@@ -20,6 +20,8 @@ Two ways to install:
 Choose Aerial and click on Screen Saver Options to select your settings.
 
 
+![Screenshot](https://raw.githubusercontent.com/JohnCoates/Aerial/master/screenshot.png)
+
 ## Features
 * **Auto Load Latest Aerials:** Aerials are loaded directly from Apple, so you're never out of date.
 * **Play Different Aerial On Each Display:** If you've got multiple monitors, this setting loads a different aerial for each of your displays.
