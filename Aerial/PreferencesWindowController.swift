@@ -88,11 +88,9 @@ class City {
     
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
-        NSLog("initted!");
     }
     override init(window: NSWindow?) {
         super.init(window: window)
-        NSLog("initted!");
         
     }
     override func windowDidLoad() {
@@ -157,8 +155,6 @@ class City {
             return;
         }
         
-        NSLog("loading JSON!");
-        
         PreferencesWindowController.loadedJSON = true;
         
         let completionHandler = { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
@@ -198,7 +194,7 @@ class City {
                         city.addVideoForTimeOfDay(timeOfDay, video: video);
                         videos.append(video)
                         
-                        NSLog("id: \(id), name: \(name), time of day: \(timeOfDay), url: \(url)");
+//                        NSLog("id: \(id), name: \(name), time of day: \(timeOfDay), url: \(url)");
                     }
                 }
                 
@@ -212,7 +208,7 @@ class City {
                     self.outlineView?.reloadData();
                     self.outlineView?.expandItem(nil, expandChildren: true);
                 })
-                NSLog("reloading outline view\(self.outlineView)");
+//                NSLog("reloading outline view\(self.outlineView)");
             }
             catch {
                 NSLog("Error retrieving content listing.");
@@ -236,7 +232,7 @@ class City {
     
     func outlineView(outlineView: NSOutlineView, numberOfChildrenOfItem item: AnyObject?) -> Int {
         if item == nil {
-            NSLog("count: \(cities.count)");
+//            NSLog("count: \(cities.count)");
             return cities.count;
         }
         

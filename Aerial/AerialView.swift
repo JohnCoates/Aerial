@@ -159,10 +159,10 @@ class ManifestLoader {
             static var _player:AVPlayer?;
             static var player:AVPlayer {
                 if let activePlayer = _player {
-                    NSLog("returning existing player: %@", activePlayer);
+//                    NSLog("returning existing player: %@", activePlayer);
                     return activePlayer;
                 }
-                NSLog("preview.... constructing new player!");
+//                NSLog("preview.... constructing new player!");
 //                let movieURL = NSURL(string: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b10-2.mov");
 //                let asset = AVAsset(URL: movieURL!);
 //                
@@ -188,7 +188,7 @@ class ManifestLoader {
     }
     
     deinit {
-        NSLog("deinit AerialView");
+//        NSLog("deinit AerialView");
         NSNotificationCenter.defaultCenter().removeObserver(self);
         
         // set player item to nil if not preview player
@@ -318,6 +318,11 @@ public let AVPlayerItemFailedToPlayToEndTimeErrorKey: String // NSError
 */
     func playerItemFailedtoPlayToEnd(aNotification: NSNotification) {
         NSLog("AVPlayerItemFailedToPlayToEndTimeNotification \(aNotification)");
+        guard let player = self.player else {
+            return;
+        }
+        
+        playNextVideo(player);
     }
     
     func playerItemNewErrorLogEntryNotification(aNotification: NSNotification) {
@@ -329,13 +334,13 @@ public let AVPlayerItemFailedToPlayToEndTimeErrorKey: String // NSError
     }
     
     func playerItemDidReachEnd(aNotification: NSNotification) {
-        NSLog("played did reach end");
-        NSLog("notification: \(aNotification)");
+//        NSLog("played did reach end");
+//        NSLog("notification: \(aNotification)");
         guard let player = self.player else {
             return;
         }
 
-        NSLog("playing next video for player \(player)");
+//        NSLog("playing next video for player \(player)");
         
         // play another video
         playNextVideo(player);
@@ -356,7 +361,7 @@ public let AVPlayerItemFailedToPlayToEndTimeErrorKey: String // NSError
         let item = AVPlayerItem(asset: asset);
         player.replaceCurrentItemWithPlayerItem(item);
         
-        NSLog("playing video: \(video.url)");
+//        NSLog("playing video: \(video.url)");
         if player.rate == 0 {
             player.play();
         }
@@ -371,7 +376,7 @@ public let AVPlayerItemFailedToPlayToEndTimeErrorKey: String // NSError
         // remove old entries
         notificationCenter.removeObserver(self);
         
-        NSLog("observing current item \(currentItem)");
+//        NSLog("observing current item \(currentItem)");
         notificationCenter.addObserver(self, selector: "playerItemDidReachEnd:", name: AVPlayerItemDidPlayToEndTimeNotification, object: currentItem);
         notificationCenter.addObserver(self, selector: "playerItemNewErrorLogEntryNotification:", name: AVPlayerItemNewErrorLogEntryNotification, object: currentItem);
         notificationCenter.addObserver(self, selector: "playerItemFailedtoPlayToEnd:", name: AVPlayerItemFailedToPlayToEndTimeNotification, object: currentItem);
