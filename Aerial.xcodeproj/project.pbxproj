@@ -7,18 +7,52 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FACAF1A91BD9FC6000E539DC /* AerialView.h in Headers */ = {isa = PBXBuildFile; fileRef = FACAF1A81BD9FC6000E539DC /* AerialView.h */; };
-		FACAF1AB1BD9FC6000E539DC /* AerialView.m in Sources */ = {isa = PBXBuildFile; fileRef = FACAF1AA1BD9FC6000E539DC /* AerialView.m */; };
+		FA143CCB1BDA270A0041A82B /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA143CCA1BDA270A0041A82B /* PreferencesWindow.xib */; settings = {ASSET_TAGS = (); }; };
+		FA143CCD1BDA2EE00041A82B /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA143CCC1BDA2EE00041A82B /* PreferencesWindowController.swift */; settings = {ASSET_TAGS = (); }; };
+		FA143CD91BDA3E880041A82B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA143CD81BDA3E880041A82B /* AppDelegate.swift */; };
+		FA143CDB1BDA3E880041A82B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA143CDA1BDA3E880041A82B /* Assets.xcassets */; };
+		FA143CDE1BDA3E880041A82B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA143CDC1BDA3E880041A82B /* MainMenu.xib */; };
+		FA143CE31BDA3E910041A82B /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA143CCC1BDA2EE00041A82B /* PreferencesWindowController.swift */; settings = {ASSET_TAGS = (); }; };
+		FA143CE61BDA3EEF0041A82B /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA143CE51BDA3EEF0041A82B /* AVKit.framework */; };
+		FA143CE81BDA49BA0041A82B /* AerialVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA143CE71BDA49BA0041A82B /* AerialVideo.swift */; settings = {ASSET_TAGS = (); }; };
+		FA143CE91BDA4A9E0041A82B /* AerialVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA143CE71BDA49BA0041A82B /* AerialVideo.swift */; settings = {ASSET_TAGS = (); }; };
+		FA6746D01BDB7B2B00769DC6 /* CheckCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6746CF1BDB7B2B00769DC6 /* CheckCellView.swift */; settings = {ASSET_TAGS = (); }; };
+		FA6746D11BDB7B3300769DC6 /* CheckCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6746CF1BDB7B2B00769DC6 /* CheckCellView.swift */; settings = {ASSET_TAGS = (); }; };
+		FA6746D41BDB850000769DC6 /* icon-day.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FA6746D21BDB850000769DC6 /* icon-day.pdf */; settings = {ASSET_TAGS = (); }; };
+		FA6746D51BDB850000769DC6 /* icon-day.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FA6746D21BDB850000769DC6 /* icon-day.pdf */; settings = {ASSET_TAGS = (); }; };
+		FA6746D61BDB850000769DC6 /* icon-night.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FA6746D31BDB850000769DC6 /* icon-night.pdf */; settings = {ASSET_TAGS = (); }; };
+		FA6746D71BDB850000769DC6 /* icon-night.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FA6746D31BDB850000769DC6 /* icon-night.pdf */; settings = {ASSET_TAGS = (); }; };
+		FA6746D81BDB9DCE00769DC6 /* AerialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACAF1B31BD9FEEC00E539DC /* AerialView.swift */; settings = {ASSET_TAGS = (); }; };
+		FACAF1B41BD9FEEC00E539DC /* AerialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACAF1B31BD9FEEC00E539DC /* AerialView.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA143CCA1BDA270A0041A82B /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindow.xib; path = Aerial/PreferencesWindow.xib; sourceTree = "<group>"; };
+		FA143CCC1BDA2EE00041A82B /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		FA143CD61BDA3E880041A82B /* Aerial Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aerial Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA143CD81BDA3E880041A82B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FA143CDA1BDA3E880041A82B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA143CDD1BDA3E880041A82B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FA143CDF1BDA3E880041A82B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA143CE51BDA3EEF0041A82B /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		FA143CE71BDA49BA0041A82B /* AerialVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AerialVideo.swift; sourceTree = "<group>"; };
+		FA6746CF1BDB7B2B00769DC6 /* CheckCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckCellView.swift; sourceTree = "<group>"; };
+		FA6746D21BDB850000769DC6 /* icon-day.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "icon-day.pdf"; path = "Aerial/icon-day.pdf"; sourceTree = "<group>"; };
+		FA6746D31BDB850000769DC6 /* icon-night.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "icon-night.pdf"; path = "Aerial/icon-night.pdf"; sourceTree = "<group>"; };
 		FACAF1A51BD9FC6000E539DC /* Aerial.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Aerial.saver; sourceTree = BUILT_PRODUCTS_DIR; };
-		FACAF1A81BD9FC6000E539DC /* AerialView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AerialView.h; sourceTree = "<group>"; };
-		FACAF1AA1BD9FC6000E539DC /* AerialView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AerialView.m; sourceTree = "<group>"; };
-		FACAF1AC1BD9FC6000E539DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FACAF1AC1BD9FC6000E539DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Aerial/Info.plist; sourceTree = "<group>"; };
+		FACAF1B31BD9FEEC00E539DC /* AerialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AerialView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FA143CD31BDA3E880041A82B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA143CE61BDA3EEF0041A82B /* AVKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FACAF1A11BD9FC6000E539DC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -29,10 +63,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA143CD71BDA3E880041A82B /* Aerial Test */ = {
+			isa = PBXGroup;
+			children = (
+				FA143CD81BDA3E880041A82B /* AppDelegate.swift */,
+				FA143CDA1BDA3E880041A82B /* Assets.xcassets */,
+				FA143CDC1BDA3E880041A82B /* MainMenu.xib */,
+				FA143CDF1BDA3E880041A82B /* Info.plist */,
+			);
+			path = "Aerial Test";
+			sourceTree = "<group>";
+		};
+		FA2D7AA01BDD849E009EA54C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA143CE51BDA3EEF0041A82B /* AVKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA2D7AA11BDD84A7009EA54C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FA143CCA1BDA270A0041A82B /* PreferencesWindow.xib */,
+				FA6746D21BDB850000769DC6 /* icon-day.pdf */,
+				FA6746D31BDB850000769DC6 /* icon-night.pdf */,
+				FACAF1AC1BD9FC6000E539DC /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		FACAF19B1BD9FC6000E539DC = {
 			isa = PBXGroup;
 			children = (
+				FA2D7AA11BDD84A7009EA54C /* Resources */,
+				FA2D7AA01BDD849E009EA54C /* Frameworks */,
 				FACAF1A71BD9FC6000E539DC /* Aerial */,
+				FA143CD71BDA3E880041A82B /* Aerial Test */,
 				FACAF1A61BD9FC6000E539DC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				FACAF1A51BD9FC6000E539DC /* Aerial.saver */,
+				FA143CD61BDA3E880041A82B /* Aerial Test.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +116,10 @@
 		FACAF1A71BD9FC6000E539DC /* Aerial */ = {
 			isa = PBXGroup;
 			children = (
-				FACAF1A81BD9FC6000E539DC /* AerialView.h */,
-				FACAF1AA1BD9FC6000E539DC /* AerialView.m */,
-				FACAF1AC1BD9FC6000E539DC /* Info.plist */,
+				FACAF1B31BD9FEEC00E539DC /* AerialView.swift */,
+				FA143CCC1BDA2EE00041A82B /* PreferencesWindowController.swift */,
+				FA143CE71BDA49BA0041A82B /* AerialVideo.swift */,
+				FA6746CF1BDB7B2B00769DC6 /* CheckCellView.swift */,
 			);
 			path = Aerial;
 			sourceTree = "<group>";
@@ -62,13 +131,29 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FACAF1A91BD9FC6000E539DC /* AerialView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		FA143CD51BDA3E880041A82B /* Aerial Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA143CE01BDA3E880041A82B /* Build configuration list for PBXNativeTarget "Aerial Test" */;
+			buildPhases = (
+				FA143CD21BDA3E880041A82B /* Sources */,
+				FA143CD31BDA3E880041A82B /* Frameworks */,
+				FA143CD41BDA3E880041A82B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Aerial Test";
+			productName = "Aerial Test";
+			productReference = FA143CD61BDA3E880041A82B /* Aerial Test.app */;
+			productType = "com.apple.product-type.application";
+		};
 		FACAF1A41BD9FC6000E539DC /* Aerial */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FACAF1AF1BD9FC6000E539DC /* Build configuration list for PBXNativeTarget "Aerial" */;
@@ -93,9 +178,13 @@
 		FACAF19C1BD9FC6000E539DC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "John Coates";
 				TargetAttributes = {
+					FA143CD51BDA3E880041A82B = {
+						CreatedOnToolsVersion = 7.0;
+					};
 					FACAF1A41BD9FC6000E539DC = {
 						CreatedOnToolsVersion = 7.0;
 					};
@@ -107,6 +196,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = FACAF19B1BD9FC6000E539DC;
 			productRefGroup = FACAF1A61BD9FC6000E539DC /* Products */;
@@ -114,32 +204,102 @@
 			projectRoot = "";
 			targets = (
 				FACAF1A41BD9FC6000E539DC /* Aerial */,
+				FA143CD51BDA3E880041A82B /* Aerial Test */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		FA143CD41BDA3E880041A82B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA143CDB1BDA3E880041A82B /* Assets.xcassets in Resources */,
+				FA143CDE1BDA3E880041A82B /* MainMenu.xib in Resources */,
+				FA6746D71BDB850000769DC6 /* icon-night.pdf in Resources */,
+				FA6746D51BDB850000769DC6 /* icon-day.pdf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FACAF1A31BD9FC6000E539DC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA143CCB1BDA270A0041A82B /* PreferencesWindow.xib in Resources */,
+				FA6746D61BDB850000769DC6 /* icon-night.pdf in Resources */,
+				FA6746D41BDB850000769DC6 /* icon-day.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FA143CD21BDA3E880041A82B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA143CE31BDA3E910041A82B /* PreferencesWindowController.swift in Sources */,
+				FA143CD91BDA3E880041A82B /* AppDelegate.swift in Sources */,
+				FA143CE91BDA4A9E0041A82B /* AerialVideo.swift in Sources */,
+				FA6746D11BDB7B3300769DC6 /* CheckCellView.swift in Sources */,
+				FA6746D81BDB9DCE00769DC6 /* AerialView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FACAF1A01BD9FC6000E539DC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FACAF1AB1BD9FC6000E539DC /* AerialView.m in Sources */,
+				FA143CCD1BDA2EE00041A82B /* PreferencesWindowController.swift in Sources */,
+				FACAF1B41BD9FEEC00E539DC /* AerialView.swift in Sources */,
+				FA143CE81BDA49BA0041A82B /* AerialVideo.swift in Sources */,
+				FA6746D01BDB7B2B00769DC6 /* CheckCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		FA143CDC1BDA3E880041A82B /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA143CDD1BDA3E880041A82B /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		FA143CE11BDA3E880041A82B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Aerial Test/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FA143CE21BDA3E880041A82B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Aerial Test/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		FACAF1AD1BD9FC6000E539DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -175,7 +335,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -211,7 +371,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
@@ -220,11 +380,17 @@
 		FACAF1B01BD9FC6000E539DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Aerial/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Aerial/Aerial-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Debug;
@@ -232,11 +398,16 @@
 		FACAF1B11BD9FC6000E539DC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Aerial/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Aerial/Aerial-Bridging-Header.h";
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -244,6 +415,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FA143CE01BDA3E880041A82B /* Build configuration list for PBXNativeTarget "Aerial Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA143CE11BDA3E880041A82B /* Debug */,
+				FA143CE21BDA3E880041A82B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FACAF19F1BD9FC6000E539DC /* Build configuration list for PBXProject "Aerial" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -260,6 +440,7 @@
 				FACAF1B11BD9FC6000E539DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

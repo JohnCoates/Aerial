@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Aerial Test.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>Aerial.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>FA143CD51BDA3E880041A82B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>FACAF1A41BD9FC6000E539DC</key>
 		<dict>
 			<key>primary</key>
