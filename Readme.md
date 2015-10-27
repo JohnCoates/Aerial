@@ -5,6 +5,11 @@ Aerial is a Mac screen saver based on the new Apple TV screen saver that display
 
 Aerial is completely open source, so feel free to contribute to its development!
 
+#### Coded with Love by John Coates
+
+[![Twitter](http://i.imgur.com/KzOiue1.png)](http://twitter.com/punksomething)
+[![Email](http://i.imgur.com/FvDZudR.png)](mailto:john@johncoates.me)
+
 ## Download
 Download from [Github](https://github.com/JohnCoates/Aerial/releases/download/v1.1/Aerial.zip)
 
@@ -41,10 +46,12 @@ I appreciate all pull requests. Caching hasn't been added yet.
 
 ## Changelog
 
-- October 26th, 2015 - 1.0: first release
+- October 26th, 2015 - 1.1
+  - Added thumbnail.
+  - Added support for Mavericks.
+  - Removes un-necessary logging.
+  - Now shows error when installing on un-supported OS X version.
+- October 26th, 2015 - 1.0: First release.
 
 ## License
 [MIT License](https://raw.githubusercontent.com/JohnCoates/Aerial/master/LICENSE)
-
-## Author
-Maintained and created by John Coates [@punksomething](http://twitter.com/punksomething)
