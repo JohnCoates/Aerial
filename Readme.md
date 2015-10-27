@@ -1,4 +1,4 @@
-![Screencast](https://raw.githubusercontent.com/JohnCoates/Aerial/master/screencast.gif)
+![screencast](https://cloud.githubusercontent.com/assets/499192/10754100/c0e1cc4c-7c95-11e5-9d3b-842d3acc2fd5.gif)
 
 ## Aerial - Apple TV Aerial Views Screen Saver
 Aerial is a Mac screen saver based on the new Apple TV screen saver that displays the aerial movies Apple shot over New York, San Francisco, Hawaii, China, etc.
@@ -25,8 +25,7 @@ To enable Aerial open System Preferences -> Desktop & Screen Saver -> Screen Sav
 
 Choose Aerial and click on Screen Saver Options to select your settings.
 
-
-![Screenshot](https://raw.githubusercontent.com/JohnCoates/Aerial/master/screenshot.png)
+![screenshot](https://cloud.githubusercontent.com/assets/499192/10754102/c58cc076-7c95-11e5-9579-4275740ba339.png)
 
 ## Features
 * **Auto Load Latest Aerials:** Aerials are loaded directly from Apple, so you're never out of date.
