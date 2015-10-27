@@ -29,6 +29,9 @@ Choose Aerial and click on Screen Saver Options to select your settings.
 * **Favorites:** You can choose to only have certain aerials play.
 * **Preview:** Clicking on an aerial in the screen saver options previews that aerial for you.
 
+## Compatibility
+Aerial is written in Swift, which requires OS X Mavericks or above.
+
 ## Community
 - **Find a bug?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Try to be as specific as possible.
 - **Have a feature request** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Tell me why this feature would be useful, and why you and others would want it.
