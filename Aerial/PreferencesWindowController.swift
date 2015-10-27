@@ -70,7 +70,9 @@ class City {
         
         playerView.player = player;
         playerView.controlsStyle = .None;
-        playerView.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        if #available(OSX 10.10, *) {
+            playerView.videoGravity = AVLayerVideoGravityResizeAspectFill
+        };
         defaults.synchronize();
         
         if (defaults.boolForKey("differentDisplays")) {

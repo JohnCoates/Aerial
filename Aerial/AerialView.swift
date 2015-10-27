@@ -235,7 +235,9 @@ class ManifestLoader {
         playerView.autoresizingMask = [.ViewHeightSizable, .ViewWidthSizable]
         playerView.controlsStyle = .None
         playerView.player = player;
-        playerView.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        if #available(OSX 10.10, *) {
+            playerView.videoGravity = AVLayerVideoGravityResizeAspectFill
+        };
         self.addSubview(playerView);
     }
     func setup() {
