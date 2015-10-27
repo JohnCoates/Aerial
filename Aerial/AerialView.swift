@@ -114,7 +114,6 @@ class ManifestLoader {
                 }
                 
                 self.loadedManifest = videos;
-                NSLog("loaded videos: \(videos)");
                 
                 // callbacks
                 for callback in self.callbacks {
