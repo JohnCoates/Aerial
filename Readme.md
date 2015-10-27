@@ -16,7 +16,8 @@ Two ways to install:
 
 ## Using Aerial
 
-* To enable Aerial open System Preferences -> Desktop & Screen Saver -> Screen Saver
+To enable Aerial open System Preferences -> Desktop & Screen Saver -> Screen Saver
+
 Choose Aerial and click on Screen Saver Options to select your settings.
 
 
