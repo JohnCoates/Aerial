@@ -13,7 +13,20 @@ import AVKit
 
 typealias manifestLoadCallback = ([AerialVideo]) -> (Void);
 
-let CACHE_DIR = NSHomeDirectory() + "/Downloads/AerialMovCache/"
+public let CACHE_DIR = getCacheDirectory()
+
+func getCacheDirectory() -> String {
+    let CACHE_DIR = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, .UserDomainMask, true)[0] + "/AerialMovCache/"
+    var isDir : ObjCBool = false
+    if (!NSFileManager.defaultManager().fileExistsAtPath(CACHE_DIR, isDirectory: &isDir)) {
+        do {
+            try NSFileManager.defaultManager().createDirectoryAtPath(CACHE_DIR, withIntermediateDirectories: true, attributes: nil)
+        }catch{
+            NSLog("Error")
+        }
+    }
+    return CACHE_DIR
+}
 
 // shuffling thanks to Nate Cook http://stackoverflow.com/questions/24026510/how-do-i-shuffle-an-array-in-swift
 extension CollectionType {

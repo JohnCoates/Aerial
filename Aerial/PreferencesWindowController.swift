@@ -228,6 +228,10 @@ class City {
         NSApp.mainWindow?.endSheet(window!);
     }
 
+    @IBAction func openCacheDirectory(sender: AnyObject) {
+        NSWorkspace.sharedWorkspace().openURL(NSURL(fileURLWithPath: CACHE_DIR, isDirectory: true))
+    }
+
     
     // MARK: - Outline View Delegate & Data Source
     
