@@ -13,6 +13,8 @@ import AVKit
 
 typealias manifestLoadCallback = ([AerialVideo]) -> (Void);
 
+let CACHE_DIR = NSHomeDirectory() + "/Downloads/AerialMovCache/"
+
 // shuffling thanks to Nate Cook http://stackoverflow.com/questions/24026510/how-do-i-shuffle-an-array-in-swift
 extension CollectionType {
     /// Return a copy of `self` with its elements shuffled
@@ -354,7 +356,7 @@ public let AVPlayerItemFailedToPlayToEndTimeErrorKey: String // NSError
             NSLog("error grabbing random video!");
             return;
         }
-        let videoURL = video.url;
+        let videoURL = getVideoURL(video.url);
 //        let videoURL = NSURL(string:"http://localhost/test.mov")!;
         
         let asset = AVAsset(URL: videoURL);
@@ -383,6 +385,19 @@ public let AVPlayerItemFailedToPlayToEndTimeErrorKey: String // NSError
         notificationCenter.addObserver(self, selector: "playerItemFailedtoPlayToEnd:", name: AVPlayerItemFailedToPlayToEndTimeNotification, object: currentItem);
         notificationCenter.addObserver(self, selector: "playerItemPlaybackStalledNotification:", name: AVPlayerItemPlaybackStalledNotification, object: currentItem);
         player.actionAtItemEnd = AVPlayerActionAtItemEnd.None;
+    }
+    
+    func getVideoURL(url:NSURL) -> NSURL{
+        let filename = url.lastPathComponent;
+        let cacheFilePath = CACHE_DIR + filename!;
+//        NSLog("getVideoURL : %@ - %@ - %@", url, filename!, cacheFilePath)
+        if (NSFileManager.defaultManager().fileExistsAtPath(cacheFilePath)) {
+//            NSLog("Get video from cache");
+            return NSURL(fileURLWithPath:cacheFilePath);
+        } else {
+//            NSLog("Get video from url");
+            return url;
+        }
     }
     
     override func hasConfigureSheet() -> Bool {
