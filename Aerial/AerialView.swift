@@ -413,6 +413,14 @@ public let AVPlayerItemFailedToPlayToEndTimeErrorKey: String // NSError
             return NSURL(fileURLWithPath:cacheFilePath);
         } else {
 //            NSLog("Get video from url");
+            if let myAudioDataFromUrl = NSData(contentsOfURL: url){
+                // after downloading your data you need to save it to your destination url
+                if myAudioDataFromUrl.writeToURL(NSURL(fileURLWithPath:cacheFilePath), atomically: true) {
+//                    NSLog("file saved")
+                } else {
+//                    NSLog("error saving file")
+                }
+            }
             return url;
         }
     }
