@@ -52,7 +52,7 @@ class ManifestLoader {
         // start loading right away!
         let completionHandler = { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
             if let error = error {
-                NSLog("Error! \(error)");
+                NSLog("Aerial Error Loading Manifest: \(error)");
                 return;
             }
             
@@ -97,7 +97,7 @@ class ManifestLoader {
                 
             }
             catch {
-                NSLog("Error retrieving content listing.");
+                NSLog("Aerial: Error retrieving content listing.");
                 return;
             }
             

@@ -34,14 +34,9 @@ import AVKit
             static var _player:AVPlayer?;
             static var player:AVPlayer {
                 if let activePlayer = _player {
-//                    NSLog("returning existing player: %@", activePlayer);
                     return activePlayer;
                 }
-//                NSLog("preview.... constructing new player!");
-//                let movieURL = NSURL(string: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/b10-2.mov");
-//                let asset = AVAsset(URL: movieURL!);
-//                
-//                let item = AVPlayerItem(asset: asset);
+
                 _player = AVPlayer();
                 return _player!;
             }
@@ -63,7 +58,7 @@ import AVKit
     }
     
     deinit {
-//        NSLog("deinit AerialView");
+        debugLog("deinit AerialView");
         NSNotificationCenter.defaultCenter().removeObserver(self);
         
         // set player item to nil if not preview player
@@ -145,7 +140,7 @@ import AVKit
         }
         
         guard let player = localPlayer else {
-            NSLog("Aerial: Couldn't create AVPlayer!");
+            NSLog("Aerial Error: Couldn't create AVPlayer!");
             return;
         }
         
@@ -211,13 +206,13 @@ public let AVPlayerItemFailedToPlayToEndTimeErrorKey: String // NSError
     }
     
     func playerItemDidReachEnd(aNotification: NSNotification) {
-//        NSLog("played did reach end");
-//        NSLog("notification: \(aNotification)");
+        debugLog("played did reach end");
+        debugLog("notification: \(aNotification)");
         guard let player = self.player else {
             return;
         }
 
-//        NSLog("playing next video for player \(player)");
+        debugLog("playing next video for player \(player)");
         
         // play another video
         playNextVideo(player);
@@ -227,7 +222,7 @@ public let AVPlayerItemFailedToPlayToEndTimeErrorKey: String // NSError
         let randomVideo = ManifestLoader.instance.randomVideo();
         
         guard let video = randomVideo else {
-            NSLog("error grabbing random video!");
+            NSLog("Aerial: Error grabbing random video!");
             return;
         }
         let videoURL = video.url;
@@ -238,13 +233,13 @@ public let AVPlayerItemFailedToPlayToEndTimeErrorKey: String // NSError
         let item = AVPlayerItem(asset: asset);
         player.replaceCurrentItemWithPlayerItem(item);
         
-//        NSLog("playing video: \(video.url)");
+        debugLog("playing video: \(video.url)");
         if player.rate == 0 {
             player.play();
         }
         
         guard let currentItem = player.currentItem else {
-            NSLog("no current item!");
+            NSLog("Aerial Error: No current item!");
             return;
         }
         
@@ -253,7 +248,7 @@ public let AVPlayerItemFailedToPlayToEndTimeErrorKey: String // NSError
         // remove old entries
         notificationCenter.removeObserver(self);
         
-//        NSLog("observing current item \(currentItem)");
+        debugLog("observing current item \(currentItem)");
         notificationCenter.addObserver(self, selector: "playerItemDidReachEnd:", name: AVPlayerItemDidPlayToEndTimeNotification, object: currentItem);
         notificationCenter.addObserver(self, selector: "playerItemNewErrorLogEntryNotification:", name: AVPlayerItemNewErrorLogEntryNotification, object: currentItem);
         notificationCenter.addObserver(self, selector: "playerItemFailedtoPlayToEnd:", name: AVPlayerItemFailedToPlayToEndTimeNotification, object: currentItem);
@@ -273,12 +268,6 @@ public let AVPlayerItemFailedToPlayToEndTimeErrorKey: String // NSError
         let controller = PreferencesWindowController(windowNibName: "PreferencesWindow");
     
         preferencesController = controller;
-//        controller.loadWindow();
-//        controller.window?.styleMask
-//        guard let window = controller.window else {
-//            NSLog("no controller :(");
-//            return nil;
-//        }
         return controller.window;
     }
 }

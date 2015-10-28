@@ -145,7 +145,7 @@ class City {
         defaults.setBool(onState, forKey: "differentDisplays");
         defaults.synchronize();
         
-        NSLog("set differentDisplays to \(onState)");
+        debugLog("set differentDisplays to \(onState)");
     }
     
     @IBAction func pageProjectClick(button:NSButton?) {
@@ -196,7 +196,7 @@ class City {
                         city.addVideoForTimeOfDay(timeOfDay, video: video);
                         videos.append(video)
                         
-//                        NSLog("id: \(id), name: \(name), time of day: \(timeOfDay), url: \(url)");
+                        debugLog("id: \(id), name: \(name), time of day: \(timeOfDay), url: \(url)");
                     }
                 }
                 
@@ -210,10 +210,10 @@ class City {
                     self.outlineView?.reloadData();
                     self.outlineView?.expandItem(nil, expandChildren: true);
                 })
-//                NSLog("reloading outline view\(self.outlineView)");
+                debugLog("reloading outline view\(self.outlineView)");
             }
             catch {
-                NSLog("Error retrieving content listing.");
+                NSLog("Aerial: Error retrieving content listing.");
                 return;
             }
             
@@ -234,7 +234,6 @@ class City {
     
     func outlineView(outlineView: NSOutlineView, numberOfChildrenOfItem item: AnyObject?) -> Int {
         if item == nil {
-//            NSLog("count: \(cities.count)");
             return cities.count;
         }
         

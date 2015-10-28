@@ -27,9 +27,7 @@ class CheckCellView: NSTableCellView {
         checkButton.action = "check:";
     }
     
-    func check(button:AnyObject?) {
-        NSLog("checked!");
-        
+    func check(button:AnyObject?) {        
         guard let onCheck = self.onCheck else {
             return;
         }
