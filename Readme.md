@@ -10,20 +10,18 @@ Aerial is completely open source, so feel free to contribute to its development!
 [![Twitter](http://i.imgur.com/KzOiue1.png)](http://twitter.com/punksomething)
 [![Email](http://i.imgur.com/FvDZudR.png)](mailto:john@johncoates.me)
 
-## Download
-Download from [Github](https://github.com/JohnCoates/Aerial/releases/download/v1.1/Aerial.zip)
+## To install:
 
-Two ways to install:
+1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.1/Aerial.zip)
+2. Unzip the downloaded file.
+3. Open **Aerial.saver** and confirm installation.
 
-**Option A:** Open Aerial.saver and OS X will ask if you'd like it installed.
+If Aerial.saver could not be opened, place Aerial.saver in ~/Library/Screen Savers
 
-**Option B:** Place Aerial.saver in ~/Library/Screen Savers
+## To set Aerial as your Screen Saver:
 
-## Using Aerial
-
-To enable Aerial open System Preferences -> Desktop & Screen Saver -> Screen Saver
-
-Choose Aerial and click on Screen Saver Options to select your settings.
+1. Open System Preferences -> Desktop & Screen Saver -> Screen Saver
+2. Choose Aerial and click on Screen Saver Options to select your settings.
 
 ![screenshot](https://cloud.githubusercontent.com/assets/499192/10754102/c58cc076-7c95-11e5-9579-4275740ba339.png)
 
