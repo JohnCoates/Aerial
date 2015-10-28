@@ -27,21 +27,21 @@ Choose Aerial and click on Screen Saver Options to select your settings.
 
 ![screenshot](https://cloud.githubusercontent.com/assets/499192/10754102/c58cc076-7c95-11e5-9579-4275740ba339.png)
 
-## Add Local Cahce
-
-You can add the mov file cache to Aerial.
-
-1. Download the `mov` files form [http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json](http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json) 
-
-2. Put them into `~/Downloads/AerialMovCache/` ( Just add a new folder `AerialMovCache` in your `Downloads` and put the `mov` files into it. )
-
-And Aerial will use the cached `mov` if the file exists in `~/Downloads/AerialMovCache/`
-
 ## Features
 * **Auto Load Latest Aerials:** Aerials are loaded directly from Apple, so you're never out of date.
 * **Play Different Aerial On Each Display:** If you've got multiple monitors, this setting loads a different aerial for each of your displays.
 * **Favorites:** You can choose to only have certain aerials play.
 * **Preview:** Clicking on an aerial in the screen saver options previews that aerial for you.
+
+## Manual Download Files And Add To CacheDirectory
+
+Aerial will cache on-demand and you can add the mov file cache to CacheDirectory.
+
+1. Download the `mov` files form [http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json](http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json) 
+
+2. open System Preferences -> Desktop & Screen Saver -> Screen Saver. Choose Aerial and click on Screen Saver Options and click `OpenCacheDirectory ` and copy the file you download into it.
+
+*Or just put the `mov` files into `~/Library/Caches/AerialMovCache/`.*
 
 ## Compatibility
 Aerial is written in Swift, which requires OS X Mavericks or above.
