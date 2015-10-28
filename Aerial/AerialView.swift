@@ -91,6 +91,10 @@ class ManifestLoader {
     
     init() {
         // start loading right away!
+        
+        let sharedCache = NSURLCache(memoryCapacity: 50*1024*1024, diskCapacity: 50*1024*1024, diskPath: "AerialMovCache")
+        NSURLCache.setSharedURLCache(sharedCache)
+        
         let completionHandler = { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
             guard let data = data else {
                 NSLog("Couldn't load manifest!");
