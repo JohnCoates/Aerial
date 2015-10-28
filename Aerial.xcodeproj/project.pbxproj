@@ -29,6 +29,8 @@
 		FAC36F601BE175CF007F2A20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F301BE1756D007F2A20 /* AppDelegate.swift */; };
 		FAC36F641BE1772F007F2A20 /* CollectionType+Shuffling.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F631BE1772F007F2A20 /* CollectionType+Shuffling.swift */; };
 		FAC36F651BE1772F007F2A20 /* CollectionType+Shuffling.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F631BE1772F007F2A20 /* CollectionType+Shuffling.swift */; };
+		FAC36F671BE1778C007F2A20 /* ManifestLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F661BE1778C007F2A20 /* ManifestLoader.swift */; };
+		FAC36F681BE1778C007F2A20 /* ManifestLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F661BE1778C007F2A20 /* ManifestLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,7 @@
 		FAC36F431BE1756D007F2A20 /* AerialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AerialView.swift; sourceTree = "<group>"; };
 		FAC36F441BE1756D007F2A20 /* CheckCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckCellView.swift; sourceTree = "<group>"; };
 		FAC36F631BE1772F007F2A20 /* CollectionType+Shuffling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionType+Shuffling.swift"; sourceTree = "<group>"; };
+		FAC36F661BE1778C007F2A20 /* ManifestLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManifestLoader.swift; sourceTree = "<group>"; };
 		FACAF1A51BD9FC6000E539DC /* Aerial.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Aerial.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -136,6 +139,7 @@
 				FAC36F411BE1756D007F2A20 /* Cache */,
 				FAC36F621BE17701007F2A20 /* Extensions */,
 				FAC36F401BE1756D007F2A20 /* AerialVideo.swift */,
+				FAC36F661BE1778C007F2A20 /* ManifestLoader.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -304,6 +308,7 @@
 				FAC36F651BE1772F007F2A20 /* CollectionType+Shuffling.swift in Sources */,
 				FAC36F5E1BE1756D007F2A20 /* CheckCellView.swift in Sources */,
 				FAC36F5C1BE1756D007F2A20 /* AerialView.swift in Sources */,
+				FAC36F681BE1778C007F2A20 /* ManifestLoader.swift in Sources */,
 				FAC36F581BE1756D007F2A20 /* PreferencesWindowController.swift in Sources */,
 				FAC36F601BE175CF007F2A20 /* AppDelegate.swift in Sources */,
 				FAC36F5A1BE1756D007F2A20 /* AerialVideo.swift in Sources */,
@@ -317,6 +322,7 @@
 				FAC36F5D1BE1756D007F2A20 /* CheckCellView.swift in Sources */,
 				FAC36F5B1BE1756D007F2A20 /* AerialView.swift in Sources */,
 				FAC36F571BE1756D007F2A20 /* PreferencesWindowController.swift in Sources */,
+				FAC36F671BE1778C007F2A20 /* ManifestLoader.swift in Sources */,
 				FAC36F591BE1756D007F2A20 /* AerialVideo.swift in Sources */,
 				FAC36F641BE1772F007F2A20 /* CollectionType+Shuffling.swift in Sources */,
 			);
