@@ -27,6 +27,8 @@ import AVKit
         return !defaults.boolForKey("differentDisplays");
     }
     
+    // MARK: - Shared Player
+    
     static var singlePlayerAlreadySetup:Bool = false;
     class var sharedPlayer: AVPlayer {
         struct Static {
@@ -44,6 +46,8 @@ import AVKit
         
         return Static.player;
     }
+    
+    // MARK: - Init / Setup
     
     override init?(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)
@@ -171,23 +175,9 @@ import AVKit
         };
     }
     
-    /*
-public let AVPlayerItemTimeJumpedNotification: String // the item's current time has changed discontinuously
-@available(OSX 10.7, *)
-public let AVPlayerItemDidPlayToEndTimeNotification: String // item has played to its end time
-@available(OSX 10.7, *)
-public let AVPlayerItemFailedToPlayToEndTimeNotification: String // item has failed to play to its end time
-@available(OSX 10.9, *)
-public let AVPlayerItemPlaybackStalledNotification: String // media did not arrive in time to continue playback
-@available(OSX 10.9, *)
-public let AVPlayerItemNewAccessLogEntryNotification: String // a new access log entry has been added
-@available(OSX 10.9, *)
-public let AVPlayerItemNewErrorLogEntryNotification: String // a new error log entry has been added
-
-// notification userInfo key                                                                    type
-@available(OSX 10.7, *)
-public let AVPlayerItemFailedToPlayToEndTimeErrorKey: String // NSError
-*/
+    
+    // MARK: - AVPlayerItem Notifications
+    
     func playerItemFailedtoPlayToEnd(aNotification: NSNotification) {
         NSLog("AVPlayerItemFailedToPlayToEndTimeNotification \(aNotification)");
         guard let player = self.player else {
@@ -217,6 +207,8 @@ public let AVPlayerItemFailedToPlayToEndTimeErrorKey: String // NSError
         // play another video
         playNextVideo(player);
     }
+    
+    // MARK: - Playing Videos
     
     func playNextVideo(player:AVPlayer) {
         let randomVideo = ManifestLoader.instance.randomVideo();
@@ -255,6 +247,8 @@ public let AVPlayerItemFailedToPlayToEndTimeErrorKey: String // NSError
         notificationCenter.addObserver(self, selector: "playerItemPlaybackStalledNotification:", name: AVPlayerItemPlaybackStalledNotification, object: currentItem);
         player.actionAtItemEnd = AVPlayerActionAtItemEnd.None;
     }
+    
+    // MARK: - Preferences
     
     override func hasConfigureSheet() -> Bool {
         return true;
