@@ -77,13 +77,13 @@ class ManifestLoader {
     init() {
         // start loading right away!
         let completionHandler = { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
-            guard let data = data else {
-                NSLog("Couldn't load manifest!");
+            if let error = error {
+                NSLog("Error! \(error)");
                 return;
             }
             
-            if let error = error {
-                NSLog("Error! \(error)");
+            guard let data = data else {
+                NSLog("Couldn't load manifest!");
                 return;
             }
             
