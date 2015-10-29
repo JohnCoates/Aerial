@@ -35,8 +35,8 @@ If Aerial.saver could not be opened, place Aerial.saver in ~/Library/Screen Save
 Aerial is written in Swift, which requires OS X Mavericks or above.
 
 ## Community
-- **Find a bug?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Try to be as specific as possible.
-- **Have a feature request** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Tell me why this feature would be useful, and why you and others would want it.
+- **Found a bug?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Try to be as specific as possible.
+- **Have a feature request?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Tell me why this feature would be useful, and why you and others would want it.
 
 ## Contribute
 I appreciate all pull requests. Caching hasn't been added yet.
@@ -46,8 +46,8 @@ I appreciate all pull requests. Caching hasn't been added yet.
 - October 26th, 2015 - 1.1
   - Added thumbnail.
   - Added support for Mavericks.
-  - Removes un-necessary logging.
-  - Now shows error when installing on un-supported OS X version.
+  - Removed unnecessary logging.
+  - Now shows error when installing on unsupported OS X version.
 - October 26th, 2015 - 1.0: First release.
 
 ## License
