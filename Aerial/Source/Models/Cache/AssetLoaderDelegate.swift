@@ -56,7 +56,7 @@ class LoadRangeConnection {
 }
 
 
-class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, NSURLConnectionDataDelegate {
+class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, NSURLConnectionDataDelegate, VideoLoaderDelegate {
  
     let URL:NSURL
     var connection:NSURLConnection?
@@ -65,6 +65,7 @@ class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, NSURLConnec
     var movieData:NSMutableData?
     var finishedLoading:Bool = false
     var rangeLoads:[LoadRangeConnection] = []
+    var videoLoaders:[VideoLoader] = []
     
     // byte offset of data loaded on main connection
     var mainConnectionOffset:Int = 0;
@@ -379,6 +380,28 @@ class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, NSURLConnec
     
     // MARK: - Delegate Methods
     func resourceLoader(resourceLoader: AVAssetResourceLoader, didCancelLoadingRequest loadingRequest: AVAssetResourceLoadingRequest) {
+        debugLog("cancelled load request: \(loadingRequest)");
+        
+        var remove:VideoLoader?
+        for loader in videoLoaders {
+            if loader.loadingRequest != loadingRequest {
+                continue;
+            }
+            
+            if let connection = loader.connection {
+                connection.cancel();
+            }
+            
+            remove = loader;
+            break;
+        }
+        
+        if let removeLoader = remove {
+            if let index = videoLoaders.indexOf(removeLoader) {
+                videoLoaders.removeAtIndex(index);
+            }
+        }
+        
         guard let index = pendingRequests.indexOf(loadingRequest) else {
             debugLog("Couldnt' find index of loadingRequest");
             return;
@@ -390,24 +413,33 @@ class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, NSURLConnec
     }
     
     func resourceLoader(resourceLoader: AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
-        pendingRequests.append(loadingRequest);
-        debugLog("new request, now \(pendingRequests.count) pending requests")
+//        pendingRequests.append(loadingRequest);
+//        debugLog("new request, now \(pendingRequests.count) pending requests")
         
+        let interceptedURL = loadingRequest.request.URL!;
+        let actualURLComponents = NSURLComponents(URL: interceptedURL, resolvingAgainstBaseURL: false)!;
+        actualURLComponents.scheme = "http";
         
-        if self.connection == nil {
-            finishedLoading = false;
-            let interceptedURL = loadingRequest.request.URL!;
-            let actualURLComponents = NSURLComponents(URL: interceptedURL, resolvingAgainstBaseURL: false)!;
-            actualURLComponents.scheme = "http";
-            let request = NSURLRequest(URL: actualURLComponents.URL!);
-            debugLog("loading request for \(request)");
-            connection = NSURLConnection(request: request, delegate: self, startImmediately: false)
-            connection?.setDelegateQueue(NSOperationQueue.mainQueue());
-            connection?.start();
-        }
-        else {
-            processPendingRequests();
-        }
+        let actualURL = actualURLComponents.URL!
+        
+        let videoLoader = VideoLoader(url: actualURL, loadingRequest: loadingRequest, delegate: self);
+        
+        videoLoaders.append(videoLoader);
+        
+//        if self.connection == nil {
+//            finishedLoading = false;
+//            let interceptedURL = loadingRequest.request.URL!;
+//            let actualURLComponents = NSURLComponents(URL: interceptedURL, resolvingAgainstBaseURL: false)!;
+//            actualURLComponents.scheme = "http";
+//            let request = NSURLRequest(URL: actualURLComponents.URL!);
+//            debugLog("loading request for \(request)");
+//            connection = NSURLConnection(request: request, delegate: self, startImmediately: false)
+//            connection?.setDelegateQueue(NSOperationQueue.mainQueue());
+//            connection?.start();
+//        }
+//        else {
+//            processPendingRequests();
+//        }
         
         return true;
     }
