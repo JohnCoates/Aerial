@@ -196,7 +196,7 @@ class City {
                         city.addVideoForTimeOfDay(timeOfDay, video: video);
                         videos.append(video)
                         
-                        debugLog("id: \(id), name: \(name), time of day: \(timeOfDay), url: \(url)");
+//                        debugLog("id: \(id), name: \(name), time of day: \(timeOfDay), url: \(url)");
                     }
                 }
                 
@@ -210,7 +210,7 @@ class City {
                     self.outlineView?.reloadData();
                     self.outlineView?.expandItem(nil, expandChildren: true);
                 })
-                debugLog("reloading outline view\(self.outlineView)");
+//                debugLog("reloading outline view\(self.outlineView)");
             }
             catch {
                 NSLog("Aerial: Error retrieving content listing.");
@@ -394,9 +394,15 @@ class City {
         case is AerialVideo:
             let video = item as! AerialVideo;
             
-            let asset = AVAsset(URL: video.url);
+            let asset = CachedOrCachingAsset(video.url);
+//            let asset = AVAsset(URL: video.url);
             
             let item = AVPlayerItem(asset: asset);
+            
+//            self.playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:NULL];
+
+//            item.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.New, context: nil)
+            NSLog("loading item: \(item)");
             player.replaceCurrentItemWithPlayerItem(item);
             player.play();
             
@@ -408,6 +414,14 @@ class City {
         }
     }
     
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        guard let item = object as? AVPlayerItem else {
+            return;
+        }
+        
+        
+        debugLog("status: \(item.status.rawValue)");
+    }
     func outlineView(outlineView: NSOutlineView, heightOfRowByItem item: AnyObject) -> CGFloat {
         switch item {
         case is AerialVideo:
