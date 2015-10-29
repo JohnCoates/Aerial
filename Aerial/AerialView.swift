@@ -14,6 +14,7 @@ import AVKit
 typealias manifestLoadCallback = ([AerialVideo]) -> (Void);
 
 public let CACHE_DIR = getCacheDirectory()
+public let USER_DEFAULTS_KEY = "AerialMovCacheKey"
 
 func getCacheDirectory() -> String {
     let CACHE_DIR = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, .UserDomainMask, true)[0] + "/AerialMovCache/"
@@ -96,13 +97,14 @@ class ManifestLoader {
         NSURLCache.setSharedURLCache(sharedCache)
         
         let completionHandler = { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
-            guard let data = data else {
-                NSLog("Couldn't load manifest!");
-                return;
+            
+            if((error) == nil && (data) != nil) {
+                self.defaults.setObject(data, forKey: USER_DEFAULTS_KEY);
+                self.defaults.synchronize();
             }
             
-            if let error = error {
-                NSLog("Error! \(error)");
+            guard let data : NSData = self.defaults.objectForKey(USER_DEFAULTS_KEY) as? NSData else {
+                NSLog("Couldn't load manifest!");
                 return;
             }
             

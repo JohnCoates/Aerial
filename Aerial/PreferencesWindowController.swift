@@ -160,7 +160,14 @@ class City {
         PreferencesWindowController.loadedJSON = true;
         
         let completionHandler = { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
-            guard let data = data else {
+            
+            if((error) == nil && (data) != nil) {
+                self.defaults.setObject(data, forKey: USER_DEFAULTS_KEY);
+                self.defaults.synchronize()
+            }
+            
+           guard let data : NSData = self.defaults.objectForKey(USER_DEFAULTS_KEY) as? NSData else {
+                NSLog("Couldn't load manifest!");
                 return;
             }
             
