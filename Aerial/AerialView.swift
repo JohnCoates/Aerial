@@ -375,9 +375,9 @@ public let AVPlayerItemFailedToPlayToEndTimeErrorKey: String // NSError
             NSLog("error grabbing random video!");
             return;
         }
-        let videoURL = getVideoURL(video.url);
+        let videoURL = video.cached ? video.localPath : video.url;
 //        let videoURL = NSURL(string:"http://localhost/test.mov")!;
-        
+        NSLog("%@", videoURL)
         let asset = AVAsset(URL: videoURL);
         
         let item = AVPlayerItem(asset: asset);
@@ -404,27 +404,6 @@ public let AVPlayerItemFailedToPlayToEndTimeErrorKey: String // NSError
         notificationCenter.addObserver(self, selector: "playerItemFailedtoPlayToEnd:", name: AVPlayerItemFailedToPlayToEndTimeNotification, object: currentItem);
         notificationCenter.addObserver(self, selector: "playerItemPlaybackStalledNotification:", name: AVPlayerItemPlaybackStalledNotification, object: currentItem);
         player.actionAtItemEnd = AVPlayerActionAtItemEnd.None;
-    }
-    
-    func getVideoURL(url:NSURL) -> NSURL{
-        let filename = url.lastPathComponent;
-        let cacheFilePath = CACHE_DIR + filename!;
-//        NSLog("getVideoURL : %@ - %@ - %@", url, filename!, cacheFilePath)
-        if (NSFileManager.defaultManager().fileExistsAtPath(cacheFilePath)) {
-//            NSLog("Get video from cache");
-            return NSURL(fileURLWithPath:cacheFilePath);
-        } else {
-//            NSLog("Get video from url");
-            if let myAudioDataFromUrl = NSData(contentsOfURL: url){
-                // after downloading your data you need to save it to your destination url
-                if myAudioDataFromUrl.writeToURL(NSURL(fileURLWithPath:cacheFilePath), atomically: true) {
-//                    NSLog("file saved")
-                } else {
-//                    NSLog("error saving file")
-                }
-            }
-            return url;
-        }
     }
     
     override func hasConfigureSheet() -> Bool {

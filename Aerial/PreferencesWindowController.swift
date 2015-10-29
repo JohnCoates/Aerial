@@ -405,8 +405,9 @@ class City {
         switch item {
         case is AerialVideo:
             let video = item as! AerialVideo;
+            let videoURL = video.cached ? video.localPath : video.url;
             
-            let asset = AVAsset(URL: video.url);
+            let asset = AVAsset(URL: videoURL);
             
             let item = AVPlayerItem(asset: asset);
             player.replaceCurrentItemWithPlayerItem(item);
