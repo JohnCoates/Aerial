@@ -15,6 +15,8 @@ class AerialVideo {
     let type:String;
     let timeOfDay:String;
     let url:NSURL;
+    let localPath:NSURL;
+    let cached:Bool;
     var arrayPosition:Int = 1;
     
     
@@ -24,5 +26,9 @@ class AerialVideo {
         self.type = type;
         self.timeOfDay = timeOfDay;
         self.url = NSURL(string:url)!;
+        let localPath = CACHE_DIR + self.url.lastPathComponent!
+        self.localPath = NSURL(fileURLWithPath: localPath)
+        self.cached = NSFileManager.defaultManager().fileExistsAtPath(localPath)
     }
+    
 }
