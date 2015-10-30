@@ -78,7 +78,8 @@ class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, NSURLConnec
     }
 
     init(URL:NSURL) {
-        self.URL = URL;
+//        self.URL = URL;
+        self.URL = NSURL(string:"http://localhost/test.mov")!
         videoCache = VideoCache(URL: URL)
     }
     
@@ -416,6 +417,12 @@ class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, NSURLConnec
     func resourceLoader(resourceLoader: AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
 //        pendingRequests.append(loadingRequest);
 //        debugLog("new request, now \(pendingRequests.count) pending requests")
+        
+        if videoCache.canFulfillLoadingRequest(loadingRequest) {
+            if videoCache.fulfillLoadingRequest(loadingRequest) {
+                return true;
+            }
+        }
         
         let videoLoader = VideoLoader(url: URL, loadingRequest: loadingRequest, delegate: self);
         
