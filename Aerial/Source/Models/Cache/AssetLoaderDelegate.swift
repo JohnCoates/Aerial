@@ -66,6 +66,7 @@ class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, NSURLConnec
     var finishedLoading:Bool = false
     var rangeLoads:[LoadRangeConnection] = []
     var videoLoaders:[VideoLoader] = []
+    let videoCache:VideoCache
     
     // byte offset of data loaded on main connection
     var mainConnectionOffset:Int = 0;
@@ -78,10 +79,19 @@ class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, NSURLConnec
 
     init(URL:NSURL) {
         self.URL = URL;
+        videoCache = VideoCache(URL: URL)
     }
     
     deinit {
         debugLog("AssetLoaderDelegate deinit");
+    }
+    
+    // MARK: - Video Loader Delegate
+    func videoLoader(videoLoader:VideoLoader, receivedResponse response:NSURLResponse) {
+        videoCache.receivedContentLength(Int(response.expectedContentLength))
+    }
+    func videoLoader(videoLoader:VideoLoader, receivedData data:NSData, forRange range:NSRange) {
+        videoCache.receivedData(data, atRange: range)
     }
     
     // MARK: - NSURLConnection Delegate
@@ -401,28 +411,13 @@ class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, NSURLConnec
                 videoLoaders.removeAtIndex(index);
             }
         }
-        
-        guard let index = pendingRequests.indexOf(loadingRequest) else {
-            debugLog("Couldnt' find index of loadingRequest");
-            return;
-        }
-        
-        pendingRequests.removeAtIndex(index);
-        
-        debugLog("cancelled loading request: \(loadingRequest), \(pendingRequests.count) pending requests left");
     }
     
     func resourceLoader(resourceLoader: AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
 //        pendingRequests.append(loadingRequest);
 //        debugLog("new request, now \(pendingRequests.count) pending requests")
         
-        let interceptedURL = loadingRequest.request.URL!;
-        let actualURLComponents = NSURLComponents(URL: interceptedURL, resolvingAgainstBaseURL: false)!;
-        actualURLComponents.scheme = "http";
-        
-        let actualURL = actualURLComponents.URL!
-        
-        let videoLoader = VideoLoader(url: actualURL, loadingRequest: loadingRequest, delegate: self);
+        let videoLoader = VideoLoader(url: URL, loadingRequest: loadingRequest, delegate: self);
         
         videoLoaders.append(videoLoader);
         

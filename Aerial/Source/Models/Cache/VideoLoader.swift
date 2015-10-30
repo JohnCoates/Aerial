@@ -9,8 +9,9 @@
 import Foundation
 import AVFoundation
 
-public protocol VideoLoaderDelegate {
-//    func videoLoader(videoLoader:VideoLoader, receivedResponse:NSURLResponse);
+protocol VideoLoaderDelegate {
+    func videoLoader(videoLoader:VideoLoader, receivedResponse response:NSURLResponse);
+    func videoLoader(videoLoader:VideoLoader, receivedData data:NSData, forRange range:NSRange);
 };
 
 class VideoLoader : NSObject, NSURLConnectionDataDelegate {
@@ -89,6 +90,7 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
         self.response = response as? NSHTTPURLResponse;
         
         dispatch_async(queue) { () -> Void in
+            self.delegate.videoLoader(self, receivedResponse: response);
             self.fillInContentInformation(self.loadingRequest)
         };
     }
@@ -106,6 +108,9 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
             let requestedRange = self.requestedRange
             let loadedRange = self.loadedRange
             let loadedLocation = loadedRange.location + loadedRange.length;
+            
+            let dataRange = NSMakeRange(loadedRange.location + loadedRange.length, data.length)
+            self.delegate.videoLoader(self, receivedData: data, forRange: dataRange);
             
             // check if we've already been sending content, or we're at right byte offset
             if loadedLocation >= requestedRange.location {
