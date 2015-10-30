@@ -18,8 +18,14 @@ Aerial is completely open source, so feel free to contribute to its development!
 
 If Aerial.saver could not be opened, place Aerial.saver in ~/Library/Screen Savers
 
+<<<<<<< HEAD
 ## Caching Support - Beta
 If you'd like the videos to be saved as they are viewed to minimize bandwidth concerns, the 1.2 beta 3 has this feature. [Click here to download 1.2 beta 3](https://github.com/JohnCoates/Aerial/releases/download/1.2beta3/Aerial.zip)
+=======
+**Option B:**
+
+1. ```brew cask install aerial```
+>>>>>>> f5b7c0e3767ee957e4f085cd8deb9a2ca4ab48f3
 
 ## Settings Aerial as Your Screen Saver
 
