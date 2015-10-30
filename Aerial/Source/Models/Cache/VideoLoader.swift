@@ -9,7 +9,7 @@
 import Foundation
 import AVFoundation
 
-protocol VideoLoaderDelegate {
+protocol VideoLoaderDelegate : NSObjectProtocol {
     func videoLoader(videoLoader:VideoLoader, receivedResponse response:NSURLResponse);
     func videoLoader(videoLoader:VideoLoader, receivedData data:NSData, forRange range:NSRange);
 };
@@ -17,7 +17,7 @@ protocol VideoLoaderDelegate {
 class VideoLoader : NSObject, NSURLConnectionDataDelegate {
     var connection:NSURLConnection?
     var response:NSHTTPURLResponse?
-    var delegate:VideoLoaderDelegate
+    weak var delegate:VideoLoaderDelegate?
     var loadingRequest:AVAssetResourceLoadingRequest
     
     // range params
@@ -68,6 +68,10 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
         debugLog("Starting request: \(request)");
     }
     
+    deinit {
+        connection?.cancel()
+    }
+    
     // MARK: - NSURLConnection Delegate
     
     func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
@@ -81,7 +85,7 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
         self.response = response as? NSHTTPURLResponse;
         
         dispatch_async(queue) { () -> Void in
-            self.delegate.videoLoader(self, receivedResponse: response);
+            self.delegate?.videoLoader(self, receivedResponse: response);
             self.fillInContentInformation(self.loadingRequest)
         };
     }
@@ -101,7 +105,7 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
             let loadedLocation = loadedRange.location + loadedRange.length;
             
             let dataRange = NSMakeRange(loadedRange.location + loadedRange.length, data.length)
-            self.delegate.videoLoader(self, receivedData: data, forRange: dataRange);
+            self.delegate?.videoLoader(self, receivedData: data, forRange: dataRange);
             
             // check if we've already been sending content, or we're at right byte offset
             if loadedLocation >= requestedRange.location {
