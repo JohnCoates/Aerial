@@ -160,7 +160,14 @@ class City {
         PreferencesWindowController.loadedJSON = true;
         
         let completionHandler = { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
-            guard let data = data else {
+            
+            if((error) == nil && (data) != nil) {
+                self.defaults.setObject(data, forKey: USER_DEFAULTS_KEY);
+                self.defaults.synchronize()
+            }
+            
+           guard let data : NSData = self.defaults.objectForKey(USER_DEFAULTS_KEY) as? NSData else {
+                NSLog("Couldn't load manifest!");
                 return;
             }
             
@@ -226,6 +233,10 @@ class City {
     
     @IBAction func close(sender: AnyObject?) {
         NSApp.mainWindow?.endSheet(window!);
+    }
+
+    @IBAction func openCacheDirectory(sender: AnyObject) {
+        NSWorkspace.sharedWorkspace().openURL(NSURL(fileURLWithPath: CACHE_DIR, isDirectory: true))
     }
 
     
@@ -362,7 +373,8 @@ class City {
             
             numberFormatter.numberStyle = NSNumberFormatterStyle.SpellOutStyle;
             let numberString = numberFormatter.stringFromNumber(number);
-            view?.textField?.stringValue = numberString!.capitalizedString;
+            let titile = video.cached ? numberString!.capitalizedString + " ✓" : numberString!.capitalizedString
+            view?.textField?.stringValue = titile;
             
             let settingValue = defaults.objectForKey(video.id);
             
@@ -394,8 +406,9 @@ class City {
         switch item {
         case is AerialVideo:
             let video = item as! AerialVideo;
+            let videoURL = video.cached ? video.localPath : video.url;
             
-            let asset = AVAsset(URL: video.url);
+            let asset = AVAsset(URL: videoURL);
             
             let item = AVPlayerItem(asset: asset);
             player.replaceCurrentItemWithPlayerItem(item);

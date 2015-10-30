@@ -12,7 +12,7 @@ Aerial is completely open source, so feel free to contribute to its development!
 
 ## To install:
 
-1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.1/Aerial.zip)
+1. [Click here to Download](https://github.com/yourtion/Aerial/releases/download/v1.3/Aerial.saver.zip)
 2. Unzip the downloaded file.
 3. Open **Aerial.saver** and confirm installation.
 
@@ -23,13 +23,23 @@ If Aerial.saver could not be opened, place Aerial.saver in ~/Library/Screen Save
 1. Open System Preferences -> Desktop & Screen Saver -> Screen Saver
 2. Choose Aerial and click on Screen Saver Options to select your settings.
 
-![screenshot](https://cloud.githubusercontent.com/assets/499192/10754102/c58cc076-7c95-11e5-9579-4275740ba339.png)
+![screenshot](https://cloud.githubusercontent.com/assets/1475301/10808988/883bd944-7e2c-11e5-87f6-63acaed11ad0.JPG)
 
 ## Features
 * **Auto Load Latest Aerials:** Aerials are loaded directly from Apple, so you're never out of date.
 * **Play Different Aerial On Each Display:** If you've got multiple monitors, this setting loads a different aerial for each of your displays.
 * **Favorites:** You can choose to only have certain aerials play.
 * **Preview:** Clicking on an aerial in the screen saver options previews that aerial for you.
+
+## Manual Download Files And Add To CacheDirectory
+
+Aerial will cache on-demand and you can add the mov file cache to CacheDirectory.
+
+1. Download the `mov` files form [http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json](http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json) 
+
+2. open System Preferences -> Desktop & Screen Saver -> Screen Saver. Choose Aerial and click on Screen Saver Options and click `OpenCacheDirectory ` and copy the file you download into it.
+
+*Or just put the `mov` files into `~/Library/Caches/AerialMovCache/`.*
 
 ## Compatibility
 Aerial is written in Swift, which requires OS X Mavericks or above.
@@ -43,6 +53,12 @@ I appreciate all pull requests. Caching hasn't been added yet.
 
 ## Changelog
 
+- October 30th, 2015 - 1.3
+  - Base offline mode
+  - Show file cached in Screen Saver Options
+- October 28th, 2015 - 1.2
+  - Cache on-demand
+  - User can put the cache file on cache directory manual
 - October 26th, 2015 - 1.1
   - Added thumbnail.
   - Added support for Mavericks.

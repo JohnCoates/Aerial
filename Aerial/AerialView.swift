@@ -13,6 +13,22 @@ import AVKit
 
 typealias manifestLoadCallback = ([AerialVideo]) -> (Void);
 
+public let CACHE_DIR = getCacheDirectory()
+public let USER_DEFAULTS_KEY = "AerialMovCacheKey"
+
+func getCacheDirectory() -> String {
+    let CACHE_DIR = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, .UserDomainMask, true)[0] + "/AerialMovCache/"
+    var isDir : ObjCBool = false
+    if (!NSFileManager.defaultManager().fileExistsAtPath(CACHE_DIR, isDirectory: &isDir)) {
+        do {
+            try NSFileManager.defaultManager().createDirectoryAtPath(CACHE_DIR, withIntermediateDirectories: true, attributes: nil)
+        }catch{
+            NSLog("Error")
+        }
+    }
+    return CACHE_DIR
+}
+
 // shuffling thanks to Nate Cook http://stackoverflow.com/questions/24026510/how-do-i-shuffle-an-array-in-swift
 extension CollectionType {
     /// Return a copy of `self` with its elements shuffled
@@ -76,14 +92,19 @@ class ManifestLoader {
     
     init() {
         // start loading right away!
+        
+        let sharedCache = NSURLCache(memoryCapacity: 50*1024*1024, diskCapacity: 50*1024*1024, diskPath: "AerialMovCache")
+        NSURLCache.setSharedURLCache(sharedCache)
+        
         let completionHandler = { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
-            guard let data = data else {
-                NSLog("Couldn't load manifest!");
-                return;
+            
+            if((error) == nil && (data) != nil) {
+                self.defaults.setObject(data, forKey: USER_DEFAULTS_KEY);
+                self.defaults.synchronize();
             }
             
-            if let error = error {
-                NSLog("Error! \(error)");
+            guard let data : NSData = self.defaults.objectForKey(USER_DEFAULTS_KEY) as? NSData else {
+                NSLog("Couldn't load manifest!");
                 return;
             }
             
@@ -354,9 +375,9 @@ public let AVPlayerItemFailedToPlayToEndTimeErrorKey: String // NSError
             NSLog("error grabbing random video!");
             return;
         }
-        let videoURL = video.url;
+        let videoURL = video.cached ? video.localPath : video.url;
 //        let videoURL = NSURL(string:"http://localhost/test.mov")!;
-        
+        NSLog("%@", videoURL)
         let asset = AVAsset(URL: videoURL);
         
         let item = AVPlayerItem(asset: asset);
