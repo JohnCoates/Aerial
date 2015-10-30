@@ -195,9 +195,7 @@ import AVKit
     func playerItemDidReachEnd(aNotification: NSNotification) {
         debugLog("played did reach end");
         debugLog("notification: \(aNotification)");
-        guard let player = self.player else {
-            return;
-        }
+        playNextVideo()
 
         debugLog("playing next video for player \(player)");
         
