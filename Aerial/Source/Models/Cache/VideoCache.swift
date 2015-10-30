@@ -52,10 +52,10 @@ class VideoCache {
         
         consolidateLoadedRanges();
         
-        debugLog("loaded ranges: \(loadedRanges)");
+//        debugLog("loaded ranges: \(loadedRanges)");
         if loadedRanges.count == 1 {
             let range = loadedRanges[0]
-            debugLog("checking if range \(range) matches length \(mutableVideoData.length)");
+//            debugLog("checking if range \(range) matches length \(mutableVideoData.length)");
             if range.location == 0 && range.length == mutableVideoData.length {
                 // done loading, save
                 saveCachedVideo();
@@ -163,14 +163,11 @@ class VideoCache {
         let range = NSMakeRange(requestedOffset, requestedLength);
         
         let data = videoData.subdataWithRange(range);
+                
+        self.fillInContentInformation(loadingRequest);
         
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            
-            self.fillInContentInformation(loadingRequest);
-            
-            dataRequest.respondWithData(data);
-            loadingRequest.finishLoading();
-        }
+        dataRequest.respondWithData(data);
+        loadingRequest.finishLoading();
         
         return true;
     }
@@ -249,7 +246,7 @@ class VideoCache {
                     }
                     else {
                         // skip adding this to the array, previous range is already bigger
-                        debugLog("skipping add of \(range)");
+                        debugLog("skipping add of \(range), previous: \(previousRange)");
                         continue;
                     }
                 }
