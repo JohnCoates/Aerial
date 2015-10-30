@@ -53,5 +53,14 @@ I appreciate all pull requests. Caching hasn't been added yet.
   - Now shows error when installing on unsupported OS X version.
 - October 26th, 2015 - 1.0: First release.
 
+## Brew Cask Support - Install Remotely
+If you're looking to install Aerial across many systems, remotely, or simply from terminal I recommend [Brew Cask](http://caskroom.io/).
+
+Issue the following terminal command: **brew cask install aerial**
+
+## Troubleshooting
+
+- Black screen: Try disabling Little Snitch, or try the latest beta release from [Aerial Release](https://github.com/JohnCoates/Aerial/releases/).
+
 ## License
 [MIT License](https://raw.githubusercontent.com/JohnCoates/Aerial/master/LICENSE)
