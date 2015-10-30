@@ -15,13 +15,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var preferencesWindowController:PreferencesWindowController!
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        debugLog("app launched");
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
-        // Insert code here to tear down your application
     }
-
-
 }
 
