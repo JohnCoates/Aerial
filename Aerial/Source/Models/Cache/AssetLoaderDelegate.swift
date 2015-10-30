@@ -17,7 +17,7 @@ func CachedOrCachingAsset(URL:NSURL) -> AVURLAsset {
     let asset = AVURLAsset(URL: assetLoader.URLWithCustomScheme);
     let queue = dispatch_get_main_queue();
     asset.resourceLoader.setDelegate(assetLoader, queue: queue)
-    objc_setAssociatedObject(asset, "assetLoader", assetLoader, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(asset, "assetLoader", assetLoader, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
     
     return asset
 }
@@ -80,11 +80,14 @@ class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, VideoLoader
     
     func resourceLoader(resourceLoader: AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
         
+        // check if cache can fullfill this without a request
         if videoCache.canFulfillLoadingRequest(loadingRequest) {
             if videoCache.fulfillLoadingRequest(loadingRequest) {
                 return true;
             }
         }
+        
+        // assign request to VideoLoader
         
         let videoLoader = VideoLoader(url: URL, loadingRequest: loadingRequest, delegate: self);
         videoLoaders.append(videoLoader);
