@@ -392,6 +392,9 @@ class City {
     func outlineView(outlineView: NSOutlineView, shouldSelectItem item: AnyObject) -> Bool {
         switch item {
         case is AerialVideo:
+            player = AVPlayer()
+            playerView.player = player;
+            
             let video = item as! AerialVideo;
             
             let asset = CachedOrCachingAsset(video.url);
@@ -399,7 +402,6 @@ class City {
             
             let item = AVPlayerItem(asset: asset);
             
-            NSLog("loading item: \(item)");
             player.replaceCurrentItemWithPlayerItem(item);
             player.play();
             
