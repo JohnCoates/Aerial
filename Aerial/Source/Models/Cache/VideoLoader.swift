@@ -49,15 +49,7 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
                 // set Range: bytes=startOffset-endOffset
                 let requestRange = "bytes=\(requestedRange.location)-\(requestedRange.location+requestedRange.length)";
                 request.setValue(requestRange, forHTTPHeaderField: "Range");
-                
-                debugLog("data request range: \(requestRange)");
             }
-            else {
-                debugLog("data request offset 0");
-            }
-        }
-        else {
-            debugLog("No data request");
         }
         
         super.init()
@@ -83,7 +75,6 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
         if loadRange {
             if let startOffset = startOffsetFromResponse(response) {
                 loadedRange.location = startOffset;
-                debugLog("offset requested: \(requestedRange.location), offset received: \(startOffset)");
             }
         }
 
@@ -126,9 +117,6 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
                     let truncatedData = data.subdataWithRange(dataRange);
                     
                     dataRequest.respondWithData(truncatedData);
-                    debugLog("pending data end offset: \(pendingDataEndOffset)");
-                    debugLog("requested: \(dataRequest.requestedOffset) + \(dataRequest.requestedLength)");
-                    debugLog("responding with end of data with length \(data.length - truncateDataLength)");
                     self.loadingRequest.finishLoading();
                     self.connection?.cancel();
                 }else {
@@ -147,7 +135,6 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
                     
                     let responseData = data.subdataWithRange(dataRange);
                     dataRequest.respondWithData(responseData);
-                    debugLog("Responding with inset data with range \(dataRange)");
                     
                     if dataRequest.currentOffset >= dataRequest.requestedOffset + dataRequest.requestedLength {
                         self.loadingRequest.finishLoading();
