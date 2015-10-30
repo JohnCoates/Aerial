@@ -12,7 +12,7 @@ Aerial is completely open source, so feel free to contribute to its development!
 
 ## To install:
 
-1. [Click here to Download](https://github.com/yourtion/Aerial/releases/download/v1.2/Aerial.saver.zip)
+1. [Click here to Download](https://github.com/yourtion/Aerial/releases/download/v1.3/Aerial.saver.zip)
 2. Unzip the downloaded file.
 3. Open **Aerial.saver** and confirm installation.
 
@@ -53,6 +53,12 @@ I appreciate all pull requests. Caching hasn't been added yet.
 
 ## Changelog
 
+- October 30th, 2015 - 1.3
+  - Base offline mode
+  - Show file cached in Screen Saver Options
+- October 28th, 2015 - 1.2
+  - Cache on-demand
+  - User can put the cache file on cache directory manual
 - October 26th, 2015 - 1.1
   - Added thumbnail.
   - Added support for Mavericks.
