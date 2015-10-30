@@ -373,7 +373,8 @@ class City {
             
             numberFormatter.numberStyle = NSNumberFormatterStyle.SpellOutStyle;
             let numberString = numberFormatter.stringFromNumber(number);
-            view?.textField?.stringValue = numberString!.capitalizedString;
+            let titile = video.cached ? numberString!.capitalizedString + " ✓" : numberString!.capitalizedString
+            view?.textField?.stringValue = titile;
             
             let settingValue = defaults.objectForKey(video.id);
             
