@@ -12,9 +12,29 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
-    @IBOutlet var preferencesWindowController:PreferencesWindowController!
+    var preferencesWindowController:PreferencesWindowController = PreferencesWindowController()
 
+    var topLevelObjects:NSArray?
+    
     func applicationDidFinishLaunching(aNotification: NSNotification) {
+        let bundle = NSBundle.mainBundle()
+        bundle.loadNibNamed("PreferencesWindow", owner: preferencesWindowController, topLevelObjects: &topLevelObjects);
+        
+        NSLog("objects: \(topLevelObjects)");
+        
+        for object in topLevelObjects! {
+            if let prefWindow = object as? NSWindow {
+                //            window.contentView?.addSubview(prefWindow.contentView!);
+                NSLog("making key window!");
+                prefWindow.makeKeyAndOrderFront(self);
+                prefWindow.styleMask = NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask;
+                var frame = prefWindow.frame;
+                frame.origin = window.frame.origin
+                prefWindow.setFrame(frame, display: true);
+                window.orderOut(self);
+            }
+        }
+        
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
