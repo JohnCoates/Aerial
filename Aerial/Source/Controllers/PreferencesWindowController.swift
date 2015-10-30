@@ -48,6 +48,7 @@ class City {
     @IBOutlet var playerView:AVPlayerView!
     @IBOutlet var differentAerialCheckbox:NSButton!
     @IBOutlet var projectPageLink:NSButton!
+    @IBOutlet var cacheLocation:NSPathControl!
     
     var player:AVPlayer = AVPlayer()
     let defaults:NSUserDefaults = ScreenSaverDefaults(forModuleWithName: "com.JohnCoates.Aerial")! as ScreenSaverDefaults
@@ -85,6 +86,10 @@ class City {
         let titleRange = NSMakeRange(0, coloredTitle.length);
         coloredTitle.addAttribute(NSForegroundColorAttributeName, value: color, range: titleRange);
         projectPageLink.attributedTitle = coloredTitle;
+        
+        if let cacheDirectory = VideoCache.cacheDirectory {
+            cacheLocation.URL = NSURL(fileURLWithPath: cacheDirectory as String)
+        }
     }
     
     
@@ -97,6 +102,49 @@ class City {
     }
     override func windowDidLoad() {
         super.windowDidLoad()
+    }
+    
+    @IBAction func cacheAerialsAsTheyPlayClick(button:NSButton!) {
+        debugLog("cache aerials as they play: \(button.state)");
+        
+        if button.state == NSOnState {
+            defaults.setBool(false, forKey: "disableCache");
+        }
+        else {
+            defaults.setBool(true, forKey: "disableCache");
+        }
+        
+        defaults.synchronize();
+    }
+    
+    @IBAction func userSetCacheLocation(button:NSButton?) {
+        let openPanel = NSOpenPanel()
+        
+        openPanel.canChooseDirectories = true;
+        openPanel.canChooseFiles = false
+        openPanel.canCreateDirectories = true
+        openPanel.allowsMultipleSelection = false
+        openPanel.title = "Choose Aerial Cache Directory"
+        openPanel.prompt = "Choose"
+        openPanel.directoryURL = cacheLocation.URL
+        
+        openPanel.beginWithCompletionHandler { (result:Int) -> Void in
+            if result == NSFileHandlingPanelOKButton {
+                if openPanel.URLs.count > 0 {
+                    let cacheDirectory = openPanel.URLs[0];
+                    self.defaults.setObject(cacheDirectory.path, forKey: "cacheDirectory");
+                    self.defaults.synchronize()
+                    self.cacheLocation.URL = cacheDirectory
+                }
+            }
+        }
+    }
+    @IBAction func resetCacheLocation(button:NSButton?) {
+        defaults.removeObjectForKey("cacheDirectory");
+        defaults.synchronize()
+        if let cacheDirectory = VideoCache.cacheDirectory {
+            cacheLocation.URL = NSURL(fileURLWithPath: cacheDirectory as String)
+        }
     }
     
     @IBAction func outlineViewSettingsClick(button:NSButton) {

@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+import ScreenSaver
 
 
 class VideoCache {
@@ -18,6 +19,49 @@ class VideoCache {
     var loadedRanges:[NSRange] = []
     let URL:NSURL
     
+    
+    static var cacheDirectory:NSString? {
+        get {
+            let defaults:NSUserDefaults = ScreenSaverDefaults(forModuleWithName: "com.JohnCoates.Aerial")! as ScreenSaverDefaults
+            let fileManager = NSFileManager.defaultManager()
+            
+            var cacheDirectory:NSString?
+            
+            if let customDirectory = defaults.objectForKey("cacheDirectory") as? NSString {
+                cacheDirectory = customDirectory
+            }
+            else {
+                let cachePaths = NSSearchPathForDirectoriesInDomains(.CachesDirectory,
+                    .UserDomainMask,
+                    true);
+                
+                if cachePaths.count == 0 {
+                    NSLog("Aerial Error: Couldn't find cache paths!");
+                    return nil;
+                }
+                
+                let userCacheDirectory = cachePaths[0] as NSString;
+                let defaultCacheDirectory = userCacheDirectory.stringByAppendingPathComponent("Aerial") as NSString;
+                
+                cacheDirectory = defaultCacheDirectory;
+            }
+
+            guard let appCacheDirectory = cacheDirectory else {
+                return nil;
+            }
+            
+            if fileManager.fileExistsAtPath(appCacheDirectory as String) == false {
+                do {
+                    try fileManager.createDirectoryAtPath(appCacheDirectory as String, withIntermediateDirectories: false, attributes: nil);
+                }
+                catch let error {
+                    NSLog("Aerial Error: Couldn't create cache directory: \(error)");
+                    return nil;
+                }
+            }
+            return appCacheDirectory;
+        }
+    }
     
     init(URL:NSURL) {
         videoData = NSData()
@@ -67,27 +111,8 @@ class VideoCache {
     
     var videoCachePath:String? {
         get {
-            let fileManager = NSFileManager.defaultManager()
-            let cachePaths = NSSearchPathForDirectoriesInDomains(.CachesDirectory,
-                .UserDomainMask,
-                true);
-            
-            if cachePaths.count == 0 {
-                NSLog("Aerial Error: Couldn't find cache paths!");
+            guard let appCacheDirectory = VideoCache.cacheDirectory else {
                 return nil;
-            }
-            
-            let userCacheDirectory = cachePaths[0] as NSString;
-            let appCacheDirectory = userCacheDirectory.stringByAppendingPathComponent("Aerial") as NSString;
-            
-            if fileManager.fileExistsAtPath(appCacheDirectory as String) == false {
-                do {
-                    try fileManager.createDirectoryAtPath(appCacheDirectory as String, withIntermediateDirectories: false, attributes: nil);
-                }
-                catch let error {
-                    NSLog("Aerial Error: Couldn't create cache directory: \(error)");
-                    return nil;
-                }
             }
             
             guard let filename = URL.lastPathComponent else {
@@ -101,6 +126,13 @@ class VideoCache {
     }
     
     func saveCachedVideo() {
+        let defaults:NSUserDefaults = ScreenSaverDefaults(forModuleWithName: "com.JohnCoates.Aerial")! as ScreenSaverDefaults
+        
+        guard defaults.boolForKey("disableCache") == false else {
+            debugLog("Cache disabled, not saving video")
+            return;
+        }
+        
         let fileManager = NSFileManager.defaultManager()
         
         guard let videoCachePath = videoCachePath else {
@@ -163,11 +195,13 @@ class VideoCache {
         let range = NSMakeRange(requestedOffset, requestedLength);
         
         let data = videoData.subdataWithRange(range);
-                
-        self.fillInContentInformation(loadingRequest);
         
-        dataRequest.respondWithData(data);
-        loadingRequest.finishLoading();
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self.fillInContentInformation(loadingRequest);
+            
+            dataRequest.respondWithData(data);
+            loadingRequest.finishLoading();
+        }
         
         return true;
     }
