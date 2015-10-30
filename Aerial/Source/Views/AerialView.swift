@@ -171,7 +171,7 @@ import AVKit
         
         
         ManifestLoader.instance.addCallback { (videos:[AerialVideo]) -> Void in
-            self.playNextVideo(player);
+            self.playNextVideo();
         };
     }
     
@@ -180,11 +180,8 @@ import AVKit
     
     func playerItemFailedtoPlayToEnd(aNotification: NSNotification) {
         NSLog("AVPlayerItemFailedToPlayToEndTimeNotification \(aNotification)");
-        guard let player = self.player else {
-            return;
-        }
         
-        playNextVideo(player);
+        playNextVideo();
     }
     
     func playerItemNewErrorLogEntryNotification(aNotification: NSNotification) {
@@ -204,13 +201,24 @@ import AVKit
 
         debugLog("playing next video for player \(player)");
         
-        // play another video
-        playNextVideo(player);
+
     }
     
     // MARK: - Playing Videos
     
-    func playNextVideo(player:AVPlayer) {
+    func playNextVideo() {
+        
+        let player = AVPlayer()
+        // play another video
+        let oldPlayer = self.player
+        self.player = player
+        self.playerView.player = self.player
+        
+        if (oldPlayer == AerialView.previewPlayer) {
+            AerialView.previewPlayer = self.player
+        }
+        
+        
         let randomVideo = ManifestLoader.instance.randomVideo();
         
         guard let video = randomVideo else {
@@ -218,11 +226,12 @@ import AVKit
             return;
         }
         let videoURL = video.url;
-//        let videoURL = NSURL(string:"http://localhost/test.mov")!;
         
-        let asset = AVAsset(URL: videoURL);
+        let asset = CachedOrCachingAsset(videoURL)
+//        let asset = AVAsset(URL: videoURL);
         
         let item = AVPlayerItem(asset: asset);
+        
         player.replaceCurrentItemWithPlayerItem(item);
         
         debugLog("playing video: \(video.url)");
