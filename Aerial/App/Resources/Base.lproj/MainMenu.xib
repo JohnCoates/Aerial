@@ -675,6 +675,12 @@
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="625" height="291"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M0V-7R-ZSD" customClass="AerialView">
+                        <rect key="frame" x="0.0" y="0.0" width="625" height="291"/>
+                        <animations/>
+                    </customView>
+                </subviews>
                 <animations/>
             </view>
             <point key="canvasLocation" x="590.5" y="316.5"/>
