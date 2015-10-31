@@ -63,6 +63,24 @@ class VideoCache {
         }
     }
     
+    static func isVideoAvailableOffline(video:AerialVideo) -> Bool {
+        guard let appCacheDirectory = VideoCache.cacheDirectory else {
+            return false;
+        }
+        
+        guard let filename = video.url.lastPathComponent else {
+            NSLog("Aerial Error: Couldn't get filename from URL for cache.");
+            return false;
+        }
+        
+        let videoCachePath = appCacheDirectory.stringByAppendingPathComponent(filename);
+
+        let fileManager = NSFileManager.defaultManager()
+        
+        
+        return fileManager.fileExistsAtPath(videoCachePath)
+    }
+    
     init(URL:NSURL) {
         videoData = NSData()
         loading = true

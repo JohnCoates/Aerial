@@ -18,6 +18,7 @@ class ManifestLoader {
     var callbacks = [manifestLoadCallback]();
     var loadedManifest = [AerialVideo]();
     var playedVideos = [AerialVideo]();
+    var offlineMode:Bool = false
     
     func addCallback(callback:manifestLoadCallback) {
         if (loadedManifest.count > 0) {
@@ -33,10 +34,18 @@ class ManifestLoader {
         let shuffled = loadedManifest.shuffle();
         
         for video in shuffled {
+            // check if this video id has been disabled in preferences
             let possible = defaults.objectForKey(video.id);
             
             if let possible = possible as? NSNumber {
                 if possible.boolValue == false {
+                    continue;
+                }
+            }
+            
+            // check if we're in offline mode
+            if offlineMode == true {
+                if video.isAvailableOffline == false {
                     continue;
                 }
             }
@@ -71,7 +80,10 @@ class ManifestLoader {
             
         };
         let url = NSURL(string: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json");
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler:completionHandler);
+        // use ephemeral session so when we load json offline it fails and puts us in offline mode
+        let configuration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+        let session = NSURLSession(configuration: configuration)
+        let task = session.dataTaskWithURL(url!, completionHandler:completionHandler);
         task.resume();
     }
     
@@ -81,6 +93,7 @@ class ManifestLoader {
             return;
         }
         
+        offlineMode = true;
         readJSONFromData(savedJSON)
     }
     

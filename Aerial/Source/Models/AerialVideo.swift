@@ -17,6 +17,12 @@ class AerialVideo {
     let url:NSURL;
     var arrayPosition:Int = 1;
     
+    var isAvailableOffline:Bool {
+        get {
+            return VideoCache.isVideoAvailableOffline(self);
+        }
+    }
+    
     
     init(id:String, name:String, type:String, timeOfDay:String, url:String) {
         self.id = id;
