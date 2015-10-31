@@ -53,58 +53,76 @@ class ManifestLoader {
         let completionHandler = { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
             if let error = error {
                 NSLog("Aerial Error Loading Manifest: \(error)");
+                self.loadSavedManifest();
                 return;
             }
             
             guard let data = data else {
                 NSLog("Couldn't load manifest!");
+                self.loadSavedManifest();
                 return;
             }
+            let defaults = self.defaults
+            defaults.setObject(data, forKey: "manifest");
+            defaults.synchronize()
             
-            var videos = [AerialVideo]();
             
-            do {
-                let batches = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! Array<NSDictionary>;
-                
-                for batch:NSDictionary in batches {
-                    let assets = batch["assets"] as! Array<NSDictionary>;
-                    
-                    for item in assets {
-                        let url = item["url"] as! String;
-                        let name = item["accessibilityLabel"] as! String;
-                        let timeOfDay = item["timeOfDay"] as! String;
-                        let id = item["id"] as! String;
-                        let type = item["type"] as! String;
-                        
-                        if (type != "video") {
-                            continue;
-                        }
-                        
-                        
-                        let video = AerialVideo(id: id, name: name, type: type, timeOfDay: timeOfDay, url: url);
-                        
-                        videos.append(video)
-                    }
-                }
-                
-                self.loadedManifest = videos;
-                
-                // callbacks
-                for callback in self.callbacks {
-                    callback(videos);
-                }
-                self.callbacks.removeAll()
-                
-            }
-            catch {
-                NSLog("Aerial: Error retrieving content listing.");
-                return;
-            }
-            
+            self.readJSONFromData(data);
             
         };
         let url = NSURL(string: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json");
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler:completionHandler);
         task.resume();
+    }
+    
+    func loadSavedManifest() {
+        guard let savedJSON = defaults.objectForKey("manifest") as? NSData else {
+            debugLog("Couldn't find saved manifest");
+            return;
+        }
+        
+        readJSONFromData(savedJSON)
+    }
+    
+    func readJSONFromData(data:NSData) {
+        var videos = [AerialVideo]();
+        
+        do {
+            let batches = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! Array<NSDictionary>;
+            
+            for batch:NSDictionary in batches {
+                let assets = batch["assets"] as! Array<NSDictionary>;
+                
+                for item in assets {
+                    let url = item["url"] as! String;
+                    let name = item["accessibilityLabel"] as! String;
+                    let timeOfDay = item["timeOfDay"] as! String;
+                    let id = item["id"] as! String;
+                    let type = item["type"] as! String;
+                    
+                    if (type != "video") {
+                        continue;
+                    }
+                    
+                    
+                    let video = AerialVideo(id: id, name: name, type: type, timeOfDay: timeOfDay, url: url);
+                    
+                    videos.append(video)
+                }
+            }
+            
+            self.loadedManifest = videos;
+            
+            // callbacks
+            for callback in self.callbacks {
+                callback(videos);
+            }
+            self.callbacks.removeAll()
+            
+        }
+        catch {
+            NSLog("Aerial: Error retrieving content listing.");
+            return;
+        }
     }
 }
