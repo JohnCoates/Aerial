@@ -211,74 +211,45 @@ class City {
         if (PreferencesWindowController.loadedJSON) {
             return;
         }
-        
         PreferencesWindowController.loadedJSON = true;
         
-        let completionHandler = { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
-            guard let data = data else {
-                return;
-            }
-            
-            var videos = [AerialVideo]();
-            var cities = [String:City]();
-            
-            do {
-                let batches = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! Array<NSDictionary>;
-                
-                for batch:NSDictionary in batches {
-                    let assets = batch["assets"] as! Array<NSDictionary>;
-                    
-                    for item in assets {
-                        let url = item["url"] as! String;
-                        let name = item["accessibilityLabel"] as! String;
-                        let timeOfDay = item["timeOfDay"] as! String;
-                        let id = item["id"] as! String;
-                        let type = item["type"] as! String;
-                        
-                        if (type != "video") {
-                            continue;
-                        }
-                        
-                        // check if city name has dictionary
-                        if cities.keys.contains(name) == false {
-                            cities[name] = City(name: name);
-                        }
-                        
-                        let city:City = cities[name]!;
-                        
-                        let video = AerialVideo(id: id, name: name, type: type, timeOfDay: timeOfDay, url: url);
-                        
-                        city.addVideoForTimeOfDay(timeOfDay, video: video);
-                        videos.append(video)
-                        
-//                        debugLog("id: \(id), name: \(name), time of day: \(timeOfDay), url: \(url)");
-                    }
-                }
-                
-                self.videos = videos;
-                // sort cities by name
-                let unsortedCities = cities.values;
-                let sortedCities = unsortedCities.sort { $0.name < $1.name };
-                
-                self.cities = sortedCities;
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.outlineView?.reloadData();
-                    self.outlineView?.expandItem(nil, expandChildren: true);
-                })
-//                debugLog("reloading outline view\(self.outlineView)");
-            }
-            catch {
-                NSLog("Aerial: Error retrieving content listing.");
-                return;
-            }
-            
-            
-        };
-        let url = NSURL(string: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json");
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler:completionHandler);
-        task.resume();
+        ManifestLoader.instance.addCallback { (manifestVideos:[AerialVideo]) -> Void in
+            self.loadedManifestWithVideos(manifestVideos)
+       };
     }
     
+    func loadedManifestWithVideos(manifestVideos:[AerialVideo]) {
+        var videos = [AerialVideo]();
+        var cities = [String:City]();
+        for video in manifestVideos {
+            let name = video.name
+            
+            if cities.keys.contains(name) == false {
+                cities[name] = City(name: name);
+            }
+        
+            let city:City = cities[name]!;
+        
+            let timeOfDay = video.timeOfDay
+            city.addVideoForTimeOfDay(timeOfDay, video: video);
+            videos.append(video)
+        }
+
+
+        self.videos = videos;
+        
+        // sort cities by name
+        let unsortedCities = cities.values;
+        let sortedCities = unsortedCities.sort { $0.name < $1.name };
+
+        self.cities = sortedCities;
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.outlineView?.reloadData();
+            self.outlineView?.expandItem(nil, expandChildren: true);
+        })
+
+    }
+
     @IBAction func close(sender: AnyObject?) {
         NSApp.mainWindow?.endSheet(window!);
     }
