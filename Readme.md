@@ -60,7 +60,7 @@ Issue the following terminal command: **brew cask install aerial**
 
 ## Troubleshooting
 
-- Black screen: Try disabling Little Snitch, or try the latest beta release from [Aerial Release](https://github.com/JohnCoates/Aerial/releases/).
+- Black screen: Try disabling Little Snitch, or try the latest beta release from [Aerial Releases](https://github.com/JohnCoates/Aerial/releases/).
 
 ## License
 [MIT License](https://raw.githubusercontent.com/JohnCoates/Aerial/master/LICENSE)
