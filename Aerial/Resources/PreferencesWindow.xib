@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController">
             <connections>
+                <outlet property="cacheAerialsAsTheyPlayCheckbox" destination="7HM-tD-v0b" id="29n-iQ-L36"/>
                 <outlet property="cacheLocation" destination="XAJ-Se-rwG" id="Qm8-0v-eOq"/>
                 <outlet property="differentAerialCheckbox" destination="9Xe-S2-eQT" id="2tM-2p-KDu"/>
                 <outlet property="outlineView" destination="gP6-w2-1UT" id="xdh-0c-TK2"/>
@@ -225,7 +226,7 @@
                                                     <pathCell key="cell" selectable="YES" editable="YES" alignment="left" id="gVD-I9-Ldu">
                                                         <font key="font" metaFont="system"/>
                                                         <url key="url" string="file://localhost/Applications/"/>
-                                                        <color key="backgroundColor" red="0.8980392157" green="0.92549019610000005" blue="0.97254901959999995" alpha="1" colorSpace="deviceRGB"/>
+                                                        <color key="backgroundColor" red="0.89803921568627454" green="0.92549019607843142" blue="0.97254901960784312" alpha="1" colorSpace="deviceRGB"/>
                                                     </pathCell>
                                                 </pathControl>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZO8-hg-MHd">

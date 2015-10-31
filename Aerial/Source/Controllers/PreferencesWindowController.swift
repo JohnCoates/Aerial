@@ -49,6 +49,7 @@ class City {
     @IBOutlet var differentAerialCheckbox:NSButton!
     @IBOutlet var projectPageLink:NSButton!
     @IBOutlet var cacheLocation:NSPathControl!
+    @IBOutlet var cacheAerialsAsTheyPlayCheckbox:NSButton!
     
     var player:AVPlayer = AVPlayer()
     let defaults:NSUserDefaults = ScreenSaverDefaults(forModuleWithName: "com.JohnCoates.Aerial")! as ScreenSaverDefaults
@@ -76,8 +77,12 @@ class City {
         };
         defaults.synchronize();
         
-        if (defaults.boolForKey("differentDisplays")) {
+        if defaults.boolForKey("differentDisplays") == true {
             differentAerialCheckbox.state = NSOnState;
+        }
+        
+        if defaults.boolForKey("disableCache") == true {
+            cacheAerialsAsTheyPlayCheckbox.state = NSOffState
         }
         
         // blue link
@@ -90,6 +95,8 @@ class City {
         if let cacheDirectory = VideoCache.cacheDirectory {
             cacheLocation.URL = NSURL(fileURLWithPath: cacheDirectory as String)
         }
+        
+
     }
     
     
