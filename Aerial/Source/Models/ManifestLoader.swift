@@ -54,7 +54,7 @@ class ManifestLoader {
             if timeDependent == true {
                 let date = NSDate()
                 let calendar = NSCalendar.currentCalendar()
-                let components = calendar.components(NSCalendarUnit.Year.union(NSCalendarUnit.Minute),fromDate: date)
+                let components = calendar.components(NSCalendarUnit.Year.union(NSCalendarUnit.Hour),fromDate: date)
                 let hour = components.hour
                 
                 if hour > 6 && hour < 20 {
