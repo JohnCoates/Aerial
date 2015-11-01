@@ -5,6 +5,8 @@ Aerial is a Mac screen saver based on the new Apple TV screen saver that display
 
 Aerial is completely open source, so feel free to contribute to its development!
 
+###### Windows user? Try [cDima/Aerial](https://github.com/cDima/Aerial/)
+
 #### Coded with Love by John Coates
 
 [![Twitter](http://i.imgur.com/KzOiue1.png)](http://twitter.com/punksomething)
