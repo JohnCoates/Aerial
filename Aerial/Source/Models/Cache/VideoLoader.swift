@@ -65,7 +65,7 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
         loadedRange = NSMakeRange(requestedRange.location, 0);
         
         connection.start();
-        debugLog("Starting request: \(request)");
+//        debugLog("Starting request: \(request)");
     }
     
     deinit {
@@ -199,7 +199,7 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
 //        debugLog("expected content length: \(response.expectedContentLength)");
     }
     
-    // MARK - Range
+    // MARK: - Range
     
     func startOffsetFromResponse(response: NSURLResponse) -> Int? {
         
@@ -229,7 +229,7 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
         
         let offset = offsetString.longLongValue;
         
-        debugLog("content range: \(contentRange), start offset: \(offset)");
+//        debugLog("content range: \(contentRange), start offset: \(offset)");
         
         return Int(offset);
     }

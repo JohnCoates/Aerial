@@ -55,7 +55,7 @@ class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, VideoLoader
     
     // MARK: - Asset Resource Loader Delegate
     func resourceLoader(resourceLoader: AVAssetResourceLoader, didCancelLoadingRequest loadingRequest: AVAssetResourceLoadingRequest) {
-        debugLog("cancelled load request: \(loadingRequest)");
+//        debugLog("cancelled load request: \(loadingRequest)");
         
         var remove:VideoLoader?
         for loader in videoLoaders {
