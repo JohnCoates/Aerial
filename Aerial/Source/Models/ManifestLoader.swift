@@ -39,6 +39,7 @@ class ManifestLoader {
             
             if let possible = possible as? NSNumber {
                 if possible.boolValue == false {
+                    debugLog("video is disabled: \(video)");
                     continue;
                 }
             }
@@ -71,12 +72,14 @@ class ManifestLoader {
                 self.loadSavedManifest();
                 return;
             }
+            // save data
             let defaults = self.defaults
             defaults.setObject(data, forKey: "manifest");
             defaults.synchronize()
             
-            
-            self.readJSONFromData(data);
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.readJSONFromData(data);
+            })
             
         };
         let url = NSURL(string: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json");
@@ -121,21 +124,109 @@ class ManifestLoader {
                     let video = AerialVideo(id: id, name: name, type: type, timeOfDay: timeOfDay, url: url);
                     
                     videos.append(video)
+                    
+                    checkContentLength(video)
                 }
             }
             
             self.loadedManifest = videos;
-            
-            // callbacks
-            for callback in self.callbacks {
-                callback(videos);
-            }
-            self.callbacks.removeAll()
-            
         }
         catch {
             NSLog("Aerial: Error retrieving content listing.");
             return;
         }
+    }
+    
+    func checkContentLength(video:AerialVideo) {
+        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let session = NSURLSession(configuration: config)
+        let request = NSMutableURLRequest(URL: video.url)
+        request.HTTPMethod = "HEAD"
+        
+        let task = session.dataTaskWithRequest(request) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
+            video.contentLengthChecked = true
+            
+            if let error = error {
+                NSLog("error fetching content length: \(error)")
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.receivedContentLengthResponse()
+                })
+                return;
+            }
+            
+            guard let response = response else {
+                return;
+            }
+            
+            video.contentLength = Int(response.expectedContentLength);
+//            NSLog("content length: \(response.expectedContentLength)");
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.receivedContentLengthResponse()
+            })
+        }
+        
+        task.resume()
+    }
+    
+    func receivedContentLengthResponse() {
+        // check if content length on all videos has been checked
+        for video in loadedManifest {
+            if video.contentLengthChecked == false {
+                return;
+            }
+        }
+        
+        filterVideoAndProcessCallbacks()
+    }
+    
+    func filterVideoAndProcessCallbacks() {
+        let unfiltered = loadedManifest
+        
+        var filtered = [AerialVideo]()
+        for video in unfiltered {
+            // offline? eror? just put it through
+            if video.contentLength == 0  {
+                filtered.append(video)
+                continue;
+            }
+            
+            // check to see if we find another video with the same content length
+            var isDuplicate = false
+            for videoCheck in filtered {
+                if videoCheck.id == video.id {
+                    isDuplicate = true;
+                    continue;
+                }
+                
+                if videoCheck.name != video.name {
+                    continue;
+                }
+                
+                if videoCheck.timeOfDay != video.timeOfDay {
+                    continue
+                }
+                
+                if videoCheck.contentLength == video.contentLength {
+//                    NSLog("removing duplicate video \(videoCheck.name) \(videoCheck.timeOfDay)");
+                    isDuplicate = true;
+                    break;
+                }
+            } // dupe check
+            
+            if isDuplicate == true {
+                continue;
+            }
+            
+            filtered.append(video)
+        }
+        
+        loadedManifest = filtered
+        
+        
+        // callbacks
+        for callback in self.callbacks {
+            callback(filtered);
+        }
+        self.callbacks.removeAll()
     }
 }

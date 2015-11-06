@@ -16,6 +16,8 @@ class AerialVideo {
     let timeOfDay:String;
     let url:NSURL;
     var arrayPosition:Int = 1;
+    var contentLength:Int = 0;
+    var contentLengthChecked:Bool = false;
     
     var isAvailableOffline:Bool {
         get {
