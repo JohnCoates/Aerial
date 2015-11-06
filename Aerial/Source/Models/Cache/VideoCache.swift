@@ -64,21 +64,30 @@ class VideoCache {
     }
     
     static func isVideoAvailableOffline(video:AerialVideo) -> Bool {
-        guard let appCacheDirectory = VideoCache.cacheDirectory else {
+        guard let videoCachePath = cachePathForVideo(video) else {
+            NSLog("Aerial Error: Couldn't get video cache path!");
             return false;
+        }
+        
+
+        let fileManager = NSFileManager.defaultManager()
+        
+        return fileManager.fileExistsAtPath(videoCachePath)
+    }
+    
+    static func cachePathForVideo(video:AerialVideo) -> String? {
+        guard let appCacheDirectory = VideoCache.cacheDirectory else {
+            return nil;
         }
         
         guard let filename = video.url.lastPathComponent else {
             NSLog("Aerial Error: Couldn't get filename from URL for cache.");
-            return false;
+            return nil;
         }
         
         let videoCachePath = appCacheDirectory.stringByAppendingPathComponent(filename);
-
-        let fileManager = NSFileManager.defaultManager()
         
-        
-        return fileManager.fileExistsAtPath(videoCachePath)
+        return videoCachePath
     }
     
     init(URL:NSURL) {
@@ -196,7 +205,7 @@ class VideoCache {
         
         self.videoData = videoData;
         loading = false;
-        debugLog("cached video file with length: \(self.videoData.length)");
+//        debugLog("cached video file with length: \(self.videoData.length)");
     }
     
     // MARK: - Fulfilling cache
@@ -298,7 +307,7 @@ class VideoCache {
                     }
                     else {
                         // skip adding this to the array, previous range is already bigger
-                        debugLog("skipping add of \(range), previous: \(previousRange)");
+//                        debugLog("skipping add of \(range), previous: \(previousRange)");
                         continue;
                     }
                 }

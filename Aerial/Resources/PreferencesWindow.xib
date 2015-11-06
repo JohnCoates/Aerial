@@ -10,10 +10,13 @@
             <connections>
                 <outlet property="cacheAerialsAsTheyPlayCheckbox" destination="7HM-tD-v0b" id="29n-iQ-L36"/>
                 <outlet property="cacheLocation" destination="XAJ-Se-rwG" id="Qm8-0v-eOq"/>
+                <outlet property="cacheStatusLabel" destination="Z45-8U-mbl" id="WxU-ME-7CP"/>
+                <outlet property="currentProgress" destination="CLV-o6-oiA" id="CvS-m7-rdc"/>
                 <outlet property="differentAerialCheckbox" destination="9Xe-S2-eQT" id="2tM-2p-KDu"/>
                 <outlet property="outlineView" destination="gP6-w2-1UT" id="xdh-0c-TK2"/>
                 <outlet property="playerView" destination="Rc1-hl-hSC" id="I7W-rF-KFm"/>
                 <outlet property="projectPageLink" destination="hOD-gE-gxl" id="UTt-Vt-cTP"/>
+                <outlet property="totalProgress" destination="HH2-7L-HmQ" id="UgG-Xt-pR3"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="B44-2j-OKw"/>
             </connections>
         </customObject>
@@ -36,12 +39,12 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Main" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
-                                            <rect key="frame" x="10" y="33" width="607" height="286"/>
+                                        <view key="view" id="zsM-Ha-kCO">
+                                            <rect key="frame" x="10" y="33" width="127" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNc-EK-7cY">
-                                                    <rect key="frame" x="4" y="32" width="150" height="254"/>
+                                                    <rect key="frame" x="4" y="-254" width="150" height="254"/>
                                                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="4QR-cO-33N">
                                                         <rect key="frame" x="1" y="1" width="148" height="252"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -164,11 +167,11 @@
                                                     </scroller>
                                                 </scrollView>
                                                 <avPlayerView fixedFrame="YES" controlsStyle="inline" translatesAutoresizingMaskIntoConstraints="NO" id="Rc1-hl-hSC">
-                                                    <rect key="frame" x="207" y="100" width="336" height="188"/>
+                                                    <rect key="frame" x="207" y="-186" width="336" height="188"/>
                                                     <animations/>
                                                 </avPlayerView>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hOD-gE-gxl">
-                                                    <rect key="frame" x="467" y="32" width="130" height="21"/>
+                                                    <rect key="frame" x="467" y="-254" width="130" height="21"/>
                                                     <animations/>
                                                     <buttonCell key="cell" type="bevel" title="Visit Project Page" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="5mJ-Tt-2db">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -179,7 +182,7 @@
                                                     </connections>
                                                 </button>
                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XSQ-4P-bI2">
-                                                    <rect key="frame" x="4" y="10" width="39" height="16"/>
+                                                    <rect key="frame" x="4" y="-276" width="39" height="16"/>
                                                     <animations/>
                                                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSActionTemplate" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="4Dx-Hp-CRf">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -190,7 +193,7 @@
                                                     </connections>
                                                 </button>
                                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Xe-S2-eQT">
-                                                    <rect key="frame" x="205" y="71" width="244" height="18"/>
+                                                    <rect key="frame" x="205" y="-215" width="244" height="18"/>
                                                     <animations/>
                                                     <buttonCell key="cell" type="check" title="Play Different Aerial On Each Display" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Mp6-m9-C2d">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -205,7 +208,7 @@
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Cache" identifier="2" id="kp1-xv-zNG">
-                                        <view key="view" id="93q-v8-yxM">
+                                        <view key="view" ambiguous="YES" id="93q-v8-yxM">
                                             <rect key="frame" x="10" y="33" width="607" height="286"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -251,6 +254,52 @@
                                                         <action selector="resetCacheLocation:" target="-2" id="J5B-s3-tpE"/>
                                                     </connections>
                                                 </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="118-Gb-ppx">
+                                                    <rect key="frame" x="25" y="78" width="131" height="32"/>
+                                                    <animations/>
+                                                    <buttonCell key="cell" type="push" title="Download Now" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OL6-Qf-3eQ">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="cacheAllNow:" target="-2" id="poN-ta-Wfd"/>
+                                                    </connections>
+                                                </button>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z45-8U-mbl">
+                                                    <rect key="frame" x="175" y="87" width="437" height="17"/>
+                                                    <animations/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Idle" id="QNE-T2-Dpe">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ELj-7t-LmS">
+                                                    <rect key="frame" x="29" y="43" width="134" height="17"/>
+                                                    <animations/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Total Progress" id="7yK-FT-4Kh">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="CLV-o6-oiA">
+                                                    <rect key="frame" x="214" y="16" width="130" height="20"/>
+                                                    <animations/>
+                                                </progressIndicator>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u6T-MT-X4f">
+                                                    <rect key="frame" x="212" y="43" width="134" height="17"/>
+                                                    <animations/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Current Video" id="eyb-qY-C1D">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="HH2-7L-HmQ">
+                                                    <rect key="frame" x="31" y="16" width="130" height="20"/>
+                                                    <animations/>
+                                                </progressIndicator>
                                             </subviews>
                                             <animations/>
                                         </view>

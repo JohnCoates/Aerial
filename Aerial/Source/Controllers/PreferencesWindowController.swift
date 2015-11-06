@@ -42,7 +42,7 @@ class City {
     }
 }
 
-@objc(PreferencesWindowController) class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, NSOutlineViewDelegate {
+@objc(PreferencesWindowController) class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, NSOutlineViewDelegate, VideoDownloadDelegate {
 
     @IBOutlet var outlineView:NSOutlineView?
     @IBOutlet var playerView:AVPlayerView!
@@ -95,6 +95,8 @@ class City {
         if let cacheDirectory = VideoCache.cacheDirectory {
             cacheLocation.URL = NSURL(fileURLWithPath: cacheDirectory as String)
         }
+        
+        cacheStatusLabel.editable = false;
         
 
     }
@@ -431,6 +433,7 @@ class City {
             player.replaceCurrentItemWithPlayerItem(item);
             player.play();
             
+            
             return true;
         case is TimeOfDay:
             return false;
@@ -450,6 +453,80 @@ class City {
         default:
             return 0;
         }
+    }
+    
+    // MARK: - Caching
+    @IBOutlet var totalProgress:NSProgressIndicator!
+    @IBOutlet var currentProgress:NSProgressIndicator!
+    @IBOutlet var cacheStatusLabel:NSTextField!
+    var currentVideoDownload:VideoDownload?
+    var manifestVideos:[AerialVideo]?
+    
+    @IBAction func cacheAllNow(button:NSButton) {
+       cacheStatusLabel.stringValue = "Loading JSON"
+        currentProgress.maxValue = 1;
+        
+        ManifestLoader.instance.addCallback { (manifestVideos:[AerialVideo]) -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.manifestVideos = manifestVideos
+                self.cacheNextVideo()
+                
+            })
+        };
+    }
+    
+    
+    func cacheNextVideo() {
+        guard let manifestVideos = self.manifestVideos else {
+            cacheStatusLabel.stringValue = "Couldn't load manifest!"
+            return;
+        }
+        
+        let uncached = manifestVideos.filter { (video) -> Bool in
+            return video.isAvailableOffline == false
+        }
+        
+        
+        if uncached.count == 0 {
+            cacheStatusLabel.stringValue = "All videos have been cached"
+            return;
+        }
+        
+        NSLog("unached: \(uncached)")
+        
+        totalProgress.maxValue = Double(manifestVideos.count)
+        totalProgress.doubleValue = Double(manifestVideos.count) - Double(uncached.count)
+        NSLog("total process max value: \(totalProgress.maxValue), current value: \(totalProgress.doubleValue)")
+        
+        
+        let video = uncached[0];
+        
+        // find video that hasn't been cached
+        let videoDownload = VideoDownload(video: video, delegate: self)
+        
+        cacheStatusLabel.stringValue = "Caching video \(video.name) \(video.timeOfDay.capitalizedString): \(video.id)"
+        
+        currentVideoDownload = videoDownload
+        videoDownload.startDownload()
+    }
+ 
+    // MARK: - Video Download Delegate
+    
+    func videoDownload(videoDownload:VideoDownload , finished success:Bool, errorMessage:String?) {
+        
+        if let message = errorMessage {
+            cacheStatusLabel.stringValue = message
+        }
+        else {
+            cacheNextVideo()
+        }
+        
+         NSLog("video download finished with success: \(success))")
+    }
+    
+    func videoDownload(videoDownload:VideoDownload, receivedBytes:Int, progress:Float) {
+        currentProgress.doubleValue = Double(progress)
+//     NSLog("received bytes: \(receivedBytes), progress: \(progress)")
     }
     
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FA143CE61BDA3EEF0041A82B /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA143CE51BDA3EEF0041A82B /* AVKit.framework */; };
+		FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */; };
+		FA36BD401BE57F8E00D5E03B /* VideoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */; };
 		FAB22A7E1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB22A7D1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift */; };
 		FAB22A7F1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB22A7D1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift */; };
 		FAC36F481BE1756D007F2A20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAC36F321BE1756D007F2A20 /* Assets.xcassets */; };
@@ -44,6 +46,7 @@
 /* Begin PBXFileReference section */
 		FA143CD61BDA3E880041A82B /* Aerial Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aerial Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA143CE51BDA3EEF0041A82B /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDownload.swift; sourceTree = "<group>"; };
 		FAB22A7D1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetLoaderDelegate.swift; sourceTree = "<group>"; };
 		FAC36F301BE1756D007F2A20 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAC36F321BE1756D007F2A20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -163,6 +166,7 @@
 				FAB22A7D1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift */,
 				FAF450201BE2B45D00C1F98A /* VideoLoader.swift */,
 				FAF450231BE2D2FD00C1F98A /* VideoCache.swift */,
+				FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -329,6 +333,7 @@
 				FAC36F6B1BE1780B007F2A20 /* Debug.swift in Sources */,
 				FAB22A7F1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */,
 				FAC36F601BE175CF007F2A20 /* AppDelegate.swift in Sources */,
+				FA36BD401BE57F8E00D5E03B /* VideoDownload.swift in Sources */,
 				FAF450221BE2B45D00C1F98A /* VideoLoader.swift in Sources */,
 				FAC36F5A1BE1756D007F2A20 /* AerialVideo.swift in Sources */,
 				FAF450251BE2D2FD00C1F98A /* VideoCache.swift in Sources */,
@@ -348,6 +353,7 @@
 				FAF450211BE2B45D00C1F98A /* VideoLoader.swift in Sources */,
 				FAC36F6A1BE1780B007F2A20 /* Debug.swift in Sources */,
 				FAB22A7E1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */,
+				FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */,
 				FAC36F641BE1772F007F2A20 /* CollectionType+Shuffling.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
