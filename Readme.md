@@ -58,7 +58,7 @@ I appreciate all pull requests. Caching hasn't been added yet.
 ## Brew Cask Support - Install Remotely
 If you're looking to install Aerial across many systems, remotely, or simply from terminal I recommend [Brew Cask](http://caskroom.io/).
 
-Issue the following terminal command: **brew cask install aerial**
+Issue the following terminal command: `brew cask install aerial`
 
 ## Troubleshooting
 
