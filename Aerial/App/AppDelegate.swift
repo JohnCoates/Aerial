@@ -31,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 var frame = prefWindow.frame;
                 frame.origin = window.frame.origin
                 prefWindow.setFrame(frame, display: true);
-                window.orderOut(self);
+//                window.orderOut(self);
             }
         }
         
