@@ -148,6 +148,7 @@ class City {
             }
         }
     }
+    
     @IBAction func resetCacheLocation(button:NSButton?) {
         defaults.removeObjectForKey("cacheDirectory");
         defaults.synchronize()
@@ -255,7 +256,14 @@ class City {
     @IBAction func close(sender: AnyObject?) {
         NSApp.mainWindow?.endSheet(window!);
     }
-
+    
+    @IBAction func clickShowFolder(sender: AnyObject) {
+        let pathToApplication: String = (cacheLocation.URL?.absoluteString)!
+        let showFolder = NSTask()
+        showFolder.launchPath = "/usr/bin/open"
+        showFolder.arguments = [pathToApplication]
+        showFolder.launch()
+    }
     
     // MARK: - Outline View Delegate & Data Source
     
