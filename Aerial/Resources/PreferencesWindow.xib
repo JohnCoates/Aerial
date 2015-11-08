@@ -228,9 +228,12 @@
                                                     <animations/>
                                                     <pathCell key="cell" selectable="YES" editable="YES" alignment="left" id="gVD-I9-Ldu">
                                                         <font key="font" metaFont="system"/>
-                                                        <url key="url" string="file://localhost/Applications/"/>
+                                                        <url key="url" string="file:///Applications/"/>
                                                         <color key="backgroundColor" red="0.89803921568627454" green="0.92549019607843142" blue="0.97254901960784312" alpha="1" colorSpace="deviceRGB"/>
                                                     </pathCell>
+                                                    <connections>
+                                                        <action selector="clickShowFolder:" target="-2" id="L3b-Rg-xO6"/>
+                                                    </connections>
                                                 </pathControl>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZO8-hg-MHd">
                                                     <rect key="frame" x="4" y="144" width="185" height="32"/>
