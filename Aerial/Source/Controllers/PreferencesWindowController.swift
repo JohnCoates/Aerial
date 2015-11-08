@@ -461,6 +461,8 @@ class City {
     @IBOutlet var cacheStatusLabel:NSTextField!
     var currentVideoDownload:VideoDownload?
     var manifestVideos:[AerialVideo]?
+    var cacheAborted = false;
+
     
     @IBAction func cacheAllNow(button:NSButton) {
        cacheStatusLabel.stringValue = "Loading JSON"
@@ -470,13 +472,23 @@ class City {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.manifestVideos = manifestVideos
                 self.cacheNextVideo()
-                
             })
         };
     }
-    
+
+
+    @IBAction func abortCacheNow(button:NSButton) {
+        cacheStatusLabel.stringValue = "Will stop download process after this video"
+        currentProgress.maxValue = 1;
+        self.cacheAborted = true;
+    }
+
     
     func cacheNextVideo() {
+        if self.cacheAborted == true {
+            return;
+        }
+
         guard let manifestVideos = self.manifestVideos else {
             cacheStatusLabel.stringValue = "Couldn't load manifest!"
             return;
@@ -485,7 +497,6 @@ class City {
         let uncached = manifestVideos.filter { (video) -> Bool in
             return video.isAvailableOffline == false
         }
-        
         
         if uncached.count == 0 {
             cacheStatusLabel.stringValue = "All videos have been cached"
