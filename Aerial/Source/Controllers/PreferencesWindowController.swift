@@ -479,13 +479,15 @@ class City {
 
     @IBAction func abortCacheNow(button:NSButton) {
         cacheStatusLabel.stringValue = "Will stop download process after this video"
-        currentProgress.maxValue = 1;
-        self.cacheAborted = true;
+        currentProgress.maxValue = 1
+        self.cacheAborted = true
     }
 
     
     func cacheNextVideo() {
         if self.cacheAborted == true {
+            cacheStatusLabel.stringValue = "Caching all videos has been stoped"
+            self.cacheAborted = false
             return;
         }
 
