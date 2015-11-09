@@ -9,6 +9,7 @@
 import Cocoa
 import AVKit
 import AVFoundation
+import Foundation
 import ScreenSaver
 
 class TimeOfDay {
@@ -263,6 +264,16 @@ class City {
         showFolder.launchPath = "/usr/bin/open"
         showFolder.arguments = [pathToApplication]
         showFolder.launch()
+    }
+    
+    @IBAction func clickPlayAsWallpaper(sender: AnyObject) {
+        let task = NSTask()
+        task.launchPath = "/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine"
+        task.arguments = ["-background", "&"]
+        
+        let pipe = NSPipe()
+        task.standardOutput = pipe
+        task.launch()
     }
     
     // MARK: - Outline View Delegate & Data Source
