@@ -1,0 +1,5 @@
+language: objective-c  #Code is in SWIFT but don't panik
+osx_image: xcode7.1 
+xcode_project: Aerial.xcodeproj 
+xcode_scheme: Aerial 
+xcode_sdk: macosx10.11 
