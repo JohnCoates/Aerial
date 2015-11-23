@@ -1,6 +1,6 @@
 ####Master branch build status: 
 ![](https://travis-ci.org/mommel/Aerial.svg?branch=master)
-
+[![Still Maintained](http://stillmaintained.com/mommel/Aerial.png)](http://stillmaintained.com/mommel/Aerial) 
 
 ![screencast](https://cloud.githubusercontent.com/assets/499192/10754100/c0e1cc4c-7c95-11e5-9d3b-842d3acc2fd5.gif)
 
