@@ -261,7 +261,7 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
     func connection(connection: NSURLConnection, didFailWithError error: NSError) {
         NSLog("Aerial Error: Couldn't download video: \(error)")
         dispatch_async(queue) { () -> Void in
-            self.failedDownload("Connection fail: \(error)")
+            self.failedDownload("Connection fail: \(error.localizedDescription)")
         }
     }
     
