@@ -64,5 +64,13 @@ Issue the following terminal command: `brew cask install aerial`
 
 - Black screen: Try disabling Little Snitch, or try the latest beta release from [Aerial Releases](https://github.com/JohnCoates/Aerial/releases/).
 
+## Uninstallation
+
+Typically, you would right click on the screen saver and select 'Delete Ariel' in your system screen saver preferences. If that does not work, the screen saver can manually be deleted from the following locations:
+
+IF you installed the screen saver for all users, issue the following terminal command: `open /Library/Screen\ Savers/` then delete the screensaver.
+
+IF you installed the screen saver for your own user account only, issue the following terminal command: `open ~/Library/Screen\ Savers/` then delete the screensaver.
+
 ## License
 [MIT License](https://raw.githubusercontent.com/JohnCoates/Aerial/master/LICENSE)
