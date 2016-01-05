@@ -1,3 +1,7 @@
+####Master branch build status: 
+![](https://travis-ci.org/mommel/Aerial.svg?branch=master)
+[![Still Maintained](http://stillmaintained.com/mommel/Aerial.png)](http://stillmaintained.com/mommel/Aerial) 
+
 ![screencast](https://cloud.githubusercontent.com/assets/499192/10754100/c0e1cc4c-7c95-11e5-9d3b-842d3acc2fd5.gif)
 
 ## Aerial - Apple TV Aerial Views Screen Saver
@@ -6,6 +10,7 @@ Aerial is a Mac screen saver based on the new Apple TV screen saver that display
 Aerial is completely open source, so feel free to contribute to its development!
 
 ###### Windows user? Try [cDima/Aerial](https://github.com/cDima/Aerial/)
+###### Linux user? Try [graysky2/xscreensaver-aerial](https://github.com/graysky2/xscreensaver-aerial/)
 
 #### Coded with Love by John Coates
 
@@ -21,7 +26,7 @@ Aerial is completely open source, so feel free to contribute to its development!
 If Aerial.saver could not be opened, place Aerial.saver in ~/Library/Screen Savers
 
 ## Caching Support & Offline Mode - Beta
-If you'd like the videos to be saved as they are viewed to minimize bandwidth concerns and enable offline mode, the 1.2 beta 4 has this feature. [Click here to download the latest release](https://github.com/JohnCoates/Aerial/releases/)
+If you'd like the videos to be saved as they are viewed to minimize bandwidth concerns and enable offline mode, the 1.2 beta 4 has this feature. [Click here to download the latest alpha release by Mommel](https://github.com/mommel/Aerial/releases/)
 
 ## Settings Aerial as Your Screen Saver
 

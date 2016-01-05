@@ -9,6 +9,7 @@
 import Cocoa
 import AVKit
 import AVFoundation
+import Foundation
 import ScreenSaver
 
 class TimeOfDay {
@@ -148,6 +149,7 @@ class City {
             }
         }
     }
+    
     @IBAction func resetCacheLocation(button:NSButton?) {
         defaults.removeObjectForKey("cacheDirectory");
         defaults.synchronize()
@@ -255,7 +257,24 @@ class City {
     @IBAction func close(sender: AnyObject?) {
         NSApp.mainWindow?.endSheet(window!);
     }
-
+    
+    @IBAction func clickShowFolder(sender: AnyObject) {
+        let pathToApplication: String = (cacheLocation.URL?.absoluteString)!
+        let showFolder = NSTask()
+        showFolder.launchPath = "/usr/bin/open"
+        showFolder.arguments = [pathToApplication]
+        showFolder.launch()
+    }
+    
+    @IBAction func clickPlayAsWallpaper(sender: AnyObject) {
+        let task = NSTask()
+        task.launchPath = "/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine"
+        task.arguments = ["-background", "&"]
+        
+        let pipe = NSPipe()
+        task.standardOutput = pipe
+        task.launch()
+    }
     
     // MARK: - Outline View Delegate & Data Source
     
@@ -461,6 +480,8 @@ class City {
     @IBOutlet var cacheStatusLabel:NSTextField!
     var currentVideoDownload:VideoDownload?
     var manifestVideos:[AerialVideo]?
+    var cacheAborted = false;
+
     
     @IBAction func cacheAllNow(button:NSButton) {
        cacheStatusLabel.stringValue = "Loading JSON"
@@ -470,13 +491,25 @@ class City {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.manifestVideos = manifestVideos
                 self.cacheNextVideo()
-                
             })
         };
     }
-    
+
+
+    @IBAction func abortCacheNow(button:NSButton) {
+        cacheStatusLabel.stringValue = "Will stop download process after this video"
+        currentProgress.maxValue = 1
+        self.cacheAborted = true
+    }
+
     
     func cacheNextVideo() {
+        if self.cacheAborted == true {
+            cacheStatusLabel.stringValue = "Caching all videos has been stoped"
+            self.cacheAborted = false
+            return;
+        }
+
         guard let manifestVideos = self.manifestVideos else {
             cacheStatusLabel.stringValue = "Couldn't load manifest!"
             return;
@@ -485,7 +518,6 @@ class City {
         let uncached = manifestVideos.filter { (video) -> Bool in
             return video.isAvailableOffline == false
         }
-        
         
         if uncached.count == 0 {
             cacheStatusLabel.stringValue = "All videos have been cached"
