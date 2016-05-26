@@ -21,7 +21,7 @@ Aerial is completely open source, so feel free to contribute to its development!
 If Aerial.saver could not be opened, place Aerial.saver in ~/Library/Screen Savers
 
 ## Caching Support & Offline Mode - Beta
-If you'd like the videos to be saved as they are viewed to minimize bandwidth concerns and enable offline mode, the 1.2 beta 4 has this feature. [Click here to download the latest release](https://github.com/JohnCoates/Aerial/releases/)
+If you'd like the videos to be saved as they are viewed to minimize bandwidth concerns and enable offline mode, the 1.2 beta 5 has this feature. [Click here to download the latest release](https://github.com/JohnCoates/Aerial/releases/)
 
 ## Settings Aerial as Your Screen Saver
 
