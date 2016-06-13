@@ -24,10 +24,10 @@ class CheckCellView: NSTableCellView {
     
     override func awakeFromNib() {
         checkButton.target = self;
-        checkButton.action = "check:";
+        checkButton.action = #selector(CheckCellView.check(_:));
     }
     
-    func check(button:AnyObject?) {        
+    func check(_ button:AnyObject?) {        
         guard let onCheck = self.onCheck else {
             return;
         }
@@ -35,8 +35,8 @@ class CheckCellView: NSTableCellView {
         onCheck(checkButton.state == NSOnState);
     }
     
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
     }
     
 }
