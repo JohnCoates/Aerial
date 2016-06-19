@@ -19,6 +19,7 @@ class ManifestLoader {
     var loadedManifest = [AerialVideo]();
     var playedVideos = [AerialVideo]();
     var offlineMode:Bool = false
+    var timeDependent:Bool = false
     
     func addCallback(callback:manifestLoadCallback) {
         if (loadedManifest.count > 0) {
@@ -49,6 +50,25 @@ class ManifestLoader {
                 if video.isAvailableOffline == false {
                     continue;
                 }
+            }
+            
+            if timeDependent == true {
+                let date = NSDate()
+                let calendar = NSCalendar.currentCalendar()
+                let components = calendar.components(NSCalendarUnit.Year.union(NSCalendarUnit.Hour),fromDate: date)
+                let hour = components.hour
+                
+                if hour > 6 && hour < 20 {
+                    if video.timeOfDay != "day" {
+                        continue
+                    }
+                }
+                else {
+                    if video.timeOfDay != "night" {
+                        continue
+                    }
+                }
+                
             }
             
             return video;
@@ -88,6 +108,7 @@ class ManifestLoader {
         let session = NSURLSession(configuration: configuration)
         let task = session.dataTaskWithURL(url!, completionHandler:completionHandler);
         task.resume();
+        timeDependent = defaults.boolForKey("playTimeDependent")
     }
     
     func loadSavedManifest() {
