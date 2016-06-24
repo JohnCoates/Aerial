@@ -14,7 +14,7 @@ class AerialVideo {
     let name:String;
     let type:String;
     let timeOfDay:String;
-    let url:URL;
+    let url:NSURL;
     var arrayPosition:Int = 1;
     var contentLength:Int = 0;
     var contentLengthChecked:Bool = false;
@@ -31,6 +31,6 @@ class AerialVideo {
         self.name = name;
         self.type = type;
         self.timeOfDay = timeOfDay;
-        self.url = URL(string:url)!;
+        self.url = NSURL(string:url)!;
     }
 }

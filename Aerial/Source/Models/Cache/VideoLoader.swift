@@ -10,13 +10,13 @@ import Foundation
 import AVFoundation
 
 protocol VideoLoaderDelegate : NSObjectProtocol {
-    func videoLoader(_ videoLoader:VideoLoader, receivedResponse response:URLResponse);
-    func videoLoader(_ videoLoader:VideoLoader, receivedData data:Data, forRange range:NSRange);
+    func videoLoader(videoLoader:VideoLoader, receivedResponse response:NSURLResponse);
+    func videoLoader(videoLoader:VideoLoader, receivedData data:NSData, forRange range:NSRange);
 };
 
 class VideoLoader : NSObject, NSURLConnectionDataDelegate {
     var connection:NSURLConnection?
-    var response:HTTPURLResponse?
+    var response:NSHTTPURLResponse?
     weak var delegate:VideoLoaderDelegate?
     var loadingRequest:AVAssetResourceLoadingRequest
     
@@ -25,14 +25,14 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
     var requestedRange:NSRange
     var loadRange:Bool
     
-    let queue = DispatchQueue.main
+    let queue = dispatch_get_main_queue()
     
-    init(url:URL, loadingRequest:AVAssetResourceLoadingRequest, delegate:VideoLoaderDelegate) {
+    init(url:NSURL, loadingRequest:AVAssetResourceLoadingRequest, delegate:VideoLoaderDelegate) {
         self.delegate = delegate
         self.loadingRequest = loadingRequest
         
-        let request = NSMutableURLRequest(url: url);
-        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData;
+        let request = NSMutableURLRequest(URL: url);
+        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData;
         
         loadRange = false;
         loadedRange = NSMakeRange(0,0);
@@ -54,14 +54,14 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
         
         super.init()
         
-        connection = NSURLConnection(request: request as URLRequest, delegate: self, startImmediately: false)
+        connection = NSURLConnection(request: request, delegate: self, startImmediately: false)
         
         guard let connection = connection else {
             NSLog("Aerial error: Couldn't instantiate connection.");
             return;
         }
         
-        connection.setDelegateQueue(OperationQueue.main());
+        connection.setDelegateQueue(NSOperationQueue.mainQueue());
         loadedRange = NSMakeRange(requestedRange.location, 0);
         
         connection.start();
@@ -74,7 +74,7 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
     
     // MARK: - NSURLConnection Delegate
     
-    func connection(_ connection: NSURLConnection, didReceive response: URLResponse) {
+    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
         
         if loadRange {
             if let startOffset = startOffsetFromResponse(response) {
@@ -82,17 +82,17 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
             }
         }
 
-        self.response = response as? HTTPURLResponse;
+        self.response = response as? NSHTTPURLResponse;
         
-        queue.async { () -> Void in
+        dispatch_async(queue) { () -> Void in
             self.delegate?.videoLoader(self, receivedResponse: response);
             self.fillInContentInformation(self.loadingRequest)
         };
     }
     
-    func connection(_ connection: NSURLConnection, didReceive data: Data) {
+    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
         
-        queue.async { () -> Void in
+        dispatch_async(queue) { () -> Void in
             
             self.fillInContentInformation(self.loadingRequest)
             
@@ -104,7 +104,7 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
             let loadedRange = self.loadedRange
             let loadedLocation = loadedRange.location + loadedRange.length;
             
-            let dataRange = NSMakeRange(loadedRange.location + loadedRange.length, data.count)
+            let dataRange = NSMakeRange(loadedRange.location + loadedRange.length, data.length)
             self.delegate?.videoLoader(self, receivedData: data, forRange: dataRange);
             
             // check if we've already been sending content, or we're at right byte offset
@@ -112,33 +112,33 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
                 
                 let requestedEndOffset = Int(dataRequest.requestedOffset + dataRequest.requestedLength);
                 
-                let pendingDataEndOffset = loadedLocation + data.count;
+                let pendingDataEndOffset = loadedLocation + data.length;
                 
                 if (pendingDataEndOffset > requestedEndOffset) {
                     let truncateDataLength = pendingDataEndOffset - requestedEndOffset;
-                    let dataRange = NSMakeRange(0, data.count - truncateDataLength);
+                    let dataRange = NSMakeRange(0, data.length - truncateDataLength);
                     
-                    let truncatedData = data.subdata(in: dataRange.toRange()!);
+                    let truncatedData = data.subdataWithRange(dataRange);
                     
-                    dataRequest.respond(with: truncatedData);
+                    dataRequest.respondWithData(truncatedData);
                     self.loadingRequest.finishLoading();
                     self.connection?.cancel();
                 }else {
-                    dataRequest.respond(with: data);
+                    dataRequest.respondWithData(data);
                 }
 //                debugLog("Responding with data");
             }
                 // check if we're at a point now where we can send content
-            else if loadedLocation + data.count >= requestedRange.location {
+            else if loadedLocation + data.length >= requestedRange.location {
                 // calculate how far along we need to be into the data before it's part of what
                 // was requested
                 let inset = requestedRange.location - loadedRange.location
                 
                 if inset > 0 {
-                    let dataRange = NSMakeRange(inset, data.count - inset);
+                    let dataRange = NSMakeRange(inset, data.length - inset);
                     
-                    let responseData = data.subdata(in: dataRange.toRange()!);
-                    dataRequest.respond(with: responseData);
+                    let responseData = data.subdataWithRange(dataRange);
+                    dataRequest.respondWithData(responseData);
                     
                     if dataRequest.currentOffset >= dataRequest.requestedOffset + dataRequest.requestedLength {
                         self.loadingRequest.finishLoading();
@@ -153,20 +153,20 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
             
 //            debugLog("Received data with length: \(data.length)");
             
-            self.loadedRange.length += data.count;
+            self.loadedRange.length += data.length;
             
         }
     }
 
-    func connectionDidFinishLoading(_ connection: NSURLConnection) {
+    func connectionDidFinishLoading(connection: NSURLConnection) {
 
-        queue.async { () -> Void in
+        dispatch_async(queue) { () -> Void in
             debugLog("connectionDidFinishLoading");
             self.loadingRequest.finishLoading()
         };
     }
     
-    func fillInContentInformation(_ loadingRequest:AVAssetResourceLoadingRequest) {
+    func fillInContentInformation(loadingRequest:AVAssetResourceLoadingRequest) {
         
         guard let contentInformationRequest = loadingRequest.contentInformationRequest else {
             return;
@@ -177,7 +177,7 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
             return;
         }
         
-        guard let mimeType = response.mimeType else {
+        guard let mimeType = response.MIMEType else {
             debugLog("no mimeType for \(response)");
             return;
         }
@@ -191,7 +191,7 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
         
         let contentType:String = uti.takeRetainedValue() as String;
         
-        contentInformationRequest.isByteRangeAccessSupported = true;
+        contentInformationRequest.byteRangeAccessSupported = true;
         contentInformationRequest.contentType = contentType;
         contentInformationRequest.contentLength = response.expectedContentLength
         
@@ -201,31 +201,31 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
     
     // MARK: - Range
     
-    func startOffsetFromResponse(_ response: URLResponse) -> Int? {
+    func startOffsetFromResponse(response: NSURLResponse) -> Int? {
         
         // get range response
-        var regex : RegularExpression!
+        var regex : NSRegularExpression!
         do {
             // Check to see if the server returned a valid byte-range
-            regex = try RegularExpression(pattern: "bytes (\\d+)-\\d+/\\d+", options: RegularExpression.Options.caseInsensitive)
+            regex = try NSRegularExpression(pattern: "bytes (\\d+)-\\d+/\\d+", options: NSRegularExpressionOptions.CaseInsensitive)
         } catch let error as NSError {
             NSLog("Aerial: Error formatting regex: \(error)");
             return nil;
         }
         
-        let httpResponse = response as! HTTPURLResponse
+        let httpResponse = response as! NSHTTPURLResponse
         
         guard let contentRange = httpResponse.allHeaderFields["Content-Range"] as? NSString else {
             debugLog("Weird, no byte response: \(response)");
             return nil;
         }
         
-        guard let match : TextCheckingResult = regex.firstMatch(in: contentRange as String, options: RegularExpression.MatchingOptions.anchored, range: NSMakeRange(0, contentRange.length)) else {
+        guard let match : NSTextCheckingResult = regex.firstMatchInString(contentRange as String, options: NSMatchingOptions.Anchored, range: NSMakeRange(0, contentRange.length)) else {
             debugLog("Weird, couldn't make a regex match for byte offset: \(contentRange)");
             return nil;
         }
-        let offsetMatchRange = match.range(at: 1);
-        let offsetString = contentRange.substring(with: offsetMatchRange) as NSString;
+        let offsetMatchRange = match.rangeAtIndex(1);
+        let offsetString = contentRange.substringWithRange(offsetMatchRange) as NSString;
         
         let offset = offsetString.longLongValue;
         

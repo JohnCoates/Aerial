@@ -27,7 +27,7 @@ class CheckCellView: NSTableCellView {
         checkButton.action = #selector(CheckCellView.check(_:));
     }
     
-    func check(_ button:AnyObject?) {        
+    func check(button:AnyObject?) {        
         guard let onCheck = self.onCheck else {
             return;
         }
@@ -35,8 +35,8 @@ class CheckCellView: NSTableCellView {
         onCheck(checkButton.state == NSOnState);
     }
     
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
+    override func drawRect(dirtyRect: NSRect) {
+        super.drawRect(dirtyRect)
     }
     
 }

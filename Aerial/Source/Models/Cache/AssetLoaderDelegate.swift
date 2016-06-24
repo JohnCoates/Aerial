@@ -11,11 +11,11 @@ import AVFoundation
 
 /// Returns an AVURLAsset that is automatically cached. If already cached
 /// then returns the cached asset.
-func CachedOrCachingAsset(_ URL:Foundation.URL) -> AVURLAsset {
+func CachedOrCachingAsset(URL:NSURL) -> AVURLAsset {
     let assetLoader = AssetLoaderDelegate(URL: URL);
     
-    let asset = AVURLAsset(url: assetLoader.URLWithCustomScheme);
-    let queue = DispatchQueue.main;
+    let asset = AVURLAsset(URL: assetLoader.URLWithCustomScheme);
+    let queue = dispatch_get_main_queue();
     asset.resourceLoader.setDelegate(assetLoader, queue: queue)
     objc_setAssociatedObject(asset, "assetLoader", assetLoader, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN);
     
@@ -25,17 +25,17 @@ func CachedOrCachingAsset(_ URL:Foundation.URL) -> AVURLAsset {
 
 class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, VideoLoaderDelegate {
  
-    let URL:Foundation.URL
+    let URL:NSURL
     var videoLoaders:[VideoLoader] = []
     let videoCache:VideoCache
     
-    var URLWithCustomScheme:Foundation.URL {
-        var components = URLComponents(url: URL, resolvingAgainstBaseURL: false)!;
+    var URLWithCustomScheme:NSURL {
+        let components = NSURLComponents(URL: URL, resolvingAgainstBaseURL: false)!;
         components.scheme = "streaming";
-        return components.url!;
+        return components.URL!;
     }
 
-    init(URL:Foundation.URL) {
+    init(URL:NSURL) {
         self.URL = URL;
 //        self.URL = NSURL(string:"http://localhost/test.mov")!
         videoCache = VideoCache(URL: URL)
@@ -46,15 +46,15 @@ class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, VideoLoader
     }
     
     // MARK: - Video Loader Delegate
-    func videoLoader(_ videoLoader:VideoLoader, receivedResponse response:URLResponse) {
+    func videoLoader(videoLoader:VideoLoader, receivedResponse response:NSURLResponse) {
         videoCache.receivedContentLength(Int(response.expectedContentLength))
     }
-    func videoLoader(_ videoLoader:VideoLoader, receivedData data:Data, forRange range:NSRange) {
+    func videoLoader(videoLoader:VideoLoader, receivedData data:NSData, forRange range:NSRange) {
         videoCache.receivedData(data, atRange: range)
     }
     
     // MARK: - Asset Resource Loader Delegate
-    func resourceLoader(_ resourceLoader: AVAssetResourceLoader, didCancel loadingRequest: AVAssetResourceLoadingRequest) {
+    func resourceLoader(resourceLoader: AVAssetResourceLoader, didCancelLoadingRequest loadingRequest: AVAssetResourceLoadingRequest) {
 //        debugLog("cancelled load request: \(loadingRequest)");
         
         var remove:VideoLoader?
@@ -72,13 +72,13 @@ class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, VideoLoader
         }
         
         if let removeLoader = remove {
-            if let index = videoLoaders.index(of: removeLoader) {
-                videoLoaders.remove(at: index);
+            if let index = videoLoaders.indexOf(removeLoader) {
+                videoLoaders.removeAtIndex(index);
             }
         }
     }
     
-    func resourceLoader(_ resourceLoader: AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
+    func resourceLoader(resourceLoader: AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
         
         // check if cache can fullfill this without a request
         if videoCache.canFulfillLoadingRequest(loadingRequest) {

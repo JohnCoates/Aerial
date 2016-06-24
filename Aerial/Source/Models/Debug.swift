@@ -9,7 +9,7 @@
 import Foundation
 
 
-func debugLog(_ message:String) {
+func debugLog(message:String) {
     #if DEBUG
         NSLog(message);
     #endif

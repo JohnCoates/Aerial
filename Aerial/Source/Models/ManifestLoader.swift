@@ -14,13 +14,13 @@ typealias manifestLoadCallback = ([AerialVideo]) -> (Void);
 class ManifestLoader {
     static let instance:ManifestLoader = ManifestLoader();
     
-    let defaults:UserDefaults = ScreenSaverDefaults(forModuleWithName: "com.JohnCoates.Aerial")! as ScreenSaverDefaults
+    let defaults:NSUserDefaults = ScreenSaverDefaults(forModuleWithName: "com.JohnCoates.Aerial")! as ScreenSaverDefaults
     var callbacks = [manifestLoadCallback]();
     var loadedManifest = [AerialVideo]();
     var playedVideos = [AerialVideo]();
     var offlineMode:Bool = false
     
-    func addCallback(_ callback:manifestLoadCallback) {
+    func addCallback(callback:manifestLoadCallback) {
         if (loadedManifest.count > 0) {
             callback(loadedManifest);
         }
@@ -35,7 +35,7 @@ class ManifestLoader {
         
         for video in shuffled {
             // check if this video id has been disabled in preferences
-            let possible = defaults.object(forKey: video.id);
+            let possible = defaults.objectForKey(video.id);
             
             if let possible = possible as? NSNumber {
                 if possible.boolValue == false {
@@ -60,7 +60,7 @@ class ManifestLoader {
     
     init() {
         // start loading right away!
-        let completionHandler = { (data:Data?, response:URLResponse?, error:NSError?) -> Void in
+        let completionHandler = { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
             if let error = error {
                 NSLog("Aerial Error Loading Manifest: \(error)");
                 self.loadSavedManifest();
@@ -74,24 +74,24 @@ class ManifestLoader {
             }
             // save data
             let defaults = self.defaults
-            defaults.set(data, forKey: "manifest");
+            defaults.setObject(data, forKey: "manifest");
             defaults.synchronize()
             
-            DispatchQueue.main.async(execute: { () -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.readJSONFromData(data);
             })
             
         };
-        let url = URL(string: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json");
+        let url = NSURL(string: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json");
         // use ephemeral session so when we load json offline it fails and puts us in offline mode
-        let configuration = URLSessionConfiguration.ephemeral()
-        let session = URLSession(configuration: configuration)
-        let task = session.dataTask(with: url!, completionHandler:completionHandler);
+        let configuration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+        let session = NSURLSession(configuration: configuration)
+        let task = session.dataTaskWithURL(url!, completionHandler:completionHandler);
         task.resume();
     }
     
     func loadSavedManifest() {
-        guard let savedJSON = defaults.object(forKey: "manifest") as? Data else {
+        guard let savedJSON = defaults.objectForKey("manifest") as? NSData else {
             debugLog("Couldn't find saved manifest");
             return;
         }
@@ -100,11 +100,11 @@ class ManifestLoader {
         readJSONFromData(savedJSON)
     }
     
-    func readJSONFromData(_ data:Data) {
+    func readJSONFromData(data:NSData) {
         var videos = [AerialVideo]();
         
         do {
-            let batches = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! Array<NSDictionary>;
+            let batches = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! Array<NSDictionary>;
             
             for batch:NSDictionary in batches {
                 let assets = batch["assets"] as! Array<NSDictionary>;
@@ -137,18 +137,18 @@ class ManifestLoader {
         }
     }
     
-    func checkContentLength(_ video:AerialVideo) {
-        let config = URLSessionConfiguration.default()
-        let session = URLSession(configuration: config)
-        let request = NSMutableURLRequest(url: video.url as URL)
-        request.httpMethod = "HEAD"
+    func checkContentLength(video:AerialVideo) {
+        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let session = NSURLSession(configuration: config)
+        let request = NSMutableURLRequest(URL: video.url)
+        request.HTTPMethod = "HEAD"
         
-        let task = session.dataTask(with: request.url!) { (data:Data?, response:URLResponse?, error:NSError?) -> Void in
+        let task = session.dataTaskWithRequest(request) { (data:NSData?, response:NSURLResponse?, error:NSError?) -> Void in
             video.contentLengthChecked = true
             
             if let error = error {
                 NSLog("error fetching content length: \(error)")
-                DispatchQueue.main.async(execute: { () -> Void in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.receivedContentLengthResponse()
                 })
                 return;
@@ -160,7 +160,7 @@ class ManifestLoader {
             
             video.contentLength = Int(response.expectedContentLength);
 //            NSLog("content length: \(response.expectedContentLength)");
-            DispatchQueue.main.async(execute: { () -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.receivedContentLengthResponse()
             })
         }

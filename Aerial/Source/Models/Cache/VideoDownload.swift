@@ -10,14 +10,14 @@ import Foundation
 
 
 protocol VideoDownloadDelegate : NSObjectProtocol {
-    func videoDownload(_ videoDownload:VideoDownload , finished success:Bool, errorMessage:String?);
+    func videoDownload(videoDownload:VideoDownload , finished success:Bool, errorMessage:String?);
     // bytes received for bytes/second count
-    func videoDownload(_ videoDownload:VideoDownload, receivedBytes:Int, progress:Float)
+    func videoDownload(videoDownload:VideoDownload, receivedBytes:Int, progress:Float)
 };
 
 class VideoDownloadStream {
     var connection:NSURLConnection
-    var response:URLResponse?
+    var response:NSURLResponse?
     var contentInformationRequest:Bool = false
     var downloadOffset = 0
     
@@ -33,7 +33,7 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
     var streams:[VideoDownloadStream] = []
     weak var delegate:VideoDownloadDelegate!
 
-    let queue = DispatchQueue.main
+    let queue = dispatch_get_main_queue()
     
     let video:AerialVideo
     
@@ -56,9 +56,9 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         startDownloadForChunk(nil);
     }
     
-    func startDownloadForChunk(_ chunk:NSRange?) {
-        let request = NSMutableURLRequest(url: video.url as URL);
-        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData;
+    func startDownloadForChunk(chunk:NSRange?) {
+        let request = NSMutableURLRequest(URL: video.url);
+        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData;
         
         if let requestedRange = chunk {
             // set Range: bytes=startOffset-endOffset
@@ -68,7 +68,7 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         }
         
         
-        guard let connection = NSURLConnection(request: request as URLRequest, delegate: self, startImmediately: false) else {
+        guard let connection = NSURLConnection(request: request, delegate: self, startImmediately: false) else {
             NSLog("Aerial: Error creating connection with request: \(request)");
             return;
         }
@@ -86,7 +86,7 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         
     }
     
-    func streamForConnection(_ connection: NSURLConnection) -> VideoDownloadStream? {
+    func streamForConnection(connection: NSURLConnection) -> VideoDownloadStream? {
         for stream in streams {
             if stream.connection == connection {
                 return stream;
@@ -96,7 +96,7 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         return nil;
     }
     
-    func createStreamsBasedOnContentLength(_ contentLength:Int) {
+    func createStreamsBasedOnContentLength(contentLength:Int) {
         self.contentLength = contentLength
         // remove content length request stream
         streams.removeFirst()
@@ -112,7 +112,7 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         
         var delayTime:Double = 0
         
-        let queue = DispatchQueue.main
+        let queue = dispatch_get_main_queue()
         for i in 0 ..< streamCount {
             let isLastStream:Bool = i == (streamCount - 1)
             var range:NSRange = NSMakeRange(offset, streamPiece)
@@ -124,8 +124,8 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
             }
             
 
-            let delay = DispatchTime.now() + Double(Int64(delayTime * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            queue.after(when: delay, execute: { () -> Void in
+            let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(delayTime * Double(NSEC_PER_SEC)))
+            dispatch_after(delay, queue, { () -> Void in
                 self.startDownloadForChunk(range)
             })
             
@@ -138,15 +138,15 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         }
     }
     
-    func receiveDataForStream(_ stream:VideoDownloadStream, receivedData:Data) {
+    func receiveDataForStream(stream:VideoDownloadStream, receivedData:NSData) {
         guard let videoData = self.data else {
             NSLog("Aerial error: video data missing!");
             return;
         }
         
-        let replaceRange = NSMakeRange(stream.downloadOffset, receivedData.count)
-        videoData.replaceBytes(in: replaceRange, withBytes: (receivedData as NSData).bytes)
-        stream.downloadOffset += receivedData.count
+        let replaceRange = NSMakeRange(stream.downloadOffset, receivedData.length)
+        videoData.replaceBytesInRange(replaceRange, withBytes: receivedData.bytes)
+        stream.downloadOffset += receivedData.length
     }
     
     func finishedDownload() {
@@ -164,7 +164,7 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         var success:Bool = true
         var errorMessage:String?
         do {
-            try videoData.write(toFile: videoCachePath, options: .atomicWrite)
+            try videoData.writeToFile(videoCachePath, options: .AtomicWrite)
         }
         catch let error {
             NSLog("Aerial Error: Couldn't write cache file: \(error)");
@@ -177,25 +177,25 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         
     }
     
-    func failedDownload(_ errorMessage:String) {
+    func failedDownload(errorMessage:String) {
         
         delegate.videoDownload(self, finished: false, errorMessage: errorMessage)
     }
     
     // MARK: - NSURLConnection Delegate
     
-    func connection(_ connection: NSURLConnection, didReceive response: URLResponse) {
+    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
         guard let stream = streamForConnection(connection) else {
             NSLog("Aerial Error: No matching stream for connection: \(connection) with response: \(response)")
             return;
         }
         
-        stream.response = response as? HTTPURLResponse;
+        stream.response = response as? NSHTTPURLResponse;
         
         if stream.contentInformationRequest == true {
             connection.cancel()
             
-            queue.async(execute: { () -> Void in
+            dispatch_async(queue, { () -> Void in
                 let contentLength = Int(response.expectedContentLength);
                 self.createStreamsBasedOnContentLength(contentLength)
             })
@@ -205,7 +205,7 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         else {
             // get real offset of receiving data
             
-            queue.async(execute: { () -> Void in
+            dispatch_async(queue, { () -> Void in
                 guard let offset = self.startOffsetFromResponse(response) else {
                     NSLog("Aerial Error: Couldn't get start offset from response: \(response)")
                     return
@@ -216,15 +216,15 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         }
     }
     
-    func connection(_ connection: NSURLConnection, didReceive data: Data) {
+    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
         guard let delegate = self.delegate else {
             return;
         }
         
-        queue.async { () -> Void in
-            self.downloadedData += data.count
+        dispatch_async(queue) { () -> Void in
+            self.downloadedData += data.length
             let progress:Float = Float(self.downloadedData) / Float(self.contentLength)
-            delegate.videoDownload(self, receivedBytes: data.count, progress: progress)
+            delegate.videoDownload(self, receivedBytes: data.length, progress: progress)
             
             guard let stream = self.streamForConnection(connection) else {
                 NSLog("Aerial Error: No matching stream for connection: \(connection)")
@@ -235,8 +235,8 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         }
     }
     
-    func connectionDidFinishLoading(_ connection: NSURLConnection) {
-        queue.async { () -> Void in
+    func connectionDidFinishLoading(connection: NSURLConnection) {
+        dispatch_async(queue) { () -> Void in
             debugLog("connectionDidFinishLoading");
             
             guard let stream = self.streamForConnection(connection) else {
@@ -244,12 +244,12 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
                 return;
             }
             
-            guard let index = self.streams.index(where: { $0.connection == stream.connection }) else {
+            guard let index = self.streams.indexOf({ $0.connection == stream.connection }) else {
                 NSLog("Aerial Error: Couldn't find index of stream for finished connection!")
                 return
             }
             
-            self.streams.remove(at: index)
+            self.streams.removeAtIndex(index)
             
             if self.streams.count == 0 {
                 debugLog("Finished downloading!");
@@ -258,45 +258,45 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         };
     }
     
-    func connection(_ connection: NSURLConnection, didFailWithError error: NSError) {
+    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
         NSLog("Aerial Error: Couldn't download video: \(error)")
-        queue.async { () -> Void in
+        dispatch_async(queue) { () -> Void in
             self.failedDownload("Connection fail: \(error)")
         }
     }
     
-    func connection(_ connection: NSURLConnection, didReceive challenge: URLAuthenticationChallenge) {
+    func connection(connection: NSURLConnection, didReceiveAuthenticationChallenge challenge: NSURLAuthenticationChallenge) {
         NSLog("Aerial Error: Didn't expect authentication challenge while downloading videos!")
-        queue.async { () -> Void in
+        dispatch_async(queue) { () -> Void in
             self.failedDownload("Connection fail: Received authentication request!")
         }
     }
     
     // MARK: - Range
-    func startOffsetFromResponse(_ response: URLResponse) -> Int? {
+    func startOffsetFromResponse(response: NSURLResponse) -> Int? {
         // get range response
-        var regex : RegularExpression!
+        var regex : NSRegularExpression!
         do {
             // Check to see if the server returned a valid byte-range
-            regex = try RegularExpression(pattern: "bytes (\\d+)-\\d+/\\d+", options: RegularExpression.Options.caseInsensitive)
+            regex = try NSRegularExpression(pattern: "bytes (\\d+)-\\d+/\\d+", options: NSRegularExpressionOptions.CaseInsensitive)
         } catch let error as NSError {
             NSLog("Aerial: Error formatting regex: \(error)");
             return nil;
         }
         
-        let httpResponse = response as! HTTPURLResponse
+        let httpResponse = response as! NSHTTPURLResponse
         
         guard let contentRange = httpResponse.allHeaderFields["Content-Range"] as? NSString else {
             debugLog("Weird, no byte response: \(response)");
             return nil;
         }
         
-        guard let match : TextCheckingResult = regex.firstMatch(in: contentRange as String, options: RegularExpression.MatchingOptions.anchored, range: NSMakeRange(0, contentRange.length)) else {
+        guard let match : NSTextCheckingResult = regex.firstMatchInString(contentRange as String, options: NSMatchingOptions.Anchored, range: NSMakeRange(0, contentRange.length)) else {
             debugLog("Weird, couldn't make a regex match for byte offset: \(contentRange)");
             return nil;
         }
-        let offsetMatchRange = match.range(at: 1);
-        let offsetString = contentRange.substring(with: offsetMatchRange) as NSString;
+        let offsetMatchRange = match.rangeAtIndex(1);
+        let offsetString = contentRange.substringWithRange(offsetMatchRange) as NSString;
         
         let offset = offsetString.longLongValue;
         
