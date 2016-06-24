@@ -24,7 +24,7 @@ class CheckCellView: NSTableCellView {
     
     override func awakeFromNib() {
         checkButton.target = self;
-        checkButton.action = "check:";
+        checkButton.action = #selector(CheckCellView.check(_:));
     }
     
     func check(button:AnyObject?) {        

@@ -113,7 +113,7 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         var delayTime:Double = 0
         
         let queue = dispatch_get_main_queue()
-        for (var i=0; i < streamCount; i++) {
+        for i in 0 ..< streamCount {
             let isLastStream:Bool = i == (streamCount - 1)
             var range:NSRange = NSMakeRange(offset, streamPiece)
             

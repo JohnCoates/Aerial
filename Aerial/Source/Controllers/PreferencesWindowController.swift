@@ -159,12 +159,12 @@ class City {
     @IBAction func outlineViewSettingsClick(button:NSButton) {
         let menu = NSMenu()
         menu.insertItemWithTitle("Uncheck All",
-            action: "outlineViewUncheckAll:",
+            action: #selector(PreferencesWindowController.outlineViewUncheckAll(_:)),
             keyEquivalent: "",
             atIndex: 0);
         
         menu.insertItemWithTitle("Check All",
-            action: "outlineViewCheckAll:",
+            action: #selector(PreferencesWindowController.outlineViewCheckAll(_:)),
             keyEquivalent: "",
             atIndex: 1);
         
@@ -275,11 +275,11 @@ class City {
                 var count = 0;
                 
                 if city.night.videos.count > 0 {
-                    count++;
+                    count += 1;
                 }
                 
                 if city.day.videos.count > 0 {
-                    count++;
+                    count += 1;
                 }
                 
                 return count;
