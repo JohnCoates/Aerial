@@ -17,8 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var topLevelObjects:NSArray?
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        let bundle = NSBundle.mainBundle()
-        bundle.loadNibNamed("PreferencesWindow", owner: preferencesWindowController, topLevelObjects: &topLevelObjects);
+        let bundle = Bundle.main()
+        bundle.loadNibNamed("PreferencesWindow", owner: preferencesWindowController, topLevelObjects: &topLevelObjects!);
         
         NSLog("objects: \(topLevelObjects)");
         
@@ -27,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 //            window.contentView?.addSubview(prefWindow.contentView!);
                 NSLog("making key window!");
                 prefWindow.makeKeyAndOrderFront(self);
-                prefWindow.styleMask = NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask;
+//                prefWindow.styleMask = NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask;
                 var frame = prefWindow.frame;
                 frame.origin = window.frame.origin
                 prefWindow.setFrame(frame, display: true);
