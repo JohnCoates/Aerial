@@ -47,6 +47,7 @@ class City {
     @IBOutlet var outlineView:NSOutlineView?
     @IBOutlet var playerView:AVPlayerView!
     @IBOutlet var differentAerialCheckbox:NSButton!
+    @IBOutlet var playTimeDependentCheckbox:NSButton!
     @IBOutlet var projectPageLink:NSButton!
     @IBOutlet var cacheLocation:NSPathControl!
     @IBOutlet var cacheAerialsAsTheyPlayCheckbox:NSButton!
@@ -83,6 +84,10 @@ class City {
         
         if defaults.boolForKey("disableCache") == true {
             cacheAerialsAsTheyPlayCheckbox.state = NSOffState
+        }
+        
+        if defaults.boolForKey("playTimeDependent") == true {
+            playTimeDependentCheckbox.state = NSOnState
         }
         
         // blue link
@@ -203,6 +208,17 @@ class City {
         defaults.synchronize();
         
         debugLog("set differentDisplays to \(onState)");
+    }
+    
+    @IBAction func playTimeDependentCheckboxClick(button:NSButton?) {
+        let state = playTimeDependentCheckbox.state;
+        
+        let onState:Bool = state == NSOnState;
+        
+        defaults.setBool(onState, forKey: "playTimeDependent");
+        defaults.synchronize();
+        
+        debugLog("set playTimeDependent to \(onState)");
     }
     
     @IBAction func pageProjectClick(button:NSButton?) {
