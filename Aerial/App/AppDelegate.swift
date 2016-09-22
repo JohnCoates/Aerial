@@ -12,32 +12,39 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
-    var preferencesWindowController:PreferencesWindowController = PreferencesWindowController()
-
-    var topLevelObjects:NSArray?
+    lazy var preferencesWindowController: PreferencesWindowController = PreferencesWindowController()
     
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
-        let bundle = Bundle.main
-        bundle.loadNibNamed("PreferencesWindow", owner: preferencesWindowController, topLevelObjects: &topLevelObjects!);
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        let objects = objectsFromNib(loadNibNamed: "PreferencesWindow")
         
-        NSLog("objects: \(topLevelObjects)");
-        
-        for object in topLevelObjects! {
-            if let prefWindow = object as? NSWindow {
-                //            window.contentView?.addSubview(prefWindow.contentView!);
-                NSLog("making key window!");
-                prefWindow.makeKeyAndOrderFront(self);
-                prefWindow.styleMask = [NSTitledWindowMask, NSClosableWindowMask, NSMiniaturizableWindowMask]
-                var frame = prefWindow.frame;
-                frame.origin = window.frame.origin
-                prefWindow.setFrame(frame, display: true);
-//                window.orderOut(self);
-            }
+        guard let windowIndex = objects.index(where: { $0 is NSWindow }),
+        let preferencesWindow = objects[windowIndex] as? NSWindow
+        else {
+            fatalError("Missing window object")
         }
         
+        setUp(preferencesWindow: preferencesWindow)
     }
-
-    func applicationWillTerminate(aNotification: NSNotification) {
+    
+    private func setUp(preferencesWindow window:NSWindow) {
+        window.makeKeyAndOrderFront(self);
+        window.styleMask = [
+            NSTitledWindowMask,
+            NSClosableWindowMask,
+            NSMiniaturizableWindowMask
+        ]
+        
+        var frame = window.frame;
+        frame.origin = window.frame.origin
+        window.setFrame(frame, display: true);
+    }
+    
+    private func objectsFromNib(loadNibNamed nibName: String) -> [AnyObject] {
+        let bundle = Bundle.main
+        var topLevelObjects = NSArray()
+        bundle.loadNibNamed(nibName,
+                            owner: preferencesWindowController,
+                            topLevelObjects: &topLevelObjects);
+        return topLevelObjects as [AnyObject]
     }
 }
-
