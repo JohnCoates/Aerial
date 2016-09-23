@@ -127,13 +127,13 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
-		FA71996F1D94EC5A00FBC99B /* Aerial Tests */ = {
+		FA71996F1D94EC5A00FBC99B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				FA7199701D94EC5A00FBC99B /* PreferencesTests.swift */,
 				FA7199721D94EC5A00FBC99B /* Info.plist */,
 			);
-			path = "Aerial Tests";
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		FAC36F2F1BE1756D007F2A20 /* App */ = {
@@ -236,7 +236,7 @@
 				FAC36F2F1BE1756D007F2A20 /* App */,
 				FAC36F361BE1756D007F2A20 /* Resources */,
 				FAC36F3C1BE1756D007F2A20 /* Source */,
-				FA71996F1D94EC5A00FBC99B /* Aerial Tests */,
+				FA71996F1D94EC5A00FBC99B /* Tests */,
 				FA2D7AA01BDD849E009EA54C /* Frameworks */,
 				FACAF1A61BD9FC6000E539DC /* Products */,
 			);
