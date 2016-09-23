@@ -1,8 +1,6 @@
-language: objective-c
+language: swift
 osx_image: xcode8
-install:
-- gem install xcpretty
 after_success:
 - bash <(curl -s https://codecov.io/bash)
 script:
-- set -o pipefail && xcodebuild -scheme 'Aerial Test' test | xcpretty -c
+- xcodebuild -scheme 'Aerial App' -enableCodeCoverage YES clean test
