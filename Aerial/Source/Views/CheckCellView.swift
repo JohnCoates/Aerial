@@ -12,27 +12,27 @@ class CheckCellView: NSTableCellView {
 
     @IBOutlet var checkButton:NSButton!
     
-    var onCheck:((Bool) -> (Void))?;
+    var onCheck:((Bool) -> (Void))?
     
     override required init(frame frameRect: NSRect) {
-        super.init(frame: frameRect);
+        super.init(frame: frameRect)
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder:coder);
+        super.init(coder:coder)
     }
     
     override func awakeFromNib() {
-        checkButton.target = self;
-        checkButton.action = #selector(CheckCellView.check(_:));
+        checkButton.target = self
+        checkButton.action = #selector(CheckCellView.check(_:))
     }
     
     func check(_ button:AnyObject?) {        
         guard let onCheck = self.onCheck else {
-            return;
+            return
         }
         
-        onCheck(checkButton.state == NSOnState);
+        onCheck(checkButton.state == NSOnState)
     }
     
     override func draw(_ dirtyRect: NSRect) {

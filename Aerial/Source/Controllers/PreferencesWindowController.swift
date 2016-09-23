@@ -27,7 +27,7 @@ class City {
     let name: String
     
     init(name:String) {
-        self.name = name;
+        self.name = name
     }
     
     func addVideoForTimeOfDay(_ timeOfDay:String, video:AerialVideo) {
@@ -56,9 +56,9 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     
     var videos: [AerialVideo]?
     // cities -> time of day -> videos
-    var cities = [City]();
+    var cities = [City]()
     
-    static var loadedJSON:Bool = false;
+    static var loadedJSON:Bool = false
     
     lazy var preferences = Preferences.sharedInstance
     
@@ -88,10 +88,10 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         playerView.controlsStyle = .none
         if #available(OSX 10.10, *) {
             playerView.videoGravity = AVLayerVideoGravityResizeAspectFill
-        };
+        }
         
         if preferences.differentAerialsOnEachDisplay {
-            differentAerialCheckbox.state = NSOnState;
+            differentAerialCheckbox.state = NSOnState
         }
         
         if !preferences.cacheAerials {
@@ -104,7 +104,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             cacheLocation.url = URL(fileURLWithPath: cacheDirectory as String)
         }
         
-        cacheStatusLabel.isEditable = false;
+        cacheStatusLabel.isEditable = false
     }
     
     // MARK: - Setup
@@ -123,7 +123,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     // MARK: - Preferences
     
     @IBAction func cacheAerialsAsTheyPlayClick(_ button:NSButton!) {
-        debugLog("cache aerials as they play: \(button.state)");
+        debugLog("cache aerials as they play: \(button.state)")
         
         let onState = (button.state == NSOnState)
         preferences.cacheAerials = onState
@@ -132,7 +132,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     @IBAction func userSetCacheLocation(_ button:NSButton?) {
         let openPanel = NSOpenPanel()
         
-        openPanel.canChooseDirectories = true;
+        openPanel.canChooseDirectories = true
         openPanel.canChooseFiles = false
         openPanel.canCreateDirectories = true
         openPanel.allowsMultipleSelection = false
@@ -163,15 +163,15 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         menu.insertItem(withTitle: "Uncheck All",
             action: #selector(PreferencesWindowController.outlineViewUncheckAll(button:)),
             keyEquivalent: "",
-            at: 0);
+            at: 0)
         
         menu.insertItem(withTitle: "Check All",
             action: #selector(PreferencesWindowController.outlineViewCheckAll(button:)),
             keyEquivalent: "",
-            at: 1);
+            at: 1)
         
-        let event = NSApp.currentEvent;
-        NSMenu.popUpContextMenu(menu, with: event!, for: button);
+        let event = NSApp.currentEvent
+        NSMenu.popUpContextMenu(menu, with: event!, for: button)
     }
     
     func outlineViewUncheckAll(button: NSButton) {
@@ -198,12 +198,12 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     }
     
     @IBAction func differentAerialsOnEachDisplayCheckClick(_ button:NSButton?) {
-        let state = differentAerialCheckbox.state;
-        let onState = (state == NSOnState);
+        let state = differentAerialCheckbox.state
+        let onState = (state == NSOnState)
         
         preferences.differentAerialsOnEachDisplay = onState
         
-        debugLog("set differentAerialsOnEachDisplay to \(onState)");
+        debugLog("set differentAerialsOnEachDisplay to \(onState)")
     }
     
     // MARK: - Link
@@ -228,8 +228,8 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     }
     
     func loaded(manifestVideos: [AerialVideo]) {
-        var videos = [AerialVideo]();
-        var cities = [String: City]();
+        var videos = [AerialVideo]()
+        var cities = [String: City]()
         for video in manifestVideos {
             let name = video.name
             
@@ -251,7 +251,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         let unsortedCities = cities.values
         let sortedCities = unsortedCities.sorted { $0.name < $1.name }
 
-        self.cities = sortedCities;
+        self.cities = sortedCities
         DispatchQueue.main.async {
             self.outlineView.reloadData()
             self.outlineView.expandItem(nil, expandChildren: true)
@@ -326,7 +326,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             return timeOfDay.videos[index]
         
         default:
-            return false;
+            return false
         }
     }
     
@@ -373,7 +373,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
                                         owner: self) as! NSTableCellView
             view.textField?.stringValue = city.name
             
-            return view;
+            return view
         case is TimeOfDay:
             let timeOfDay = item as! TimeOfDay
             let view = outlineView.make(withIdentifier: "DataCell",
@@ -385,7 +385,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             if let imagePath = bundle.path(forResource: "icon-\(timeOfDay.title)",
                 ofType:"pdf") {
                 let image = NSImage(contentsOfFile: imagePath)
-                view.imageView?.image = image;
+                view.imageView?.image = image
             } else {
                 print("\(#file) failed to find time of day icon")
             }
@@ -400,7 +400,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             let number = video.arrayPosition + 1
             let numberFormatter = NumberFormatter()
             
-            numberFormatter.numberStyle = NumberFormatter.Style.spellOut;
+            numberFormatter.numberStyle = NumberFormatter.Style.spellOut
             guard
                 let numberString = numberFormatter.string(from: number as NSNumber)
                 else {
@@ -433,37 +433,37 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         switch item {
         case is AerialVideo:
             player = AVPlayer()
-            playerView.player = player;
+            playerView.player = player
             
-            let video = item as! AerialVideo;
+            let video = item as! AerialVideo
             
-            let asset = CachedOrCachingAsset(video.url);
-//            let asset = AVAsset(URL: video.url);
+            let asset = CachedOrCachingAsset(video.url)
+//            let asset = AVAsset(URL: video.url)
             
-            let item = AVPlayerItem(asset: asset);
+            let item = AVPlayerItem(asset: asset)
             
-            player.replaceCurrentItem(with: item);
-            player.play();
+            player.replaceCurrentItem(with: item)
+            player.play()
             
             
-            return true;
+            return true
         case is TimeOfDay:
-            return false;
+            return false
         default:
-            return false;
+            return false
         }
     }
     
     func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
         switch item {
         case is AerialVideo:
-            return 18;
+            return 18
         case is TimeOfDay:
-            return 18;
+            return 18
         case is City:
-            return 18;
+            return 18
         default:
-            return 0;
+            return 0
         }
     }
     
@@ -477,7 +477,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     
     @IBAction func cacheAllNow(_ button: NSButton) {
        cacheStatusLabel.stringValue = "Loading JSON"
-        currentProgress.maxValue = 1;
+        currentProgress.maxValue = 1
         
         ManifestLoader.instance.addCallback { (manifestVideos:[AerialVideo]) -> Void in
             DispatchQueue.main.async(execute: { () -> Void in
@@ -485,13 +485,13 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
                 self.cacheNextVideo()
                 
             })
-        };
+        }
     }
     
     func cacheNextVideo() {
         guard let manifestVideos = self.manifestVideos else {
             cacheStatusLabel.stringValue = "Couldn't load manifest!"
-            return;
+            return
         }
         
         let uncached = manifestVideos.filter { (video) -> Bool in
@@ -501,7 +501,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         
         if uncached.count == 0 {
             cacheStatusLabel.stringValue = "All videos have been cached"
-            return;
+            return
         }
         
         NSLog("uncached: \(uncached)")
@@ -511,7 +511,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         NSLog("total process max value: \(totalProgress.maxValue), current value: \(totalProgress.doubleValue)")
         
         
-        let video = uncached[0];
+        let video = uncached[0]
         
         // find video that hasn't been cached
         let videoDownload = VideoDownload(video: video, delegate: self)

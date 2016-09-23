@@ -29,9 +29,9 @@ class VideoCache {
             } else {
                 let cachePaths = NSSearchPathForDirectoriesInDomains(.cachesDirectory,
                                                                      .userDomainMask,
-                                                                     true);
+                                                                     true)
                 if cachePaths.count == 0 {
-                    NSLog("Aerial Error: Couldn't find cache paths!");
+                    NSLog("Aerial Error: Couldn't find cache paths!")
                     return nil
                 }
                 
@@ -48,11 +48,11 @@ class VideoCache {
             let fileManager = FileManager.default
             if fileManager.fileExists(atPath: appCacheDirectory as String) == false {
                 do {
-                    try fileManager.createDirectory(atPath: appCacheDirectory as String, withIntermediateDirectories: false, attributes: nil);
+                    try fileManager.createDirectory(atPath: appCacheDirectory as String, withIntermediateDirectories: false, attributes: nil)
                 }
                 catch let error {
-                    NSLog("Aerial Error: Couldn't create cache directory: \(error)");
-                    return nil;
+                    NSLog("Aerial Error: Couldn't create cache directory: \(error)")
+                    return nil
                 }
             }
             return appCacheDirectory
@@ -61,8 +61,8 @@ class VideoCache {
     
     static func isAvailableOffline(video:AerialVideo) -> Bool {
         guard let videoCachePath = cachePath(forVideo: video) else {
-            NSLog("Aerial Error: Couldn't get video cache path!");
-            return false;
+            NSLog("Aerial Error: Couldn't get video cache path!")
+            return false
         }
         
 
@@ -90,42 +90,42 @@ class VideoCache {
         videoData = Data()
         loading = true
         self.URL = URL
-        loadCachedVideoIfPossible();
+        loadCachedVideoIfPossible()
     }
     
     // MARK: - Data Adding
     
     func receivedContentLength(_ contentLength:Int) {
         if loading == false {
-            return;
+            return
         }
         
         if mutableVideoData != nil {
-            return;
+            return
         }
         
         mutableVideoData = NSMutableData(length: contentLength)
-        videoData = mutableVideoData! as Data;
+        videoData = mutableVideoData! as Data
     }
     
     func receivedData(_ data:Data, atRange range:NSRange) {
         guard let mutableVideoData = mutableVideoData else {
-            NSLog("Aerial Error: Received data without having mutable video data");
-            return;
+            NSLog("Aerial Error: Received data without having mutable video data")
+            return
         }
         
-        mutableVideoData.replaceBytes(in: range, withBytes: (data as NSData).bytes);
-        loadedRanges.append(range);
+        mutableVideoData.replaceBytes(in: range, withBytes: (data as NSData).bytes)
+        loadedRanges.append(range)
         
-        consolidateLoadedRanges();
+        consolidateLoadedRanges()
         
-//        debugLog("loaded ranges: \(loadedRanges)");
+//        debugLog("loaded ranges: \(loadedRanges)")
         if loadedRanges.count == 1 {
             let range = loadedRanges[0]
-//            debugLog("checking if range \(range) matches length \(mutableVideoData.length)");
+//            debugLog("checking if range \(range) matches length \(mutableVideoData.length)")
             if range.location == 0 && range.length == mutableVideoData.length {
                 // done loading, save
-                saveCachedVideo();
+                saveCachedVideo()
             }
         }
     }
@@ -178,7 +178,7 @@ class VideoCache {
         
         guard let videoCachePath = self.videoCachePath else {
             NSLog("Aerial Error: Couldn't load cache file.")
-            return;
+            return
         }
         
         if fileManager.fileExists(atPath: videoCachePath) == false {
@@ -190,45 +190,45 @@ class VideoCache {
             return
         }
         
-        self.videoData = videoData;
-        loading = false;
-//        debugLog("cached video file with length: \(self.videoData.length)");
+        self.videoData = videoData
+        loading = false
+//        debugLog("cached video file with length: \(self.videoData.length)")
     }
     
     // MARK: - Fulfilling cache
     
     func fulfillLoadingRequest(_ loadingRequest:AVAssetResourceLoadingRequest) -> Bool {
         guard let dataRequest = loadingRequest.dataRequest else {
-            NSLog("Aerial Error: Missing data request for \(loadingRequest)");
-            return false;
+            NSLog("Aerial Error: Missing data request for \(loadingRequest)")
+            return false
         }
         
         let requestedOffset = Int(dataRequest.requestedOffset)
         let requestedLength = Int(dataRequest.requestedLength)
         
-        let data = videoData.subdata(in: requestedOffset..<requestedOffset + requestedLength);
+        let data = videoData.subdata(in: requestedOffset..<requestedOffset + requestedLength)
         
         DispatchQueue.main.async { () -> Void in
-            self.fillInContentInformation(loadingRequest);
+            self.fillInContentInformation(loadingRequest)
             
-            dataRequest.respond(with: data);
-            loadingRequest.finishLoading();
+            dataRequest.respond(with: data)
+            loadingRequest.finishLoading()
         }
         
-        return true;
+        return true
     }
     
     func fillInContentInformation(_ loadingRequest:AVAssetResourceLoadingRequest) {
         
         guard let contentInformationRequest = loadingRequest.contentInformationRequest else {
-            return;
+            return
         }
         
-        let contentType:String = kUTTypeQuickTimeMovie as String;
+        let contentType:String = kUTTypeQuickTimeMovie as String
         
-        contentInformationRequest.isByteRangeAccessSupported = true;
-        contentInformationRequest.contentType = contentType;
-        contentInformationRequest.contentLength = Int64(videoData.count);
+        contentInformationRequest.isByteRangeAccessSupported = true
+        contentInformationRequest.contentType = contentType
+        contentInformationRequest.contentLength = Int64(videoData.count)
     }
     
     // MARK: - Cache Checking
@@ -237,12 +237,12 @@ class VideoCache {
     func canFulfillLoadingRequest(_ loadingRequest:AVAssetResourceLoadingRequest) -> Bool {
         
         if (loading == false) {
-            return true;
+            return true
         }
         
         guard let dataRequest = loadingRequest.dataRequest else {
-            NSLog("Aerial Error: Missing data request for \(loadingRequest)");
-            return false;
+            NSLog("Aerial Error: Missing data request for \(loadingRequest)")
+            return false
         }
         
         let requestedOffset = Int(dataRequest.requestedOffset)
@@ -254,11 +254,11 @@ class VideoCache {
             let rangeEnd = range.location + range.length
             
             if requestedOffset >= rangeStart && requestedEnd <= rangeEnd {
-                return true;
+                return true
             }
         }
         
-        return false;
+        return false
     }
     
     
@@ -279,29 +279,29 @@ class VideoCache {
                 // or if they're at each other's edges if it can be merged
                 
                 if lastRangeEndOffset >= range.location {
-                    let endOffset = range.location + range.length;
+                    let endOffset = range.location + range.length
                     
                     // check if this range's end offset is larger than lastRange's
                     if endOffset > lastRangeEndOffset {
-                        previousRange!.length = endOffset - lastRange.location;
+                        previousRange!.length = endOffset - lastRange.location
                         
                         // replace lastRange in array with new value
-                        consolidatedRanges.remove(at: lastIndex!);
-                        consolidatedRanges.append(previousRange!);
-                        continue;
+                        consolidatedRanges.remove(at: lastIndex!)
+                        consolidatedRanges.append(previousRange!)
+                        continue
                     }
                     else {
                         // skip adding this to the array, previous range is already bigger
-//                        debugLog("skipping add of \(range), previous: \(previousRange)");
-                        continue;
+//                        debugLog("skipping add of \(range), previous: \(previousRange)")
+                        continue
                     }
                 }
             }
             
             lastIndex = consolidatedRanges.count
             previousRange = range
-            consolidatedRanges.append(range);
+            consolidatedRanges.append(range)
         }
-        loadedRanges = consolidatedRanges;
+        loadedRanges = consolidatedRanges
     }
 }

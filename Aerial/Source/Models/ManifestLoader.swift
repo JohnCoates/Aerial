@@ -9,23 +9,23 @@
 import Foundation
 import ScreenSaver
 
-typealias manifestLoadCallback = ([AerialVideo]) -> (Void);
+typealias manifestLoadCallback = ([AerialVideo]) -> (Void)
 
 class ManifestLoader {
-    static let instance:ManifestLoader = ManifestLoader();
+    static let instance:ManifestLoader = ManifestLoader()
     
     lazy var preferences = Preferences.sharedInstance
-    var callbacks = [manifestLoadCallback]();
-    var loadedManifest = [AerialVideo]();
-    var playedVideos = [AerialVideo]();
+    var callbacks = [manifestLoadCallback]()
+    var loadedManifest = [AerialVideo]()
+    var playedVideos = [AerialVideo]()
     var offlineMode:Bool = false
     
     func addCallback(_ callback:@escaping manifestLoadCallback) {
         if (loadedManifest.count > 0) {
-            callback(loadedManifest);
+            callback(loadedManifest)
         }
         else {
-            callbacks.append(callback);
+            callbacks.append(callback)
         }
     }
     
@@ -36,45 +36,45 @@ class ManifestLoader {
             let inRotation = preferences.videoIsInRotation(videoID: video.id)
             
             if !inRotation {
-                debugLog("video is disabled: \(video)");
-                continue;
+                debugLog("video is disabled: \(video)")
+                continue
             }
             
             // check if we're in offline mode
             if offlineMode == true {
                 if video.isAvailableOffline == false {
-                    continue;
+                    continue
                 }
             }
             
-            return video;
+            return video
         }
         
         // nothing available??? return first thing we find
-        return shuffled.first;
+        return shuffled.first
     }
     
     init() {
         // start loading right away!
         let completionHandler = { (data: Data?, response:URLResponse?, error:Error?) -> Void in
             if let error = error {
-                NSLog("Aerial Error Loading Manifest: \(error)");
-                self.loadSavedManifest();
-                return;
+                NSLog("Aerial Error Loading Manifest: \(error)")
+                self.loadSavedManifest()
+                return
             }
             
             guard let data = data else {
-                NSLog("Couldn't load manifest!");
-                self.loadSavedManifest();
-                return;
+                NSLog("Couldn't load manifest!")
+                self.loadSavedManifest()
+                return
             }
             self.preferences.manifest = data
             
             DispatchQueue.main.async(execute: { () -> Void in
-                self.readJSONFromData(data);
+                self.readJSONFromData(data)
             })
             
-        };
+        }
         guard let url = URL(string: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json") else {
             fatalError("Couldn't init URL from string")
         }
@@ -87,7 +87,7 @@ class ManifestLoader {
     
     func loadSavedManifest() {
         guard let savedJSON = preferences.manifest else {
-            debugLog("Couldn't find saved manifest");
+            debugLog("Couldn't find saved manifest")
             return
         }
         
@@ -96,13 +96,13 @@ class ManifestLoader {
     }
     
     func readJSONFromData(_ data:Data) {
-        var videos = [AerialVideo]();
+        var videos = [AerialVideo]()
         
         do {
-            let batches = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! Array<NSDictionary>;
+            let batches = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! Array<NSDictionary>
             
             for batch: NSDictionary in batches {
-                let assets = batch["assets"] as! Array<NSDictionary>;
+                let assets = batch["assets"] as! Array<NSDictionary>
                 
                 for item in assets {
                     let url = item["url"] as! String
@@ -112,7 +112,7 @@ class ManifestLoader {
                     let type = item["type"] as! String
                     
                     if (type != "video") {
-                        continue;
+                        continue
                     }
                     
                     
@@ -150,15 +150,15 @@ class ManifestLoader {
                 DispatchQueue.main.async(execute: { () -> Void in
                     self.receivedContentLengthResponse()
                 })
-                return;
+                return
             }
             
             guard let response = response else {
-                return;
+                return
             }
             
-            video.contentLength = Int(response.expectedContentLength);
-//            NSLog("content length: \(response.expectedContentLength)");
+            video.contentLength = Int(response.expectedContentLength)
+//            NSLog("content length: \(response.expectedContentLength)")
             DispatchQueue.main.async(execute: { () -> Void in
                 self.receivedContentLengthResponse()
             })
@@ -171,7 +171,7 @@ class ManifestLoader {
         // check if content length on all videos has been checked
         for video in loadedManifest {
             if video.contentLengthChecked == false {
-                return;
+                return
             }
         }
         
@@ -186,19 +186,19 @@ class ManifestLoader {
             // offline? eror? just put it through
             if video.contentLength == 0  {
                 filtered.append(video)
-                continue;
+                continue
             }
             
             // check to see if we find another video with the same content length
             var isDuplicate = false
             for videoCheck in filtered {
                 if videoCheck.id == video.id {
-                    isDuplicate = true;
-                    continue;
+                    isDuplicate = true
+                    continue
                 }
                 
                 if videoCheck.name != video.name {
-                    continue;
+                    continue
                 }
                 
                 if videoCheck.timeOfDay != video.timeOfDay {
@@ -206,14 +206,14 @@ class ManifestLoader {
                 }
                 
                 if videoCheck.contentLength == video.contentLength {
-//                    NSLog("removing duplicate video \(videoCheck.name) \(videoCheck.timeOfDay)");
-                    isDuplicate = true;
-                    break;
+//                    NSLog("removing duplicate video \(videoCheck.name) \(videoCheck.timeOfDay)")
+                    isDuplicate = true
+                    break
                 }
             } // dupe check
             
             if isDuplicate == true {
-                continue;
+                continue
             }
             
             filtered.append(video)
@@ -224,7 +224,7 @@ class ManifestLoader {
         
         // callbacks
         for callback in self.callbacks {
-            callback(filtered);
+            callback(filtered)
         }
         self.callbacks.removeAll()
     }

@@ -27,16 +27,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     private func setUp(preferencesWindow window:NSWindow) {
-        window.makeKeyAndOrderFront(self);
+        window.makeKeyAndOrderFront(self)
         window.styleMask = [
             NSTitledWindowMask,
             NSClosableWindowMask,
             NSMiniaturizableWindowMask
         ]
         
-        var frame = window.frame;
+        var frame = window.frame
         frame.origin = window.frame.origin
-        window.setFrame(frame, display: true);
+        window.setFrame(frame, display: true)
     }
     
     private func objectsFromNib(loadNibNamed nibName: String) -> [AnyObject] {
@@ -44,7 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var topLevelObjects = NSArray()
         bundle.loadNibNamed(nibName,
                             owner: preferencesWindowController,
-                            topLevelObjects: &topLevelObjects);
+                            topLevelObjects: &topLevelObjects)
         return topLevelObjects as [AnyObject]
     }
 }
