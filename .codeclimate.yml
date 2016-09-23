@@ -1,0 +1,8 @@
+engines:
+  tailor:
+    enabled: true
+
+ratings:
+  paths:
+  - "**.swift"
+  exclude_paths: []
