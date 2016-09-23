@@ -29,7 +29,6 @@ class ManifestLoader {
     }
     
     func randomVideo() -> AerialVideo? {
-        
         let shuffled = loadedManifest.shuffled()
         for video in shuffled {
             let inRotation = preferences.videoIsInRotation(videoID: video.id)

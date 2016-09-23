@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FA143CD51BDA3E880041A82B"
-               BuildableName = "Aerial Test.app"
-               BlueprintName = "Aerial Test"
+               BuildableName = "Aerial App.app"
+               BlueprintName = "Aerial App"
                ReferencedContainer = "container:Aerial.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,13 +28,23 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FA71996D1D94EC5A00FBC99B"
+               BuildableName = "Aerial Tests.xctest"
+               BlueprintName = "Aerial Tests"
+               ReferencedContainer = "container:Aerial.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA143CD51BDA3E880041A82B"
-            BuildableName = "Aerial Test.app"
-            BlueprintName = "Aerial Test"
+            BuildableName = "Aerial App.app"
+            BlueprintName = "Aerial App"
             ReferencedContainer = "container:Aerial.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,8 +66,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA143CD51BDA3E880041A82B"
-            BuildableName = "Aerial Test.app"
-            BlueprintName = "Aerial Test"
+            BuildableName = "Aerial App.app"
+            BlueprintName = "Aerial App"
             ReferencedContainer = "container:Aerial.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -97,8 +107,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA143CD51BDA3E880041A82B"
-            BuildableName = "Aerial Test.app"
-            BlueprintName = "Aerial Test"
+            BuildableName = "Aerial App.app"
+            BlueprintName = "Aerial App"
             ReferencedContainer = "container:Aerial.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
