@@ -32,6 +32,6 @@ class AerialVideo {
         self.name = name
         self.type = type
         self.timeOfDay = timeOfDay
-        self.url = URL(string:url)!
+        self.url = URL(string: url)!
     }
 }

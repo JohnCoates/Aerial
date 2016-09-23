@@ -10,7 +10,7 @@ import Cocoa
 
 class CheckCellView: NSTableCellView {
 
-    @IBOutlet var checkButton:NSButton!
+    @IBOutlet var checkButton: NSButton!
     
     var onCheck:((Bool) -> (Void))?
     
@@ -19,7 +19,7 @@ class CheckCellView: NSTableCellView {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder:coder)
+        super.init(coder: coder)
     }
     
     override func awakeFromNib() {
@@ -27,7 +27,7 @@ class CheckCellView: NSTableCellView {
         checkButton.action = #selector(CheckCellView.check(_:))
     }
     
-    func check(_ button:AnyObject?) {        
+    func check(_ button: AnyObject?) {        
         guard let onCheck = self.onCheck else {
             return
         }

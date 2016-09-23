@@ -11,7 +11,7 @@ import AVFoundation
 
 /// Returns an AVURLAsset that is automatically cached. If already cached
 /// then returns the cached asset.
-func CachedOrCachingAsset(_ URL:Foundation.URL) -> AVURLAsset {
+func CachedOrCachingAsset(_ URL: Foundation.URL) -> AVURLAsset {
     let assetLoader = AssetLoaderDelegate(URL: URL)
     
     let asset = AVURLAsset(url: assetLoader.URLWithCustomScheme)
@@ -25,17 +25,17 @@ func CachedOrCachingAsset(_ URL:Foundation.URL) -> AVURLAsset {
 
 class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, VideoLoaderDelegate {
  
-    let URL:Foundation.URL
-    var videoLoaders:[VideoLoader] = []
-    let videoCache:VideoCache
+    let URL: Foundation.URL
+    var videoLoaders: [VideoLoader] = []
+    let videoCache: VideoCache
     
-    var URLWithCustomScheme:Foundation.URL {
+    var URLWithCustomScheme: Foundation.URL {
         var components = URLComponents(url: URL, resolvingAgainstBaseURL: false)!
         components.scheme = "streaming"
         return components.url!
     }
 
-    init(URL:Foundation.URL) {
+    init(URL: Foundation.URL) {
         self.URL = URL
 //        self.URL = NSURL(string:"http://localhost/test.mov")!
         videoCache = VideoCache(URL: URL)
@@ -47,11 +47,11 @@ class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, VideoLoader
     
     // MARK: - Video Loader Delegate
     
-    func videoLoader(_ videoLoader:VideoLoader, receivedResponse response:URLResponse) {
+    func videoLoader(_ videoLoader: VideoLoader, receivedResponse response: URLResponse) {
         videoCache.receivedContentLength(Int(response.expectedContentLength))
     }
     
-    func videoLoader(_ videoLoader:VideoLoader, receivedData data:Data, forRange range:NSRange) {
+    func videoLoader(_ videoLoader: VideoLoader, receivedData data: Data, forRange range: NSRange) {
         videoCache.receivedData(data, atRange: range)
     }
     
@@ -59,7 +59,7 @@ class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, VideoLoader
     func resourceLoader(_ resourceLoader: AVAssetResourceLoader, didCancel loadingRequest: AVAssetResourceLoadingRequest) {
 //        debugLog("cancelled load request: \(loadingRequest)")
         
-        var remove:VideoLoader?
+        var remove: VideoLoader?
         for loader in videoLoaders {
             if loader.loadingRequest != loadingRequest {
                 continue

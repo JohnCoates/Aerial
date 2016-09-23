@@ -59,7 +59,7 @@ class VideoCache {
         }
     }
     
-    static func isAvailableOffline(video:AerialVideo) -> Bool {
+    static func isAvailableOffline(video: AerialVideo) -> Bool {
         guard let videoCachePath = cachePath(forVideo: video) else {
             NSLog("Aerial Error: Couldn't get video cache path!")
             return false
@@ -86,7 +86,7 @@ class VideoCache {
         return videoCachePath
     }
     
-    init(URL:Foundation.URL) {
+    init(URL: Foundation.URL) {
         videoData = Data()
         loading = true
         self.URL = URL
@@ -95,7 +95,7 @@ class VideoCache {
     
     // MARK: - Data Adding
     
-    func receivedContentLength(_ contentLength:Int) {
+    func receivedContentLength(_ contentLength: Int) {
         if loading == false {
             return
         }
@@ -108,7 +108,7 @@ class VideoCache {
         videoData = mutableVideoData! as Data
     }
     
-    func receivedData(_ data:Data, atRange range:NSRange) {
+    func receivedData(_ data: Data, atRange range: NSRange) {
         guard let mutableVideoData = mutableVideoData else {
             NSLog("Aerial Error: Received data without having mutable video data")
             return
@@ -197,7 +197,7 @@ class VideoCache {
     
     // MARK: - Fulfilling cache
     
-    func fulfillLoadingRequest(_ loadingRequest:AVAssetResourceLoadingRequest) -> Bool {
+    func fulfillLoadingRequest(_ loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
         guard let dataRequest = loadingRequest.dataRequest else {
             NSLog("Aerial Error: Missing data request for \(loadingRequest)")
             return false
@@ -218,13 +218,13 @@ class VideoCache {
         return true
     }
     
-    func fillInContentInformation(_ loadingRequest:AVAssetResourceLoadingRequest) {
+    func fillInContentInformation(_ loadingRequest: AVAssetResourceLoadingRequest) {
         
         guard let contentInformationRequest = loadingRequest.contentInformationRequest else {
             return
         }
         
-        let contentType:String = kUTTypeQuickTimeMovie as String
+        let contentType: String = kUTTypeQuickTimeMovie as String
         
         contentInformationRequest.isByteRangeAccessSupported = true
         contentInformationRequest.contentType = contentType
@@ -234,7 +234,7 @@ class VideoCache {
     // MARK: - Cache Checking
     
     // Whether the video cache can fulfill this request
-    func canFulfillLoadingRequest(_ loadingRequest:AVAssetResourceLoadingRequest) -> Bool {
+    func canFulfillLoadingRequest(_ loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
         
         if (loading == false) {
             return true
@@ -265,14 +265,14 @@ class VideoCache {
     // MARK: - Consolidating
     
     func consolidateLoadedRanges() {
-        var consolidatedRanges:[NSRange] = []
+        var consolidatedRanges: [NSRange] = []
         
         let sortedRanges = loadedRanges.sorted { $0.location < $1.location }
         
-        var previousRange:NSRange?
-        var lastIndex:Int?
+        var previousRange: NSRange?
+        var lastIndex: Int?
         for range in sortedRanges {
-            if let lastRange:NSRange = previousRange {
+            if let lastRange: NSRange = previousRange {
                 let lastRangeEndOffset = lastRange.location + lastRange.length
                 
                 // check if range can be consumed by lastRange

@@ -27,16 +27,16 @@ class AerialView: ScreenSaverView {
         return !preferences.differentAerialsOnEachDisplay
     }
     
-    static var sharedViews:[AerialView] = []
+    static var sharedViews: [AerialView] = []
     
     // MARK: - Shared Player
     
-    static var singlePlayerAlreadySetup:Bool = false
+    static var singlePlayerAlreadySetup: Bool = false
     class var sharedPlayer: AVPlayer {
         struct Static {
             static let instance: AVPlayer = AVPlayer()
-            static var _player:AVPlayer?
-            static var player:AVPlayer {
+            static var _player: AVPlayer?
+            static var player: AVPlayer {
                 if let activePlayer = _player {
                     return activePlayer
                 }
@@ -89,7 +89,7 @@ class AerialView: ScreenSaverView {
     }
     
     
-    func setupPlayerLayer(withPlayer player:AVPlayer) {
+    func setupPlayerLayer(withPlayer player: AVPlayer) {
         self.layer = CALayer()
         guard let layer = self.layer else {
             NSLog("Aerial Errror: Couldn't create CALayer")
@@ -114,7 +114,7 @@ class AerialView: ScreenSaverView {
     
     func setup() {
         
-        var localPlayer:AVPlayer?
+        var localPlayer: AVPlayer?
         
         if (!self.isPreview) {
             // check if we should share preview's player
@@ -172,7 +172,7 @@ class AerialView: ScreenSaverView {
         AerialView.singlePlayerAlreadySetup = true
         
         
-        ManifestLoader.instance.addCallback { (videos:[AerialVideo]) -> Void in
+        ManifestLoader.instance.addCallback { (videos: [AerialVideo]) -> Void in
             self.playNextVideo()
         }
     }

@@ -10,24 +10,24 @@ import Foundation
 import AVFoundation
 
 protocol VideoLoaderDelegate : NSObjectProtocol {
-    func videoLoader(_ videoLoader:VideoLoader, receivedResponse response:URLResponse)
-    func videoLoader(_ videoLoader:VideoLoader, receivedData data:Data, forRange range:NSRange)
+    func videoLoader(_ videoLoader: VideoLoader, receivedResponse response: URLResponse)
+    func videoLoader(_ videoLoader: VideoLoader, receivedData data: Data, forRange range: NSRange)
 }
 
 class VideoLoader : NSObject, NSURLConnectionDataDelegate {
-    var connection:NSURLConnection?
-    var response:HTTPURLResponse?
-    weak var delegate:VideoLoaderDelegate?
-    var loadingRequest:AVAssetResourceLoadingRequest
+    var connection: NSURLConnection?
+    var response: HTTPURLResponse?
+    weak var delegate: VideoLoaderDelegate?
+    var loadingRequest: AVAssetResourceLoadingRequest
     
     // range params
-    var loadedRange:NSRange
-    var requestedRange:NSRange
-    var loadRange:Bool
+    var loadedRange: NSRange
+    var requestedRange: NSRange
+    var loadRange: Bool
     
     let queue = DispatchQueue.main
     
-    init(url:URL, loadingRequest:AVAssetResourceLoadingRequest, delegate:VideoLoaderDelegate) {
+    init(url: URL, loadingRequest: AVAssetResourceLoadingRequest, delegate: VideoLoaderDelegate) {
         self.delegate = delegate
         self.loadingRequest = loadingRequest
         
@@ -165,7 +165,7 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
         }
     }
     
-    func fillInContentInformation(_ loadingRequest:AVAssetResourceLoadingRequest) {
+    func fillInContentInformation(_ loadingRequest: AVAssetResourceLoadingRequest) {
         
         guard let contentInformationRequest = loadingRequest.contentInformationRequest else {
             return
@@ -188,7 +188,7 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
         
         //        debugLog("Processsing contentInformationRequest")
         
-        let contentType:String = uti.takeRetainedValue() as String
+        let contentType: String = uti.takeRetainedValue() as String
         
         contentInformationRequest.isByteRangeAccessSupported = true
         contentInformationRequest.contentType = contentType

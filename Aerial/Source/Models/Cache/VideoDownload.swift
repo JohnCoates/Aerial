@@ -10,18 +10,18 @@ import Foundation
 
 
 protocol VideoDownloadDelegate : NSObjectProtocol {
-    func videoDownload(_ videoDownload:VideoDownload , finished success:Bool, errorMessage:String?)
+    func videoDownload(_ videoDownload: VideoDownload , finished success: Bool, errorMessage: String?)
     // bytes received for bytes/second count
-    func videoDownload(_ videoDownload:VideoDownload, receivedBytes:Int, progress:Float)
+    func videoDownload(_ videoDownload: VideoDownload, receivedBytes: Int, progress: Float)
 }
 
 class VideoDownloadStream {
-    var connection:NSURLConnection
-    var response:URLResponse?
-    var contentInformationRequest:Bool = false
+    var connection: NSURLConnection
+    var response: URLResponse?
+    var contentInformationRequest: Bool = false
     var downloadOffset = 0
     
-    init(connection:NSURLConnection) {
+    init(connection: NSURLConnection) {
         self.connection = connection
     }
     deinit {
@@ -30,18 +30,18 @@ class VideoDownloadStream {
 }
 
 class VideoDownload : NSObject, NSURLConnectionDataDelegate {
-    var streams:[VideoDownloadStream] = []
-    weak var delegate:VideoDownloadDelegate!
+    var streams: [VideoDownloadStream] = []
+    weak var delegate: VideoDownloadDelegate!
 
     let queue = DispatchQueue.main
     
-    let video:AerialVideo
+    let video: AerialVideo
     
-    var data:NSMutableData?
-    var downloadedData:Int = 0
-    var contentLength:Int = 0
+    var data: NSMutableData?
+    var downloadedData: Int = 0
+    var contentLength: Int = 0
     
-    init(video:AerialVideo, delegate:VideoDownloadDelegate) {
+    init(video: AerialVideo, delegate: VideoDownloadDelegate) {
         self.video = video
         self.delegate = delegate
     }
@@ -56,7 +56,7 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         startDownloadForChunk(nil)
     }
     
-    func startDownloadForChunk(_ chunk:NSRange?) {
+    func startDownloadForChunk(_ chunk: NSRange?) {
         let request = NSMutableURLRequest(url: video.url as URL)
         request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
         
@@ -96,7 +96,7 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         return nil
     }
     
-    func createStreamsBasedOnContentLength(_ contentLength:Int) {
+    func createStreamsBasedOnContentLength(_ contentLength: Int) {
         self.contentLength = contentLength
         // remove content length request stream
         streams.removeFirst()
@@ -110,12 +110,12 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         debugLog("Starting \(streamCount) streams with \(streamPiece) each, for content length of \(contentLength)")
         var offset = 0
         
-        var delayTime:Double = 0
+        var delayTime: Double = 0
         
 //        let queue = DispatchQueue.main
         for i in 0 ..< streamCount {
-            let isLastStream:Bool = i == (streamCount - 1)
-            var range:NSRange = NSMakeRange(offset, streamPiece)
+            let isLastStream: Bool = i == (streamCount - 1)
+            var range: NSRange = NSMakeRange(offset, streamPiece)
             
             if isLastStream {
                 let bytesLeft = contentLength - offset
@@ -138,7 +138,7 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         }
     }
     
-    func receiveDataForStream(_ stream:VideoDownloadStream, receivedData:Data) {
+    func receiveDataForStream(_ stream: VideoDownloadStream, receivedData: Data) {
         guard let videoData = self.data else {
             NSLog("Aerial error: video data missing!")
             return
@@ -161,8 +161,8 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
             return
         }
         
-        var success:Bool = true
-        var errorMessage:String?
+        var success: Bool = true
+        var errorMessage: String?
         do {
             try videoData.write(toFile: videoCachePath, options: .atomicWrite)
         }
@@ -177,7 +177,7 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         
     }
     
-    func failedDownload(_ errorMessage:String) {
+    func failedDownload(_ errorMessage: String) {
         
         delegate.videoDownload(self, finished: false, errorMessage: errorMessage)
     }
@@ -223,7 +223,7 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         
         queue.async { () -> Void in
             self.downloadedData += data.count
-            let progress:Float = Float(self.downloadedData) / Float(self.contentLength)
+            let progress: Float = Float(self.downloadedData) / Float(self.contentLength)
             delegate.videoDownload(self, receivedBytes: data.count, progress: progress)
             
             guard let stream = self.streamForConnection(connection) else {

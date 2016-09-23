@@ -26,11 +26,11 @@ class City {
     var day: TimeOfDay = TimeOfDay(title: "day")
     let name: String
     
-    init(name:String) {
+    init(name: String) {
         self.name = name
     }
     
-    func addVideoForTimeOfDay(_ timeOfDay:String, video:AerialVideo) {
+    func addVideoForTimeOfDay(_ timeOfDay: String, video: AerialVideo) {
         if timeOfDay.lowercased() == "night" {
             video.arrayPosition = night.videos.count
             night.videos.append(video)
@@ -58,7 +58,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     // cities -> time of day -> videos
     var cities = [City]()
     
-    static var loadedJSON:Bool = false
+    static var loadedJSON: Bool = false
     
     lazy var preferences = Preferences.sharedInstance
     
@@ -122,14 +122,14 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     
     // MARK: - Preferences
     
-    @IBAction func cacheAerialsAsTheyPlayClick(_ button:NSButton!) {
+    @IBAction func cacheAerialsAsTheyPlayClick(_ button: NSButton!) {
         debugLog("cache aerials as they play: \(button.state)")
         
         let onState = (button.state == NSOnState)
         preferences.cacheAerials = onState
     }
     
-    @IBAction func userSetCacheLocation(_ button:NSButton?) {
+    @IBAction func userSetCacheLocation(_ button: NSButton?) {
         let openPanel = NSOpenPanel()
         
         openPanel.canChooseDirectories = true
@@ -151,7 +151,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             self.cacheLocation.url = cacheDirectory
         }
     }
-    @IBAction func resetCacheLocation(_ button:NSButton?) {
+    @IBAction func resetCacheLocation(_ button: NSButton?) {
         preferences.customCacheDirectory = nil
         if let cacheDirectory = VideoCache.cacheDirectory {
             cacheLocation.url = URL(fileURLWithPath: cacheDirectory as String)
@@ -197,7 +197,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         outlineView.reloadData()
     }
     
-    @IBAction func differentAerialsOnEachDisplayCheckClick(_ button:NSButton?) {
+    @IBAction func differentAerialsOnEachDisplayCheckClick(_ button: NSButton?) {
         let state = differentAerialCheckbox.state
         let onState = (state == NSOnState)
         
@@ -208,7 +208,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     
     // MARK: - Link
     
-    @IBAction func pageProjectClick(_ button:NSButton?) {
+    @IBAction func pageProjectClick(_ button: NSButton?) {
         let workspace = NSWorkspace.shared()
         let url = URL(string: "http://github.com/JohnCoates/Aerial")!
         workspace.open(url)
@@ -479,7 +479,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
        cacheStatusLabel.stringValue = "Loading JSON"
         currentProgress.maxValue = 1
         
-        ManifestLoader.instance.addCallback { (manifestVideos:[AerialVideo]) -> Void in
+        ManifestLoader.instance.addCallback { (manifestVideos: [AerialVideo]) -> Void in
             DispatchQueue.main.async(execute: { () -> Void in
                 self.manifestVideos = manifestVideos
                 self.cacheNextVideo()
@@ -525,7 +525,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     // MARK: - Video Download Delegate
     
     func videoDownload(_ videoDownload: VideoDownload,
-                       finished success: Bool, errorMessage:String?) {
+                       finished success: Bool, errorMessage: String?) {
         if let message = errorMessage {
             cacheStatusLabel.stringValue = message
         } else {
@@ -535,7 +535,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
          NSLog("video download finished with success: \(success))")
     }
     
-    func videoDownload(_ videoDownload:VideoDownload, receivedBytes:Int, progress:Float) {
+    func videoDownload(_ videoDownload: VideoDownload, receivedBytes: Int, progress: Float) {
         currentProgress.doubleValue = Double(progress)
 //     NSLog("received bytes: \(receivedBytes), progress: \(progress)")
     }

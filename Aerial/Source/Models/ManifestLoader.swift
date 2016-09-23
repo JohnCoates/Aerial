@@ -12,13 +12,13 @@ import ScreenSaver
 typealias manifestLoadCallback = ([AerialVideo]) -> (Void)
 
 class ManifestLoader {
-    static let instance:ManifestLoader = ManifestLoader()
+    static let instance: ManifestLoader = ManifestLoader()
     
     lazy var preferences = Preferences.sharedInstance
     var callbacks = [manifestLoadCallback]()
     var loadedManifest = [AerialVideo]()
     var playedVideos = [AerialVideo]()
-    var offlineMode:Bool = false
+    var offlineMode: Bool = false
     
     func addCallback(_ callback:@escaping manifestLoadCallback) {
         if (loadedManifest.count > 0) {
@@ -56,7 +56,7 @@ class ManifestLoader {
     
     init() {
         // start loading right away!
-        let completionHandler = { (data: Data?, response:URLResponse?, error:Error?) -> Void in
+        let completionHandler = { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if let error = error {
                 NSLog("Aerial Error Loading Manifest: \(error)")
                 self.loadSavedManifest()
@@ -81,7 +81,7 @@ class ManifestLoader {
         // use ephemeral session so when we load json offline it fails and puts us in offline mode
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration)
-        let task = session.dataTask(with: url, completionHandler:completionHandler)
+        let task = session.dataTask(with: url, completionHandler: completionHandler)
         task.resume()
     }
     
@@ -95,7 +95,7 @@ class ManifestLoader {
         readJSONFromData(savedJSON)
     }
     
-    func readJSONFromData(_ data:Data) {
+    func readJSONFromData(_ data: Data) {
         var videos = [AerialVideo]()
         
         do {
@@ -136,13 +136,13 @@ class ManifestLoader {
         }
     }
     
-    func checkContentLength(_ video:AerialVideo) {
+    func checkContentLength(_ video: AerialVideo) {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let request = NSMutableURLRequest(url: video.url as URL)
         request.httpMethod = "HEAD"
         
-        let task = session.dataTask(with: request as URLRequest, completionHandler: { (data:Data?, response:URLResponse?, error:Error?) -> Void in
+        let task = session.dataTask(with: request as URLRequest, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             video.contentLengthChecked = true
             
             if let error = error {

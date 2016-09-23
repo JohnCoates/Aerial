@@ -26,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         setUp(preferencesWindow: preferencesWindow)
     }
     
-    private func setUp(preferencesWindow window:NSWindow) {
+    private func setUp(preferencesWindow window: NSWindow) {
         window.makeKeyAndOrderFront(self)
         window.styleMask = [
             NSTitledWindowMask,
