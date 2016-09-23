@@ -1,6 +1,6 @@
-language: swift
+language: objective-c
 osx_image: xcode8
 after_success:
 - bash <(curl -s https://codecov.io/bash)
 script:
-- xcodebuild -scheme 'Aerial App' clean test
+- xcodebuild -scheme 'Aerial App' -enableCodeCoverage YES clean test
