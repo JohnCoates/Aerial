@@ -3,7 +3,6 @@
 //  Aerial
 //
 
-
 import Foundation
 
 // shuffling thanks to Nate Cook http://stackoverflow.com/questions/24026510/how-do-i-shuffle-an-array-in-swift

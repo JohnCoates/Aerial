@@ -10,7 +10,6 @@ import Foundation
 import AVFoundation
 import ScreenSaver
 
-
 class VideoCache {
     var videoData: Data
     var mutableVideoData: NSMutableData?
@@ -48,9 +47,9 @@ class VideoCache {
             let fileManager = FileManager.default
             if fileManager.fileExists(atPath: appCacheDirectory as String) == false {
                 do {
-                    try fileManager.createDirectory(atPath: appCacheDirectory as String, withIntermediateDirectories: false, attributes: nil)
-                }
-                catch let error {
+                    try fileManager.createDirectory(atPath: appCacheDirectory as String,
+                                                    withIntermediateDirectories: false, attributes: nil)
+                } catch let error {
                     NSLog("Aerial Error: Couldn't create cache directory: \(error)")
                     return nil
                 }
@@ -64,7 +63,6 @@ class VideoCache {
             NSLog("Aerial Error: Couldn't get video cache path!")
             return false
         }
-        
 
         let fileManager = FileManager.default
         
@@ -167,8 +165,7 @@ class VideoCache {
         
         do {
             try mutableVideoData.write(toFile: videoCachePath, options: .atomicWrite)
-        }
-        catch let error {
+        } catch let error {
             NSLog("Aerial Error: Couldn't write cache file: \(error)")
         }
     }
@@ -236,7 +233,7 @@ class VideoCache {
     // Whether the video cache can fulfill this request
     func canFulfillLoadingRequest(_ loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
         
-        if (loading == false) {
+        if !loading {
             return true
         }
         
@@ -260,7 +257,6 @@ class VideoCache {
         
         return false
     }
-    
     
     // MARK: - Consolidating
     
@@ -289,8 +285,7 @@ class VideoCache {
                         consolidatedRanges.remove(at: lastIndex!)
                         consolidatedRanges.append(previousRange!)
                         continue
-                    }
-                    else {
+                    } else {
                         // skip adding this to the array, previous range is already bigger
 //                        debugLog("skipping add of \(range), previous: \(previousRange)")
                         continue

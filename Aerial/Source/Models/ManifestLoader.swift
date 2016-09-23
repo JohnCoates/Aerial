@@ -21,10 +21,9 @@ class ManifestLoader {
     var offlineMode: Bool = false
     
     func addCallback(_ callback:@escaping manifestLoadCallback) {
-        if (loadedManifest.count > 0) {
+        if loadedManifest.count > 0 {
             callback(loadedManifest)
-        }
-        else {
+        } else {
             callbacks.append(callback)
         }
     }
@@ -75,7 +74,8 @@ class ManifestLoader {
             })
             
         }
-        guard let url = URL(string: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json") else {
+        let apiURL = "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json"
+        guard let url = URL(string: apiURL) else {
             fatalError("Couldn't init URL from string")
         }
         // use ephemeral session so when we load json offline it fails and puts us in offline mode
@@ -99,7 +99,9 @@ class ManifestLoader {
         var videos = [AerialVideo]()
         
         do {
-            let batches = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! Array<NSDictionary>
+            let options = JSONSerialization.ReadingOptions.allowFragments
+            let batches = try JSONSerialization.jsonObject(with: data,
+                                                           options: options) as! Array<NSDictionary>
             
             for batch: NSDictionary in batches {
                 let assets = batch["assets"] as! Array<NSDictionary>
@@ -111,10 +113,9 @@ class ManifestLoader {
                     let id = item["id"] as! String
                     let type = item["type"] as! String
                     
-                    if (type != "video") {
+                    if type != "video" {
                         continue
                     }
-                    
                     
                     let video = AerialVideo(id: id,
                                             name: name,
@@ -129,8 +130,7 @@ class ManifestLoader {
             }
             
             self.loadedManifest = videos
-        }
-        catch {
+        } catch {
             NSLog("Aerial: Error retrieving content listing.")
             return
         }
@@ -142,7 +142,9 @@ class ManifestLoader {
         let request = NSMutableURLRequest(url: video.url as URL)
         request.httpMethod = "HEAD"
         
-        let task = session.dataTask(with: request as URLRequest, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+        let task = session.dataTask(with: request as URLRequest,
+                                    completionHandler: {
+                                        data, response, error in
             video.contentLengthChecked = true
             
             if let error = error {
@@ -184,7 +186,7 @@ class ManifestLoader {
         var filtered = [AerialVideo]()
         for video in unfiltered {
             // offline? eror? just put it through
-            if video.contentLength == 0  {
+            if video.contentLength == 0 {
                 filtered.append(video)
                 continue
             }
@@ -220,7 +222,6 @@ class ManifestLoader {
         }
         
         loadedManifest = filtered
-        
         
         // callbacks
         for callback in self.callbacks {

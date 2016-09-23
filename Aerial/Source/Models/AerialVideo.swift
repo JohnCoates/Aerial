@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class AerialVideo {
     let id: String
     let name: String
@@ -24,7 +23,6 @@ class AerialVideo {
             return VideoCache.isAvailableOffline(video: self)
         }
     }
-    
     
     init(id: String, name: String, type: String,
          timeOfDay: String, url: String) {

@@ -22,8 +22,7 @@ func CachedOrCachingAsset(_ URL: Foundation.URL) -> AVURLAsset {
     return asset
 }
 
-
-class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, VideoLoaderDelegate {
+class AssetLoaderDelegate: NSObject, AVAssetResourceLoaderDelegate, VideoLoaderDelegate {
  
     let URL: Foundation.URL
     var videoLoaders: [VideoLoader] = []
@@ -56,7 +55,8 @@ class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, VideoLoader
     }
     
     // MARK: - Asset Resource Loader Delegate
-    func resourceLoader(_ resourceLoader: AVAssetResourceLoader, didCancel loadingRequest: AVAssetResourceLoadingRequest) {
+    func resourceLoader(_ resourceLoader: AVAssetResourceLoader,
+                        didCancel loadingRequest: AVAssetResourceLoadingRequest) {
 //        debugLog("cancelled load request: \(loadingRequest)")
         
         var remove: VideoLoader?
@@ -80,7 +80,9 @@ class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, VideoLoader
         }
     }
     
-    func resourceLoader(_ resourceLoader: AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
+    func resourceLoader(_ resourceLoader: AVAssetResourceLoader,
+                        shouldWaitForLoadingOfRequestedResource
+        loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
         
         // check if cache can fulfill this without a request
         if videoCache.canFulfillLoadingRequest(loadingRequest) {

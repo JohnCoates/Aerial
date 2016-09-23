@@ -11,8 +11,7 @@ import Cocoa
 class CheckCellView: NSTableCellView {
 
     @IBOutlet var checkButton: NSButton!
-    
-    var onCheck:((Bool) -> (Void))?
+    var onCheck: ((Bool) -> (Void))?
     
     override required init(frame frameRect: NSRect) {
         super.init(frame: frameRect)

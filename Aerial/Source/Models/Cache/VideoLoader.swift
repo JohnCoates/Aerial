@@ -9,12 +9,12 @@
 import Foundation
 import AVFoundation
 
-protocol VideoLoaderDelegate : NSObjectProtocol {
+protocol VideoLoaderDelegate: NSObjectProtocol {
     func videoLoader(_ videoLoader: VideoLoader, receivedResponse response: URLResponse)
     func videoLoader(_ videoLoader: VideoLoader, receivedData data: Data, forRange range: NSRange)
 }
 
-class VideoLoader : NSObject, NSURLConnectionDataDelegate {
+class VideoLoader: NSObject, NSURLConnectionDataDelegate {
     var connection: NSURLConnection?
     var response: HTTPURLResponse?
     weak var delegate: VideoLoaderDelegate?
@@ -35,16 +35,16 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
         request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
         
         loadRange = false
-        loadedRange = NSMakeRange(0,0)
-        requestedRange = NSMakeRange(0,0)
+        loadedRange = NSRange(location: 0, length: 0)
+        requestedRange = NSRange(location: 0, length: 0)
         
         if let dataRequest = loadingRequest.dataRequest {
             if dataRequest.requestedOffset > 0 {
                 loadRange = true
                 let startOffset = Int(dataRequest.requestedOffset)
                 let requestedBytes = Int(dataRequest.requestedLength)
-                loadedRange = NSMakeRange(startOffset, 0)
-                requestedRange = NSMakeRange(startOffset, requestedBytes)
+                loadedRange = NSRange(location: startOffset, length: 0)
+                requestedRange = NSRange(location: startOffset, length: requestedBytes)
                 
                 // set Range: bytes=startOffset-endOffset
                 let requestRange = "bytes=\(requestedRange.location)-\(requestedRange.location+requestedRange.length)"
@@ -62,7 +62,7 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
         }
         
         connection.setDelegateQueue(OperationQueue.main)
-        loadedRange = NSMakeRange(requestedRange.location, 0)
+        loadedRange = NSRange(location: requestedRange.location, length: 0)
         
         connection.start()
 //        debugLog("Starting request: \(request)")
@@ -104,7 +104,8 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
             let loadedRange = self.loadedRange
             let loadedLocation = loadedRange.location + loadedRange.length
             
-            let dataRange = NSMakeRange(loadedRange.location + loadedRange.length, data.count)
+            let dataRange = NSRange(location: loadedRange.location + loadedRange.length,
+                                    length: data.count)
             self.delegate?.videoLoader(self, receivedData: data, forRange: dataRange)
             
             // check if we've already been sending content, or we're at right byte offset
@@ -114,14 +115,14 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
                 
                 let pendingDataEndOffset = loadedLocation + data.count
                 
-                if (pendingDataEndOffset > requestedEndOffset) {
+                if pendingDataEndOffset > requestedEndOffset {
                     let truncateDataLength = pendingDataEndOffset - requestedEndOffset
                     let truncatedData = data.subdata(in: 0..<data.count - truncateDataLength)
                     
                     dataRequest.respond(with: truncatedData)
                     self.loadingRequest.finishLoading()
                     self.connection?.cancel()
-                }else {
+                } else {
                     dataRequest.respond(with: data)
                 }
 //                debugLog("Responding with data")
@@ -143,8 +144,7 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
                         self.loadingRequest.finishLoading()
                         self.connection?.cancel()
                     }
-                }
-                else if inset < 1 {
+                } else if inset < 1 {
                     NSLog("Aerial Error: Inset is invalid value: \(inset)")
                 }
                 
@@ -194,7 +194,6 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
         contentInformationRequest.contentType = contentType
         contentInformationRequest.contentLength = response.expectedContentLength
         
-        
 //        debugLog("expected content length: \(response.expectedContentLength)")
     }
     
@@ -203,10 +202,11 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
     func startOffsetFromResponse(_ response: URLResponse) -> Int? {
         
         // get range response
-        var regex : NSRegularExpression!
+        var regex: NSRegularExpression!
         do {
             // Check to see if the server returned a valid byte-range
-            regex = try NSRegularExpression(pattern: "bytes (\\d+)-\\d+/\\d+", options: NSRegularExpression.Options.caseInsensitive)
+            regex = try NSRegularExpression(pattern: "bytes (\\d+)-\\d+/\\d+",
+                                            options: NSRegularExpression.Options.caseInsensitive)
         } catch let error as NSError {
             NSLog("Aerial: Error formatting regex: \(error)")
             return nil
@@ -219,7 +219,9 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
             return nil
         }
         
-        guard let match : NSTextCheckingResult = regex.firstMatch(in: contentRange as String, options: NSRegularExpression.MatchingOptions.anchored, range: NSMakeRange(0, contentRange.length)) else {
+        guard let match = regex.firstMatch(in: contentRange as String,
+                                           options: NSRegularExpression.MatchingOptions.anchored,
+                                           range: NSRange(location:0, length: contentRange.length)) else {
             debugLog("Weird, couldn't make a regex match for byte offset: \(contentRange)")
             return nil
         }

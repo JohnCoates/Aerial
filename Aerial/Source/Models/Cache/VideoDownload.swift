@@ -8,11 +8,12 @@
 
 import Foundation
 
-
-protocol VideoDownloadDelegate : NSObjectProtocol {
-    func videoDownload(_ videoDownload: VideoDownload , finished success: Bool, errorMessage: String?)
+protocol VideoDownloadDelegate: NSObjectProtocol {
+    func videoDownload(_ videoDownload: VideoDownload,
+                       finished success: Bool, errorMessage: String?)
     // bytes received for bytes/second count
-    func videoDownload(_ videoDownload: VideoDownload, receivedBytes: Int, progress: Float)
+    func videoDownload(_ videoDownload: VideoDownload,
+                       receivedBytes: Int, progress: Float)
 }
 
 class VideoDownloadStream {
@@ -29,7 +30,7 @@ class VideoDownloadStream {
     }
 }
 
-class VideoDownload : NSObject, NSURLConnectionDataDelegate {
+class VideoDownload: NSObject, NSURLConnectionDataDelegate {
     var streams: [VideoDownloadStream] = []
     weak var delegate: VideoDownloadDelegate!
 
@@ -67,8 +68,8 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
             debugLog("Starting download for range \(requestRangeField)")
         }
         
-        
-        guard let connection = NSURLConnection(request: request as URLRequest, delegate: self, startImmediately: false) else {
+        guard let connection = NSURLConnection(request: request as URLRequest,
+                                               delegate: self, startImmediately: false) else {
             NSLog("Aerial: Error creating connection with request: \(request)")
             return
         }
@@ -115,14 +116,13 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
 //        let queue = DispatchQueue.main
         for i in 0 ..< streamCount {
             let isLastStream: Bool = i == (streamCount - 1)
-            var range: NSRange = NSMakeRange(offset, streamPiece)
+            var range = NSRange(location: offset, length: streamPiece)
             
             if isLastStream {
                 let bytesLeft = contentLength - offset
-                range = NSMakeRange(offset, bytesLeft)
+                range = NSRange(location: offset, length: bytesLeft)
                 debugLog("last stream range: \(range)")
             }
-            
 
             let delay = DispatchTime.now() + Double(Int64(delayTime * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
             queue.asyncAfter(deadline: delay) {
@@ -144,7 +144,8 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
             return
         }
         
-        let replaceRange = NSMakeRange(stream.downloadOffset, receivedData.count)
+        let replaceRange = NSRange(location: stream.downloadOffset,
+                                   length: receivedData.count)
         videoData.replaceBytes(in: replaceRange, withBytes: (receivedData as NSData).bytes)
         stream.downloadOffset += receivedData.count
     }
@@ -165,8 +166,7 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
         var errorMessage: String?
         do {
             try videoData.write(toFile: videoCachePath, options: .atomicWrite)
-        }
-        catch let error {
+        } catch let error {
             NSLog("Aerial Error: Couldn't write cache file: \(error)")
             errorMessage = "Couldn't write to cache file!"
             success = false
@@ -201,8 +201,7 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
             })
             
             return
-        }
-        else {
+        } else {
             // get real offset of receiving data
             
             queue.async(execute: { () -> Void in
@@ -275,10 +274,11 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
     // MARK: - Range
     func startOffsetFromResponse(_ response: URLResponse) -> Int? {
         // get range response
-        var regex : NSRegularExpression!
+        var regex: NSRegularExpression!
         do {
             // Check to see if the server returned a valid byte-range
-            regex = try NSRegularExpression(pattern: "bytes (\\d+)-\\d+/\\d+", options: NSRegularExpression.Options.caseInsensitive)
+            regex = try NSRegularExpression(pattern: "bytes (\\d+)-\\d+/\\d+",
+                                            options: NSRegularExpression.Options.caseInsensitive)
         } catch let error as NSError {
             NSLog("Aerial: Error formatting regex: \(error)")
             return nil
@@ -291,7 +291,9 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
             return nil
         }
         
-        guard let match : NSTextCheckingResult = regex.firstMatch(in: contentRange as String, options: NSRegularExpression.MatchingOptions.anchored, range: NSMakeRange(0, contentRange.length)) else {
+        guard let match = regex.firstMatch(in: contentRange as String,
+                                           options: NSRegularExpression.MatchingOptions.anchored,
+                                           range: NSRange(location:0, length: contentRange.length)) else {
             debugLog("Weird, couldn't make a regex match for byte offset: \(contentRange)")
             return nil
         }

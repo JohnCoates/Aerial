@@ -34,8 +34,7 @@ class City {
         if timeOfDay.lowercased() == "night" {
             video.arrayPosition = night.videos.count
             night.videos.append(video)
-        }
-        else {
+        } else {
             video.arrayPosition = day.videos.count
             day.videos.append(video)
         }
@@ -43,7 +42,8 @@ class City {
 }
 
 @objc(PreferencesWindowController)
-class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, NSOutlineViewDelegate, VideoDownloadDelegate {
+class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource,
+NSOutlineViewDelegate, VideoDownloadDelegate {
 
     @IBOutlet var outlineView: NSOutlineView!
     @IBOutlet var playerView: AVPlayerView!
@@ -113,7 +113,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         let color = NSColor(calibratedRed: 0.18, green: 0.39, blue: 0.76, alpha: 1)
         let link = projectPageLink.attributedTitle
         let coloredLink = NSMutableAttributedString(attributedString: link)
-        let fullRange = NSMakeRange(0, coloredLink.length)
+        let fullRange = NSRange(location: 0, length: coloredLink.length)
         coloredLink.addAttribute(NSForegroundColorAttributeName,
                                  value: color,
                                   range: fullRange)
@@ -217,7 +217,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     // MARK: - Manifest
     
     func loadJSON() {
-        if (PreferencesWindowController.loadedJSON) {
+        if PreferencesWindowController.loadedJSON {
             return
         }
         PreferencesWindowController.loadedJSON = true
@@ -243,7 +243,6 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             city.addVideoForTimeOfDay(timeOfDay, video: video)
             videos.append(video)
         }
-
 
         self.videos = videos
         
@@ -314,10 +313,9 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         case is City:
             let city = item as! City
             
-            if (index == 0 && city.day.videos.count > 0) {
+            if index == 0 && city.day.videos.count > 0 {
                 return city.day
-            }
-            else {
+            } else {
                 return city.night
             }
             
@@ -330,7 +328,8 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         }
     }
     
-    func outlineView(_ outlineView: NSOutlineView, objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any? {
+    func outlineView(_ outlineView: NSOutlineView,
+                     objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any? {
         switch item {
         case is City:
             let city = item as! City
@@ -418,7 +417,6 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
                 view.checkButton.state = NSOffState
             }
             
-            
             view.onCheck = { checked in
                 self.preferences.setVideo(videoID: video.id,
                                           inRotation: checked)
@@ -444,7 +442,6 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             
             player.replaceCurrentItem(with: item)
             player.play()
-            
             
             return true
         case is TimeOfDay:
@@ -498,7 +495,6 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             return video.isAvailableOffline == false
         }
         
-        
         if uncached.count == 0 {
             cacheStatusLabel.stringValue = "All videos have been cached"
             return
@@ -509,7 +505,6 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         totalProgress.maxValue = Double(manifestVideos.count)
         totalProgress.doubleValue = Double(manifestVideos.count) - Double(uncached.count)
         NSLog("total process max value: \(totalProgress.maxValue), current value: \(totalProgress.doubleValue)")
-        
         
         let video = uncached[0]
         
