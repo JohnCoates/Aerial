@@ -1,0 +1,6 @@
+language: objective-c
+osx_image: xcode8
+install:
+- gem install xcpretty
+script:
+- set -o pipefail && xcodebuild -scheme 'Aerial Test' test | xcpretty -c
