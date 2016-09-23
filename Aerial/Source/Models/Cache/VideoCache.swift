@@ -12,44 +12,40 @@ import ScreenSaver
 
 
 class VideoCache {
-    var videoData:Data
-    var mutableVideoData:NSMutableData?
+    var videoData: Data
+    var mutableVideoData: NSMutableData?
     
-    var loading:Bool
-    var loadedRanges:[NSRange] = []
-    let URL:Foundation.URL
+    var loading: Bool
+    var loadedRanges: [NSRange] = []
+    let URL: URL
     
-    
-    static var cacheDirectory:NSString? {
+    static var cacheDirectory: String? {
         get {
-            let defaults:UserDefaults = ScreenSaverDefaults(forModuleWithName: "com.JohnCoates.Aerial")! as ScreenSaverDefaults
-            let fileManager = FileManager.default
+            var cacheDirectory: String?
             
-            var cacheDirectory:NSString?
-            
-            if let customDirectory = defaults.object(forKey: "cacheDirectory") as? NSString {
-                cacheDirectory = customDirectory
-            }
-            else {
+            let preferences = Preferences.sharedInstance
+            if let customCacheDirectory = preferences.customCacheDirectory {
+                cacheDirectory = customCacheDirectory
+            } else {
                 let cachePaths = NSSearchPathForDirectoriesInDomains(.cachesDirectory,
-                    .userDomainMask,
-                    true);
-                
+                                                                     .userDomainMask,
+                                                                     true);
                 if cachePaths.count == 0 {
                     NSLog("Aerial Error: Couldn't find cache paths!");
-                    return nil;
+                    return nil
                 }
                 
-                let userCacheDirectory = cachePaths[0] as NSString;
-                let defaultCacheDirectory = userCacheDirectory.appendingPathComponent("Aerial") as NSString;
+                let userCacheDirectory = cachePaths[0] as NSString
+                let defaultCacheDirectory = userCacheDirectory.appendingPathComponent("Aerial")
                 
-                cacheDirectory = defaultCacheDirectory;
+                cacheDirectory = defaultCacheDirectory
             }
 
             guard let appCacheDirectory = cacheDirectory else {
-                return nil;
+                return nil
             }
             
+            let fileManager = FileManager.default
             if fileManager.fileExists(atPath: appCacheDirectory as String) == false {
                 do {
                     try fileManager.createDirectory(atPath: appCacheDirectory as String, withIntermediateDirectories: false, attributes: nil);
@@ -59,12 +55,12 @@ class VideoCache {
                     return nil;
                 }
             }
-            return appCacheDirectory;
+            return appCacheDirectory
         }
     }
     
-    static func isVideoAvailableOffline(_ video:AerialVideo) -> Bool {
-        guard let videoCachePath = cachePathForVideo(video) else {
+    static func isAvailableOffline(video:AerialVideo) -> Bool {
+        guard let videoCachePath = cachePath(forVideo: video) else {
             NSLog("Aerial Error: Couldn't get video cache path!");
             return false;
         }
@@ -75,14 +71,18 @@ class VideoCache {
         return fileManager.fileExists(atPath: videoCachePath)
     }
     
-    static func cachePathForVideo(_ video:AerialVideo) -> String? {
-        guard let appCacheDirectory = VideoCache.cacheDirectory else {
-            return nil;
+    static func cachePath(forVideo video: AerialVideo) -> String? {
+        let filename = video.url.lastPathComponent
+        return cachePath(forFilename: filename)
+    }
+    
+    static func cachePath(forFilename filename: String) -> String? {
+        guard let cacheDirectory = VideoCache.cacheDirectory else {
+            return nil
         }
         
-        let filename = video.url.lastPathComponent
-        let videoCachePath = appCacheDirectory.appendingPathComponent(filename);
-        
+        let cacheDirectoryPath = cacheDirectory as NSString
+        let videoCachePath = cacheDirectoryPath.appendingPathComponent(filename)
         return videoCachePath
     }
     
@@ -132,49 +132,44 @@ class VideoCache {
     
     // MARK: - Save / Load Cache
     
-    var videoCachePath:String? {
+    var videoCachePath: String? {
         get {
-            guard let appCacheDirectory = VideoCache.cacheDirectory else {
-                return nil;
-            }
-            
             let filename = URL.lastPathComponent
-            let videoCachePath = appCacheDirectory.appendingPathComponent(filename);
-            return videoCachePath
+            return VideoCache.cachePath(forFilename: filename)
         }
     }
     
     func saveCachedVideo() {
-        let defaults:UserDefaults = ScreenSaverDefaults(forModuleWithName: "com.JohnCoates.Aerial")! as ScreenSaverDefaults
+        let preferences = Preferences.sharedInstance
         
-        guard defaults.bool(forKey: "disableCache") == false else {
+        guard preferences.cacheAerials else {
             debugLog("Cache disabled, not saving video")
-            return;
+            return
         }
         
         let fileManager = FileManager.default
         
         guard let videoCachePath = videoCachePath else {
-            NSLog("Aerial Error: Couldn't save cache file");
-            return;
+            NSLog("Aerial Error: Couldn't save cache file")
+            return
         }
         
         guard fileManager.fileExists(atPath: videoCachePath) == false else {
-            NSLog("Aerial Error: Cache file \(videoCachePath) already exists.");
-            return;
+            NSLog("Aerial Error: Cache file \(videoCachePath) already exists.")
+            return
         }
         
-        loading = false;
+        loading = false
         guard let mutableVideoData = mutableVideoData else {
-            NSLog("Aerial Error: Missing video data for save.");
-            return;
+            NSLog("Aerial Error: Missing video data for save.")
+            return
         }
         
         do {
             try mutableVideoData.write(toFile: videoCachePath, options: .atomicWrite)
         }
         catch let error {
-            NSLog("Aerial Error: Couldn't write cache file: \(error)");
+            NSLog("Aerial Error: Couldn't write cache file: \(error)")
         }
     }
     
@@ -182,17 +177,17 @@ class VideoCache {
         let fileManager = FileManager.default
         
         guard let videoCachePath = self.videoCachePath else {
-            NSLog("Aerial Error: Couldn't load cache file.");
+            NSLog("Aerial Error: Couldn't load cache file.")
             return;
         }
         
         if fileManager.fileExists(atPath: videoCachePath) == false {
-            return;
+            return
         }
         
         guard let videoData = try? Data(contentsOf: Foundation.URL(fileURLWithPath: videoCachePath)) else {
             NSLog("Aerial Error: NSData failed to load cache file \(videoCachePath)")
-            return;
+            return
         }
         
         self.videoData = videoData;

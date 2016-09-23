@@ -12,20 +12,19 @@ import AVFoundation
 import AVKit
 
 
-@objc(AerialView) class AerialView : ScreenSaverView {
-//    var playerView: AVPlayerView!
-    var playerLayer:AVPlayerLayer!
-    var preferencesController:PreferencesWindowController?
-    static var players:[AVPlayer] = [AVPlayer]()
-    static var previewPlayer:AVPlayer?
-    static var previewView:AerialView?
+@objc(AerialView)
+class AerialView: ScreenSaverView {
+    var playerLayer: AVPlayerLayer!
+    var preferencesController: PreferencesWindowController?
+    static var players: [AVPlayer] = [AVPlayer]()
+    static var previewPlayer: AVPlayer?
+    static var previewView: AerialView?
     
-    var player:AVPlayer?
-    static let defaults:UserDefaults = ScreenSaverDefaults(forModuleWithName: "com.JohnCoates.Aerial")! as ScreenSaverDefaults
+    var player: AVPlayer?
     
-    static var sharingPlayers:Bool {
-        defaults.synchronize();
-        return !defaults.bool(forKey: "differentDisplays");
+    static var sharingPlayers: Bool {
+        let preferences = Preferences.sharedInstance
+        return !preferences.differentAerialsOnEachDisplay
     }
     
     static var sharedViews:[AerialView] = []

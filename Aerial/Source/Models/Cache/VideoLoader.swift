@@ -133,7 +133,10 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
                 let inset = requestedRange.location - loadedRange.location
                 
                 if inset > 0 {
-                    let responseData = data.subdata(in: inset..<inset + (data.count - inset));
+                    let start = inset
+                    let length = data.count - inset
+                    let end = start + length
+                    let responseData = data.subdata(in: inset..<end);
                     dataRequest.respond(with: responseData);
                     
                     if dataRequest.currentOffset >= dataRequest.requestedOffset + dataRequest.requestedLength {
@@ -147,7 +150,7 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
                 
             }
             
-//            debugLog("Received data with length: \(data.length)");
+//            debugLog("Received data with length: \(data.count)");
             
             self.loadedRange.length += data.count;
             

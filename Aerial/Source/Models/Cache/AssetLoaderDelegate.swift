@@ -46,9 +46,11 @@ class AssetLoaderDelegate : NSObject, AVAssetResourceLoaderDelegate, VideoLoader
     }
     
     // MARK: - Video Loader Delegate
+    
     func videoLoader(_ videoLoader:VideoLoader, receivedResponse response:URLResponse) {
         videoCache.receivedContentLength(Int(response.expectedContentLength))
     }
+    
     func videoLoader(_ videoLoader:VideoLoader, receivedData data:Data, forRange range:NSRange) {
         videoCache.receivedData(data, atRange: range)
     }

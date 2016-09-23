@@ -12,19 +12,19 @@ import AVFoundation
 import ScreenSaver
 
 class TimeOfDay {
-    let title:String;
-    var videos:[AerialVideo] = [AerialVideo]()
+    let title: String
+    var videos: [AerialVideo] = [AerialVideo]()
     
-    init(title:String) {
-        self.title = title;
+    init(title: String) {
+        self.title = title
     }
     
 }
 
 class City {
-    var night:TimeOfDay = TimeOfDay(title: "night");
-    var day:TimeOfDay = TimeOfDay(title: "day");
-    let name:String;
+    var night: TimeOfDay = TimeOfDay(title: "night")
+    var day: TimeOfDay = TimeOfDay(title: "day")
+    let name: String
     
     init(name:String) {
         self.name = name;
@@ -32,75 +32,37 @@ class City {
     
     func addVideoForTimeOfDay(_ timeOfDay:String, video:AerialVideo) {
         if timeOfDay.lowercased() == "night" {
-            video.arrayPosition = night.videos.count;
-            night.videos.append(video);
+            video.arrayPosition = night.videos.count
+            night.videos.append(video)
         }
         else {
-            video.arrayPosition = day.videos.count;
-            day.videos.append(video);
+            video.arrayPosition = day.videos.count
+            day.videos.append(video)
         }
     }
 }
 
-@objc(PreferencesWindowController) class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, NSOutlineViewDelegate, VideoDownloadDelegate {
+@objc(PreferencesWindowController)
+class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, NSOutlineViewDelegate, VideoDownloadDelegate {
 
-    @IBOutlet var outlineView:NSOutlineView?
-    @IBOutlet var playerView:AVPlayerView!
-    @IBOutlet var differentAerialCheckbox:NSButton!
-    @IBOutlet var projectPageLink:NSButton!
-    @IBOutlet var cacheLocation:NSPathControl!
-    @IBOutlet var cacheAerialsAsTheyPlayCheckbox:NSButton!
+    @IBOutlet var outlineView: NSOutlineView!
+    @IBOutlet var playerView: AVPlayerView!
+    @IBOutlet var differentAerialCheckbox: NSButton!
+    @IBOutlet var projectPageLink: NSButton!
+    @IBOutlet var cacheLocation: NSPathControl!
+    @IBOutlet var cacheAerialsAsTheyPlayCheckbox: NSButton!
     
-    var player:AVPlayer = AVPlayer()
-    let defaults:UserDefaults = ScreenSaverDefaults(forModuleWithName: "com.JohnCoates.Aerial")! as ScreenSaverDefaults
+    var player: AVPlayer = AVPlayer()
     
-    var videos:[AerialVideo]?
+    var videos: [AerialVideo]?
     // cities -> time of day -> videos
     var cities = [City]();
     
     static var loadedJSON:Bool = false;
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        if let previewPlayer = AerialView.previewPlayer {
-            self.player = previewPlayer;
-        }
-        
-        outlineView?.floatsGroupRows = false;
-        loadJSON();
-        
-        playerView.player = player;
-        playerView.controlsStyle = .none;
-        if #available(OSX 10.10, *) {
-            playerView.videoGravity = AVLayerVideoGravityResizeAspectFill
-        };
-        defaults.synchronize();
-        
-        if defaults.bool(forKey: "differentDisplays") == true {
-            differentAerialCheckbox.state = NSOnState;
-        }
-        
-        if defaults.bool(forKey: "disableCache") == true {
-            cacheAerialsAsTheyPlayCheckbox.state = NSOffState
-        }
-        
-        // blue link
-        let color = NSColor(calibratedRed:0.18, green:0.39, blue:0.76, alpha:1);
-        let coloredTitle = NSMutableAttributedString(attributedString: projectPageLink.attributedTitle);
-        let titleRange = NSMakeRange(0, coloredTitle.length);
-        coloredTitle.addAttribute(NSForegroundColorAttributeName, value: color, range: titleRange);
-        projectPageLink.attributedTitle = coloredTitle;
-        
-        if let cacheDirectory = VideoCache.cacheDirectory {
-            cacheLocation.url = URL(fileURLWithPath: cacheDirectory as String)
-        }
-        
-        cacheStatusLabel.isEditable = false;
-        
-
-    }
+    lazy var preferences = Preferences.sharedInstance
     
+    // MARK: - Init
     
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
@@ -109,21 +71,62 @@ class City {
         super.init(window: window)
         
     }
-    override func windowDidLoad() {
-        super.windowDidLoad()
+    
+    // MARK: - Lifecycle
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        if let previewPlayer = AerialView.previewPlayer {
+            self.player = previewPlayer
+        }
+        
+        outlineView.floatsGroupRows = false
+        loadJSON()
+        
+        playerView.player = player
+        playerView.controlsStyle = .none
+        if #available(OSX 10.10, *) {
+            playerView.videoGravity = AVLayerVideoGravityResizeAspectFill
+        };
+        
+        if preferences.differentAerialsOnEachDisplay {
+            differentAerialCheckbox.state = NSOnState;
+        }
+        
+        if !preferences.cacheAerials {
+            cacheAerialsAsTheyPlayCheckbox.state = NSOffState
+        }
+        
+        colorizeProjectPageLink()
+        
+        if let cacheDirectory = VideoCache.cacheDirectory {
+            cacheLocation.url = URL(fileURLWithPath: cacheDirectory as String)
+        }
+        
+        cacheStatusLabel.isEditable = false;
     }
+    
+    // MARK: - Setup
+    
+    fileprivate func colorizeProjectPageLink() {
+        let color = NSColor(calibratedRed: 0.18, green: 0.39, blue: 0.76, alpha: 1)
+        let link = projectPageLink.attributedTitle
+        let coloredLink = NSMutableAttributedString(attributedString: link)
+        let fullRange = NSMakeRange(0, coloredLink.length)
+        coloredLink.addAttribute(NSForegroundColorAttributeName,
+                                 value: color,
+                                  range: fullRange)
+        projectPageLink.attributedTitle = coloredLink
+    }
+    
+    // MARK: - Preferences
     
     @IBAction func cacheAerialsAsTheyPlayClick(_ button:NSButton!) {
         debugLog("cache aerials as they play: \(button.state)");
         
-        if button.state == NSOnState {
-            defaults.set(false, forKey: "disableCache");
-        }
-        else {
-            defaults.set(true, forKey: "disableCache");
-        }
-        
-        defaults.synchronize();
+        let onState = (button.state == NSOnState)
+        preferences.cacheAerials = onState
     }
     
     @IBAction func userSetCacheLocation(_ button:NSButton?) {
@@ -137,34 +140,33 @@ class City {
         openPanel.prompt = "Choose"
         openPanel.directoryURL = cacheLocation.url
         
-        openPanel.begin { (result:Int) -> Void in
-            if result == NSFileHandlingPanelOKButton {
-                if openPanel.urls.count > 0 {
-                    let cacheDirectory = openPanel.urls[0];
-                    self.defaults.set(cacheDirectory.path, forKey: "cacheDirectory");
-                    self.defaults.synchronize()
-                    self.cacheLocation.url = cacheDirectory
-                }
+        openPanel.begin { result in
+            guard result == NSFileHandlingPanelOKButton,
+                openPanel.urls.count > 0 else {
+                return
             }
+            
+            let cacheDirectory = openPanel.urls[0]
+            self.preferences.customCacheDirectory = cacheDirectory.path
+            self.cacheLocation.url = cacheDirectory
         }
     }
     @IBAction func resetCacheLocation(_ button:NSButton?) {
-        defaults.removeObject(forKey: "cacheDirectory");
-        defaults.synchronize()
+        preferences.customCacheDirectory = nil
         if let cacheDirectory = VideoCache.cacheDirectory {
             cacheLocation.url = URL(fileURLWithPath: cacheDirectory as String)
         }
     }
     
-    @IBAction func outlineViewSettingsClick(_ button:NSButton) {
+    @IBAction func outlineViewSettingsClick(_ button: NSButton) {
         let menu = NSMenu()
         menu.insertItem(withTitle: "Uncheck All",
-            action: #selector(PreferencesWindowController.outlineViewUncheckAll(_:)),
+            action: #selector(PreferencesWindowController.outlineViewUncheckAll(button:)),
             keyEquivalent: "",
             at: 0);
         
         menu.insertItem(withTitle: "Check All",
-            action: #selector(PreferencesWindowController.outlineViewCheckAll(_:)),
+            action: #selector(PreferencesWindowController.outlineViewCheckAll(button:)),
             keyEquivalent: "",
             at: 1);
         
@@ -172,119 +174,122 @@ class City {
         NSMenu.popUpContextMenu(menu, with: event!, for: button);
     }
     
-    
-    func outlineViewUncheckAll(_ button:NSButton) {
-        setChecked(false);
+    func outlineViewUncheckAll(button: NSButton) {
+        setAllVideos(inRotation: false)
     }
     
-    func outlineViewCheckAll(_ button:NSButton) {
-        setChecked(true);
+    func outlineViewCheckAll(button: NSButton) {
+        setAllVideos(inRotation: true)
     }
     
-    func setChecked(_ checked:Bool) {
+    func setAllVideos(inRotation: Bool) {
         guard let videos = videos else {
-            return;
+            return
         }
         
         for video in videos {
-            self.defaults.set(checked, forKey: video.id);
+            preferences.setVideo(videoID: video.id,
+                                 inRotation: inRotation,
+                                 synchronize: false)
         }
-        self.defaults.synchronize();
+        preferences.synchronize()
         
-        outlineView!.reloadData()
+        outlineView.reloadData()
     }
     
     @IBAction func differentAerialsOnEachDisplayCheckClick(_ button:NSButton?) {
         let state = differentAerialCheckbox.state;
+        let onState = (state == NSOnState);
         
-        let onState:Bool = state == NSOnState;
-
-        defaults.set(onState, forKey: "differentDisplays");
-        defaults.synchronize();
+        preferences.differentAerialsOnEachDisplay = onState
         
-        debugLog("set differentDisplays to \(onState)");
+        debugLog("set differentAerialsOnEachDisplay to \(onState)");
     }
     
+    // MARK: - Link
+    
     @IBAction func pageProjectClick(_ button:NSButton?) {
-        NSWorkspace.shared().open(URL(string: "http://github.com/JohnCoates/Aerial")!);
+        let workspace = NSWorkspace.shared()
+        let url = URL(string: "http://github.com/JohnCoates/Aerial")!
+        workspace.open(url)
     }
+    
+    // MARK: - Manifest
     
     func loadJSON() {
         if (PreferencesWindowController.loadedJSON) {
-            return;
+            return
         }
-        PreferencesWindowController.loadedJSON = true;
+        PreferencesWindowController.loadedJSON = true
         
-        ManifestLoader.instance.addCallback { (manifestVideos:[AerialVideo]) -> Void in
-            self.loadedManifestWithVideos(manifestVideos)
-       };
+        ManifestLoader.instance.addCallback { manifestVideos in
+            self.loaded(manifestVideos: manifestVideos)
+       }
     }
     
-    func loadedManifestWithVideos(_ manifestVideos:[AerialVideo]) {
+    func loaded(manifestVideos: [AerialVideo]) {
         var videos = [AerialVideo]();
-        var cities = [String:City]();
+        var cities = [String: City]();
         for video in manifestVideos {
             let name = video.name
             
             if cities.keys.contains(name) == false {
-                cities[name] = City(name: name);
+                cities[name] = City(name: name)
             }
         
-            let city:City = cities[name]!;
+            let city = cities[name]!
         
             let timeOfDay = video.timeOfDay
-            city.addVideoForTimeOfDay(timeOfDay, video: video);
+            city.addVideoForTimeOfDay(timeOfDay, video: video)
             videos.append(video)
         }
 
 
-        self.videos = videos;
+        self.videos = videos
         
         // sort cities by name
-        let unsortedCities = cities.values;
-        let sortedCities = unsortedCities.sorted { $0.name < $1.name };
+        let unsortedCities = cities.values
+        let sortedCities = unsortedCities.sorted { $0.name < $1.name }
 
         self.cities = sortedCities;
-        DispatchQueue.main.async(execute: { () -> Void in
-            self.outlineView?.reloadData();
-            self.outlineView?.expandItem(nil, expandChildren: true);
-        })
+        DispatchQueue.main.async {
+            self.outlineView.reloadData()
+            self.outlineView.expandItem(nil, expandChildren: true)
+        }
 
     }
 
     @IBAction func close(_ sender: AnyObject?) {
-        NSApp.mainWindow?.endSheet(window!);
+        NSApp.mainWindow?.endSheet(window!)
     }
-
     
     // MARK: - Outline View Delegate & Data Source
     
-    
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         if item == nil {
-            return cities.count;
+            return cities.count
         }
         
         switch item {
             case is TimeOfDay:
-                let timeOfDay = item as! TimeOfDay;
-                return timeOfDay.videos.count;
+                let timeOfDay = item as! TimeOfDay
+                return timeOfDay.videos.count
             case is City:
-                let city = item as! City;
+                let city = item as! City
                 
-                var count = 0;
+                var count = 0
                 
                 if city.night.videos.count > 0 {
-                    count += 1;
+                    count += 1
                 }
                 
                 if city.day.videos.count > 0 {
-                    count += 1;
+                    count += 1
                 }
                 
-                return count;
+                return count
             default:
-                return 0;
+                return 0
         }
         
     }
@@ -292,33 +297,33 @@ class City {
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
         switch item {
         case is TimeOfDay:
-            return true;
+            return true
         case is City: // cities
-            return true;
+            return true
         default:
-            return false;
+            return false
         }
     }
     
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         if item == nil {
-            return cities[index];
+            return cities[index]
         }
         
         switch item {
         case is City:
-            let city = item as! City;
+            let city = item as! City
             
             if (index == 0 && city.day.videos.count > 0) {
-                return city.day;
+                return city.day
             }
             else {
-                return city.night;
+                return city.night
             }
             
         case is TimeOfDay:
-            let timeOfDay = item as! TimeOfDay;
-            return timeOfDay.videos[index];
+            let timeOfDay = item as! TimeOfDay
+            return timeOfDay.videos[index]
         
         default:
             return false;
@@ -328,92 +333,99 @@ class City {
     func outlineView(_ outlineView: NSOutlineView, objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any? {
         switch item {
         case is City:
-            let city = item as! City;
-            return city.name;
+            let city = item as! City
+            return city.name
         case is TimeOfDay:
-            let timeOfDay = item as! TimeOfDay;
-            return timeOfDay.title;
+            let timeOfDay = item as! TimeOfDay
+            return timeOfDay.title
             
         default:
-            return "untitled";
+            return "untitled"
         }
     }
     
     func outlineView(_ outlineView: NSOutlineView, shouldEdit tableColumn: NSTableColumn?, item: Any) -> Bool {
-        return false;
+        return false
     }
     
     func outlineView(_ outlineView: NSOutlineView, dataCellFor tableColumn: NSTableColumn?, item: Any) -> NSCell? {
-        let row = outlineView.row(forItem: item);
-        return tableColumn!.dataCell(forRow: row) as? NSCell;
+        let row = outlineView.row(forItem: item)
+        return tableColumn!.dataCell(forRow: row) as? NSCell
     }
     
     func outlineView(_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool {
         switch item {
         case is TimeOfDay:
-            return true;
+            return true
         case is City:
-            return true;
+            return true
         default:
-            return false;
+            return false
         }
     }
 
-    func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
+    func outlineView(_ outlineView: NSOutlineView,
+                     viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         switch item {
         case is City:
-            
-            let city = item as! City;
-            let view = outlineView.make(withIdentifier: "HeaderCell", owner: self) as? NSTableCellView
-            
-            view?.textField?.stringValue = city.name;
+            let city = item as! City
+            let view = outlineView.make(withIdentifier: "HeaderCell",
+                                        owner: self) as! NSTableCellView
+            view.textField?.stringValue = city.name
             
             return view;
         case is TimeOfDay:
-            let view = outlineView.make(withIdentifier: "DataCell", owner: self) as? NSTableCellView
+            let timeOfDay = item as! TimeOfDay
+            let view = outlineView.make(withIdentifier: "DataCell",
+                                        owner: self) as! NSTableCellView
             
-            let timeOfDay = item as! TimeOfDay;
-            view?.textField?.stringValue = timeOfDay.title.capitalized;
-            let bundle = Bundle(for: PreferencesWindowController.self);
-            let imagePath = bundle.path(forResource: "icon-\(timeOfDay.title)", ofType:"pdf");
-            let image = NSImage(contentsOfFile: imagePath!);
-            view?.imageView?.image = image;
-            return view;
+            view.textField?.stringValue = timeOfDay.title.capitalized
+            
+            let bundle = Bundle(for: PreferencesWindowController.self)
+            if let imagePath = bundle.path(forResource: "icon-\(timeOfDay.title)",
+                ofType:"pdf") {
+                let image = NSImage(contentsOfFile: imagePath)
+                view.imageView?.image = image;
+            } else {
+                print("\(#file) failed to find time of day icon")
+            }
+            
+            return view
         case is AerialVideo:
-            let view = outlineView.make(withIdentifier: "CheckCell", owner: self) as? CheckCellView
+            let video = item as! AerialVideo
+            let view = outlineView.make(withIdentifier: "CheckCell",
+                                        owner: self) as! CheckCellView
             
-            
-            let video = item as! AerialVideo;
-            let number = video.arrayPosition + 1;
-            let numberFormatter = NumberFormatter();
+            // One based index
+            let number = video.arrayPosition + 1
+            let numberFormatter = NumberFormatter()
             
             numberFormatter.numberStyle = NumberFormatter.Style.spellOut;
-            let numberString = numberFormatter.string(from: number as NSNumber);
-            view?.textField?.stringValue = numberString!.capitalized;
-            
-            let settingValue = defaults.object(forKey: video.id);
-            
-            if let settingValue = settingValue as? NSNumber {
-                if settingValue.boolValue == false {
-                    view?.checkButton.state = NSOffState;
-                }
+            guard
+                let numberString = numberFormatter.string(from: number as NSNumber)
                 else {
-                    view?.checkButton.state = NSOnState;
-                }
-            }
-            else {
-                view?.checkButton.state = NSOnState;
+                    print("failed to create number with formatter")
+                    return nil
             }
             
+            view.textField?.stringValue = numberString.capitalized
             
-            view?.onCheck = { (checked:Bool) in
-                self.defaults.set(checked, forKey: video.id);
-                self.defaults.synchronize();
-            };
+            let isInRotation = preferences.videoIsInRotation(videoID: video.id)
             
-            return view;
+            if isInRotation {
+                view.checkButton.state = NSOnState
+            } else {
+                view.checkButton.state = NSOffState
+            }
+            
+            
+            view.onCheck = { checked in
+                self.preferences.setVideo(videoID: video.id,
+                                          inRotation: checked)
+            }
+            return view
         default:
-            return nil;
+            return nil
         }
     }
     
@@ -456,13 +468,14 @@ class City {
     }
     
     // MARK: - Caching
-    @IBOutlet var totalProgress:NSProgressIndicator!
-    @IBOutlet var currentProgress:NSProgressIndicator!
-    @IBOutlet var cacheStatusLabel:NSTextField!
-    var currentVideoDownload:VideoDownload?
-    var manifestVideos:[AerialVideo]?
     
-    @IBAction func cacheAllNow(_ button:NSButton) {
+    @IBOutlet var totalProgress: NSProgressIndicator!
+    @IBOutlet var currentProgress: NSProgressIndicator!
+    @IBOutlet var cacheStatusLabel: NSTextField!
+    var currentVideoDownload: VideoDownload?
+    var manifestVideos: [AerialVideo]?
+    
+    @IBAction func cacheAllNow(_ button: NSButton) {
        cacheStatusLabel.stringValue = "Loading JSON"
         currentProgress.maxValue = 1;
         
@@ -474,7 +487,6 @@ class City {
             })
         };
     }
-    
     
     func cacheNextVideo() {
         guard let manifestVideos = self.manifestVideos else {
@@ -492,7 +504,7 @@ class City {
             return;
         }
         
-        NSLog("unached: \(uncached)")
+        NSLog("uncached: \(uncached)")
         
         totalProgress.maxValue = Double(manifestVideos.count)
         totalProgress.doubleValue = Double(manifestVideos.count) - Double(uncached.count)
@@ -512,12 +524,11 @@ class City {
  
     // MARK: - Video Download Delegate
     
-    func videoDownload(_ videoDownload:VideoDownload , finished success:Bool, errorMessage:String?) {
-        
+    func videoDownload(_ videoDownload: VideoDownload,
+                       finished success: Bool, errorMessage:String?) {
         if let message = errorMessage {
             cacheStatusLabel.stringValue = message
-        }
-        else {
+        } else {
             cacheNextVideo()
         }
         

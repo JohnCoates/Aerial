@@ -14,7 +14,7 @@ typealias manifestLoadCallback = ([AerialVideo]) -> (Void);
 class ManifestLoader {
     static let instance:ManifestLoader = ManifestLoader();
     
-    let defaults:UserDefaults = ScreenSaverDefaults(forModuleWithName: "com.JohnCoates.Aerial")! as ScreenSaverDefaults
+    lazy var preferences = Preferences.sharedInstance
     var callbacks = [manifestLoadCallback]();
     var loadedManifest = [AerialVideo]();
     var playedVideos = [AerialVideo]();
@@ -31,17 +31,13 @@ class ManifestLoader {
     
     func randomVideo() -> AerialVideo? {
         
-        let shuffled = loadedManifest.shuffled();
-        
+        let shuffled = loadedManifest.shuffled()
         for video in shuffled {
-            // check if this video id has been disabled in preferences
-            let possible = defaults.object(forKey: video.id);
+            let inRotation = preferences.videoIsInRotation(videoID: video.id)
             
-            if let possible = possible as? NSNumber {
-                if possible.boolValue == false {
-                    debugLog("video is disabled: \(video)");
-                    continue;
-                }
+            if !inRotation {
+                debugLog("video is disabled: \(video)");
+                continue;
             }
             
             // check if we're in offline mode
@@ -60,7 +56,7 @@ class ManifestLoader {
     
     init() {
         // start loading right away!
-        let completionHandler = { (data:Data?, response:URLResponse?, error:Error?) -> Void in
+        let completionHandler = { (data: Data?, response:URLResponse?, error:Error?) -> Void in
             if let error = error {
                 NSLog("Aerial Error Loading Manifest: \(error)");
                 self.loadSavedManifest();
@@ -72,10 +68,7 @@ class ManifestLoader {
                 self.loadSavedManifest();
                 return;
             }
-            // save data
-            let defaults = self.defaults
-            defaults.set(data, forKey: "manifest");
-            defaults.synchronize()
+            self.preferences.manifest = data
             
             DispatchQueue.main.async(execute: { () -> Void in
                 self.readJSONFromData(data);
@@ -88,17 +81,17 @@ class ManifestLoader {
         // use ephemeral session so when we load json offline it fails and puts us in offline mode
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration)
-        let task = session.dataTask(with: url, completionHandler:completionHandler);
-        task.resume();
+        let task = session.dataTask(with: url, completionHandler:completionHandler)
+        task.resume()
     }
     
     func loadSavedManifest() {
-        guard let savedJSON = defaults.object(forKey: "manifest") as? Data else {
+        guard let savedJSON = preferences.manifest else {
             debugLog("Couldn't find saved manifest");
-            return;
+            return
         }
         
-        offlineMode = true;
+        offlineMode = true
         readJSONFromData(savedJSON)
     }
     
@@ -108,22 +101,26 @@ class ManifestLoader {
         do {
             let batches = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! Array<NSDictionary>;
             
-            for batch:NSDictionary in batches {
+            for batch: NSDictionary in batches {
                 let assets = batch["assets"] as! Array<NSDictionary>;
                 
                 for item in assets {
-                    let url = item["url"] as! String;
-                    let name = item["accessibilityLabel"] as! String;
-                    let timeOfDay = item["timeOfDay"] as! String;
-                    let id = item["id"] as! String;
-                    let type = item["type"] as! String;
+                    let url = item["url"] as! String
+                    let name = item["accessibilityLabel"] as! String
+                    let timeOfDay = item["timeOfDay"] as! String
+                    let id = item["id"] as! String
+                    let type = item["type"] as! String
                     
                     if (type != "video") {
                         continue;
                     }
                     
                     
-                    let video = AerialVideo(id: id, name: name, type: type, timeOfDay: timeOfDay, url: url);
+                    let video = AerialVideo(id: id,
+                                            name: name,
+                                            type: type,
+                                            timeOfDay: timeOfDay,
+                                            url: url)
                     
                     videos.append(video)
                     
@@ -131,11 +128,11 @@ class ManifestLoader {
                 }
             }
             
-            self.loadedManifest = videos;
+            self.loadedManifest = videos
         }
         catch {
-            NSLog("Aerial: Error retrieving content listing.");
-            return;
+            NSLog("Aerial: Error retrieving content listing.")
+            return
         }
     }
     

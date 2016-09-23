@@ -150,15 +150,15 @@ class VideoDownload : NSObject, NSURLConnectionDataDelegate {
     }
     
     func finishedDownload() {
-        guard let videoCachePath = VideoCache.cachePathForVideo(video) else {
-            NSLog("Aerial Error: Couldn't save video because couldn't get cache path")
+        guard let videoCachePath = VideoCache.cachePath(forVideo: video) else {
+            print("Aerial Error: Couldn't save video because couldn't get cache path\n")
             failedDownload("Couldn't get cache path")
             return;
         }
         
         guard let videoData = self.data else {
-            NSLog("Aerial error: video data missing!");
-            return;
+            print("Aerial error: video data missing!\n");
+            return
         }
         
         var success:Bool = true

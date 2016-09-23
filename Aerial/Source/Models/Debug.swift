@@ -8,9 +8,8 @@
 
 import Foundation
 
-
 func debugLog(_ message:String) {
     #if DEBUG
-        NSLog(message);
+        print("\(message)\n");
     #endif
 }
