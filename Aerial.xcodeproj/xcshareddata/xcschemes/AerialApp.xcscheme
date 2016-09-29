@@ -15,15 +15,15 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FA143CD51BDA3E880041A82B"
-               BuildableName = "Aerial App.app"
-               BlueprintName = "Aerial App"
+               BuildableName = "AerialApp.app"
+               BlueprintName = "AerialApp"
                ReferencedContainer = "container:Aerial.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
@@ -44,8 +44,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA143CD51BDA3E880041A82B"
-            BuildableName = "Aerial App.app"
-            BlueprintName = "Aerial App"
+            BuildableName = "AerialApp.app"
+            BlueprintName = "AerialApp"
             ReferencedContainer = "container:Aerial.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -67,8 +67,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA143CD51BDA3E880041A82B"
-            BuildableName = "Aerial App.app"
-            BlueprintName = "Aerial App"
+            BuildableName = "AerialApp.app"
+            BlueprintName = "AerialApp"
             ReferencedContainer = "container:Aerial.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -76,25 +76,10 @@
          <EnvironmentVariable
             key = "MALLOC_PERMIT_INSANE_REQUESTS"
             value = ""
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
       <AdditionalOptions>
-         <AdditionalOption
-            key = "DYLD_INSERT_LIBRARIES"
-            value = "/usr/lib/libgmalloc.dylib"
-            isEnabled = "YES">
-         </AdditionalOption>
-         <AdditionalOption
-            key = "NSZombieEnabled"
-            value = "YES"
-            isEnabled = "YES">
-         </AdditionalOption>
-         <AdditionalOption
-            key = "MallocScribble"
-            value = ""
-            isEnabled = "YES">
-         </AdditionalOption>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
@@ -108,8 +93,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA143CD51BDA3E880041A82B"
-            BuildableName = "Aerial App.app"
-            BlueprintName = "Aerial App"
+            BuildableName = "AerialApp.app"
+            BlueprintName = "AerialApp"
             ReferencedContainer = "container:Aerial.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
