@@ -4,6 +4,12 @@
 Aerial is a Mac screen saver based on the new Apple TV screen saver that displays the aerial movies Apple shot over New York, San Francisco, Hawaii, China, etc.
 
 Aerial is completely open source, so feel free to contribute to its development!
+[![Github All Releases](https://img.shields.io/github/downloads/johncoates/aerial/total.svg?maxAge=2592000)]()
+[![GitHub contributors](https://img.shields.io/github/contributors/johncoates/aerial.svg?maxAge=2592000)]()
+[![Build Status](https://travis-ci.org/JohnCoates/Aerial.svg?branch=master)](https://travis-ci.org/JohnCoates/Aerial)
+[![codebeat badge](https://codebeat.co/badges/cefd1672-5501-4b79-8d08-c2121cdbc9ed)](https://codebeat.co/projects/github-com-johncoates-aerial-e1c8873e-7a9f-4c74-9e50-0380add2478a)
+[![Code Climate](https://codeclimate.com/github/JohnCoates/Aerial/badges/gpa.svg)](https://codeclimate.com/github/JohnCoates/Aerial)
+[![codecov](https://codecov.io/gh/JohnCoates/Aerial/branch/master/graph/badge.svg)](https://codecov.io/gh/JohnCoates/Aerial)
 
 ###### Windows user? Try [cDima/Aerial](https://github.com/cDima/Aerial/)
 
@@ -14,14 +20,11 @@ Aerial is completely open source, so feel free to contribute to its development!
 
 ## Installation
 
-1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.1/Aerial.zip)
+1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.2beta5/Aerial.zip)
 2. Unzip the downloaded file.
 3. Open **Aerial.saver** and confirm installation.
 
 If Aerial.saver could not be opened, place Aerial.saver in ~/Library/Screen Savers
-
-## Caching Support & Offline Mode - Beta
-If you'd like the videos to be saved as they are viewed to minimize bandwidth concerns and enable offline mode, the 1.2 beta 5 has this feature. [Click here to download the latest release](https://github.com/JohnCoates/Aerial/releases/)
 
 ## Settings Aerial as Your Screen Saver
 
@@ -45,15 +48,6 @@ Aerial is written in Swift, which requires OS X Mavericks or above.
 
 ## Contribute
 I appreciate all pull requests. Caching hasn't been added yet.
-
-## Changelog
-
-- October 26th, 2015 - 1.1
-  - Added thumbnail.
-  - Added support for Mavericks.
-  - Removed unnecessary logging.
-  - Now shows error when installing on unsupported OS X version.
-- October 26th, 2015 - 1.0: First release.
 
 ## Brew Cask Support - Install Remotely
 If you're looking to install Aerial across many systems, remotely, or simply from terminal I recommend [Brew Cask](http://caskroom.io/).
