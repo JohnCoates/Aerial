@@ -27,7 +27,7 @@ Aerial is completely open source, so feel free to contribute to its development!
 
 If Aerial.saver could not be opened, place Aerial.saver in ~/Library/Screen Savers
 
-## Settings Aerial as Your Screen Saver
+## Setting Aerial as Your Screen Saver
 
 1. Open System Preferences -> Desktop & Screen Saver -> Screen Saver
 2. Choose Aerial and click on Screen Saver Options to select your settings.
