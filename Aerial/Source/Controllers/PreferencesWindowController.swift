@@ -173,7 +173,39 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         let event = NSApp.currentEvent
         NSMenu.popUpContextMenu(menu, with: event!, for: button)
     }
-    
+
+	@IBAction func outlineViewPlaybackSettingsClick(_ sender: NSButton) {
+		let menu = NSMenu()
+
+		menu.insertItem(withTitle: "0.5x Speed\(preferences.playbackSpeed == 0.5 ? "  ✔" : "")",
+			action: #selector(PreferencesWindowController.setPlaybackSpeedPreferenceHalfSpeed(button:)),
+			keyEquivalent: "", at: 0)
+
+		menu.insertItem(withTitle: "0.75x Speed\(preferences.playbackSpeed == 0.75 ? "  ✔" : "")",
+			action: #selector(PreferencesWindowController.setPlaybackSpeedPreferenceThreeQuarterSpeed(button:)),
+			keyEquivalent: "", at: 1)
+
+		menu.insertItem(withTitle: "1.0x Speed\(preferences.playbackSpeed == 1.0 ? "  ✔" : "")",
+			action: #selector(PreferencesWindowController.setPlaybackSpeedPreferenceNormalSpeed(button:)),
+			keyEquivalent: "", at: 2)
+
+		menu.insertItem(withTitle: "1.25x Speed\(preferences.playbackSpeed == 1.25 ? "  ✔" : "")",
+			action: #selector(PreferencesWindowController.setPlaybackSpeedPreferenceOneAndAQuarterSpeed(button:)),
+			keyEquivalent: "", at: 3)
+
+		menu.insertItem(withTitle: "1.5x Speed\(preferences.playbackSpeed == 1.5 ? "  ✔" : "")",
+			action: #selector(PreferencesWindowController.setPlaybackSpeedPreferenceOneAndAHalfSpeed(button:)),
+			keyEquivalent: "", at: 4)
+
+		menu.insertItem(withTitle: "2.0x Speed\(preferences.playbackSpeed == 2.0 ? "  ✔" : "")",
+			action: #selector(PreferencesWindowController.setPlaybackSpeedPreferenceDoubleSpeed(button:)),
+			keyEquivalent: "", at: 5)
+
+		let event = NSApp.currentEvent
+		NSMenu.popUpContextMenu(menu, with: event!, for: sender)
+	}
+
+
     func outlineViewUncheckAll(button: NSButton) {
         setAllVideos(inRotation: false)
     }
@@ -181,6 +213,42 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     func outlineViewCheckAll(button: NSButton) {
         setAllVideos(inRotation: true)
     }
+
+	func setPlaybackSpeedPreferenceHalfSpeed(button: NSButton) {
+		player.rate = 0.5
+		preferences.playbackSpeed = 0.5
+		preferences.synchronize()
+	}
+
+	func setPlaybackSpeedPreferenceThreeQuarterSpeed(button: NSButton) {
+		player.rate = 0.75
+		preferences.playbackSpeed = 0.75
+		preferences.synchronize()
+	}
+
+	func setPlaybackSpeedPreferenceNormalSpeed(button: NSButton) {
+		player.rate = 1.0
+		preferences.playbackSpeed = 1.0
+		preferences.synchronize()
+	}
+
+	func setPlaybackSpeedPreferenceOneAndAQuarterSpeed(button: NSButton) {
+		player.rate = 1.25
+		preferences.playbackSpeed = 1.25
+		preferences.synchronize()
+	}
+
+	func setPlaybackSpeedPreferenceOneAndAHalfSpeed(button: NSButton) {
+		player.rate = 1.5
+		preferences.playbackSpeed = 1.5
+		preferences.synchronize()
+	}
+
+	func setPlaybackSpeedPreferenceDoubleSpeed(button: NSButton) {
+		player.rate = 2.0
+		preferences.playbackSpeed = 2.0
+		preferences.synchronize()
+	}
     
     func setAllVideos(inRotation: Bool) {
         guard let videos = videos else {
@@ -441,7 +509,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             let item = AVPlayerItem(asset: asset)
             
             player.replaceCurrentItem(with: item)
-            player.play()
+			player.rate = preferences.playbackSpeed
             
             return true
         case is TimeOfDay:

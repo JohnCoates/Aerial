@@ -152,11 +152,11 @@
                                                         <nil key="backgroundColor"/>
                                                     </clipView>
                                                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Ano-CK-gsw">
-                                                        <rect key="frame" x="1" y="-15" width="0.0" height="16"/>
+                                                        <rect key="frame" x="-7" y="-14" width="0.0" height="15"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="sIg-0t-YWZ">
-                                                        <rect key="frame" x="-15" y="1" width="16" height="0.0"/>
+                                                        <rect key="frame" x="-14" y="-7" width="15" height="0.0"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
@@ -182,6 +182,14 @@
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                </button>
+                                                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jch-k4-78f">
+                                                    <rect key="frame" x="44" y="-2" width="44" height="33"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="speedometer" imagePosition="only" alignment="center" state="on" inset="2" id="e4W-Vi-DGV">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
                                                     <connections>
                                                         <action selector="differentAerialsOnEachDisplayCheckClick:" target="-2" id="WfC-A5-ikB"/>
                                                     </connections>
@@ -201,7 +209,7 @@
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Cache" identifier="2" id="kp1-xv-zNG">
-                                        <view key="view" ambiguous="YES" id="93q-v8-yxM">
+                                        <view key="view" id="93q-v8-yxM">
                                             <rect key="frame" x="10" y="33" width="607" height="286"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -318,5 +326,6 @@
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="speedometer" width="16" height="11"/>
     </resources>
 </document>
