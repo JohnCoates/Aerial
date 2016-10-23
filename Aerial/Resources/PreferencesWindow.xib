@@ -182,6 +182,9 @@
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="differentAerialsOnEachDisplayCheckClick:" target="-2" id="KUU-Fb-m92"/>
+                                                    </connections>
                                                 </button>
                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jch-k4-78f">
                                                     <rect key="frame" x="44" y="-2" width="44" height="33"/>
@@ -191,7 +194,7 @@
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <action selector="differentAerialsOnEachDisplayCheckClick:" target="-2" id="WfC-A5-ikB"/>
+                                                        <action selector="outlineViewPlaybackSettingsClick:" target="-2" id="wCa-Hv-cAz"/>
                                                     </connections>
                                                 </button>
                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XSQ-4P-bI2">
