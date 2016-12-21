@@ -48,6 +48,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var outlineView: NSOutlineView!
     @IBOutlet var playerView: AVPlayerView!
     @IBOutlet var differentAerialCheckbox: NSButton!
+    @IBOutlet var showNameLabelCheckbox: NSButton!
     @IBOutlet var projectPageLink: NSButton!
     @IBOutlet var cacheLocation: NSPathControl!
     @IBOutlet var cacheAerialsAsTheyPlayCheckbox: NSButton!
@@ -93,7 +94,11 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         if preferences.differentAerialsOnEachDisplay {
             differentAerialCheckbox.state = NSOnState
         }
-        
+
+        if preferences.shouldShowNameLabel {
+            showNameLabelCheckbox.state = NSOnState
+        }
+
         if !preferences.cacheAerials {
             cacheAerialsAsTheyPlayCheckbox.state = NSOffState
         }
@@ -128,7 +133,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         let onState = (button.state == NSOnState)
         preferences.cacheAerials = onState
     }
-    
+
     @IBAction func userSetCacheLocation(_ button: NSButton?) {
         let openPanel = NSOpenPanel()
         
@@ -204,6 +209,15 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         preferences.differentAerialsOnEachDisplay = onState
         
         debugLog("set differentAerialsOnEachDisplay to \(onState)")
+    }
+
+    @IBAction func showNameLabel(_ button: NSButton!) {
+        let state = showNameLabelCheckbox.state
+        let onState = (state == NSOnState)
+
+        preferences.shouldShowNameLabel = onState
+
+        debugLog("set shouldShowNameLabel to \(onState)")
     }
     
     // MARK: - Link
