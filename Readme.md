@@ -57,8 +57,8 @@ Issue the following terminal command: `brew cask install aerial`
 
 ## Troubleshooting
 
-- Black screen / cannot stream: If you run a reverse firewall, such as Little Snitch or Hands Off!, be sure the application 'ScreenSaverEngine.app' is not being blocked access to \*.phobos.apple.com.
-- Black preview / cannot pre-download: If you run a reverse firewall, such as Little Snitch or Hands Off!, be sure the application 'System Preferences.app' is not being blocked access to \*.phobos.apple.com.
+- Black screen / cannot stream: If you run a reverse firewall, such as Little Snitch or Hands Off!, be sure the application 'ScreenSaverEngine.app' is not being blocked access to *.phobos.apple.com.
+- Black preview / cannot pre-download: If you run a reverse firewall, such as Little Snitch or Hands Off!, be sure the application 'System Preferences.app' is not being blocked access to *.phobos.apple.com.
 
 ## License
 [MIT License](https://raw.githubusercontent.com/JohnCoates/Aerial/master/LICENSE)
