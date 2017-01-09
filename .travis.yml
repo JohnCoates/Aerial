@@ -1,0 +1,6 @@
+language: objective-c
+osx_image: xcode8
+after_success:
+- bash <(curl -s https://raw.githubusercontent.com/codecov/codecov-bash/04845559fe1caefe990968cc9e3851573012b756/codecov) -J 'AerialApp'
+script:
+- xcodebuild -scheme 'AerialApp' -enableCodeCoverage YES clean test

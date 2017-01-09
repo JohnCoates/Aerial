@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FA143CD51BDA3E880041A82B"
-               BuildableName = "Aerial Test.app"
-               BlueprintName = "Aerial Test"
+               BuildableName = "AerialApp.app"
+               BlueprintName = "AerialApp"
                ReferencedContainer = "container:Aerial.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,15 +26,26 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FA71996D1D94EC5A00FBC99B"
+               BuildableName = "Aerial Tests.xctest"
+               BlueprintName = "Aerial Tests"
+               ReferencedContainer = "container:Aerial.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA143CD51BDA3E880041A82B"
-            BuildableName = "Aerial Test.app"
-            BlueprintName = "Aerial Test"
+            BuildableName = "AerialApp.app"
+            BlueprintName = "AerialApp"
             ReferencedContainer = "container:Aerial.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,11 +67,18 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA143CD51BDA3E880041A82B"
-            BuildableName = "Aerial Test.app"
-            BlueprintName = "Aerial Test"
+            BuildableName = "AerialApp.app"
+            BlueprintName = "AerialApp"
             ReferencedContainer = "container:Aerial.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "MALLOC_PERMIT_INSANE_REQUESTS"
+            value = ""
+            isEnabled = "NO">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -75,8 +93,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA143CD51BDA3E880041A82B"
-            BuildableName = "Aerial Test.app"
-            BlueprintName = "Aerial Test"
+            BuildableName = "AerialApp.app"
+            BlueprintName = "AerialApp"
             ReferencedContainer = "container:Aerial.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -11,43 +11,41 @@ import ScreenSaver
 import AVFoundation
 import AVKit
 
-
-@objc(AerialView) class AerialView : ScreenSaverView {
-//    var playerView: AVPlayerView!
-    var playerLayer:AVPlayerLayer!
-    var preferencesController:PreferencesWindowController?
-    static var players:[AVPlayer] = [AVPlayer]()
-    static var previewPlayer:AVPlayer?
-    static var previewView:AerialView?
+@objc(AerialView)
+class AerialView: ScreenSaverView {
+    var playerLayer: AVPlayerLayer!
+    var preferencesController: PreferencesWindowController?
+    static var players: [AVPlayer] = [AVPlayer]()
+    static var previewPlayer: AVPlayer?
+    static var previewView: AerialView?
     
-    var player:AVPlayer?
-    static let defaults:NSUserDefaults = ScreenSaverDefaults(forModuleWithName: "com.JohnCoates.Aerial")! as ScreenSaverDefaults
+    var player: AVPlayer?
     
-    static var sharingPlayers:Bool {
-        defaults.synchronize();
-        return !defaults.boolForKey("differentDisplays");
+    static var sharingPlayers: Bool {
+        let preferences = Preferences.sharedInstance
+        return !preferences.differentAerialsOnEachDisplay
     }
     
-    static var sharedViews:[AerialView] = []
+    static var sharedViews: [AerialView] = []
     
     // MARK: - Shared Player
     
-    static var singlePlayerAlreadySetup:Bool = false;
+    static var singlePlayerAlreadySetup: Bool = false
     class var sharedPlayer: AVPlayer {
         struct Static {
-            static let instance: AVPlayer = AVPlayer();
-            static var _player:AVPlayer?;
-            static var player:AVPlayer {
+            static let instance: AVPlayer = AVPlayer()
+            static var _player: AVPlayer?
+            static var player: AVPlayer {
                 if let activePlayer = _player {
-                    return activePlayer;
+                    return activePlayer
                 }
 
-                _player = AVPlayer();
-                return _player!;
+                _player = AVPlayer()
+                return _player!
             }
         }
         
-        return Static.player;
+        return Static.player
     }
     
     // MARK: - Init / Setup
@@ -65,154 +63,144 @@ import AVKit
     }
     
     deinit {
-        debugLog("deinit AerialView");
-        NSNotificationCenter.defaultCenter().removeObserver(self);
+        debugLog("deinit AerialView")
+        NotificationCenter.default.removeObserver(self)
         
         // set player item to nil if not preview player
         if player != AerialView.previewPlayer {
-            player?.rate = 0;
-            player?.replaceCurrentItemWithPlayerItem(nil);
+            player?.rate = 0
+            player?.replaceCurrentItem(with: nil)
         }
         
         guard let player = self.player else {
-            return;
+            return
         }
         
         // Remove from player index
         
-        let indexMaybe = AerialView.players.indexOf(player)
+        let indexMaybe = AerialView.players.index(of: player)
         
         guard let index = indexMaybe else {
-            return;
+            return
         }
         
-        AerialView.players.removeAtIndex(index);
+        AerialView.players.remove(at: index)
     }
     
-    
-    func setupPlayerLayer(withPlayer player:AVPlayer) {
+    func setupPlayerLayer(withPlayer player: AVPlayer) {
         self.layer = CALayer()
         guard let layer = self.layer else {
-            NSLog("Aerial Errror: Couldn't create CALayer");
-            return;
+            NSLog("Aerial Errror: Couldn't create CALayer")
+            return
         }
         self.wantsLayer = true
-        layer.backgroundColor = NSColor.blackColor().CGColor
-        layer.delegate = self;
-        layer.needsDisplayOnBoundsChange = true;
+        layer.backgroundColor = NSColor.black.cgColor
+        layer.needsDisplayOnBoundsChange = true
         layer.frame = self.bounds
 //        layer.backgroundColor = NSColor.greenColor().CGColor
         
-        debugLog("setting up player layer with frame: \(self.bounds) / \(self.frame)");
+        debugLog("setting up player layer with frame: \(self.bounds) / \(self.frame)")
         
-        playerLayer = AVPlayerLayer(player: player);
+        playerLayer = AVPlayerLayer(player: player)
         if #available(OSX 10.10, *) {
             playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-        };
-        playerLayer.autoresizingMask = [CAAutoresizingMask.LayerWidthSizable, CAAutoresizingMask.LayerHeightSizable]
-        playerLayer.frame = layer.bounds;
-        layer.addSublayer(playerLayer);
+        }
+        playerLayer.autoresizingMask = [CAAutoresizingMask.layerWidthSizable, CAAutoresizingMask.layerHeightSizable]
+        playerLayer.frame = layer.bounds
+        layer.addSublayer(playerLayer)
     }
     
     func setup() {
+        var localPlayer: AVPlayer?
         
-        var localPlayer:AVPlayer?
+        let notPreview = !isPreview
         
-        if (!self.preview) {
+        if notPreview {
             // check if we should share preview's player
-            if (AerialView.players.count == 0) {
-                if AerialView.previewPlayer != nil {
-                    localPlayer = AerialView.previewPlayer;
-                }
+            let noPlayers = (AerialView.players.count == 0)
+            let previewPlayerExists = (AerialView.previewPlayer != nil)
+            if noPlayers && previewPlayerExists {
+                localPlayer = AerialView.previewPlayer
             }
-        }
-        else {
-            AerialView.previewView = self;
+        } else {
+            AerialView.previewView = self
         }
         
         if AerialView.sharingPlayers {
-            AerialView.sharedViews.append(self);
+            AerialView.sharedViews.append(self)
         }
         
         if localPlayer == nil {
             if AerialView.sharingPlayers {
                 if AerialView.previewPlayer != nil {
                     localPlayer = AerialView.previewPlayer
+                } else {
+                    localPlayer = AerialView.sharedPlayer
                 }
-                else {
-                    localPlayer = AerialView.sharedPlayer;
-                }
-            }
-            else {
-                localPlayer = AVPlayer();
+            } else {
+                localPlayer = AVPlayer()
             }
         }
         
         guard let player = localPlayer else {
-            NSLog("Aerial Error: Couldn't create AVPlayer!");
-            return;
+            NSLog("Aerial Error: Couldn't create AVPlayer!")
+            return
         }
         
-        self.player = player;
+        self.player = player
         
-        if (self.preview) {
-            AerialView.previewPlayer = player;
-        }
-        else if (AerialView.sharingPlayers == false) {
+        if self.isPreview {
+            AerialView.previewPlayer = player
+        } else if !AerialView.sharingPlayers {
             // add to player list
-            AerialView.players.append(player);
+            AerialView.players.append(player)
         }
         
-        setupPlayerLayer(withPlayer: player);
+        setupPlayerLayer(withPlayer: player)
         
-        
-        if (AerialView.sharingPlayers == true && AerialView.singlePlayerAlreadySetup) {
+        if AerialView.sharingPlayers && AerialView.singlePlayerAlreadySetup {
             self.playerLayer.player = AerialView.sharedViews[0].player
-            return;
+            return
         }
         
-        AerialView.singlePlayerAlreadySetup = true;
+        AerialView.singlePlayerAlreadySetup = true
         
-        
-        ManifestLoader.instance.addCallback { (videos:[AerialVideo]) -> Void in
-            self.playNextVideo();
-        };
+        ManifestLoader.instance.addCallback { videos in
+            self.playNextVideo()
+        }
     }
-    
     
     // MARK: - AVPlayerItem Notifications
     
-    func playerItemFailedtoPlayToEnd(aNotification: NSNotification) {
-        NSLog("AVPlayerItemFailedToPlayToEndTimeNotification \(aNotification)");
+    func playerItemFailedtoPlayToEnd(_ aNotification: Notification) {
+        NSLog("AVPlayerItemFailedToPlayToEndTimeNotification \(aNotification)")
         
-        playNextVideo();
+        playNextVideo()
     }
     
-    func playerItemNewErrorLogEntryNotification(aNotification: NSNotification) {
-        NSLog("AVPlayerItemNewErrorLogEntryNotification \(aNotification)");
+    func playerItemNewErrorLogEntryNotification(_ aNotification: Notification) {
+        NSLog("AVPlayerItemNewErrorLogEntryNotification \(aNotification)")
     }
     
-    func playerItemPlaybackStalledNotification(aNotification: NSNotification) {
-        NSLog("AVPlayerItemPlaybackStalledNotification \(aNotification)");
+    func playerItemPlaybackStalledNotification(_ aNotification: Notification) {
+        NSLog("AVPlayerItemPlaybackStalledNotification \(aNotification)")
     }
     
-    func playerItemDidReachEnd(aNotification: NSNotification) {
-        debugLog("played did reach end");
-        debugLog("notification: \(aNotification)");
+    func playerItemDidReachEnd(_ aNotification: Notification) {
+        debugLog("played did reach end")
+        debugLog("notification: \(aNotification)")
         playNextVideo()
 
-        debugLog("playing next video for player \(player)");
-        
-
+        debugLog("playing next video for player \(player)")
     }
     
     // MARK: - Playing Videos
     
     func playNextVideo() {
-        let notificationCenter = NSNotificationCenter.defaultCenter()
+        let notificationCenter = NotificationCenter.default
         
         // remove old entries
-        notificationCenter.removeObserver(self);
+        notificationCenter.removeObserver(self)
         
         let player = AVPlayer()
         // play another video
@@ -220,56 +208,68 @@ import AVKit
         self.player = player
         self.playerLayer.player = self.player
         
-        if self.preview {
+        if self.isPreview {
             AerialView.previewPlayer = player
         }
         
-        debugLog("Setting player for all player layers in \(AerialView.sharedViews)");
+        debugLog("Setting player for all player layers in \(AerialView.sharedViews)")
         for view in AerialView.sharedViews {
             view.playerLayer.player = player
         }
         
-        if (oldPlayer == AerialView.previewPlayer) {
+        if oldPlayer == AerialView.previewPlayer {
             AerialView.previewView?.playerLayer.player = self.player
         }
         
-        let randomVideo = ManifestLoader.instance.randomVideo();
+        let randomVideo = ManifestLoader.instance.randomVideo()
         
         guard let video = randomVideo else {
-            NSLog("Aerial: Error grabbing random video!");
-            return;
+            NSLog("Aerial: Error grabbing random video!")
+            return
         }
-        let videoURL = video.url;
+        let videoURL = video.url
         
         let asset = CachedOrCachingAsset(videoURL)
-//        let asset = AVAsset(URL: videoURL);
+//        let asset = AVAsset(URL: videoURL)
         
-        let item = AVPlayerItem(asset: asset);
+        let item = AVPlayerItem(asset: asset)
         
-        player.replaceCurrentItemWithPlayerItem(item);
+        player.replaceCurrentItem(with: item)
         
-        debugLog("playing video: \(video.url)");
+        debugLog("playing video: \(video.url)")
         if player.rate == 0 {
-            player.play();
+            player.play()
         }
         
         guard let currentItem = player.currentItem else {
-            NSLog("Aerial Error: No current item!");
-            return;
+            NSLog("Aerial Error: No current item!")
+            return
         }
         
-        debugLog("observing current item \(currentItem)");
-        notificationCenter.addObserver(self, selector: "playerItemDidReachEnd:", name: AVPlayerItemDidPlayToEndTimeNotification, object: currentItem);
-        notificationCenter.addObserver(self, selector: "playerItemNewErrorLogEntryNotification:", name: AVPlayerItemNewErrorLogEntryNotification, object: currentItem);
-        notificationCenter.addObserver(self, selector: "playerItemFailedtoPlayToEnd:", name: AVPlayerItemFailedToPlayToEndTimeNotification, object: currentItem);
-        notificationCenter.addObserver(self, selector: "playerItemPlaybackStalledNotification:", name: AVPlayerItemPlaybackStalledNotification, object: currentItem);
-        player.actionAtItemEnd = AVPlayerActionAtItemEnd.None;
+        debugLog("observing current item \(currentItem)")
+        notificationCenter.addObserver(self,
+                                       selector: #selector(AerialView.playerItemDidReachEnd(_:)),
+                                       name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
+                                       object: currentItem)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(AerialView.playerItemNewErrorLogEntryNotification(_:)),
+                                       name: NSNotification.Name.AVPlayerItemNewErrorLogEntry,
+                                       object: currentItem)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(AerialView.playerItemFailedtoPlayToEnd(_:)),
+                                       name: NSNotification.Name.AVPlayerItemFailedToPlayToEndTime,
+                                       object: currentItem)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(AerialView.playerItemPlaybackStalledNotification(_:)),
+                                       name: NSNotification.Name.AVPlayerItemPlaybackStalled,
+                                       object: currentItem)
+        player.actionAtItemEnd = AVPlayerActionAtItemEnd.none
     }
     
     // MARK: - Preferences
     
     override func hasConfigureSheet() -> Bool {
-        return true;
+        return true
     }
     
     override func configureSheet() -> NSWindow? {
@@ -277,9 +277,9 @@ import AVKit
             return controller.window
         }
         
-        let controller = PreferencesWindowController(windowNibName: "PreferencesWindow");
+        let controller = PreferencesWindowController(windowNibName: "PreferencesWindow")
     
-        preferencesController = controller;
-        return controller.window;
+        preferencesController = controller
+        return controller.window
     }
 }

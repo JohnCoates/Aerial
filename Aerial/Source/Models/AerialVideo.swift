@@ -8,27 +8,28 @@
 
 import Foundation
 
-
 class AerialVideo {
-    let id:String;
-    let name:String;
-    let type:String;
-    let timeOfDay:String;
-    let url:NSURL;
-    var arrayPosition:Int = 1;
+    let id: String
+    let name: String
+    let type: String
+    let timeOfDay: String
+    let url: URL
+    var arrayPosition = 1
+    var contentLength = 0
+    var contentLengthChecked = false
     
-    var isAvailableOffline:Bool {
+    var isAvailableOffline: Bool {
         get {
-            return VideoCache.isVideoAvailableOffline(self);
+            return VideoCache.isAvailableOffline(video: self)
         }
     }
     
-    
-    init(id:String, name:String, type:String, timeOfDay:String, url:String) {
-        self.id = id;
-        self.name = name;
-        self.type = type;
-        self.timeOfDay = timeOfDay;
-        self.url = NSURL(string:url)!;
+    init(id: String, name: String, type: String,
+         timeOfDay: String, url: String) {
+        self.id = id
+        self.name = name
+        self.type = type
+        self.timeOfDay = timeOfDay
+        self.url = URL(string: url)!
     }
 }

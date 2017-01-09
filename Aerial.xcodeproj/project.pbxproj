@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		FA143CE61BDA3EEF0041A82B /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA143CE51BDA3EEF0041A82B /* AVKit.framework */; };
+		FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */; };
+		FA36BD401BE57F8E00D5E03B /* VideoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */; };
+		FA6F81DC1D939455007975FE /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F81DB1D939455007975FE /* Preferences.swift */; };
+		FA6F81DD1D939455007975FE /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F81DB1D939455007975FE /* Preferences.swift */; };
+		FA7199711D94EC5A00FBC99B /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7199701D94EC5A00FBC99B /* PreferencesTests.swift */; };
 		FAB22A7E1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB22A7D1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift */; };
 		FAB22A7F1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB22A7D1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift */; };
 		FAC36F481BE1756D007F2A20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAC36F321BE1756D007F2A20 /* Assets.xcassets */; };
@@ -41,11 +46,26 @@
 		FAF450251BE2D2FD00C1F98A /* VideoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF450231BE2D2FD00C1F98A /* VideoCache.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FA7199731D94EC5A00FBC99B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FACAF19C1BD9FC6000E539DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA143CD51BDA3E880041A82B;
+			remoteInfo = "Aerial App";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		FA143CD61BDA3E880041A82B /* Aerial Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aerial Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA143CD61BDA3E880041A82B /* AerialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA143CE51BDA3EEF0041A82B /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
-		FAB22A7D1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetLoaderDelegate.swift; sourceTree = "<group>"; };
-		FAC36F301BE1756D007F2A20 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = VideoDownload.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		FA6F81DB1D939455007975FE /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		FA71996E1D94EC5A00FBC99B /* Aerial Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aerial Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA7199701D94EC5A00FBC99B /* PreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
+		FA7199721D94EC5A00FBC99B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAB22A7D1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AssetLoaderDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		FAC36F301BE1756D007F2A20 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		FAC36F321BE1756D007F2A20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAC36F341BE1756D007F2A20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		FAC36F351BE1756D007F2A20 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,16 +74,16 @@
 		FAC36F391BE1756D007F2A20 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAC36F3A1BE1756D007F2A20 /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
 		FAC36F3B1BE1756D007F2A20 /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail.png; sourceTree = "<group>"; };
-		FAC36F3E1BE1756D007F2A20 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
-		FAC36F401BE1756D007F2A20 /* AerialVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AerialVideo.swift; sourceTree = "<group>"; };
-		FAC36F431BE1756D007F2A20 /* AerialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AerialView.swift; sourceTree = "<group>"; };
-		FAC36F441BE1756D007F2A20 /* CheckCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckCellView.swift; sourceTree = "<group>"; };
+		FAC36F3E1BE1756D007F2A20 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesWindowController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		FAC36F401BE1756D007F2A20 /* AerialVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AerialVideo.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		FAC36F431BE1756D007F2A20 /* AerialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AerialView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		FAC36F441BE1756D007F2A20 /* CheckCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CheckCellView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		FAC36F631BE1772F007F2A20 /* CollectionType+Shuffling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionType+Shuffling.swift"; sourceTree = "<group>"; };
-		FAC36F661BE1778C007F2A20 /* ManifestLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManifestLoader.swift; sourceTree = "<group>"; };
-		FAC36F691BE1780B007F2A20 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
+		FAC36F661BE1778C007F2A20 /* ManifestLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ManifestLoader.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		FAC36F691BE1780B007F2A20 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Debug.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		FACAF1A51BD9FC6000E539DC /* Aerial.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Aerial.saver; sourceTree = BUILT_PRODUCTS_DIR; };
-		FAF450201BE2B45D00C1F98A /* VideoLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoLoader.swift; sourceTree = "<group>"; };
-		FAF450231BE2D2FD00C1F98A /* VideoCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCache.swift; sourceTree = "<group>"; };
+		FAF450201BE2B45D00C1F98A /* VideoLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = VideoLoader.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		FAF450231BE2D2FD00C1F98A /* VideoCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = VideoCache.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +92,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA143CE61BDA3EEF0041A82B /* AVKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA71996B1D94EC5A00FBC99B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +118,22 @@
 				FA143CE51BDA3EEF0041A82B /* AVKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA6F81DA1D935F22007975FE /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		FA71996F1D94EC5A00FBC99B /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				FA7199701D94EC5A00FBC99B /* PreferencesTests.swift */,
+				FA7199721D94EC5A00FBC99B /* Info.plist */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		FAC36F2F1BE1756D007F2A20 /* App */ = {
@@ -129,6 +172,7 @@
 		FAC36F3C1BE1756D007F2A20 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				FA6F81DA1D935F22007975FE /* Constants */,
 				FAC36F3D1BE1756D007F2A20 /* Controllers */,
 				FAC36F3F1BE1756D007F2A20 /* Models */,
 				FAC36F421BE1756D007F2A20 /* Views */,
@@ -141,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				FAC36F3E1BE1756D007F2A20 /* PreferencesWindowController.swift */,
+				FA6F81DB1D939455007975FE /* Preferences.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -163,6 +208,7 @@
 				FAB22A7D1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift */,
 				FAF450201BE2B45D00C1F98A /* VideoLoader.swift */,
 				FAF450231BE2D2FD00C1F98A /* VideoCache.swift */,
+				FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -190,6 +236,7 @@
 				FAC36F2F1BE1756D007F2A20 /* App */,
 				FAC36F361BE1756D007F2A20 /* Resources */,
 				FAC36F3C1BE1756D007F2A20 /* Source */,
+				FA71996F1D94EC5A00FBC99B /* Tests */,
 				FA2D7AA01BDD849E009EA54C /* Frameworks */,
 				FACAF1A61BD9FC6000E539DC /* Products */,
 			);
@@ -199,7 +246,8 @@
 			isa = PBXGroup;
 			children = (
 				FACAF1A51BD9FC6000E539DC /* Aerial.saver */,
-				FA143CD61BDA3E880041A82B /* Aerial Test.app */,
+				FA143CD61BDA3E880041A82B /* AerialApp.app */,
+				FA71996E1D94EC5A00FBC99B /* Aerial Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -217,10 +265,11 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		FA143CD51BDA3E880041A82B /* Aerial Test */ = {
+		FA143CD51BDA3E880041A82B /* AerialApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA143CE01BDA3E880041A82B /* Build configuration list for PBXNativeTarget "Aerial Test" */;
+			buildConfigurationList = FA143CE01BDA3E880041A82B /* Build configuration list for PBXNativeTarget "AerialApp" */;
 			buildPhases = (
+				FA74B8481D94DCE0004FE056 /* ShellScript */,
 				FA143CD21BDA3E880041A82B /* Sources */,
 				FA143CD31BDA3E880041A82B /* Frameworks */,
 				FA143CD41BDA3E880041A82B /* Resources */,
@@ -229,10 +278,28 @@
 			);
 			dependencies = (
 			);
-			name = "Aerial Test";
+			name = AerialApp;
 			productName = "Aerial Test";
-			productReference = FA143CD61BDA3E880041A82B /* Aerial Test.app */;
+			productReference = FA143CD61BDA3E880041A82B /* AerialApp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		FA71996D1D94EC5A00FBC99B /* Aerial Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA7199751D94EC5A00FBC99B /* Build configuration list for PBXNativeTarget "Aerial Tests" */;
+			buildPhases = (
+				FA71996A1D94EC5A00FBC99B /* Sources */,
+				FA71996B1D94EC5A00FBC99B /* Frameworks */,
+				FA71996C1D94EC5A00FBC99B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA7199741D94EC5A00FBC99B /* PBXTargetDependency */,
+			);
+			name = "Aerial Tests";
+			productName = "Aerial Tests";
+			productReference = FA71996E1D94EC5A00FBC99B /* Aerial Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		FACAF1A41BD9FC6000E539DC /* Aerial */ = {
 			isa = PBXNativeTarget;
@@ -258,15 +325,22 @@
 		FACAF19C1BD9FC6000E539DC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "John Coates";
 				TargetAttributes = {
 					FA143CD51BDA3E880041A82B = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
+					};
+					FA71996D1D94EC5A00FBC99B = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = FA143CD51BDA3E880041A82B;
 					};
 					FACAF1A41BD9FC6000E539DC = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -284,7 +358,8 @@
 			projectRoot = "";
 			targets = (
 				FACAF1A41BD9FC6000E539DC /* Aerial */,
-				FA143CD51BDA3E880041A82B /* Aerial Test */,
+				FA143CD51BDA3E880041A82B /* AerialApp */,
+				FA71996D1D94EC5A00FBC99B /* Aerial Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -303,6 +378,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA71996C1D94EC5A00FBC99B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FACAF1A31BD9FC6000E539DC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -315,6 +397,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FA74B8481D94DCE0004FE056 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FA143CD21BDA3E880041A82B /* Sources */ = {
@@ -329,9 +427,19 @@
 				FAC36F6B1BE1780B007F2A20 /* Debug.swift in Sources */,
 				FAB22A7F1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */,
 				FAC36F601BE175CF007F2A20 /* AppDelegate.swift in Sources */,
+				FA36BD401BE57F8E00D5E03B /* VideoDownload.swift in Sources */,
+				FA6F81DD1D939455007975FE /* Preferences.swift in Sources */,
 				FAF450221BE2B45D00C1F98A /* VideoLoader.swift in Sources */,
 				FAC36F5A1BE1756D007F2A20 /* AerialVideo.swift in Sources */,
 				FAF450251BE2D2FD00C1F98A /* VideoCache.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA71996A1D94EC5A00FBC99B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA7199711D94EC5A00FBC99B /* PreferencesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +449,7 @@
 			files = (
 				FAC36F5D1BE1756D007F2A20 /* CheckCellView.swift in Sources */,
 				FAC36F5B1BE1756D007F2A20 /* AerialView.swift in Sources */,
+				FA6F81DC1D939455007975FE /* Preferences.swift in Sources */,
 				FAF450241BE2D2FD00C1F98A /* VideoCache.swift in Sources */,
 				FAC36F571BE1756D007F2A20 /* PreferencesWindowController.swift in Sources */,
 				FAC36F671BE1778C007F2A20 /* ManifestLoader.swift in Sources */,
@@ -348,11 +457,20 @@
 				FAF450211BE2B45D00C1F98A /* VideoLoader.swift in Sources */,
 				FAC36F6A1BE1780B007F2A20 /* Debug.swift in Sources */,
 				FAB22A7E1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */,
+				FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */,
 				FAC36F641BE1772F007F2A20 /* CollectionType+Shuffling.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA7199741D94EC5A00FBC99B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA143CD51BDA3E880041A82B /* AerialApp */;
+			targetProxy = FA7199731D94EC5A00FBC99B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FAC36F331BE1756D007F2A20 /* MainMenu.xib */ = {
@@ -370,14 +488,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Aerial/App/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -385,13 +505,55 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Aerial/App/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		FA7199761D94EC5A00FBC99B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AerialApp.app/Contents/MacOS/AerialApp";
+			};
+			name = Debug;
+		};
+		FA7199771D94EC5A00FBC99B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AerialApp.app/Contents/MacOS/AerialApp";
 			};
 			name = Release;
 		};
@@ -408,14 +570,15 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -451,8 +614,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -470,22 +635,24 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
 		FACAF1B01BD9FC6000E539DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Aerial/Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Debug;
@@ -493,15 +660,16 @@
 		FACAF1B11BD9FC6000E539DC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Aerial/Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
@@ -509,7 +677,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FA143CE01BDA3E880041A82B /* Build configuration list for PBXNativeTarget "Aerial Test" */ = {
+		FA143CE01BDA3E880041A82B /* Build configuration list for PBXNativeTarget "AerialApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA143CE11BDA3E880041A82B /* Debug */,
@@ -517,6 +685,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		FA7199751D94EC5A00FBC99B /* Build configuration list for PBXNativeTarget "Aerial Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA7199761D94EC5A00FBC99B /* Debug */,
+				FA7199771D94EC5A00FBC99B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		FACAF19F1BD9FC6000E539DC /* Build configuration list for PBXProject "Aerial" */ = {
 			isa = XCConfigurationList;

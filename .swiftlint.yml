@@ -1,0 +1,13 @@
+disabled_rules:
+    - trailing_whitespace
+    - force_cast
+    - function_body_length
+    - type_body_length
+    - file_length
+
+variable_name:
+  min_length:
+    warning: 2
+    error: 2
+line_length:
+  warning: 120

@@ -9,63 +9,63 @@
 import Foundation
 import AVFoundation
 
-protocol VideoLoaderDelegate : NSObjectProtocol {
-    func videoLoader(videoLoader:VideoLoader, receivedResponse response:NSURLResponse);
-    func videoLoader(videoLoader:VideoLoader, receivedData data:NSData, forRange range:NSRange);
-};
+protocol VideoLoaderDelegate: NSObjectProtocol {
+    func videoLoader(_ videoLoader: VideoLoader, receivedResponse response: URLResponse)
+    func videoLoader(_ videoLoader: VideoLoader, receivedData data: Data, forRange range: NSRange)
+}
 
-class VideoLoader : NSObject, NSURLConnectionDataDelegate {
-    var connection:NSURLConnection?
-    var response:NSHTTPURLResponse?
-    weak var delegate:VideoLoaderDelegate?
-    var loadingRequest:AVAssetResourceLoadingRequest
+class VideoLoader: NSObject, NSURLConnectionDataDelegate {
+    var connection: NSURLConnection?
+    var response: HTTPURLResponse?
+    weak var delegate: VideoLoaderDelegate?
+    var loadingRequest: AVAssetResourceLoadingRequest
     
     // range params
-    var loadedRange:NSRange
-    var requestedRange:NSRange
-    var loadRange:Bool
+    var loadedRange: NSRange
+    var requestedRange: NSRange
+    var loadRange: Bool
     
-    let queue = dispatch_get_main_queue()
+    let queue = DispatchQueue.main
     
-    init(url:NSURL, loadingRequest:AVAssetResourceLoadingRequest, delegate:VideoLoaderDelegate) {
+    init(url: URL, loadingRequest: AVAssetResourceLoadingRequest, delegate: VideoLoaderDelegate) {
         self.delegate = delegate
         self.loadingRequest = loadingRequest
         
-        let request = NSMutableURLRequest(URL: url);
-        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData;
+        let request = NSMutableURLRequest(url: url)
+        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
         
-        loadRange = false;
-        loadedRange = NSMakeRange(0,0);
-        requestedRange = NSMakeRange(0,0);
+        loadRange = false
+        loadedRange = NSRange(location: 0, length: 0)
+        requestedRange = NSRange(location: 0, length: 0)
         
         if let dataRequest = loadingRequest.dataRequest {
             if dataRequest.requestedOffset > 0 {
-                loadRange = true;
+                loadRange = true
                 let startOffset = Int(dataRequest.requestedOffset)
                 let requestedBytes = Int(dataRequest.requestedLength)
-                loadedRange = NSMakeRange(startOffset, 0);
-                requestedRange = NSMakeRange(startOffset, requestedBytes);
+                loadedRange = NSRange(location: startOffset, length: 0)
+                requestedRange = NSRange(location: startOffset, length: requestedBytes)
                 
                 // set Range: bytes=startOffset-endOffset
-                let requestRange = "bytes=\(requestedRange.location)-\(requestedRange.location+requestedRange.length)";
-                request.setValue(requestRange, forHTTPHeaderField: "Range");
+                let requestRange = "bytes=\(requestedRange.location)-\(requestedRange.location+requestedRange.length)"
+                request.setValue(requestRange, forHTTPHeaderField: "Range")
             }
         }
         
         super.init()
         
-        connection = NSURLConnection(request: request, delegate: self, startImmediately: false)
+        connection = NSURLConnection(request: request as URLRequest, delegate: self, startImmediately: false)
         
         guard let connection = connection else {
-            NSLog("Aerial error: Couldn't instantiate connection.");
-            return;
+            NSLog("Aerial error: Couldn't instantiate connection.")
+            return
         }
         
-        connection.setDelegateQueue(NSOperationQueue.mainQueue());
-        loadedRange = NSMakeRange(requestedRange.location, 0);
+        connection.setDelegateQueue(OperationQueue.main)
+        loadedRange = NSRange(location: requestedRange.location, length: 0)
         
-        connection.start();
-        debugLog("Starting request: \(request)");
+        connection.start()
+//        debugLog("Starting request: \(request)")
     }
     
     deinit {
@@ -74,164 +74,165 @@ class VideoLoader : NSObject, NSURLConnectionDataDelegate {
     
     // MARK: - NSURLConnection Delegate
     
-    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
+    func connection(_ connection: NSURLConnection, didReceive response: URLResponse) {
         
         if loadRange {
             if let startOffset = startOffsetFromResponse(response) {
-                loadedRange.location = startOffset;
+                loadedRange.location = startOffset
             }
         }
 
-        self.response = response as? NSHTTPURLResponse;
+        self.response = response as? HTTPURLResponse
         
-        dispatch_async(queue) { () -> Void in
-            self.delegate?.videoLoader(self, receivedResponse: response);
+        queue.async { () -> Void in
+            self.delegate?.videoLoader(self, receivedResponse: response)
             self.fillInContentInformation(self.loadingRequest)
-        };
+        }
     }
     
-    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
+    func connection(_ connection: NSURLConnection, didReceive data: Data) {
         
-        dispatch_async(queue) { () -> Void in
+        queue.async { () -> Void in
             
             self.fillInContentInformation(self.loadingRequest)
             
             guard let dataRequest = self.loadingRequest.dataRequest else {
-                NSLog("Aerial Error: Data request missing for \(self.loadingRequest)");
-                return;
+                NSLog("Aerial Error: Data request missing for \(self.loadingRequest)")
+                return
             }
             let requestedRange = self.requestedRange
             let loadedRange = self.loadedRange
-            let loadedLocation = loadedRange.location + loadedRange.length;
+            let loadedLocation = loadedRange.location + loadedRange.length
             
-            let dataRange = NSMakeRange(loadedRange.location + loadedRange.length, data.length)
-            self.delegate?.videoLoader(self, receivedData: data, forRange: dataRange);
+            let dataRange = NSRange(location: loadedRange.location + loadedRange.length,
+                                    length: data.count)
+            self.delegate?.videoLoader(self, receivedData: data, forRange: dataRange)
             
             // check if we've already been sending content, or we're at right byte offset
             if loadedLocation >= requestedRange.location {
                 
-                let requestedEndOffset = Int(dataRequest.requestedOffset + dataRequest.requestedLength);
+                let requestedEndOffset = Int(dataRequest.requestedOffset + dataRequest.requestedLength)
                 
-                let pendingDataEndOffset = loadedLocation + data.length;
+                let pendingDataEndOffset = loadedLocation + data.count
                 
-                if (pendingDataEndOffset > requestedEndOffset) {
-                    let truncateDataLength = pendingDataEndOffset - requestedEndOffset;
-                    let dataRange = NSMakeRange(0, data.length - truncateDataLength);
+                if pendingDataEndOffset > requestedEndOffset {
+                    let truncateDataLength = pendingDataEndOffset - requestedEndOffset
+                    let truncatedData = data.subdata(in: 0..<data.count - truncateDataLength)
                     
-                    let truncatedData = data.subdataWithRange(dataRange);
-                    
-                    dataRequest.respondWithData(truncatedData);
-                    self.loadingRequest.finishLoading();
-                    self.connection?.cancel();
-                }else {
-                    dataRequest.respondWithData(data);
+                    dataRequest.respond(with: truncatedData)
+                    self.loadingRequest.finishLoading()
+                    self.connection?.cancel()
+                } else {
+                    dataRequest.respond(with: data)
                 }
-//                debugLog("Responding with data");
+//                debugLog("Responding with data")
             }
                 // check if we're at a point now where we can send content
-            else if loadedLocation + data.length >= requestedRange.location {
+            else if loadedLocation + data.count >= requestedRange.location {
                 // calculate how far along we need to be into the data before it's part of what
                 // was requested
                 let inset = requestedRange.location - loadedRange.location
                 
                 if inset > 0 {
-                    let dataRange = NSMakeRange(inset, data.length - inset);
-                    
-                    let responseData = data.subdataWithRange(dataRange);
-                    dataRequest.respondWithData(responseData);
+                    let start = inset
+                    let length = data.count - inset
+                    let end = start + length
+                    let responseData = data.subdata(in: inset..<end)
+                    dataRequest.respond(with: responseData)
                     
                     if dataRequest.currentOffset >= dataRequest.requestedOffset + dataRequest.requestedLength {
-                        self.loadingRequest.finishLoading();
-                        self.connection?.cancel();
+                        self.loadingRequest.finishLoading()
+                        self.connection?.cancel()
                     }
-                }
-                else if inset < 1 {
-                    NSLog("Aerial Error: Inset is invalid value: \(inset)");
+                } else if inset < 1 {
+                    NSLog("Aerial Error: Inset is invalid value: \(inset)")
                 }
                 
             }
             
-//            debugLog("Received data with length: \(data.length)");
+//            debugLog("Received data with length: \(data.count)")
             
-            self.loadedRange.length += data.length;
+            self.loadedRange.length += data.count
             
         }
     }
 
-    func connectionDidFinishLoading(connection: NSURLConnection) {
+    func connectionDidFinishLoading(_ connection: NSURLConnection) {
 
-        dispatch_async(queue) { () -> Void in
-            debugLog("connectionDidFinishLoading");
+        queue.async { () -> Void in
+            debugLog("connectionDidFinishLoading")
             self.loadingRequest.finishLoading()
-        };
+        }
     }
     
-    func fillInContentInformation(loadingRequest:AVAssetResourceLoadingRequest) {
+    func fillInContentInformation(_ loadingRequest: AVAssetResourceLoadingRequest) {
         
         guard let contentInformationRequest = loadingRequest.contentInformationRequest else {
-            return;
+            return
         }
         
         guard let response = self.response else {
-            debugLog("No response");
-            return;
+            debugLog("No response")
+            return
         }
         
-        guard let mimeType = response.MIMEType else {
-            debugLog("no mimeType for \(response)");
-            return;
+        guard let mimeType = response.mimeType else {
+            debugLog("no mimeType for \(response)")
+            return
         }
         
-        guard let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, mimeType, nil) else {
-            debugLog("couldn't create prefered identifier for tag \(mimeType)");
-            return;
+        guard let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, mimeType as CFString, nil) else {
+            debugLog("couldn't create prefered identifier for tag \(mimeType)")
+            return
         }
         
-        //        debugLog("Processsing contentInformationRequest");
+        //        debugLog("Processsing contentInformationRequest")
         
-        let contentType:String = uti.takeRetainedValue() as String;
+        let contentType: String = uti.takeRetainedValue() as String
         
-        contentInformationRequest.byteRangeAccessSupported = true;
-        contentInformationRequest.contentType = contentType;
+        contentInformationRequest.isByteRangeAccessSupported = true
+        contentInformationRequest.contentType = contentType
         contentInformationRequest.contentLength = response.expectedContentLength
         
-        
-//        debugLog("expected content length: \(response.expectedContentLength)");
+//        debugLog("expected content length: \(response.expectedContentLength)")
     }
     
-    // MARK - Range
+    // MARK: - Range
     
-    func startOffsetFromResponse(response: NSURLResponse) -> Int? {
+    func startOffsetFromResponse(_ response: URLResponse) -> Int? {
         
         // get range response
-        var regex : NSRegularExpression!
+        var regex: NSRegularExpression!
         do {
             // Check to see if the server returned a valid byte-range
-            regex = try NSRegularExpression(pattern: "bytes (\\d+)-\\d+/\\d+", options: NSRegularExpressionOptions.CaseInsensitive)
+            regex = try NSRegularExpression(pattern: "bytes (\\d+)-\\d+/\\d+",
+                                            options: NSRegularExpression.Options.caseInsensitive)
         } catch let error as NSError {
-            NSLog("Aerial: Error formatting regex: \(error)");
-            return nil;
+            NSLog("Aerial: Error formatting regex: \(error)")
+            return nil
         }
         
-        let httpResponse = response as! NSHTTPURLResponse
+        let httpResponse = response as! HTTPURLResponse
         
         guard let contentRange = httpResponse.allHeaderFields["Content-Range"] as? NSString else {
-            debugLog("Weird, no byte response: \(response)");
-            return nil;
+            debugLog("Weird, no byte response: \(response)")
+            return nil
         }
         
-        guard let match : NSTextCheckingResult = regex.firstMatchInString(contentRange as String, options: NSMatchingOptions.Anchored, range: NSMakeRange(0, contentRange.length)) else {
-            debugLog("Weird, couldn't make a regex match for byte offset: \(contentRange)");
-            return nil;
+        guard let match = regex.firstMatch(in: contentRange as String,
+                                           options: NSRegularExpression.MatchingOptions.anchored,
+                                           range: NSRange(location:0, length: contentRange.length)) else {
+            debugLog("Weird, couldn't make a regex match for byte offset: \(contentRange)")
+            return nil
         }
-        let offsetMatchRange = match.rangeAtIndex(1);
-        let offsetString = contentRange.substringWithRange(offsetMatchRange) as NSString;
+        let offsetMatchRange = match.rangeAt(1)
+        let offsetString = contentRange.substring(with: offsetMatchRange) as NSString
         
-        let offset = offsetString.longLongValue;
+        let offset = offsetString.longLongValue
         
-        debugLog("content range: \(contentRange), start offset: \(offset)");
+//        debugLog("content range: \(contentRange), start offset: \(offset)")
         
-        return Int(offset);
+        return Int(offset)
     }
 
 }
