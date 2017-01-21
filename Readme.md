@@ -34,6 +34,15 @@ If Aerial.saver could not be opened, place Aerial.saver in ~/Library/Screen Save
 
 ![Screenshot](https://cloud.githubusercontent.com/assets/499192/10754102/c58cc076-7c95-11e5-9579-4275740ba339.png)
 
+## Uninstallation
+
+There are two options to uninstall Aerial from your Mac.
+
+* Right-click on the Aerial screen saver in System Preferences and select `Delete "Aerial"`.
+* Or delete the file(s) directly. macOS can store screen savers in two locations. `/Library/Screen Savers` and `/Users/YOURUSERNAME/Library/Screen Savers`. Check both locations for a file called "Aerial.saver" and delete any copies you find.
+
+You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aerial`. This is where Aerial stores the cached copies of the aerial videos.
+
 ## Features
 * **Auto Load Latest Aerials:** Aerials are loaded directly from Apple, so you're never out of date.
 * **Play Different Aerial On Each Display:** If you've got multiple monitors, this setting loads a different aerial for each of your displays.
@@ -48,7 +57,7 @@ Aerial is written in Swift, which requires OS X Mavericks or above.
 - **Have a feature request?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Tell me why this feature would be useful, and why you and others would want it.
 
 ## Contribute
-I appreciate all pull requests. Caching hasn't been added yet.
+I appreciate all pull requests.
 
 ## Brew Cask Support - Install Remotely
 If you're looking to install Aerial across many systems, remotely, or simply from terminal I recommend [Brew Cask](http://caskroom.io/).
@@ -57,7 +66,8 @@ Issue the following terminal command: `brew cask install aerial`
 
 ## Troubleshooting
 
-- Black screen: Try disabling Little Snitch, or try the latest beta release from [Aerial Releases](https://github.com/JohnCoates/Aerial/releases/).
+- Black screen: If you are behind a firewall (like Little Snitch) try creating an exception for Aerial to allow it access to Apple's servers. If that isn't an option and you are on a Macbook try caching the videos while connected to a different network.
+- "You cannot user the Aerial screen saver with this version of macOS." error: Select Aerial, close System Preferences with Aerial still selected, re-open System Preferences and Aerial should now work. This is a known bug with Swift screensavers in macOS/OS X reported to Apple as [rdar://25569037](http://www.openradar.me/25569037).
 
 ## License
 [MIT License](https://raw.githubusercontent.com/JohnCoates/Aerial/master/LICENSE)
