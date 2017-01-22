@@ -13,6 +13,7 @@ Aerial is completely open source, so feel free to contribute to its development!
 [![codecov](https://codecov.io/gh/JohnCoates/Aerial/branch/master/graph/badge.svg)](https://codecov.io/gh/JohnCoates/Aerial)
 
 ###### Windows user? Try [cDima/Aerial](https://github.com/cDima/Aerial/)
+###### Linux user? Try [graysky2/xscreensaver-aerial](https://github.com/graysky2/xscreensaver-aerial/)
 
 #### Coded with Love by John Coates
 
