@@ -37,10 +37,11 @@ If Aerial.saver could not be opened, place Aerial.saver in ~/Library/Screen Save
 
 ## Uninstallation
 
-There are two options to uninstall Aerial from your Mac.
+There are three options to uninstall Aerial from your Mac.
 
 * Right-click on the Aerial screen saver in System Preferences and select `Delete "Aerial"`.
 * Or delete the file(s) directly. macOS can store screen savers in two locations. `/Library/Screen Savers` and `/Users/YOURUSERNAME/Library/Screen Savers`. Check both locations for a file called "Aerial.saver" and delete any copies you find.
+* If you installed Aerial using brew, then the following command in a Terminal window should remove the brew installed version. `brew cask uninstall aerial`
 
 You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aerial`. This is where Aerial stores the cached copies of the aerial videos.
 
