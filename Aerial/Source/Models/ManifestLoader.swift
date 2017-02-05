@@ -32,7 +32,7 @@ class ManifestLoader {
         let date = NSDate()
         let calendar = NSCalendar.current
         let hour = calendar.component(.hour, from: date as Date)
-        if hour>=18{
+        if hour>=18 || hour<6{
             return "night";
         }else{
             return "day";
@@ -43,24 +43,30 @@ class ManifestLoader {
         let shuffled = loadedManifest.shuffled()
         for video in shuffled {
          
-            if video.timeOfDay==timeOfDay(){
-                
-                let inRotation = preferences.videoIsInRotation(videoID: video.id)
-                
-                if !inRotation {
-                    debugLog("video is disabled: \(video)")
+            let inRotation = preferences.videoIsInRotation(videoID: video.id)
+            
+            if !inRotation {
+                debugLog("video is disabled: \(video)")
+                continue
+            }
+            
+            // check if we're in offline mode
+            if offlineMode == true {
+                if video.isAvailableOffline == false {
                     continue
                 }
-                
-                // check if we're in offline mode
-                if offlineMode == true {
-                    if video.isAvailableOffline == false {
-                        continue
-                    }
-                }
-                
-                return video
             }
+            
+            // Check if based on time
+            if preferences.basedOnTime {
+                if video.timeOfDay==timeOfDay(){
+                    return video
+                }
+                continue
+            }
+            return video
+
+            
         }
         
         // nothing available??? return first thing we find
