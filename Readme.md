@@ -71,5 +71,11 @@ Issue the following terminal command: `brew cask install aerial`
 - Black screen: If you are behind a firewall (like Little Snitch or Hands Off!) try creating exceptions for Aerial to allow it access to Apple's servers. Be sure the applications 'ScreenSaverEngine.app' and 'System Preferences.app' are not being blocked access to *.phobos.apple.com and *.phobos.apple.com.edgesuite.net. If that isn't an option and you are on a Macbook try caching the videos while connected to a different network.
 - "You cannot user the Aerial screen saver with this version of macOS." error: Select Aerial, close System Preferences with Aerial still selected, re-open System Preferences and Aerial should now work. This is a known bug with Swift screensavers in macOS/OS X reported to Apple as [rdar://25569037](http://www.openradar.me/25569037).
 
+## Video Source
+
+This application downloads the manifest file containing a list of the videos provided by Apple from the following URL:
+
+`http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json`
+
 ## License
 [MIT License](https://raw.githubusercontent.com/JohnCoates/Aerial/master/LICENSE)
