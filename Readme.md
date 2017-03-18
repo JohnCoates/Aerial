@@ -35,6 +35,17 @@ If Aerial.saver could not be opened, place Aerial.saver in ~/Library/Screen Save
 
 ![Screenshot](https://cloud.githubusercontent.com/assets/499192/10754102/c58cc076-7c95-11e5-9579-4275740ba339.png)
 
+## Optional: Set Aerial as Moving Desktop Background
+
+1. Open Terminal 
+2. Paste or type below command(sets your Default Screen Saver as Desktop Background): 
+<pre>
+  cd /System/Library/Frameworks/ScreenSaver.framework/Resources;
+  ./ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background
+</pre>
+3. Minimize Terminal window and enjoy your day. 
+4. To stop: close terminal or it default terminates when you put your computer to sleep/shut down. 
+
 ## Uninstallation
 
 There are three options to uninstall Aerial from your Mac.
