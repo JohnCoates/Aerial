@@ -196,6 +196,37 @@ class AerialView: ScreenSaverView {
     
     // MARK: - Playing Videos
     
+    func playWithFade() {
+      self.player?.play()
+      // self.playerLayer.opacity = 0.0
+      // fade in
+      let inImation = CAKeyframeAnimation()
+      inImation.keyPath = "opacity"
+      inImation.keyTimes = [0,1]
+      inImation.values = [0,1]
+      inImation.duration = 3
+      inImation.fillMode = kCAFillModeBackwards
+      inImation.beginTime = CACurrentMediaTime()+1;
+      self.playerLayer?.add(inImation, forKey: "inOpacity")
+
+      // let currentPlayerItem = self.player?.currentItem
+      let duration = self.player?.currentItem?.asset.duration
+      let offset = CMTimeGetSeconds(duration!)
+      NSLog("\nclip length is \(offset)\n\n")
+      // var currentTime = AVPlayer.currentTime()
+
+      let outImation = CAKeyframeAnimation()
+      outImation.keyPath = "opacity"
+      outImation.keyTimes = [1,0]
+      outImation.values = [0,1]
+      outImation.duration = 3
+      outImation.fillMode = kCAFillModeForwards
+      outImation.isRemovedOnCompletion = false
+      outImation.beginTime = CACurrentMediaTime()+offset-3.5;
+      self.playerLayer?.add(outImation, forKey: "outOpacity")
+    }
+
+    
     func playNextVideo() {
         let notificationCenter = NotificationCenter.default
         
@@ -229,8 +260,9 @@ class AerialView: ScreenSaverView {
         }
         let videoURL = video.url
         
-        let asset = CachedOrCachingAsset(videoURL)
-//        let asset = AVAsset(URL: videoURL)
+        // let asset = CachedOrCachingAsset(videoURL)
+        let asset = AVAsset(url: videoURL)
+        // assets from CachedOrCaching have undefined duration which is needed start the fade out
         
         let item = AVPlayerItem(asset: asset)
         
@@ -238,7 +270,7 @@ class AerialView: ScreenSaverView {
         
         debugLog("playing video: \(video.url)")
         if player.rate == 0 {
-            player.play()
+            playWithFade()
         }
         
         guard let currentItem = player.currentItem else {
