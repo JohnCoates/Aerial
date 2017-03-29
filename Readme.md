@@ -71,5 +71,13 @@ Issue the following terminal command: `brew cask install aerial`
 - Black screen: If you are behind a firewall (like Little Snitch or Hands Off!) try creating exceptions for Aerial to allow it access to Apple's servers. Be sure the applications 'ScreenSaverEngine.app' and 'System Preferences.app' are not being blocked access to *.phobos.apple.com and *.phobos.apple.com.edgesuite.net. If that isn't an option and you are on a Macbook try caching the videos while connected to a different network.
 - "You cannot use the Aerial screen saver with this version of macOS." error: Select Aerial, close System Preferences with Aerial still selected, re-open System Preferences and Aerial should now work. This is a known bug with Swift screensavers in macOS/OS X reported to Apple as [rdar://25569037](http://www.openradar.me/25569037).
 
+## Uninstallation
+
+Typically, you would right click on the screen saver and select 'Delete Ariel' in your system screen saver preferences. If that does not work, the screen saver can manually be deleted from the following locations:
+
+IF you installed the screen saver for all users, issue the following terminal command: `open /Library/Screen\ Savers/` then delete the screensaver.
+
+IF you installed the screen saver for your own user account only, issue the following terminal command: `open ~/Library/Screen\ Savers/` then delete the screensaver.
+
 ## License
 [MIT License](https://raw.githubusercontent.com/JohnCoates/Aerial/master/LICENSE)
