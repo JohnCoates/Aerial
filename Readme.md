@@ -5,7 +5,7 @@ Aerial is a Mac screen saver based on the new Apple TV screen saver that display
 
 Aerial is completely open source, so feel free to contribute to its development!  
 
-[![Github All Releases](https://img.shields.io/github/downloads/johncoates/aerial/total.svg?maxAge=2592000)]()
+[![Github All Releases](https://img.shields.io/github/downloads/johncoates/aerial/total.svg?maxAge=86400)]()
 [![GitHub contributors](https://img.shields.io/github/contributors/johncoates/aerial.svg?maxAge=2592000)]()
 [![Build Status](https://travis-ci.org/JohnCoates/Aerial.svg?branch=master)](https://travis-ci.org/JohnCoates/Aerial)
 [![codebeat badge](https://codebeat.co/badges/cefd1672-5501-4b79-8d08-c2121cdbc9ed)](https://codebeat.co/projects/github-com-johncoates-aerial-e1c8873e-7a9f-4c74-9e50-0380add2478a)
