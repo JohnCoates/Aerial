@@ -73,7 +73,7 @@ class ManifestLoader {
             })
             
         }
-        let apiURL = "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json"
+        let apiURL = "https://sylvan.apple.com/Aerials/2x/entries.json"
         guard let url = URL(string: apiURL) else {
             fatalError("Couldn't init URL from string")
         }
@@ -100,8 +100,8 @@ class ManifestLoader {
         do {
             let options = JSONSerialization.ReadingOptions.allowFragments
             let batches = try JSONSerialization.jsonObject(with: data,
-                                                           options: options) as! Array<NSDictionary>
-            
+                                                           options: options)
+            if let batches = batches as? Array<NSDictionary> {
             for batch: NSDictionary in batches {
                 let assets = batch["assets"] as! Array<NSDictionary>
                 
@@ -115,6 +115,28 @@ class ManifestLoader {
                     if type != "video" {
                         continue
                     }
+                    
+                    let video = AerialVideo(id: id,
+                                            name: name,
+                                            type: type,
+                                            timeOfDay: timeOfDay,
+                                            url: url)
+                    
+                    videos.append(video)
+                    
+                    checkContentLength(video)
+                }
+            }
+            }
+            else if let batch = batches as? NSDictionary {
+                let assets = batch["assets"] as! Array<NSDictionary>
+                
+                for item in assets {
+                    let url = item["url-4K-SDR"] as! String
+                    let name = item["accessibilityLabel"] as! String
+                    let timeOfDay = "day"
+                    let id = item["id"] as! String
+                    let type = "video"
                     
                     let video = AerialVideo(id: id,
                                             name: name,

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.AVKitIBPlugin" version="11201"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="13529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController">
@@ -41,11 +42,11 @@
                                 <tabViewItems>
                                     <tabViewItem label="Main" identifier="1" id="dfl-QA-fvD">
                                         <view key="view" id="zsM-Ha-kCO">
-                                            <rect key="frame" x="10" y="33" width="607" height="286"/>
+                                            <rect key="frame" x="10" y="33" width="127" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNc-EK-7cY">
-                                                    <rect key="frame" x="4" y="32" width="150" height="254"/>
+                                                    <rect key="frame" x="4" y="-254" width="150" height="254"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="4QR-cO-33N">
                                                         <rect key="frame" x="1" y="1" width="148" height="252"/>
@@ -58,7 +59,7 @@
                                                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                                 <tableColumns>
-                                                                    <tableColumn width="145" minWidth="16" maxWidth="1000" id="Grd-eN-eTf">
+                                                                    <tableColumn identifier="" width="145" minWidth="16" maxWidth="1000" id="Grd-eN-eTf">
                                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                                             <font key="font" metaFont="smallSystem"/>
                                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -152,20 +153,20 @@
                                                         <nil key="backgroundColor"/>
                                                     </clipView>
                                                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Ano-CK-gsw">
-                                                        <rect key="frame" x="1" y="-15" width="0.0" height="16"/>
+                                                        <rect key="frame" x="-7" y="-14" width="0.0" height="15"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="sIg-0t-YWZ">
-                                                        <rect key="frame" x="-15" y="1" width="16" height="0.0"/>
+                                                        <rect key="frame" x="-14" y="-7" width="15" height="0.0"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
                                                 <avPlayerView fixedFrame="YES" controlsStyle="inline" translatesAutoresizingMaskIntoConstraints="NO" id="Rc1-hl-hSC">
-                                                    <rect key="frame" x="207" y="100" width="336" height="188"/>
+                                                    <rect key="frame" x="207" y="-186" width="336" height="188"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 </avPlayerView>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hOD-gE-gxl">
-                                                    <rect key="frame" x="467" y="21" width="132" height="32"/>
+                                                    <rect key="frame" x="467" y="-265" width="132" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="bevel" title="Visit Project Page" bezelStyle="rounded" alignment="center" inset="2" id="5mJ-Tt-2db">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -176,7 +177,7 @@
                                                     </connections>
                                                 </button>
                                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Xe-S2-eQT">
-                                                    <rect key="frame" x="205" y="71" width="244" height="18"/>
+                                                    <rect key="frame" x="205" y="-215" width="244" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Play Different Aerial On Each Display" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Mp6-m9-C2d">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -187,7 +188,7 @@
                                                     </connections>
                                                 </button>
                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XSQ-4P-bI2">
-                                                    <rect key="frame" x="4" y="-3" width="44" height="33"/>
+                                                    <rect key="frame" x="4" y="-289" width="44" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSActionTemplate" imagePosition="only" alignment="center" state="on" inset="2" id="4Dx-Hp-CRf">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
