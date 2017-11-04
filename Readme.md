@@ -17,7 +17,7 @@ Aerial is completely open source, so feel free to contribute to its development!
 
 #### Coded with Love by John Coates
 
-[![Twitter](http://i.imgur.com/KzOiue1.png)](http://twitter.com/punksomething)
+[![Twitter](http://i.imgur.com/KzOiue1.png)](https://twitter.com/JohnCoatesDev)
 [![Email](http://i.imgur.com/FvDZudR.png)](mailto:john@johncoates.me)
 
 ## Installation
