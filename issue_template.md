@@ -1,6 +1,6 @@
 ## Known Issues
 
-Before logging an issue please check if one of the problems you are experiencing is mentioned here.
+Before logging an issue please check if one of the problems you are experiencing is mentioned here. If the issue you are experiencing isn't covered here, then please delete this content and tell us about the problem you are experiencing or the feature you'd like to request.
 
 ### "You cannot use the Aerial screen saver with this version of OS X." message
 
