@@ -9,6 +9,10 @@ If you get a message saying `You cannot use the Aerial screen saver with this ve
 * close System Preferences with Aerial selected
 * reopen System Preferences and the preview should work now
 
+### Mac won't sleep with Aerial as screensaver
+
+If your Mac won't sleep while Aerial is the selected screensaver, then you probably have an older version of Aerial installed. Download the latest verson of Aerial here: https://github.com/JohnCoates/Aerial/releases/ Make sure to check both locations for the old version, it can be installed to `/Library/Screen Savers` and `/User/YOURUSERNAME/Library/Screen Savers`.
+
 ### Corrupted playback
 
 If you are getting corrupted playback when the screensaver starts then that is a new bug in macOS High Sierra. It appears to be a problem with the Intel drivers in High Sierra. As a workaround tick the "Show with clock" option as that seems to eliminate the corruption for the moment. Discussed extensively here: https://github.com/JohnCoates/Aerial/issues/377
