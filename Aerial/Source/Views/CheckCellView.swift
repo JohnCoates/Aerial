@@ -26,12 +26,12 @@ class CheckCellView: NSTableCellView {
         checkButton.action = #selector(CheckCellView.check(_:))
     }
     
-    func check(_ button: AnyObject?) {        
+    @objc func check(_ button: AnyObject?) {        
         guard let onCheck = self.onCheck else {
             return
         }
         
-        onCheck(checkButton.state == NSOnState)
+        onCheck(checkButton.state == NSControl.StateValue.on)
     }
     
     override func draw(_ dirtyRect: NSRect) {
