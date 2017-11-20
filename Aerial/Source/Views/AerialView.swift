@@ -191,7 +191,7 @@ class AerialView: ScreenSaverView {
         debugLog("notification: \(aNotification)")
         playNextVideo()
 
-        debugLog("playing next video for player \(player)")
+        debugLog("playing next video for player \(String(describing: player))")
     }
     
     // MARK: - Playing Videos
