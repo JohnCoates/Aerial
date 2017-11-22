@@ -8,7 +8,11 @@
 
 import Foundation
 
-class AerialVideo: CustomStringConvertible {
+class AerialVideo: CustomStringConvertible, Equatable {
+    static func ==(lhs: AerialVideo, rhs: AerialVideo) -> Bool {
+        return lhs.id == rhs.id && lhs.url == rhs.url
+    }
+    
     let id: String
     let name: String
     let type: String

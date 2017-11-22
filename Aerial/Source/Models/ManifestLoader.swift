@@ -28,13 +28,18 @@ class ManifestLoader {
         }
     }
     
-    func randomVideo() -> AerialVideo? {
+    func randomVideo(excluding: [AerialVideo]) -> AerialVideo? {
         let shuffled = loadedManifest.shuffled()
         for video in shuffled {
             let inRotation = preferences.videoIsInRotation(videoID: video.id)
             
             if !inRotation {
                 debugLog("video is disabled: \(video)")
+                continue
+            }
+            
+            if excluding.contains(video) {
+                debugLog("video is excluded because it's already in use: \(video)")
                 continue
             }
             

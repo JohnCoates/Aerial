@@ -194,8 +194,6 @@ class AerialView: ScreenSaverView {
         debugLog("playing next video for player \(String(describing: player))")
     }
     
-    // MARK: - Playing Videos
-    
     func playNextVideo() {
         let notificationCenter = NotificationCenter.default
         
@@ -221,18 +219,22 @@ class AerialView: ScreenSaverView {
             AerialView.previewView?.playerLayer.player = self.player
         }
         
-        let randomVideo = ManifestLoader.instance.randomVideo()
+        // get a list of current videos that should be excluded from the candidate selection
+        // for the next video. This prevents the same video from being shown twice in a row
+        // as well as the same video being shown on two different monitors even when sharingPlayers
+        // is false
+        let currentVideos: [AerialVideo] = AerialView.players.flatMap { (player) -> AerialVideo? in
+            (player.currentItem as? AerialPlayerItem)?.video
+        }
+        
+        let randomVideo = ManifestLoader.instance.randomVideo(excluding: currentVideos)
         
         guard let video = randomVideo else {
             NSLog("Aerial: Error grabbing random video!")
             return
         }
-        let videoURL = video.url
         
-        let asset = CachedOrCachingAsset(videoURL)
-//        let asset = AVAsset(URL: videoURL)
-        
-        let item = AVPlayerItem(asset: asset)
+        let item = AerialPlayerItem(video: video)
         
         player.replaceCurrentItem(with: item)
         
