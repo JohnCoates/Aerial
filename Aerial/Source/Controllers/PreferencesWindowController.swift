@@ -495,23 +495,23 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             return video.isAvailableOffline == false
         }
         
-        if uncached.count == 0 {
-            cacheStatusLabel.stringValue = "All videos have been cached"
-            return
-        }
-        
         NSLog("uncached: \(uncached)")
         
         totalProgress.maxValue = Double(manifestVideos.count)
         totalProgress.doubleValue = Double(manifestVideos.count) - Double(uncached.count)
         NSLog("total process max value: \(totalProgress.maxValue), current value: \(totalProgress.doubleValue)")
         
+        if uncached.count == 0 {
+            cacheStatusLabel.stringValue = "All videos have been cached"
+            return
+        }
+        
         let video = uncached[0]
         
         // find video that hasn't been cached
         let videoDownload = VideoDownload(video: video, delegate: self)
         
-        cacheStatusLabel.stringValue = "Caching video \(video.name) \(video.timeOfDay.capitalized): \(video.id)"
+        cacheStatusLabel.stringValue = "Caching video \(video.name) \(video.timeOfDay.capitalized): \(video.url)"
         
         currentVideoDownload = videoDownload
         videoDownload.startDownload()

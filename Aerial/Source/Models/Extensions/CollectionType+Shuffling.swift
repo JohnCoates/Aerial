@@ -1,22 +1,22 @@
+
 //
 //  CollectionType+Shuffling.swift
 //  Aerial
 //
-
 import Foundation
 
 // shuffling thanks to Nate Cook http://stackoverflow.com/questions/24026510/how-do-i-shuffle-an-array-in-swift
-
-extension MutableCollection {
-    /// Shuffle the elements of `self` in-place.
+extension MutableCollection where Indices.Iterator.Element == Index {
+    /// Shuffles the contents of this collection.
     mutating func shuffle() {
-        // empty and single-element collections don't shuffle
-        if count < 2 { return }
+        let c = count
+        guard c > 1 else { return }
         
-        for i in indices.dropLast() {
-            let diff = distance(from: i, to: endIndex)
-            let j = index(i, offsetBy: numericCast(arc4random_uniform(numericCast(diff))))
-            swapAt(i, j)
+        for (unshuffledCount, firstUnshuffled) in zip(stride(from: c, to: 1, by: -1), indices) {
+            let d: IndexDistance = numericCast(arc4random_uniform(numericCast(unshuffledCount)))
+            guard d != 0 else { continue }
+            let i = index(firstUnshuffled, offsetBy: d)
+            swap(&self[firstUnshuffled], &self[i])
         }
     }
 }

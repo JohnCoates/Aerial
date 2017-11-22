@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AerialVideo {
+class AerialVideo: CustomStringConvertible {
     let id: String
     let name: String
     let type: String
@@ -31,5 +31,9 @@ class AerialVideo {
         self.type = type
         self.timeOfDay = timeOfDay
         self.url = URL(string: url)!
+    }
+    
+    var description: String {
+        return "id=\(id), name=\(name), type=\(type), timeofDay=\(timeOfDay), url=\(url)"
     }
 }

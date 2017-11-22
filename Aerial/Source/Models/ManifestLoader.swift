@@ -101,53 +101,30 @@ class ManifestLoader {
             let options = JSONSerialization.ReadingOptions.allowFragments
             let batches = try JSONSerialization.jsonObject(with: data,
                                                            options: options)
-            if let batches = batches as? Array<NSDictionary> {
-            for batch: NSDictionary in batches {
-                let assets = batch["assets"] as! Array<NSDictionary>
-                
-                for item in assets {
-                    let url = item["url"] as! String
-                    let name = item["accessibilityLabel"] as! String
-                    let timeOfDay = item["timeOfDay"] as! String
-                    let id = item["id"] as! String
-                    let type = item["type"] as! String
-                    
-                    if type != "video" {
-                        continue
-                    }
-                    
-                    let video = AerialVideo(id: id,
-                                            name: name,
-                                            type: type,
-                                            timeOfDay: timeOfDay,
-                                            url: url)
-                    
-                    videos.append(video)
-                    
-                    checkContentLength(video)
-                }
+            
+            guard let batch = batches as? NSDictionary else {
+                NSLog("Aerial: Encountered unexpected content type for batch")
+                return
             }
-            }
-            else if let batch = batches as? NSDictionary {
-                let assets = batch["assets"] as! Array<NSDictionary>
+            
+            let assets = batch["assets"] as! Array<NSDictionary>
+            
+            for item in assets {
+                let url = item["url-4K-SDR"] as! String
+                let name = item["accessibilityLabel"] as! String
+                let timeOfDay = "day"
+                let id = item["id"] as! String
+                let type = "video"
                 
-                for item in assets {
-                    let url = item["url-4K-SDR"] as! String
-                    let name = item["accessibilityLabel"] as! String
-                    let timeOfDay = "day"
-                    let id = item["id"] as! String
-                    let type = "video"
-                    
-                    let video = AerialVideo(id: id,
-                                            name: name,
-                                            type: type,
-                                            timeOfDay: timeOfDay,
-                                            url: url)
-                    
-                    videos.append(video)
-                    
-                    checkContentLength(video)
-                }
+                let video = AerialVideo(id: id,
+                                        name: name,
+                                        type: type,
+                                        timeOfDay: timeOfDay,
+                                        url: url)
+                
+                videos.append(video)
+                
+                checkContentLength(video)
             }
             
             self.loadedManifest = videos
