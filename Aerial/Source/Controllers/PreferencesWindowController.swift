@@ -451,18 +451,18 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         }
     }
     
-    func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
-        switch item {
-        case is AerialVideo:
-            return 18
-        case is TimeOfDay:
-            return 18
-        case is City:
-            return 18
-        default:
-            return 0
-        }
-    }
+//    func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
+//        switch item {
+//        case is AerialVideo:
+//            return 18
+//        case is TimeOfDay:
+//            return outlineView.textFi
+//        case is City:
+//            return 18
+//        default:
+//            fatalError("unhandled item in heightOfRowByItem for \(item)")
+//        }
+//    }
     
     // MARK: - Caching
     
