@@ -22,7 +22,7 @@ Aerial is completely open source, so feel free to contribute to its development!
 
 ## Installation
 
-1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.2/Aerial.zip)
+1. [Click here to Download](https://github.com/esetnik/Aerial/releases/download/v1.3/Aerial.saver.zip)
 2. Unzip the downloaded file.
 3. Open **Aerial.saver** and confirm installation.
 
