@@ -28,13 +28,18 @@ class ManifestLoader {
         }
     }
     
-    func randomVideo() -> AerialVideo? {
+    func randomVideo(excluding: [AerialVideo]) -> AerialVideo? {
         let shuffled = loadedManifest.shuffled()
         for video in shuffled {
             let inRotation = preferences.videoIsInRotation(videoID: video.id)
             
             if !inRotation {
                 debugLog("video is disabled: \(video)")
+                continue
+            }
+            
+            if excluding.contains(video) {
+                debugLog("video is excluded because it's already in use: \(video)")
                 continue
             }
             
@@ -73,7 +78,7 @@ class ManifestLoader {
             })
             
         }
-        let apiURL = "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json"
+        let apiURL = "https://sylvan.apple.com/Aerials/2x/entries.json"
         guard let url = URL(string: apiURL) else {
             fatalError("Couldn't init URL from string")
         }
@@ -100,32 +105,31 @@ class ManifestLoader {
         do {
             let options = JSONSerialization.ReadingOptions.allowFragments
             let batches = try JSONSerialization.jsonObject(with: data,
-                                                           options: options) as! Array<NSDictionary>
+                                                           options: options)
             
-            for batch: NSDictionary in batches {
-                let assets = batch["assets"] as! Array<NSDictionary>
+            guard let batch = batches as? NSDictionary else {
+                NSLog("Aerial: Encountered unexpected content type for batch")
+                return
+            }
+            
+            let assets = batch["assets"] as! Array<NSDictionary>
+            
+            for item in assets {
+                let url = item["url-4K-SDR"] as! String
+                let name = item["accessibilityLabel"] as! String
+                let timeOfDay = "day"
+                let id = item["id"] as! String
+                let type = "video"
                 
-                for item in assets {
-                    let url = item["url"] as! String
-                    let name = item["accessibilityLabel"] as! String
-                    let timeOfDay = item["timeOfDay"] as! String
-                    let id = item["id"] as! String
-                    let type = item["type"] as! String
-                    
-                    if type != "video" {
-                        continue
-                    }
-                    
-                    let video = AerialVideo(id: id,
-                                            name: name,
-                                            type: type,
-                                            timeOfDay: timeOfDay,
-                                            url: url)
-                    
-                    videos.append(video)
-                    
-                    checkContentLength(video)
-                }
+                let video = AerialVideo(id: id,
+                                        name: name,
+                                        type: type,
+                                        timeOfDay: timeOfDay,
+                                        url: url)
+                
+                videos.append(video)
+                
+                checkContentLength(video)
             }
             
             self.loadedManifest = videos
