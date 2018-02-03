@@ -15,6 +15,7 @@ class Preferences {
     
     fileprivate enum Identifiers: String {
         case differentAerialsOnEachDisplay = "differentAerialsOnEachDisplay"
+        case basedOnTime = "basedOnTime"
         case cacheAerials = "cacheAerials"
         case customCacheDirectory = "cacheDirectory"
         case manifest = "manifest"
@@ -42,6 +43,7 @@ class Preferences {
     func registerDefaultValues() {
         var defaultValues = [Identifiers: Any]()
         defaultValues[.differentAerialsOnEachDisplay] = false
+        defaultValues[.basedOnTime] = true
         defaultValues[.cacheAerials] = true
         
         let defaults = defaultValues.reduce([String: Any]()) {
@@ -63,6 +65,15 @@ class Preferences {
         set {
             setValue(forIdentifier: .differentAerialsOnEachDisplay,
                          value: newValue)
+        }
+    }
+    var basedOnTime: Bool {
+        get {
+            return value(forIdentifier: .basedOnTime)
+        }
+        set {
+            setValue(forIdentifier: .basedOnTime,
+                     value: newValue)
         }
     }
     
