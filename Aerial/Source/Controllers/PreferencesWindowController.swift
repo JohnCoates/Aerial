@@ -258,6 +258,10 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
 
     }
 
+    func bundleVersionNumber() -> String {
+        return NSBundle(identifier: "com.JohnCoates.Aerial")?.objectForInfoDictionaryKey("CFBundleVersion") as! String
+    }
+
     @IBAction func close(_ sender: AnyObject?) {
         NSApp.mainWindow?.endSheet(window!)
     }

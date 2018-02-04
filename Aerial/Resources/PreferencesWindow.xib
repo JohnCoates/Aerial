@@ -186,6 +186,22 @@
                                                         <action selector="differentAerialsOnEachDisplayCheckClick:" target="-2" id="WfC-A5-ikB"/>
                                                     </connections>
                                                 </button>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHw-hh-Nma">
+                                                    <rect key="frame" x="393" y="7" width="206" height="17"/>
+                                                    <animations/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Version %{value1}@" id="tNl-nj-3mX">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <connections>
+                                                        <binding destination="-2" name="displayPatternValue1" keyPath="bundleVersionNumber" id="EY1-Hc-DWW">
+                                                            <dictionary key="options">
+                                                                <string key="NSDisplayPattern">Version %{value1}@</string>
+                                                            </dictionary>
+                                                        </binding>
+                                                    </connections>
+                                                </textField>
                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XSQ-4P-bI2">
                                                     <rect key="frame" x="4" y="-3" width="44" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
