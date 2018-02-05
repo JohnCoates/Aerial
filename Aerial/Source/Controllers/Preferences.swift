@@ -18,6 +18,7 @@ class Preferences {
         case cacheAerials = "cacheAerials"
         case customCacheDirectory = "cacheDirectory"
         case manifest = "manifest"
+        case shouldShowNameLabel = "shouldShowNameLabel"
     }
     
     static let sharedInstance = Preferences()
@@ -93,7 +94,16 @@ class Preferences {
             setValue(forIdentifier: .manifest, value: newValue)
         }
     }
-    
+
+    var shouldShowNameLabel: Bool {
+        get {
+            return value(forIdentifier: .shouldShowNameLabel)
+        }
+        set {
+            setValue(forIdentifier: .shouldShowNameLabel, value: newValue)
+        }
+    }
+
     func videoIsInRotation(videoID: String) -> Bool {
         let key = "remove\(videoID)"
         let removed = userDefaults.bool(forKey: key)
