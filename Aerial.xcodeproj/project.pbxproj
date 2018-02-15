@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		726D725F1DBCC4AD00AC56D7 /* speedometer.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 726D725E1DBCC4AD00AC56D7 /* speedometer.pdf */; };
+		726D72601DBCC84B00AC56D7 /* speedometer.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 726D725E1DBCC4AD00AC56D7 /* speedometer.pdf */; };
+		726D72621DBCCB5D00AC56D7 /* PlaybackSpeeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726D72611DBCCB5D00AC56D7 /* PlaybackSpeeds.swift */; };
 		FA143CE61BDA3EEF0041A82B /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA143CE51BDA3EEF0041A82B /* AVKit.framework */; };
 		FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */; };
 		FA36BD401BE57F8E00D5E03B /* VideoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */; };
@@ -57,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		726D725E1DBCC4AD00AC56D7 /* speedometer.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = speedometer.pdf; sourceTree = "<group>"; };
+		726D72611DBCCB5D00AC56D7 /* PlaybackSpeeds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackSpeeds.swift; sourceTree = "<group>"; };
 		FA143CD61BDA3E880041A82B /* AerialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA143CE51BDA3EEF0041A82B /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = VideoDownload.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -163,6 +168,7 @@
 				FAC36F381BE1756D007F2A20 /* icon-night.pdf */,
 				FAC36F391BE1756D007F2A20 /* Info.plist */,
 				FAC36F3A1BE1756D007F2A20 /* PreferencesWindow.xib */,
+				726D725E1DBCC4AD00AC56D7 /* speedometer.pdf */,
 				FAC36F3B1BE1756D007F2A20 /* thumbnail.png */,
 			);
 			name = Resources;
@@ -198,6 +204,7 @@
 				FAC36F401BE1756D007F2A20 /* AerialVideo.swift */,
 				FAC36F661BE1778C007F2A20 /* ManifestLoader.swift */,
 				FAC36F691BE1780B007F2A20 /* Debug.swift */,
+				726D72611DBCCB5D00AC56D7 /* PlaybackSpeeds.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -369,6 +376,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				726D72601DBCC84B00AC56D7 /* speedometer.pdf in Resources */,
 				FAC36F541BE1756D007F2A20 /* PreferencesWindow.xib in Resources */,
 				FAC36F4E1BE1756D007F2A20 /* icon-day.pdf in Resources */,
 				FAC36F481BE1756D007F2A20 /* Assets.xcassets in Resources */,
@@ -389,6 +397,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				726D725F1DBCC4AD00AC56D7 /* speedometer.pdf in Resources */,
 				FAC36F531BE1756D007F2A20 /* PreferencesWindow.xib in Resources */,
 				FAC36F4D1BE1756D007F2A20 /* icon-day.pdf in Resources */,
 				FAC36F551BE1756D007F2A20 /* thumbnail.png in Resources */,
@@ -455,6 +464,7 @@
 				FAC36F671BE1778C007F2A20 /* ManifestLoader.swift in Sources */,
 				FAC36F591BE1756D007F2A20 /* AerialVideo.swift in Sources */,
 				FAF450211BE2B45D00C1F98A /* VideoLoader.swift in Sources */,
+				726D72621DBCCB5D00AC56D7 /* PlaybackSpeeds.swift in Sources */,
 				FAC36F6A1BE1780B007F2A20 /* Debug.swift in Sources */,
 				FAB22A7E1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */,
 				FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */,

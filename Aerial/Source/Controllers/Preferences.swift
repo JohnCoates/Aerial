@@ -18,6 +18,7 @@ class Preferences {
         case cacheAerials = "cacheAerials"
         case customCacheDirectory = "cacheDirectory"
         case manifest = "manifest"
+		case playbackSpeed = "playbackSpeed"
     }
     
     static let sharedInstance = Preferences()
@@ -43,6 +44,7 @@ class Preferences {
         var defaultValues = [Identifiers: Any]()
         defaultValues[.differentAerialsOnEachDisplay] = false
         defaultValues[.cacheAerials] = true
+		defaultValues[.playbackSpeed] = 1.0
         
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
@@ -93,6 +95,16 @@ class Preferences {
             setValue(forIdentifier: .manifest, value: newValue)
         }
     }
+
+	var playbackSpeed: Float {
+		get {
+			return userDefaults.float(forKey: Identifiers.playbackSpeed.rawValue)
+		}
+
+		set {
+			userDefaults.set(newValue, forKey: Identifiers.playbackSpeed.rawValue)
+		}
+	}
     
     func videoIsInRotation(videoID: String) -> Bool {
         let key = "remove\(videoID)"

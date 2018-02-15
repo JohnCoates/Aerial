@@ -235,6 +235,7 @@ class AerialView: ScreenSaverView {
         let item = AVPlayerItem(asset: asset)
         
         player.replaceCurrentItem(with: item)
+		player.rate = Preferences.sharedInstance.playbackSpeed
         
         debugLog("playing video: \(video.url)")
         if player.rate == 0 {
