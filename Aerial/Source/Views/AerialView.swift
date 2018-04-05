@@ -103,7 +103,7 @@ class AerialView: ScreenSaverView {
         
         playerLayer = AVPlayerLayer(player: player)
         if #available(OSX 10.10, *) {
-            playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         }
         playerLayer.autoresizingMask = [CAAutoresizingMask.layerWidthSizable, CAAutoresizingMask.layerHeightSizable]
         playerLayer.frame = layer.bounds
@@ -172,26 +172,30 @@ class AerialView: ScreenSaverView {
     
     // MARK: - AVPlayerItem Notifications
     
-    func playerItemFailedtoPlayToEnd(_ aNotification: Notification) {
+    @objc func playerItemFailedtoPlayToEnd(_ aNotification: Notification) {
         NSLog("AVPlayerItemFailedToPlayToEndTimeNotification \(aNotification)")
         
         playNextVideo()
     }
     
-    func playerItemNewErrorLogEntryNotification(_ aNotification: Notification) {
+    @objc func playerItemNewErrorLogEntryNotification(_ aNotification: Notification) {
         NSLog("AVPlayerItemNewErrorLogEntryNotification \(aNotification)")
     }
     
-    func playerItemPlaybackStalledNotification(_ aNotification: Notification) {
+    @objc func playerItemPlaybackStalledNotification(_ aNotification: Notification) {
         NSLog("AVPlayerItemPlaybackStalledNotification \(aNotification)")
     }
     
-    func playerItemDidReachEnd(_ aNotification: Notification) {
+    @objc func playerItemDidReachEnd(_ aNotification: Notification) {
         debugLog("played did reach end")
         debugLog("notification: \(aNotification)")
         playNextVideo()
 
-        debugLog("playing next video for player \(player)")
+		if let player = player {
+			debugLog("playing next video for player \(player)")
+		} else {
+			debugLog("playing next video for player 'nil'")
+		}
     }
     
     // MARK: - Playing Videos
@@ -268,16 +272,16 @@ class AerialView: ScreenSaverView {
     
     // MARK: - Preferences
     
-    override func hasConfigureSheet() -> Bool {
+    override var hasConfigureSheet: Bool {
         return true
     }
     
-    override func configureSheet() -> NSWindow? {
+    override var configureSheet: NSWindow? {
         if let controller = preferencesController {
             return controller.window
         }
         
-        let controller = PreferencesWindowController(windowNibName: "PreferencesWindow")
+        let controller = PreferencesWindowController(windowNibName: NSNib.Name(rawValue: "PreferencesWindow"))
     
         preferencesController = controller
         return controller.window
