@@ -219,9 +219,8 @@
                                                 <pathControl verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XAJ-Se-rwG">
                                                     <rect key="frame" x="10" y="200" width="587" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <pathCell key="cell" selectable="YES" editable="YES" alignment="left" id="gVD-I9-Ldu">
+                                                    <pathCell key="cell" selectable="YES" editable="YES" alignment="left" placeholderString="Failed to load cache location" id="gVD-I9-Ldu">
                                                         <font key="font" metaFont="system"/>
-                                                        <url key="url" string="file://localhost/Applications/"/>
                                                         <color key="backgroundColor" red="0.89803921568627454" green="0.92549019607843142" blue="0.97254901960784312" alpha="1" colorSpace="deviceRGB"/>
                                                     </pathCell>
                                                 </pathControl>
