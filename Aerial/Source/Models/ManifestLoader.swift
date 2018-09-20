@@ -71,14 +71,52 @@ class ManifestLoader {
                 self.loadSavedManifest()
                 return
             }
-            self.preferences.manifest = data
             
-            DispatchQueue.main.async(execute: { () -> Void in
-                self.readJSONFromData(data)
-            })
-            
+            // Save tar file to cache path and extract json
+            if let cacheDirectory = VideoCache.cacheDirectory {
+                var cacheResourcesUrl = URL(fileURLWithPath: cacheDirectory as String)
+                cacheResourcesUrl.appendPathComponent("resources.tar")
+                
+                var cacheResourcesString = cacheDirectory
+                cacheResourcesString.append(contentsOf: "/resources.tar")
+                
+                do {
+                    try data.write(to: cacheResourcesUrl)
+                }
+                catch
+                {
+                    NSLog("Aerial: Error saving resources.tar.")
+                }
+                
+                // Extract json
+                let process:Process = Process()
+                
+                process.currentDirectoryPath = cacheDirectory
+                process.launchPath = "/usr/bin/tar"
+                process.arguments = ["-xvf",cacheResourcesString]
+                process.launch()
+                
+                process.waitUntilExit()
+                
+                var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
+                cacheFileUrl.appendPathComponent("entries.json")
+                do {
+                    let ndata = try Data(contentsOf: cacheFileUrl)
+                    
+                    self.preferences.manifest = ndata
+                    
+                    DispatchQueue.main.async(execute: { () -> Void in
+                        self.readJSONFromData(ndata)
+                    })
+                }
+                catch {
+                    NSLog("Aerial: Error can't load entries.json")
+                }
+            }
         }
-        let apiURL = "https://sylvan.apple.com/Aerials/2x/entries.json"
+        
+        // updated url for tvOS12, json is now in a tar file
+        let apiURL = "https://sylvan.apple.com/Aerials/resources.tar"
         guard let url = URL(string: apiURL) else {
             fatalError("Couldn't init URL from string")
         }
