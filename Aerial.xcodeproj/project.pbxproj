@@ -693,6 +693,7 @@
 				FA7199771D94EC5A00FBC99B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FACAF19F1BD9FC6000E539DC /* Build configuration list for PBXProject "Aerial" */ = {
 			isa = XCConfigurationList;
