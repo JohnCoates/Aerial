@@ -66,14 +66,55 @@ class ManifestLoader {
                 self.loadSavedManifest()
                 return
             }
-            self.preferences.manifest = data
             
-            DispatchQueue.main.async(execute: { () -> Void in
-                self.readJSONFromData(data)
-            })
-            
+            // Save tar file to cache path and extract json
+            if let cacheDirectory = VideoCache.cacheDirectory {
+                var cacheResourcesUrl = URL(fileURLWithPath: cacheDirectory as String)
+                cacheResourcesUrl.appendPathComponent("resources.tar")
+                
+                var cacheResourcesString = cacheDirectory
+                cacheResourcesString.append(contentsOf: "/resources.tar")
+                
+                do {
+                    try data.write(to: cacheResourcesUrl)
+                }
+                catch
+                {
+                    NSLog("Aerial: Error saving resources.tar.")
+                }
+                
+                // Extract json
+                let process:Process = Process()
+                //let pipe:Pipe = Pipe()
+                
+                //process
+                process.currentDirectoryPath = cacheDirectory
+                process.launchPath = "/usr/bin/tar"
+                process.arguments = ["-xvf",cacheResourcesString]
+                //process.standardOutput = pipe
+                process.launch()
+                
+                process.waitUntilExit()
+                
+                var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
+                cacheFileUrl.appendPathComponent("entries.json")
+                do {
+                    let ndata = try Data(contentsOf: cacheFileUrl)
+                    
+                    self.preferences.manifest = ndata
+                    
+                    DispatchQueue.main.async(execute: { () -> Void in
+                        self.readJSONFromData(ndata)
+                    })
+                }
+                catch {
+                    NSLog("Aerial: Error can't load entries.json")
+                }
+            }
         }
-        let apiURL = "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json"
+
+        // updated url for tvOS12, json is now in a tar file
+        let apiURL = "https://sylvan.apple.com/Aerials/resources.tar"
         guard let url = URL(string: apiURL) else {
             fatalError("Couldn't init URL from string")
         }
@@ -99,33 +140,26 @@ class ManifestLoader {
         
         do {
             let options = JSONSerialization.ReadingOptions.allowFragments
-            let batches = try JSONSerialization.jsonObject(with: data,
-                                                           options: options) as! Array<NSDictionary>
             
-            for batch: NSDictionary in batches {
-                let assets = batch["assets"] as! Array<NSDictionary>
+            let batches = try JSONSerialization.jsonObject(with: data,
+                                                           options: options) as! [String:Any]
+            
+            let assets = batches["assets"] as! Array<NSDictionary>
+            
+            for item in assets {
+                let url = item["url-4K-SDR"] as! String
+                let name = item["accessibilityLabel"] as! String
+                let id = item["id"] as! String
+
+                let video = AerialVideo(id: id,
+                                        name: name,
+                                        type: "video",
+                                        timeOfDay: "Day",
+                                        url: url)
                 
-                for item in assets {
-                    let url = item["url"] as! String
-                    let name = item["accessibilityLabel"] as! String
-                    let timeOfDay = item["timeOfDay"] as! String
-                    let id = item["id"] as! String
-                    let type = item["type"] as! String
-                    
-                    if type != "video" {
-                        continue
-                    }
-                    
-                    let video = AerialVideo(id: id,
-                                            name: name,
-                                            type: type,
-                                            timeOfDay: timeOfDay,
-                                            url: url)
-                    
-                    videos.append(video)
-                    
-                    checkContentLength(video)
-                }
+                videos.append(video)
+                
+                checkContentLength(video)
             }
             
             self.loadedManifest = videos
