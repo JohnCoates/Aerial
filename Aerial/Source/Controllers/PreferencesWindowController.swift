@@ -451,18 +451,18 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         }
     }
     
-    func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
-        switch item {
-        case is AerialVideo:
-            return 18
-        case is TimeOfDay:
-            return 18
-        case is City:
-            return 18
-        default:
-            return 0
-        }
-    }
+//    func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
+//        switch item {
+//        case is AerialVideo:
+//            return 18
+//        case is TimeOfDay:
+//            return outlineView.textFi
+//        case is City:
+//            return 18
+//        default:
+//            fatalError("unhandled item in heightOfRowByItem for \(item)")
+//        }
+//    }
     
     // MARK: - Caching
     
@@ -495,23 +495,23 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             return video.isAvailableOffline == false
         }
         
-        if uncached.count == 0 {
-            cacheStatusLabel.stringValue = "All videos have been cached"
-            return
-        }
-        
         NSLog("uncached: \(uncached)")
         
         totalProgress.maxValue = Double(manifestVideos.count)
         totalProgress.doubleValue = Double(manifestVideos.count) - Double(uncached.count)
         NSLog("total process max value: \(totalProgress.maxValue), current value: \(totalProgress.doubleValue)")
         
+        if uncached.count == 0 {
+            cacheStatusLabel.stringValue = "All videos have been cached"
+            return
+        }
+        
         let video = uncached[0]
         
         // find video that hasn't been cached
         let videoDownload = VideoDownload(video: video, delegate: self)
         
-        cacheStatusLabel.stringValue = "Caching video \(video.name) \(video.timeOfDay.capitalized): \(video.id)"
+        cacheStatusLabel.stringValue = "Caching video \(video.name) \(video.timeOfDay.capitalized): \(video.url)"
         
         currentVideoDownload = videoDownload
         videoDownload.startDownload()
