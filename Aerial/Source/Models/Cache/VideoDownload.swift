@@ -297,7 +297,7 @@ class VideoDownload: NSObject, NSURLConnectionDataDelegate {
             debugLog("Weird, couldn't make a regex match for byte offset: \(contentRange)")
             return nil
         }
-        let offsetMatchRange = match.rangeAt(1)
+        let offsetMatchRange = match.range(at: 1)
         let offsetString = contentRange.substring(with: offsetMatchRange) as NSString
         
         let offset = offsetString.longLongValue

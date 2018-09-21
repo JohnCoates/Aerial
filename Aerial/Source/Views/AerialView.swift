@@ -103,7 +103,7 @@ class AerialView: ScreenSaverView {
         
         playerLayer = AVPlayerLayer(player: player)
         if #available(OSX 10.10, *) {
-            playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         }
         playerLayer.autoresizingMask = [CAAutoresizingMask.layerWidthSizable, CAAutoresizingMask.layerHeightSizable]
         playerLayer.frame = layer.bounds
@@ -172,21 +172,21 @@ class AerialView: ScreenSaverView {
     
     // MARK: - AVPlayerItem Notifications
     
-    func playerItemFailedtoPlayToEnd(_ aNotification: Notification) {
+    @objc func playerItemFailedtoPlayToEnd(_ aNotification: Notification) {
         NSLog("AVPlayerItemFailedToPlayToEndTimeNotification \(aNotification)")
         
         playNextVideo()
     }
     
-    func playerItemNewErrorLogEntryNotification(_ aNotification: Notification) {
+    @objc func playerItemNewErrorLogEntryNotification(_ aNotification: Notification) {
         NSLog("AVPlayerItemNewErrorLogEntryNotification \(aNotification)")
     }
     
-    func playerItemPlaybackStalledNotification(_ aNotification: Notification) {
+    @objc func playerItemPlaybackStalledNotification(_ aNotification: Notification) {
         NSLog("AVPlayerItemPlaybackStalledNotification \(aNotification)")
     }
     
-    func playerItemDidReachEnd(_ aNotification: Notification) {
+    @objc func playerItemDidReachEnd(_ aNotification: Notification) {
         debugLog("played did reach end")
         debugLog("notification: \(aNotification)")
         playNextVideo()
@@ -223,7 +223,7 @@ class AerialView: ScreenSaverView {
         // for the next video. This prevents the same video from being shown twice in a row
         // as well as the same video being shown on two different monitors even when sharingPlayers
         // is false
-        let currentVideos: [AerialVideo] = AerialView.players.flatMap { (player) -> AerialVideo? in
+        let currentVideos: [AerialVideo] = AerialView.players.compactMap { (player) -> AerialVideo? in
             (player.currentItem as? AerialPlayerItem)?.video
         }
         
@@ -265,16 +265,16 @@ class AerialView: ScreenSaverView {
                                        selector: #selector(AerialView.playerItemPlaybackStalledNotification(_:)),
                                        name: NSNotification.Name.AVPlayerItemPlaybackStalled,
                                        object: currentItem)
-        player.actionAtItemEnd = AVPlayerActionAtItemEnd.none
+        player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
     }
     
     // MARK: - Preferences
     
-    override func hasConfigureSheet() -> Bool {
+    override var hasConfigureSheet: Bool {
         return true
     }
     
-    override func configureSheet() -> NSWindow? {
+    override var configureSheet: NSWindow? {
         if let controller = preferencesController {
             return controller.window
         }
