@@ -258,8 +258,8 @@ class AerialView: ScreenSaverView {
         {
             // Animate text
             let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
-            fadeAnimation.values = [0, 1, 1, 0]
-            fadeAnimation.keyTimes = [0, 0.2, 0.8, 1]
+            fadeAnimation.values = [0, 0, 1, 1, 0]
+            fadeAnimation.keyTimes = [0, 0.2, 0.4, 0.8, 1]
             fadeAnimation.duration = 10
             self.textLayer.add(fadeAnimation, forKey: "textfade")
         }

@@ -89,9 +89,14 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         outlineView.floatsGroupRows = false
         loadJSON()
 
-        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+        
+        if let version = Bundle(identifier: "com.johncoates.Aerial-Test")?.infoDictionary?["CFBundleShortVersionString"] as? String {
             versionLabel.stringValue = version
         }
+        if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
+            versionLabel.stringValue = version
+        }
+
 
         playerView.player = player
         playerView.controlsStyle = .none
