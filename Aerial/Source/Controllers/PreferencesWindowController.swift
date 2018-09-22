@@ -48,6 +48,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var outlineView: NSOutlineView!
     @IBOutlet var playerView: AVPlayerView!
     @IBOutlet var differentAerialCheckbox: NSButton!
+    @IBOutlet var showDescriptionsCheckbox: NSButton!
     @IBOutlet var projectPageLink: NSButton!
     @IBOutlet var cacheLocation: NSPathControl!
     @IBOutlet var cacheAerialsAsTheyPlayCheckbox: NSButton!
@@ -101,6 +102,11 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         if preferences.differentAerialsOnEachDisplay {
             differentAerialCheckbox.state = NSControl.StateValue.on
         }
+        
+        if preferences.showDescriptions {
+            showDescriptionsCheckbox.state = NSControl.StateValue.on
+        }
+        
         
         if !preferences.cacheAerials {
             cacheAerialsAsTheyPlayCheckbox.state = NSControl.StateValue.off
@@ -232,6 +238,17 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         
         debugLog("set differentAerialsOnEachDisplay to \(onState)")
     }
+    
+    @IBAction func showDescriptionsClick(button: NSButton?) {
+        let state = showDescriptionsCheckbox.state
+        let onState = (state == NSControl.StateValue.on)
+        
+        preferences.showDescriptions = onState
+        
+        debugLog("set showDescriptions to \(onState)")
+    }
+    
+
     
     // MARK: - Link
     

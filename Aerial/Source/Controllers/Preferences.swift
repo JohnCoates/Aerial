@@ -19,6 +19,7 @@ class Preferences {
         case customCacheDirectory = "cacheDirectory"
         case manifest = "manifest"
         case use4KVideos = "use4KVideos"
+        case showDescriptions = "showDescriptions"
     }
     
     static let sharedInstance = Preferences()
@@ -45,6 +46,7 @@ class Preferences {
         defaultValues[.differentAerialsOnEachDisplay] = false
         defaultValues[.cacheAerials] = true
         defaultValues[.use4KVideos] = true
+        defaultValues[.showDescriptions] = true
         
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
@@ -102,6 +104,16 @@ class Preferences {
         }
         set {
             setValue(forIdentifier: .use4KVideos, value: newValue)
+        }
+    }
+    
+    var showDescriptions: Bool {
+        get {
+            return value(forIdentifier: .showDescriptions)
+        }
+        set {
+            setValue(forIdentifier: .showDescriptions,
+                     value: newValue)
         }
     }
     

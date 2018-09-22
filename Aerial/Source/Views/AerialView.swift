@@ -254,13 +254,15 @@ class AerialView: ScreenSaverView {
         debugLog("playing video: \(preferences.use4KVideos ? video.url4K : video.url1080p)")
         self.textLayer.string = video.name
 
-        // Animate text
-        let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
-        fadeAnimation.values = [0, 1, 1, 0]
-        fadeAnimation.keyTimes = [0, 0.2, 0.8, 1]
-        fadeAnimation.duration = 10
-        self.textLayer.add(fadeAnimation, forKey: "textfade")
-
+        if (preferences.showDescriptions)
+        {
+            // Animate text
+            let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
+            fadeAnimation.values = [0, 1, 1, 0]
+            fadeAnimation.keyTimes = [0, 0.2, 0.8, 1]
+            fadeAnimation.duration = 10
+            self.textLayer.add(fadeAnimation, forKey: "textfade")
+        }
         
         if player.rate == 0 {
             player.play()
