@@ -14,6 +14,7 @@ import AVKit
 @objc(AerialView)
 class AerialView: ScreenSaverView {
     var playerLayer: AVPlayerLayer!
+    var textLayer: CATextLayer!
     var preferencesController: PreferencesWindowController?
     static var players: [AVPlayer] = [AVPlayer]()
     static var previewPlayer: AVPlayer?
@@ -90,7 +91,7 @@ class AerialView: ScreenSaverView {
     func setupPlayerLayer(withPlayer player: AVPlayer) {
         self.layer = CALayer()
         guard let layer = self.layer else {
-            NSLog("Aerial Errror: Couldn't create CALayer")
+            NSLog("Aerial Error: Couldn't create CALayer")
             return
         }
         self.wantsLayer = true
@@ -108,6 +109,17 @@ class AerialView: ScreenSaverView {
         playerLayer.autoresizingMask = [CAAutoresizingMask.layerWidthSizable, CAAutoresizingMask.layerHeightSizable]
         playerLayer.frame = layer.bounds
         layer.addSublayer(playerLayer)
+        // Debug code
+        textLayer = CATextLayer()
+        textLayer.frame = CGRect(x: 20, y: 10, width: layer.bounds.width, height: 40)
+        //textLayer.position = CGPoint(x: 20, y: 20)
+        //textLayer.position = CGPoint(x: layer.bounds.maxX-20, y: layer.bounds.maxY-20)
+        //textLayer.alignmentMode = .left
+        textLayer.fontSize = 28
+        textLayer.string = ""
+        textLayer.opacity = 0
+        
+        layer.addSublayer(textLayer)
     }
     
     func setup() {
@@ -240,6 +252,16 @@ class AerialView: ScreenSaverView {
         
         let preferences = Preferences.sharedInstance
         debugLog("playing video: \(preferences.use4KVideos ? video.url4K : video.url1080p)")
+        self.textLayer.string = video.name
+
+        // Animate text
+        let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
+        fadeAnimation.values = [0, 1, 1, 0]
+        fadeAnimation.keyTimes = [0, 0.2, 0.8, 1]
+        fadeAnimation.duration = 10
+        self.textLayer.add(fadeAnimation, forKey: "textfade")
+
+        
         if player.rate == 0 {
             player.play()
         }
