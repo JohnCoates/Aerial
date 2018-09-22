@@ -70,7 +70,9 @@ class VideoCache {
     }
     
     static func cachePath(forVideo video: AerialVideo) -> String? {
-        let filename = video.url.lastPathComponent
+        let preferences = Preferences.sharedInstance
+        let vurl = preferences.use4KVideos ? video.url4K : video.url1080p
+        let filename = vurl.lastPathComponent
         return cachePath(forFilename: filename)
     }
     

@@ -153,7 +153,8 @@ class ManifestLoader {
             let assets = batch["assets"] as! Array<NSDictionary>
             
             for item in assets {
-                let url = item["url-4K-SDR"] as! String
+                let url1080p = item["url-1080-SDR"] as! String
+                let url4K = item["url-4K-SDR"] as! String
                 let name = item["accessibilityLabel"] as! String
                 let timeOfDay = "day"
                 let id = item["id"] as! String
@@ -163,7 +164,8 @@ class ManifestLoader {
                                         name: name,
                                         type: type,
                                         timeOfDay: timeOfDay,
-                                        url: url)
+                                        url1080p: url1080p,
+                                        url4K: url4K)
                 
                 videos.append(video)
                 
@@ -180,7 +182,8 @@ class ManifestLoader {
     func checkContentLength(_ video: AerialVideo) {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
-        let request = NSMutableURLRequest(url: video.url as URL)
+        let request = NSMutableURLRequest(url: preferences.use4KVideos ? video.url4K : video.url1080p as URL)
+        
         request.httpMethod = "HEAD"
         
         let task = session.dataTask(with: request as URLRequest,

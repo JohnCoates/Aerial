@@ -17,7 +17,10 @@
                 <outlet property="outlineView" destination="gP6-w2-1UT" id="xdh-0c-TK2"/>
                 <outlet property="playerView" destination="Rc1-hl-hSC" id="I7W-rF-KFm"/>
                 <outlet property="projectPageLink" destination="hOD-gE-gxl" id="UTt-Vt-cTP"/>
+                <outlet property="resolution1080pRadio" destination="Z6e-vj-kx2" id="Neu-Zy-5lb"/>
+                <outlet property="resolution4KRadio" destination="dc3-id-Q7V" id="EGZ-dI-69C"/>
                 <outlet property="totalProgress" destination="HH2-7L-HmQ" id="UgG-Xt-pR3"/>
+                <outlet property="versionLabel" destination="Hwv-TU-zhn" id="EPq-JL-DCZ"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="B44-2j-OKw"/>
             </connections>
         </customObject>
@@ -225,8 +228,19 @@
                                                         <action selector="cacheAerialsAsTheyPlayClick:" target="-2" id="a7P-kZ-CeM"/>
                                                     </connections>
                                                 </button>
+                                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TFE-JE-tOy">
+                                                    <rect key="frame" x="199" y="253" width="150" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Never Stream Videos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fmX-YC-9t8">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="cacheAerialsAsTheyPlayClick:" target="-2" id="EYb-IM-LYr"/>
+                                                    </connections>
+                                                </button>
                                                 <pathControl verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XAJ-Se-rwG">
-                                                    <rect key="frame" x="10" y="200" width="587" height="22"/>
+                                                    <rect key="frame" x="10" y="214" width="587" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <pathCell key="cell" selectable="YES" editable="YES" alignment="left" id="gVD-I9-Ldu">
                                                         <font key="font" metaFont="system"/>
@@ -303,20 +317,35 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 </progressIndicator>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z6e-vj-kx2">
-                                                    <rect key="frame" x="374" y="254" width="61" height="18"/>
+                                                    <rect key="frame" x="487" y="253" width="61" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="radio" title="1080p" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="WNF-LL-Vlh">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="radioResolution:" target="-2" id="1Vf-Sc-ifo"/>
+                                                    </connections>
                                                 </button>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r2T-qd-0zX">
+                                                    <rect key="frame" x="416" y="254" width="68" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Resolution" id="bos-5M-pdo">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dc3-id-Q7V">
-                                                    <rect key="frame" x="440" y="254" width="39" height="18"/>
+                                                    <rect key="frame" x="553" y="253" width="39" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="radio" title="4K" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="cgh-6T-7Bc">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="radioResolution:" target="-2" id="wWl-yk-0Ui"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -336,6 +365,15 @@
                             <action selector="close:" target="-2" id="kPJ-lE-Dlf"/>
                         </connections>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hwv-TU-zhn">
+                        <rect key="frame" x="546" y="12" width="72" height="14"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Version 1.0a1" id="oXD-cP-8h9">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <point key="canvasLocation" x="590.5" y="500.5"/>

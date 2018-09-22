@@ -238,7 +238,8 @@ class AerialView: ScreenSaverView {
         
         player.replaceCurrentItem(with: item)
         
-        debugLog("playing video: \(video.url)")
+        let preferences = Preferences.sharedInstance
+        debugLog("playing video: \(preferences.use4KVideos ? video.url4K : video.url1080p)")
         if player.rate == 0 {
             player.play()
         }

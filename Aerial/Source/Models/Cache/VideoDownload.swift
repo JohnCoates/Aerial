@@ -58,7 +58,8 @@ class VideoDownload: NSObject, NSURLConnectionDataDelegate {
     }
     
     func startDownloadForChunk(_ chunk: NSRange?) {
-        let request = NSMutableURLRequest(url: video.url as URL)
+        let preferences = Preferences.sharedInstance
+        let request = NSMutableURLRequest(url: preferences.use4KVideos ? video.url4K : video.url1080p as URL)
         request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
         
         if let requestedRange = chunk {

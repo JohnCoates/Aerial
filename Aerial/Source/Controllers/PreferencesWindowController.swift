@@ -51,6 +51,9 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var projectPageLink: NSButton!
     @IBOutlet var cacheLocation: NSPathControl!
     @IBOutlet var cacheAerialsAsTheyPlayCheckbox: NSButton!
+    @IBOutlet var resolution1080pRadio: NSButton!
+    @IBOutlet var resolution4KRadio: NSButton!
+    @IBOutlet var versionLabel: NSTextField!
     
     var player: AVPlayer = AVPlayer()
     
@@ -81,9 +84,14 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             self.player = previewPlayer
         }
         
+
         outlineView.floatsGroupRows = false
         loadJSON()
-        
+
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            versionLabel.stringValue = version
+        }
+
         playerView.player = player
         playerView.controlsStyle = .none
         if #available(OSX 10.10, *) {
@@ -98,6 +106,13 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             cacheAerialsAsTheyPlayCheckbox.state = NSControl.StateValue.off
         }
         
+        if preferences.use4KVideos {
+            resolution4KRadio.state = NSControl.StateValue.on
+        }
+        else
+        {
+            resolution1080pRadio.state = NSControl.StateValue.on
+        }
         colorizeProjectPageLink()
         
         if let cacheDirectory = VideoCache.cacheDirectory {
@@ -173,6 +188,18 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         let event = NSApp.currentEvent
         NSMenu.popUpContextMenu(menu, with: event!, for: button)
     }
+    
+    @IBAction func radioResolution(_ sender: NSButton) {
+        NSLog(sender.title)
+        if resolution4KRadio.state == NSControl.StateValue.on {
+            preferences.use4KVideos = true
+        }
+        else
+        {
+            preferences.use4KVideos = false
+        }
+    }
+    
     
     @objc func outlineViewUncheckAll(button: NSButton) {
         setAllVideos(inRotation: false)
@@ -435,7 +462,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             
             let video = item as! AerialVideo
             
-            let asset = CachedOrCachingAsset(video.url)
+            let asset = CachedOrCachingAsset(preferences.use4KVideos ? video.url4K : video.url1080p)
 //            let asset = AVAsset(URL: video.url)
             
             let item = AVPlayerItem(asset: asset)
@@ -511,7 +538,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         // find video that hasn't been cached
         let videoDownload = VideoDownload(video: video, delegate: self)
         
-        cacheStatusLabel.stringValue = "Caching video \(video.name) \(video.timeOfDay.capitalized): \(video.url)"
+        cacheStatusLabel.stringValue = "Caching video \(video.name) \(video.timeOfDay.capitalized): \(preferences.use4KVideos ? video.url4K : video.url1080p)"
         
         currentVideoDownload = videoDownload
         videoDownload.startDownload()
