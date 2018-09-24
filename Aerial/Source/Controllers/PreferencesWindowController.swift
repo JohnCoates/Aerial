@@ -308,7 +308,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     }
 
     @IBAction func close(_ sender: AnyObject?) {
-        NSApp.mainWindow?.endSheet(window!)
+        window?.sheetParent?.endSheet(window!)
     }
     
     // MARK: - Outline View Delegate & Data Source
