@@ -251,7 +251,7 @@ class AerialView: ScreenSaverView {
         player.replaceCurrentItem(with: item)
         
         let preferences = Preferences.sharedInstance
-        debugLog("playing video: \(preferences.use4KVideos ? video.url4K : video.url1080p)")
+        debugLog("playing video: \(video.url)")
         self.textLayer.string = video.name
 
         if (preferences.showDescriptions)

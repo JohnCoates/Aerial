@@ -52,9 +52,9 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var projectPageLink: NSButton!
     @IBOutlet var cacheLocation: NSPathControl!
     @IBOutlet var cacheAerialsAsTheyPlayCheckbox: NSButton!
-    @IBOutlet var resolution1080pRadio: NSButton!
-    @IBOutlet var resolution4KRadio: NSButton!
+    @IBOutlet var popupVideoFormat: NSPopUpButton!
     @IBOutlet var versionLabel: NSTextField!
+    @IBOutlet var popover: NSPopover!
     
     var player: AVPlayer = AVPlayer()
     
@@ -117,13 +117,8 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             cacheAerialsAsTheyPlayCheckbox.state = NSControl.StateValue.off
         }
         
-        if preferences.use4KVideos {
-            resolution4KRadio.state = NSControl.StateValue.on
-        }
-        else
-        {
-            resolution1080pRadio.state = NSControl.StateValue.on
-        }
+        popupVideoFormat.selectItem(at: preferences.videoFormat!)
+
         colorizeProjectPageLink()
         
         if let cacheDirectory = VideoCache.cacheDirectory {
@@ -147,6 +142,9 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     }
     
     // MARK: - Preferences
+    @IBAction func helpButtonClick(_ button: NSButton!) {
+        popover.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
+    }
     
     @IBAction func cacheAerialsAsTheyPlayClick(_ button: NSButton!) {
         debugLog("cache aerials as they play: \(convertFromNSControlStateValue(button.state))")
@@ -199,7 +197,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         let event = NSApp.currentEvent
         NSMenu.popUpContextMenu(menu, with: event!, for: button)
     }
-    
+    /*
     @IBAction func radioResolution(_ sender: NSButton) {
         NSLog(sender.title)
         if resolution4KRadio.state == NSControl.StateValue.on {
@@ -209,6 +207,11 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         {
             preferences.use4KVideos = false
         }
+    }
+    */
+    @IBAction func popupVideoFormatChange(_ sender:NSPopUpButton) {
+        NSLog("index change : \(sender.indexOfSelectedItem)")
+        preferences.videoFormat = sender.indexOfSelectedItem
     }
     
     
@@ -319,10 +322,11 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         }
         
         switch item {
-            case is TimeOfDay:
+            /*case is TimeOfDay:
                 let timeOfDay = item as! TimeOfDay
-                return timeOfDay.videos.count
+                return timeOfDay.videos.count*/
             case is City:
+                /*
                 let city = item as! City
                 
                 var count = 0
@@ -334,8 +338,11 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
                 if city.day.videos.count > 0 {
                     count += 1
                 }
-                
-                return count
+                 return count
+
+                 */
+                let city = item as! City
+                return city.day.videos.count
             default:
                 return 0
         }
@@ -360,13 +367,16 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         
         switch item {
         case is City:
+            /*
             let city = item as! City
             
             if index == 0 && city.day.videos.count > 0 {
                 return city.day
             } else {
                 return city.night
-            }
+            }*/
+            let city = item as! City
+            return city.day.videos[index]
             
         case is TimeOfDay:
             let timeOfDay = item as! TimeOfDay
@@ -383,9 +393,9 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         case is City:
             let city = item as! City
             return city.name
-        case is TimeOfDay:
+        /*case is TimeOfDay:
             let timeOfDay = item as! TimeOfDay
-            return timeOfDay.title
+            return timeOfDay.title*/
             
         default:
             return "untitled"
@@ -403,8 +413,8 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     
     func outlineView(_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool {
         switch item {
-        case is TimeOfDay:
-            return true
+        /*case is TimeOfDay:
+            return true*/
         case is City:
             return true
         default:
@@ -422,7 +432,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             view.textField?.stringValue = city.name
             
             return view
-        case is TimeOfDay:
+        /*case is TimeOfDay:
             let timeOfDay = item as! TimeOfDay
             let view = outlineView.makeView(withIdentifier: convertToNSUserInterfaceItemIdentifier("DataCell"),
                                         owner: self) as! NSTableCellView
@@ -438,7 +448,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
                 print("\(#file) failed to find time of day icon")
             }
             
-            return view
+            return view*/
         case is AerialVideo:
             let video = item as! AerialVideo
             let view = outlineView.makeView(withIdentifier: convertToNSUserInterfaceItemIdentifier("CheckCell"),
@@ -484,7 +494,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             
             let video = item as! AerialVideo
             
-            let asset = CachedOrCachingAsset(preferences.use4KVideos ? video.url4K : video.url1080p)
+            let asset = CachedOrCachingAsset(video.url)
 //            let asset = AVAsset(URL: video.url)
             
             let item = AVPlayerItem(asset: asset)
@@ -493,8 +503,8 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             player.play()
             
             return true
-        case is TimeOfDay:
-            return false
+        /*case is TimeOfDay:
+            return false*/
         default:
             return false
         }
@@ -560,7 +570,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         // find video that hasn't been cached
         let videoDownload = VideoDownload(video: video, delegate: self)
         
-        cacheStatusLabel.stringValue = "Caching video \(video.name) \(video.timeOfDay.capitalized): \(preferences.use4KVideos ? video.url4K : video.url1080p)"
+        cacheStatusLabel.stringValue = "Caching video \(video.name) \(video.timeOfDay.capitalized): \(video.url)"
         
         currentVideoDownload = videoDownload
         videoDownload.startDownload()

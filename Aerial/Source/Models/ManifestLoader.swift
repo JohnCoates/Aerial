@@ -153,23 +153,27 @@ class ManifestLoader {
             let assets = batch["assets"] as! Array<NSDictionary>
             
             for item in assets {
-                let url1080p = item["url-1080-SDR"] as! String
-                let url4K = item["url-4K-SDR"] as! String
+                let url1080pH264 = item["url-1080-H264"] as? String
+                let url1080pHEVC = item["url-1080-SDR"] as! String
+                let url4KHEVC = item["url-4K-SDR"] as! String
                 let name = item["accessibilityLabel"] as! String
-                let timeOfDay = "day"
+                let timeOfDay = "day"   // TODO, this is hardcoded as it's no longer available in the JSON
                 let id = item["id"] as! String
                 let type = "video"
                 
-                let video = AerialVideo(id: id,
-                                        name: name,
-                                        type: type,
-                                        timeOfDay: timeOfDay,
-                                        url1080p: url1080p,
-                                        url4K: url4K)
+                if (url1080pH264 != nil) {
+                    let video = AerialVideo(id: id,
+                                            name: name,
+                                            type: type,
+                                            timeOfDay: timeOfDay,
+                                            url1080pH264: url1080pH264!,
+                                            url1080pHEVC: url1080pHEVC,
+                                            url4KHEVC: url4KHEVC)
+                    
+                    videos.append(video)
                 
-                videos.append(video)
-                
-                checkContentLength(video)
+                    checkContentLength(video)
+                }
             }
             
             self.loadedManifest = videos
@@ -182,7 +186,7 @@ class ManifestLoader {
     func checkContentLength(_ video: AerialVideo) {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
-        let request = NSMutableURLRequest(url: preferences.use4KVideos ? video.url4K : video.url1080p as URL)
+        let request = NSMutableURLRequest(url: video.url as URL)
         
         request.httpMethod = "HEAD"
         

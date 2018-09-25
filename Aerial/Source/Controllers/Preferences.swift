@@ -18,8 +18,12 @@ class Preferences {
         case cacheAerials = "cacheAerials"
         case customCacheDirectory = "cacheDirectory"
         case manifest = "manifest"
-        case use4KVideos = "use4KVideos"
+        case videoFormat = "videoFormat"
         case showDescriptions = "showDescriptions"
+    }
+    
+    enum VideoFormat : Int {
+        case v1080pH264, v1080pHEVC, v4KHEVC
     }
     
     static let sharedInstance = Preferences()
@@ -45,7 +49,7 @@ class Preferences {
         var defaultValues = [Identifiers: Any]()
         defaultValues[.differentAerialsOnEachDisplay] = false
         defaultValues[.cacheAerials] = true
-        defaultValues[.use4KVideos] = true
+        defaultValues[.videoFormat] = VideoFormat.v1080pH264
         defaultValues[.showDescriptions] = true
         
         let defaults = defaultValues.reduce([String: Any]()) {
@@ -97,13 +101,13 @@ class Preferences {
             setValue(forIdentifier: .manifest, value: newValue)
         }
     }
-    
-    var use4KVideos: Bool {
+
+    var videoFormat: Int? {
         get {
-            return value(forIdentifier: .use4KVideos)
+            return optionalValue(forIdentifier: .videoFormat)
         }
         set {
-            setValue(forIdentifier: .use4KVideos, value: newValue)
+            setValue(forIdentifier: .videoFormat, value: newValue)
         }
     }
     
@@ -145,7 +149,12 @@ class Preferences {
         let key = identifier.rawValue
         return userDefaults.string(forKey: key)
     }
-    
+
+    fileprivate func optionalValue(forIdentifier identifier: Identifiers) -> Int? {
+        let key = identifier.rawValue
+        return userDefaults.integer(forKey: key)
+    }
+
     fileprivate func optionalValue(forIdentifier
         identifier: Identifiers) -> Data? {
         let key = identifier.rawValue

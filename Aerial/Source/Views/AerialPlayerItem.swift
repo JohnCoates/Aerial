@@ -12,9 +12,7 @@ class AerialPlayerItem: AVPlayerItem {
     var video: AerialVideo?
     
     init(video: AerialVideo) {
-        let preferences = Preferences.sharedInstance
-        let videoURL = preferences.use4KVideos ? video.url4K : video.url1080p
-        //let videoURL = video.url
+        let videoURL = video.url
         let asset = CachedOrCachingAsset(videoURL)
         super.init(asset: asset, automaticallyLoadedAssetKeys: nil)
         self.video = video
