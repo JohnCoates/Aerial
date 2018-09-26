@@ -115,7 +115,8 @@ class AerialView: ScreenSaverView {
         //textLayer.position = CGPoint(x: 20, y: 20)
         //textLayer.position = CGPoint(x: layer.bounds.maxX-20, y: layer.bounds.maxY-20)
         //textLayer.alignmentMode = .left
-        textLayer.fontSize = 28
+        textLayer.font = NSFont(name: "Helvetica Neue Medium", size: 26)
+        textLayer.fontSize = 28 // Seems needed despite line above
         textLayer.string = ""
         textLayer.opacity = 0
         
@@ -256,12 +257,19 @@ class AerialView: ScreenSaverView {
 
         if (preferences.showDescriptions)
         {
-            // Animate text
-            let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
-            fadeAnimation.values = [0, 0, 1, 1, 0]
-            fadeAnimation.keyTimes = [0, 0.2, 0.4, 0.8, 1]
-            fadeAnimation.duration = 10
-            self.textLayer.add(fadeAnimation, forKey: "textfade")
+            if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)
+            {
+                // Animate text
+                let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
+                fadeAnimation.values = [0, 0, 1, 1, 0]
+                fadeAnimation.keyTimes = [0, 0.2, 0.4, 0.8, 1]
+                fadeAnimation.duration = 12
+                self.textLayer.add(fadeAnimation, forKey: "textfade")
+            }
+            else
+            {
+                self.textLayer.opacity = 1.0
+            }
         }
         
         if player.rate == 0 {

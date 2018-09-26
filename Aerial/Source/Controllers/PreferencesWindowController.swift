@@ -53,6 +53,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var cacheLocation: NSPathControl!
     @IBOutlet var cacheAerialsAsTheyPlayCheckbox: NSButton!
     @IBOutlet var popupVideoFormat: NSPopUpButton!
+    @IBOutlet var descriptionModePopup: NSPopUpButton!
     @IBOutlet var versionLabel: NSTextField!
     @IBOutlet var popover: NSPopover!
     
@@ -118,7 +119,9 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         }
         
         popupVideoFormat.selectItem(at: preferences.videoFormat!)
-
+        
+        descriptionModePopup.selectItem(at: preferences.showDescriptionsMode!)
+        
         colorizeProjectPageLink()
         
         if let cacheDirectory = VideoCache.cacheDirectory {
@@ -214,6 +217,11 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         preferences.videoFormat = sender.indexOfSelectedItem
     }
     
+    @IBAction func descriptionModePopupChange(_ sender:NSPopUpButton) {
+        NSLog("dindex change : \(sender.indexOfSelectedItem)")
+        
+        preferences.showDescriptionsMode = sender.indexOfSelectedItem
+    }
     
     @objc func outlineViewUncheckAll(button: NSButton) {
         setAllVideos(inRotation: false)

@@ -20,10 +20,15 @@ class Preferences {
         case manifest = "manifest"
         case videoFormat = "videoFormat"
         case showDescriptions = "showDescriptions"
+        case showDescriptionsMode = "showDescriptionsMode"
     }
     
     enum VideoFormat : Int {
         case v1080pH264, v1080pHEVC, v4KHEVC
+    }
+    
+    enum DescriptionMode : Int {
+        case fade10seconds, always
     }
     
     static let sharedInstance = Preferences()
@@ -51,7 +56,8 @@ class Preferences {
         defaultValues[.cacheAerials] = true
         defaultValues[.videoFormat] = VideoFormat.v1080pH264
         defaultValues[.showDescriptions] = true
-        
+        defaultValues[.showDescriptionsMode] = DescriptionMode.fade10seconds
+
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
             var mutable = result
@@ -108,6 +114,15 @@ class Preferences {
         }
         set {
             setValue(forIdentifier: .videoFormat, value: newValue)
+        }
+    }
+
+    var showDescriptionsMode: Int? {
+        get {
+            return optionalValue(forIdentifier: .showDescriptionsMode)
+        }
+        set {
+            setValue(forIdentifier: .showDescriptionsMode, value: newValue)
         }
     }
     
