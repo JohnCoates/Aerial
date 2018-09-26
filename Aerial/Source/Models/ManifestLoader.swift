@@ -94,6 +94,7 @@ class ManifestLoader {
                 process.currentDirectoryPath = cacheDirectory
                 process.launchPath = "/usr/bin/tar"
                 process.arguments = ["-xvf",cacheResourcesString]
+
                 process.launch()
                 
                 process.waitUntilExit()
@@ -114,7 +115,7 @@ class ManifestLoader {
                 }
             }
         }
-        
+
         // updated url for tvOS12, json is now in a tar file
         let apiURL = "https://sylvan.apple.com/Aerials/resources.tar"
         guard let url = URL(string: apiURL) else {
@@ -142,7 +143,9 @@ class ManifestLoader {
         
         do {
             let options = JSONSerialization.ReadingOptions.allowFragments
+            
             let batches = try JSONSerialization.jsonObject(with: data,
+
                                                            options: options)
             
             guard let batch = batches as? NSDictionary else {
