@@ -48,9 +48,14 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var outlineView: NSOutlineView!
     @IBOutlet var playerView: AVPlayerView!
     @IBOutlet var differentAerialCheckbox: NSButton!
+    @IBOutlet var showDescriptionsCheckbox: NSButton!
     @IBOutlet var projectPageLink: NSButton!
     @IBOutlet var cacheLocation: NSPathControl!
     @IBOutlet var cacheAerialsAsTheyPlayCheckbox: NSButton!
+    @IBOutlet var popupVideoFormat: NSPopUpButton!
+    @IBOutlet var descriptionModePopup: NSPopUpButton!
+    @IBOutlet var versionLabel: NSTextField!
+    @IBOutlet var popover: NSPopover!
     
     var player: AVPlayer = AVPlayer()
     
@@ -81,22 +86,41 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             self.player = previewPlayer
         }
         
+
         outlineView.floatsGroupRows = false
         loadJSON()
+
         
+        if let version = Bundle(identifier: "com.johncoates.Aerial-Test")?.infoDictionary?["CFBundleShortVersionString"] as? String {
+            versionLabel.stringValue = version
+        }
+        if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
+            versionLabel.stringValue = version
+        }
+
+
         playerView.player = player
         playerView.controlsStyle = .none
         if #available(OSX 10.10, *) {
-            playerView.videoGravity = AVLayerVideoGravityResizeAspectFill
+            playerView.videoGravity = AVLayerVideoGravity.resizeAspectFill
         }
         
         if preferences.differentAerialsOnEachDisplay {
-            differentAerialCheckbox.state = NSOnState
+            differentAerialCheckbox.state = NSControl.StateValue.on
         }
         
-        if !preferences.cacheAerials {
-            cacheAerialsAsTheyPlayCheckbox.state = NSOffState
+        if preferences.showDescriptions {
+            showDescriptionsCheckbox.state = NSControl.StateValue.on
         }
+        
+        
+        if !preferences.cacheAerials {
+            cacheAerialsAsTheyPlayCheckbox.state = NSControl.StateValue.off
+        }
+        
+        popupVideoFormat.selectItem(at: preferences.videoFormat!)
+        
+        descriptionModePopup.selectItem(at: preferences.showDescriptionsMode!)
         
         colorizeProjectPageLink()
         
@@ -114,18 +138,21 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         let link = projectPageLink.attributedTitle
         let coloredLink = NSMutableAttributedString(attributedString: link)
         let fullRange = NSRange(location: 0, length: coloredLink.length)
-        coloredLink.addAttribute(NSForegroundColorAttributeName,
+        coloredLink.addAttribute(NSAttributedString.Key.foregroundColor,
                                  value: color,
                                   range: fullRange)
         projectPageLink.attributedTitle = coloredLink
     }
     
     // MARK: - Preferences
+    @IBAction func helpButtonClick(_ button: NSButton!) {
+        popover.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
+    }
     
     @IBAction func cacheAerialsAsTheyPlayClick(_ button: NSButton!) {
-        debugLog("cache aerials as they play: \(button.state)")
+        debugLog("cache aerials as they play: \(convertFromNSControlStateValue(button.state))")
         
-        let onState = (button.state == NSOnState)
+        let onState = (button.state == NSControl.StateValue.on)
         preferences.cacheAerials = onState
     }
     
@@ -141,7 +168,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         openPanel.directoryURL = cacheLocation.url
         
         openPanel.begin { result in
-            guard result == NSFileHandlingPanelOKButton,
+            guard result.rawValue == NSFileHandlingPanelOKButton,
                 openPanel.urls.count > 0 else {
                 return
             }
@@ -173,12 +200,34 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         let event = NSApp.currentEvent
         NSMenu.popUpContextMenu(menu, with: event!, for: button)
     }
+    /*
+    @IBAction func radioResolution(_ sender: NSButton) {
+        NSLog(sender.title)
+        if resolution4KRadio.state == NSControl.StateValue.on {
+            preferences.use4KVideos = true
+        }
+        else
+        {
+            preferences.use4KVideos = false
+        }
+    }
+    */
+    @IBAction func popupVideoFormatChange(_ sender:NSPopUpButton) {
+        NSLog("index change : \(sender.indexOfSelectedItem)")
+        preferences.videoFormat = sender.indexOfSelectedItem
+    }
     
-    func outlineViewUncheckAll(button: NSButton) {
+    @IBAction func descriptionModePopupChange(_ sender:NSPopUpButton) {
+        NSLog("dindex change : \(sender.indexOfSelectedItem)")
+        
+        preferences.showDescriptionsMode = sender.indexOfSelectedItem
+    }
+    
+    @objc func outlineViewUncheckAll(button: NSButton) {
         setAllVideos(inRotation: false)
     }
     
-    func outlineViewCheckAll(button: NSButton) {
+    @objc func outlineViewCheckAll(button: NSButton) {
         setAllVideos(inRotation: true)
     }
     
@@ -199,17 +248,28 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     
     @IBAction func differentAerialsOnEachDisplayCheckClick(_ button: NSButton?) {
         let state = differentAerialCheckbox.state
-        let onState = (state == NSOnState)
+        let onState = (state == NSControl.StateValue.on)
         
         preferences.differentAerialsOnEachDisplay = onState
         
         debugLog("set differentAerialsOnEachDisplay to \(onState)")
     }
     
+    @IBAction func showDescriptionsClick(button: NSButton?) {
+        let state = showDescriptionsCheckbox.state
+        let onState = (state == NSControl.StateValue.on)
+        
+        preferences.showDescriptions = onState
+        
+        debugLog("set showDescriptions to \(onState)")
+    }
+    
+
+    
     // MARK: - Link
     
     @IBAction func pageProjectClick(_ button: NSButton?) {
-        let workspace = NSWorkspace.shared()
+        let workspace = NSWorkspace.shared
         let url = URL(string: "http://github.com/JohnCoates/Aerial")!
         workspace.open(url)
     }
@@ -259,7 +319,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     }
 
     @IBAction func close(_ sender: AnyObject?) {
-        NSApp.mainWindow?.endSheet(window!)
+        window?.sheetParent?.endSheet(window!)
     }
     
     // MARK: - Outline View Delegate & Data Source
@@ -270,10 +330,11 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         }
         
         switch item {
-            case is TimeOfDay:
+            /*case is TimeOfDay:
                 let timeOfDay = item as! TimeOfDay
-                return timeOfDay.videos.count
+                return timeOfDay.videos.count*/
             case is City:
+                /*
                 let city = item as! City
                 
                 var count = 0
@@ -285,8 +346,11 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
                 if city.day.videos.count > 0 {
                     count += 1
                 }
-                
-                return count
+                 return count
+
+                 */
+                let city = item as! City
+                return city.day.videos.count
             default:
                 return 0
         }
@@ -311,13 +375,16 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         
         switch item {
         case is City:
+            /*
             let city = item as! City
             
             if index == 0 && city.day.videos.count > 0 {
                 return city.day
             } else {
                 return city.night
-            }
+            }*/
+            let city = item as! City
+            return city.day.videos[index]
             
         case is TimeOfDay:
             let timeOfDay = item as! TimeOfDay
@@ -334,9 +401,9 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         case is City:
             let city = item as! City
             return city.name
-        case is TimeOfDay:
+        /*case is TimeOfDay:
             let timeOfDay = item as! TimeOfDay
-            return timeOfDay.title
+            return timeOfDay.title*/
             
         default:
             return "untitled"
@@ -354,8 +421,8 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     
     func outlineView(_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool {
         switch item {
-        case is TimeOfDay:
-            return true
+        /*case is TimeOfDay:
+            return true*/
         case is City:
             return true
         default:
@@ -368,14 +435,14 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         switch item {
         case is City:
             let city = item as! City
-            let view = outlineView.make(withIdentifier: "HeaderCell",
+            let view = outlineView.makeView(withIdentifier: convertToNSUserInterfaceItemIdentifier("HeaderCell"),
                                         owner: self) as! NSTableCellView
             view.textField?.stringValue = city.name
             
             return view
-        case is TimeOfDay:
+        /*case is TimeOfDay:
             let timeOfDay = item as! TimeOfDay
-            let view = outlineView.make(withIdentifier: "DataCell",
+            let view = outlineView.makeView(withIdentifier: convertToNSUserInterfaceItemIdentifier("DataCell"),
                                         owner: self) as! NSTableCellView
             
             view.textField?.stringValue = timeOfDay.title.capitalized
@@ -389,10 +456,10 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
                 print("\(#file) failed to find time of day icon")
             }
             
-            return view
+            return view*/
         case is AerialVideo:
             let video = item as! AerialVideo
-            let view = outlineView.make(withIdentifier: "CheckCell",
+            let view = outlineView.makeView(withIdentifier: convertToNSUserInterfaceItemIdentifier("CheckCell"),
                                         owner: self) as! CheckCellView
             
             // One based index
@@ -412,9 +479,9 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             let isInRotation = preferences.videoIsInRotation(videoID: video.id)
             
             if isInRotation {
-                view.checkButton.state = NSOnState
+                view.checkButton.state = NSControl.StateValue.on
             } else {
-                view.checkButton.state = NSOffState
+                view.checkButton.state = NSControl.StateValue.off
             }
             
             view.onCheck = { checked in
@@ -444,25 +511,25 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             player.play()
             
             return true
-        case is TimeOfDay:
-            return false
+        /*case is TimeOfDay:
+            return false*/
         default:
             return false
         }
     }
     
-    func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
-        switch item {
-        case is AerialVideo:
-            return 18
-        case is TimeOfDay:
-            return 18
-        case is City:
-            return 18
-        default:
-            return 0
-        }
-    }
+//    func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
+//        switch item {
+//        case is AerialVideo:
+//            return 18
+//        case is TimeOfDay:
+//            return outlineView.textFi
+//        case is City:
+//            return 18
+//        default:
+//            fatalError("unhandled item in heightOfRowByItem for \(item)")
+//        }
+//    }
     
     // MARK: - Caching
     
@@ -495,23 +562,23 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             return video.isAvailableOffline == false
         }
         
-        if uncached.count == 0 {
-            cacheStatusLabel.stringValue = "All videos have been cached"
-            return
-        }
-        
         NSLog("uncached: \(uncached)")
         
         totalProgress.maxValue = Double(manifestVideos.count)
         totalProgress.doubleValue = Double(manifestVideos.count) - Double(uncached.count)
         NSLog("total process max value: \(totalProgress.maxValue), current value: \(totalProgress.doubleValue)")
         
+        if uncached.count == 0 {
+            cacheStatusLabel.stringValue = "All videos have been cached"
+            return
+        }
+        
         let video = uncached[0]
         
         // find video that hasn't been cached
         let videoDownload = VideoDownload(video: video, delegate: self)
         
-        cacheStatusLabel.stringValue = "Caching video \(video.name) \(video.timeOfDay.capitalized): \(video.id)"
+        cacheStatusLabel.stringValue = "Caching video \(video.name) \(video.timeOfDay.capitalized): \(video.url)"
         
         currentVideoDownload = videoDownload
         videoDownload.startDownload()
@@ -535,4 +602,14 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
 //     NSLog("received bytes: \(receivedBytes), progress: \(progress)")
     }
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSControlStateValue(_ input: NSControl.StateValue) -> Int {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSUserInterfaceItemIdentifier(_ input: String) -> NSUserInterfaceItemIdentifier {
+	return NSUserInterfaceItemIdentifier(rawValue: input)
 }

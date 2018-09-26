@@ -18,6 +18,17 @@ class Preferences {
         case cacheAerials = "cacheAerials"
         case customCacheDirectory = "cacheDirectory"
         case manifest = "manifest"
+        case videoFormat = "videoFormat"
+        case showDescriptions = "showDescriptions"
+        case showDescriptionsMode = "showDescriptionsMode"
+    }
+    
+    enum VideoFormat : Int {
+        case v1080pH264, v1080pHEVC, v4KHEVC
+    }
+    
+    enum DescriptionMode : Int {
+        case fade10seconds, always
     }
     
     static let sharedInstance = Preferences()
@@ -43,7 +54,10 @@ class Preferences {
         var defaultValues = [Identifiers: Any]()
         defaultValues[.differentAerialsOnEachDisplay] = false
         defaultValues[.cacheAerials] = true
-        
+        defaultValues[.videoFormat] = VideoFormat.v1080pH264
+        defaultValues[.showDescriptions] = true
+        defaultValues[.showDescriptionsMode] = DescriptionMode.fade10seconds
+
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
             var mutable = result
@@ -93,6 +107,34 @@ class Preferences {
             setValue(forIdentifier: .manifest, value: newValue)
         }
     }
+
+    var videoFormat: Int? {
+        get {
+            return optionalValue(forIdentifier: .videoFormat)
+        }
+        set {
+            setValue(forIdentifier: .videoFormat, value: newValue)
+        }
+    }
+
+    var showDescriptionsMode: Int? {
+        get {
+            return optionalValue(forIdentifier: .showDescriptionsMode)
+        }
+        set {
+            setValue(forIdentifier: .showDescriptionsMode, value: newValue)
+        }
+    }
+    
+    var showDescriptions: Bool {
+        get {
+            return value(forIdentifier: .showDescriptions)
+        }
+        set {
+            setValue(forIdentifier: .showDescriptions,
+                     value: newValue)
+        }
+    }
     
     func videoIsInRotation(videoID: String) -> Bool {
         let key = "remove\(videoID)"
@@ -122,7 +164,12 @@ class Preferences {
         let key = identifier.rawValue
         return userDefaults.string(forKey: key)
     }
-    
+
+    fileprivate func optionalValue(forIdentifier identifier: Identifiers) -> Int? {
+        let key = identifier.rawValue
+        return userDefaults.integer(forKey: key)
+    }
+
     fileprivate func optionalValue(forIdentifier
         identifier: Identifiers) -> Data? {
         let key = identifier.rawValue

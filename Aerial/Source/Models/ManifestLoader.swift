@@ -28,13 +28,18 @@ class ManifestLoader {
         }
     }
     
-    func randomVideo() -> AerialVideo? {
+    func randomVideo(excluding: [AerialVideo]) -> AerialVideo? {
         let shuffled = loadedManifest.shuffled()
         for video in shuffled {
             let inRotation = preferences.videoIsInRotation(videoID: video.id)
             
             if !inRotation {
                 debugLog("video is disabled: \(video)")
+                continue
+            }
+            
+            if excluding.contains(video) {
+                debugLog("video is excluded because it's already in use: \(video)")
                 continue
             }
             
@@ -85,13 +90,11 @@ class ManifestLoader {
                 
                 // Extract json
                 let process:Process = Process()
-                //let pipe:Pipe = Pipe()
                 
-                //process
                 process.currentDirectoryPath = cacheDirectory
                 process.launchPath = "/usr/bin/tar"
                 process.arguments = ["-xvf",cacheResourcesString]
-                //process.standardOutput = pipe
+
                 process.launch()
                 
                 process.waitUntilExit()
@@ -142,24 +145,38 @@ class ManifestLoader {
             let options = JSONSerialization.ReadingOptions.allowFragments
             
             let batches = try JSONSerialization.jsonObject(with: data,
-                                                           options: options) as! [String:Any]
+
+                                                           options: options)
             
-            let assets = batches["assets"] as! Array<NSDictionary>
+            guard let batch = batches as? NSDictionary else {
+                NSLog("Aerial: Encountered unexpected content type for batch")
+                return
+            }
+            
+            let assets = batch["assets"] as! Array<NSDictionary>
             
             for item in assets {
-                let url = item["url-4K-SDR"] as! String
+                let url1080pH264 = item["url-1080-H264"] as? String
+                let url1080pHEVC = item["url-1080-SDR"] as! String
+                let url4KHEVC = item["url-4K-SDR"] as! String
                 let name = item["accessibilityLabel"] as! String
+                let timeOfDay = "day"   // TODO, this is hardcoded as it's no longer available in the JSON
                 let id = item["id"] as! String
-
-                let video = AerialVideo(id: id,
-                                        name: name,
-                                        type: "video",
-                                        timeOfDay: "Day",
-                                        url: url)
+                let type = "video"
                 
-                videos.append(video)
+                if (url1080pH264 != nil) {
+                    let video = AerialVideo(id: id,
+                                            name: name,
+                                            type: type,
+                                            timeOfDay: timeOfDay,
+                                            url1080pH264: url1080pH264!,
+                                            url1080pHEVC: url1080pHEVC,
+                                            url4KHEVC: url4KHEVC)
+                    
+                    videos.append(video)
                 
-                checkContentLength(video)
+                    checkContentLength(video)
+                }
             }
             
             self.loadedManifest = videos
@@ -173,6 +190,7 @@ class ManifestLoader {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let request = NSMutableURLRequest(url: video.url as URL)
+        
         request.httpMethod = "HEAD"
         
         let task = session.dataTask(with: request as URLRequest,
