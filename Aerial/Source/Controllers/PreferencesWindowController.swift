@@ -10,6 +10,7 @@ import Cocoa
 import AVKit
 import AVFoundation
 import ScreenSaver
+import VideoToolbox
 
 class TimeOfDay {
     let title: String
@@ -56,7 +57,11 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var descriptionModePopup: NSPopUpButton!
     @IBOutlet var versionLabel: NSTextField!
     @IBOutlet var popover: NSPopover!
-    
+    @IBOutlet var popoverH264Indicator: NSButton!
+    @IBOutlet var popoverHEVCIndicator: NSButton!
+    @IBOutlet var popoverH264Label: NSTextField!
+    @IBOutlet var popoverHEVCLabel: NSTextField!
+
     var player: AVPlayer = AVPlayer()
     
     var videos: [AerialVideo]?
@@ -98,6 +103,24 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             versionLabel.stringValue = version
         }
 
+        if #available(OSX 10.13, *) {
+            if !VTIsHardwareDecodeSupported(kCMVideoCodecType_H264)
+            {
+                popoverH264Label.stringValue = "H264 acceleration not supported"
+                popoverH264Indicator.image = NSImage(named: NSImage.statusUnavailableName)
+            }
+            if !VTIsHardwareDecodeSupported(kCMVideoCodecType_HEVC)
+            {
+                popoverHEVCLabel.stringValue = "HEVC acceleration not supported"
+                popoverHEVCIndicator.image = NSImage(named: NSImage.statusUnavailableName)
+            }
+        } else {
+            // Fallback on earlier versions
+            popoverHEVCIndicator.isHidden = true
+            popoverH264Indicator.image = NSImage(named: NSImage.cautionName)
+            popoverH264Label.stringValue = "MacOS 10.13 or above required"
+            popoverHEVCLabel.stringValue = "Hardware acceleration status unknown"
+        }
 
         playerView.player = player
         playerView.controlsStyle = .none

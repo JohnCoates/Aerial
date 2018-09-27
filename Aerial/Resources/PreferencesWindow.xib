@@ -18,6 +18,10 @@
                 <outlet property="outlineView" destination="gP6-w2-1UT" id="xdh-0c-TK2"/>
                 <outlet property="playerView" destination="Rc1-hl-hSC" id="I7W-rF-KFm"/>
                 <outlet property="popover" destination="vZt-x4-E4Y" id="Zd6-gn-9G8"/>
+                <outlet property="popoverH264Indicator" destination="Eiy-rf-14s" id="ZGO-KJ-0wF"/>
+                <outlet property="popoverH264Label" destination="Ynp-31-Ohm" id="CbV-4g-iai"/>
+                <outlet property="popoverHEVCIndicator" destination="Kzc-o6-MCY" id="TxU-h9-Jx0"/>
+                <outlet property="popoverHEVCLabel" destination="RGL-6I-5Hp" id="Fgt-8f-0Vb"/>
                 <outlet property="popupVideoFormat" destination="T24-XE-kHN" id="171-vT-cVh"/>
                 <outlet property="projectPageLink" destination="hOD-gE-gxl" id="UTt-Vt-cTP"/>
                 <outlet property="showDescriptionsCheckbox" destination="omO-3f-eoL" id="D5j-tb-L5p"/>
@@ -336,7 +340,7 @@
                                                         <action selector="helpButtonClick:" target="-2" id="8Rn-7V-ePH"/>
                                                     </connections>
                                                 </button>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o0h-WA-Dvr">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="79" translatesAutoresizingMaskIntoConstraints="NO" id="o0h-WA-Dvr">
                                                     <rect key="frame" x="365" y="254" width="83" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Video format" id="NB6-Qr-6Lr">
@@ -388,11 +392,11 @@
             </connections>
         </popover>
         <customView id="Obi-Pb-ghI">
-            <rect key="frame" x="0.0" y="0.0" width="374" height="124"/>
+            <rect key="frame" x="0.0" y="0.0" width="374" height="180"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aGD-9L-3xx">
-                    <rect key="frame" x="18" y="20" width="338" height="84"/>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="334" translatesAutoresizingMaskIntoConstraints="NO" id="aGD-9L-3xx">
+                    <rect key="frame" x="18" y="76" width="338" height="84"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" selectable="YES" id="0Xf-rT-d9M">
                         <font key="font" metaFont="smallSystem"/>
@@ -405,8 +409,45 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eiy-rf-14s">
+                    <rect key="frame" x="20" y="40" width="16" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusAvailable" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="jc1-Op-VZE">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-31-Ohm">
+                    <rect key="frame" x="42" y="42" width="314" height="14"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="H.264 acceleration is supported" id="FDu-q3-sz0">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kzc-o6-MCY">
+                    <rect key="frame" x="20" y="20" width="16" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusAvailable" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="BPV-SY-TD8">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RGL-6I-5Hp">
+                    <rect key="frame" x="42" y="22" width="314" height="14"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="HEVC acceleration is supported" id="drx-1G-9aX">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="1179" y="528"/>
+            <point key="canvasLocation" x="1179" y="556"/>
         </customView>
     </objects>
+    <resources>
+        <image name="NSStatusAvailable" width="16" height="16"/>
+    </resources>
 </document>
