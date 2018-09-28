@@ -115,7 +115,7 @@ class ManifestLoader {
                 }
             }
         }
-
+/*
         // updated url for tvOS12, json is now in a tar file
         let apiURL = "https://sylvan.apple.com/Aerials/resources.tar"
         guard let url = URL(string: apiURL) else {
@@ -126,6 +126,9 @@ class ManifestLoader {
         let session = URLSession(configuration: configuration)
         let task = session.dataTask(with: url, completionHandler: completionHandler)
         task.resume()
+        */
+        loadSavedManifest()
+ 
     }
     
     func loadSavedManifest() {
@@ -163,6 +166,10 @@ class ManifestLoader {
                 let timeOfDay = "day"   // TODO, this is hardcoded as it's no longer available in the JSON
                 let id = item["id"] as! String
                 let type = "video"
+                let poi = item["pointsOfInterest"] as! [String: String]
+                
+                
+                // NSLog("0 for \(name) \(String(describing: poi["0"]))")
                 
                 if (url1080pH264 != nil) {
                     let video = AerialVideo(id: id,
@@ -171,7 +178,8 @@ class ManifestLoader {
                                             timeOfDay: timeOfDay,
                                             url1080pH264: url1080pH264!,
                                             url1080pHEVC: url1080pHEVC,
-                                            url4KHEVC: url4KHEVC)
+                                            url4KHEVC: url4KHEVC,
+                                            poi: poi)
                     
                     videos.append(video)
                 

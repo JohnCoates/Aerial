@@ -220,7 +220,11 @@ class AerialView: ScreenSaverView {
         self.playerLayer.player = self.player
         
         if self.isPreview {
+            print("preview")
             AerialView.previewPlayer = player
+        }
+        else{
+            print("notpreview")
         }
         
         debugLog("Setting player for all player layers in \(AerialView.sharedViews)")
@@ -251,10 +255,70 @@ class AerialView: ScreenSaverView {
         
         player.replaceCurrentItem(with: item)
         
-        let preferences = Preferences.sharedInstance
         debugLog("playing video: \(video.url)")
-        self.textLayer.string = video.name
 
+        // Idle string bundle
+        var bundlePath = VideoCache.cacheDirectory!
+        bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle")
+        
+        if let stringBundle = Bundle.init(path: bundlePath)
+        {
+            var times = [NSValue]()
+            
+            for pkv in video.poi
+            {
+                let timeStamp = Double(pkv.key)!
+                print("Timestamp : \(timeStamp), t : \(pkv.value)")
+                times.append(NSValue(time: CMTime(seconds: timeStamp, preferredTimescale: 1)))
+            }
+
+            // Animate initial text
+            let str = stringBundle.localizedString(forKey: video.poi["0"]!, value: "", table: "Localizable.nocache")
+            let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
+            fadeAnimation.values = [0, 0, 1, 1, 0]
+            fadeAnimation.keyTimes = [0, 0.2, 0.4, 0.8, 1]
+            fadeAnimation.duration = 12
+            self.textLayer.add(fadeAnimation, forKey: "textfade")
+            
+            self.textLayer.string = str
+
+            
+            let mainQueue = DispatchQueue.main
+            player.addBoundaryTimeObserver(forTimes: times, queue: mainQueue) {
+                print("BTO")
+                print(times)
+                print(player.currentTime().seconds)
+                
+                // find closest timeStamp
+                var closest = 1000.0
+                var closestTime = 0.0
+                for time in times {
+                    let ts = (time as! CMTime).seconds
+                    let distance = abs(ts - player.currentTime().seconds)
+                    if distance < closest {
+                        closest = distance
+                        closestTime = ts
+                    }
+                }
+
+                let key = String(format: "%.0f",closestTime)
+                //print("closestTime \(closestTime) \(key)")
+                let str = stringBundle.localizedString(forKey: video.poi[key]!, value: "", table: "Localizable.nocache")
+                self.textLayer.string = str
+                //se
+                // Animate text
+                let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
+                fadeAnimation.values = [0, 1, 1, 0]
+                fadeAnimation.keyTimes = [0, 0.2, 0.8, 1]
+                fadeAnimation.duration = 10
+                self.textLayer.add(fadeAnimation, forKey: "textfade")
+            }
+        }
+        else
+        {
+            self.textLayer.string = video.name
+        }
+/*
         if (preferences.showDescriptions)
         {
             if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)
@@ -270,7 +334,7 @@ class AerialView: ScreenSaverView {
             {
                 self.textLayer.opacity = 1.0
             }
-        }
+        }*/
         
         if player.rate == 0 {
             player.play()
@@ -282,6 +346,7 @@ class AerialView: ScreenSaverView {
         }
         
         debugLog("observing current item \(currentItem)")
+        
         notificationCenter.addObserver(self,
                                        selector: #selector(AerialView.playerItemDidReachEnd(_:)),
                                        name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,

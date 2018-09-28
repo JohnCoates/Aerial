@@ -20,6 +20,8 @@ class AerialVideo: CustomStringConvertible, Equatable {
     let url1080pH264: URL
     let url1080pHEVC: URL
     let url4KHEVC: URL
+    let poi: [String: String]
+    
     var arrayPosition = 1
     var contentLength = 0
     var contentLengthChecked = false
@@ -48,7 +50,7 @@ class AerialVideo: CustomStringConvertible, Equatable {
     }
     
     init(id: String, name: String, type: String,
-         timeOfDay: String, url1080pH264: String, url1080pHEVC: String, url4KHEVC: String) {
+         timeOfDay: String, url1080pH264: String, url1080pHEVC: String, url4KHEVC: String, poi: [String: String]) {
         self.id = id
         self.name = name
         self.type = type
@@ -56,6 +58,7 @@ class AerialVideo: CustomStringConvertible, Equatable {
         self.url1080pH264 = URL(string: url1080pH264)!
         self.url1080pHEVC = URL(string: url1080pHEVC)!
         self.url4KHEVC = URL(string: url4KHEVC)!
+        self.poi = poi
     }
     
     var description: String {
