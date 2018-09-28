@@ -14,6 +14,7 @@ import AVKit
 @objc(AerialView)
 class AerialView: ScreenSaverView {
     var playerLayer: AVPlayerLayer!
+    var textLayer: CATextLayer!
     var preferencesController: PreferencesWindowController?
     static var players: [AVPlayer] = [AVPlayer]()
     static var previewPlayer: AVPlayer?
@@ -90,7 +91,7 @@ class AerialView: ScreenSaverView {
     func setupPlayerLayer(withPlayer player: AVPlayer) {
         self.layer = CALayer()
         guard let layer = self.layer else {
-            NSLog("Aerial Errror: Couldn't create CALayer")
+            NSLog("Aerial Error: Couldn't create CALayer")
             return
         }
         self.wantsLayer = true
@@ -103,11 +104,23 @@ class AerialView: ScreenSaverView {
         
         playerLayer = AVPlayerLayer(player: player)
         if #available(OSX 10.10, *) {
-            playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         }
         playerLayer.autoresizingMask = [CAAutoresizingMask.layerWidthSizable, CAAutoresizingMask.layerHeightSizable]
         playerLayer.frame = layer.bounds
         layer.addSublayer(playerLayer)
+        // Debug code
+        textLayer = CATextLayer()
+        textLayer.frame = CGRect(x: 20, y: 10, width: layer.bounds.width, height: 40)
+        //textLayer.position = CGPoint(x: 20, y: 20)
+        //textLayer.position = CGPoint(x: layer.bounds.maxX-20, y: layer.bounds.maxY-20)
+        //textLayer.alignmentMode = .left
+        textLayer.font = NSFont(name: "Helvetica Neue Medium", size: 26)
+        textLayer.fontSize = 28 // Seems needed despite line above
+        textLayer.string = ""
+        textLayer.opacity = 0
+        
+        layer.addSublayer(textLayer)
     }
     
     func setup() {
@@ -172,29 +185,27 @@ class AerialView: ScreenSaverView {
     
     // MARK: - AVPlayerItem Notifications
     
-    func playerItemFailedtoPlayToEnd(_ aNotification: Notification) {
+    @objc func playerItemFailedtoPlayToEnd(_ aNotification: Notification) {
         NSLog("AVPlayerItemFailedToPlayToEndTimeNotification \(aNotification)")
         
         playNextVideo()
     }
     
-    func playerItemNewErrorLogEntryNotification(_ aNotification: Notification) {
+    @objc func playerItemNewErrorLogEntryNotification(_ aNotification: Notification) {
         NSLog("AVPlayerItemNewErrorLogEntryNotification \(aNotification)")
     }
     
-    func playerItemPlaybackStalledNotification(_ aNotification: Notification) {
+    @objc func playerItemPlaybackStalledNotification(_ aNotification: Notification) {
         NSLog("AVPlayerItemPlaybackStalledNotification \(aNotification)")
     }
     
-    func playerItemDidReachEnd(_ aNotification: Notification) {
+    @objc func playerItemDidReachEnd(_ aNotification: Notification) {
         debugLog("played did reach end")
         debugLog("notification: \(aNotification)")
         playNextVideo()
 
-        debugLog("playing next video for player \(player)")
+        debugLog("playing next video for player \(String(describing: player))")
     }
-    
-    // MARK: - Playing Videos
     
     func playNextVideo() {
         let notificationCenter = NotificationCenter.default
@@ -221,22 +232,46 @@ class AerialView: ScreenSaverView {
             AerialView.previewView?.playerLayer.player = self.player
         }
         
-        let randomVideo = ManifestLoader.instance.randomVideo()
+        // get a list of current videos that should be excluded from the candidate selection
+        // for the next video. This prevents the same video from being shown twice in a row
+        // as well as the same video being shown on two different monitors even when sharingPlayers
+        // is false
+        let currentVideos: [AerialVideo] = AerialView.players.compactMap { (player) -> AerialVideo? in
+            (player.currentItem as? AerialPlayerItem)?.video
+        }
+        
+        let randomVideo = ManifestLoader.instance.randomVideo(excluding: currentVideos)
         
         guard let video = randomVideo else {
             NSLog("Aerial: Error grabbing random video!")
             return
         }
-        let videoURL = video.url
         
-        let asset = CachedOrCachingAsset(videoURL)
-//        let asset = AVAsset(URL: videoURL)
-        
-        let item = AVPlayerItem(asset: asset)
+        let item = AerialPlayerItem(video: video)
         
         player.replaceCurrentItem(with: item)
         
+        let preferences = Preferences.sharedInstance
         debugLog("playing video: \(video.url)")
+        self.textLayer.string = video.name
+
+        if (preferences.showDescriptions)
+        {
+            if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)
+            {
+                // Animate text
+                let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
+                fadeAnimation.values = [0, 0, 1, 1, 0]
+                fadeAnimation.keyTimes = [0, 0.2, 0.4, 0.8, 1]
+                fadeAnimation.duration = 12
+                self.textLayer.add(fadeAnimation, forKey: "textfade")
+            }
+            else
+            {
+                self.textLayer.opacity = 1.0
+            }
+        }
+        
         if player.rate == 0 {
             player.play()
         }
@@ -263,16 +298,16 @@ class AerialView: ScreenSaverView {
                                        selector: #selector(AerialView.playerItemPlaybackStalledNotification(_:)),
                                        name: NSNotification.Name.AVPlayerItemPlaybackStalled,
                                        object: currentItem)
-        player.actionAtItemEnd = AVPlayerActionAtItemEnd.none
+        player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
     }
     
     // MARK: - Preferences
     
-    override func hasConfigureSheet() -> Bool {
+    override var hasConfigureSheet: Bool {
         return true
     }
     
-    override func configureSheet() -> NSWindow? {
+    override var configureSheet: NSWindow? {
         if let controller = preferencesController {
             return controller.window
         }

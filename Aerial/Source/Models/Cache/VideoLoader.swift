@@ -111,7 +111,7 @@ class VideoLoader: NSObject, NSURLConnectionDataDelegate {
             // check if we've already been sending content, or we're at right byte offset
             if loadedLocation >= requestedRange.location {
                 
-                let requestedEndOffset = Int(dataRequest.requestedOffset + dataRequest.requestedLength)
+                let requestedEndOffset = Int(dataRequest.requestedOffset + Int64(dataRequest.requestedLength))
                 
                 let pendingDataEndOffset = loadedLocation + data.count
                 
@@ -140,7 +140,7 @@ class VideoLoader: NSObject, NSURLConnectionDataDelegate {
                     let responseData = data.subdata(in: inset..<end)
                     dataRequest.respond(with: responseData)
                     
-                    if dataRequest.currentOffset >= dataRequest.requestedOffset + dataRequest.requestedLength {
+                    if dataRequest.currentOffset >= dataRequest.requestedOffset + Int64(dataRequest.requestedLength) {
                         self.loadingRequest.finishLoading()
                         self.connection?.cancel()
                     }
@@ -225,7 +225,7 @@ class VideoLoader: NSObject, NSURLConnectionDataDelegate {
             debugLog("Weird, couldn't make a regex match for byte offset: \(contentRange)")
             return nil
         }
-        let offsetMatchRange = match.rangeAt(1)
+        let offsetMatchRange = match.range(at: 1)
         let offsetString = contentRange.substring(with: offsetMatchRange) as NSString
         
         let offset = offsetString.longLongValue
