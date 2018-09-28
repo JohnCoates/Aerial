@@ -1,5 +1,3 @@
-This is a fork of Aerial, hopefully those changes will be merged at some point. In the meantime, check the Releases up there for the tvOS 12 and 4K builds. More about [them here](https://github.com/JohnCoates/Aerial/issues/463).
-
 ![screencast](https://cloud.githubusercontent.com/assets/499192/10754100/c0e1cc4c-7c95-11e5-9d3b-842d3acc2fd5.gif)
 
 ## Aerial - Apple TV Aerial Views Screen Saver
@@ -24,7 +22,7 @@ Aerial is completely open source, so feel free to contribute to its development!
 
 ## Installation
 
-1. [Click here to Download](https://github.com/glouel/Aerial/releases/download/1.4b8/Aerial.saver.zip)
+1. [Click here to Download](https://github.com/glouel/Aerial/releases/download/1.4b9/Aerial.saver.zip)
 2. Unzip the downloaded file.
 3. Open **Aerial.saver** and confirm installation.
 
