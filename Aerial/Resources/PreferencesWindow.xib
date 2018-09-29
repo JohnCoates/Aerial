@@ -398,7 +398,7 @@
                         <font key="font" metaFont="smallSystem"/>
                         <string key="title">The most appropriate format depends on your Mac. 
 
-- Macs older that late 2015 should prefer 1080p H264 as they may lack HEVC hardware decoding support.
+- Macs older than late 2015 should prefer 1080p H264 as they may lack HEVC hardware decoding support.
 
 - Late 2015 and up should either use 1080p HEVC or 4K HEVC. </string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
