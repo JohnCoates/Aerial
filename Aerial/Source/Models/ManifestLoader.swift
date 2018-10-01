@@ -115,17 +115,27 @@ class ManifestLoader {
                 }
             }
         }
+        
+        if let cacheDirectory = VideoCache.cacheDirectory {
+            var cacheResourcesString = cacheDirectory
+            cacheResourcesString.append(contentsOf: "/resources.tar")
 
-        // updated url for tvOS12, json is now in a tar file
-        let apiURL = "https://sylvan.apple.com/Aerials/resources.tar"
-        guard let url = URL(string: apiURL) else {
-            fatalError("Couldn't init URL from string")
+            let fileManager = FileManager.default
+            if fileManager.fileExists(atPath: cacheResourcesString) {
+                loadSavedManifest()
+            } else {
+                // updated url for tvOS12, json is now in a tar file
+                let apiURL = "https://sylvan.apple.com/Aerials/resources.tar"
+                guard let url = URL(string: apiURL) else {
+                    fatalError("Couldn't init URL from string")
+                }
+                // use ephemeral session so when we load json offline it fails and puts us in offline mode
+                let configuration = URLSessionConfiguration.ephemeral
+                let session = URLSession(configuration: configuration)
+                let task = session.dataTask(with: url, completionHandler: completionHandler)
+                task.resume()
+            }
         }
-        // use ephemeral session so when we load json offline it fails and puts us in offline mode
-        let configuration = URLSessionConfiguration.ephemeral
-        let session = URLSession(configuration: configuration)
-        let task = session.dataTask(with: url, completionHandler: completionHandler)
-        task.resume()
     }
     
     func loadSavedManifest() {
