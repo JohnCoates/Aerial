@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 
 class AerialVideo: CustomStringConvertible, Equatable {
     static func ==(lhs: AerialVideo, rhs: AerialVideo) -> Bool {
@@ -21,6 +22,7 @@ class AerialVideo: CustomStringConvertible, Equatable {
     let url1080pHEVC: URL
     let url4KHEVC: URL
     let poi: [String: String]
+    let duration: Double
     
     var arrayPosition = 1
     var contentLength = 0
@@ -59,8 +61,39 @@ class AerialVideo: CustomStringConvertible, Equatable {
         self.url1080pHEVC = URL(string: url1080pHEVC)!
         self.url4KHEVC = URL(string: url4KHEVC)!
         self.poi = poi
+        
+        // We need to retrieve video duration from the cached files.
+        // This is a workaround as currently, the VideoCache infrastructure
+        // relies on AVAsset with an external URL all the time, even when
+        // working on a cached copy which makes the native duration retrieval fail
+        
+        // Not the prettiest code !
+        let cacheDirectoryPath = VideoCache.cacheDirectory! as NSString
+        let fileManager = FileManager.default
+
+        let videoCache1080pH264Path = cacheDirectoryPath.appendingPathComponent(self.url1080pH264.lastPathComponent)
+        let videoCache1080pHEVCPath = cacheDirectoryPath.appendingPathComponent(self.url1080pHEVC.lastPathComponent)
+        let videoCache4KHEVCPath = cacheDirectoryPath.appendingPathComponent(self.url4KHEVC.lastPathComponent)
+
+        if fileManager.fileExists(atPath: videoCache4KHEVCPath) {
+            let asset = AVAsset(url: URL(fileURLWithPath: videoCache4KHEVCPath))
+            self.duration = CMTimeGetSeconds(asset.duration)
+        }
+        else if fileManager.fileExists(atPath: videoCache1080pHEVCPath) {
+            let asset = AVAsset(url: URL(fileURLWithPath: videoCache1080pHEVCPath))
+            self.duration = CMTimeGetSeconds(asset.duration)
+        }
+        else if fileManager.fileExists(atPath: videoCache1080pH264Path) {
+            let asset = AVAsset(url: URL(fileURLWithPath: videoCache1080pH264Path))
+            self.duration = CMTimeGetSeconds(asset.duration)
+        }
+        else
+        {
+            self.duration = 0
+        }
+        //print("Duration \(duration)")
     }
-    
+
     var description: String {
         return "id=\(id), name=\(name), type=\(type), timeofDay=\(timeOfDay), url1080pH264=\(url1080pH264), url1080pHEVC=\(url1080pHEVC), url4KHEVC=\(url4KHEVC)"
     }

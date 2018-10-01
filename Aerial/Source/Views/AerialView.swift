@@ -112,13 +112,14 @@ class AerialView: ScreenSaverView {
         // Debug code
         textLayer = CATextLayer()
         textLayer.frame = CGRect(x: 20, y: 10, width: layer.bounds.width, height: 40)
-        //textLayer.position = CGPoint(x: 20, y: 20)
-        //textLayer.position = CGPoint(x: layer.bounds.maxX-20, y: layer.bounds.maxY-20)
-        //textLayer.alignmentMode = .left
         textLayer.font = NSFont(name: "Helvetica Neue Medium", size: 26)
         textLayer.fontSize = 28 // Seems needed despite line above
         textLayer.string = ""
         textLayer.opacity = 0
+        // Add a bit of shadow to give an outline and better readability
+        textLayer.shadowRadius = 10
+        textLayer.shadowOpacity = 1.0
+        textLayer.shadowColor = CGColor.black
         
         layer.addSublayer(textLayer)
     }
@@ -218,13 +219,10 @@ class AerialView: ScreenSaverView {
         let oldPlayer = self.player
         self.player = player
         self.playerLayer.player = self.player
+        self.playerLayer.opacity = 0
         
         if self.isPreview {
-            print("preview")
             AerialView.previewPlayer = player
-        }
-        else{
-            print("notpreview")
         }
         
         debugLog("Setting player for all player layers in \(AerialView.sharedViews)")
@@ -257,126 +255,9 @@ class AerialView: ScreenSaverView {
         
         debugLog("playing video: \(video.url)")
 
-        // Idle string bundle
-        let preferences = Preferences.sharedInstance
-        
-        var bundlePath = VideoCache.cacheDirectory!
-        bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle")
-
-        if (preferences.showDescriptions)
-        {
-            if let stringBundle = Bundle.init(path: bundlePath)
-            {
-                // Collect all the timestamps from the JSON
-                var times = [NSValue]()
-                
-                for pkv in video.poi
-                {
-                    let timeStamp = Double(pkv.key)!
-                    //print("Timestamp : \(timeStamp), t : \(pkv.value)")
-                    times.append(NSValue(time: CMTime(seconds: timeStamp, preferredTimescale: 1)))
-                }
-                
-                // The JSON isn't sorted so we fix that
-                times.sort(by: { ($0 as! CMTime).seconds < ($1 as! CMTime).seconds } )
-
-                // Animate the very first one on it's own
-                let str = stringBundle.localizedString(forKey: video.poi["0"]!, value: "", table: "Localizable.nocache")
-                let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
-                
-                fadeAnimation.values = [0, 0, 1, 1, 0]
-                
-                if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)
-                {
-                    fadeAnimation.keyTimes = [0, 1/12, 3/12, 10/12, 1] as [NSNumber]
-                    fadeAnimation.duration = 12
-                }
-                else
-                {
-                    // Always show mode
-                    if times.count > 1
-                    {
-                        let duration = (times[1] as! CMTime).seconds
-                        
-                        fadeAnimation.keyTimes = [0, 1/duration, 3/duration, 1-2/duration, 1] as [NSNumber]
-                        fadeAnimation.duration = (times[1] as! CMTime).seconds
-                    }
-                    else
-                    {
-                        // TODO : better detect full video length
-                        fadeAnimation.keyTimes = [0, 1/600, 3/600, 1-2/600, 1] as [NSNumber]
-                        fadeAnimation.duration = 600
-                    }
-                }
-                self.textLayer.add(fadeAnimation, forKey: "textfade")
-                
-                self.textLayer.string = str
-                
-                let mainQueue = DispatchQueue.main
-
-                // We then callback for each timestamp
-                player.addBoundaryTimeObserver(forTimes: times, queue: mainQueue) {
-                    var isLastTimeStamp = true
-                    var intervalUntilNextTimeStamp = 0.0
-                    
-                    // find closest timestamp to when we're waking up
-                    var closest = 1000.0
-                    var closestTime = 0.0
-                    var closestTimeValue: NSValue = NSValue(time:CMTime.zero)
-                    
-                    for time in times {
-                        let ts = (time as! CMTime).seconds
-                        let distance = abs(ts - player.currentTime().seconds)
-                        if distance < closest {
-                            closest = distance
-                            closestTime = ts
-                            closestTimeValue = time
-                        }
-                    }
-
-                    // We also need the next timeStamp
-                    let index = times.firstIndex(of: closestTimeValue)
-                    if index! < times.count - 1 {
-                        isLastTimeStamp = false
-                        intervalUntilNextTimeStamp = (times[index!+1] as! CMTime).seconds - closestTime
-                    }
-                    
-                    // Get the string for the current timestamp
-                    let key = String(format: "%.0f",closestTime)
-                    let str = stringBundle.localizedString(forKey: video.poi[key]!, value: "", table: "Localizable.nocache")
-                    self.textLayer.string = str
-                    
-                    
-                    // Animate text
-                    let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
-                    fadeAnimation.values = [0, 1, 1, 0]
-
-                    if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)
-                    {
-                        fadeAnimation.keyTimes = [0, 0.2, 0.8, 1]
-                        fadeAnimation.duration = 10
-                    }
-                    else
-                    {
-                        if isLastTimeStamp {
-                            fadeAnimation.keyTimes = [0, 2 / 120, 1 - 2 / 120, 1] as [NSNumber]
-
-                            fadeAnimation.duration = 120    // TODO : better detect total video running time
-                        }
-                        else {
-                            fadeAnimation.keyTimes = [0, 2/intervalUntilNextTimeStamp, 1-2/intervalUntilNextTimeStamp, 1] as [NSNumber]
-                            fadeAnimation.duration = intervalUntilNextTimeStamp
-                        }
-                    }
-                    
-                    self.textLayer.add(fadeAnimation, forKey: "textfade")
-                }
-            }
-            else
-            {
-                self.textLayer.string = video.name
-            }
-        }
+        // Add the descriptions for the video, either the video label or the ones from the strings bundle
+        self.addDescriptions(player: player, video: video)
+        self.addPlayerFades(player: player, video: video)
 /*
         if (preferences.showDescriptions)
         {
@@ -424,6 +305,153 @@ class AerialView: ScreenSaverView {
                                        object: currentItem)
         player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
     }
+    
+    private func addPlayerFades(player: AVPlayer, video: AerialVideo)
+    {
+        // We only fade in/out if we have duration
+        if video.duration > 0 {
+            self.playerLayer.opacity = 0
+            let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
+            fadeAnimation.values = [0, 1, 1, 0]
+            fadeAnimation.keyTimes = [0, 2/video.duration, 1-2/video.duration, 1] as [NSNumber]
+            fadeAnimation.duration = video.duration
+            self.playerLayer.add(fadeAnimation, forKey: "mainfade")
+        }
+        else {
+            self.playerLayer.opacity = 1.0
+        }
+    }
+    
+    private func addDescriptions(player: AVPlayer, video: AerialVideo)
+    {
+        // Idle string bundle
+        let preferences = Preferences.sharedInstance
+        
+        var bundlePath = VideoCache.cacheDirectory!
+        bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle")
+        
+        if (preferences.showDescriptions)
+        {
+            // Preventively, make sure we have poi as tvOS11/10 videos won't have them
+            if video.poi.count > 0, let stringBundle = Bundle.init(path: bundlePath)
+            {
+                // Collect all the timestamps from the JSON
+                var times = [NSValue]()
+                
+                for pkv in video.poi
+                {
+                    let timeStamp = Double(pkv.key)!
+                    times.append(NSValue(time: CMTime(seconds: timeStamp, preferredTimescale: 1)))
+                }
+                // The JSON isn't sorted so we fix that
+                times.sort(by: { ($0 as! CMTime).seconds < ($1 as! CMTime).seconds } )
+                
+                // Animate the very first one on it's own
+                let str = stringBundle.localizedString(forKey: video.poi["0"]!, value: "", table: "Localizable.nocache")
+                let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
+                
+                fadeAnimation.values = [0, 0, 1, 1, 0]
+
+                if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)
+                {
+                    fadeAnimation.keyTimes = [0, 1/12, 3/12, 10/12, 1] as [NSNumber]
+                    fadeAnimation.duration = 12
+                }
+                else
+                {
+                    // Always show mode, if there's more than one point use that, if not either use known video duration or some hardcoded duration
+                    if times.count > 1
+                    {
+                        let duration = (times[1] as! CMTime).seconds - 1
+                        fadeAnimation.keyTimes = [0, 1/duration, 3/duration, 1-2/duration, 1] as [NSNumber]
+                        fadeAnimation.duration = duration
+                    }
+                    else if video.duration > 0
+                    {
+                        fadeAnimation.keyTimes = [0, 1/(video.duration-1), 3/(video.duration - 1), 1-2/(video.duration - 1), 1] as [NSNumber]
+                        fadeAnimation.duration = (video.duration - 1)
+                    }
+                    else
+                    {
+                        // We should have the duration, if we don't, hardcode the longest known duration
+                        fadeAnimation.keyTimes = [0, 1/807, 3/807, 1-2/807, 1] as [NSNumber]
+                        fadeAnimation.duration = 807
+                    }
+                }
+                self.textLayer.add(fadeAnimation, forKey: "textfade")
+                self.textLayer.string = str
+                
+                let mainQueue = DispatchQueue.main
+                
+                // We then callback for each timestamp
+                player.addBoundaryTimeObserver(forTimes: times, queue: mainQueue) {
+                    var isLastTimeStamp = true
+                    var intervalUntilNextTimeStamp = 0.0
+                    
+                    // find closest timestamp to when we're waking up
+                    var closest = 1000.0
+                    var closestTime = 0.0
+                    var closestTimeValue: NSValue = NSValue(time:CMTime.zero)
+                    
+                    for time in times {
+                        let ts = (time as! CMTime).seconds
+                        let distance = abs(ts - player.currentTime().seconds)
+                        if distance < closest {
+                            closest = distance
+                            closestTime = ts
+                            closestTimeValue = time
+                        }
+                    }
+                    
+                    // We also need the next timeStamp
+                    let index = times.firstIndex(of: closestTimeValue)
+                    if index! < times.count - 1 {
+                        isLastTimeStamp = false
+                        intervalUntilNextTimeStamp = (times[index!+1] as! CMTime).seconds - closestTime - 1
+                    }
+                    else if video.duration > 0 {
+                        isLastTimeStamp = true
+                        // If we have a duration for the video, we may not !
+                        intervalUntilNextTimeStamp = video.duration - closestTime - 1
+                    }
+                    // Get the string for the current timestamp
+                    let key = String(format: "%.0f",closestTime)
+                    let str = stringBundle.localizedString(forKey: video.poi[key]!, value: "", table: "Localizable.nocache")
+                    self.textLayer.string = str
+                    
+                    
+                    // Animate text
+                    let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
+                    fadeAnimation.values = [0, 1, 1, 0]
+                    
+                    if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)
+                    {
+                        fadeAnimation.keyTimes = [0, 0.2, 0.8, 1]
+                        fadeAnimation.duration = 10
+                    }
+                    else
+                    {
+                        if isLastTimeStamp, video.duration == 0 {
+                            fadeAnimation.keyTimes = [0, 2 / 120, 1 - 2 / 120, 1] as [NSNumber]
+                            fadeAnimation.duration = 120    // TODO : better detect total video running time
+                        }
+                        else {
+                            fadeAnimation.keyTimes = [0, 2/intervalUntilNextTimeStamp, 1-2/intervalUntilNextTimeStamp, 1] as [NSNumber]
+                            fadeAnimation.duration = intervalUntilNextTimeStamp
+                        }
+                    }
+                    
+                    self.textLayer.add(fadeAnimation, forKey: "textfade")
+                }
+            }
+            else
+            {
+                self.textLayer.string = video.name
+            }
+        }
+    }
+
+    
     
     // MARK: - Preferences
     
