@@ -15,6 +15,7 @@
                 <outlet property="currentProgress" destination="CLV-o6-oiA" id="CvS-m7-rdc"/>
                 <outlet property="descriptionModePopup" destination="qmX-6m-Whj" id="Ypl-kR-cJd"/>
                 <outlet property="differentAerialCheckbox" destination="9Xe-S2-eQT" id="2tM-2p-KDu"/>
+                <outlet property="neverStreamVideosCheckbox" destination="TFE-JE-tOy" id="sWg-72-tEe"/>
                 <outlet property="outlineView" destination="gP6-w2-1UT" id="xdh-0c-TK2"/>
                 <outlet property="playerView" destination="Rc1-hl-hSC" id="I7W-rF-KFm"/>
                 <outlet property="popover" destination="vZt-x4-E4Y" id="Zd6-gn-9G8"/>
@@ -24,6 +25,7 @@
                 <outlet property="popoverHEVCLabel" destination="RGL-6I-5Hp" id="Fgt-8f-0Vb"/>
                 <outlet property="popupVideoFormat" destination="T24-XE-kHN" id="171-vT-cVh"/>
                 <outlet property="projectPageLink" destination="hOD-gE-gxl" id="UTt-Vt-cTP"/>
+                <outlet property="secondProjectPageLink" destination="1gS-Uu-hUv" id="UdX-F9-u8p"/>
                 <outlet property="showDescriptionsCheckbox" destination="omO-3f-eoL" id="D5j-tb-L5p"/>
                 <outlet property="totalProgress" destination="HH2-7L-HmQ" id="UgG-Xt-pR3"/>
                 <outlet property="versionLabel" destination="Hwv-TU-zhn" id="EPq-JL-DCZ"/>
@@ -50,7 +52,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Main" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
+                                        <view key="view" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="607" height="286"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -208,7 +210,7 @@
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Cache" identifier="2" id="kp1-xv-zNG">
-                                        <view key="view" id="93q-v8-yxM">
+                                        <view key="view" ambiguous="YES" id="93q-v8-yxM">
                                             <rect key="frame" x="10" y="33" width="607" height="286"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -223,15 +225,15 @@
                                                         <action selector="cacheAerialsAsTheyPlayClick:" target="-2" id="a7P-kZ-CeM"/>
                                                     </connections>
                                                 </button>
-                                                <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TFE-JE-tOy">
-                                                    <rect key="frame" x="199" y="253" width="150" height="18"/>
+                                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TFE-JE-tOy">
+                                                    <rect key="frame" x="8" y="227" width="150" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Never Stream Videos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fmX-YC-9t8">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <action selector="cacheAerialsAsTheyPlayClick:" target="-2" id="EYb-IM-LYr"/>
+                                                        <action selector="neverStreamVideosClick:" target="-2" id="DBl-ei-t0J"/>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZO8-hg-MHd">
@@ -302,15 +304,6 @@
                                                     <rect key="frame" x="31" y="16" width="130" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 </progressIndicator>
-                                                <pathControl verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XAJ-Se-rwG">
-                                                    <rect key="frame" x="10" y="199" width="587" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <pathCell key="cell" selectable="YES" editable="YES" alignment="left" id="gVD-I9-Ldu">
-                                                        <font key="font" metaFont="system"/>
-                                                        <url key="url" string="file://localhost/Applications/"/>
-                                                        <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </pathCell>
-                                                </pathControl>
                                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T24-XE-kHN">
                                                     <rect key="frame" x="452" y="249" width="115" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -349,6 +342,15 @@
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
+                                                <pathControl verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XAJ-Se-rwG">
+                                                    <rect key="frame" x="10" y="192" width="587" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <pathCell key="cell" selectable="YES" editable="YES" alignment="left" id="gVD-I9-Ldu">
+                                                        <font key="font" metaFont="system"/>
+                                                        <url key="url" string="file://localhost/Applications/"/>
+                                                        <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </pathCell>
+                                                </pathControl>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
@@ -392,42 +394,35 @@
             </connections>
         </popover>
         <customView id="Obi-Pb-ghI">
-            <rect key="frame" x="0.0" y="0.0" width="374" height="180"/>
+            <rect key="frame" x="0.0" y="0.0" width="374" height="275"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="334" translatesAutoresizingMaskIntoConstraints="NO" id="aGD-9L-3xx">
-                    <rect key="frame" x="18" y="76" width="338" height="84"/>
+                    <rect key="frame" x="18" y="87" width="338" height="168"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" selectable="YES" id="0Xf-rT-d9M">
                         <font key="font" metaFont="smallSystem"/>
-                        <string key="title">The most appropriate format depends on your Mac. 
+                        <string key="title">The most appropriate format depends on your Mac. Video playback on MacOS can be accelerated by your GPU.
 
 - Macs older that late 2015 should prefer 1080p H264 as they may lack HEVC hardware decoding support.
 
-- Late 2015 and up should either use 1080p HEVC or 4K HEVC. </string>
+- Late 2015/2016 Macs may only partially support hardware accelerated HEVC decoding. You may see higher CPU usage with those format 
+
+- Macs 2017 and up should either use 1080p HEVC or 4K HEVC.</string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eiy-rf-14s">
-                    <rect key="frame" x="20" y="40" width="16" height="18"/>
+                    <rect key="frame" x="20" y="33" width="16" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusAvailable" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="jc1-Op-VZE">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-31-Ohm">
-                    <rect key="frame" x="42" y="42" width="314" height="14"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="H.264 acceleration is supported" id="FDu-q3-sz0">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kzc-o6-MCY">
-                    <rect key="frame" x="20" y="20" width="16" height="18"/>
+                    <rect key="frame" x="20" y="13" width="16" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusAvailable" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="BPV-SY-TD8">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -435,7 +430,7 @@
                     </buttonCell>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RGL-6I-5Hp">
-                    <rect key="frame" x="42" y="22" width="314" height="14"/>
+                    <rect key="frame" x="42" y="15" width="314" height="14"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="HEVC acceleration is supported" id="drx-1G-9aX">
                         <font key="font" metaFont="smallSystem"/>
@@ -443,8 +438,28 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1gS-Uu-hUv">
+                    <rect key="frame" x="20" y="56" width="303" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" title="Visit our project page if you need additional information" bezelStyle="rounded" alignment="left" inset="2" id="nCQ-sh-WGQ">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="pageProjectClick:" target="-2" id="pRN-Um-ffn"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-31-Ohm">
+                    <rect key="frame" x="42" y="35" width="314" height="14"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="H.264 acceleration is supported" id="FDu-q3-sz0">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="1179" y="556"/>
+            <point key="canvasLocation" x="1179" y="603.5"/>
         </customView>
     </objects>
     <resources>

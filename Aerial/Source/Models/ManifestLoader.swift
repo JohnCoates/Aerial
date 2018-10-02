@@ -18,7 +18,6 @@ class ManifestLoader {
     var callbacks = [manifestLoadCallback]()
     var loadedManifest = [AerialVideo]()
     var playedVideos = [AerialVideo]()
-    var offlineMode: Bool = false
     
     func addCallback(_ callback:@escaping manifestLoadCallback) {
         if loadedManifest.count > 0 {
@@ -43,9 +42,10 @@ class ManifestLoader {
                 continue
             }
             
-            // check if we're in offline mode
-            if offlineMode == true {
+            // We may not want to stream
+            if preferences.neverStreamVideos == true {
                 if video.isAvailableOffline == false {
+                    debugLog("video is excluded because it's not available offline \(video)")
                     continue
                 }
             }
@@ -54,6 +54,7 @@ class ManifestLoader {
         }
         
         // nothing available??? return first thing we find
+        // TODO : We need to handle the case where we have nothing AND don't want to stream
         return shuffled.first
     }
     
@@ -61,13 +62,13 @@ class ManifestLoader {
         // start loading right away!
         let completionHandler = { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if let error = error {
-                NSLog("Aerial Error Loading Manifest: \(error)")
+                debugLog("Error Loading Manifest: \(error)")
                 self.loadSavedManifest()
                 return
             }
             
             guard let data = data else {
-                NSLog("Couldn't load manifest!")
+                debugLog("No data from Manifest")
                 self.loadSavedManifest()
                 return
             }
@@ -85,7 +86,7 @@ class ManifestLoader {
                 }
                 catch
                 {
-                    NSLog("Aerial: Error saving resources.tar.")
+                    debugLog("Error saving resources.tar.")
                 }
                 
                 // Extract json
@@ -144,7 +145,6 @@ class ManifestLoader {
             return
         }
         
-        offlineMode = true
         readJSONFromData(savedJSON)
     }
     

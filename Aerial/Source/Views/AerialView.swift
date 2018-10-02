@@ -248,13 +248,21 @@ class AerialView: ScreenSaverView {
             NSLog("Aerial: Error grabbing random video!")
             return
         }
-        
-        let item = AerialPlayerItem(video: video)
-        
-        player.replaceCurrentItem(with: item)
-        
-        debugLog("playing video: \(video.url)")
 
+        // Workaround to avoid local playback making network calls
+        let item = AerialPlayerItem(video: video)
+        if !video.isAvailableOffline
+        {
+            player.replaceCurrentItem(with: item)
+            debugLog("streaming video (not fully available offline) : \(video.url)")
+        }
+        else
+        {
+            let localurl = URL(fileURLWithPath: VideoCache.cachePath(forVideo: video)!)
+            let localitem = AVPlayerItem(url: localurl)
+            player.replaceCurrentItem(with: localitem)
+            debugLog("playing video (OFFLINE MODE) : \(localurl)")
+        }
         // Add the descriptions for the video, either the video label or the ones from the strings bundle
         self.addDescriptions(player: player, video: video)
         self.addPlayerFades(player: player, video: video)
