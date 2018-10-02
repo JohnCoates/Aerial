@@ -18,7 +18,6 @@ class ManifestLoader {
     var callbacks = [manifestLoadCallback]()
     var loadedManifest = [AerialVideo]()
     var playedVideos = [AerialVideo]()
-    var offlineMode: Bool = false
     
     func addCallback(_ callback:@escaping manifestLoadCallback) {
         if loadedManifest.count > 0 {
@@ -34,18 +33,19 @@ class ManifestLoader {
             let inRotation = preferences.videoIsInRotation(videoID: video.id)
             
             if !inRotation {
-                debugLog("video is disabled: \(video)")
+                debugLog("randomVideo: video is disabled: \(video)")
                 continue
             }
             
-            if excluding.contains(video) {
-                debugLog("video is excluded because it's already in use: \(video)")
+            if excluding.contains(video) && preferences.neverStreamVideos == false {
+                debugLog("randomVideo: video is excluded because it's already in use: \(video)")
                 continue
             }
             
-            // check if we're in offline mode
-            if offlineMode == true {
+            // We may not want to stream
+            if preferences.neverStreamVideos == true {
                 if video.isAvailableOffline == false {
+                    debugLog("randomVideo: video is excluded because it's not available offline \(video)")
                     continue
                 }
             }
@@ -54,20 +54,33 @@ class ManifestLoader {
         }
         
         // nothing available??? return first thing we find
-        return shuffled.first
+        if preferences.neverStreamVideos == true {
+            if excluding.count > 0 {
+                debugLog("randomVideo: no new video available and no streaming allowed, returning previous video !")
+                return excluding.first
+            }
+            else {
+                debugLog("randomVideo: no video available and no streaming allowed !")
+                return nil
+            }
+        }
+        else {
+            debugLog("randomVideo: no video available, taking one from shuffled manifest")
+            return shuffled.first
+        }
     }
     
     init() {
         // start loading right away!
         let completionHandler = { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if let error = error {
-                NSLog("Aerial Error Loading Manifest: \(error)")
+                debugLog("Error Loading Manifest: \(error)")
                 self.loadSavedManifest()
                 return
             }
             
             guard let data = data else {
-                NSLog("Couldn't load manifest!")
+                debugLog("No data from Manifest")
                 self.loadSavedManifest()
                 return
             }
@@ -85,7 +98,7 @@ class ManifestLoader {
                 }
                 catch
                 {
-                    NSLog("Aerial: Error saving resources.tar.")
+                    debugLog("Error saving resources.tar.")
                 }
                 
                 // Extract json
@@ -115,17 +128,27 @@ class ManifestLoader {
                 }
             }
         }
-
-        // updated url for tvOS12, json is now in a tar file
-        let apiURL = "https://sylvan.apple.com/Aerials/resources.tar"
-        guard let url = URL(string: apiURL) else {
-            fatalError("Couldn't init URL from string")
+        
+        if let cacheDirectory = VideoCache.cacheDirectory {
+            var cacheResourcesString = cacheDirectory
+            cacheResourcesString.append(contentsOf: "/resources.tar")
+            
+            let fileManager = FileManager.default
+            if fileManager.fileExists(atPath: cacheResourcesString) {
+                loadSavedManifest()
+            } else {
+                // updated url for tvOS12, json is now in a tar file
+                let apiURL = "https://sylvan.apple.com/Aerials/resources.tar"
+                guard let url = URL(string: apiURL) else {
+                    fatalError("Couldn't init URL from string")
+                }
+                // use ephemeral session so when we load json offline it fails and puts us in offline mode
+                let configuration = URLSessionConfiguration.ephemeral
+                let session = URLSession(configuration: configuration)
+                let task = session.dataTask(with: url, completionHandler: completionHandler)
+                task.resume()
+            }
         }
-        // use ephemeral session so when we load json offline it fails and puts us in offline mode
-        let configuration = URLSessionConfiguration.ephemeral
-        let session = URLSession(configuration: configuration)
-        let task = session.dataTask(with: url, completionHandler: completionHandler)
-        task.resume()
     }
     
     func loadSavedManifest() {
@@ -134,7 +157,6 @@ class ManifestLoader {
             return
         }
         
-        offlineMode = true
         readJSONFromData(savedJSON)
     }
     
@@ -163,6 +185,10 @@ class ManifestLoader {
                 let timeOfDay = "day"   // TODO, this is hardcoded as it's no longer available in the JSON
                 let id = item["id"] as! String
                 let type = "video"
+                let poi = item["pointsOfInterest"] as! [String: String]
+                
+                
+                // NSLog("0 for \(name) \(String(describing: poi["0"]))")
                 
                 if (url1080pH264 != nil) {
                     let video = AerialVideo(id: id,
@@ -171,7 +197,8 @@ class ManifestLoader {
                                             timeOfDay: timeOfDay,
                                             url1080pH264: url1080pH264!,
                                             url1080pHEVC: url1080pHEVC,
-                                            url4KHEVC: url4KHEVC)
+                                            url4KHEVC: url4KHEVC,
+                                            poi: poi)
                     
                     videos.append(video)
                 
