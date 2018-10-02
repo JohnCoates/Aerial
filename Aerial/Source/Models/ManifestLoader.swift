@@ -33,19 +33,19 @@ class ManifestLoader {
             let inRotation = preferences.videoIsInRotation(videoID: video.id)
             
             if !inRotation {
-                debugLog("video is disabled: \(video)")
+                debugLog("randomVideo: video is disabled: \(video)")
                 continue
             }
             
-            if excluding.contains(video) {
-                debugLog("video is excluded because it's already in use: \(video)")
+            if excluding.contains(video) && preferences.neverStreamVideos == false {
+                debugLog("randomVideo: video is excluded because it's already in use: \(video)")
                 continue
             }
             
             // We may not want to stream
             if preferences.neverStreamVideos == true {
                 if video.isAvailableOffline == false {
-                    debugLog("video is excluded because it's not available offline \(video)")
+                    debugLog("randomVideo: video is excluded because it's not available offline \(video)")
                     continue
                 }
             }
@@ -54,8 +54,20 @@ class ManifestLoader {
         }
         
         // nothing available??? return first thing we find
-        // TODO : We need to handle the case where we have nothing AND don't want to stream
-        return shuffled.first
+        if preferences.neverStreamVideos == true {
+            if excluding.count > 0 {
+                debugLog("randomVideo: no new video available and no streaming allowed, returning previous video !")
+                return excluding.first
+            }
+            else {
+                debugLog("randomVideo: no video available and no streaming allowed !")
+                return nil
+            }
+        }
+        else {
+            debugLog("randomVideo: no video available, taking one from shuffled manifest")
+            return shuffled.first
+        }
     }
     
     init() {

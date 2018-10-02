@@ -532,13 +532,19 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             playerView.player = player
             
             let video = item as! AerialVideo
+
+            // Workaround for cached videos generating online traffic
+            if video.isAvailableOffline {
+                let localurl = URL(fileURLWithPath: VideoCache.cachePath(forVideo: video)!)
+                let localitem = AVPlayerItem(url: localurl)
+                player.replaceCurrentItem(with: localitem)
+            }
+            else {
+                let asset = CachedOrCachingAsset(video.url)
+                let item = AVPlayerItem(asset: asset)
+                player.replaceCurrentItem(with: item)
+            }
             
-            let asset = CachedOrCachingAsset(video.url)
-//            let asset = AVAsset(URL: video.url)
-            
-            let item = AVPlayerItem(asset: asset)
-            
-            player.replaceCurrentItem(with: item)
             player.play()
             
             return true
