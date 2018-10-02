@@ -148,6 +148,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             neverStreamVideosCheckbox.state = NSControl.StateValue.on
         }
         
+        
         if !preferences.cacheAerials {
             cacheAerialsAsTheyPlayCheckbox.state = NSControl.StateValue.off
         }

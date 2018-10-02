@@ -249,6 +249,7 @@ class AerialView: ScreenSaverView {
             return
         }
 
+
         // Workaround to avoid local playback making network calls
         let item = AerialPlayerItem(video: video)
         if !video.isAvailableOffline
