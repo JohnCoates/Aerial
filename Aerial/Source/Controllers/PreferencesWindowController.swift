@@ -51,6 +51,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var playerView: AVPlayerView!
     @IBOutlet var differentAerialCheckbox: NSButton!
     @IBOutlet var showDescriptionsCheckbox: NSButton!
+    @IBOutlet var localizeForTvOS12Checkbox: NSButton!
     @IBOutlet var projectPageLink: NSButton!
     @IBOutlet var secondProjectPageLink: NSButton!
     @IBOutlet var cacheLocation: NSPathControl!
@@ -137,6 +138,10 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         
         if preferences.showDescriptions {
             showDescriptionsCheckbox.state = NSControl.StateValue.on
+        }
+
+        if preferences.localizeDescriptions {
+            localizeForTvOS12Checkbox.state = NSControl.StateValue.on
         }
         
         if preferences.neverStreamVideos {
@@ -296,6 +301,14 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         debugLog("set showDescriptions to \(onState)")
     }
     
+    @IBAction func localizeForTvOS12Click(button: NSButton?) {
+        let state = localizeForTvOS12Checkbox.state
+        let onState = (state == NSControl.StateValue.on)
+        
+        preferences.localizeDescriptions = onState
+        
+        debugLog("set localizeDescriptions to \(onState)")
+    }
 
     
     // MARK: - Link

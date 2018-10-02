@@ -15,6 +15,7 @@
                 <outlet property="currentProgress" destination="CLV-o6-oiA" id="CvS-m7-rdc"/>
                 <outlet property="descriptionModePopup" destination="qmX-6m-Whj" id="Ypl-kR-cJd"/>
                 <outlet property="differentAerialCheckbox" destination="9Xe-S2-eQT" id="2tM-2p-KDu"/>
+                <outlet property="localizeForTvOS12Checkbox" destination="R3K-TR-uHC" id="8bm-PN-gTd"/>
                 <outlet property="neverStreamVideosCheckbox" destination="TFE-JE-tOy" id="sWg-72-tEe"/>
                 <outlet property="outlineView" destination="gP6-w2-1UT" id="xdh-0c-TK2"/>
                 <outlet property="outlineViewSettings" destination="Mx1-yH-imM" id="GPv-FN-JD6"/>
@@ -196,17 +197,6 @@
                                                         <action selector="descriptionModePopupChange:" target="-2" id="NdV-9N-Tqh"/>
                                                     </connections>
                                                 </popUpButton>
-                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hOD-gE-gxl">
-                                                    <rect key="frame" x="466" y="9" width="132" height="32"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="bevel" title="Visit Project Page" bezelStyle="rounded" alignment="center" inset="2" id="5mJ-Tt-2db">
-                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="pageProjectClick:" target="-2" id="7Qo-8Y-Quy"/>
-                                                    </connections>
-                                                </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mx1-yH-imM">
                                                     <rect key="frame" x="14" y="8" width="33" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -216,6 +206,28 @@
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="outlineViewSettingsClick:" target="-2" id="Q6R-jn-vi2"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R3K-TR-uHC">
+                                                    <rect key="frame" x="271" y="25" width="183" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Localize for tvOS12 videos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="xbp-av-nHy">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="localizeForTvOS12ClickWithButton:" target="-2" id="2Lx-6f-SRl"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hOD-gE-gxl">
+                                                    <rect key="frame" x="485" y="2" width="119" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="bevel" title="Visit Project Page" bezelStyle="rounded" alignment="center" inset="2" id="5mJ-Tt-2db">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="pageProjectClick:" target="-2" id="7Qo-8Y-Quy"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

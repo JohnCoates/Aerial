@@ -266,23 +266,6 @@ class AerialView: ScreenSaverView {
         // Add the descriptions for the video, either the video label or the ones from the strings bundle
         self.addDescriptions(player: player, video: video)
         self.addPlayerFades(player: player, video: video)
-/*
-        if (preferences.showDescriptions)
-        {
-            if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)
-            {
-                // Animate text
-                let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
-                fadeAnimation.values = [0, 0, 1, 1, 0]
-                fadeAnimation.keyTimes = [0, 0.2, 0.4, 0.8, 1]
-                fadeAnimation.duration = 12
-                self.textLayer.add(fadeAnimation, forKey: "textfade")
-            }
-            else
-            {
-                self.textLayer.opacity = 1.0
-            }
-        }*/
         
         if player.rate == 0 {
             player.play()
@@ -317,6 +300,7 @@ class AerialView: ScreenSaverView {
     private func addPlayerFades(player: AVPlayer, video: AerialVideo)
     {
         // We only fade in/out if we have duration
+        // TODO: This and the first description should probably be a callback after playback start...
         if video.duration > 0 {
             self.playerLayer.opacity = 0
             let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
@@ -336,7 +320,14 @@ class AerialView: ScreenSaverView {
         let preferences = Preferences.sharedInstance
         
         var bundlePath = VideoCache.cacheDirectory!
-        bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle")
+        if (preferences.localizeDescriptions) {
+            bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle")
+        }
+        else {
+            bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle/en.lproj/")
+        }
+        
+        //let path = Bundle.main.path(forResource: lang, ofType: "lproj")
         
         if (preferences.showDescriptions)
         {

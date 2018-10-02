@@ -22,6 +22,7 @@ class Preferences {
         case showDescriptions = "showDescriptions"
         case showDescriptionsMode = "showDescriptionsMode"
         case neverStreamVideos = "neverStreamVideos"
+        case localizeDescriptions = "localizeDescriptions"
     }
     
     enum VideoFormat : Int {
@@ -59,6 +60,7 @@ class Preferences {
         defaultValues[.showDescriptions] = true
         defaultValues[.showDescriptionsMode] = DescriptionMode.fade10seconds
         defaultValues[.neverStreamVideos] = false
+        defaultValues[.localizeDescriptions] = false
         
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
@@ -99,7 +101,16 @@ class Preferences {
             setValue(forIdentifier: .neverStreamVideos, value: newValue)
         }
     }
-    
+
+    var localizeDescriptions: Bool {
+        get {
+            return value(forIdentifier: .localizeDescriptions)
+        }
+        set {
+            setValue(forIdentifier: .localizeDescriptions, value: newValue)
+        }
+    }
+
     var customCacheDirectory: String? {
         get {
             return optionalValue(forIdentifier: .customCacheDirectory)
