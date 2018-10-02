@@ -47,6 +47,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource,
 NSOutlineViewDelegate, VideoDownloadDelegate {
 
     @IBOutlet var outlineView: NSOutlineView!
+    @IBOutlet var outlineViewSettings: NSButton!
     @IBOutlet var playerView: AVPlayerView!
     @IBOutlet var differentAerialCheckbox: NSButton!
     @IBOutlet var showDescriptionsCheckbox: NSButton!
