@@ -117,7 +117,7 @@ class ManifestLoader {
                 do {
                     let ndata = try Data(contentsOf: cacheFileUrl)
                     
-                    self.preferences.manifest = ndata
+                    self.preferences.manifestTvOS12 = ndata
                     
                     DispatchQueue.main.async(execute: { () -> Void in
                         self.readJSONFromData(ndata)
@@ -128,32 +128,41 @@ class ManifestLoader {
                 }
             }
         }
-        
-        if let cacheDirectory = VideoCache.cacheDirectory {
-            var cacheResourcesString = cacheDirectory
-            cacheResourcesString.append(contentsOf: "/resources.tar")
-            
-            let fileManager = FileManager.default
-            if fileManager.fileExists(atPath: cacheResourcesString) {
-                loadSavedManifest()
-            } else {
-                // updated url for tvOS12, json is now in a tar file
-                let apiURL = "https://sylvan.apple.com/Aerials/resources.tar"
-                guard let url = URL(string: apiURL) else {
-                    fatalError("Couldn't init URL from string")
-                }
-                // use ephemeral session so when we load json offline it fails and puts us in offline mode
-                let configuration = URLSessionConfiguration.ephemeral
-                let session = URLSession(configuration: configuration)
-                let task = session.dataTask(with: url, completionHandler: completionHandler)
-                task.resume()
+
+        // Temporary fix until rewrite for multiple jsons, use saved preferences, or redownload json in that order. Intermediary step to be added : reload tar file !
+        if preferences.manifestTvOS12 != nil {
+            debugLog("using manifest from saved preferences")
+            loadSavedManifest()
+        }
+        else {
+            /*if let cacheDirectory = VideoCache.cacheDirectory {
+                var cacheResourcesString = cacheDirectory
+                cacheResourcesString.append(contentsOf: "/resources.tar")
+                
+                let fileManager = FileManager.default
+                if fileManager.fileExists(atPath: cacheResourcesString) {
+                    debugLog("using manifest from saved preferences")
+                    loadSavedManifest()
+                } else {*/
+            debugLog("fetching manifest online")
+            // updated url for tvOS12, json is now in a tar file
+            let apiURL = "https://sylvan.apple.com/Aerials/resources.tar"
+            guard let url = URL(string: apiURL) else {
+                fatalError("Couldn't init URL from string")
             }
+            // use ephemeral session so when we load json offline it fails and puts us in offline mode
+            let configuration = URLSessionConfiguration.ephemeral
+            let session = URLSession(configuration: configuration)
+            let task = session.dataTask(with: url, completionHandler: completionHandler)
+            task.resume()
+                //}
+            //}
         }
     }
     
     func loadSavedManifest() {
-        guard let savedJSON = preferences.manifest else {
-            debugLog("Couldn't find saved manifest")
+        guard let savedJSON = preferences.manifestTvOS12 else {
+            debugLog("Couldn't find saved manifest for tvOS12")
             return
         }
         

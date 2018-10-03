@@ -17,7 +17,9 @@ class Preferences {
         case differentAerialsOnEachDisplay = "differentAerialsOnEachDisplay"
         case cacheAerials = "cacheAerials"
         case customCacheDirectory = "cacheDirectory"
-        case manifest = "manifest"
+        case manifestTvOS10 = "manifestTvOS10"
+        case manifestTvOS11 = "manifestTvOS11"
+        case manifestTvOS12 = "manifestTvOS12"
         case videoFormat = "videoFormat"
         case showDescriptions = "showDescriptions"
         case showDescriptionsMode = "showDescriptionsMode"
@@ -119,13 +121,31 @@ class Preferences {
             setValue(forIdentifier: .customCacheDirectory, value: newValue)
         }
     }
-    
-    var manifest: Data? {
+
+    var manifestTvOS10: Data? {
         get {
-            return optionalValue(forIdentifier: .manifest)
+            return optionalValue(forIdentifier: .manifestTvOS12)
         }
         set {
-            setValue(forIdentifier: .manifest, value: newValue)
+            setValue(forIdentifier: .manifestTvOS12, value: newValue)
+        }
+    }
+    
+    var manifestTvOS11: Data? {
+        get {
+            return optionalValue(forIdentifier: .manifestTvOS12)
+        }
+        set {
+            setValue(forIdentifier: .manifestTvOS12, value: newValue)
+        }
+    }
+    
+    var manifestTvOS12: Data? {
+        get {
+            return optionalValue(forIdentifier: .manifestTvOS12)
+        }
+        set {
+            setValue(forIdentifier: .manifestTvOS12, value: newValue)
         }
     }
 
