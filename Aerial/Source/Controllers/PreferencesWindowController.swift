@@ -10,6 +10,7 @@ import Cocoa
 import AVKit
 import AVFoundation
 import ScreenSaver
+import VideoToolbox
 
 class TimeOfDay {
     let title: String
@@ -46,17 +47,25 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource,
 NSOutlineViewDelegate, VideoDownloadDelegate {
 
     @IBOutlet var outlineView: NSOutlineView!
+    @IBOutlet var outlineViewSettings: NSButton!
     @IBOutlet var playerView: AVPlayerView!
     @IBOutlet var differentAerialCheckbox: NSButton!
     @IBOutlet var showDescriptionsCheckbox: NSButton!
+    @IBOutlet var localizeForTvOS12Checkbox: NSButton!
     @IBOutlet var projectPageLink: NSButton!
+    @IBOutlet var secondProjectPageLink: NSButton!
     @IBOutlet var cacheLocation: NSPathControl!
     @IBOutlet var cacheAerialsAsTheyPlayCheckbox: NSButton!
+    @IBOutlet var neverStreamVideosCheckbox: NSButton!
     @IBOutlet var popupVideoFormat: NSPopUpButton!
     @IBOutlet var descriptionModePopup: NSPopUpButton!
     @IBOutlet var versionLabel: NSTextField!
     @IBOutlet var popover: NSPopover!
-    
+    @IBOutlet var popoverH264Indicator: NSButton!
+    @IBOutlet var popoverHEVCIndicator: NSButton!
+    @IBOutlet var popoverH264Label: NSTextField!
+    @IBOutlet var popoverHEVCLabel: NSTextField!
+
     var player: AVPlayer = AVPlayer()
     
     var videos: [AerialVideo]?
@@ -98,6 +107,24 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             versionLabel.stringValue = version
         }
 
+        if #available(OSX 10.13, *) {
+            if !VTIsHardwareDecodeSupported(kCMVideoCodecType_H264)
+            {
+                popoverH264Label.stringValue = "H264 acceleration not supported"
+                popoverH264Indicator.image = NSImage(named: NSImage.statusUnavailableName)
+            }
+            if !VTIsHardwareDecodeSupported(kCMVideoCodecType_HEVC)
+            {
+                popoverHEVCLabel.stringValue = "HEVC acceleration not supported"
+                popoverHEVCIndicator.image = NSImage(named: NSImage.statusUnavailableName)
+            }
+        } else {
+            // Fallback on earlier versions
+            popoverHEVCIndicator.isHidden = true
+            popoverH264Indicator.image = NSImage(named: NSImage.cautionName)
+            popoverH264Label.stringValue = "MacOS 10.13 or above required"
+            popoverHEVCLabel.stringValue = "Hardware acceleration status unknown"
+        }
 
         playerView.player = player
         playerView.controlsStyle = .none
@@ -112,6 +139,14 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         if preferences.showDescriptions {
             showDescriptionsCheckbox.state = NSControl.StateValue.on
         }
+
+        if preferences.localizeDescriptions {
+            localizeForTvOS12Checkbox.state = NSControl.StateValue.on
+        }
+        
+        if preferences.neverStreamVideos {
+            neverStreamVideosCheckbox.state = NSControl.StateValue.on
+        }
         
         
         if !preferences.cacheAerials {
@@ -122,7 +157,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         
         descriptionModePopup.selectItem(at: preferences.showDescriptionsMode!)
         
-        colorizeProjectPageLink()
+        colorizeProjectPageLinks()
         
         if let cacheDirectory = VideoCache.cacheDirectory {
             cacheLocation.url = URL(fileURLWithPath: cacheDirectory as String)
@@ -133,20 +168,34 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     
     // MARK: - Setup
     
-    fileprivate func colorizeProjectPageLink() {
+    fileprivate func colorizeProjectPageLinks() {
         let color = NSColor(calibratedRed: 0.18, green: 0.39, blue: 0.76, alpha: 1)
-        let link = projectPageLink.attributedTitle
-        let coloredLink = NSMutableAttributedString(attributedString: link)
-        let fullRange = NSRange(location: 0, length: coloredLink.length)
+        var coloredLink = NSMutableAttributedString(attributedString: projectPageLink.attributedTitle)
+        var fullRange = NSRange(location: 0, length: coloredLink.length)
         coloredLink.addAttribute(NSAttributedString.Key.foregroundColor,
                                  value: color,
                                   range: fullRange)
         projectPageLink.attributedTitle = coloredLink
+
+        // We have an extra project link on the video format popover, color it too
+        coloredLink = NSMutableAttributedString(attributedString: secondProjectPageLink.attributedTitle)
+        fullRange = NSRange(location: 0, length: coloredLink.length)
+        coloredLink.addAttribute(NSAttributedString.Key.foregroundColor,
+                                 value: color,
+                                 range: fullRange)
+        secondProjectPageLink.attributedTitle = coloredLink
     }
     
     // MARK: - Preferences
     @IBAction func helpButtonClick(_ button: NSButton!) {
         popover.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
+    }
+    
+    @IBAction func neverStreamVideosClick(_ button: NSButton!) {
+        debugLog("never stream videos: \(convertFromNSControlStateValue(button.state))")
+        
+        let onState = (button.state == NSControl.StateValue.on)
+        preferences.neverStreamVideos = onState
     }
     
     @IBAction func cacheAerialsAsTheyPlayClick(_ button: NSButton!) {
@@ -200,18 +249,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         let event = NSApp.currentEvent
         NSMenu.popUpContextMenu(menu, with: event!, for: button)
     }
-    /*
-    @IBAction func radioResolution(_ sender: NSButton) {
-        NSLog(sender.title)
-        if resolution4KRadio.state == NSControl.StateValue.on {
-            preferences.use4KVideos = true
-        }
-        else
-        {
-            preferences.use4KVideos = false
-        }
-    }
-    */
+
     @IBAction func popupVideoFormatChange(_ sender:NSPopUpButton) {
         NSLog("index change : \(sender.indexOfSelectedItem)")
         preferences.videoFormat = sender.indexOfSelectedItem
@@ -264,6 +302,14 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         debugLog("set showDescriptions to \(onState)")
     }
     
+    @IBAction func localizeForTvOS12Click(button: NSButton?) {
+        let state = localizeForTvOS12Checkbox.state
+        let onState = (state == NSControl.StateValue.on)
+        
+        preferences.localizeDescriptions = onState
+        
+        debugLog("set localizeDescriptions to \(onState)")
+    }
 
     
     // MARK: - Link
@@ -501,13 +547,19 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             playerView.player = player
             
             let video = item as! AerialVideo
+
+            // Workaround for cached videos generating online traffic
+            if video.isAvailableOffline {
+                let localurl = URL(fileURLWithPath: VideoCache.cachePath(forVideo: video)!)
+                let localitem = AVPlayerItem(url: localurl)
+                player.replaceCurrentItem(with: localitem)
+            }
+            else {
+                let asset = CachedOrCachingAsset(video.url)
+                let item = AVPlayerItem(asset: asset)
+                player.replaceCurrentItem(with: item)
+            }
             
-            let asset = CachedOrCachingAsset(video.url)
-//            let asset = AVAsset(URL: video.url)
-            
-            let item = AVPlayerItem(asset: asset)
-            
-            player.replaceCurrentItem(with: item)
             player.play()
             
             return true
