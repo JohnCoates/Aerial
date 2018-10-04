@@ -124,19 +124,19 @@ class Preferences {
 
     var manifestTvOS10: Data? {
         get {
-            return optionalValue(forIdentifier: .manifestTvOS12)
+            return optionalValue(forIdentifier: .manifestTvOS10)
         }
         set {
-            setValue(forIdentifier: .manifestTvOS12, value: newValue)
+            setValue(forIdentifier: .manifestTvOS10, value: newValue)
         }
     }
     
     var manifestTvOS11: Data? {
         get {
-            return optionalValue(forIdentifier: .manifestTvOS12)
+            return optionalValue(forIdentifier: .manifestTvOS11)
         }
         set {
-            setValue(forIdentifier: .manifestTvOS12, value: newValue)
+            setValue(forIdentifier: .manifestTvOS11, value: newValue)
         }
     }
     

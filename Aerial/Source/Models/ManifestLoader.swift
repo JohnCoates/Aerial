@@ -18,6 +18,14 @@ class ManifestLoader {
     var callbacks = [manifestLoadCallback]()
     var loadedManifest = [AerialVideo]()
     var playedVideos = [AerialVideo]()
+    var processedVideos = [AerialVideo]()
+    
+    var blacklist = ["b10-1.mov",           // Dupe of b1-1 (Hawaii, day)
+                     "b10-2.mov",           // Dupe of b2-3 (New York, night)
+                     "b10-4.mov",           // Dupe of b2-4 (San Francisco, night)
+                     "b9-1.mov",            // Dupe of b2-2 (Hawaii, day)
+                     "b9-2.mov",            // Dupe of b3-1 (London, night)
+                     "comp_LA_A005_C009_v05_t9_6M.mov"] // Low quality version of Los Angeles 687B36CB-BA5D-4434-BA99-2F2B8B6EC163
     
     func addCallback(_ callback:@escaping manifestLoadCallback) {
         if loadedManifest.count > 0 {
@@ -71,116 +79,164 @@ class ManifestLoader {
     }
     
     init() {
-        // start loading right away!
-        let completionHandler = { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-            if let error = error {
-                debugLog("Error Loading Manifest: \(error)")
-                self.loadSavedManifest()
-                return
+        // We try to load our video manifests in 3 steps :
+        // - use locally saved data in preferences plist
+        // - reprocess the saved files in cache directory (full offline mode)
+        // - download the manifests from servers
+        if areManifestsSaved() {
+            loadSavedManifests()
+        }
+        else
+        {
+            // Manifests are not in our preferences plist, are they cached on disk ?
+            if areManifestsCached() {
+                debugLog("Manifests are cached, loading")
+                loadCachedManifests()
             }
-            
-            guard let data = data else {
-                debugLog("No data from Manifest")
-                self.loadSavedManifest()
-                return
-            }
-            
-            // Save tar file to cache path and extract json
-            if let cacheDirectory = VideoCache.cacheDirectory {
-                var cacheResourcesUrl = URL(fileURLWithPath: cacheDirectory as String)
-                cacheResourcesUrl.appendPathComponent("resources.tar")
+            else {
+                // Ok then, we fetch them...
+                debugLog("fetching missing manifests online")
+                let downloadManager = DownloadManager()
                 
-                var cacheResourcesString = cacheDirectory
-                cacheResourcesString.append(contentsOf: "/resources.tar")
+                var urls: [URL] = []
                 
-                do {
-                    try data.write(to: cacheResourcesUrl)
+                // For tvOS12, json is now in a tar file
+                if (!isManifestCached(manifest: .tvOS12)) {
+                    urls.append(URL(string: "https://sylvan.apple.com/Aerials/resources.tar")!)
                 }
-                catch
-                {
-                    debugLog("Error saving resources.tar.")
-                }
-                
-                // Extract json
-                let process:Process = Process()
-                
-                process.currentDirectoryPath = cacheDirectory
-                process.launchPath = "/usr/bin/tar"
-                process.arguments = ["-xvf",cacheResourcesString]
 
-                process.launch()
-                
-                process.waitUntilExit()
-                
-                var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
-                cacheFileUrl.appendPathComponent("entries.json")
-                do {
-                    let ndata = try Data(contentsOf: cacheFileUrl)
-                    
-                    self.preferences.manifestTvOS12 = ndata
-                    
-                    DispatchQueue.main.async(execute: { () -> Void in
-                        self.readJSONFromData(ndata)
-                    })
+                if (!isManifestCached(manifest: .tvOS11)) {
+                    urls.append(URL(string: "https://sylvan.apple.com/Aerials/2x/entries.json")!)
                 }
-                catch {
-                    NSLog("Aerial: Error can't load entries.json")
+                
+                if (!isManifestCached(manifest: .tvOS10)) {
+                    urls.append(URL(string: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json")!)
                 }
+
+                let completion = BlockOperation {
+                    print("fetching all done")
+                    // We can now load from the newly cached files
+                    self.loadCachedManifests()
+                }
+                
+                for url in urls {
+                    let operation = downloadManager.queueDownload(url)
+                    completion.addDependency(operation)
+                }
+                
+                OperationQueue.main.addOperation(completion)
             }
         }
+    }
 
-        // Temporary fix until rewrite for multiple jsons, use saved preferences, or redownload json in that order. Intermediary step to be added : reload tar file !
-        if preferences.manifestTvOS12 != nil {
-            debugLog("using manifest from saved preferences")
-            loadSavedManifest()
+    // Check if the Manifests have been saved in our preferences plist
+    func areManifestsSaved() -> Bool {
+        if (preferences.manifestTvOS12 != nil && preferences.manifestTvOS11 != nil && preferences.manifestTvOS10 != nil) {
+            debugLog("manifests are saved in preferences")
+            return true
         }
         else {
-            /*if let cacheDirectory = VideoCache.cacheDirectory {
-                var cacheResourcesString = cacheDirectory
-                cacheResourcesString.append(contentsOf: "/resources.tar")
-                
-                let fileManager = FileManager.default
-                if fileManager.fileExists(atPath: cacheResourcesString) {
-                    debugLog("using manifest from saved preferences")
-                    loadSavedManifest()
-                } else {*/
-            debugLog("fetching manifest online")
-            // updated url for tvOS12, json is now in a tar file
-            let apiURL = "https://sylvan.apple.com/Aerials/resources.tar"
-            guard let url = URL(string: apiURL) else {
-                fatalError("Couldn't init URL from string")
-            }
-            // use ephemeral session so when we load json offline it fails and puts us in offline mode
-            let configuration = URLSessionConfiguration.ephemeral
-            let session = URLSession(configuration: configuration)
-            let task = session.dataTask(with: url, completionHandler: completionHandler)
-            task.resume()
-                //}
-            //}
+            debugLog("manifests are NOT saved in preferences")
+            return false
         }
     }
+
+    // Check if the Manifests are saved in our cache directory
+    func areManifestsCached() -> Bool {
+        return isManifestCached(manifest: .tvOS10) && isManifestCached(manifest: .tvOS11) && isManifestCached(manifest: .tvOS12)
+    }
     
-    func loadSavedManifest() {
-        guard let savedJSON = preferences.manifestTvOS12 else {
-            debugLog("Couldn't find saved manifest for tvOS12")
-            return
+    // Check if a Manifest is saved in our cache directory
+    func isManifestCached(manifest: Manifests) -> Bool {
+        if let cacheDirectory = VideoCache.cacheDirectory {
+            let fileManager = FileManager.default
+            
+            var cacheResourcesString = cacheDirectory
+            cacheResourcesString.append(contentsOf: "/" + manifest.rawValue)
+            
+            if !fileManager.fileExists(atPath: cacheResourcesString) {
+                return false
+            }
+            
+            debugLog("\(manifest.rawValue) manifest is cached")
+        }
+        else
+        {
+            return false
         }
         
-        readJSONFromData(savedJSON)
+        return true
     }
     
-    func readJSONFromData(_ data: Data) {
-        var videos = [AerialVideo]()
+    // Load the JSON Data cached on disk
+    func loadCachedManifests() {
+        if let cacheDirectory = VideoCache.cacheDirectory {
+            // tvOS12
+            var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
+            cacheFileUrl.appendPathComponent("entries.json")
+
+            do {
+                let ndata = try Data(contentsOf: cacheFileUrl)
+                self.preferences.manifestTvOS12 = ndata
+            }
+            catch {
+                NSLog("Aerial: Error can't load entries.json from cached directory (tvOS12)")
+            }
+            
+            // tvOS11
+            cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
+            cacheFileUrl.appendPathComponent("tvOS11.json")
+            
+            do {
+                let ndata = try Data(contentsOf: cacheFileUrl)
+                self.preferences.manifestTvOS11 = ndata
+            }
+            catch {
+                NSLog("Aerial: Error can't load tvos11.json from cached directory ")
+            }
+
+            // tvOS11
+            cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
+            cacheFileUrl.appendPathComponent("tvos10.json")
+            
+            do {
+                let ndata = try Data(contentsOf: cacheFileUrl)
+                self.preferences.manifestTvOS10 = ndata
+            }
+            catch {
+                NSLog("Aerial: Error can't load tvos10.json from cached directory")
+            }
+            
+            loadSavedManifests()
+        }
+    }
+    
+    // Load Manifests from the saved preferences
+    func loadSavedManifests() {
+        // Reset our array
+        processedVideos = []
+
+        // We start with the more recent one, it has more information (poi, etc)
+        readJSONFromData(preferences.manifestTvOS12!, manifest: .tvOS12)
+        // This one has a couple videos not in the tvOS12 JSON. No H264 for these !
+        readJSONFromData(preferences.manifestTvOS11!, manifest: .tvOS11)
+        // The original manifest is in another format
+        readOldJSONFromData(preferences.manifestTvOS10!, manifest: .tvOS10)
+
+        self.loadedManifest = processedVideos
+        
+        debugLog("\(processedVideos.count) videos processed !")
+    }
+    
+    func readJSONFromData(_ data: Data, manifest: Manifests) {
+        //var videos = [AerialVideo]()
         
         do {
             let options = JSONSerialization.ReadingOptions.allowFragments
-            
-            let batches = try JSONSerialization.jsonObject(with: data,
-
-                                                           options: options)
+            let batches = try JSONSerialization.jsonObject(with: data, options: options)
             
             guard let batch = batches as? NSDictionary else {
-                NSLog("Aerial: Encountered unexpected content type for batch")
+                NSLog("Aerial: Encountered unexpected content type for batch, please report !")
                 return
             }
             
@@ -188,41 +244,135 @@ class ManifestLoader {
             
             for item in assets {
                 let url1080pH264 = item["url-1080-H264"] as? String
-                let url1080pHEVC = item["url-1080-SDR"] as! String
-                let url4KHEVC = item["url-4K-SDR"] as! String
-                let name = item["accessibilityLabel"] as! String
-                let timeOfDay = "day"   // TODO, this is hardcoded as it's no longer available in the JSON
+                let url1080pHEVC = item["url-1080-SDR"] as? String
+                let url4KHEVC = item["url-4K-SDR"] as? String
+                let name = item["accessibilityLabel"] as! String //.appending(" (" + manifest.rawValue + ")")
+                
+                let timeOfDay = "day"   // TODO, this is hardcoded as it's no longer available in the modern JSONs
                 let id = item["id"] as! String
                 let type = "video"
-                let poi = item["pointsOfInterest"] as! [String: String]
-                
-                
-                // NSLog("0 for \(name) \(String(describing: poi["0"]))")
-                
-                if (url1080pH264 != nil) {
-                    let video = AerialVideo(id: id,
-                                            name: name,
-                                            type: type,
-                                            timeOfDay: timeOfDay,
-                                            url1080pH264: url1080pH264!,
-                                            url1080pHEVC: url1080pHEVC,
-                                            url4KHEVC: url4KHEVC,
-                                            poi: poi)
+                let poi = item["pointsOfInterest"] as? [String: String]
+                let (isDupe,foundDupe) = findDuplicate(id: id, url1080pH264: url1080pH264 ?? "")
+                if (isDupe) {
+                    print("duplicate found, adding \(manifest) as source to \(name)")
+                    foundDupe!.sources.append(manifest)
+                }
+                else {
+                    let video = AerialVideo(id: id,             // Must have
+                        name: name,         // Must have
+                        type: type,         // Not sure the point of this one ?
+                        timeOfDay: timeOfDay,
+                        url1080pH264: url1080pH264 ?? "",
+                        url1080pHEVC: url1080pHEVC ?? "",
+                        url4KHEVC: url4KHEVC ?? "",
+                        manifest: manifest,
+                        poi: poi ?? [:])    // tvOS12 only
                     
-                    videos.append(video)
-                
-                    checkContentLength(video)
+                    processedVideos.append(video)
+                    //checkContentLength(video)
                 }
             }
-            
-            self.loadedManifest = videos
         } catch {
             NSLog("Aerial: Error retrieving content listing.")
             return
         }
     }
     
-    func checkContentLength(_ video: AerialVideo) {
+    func readOldJSONFromData(_ data: Data, manifest: Manifests) {
+        do {
+            let options = JSONSerialization.ReadingOptions.allowFragments
+            let batches = try JSONSerialization.jsonObject(with: data,
+                                                           options: options) as! Array<NSDictionary>
+            
+            for batch: NSDictionary in batches {
+                let assets = batch["assets"] as! Array<NSDictionary>
+                
+                for item in assets {
+                    let url = item["url"] as! String
+                    let name = item["accessibilityLabel"] as! String
+                    let timeOfDay = item["timeOfDay"] as! String
+                    let id = item["id"] as! String
+                    let type = item["type"] as! String
+                    
+                    if type != "video" {
+                        continue
+                    }
+                    
+                    let (isDupe,foundDupe) = findDuplicate(id: id, url1080pH264: url)
+                    if isDupe {
+                        if (foundDupe != nil) {
+                            debugLog("duplicate found, adding \(manifest) as source to \(name)")
+                            foundDupe!.sources.append(manifest)
+                        }
+                    }
+                    else {
+                        let video = AerialVideo(id: id,             // Must have
+                            name: name,         // Must have
+                            type: type,         // Not sure the point of this one ?
+                            timeOfDay: timeOfDay,
+                            url1080pH264: url,
+                            url1080pHEVC: "",
+                            url4KHEVC: "",
+                            manifest: manifest,
+                            poi: [:])    // tvOS12 only
+                        
+                        processedVideos.append(video)
+                        //checkContentLength(video)
+                    }
+                    /*let video = AerialVideo(id: id,
+                                            name: name,
+                                            type: type,
+                                            timeOfDay: timeOfDay,
+                                            url: url)
+                    
+                    videos.append(video)
+                    
+                    checkContentLength(video)*/
+                }
+            }
+            
+            //self.loadedManifest = videos
+        } catch {
+            NSLog("Aerial: Error retrieving content listing.")
+            return
+        }
+    }
+    
+    // Look for a previously processed similar video
+    //
+    // tvOS11 and 12 JSON are using the same ID (and tvOS12 JSON always has better data,
+    // so no need for a fancy merge)
+    //
+    // tvOS10 however JSON DOES NOT use the same ID, so we need to dupecheck on the h264
+    // (only available format there) filename (they actually have different URLs !)
+    func findDuplicate(id: String, url1080pH264: String) -> (Bool,AerialVideo?)
+    {
+        // We blacklist some duplicates
+        if (url1080pH264 != "") {
+            if (blacklist.contains((URL(string:url1080pH264)?.lastPathComponent)!))
+            {
+                debugLog("Blacklisted video : \(url1080pH264)")
+                return (true,nil)
+            }
+        }
+        
+        for video in processedVideos {
+            if id == video.id {
+                debugLog("duplicate found by ID")
+                return (true,video)
+            }
+            else if (url1080pH264 != "" && video.url1080pH264 != "") {
+                if (URL(string:url1080pH264)?.lastPathComponent == URL(string:video.url1080pH264)?.lastPathComponent) {
+                    debugLog("duplicate found by filename")
+                    return (true,video)
+                }
+            }
+        }
+        
+        return (false,nil)
+    }
+    
+/*    func checkContentLength(_ video: AerialVideo) {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let request = NSMutableURLRequest(url: video.url as URL)
@@ -315,5 +465,5 @@ class ManifestLoader {
             callback(filtered)
         }
         self.callbacks.removeAll()
-    }
+    }*/
 }

@@ -26,11 +26,16 @@ class City {
     var night: TimeOfDay = TimeOfDay(title: "night")
     var day: TimeOfDay = TimeOfDay(title: "day")
     let name: String
+    //var videos: [AerialVideo] = [AerialVideo]()
     
     init(name: String) {
         self.name = name
     }
-    
+    /*func addVideo(video: AerialVideo)
+    {
+        video.arrayPosition = videos.count
+        videos.append(video)
+    }*/
     func addVideoForTimeOfDay(_ timeOfDay: String, video: AerialVideo) {
         if timeOfDay.lowercased() == "night" {
             video.arrayPosition = night.videos.count
@@ -336,17 +341,19 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     func loaded(manifestVideos: [AerialVideo]) {
         var videos = [AerialVideo]()
         var cities = [String: City]()
+
+        // First day, then night
         for video in manifestVideos {
             let name = video.name
             
             if cities.keys.contains(name) == false {
                 cities[name] = City(name: name)
             }
-        
             let city = cities[name]!
         
             let timeOfDay = video.timeOfDay
             city.addVideoForTimeOfDay(timeOfDay, video: video)
+            
             videos.append(video)
         }
 
@@ -361,7 +368,6 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             self.outlineView.reloadData()
             self.outlineView.expandItem(nil, expandChildren: true)
         }
-
     }
 
     @IBAction func close(_ sender: AnyObject?) {
@@ -376,11 +382,10 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         }
         
         switch item {
-            /*case is TimeOfDay:
+            case is TimeOfDay:
                 let timeOfDay = item as! TimeOfDay
-                return timeOfDay.videos.count*/
+                return timeOfDay.videos.count
             case is City:
-                /*
                 let city = item as! City
                 
                 var count = 0
@@ -392,11 +397,10 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
                 if city.day.videos.count > 0 {
                     count += 1
                 }
-                 return count
+                return count
 
-                 */
-                let city = item as! City
-                return city.day.videos.count
+                //let city = item as! City
+                //return city.day.videos.count + city.night.videos.count
             default:
                 return 0
         }
@@ -407,7 +411,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         switch item {
         case is TimeOfDay:
             return true
-        case is City: // cities
+        case is City:
             return true
         default:
             return false
@@ -421,16 +425,16 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         
         switch item {
         case is City:
-            /*
+            
             let city = item as! City
             
             if index == 0 && city.day.videos.count > 0 {
                 return city.day
             } else {
                 return city.night
-            }*/
-            let city = item as! City
-            return city.day.videos[index]
+            }
+            //let city = item as! City
+            //return city.videos[index]
             
         case is TimeOfDay:
             let timeOfDay = item as! TimeOfDay
@@ -447,9 +451,9 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         case is City:
             let city = item as! City
             return city.name
-        /*case is TimeOfDay:
+        case is TimeOfDay:
             let timeOfDay = item as! TimeOfDay
-            return timeOfDay.title*/
+            return timeOfDay.title
             
         default:
             return "untitled"
@@ -467,8 +471,8 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     
     func outlineView(_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool {
         switch item {
-        /*case is TimeOfDay:
-            return true*/
+        case is TimeOfDay:
+            return true
         case is City:
             return true
         default:
@@ -486,7 +490,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             view.textField?.stringValue = city.name
             
             return view
-        /*case is TimeOfDay:
+        case is TimeOfDay:
             let timeOfDay = item as! TimeOfDay
             let view = outlineView.makeView(withIdentifier: convertToNSUserInterfaceItemIdentifier("DataCell"),
                                         owner: self) as! NSTableCellView
@@ -498,11 +502,13 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
                 ofType:"pdf") {
                 let image = NSImage(contentsOfFile: imagePath)
                 view.imageView?.image = image
+                // TODO, change the icons for dark mode
+
             } else {
                 print("\(#file) failed to find time of day icon")
             }
             
-            return view*/
+            return view
         case is AerialVideo:
             let video = item as! AerialVideo
             let view = outlineView.makeView(withIdentifier: convertToNSUserInterfaceItemIdentifier("CheckCell"),
@@ -547,7 +553,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             playerView.player = player
             
             let video = item as! AerialVideo
-
+            print(video)
             // Workaround for cached videos generating online traffic
             if video.isAvailableOffline {
                 let localurl = URL(fileURLWithPath: VideoCache.cachePath(forVideo: video)!)
@@ -563,25 +569,25 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             player.play()
             
             return true
-        /*case is TimeOfDay:
-            return false*/
+        case is TimeOfDay:
+            return false
         default:
             return false
         }
     }
     
-//    func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
-//        switch item {
-//        case is AerialVideo:
-//            return 18
-//        case is TimeOfDay:
-//            return outlineView.textFi
-//        case is City:
-//            return 18
-//        default:
-//            fatalError("unhandled item in heightOfRowByItem for \(item)")
-//        }
-//    }
+    func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
+        switch item {
+            case is AerialVideo:
+                return 17
+            case is TimeOfDay:
+                return 18
+            case is City:
+                return 17
+            default:
+                fatalError("unhandled item in heightOfRowByItem for \(item)")
+        }
+    }
     
     // MARK: - Caching
     

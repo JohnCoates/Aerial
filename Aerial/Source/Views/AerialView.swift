@@ -446,7 +446,34 @@ class AerialView: ScreenSaverView {
             }
             else
             {
-                self.textLayer.string = video.name
+                // We don't have any extended description, using video name (City)
+                let str = video.name
+                let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
+                
+                fadeAnimation.values = [0, 0, 1, 1, 0]
+                
+                if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)
+                {
+                    fadeAnimation.keyTimes = [0, 1/12, 3/12, 10/12, 1] as [NSNumber]
+                    fadeAnimation.duration = 12
+                }
+                else
+                {
+                    // Always show mode, use known video duration or some hardcoded duration
+                    if video.duration > 0
+                    {
+                        fadeAnimation.keyTimes = [0, 1/(video.duration-1), 3/(video.duration - 1), 1-2/(video.duration - 1), 1] as [NSNumber]
+                        fadeAnimation.duration = (video.duration - 1)
+                    }
+                    else
+                    {
+                        // We should have the duration, if we don't, hardcode the longest known duration
+                        fadeAnimation.keyTimes = [0, 1/807, 3/807, 1-2/807, 1] as [NSNumber]
+                        fadeAnimation.duration = 807
+                    }
+                }
+                self.textLayer.add(fadeAnimation, forKey: "textfade")
+                self.textLayer.string = str
             }
         }
     }
