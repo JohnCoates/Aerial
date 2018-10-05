@@ -334,6 +334,10 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
                         action: #selector(PreferencesWindowController.outlineViewCheck4K(button:)),
                         keyEquivalent: "",
                         at: 0)
+        menu.insertItem(withTitle: "Check Only Cached",
+                        action: #selector(PreferencesWindowController.outlineViewCheckCached(button:)),
+                        keyEquivalent: "",
+                        at: 0)
 
         
         let event = NSApp.currentEvent
@@ -367,6 +371,27 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         
         for video in videos {
             if video.url4KHEVC != "" {
+                preferences.setVideo(videoID: video.id,
+                                     inRotation: true,
+                                     synchronize: false)
+            } else {
+                preferences.setVideo(videoID: video.id,
+                                     inRotation: false,
+                                     synchronize: false)
+            }
+        }
+        preferences.synchronize()
+        
+        outlineView.reloadData()
+    }
+    
+    @objc func outlineViewCheckCached(button: NSButton) {
+        guard let videos = videos else {
+            return
+        }
+        
+        for video in videos {
+            if video.isAvailableOffline {
                 preferences.setVideo(videoID: video.id,
                                      inRotation: true,
                                      synchronize: false)
@@ -609,6 +634,8 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             if let imagePath = bundle.path(forResource: "icon-\(timeOfDay.title)",
                 ofType:"pdf") {
                 let image = NSImage(contentsOfFile: imagePath)
+                image!.size.width = 13
+                image!.size.height = 13
                 view.imageView?.image = image
                 // TODO, change the icons for dark mode
 
@@ -640,6 +667,18 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
                 view.textField?.stringValue = numberString.capitalized
             }
 
+            
+            if video.isAvailableOffline {
+                view.subviews.last?.isHidden = true     // Hide the download indicator
+            } else {
+                view.subviews.last?.isHidden = false
+            }
+            
+            if video.url4KHEVC == "" {
+                view.subviews[2].isHidden = true        // Hide the 4K indicator
+            } else {
+                view.subviews[2].isHidden = false       
+            }
             
             let isInRotation = preferences.videoIsInRotation(videoID: video.id)
             
@@ -700,6 +739,9 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             default:
                 fatalError("unhandled item in heightOfRowByItem for \(item)")
         }
+    }
+    func outlineView(_ outlineView: NSOutlineView, sizeToFitWidthOfColumn column: Int) -> CGFloat {
+        return 0
     }
     
     // MARK: - Caching
