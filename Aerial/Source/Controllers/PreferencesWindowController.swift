@@ -330,6 +330,11 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             action: #selector(PreferencesWindowController.outlineViewCheckAll(button:)),
             keyEquivalent: "",
             at: 1)
+        menu.insertItem(withTitle: "Check Only 4K",
+                        action: #selector(PreferencesWindowController.outlineViewCheck4K(button:)),
+                        keyEquivalent: "",
+                        at: 0)
+
         
         let event = NSApp.currentEvent
         NSMenu.popUpContextMenu(menu, with: event!, for: button)
@@ -353,6 +358,27 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     
     @objc func outlineViewCheckAll(button: NSButton) {
         setAllVideos(inRotation: true)
+    }
+    
+    @objc func outlineViewCheck4K(button: NSButton) {
+        guard let videos = videos else {
+            return
+        }
+        
+        for video in videos {
+            if video.url4KHEVC != "" {
+                preferences.setVideo(videoID: video.id,
+                                     inRotation: true,
+                                     synchronize: false)
+            } else {
+                preferences.setVideo(videoID: video.id,
+                                     inRotation: false,
+                                     synchronize: false)
+            }
+        }
+        preferences.synchronize()
+        
+        outlineView.reloadData()
     }
     
     func setAllVideos(inRotation: Bool) {
