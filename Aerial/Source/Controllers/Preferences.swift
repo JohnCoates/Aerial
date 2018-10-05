@@ -25,6 +25,13 @@ class Preferences {
         case showDescriptionsMode = "showDescriptionsMode"
         case neverStreamVideos = "neverStreamVideos"
         case localizeDescriptions = "localizeDescriptions"
+        case timeMode = "timeMode"
+        case manualSunrise = "manualSunrise"
+        case manualSunset = "manualSunset"
+    }
+
+    enum TimeMode : Int {
+        case disabled, nightShift, manual, lightDarkMode
     }
     
     enum VideoFormat : Int {
@@ -63,6 +70,9 @@ class Preferences {
         defaultValues[.showDescriptionsMode] = DescriptionMode.fade10seconds
         defaultValues[.neverStreamVideos] = false
         defaultValues[.localizeDescriptions] = false
+        defaultValues[.timeMode] = TimeMode.disabled
+        defaultValues[.manualSunrise] = "09:00"
+        defaultValues[.manualSunset] = "19:00"
         
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
@@ -112,7 +122,25 @@ class Preferences {
             setValue(forIdentifier: .localizeDescriptions, value: newValue)
         }
     }
-
+    
+    var manualSunrise: String? {
+        get {
+            return optionalValue(forIdentifier: .manualSunrise)
+        }
+        set {
+            setValue(forIdentifier: .manualSunrise, value: newValue)
+        }
+    }
+    
+    var manualSunset: String? {
+        get {
+            return optionalValue(forIdentifier: .manualSunset)
+        }
+        set {
+            setValue(forIdentifier: .manualSunset, value: newValue)
+        }
+    }
+    
     var customCacheDirectory: String? {
         get {
             return optionalValue(forIdentifier: .customCacheDirectory)
@@ -146,6 +174,15 @@ class Preferences {
         }
         set {
             setValue(forIdentifier: .manifestTvOS12, value: newValue)
+        }
+    }
+
+    var timeMode: Int? {
+        get {
+            return optionalValue(forIdentifier: .timeMode)
+        }
+        set {
+            setValue(forIdentifier: .timeMode, value: newValue)
         }
     }
 

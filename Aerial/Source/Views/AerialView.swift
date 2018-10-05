@@ -209,6 +209,8 @@ class AerialView: ScreenSaverView {
     }
     
     func playNextVideo() {
+        let timeManagement = TimeManagement.sharedInstance
+
         let notificationCenter = NotificationCenter.default
         
         // remove old entries

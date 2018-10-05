@@ -20,12 +20,17 @@ class ManifestLoader {
     var playedVideos = [AerialVideo]()
     var processedVideos = [AerialVideo]()
     
-    var blacklist = ["b10-1.mov",           // Dupe of b1-1 (Hawaii, day)
+    // Those videos will be ignored
+    let blacklist = ["b10-1.mov",           // Dupe of b1-1 (Hawaii, day)
                      "b10-2.mov",           // Dupe of b2-3 (New York, night)
                      "b10-4.mov",           // Dupe of b2-4 (San Francisco, night)
                      "b9-1.mov",            // Dupe of b2-2 (Hawaii, day)
                      "b9-2.mov",            // Dupe of b3-1 (London, night)
-                     "comp_LA_A005_C009_v05_t9_6M.mov"] // Low quality version of Los Angeles 687B36CB-BA5D-4434-BA99-2F2B8B6EC163
+                     "comp_LA_A005_C009_v05_t9_6M.mov",     // Low quality version of Los Angeles day 687B36CB-BA5D-4434-BA99-2F2B8B6EC163
+                     "comp_LA_A009_C009_t9_6M_tag0.mov"]    // Low quality version of Los Angeles night 89B1643B-06DD-4DEC-B1B0-774493B0F7B7
+    
+    // This is used for videos where URLs should be merged
+    var dupePairs = ["88025454-6D58-48E8-A2DB-924988FAD7AC":"6E2FC8AC-832D-46CF-B306-BB2A05030C17"] // Liwa
     
     func addCallback(_ callback:@escaping manifestLoadCallback) {
         if loadedManifest.count > 0 {
@@ -36,6 +41,10 @@ class ManifestLoader {
     }
     
     func randomVideo(excluding: [AerialVideo]) -> AerialVideo? {
+        let timeManagement = TimeManagement.sharedInstance
+        let (shouldRestrictByDayNight,restrictTo) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
+        debugLog("randomVideo shouldRestrict : \(shouldRestrictByDayNight) to : \(restrictTo)")
+        
         let shuffled = loadedManifest.shuffled()
         for video in shuffled {
             let inRotation = preferences.videoIsInRotation(videoID: video.id)
@@ -50,6 +59,14 @@ class ManifestLoader {
                 continue
             }
             
+            // Do we restrict video types by day/night ?
+            if shouldRestrictByDayNight {
+                if video.timeOfDay != restrictTo {
+                    debugLog("randomVideo: video is excluded as we only play \(restrictTo) (is: \(video.timeOfDay))")
+                    continue
+                }
+                
+            }
             // We may not want to stream
             if preferences.neverStreamVideos == true {
                 if video.isAvailableOffline == false {
@@ -58,6 +75,7 @@ class ManifestLoader {
                 }
             }
             
+            debugLog("randomVideo: picked \(video)")
             return video
         }
         
@@ -114,7 +132,7 @@ class ManifestLoader {
                 }
 
                 let completion = BlockOperation {
-                    print("fetching all done")
+                    debugLog("fetching all done")
                     // We can now load from the newly cached files
                     self.loadCachedManifests()
                 }
@@ -223,6 +241,7 @@ class ManifestLoader {
         // The original manifest is in another format
         readOldJSONFromData(preferences.manifestTvOS10!, manifest: .tvOS10)
 
+        processedVideos = processedVideos.sorted { $0.secondaryName < $1.secondaryName }
         self.loadedManifest = processedVideos
         
         debugLog("\(processedVideos.count) videos processed !")
@@ -254,7 +273,7 @@ class ManifestLoader {
                 let poi = item["pointsOfInterest"] as? [String: String]
                 let (isDupe,foundDupe) = findDuplicate(id: id, url1080pH264: url1080pH264 ?? "")
                 if (isDupe) {
-                    print("duplicate found, adding \(manifest) as source to \(name)")
+                    debugLog("duplicate found, adding \(manifest) as source to \(name)")
                     foundDupe!.sources.append(manifest)
                 }
                 else {
@@ -303,6 +322,12 @@ class ManifestLoader {
                         if (foundDupe != nil) {
                             debugLog("duplicate found, adding \(manifest) as source to \(name)")
                             foundDupe!.sources.append(manifest)
+                            
+                            if (foundDupe?.url1080pH264 == "") {
+                                debugLog("merging urls for \(url)")
+                                foundDupe?.url1080pH264 = url
+                            }
+                            
                         }
                     }
                     else {
@@ -353,6 +378,20 @@ class ManifestLoader {
             {
                 debugLog("Blacklisted video : \(url1080pH264)")
                 return (true,nil)
+            }
+        }
+        
+        // We also have a Dictionary of duplicates that need source merging
+        for (pid,replace) in dupePairs {
+            if (id == pid)
+            {
+                debugLog("duplicate found by dupePairs \(id)")
+                for vid in processedVideos {
+                    if vid.id == replace {
+                        debugLog("returning \(replace)")
+                        return (true,vid)
+                    }
+                }
             }
         }
         
