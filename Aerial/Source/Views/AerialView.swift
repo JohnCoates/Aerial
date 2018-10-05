@@ -120,7 +120,7 @@ class AerialView: ScreenSaverView {
         textLayer.shadowRadius = 10
         textLayer.shadowOpacity = 1.0
         textLayer.shadowColor = CGColor.black
-        
+        textLayer.contentsScale = NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(textLayer)
     }
     
@@ -209,7 +209,7 @@ class AerialView: ScreenSaverView {
     }
     
     func playNextVideo() {
-        let timeManagement = TimeManagement.sharedInstance
+        //let timeManagement = TimeManagement.sharedInstance
 
         let notificationCenter = NotificationCenter.default
         
