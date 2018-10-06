@@ -11,7 +11,10 @@ import Cocoa
 class CheckCellView: NSTableCellView {
 
     @IBOutlet var checkButton: NSButton!
+    @IBOutlet var addButton: NSButton!
+    
     var onCheck: ((Bool) -> (Void))?
+    var video: (AerialVideo)?
     
     override required init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -36,6 +39,15 @@ class CheckCellView: NSTableCellView {
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
+    }
+    
+    // Add video handling
+    func setVideo(video:AerialVideo) {
+        self.video = video
+    }
+    @IBAction func addClick(_ button: NSButton?) {
+        print("woo")
+        print(video)
     }
     
 }

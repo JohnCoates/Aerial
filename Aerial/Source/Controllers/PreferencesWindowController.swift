@@ -512,6 +512,8 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             self.outlineView.expandItem(nil, expandChildren: true)
         }
     }
+    
+  
 
     @IBAction func close(_ sender: AnyObject?) {
         window?.sheetParent?.endSheet(window!)
@@ -658,6 +660,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             let video = item as! AerialVideo
             let view = outlineView.makeView(withIdentifier: convertToNSUserInterfaceItemIdentifier("CheckCell"),
                                         owner: nil) as! CheckCellView   // if owner = self, awakeFromNib will be called for each created cell !
+            view.setVideo(video: video)     // For our Add button
             if (video.secondaryName != "") {
                 view.textField?.stringValue = video.secondaryName
             }
@@ -682,6 +685,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
                 view.subviews.last?.isHidden = true     // Hide the download indicator
             } else {
                 view.subviews.last?.isHidden = false
+                //view.subviews.last?.
             }
             
             if video.url4KHEVC == "" {
@@ -709,6 +713,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     }
     
     func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
+        print("baaclick")
         switch item {
         case is AerialVideo:
             player = AVPlayer()
@@ -741,7 +746,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
         switch item {
             case is AerialVideo:
-                return 17
+                return 19
             case is TimeOfDay:
                 return 18
             case is City:
