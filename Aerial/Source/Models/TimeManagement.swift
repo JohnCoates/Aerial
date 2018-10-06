@@ -145,7 +145,7 @@ class TimeManagement {
             
             if (isAvailable) {
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "HH:mm:ss"
+                dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
                 let sunriseString = dateFormatter.string(from: sunriseDate!)
                 let sunsetString = dateFormatter.string(from: sunsetDate!)
 

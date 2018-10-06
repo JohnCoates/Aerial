@@ -98,7 +98,6 @@ class AerialView: ScreenSaverView {
         layer.backgroundColor = NSColor.black.cgColor
         layer.needsDisplayOnBoundsChange = true
         layer.frame = self.bounds
-//        layer.backgroundColor = NSColor.greenColor().CGColor
         
         debugLog("setting up player layer with frame: \(self.bounds) / \(self.frame)")
         
@@ -108,7 +107,10 @@ class AerialView: ScreenSaverView {
         }
         playerLayer.autoresizingMask = [CAAutoresizingMask.layerWidthSizable, CAAutoresizingMask.layerHeightSizable]
         playerLayer.frame = layer.bounds
+        playerLayer.contentsScale = NSScreen.main?.backingScaleFactor ?? 1.0
+
         layer.addSublayer(playerLayer)
+
         // Debug code
         textLayer = CATextLayer()
         textLayer.frame = CGRect(x: 20, y: 10, width: layer.bounds.width, height: 40)
