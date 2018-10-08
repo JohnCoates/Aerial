@@ -763,14 +763,14 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
                 let localurl = URL(fileURLWithPath: VideoCache.cachePath(forVideo: video)!)
                 let localitem = AVPlayerItem(url: localurl)
                 player.replaceCurrentItem(with: localitem)
+                player.play()
             }
-            else {
+            else if !preferences.neverStreamPreviews {
                 let asset = CachedOrCachingAsset(video.url)
                 let item = AVPlayerItem(asset: asset)
                 player.replaceCurrentItem(with: item)
+                player.play()
             }
-            
-            player.play()
             
             return true
         case is TimeOfDay:
