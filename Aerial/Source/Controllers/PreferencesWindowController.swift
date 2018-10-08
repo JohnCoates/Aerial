@@ -62,6 +62,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var cacheLocation: NSPathControl!
     @IBOutlet var cacheAerialsAsTheyPlayCheckbox: NSButton!
     @IBOutlet var neverStreamVideosCheckbox: NSButton!
+    @IBOutlet var neverStreamPreviewsCheckbox: NSButton!
     @IBOutlet var popupVideoFormat: NSPopUpButton!
     @IBOutlet var descriptionModePopup: NSPopUpButton!
     @IBOutlet var versionLabel: NSTextField!
@@ -111,7 +112,6 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         if let previewPlayer = AerialView.previewPlayer {
             self.player = previewPlayer
         }
-        
 
         outlineView.floatsGroupRows = false
         loadJSON()
@@ -227,8 +227,13 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     
     override func windowDidLoad() {
         super.windowDidLoad()
-        // Tentative workaround for garbled icons on non retina
+
+        // Workaround for garbled icons on non retina, we force redraw
         outlineView.reloadData()
+    }
+    
+    @IBAction func close(_ sender: AnyObject?) {
+        window?.sheetParent?.endSheet(window!)
     }
     
     // MARK: - Setup
@@ -289,6 +294,12 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         preferences.neverStreamVideos = onState
     }
     
+    @IBAction func neverStreamPreviewsClick(_ button: NSButton!) {
+        debugLog("never stream previews: \(convertFromNSControlStateValue(button.state))")
+        
+        let onState = (button.state == NSControl.StateValue.on)
+        preferences.neverStreamPreviews = onState
+    }
     @IBAction func cacheAerialsAsTheyPlayClick(_ button: NSButton!) {
         debugLog("cache aerials as they play: \(convertFromNSControlStateValue(button.state))")
         
@@ -325,31 +336,6 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         }
     }
     
-    @IBAction func outlineViewSettingsClick(_ button: NSButton) {
-        let menu = NSMenu()
-        menu.insertItem(withTitle: "Uncheck All",
-            action: #selector(PreferencesWindowController.outlineViewUncheckAll(button:)),
-            keyEquivalent: "",
-            at: 0)
-        
-        menu.insertItem(withTitle: "Check All",
-            action: #selector(PreferencesWindowController.outlineViewCheckAll(button:)),
-            keyEquivalent: "",
-            at: 1)
-        menu.insertItem(withTitle: "Check Only 4K",
-                        action: #selector(PreferencesWindowController.outlineViewCheck4K(button:)),
-                        keyEquivalent: "",
-                        at: 0)
-        menu.insertItem(withTitle: "Check Only Cached",
-                        action: #selector(PreferencesWindowController.outlineViewCheckCached(button:)),
-                        keyEquivalent: "",
-                        at: 0)
-
-        
-        let event = NSApp.currentEvent
-        NSMenu.popUpContextMenu(menu, with: event!, for: button)
-    }
-
     @IBAction func popupVideoFormatChange(_ sender:NSPopUpButton) {
         NSLog("index change : \(sender.indexOfSelectedItem)")
         preferences.videoFormat = sender.indexOfSelectedItem
@@ -365,6 +351,66 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         preferences.synchronize()
     }
     
+    @IBAction func differentAerialsOnEachDisplayCheckClick(_ button: NSButton?) {
+        let state = differentAerialCheckbox.state
+        let onState = (state == NSControl.StateValue.on)
+        
+        preferences.differentAerialsOnEachDisplay = onState
+        
+        debugLog("set differentAerialsOnEachDisplay to \(onState)")
+    }
+    
+    @IBAction func showDescriptionsClick(button: NSButton?) {
+        let state = showDescriptionsCheckbox.state
+        let onState = (state == NSControl.StateValue.on)
+        
+        preferences.showDescriptions = onState
+        
+        debugLog("set showDescriptions to \(onState)")
+    }
+    
+    @IBAction func localizeForTvOS12Click(button: NSButton?) {
+        let state = localizeForTvOS12Checkbox.state
+        let onState = (state == NSControl.StateValue.on)
+        
+        preferences.localizeDescriptions = onState
+        
+        debugLog("set localizeDescriptions to \(onState)")
+    }
+    
+    // MARK: Menu
+    @IBAction func outlineViewSettingsClick(_ button: NSButton) {
+        let menu = NSMenu()
+
+        menu.insertItem(withTitle: "Check Only Cached",
+                        action: #selector(PreferencesWindowController.outlineViewCheckCached(button:)),
+                        keyEquivalent: "",
+                        at: 0)
+        menu.insertItem(withTitle: "Check Only 4K",
+                        action: #selector(PreferencesWindowController.outlineViewCheck4K(button:)),
+                        keyEquivalent: "",
+                        at: 1)
+        menu.insertItem(withTitle: "Check All",
+                        action: #selector(PreferencesWindowController.outlineViewCheckAll(button:)),
+                        keyEquivalent: "",
+                        at: 2)
+        menu.insertItem(withTitle: "Uncheck All",
+                        action: #selector(PreferencesWindowController.outlineViewUncheckAll(button:)),
+                        keyEquivalent: "",
+                        at: 3)
+        menu.insertItem(NSMenuItem.separator(), at: 4)
+        menu.insertItem(withTitle: "Download Checked",
+                        action: #selector(PreferencesWindowController.outlineViewDownloadChecked(button:)),
+                        keyEquivalent: "",
+                        at: 5)
+        menu.insertItem(withTitle: "Download All",
+                        action: #selector(PreferencesWindowController.outlineViewDownloadAll(button:)),
+                        keyEquivalent: "",
+                        at: 6)
+        
+        let event = NSApp.currentEvent
+        NSMenu.popUpContextMenu(menu, with: event!, for: button)
+    }
 
     @objc func outlineViewUncheckAll(button: NSButton) {
         setAllVideos(inRotation: false)
@@ -416,6 +462,36 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         outlineView.reloadData()
     }
     
+    @objc func outlineViewDownloadChecked(button: NSButton) {
+        guard let videos = videos else {
+            return
+        }
+        let videoManager = VideoManager.sharedInstance
+
+        for video in videos {
+            if preferences.videoIsInRotation(videoID: video.id) && !video.isAvailableOffline {
+                if !videoManager.isVideoQueued(id: video.id) {
+                    videoManager.queueDownload(video)
+                }
+            }
+        }
+    }
+    
+    @objc func outlineViewDownloadAll(button: NSButton) {
+        guard let videos = videos else {
+            return
+        }
+        let videoManager = VideoManager.sharedInstance
+        
+        for video in videos {
+            if !video.isAvailableOffline {
+                if !videoManager.isVideoQueued(id: video.id) {
+                    videoManager.queueDownload(video)
+                }
+            }
+        }
+    }
+    
     func setAllVideos(inRotation: Bool) {
         guard let videos = videos else {
             return
@@ -431,35 +507,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         outlineView.reloadData()
     }
     
-    @IBAction func differentAerialsOnEachDisplayCheckClick(_ button: NSButton?) {
-        let state = differentAerialCheckbox.state
-        let onState = (state == NSControl.StateValue.on)
-        
-        preferences.differentAerialsOnEachDisplay = onState
-        
-        debugLog("set differentAerialsOnEachDisplay to \(onState)")
-    }
-    
-    @IBAction func showDescriptionsClick(button: NSButton?) {
-        let state = showDescriptionsCheckbox.state
-        let onState = (state == NSControl.StateValue.on)
-        
-        preferences.showDescriptions = onState
-        
-        debugLog("set showDescriptions to \(onState)")
-    }
-    
-    @IBAction func localizeForTvOS12Click(button: NSButton?) {
-        let state = localizeForTvOS12Checkbox.state
-        let onState = (state == NSControl.StateValue.on)
-        
-        preferences.localizeDescriptions = onState
-        
-        debugLog("set localizeDescriptions to \(onState)")
-    }
-
-    
-    // MARK: - Link
+    // MARK: - Links
     
     @IBAction func pageProjectClick(_ button: NSButton?) {
         let workspace = NSWorkspace.shared
@@ -511,12 +559,6 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             self.outlineView.reloadData()
             self.outlineView.expandItem(nil, expandChildren: true)
         }
-    }
-    
-  
-
-    @IBAction func close(_ sender: AnyObject?) {
-        window?.sheetParent?.endSheet(window!)
     }
     
     // MARK: - Outline View Delegate & Data Source
@@ -660,7 +702,13 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             let video = item as! AerialVideo
             let view = outlineView.makeView(withIdentifier: convertToNSUserInterfaceItemIdentifier("CheckCell"),
                                         owner: nil) as! CheckCellView   // if owner = self, awakeFromNib will be called for each created cell !
+            // Mark the new view for this video for subsequent callbacks
+            let videoManager = VideoManager.sharedInstance
+            videoManager.addCheckCellView(id: video.id, checkCellView: view)
+
             view.setVideo(video: video)     // For our Add button
+            view.adaptIndicators()
+
             if (video.secondaryName != "") {
                 view.textField?.stringValue = video.secondaryName
             }
@@ -680,19 +728,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
                 view.textField?.stringValue = numberString.capitalized
             }
 
-            
-            if video.isAvailableOffline {
-                view.subviews.last?.isHidden = true     // Hide the download indicator
-            } else {
-                view.subviews.last?.isHidden = false
-                //view.subviews.last?.
-            }
-            
-            if video.url4KHEVC == "" {
-                view.subviews[2].isHidden = true        // Hide the 4K indicator
-            } else {
-                view.subviews[2].isHidden = false       
-            }
+
             
             let isInRotation = preferences.videoIsInRotation(videoID: video.id)
             
@@ -706,6 +742,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
                 self.preferences.setVideo(videoID: video.id,
                                           inRotation: checked)
             }
+
             return view
         default:
             return nil

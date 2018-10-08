@@ -62,7 +62,7 @@ class AerialVideo: CustomStringConvertible, Equatable {
     let url4KHEVC: String
     var sources: [Manifests]
     let poi: [String: String]
-    let duration: Double
+    var duration: Double
     
     var arrayPosition = 1
     var contentLength = 0
@@ -85,11 +85,11 @@ class AerialVideo: CustomStringConvertible, Equatable {
                     return URL(string: self.url4KHEVC)!
                 }
                 else if (url1080pHEVC != "") {
-                    debugLog("4K NOT AVAILABLE, retunring 1080P HEVC as closest available")
+                    //debugLog("4K NOT AVAILABLE, retunring 1080P HEVC as closest available")
                     return URL(string: self.url1080pHEVC)!
                 }
                 else {
-                    debugLog("4K NOT AVAILABLE, retunring 1080P H264 as closest available")
+                    //debugLog("4K NOT AVAILABLE, retunring 1080P H264 as closest available")
                     return URL(string: self.url1080pH264)!
                 }
             }
@@ -99,11 +99,11 @@ class AerialVideo: CustomStringConvertible, Equatable {
                     return URL(string: self.url1080pHEVC)!
                 }
                 else if (url1080pH264 != "") {
-                    debugLog("1080pHEVC NOT AVAILABLE, retunring 1080P H264 as closest available")
+                    //debugLog("1080pHEVC NOT AVAILABLE, retunring 1080P H264 as closest available")
                     return URL(string: self.url1080pH264)!
                 }
                 else {
-                    debugLog("1080pHEVC NOT AVAILABLE, retunring 4K HEVC as closest available")
+                    //debugLog("1080pHEVC NOT AVAILABLE, retunring 4K HEVC as closest available")
                     return URL(string: self.url4KHEVC)!
                 }
             }
@@ -113,11 +113,11 @@ class AerialVideo: CustomStringConvertible, Equatable {
                     return URL(string: self.url1080pH264)!
                 }
                 else if (url1080pHEVC != "") {
-                    debugLog("1080pH264 NOT AVAILABLE, retunring 1080P HEVC as closest available")
+                    //debugLog("1080pH264 NOT AVAILABLE, retunring 1080P HEVC as closest available")
                     return URL(string: self.url1080pHEVC)!
                 }
                 else {
-                    debugLog("1080pHEVC NOT AVAILABLE, retunring 4K HEVC as closest available")
+                    //debugLog("1080pHEVC NOT AVAILABLE, retunring 4K HEVC as closest available")
                     return URL(string: self.url4KHEVC)!
                 }
             }
@@ -167,6 +167,11 @@ class AerialVideo: CustomStringConvertible, Equatable {
         self.sources = [manifest]
         self.poi = poi
         
+        self.duration = 0
+        updateDuration()
+    }
+
+    func updateDuration() {
         // We need to retrieve video duration from the cached files.
         // This is a workaround as currently, the VideoCache infrastructure
         // relies on AVAsset with an external URL all the time, even when
@@ -175,7 +180,7 @@ class AerialVideo: CustomStringConvertible, Equatable {
         // Not the prettiest code !
         let cacheDirectoryPath = VideoCache.cacheDirectory! as NSString
         let fileManager = FileManager.default
-
+        
         var videoCache1080pH264Path = "", videoCache1080pHEVCPath = "", videoCache4KHEVCPath = ""
         if (self.url1080pH264 != "")
         {
@@ -189,8 +194,7 @@ class AerialVideo: CustomStringConvertible, Equatable {
         {
             videoCache4KHEVCPath = cacheDirectoryPath.appendingPathComponent((URL(string: url4KHEVC)?.lastPathComponent)!)
         }
-
-
+        
         if fileManager.fileExists(atPath: videoCache4KHEVCPath) {
             let asset = AVAsset(url: URL(fileURLWithPath: videoCache4KHEVCPath))
             self.duration = CMTimeGetSeconds(asset.duration)

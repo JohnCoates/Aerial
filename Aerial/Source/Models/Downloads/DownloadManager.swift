@@ -108,12 +108,8 @@ extension DownloadOperation: URLSessionDownloadDelegate {
             let manager = FileManager.default
             var destinationURL = URL(fileURLWithPath: VideoCache.cacheDirectory!)
             
-//            if downloadTask.originalRequest!.url!.lastPathComponent == "ressources.tar" {
-//                destinationURL.appendPathComponent(downloadTask.originalRequest!.url!.lastPathComponent)
-//            }
-            
             // tvOS11 and tvOS10 JSONs are named entries.json, so we rename them here
-            if downloadTask.originalRequest!.url!.absoluteString.contains("2x") {
+            if downloadTask.originalRequest!.url!.absoluteString.contains("2x/entries.json") {
                 NSLog("Aerial: Caching tvos11.json")
                 destinationURL.appendPathComponent("tvos11.json")
             }
@@ -154,11 +150,10 @@ extension DownloadOperation: URLSessionTaskDelegate {
         // We need to untar the resources.tar
         if task.originalRequest!.url!.absoluteString.contains("resources.tar") {
             print("untaring resources.tar")
+
             // Extract json
             let process:Process = Process()
             let cacheDirectory = VideoCache.cacheDirectory!
-            //var cacheResourcesUrl = URL(fileURLWithPath: cacheDirectory as String)
-            //cacheResourcesUrl.appendPathComponent("resources.tar")
             
             var cacheResourcesString = cacheDirectory
             cacheResourcesString.append(contentsOf: "/resources.tar")

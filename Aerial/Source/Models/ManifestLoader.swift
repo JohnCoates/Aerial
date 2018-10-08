@@ -29,9 +29,13 @@ class ManifestLoader {
                      "comp_LA_A005_C009_v05_t9_6M.mov",     // Low quality version of Los Angeles day 687B36CB-BA5D-4434-BA99-2F2B8B6EC163
                      "comp_LA_A009_C009_t9_6M_tag0.mov"]    // Low quality version of Los Angeles night 89B1643B-06DD-4DEC-B1B0-774493B0F7B7
     
-    // This is used for videos where URLs should be merged
-    var dupePairs = ["88025454-6D58-48E8-A2DB-924988FAD7AC":"6E2FC8AC-832D-46CF-B306-BB2A05030C17"] // Liwa
+    // This is used for videos where URLs should be merged with different ID
+    let dupePairs = ["88025454-6D58-48E8-A2DB-924988FAD7AC":"6E2FC8AC-832D-46CF-B306-BB2A05030C17"] // Liwa
     
+    // Extra info to be merged for a given ID, as of right now only one known video
+    let mergeInfo = ["2F11E857-4F77-4476-8033-4A1E4610AFCC":
+        ["url-1080-SDR":"https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_2K_SDR_HEVC.mov",
+         "url-4K-SDR":"https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_SDR_HEVC.mov"]]
     func addCallback(_ callback:@escaping manifestLoadCallback) {
         if loadedManifest.count > 0 {
             callback(loadedManifest)
@@ -43,26 +47,26 @@ class ManifestLoader {
     func randomVideo(excluding: [AerialVideo]) -> AerialVideo? {
         let timeManagement = TimeManagement.sharedInstance
         let (shouldRestrictByDayNight,restrictTo) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
-        debugLog("randomVideo shouldRestrict : \(shouldRestrictByDayNight) to : \(restrictTo)")
+        //debugLog("randomVideo shouldRestrict : \(shouldRestrictByDayNight) to : \(restrictTo)")
         
         let shuffled = loadedManifest.shuffled()
         for video in shuffled {
             let inRotation = preferences.videoIsInRotation(videoID: video.id)
             
             if !inRotation {
-                debugLog("randomVideo: video is disabled: \(video)")
+                //debugLog("randomVideo: video is disabled: \(video)")
                 continue
             }
             
             if excluding.contains(video) && preferences.neverStreamVideos == false {
-                debugLog("randomVideo: video is excluded because it's already in use: \(video)")
+                //debugLog("randomVideo: video is excluded because it's already in use: \(video)")
                 continue
             }
             
             // Do we restrict video types by day/night ?
             if shouldRestrictByDayNight {
                 if video.timeOfDay != restrictTo {
-                    debugLog("randomVideo: video is excluded as we only play \(restrictTo) (is: \(video.timeOfDay))")
+                    //debugLog("randomVideo: video is excluded as we only play \(restrictTo) (is: \(video.timeOfDay))")
                     continue
                 }
                 
@@ -70,23 +74,23 @@ class ManifestLoader {
             // We may not want to stream
             if preferences.neverStreamVideos == true {
                 if video.isAvailableOffline == false {
-                    debugLog("randomVideo: video is excluded because it's not available offline \(video)")
+                    //debugLog("randomVideo: video is excluded because it's not available offline \(video)")
                     continue
                 }
             }
             
-            debugLog("randomVideo: picked \(video)")
+            //debugLog("randomVideo: picked \(video)")
             return video
         }
         
         // nothing available??? return first thing we find
         if preferences.neverStreamVideos == true {
             if excluding.count > 0 {
-                debugLog("randomVideo: no new video available and no streaming allowed, returning previous video !")
+                //debugLog("randomVideo: no new video available and no streaming allowed, returning previous video !")
                 return excluding.first
             }
             else {
-                debugLog("randomVideo: no video available and no streaming allowed !")
+                //debugLog("randomVideo: no video available and no streaming allowed !")
                 return nil
             }
         }
@@ -241,7 +245,7 @@ class ManifestLoader {
         // The original manifest is in another format
         readOldJSONFromData(preferences.manifestTvOS10!, manifest: .tvOS10)
 
-        processedVideos = processedVideos.sorted { $0.secondaryName < $1.secondaryName }
+        processedVideos = processedVideos.sorted { $0.secondaryName < $1.secondaryName }    // Only matters for Space videos, this way they show sorted in the Space category
         self.loadedManifest = processedVideos
         
         debugLog("\(processedVideos.count) videos processed !")
@@ -273,7 +277,7 @@ class ManifestLoader {
                 let poi = item["pointsOfInterest"] as? [String: String]
                 let (isDupe,foundDupe) = findDuplicate(id: id, url1080pH264: url1080pH264 ?? "")
                 if (isDupe) {
-                    debugLog("duplicate found, adding \(manifest) as source to \(name)")
+                    //debugLog("duplicate found, adding \(manifest) as source to \(name)")
                     foundDupe!.sources.append(manifest)
                 }
                 else {
@@ -320,24 +324,32 @@ class ManifestLoader {
                     let (isDupe,foundDupe) = findDuplicate(id: id, url1080pH264: url)
                     if isDupe {
                         if (foundDupe != nil) {
-                            debugLog("duplicate found, adding \(manifest) as source to \(name)")
+                            //debugLog("duplicate found, adding \(manifest) as source to \(name)")
                             foundDupe!.sources.append(manifest)
                             
                             if (foundDupe?.url1080pH264 == "") {
-                                debugLog("merging urls for \(url)")
+                                //debugLog("merging urls for \(url)")
                                 foundDupe?.url1080pH264 = url
                             }
                             
                         }
                     }
                     else {
+                        var url4khevc = ""
+                        var url1080phevc = ""
+                        // Check if we have some HEVC urls to merge
+                        if let val = mergeInfo[id] {
+                            url1080phevc = val["url-1080-SDR"]!
+                            url4khevc = val["url-4K-SDR"]!
+                        }
+
                         let video = AerialVideo(id: id,             // Must have
                             name: name,         // Must have
                             type: type,         // Not sure the point of this one ?
                             timeOfDay: timeOfDay,
                             url1080pH264: url,
-                            url1080pHEVC: "",
-                            url4KHEVC: "",
+                            url1080pHEVC: url1080phevc,
+                            url4KHEVC: url4khevc,
                             manifest: manifest,
                             poi: [:])    // tvOS12 only
                         
@@ -376,7 +388,7 @@ class ManifestLoader {
         if (url1080pH264 != "") {
             if (blacklist.contains((URL(string:url1080pH264)?.lastPathComponent)!))
             {
-                debugLog("Blacklisted video : \(url1080pH264)")
+                //debugLog("Blacklisted video : \(url1080pH264)")
                 return (true,nil)
             }
         }
@@ -385,10 +397,9 @@ class ManifestLoader {
         for (pid,replace) in dupePairs {
             if (id == pid)
             {
-                debugLog("duplicate found by dupePairs \(id)")
+                //debugLog("duplicate found by dupePairs \(id)")
                 for vid in processedVideos {
                     if vid.id == replace {
-                        debugLog("returning \(replace)")
                         return (true,vid)
                     }
                 }
@@ -397,12 +408,12 @@ class ManifestLoader {
         
         for video in processedVideos {
             if id == video.id {
-                debugLog("duplicate found by ID")
+                //debugLog("duplicate found by ID")
                 return (true,video)
             }
             else if (url1080pH264 != "" && video.url1080pH264 != "") {
                 if (URL(string:url1080pH264)?.lastPathComponent == URL(string:video.url1080pH264)?.lastPathComponent) {
-                    debugLog("duplicate found by filename")
+                    //debugLog("duplicate found by filename")
                     return (true,video)
                 }
             }

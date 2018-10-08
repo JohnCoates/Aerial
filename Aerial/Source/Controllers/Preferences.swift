@@ -24,6 +24,7 @@ class Preferences {
         case showDescriptions = "showDescriptions"
         case showDescriptionsMode = "showDescriptionsMode"
         case neverStreamVideos = "neverStreamVideos"
+        case neverStreamPreviews = "neverStreamPreviews"
         case localizeDescriptions = "localizeDescriptions"
         case timeMode = "timeMode"
         case manualSunrise = "manualSunrise"
@@ -69,6 +70,7 @@ class Preferences {
         defaultValues[.showDescriptions] = true
         defaultValues[.showDescriptionsMode] = DescriptionMode.fade10seconds
         defaultValues[.neverStreamVideos] = false
+        defaultValues[.neverStreamPreviews] = false
         defaultValues[.localizeDescriptions] = false
         defaultValues[.timeMode] = TimeMode.disabled
         defaultValues[.manualSunrise] = "09:00"
@@ -111,6 +113,15 @@ class Preferences {
         }
         set {
             setValue(forIdentifier: .neverStreamVideos, value: newValue)
+        }
+    }
+    
+    var neverStreamPreviews: Bool {
+        get {
+            return value(forIdentifier: .neverStreamPreviews)
+        }
+        set {
+            setValue(forIdentifier: .neverStreamPreviews, value: newValue)
         }
     }
 
