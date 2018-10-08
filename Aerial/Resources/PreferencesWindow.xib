@@ -65,7 +65,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Main" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
+                                        <view key="view" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="614" height="322"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -187,7 +187,7 @@
                                                                                         <rect key="frame" x="222" y="1" width="25" height="17"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" borderStyle="border" alignment="center" title="4K" drawsBackground="YES" id="8vf-Ke-XDl">
-                                                                                            <font key="font" metaFont="system" size="11"/>
+                                                                                            <font key="font" metaFont="smallSystem"/>
                                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -338,7 +338,7 @@
                                                     <rect key="frame" x="241" y="18" width="25" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" borderStyle="border" alignment="center" title="4K" drawsBackground="YES" id="eOu-8R-igj">
-                                                        <font key="font" metaFont="system" size="11"/>
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -526,7 +526,7 @@ Shift, but MacOS 10.12.4 or above and a compatible Mac are required) </string>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Cache" identifier="2" id="kp1-xv-zNG">
-                                        <view key="view" id="93q-v8-yxM">
+                                        <view key="view" ambiguous="YES" id="93q-v8-yxM">
                                             <rect key="frame" x="10" y="33" width="614" height="322"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -640,7 +640,7 @@ Shift, but MacOS 10.12.4 or above and a compatible Mac are required) </string>
                                                         <action selector="neverStreamPreviewsClick:" target="-2" id="yK7-In-bSa"/>
                                                     </connections>
                                                 </button>
-                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="918-ug-3EV">
+                                                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="918-ug-3EV">
                                                     <rect key="frame" x="431" y="133" width="172" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Show in Finder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MMG-EW-6UN">
