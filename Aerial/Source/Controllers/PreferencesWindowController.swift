@@ -84,6 +84,8 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var iconTime1: NSImageCell!
     @IBOutlet var iconTime2: NSImageCell!
 
+    @IBOutlet var previewDisabledTextfield: NSTextField!
+    
     var player: AVPlayer = AVPlayer()
     
     var videos: [AerialVideo]?
@@ -167,6 +169,10 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         
         if preferences.neverStreamVideos {
             neverStreamVideosCheckbox.state = NSControl.StateValue.on
+        }
+        
+        if preferences.neverStreamPreviews {
+            neverStreamPreviewsCheckbox.state = NSControl.StateValue.on
         }
         
         if !preferences.cacheAerials {
@@ -287,6 +293,10 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         popover.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
     }
     
+    @IBAction func showInFinder(_ button: NSButton!) {
+        NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: VideoCache.cacheDirectory!)
+        
+    }
     @IBAction func neverStreamVideosClick(_ button: NSButton!) {
         debugLog("never stream videos: \(convertFromNSControlStateValue(button.state))")
         
@@ -685,7 +695,15 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             view.textField?.stringValue = timeOfDay.title.capitalized
             
             let bundle = Bundle(for: PreferencesWindowController.self)
-            if let imagePath = bundle.path(forResource: "icon-\(timeOfDay.title)",
+            
+            // Use -dark icons in MacOS 10.14+ Dark Mode
+            let timeManagement = TimeManagement.sharedInstance
+            var postfix = ""
+            if timeManagement.isDarkModeEnabled() {
+                postfix = "-dark"
+            }
+            
+            if let imagePath = bundle.path(forResource: "icon-\(timeOfDay.title)"+postfix,
                 ofType:"pdf") {
                 let image = NSImage(contentsOfFile: imagePath)
                 image!.size.width = 13
@@ -750,7 +768,6 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     }
     
     func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
-        print("baaclick")
         switch item {
         case is AerialVideo:
             player = AVPlayer()
@@ -760,16 +777,20 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             debugLog("playing this preview \(video)")
             // Workaround for cached videos generating online traffic
             if video.isAvailableOffline {
+                previewDisabledTextfield.isHidden = true
                 let localurl = URL(fileURLWithPath: VideoCache.cachePath(forVideo: video)!)
                 let localitem = AVPlayerItem(url: localurl)
                 player.replaceCurrentItem(with: localitem)
                 player.play()
             }
             else if !preferences.neverStreamPreviews {
+                previewDisabledTextfield.isHidden = true
                 let asset = CachedOrCachingAsset(video.url)
                 let item = AVPlayerItem(asset: asset)
                 player.replaceCurrentItem(with: item)
                 player.play()
+            } else {
+                previewDisabledTextfield.isHidden = false
             }
             
             return true
@@ -880,3 +901,4 @@ fileprivate func convertFromNSControlStateValue(_ input: NSControl.StateValue) -
 fileprivate func convertToNSUserInterfaceItemIdentifier(_ input: String) -> NSUserInterfaceItemIdentifier {
 	return NSUserInterfaceItemIdentifier(rawValue: input)
 }
+

@@ -127,7 +127,7 @@ class TimeManagement {
         }
     }
     
-    private func isDarkModeEnabled() -> Bool {
+    func isDarkModeEnabled() -> Bool {
         if #available(OSX 10.14, *) {
             let modeString = UserDefaults.standard.string(forKey: "AppleInterfaceStyle")
             
