@@ -36,8 +36,7 @@ If Aerial.saver could not be opened, place Aerial.saver in `~/Library/Screen Sav
 1. Open `System Preferences` -> `Desktop & Screen Saver` -> `Screen Saver`
 2. Choose Aerial and click on Screen Saver Options to select your settings.
 
-![Screenshot](https://cloud.githubusercontent.com/assets/499192/10754102/c58cc076-7c95-11e5-9579-4275740ba339.png)
-(redo screenshot)
+![screen shot 2018-10-09 at 03 08 21](https://user-images.githubusercontent.com/37544189/46671916-5a1ba080-cbd6-11e8-895c-42f57e6902f6.png)
 
 ## Uninstallation
 
@@ -51,14 +50,20 @@ You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aeria
 
 ## New features in version 1.4
 
+![screen shot 2018-10-09 at 03 09 57](https://user-images.githubusercontent.com/37544189/46671930-643d9f00-cbd6-11e8-84b4-d26902eec168.png)
+
 * **Every Aerial video:** From the very first Aerials in San Francisco to the new space videos shot from the ISS!
 * **4K HEVC:** With the launch of Apple TV4K, many videos are now available in this format too. Aerial will show you the best format available based on your preferences.
 * **Different videos based on time:** Want to see night videos at night? You can either specify your sunset or sunrise time manually, or, if your Mac is compatible with Night Shift (see [here for a list of compatible Mac](https://support.apple.com/en-us/HT207513)), get those automatically (you do not need to enable Night Shift).
 * **Feeling Dark?:** Aerial is now compatible with Dark Mode in MacOS 10.14 Mojave, and can play night videos when Dark Mode is enabled.
+
+![screen shot 2018-10-09 at 03 10 56](https://user-images.githubusercontent.com/37544189/46671938-6869bc80-cbd6-11e8-8fc8-4804378d5ecc.png)
+
 * **Descriptions:** Wondering where an Aerial view was shot? Aerial can now tell you as they play.
 * **Full offline mode::** Behind a firewall? Just copy the cache folder from another Mac and you are all set. You can also disable all streaming. 
 * **Better cache management:** You can now cache your favorite videos individually, no need to grab them all. Or just stream them as you go, they'll get cached automatically too.
 * **And many bug fixes!**
+
 
 ## Compatibility
 Aerial is written in Swift, which requires OS X Mavericks or above.
