@@ -115,7 +115,12 @@ class AerialView: ScreenSaverView {
         textLayer = CATextLayer()
         textLayer.frame = CGRect(x: 20, y: 10, width: layer.bounds.width, height: 40)
         textLayer.font = NSFont(name: "Helvetica Neue Medium", size: 26)
-        textLayer.fontSize = 28 // Seems needed despite line above
+        if self.frame.height < 400 {
+            textLayer.fontSize = 12 // Seems needed despite line above
+
+        } else {
+            textLayer.fontSize = 28 // Seems needed despite line above
+        }
         textLayer.string = ""
         textLayer.opacity = 0
         // Add a bit of shadow to give an outline and better readability
