@@ -36,6 +36,10 @@ class ManifestLoader {
     let mergeInfo = ["2F11E857-4F77-4476-8033-4A1E4610AFCC":
         ["url-1080-SDR":"https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_2K_SDR_HEVC.mov",
          "url-4K-SDR":"https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_SDR_HEVC.mov"]]
+    
+    // Better Descriptions
+    let mergeName = ["6C3D54AE-0871-498A-81D0-56ED24E5FE9F":"Korea and Japan Night"]
+    
     func addCallback(_ callback:@escaping manifestLoadCallback) {
         if loadedManifest.count > 0 {
             callback(loadedManifest)
@@ -266,13 +270,16 @@ class ManifestLoader {
             let assets = batch["assets"] as! Array<NSDictionary>
             
             for item in assets {
+                let id = item["id"] as! String
                 let url1080pH264 = item["url-1080-H264"] as? String
                 let url1080pHEVC = item["url-1080-SDR"] as? String
                 let url4KHEVC = item["url-4K-SDR"] as? String
-                let name = item["accessibilityLabel"] as! String //.appending(" (" + manifest.rawValue + ")")
-                
+                var name = item["accessibilityLabel"] as! String
+                // We may override the names
+                if let mergeName = mergeName[id] {
+                    name = mergeName
+                }
                 let timeOfDay = "day"   // TODO, this is hardcoded as it's no longer available in the modern JSONs
-                let id = item["id"] as! String
                 let type = "video"
                 let poi = item["pointsOfInterest"] as? [String: String]
                 let (isDupe,foundDupe) = findDuplicate(id: id, url1080pH264: url1080pH264 ?? "")
