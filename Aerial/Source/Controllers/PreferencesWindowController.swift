@@ -145,7 +145,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             // Fallback on earlier versions
             popoverHEVCIndicator.isHidden = true
             popoverH264Indicator.image = NSImage(named: NSImage.cautionName)
-            popoverH264Label.stringValue = "MacOS 10.13 or above required"
+            popoverH264Label.stringValue = "macOS 10.13 or above required"
             popoverHEVCLabel.stringValue = "Hardware acceleration status unknown"
         }
 
@@ -696,7 +696,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             
             let bundle = Bundle(for: PreferencesWindowController.self)
             
-            // Use -dark icons in MacOS 10.14+ Dark Mode
+            // Use -dark icons in macOS 10.14+ Dark Mode
             let timeManagement = TimeManagement.sharedInstance
             var postfix = ""
             if timeManagement.isDarkModeEnabled() {

@@ -123,7 +123,7 @@ class TimeManagement {
             }
         } else {
             // Fallback on earlier versions
-            return (false,"MacOS 10.14 Mojave or above is required")
+            return (false,"macOS 10.14 Mojave or above is required")
         }
     }
     
@@ -156,7 +156,7 @@ class TimeManagement {
                 return (false,"Your Mac does not support Night Shift")
             }
         } else {
-            return (false,"MacOS 10.12.4 or above is required")
+            return (false,"macOS 10.12.4 or above is required")
         }
     }
 
