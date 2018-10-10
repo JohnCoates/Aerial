@@ -343,7 +343,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="tek-Xr-piE">
                                                         <font key="font" usesAppearanceFont="YES"/>
-                                                        <string key="title">Video preview streaming
+                                                        <string key="title">Preview streaming
 is disabled
 </string>
                                                         <color key="textColor" red="0.82352941176470584" green="0.82352941176470584" blue="0.82352941176470584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
