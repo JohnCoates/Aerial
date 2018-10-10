@@ -1,9 +1,9 @@
 ![screencast](https://cloud.githubusercontent.com/assets/499192/10754100/c0e1cc4c-7c95-11e5-9d3b-842d3acc2fd5.gif)
 
 ## Aerial - Apple TV Aerial Views Screen Saver
-Aerial is a Mac screen saver based on the new Apple TV screen saver that displays the aerial movies Apple shot over New York, San Francisco, Hawaii, China, etc. Starting with version 1.4, this also includes the new ISS videos available in tvOS 12. 
+Aerial is a Mac screen saver based on the new Apple TV screen saver that displays the aerial movies Apple shot over New York, San Francisco, Hawaii, China, etc. Starting with version 1.4, this also includes the new ISS videos available in tvOS 12! 
 
-Aerial is completely open source, so feel free to contribute to its development!  
+Aerial is completely open source, so feel free to contribute to its development.
 
 [![Github All Releases](https://img.shields.io/github/downloads/johncoates/aerial/total.svg?maxAge=86400)]()
 [![GitHub contributors](https://img.shields.io/github/contributors/johncoates/aerial.svg?maxAge=2592000)]()
@@ -53,9 +53,9 @@ You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aeria
 ![screen shot 2018-10-09 at 03 09 57](https://user-images.githubusercontent.com/37544189/46671930-643d9f00-cbd6-11e8-84b4-d26902eec168.png)
 
 * **Every Aerial video:** From the very first Aerials in San Francisco to the new space videos shot from the ISS!
-* **4K HEVC:** With the launch of Apple TV4K, many videos are now available in this format too. Aerial will show you the best format available based on your preferences.
+* **4K HEVC:** With the launch of Apple TV 4K, many videos are now available in this format. Aerial will show you the best format available based on your preferences.
 * **Different videos based on time:** Want to see night videos at night? You can either specify your sunset or sunrise time manually, or, if your Mac is compatible with Night Shift (see [here for a list of compatible Mac](https://support.apple.com/en-us/HT207513)), get those automatically (you do not need to enable Night Shift).
-* **Feeling Dark?:** Aerial is now compatible with Dark Mode in MacOS 10.14 Mojave, and can play night videos when Dark Mode is enabled.
+* **Feeling Dark?:** Aerial is now compatible with Dark Mode in macOS 10.14 Mojave, and can play night videos when Dark Mode is enabled.
 
 ![screen shot 2018-10-09 at 03 10 56](https://user-images.githubusercontent.com/37544189/46671938-6869bc80-cbd6-11e8-8fc8-4804378d5ecc.png)
 
@@ -66,7 +66,7 @@ You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aeria
 
 
 ## Compatibility
-Aerial is written in Swift, which requires OS X Mavericks or above.
+Aerial is written in Swift, which requires OS X Mavericks (10.9) or above.
 
 ## Community
 - **Found a bug?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Try to be as specific as possible.
@@ -92,14 +92,14 @@ You can then download the videos you want from the JSON files. In the 4K JSONs, 
 
 ## About HEVC and hardware decoding
 
-Aerial uses Apple's AV Framework to play the videos as your screensaver. When available, AV Framework will use hardware decoding (from your CPU or your graphic card) to minimize the ressources needed for video playback. You can find guidelines in the help button next to the Preferred video format setting. By default, Aerial prefers 1080p H.264 videos which is the most compatible format. Please note that all HEVC videos are encoded with the `Main10` profile, which may not be hardware accelerated by your machine, while some other HEVC videos (encoded in `Main` profile) will be.
+Aerial uses Apple's AV Framework to play the videos as your screensaver. When available, AV Framework will use hardware decoding (from your CPU or your graphic card) to minimize the ressources needed for video playback. You can find guidelines in the help button next to the `Preferred video format` setting. By default, Aerial uses 1080p H.264 videos which is the most compatible format. Please note that all HEVC videos are encoded with the `Main10` profile, which may not be hardware accelerated by your machine, while some other HEVC videos (encoded in `Main` profile) will be.
 
-While we wish to provide everyone with the best setting for their machine, the GVA framework from Apple doesn't let us distinguish HEVC `Main10` profile acceleration from general HEVC acceleration. Early feedback we gathered also seems to point that on machines with multiple decoding option (Intel QuickSync and AMD UVD), QuickSync will always be prefered.
+While we wish to provide everyone with the best setting for their machine, the GVA framework from Apple doesn't let us distinguish HEVC `Main10` profile acceleration from general HEVC acceleration. Early feedback we gathered also seems to point that on machines with multiple decoding option (Intel QuickSync and AMD UVD), QuickSync will always be prefered (even if you "force" the discrete GPU use with an external monitor).
 
-This is our recommandations :
+These are our recommandations so far:
 - Macs older than 2011 may lack H.264 acceleration. 
 - Macs with an Intel CPU (with iGPU) from the Sandy Bridge (2011) generation to Broadwell (early 2015) should have H.264 hardware acceleration available.
-- Late 2015 and 2016 Macs (Skylake and Kaby Lake) may only have partially accelerated HEVC decoding. We recommand you stick to 1080p H.264 on laptops. You may consider the HEVC format on desktops but understand that decoding may be CPU intensive and spin up your fans
+- Late 2015 and 2016 Macs (Skylake and Kaby Lake) may only have partially accelerated HEVC decoding. We recommand you stick to 1080p H.264 on laptops. You may consider the HEVC format on desktops but understand that decoding may be CPU intensive and spin up your fans.
 - Macs 2017 and up should have full HEVC acceleration. 
 
 You can easily check for yourself what to expect by opening a video in Quicktime (use the `Show in Finder` option in the `Cache` tab to find the cached videos). In activity monitor, the AV Framework GVA process is called `VTDecoderXPCService`.
