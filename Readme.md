@@ -1,9 +1,9 @@
 ![screencast](https://cloud.githubusercontent.com/assets/499192/10754100/c0e1cc4c-7c95-11e5-9d3b-842d3acc2fd5.gif)
 
 ## Aerial - Apple TV Aerial Views Screen Saver
-Aerial is a Mac screen saver based on the new Apple TV screen saver that displays the aerial movies Apple shot over New York, San Francisco, Hawaii, China, etc.
+Aerial is a Mac screen saver based on the new Apple TV screen saver that displays the aerial movies Apple shot over New York, San Francisco, Hawaii, China, etc. Starting with version 1.4, this also includes the new ISS videos available in tvOS 12! 
 
-Aerial is completely open source, so feel free to contribute to its development!  
+Aerial is completely open source, so feel free to contribute to its development.
 
 [![Github All Releases](https://img.shields.io/github/downloads/johncoates/aerial/total.svg?maxAge=86400)]()
 [![GitHub contributors](https://img.shields.io/github/contributors/johncoates/aerial.svg?maxAge=2592000)]()
@@ -20,9 +20,15 @@ Aerial is completely open source, so feel free to contribute to its development!
 [![Twitter](http://i.imgur.com/KzOiue1.png)](https://twitter.com/JohnCoatesDev)
 [![Email](http://i.imgur.com/FvDZudR.png)](mailto:john@johncoates.me)
 
+Version 1.4 is also maintained by :
+- [Guillaume Louel](https://github.com/glouel) ([Twitter](https://twitter.com/C_Wiz))
+- [Ethan Setnik](https://github.com/esetnik)
+
+You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/graphs/contributors). 
+
 ## Installation
 
-1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4beta9/Aerial.saver.zip)
+1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4/Aerial.saver.zip) (Version 1.4)
 2. Unzip the downloaded file.
 3. Open **Aerial.saver** and confirm installation.
 
@@ -33,7 +39,7 @@ If Aerial.saver could not be opened, place Aerial.saver in `~/Library/Screen Sav
 1. Open `System Preferences` -> `Desktop & Screen Saver` -> `Screen Saver`
 2. Choose Aerial and click on Screen Saver Options to select your settings.
 
-![Screenshot](https://cloud.githubusercontent.com/assets/499192/10754102/c58cc076-7c95-11e5-9579-4275740ba339.png)
+![screen shot 2018-10-11 at 14 47 09](https://user-images.githubusercontent.com/37544189/46805565-ad702900-cd65-11e8-9779-91243ee9e634.png)
 
 ## Uninstallation
 
@@ -45,31 +51,68 @@ There are three options to uninstall Aerial from your Mac.
 
 You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aerial`. This is where Aerial stores the cached copies of the aerial videos.
 
-## Features
-* **Auto Load Latest Aerials:** Aerials are loaded directly from Apple, so you're never out of date.
-* **Play Different Aerial On Each Display:** If you've got multiple monitors, this setting loads a different aerial for each of your displays.
-* **Favorites:** You can choose to only have certain aerials play.
-* **Preview:** Clicking on an aerial in the screen saver options previews that aerial for you.
+## New features in version 1.4
+
+![screen shot 2018-10-11 at 14 49 52](https://user-images.githubusercontent.com/37544189/46805573-b3660a00-cd65-11e8-9e40-152d170ffd8e.png)
+
+* **Every Aerial video:** From the very first Aerials in San Francisco to the new space videos shot from the ISS!
+* **4K HEVC:** With the launch of Apple TV 4K, many videos are now available in this format. Aerial will show you the best format available based on your preferences.
+* **Different videos based on time:** Want to see night videos at night? You can either specify your sunset or sunrise time manually, or, if your Mac is compatible with Night Shift (see [here for a list of compatible Mac](https://support.apple.com/en-us/HT207513)), get those automatically (you do not need to enable Night Shift).
+* **Feeling Dark?:** Aerial is now compatible with Dark Mode in macOS 10.14 Mojave, and can play night videos when Dark Mode is enabled.
+
+![screen shot 2018-10-11 at 14 50 18](https://user-images.githubusercontent.com/37544189/46805577-b5c86400-cd65-11e8-8c04-252c5fa6c1eb.png)
+
+* **Descriptions:** Wondering where an Aerial view was shot? Aerial can now tell you as they play.
+* **Full offline mode::** Behind a firewall? Just copy the cache folder from another Mac and you are all set. You can also disable all streaming. 
+* **Better cache management:** You can now cache your favorite videos individually, no need to grab them all. Or just stream them as you go, they'll get cached automatically too.
+* **And many bug fixes!**
+
 
 ## Compatibility
-Aerial is written in Swift, which requires OS X Mavericks or above.
+Aerial is written in Swift, which requires OS X Mavericks (10.9) or above.
 
 ## Community
 - **Found a bug?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Try to be as specific as possible.
-- **Have a feature request?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Tell me why this feature would be useful, and why you and others would want it.
+- **Have a feature request?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Tell us why this feature would be useful, and why you and others would want it.
 
 ## Contribute
-I appreciate all pull requests.
+We appreciate all pull requests.
 
-## Brew Cask Support - Install Remotely
+## Brew Cask Support - Install Remotely (temporarily outdated, please use link above in the meantime)
 If you're looking to install Aerial across many systems, remotely, or simply from terminal I recommend [Brew Cask](https://caskroom.github.io).
 
 Issue the following terminal command: `brew cask install aerial`
 
+## Offline Mode
+If you want to use Aerial on a Mac behind a firewall or with no network access, the easiest way starting with version 1.4 is to copy the content of the cache folder from another Mac where Aerial is already installed. 
+
+If that's not an option, you can manually recreate a cache folder by downloading files manually. 
+- Download and untar `https://sylvan.apple.com/Aerials/resources.tar` (tvOS12 ressources, keep the tar *and* extracted files)
+- Download and rename `https://sylvan.apple.com/Aerials/2x/entries.json` to `tvos11.json` (tvOS11 ressources, also in 4K)
+- Download and rename `http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json` to `tvos10.json` (the original Aerials, in 1080p H.264 only)
+
+You can then download the videos you want from the JSON files. In the 4K JSONs, you are looking for the `url-1080-H264` (1080p H.264, most compatible format), `url-1080-SDR` (1080p HEVC, better quality, requires a recent Mac for hardware decoding) or `url-4K-SDR` (4K HEVC).
+
+## About HEVC and hardware decoding
+
+Aerial uses Apple's AV Framework to play the videos as your screensaver. When available, AV Framework will use hardware decoding (from your CPU or your graphic card) to minimize the ressources needed for video playback. You can find guidelines in the help button next to the `Preferred video format` setting. By default, Aerial uses 1080p H.264 videos which is the most compatible format. Please note that all HEVC videos are encoded with the `Main10` profile, which may not be hardware accelerated by your machine, while some other HEVC videos (encoded in `Main` profile) will be.
+
+While we wish to provide everyone with the best setting for their machine, the GVA framework from Apple doesn't let us distinguish HEVC `Main10` profile acceleration from general HEVC acceleration. Early feedback we gathered also seems to point that on machines with multiple decoding option (Intel QuickSync and AMD UVD), QuickSync will always be prefered (even if you "force" the discrete GPU use with an external monitor).
+
+These are our recommandations so far:
+- Macs older than 2011 may lack H.264 acceleration. 
+- Macs with an Intel CPU (with iGPU) from the Sandy Bridge (2011) generation to Broadwell (early 2015) should have H.264 hardware acceleration available.
+- Late 2015 and 2016 Macs (Skylake and Kaby Lake) may only have partially accelerated HEVC decoding. We recommand you stick to 1080p H.264 on laptops. You may consider the HEVC format on desktops but understand that decoding may be CPU intensive and spin up your fans.
+- Macs 2017 and up should have full HEVC acceleration. 
+
+You can easily check for yourself what to expect by opening a video in Quicktime (use the `Show in Finder` option in the `Cache` tab to find the cached videos). In activity monitor, the AV Framework GVA process is called `VTDecoderXPCService`.
+
 ## Troubleshooting
 
-- Black screen: If you are behind a firewall (like Little Snitch or Hands Off!) try creating exceptions for Aerial to allow it access to Apple's servers. Be sure the applications `ScreenSaverEngine.app` and `System Preferences.app` are not being blocked access to *.phobos.apple.com and *.phobos.apple.com.edgesuite.net. If that isn't an option and you are on a Macbook try caching the videos while connected to a different network.
+- Black screen: If you are behind a firewall (like Little Snitch or Hands Off!) try creating exceptions for Aerial to allow it access to Apple's servers. Be sure the applications `ScreenSaverEngine.app` and `System Preferences.app` are not being blocked access to *.phobos.apple.com, *.phobos.apple.com.edgesuite.net and sylvan.apple.com. If that isn't an option, please look at the Offline mode section. 
 - "You cannot use the Aerial screen saver with this version of macOS." error: Select Aerial, close System Preferences with Aerial still selected, re-open System Preferences and Aerial should now work. This is a known bug with Swift screensavers in macOS/OS X reported to Apple as [rdar://25569037](http://www.openradar.me/25569037).
+- High CPU usage/fan spinning all of a sudden: If you correctly configured the Prefered video format according to your Mac and still experience high CPU usage/fan spinning all of a sudden, please look for the cause with `Activity Monitor`, you may see   a `com.apple.photos.ImageConversionService` responsible for this CPU load. This is thes iCloud Photos process, you can find more about [what it does here](https://support.apple.com/en-gu/HT204264) and how to pause it.
+
 
 ## License
 [MIT License](https://raw.githubusercontent.com/JohnCoates/Aerial/master/LICENSE)
