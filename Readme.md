@@ -114,5 +114,11 @@ You can easily check for yourself what to expect by opening a video in Quicktime
 - High CPU usage/fan spinning all of a sudden: If you correctly configured the Prefered video format according to your Mac and still experience high CPU usage/fan spinning all of a sudden, please look for the cause with `Activity Monitor`, you may see   a `com.apple.photos.ImageConversionService` responsible for this CPU load. This is thes iCloud Photos process, you can find more about [what it does here](https://support.apple.com/en-gu/HT204264) and how to pause it.
 
 
+## Video Source
+
+This application downloads the manifest file containing a list of the videos provided by Apple from the following URL:
+
+`http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json`
+
 ## License
 [MIT License](https://raw.githubusercontent.com/JohnCoates/Aerial/master/LICENSE)
