@@ -194,7 +194,7 @@ class VideoLoader: NSObject, NSURLConnectionDataDelegate {
         contentInformationRequest.contentType = contentType
         contentInformationRequest.contentLength = response.expectedContentLength
         
-//        debugLog("expected content length: \(response.expectedContentLength)")
+        //debugLog("expected content length: \(response.expectedContentLength)")
     }
     
     // MARK: - Range

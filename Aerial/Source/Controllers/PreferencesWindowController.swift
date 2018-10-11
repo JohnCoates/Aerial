@@ -10,6 +10,7 @@ import Cocoa
 import AVKit
 import AVFoundation
 import ScreenSaver
+import VideoToolbox
 
 class TimeOfDay {
     let title: String
@@ -25,11 +26,16 @@ class City {
     var night: TimeOfDay = TimeOfDay(title: "night")
     var day: TimeOfDay = TimeOfDay(title: "day")
     let name: String
+    //var videos: [AerialVideo] = [AerialVideo]()
     
     init(name: String) {
         self.name = name
     }
-    
+    /*func addVideo(video: AerialVideo)
+    {
+        video.arrayPosition = videos.count
+        videos.append(video)
+    }*/
     func addVideoForTimeOfDay(_ timeOfDay: String, video: AerialVideo) {
         if timeOfDay.lowercased() == "night" {
             video.arrayPosition = night.videos.count
@@ -46,16 +52,39 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource,
 NSOutlineViewDelegate, VideoDownloadDelegate {
 
     @IBOutlet var outlineView: NSOutlineView!
+    @IBOutlet var outlineViewSettings: NSButton!
     @IBOutlet var playerView: AVPlayerView!
     @IBOutlet var differentAerialCheckbox: NSButton!
     @IBOutlet var showDescriptionsCheckbox: NSButton!
+    @IBOutlet var localizeForTvOS12Checkbox: NSButton!
     @IBOutlet var projectPageLink: NSButton!
+    @IBOutlet var secondProjectPageLink: NSButton!
     @IBOutlet var cacheLocation: NSPathControl!
     @IBOutlet var cacheAerialsAsTheyPlayCheckbox: NSButton!
+    @IBOutlet var neverStreamVideosCheckbox: NSButton!
+    @IBOutlet var neverStreamPreviewsCheckbox: NSButton!
     @IBOutlet var popupVideoFormat: NSPopUpButton!
     @IBOutlet var descriptionModePopup: NSPopUpButton!
     @IBOutlet var versionLabel: NSTextField!
     @IBOutlet var popover: NSPopover!
+    @IBOutlet var popoverH264Indicator: NSButton!
+    @IBOutlet var popoverHEVCIndicator: NSButton!
+    @IBOutlet var popoverH264Label: NSTextField!
+    @IBOutlet var popoverHEVCLabel: NSTextField!
+
+    @IBOutlet var timeDisabledRadio: NSButton!
+    @IBOutlet var timeNightShiftRadio: NSButton!
+    @IBOutlet var timeManualRadio: NSButton!
+    @IBOutlet var timeLightDarkModeRadio: NSButton!
+    @IBOutlet var nightShiftLabel: NSTextField!
+    @IBOutlet var lightDarkModeLabel: NSTextField!
+    
+    @IBOutlet var sunriseTime: NSDatePicker!
+    @IBOutlet var sunsetTime: NSDatePicker!
+    @IBOutlet var iconTime1: NSImageCell!
+    @IBOutlet var iconTime2: NSImageCell!
+
+    @IBOutlet var previewDisabledTextfield: NSTextField!
     
     var player: AVPlayer = AVPlayer()
     
@@ -68,7 +97,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     lazy var preferences = Preferences.sharedInstance
     
     // MARK: - Init
-    
+    var awakenAlready = false
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
     }
@@ -85,12 +114,10 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         if let previewPlayer = AerialView.previewPlayer {
             self.player = previewPlayer
         }
-        
 
         outlineView.floatsGroupRows = false
         loadJSON()
 
-        
         if let version = Bundle(identifier: "com.johncoates.Aerial-Test")?.infoDictionary?["CFBundleShortVersionString"] as? String {
             versionLabel.stringValue = version
         }
@@ -98,6 +125,29 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             versionLabel.stringValue = version
         }
 
+        if #available(OSX 10.12.2, *) {
+            iconTime1.image = NSImage(named: NSImage.touchBarHistoryTemplateName)
+            iconTime2.image = NSImage(named: NSImage.touchBarComposeTemplateName)
+        }
+        
+        if #available(OSX 10.13, *) {
+            if !VTIsHardwareDecodeSupported(kCMVideoCodecType_H264)
+            {
+                popoverH264Label.stringValue = "H264 acceleration not supported"
+                popoverH264Indicator.image = NSImage(named: NSImage.statusUnavailableName)
+            }
+            if !VTIsHardwareDecodeSupported(kCMVideoCodecType_HEVC)
+            {
+                popoverHEVCLabel.stringValue = "HEVC acceleration not supported"
+                popoverHEVCIndicator.image = NSImage(named: NSImage.statusUnavailableName)
+            }
+        } else {
+            // Fallback on earlier versions
+            popoverHEVCIndicator.isHidden = true
+            popoverH264Indicator.image = NSImage(named: NSImage.cautionName)
+            popoverH264Label.stringValue = "macOS 10.13 or above required"
+            popoverHEVCLabel.stringValue = "Hardware acceleration status unknown"
+        }
 
         playerView.player = player
         playerView.controlsStyle = .none
@@ -112,17 +162,67 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         if preferences.showDescriptions {
             showDescriptionsCheckbox.state = NSControl.StateValue.on
         }
+
+        if preferences.localizeDescriptions {
+            localizeForTvOS12Checkbox.state = NSControl.StateValue.on
+        }
         
+        if preferences.neverStreamVideos {
+            neverStreamVideosCheckbox.state = NSControl.StateValue.on
+        }
+        
+        if preferences.neverStreamPreviews {
+            neverStreamPreviewsCheckbox.state = NSControl.StateValue.on
+        }
         
         if !preferences.cacheAerials {
             cacheAerialsAsTheyPlayCheckbox.state = NSControl.StateValue.off
         }
         
+        // Time mode
+        let timeManagement = TimeManagement.sharedInstance
+        // Light/Dark mode only available on Mojave+
+        let (isLDMCapable, reason: LDMReason) = timeManagement.isLightDarkModeAvailable()
+        if !isLDMCapable {
+            timeLightDarkModeRadio.isEnabled = false
+        }
+        lightDarkModeLabel.stringValue = LDMReason
+
+        // Night Shift requires 10.12.4+ and a compatible Mac
+        let (isNSCapable, reason: NSReason) = timeManagement.isNightShiftAvailable()
+        if !isNSCapable {
+            timeNightShiftRadio.isEnabled = false
+        }
+        nightShiftLabel.stringValue = NSReason
+
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        if let dateSunrise = dateFormatter.date(from: preferences.manualSunrise!) {
+            sunriseTime.dateValue = dateSunrise
+        }
+        if let dateSunset = dateFormatter.date(from: preferences.manualSunset!) {
+            sunsetTime.dateValue = dateSunset
+        }
+        
+        // Handle the radio button
+        switch preferences.timeMode {
+        case Preferences.TimeMode.nightShift.rawValue:
+            timeNightShiftRadio.state = NSControl.StateValue.on
+        case Preferences.TimeMode.manual.rawValue:
+            timeManualRadio.state = NSControl.StateValue.on
+        case Preferences.TimeMode.lightDarkMode.rawValue:
+            timeLightDarkModeRadio.state = NSControl.StateValue.on
+        default:
+            timeDisabledRadio.state = NSControl.StateValue.on
+        }
+        
+        
         popupVideoFormat.selectItem(at: preferences.videoFormat!)
         
         descriptionModePopup.selectItem(at: preferences.showDescriptionsMode!)
         
-        colorizeProjectPageLink()
+        colorizeProjectPageLinks()
         
         if let cacheDirectory = VideoCache.cacheDirectory {
             cacheLocation.url = URL(fileURLWithPath: cacheDirectory as String)
@@ -131,24 +231,85 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         cacheStatusLabel.isEditable = false
     }
     
+    override func windowDidLoad() {
+        super.windowDidLoad()
+
+        // Workaround for garbled icons on non retina, we force redraw
+        outlineView.reloadData()
+    }
+    
+    @IBAction func close(_ sender: AnyObject?) {
+        window?.sheetParent?.endSheet(window!)
+    }
+    
     // MARK: - Setup
     
-    fileprivate func colorizeProjectPageLink() {
+    fileprivate func colorizeProjectPageLinks() {
         let color = NSColor(calibratedRed: 0.18, green: 0.39, blue: 0.76, alpha: 1)
-        let link = projectPageLink.attributedTitle
-        let coloredLink = NSMutableAttributedString(attributedString: link)
-        let fullRange = NSRange(location: 0, length: coloredLink.length)
+        var coloredLink = NSMutableAttributedString(attributedString: projectPageLink.attributedTitle)
+        var fullRange = NSRange(location: 0, length: coloredLink.length)
         coloredLink.addAttribute(NSAttributedString.Key.foregroundColor,
                                  value: color,
                                   range: fullRange)
         projectPageLink.attributedTitle = coloredLink
+
+        // We have an extra project link on the video format popover, color it too
+        coloredLink = NSMutableAttributedString(attributedString: secondProjectPageLink.attributedTitle)
+        fullRange = NSRange(location: 0, length: coloredLink.length)
+        coloredLink.addAttribute(NSAttributedString.Key.foregroundColor,
+                                 value: color,
+                                 range: fullRange)
+        secondProjectPageLink.attributedTitle = coloredLink
     }
     
     // MARK: - Preferences
+    @IBAction func timeModeChange(_ sender:NSButton?) {
+        if sender == timeDisabledRadio {
+            preferences.timeMode = Preferences.TimeMode.disabled.rawValue
+        } else if sender == timeNightShiftRadio {
+            preferences.timeMode = Preferences.TimeMode.nightShift.rawValue
+        } else if sender == timeManualRadio {
+            preferences.timeMode = Preferences.TimeMode.manual.rawValue
+        } else if sender == timeLightDarkModeRadio {
+            preferences.timeMode = Preferences.TimeMode.lightDarkMode.rawValue
+        }
+    }
+    
+    @IBAction func sunriseChange(_ sender:NSDatePicker?) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let sunriseString = dateFormatter.string(from: (sender?.dateValue)!)
+        preferences.manualSunrise = sunriseString
+    }
+
+    @IBAction func sunsetChange(_ sender:NSDatePicker?) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let sunsetString = dateFormatter.string(from: (sender?.dateValue)!)
+        preferences.manualSunset = sunsetString
+    }
+
     @IBAction func helpButtonClick(_ button: NSButton!) {
         popover.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
     }
     
+    @IBAction func showInFinder(_ button: NSButton!) {
+        NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: VideoCache.cacheDirectory!)
+        
+    }
+    @IBAction func neverStreamVideosClick(_ button: NSButton!) {
+        debugLog("never stream videos: \(convertFromNSControlStateValue(button.state))")
+        
+        let onState = (button.state == NSControl.StateValue.on)
+        preferences.neverStreamVideos = onState
+    }
+    
+    @IBAction func neverStreamPreviewsClick(_ button: NSButton!) {
+        debugLog("never stream previews: \(convertFromNSControlStateValue(button.state))")
+        
+        let onState = (button.state == NSControl.StateValue.on)
+        preferences.neverStreamPreviews = onState
+    }
     @IBAction func cacheAerialsAsTheyPlayClick(_ button: NSButton!) {
         debugLog("cache aerials as they play: \(convertFromNSControlStateValue(button.state))")
         
@@ -185,65 +346,19 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         }
     }
     
-    @IBAction func outlineViewSettingsClick(_ button: NSButton) {
-        let menu = NSMenu()
-        menu.insertItem(withTitle: "Uncheck All",
-            action: #selector(PreferencesWindowController.outlineViewUncheckAll(button:)),
-            keyEquivalent: "",
-            at: 0)
-        
-        menu.insertItem(withTitle: "Check All",
-            action: #selector(PreferencesWindowController.outlineViewCheckAll(button:)),
-            keyEquivalent: "",
-            at: 1)
-        
-        let event = NSApp.currentEvent
-        NSMenu.popUpContextMenu(menu, with: event!, for: button)
-    }
-    /*
-    @IBAction func radioResolution(_ sender: NSButton) {
-        NSLog(sender.title)
-        if resolution4KRadio.state == NSControl.StateValue.on {
-            preferences.use4KVideos = true
-        }
-        else
-        {
-            preferences.use4KVideos = false
-        }
-    }
-    */
     @IBAction func popupVideoFormatChange(_ sender:NSPopUpButton) {
         NSLog("index change : \(sender.indexOfSelectedItem)")
         preferences.videoFormat = sender.indexOfSelectedItem
+        preferences.synchronize()
+        
+        outlineView.reloadData()
     }
     
     @IBAction func descriptionModePopupChange(_ sender:NSPopUpButton) {
         NSLog("dindex change : \(sender.indexOfSelectedItem)")
         
         preferences.showDescriptionsMode = sender.indexOfSelectedItem
-    }
-    
-    @objc func outlineViewUncheckAll(button: NSButton) {
-        setAllVideos(inRotation: false)
-    }
-    
-    @objc func outlineViewCheckAll(button: NSButton) {
-        setAllVideos(inRotation: true)
-    }
-    
-    func setAllVideos(inRotation: Bool) {
-        guard let videos = videos else {
-            return
-        }
-        
-        for video in videos {
-            preferences.setVideo(videoID: video.id,
-                                 inRotation: inRotation,
-                                 synchronize: false)
-        }
         preferences.synchronize()
-        
-        outlineView.reloadData()
     }
     
     @IBAction func differentAerialsOnEachDisplayCheckClick(_ button: NSButton?) {
@@ -264,9 +379,145 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         debugLog("set showDescriptions to \(onState)")
     }
     
-
+    @IBAction func localizeForTvOS12Click(button: NSButton?) {
+        let state = localizeForTvOS12Checkbox.state
+        let onState = (state == NSControl.StateValue.on)
+        
+        preferences.localizeDescriptions = onState
+        
+        debugLog("set localizeDescriptions to \(onState)")
+    }
     
-    // MARK: - Link
+    // MARK: Menu
+    @IBAction func outlineViewSettingsClick(_ button: NSButton) {
+        let menu = NSMenu()
+
+        menu.insertItem(withTitle: "Check Only Cached",
+                        action: #selector(PreferencesWindowController.outlineViewCheckCached(button:)),
+                        keyEquivalent: "",
+                        at: 0)
+        menu.insertItem(withTitle: "Check Only 4K",
+                        action: #selector(PreferencesWindowController.outlineViewCheck4K(button:)),
+                        keyEquivalent: "",
+                        at: 1)
+        menu.insertItem(withTitle: "Check All",
+                        action: #selector(PreferencesWindowController.outlineViewCheckAll(button:)),
+                        keyEquivalent: "",
+                        at: 2)
+        menu.insertItem(withTitle: "Uncheck All",
+                        action: #selector(PreferencesWindowController.outlineViewUncheckAll(button:)),
+                        keyEquivalent: "",
+                        at: 3)
+        menu.insertItem(NSMenuItem.separator(), at: 4)
+        menu.insertItem(withTitle: "Download Checked",
+                        action: #selector(PreferencesWindowController.outlineViewDownloadChecked(button:)),
+                        keyEquivalent: "",
+                        at: 5)
+        menu.insertItem(withTitle: "Download All",
+                        action: #selector(PreferencesWindowController.outlineViewDownloadAll(button:)),
+                        keyEquivalent: "",
+                        at: 6)
+        
+        let event = NSApp.currentEvent
+        NSMenu.popUpContextMenu(menu, with: event!, for: button)
+    }
+
+    @objc func outlineViewUncheckAll(button: NSButton) {
+        setAllVideos(inRotation: false)
+    }
+    
+    @objc func outlineViewCheckAll(button: NSButton) {
+        setAllVideos(inRotation: true)
+    }
+    
+    @objc func outlineViewCheck4K(button: NSButton) {
+        guard let videos = videos else {
+            return
+        }
+        
+        for video in videos {
+            if video.url4KHEVC != "" {
+                preferences.setVideo(videoID: video.id,
+                                     inRotation: true,
+                                     synchronize: false)
+            } else {
+                preferences.setVideo(videoID: video.id,
+                                     inRotation: false,
+                                     synchronize: false)
+            }
+        }
+        preferences.synchronize()
+        
+        outlineView.reloadData()
+    }
+    
+    @objc func outlineViewCheckCached(button: NSButton) {
+        guard let videos = videos else {
+            return
+        }
+        
+        for video in videos {
+            if video.isAvailableOffline {
+                preferences.setVideo(videoID: video.id,
+                                     inRotation: true,
+                                     synchronize: false)
+            } else {
+                preferences.setVideo(videoID: video.id,
+                                     inRotation: false,
+                                     synchronize: false)
+            }
+        }
+        preferences.synchronize()
+        
+        outlineView.reloadData()
+    }
+    
+    @objc func outlineViewDownloadChecked(button: NSButton) {
+        guard let videos = videos else {
+            return
+        }
+        let videoManager = VideoManager.sharedInstance
+
+        for video in videos {
+            if preferences.videoIsInRotation(videoID: video.id) && !video.isAvailableOffline {
+                if !videoManager.isVideoQueued(id: video.id) {
+                    videoManager.queueDownload(video)
+                }
+            }
+        }
+    }
+    
+    @objc func outlineViewDownloadAll(button: NSButton) {
+        guard let videos = videos else {
+            return
+        }
+        let videoManager = VideoManager.sharedInstance
+        
+        for video in videos {
+            if !video.isAvailableOffline {
+                if !videoManager.isVideoQueued(id: video.id) {
+                    videoManager.queueDownload(video)
+                }
+            }
+        }
+    }
+    
+    func setAllVideos(inRotation: Bool) {
+        guard let videos = videos else {
+            return
+        }
+        
+        for video in videos {
+            preferences.setVideo(videoID: video.id,
+                                 inRotation: inRotation,
+                                 synchronize: false)
+        }
+        preferences.synchronize()
+        
+        outlineView.reloadData()
+    }
+    
+    // MARK: - Links
     
     @IBAction func pageProjectClick(_ button: NSButton?) {
         let workspace = NSWorkspace.shared
@@ -290,17 +541,19 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     func loaded(manifestVideos: [AerialVideo]) {
         var videos = [AerialVideo]()
         var cities = [String: City]()
+
+        // First day, then night
         for video in manifestVideos {
             let name = video.name
             
             if cities.keys.contains(name) == false {
                 cities[name] = City(name: name)
             }
-        
             let city = cities[name]!
         
             let timeOfDay = video.timeOfDay
             city.addVideoForTimeOfDay(timeOfDay, video: video)
+            
             videos.append(video)
         }
 
@@ -311,15 +564,11 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         let sortedCities = unsortedCities.sorted { $0.name < $1.name }
 
         self.cities = sortedCities
+
         DispatchQueue.main.async {
             self.outlineView.reloadData()
             self.outlineView.expandItem(nil, expandChildren: true)
         }
-
-    }
-
-    @IBAction func close(_ sender: AnyObject?) {
-        window?.sheetParent?.endSheet(window!)
     }
     
     // MARK: - Outline View Delegate & Data Source
@@ -330,11 +579,10 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         }
         
         switch item {
-            /*case is TimeOfDay:
+            case is TimeOfDay:
                 let timeOfDay = item as! TimeOfDay
-                return timeOfDay.videos.count*/
+                return timeOfDay.videos.count
             case is City:
-                /*
                 let city = item as! City
                 
                 var count = 0
@@ -346,11 +594,10 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
                 if city.day.videos.count > 0 {
                     count += 1
                 }
-                 return count
+                return count
 
-                 */
-                let city = item as! City
-                return city.day.videos.count
+                //let city = item as! City
+                //return city.day.videos.count + city.night.videos.count
             default:
                 return 0
         }
@@ -361,7 +608,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         switch item {
         case is TimeOfDay:
             return true
-        case is City: // cities
+        case is City:
             return true
         default:
             return false
@@ -375,16 +622,16 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         
         switch item {
         case is City:
-            /*
+            
             let city = item as! City
             
             if index == 0 && city.day.videos.count > 0 {
                 return city.day
             } else {
                 return city.night
-            }*/
-            let city = item as! City
-            return city.day.videos[index]
+            }
+            //let city = item as! City
+            //return city.videos[index]
             
         case is TimeOfDay:
             let timeOfDay = item as! TimeOfDay
@@ -401,9 +648,9 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         case is City:
             let city = item as! City
             return city.name
-        /*case is TimeOfDay:
+        case is TimeOfDay:
             let timeOfDay = item as! TimeOfDay
-            return timeOfDay.title*/
+            return timeOfDay.title
             
         default:
             return "untitled"
@@ -421,8 +668,8 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     
     func outlineView(_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool {
         switch item {
-        /*case is TimeOfDay:
-            return true*/
+        case is TimeOfDay:
+            return true
         case is City:
             return true
         default:
@@ -436,45 +683,70 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         case is City:
             let city = item as! City
             let view = outlineView.makeView(withIdentifier: convertToNSUserInterfaceItemIdentifier("HeaderCell"),
-                                        owner: self) as! NSTableCellView
+                                        owner: nil) as! NSTableCellView     // if owner = self, awakeFromNib will be called for each created cell !
             view.textField?.stringValue = city.name
             
             return view
-        /*case is TimeOfDay:
+        case is TimeOfDay:
             let timeOfDay = item as! TimeOfDay
             let view = outlineView.makeView(withIdentifier: convertToNSUserInterfaceItemIdentifier("DataCell"),
-                                        owner: self) as! NSTableCellView
+                                        owner: nil) as! NSTableCellView     // if owner = self, awakeFromNib will be called for each created cell !
             
             view.textField?.stringValue = timeOfDay.title.capitalized
             
             let bundle = Bundle(for: PreferencesWindowController.self)
-            if let imagePath = bundle.path(forResource: "icon-\(timeOfDay.title)",
-                ofType:"pdf") {
-                let image = NSImage(contentsOfFile: imagePath)
-                view.imageView?.image = image
-            } else {
-                print("\(#file) failed to find time of day icon")
+            
+            // Use -dark icons in macOS 10.14+ Dark Mode
+            let timeManagement = TimeManagement.sharedInstance
+            var postfix = ""
+            if timeManagement.isDarkModeEnabled() {
+                postfix = "-dark"
             }
             
-            return view*/
+            if let imagePath = bundle.path(forResource: "icon-\(timeOfDay.title)"+postfix,
+                ofType:"pdf") {
+                let image = NSImage(contentsOfFile: imagePath)
+                image!.size.width = 13
+                image!.size.height = 13
+                view.imageView?.image = image
+                // TODO, change the icons for dark mode
+
+            } else {
+                NSLog("\(#file) failed to find time of day icon")
+            }
+            
+            return view
         case is AerialVideo:
             let video = item as! AerialVideo
             let view = outlineView.makeView(withIdentifier: convertToNSUserInterfaceItemIdentifier("CheckCell"),
-                                        owner: self) as! CheckCellView
-            
-            // One based index
-            let number = video.arrayPosition + 1
-            let numberFormatter = NumberFormatter()
-            
-            numberFormatter.numberStyle = NumberFormatter.Style.spellOut
-            guard
-                let numberString = numberFormatter.string(from: number as NSNumber)
-                else {
-                    print("failed to create number with formatter")
-                    return nil
+                                        owner: nil) as! CheckCellView   // if owner = self, awakeFromNib will be called for each created cell !
+            // Mark the new view for this video for subsequent callbacks
+            let videoManager = VideoManager.sharedInstance
+            videoManager.addCheckCellView(id: video.id, checkCellView: view)
+
+            view.setVideo(video: video)     // For our Add button
+            view.adaptIndicators()
+
+            if (video.secondaryName != "") {
+                view.textField?.stringValue = video.secondaryName
             }
-            
-            view.textField?.stringValue = numberString.capitalized
+            else {
+                // One based index
+                let number = video.arrayPosition + 1
+                let numberFormatter = NumberFormatter()
+                
+                numberFormatter.numberStyle = NumberFormatter.Style.spellOut
+                guard
+                    let numberString = numberFormatter.string(from: number as NSNumber)
+                    else {
+                        print("failed to create number with formatter")
+                        return nil
+                }
+                
+                view.textField?.stringValue = numberString.capitalized
+            }
+
+
             
             let isInRotation = preferences.videoIsInRotation(videoID: video.id)
             
@@ -488,6 +760,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
                 self.preferences.setVideo(videoID: video.id,
                                           inRotation: checked)
             }
+
             return view
         default:
             return nil
@@ -501,35 +774,48 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             playerView.player = player
             
             let video = item as! AerialVideo
-            
-            let asset = CachedOrCachingAsset(video.url)
-//            let asset = AVAsset(URL: video.url)
-            
-            let item = AVPlayerItem(asset: asset)
-            
-            player.replaceCurrentItem(with: item)
-            player.play()
+            debugLog("playing this preview \(video)")
+            // Workaround for cached videos generating online traffic
+            if video.isAvailableOffline {
+                previewDisabledTextfield.isHidden = true
+                let localurl = URL(fileURLWithPath: VideoCache.cachePath(forVideo: video)!)
+                let localitem = AVPlayerItem(url: localurl)
+                player.replaceCurrentItem(with: localitem)
+                player.play()
+            }
+            else if !preferences.neverStreamPreviews {
+                previewDisabledTextfield.isHidden = true
+                let asset = CachedOrCachingAsset(video.url)
+                let item = AVPlayerItem(asset: asset)
+                player.replaceCurrentItem(with: item)
+                player.play()
+            } else {
+                previewDisabledTextfield.isHidden = false
+            }
             
             return true
-        /*case is TimeOfDay:
-            return false*/
+        case is TimeOfDay:
+            return false
         default:
             return false
         }
     }
     
-//    func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
-//        switch item {
-//        case is AerialVideo:
-//            return 18
-//        case is TimeOfDay:
-//            return outlineView.textFi
-//        case is City:
-//            return 18
-//        default:
-//            fatalError("unhandled item in heightOfRowByItem for \(item)")
-//        }
-//    }
+    func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
+        switch item {
+            case is AerialVideo:
+                return 19
+            case is TimeOfDay:
+                return 18
+            case is City:
+                return 17
+            default:
+                fatalError("unhandled item in heightOfRowByItem for \(item)")
+        }
+    }
+    func outlineView(_ outlineView: NSOutlineView, sizeToFitWidthOfColumn column: Int) -> CGFloat {
+        return 0
+    }
     
     // MARK: - Caching
     
@@ -594,7 +880,9 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             cacheNextVideo()
         }
         
-         NSLog("video download finished with success: \(success))")
+        preferences.synchronize()
+        outlineView.reloadData()
+        NSLog("video download finished with success: \(success))")
     }
     
     func videoDownload(_ videoDownload: VideoDownload, receivedBytes: Int, progress: Float) {
@@ -613,3 +901,4 @@ fileprivate func convertFromNSControlStateValue(_ input: NSControl.StateValue) -
 fileprivate func convertToNSUserInterfaceItemIdentifier(_ input: String) -> NSUserInterfaceItemIdentifier {
 	return NSUserInterfaceItemIdentifier(rawValue: input)
 }
+

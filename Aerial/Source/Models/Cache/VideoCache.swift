@@ -190,7 +190,7 @@ class VideoCache {
         
         self.videoData = videoData
         loading = false
-//        debugLog("cached video file with length: \(self.videoData.length)")
+        debugLog("cached video file with length: \(self.videoData.count)")
     }
     
     // MARK: - Fulfilling cache
