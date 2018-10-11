@@ -28,7 +28,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 ## Installation
 
-1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4/Aerial.saver.zip) (Version 1.4)
+1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/1.4/Aerial.saver.zip) (Version 1.4)
 2. Unzip the downloaded file.
 3. Open **Aerial.saver** and confirm installation.
 
