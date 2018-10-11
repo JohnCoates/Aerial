@@ -15,7 +15,10 @@ Aerial is completely open source, so feel free to contribute to its development.
 ###### Windows user? Try [cDima/Aerial](https://github.com/cDima/Aerial/)
 ###### Linux user? Try [graysky2/xscreensaver-aerial](https://github.com/graysky2/xscreensaver-aerial/)
 
-#### Coded with Love by John Coates ([Twitter](https://twitter.com/JohnCoatesDev), [Email](mailto:john@johncoates.me))
+#### Coded with Love by John Coates
+
+[![Twitter](http://i.imgur.com/KzOiue1.png)](https://twitter.com/JohnCoatesDev)
+[![Email](http://i.imgur.com/FvDZudR.png)](mailto:john@johncoates.me)
 
 Version 1.4 is also maintained by :
 - [Guillaume Louel](https://github.com/glouel) ([Twitter](https://twitter.com/C_Wiz))
