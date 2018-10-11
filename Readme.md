@@ -25,7 +25,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 ## Installation
 
-1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4/Aerial.saver.zip)
+1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4/Aerial.saver.zip) (Version 1.4)
 2. Unzip the downloaded file.
 3. Open **Aerial.saver** and confirm installation.
 
@@ -36,7 +36,7 @@ If Aerial.saver could not be opened, place Aerial.saver in `~/Library/Screen Sav
 1. Open `System Preferences` -> `Desktop & Screen Saver` -> `Screen Saver`
 2. Choose Aerial and click on Screen Saver Options to select your settings.
 
-![screen shot 2018-10-09 at 03 08 21](https://user-images.githubusercontent.com/37544189/46671916-5a1ba080-cbd6-11e8-895c-42f57e6902f6.png)
+![screen shot 2018-10-11 at 14 47 09](https://user-images.githubusercontent.com/37544189/46805565-ad702900-cd65-11e8-9779-91243ee9e634.png)
 
 ## Uninstallation
 
@@ -50,14 +50,14 @@ You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aeria
 
 ## New features in version 1.4
 
-![screen shot 2018-10-09 at 03 09 57](https://user-images.githubusercontent.com/37544189/46671930-643d9f00-cbd6-11e8-84b4-d26902eec168.png)
+![screen shot 2018-10-11 at 14 49 52](https://user-images.githubusercontent.com/37544189/46805573-b3660a00-cd65-11e8-9e40-152d170ffd8e.png)
 
 * **Every Aerial video:** From the very first Aerials in San Francisco to the new space videos shot from the ISS!
 * **4K HEVC:** With the launch of Apple TV 4K, many videos are now available in this format. Aerial will show you the best format available based on your preferences.
 * **Different videos based on time:** Want to see night videos at night? You can either specify your sunset or sunrise time manually, or, if your Mac is compatible with Night Shift (see [here for a list of compatible Mac](https://support.apple.com/en-us/HT207513)), get those automatically (you do not need to enable Night Shift).
 * **Feeling Dark?:** Aerial is now compatible with Dark Mode in macOS 10.14 Mojave, and can play night videos when Dark Mode is enabled.
 
-![screen shot 2018-10-09 at 03 10 56](https://user-images.githubusercontent.com/37544189/46671938-6869bc80-cbd6-11e8-8fc8-4804378d5ecc.png)
+![screen shot 2018-10-11 at 14 50 18](https://user-images.githubusercontent.com/37544189/46805577-b5c86400-cd65-11e8-8c04-252c5fa6c1eb.png)
 
 * **Descriptions:** Wondering where an Aerial view was shot? Aerial can now tell you as they play.
 * **Full offline mode::** Behind a firewall? Just copy the cache folder from another Mac and you are all set. You can also disable all streaming. 
@@ -75,7 +75,7 @@ Aerial is written in Swift, which requires OS X Mavericks (10.9) or above.
 ## Contribute
 We appreciate all pull requests.
 
-## Brew Cask Support - Install Remotely (temporarily outdated)
+## Brew Cask Support - Install Remotely (temporarily outdated, please use link above in the meantime)
 If you're looking to install Aerial across many systems, remotely, or simply from terminal I recommend [Brew Cask](https://caskroom.github.io).
 
 Issue the following terminal command: `brew cask install aerial`
