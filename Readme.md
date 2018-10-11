@@ -80,8 +80,8 @@ Aerial is written in Swift, which requires OS X Mavericks (10.9) or above.
 ## Contribute
 We appreciate all pull requests.
 
-## Brew Cask Support - Install Remotely (temporarily outdated, please use link above in the meantime)
-If you're looking to install Aerial across many systems, remotely, or simply from terminal I recommend [Brew Cask](https://caskroom.github.io).
+## Brew Cask Support - Install Remotely (Updated for Version 1.4)
+If you're looking to install Aerial across many systems, remotely, or simply from terminal I recommend [Brew Cask](https://caskroom.github.io). Prefer this method if you're looking for auto-updates.
 
 Issue the following terminal command: `brew cask install aerial`
 
