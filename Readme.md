@@ -34,6 +34,8 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 If Aerial.saver could not be opened, place Aerial.saver in `~/Library/Screen Savers`
 
+Please note that if you are upgrading from a previous version, we strongly recommand you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated. 
+
 ## Setting Aerial as Your Screen Saver
 
 1. Open `System Preferences` -> `Desktop & Screen Saver` -> `Screen Saver`
