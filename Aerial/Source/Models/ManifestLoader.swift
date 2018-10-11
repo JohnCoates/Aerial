@@ -13,12 +13,17 @@ typealias manifestLoadCallback = ([AerialVideo]) -> (Void)
 
 class ManifestLoader {
     static let instance: ManifestLoader = ManifestLoader()
-    
+
     lazy var preferences = Preferences.sharedInstance
     var callbacks = [manifestLoadCallback]()
     var loadedManifest = [AerialVideo]()
-    var playedVideos = [AerialVideo]()
     var processedVideos = [AerialVideo]()
+    var lastPluckedFromPlaylist: AerialVideo?
+    
+    // Playlist management
+    var playlistIsRestricted = false
+    var playlistRestrictedTo = ""
+    var playlist = [AerialVideo]()
     
     // Those videos will be ignored
     let blacklist = ["b10-1.mov",           // Dupe of b1-1 (Hawaii, day)
@@ -48,33 +53,32 @@ class ManifestLoader {
         }
     }
     
-    func randomVideo(excluding: [AerialVideo]) -> AerialVideo? {
-        let timeManagement = TimeManagement.sharedInstance
-        let (shouldRestrictByDayNight,restrictTo) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
-        //debugLog("randomVideo shouldRestrict : \(shouldRestrictByDayNight) to : \(restrictTo)")
+    func generatePlaylist(isRestricted:Bool, restrictedTo:String) {
+        // Start fresh
+        playlist = [AerialVideo]()
+        playlistIsRestricted = isRestricted
+        playlistRestrictedTo = restrictedTo
         
+        // Start with a shuffled list
         let shuffled = loadedManifest.shuffled()
+
         for video in shuffled {
+            // We exclude videos not in rotation
             let inRotation = preferences.videoIsInRotation(videoID: video.id)
             
             if !inRotation {
                 //debugLog("randomVideo: video is disabled: \(video)")
                 continue
             }
-            
-            if excluding.contains(video) && preferences.neverStreamVideos == false {
-                //debugLog("randomVideo: video is excluded because it's already in use: \(video)")
-                continue
-            }
-            
+
             // Do we restrict video types by day/night ?
-            if shouldRestrictByDayNight {
-                if video.timeOfDay != restrictTo {
+            if isRestricted {
+                if video.timeOfDay != restrictedTo {
                     //debugLog("randomVideo: video is excluded as we only play \(restrictTo) (is: \(video.timeOfDay))")
                     continue
                 }
-                
             }
+            
             // We may not want to stream
             if preferences.neverStreamVideos == true {
                 if video.isAvailableOffline == false {
@@ -82,25 +86,77 @@ class ManifestLoader {
                     continue
                 }
             }
-            
-            //debugLog("randomVideo: picked \(video)")
-            return video
+
+            // All good ? Add to playlist
+            playlist.append(video)
         }
         
-        // nothing available??? return first thing we find
-        if preferences.neverStreamVideos == true {
-            if excluding.count > 0 {
-                //debugLog("randomVideo: no new video available and no streaming allowed, returning previous video !")
-                return excluding.first
-            }
-            else {
-                //debugLog("randomVideo: no video available and no streaming allowed !")
+        // On regenerating a new playlist, we try to avoid repeating
+        while (playlist.count > 1 && lastPluckedFromPlaylist == playlist.first) {
+            //NSLog("AerialDBG: Reshuffle")
+            playlist.shuffle()
+        }
+    }
+    
+    func randomVideo(excluding: [AerialVideo]) -> AerialVideo? {
+        let timeManagement = TimeManagement.sharedInstance
+        let (shouldRestrictByDayNight,restrictTo) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
+
+        if (playlist.count == 0 || (restrictTo != playlistRestrictedTo) || (shouldRestrictByDayNight != playlistIsRestricted)) {
+            //NSLog("AerialDBG: Generating new playlist")
+            generatePlaylist(isRestricted: shouldRestrictByDayNight, restrictedTo: restrictTo)
+        }
+        
+        if playlist.count > 0 {
+            lastPluckedFromPlaylist = playlist.removeFirst()
+            return lastPluckedFromPlaylist
+        } else {
+            return findBestEffortVideo()
+        }
+
+    }
+    
+    // Find a backup plan when conditions are not met
+    func findBestEffortVideo() -> AerialVideo? {
+        // So this is embarassing. This can happen if :
+        // - No video checked
+        // - No video for current conditions (only day video checked, and looking for night)
+        // - We don't want to stream but don't have any video
+        // - We may not have the manifests
+        // At this point we're doing a best effort :
+        // - Did we play something previously ? If so play that back (will loop)
+        // - return a random one from the manifest that is cached
+        // - return a random video that is not cached (slight betrayal of the Never stream videos)
+        
+        NSLog("AerialDBG: empty playlist, not good !")
+
+        if lastPluckedFromPlaylist != nil {
+            NSLog("AerialDBG: returning last played video after condition change not met !")
+            return lastPluckedFromPlaylist!
+        } else {
+            // Start with a shuffled list
+            let shuffled = loadedManifest.shuffled()
+            
+            if (shuffled.count == 0)
+            {
+                // This is super bad, no manifest at all
+                NSLog("AerialDBG: No manifest, nothing to play !")
                 return nil
             }
-        }
-        else {
-            debugLog("randomVideo: no video available, taking one from shuffled manifest")
-            return shuffled.first
+            
+            for video in shuffled {
+                // We exclude videos not in rotation
+                let inRotation = preferences.videoIsInRotation(videoID: video.id)
+                
+                // If we find anything cached and in rotation, we send that back
+                if video.isAvailableOffline && inRotation {
+                    NSLog("AerialDBG: returning random cached in rotation video after condition change not met !")
+                    return video
+                }
+            }
+            // Nothing ? Sorry but you'll get a non cached file
+            NSLog("AerialDBG: returning random video after condition change not met !")
+            return shuffled.first!
         }
     }
     
@@ -143,6 +199,7 @@ class ManifestLoader {
                     debugLog("fetching all done")
                     // We can now load from the newly cached files
                     self.loadCachedManifests()
+                    
                 }
                 
                 for url in urls {
@@ -232,8 +289,13 @@ class ManifestLoader {
             catch {
                 NSLog("Aerial: Error can't load tvos10.json from cached directory")
             }
-            
-            loadSavedManifests()
+
+            if self.preferences.manifestTvOS10 != nil || self.preferences.manifestTvOS11 != nil || self.preferences.manifestTvOS12 != nil {
+                loadSavedManifests()
+            } else {
+                // No internet, no anything, nothing to do
+                NSLog("AerialDBG: No video to load, no internet connexion ?")
+            }
         }
     }
     
@@ -250,9 +312,16 @@ class ManifestLoader {
         readOldJSONFromData(preferences.manifestTvOS10!, manifest: .tvOS10)
 
         processedVideos = processedVideos.sorted { $0.secondaryName < $1.secondaryName }    // Only matters for Space videos, this way they show sorted in the Space category
+        
         self.loadedManifest = processedVideos
         
         debugLog("\(processedVideos.count) videos processed !")
+        
+        // callbacks
+        for callback in self.callbacks {
+            callback(self.loadedManifest)
+        }
+        self.callbacks.removeAll()
     }
     
     func readJSONFromData(_ data: Data, manifest: Manifests) {

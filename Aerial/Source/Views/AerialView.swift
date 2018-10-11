@@ -250,7 +250,7 @@ class AerialView: ScreenSaverView {
         let currentVideos: [AerialVideo] = AerialView.players.compactMap { (player) -> AerialVideo? in
             (player.currentItem as? AerialPlayerItem)?.video
         }
-        
+
         let randomVideo = ManifestLoader.instance.randomVideo(excluding: currentVideos)
         
         guard let video = randomVideo else {
@@ -279,6 +279,7 @@ class AerialView: ScreenSaverView {
         
         if player.rate == 0 {
             player.play()
+            //player.rate = 32.0
         }
         
         guard let currentItem = player.currentItem else {
