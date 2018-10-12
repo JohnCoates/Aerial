@@ -28,6 +28,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 ## Installation
 
+### Manual Installation
 *Rather install from terminal or have auto-updates? Look at the Brew Cask section below!*
 
 1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4/Aerial.zip) (Version 1.4)
@@ -38,10 +39,11 @@ If Aerial.saver could not be opened, place Aerial.saver in `~/Library/Screen Sav
 
 Please note that if you are upgrading from a previous version, we strongly recommand you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated. 
 
-## Brew Cask Support - Install Remotely (Updated for Version 1.4)
+### Brew Cask Support - (Updated for Version 1.4)
+
 If you're looking to install Aerial across many systems, remotely, or simply from terminal we recommend [Brew Cask](https://caskroom.github.io). Prefer this method if you're looking for auto-updates.
 
-Issue the following terminal command: `brew cask install aerial`
+Simply issue the following terminal command: `brew cask install aerial`
 
 ## Setting Aerial as Your Screen Saver
 
