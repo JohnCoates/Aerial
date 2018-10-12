@@ -28,7 +28,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 ## Installation
 
-*Rather install from terminal or have auto-updates? Look at the Brew Cask section below !*
+*Rather install from terminal or have auto-updates? Look at the Brew Cask section below!*
 
 1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4/Aerial.zip) (Version 1.4)
 2. Unzip the downloaded file.
