@@ -40,7 +40,7 @@ class ManifestLoader {
     // Extra info to be merged for a given ID, as of right now only one known video
     let mergeInfo = ["2F11E857-4F77-4476-8033-4A1E4610AFCC":
         ["url-1080-SDR":"https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_2K_SDR_HEVC.mov",
-         "url-4K-SDR":"https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_SDR_HEVC.mov"]]
+         "url-4K-SDR":"https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_SDR_HEVC.mov"]]   // Dubai night 2
     
     // Better Descriptions
     let mergeName = ["6C3D54AE-0871-498A-81D0-56ED24E5FE9F":"Korea and Japan Night"]

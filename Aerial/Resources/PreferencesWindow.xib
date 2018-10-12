@@ -74,7 +74,7 @@
                                                     <rect key="frame" x="307" y="162" width="294" height="160"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 </avPlayerView>
-                                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Xe-S2-eQT">
+                                                <button toolTip="When using multiple monitor, should they all show the same video or different ones" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Xe-S2-eQT">
                                                     <rect key="frame" x="307" y="94" width="238" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Play different Aerial on each display" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Mp6-m9-C2d">
@@ -85,7 +85,7 @@
                                                         <action selector="differentAerialsOnEachDisplayCheckClick:" target="-2" id="WfC-A5-ikB"/>
                                                     </connections>
                                                 </button>
-                                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="omO-3f-eoL">
+                                                <button toolTip="How long should the descriptions stay on screen" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="omO-3f-eoL">
                                                     <rect key="frame" x="307" y="68" width="134" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Show descriptions" bezelStyle="regularSquare" imagePosition="left" inset="2" id="F7m-zV-2tM">
@@ -267,7 +267,7 @@
                                                         <action selector="descriptionModePopupChange:" target="-2" id="NdV-9N-Tqh"/>
                                                     </connections>
                                                 </popUpButton>
-                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R3K-TR-uHC">
+                                                <button toolTip="If enabled, descriptions will get translated to your macOS locale language if available" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R3K-TR-uHC">
                                                     <rect key="frame" x="325" y="42" width="183" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Localize for tvOS12 videos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="xbp-av-nHy">
@@ -296,7 +296,7 @@
                                                         <action selector="popupVideoFormatChange:" target="-2" id="SFB-Jl-HDe"/>
                                                     </connections>
                                                 </popUpButton>
-                                                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m7D-Ed-ZCH">
+                                                <button toolTip="Click for more information on Video Formats" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m7D-Ed-ZCH">
                                                     <rect key="frame" x="576" y="114" width="25" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6wW-GF-py9">
@@ -327,7 +327,7 @@
                                                         <action selector="pageProjectClick:" target="-2" id="7Qo-8Y-Quy"/>
                                                     </connections>
                                                 </button>
-                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mx1-yH-imM">
+                                                <button toolTip="Option menu" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mx1-yH-imM">
                                                     <rect key="frame" x="12" y="10" width="32" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSActionTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nxM-5Y-pQM">
@@ -393,7 +393,7 @@ is disabled
                                             <rect key="frame" x="10" y="33" width="614" height="322"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Su5-5y-7hV">
+                                                <button toolTip="Sunset/sunrise detection requires macOS 10.12.4, a compatible Mac, and location services enabled" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Su5-5y-7hV">
                                                     <rect key="frame" x="73" y="246" width="510" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="nQ1-wT-jXy">
@@ -544,7 +544,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                             <rect key="frame" x="10" y="33" width="614" height="322"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7HM-tD-v0b">
+                                                <button toolTip="If disabled, videos will always be streamed and never persisted to disk" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7HM-tD-v0b">
                                                     <rect key="frame" x="8" y="289" width="181" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Cache Aerials as they play" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="0lV-AO-Vfb">
@@ -555,7 +555,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                         <action selector="cacheAerialsAsTheyPlayClick:" target="-2" id="a7P-kZ-CeM"/>
                                                     </connections>
                                                 </button>
-                                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TFE-JE-tOy">
+                                                <button toolTip="Enable if you never want to stream non cached videos that are on your playlist" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TFE-JE-tOy">
                                                     <rect key="frame" x="8" y="269" width="147" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Never stream videos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fmX-YC-9t8">
@@ -577,7 +577,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                         <action selector="userSetCacheLocation:" target="-2" id="GBv-TQ-26G"/>
                                                     </connections>
                                                 </button>
-                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="118-Gb-ppx">
+                                                <button toolTip="Download all missing videos for your currently selected format" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="118-Gb-ppx">
                                                     <rect key="frame" x="12" y="52" width="131" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Download Now" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OL6-Qf-3eQ">
@@ -632,7 +632,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     <rect key="frame" x="18" y="7" width="130" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 </progressIndicator>
-                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cN4-52-cnH">
+                                                <button toolTip="Enable if you don't want to stream preview. You won't be able to preview non cached videos" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cN4-52-cnH">
                                                     <rect key="frame" x="8" y="249" width="161" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Never stream previews" bezelStyle="regularSquare" imagePosition="left" inset="2" id="ZU1-72-d58">
@@ -717,6 +717,26 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                         <connections>
                             <action selector="close:" target="-2" id="kPJ-lE-Dlf"/>
                         </connections>
+                    </button>
+                    <progressIndicator toolTip="Total download progress" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="0Nj-rn-Gmk">
+                        <rect key="frame" x="10" y="12" width="16" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </progressIndicator>
+                    <button toolTip="Cancel downloads" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7SM-Cq-nPU">
+                        <rect key="frame" x="34" y="10" width="24" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundRect" alternateTitle="Cancel downloads" bezelStyle="roundedRect" image="NSStopProgressFreestandingTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7Ij-Vr-lyx">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="cellTitle"/>
+                        </buttonCell>
+                    </button>
+                    <button toolTip="Show error messages" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qtq-PW-JOS">
+                        <rect key="frame" x="66" y="10" width="83" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundRect" title="Show errors" bezelStyle="roundedRect" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nGM-Iz-Zkv">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="cellTitle"/>
+                        </buttonCell>
                     </button>
                 </subviews>
             </view>
@@ -825,6 +845,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
         <image name="NSStatusAvailable" width="16" height="16"/>
         <image name="NSStatusNone" width="16" height="16"/>
         <image name="NSStatusPartiallyAvailable" width="16" height="16"/>
+        <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
         <image name="NSStopProgressTemplate" width="11" height="11"/>
     </resources>
 </document>
