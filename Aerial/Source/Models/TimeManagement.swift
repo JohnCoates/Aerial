@@ -35,7 +35,7 @@ class TimeManagement {
             }
         }
         else if preferences.timeMode == Preferences.TimeMode.nightShift.rawValue {
-            let (isNSCapable, sunrise, sunset) = getNightShiftInformation()
+            let (isNSCapable, sunrise, sunset, _) = getNightShiftInformation()
             if (!isNSCapable) {
                 NSLog("Aerial : Trying to use Night Shift on a non capable Mac")
                 return (false,"")
@@ -141,7 +141,7 @@ class TimeManagement {
     // MARK: Night Shift
     func isNightShiftAvailable() -> (Bool,reason: String) {
         if #available(OSX 10.12.4, *) {
-            let (isAvailable,sunriseDate,sunsetDate) = getNightShiftInformation()
+            let (isAvailable,sunriseDate,sunsetDate, errorMessage) = getNightShiftInformation()
             
             if (isAvailable) {
                 let dateFormatter = DateFormatter()
@@ -153,29 +153,29 @@ class TimeManagement {
 
             } else {
                 isNightShiftDataCached = true
-                return (false,"Your Mac does not support Night Shift")
+                return (false,errorMessage!)
             }
         } else {
             return (false,"macOS 10.12.4 or above is required")
         }
     }
 
-    func getNightShiftInformation() -> (Bool,sunrise: Date?, sunset: Date?)
+    func getNightShiftInformation() -> (Bool,sunrise: Date?, sunset: Date?, error: String?)
     {
         if (isNightShiftDataCached) {
-            return (nightShiftAvailable, nightShiftSunrise, nightShiftSunset)
+            return (nightShiftAvailable, nightShiftSunrise, nightShiftSunset, nil)
         }
         
-        let (nsInfo,ts) = shell(launchPath: "/usr/bin/corebrightnessdiag", arguments: ["nightshift-internal"]) // | grep nextSunrise | cut -d \" -f2")
-        
+        let (nsInfo,ts) = shell(launchPath: "/usr/bin/corebrightnessdiag", arguments: ["nightshift-internal"])
+
         if (ts != 0) {
             // Task didn't return correctly ? Abort
-            return (false,nil,nil)
+            return (false,nil,nil,"Your Mac does not support Night Shift")
         }
         let lines = nsInfo?.split(separator: "\n")
         if lines!.count < 5 {
             // We get a couple of lines of output on unsupported Macs
-            return (false,nil,nil)
+            return (false,nil,nil,"Your Mac does not support Night Shift")
         }
         var sunrise: Date?, sunset: Date?
         
@@ -206,6 +206,7 @@ class TimeManagement {
                 }
             }
         }
+        
         if (sunset != nil && sunrise != nil)
         {
             nightShiftSunrise = sunrise!
@@ -213,12 +214,12 @@ class TimeManagement {
             nightShiftAvailable = true
             isNightShiftDataCached = true
             
-            return(true,sunrise,sunset)
+            return(true,sunrise,sunset, nil)
         }
         
         // /usr/bin/corebrightnessdiag nightshift-internal | grep nextSunset | cut -d \" -f2
         
-        return (false,nil,nil)
+        return (false,nil,nil,"Location services may be disabled")
     }
     
     private func shell(launchPath: String, arguments: [String] = []) -> (String? , Int32) {
