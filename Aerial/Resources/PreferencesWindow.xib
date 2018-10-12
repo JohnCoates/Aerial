@@ -14,11 +14,11 @@
                 <outlet property="cacheStatusLabel" destination="Z45-8U-mbl" id="WxU-ME-7CP"/>
                 <outlet property="currentProgress" destination="CLV-o6-oiA" id="CvS-m7-rdc"/>
                 <outlet property="descriptionModePopup" destination="qmX-6m-Whj" id="Ypl-kR-cJd"/>
-                <outlet property="differentAerialCheckbox" destination="9Xe-S2-eQT" id="2tM-2p-KDu"/>
                 <outlet property="iconTime1" destination="lQX-Ux-Sz8" id="JNc-dR-kDA"/>
                 <outlet property="iconTime2" destination="VuJ-HC-hN5" id="AbN-SY-Tux"/>
                 <outlet property="lightDarkModeLabel" destination="XQ7-f2-0uN" id="UUs-Je-cud"/>
                 <outlet property="localizeForTvOS12Checkbox" destination="R3K-TR-uHC" id="8bm-PN-gTd"/>
+                <outlet property="multiMonitorModePopup" destination="VMF-XF-l84" id="pHc-KU-Cnb"/>
                 <outlet property="neverStreamPreviewsCheckbox" destination="cN4-52-cnH" id="hFw-FV-TAL"/>
                 <outlet property="neverStreamVideosCheckbox" destination="TFE-JE-tOy" id="sWg-72-tEe"/>
                 <outlet property="nightShiftLabel" destination="Epa-Ok-cwG" id="Iks-ZE-JaS"/>
@@ -74,17 +74,6 @@
                                                     <rect key="frame" x="307" y="162" width="294" height="160"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 </avPlayerView>
-                                                <button toolTip="When using multiple monitor, should they all show the same video or different ones" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Xe-S2-eQT">
-                                                    <rect key="frame" x="307" y="94" width="238" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Play different Aerial on each display" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Mp6-m9-C2d">
-                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="differentAerialsOnEachDisplayCheckClick:" target="-2" id="WfC-A5-ikB"/>
-                                                    </connections>
-                                                </button>
                                                 <button toolTip="How long should the descriptions stay on screen" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="omO-3f-eoL">
                                                     <rect key="frame" x="307" y="68" width="134" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -279,7 +268,7 @@
                                                     </connections>
                                                 </button>
                                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUc-qc-3p7">
-                                                    <rect key="frame" x="457" y="115" width="115" height="25"/>
+                                                    <rect key="frame" x="456" y="124" width="115" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <popUpButtonCell key="cell" type="push" title="1080p H264" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="xf3-qe-aEd" id="kDC-Tc-OTg">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -296,19 +285,8 @@
                                                         <action selector="popupVideoFormatChange:" target="-2" id="SFB-Jl-HDe"/>
                                                     </connections>
                                                 </popUpButton>
-                                                <button toolTip="Click for more information on Video Formats" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m7D-Ed-ZCH">
-                                                    <rect key="frame" x="576" y="114" width="25" height="25"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6wW-GF-py9">
-                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="helpButtonClick:" target="-2" id="ser-xh-mxo"/>
-                                                    </connections>
-                                                </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="79" translatesAutoresizingMaskIntoConstraints="NO" id="zff-sA-hBB">
-                                                    <rect key="frame" x="307" y="120" width="141" height="17"/>
+                                                    <rect key="frame" x="307" y="129" width="141" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Preferred video format" id="F2h-co-bje">
                                                         <font key="font" metaFont="system"/>
@@ -385,6 +363,44 @@ is disabled
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aMY-cT-Beh">
+                                                    <rect key="frame" x="307" y="99" width="74" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Play Aerials" id="aZj-Wd-2jX">
+                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VMF-XF-l84">
+                                                    <rect key="frame" x="385" y="94" width="215" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <popUpButtonCell key="cell" type="push" title="Only on Main Display" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ajH-jt-gZt" id="X1b-79-RBP">
+                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="menu"/>
+                                                        <menu key="menu" id="xWe-Y1-5l5">
+                                                            <items>
+                                                                <menuItem title="Only on Main Display" state="on" id="ajH-jt-gZt"/>
+                                                                <menuItem title="Mirrored on All Displays" id="V9X-dq-asD"/>
+                                                                <menuItem title="Different on Each Display" id="pui-N6-dxE"/>
+                                                            </items>
+                                                        </menu>
+                                                    </popUpButtonCell>
+                                                    <connections>
+                                                        <action selector="multiMonitorModePopupChange:" target="-2" id="i3p-CI-1NY"/>
+                                                    </connections>
+                                                </popUpButton>
+                                                <button toolTip="Click for more information on Video Formats" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m7D-Ed-ZCH">
+                                                    <rect key="frame" x="574" y="123" width="25" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6wW-GF-py9">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="helpButtonClick:" target="-2" id="ser-xh-mxo"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
@@ -718,11 +734,11 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                             <action selector="close:" target="-2" id="kPJ-lE-Dlf"/>
                         </connections>
                     </button>
-                    <progressIndicator toolTip="Total download progress" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="0Nj-rn-Gmk">
+                    <progressIndicator hidden="YES" toolTip="Total download progress" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="0Nj-rn-Gmk">
                         <rect key="frame" x="10" y="12" width="16" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </progressIndicator>
-                    <button toolTip="Cancel downloads" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7SM-Cq-nPU">
+                    <button hidden="YES" toolTip="Cancel downloads" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7SM-Cq-nPU">
                         <rect key="frame" x="34" y="10" width="24" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundRect" alternateTitle="Cancel downloads" bezelStyle="roundedRect" image="NSStopProgressFreestandingTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7Ij-Vr-lyx">
@@ -730,7 +746,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                             <font key="font" metaFont="cellTitle"/>
                         </buttonCell>
                     </button>
-                    <button toolTip="Show error messages" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qtq-PW-JOS">
+                    <button hidden="YES" toolTip="Show error messages" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qtq-PW-JOS">
                         <rect key="frame" x="66" y="10" width="83" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundRect" title="Show errors" bezelStyle="roundedRect" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nGM-Iz-Zkv">

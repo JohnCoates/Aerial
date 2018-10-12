@@ -15,6 +15,7 @@ class Preferences {
     
     fileprivate enum Identifiers: String {
         case differentAerialsOnEachDisplay = "differentAerialsOnEachDisplay"
+        case multiMonitorMode = "multiMonitorMode"
         case cacheAerials = "cacheAerials"
         case customCacheDirectory = "cacheDirectory"
         case manifestTvOS10 = "manifestTvOS10"
@@ -31,6 +32,10 @@ class Preferences {
         case manualSunset = "manualSunset"
     }
 
+    enum MultiMonitorMode : Int {
+        case mainOnly, mirrored, independant
+    }
+    
     enum TimeMode : Int {
         case disabled, nightShift, manual, lightDarkMode
     }
@@ -75,6 +80,7 @@ class Preferences {
         defaultValues[.timeMode] = TimeMode.disabled
         defaultValues[.manualSunrise] = "09:00"
         defaultValues[.manualSunset] = "19:00"
+        defaultValues[.multiMonitorMode] = MultiMonitorMode.mainOnly
         
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
@@ -212,6 +218,15 @@ class Preferences {
         }
         set {
             setValue(forIdentifier: .showDescriptionsMode, value: newValue)
+        }
+    }
+    
+    var multiMonitorMode: Int? {
+        get {
+            return optionalValue(forIdentifier: .multiMonitorMode)
+        }
+        set {
+            setValue(forIdentifier: .multiMonitorMode, value: newValue)
         }
     }
     

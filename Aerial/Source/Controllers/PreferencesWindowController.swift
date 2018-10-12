@@ -54,7 +54,6 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var outlineView: NSOutlineView!
     @IBOutlet var outlineViewSettings: NSButton!
     @IBOutlet var playerView: AVPlayerView!
-    @IBOutlet var differentAerialCheckbox: NSButton!
     @IBOutlet var showDescriptionsCheckbox: NSButton!
     @IBOutlet var localizeForTvOS12Checkbox: NSButton!
     @IBOutlet var projectPageLink: NSButton!
@@ -63,8 +62,11 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var cacheAerialsAsTheyPlayCheckbox: NSButton!
     @IBOutlet var neverStreamVideosCheckbox: NSButton!
     @IBOutlet var neverStreamPreviewsCheckbox: NSButton!
+    
+    @IBOutlet var multiMonitorModePopup: NSPopUpButton!
     @IBOutlet var popupVideoFormat: NSPopUpButton!
     @IBOutlet var descriptionModePopup: NSPopUpButton!
+    
     @IBOutlet var versionLabel: NSTextField!
     @IBOutlet var popover: NSPopover!
     @IBOutlet var popoverH264Indicator: NSButton!
@@ -155,10 +157,6 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             playerView.videoGravity = AVLayerVideoGravity.resizeAspectFill
         }
         
-        if preferences.differentAerialsOnEachDisplay {
-            differentAerialCheckbox.state = NSControl.StateValue.on
-        }
-        
         if preferences.showDescriptions {
             showDescriptionsCheckbox.state = NSControl.StateValue.on
         }
@@ -217,6 +215,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             timeDisabledRadio.state = NSControl.StateValue.on
         }
         
+        multiMonitorModePopup.selectItem(at: preferences.multiMonitorMode!)
         
         popupVideoFormat.selectItem(at: preferences.videoFormat!)
         
@@ -361,14 +360,21 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         preferences.synchronize()
     }
     
-    @IBAction func differentAerialsOnEachDisplayCheckClick(_ button: NSButton?) {
+    @IBAction func multiMonitorModePopupChange(_ sender:NSPopUpButton) {
+        NSLog("mm index change : \(sender.indexOfSelectedItem)")
+        
+        preferences.multiMonitorMode = sender.indexOfSelectedItem
+        preferences.synchronize()
+    }
+    
+    /*@IBAction func differentAerialsOnEachDisplayCheckClick(_ button: NSButton?) {
         let state = differentAerialCheckbox.state
         let onState = (state == NSControl.StateValue.on)
         
         preferences.differentAerialsOnEachDisplay = onState
         
         debugLog("set differentAerialsOnEachDisplay to \(onState)")
-    }
+    }*/
     
     @IBAction func showDescriptionsClick(button: NSButton?) {
         let state = showDescriptionsCheckbox.state

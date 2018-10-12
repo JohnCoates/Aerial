@@ -24,7 +24,7 @@ class AerialView: ScreenSaverView {
     
     static var sharingPlayers: Bool {
         let preferences = Preferences.sharedInstance
-        return !preferences.differentAerialsOnEachDisplay
+        return (preferences.multiMonitorMode == Preferences.MultiMonitorMode.mirrored.rawValue)
     }
     
     static var sharedViews: [AerialView] = []
@@ -132,11 +132,18 @@ class AerialView: ScreenSaverView {
     }
     
     func setup() {
+        NSLog("AerialMM : setup init")
         var localPlayer: AVPlayer?
         
         let notPreview = !isPreview
         
         if notPreview {
+            let preferences = Preferences.sharedInstance
+            
+            if (AerialView.singlePlayerAlreadySetup && preferences.multiMonitorMode == Preferences.MultiMonitorMode.mainOnly.rawValue) {
+                return
+            }
+            
             // check if we should share preview's player
             let noPlayers = (AerialView.players.count == 0)
             let previewPlayerExists = (AerialView.previewPlayer != nil)
