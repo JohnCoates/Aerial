@@ -28,6 +28,8 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 ## Installation
 
+*Rather install from terminal or have auto-updates? Look at the Brew Cask section below!*
+
 1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4/Aerial.zip) (Version 1.4)
 2. Unzip the downloaded file.
 3. Open **Aerial.saver** and confirm installation.
@@ -35,6 +37,11 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 If Aerial.saver could not be opened, place Aerial.saver in `~/Library/Screen Savers`
 
 Please note that if you are upgrading from a previous version, we strongly recommand you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated. 
+
+## Brew Cask Support - Install Remotely (Updated for Version 1.4)
+If you're looking to install Aerial across many systems, remotely, or simply from terminal we recommend [Brew Cask](https://caskroom.github.io). Prefer this method if you're looking for auto-updates.
+
+Issue the following terminal command: `brew cask install aerial`
 
 ## Setting Aerial as Your Screen Saver
 
@@ -79,11 +86,6 @@ Aerial is written in Swift, which requires OS X Mavericks (10.9) or above.
 
 ## Contribute
 We appreciate all pull requests.
-
-## Brew Cask Support - Install Remotely (Updated for Version 1.4)
-If you're looking to install Aerial across many systems, remotely, or simply from terminal I recommend [Brew Cask](https://caskroom.github.io). Prefer this method if you're looking for auto-updates.
-
-Issue the following terminal command: `brew cask install aerial`
 
 ## Offline Mode
 If you want to use Aerial on a Mac behind a firewall or with no network access, the easiest way starting with version 1.4 is to copy the content of the cache folder from another Mac where Aerial is already installed. 
