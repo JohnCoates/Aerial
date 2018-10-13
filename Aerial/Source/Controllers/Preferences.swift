@@ -30,8 +30,13 @@ class Preferences {
         case timeMode = "timeMode"
         case manualSunrise = "manualSunrise"
         case manualSunset = "manualSunset"
+        case fadeMode = "fadeMode"
     }
 
+    enum FadeMode : Int {
+        case disabled, t0_5, t1, t2
+    }
+    
     enum MultiMonitorMode : Int {
         case mainOnly, mirrored, independant
     }
@@ -81,6 +86,7 @@ class Preferences {
         defaultValues[.manualSunrise] = "09:00"
         defaultValues[.manualSunset] = "19:00"
         defaultValues[.multiMonitorMode] = MultiMonitorMode.mainOnly
+        defaultValues[.fadeMode] = FadeMode.t1
         
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
@@ -194,6 +200,15 @@ class Preferences {
         }
     }
 
+    var fadeMode: Int? {
+        get {
+            return optionalValue(forIdentifier: .fadeMode)
+        }
+        set {
+            setValue(forIdentifier: .fadeMode, value: newValue)
+        }
+    }
+    
     var timeMode: Int? {
         get {
             return optionalValue(forIdentifier: .timeMode)

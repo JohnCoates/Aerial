@@ -66,6 +66,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var multiMonitorModePopup: NSPopUpButton!
     @IBOutlet var popupVideoFormat: NSPopUpButton!
     @IBOutlet var descriptionModePopup: NSPopUpButton!
+    @IBOutlet var fadeInOutModePopup: NSPopUpButton!
     
     @IBOutlet var versionLabel: NSTextField!
     @IBOutlet var popover: NSPopover!
@@ -221,6 +222,8 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         
         descriptionModePopup.selectItem(at: preferences.showDescriptionsMode!)
         
+        fadeInOutModePopup.selectItem(at: preferences.fadeMode!)
+        
         colorizeProjectPageLinks()
         
         if let cacheDirectory = VideoCache.cacheDirectory {
@@ -367,14 +370,13 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         preferences.synchronize()
     }
     
-    /*@IBAction func differentAerialsOnEachDisplayCheckClick(_ button: NSButton?) {
-        let state = differentAerialCheckbox.state
-        let onState = (state == NSControl.StateValue.on)
+    @IBAction func fadeInOutModePopupChange(_ sender:NSPopUpButton) {
         
-        preferences.differentAerialsOnEachDisplay = onState
+        NSLog("fm index change : \(sender.indexOfSelectedItem)")
         
-        debugLog("set differentAerialsOnEachDisplay to \(onState)")
-    }*/
+        preferences.fadeMode = sender.indexOfSelectedItem
+        preferences.synchronize()
+    }
     
     @IBAction func showDescriptionsClick(button: NSButton?) {
         let state = showDescriptionsCheckbox.state

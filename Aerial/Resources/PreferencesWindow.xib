@@ -14,6 +14,7 @@
                 <outlet property="cacheStatusLabel" destination="Z45-8U-mbl" id="WxU-ME-7CP"/>
                 <outlet property="currentProgress" destination="CLV-o6-oiA" id="CvS-m7-rdc"/>
                 <outlet property="descriptionModePopup" destination="qmX-6m-Whj" id="Ypl-kR-cJd"/>
+                <outlet property="fadeInOutModePopup" destination="405-v4-6d2" id="eli-xQ-IOg"/>
                 <outlet property="iconTime1" destination="lQX-Ux-Sz8" id="JNc-dR-kDA"/>
                 <outlet property="iconTime2" destination="VuJ-HC-hN5" id="AbN-SY-Tux"/>
                 <outlet property="lightDarkModeLabel" destination="XQ7-f2-0uN" id="UUs-Je-cud"/>
@@ -65,7 +66,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
-                                    <tabViewItem label="Main" identifier="1" id="dfl-QA-fvD">
+                                    <tabViewItem label="Videos" identifier="1" id="dfl-QA-fvD">
                                         <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="614" height="322"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,17 +75,6 @@
                                                     <rect key="frame" x="307" y="162" width="294" height="160"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 </avPlayerView>
-                                                <button toolTip="How long should the descriptions stay on screen" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="omO-3f-eoL">
-                                                    <rect key="frame" x="307" y="68" width="134" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Show descriptions" bezelStyle="regularSquare" imagePosition="left" inset="2" id="F7m-zV-2tM">
-                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="showDescriptionsClickWithButton:" target="-2" id="ZZg-30-63M"/>
-                                                    </connections>
-                                                </button>
                                                 <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNc-EK-7cY">
                                                     <rect key="frame" x="12" y="39" width="278" height="283"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -239,34 +229,6 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
-                                                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qmX-6m-Whj">
-                                                    <rect key="frame" x="445" y="63" width="107" height="25"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <popUpButtonCell key="cell" type="push" title="10 Seconds" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wjq-nI-072" id="S3w-hi-xoE">
-                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="menu"/>
-                                                        <menu key="menu" id="rE1-IA-Gwp">
-                                                            <items>
-                                                                <menuItem title="10 Seconds" state="on" id="wjq-nI-072" userLabel="10 Seconds"/>
-                                                                <menuItem title="Always" id="aCg-qD-wSL"/>
-                                                            </items>
-                                                        </menu>
-                                                    </popUpButtonCell>
-                                                    <connections>
-                                                        <action selector="descriptionModePopupChange:" target="-2" id="NdV-9N-Tqh"/>
-                                                    </connections>
-                                                </popUpButton>
-                                                <button toolTip="If enabled, descriptions will get translated to your macOS locale language if available" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R3K-TR-uHC">
-                                                    <rect key="frame" x="325" y="42" width="183" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Localize for tvOS12 videos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="xbp-av-nHy">
-                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="localizeForTvOS12ClickWithButton:" target="-2" id="2Lx-6f-SRl"/>
-                                                    </connections>
-                                                </button>
                                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUc-qc-3p7">
                                                     <rect key="frame" x="456" y="124" width="115" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -399,6 +361,83 @@ is disabled
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="helpButtonClick:" target="-2" id="ser-xh-mxo"/>
+                                                    </connections>
+                                                </button>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j0k-lf-UM7">
+                                                    <rect key="frame" x="307" y="68" width="72" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Fade in/out" id="gXx-65-S5a">
+                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="405-v4-6d2">
+                                                    <rect key="frame" x="385" y="63" width="107" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="D0r-yP-Ehu" id="WDB-Zy-UB4">
+                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="menu"/>
+                                                        <menu key="menu" id="Aex-M5-Ep9">
+                                                            <items>
+                                                                <menuItem title="None" state="on" id="D0r-yP-Ehu"/>
+                                                                <menuItem title="0.5 Second" id="2wY-yk-9XD"/>
+                                                                <menuItem title="1 Second" id="4aA-BM-bD5"/>
+                                                                <menuItem title="2 Seconds" id="dWP-Di-V3P">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                </menuItem>
+                                                            </items>
+                                                        </menu>
+                                                    </popUpButtonCell>
+                                                    <connections>
+                                                        <action selector="fadeInOutModePopupChange:" target="-2" id="E9T-9R-9Ku"/>
+                                                    </connections>
+                                                </popUpButton>
+                                            </subviews>
+                                        </view>
+                                    </tabViewItem>
+                                    <tabViewItem label="Descriptions" identifier="" id="bPY-uP-DGa">
+                                        <view key="view" id="M1m-ud-C95">
+                                            <rect key="frame" x="10" y="33" width="614" height="322"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <button toolTip="How long should the descriptions stay on screen" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="omO-3f-eoL">
+                                                    <rect key="frame" x="15" y="280" width="134" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Show descriptions" bezelStyle="regularSquare" imagePosition="left" inset="2" id="F7m-zV-2tM">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="showDescriptionsClickWithButton:" target="-2" id="ZZg-30-63M"/>
+                                                    </connections>
+                                                </button>
+                                                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qmX-6m-Whj">
+                                                    <rect key="frame" x="159" y="276" width="107" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <popUpButtonCell key="cell" type="push" title="10 Seconds" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wjq-nI-072" id="S3w-hi-xoE">
+                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="menu"/>
+                                                        <menu key="menu" id="rE1-IA-Gwp">
+                                                            <items>
+                                                                <menuItem title="10 Seconds" state="on" id="wjq-nI-072" userLabel="10 Seconds"/>
+                                                                <menuItem title="Always" id="aCg-qD-wSL"/>
+                                                            </items>
+                                                        </menu>
+                                                    </popUpButtonCell>
+                                                    <connections>
+                                                        <action selector="descriptionModePopupChange:" target="-2" id="NdV-9N-Tqh"/>
+                                                    </connections>
+                                                </popUpButton>
+                                                <button toolTip="Translates descriptions, if available, to your preferred language (as set in System Preferences : Language &amp; Region)" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R3K-TR-uHC">
+                                                    <rect key="frame" x="31" y="255" width="183" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Localize for tvOS12 videos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="xbp-av-nHy">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="localizeForTvOS12ClickWithButton:" target="-2" id="2Lx-6f-SRl"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

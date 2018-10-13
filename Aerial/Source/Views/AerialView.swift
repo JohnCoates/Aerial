@@ -21,7 +21,25 @@ class AerialView: ScreenSaverView {
     static var previewView: AerialView?
     
     var player: AVPlayer?
+    var currentVideo: AerialVideo?
     
+    static var shouldFade: Bool {
+        let preferences = Preferences.sharedInstance
+        return (preferences.fadeMode != Preferences.FadeMode.disabled.rawValue)
+    }
+    static var fadeDuration: Double {
+        let preferences = Preferences.sharedInstance
+        switch preferences.fadeMode {
+        case Preferences.FadeMode.t0_5.rawValue:
+            return 0.5
+        case Preferences.FadeMode.t1.rawValue:
+            return 1
+        case Preferences.FadeMode.t2.rawValue:
+            return 2
+        default:
+            return 0
+        }
+    }
     static var sharingPlayers: Bool {
         let preferences = Preferences.sharedInstance
         return (preferences.multiMonitorMode == Preferences.MultiMonitorMode.mirrored.rawValue)
@@ -235,8 +253,11 @@ class AerialView: ScreenSaverView {
         let oldPlayer = self.player
         self.player = player
         self.playerLayer.player = self.player
-        self.playerLayer.opacity = 0
-        
+        if AerialView.shouldFade {
+            self.playerLayer.opacity = 0
+        } else {
+            self.playerLayer.opacity = 1.0
+        }
         if self.isPreview {
             AerialView.previewPlayer = player
         }
@@ -264,7 +285,7 @@ class AerialView: ScreenSaverView {
             NSLog("Aerial: Error grabbing random video!")
             return
         }
-
+        self.currentVideo = video
 
         // Workaround to avoid local playback making network calls
         let item = AerialPlayerItem(video: video)
@@ -281,8 +302,7 @@ class AerialView: ScreenSaverView {
             debugLog("playing video (OFFLINE MODE) : \(localurl)")
         }
         // Add the descriptions for the video, either the video label or the ones from the strings bundle
-        self.addDescriptions(player: player, video: video)
-        self.addPlayerFades(player: player, video: video)
+
         
         if player.rate == 0 {
             player.play()
@@ -295,6 +315,9 @@ class AerialView: ScreenSaverView {
         }
         
         debugLog("observing current item \(currentItem)")
+
+        playerLayer.addObserver(self, forKeyPath: "readyForDisplay", options: .initial, context: nil)
+
         
         notificationCenter.addObserver(self,
                                        selector: #selector(AerialView.playerItemDidReachEnd(_:)),
@@ -315,15 +338,27 @@ class AerialView: ScreenSaverView {
         player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
     }
     
+    // Wait for the player to be ready
+    internal override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        print("obs")
+        if self.playerLayer.isReadyForDisplay {
+            self.addDescriptions(player: self.player!, video: self.currentVideo!)
+            self.addPlayerFades(player: self.player!, video: self.currentVideo!)
+            print("REEAAADY")
+        }
+    }
+    
     private func addPlayerFades(player: AVPlayer, video: AerialVideo)
     {
+        print(AerialView.shouldFade)
+        print(AerialView.fadeDuration)
         // We only fade in/out if we have duration
         // TODO: This and the first description should probably be a callback after playback start...
-        if video.duration > 0 {
+        if video.duration > 0 && AerialView.shouldFade {
             self.playerLayer.opacity = 0
             let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
             fadeAnimation.values = [0, 1, 1, 0]
-            fadeAnimation.keyTimes = [0, 2/video.duration, 1-2/video.duration, 1] as [NSNumber]
+            fadeAnimation.keyTimes = [0, AerialView.fadeDuration/video.duration, 1-(AerialView.fadeDuration/video.duration), 1] as [NSNumber]
             fadeAnimation.duration = video.duration
             self.playerLayer.add(fadeAnimation, forKey: "mainfade")
         }
