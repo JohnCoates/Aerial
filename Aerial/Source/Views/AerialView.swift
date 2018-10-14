@@ -27,6 +27,7 @@ class AerialView: ScreenSaverView {
         let preferences = Preferences.sharedInstance
         return (preferences.fadeMode != Preferences.FadeMode.disabled.rawValue)
     }
+    
     static var fadeDuration: Double {
         let preferences = Preferences.sharedInstance
         switch preferences.fadeMode {
@@ -40,6 +41,7 @@ class AerialView: ScreenSaverView {
             return 0.10
         }
     }
+    
     static var sharingPlayers: Bool {
         let preferences = Preferences.sharedInstance
         return (preferences.multiMonitorMode == Preferences.MultiMonitorMode.mirrored.rawValue)
@@ -133,14 +135,15 @@ class AerialView: ScreenSaverView {
 
         // Debug code
         textLayer = CATextLayer()
-        textLayer.frame = CGRect(x: 20, y: 10, width: layer.bounds.width, height: 40)
-        textLayer.font = NSFont(name: "Helvetica Neue Medium", size: 26)
+        textLayer.frame = CGRect(x: 20, y: layer.bounds.height-60, width: layer.bounds.width-40, height: 40)
+        textLayer.font = NSFont(name: "Helvetica Neue Medium", size: 28)
         if self.frame.height < 400 {
             textLayer.fontSize = 12 // Seems needed despite line above
 
         } else {
             textLayer.fontSize = 28 // Seems needed despite line above
         }
+        //textLayer.alignmentMode = .right
         textLayer.string = ""
         textLayer.opacity = 0
         // Add a bit of shadow to give an outline and better readability
@@ -355,9 +358,10 @@ class AerialView: ScreenSaverView {
         if video.duration > 0 && AerialView.shouldFade {
             self.playerLayer.opacity = 0
             let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
-            fadeAnimation.values = [0, 1, 1, 0]
+            fadeAnimation.values = [0, 1, 1, 0] as [Int]
             fadeAnimation.keyTimes = [0, AerialView.fadeDuration/video.duration, 1-(AerialView.fadeDuration/video.duration), 1] as [NSNumber]
             fadeAnimation.duration = video.duration
+            
             fadeAnimation.calculationMode = CAAnimationCalculationMode.cubic
             
             self.playerLayer.add(fadeAnimation, forKey: "mainfade")
@@ -393,7 +397,7 @@ class AerialView: ScreenSaverView {
                 let str = poiStringProvider.getString(key: video.poi["0"]!)
                 let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
                 
-                fadeAnimation.values = [0, 0, 1, 1, 0]
+                fadeAnimation.values = [0, 0, 1, 1, 0] as [NSNumber]
 
                 if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)
                 {
@@ -422,7 +426,8 @@ class AerialView: ScreenSaverView {
                     }
                 }
                 self.textLayer.add(fadeAnimation, forKey: "textfade")
-                self.textLayer.string = str
+                setupTextLayer(string: str)
+                //self.textLayer.string = str
                 
                 let mainQueue = DispatchQueue.main
                 
@@ -460,12 +465,13 @@ class AerialView: ScreenSaverView {
                     // Get the string for the current timestamp
                     let key = String(format: "%.0f",closestTime)
                     let str = poiStringProvider.getString(key: video.poi[key]!)
-                    self.textLayer.string = str
+                    self.setupTextLayer(string: str)
+                    //self.textLayer.string = str
                     
                     
                     // Animate text
                     let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
-                    fadeAnimation.values = [0, 1, 1, 0]
+                    fadeAnimation.values = [0, 1, 1, 0] as [NSNumber]
                     
                     if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)
                     {
@@ -516,8 +522,66 @@ class AerialView: ScreenSaverView {
                     }
                 }
                 self.textLayer.add(fadeAnimation, forKey: "textfade")
-                self.textLayer.string = str
+                setupTextLayer(string: str)
+                //self.textLayer.string = str
             }
+        }
+    }
+    
+    func setupTextLayer(string:String) {
+        // Setup string
+        self.textLayer.string = string
+
+        let preferences = Preferences.sharedInstance
+
+        // We override font size on previews
+        var fontSize = CGFloat(preferences.fontSize!)
+        if (layer!.bounds.height < 200) {
+            fontSize = 12
+        }
+
+        // Get font
+        var font = NSFont(name: "Helvetica Neue Medium", size: 28)
+        if let tryFont = NSFont(name: preferences.fontName!,size: fontSize) {
+            font = tryFont
+        }
+
+        // Make sure we change the layer font/size
+        self.textLayer.font = font
+        self.textLayer.fontSize = fontSize
+
+        let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : font as Any]
+
+        // Calculate bounding box
+        let s = NSAttributedString(string: string, attributes: attributes)
+        let rect = s.boundingRect(with: layer!.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
+
+        print(s)
+        print(rect)
+        // Rebind frame
+        self.textLayer.frame = rect
+
+        // At the position the user wants
+        if preferences.descriptionCorner == Preferences.DescriptionCorner.random.rawValue {
+            repositionTextLayer(position: Int.random(in: 0...3))            // Random
+        } else {
+            repositionTextLayer(position: preferences.descriptionCorner!)   // Or set position from pref
+        }
+    }
+    
+    private func repositionTextLayer(position:Int) {
+        if (position == Preferences.DescriptionCorner.topLeft.rawValue) {
+            self.textLayer.anchorPoint = CGPoint(x: 0, y: 1)
+            self.textLayer.position = CGPoint(x: 10, y: layer!.bounds.height-10)
+        } else if (position == Preferences.DescriptionCorner.bottomLeft.rawValue) {
+            self.textLayer.anchorPoint = CGPoint(x: 0, y: 0)
+            self.textLayer.position = CGPoint(x: 10, y: 10)
+        } else if (position == Preferences.DescriptionCorner.topRight.rawValue) {
+            self.textLayer.anchorPoint = CGPoint(x: 1, y: 1)
+            self.textLayer.position = CGPoint(x: layer!.bounds.width-10, y: layer!.bounds.height-10)
+        } else if (position == Preferences.DescriptionCorner.bottomRight.rawValue) {
+            self.textLayer.anchorPoint = CGPoint(x: 1, y: 0)
+            self.textLayer.position = CGPoint(x: layer!.bounds.width-10, y: 10)
         }
     }
     

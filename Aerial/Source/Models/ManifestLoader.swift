@@ -272,23 +272,31 @@ class ManifestLoader {
     }
     
     init() {
+        NSLog("AerialML: Manifest init")
         // We try to load our video manifests in 3 steps :
         // - use locally saved data in preferences plist
         // - reprocess the saved files in cache directory (full offline mode)
         // - download the manifests from servers
+
+        NSLog("AerialML: 10 \(isManifestCached(manifest: .tvOS10))")
+        NSLog("AerialML: 11 \(isManifestCached(manifest: .tvOS11))")
+        NSLog("AerialML: 12 \(isManifestCached(manifest: .tvOS12))")
+        
         if areManifestsSaved() {
+            NSLog("AerialML: Loading from plist")
             loadSavedManifests()
         }
         else
         {
+            NSLog("AerialML: Not available from plist")
             // Manifests are not in our preferences plist, are they cached on disk ?
             if areManifestsCached() {
-                debugLog("Manifests are cached, loading")
+                NSLog("AerialML: Manifests are cached on disk, loading")
                 loadCachedManifests()
             }
             else {
                 // Ok then, we fetch them...
-                debugLog("fetching missing manifests online")
+                NSLog("AerialML: fetching missing manifests online")
                 let downloadManager = DownloadManager()
                 
                 var urls: [URL] = []
@@ -307,7 +315,7 @@ class ManifestLoader {
                 }
 
                 let completion = BlockOperation {
-                    debugLog("fetching all done")
+                    NSLog("AerialML: fetching all done")
                     // We can now load from the newly cached files
                     self.loadCachedManifests()
                     
@@ -326,11 +334,11 @@ class ManifestLoader {
     // Check if the Manifests have been saved in our preferences plist
     func areManifestsSaved() -> Bool {
         if (preferences.manifestTvOS12 != nil && preferences.manifestTvOS11 != nil && preferences.manifestTvOS10 != nil) {
-            debugLog("manifests are saved in preferences")
+            NSLog("AerialML: manifests are saved in preferences")
             return true
         }
         else {
-            debugLog("manifests are NOT saved in preferences")
+            NSLog("AerialML: manifests are NOT saved in preferences")
             return false
         }
     }
@@ -352,7 +360,7 @@ class ManifestLoader {
                 return false
             }
             
-            debugLog("\(manifest.rawValue) manifest is cached")
+            NSLog("AerialML: \(manifest.rawValue) manifest is cached")
         }
         else
         {
@@ -368,7 +376,7 @@ class ManifestLoader {
             // tvOS12
             var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
             cacheFileUrl.appendPathComponent("entries.json")
-
+            NSLog("AerialML: 12path : \(cacheFileUrl)")
             do {
                 let ndata = try Data(contentsOf: cacheFileUrl)
                 self.preferences.manifestTvOS12 = ndata
@@ -379,8 +387,9 @@ class ManifestLoader {
             
             // tvOS11
             cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
-            cacheFileUrl.appendPathComponent("tvOS11.json")
-            
+            cacheFileUrl.appendPathComponent("tvos11.json")
+            NSLog("AerialML: 11path : \(cacheFileUrl)")
+
             do {
                 let ndata = try Data(contentsOf: cacheFileUrl)
                 self.preferences.manifestTvOS11 = ndata
@@ -389,10 +398,11 @@ class ManifestLoader {
                 NSLog("Aerial: Error can't load tvos11.json from cached directory ")
             }
 
-            // tvOS11
+            // tvOS10
             cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
             cacheFileUrl.appendPathComponent("tvos10.json")
-            
+            NSLog("AerialML: 10path : \(cacheFileUrl)")
+
             do {
                 let ndata = try Data(contentsOf: cacheFileUrl)
                 self.preferences.manifestTvOS10 = ndata
@@ -412,24 +422,38 @@ class ManifestLoader {
     
     // Load Manifests from the saved preferences
     func loadSavedManifests() {
+        NSLog("AerialML: LSM")
+        
         // Reset our array
         processedVideos = []
 
-        // We start with the more recent one, it has more information (poi, etc)
-        readJSONFromData(preferences.manifestTvOS12!, manifest: .tvOS12)
-        // This one has a couple videos not in the tvOS12 JSON. No H264 for these !
-        readJSONFromData(preferences.manifestTvOS11!, manifest: .tvOS11)
-        // The original manifest is in another format
-        readOldJSONFromData(preferences.manifestTvOS10!, manifest: .tvOS10)
+        if (preferences.manifestTvOS12 != nil) {
+            NSLog("AerialML: lsm12")
+            // We start with the more recent one, it has more information (poi, etc)
+            readJSONFromData(preferences.manifestTvOS12!, manifest: .tvOS12)
+        }
+        if (preferences.manifestTvOS11 != nil) {
+            NSLog("AerialML: lsm11")
+            // This one has a couple videos not in the tvOS12 JSON. No H264 for these !
+            readJSONFromData(preferences.manifestTvOS11!, manifest: .tvOS11)
+        }
+        if (preferences.manifestTvOS10 != nil) {
+            NSLog("AerialML: lsm10")
+            // The original manifest is in another format
+            readOldJSONFromData(preferences.manifestTvOS10!, manifest: .tvOS10)
+        }
+
+        NSLog("AerialML: post json loading")
 
         processedVideos = processedVideos.sorted { $0.secondaryName < $1.secondaryName }    // Only matters for Space videos, this way they show sorted in the Space category
         
         self.loadedManifest = processedVideos
         
-        debugLog("\(processedVideos.count) videos processed !")
+        NSLog("AerialML: \(processedVideos.count) videos processed !")
         
         // callbacks
         for callback in self.callbacks {
+            NSLog("AerialML: Calling back")
             callback(self.loadedManifest)
         }
         self.callbacks.removeAll()

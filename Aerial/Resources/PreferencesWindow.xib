@@ -12,9 +12,16 @@
                 <outlet property="cacheAerialsAsTheyPlayCheckbox" destination="7HM-tD-v0b" id="29n-iQ-L36"/>
                 <outlet property="cacheLocation" destination="XAJ-Se-rwG" id="Qm8-0v-eOq"/>
                 <outlet property="cacheStatusLabel" destination="Z45-8U-mbl" id="WxU-ME-7CP"/>
+                <outlet property="cornerBottomLeft" destination="Qhn-AB-VZ5" id="YIg-vu-QIS"/>
+                <outlet property="cornerBottomRight" destination="4Rr-4h-bRr" id="5oY-Eh-CdE"/>
+                <outlet property="cornerRandom" destination="u5m-Hq-OEe" id="Nrr-p1-591"/>
+                <outlet property="cornerTopLeft" destination="YXy-49-EyS" id="6OY-bd-JrE"/>
+                <outlet property="cornerTopRight" destination="KmD-a8-TgO" id="o5t-Ey-I2X"/>
+                <outlet property="currentFontLabel" destination="8Xa-gF-Xrb" id="ESX-xC-0VZ"/>
                 <outlet property="currentProgress" destination="CLV-o6-oiA" id="CvS-m7-rdc"/>
                 <outlet property="descriptionModePopup" destination="qmX-6m-Whj" id="Ypl-kR-cJd"/>
                 <outlet property="fadeInOutModePopup" destination="405-v4-6d2" id="eli-xQ-IOg"/>
+                <outlet property="fontPickerButton" destination="DqU-8n-gZ9" id="BEa-9N-ipc"/>
                 <outlet property="iconTime1" destination="lQX-Ux-Sz8" id="JNc-dR-kDA"/>
                 <outlet property="iconTime2" destination="VuJ-HC-hN5" id="AbN-SY-Tux"/>
                 <outlet property="lightDarkModeLabel" destination="XQ7-f2-0uN" id="UUs-Je-cud"/>
@@ -67,7 +74,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Videos" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" id="zsM-Ha-kCO">
+                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="614" height="322"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -397,7 +404,7 @@ is disabled
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Descriptions" identifier="" id="bPY-uP-DGa">
-                                        <view key="view" ambiguous="YES" id="M1m-ud-C95">
+                                        <view key="view" id="M1m-ud-C95">
                                             <rect key="frame" x="10" y="33" width="614" height="322"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -438,6 +445,104 @@ is disabled
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="localizeForTvOS12ClickWithButton:" target="-2" id="2Lx-6f-SRl"/>
+                                                    </connections>
+                                                </button>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NQf-K9-FZk">
+                                                    <rect key="frame" x="385" y="176" width="212" height="124"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" borderStyle="border" alignment="center" drawsBackground="YES" id="j0E-uW-wQH">
+                                                        <font key="font" metaFont="system"/>
+                                                        <string key="title">
+
+Pick the corner where
+descriptions should
+appear</string>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="quaternaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YXy-49-EyS">
+                                                    <rect key="frame" x="394" y="273" width="22" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="eqE-SR-JNx">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="descriptionCornerChange:" target="-2" id="bde-Xz-fTP"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KmD-a8-TgO">
+                                                    <rect key="frame" x="570" y="273" width="22" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="7er-5J-dS2">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="descriptionCornerChange:" target="-2" id="mze-MZ-nUw"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qhn-AB-VZ5">
+                                                    <rect key="frame" x="394" y="184" width="22" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="yWr-Bk-Lwd">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="descriptionCornerChange:" target="-2" id="0dY-pW-YPh"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u5m-Hq-OEe">
+                                                    <rect key="frame" x="394" y="151" width="119" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="radio" title=" Random corner" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="OKv-Q2-o61">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="descriptionCornerChange:" target="-2" id="CrY-O7-e7a"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Rr-4h-bRr">
+                                                    <rect key="frame" x="570" y="184" width="22" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="VQg-5y-vhp">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="descriptionCornerChange:" target="-2" id="38x-9P-EOu"/>
+                                                    </connections>
+                                                </button>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HJu-VC-0JK">
+                                                    <rect key="frame" x="17" y="117" width="35" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Font:" id="NfR-Pc-Wfc">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Xa-gF-Xrb">
+                                                    <rect key="frame" x="64" y="117" width="455" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Igd-fx-DFw">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DqU-8n-gZ9">
+                                                    <rect key="frame" x="519" y="108" width="87" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="push" title="Change" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FGg-1N-5mQ">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="fontPickerClick:" target="-2" id="8qu-2B-3aS"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

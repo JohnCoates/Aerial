@@ -31,8 +31,15 @@ class Preferences {
         case manualSunrise = "manualSunrise"
         case manualSunset = "manualSunset"
         case fadeMode = "fadeMode"
+        case descriptionCorner = "descriptionCorner"
+        case fontName = "fontName"
+        case fontSize = "fontSize"
     }
 
+    enum DescriptionCorner : Int {
+        case topLeft, topRight, bottomLeft, bottomRight, random
+    }
+    
     enum FadeMode : Int {
         case disabled, t0_5, t1, t2
     }
@@ -87,6 +94,9 @@ class Preferences {
         defaultValues[.manualSunset] = "19:00"
         defaultValues[.multiMonitorMode] = MultiMonitorMode.mainOnly
         defaultValues[.fadeMode] = FadeMode.t1
+        defaultValues[.descriptionCorner] = DescriptionCorner.bottomLeft
+        defaultValues[.fontName] = "Helvetica Neue Medium"
+        defaultValues[.fontSize] = 28
         
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
@@ -146,6 +156,24 @@ class Preferences {
         }
     }
     
+    var fontName: String? {
+        get {
+            return optionalValue(forIdentifier: .fontName)
+        }
+        set {
+            setValue(forIdentifier: .fontName, value: newValue)
+        }
+    }
+    
+    var fontSize: Double? {
+        get {
+            return optionalValue(forIdentifier: .fontSize)
+        }
+        set {
+            setValue(forIdentifier: .fontSize, value: newValue)
+        }
+        
+    }
     var manualSunrise: String? {
         get {
             return optionalValue(forIdentifier: .manualSunrise)
@@ -200,6 +228,15 @@ class Preferences {
         }
     }
 
+    var descriptionCorner: Int? {
+        get {
+            return optionalValue(forIdentifier: .descriptionCorner)
+        }
+        set {
+            setValue(forIdentifier: .descriptionCorner, value: newValue)
+        }
+    }
+    
     var fadeMode: Int? {
         get {
             return optionalValue(forIdentifier: .fadeMode)
@@ -288,7 +325,12 @@ class Preferences {
         let key = identifier.rawValue
         return userDefaults.integer(forKey: key)
     }
-
+    
+    fileprivate func optionalValue(forIdentifier identifier: Identifiers) -> Double? {
+        let key = identifier.rawValue
+        return userDefaults.double(forKey: key)
+    }
+    
     fileprivate func optionalValue(forIdentifier
         identifier: Identifiers) -> Data? {
         let key = identifier.rawValue

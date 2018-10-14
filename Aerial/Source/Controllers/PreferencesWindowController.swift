@@ -87,7 +87,15 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var iconTime1: NSImageCell!
     @IBOutlet var iconTime2: NSImageCell!
 
+    @IBOutlet var cornerTopLeft: NSButton!
+    @IBOutlet var cornerTopRight: NSButton!
+    @IBOutlet var cornerBottomLeft: NSButton!
+    @IBOutlet var cornerBottomRight: NSButton!
+    @IBOutlet var cornerRandom: NSButton!
+
     @IBOutlet var previewDisabledTextfield: NSTextField!
+    @IBOutlet var fontPickerButton: NSButton!
+    @IBOutlet var currentFontLabel: NSTextField!
     
     var player: AVPlayer = AVPlayer()
     
@@ -99,20 +107,25 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     
     lazy var preferences = Preferences.sharedInstance
     
+    let fontManager: NSFontManager
+    
     // MARK: - Init
     required init?(coder decoder: NSCoder) {
+        self.fontManager = NSFontManager.shared
         super.init(coder: decoder)
     }
     override init(window: NSWindow?) {
+        self.fontManager = NSFontManager.shared
         super.init(window: window)
-        
     }
     
     // MARK: - Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
+        self.fontManager.target = self
+
         if let previewPlayer = AerialView.previewPlayer {
             self.player = previewPlayer
         }
@@ -150,6 +163,8 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             popoverH264Label.stringValue = "macOS 10.13 or above required"
             popoverHEVCLabel.stringValue = "Hardware acceleration status unknown"
         }
+        
+        currentFontLabel.stringValue = preferences.fontName! + ", \(preferences.fontSize!) pt"
 
         playerView.player = player
         playerView.controlsStyle = .none
@@ -203,7 +218,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             sunsetTime.dateValue = dateSunset
         }
         
-        // Handle the radio button
+        // Handle the time radios
         switch preferences.timeMode {
         case Preferences.TimeMode.nightShift.rawValue:
             timeNightShiftRadio.state = NSControl.StateValue.on
@@ -215,6 +230,20 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             timeDisabledRadio.state = NSControl.StateValue.on
         }
         
+        // Handle the corner radios
+        switch preferences.descriptionCorner {
+        case Preferences.DescriptionCorner.topLeft.rawValue:
+            cornerTopLeft.state = NSControl.StateValue.on
+        case Preferences.DescriptionCorner.topRight.rawValue:
+            cornerTopRight.state = NSControl.StateValue.on
+        case Preferences.DescriptionCorner.bottomLeft.rawValue:
+            cornerBottomLeft.state = NSControl.StateValue.on
+        case Preferences.DescriptionCorner.bottomRight.rawValue:
+            cornerBottomRight.state = NSControl.StateValue.on
+        default:
+            cornerRandom.state = NSControl.StateValue.on
+        }
+
         multiMonitorModePopup.selectItem(at: preferences.multiMonitorMode!)
         
         popupVideoFormat.selectItem(at: preferences.videoFormat!)
@@ -264,6 +293,22 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     }
     
     // MARK: - Preferences
+    @IBAction func fontPickerClick(_ sender:NSButton?) {
+        // Make a panel
+        let fp = self.fontManager.fontPanel(true)
+
+        // Set current font
+        if let font = NSFont(name: preferences.fontName!,size: CGFloat(preferences.fontSize!)) {
+            fp?.setPanelFont(font, isMultiple: false)
+
+        } else {
+            fp?.setPanelFont(NSFont(name: "Helvetica Neue Medium", size: 28)!, isMultiple: false)
+        }
+
+        // push the panel
+        fp?.makeKeyAndOrderFront(sender)
+    }
+    
     @IBAction func timeModeChange(_ sender:NSButton?) {
         if sender == timeDisabledRadio {
             preferences.timeMode = Preferences.TimeMode.disabled.rawValue
@@ -273,6 +318,20 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             preferences.timeMode = Preferences.TimeMode.manual.rawValue
         } else if sender == timeLightDarkModeRadio {
             preferences.timeMode = Preferences.TimeMode.lightDarkMode.rawValue
+        }
+    }
+    
+    @IBAction func descriptionCornerChange(_ sender:NSButton?) {
+        if sender == cornerTopLeft {
+            preferences.descriptionCorner = Preferences.DescriptionCorner.topLeft.rawValue
+        } else if sender == cornerTopRight {
+            preferences.descriptionCorner = Preferences.DescriptionCorner.topRight.rawValue
+        } else if sender == cornerBottomLeft {
+            preferences.descriptionCorner = Preferences.DescriptionCorner.bottomLeft.rawValue
+        } else if sender == cornerBottomRight {
+            preferences.descriptionCorner = Preferences.DescriptionCorner.bottomRight.rawValue
+        } else if sender == cornerRandom {
+            preferences.descriptionCorner = Preferences.DescriptionCorner.random.rawValue
         }
     }
     
@@ -895,6 +954,30 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     func videoDownload(_ videoDownload: VideoDownload, receivedBytes: Int, progress: Float) {
         currentProgress.doubleValue = Double(progress)
 //     NSLog("received bytes: \(receivedBytes), progress: \(progress)")
+    }
+    
+}
+
+extension PreferencesWindowController : NSFontChanging  {
+    func changeFont(_ sender: NSFontManager?) {
+        print("change font")
+        // Set current font
+        var oldFont = NSFont(name: "Helvetica Neue Medium", size: 28)
+        if let tryFont = NSFont(name: preferences.fontName!,size: CGFloat(preferences.fontSize!)) {
+            oldFont = tryFont
+        }
+        
+        let newFont = sender?.convert(oldFont!)
+        
+        preferences.fontName = newFont?.fontName
+        preferences.fontSize = Double((newFont?.pointSize)!)
+        
+        // Update our label
+        currentFontLabel.stringValue = preferences.fontName! + ", \(preferences.fontSize!) pt"
+
+        preferences.synchronize()
+        print(newFont?.fontName)
+        print(newFont?.pointSize)
     }
     
 }
