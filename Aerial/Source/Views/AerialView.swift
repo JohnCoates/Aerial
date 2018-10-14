@@ -37,7 +37,7 @@ class AerialView: ScreenSaverView {
         case Preferences.FadeMode.t2.rawValue:
             return 2
         default:
-            return 0
+            return 0.10
         }
     }
     static var sharingPlayers: Bool {
@@ -128,6 +128,8 @@ class AerialView: ScreenSaverView {
         playerLayer.contentsScale = NSScreen.main?.backingScaleFactor ?? 1.0
 
         layer.addSublayer(playerLayer)
+        
+        playerLayer.addObserver(self, forKeyPath: "readyForDisplay", options: .initial, context: nil)
 
         // Debug code
         textLayer = CATextLayer()
@@ -286,7 +288,7 @@ class AerialView: ScreenSaverView {
             return
         }
         self.currentVideo = video
-
+        print(video.poi)
         // Workaround to avoid local playback making network calls
         let item = AerialPlayerItem(video: video)
         if !video.isAvailableOffline
@@ -315,8 +317,7 @@ class AerialView: ScreenSaverView {
         }
         
         debugLog("observing current item \(currentItem)")
-
-        playerLayer.addObserver(self, forKeyPath: "readyForDisplay", options: .initial, context: nil)
+        
 
         
         notificationCenter.addObserver(self,
@@ -340,26 +341,25 @@ class AerialView: ScreenSaverView {
     
     // Wait for the player to be ready
     internal override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        print("obs")
+        
         if self.playerLayer.isReadyForDisplay {
+            print("RFD")
             self.addDescriptions(player: self.player!, video: self.currentVideo!)
             self.addPlayerFades(player: self.player!, video: self.currentVideo!)
-            print("REEAAADY")
         }
     }
     
     private func addPlayerFades(player: AVPlayer, video: AerialVideo)
     {
-        print(AerialView.shouldFade)
-        print(AerialView.fadeDuration)
         // We only fade in/out if we have duration
-        // TODO: This and the first description should probably be a callback after playback start...
         if video.duration > 0 && AerialView.shouldFade {
             self.playerLayer.opacity = 0
             let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
             fadeAnimation.values = [0, 1, 1, 0]
             fadeAnimation.keyTimes = [0, AerialView.fadeDuration/video.duration, 1-(AerialView.fadeDuration/video.duration), 1] as [NSNumber]
             fadeAnimation.duration = video.duration
+            fadeAnimation.calculationMode = CAAnimationCalculationMode.cubic
+            
             self.playerLayer.add(fadeAnimation, forKey: "mainfade")
         }
         else {
@@ -369,29 +369,20 @@ class AerialView: ScreenSaverView {
     
     private func addDescriptions(player: AVPlayer, video: AerialVideo)
     {
-        // Idle string bundle
+        let poiStringProvider = PoiStringProvider.sharedInstance
         let preferences = Preferences.sharedInstance
-        
-        var bundlePath = VideoCache.cacheDirectory!
-        if (preferences.localizeDescriptions) {
-            bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle")
-        }
-        else {
-            bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle/en.lproj/")
-        }
-        
-        //let path = Bundle.main.path(forResource: lang, ofType: "lproj")
         
         if (preferences.showDescriptions)
         {
             // Preventively, make sure we have poi as tvOS11/10 videos won't have them
-            if video.poi.count > 0, let stringBundle = Bundle.init(path: bundlePath)
+            if video.poi.count > 0 && poiStringProvider.loadedDescriptions
             {
                 // Collect all the timestamps from the JSON
                 var times = [NSValue]()
                 
                 for pkv in video.poi
                 {
+                    print("time \(pkv.key) \(poiStringProvider.getString(key: video.poi[pkv.key]!))")
                     let timeStamp = Double(pkv.key)!
                     times.append(NSValue(time: CMTime(seconds: timeStamp, preferredTimescale: 1)))
                 }
@@ -399,15 +390,15 @@ class AerialView: ScreenSaverView {
                 times.sort(by: { ($0 as! CMTime).seconds < ($1 as! CMTime).seconds } )
                 
                 // Animate the very first one on it's own
-                let str = stringBundle.localizedString(forKey: video.poi["0"]!, value: "", table: "Localizable.nocache")
+                let str = poiStringProvider.getString(key: video.poi["0"]!)
                 let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
                 
                 fadeAnimation.values = [0, 0, 1, 1, 0]
 
                 if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)
                 {
-                    fadeAnimation.keyTimes = [0, 1/12, 3/12, 10/12, 1] as [NSNumber]
-                    fadeAnimation.duration = 12
+                    fadeAnimation.keyTimes = [0, 1/11, (1+AerialView.fadeDuration)/11, 1-(AerialView.fadeDuration/11), 1] as [NSNumber]
+                    fadeAnimation.duration = 11
                 }
                 else
                 {
@@ -415,18 +406,18 @@ class AerialView: ScreenSaverView {
                     if times.count > 1
                     {
                         let duration = (times[1] as! CMTime).seconds - 1
-                        fadeAnimation.keyTimes = [0, 1/duration, 3/duration, 1-2/duration, 1] as [NSNumber]
+                        fadeAnimation.keyTimes = [0, 1/duration, (1+AerialView.fadeDuration)/duration, 1-(AerialView.fadeDuration)/duration, 1] as [NSNumber]
                         fadeAnimation.duration = duration
                     }
                     else if video.duration > 0
                     {
-                        fadeAnimation.keyTimes = [0, 1/(video.duration-1), 3/(video.duration - 1), 1-2/(video.duration - 1), 1] as [NSNumber]
+                        fadeAnimation.keyTimes = [0, 1/(video.duration-1), (1+AerialView.fadeDuration)/(video.duration - 1), 1-AerialView.fadeDuration/(video.duration - 1), 1] as [NSNumber]
                         fadeAnimation.duration = (video.duration - 1)
                     }
                     else
                     {
                         // We should have the duration, if we don't, hardcode the longest known duration
-                        fadeAnimation.keyTimes = [0, 1/807, 3/807, 1-2/807, 1] as [NSNumber]
+                        fadeAnimation.keyTimes = [0, 1/807, (1+AerialView.fadeDuration)/807, 1-(AerialView.fadeDuration)/807, 1] as [NSNumber]
                         fadeAnimation.duration = 807
                     }
                 }
@@ -468,7 +459,7 @@ class AerialView: ScreenSaverView {
                     }
                     // Get the string for the current timestamp
                     let key = String(format: "%.0f",closestTime)
-                    let str = stringBundle.localizedString(forKey: video.poi[key]!, value: "", table: "Localizable.nocache")
+                    let str = poiStringProvider.getString(key: video.poi[key]!)
                     self.textLayer.string = str
                     
                     
@@ -478,17 +469,17 @@ class AerialView: ScreenSaverView {
                     
                     if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)
                     {
-                        fadeAnimation.keyTimes = [0, 0.2, 0.8, 1]
+                        fadeAnimation.keyTimes = [0, AerialView.fadeDuration/10, 1-AerialView.fadeDuration/10, 1] as [NSNumber]
                         fadeAnimation.duration = 10
                     }
                     else
                     {
                         if isLastTimeStamp, video.duration == 0 {
-                            fadeAnimation.keyTimes = [0, 2 / 120, 1 - 2 / 120, 1] as [NSNumber]
+                            fadeAnimation.keyTimes = [0, AerialView.fadeDuration/120, 1 - AerialView.fadeDuration/120, 1] as [NSNumber]
                             fadeAnimation.duration = 120    // TODO : better detect total video running time
                         }
                         else {
-                            fadeAnimation.keyTimes = [0, 2/intervalUntilNextTimeStamp, 1-2/intervalUntilNextTimeStamp, 1] as [NSNumber]
+                            fadeAnimation.keyTimes = [0, AerialView.fadeDuration/intervalUntilNextTimeStamp, 1-AerialView.fadeDuration/intervalUntilNextTimeStamp, 1] as [NSNumber]
                             fadeAnimation.duration = intervalUntilNextTimeStamp
                         }
                     }
@@ -506,21 +497,21 @@ class AerialView: ScreenSaverView {
                 
                 if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)
                 {
-                    fadeAnimation.keyTimes = [0, 1/12, 3/12, 10/12, 1] as [NSNumber]
-                    fadeAnimation.duration = 12
+                    fadeAnimation.keyTimes = [0, 1/11, (1+AerialView.fadeDuration)/11, 1-AerialView.fadeDuration/11, 1] as [NSNumber]
+                    fadeAnimation.duration = 11
                 }
                 else
                 {
                     // Always show mode, use known video duration or some hardcoded duration
                     if video.duration > 0
                     {
-                        fadeAnimation.keyTimes = [0, 1/(video.duration-1), 3/(video.duration - 1), 1-2/(video.duration - 1), 1] as [NSNumber]
+                        fadeAnimation.keyTimes = [0, 1/(video.duration-1), (1+AerialView.fadeDuration)/(video.duration - 1), 1-AerialView.fadeDuration/(video.duration - 1), 1] as [NSNumber]
                         fadeAnimation.duration = (video.duration - 1)
                     }
                     else
                     {
                         // We should have the duration, if we don't, hardcode the longest known duration
-                        fadeAnimation.keyTimes = [0, 1/807, 3/807, 1-2/807, 1] as [NSNumber]
+                        fadeAnimation.keyTimes = [0, 1/807, (1+AerialView.fadeDuration)/807, 1-AerialView.fadeDuration/807, 1] as [NSNumber]
                         fadeAnimation.duration = 807
                     }
                 }
@@ -529,8 +520,6 @@ class AerialView: ScreenSaverView {
             }
         }
     }
-
-    
     
     // MARK: - Preferences
     

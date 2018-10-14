@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		030D9B7C21551A8D00961E95 /* AerialPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */; };
+		03233B68217272640077D3F9 /* PoiStringProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03233B67217272640077D3F9 /* PoiStringProvider.swift */; };
+		03233B692172762C0077D3F9 /* PoiStringProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03233B67217272640077D3F9 /* PoiStringProvider.swift */; };
 		033D62AB216CADCD00F3AF83 /* icon-day-dark.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 033D62AA216CADCD00F3AF83 /* icon-day-dark.pdf */; };
 		033D62AC216CADCD00F3AF83 /* icon-day-dark.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 033D62AA216CADCD00F3AF83 /* icon-day-dark.pdf */; };
 		033D62AD216CADCD00F3AF83 /* icon-day-dark.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 033D62AA216CADCD00F3AF83 /* icon-day-dark.pdf */; };
@@ -73,6 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03233B67217272640077D3F9 /* PoiStringProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoiStringProvider.swift; sourceTree = "<group>"; };
 		033D62AA216CADCD00F3AF83 /* icon-day-dark.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icon-day-dark.pdf"; sourceTree = "<group>"; };
 		033D62AE216CAE2C00F3AF83 /* icon-night-dark.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icon-night-dark.pdf"; sourceTree = "<group>"; };
 		03A2CB9B216BA9AF0061E8E8 /* VideoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
@@ -238,6 +241,7 @@
 				FAF450231BE2D2FD00C1F98A /* VideoCache.swift */,
 				FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */,
 				03A2CB9B216BA9AF0061E8E8 /* VideoManager.swift */,
+				03233B67217272640077D3F9 /* PoiStringProvider.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -456,6 +460,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03233B692172762C0077D3F9 /* PoiStringProvider.swift in Sources */,
 				03A2CB9D216BB1490061E8E8 /* VideoManager.swift in Sources */,
 				03E87314216760B7002B469B /* TimeManagement.swift in Sources */,
 				03E8731021662AEB002B469B /* DownloadManager.swift in Sources */,
@@ -503,6 +508,7 @@
 				FAC36F6A1BE1780B007F2A20 /* Debug.swift in Sources */,
 				03E8731321675FE0002B469B /* TimeManagement.swift in Sources */,
 				FAB22A7E1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */,
+				03233B68217272640077D3F9 /* PoiStringProvider.swift in Sources */,
 				FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */,
 				FAC36F641BE1772F007F2A20 /* CollectionType+Shuffling.swift in Sources */,
 				03E8730C2165013C002B469B /* DownloadManager.swift in Sources */,

@@ -100,7 +100,6 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     lazy var preferences = Preferences.sharedInstance
     
     // MARK: - Init
-    var awakenAlready = false
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
     }

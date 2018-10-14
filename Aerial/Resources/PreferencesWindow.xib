@@ -67,7 +67,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Videos" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
+                                        <view key="view" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="614" height="322"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -397,7 +397,7 @@ is disabled
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Descriptions" identifier="" id="bPY-uP-DGa">
-                                        <view key="view" id="M1m-ud-C95">
+                                        <view key="view" ambiguous="YES" id="M1m-ud-C95">
                                             <rect key="frame" x="10" y="33" width="614" height="322"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -430,9 +430,9 @@ is disabled
                                                     </connections>
                                                 </popUpButton>
                                                 <button toolTip="Translates descriptions, if available, to your preferred language (as set in System Preferences : Language &amp; Region)" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R3K-TR-uHC">
-                                                    <rect key="frame" x="31" y="255" width="183" height="18"/>
+                                                    <rect key="frame" x="31" y="255" width="291" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Localize for tvOS12 videos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="xbp-av-nHy">
+                                                    <buttonCell key="cell" type="check" title="Show translated descriptions when available" bezelStyle="regularSquare" imagePosition="left" inset="2" id="xbp-av-nHy">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>

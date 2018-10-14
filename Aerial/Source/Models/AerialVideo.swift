@@ -137,20 +137,23 @@ class AerialVideo: CustomStringConvertible, Equatable {
         }
     }
     
-    init(id: String, name: String, type: String,
+    init(id: String, name: String, secondaryName: String, type: String,
          timeOfDay: String, url1080pH264: String, url1080pHEVC: String, url4KHEVC: String, manifest: Manifests, poi: [String: String]) {
         self.id = id
 
         // We override names for known space videos
         if (SpaceVideos.contains(id)) {
             self.name = "Space"
-            self.secondaryName = name
-
-        }
-        else {
+            if (secondaryName != "") {
+                self.secondaryName = secondaryName
+            } else {
+                self.secondaryName = name
+            }
+        } else {
             self.name = name
-            self.secondaryName = ""
+            self.secondaryName = secondaryName      // We may have a secondary name from our merges
         }
+        
         self.type = type
 
         // We override timeOfDay based on our own list
