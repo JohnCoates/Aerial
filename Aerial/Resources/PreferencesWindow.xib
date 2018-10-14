@@ -746,7 +746,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
 
 - Macs older than late 2015 should prefer 1080p H264 as they may lack HEVC hardware decoding support.
 
-- Late 2015/2016 Macs may only partially support hardware accelerated HEVC decoding. You may see higher CPU usage with those format.
+- Late 2015/2016 Macs may only partially support hardware accelerated HEVC decoding. You may see higher CPU usage with these formats.
 
 - Macs 2017 and up should either use 1080p HEVC or 4K HEVC.</string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
