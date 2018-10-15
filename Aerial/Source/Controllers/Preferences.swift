@@ -34,8 +34,17 @@ class Preferences {
         case descriptionCorner = "descriptionCorner"
         case fontName = "fontName"
         case fontSize = "fontSize"
+        case showClock = "showClock"
+        case showMessage = "showMessage"
+        case showMessageString = "showMessageString"
+        case extraFontName = "extraFontName"
+        case extraFontSize = "extraFontSize"
+        case extraCorner = "extraCorner"
     }
 
+    enum ExtraCorner : Int {
+        case same, hOpposed, dOpposed
+    }
     enum DescriptionCorner : Int {
         case topLeft, topRight, bottomLeft, bottomRight, random
     }
@@ -97,6 +106,13 @@ class Preferences {
         defaultValues[.descriptionCorner] = DescriptionCorner.bottomLeft
         defaultValues[.fontName] = "Helvetica Neue Medium"
         defaultValues[.fontSize] = 28
+        defaultValues[.showClock] = false
+        defaultValues[.showMessage] = false
+        defaultValues[.showMessageString] = ""
+        defaultValues[.extraFontName] = "Helvetica Neue Medium"
+        defaultValues[.extraFontSize] = 28
+        defaultValues[.extraCorner] = ExtraCorner.same
+        
         
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
@@ -109,14 +125,40 @@ class Preferences {
     }
     
     // MARK: - Variables
+
+    var showClock: Bool {
+        get {
+            return value(forIdentifier: .showClock)
+        }
+        set {
+            setValue(forIdentifier: .showClock, value: newValue)
+        }
+    }
+
+    var showMessage: Bool {
+        get {
+            return value(forIdentifier: .showMessage)
+        }
+        set {
+            setValue(forIdentifier: .showMessage, value: newValue)
+        }
+    }
+
+    var showMessageString: String? {
+        get {
+            return optionalValue(forIdentifier: .showMessageString)
+        }
+        set {
+            setValue(forIdentifier: .showMessageString, value: newValue)
+        }
+    }
     
     var differentAerialsOnEachDisplay: Bool {
         get {
             return value(forIdentifier: .differentAerialsOnEachDisplay)
         }
         set {
-            setValue(forIdentifier: .differentAerialsOnEachDisplay,
-                         value: newValue)
+            setValue(forIdentifier: .differentAerialsOnEachDisplay, value: newValue)
         }
     }
     
@@ -171,6 +213,25 @@ class Preferences {
         }
         set {
             setValue(forIdentifier: .fontSize, value: newValue)
+        }
+        
+    }
+    
+    var extraFontName: String? {
+        get {
+            return optionalValue(forIdentifier: .extraFontName)
+        }
+        set {
+            setValue(forIdentifier: .extraFontName, value: newValue)
+        }
+    }
+    
+    var extraFontSize: Double? {
+        get {
+            return optionalValue(forIdentifier: .extraFontSize)
+        }
+        set {
+            setValue(forIdentifier: .extraFontSize, value: newValue)
         }
         
     }
@@ -234,6 +295,15 @@ class Preferences {
         }
         set {
             setValue(forIdentifier: .descriptionCorner, value: newValue)
+        }
+    }
+    
+    var extraCorner: Int? {
+        get {
+            return optionalValue(forIdentifier: .extraCorner)
+        }
+        set {
+            setValue(forIdentifier: .extraCorner, value: newValue)
         }
     }
     
