@@ -32,7 +32,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 *Rather install from terminal or have auto-updates? Look at the Brew Cask section below!*
 
 1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4/Aerial.zip) (Version 1.4)
-(if you are experiencing startup or multi monitor issues, please check the [1.4.1 beta 1 version here](https://github.com/JohnCoates/Aerial/releases/download/v1.4.1beta1/Aerial.saver.zip) ([what's fixed](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.1beta1))
+(if you are experiencing startup or multi monitor issues, please check the [1.4.1 beta 2 version here](https://github.com/JohnCoates/Aerial/releases/download/v1.4.1beta2/Aerial.saver.zip) ([what's fixed](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.1beta2))
 2. Unzip the downloaded file.
 3. Open **Aerial.saver** and confirm installation.
 
