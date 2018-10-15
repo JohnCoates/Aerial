@@ -369,10 +369,16 @@ class AerialView: ScreenSaverView {
     internal override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if self.playerLayer.isReadyForDisplay {
             // All playerLayers should fade, we only have one shared player
-            for view in AerialView.sharedViews {
-                self.addPlayerFades(player: self.player!, playerLayer: view.playerLayer, video: self.currentVideo!)
+            if AerialView.sharingPlayers {
+                for view in AerialView.sharedViews {
+                    self.addPlayerFades(player: self.player!, playerLayer: view.playerLayer, video: self.currentVideo!)
+                }
+            } else {
+                self.addPlayerFades(player: self.player!, playerLayer: self.playerLayer, video: self.currentVideo!)
             }
+            
             // Descriptions on main only for now
+
             self.addDescriptions(player: self.player!, video: self.currentVideo!)
         }
     }
