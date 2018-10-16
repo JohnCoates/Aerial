@@ -31,16 +31,15 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 ### Manual Installation
 *Rather install from terminal or have auto-updates? Look at the Brew Cask section below!*
 
-1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4/Aerial.zip) (Version 1.4)
-(if you are experiencing startup or multi monitor issues, please check the [1.4.1 beta 3 version here](https://github.com/JohnCoates/Aerial/releases/download/v1.4.1beta3/Aerial.saver.zip) ([what's fixed](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.1beta3))
+1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.1/Aerial.saver.zip) (Version 1.4.1, october 16, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.1)) 
 2. Unzip the downloaded file.
 3. Open **Aerial.saver** and confirm installation.
 
 If Aerial.saver could not be opened, place Aerial.saver in `~/Library/Screen Savers`
 
-Please note that if you are upgrading from a previous version, we strongly recommand you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated. 
+**Important** : Please note that if you are upgrading from a previous version, we strongly recommand you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated.
 
-### Brew Cask Support - (Updated for Version 1.4)
+### Brew Cask Support - (Updated for Version 1.4, 1.4.1 coming soon)
 
 If you're looking to install Aerial across many systems, remotely, or simply from terminal we recommend [Brew Cask](https://caskroom.github.io). Prefer this method if you're looking for auto-updates.
 
@@ -63,20 +62,21 @@ There are three options to uninstall Aerial from your Mac.
 
 You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aerial`. This is where Aerial stores the cached copies of the aerial videos.
 
-## New features in version 1.4
+## New features in version 1.4+
 
 ![screen shot 2018-10-11 at 14 49 52](https://user-images.githubusercontent.com/37544189/46805573-b3660a00-cd65-11e8-9e40-152d170ffd8e.png)
 
-* **Every Aerial video:** From the very first Aerials in San Francisco to the new space videos shot from the ISS!
+* **Every Aerial video:** From the very first Aerials in San Francisco to the new space videos shot from the ISS! Now with better titles too so you can find your favorite videos faster.
 * **4K HEVC:** With the launch of Apple TV 4K, many videos are now available in this format. Aerial will show you the best format available based on your preferences.
 * **Different videos based on time:** Want to see night videos at night? You can either specify your sunset or sunrise time manually, or, if your Mac is compatible with Night Shift (see [here for a list of compatible Mac](https://support.apple.com/en-us/HT207513)), get those automatically (you do not need to enable Night Shift).
 * **Feeling Dark?:** Aerial is now compatible with Dark Mode in macOS 10.14 Mojave, and can play night videos when Dark Mode is enabled.
 
 ![screen shot 2018-10-11 at 14 50 18](https://user-images.githubusercontent.com/37544189/46805577-b5c86400-cd65-11e8-8c04-252c5fa6c1eb.png)
 
-* **Descriptions:** Wondering where an Aerial view was shot? Aerial can now tell you as they play.
+* **Descriptions:** Wondering where an Aerial view was shot? Aerial can now tell you as they play. New in 1.4.1, we even have extra descriptions on the "original" videos (London, New York, San Francisco...)
 * **Full offline mode::** Behind a firewall? Just copy the cache folder from another Mac and you are all set. You can also disable all streaming. 
 * **Better cache management:** You can now cache your favorite videos individually, no need to grab them all. Or just stream them as you go, they'll get cached automatically too.
+* **Clock:** We even have a properly styled clock if that's your thing! 
 * **And many bug fixes!**
 
 
