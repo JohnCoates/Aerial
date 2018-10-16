@@ -1097,6 +1097,10 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
 }
 
 extension PreferencesWindowController : NSFontChanging  {
+    func validModesForFontPanel(_ fontPanel: NSFontPanel) -> NSFontPanel.ModeMask {
+        return [.size, .collection, .face]
+    }
+    
     func changeFont(_ sender: NSFontManager?) {
         print("change font")
         // Set current font
@@ -1132,6 +1136,7 @@ extension PreferencesWindowController : NSFontChanging  {
     }
     
 }
+
 
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromNSControlStateValue(_ input: NSControl.StateValue) -> Int {
