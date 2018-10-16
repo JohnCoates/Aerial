@@ -326,8 +326,12 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     // Rewind preview video when reaching end
     @objc func playerItemDidReachEnd(notification: Notification) {
         if let playerItem: AVPlayerItem = notification.object as? AVPlayerItem {
-            playerItem.seek(to: CMTime.zero, completionHandler: nil)
-            self.player.play()
+            let url:URL? = (playerItem.asset as? AVURLAsset)?.url
+
+            if (url!.absoluteString.starts(with: "file")) {
+                playerItem.seek(to: CMTime.zero, completionHandler: nil)
+                self.player.play()
+            }
         }
     }
     
