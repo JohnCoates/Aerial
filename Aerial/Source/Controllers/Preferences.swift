@@ -15,6 +15,7 @@ class Preferences {
     
     fileprivate enum Identifiers: String {
         case differentAerialsOnEachDisplay = "differentAerialsOnEachDisplay"
+        case multiMonitorMode = "multiMonitorMode"
         case cacheAerials = "cacheAerials"
         case customCacheDirectory = "cacheDirectory"
         case manifestTvOS10 = "manifestTvOS10"
@@ -29,8 +30,34 @@ class Preferences {
         case timeMode = "timeMode"
         case manualSunrise = "manualSunrise"
         case manualSunset = "manualSunset"
+        case fadeMode = "fadeMode"
+        case fadeModeText = "fadeModeText"
+        case descriptionCorner = "descriptionCorner"
+        case fontName = "fontName"
+        case fontSize = "fontSize"
+        case showClock = "showClock"
+        case showMessage = "showMessage"
+        case showMessageString = "showMessageString"
+        case extraFontName = "extraFontName"
+        case extraFontSize = "extraFontSize"
+        case extraCorner = "extraCorner"
     }
 
+    enum ExtraCorner : Int {
+        case same, hOpposed, dOpposed
+    }
+    enum DescriptionCorner : Int {
+        case topLeft, topRight, bottomLeft, bottomRight, random
+    }
+    
+    enum FadeMode : Int {
+        case disabled, t0_5, t1, t2
+    }
+    
+    enum MultiMonitorMode : Int {
+        case mainOnly, mirrored, independant
+    }
+    
     enum TimeMode : Int {
         case disabled, nightShift, manual, lightDarkMode
     }
@@ -75,6 +102,19 @@ class Preferences {
         defaultValues[.timeMode] = TimeMode.disabled
         defaultValues[.manualSunrise] = "09:00"
         defaultValues[.manualSunset] = "19:00"
+        defaultValues[.multiMonitorMode] = MultiMonitorMode.mainOnly
+        defaultValues[.fadeMode] = FadeMode.t1
+        defaultValues[.fadeModeText] = FadeMode.t1
+        defaultValues[.descriptionCorner] = DescriptionCorner.bottomLeft
+        defaultValues[.fontName] = "Helvetica Neue Medium"
+        defaultValues[.fontSize] = 28
+        defaultValues[.showClock] = false
+        defaultValues[.showMessage] = false
+        defaultValues[.showMessageString] = ""
+        defaultValues[.extraFontName] = "Helvetica Neue Medium"
+        defaultValues[.extraFontSize] = 28
+        defaultValues[.extraCorner] = ExtraCorner.same
+        
         
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
@@ -87,14 +127,40 @@ class Preferences {
     }
     
     // MARK: - Variables
+
+    var showClock: Bool {
+        get {
+            return value(forIdentifier: .showClock)
+        }
+        set {
+            setValue(forIdentifier: .showClock, value: newValue)
+        }
+    }
+
+    var showMessage: Bool {
+        get {
+            return value(forIdentifier: .showMessage)
+        }
+        set {
+            setValue(forIdentifier: .showMessage, value: newValue)
+        }
+    }
+
+    var showMessageString: String? {
+        get {
+            return optionalValue(forIdentifier: .showMessageString)
+        }
+        set {
+            setValue(forIdentifier: .showMessageString, value: newValue)
+        }
+    }
     
     var differentAerialsOnEachDisplay: Bool {
         get {
             return value(forIdentifier: .differentAerialsOnEachDisplay)
         }
         set {
-            setValue(forIdentifier: .differentAerialsOnEachDisplay,
-                         value: newValue)
+            setValue(forIdentifier: .differentAerialsOnEachDisplay, value: newValue)
         }
     }
     
@@ -134,6 +200,43 @@ class Preferences {
         }
     }
     
+    var fontName: String? {
+        get {
+            return optionalValue(forIdentifier: .fontName)
+        }
+        set {
+            setValue(forIdentifier: .fontName, value: newValue)
+        }
+    }
+    
+    var fontSize: Double? {
+        get {
+            return optionalValue(forIdentifier: .fontSize)
+        }
+        set {
+            setValue(forIdentifier: .fontSize, value: newValue)
+        }
+        
+    }
+    
+    var extraFontName: String? {
+        get {
+            return optionalValue(forIdentifier: .extraFontName)
+        }
+        set {
+            setValue(forIdentifier: .extraFontName, value: newValue)
+        }
+    }
+    
+    var extraFontSize: Double? {
+        get {
+            return optionalValue(forIdentifier: .extraFontSize)
+        }
+        set {
+            setValue(forIdentifier: .extraFontSize, value: newValue)
+        }
+        
+    }
     var manualSunrise: String? {
         get {
             return optionalValue(forIdentifier: .manualSunrise)
@@ -188,6 +291,42 @@ class Preferences {
         }
     }
 
+    var descriptionCorner: Int? {
+        get {
+            return optionalValue(forIdentifier: .descriptionCorner)
+        }
+        set {
+            setValue(forIdentifier: .descriptionCorner, value: newValue)
+        }
+    }
+    
+    var extraCorner: Int? {
+        get {
+            return optionalValue(forIdentifier: .extraCorner)
+        }
+        set {
+            setValue(forIdentifier: .extraCorner, value: newValue)
+        }
+    }
+    
+    var fadeMode: Int? {
+        get {
+            return optionalValue(forIdentifier: .fadeMode)
+        }
+        set {
+            setValue(forIdentifier: .fadeMode, value: newValue)
+        }
+    }
+
+    var fadeModeText: Int? {
+        get {
+            return optionalValue(forIdentifier: .fadeModeText)
+        }
+        set {
+            setValue(forIdentifier: .fadeModeText, value: newValue)
+        }
+    }
+    
     var timeMode: Int? {
         get {
             return optionalValue(forIdentifier: .timeMode)
@@ -212,6 +351,15 @@ class Preferences {
         }
         set {
             setValue(forIdentifier: .showDescriptionsMode, value: newValue)
+        }
+    }
+    
+    var multiMonitorMode: Int? {
+        get {
+            return optionalValue(forIdentifier: .multiMonitorMode)
+        }
+        set {
+            setValue(forIdentifier: .multiMonitorMode, value: newValue)
         }
     }
     
@@ -258,7 +406,12 @@ class Preferences {
         let key = identifier.rawValue
         return userDefaults.integer(forKey: key)
     }
-
+    
+    fileprivate func optionalValue(forIdentifier identifier: Identifiers) -> Double? {
+        let key = identifier.rawValue
+        return userDefaults.double(forKey: key)
+    }
+    
     fileprivate func optionalValue(forIdentifier
         identifier: Identifiers) -> Data? {
         let key = identifier.rawValue

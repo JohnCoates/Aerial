@@ -54,7 +54,6 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var outlineView: NSOutlineView!
     @IBOutlet var outlineViewSettings: NSButton!
     @IBOutlet var playerView: AVPlayerView!
-    @IBOutlet var differentAerialCheckbox: NSButton!
     @IBOutlet var showDescriptionsCheckbox: NSButton!
     @IBOutlet var localizeForTvOS12Checkbox: NSButton!
     @IBOutlet var projectPageLink: NSButton!
@@ -63,8 +62,13 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var cacheAerialsAsTheyPlayCheckbox: NSButton!
     @IBOutlet var neverStreamVideosCheckbox: NSButton!
     @IBOutlet var neverStreamPreviewsCheckbox: NSButton!
+    
+    @IBOutlet var multiMonitorModePopup: NSPopUpButton!
     @IBOutlet var popupVideoFormat: NSPopUpButton!
     @IBOutlet var descriptionModePopup: NSPopUpButton!
+    @IBOutlet var fadeInOutModePopup: NSPopUpButton!
+    @IBOutlet weak var fadeInOutTextModePopup: NSPopUpButton!
+    
     @IBOutlet var versionLabel: NSTextField!
     @IBOutlet var popover: NSPopover!
     @IBOutlet var popoverH264Indicator: NSButton!
@@ -84,7 +88,22 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var iconTime1: NSImageCell!
     @IBOutlet var iconTime2: NSImageCell!
 
+    @IBOutlet var cornerTopLeft: NSButton!
+    @IBOutlet var cornerTopRight: NSButton!
+    @IBOutlet var cornerBottomLeft: NSButton!
+    @IBOutlet var cornerBottomRight: NSButton!
+    @IBOutlet var cornerRandom: NSButton!
+
     @IBOutlet var previewDisabledTextfield: NSTextField!
+    @IBOutlet var fontPickerButton: NSButton!
+    @IBOutlet var currentFontLabel: NSTextField!
+    @IBOutlet var currentLocaleLabel: NSTextField!
+    
+    @IBOutlet var showClockCheckbox: NSButton!
+    @IBOutlet var showExtraMessage: NSButton!
+    @IBOutlet var extraMessageTextField: NSTextField!
+    @IBOutlet var extraMessageFontLabel: NSTextField!
+    @IBOutlet weak var extraCornerPopup: NSPopUpButton!
     
     var player: AVPlayer = AVPlayer()
     
@@ -96,27 +115,33 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     
     lazy var preferences = Preferences.sharedInstance
     
+    let fontManager: NSFontManager
+    var fontEditing = 0     // To track the font we are changing
+    
     // MARK: - Init
-    var awakenAlready = false
     required init?(coder decoder: NSCoder) {
+        self.fontManager = NSFontManager.shared
         super.init(coder: decoder)
     }
     override init(window: NSWindow?) {
+        self.fontManager = NSFontManager.shared
         super.init(window: window)
-        
     }
     
     // MARK: - Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
+        self.fontManager.target = self
+
         if let previewPlayer = AerialView.previewPlayer {
             self.player = previewPlayer
         }
 
         outlineView.floatsGroupRows = false
-        loadJSON()
+
+        loadJSON()  // Async loading
 
         if let version = Bundle(identifier: "com.johncoates.Aerial-Test")?.infoDictionary?["CFBundleShortVersionString"] as? String {
             versionLabel.stringValue = version
@@ -125,11 +150,13 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             versionLabel.stringValue = version
         }
 
+        // Some icons are 10.12.2+ only
         if #available(OSX 10.12.2, *) {
             iconTime1.image = NSImage(named: NSImage.touchBarHistoryTemplateName)
             iconTime2.image = NSImage(named: NSImage.touchBarComposeTemplateName)
         }
         
+        // Help popover, GVA detection requires 10.13
         if #available(OSX 10.13, *) {
             if !VTIsHardwareDecodeSupported(kCMVideoCodecType_H264)
             {
@@ -148,17 +175,50 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             popoverH264Label.stringValue = "macOS 10.13 or above required"
             popoverHEVCLabel.stringValue = "Hardware acceleration status unknown"
         }
+        
+        // Fonts for descriptions and extra (clock/msg)
+        currentFontLabel.stringValue = preferences.fontName! + ", \(preferences.fontSize!) pt"
+        extraMessageFontLabel.stringValue = preferences.extraFontName! + ", \(preferences.extraFontSize!) pt"
 
+        // Extra message
+        extraMessageTextField.stringValue = preferences.showMessageString!
+        
+        // Grab preferred language as proper string
+        let printOutputLocale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
+        if let deviceLanguageName: String = printOutputLocale.displayName(forKey: NSLocale.Key.identifier, value: Locale.preferredLanguages[0]) {
+            currentLocaleLabel.stringValue = "Preferred language : \(deviceLanguageName)"
+        } else {
+            currentLocaleLabel.stringValue = ""
+        }
+        
+        // Videos panel
         playerView.player = player
         playerView.controlsStyle = .none
         if #available(OSX 10.10, *) {
             playerView.videoGravity = AVLayerVideoGravity.resizeAspectFill
         }
+
+        // To loop playback, we catch the end of the video to rewind
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(playerItemDidReachEnd(notification:)),
+                                               name: Notification.Name.AVPlayerItemDidPlayToEndTime,
+                                               object: player.currentItem)
         
-        if preferences.differentAerialsOnEachDisplay {
-            differentAerialCheckbox.state = NSControl.StateValue.on
+        if #available(OSX 10.12, *) {
+        } else {
+            showClockCheckbox.isEnabled = false
         }
         
+        // Text panel
+        if preferences.showClock {
+            showClockCheckbox.state = NSControl.StateValue.on
+        }
+
+        if preferences.showMessage {
+            showExtraMessage.state = NSControl.StateValue.on
+            extraMessageTextField.isEnabled = true
+        }
+
         if preferences.showDescriptions {
             showDescriptionsCheckbox.state = NSControl.StateValue.on
         }
@@ -167,6 +227,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             localizeForTvOS12Checkbox.state = NSControl.StateValue.on
         }
         
+        // Cache panel
         if preferences.neverStreamVideos {
             neverStreamVideosCheckbox.state = NSControl.StateValue.on
         }
@@ -205,7 +266,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             sunsetTime.dateValue = dateSunset
         }
         
-        // Handle the radio button
+        // Handle the time radios
         switch preferences.timeMode {
         case Preferences.TimeMode.nightShift.rawValue:
             timeNightShiftRadio.state = NSControl.StateValue.on
@@ -217,10 +278,31 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             timeDisabledRadio.state = NSControl.StateValue.on
         }
         
+        // Handle the corner radios
+        switch preferences.descriptionCorner {
+        case Preferences.DescriptionCorner.topLeft.rawValue:
+            cornerTopLeft.state = NSControl.StateValue.on
+        case Preferences.DescriptionCorner.topRight.rawValue:
+            cornerTopRight.state = NSControl.StateValue.on
+        case Preferences.DescriptionCorner.bottomLeft.rawValue:
+            cornerBottomLeft.state = NSControl.StateValue.on
+        case Preferences.DescriptionCorner.bottomRight.rawValue:
+            cornerBottomRight.state = NSControl.StateValue.on
+        default:
+            cornerRandom.state = NSControl.StateValue.on
+        }
+
+        multiMonitorModePopup.selectItem(at: preferences.multiMonitorMode!)
         
         popupVideoFormat.selectItem(at: preferences.videoFormat!)
         
         descriptionModePopup.selectItem(at: preferences.showDescriptionsMode!)
+        
+        fadeInOutModePopup.selectItem(at: preferences.fadeMode!)
+
+        fadeInOutTextModePopup.selectItem(at: preferences.fadeModeText!)
+
+        extraCornerPopup.selectItem(at: preferences.extraCorner!)
         
         colorizeProjectPageLinks()
         
@@ -240,6 +322,20 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     
     @IBAction func close(_ sender: AnyObject?) {
         window?.sheetParent?.endSheet(window!)
+    }
+    
+    // MARK: Video playback
+    
+    // Rewind preview video when reaching end
+    @objc func playerItemDidReachEnd(notification: Notification) {
+        if let playerItem: AVPlayerItem = notification.object as? AVPlayerItem {
+            let url:URL? = (playerItem.asset as? AVURLAsset)?.url
+
+            if (url!.absoluteString.starts(with: "file")) {
+                playerItem.seek(to: CMTime.zero, completionHandler: nil)
+                self.player.play()
+            }
+        }
     }
     
     // MARK: - Setup
@@ -263,6 +359,62 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     }
     
     // MARK: - Preferences
+    @IBAction func fontPickerClick(_ sender:NSButton?) {
+        // Make a panel
+        let fp = self.fontManager.fontPanel(true)
+
+        // Set current font
+        if let font = NSFont(name: preferences.fontName!,size: CGFloat(preferences.fontSize!)) {
+            fp?.setPanelFont(font, isMultiple: false)
+
+        } else {
+            fp?.setPanelFont(NSFont(name: "Helvetica Neue Medium", size: 28)!, isMultiple: false)
+        }
+
+        // push the panel but mark which one we are editing
+        fontEditing = 0
+        fp?.makeKeyAndOrderFront(sender)
+    }
+    
+    @IBAction func fontResetClick(_ sender:NSButton?) {
+        preferences.fontName = "Helvetica Neue Medium"
+        preferences.fontSize = 28
+        
+        // Update our label
+        currentFontLabel.stringValue = preferences.fontName! + ", \(preferences.fontSize!) pt"
+    }
+
+    @IBAction func extraFontPickerClick(_ sender:NSButton?) {
+        // Make a panel
+        let fp = self.fontManager.fontPanel(true)
+        
+        // Set current font
+        if let font = NSFont(name: preferences.extraFontName!,size: CGFloat(preferences.extraFontSize!)) {
+            fp?.setPanelFont(font, isMultiple: false)
+            
+        } else {
+            fp?.setPanelFont(NSFont(name: "Helvetica Neue Medium", size: 28)!, isMultiple: false)
+        }
+        
+        // push the panel but mark which one we are editing
+        fontEditing = 1
+        fp?.makeKeyAndOrderFront(sender)
+    }
+
+    @IBAction func extraFontResetClick(_ sender:NSButton?) {
+        preferences.extraFontName = "Helvetica Neue Medium"
+        preferences.extraFontSize = 28
+        
+        // Update our label
+        extraMessageFontLabel.stringValue = preferences.extraFontName! + ", \(preferences.extraFontSize!) pt"
+    }
+
+    
+    @IBAction func extraTextFieldChange(_ sender: NSTextField) {
+        print("changed message \(sender.stringValue)")
+        preferences.showMessageString = sender.stringValue
+    }
+    
     @IBAction func timeModeChange(_ sender:NSButton?) {
         if sender == timeDisabledRadio {
             preferences.timeMode = Preferences.TimeMode.disabled.rawValue
@@ -272,6 +424,20 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             preferences.timeMode = Preferences.TimeMode.manual.rawValue
         } else if sender == timeLightDarkModeRadio {
             preferences.timeMode = Preferences.TimeMode.lightDarkMode.rawValue
+        }
+    }
+    
+    @IBAction func descriptionCornerChange(_ sender:NSButton?) {
+        if sender == cornerTopLeft {
+            preferences.descriptionCorner = Preferences.DescriptionCorner.topLeft.rawValue
+        } else if sender == cornerTopRight {
+            preferences.descriptionCorner = Preferences.DescriptionCorner.topRight.rawValue
+        } else if sender == cornerBottomLeft {
+            preferences.descriptionCorner = Preferences.DescriptionCorner.bottomLeft.rawValue
+        } else if sender == cornerBottomRight {
+            preferences.descriptionCorner = Preferences.DescriptionCorner.bottomRight.rawValue
+        } else if sender == cornerRandom {
+            preferences.descriptionCorner = Preferences.DescriptionCorner.random.rawValue
         }
     }
     
@@ -297,6 +463,24 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: VideoCache.cacheDirectory!)
         
     }
+    
+    @IBAction func showClockClick(_ sender: NSButton) {
+        debugLog("show clock click: \(convertFromNSControlStateValue(sender.state))")
+        
+        let onState = (sender.state == NSControl.StateValue.on)
+        preferences.showClock = onState
+
+    }
+    
+    @IBAction func showExtraMessageClick(_ sender: NSButton) {
+        debugLog("show extra message: \(convertFromNSControlStateValue(sender.state))")
+        
+        let onState = (sender.state == NSControl.StateValue.on)
+        // We also need to enable/disable our message field
+        extraMessageTextField.isEnabled = onState
+        preferences.showMessage = onState
+    }
+    
     @IBAction func neverStreamVideosClick(_ button: NSButton!) {
         debugLog("never stream videos: \(convertFromNSControlStateValue(button.state))")
         
@@ -347,7 +531,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     }
     
     @IBAction func popupVideoFormatChange(_ sender:NSPopUpButton) {
-        NSLog("index change : \(sender.indexOfSelectedItem)")
+        debugLog("index change : \(sender.indexOfSelectedItem)")
         preferences.videoFormat = sender.indexOfSelectedItem
         preferences.synchronize()
         
@@ -355,21 +539,41 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     }
     
     @IBAction func descriptionModePopupChange(_ sender:NSPopUpButton) {
-        NSLog("dindex change : \(sender.indexOfSelectedItem)")
+        debugLog("dindex change : \(sender.indexOfSelectedItem)")
         
         preferences.showDescriptionsMode = sender.indexOfSelectedItem
         preferences.synchronize()
     }
     
-    @IBAction func differentAerialsOnEachDisplayCheckClick(_ button: NSButton?) {
-        let state = differentAerialCheckbox.state
-        let onState = (state == NSControl.StateValue.on)
+    @IBAction func multiMonitorModePopupChange(_ sender:NSPopUpButton) {
+        debugLog("mm index change : \(sender.indexOfSelectedItem)")
         
-        preferences.differentAerialsOnEachDisplay = onState
-        
-        debugLog("set differentAerialsOnEachDisplay to \(onState)")
+        preferences.multiMonitorMode = sender.indexOfSelectedItem
+        preferences.synchronize()
     }
     
+    @IBAction func fadeInOutModePopupChange(_ sender:NSPopUpButton) {
+        debugLog("fm index change : \(sender.indexOfSelectedItem)")
+        
+        preferences.fadeMode = sender.indexOfSelectedItem
+        preferences.synchronize()
+    }
+    
+    @IBAction func fadeInOutTextModePopupChange(_ sender: NSPopUpButton) {
+        debugLog("fmt index change : \(sender.indexOfSelectedItem)")
+        
+        preferences.fadeModeText = sender.indexOfSelectedItem
+        preferences.synchronize()
+    }
+    
+    @IBAction func extraCornerPopupChange(_ sender: NSPopUpButton) {
+        debugLog("ec index change : \(sender.indexOfSelectedItem)")
+        
+        preferences.extraCorner = sender.indexOfSelectedItem
+        preferences.synchronize()
+
+    }
+
     @IBAction func showDescriptionsClick(button: NSButton?) {
         let state = showDescriptionsCheckbox.state
         let onState = (state == NSControl.StateValue.on)
@@ -891,6 +1095,48 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     }
     
 }
+
+extension PreferencesWindowController : NSFontChanging  {
+    func validModesForFontPanel(_ fontPanel: NSFontPanel) -> NSFontPanel.ModeMask {
+        return [.size, .collection, .face]
+    }
+    
+    func changeFont(_ sender: NSFontManager?) {
+        print("change font")
+        // Set current font
+        var oldFont = NSFont(name: "Helvetica Neue Medium", size: 28)
+
+        if (fontEditing == 0) {
+            if let tryFont = NSFont(name: preferences.fontName!,size: CGFloat(preferences.fontSize!)) {
+                oldFont = tryFont
+            }
+        } else {
+            if let tryFont = NSFont(name: preferences.extraFontName!,size: CGFloat(preferences.extraFontSize!)) {
+                oldFont = tryFont
+            }
+        }
+        
+        
+        let newFont = sender?.convert(oldFont!)
+
+        if (fontEditing == 0) {
+            preferences.fontName = newFont?.fontName
+            preferences.fontSize = Double((newFont?.pointSize)!)
+            
+            // Update our label
+            currentFontLabel.stringValue = preferences.fontName! + ", \(preferences.fontSize!) pt"
+        } else {
+            preferences.extraFontName = newFont?.fontName
+            preferences.extraFontSize = Double((newFont?.pointSize)!)
+            
+            // Update our label
+            extraMessageFontLabel.stringValue = preferences.extraFontName! + ", \(preferences.extraFontSize!) pt"
+        }
+        preferences.synchronize()
+    }
+    
+}
+
 
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromNSControlStateValue(_ input: NSControl.StateValue) -> Int {
