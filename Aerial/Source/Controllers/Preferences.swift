@@ -31,6 +31,7 @@ class Preferences {
         case manualSunrise = "manualSunrise"
         case manualSunset = "manualSunset"
         case fadeMode = "fadeMode"
+        case fadeModeText = "fadeModeText"
         case descriptionCorner = "descriptionCorner"
         case fontName = "fontName"
         case fontSize = "fontSize"
@@ -103,6 +104,7 @@ class Preferences {
         defaultValues[.manualSunset] = "19:00"
         defaultValues[.multiMonitorMode] = MultiMonitorMode.mainOnly
         defaultValues[.fadeMode] = FadeMode.t1
+        defaultValues[.fadeModeText] = FadeMode.t1
         defaultValues[.descriptionCorner] = DescriptionCorner.bottomLeft
         defaultValues[.fontName] = "Helvetica Neue Medium"
         defaultValues[.fontSize] = 28
@@ -313,6 +315,15 @@ class Preferences {
         }
         set {
             setValue(forIdentifier: .fadeMode, value: newValue)
+        }
+    }
+
+    var fadeModeText: Int? {
+        get {
+            return optionalValue(forIdentifier: .fadeModeText)
+        }
+        set {
+            setValue(forIdentifier: .fadeModeText, value: newValue)
         }
     }
     

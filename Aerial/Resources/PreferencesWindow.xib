@@ -25,6 +25,7 @@
                 <outlet property="extraMessageFontLabel" destination="Hyj-eq-me5" id="wSX-G6-ry2"/>
                 <outlet property="extraMessageTextField" destination="dch-FL-HdX" id="dRi-6L-vQY"/>
                 <outlet property="fadeInOutModePopup" destination="405-v4-6d2" id="eli-xQ-IOg"/>
+                <outlet property="fadeInOutTextModePopup" destination="vwV-g6-SF4" id="qkT-13-zQb"/>
                 <outlet property="fontPickerButton" destination="DqU-8n-gZ9" id="BEa-9N-ipc"/>
                 <outlet property="iconTime1" destination="lQX-Ux-Sz8" id="JNc-dR-kDA"/>
                 <outlet property="iconTime2" destination="VuJ-HC-hN5" id="AbN-SY-Tux"/>
@@ -80,7 +81,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Videos" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
+                                        <view key="view" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="614" height="322"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -388,14 +389,14 @@ is disabled
                                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="405-v4-6d2">
                                                     <rect key="frame" x="385" y="63" width="107" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="D0r-yP-Ehu" id="WDB-Zy-UB4">
+                                                    <popUpButtonCell key="cell" type="push" title="1 Second" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="4aA-BM-bD5" id="WDB-Zy-UB4">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="menu"/>
                                                         <menu key="menu" id="Aex-M5-Ep9">
                                                             <items>
-                                                                <menuItem title="None" state="on" id="D0r-yP-Ehu"/>
+                                                                <menuItem title="None" id="D0r-yP-Ehu"/>
                                                                 <menuItem title="0.5 Second" id="2wY-yk-9XD"/>
-                                                                <menuItem title="1 Second" id="4aA-BM-bD5"/>
+                                                                <menuItem title="1 Second" state="on" id="4aA-BM-bD5"/>
                                                                 <menuItem title="2 Seconds" id="dWP-Di-V3P">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                                 </menuItem>
@@ -410,38 +411,10 @@ is disabled
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Text" identifier="" id="bPY-uP-DGa">
-                                        <view key="view" id="M1m-ud-C95">
+                                        <view key="view" ambiguous="YES" id="M1m-ud-C95">
                                             <rect key="frame" x="10" y="33" width="614" height="322"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <button toolTip="How long should the descriptions stay on screen" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="omO-3f-eoL">
-                                                    <rect key="frame" x="29" y="254" width="107" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Show location" bezelStyle="regularSquare" imagePosition="left" inset="2" id="F7m-zV-2tM">
-                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="showDescriptionsClickWithButton:" target="-2" id="LWZ-gL-jo6"/>
-                                                    </connections>
-                                                </button>
-                                                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qmX-6m-Whj">
-                                                    <rect key="frame" x="140" y="250" width="107" height="25"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <popUpButtonCell key="cell" type="push" title="10 Seconds" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wjq-nI-072" id="S3w-hi-xoE">
-                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="menu"/>
-                                                        <menu key="menu" id="rE1-IA-Gwp">
-                                                            <items>
-                                                                <menuItem title="10 Seconds" state="on" id="wjq-nI-072" userLabel="10 Seconds"/>
-                                                                <menuItem title="Always" id="aCg-qD-wSL"/>
-                                                            </items>
-                                                        </menu>
-                                                    </popUpButtonCell>
-                                                    <connections>
-                                                        <action selector="descriptionModePopupChange:" target="-2" id="Eas-vP-eBK"/>
-                                                    </connections>
-                                                </popUpButton>
                                                 <button toolTip="Translates descriptions, if available, to your preferred language (as set in System Preferences : Language &amp; Region)" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R3K-TR-uHC">
                                                     <rect key="frame" x="29" y="207" width="292" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -523,20 +496,11 @@ should appear</string>
                                                     </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c3z-Qv-pgf">
-                                                    <rect key="frame" x="17" y="283" width="132" height="17"/>
+                                                    <rect key="frame" x="17" y="290" width="132" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Location information:" id="xPo-9e-Nw2">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0G5-Y9-yVi">
-                                                    <rect key="frame" x="47" y="231" width="312" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Some videos include multiple location informations" id="hYB-y2-5Iv">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
@@ -572,7 +536,7 @@ should appear</string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AA1-DI-Dei">
-                                                    <rect key="frame" x="46" y="184" width="332" height="17"/>
+                                                    <rect key="frame" x="47" y="184" width="332" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Your current locale is " id="FRS-mq-r4b">
                                                         <font key="font" metaFont="system"/>
@@ -676,6 +640,64 @@ should appear</string>
                                                         <action selector="extraTextFieldChange:" target="-2" id="SPD-NN-nV1"/>
                                                     </connections>
                                                 </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UWx-zh-UlZ">
+                                                    <rect key="frame" x="47" y="234" width="72" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Fade in/out" id="Hkv-Ca-c6A">
+                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vwV-g6-SF4">
+                                                    <rect key="frame" x="125" y="229" width="107" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <popUpButtonCell key="cell" type="push" title="1 Second" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="A8B-Cb-jvo" id="YEr-La-tPj">
+                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="menu"/>
+                                                        <menu key="menu" id="8QE-J3-wjY">
+                                                            <items>
+                                                                <menuItem title="None" id="noA-G7-biS"/>
+                                                                <menuItem title="0.5 Second" id="Zwc-nM-OD0"/>
+                                                                <menuItem title="1 Second" state="on" id="A8B-Cb-jvo"/>
+                                                                <menuItem title="2 Seconds" id="3MV-ak-AHM">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                </menuItem>
+                                                            </items>
+                                                        </menu>
+                                                    </popUpButtonCell>
+                                                    <connections>
+                                                        <action selector="fadeInOutTextModePopupChange:" target="-2" id="oYq-Zs-e8C"/>
+                                                    </connections>
+                                                </popUpButton>
+                                                <button toolTip="How long should the descriptions stay on screen" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="omO-3f-eoL">
+                                                    <rect key="frame" x="29" y="262" width="107" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Show location" bezelStyle="regularSquare" imagePosition="left" inset="2" id="F7m-zV-2tM">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="showDescriptionsClickWithButton:" target="-2" id="LWZ-gL-jo6"/>
+                                                    </connections>
+                                                </button>
+                                                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qmX-6m-Whj">
+                                                    <rect key="frame" x="140" y="258" width="107" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <popUpButtonCell key="cell" type="push" title="10 Seconds" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wjq-nI-072" id="S3w-hi-xoE">
+                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="menu"/>
+                                                        <menu key="menu" id="rE1-IA-Gwp">
+                                                            <items>
+                                                                <menuItem title="10 Seconds" state="on" id="wjq-nI-072" userLabel="10 Seconds"/>
+                                                                <menuItem title="Always" id="aCg-qD-wSL"/>
+                                                            </items>
+                                                        </menu>
+                                                    </popUpButtonCell>
+                                                    <connections>
+                                                        <action selector="descriptionModePopupChange:" target="-2" id="Eas-vP-eBK"/>
+                                                    </connections>
+                                                </popUpButton>
                                             </subviews>
                                         </view>
                                     </tabViewItem>

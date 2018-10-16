@@ -67,6 +67,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var popupVideoFormat: NSPopUpButton!
     @IBOutlet var descriptionModePopup: NSPopUpButton!
     @IBOutlet var fadeInOutModePopup: NSPopUpButton!
+    @IBOutlet weak var fadeInOutTextModePopup: NSPopUpButton!
     
     @IBOutlet var versionLabel: NSTextField!
     @IBOutlet var popover: NSPopover!
@@ -298,7 +299,9 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         descriptionModePopup.selectItem(at: preferences.showDescriptionsMode!)
         
         fadeInOutModePopup.selectItem(at: preferences.fadeMode!)
-        
+
+        fadeInOutTextModePopup.selectItem(at: preferences.fadeModeText!)
+
         extraCornerPopup.selectItem(at: preferences.extraCorner!)
         
         colorizeProjectPageLinks()
@@ -553,6 +556,13 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         debugLog("fm index change : \(sender.indexOfSelectedItem)")
         
         preferences.fadeMode = sender.indexOfSelectedItem
+        preferences.synchronize()
+    }
+    
+    @IBAction func fadeInOutTextModePopupChange(_ sender: NSPopUpButton) {
+        debugLog("fmt index change : \(sender.indexOfSelectedItem)")
+        
+        preferences.fadeModeText = sender.indexOfSelectedItem
         preferences.synchronize()
     }
     

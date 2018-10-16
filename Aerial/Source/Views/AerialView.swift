@@ -49,6 +49,20 @@ class AerialView: ScreenSaverView {
         }
     }
     
+    static var textFadeDuration: Double {
+        let preferences = Preferences.sharedInstance
+        switch preferences.fadeModeText {
+        case Preferences.FadeMode.t0_5.rawValue:
+            return 0.5
+        case Preferences.FadeMode.t1.rawValue:
+            return 1
+        case Preferences.FadeMode.t2.rawValue:
+            return 2
+        default:
+            return 0.10
+        }
+    }
+    
     static var sharingPlayers: Bool {
         let preferences = Preferences.sharedInstance
         return (preferences.multiMonitorMode == Preferences.MultiMonitorMode.mirrored.rawValue)
@@ -546,7 +560,7 @@ class AerialView: ScreenSaverView {
     func createFadeInOutAnimation(duration: Double) -> CAKeyframeAnimation {
         let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
         fadeAnimation.values = [0, 0, 1, 1, 0] as [NSNumber]
-        fadeAnimation.keyTimes = [0, Double( 1/duration ), Double( (1+AerialView.fadeDuration)/duration ), Double( 1-AerialView.fadeDuration/duration ), 1] as [NSNumber]
+        fadeAnimation.keyTimes = [0, Double( 1/duration ), Double( (1+AerialView.textFadeDuration)/duration ), Double( 1-AerialView.textFadeDuration/duration ), 1] as [NSNumber]
         fadeAnimation.duration = duration
         
         return fadeAnimation
