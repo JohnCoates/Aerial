@@ -196,6 +196,12 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         if #available(OSX 10.10, *) {
             playerView.videoGravity = AVLayerVideoGravity.resizeAspectFill
         }
+
+        // To loop playback, we catch the end of the video to rewind
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(playerItemDidReachEnd(notification:)),
+                                               name: Notification.Name.AVPlayerItemDidPlayToEndTime,
+                                               object: player.currentItem)
         
         if #available(OSX 10.12, *) {
         } else {
@@ -313,6 +319,16 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     
     @IBAction func close(_ sender: AnyObject?) {
         window?.sheetParent?.endSheet(window!)
+    }
+    
+    // MARK: Video playback
+    
+    // Rewind preview video when reaching end
+    @objc func playerItemDidReachEnd(notification: Notification) {
+        if let playerItem: AVPlayerItem = notification.object as? AVPlayerItem {
+            playerItem.seek(to: CMTime.zero, completionHandler: nil)
+            self.player.play()
+        }
     }
     
     // MARK: - Setup

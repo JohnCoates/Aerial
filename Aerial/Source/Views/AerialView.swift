@@ -232,6 +232,7 @@ class AerialView: ScreenSaverView {
         
         if AerialView.sharingPlayers && AerialView.singlePlayerAlreadySetup {
             self.playerLayer.player = AerialView.sharedViews[0].player
+            self.playerLayer.opacity = 0
             return
         }
         
