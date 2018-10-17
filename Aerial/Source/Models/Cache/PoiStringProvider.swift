@@ -43,6 +43,8 @@ class PoiStringProvider {
             self.stringBundle = sb
             self.loadedDescriptions = true
             self.loadedDescriptionsWasLocalized = preferences.localizeDescriptions
+        } else {
+            NSLog("Aerial: TVIdleScreenStrings.bundle is missing, please remove entries.json to fix the issue")
         }
     }
 

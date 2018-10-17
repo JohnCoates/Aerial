@@ -85,11 +85,9 @@ class AerialVideo: CustomStringConvertible, Equatable {
                     return URL(string: self.url4KHEVC)!
                 }
                 else if (url1080pHEVC != "") {
-                    //debugLog("4K NOT AVAILABLE, retunring 1080P HEVC as closest available")
                     return URL(string: self.url1080pHEVC)!
                 }
                 else {
-                    //debugLog("4K NOT AVAILABLE, retunring 1080P H264 as closest available")
                     return URL(string: self.url1080pH264)!
                 }
             }
@@ -99,11 +97,9 @@ class AerialVideo: CustomStringConvertible, Equatable {
                     return URL(string: self.url1080pHEVC)!
                 }
                 else if (url1080pH264 != "") {
-                    //debugLog("1080pHEVC NOT AVAILABLE, retunring 1080P H264 as closest available")
                     return URL(string: self.url1080pH264)!
                 }
                 else {
-                    //debugLog("1080pHEVC NOT AVAILABLE, retunring 4K HEVC as closest available")
                     return URL(string: self.url4KHEVC)!
                 }
             }
@@ -113,27 +109,12 @@ class AerialVideo: CustomStringConvertible, Equatable {
                     return URL(string: self.url1080pH264)!
                 }
                 else if (url1080pHEVC != "") {
-                    //debugLog("1080pH264 NOT AVAILABLE, retunring 1080P HEVC as closest available")
-                    return URL(string: self.url1080pHEVC)!
+                    return URL(string: self.url1080pHEVC)!      // With the latest versions, we should always have a H.264 fallback so this is just for future proofing
                 }
                 else {
-                    //debugLog("1080pHEVC NOT AVAILABLE, retunring 4K HEVC as closest available")
                     return URL(string: self.url4KHEVC)!
                 }
             }
-
-            
-            /*switch preferences.videoFormat {
-                case Preferences.VideoFormat.v1080pH264.rawValue:
-                    return URL(string: self.url1080pH264)!
-                case Preferences.VideoFormat.v1080pHEVC.rawValue:
-                    return URL(string: self.url1080pHEVC)!
-                case Preferences.VideoFormat.v4KHEVC.rawValue:
-                    return URL(string: self.url4KHEVC)!
-                default:
-                    return URL(string: url1080pH264)!
-            }*/
-            
         }
     }
     
@@ -151,7 +132,7 @@ class AerialVideo: CustomStringConvertible, Equatable {
             }
         } else {
             self.name = name
-            self.secondaryName = secondaryName      // We may have a secondary name from our merges
+            self.secondaryName = secondaryName      // We may have a secondary name from our merges too now !
         }
         
         self.type = type
@@ -212,7 +193,7 @@ class AerialVideo: CustomStringConvertible, Equatable {
         }
         else
         {
-            print("Could not determine duration, video is not cached")
+            debugLog("Could not determine duration, video is not cached in any format")
             self.duration = 0
         }
     }

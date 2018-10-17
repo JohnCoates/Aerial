@@ -18,9 +18,6 @@ class Preferences {
         case multiMonitorMode = "multiMonitorMode"
         case cacheAerials = "cacheAerials"
         case customCacheDirectory = "cacheDirectory"
-        case manifestTvOS10 = "manifestTvOS10"
-        case manifestTvOS11 = "manifestTvOS11"
-        case manifestTvOS12 = "manifestTvOS12"
         case videoFormat = "videoFormat"
         case showDescriptions = "showDescriptions"
         case showDescriptionsMode = "showDescriptionsMode"
@@ -264,33 +261,6 @@ class Preferences {
         }
     }
 
-    var manifestTvOS10: Data? {
-        get {
-            return optionalValue(forIdentifier: .manifestTvOS10)
-        }
-        set {
-            setValue(forIdentifier: .manifestTvOS10, value: newValue)
-        }
-    }
-    
-    var manifestTvOS11: Data? {
-        get {
-            return optionalValue(forIdentifier: .manifestTvOS11)
-        }
-        set {
-            setValue(forIdentifier: .manifestTvOS11, value: newValue)
-        }
-    }
-    
-    var manifestTvOS12: Data? {
-        get {
-            return optionalValue(forIdentifier: .manifestTvOS12)
-        }
-        set {
-            setValue(forIdentifier: .manifestTvOS12, value: newValue)
-        }
-    }
-
     var descriptionCorner: Int? {
         get {
             return optionalValue(forIdentifier: .descriptionCorner)
@@ -410,12 +380,6 @@ class Preferences {
     fileprivate func optionalValue(forIdentifier identifier: Identifiers) -> Double? {
         let key = identifier.rawValue
         return userDefaults.double(forKey: key)
-    }
-    
-    fileprivate func optionalValue(forIdentifier
-        identifier: Identifiers) -> Data? {
-        let key = identifier.rawValue
-        return userDefaults.data(forKey: key)
     }
     
     fileprivate func setValue(forIdentifier identifier: Identifiers, value: Any?) {

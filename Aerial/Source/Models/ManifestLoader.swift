@@ -20,6 +20,10 @@ class ManifestLoader {
     var processedVideos = [AerialVideo]()
     var lastPluckedFromPlaylist: AerialVideo?
     
+    var manifestTvOS10: Data?
+    var manifestTvOS11: Data?
+    var manifestTvOS12: Data?
+
     // Playlist management
     var playlistIsRestricted = false
     var playlistRestrictedTo = ""
@@ -204,7 +208,6 @@ class ManifestLoader {
         
         // On regenerating a new playlist, we try to avoid repeating
         while (playlist.count > 1 && lastPluckedFromPlaylist == playlist.first) {
-            //NSLog("AerialDBG: Reshuffle")
             playlist.shuffle()
         }
     }
@@ -214,7 +217,6 @@ class ManifestLoader {
         let (shouldRestrictByDayNight,restrictTo) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
 
         if (playlist.count == 0 || (restrictTo != playlistRestrictedTo) || (shouldRestrictByDayNight != playlistIsRestricted)) {
-            //NSLog("AerialDBG: Generating new playlist")
             generatePlaylist(isRestricted: shouldRestrictByDayNight, restrictedTo: restrictTo)
         }
         
@@ -239,10 +241,10 @@ class ManifestLoader {
         // - return a random one from the manifest that is cached
         // - return a random video that is not cached (slight betrayal of the Never stream videos)
         
-        NSLog("AerialDBG: empty playlist, not good !")
+        NSLog("Aerial: empty playlist, not good !")
 
         if lastPluckedFromPlaylist != nil {
-            NSLog("AerialDBG: returning last played video after condition change not met !")
+            NSLog("Aerial: returning last played video after condition change not met !")
             return lastPluckedFromPlaylist!
         } else {
             // Start with a shuffled list
@@ -251,7 +253,7 @@ class ManifestLoader {
             if (shuffled.count == 0)
             {
                 // This is super bad, no manifest at all
-                NSLog("AerialDBG: No manifest, nothing to play !")
+                NSLog("Aerial: No manifest, nothing to play !")
                 return nil
             }
             
@@ -261,42 +263,42 @@ class ManifestLoader {
                 
                 // If we find anything cached and in rotation, we send that back
                 if video.isAvailableOffline && inRotation {
-                    NSLog("AerialDBG: returning random cached in rotation video after condition change not met !")
+                    NSLog("Aerial: returning random cached in rotation video after condition change not met !")
                     return video
                 }
             }
             // Nothing ? Sorry but you'll get a non cached file
-            NSLog("AerialDBG: returning random video after condition change not met !")
+            NSLog("Aerial: returning random video after condition change not met !")
             return shuffled.first!
         }
     }
     
     init() {
-        NSLog("AerialML: Manifest init")
+        NSLog("Aerial: Manifest init")
         // We try to load our video manifests in 3 steps :
         // - use locally saved data in preferences plist
         // - reprocess the saved files in cache directory (full offline mode)
         // - download the manifests from servers
 
-        NSLog("AerialML: 10 \(isManifestCached(manifest: .tvOS10))")
-        NSLog("AerialML: 11 \(isManifestCached(manifest: .tvOS11))")
-        NSLog("AerialML: 12 \(isManifestCached(manifest: .tvOS12))")
+        NSLog("Aerial: 10 \(isManifestCached(manifest: .tvOS10))")
+        NSLog("Aerial: 11 \(isManifestCached(manifest: .tvOS11))")
+        NSLog("Aerial: 12 \(isManifestCached(manifest: .tvOS12))")
         
-        if areManifestsSaved() {
-            NSLog("AerialML: Loading from plist")
-            loadSavedManifests()
+        if areManifestsFilesLoaded() {
+            NSLog("Aerial: Files were already loaded")
+            loadManifestsFromLoadedFiles()
         }
         else
         {
-            NSLog("AerialML: Not available from plist")
+            NSLog("Aerial: Files were not already loaded")
             // Manifests are not in our preferences plist, are they cached on disk ?
             if areManifestsCached() {
-                NSLog("AerialML: Manifests are cached on disk, loading")
+                NSLog("Aerial: Manifests are cached on disk, loading")
                 loadCachedManifests()
             }
             else {
                 // Ok then, we fetch them...
-                NSLog("AerialML: fetching missing manifests online")
+                NSLog("Aerial: Fetching missing manifests online")
                 let downloadManager = DownloadManager()
                 
                 var urls: [URL] = []
@@ -315,7 +317,7 @@ class ManifestLoader {
                 }
 
                 let completion = BlockOperation {
-                    NSLog("AerialML: fetching all done")
+                    NSLog("Aerial: Fetching all done")
                     // We can now load from the newly cached files
                     self.loadCachedManifests()
                     
@@ -331,14 +333,14 @@ class ManifestLoader {
         }
     }
 
-    // Check if the Manifests have been saved in our preferences plist
-    func areManifestsSaved() -> Bool {
-        if (preferences.manifestTvOS12 != nil && preferences.manifestTvOS11 != nil && preferences.manifestTvOS10 != nil) {
-            NSLog("AerialML: manifests are saved in preferences")
+    // Check if the Manifests have been loaded in this class already
+    func areManifestsFilesLoaded() -> Bool {
+        if (manifestTvOS12 != nil && manifestTvOS11 != nil && manifestTvOS10 != nil) {
+            NSLog("Aerial: manifests files were loaded in class")
             return true
         }
         else {
-            NSLog("AerialML: manifests are NOT saved in preferences")
+            NSLog("Aerial: manifests files were not loaded in class")
             return false
         }
     }
@@ -360,7 +362,7 @@ class ManifestLoader {
                 return false
             }
             
-            NSLog("AerialML: \(manifest.rawValue) manifest is cached")
+            NSLog("Aerial: \(manifest.rawValue) manifest is cached")
         }
         else
         {
@@ -376,10 +378,9 @@ class ManifestLoader {
             // tvOS12
             var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
             cacheFileUrl.appendPathComponent("entries.json")
-            NSLog("AerialML: 12path : \(cacheFileUrl)")
             do {
                 let ndata = try Data(contentsOf: cacheFileUrl)
-                self.preferences.manifestTvOS12 = ndata
+                manifestTvOS12 = ndata
             }
             catch {
                 NSLog("Aerial: Error can't load entries.json from cached directory (tvOS12)")
@@ -388,11 +389,9 @@ class ManifestLoader {
             // tvOS11
             cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
             cacheFileUrl.appendPathComponent("tvos11.json")
-            NSLog("AerialML: 11path : \(cacheFileUrl)")
-
             do {
                 let ndata = try Data(contentsOf: cacheFileUrl)
-                self.preferences.manifestTvOS11 = ndata
+                manifestTvOS11 = ndata
             }
             catch {
                 NSLog("Aerial: Error can't load tvos11.json from cached directory ")
@@ -401,59 +400,54 @@ class ManifestLoader {
             // tvOS10
             cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
             cacheFileUrl.appendPathComponent("tvos10.json")
-            NSLog("AerialML: 10path : \(cacheFileUrl)")
-
             do {
                 let ndata = try Data(contentsOf: cacheFileUrl)
-                self.preferences.manifestTvOS10 = ndata
+                manifestTvOS10 = ndata
             }
             catch {
                 NSLog("Aerial: Error can't load tvos10.json from cached directory")
             }
 
-            if self.preferences.manifestTvOS10 != nil || self.preferences.manifestTvOS11 != nil || self.preferences.manifestTvOS12 != nil {
-                loadSavedManifests()
+            if manifestTvOS10 != nil || manifestTvOS11 != nil || manifestTvOS12 != nil {
+                loadManifestsFromLoadedFiles()
             } else {
                 // No internet, no anything, nothing to do
-                NSLog("AerialDBG: No video to load, no internet connexion ?")
+                NSLog("Aerial: No video to load, no internet connexion ?")
             }
         }
     }
     
     // Load Manifests from the saved preferences
-    func loadSavedManifests() {
-        NSLog("AerialML: LSM")
-        
+    func loadManifestsFromLoadedFiles() {
         // Reset our array
         processedVideos = []
 
-        if (preferences.manifestTvOS12 != nil) {
-            NSLog("AerialML: lsm12")
+        if (manifestTvOS12 != nil) {
+            NSLog("Aerial: LMFLF12")
             // We start with the more recent one, it has more information (poi, etc)
-            readJSONFromData(preferences.manifestTvOS12!, manifest: .tvOS12)
+            readJSONFromData(manifestTvOS12!, manifest: .tvOS12)
         }
-        if (preferences.manifestTvOS11 != nil) {
-            NSLog("AerialML: lsm11")
+        if (manifestTvOS11 != nil) {
+            NSLog("Aerial: LMFLF12")
             // This one has a couple videos not in the tvOS12 JSON. No H264 for these !
-            readJSONFromData(preferences.manifestTvOS11!, manifest: .tvOS11)
+            readJSONFromData(manifestTvOS11!, manifest: .tvOS11)
         }
-        if (preferences.manifestTvOS10 != nil) {
-            NSLog("AerialML: lsm10")
+        if (manifestTvOS10 != nil) {
+            NSLog("Aerial: LMFLF12")
             // The original manifest is in another format
-            readOldJSONFromData(preferences.manifestTvOS10!, manifest: .tvOS10)
+            readOldJSONFromData(manifestTvOS10!, manifest: .tvOS10)
         }
 
-        NSLog("AerialML: post json loading")
+        NSLog("Aerial: post json loading")
 
-        processedVideos = processedVideos.sorted { $0.secondaryName < $1.secondaryName }    // Only matters for Space videos, this way they show sorted in the Space category
+        processedVideos = processedVideos.sorted { $0.secondaryName < $1.secondaryName }    // We sort videos by secondary names, so they can display sorted in our view later
         
         self.loadedManifest = processedVideos
         
-        NSLog("AerialML: \(processedVideos.count) videos processed !")
+        NSLog("Aerial: \(processedVideos.count) videos processed !")
         
         // callbacks
         for callback in self.callbacks {
-            NSLog("AerialML: Calling back")
             callback(self.loadedManifest)
         }
         self.callbacks.removeAll()
@@ -656,99 +650,4 @@ class ManifestLoader {
         
         return (false,nil)
     }
-    
-/*    func checkContentLength(_ video: AerialVideo) {
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        let request = NSMutableURLRequest(url: video.url as URL)
-        
-        request.httpMethod = "HEAD"
-        
-        let task = session.dataTask(with: request as URLRequest,
-                                    completionHandler: {
-                                        data, response, error in
-            video.contentLengthChecked = true
-            
-            if let error = error {
-                NSLog("error fetching content length: \(error)")
-                DispatchQueue.main.async(execute: { () -> Void in
-                    self.receivedContentLengthResponse()
-                })
-                return
-            }
-            
-            guard let response = response else {
-                return
-            }
-            
-            video.contentLength = Int(response.expectedContentLength)
-//            NSLog("content length: \(response.expectedContentLength)")
-            DispatchQueue.main.async(execute: { () -> Void in
-                self.receivedContentLengthResponse()
-            })
-        }) 
-        
-        task.resume()
-    }
-    
-    func receivedContentLengthResponse() {
-        // check if content length on all videos has been checked
-        for video in loadedManifest {
-            if video.contentLengthChecked == false {
-                return
-            }
-        }
-        
-        filterVideoAndProcessCallbacks()
-    }
-    
-    func filterVideoAndProcessCallbacks() {
-        let unfiltered = loadedManifest
-        
-        var filtered = [AerialVideo]()
-        for video in unfiltered {
-            // offline? eror? just put it through
-            if video.contentLength == 0 {
-                filtered.append(video)
-                continue
-            }
-            
-            // check to see if we find another video with the same content length
-            var isDuplicate = false
-            for videoCheck in filtered {
-                if videoCheck.id == video.id {
-                    isDuplicate = true
-                    continue
-                }
-                
-                if videoCheck.name != video.name {
-                    continue
-                }
-                
-                if videoCheck.timeOfDay != video.timeOfDay {
-                    continue
-                }
-                
-                if videoCheck.contentLength == video.contentLength {
-//                    NSLog("removing duplicate video \(videoCheck.name) \(videoCheck.timeOfDay)")
-                    isDuplicate = true
-                    break
-                }
-            } // dupe check
-            
-            if isDuplicate == true {
-                continue
-            }
-            
-            filtered.append(video)
-        }
-        
-        loadedManifest = filtered
-        
-        // callbacks
-        for callback in self.callbacks {
-            callback(filtered)
-        }
-        self.callbacks.removeAll()
-    }*/
 }
