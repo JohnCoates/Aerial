@@ -39,7 +39,7 @@ If Aerial.saver could not be opened, place Aerial.saver in `~/Library/Screen Sav
 
 **Important** : Please note that if you are upgrading from a previous version, we strongly recommand you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated.
 
-### Brew Cask Support - (Updated for Version 1.4, 1.4.1 coming soon)
+### Brew Cask Support - (Updated for Version 1.4.1)
 
 If you're looking to install Aerial across many systems, remotely, or simply from terminal we recommend [Brew Cask](https://caskroom.github.io). Prefer this method if you're looking for auto-updates.
 
