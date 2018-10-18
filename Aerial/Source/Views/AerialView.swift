@@ -261,7 +261,7 @@ class AerialView: ScreenSaverView {
         debugLog("startAnimation")
 
         // Previews may be restarted, but our layer will hidden (somehow) so show it back
-        if (isPreview) {
+        if (isPreview && player?.currentTime() != CMTime.zero) {
             playerLayer.opacity = 1
         }
         
