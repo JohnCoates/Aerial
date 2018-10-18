@@ -31,11 +31,7 @@ class City {
     init(name: String) {
         self.name = name
     }
-    /*func addVideo(video: AerialVideo)
-    {
-        video.arrayPosition = videos.count
-        videos.append(video)
-    }*/
+
     func addVideoForTimeOfDay(_ timeOfDay: String, video: AerialVideo) {
         if timeOfDay.lowercased() == "night" {
             video.arrayPosition = night.videos.count
@@ -108,7 +104,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var logPanel: NSPanel!
     @IBOutlet weak var logTableView: NSTableView!
     @IBOutlet weak var debugModeCheckbox: NSButton!
-@IBOutlet weak var logToDiskCheckbox: NSButton!
+    @IBOutlet weak var logToDiskCheckbox: NSButton!
     
     var player: AVPlayer = AVPlayer()
     
@@ -126,10 +122,14 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     // MARK: - Init
     required init?(coder decoder: NSCoder) {
         self.fontManager = NSFontManager.shared
+        debugLog("pwc init1")
         super.init(coder: decoder)
     }
+    
+    // We start here from SysPref and App mode
     override init(window: NSWindow?) {
         self.fontManager = NSFontManager.shared
+        debugLog("pwc init2")
         super.init(window: window)
     }
     
@@ -140,9 +140,11 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
 
         self.fontManager.target = self
 
-        if let previewPlayer = AerialView.previewPlayer {
+        // This used to grab the preview player and put it in our own video preview thing.
+        // While kinda cool, it showed a random video that wasn't selected, and with new lifecycle, it was paused
+        /*if let previewPlayer = AerialView.previewPlayer {
             self.player = previewPlayer
-        }
+        }*/
 
         outlineView.floatsGroupRows = false
 

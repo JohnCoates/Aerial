@@ -92,12 +92,12 @@ class ManifestLoader {
         "b1-2":"Tower Bridge 1",                                                    // London night 1
         "b3-1":"Tower Bridge 2",                                                    // London night 2
         
-        "829E69BA-BB53-4841-A138-4DF0C2A74236":"LAX",                               // Los Angeles day 1
-        "30A2A488-E708-42E7-9A90-B749A407AE1C":"Interstate 110",                    // Los Angeles day 2
+        "829E69BA-BB53-4841-A138-4DF0C2A74236":"Los Angeles International Airport",                               // Los Angeles day 1
+        "30A2A488-E708-42E7-9A90-B749A407AE1C":"Harbor Freeway (Interstate 110)",                    // Los Angeles day 2
         "B730433D-1B3B-4B99-9500-A286BF7A9940":"Santa Monica Beach",                // Los Angeles day 3
         
         "89B1643B-06DD-4DEC-B1B0-774493B0F7B7":"Griffith Observatory",              // Los Angeles night 1
-        "EC67726A-8212-4C5E-83CF-8412932740D2":"Hollywood Sign",                    // Los Angeles night 2
+        "EC67726A-8212-4C5E-83CF-8412932740D2":"Hollywood Hills",                    // Los Angeles night 2
         "A284F0BF-E690-4C13-92E2-4672D93E8DE5":"Downtown",                          // Los Angeles night 3
         
         "b7-2":"Central Park",                                                      // New York day 1
@@ -108,18 +108,18 @@ class ManifestLoader {
         "b4-2":"Lower Manhattan",                                                   // New York night 2
         
         
-        "b8-2":"Marin Headlands",                                    // San Francisco day 1
-        "b10-3":"Presidio to Golden Gate",                                          // San Francisco day 2
+        "b8-2":"Marin Headlands",                                                   // San Francisco day 1
+        "b10-3":"Marin Headlands to Golden Gate",                                          // San Francisco day 2
         "b9-3":"Bay and Golden Gate",                                               // San Francisco day 3
-        "b8-3":"Downtown",                                                          // San Francisco day 4
-        "b3-3":"Embarcadero/Market Street",                                      // San Francisco day 5
+        "b8-3":"Alamo Square",                                                      // San Francisco day 4
+        "b3-3":"The Embarcadero and Market Street",                                 // San Francisco day 5
         "b4-3":"Golden Gate from SF",                                               // San Francisco day 6
         
-        "b6-4":"Downtown/Coit Tower",                                               // San Francisco night 1
-        "b7-3":"Fisherman's Wharf",                                                 // San Francisco night 2
-        "b5-3":"Embarcadero/Market Street",                                      // San Francisco night 3
+        "b6-4":"Downtown and Coit Tower",                                               // San Francisco night 1
+        "b7-3":"Fisherman’s Wharf",                                                 // San Francisco night 2
+        "b5-3":"The Embarcadero and Market Street",                                      // San Francisco night 3
         "b1-4":"Bay Bridge",                                                        // San Francisco night 4
-        "b2-4":"Downtown/Sutro Tower"                                               // San Francisco night 5
+        "b2-4":"Downtown and Sutro Tower"                                               // San Francisco night 5
     ]
     
     // Extra POI

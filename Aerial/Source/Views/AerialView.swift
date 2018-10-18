@@ -91,16 +91,18 @@ class AerialView: ScreenSaverView {
     }
     
     // MARK: - Init / Setup
-    
+    // This is the one used by System Preferences
     override init?(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)
-        
+        debugLog("avInit1")
         self.animationTimeInterval = 1.0 / 30.0
         setup()
     }
     
+    // This is the one used by App
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        debugLog("avInit2")
         setup()
     }
     
@@ -129,63 +131,12 @@ class AerialView: ScreenSaverView {
         AerialView.players.remove(at: index)
     }
     
-    func setupPlayerLayer(withPlayer player: AVPlayer) {
-        self.layer = CALayer()
-        guard let layer = self.layer else {
-            errorLog("Couldn't create CALayer")
-            return
-        }
-        self.wantsLayer = true
-        layer.backgroundColor = NSColor.black.cgColor
-        layer.needsDisplayOnBoundsChange = true
-        layer.frame = self.bounds
-        
-        debugLog("setting up player layer with frame: \(self.bounds) / \(self.frame)")
-        
-        playerLayer = AVPlayerLayer(player: player)
-        if #available(OSX 10.10, *) {
-            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        }
-        playerLayer.autoresizingMask = [CAAutoresizingMask.layerWidthSizable, CAAutoresizingMask.layerHeightSizable]
-        playerLayer.frame = layer.bounds
-        playerLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
-        layer.addSublayer(playerLayer)
-        
-        textLayer = CATextLayer()
-        textLayer.opacity = 0
-        // Add a bit of shadow to give an outline and better readability
-        textLayer.shadowRadius = 10
-        textLayer.shadowOpacity = 1.0
-        textLayer.shadowColor = CGColor.black
-        textLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
-        layer.addSublayer(textLayer)
-        
-        // Clock Layer
-        clockLayer = CATextLayer()
-        clockLayer.opacity = 0
-        // Add a bit of shadow to give an outline and better readability
-        clockLayer.shadowRadius = 10
-        clockLayer.shadowOpacity = 1.0
-        textLayer.shadowColor = CGColor.black
-        clockLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
-        layer.addSublayer(clockLayer)
-        
-        // Message Layer
-        messageLayer = CATextLayer()
-        messageLayer.opacity = 0
-        // Add a bit of shadow to give an outline and better readability
-        messageLayer.shadowRadius = 10
-        messageLayer.shadowOpacity = 1.0
-        textLayer.shadowColor = CGColor.black
-        messageLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
-        layer.addSublayer(messageLayer)
-    }
-    
     func setup() {
         debugLog("AerialView setup init")
         var localPlayer: AVPlayer?
         
         let notPreview = !isPreview
+        debugLog("isPreview : \(isPreview)")
         
         if notPreview {
             let preferences = Preferences.sharedInstance
@@ -249,6 +200,83 @@ class AerialView: ScreenSaverView {
         }
     }
     
+    
+    func setupPlayerLayer(withPlayer player: AVPlayer) {
+        self.layer = CALayer()
+        guard let layer = self.layer else {
+            errorLog("Couldn't create CALayer")
+            return
+        }
+        self.wantsLayer = true
+        layer.backgroundColor = NSColor.black.cgColor
+        layer.needsDisplayOnBoundsChange = true
+        layer.frame = self.bounds
+        
+        debugLog("setting up player layer with frame: \(self.bounds) / \(self.frame)")
+        
+        playerLayer = AVPlayerLayer(player: player)
+        if #available(OSX 10.10, *) {
+            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        }
+        playerLayer.autoresizingMask = [CAAutoresizingMask.layerWidthSizable, CAAutoresizingMask.layerHeightSizable]
+        playerLayer.frame = layer.bounds
+        playerLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
+        layer.addSublayer(playerLayer)
+        
+        textLayer = CATextLayer()
+        textLayer.opacity = 0
+        // Add a bit of shadow to give an outline and better readability
+        textLayer.shadowRadius = 10
+        textLayer.shadowOpacity = 1.0
+        textLayer.shadowColor = CGColor.black
+        textLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
+        layer.addSublayer(textLayer)
+        
+        // Clock Layer
+        clockLayer = CATextLayer()
+        clockLayer.opacity = 0
+        // Add a bit of shadow to give an outline and better readability
+        clockLayer.shadowRadius = 10
+        clockLayer.shadowOpacity = 1.0
+        textLayer.shadowColor = CGColor.black
+        clockLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
+        layer.addSublayer(clockLayer)
+        
+        // Message Layer
+        messageLayer = CATextLayer()
+        messageLayer.opacity = 0
+        // Add a bit of shadow to give an outline and better readability
+        messageLayer.shadowRadius = 10
+        messageLayer.shadowOpacity = 1.0
+        textLayer.shadowColor = CGColor.black
+        messageLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
+        layer.addSublayer(messageLayer)
+    }
+    
+    // MARK: - Lifecycle stuff
+/*    override func draw(_ rect: NSRect) {
+    }*/
+    override func startAnimation() {
+        super.startAnimation()
+        debugLog("startAnimation")
+
+        // Previews may be restarted, but our layer will hidden (somehow) so show it back
+        if (isPreview) {
+            playerLayer.opacity = 1
+        }
+        
+        if player?.rate == 0 {
+            player?.play()
+        }
+    }
+
+    override func stopAnimation() {
+        super.stopAnimation()
+        debugLog("stopAnimation")
+        debugLog("player.rate : \(player!.rate)" )
+        player?.pause()
+        debugLog("player.rate : \(player!.rate)" )
+    }
     // MARK: - AVPlayerItem Notifications
     
     @objc func playerItemFailedtoPlayToEnd(_ aNotification: Notification) {
@@ -272,6 +300,26 @@ class AerialView: ScreenSaverView {
         debugLog("playing next video for player \(String(describing: player))")
     }
     
+    // Wait for the player to be ready
+    internal override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        debugLog("observeValue \(String(describing: change))")
+        if self.playerLayer.isReadyForDisplay {
+            // All playerLayers should fade, we only have one shared player
+            if AerialView.sharingPlayers {
+                for view in AerialView.sharedViews {
+                    self.addPlayerFades(player: self.player!, playerLayer: view.playerLayer, video: self.currentVideo!)
+                }
+            } else {
+                self.addPlayerFades(player: self.player!, playerLayer: self.playerLayer, video: self.currentVideo!)
+            }
+            
+            // Descriptions on main only for now
+            
+            self.addDescriptions(player: self.player!, video: self.currentVideo!)
+        }
+    }
+    
+    // MARK: - playNextVideo()
     func playNextVideo() {
         //let timeManagement = TimeManagement.sharedInstance
 
@@ -334,10 +382,10 @@ class AerialView: ScreenSaverView {
             debugLog("playing video (OFFLINE MODE) : \(localurl)")
         }
 
-        if player.rate == 0 {
+        /*if player.rate == 0 {
             player.play()
             //player.rate = 32.0
-        }
+        }*/
         
         guard let currentItem = player.currentItem else {
             errorLog("No current item!")
@@ -371,24 +419,8 @@ class AerialView: ScreenSaverView {
         player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
     }
     
-    // Wait for the player to be ready
-    internal override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if self.playerLayer.isReadyForDisplay {
-            // All playerLayers should fade, we only have one shared player
-            if AerialView.sharingPlayers {
-                for view in AerialView.sharedViews {
-                    self.addPlayerFades(player: self.player!, playerLayer: view.playerLayer, video: self.currentVideo!)
-                }
-            } else {
-                self.addPlayerFades(player: self.player!, playerLayer: self.playerLayer, video: self.currentVideo!)
-            }
-            
-            // Descriptions on main only for now
+    // MARK: - Extra Animations
 
-            self.addDescriptions(player: self.player!, video: self.currentVideo!)
-        }
-    }
-    
     private func addPlayerFades(player: AVPlayer, playerLayer: AVPlayerLayer, video: AerialVideo)
     {
         // We only fade in/out if we have duration

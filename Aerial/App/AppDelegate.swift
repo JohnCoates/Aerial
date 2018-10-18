@@ -16,7 +16,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         let objects = objectsFromNib(loadNibNamed: "PreferencesWindow")
-        
+
+        // We need to find the correct window in our nib
         for object in objects {
             if object is NSWindow {
                 if (object as! NSWindow).identifier!.rawValue == "preferencesWindow" {
@@ -24,13 +25,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             }
         }
-
-        /*guard let windowIndex = objects.index(where: { $0 is NSWindow }),
-        let preferencesWindow = objects[windowIndex] as? NSWindow
-        else {
-            fatalError("Missing window object")
-        }*/
-        
     }
     
     private func setUp(preferencesWindow window: NSWindow) {
