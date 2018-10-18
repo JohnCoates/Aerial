@@ -60,7 +60,7 @@ There are three options to uninstall Aerial from your Mac.
 * Or delete the file(s) directly. macOS can store screen savers in two locations. `/Library/Screen Savers` and `/Users/YOURUSERNAME/Library/Screen Savers`. Check both locations for a file called "Aerial.saver" and delete any copies you find.
 * If you installed Aerial using brew, then the following command in a Terminal window should remove the brew installed version. `brew cask uninstall aerial`
 
-You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aerial`. This is where Aerial stores the cached copies of the aerial videos. Last thing, you may want to delete the preferences `plist`. The file is `/Users/YOURUSERNAME/Library/Preferences/ByHost/com.JohnCoates.Aerial.{UUID}.plist`. It's highly recommanded to remove that file if you purge the Cache folder.
+You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aerial`. This is where Aerial stores the cached copies of the aerial videos. Last thing, you may want to delete the preferences `plist`. The file is `/Users/YOURUSERNAME/Library/Preferences/ByHost/com.JohnCoates.Aerial.{UUID}.plist`. It's highly recommended to remove that file if you purge the Cache folder.
 
 ## New features in version 1.4+
 
@@ -94,22 +94,22 @@ We appreciate all pull requests.
 If you want to use Aerial on a Mac behind a firewall or with no network access, the easiest way starting with version 1.4 is to copy the content of the cache folder from another Mac where Aerial is already installed. 
 
 If that's not an option, you can manually recreate a cache folder by downloading files manually. 
-- Download and untar `https://sylvan.apple.com/Aerials/resources.tar` (tvOS12 ressources, keep the tar *and* extracted files)
-- Download and rename `https://sylvan.apple.com/Aerials/2x/entries.json` to `tvos11.json` (tvOS11 ressources, also in 4K)
+- Download and untar `https://sylvan.apple.com/Aerials/resources.tar` (tvOS12 resources, keep the tar *and* extracted files)
+- Download and rename `https://sylvan.apple.com/Aerials/2x/entries.json` to `tvos11.json` (tvOS11 resources, also in 4K)
 - Download and rename `http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json` to `tvos10.json` (the original Aerials, in 1080p H.264 only)
 
 You can then download the videos you want from the JSON files. In the 4K JSONs, you are looking for the `url-1080-H264` (1080p H.264, most compatible format), `url-1080-SDR` (1080p HEVC, better quality, requires a recent Mac for hardware decoding) or `url-4K-SDR` (4K HEVC).
 
 ## About HEVC and hardware decoding
 
-Aerial uses Apple's AV Framework to play the videos as your screensaver. When available, AV Framework will use hardware decoding (from your CPU or your graphic card) to minimize the ressources needed for video playback. You can find guidelines in the help button next to the `Preferred video format` setting. By default, Aerial uses 1080p H.264 videos which is the most compatible format. Please note that all HEVC videos are encoded with the `Main10` profile, which may not be hardware accelerated by your machine, while some other HEVC videos (encoded in `Main` profile) will be.
+Aerial uses Apple's AV Framework to play the videos as your screensaver. When available, AV Framework will use hardware decoding (from your CPU or your graphic card) to minimize the resources needed for video playback. You can find guidelines in the help button next to the `Preferred video format` setting. By default, Aerial uses 1080p H.264 videos which is the most compatible format. Please note that all HEVC videos are encoded with the `Main10` profile, which may not be hardware accelerated by your machine, while some other HEVC videos (encoded in `Main` profile) will be.
 
 While we wish to provide everyone with the best setting for their machine, the GVA framework from Apple doesn't let us distinguish HEVC `Main10` profile acceleration from general HEVC acceleration. Early feedback we gathered also seems to point that on machines with multiple decoding option (Intel QuickSync and AMD UVD), QuickSync will always be prefered (even if you "force" the discrete GPU use with an external monitor).
 
 These are our recommandations so far:
 - Macs older than 2011 may lack H.264 acceleration. 
 - Macs with an Intel CPU (with iGPU) from the Sandy Bridge (2011) generation to Broadwell (early 2015) should have H.264 hardware acceleration available.
-- Late 2015 and 2016 Macs (Skylake and Kaby Lake) may only have partially accelerated HEVC decoding. We recommand you stick to 1080p H.264 on laptops. You may consider the HEVC format on desktops but understand that decoding may be CPU intensive and spin up your fans.
+- Late 2015 and 2016 Macs (Skylake and Kaby Lake) may only have partially accelerated HEVC decoding. We recommended you stick to 1080p H.264 on laptops. You may consider the HEVC format on desktops but understand that decoding may be CPU intensive and spin up your fans.
 - Macs 2017 and up should have full HEVC acceleration. 
 
 You can easily check for yourself what to expect by opening a video in Quicktime (use the `Show in Finder` option in the `Cache` tab to find the cached videos). In activity monitor, the AV Framework GVA process is called `VTDecoderXPCService`.
