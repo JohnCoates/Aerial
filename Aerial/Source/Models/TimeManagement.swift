@@ -37,7 +37,7 @@ class TimeManagement {
         else if preferences.timeMode == Preferences.TimeMode.nightShift.rawValue {
             let (isNSCapable, sunrise, sunset, _) = getNightShiftInformation()
             if (!isNSCapable) {
-                NSLog("Aerial : Trying to use Night Shift on a non capable Mac")
+                errorLog("Trying to use Night Shift on a non capable Mac")
                 return (false,"")
             }
             
@@ -49,11 +49,11 @@ class TimeManagement {
             dateFormatter.dateFormat = "HH:mm"
             
             guard let dateSunrise = dateFormatter.date(from: preferences.manualSunrise!) else {
-                NSLog("Aerial : Invalid sunrise time in preferences")
+                errorLog("Invalid sunrise time in preferences")
                 return(false,"")
             }
             guard let dateSunset = dateFormatter.date(from: preferences.manualSunset!) else {
-                NSLog("Aerial : Invalid sunrise time in preferences")
+                errorLog("Invalid sunset time in preferences")
                 return(false,"")
             }
             
@@ -130,7 +130,6 @@ class TimeManagement {
     func isDarkModeEnabled() -> Bool {
         if #available(OSX 10.14, *) {
             let modeString = UserDefaults.standard.string(forKey: "AppleInterfaceStyle")
-            
             return (modeString == "Dark")
         }
         else {
@@ -239,5 +238,4 @@ class TimeManagement {
         
         return (output, task.terminationStatus)
     }
-
 }

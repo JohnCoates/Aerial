@@ -97,7 +97,7 @@ class VideoDownloadOperation : AsynchronousOperation {
     }
     
     override func main() {
-        print("start \(video.name)")
+        debugLog("Starting download for \(video.name)")
         DispatchQueue.main.async {
             self.download = VideoDownload(video: self.video, delegate: self)
             self.download!.startDownload()
@@ -108,7 +108,7 @@ class VideoDownloadOperation : AsynchronousOperation {
 extension VideoDownloadOperation : VideoDownloadDelegate {
     func videoDownload(_ videoDownload: VideoDownload,
                        finished success: Bool, errorMessage: String?) {
-        print("finished")
+        debugLog("Finished")
         defer { finish() }
 
         // Call up to clean the view

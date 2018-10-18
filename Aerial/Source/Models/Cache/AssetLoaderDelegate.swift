@@ -36,7 +36,6 @@ class AssetLoaderDelegate: NSObject, AVAssetResourceLoaderDelegate, VideoLoaderD
 
     init(URL: Foundation.URL) {
         self.URL = URL
-//        self.URL = NSURL(string:"http://localhost/test.mov")!
         videoCache = VideoCache(URL: URL)
     }
     
@@ -98,5 +97,4 @@ class AssetLoaderDelegate: NSObject, AVAssetResourceLoaderDelegate, VideoLoaderD
         
         return true
     }
-    
 }

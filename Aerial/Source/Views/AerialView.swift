@@ -132,7 +132,7 @@ class AerialView: ScreenSaverView {
     func setupPlayerLayer(withPlayer player: AVPlayer) {
         self.layer = CALayer()
         guard let layer = self.layer else {
-            NSLog("Aerial Error: Couldn't create CALayer")
+            errorLog("Couldn't create CALayer")
             return
         }
         self.wantsLayer = true
@@ -148,26 +148,16 @@ class AerialView: ScreenSaverView {
         }
         playerLayer.autoresizingMask = [CAAutoresizingMask.layerWidthSizable, CAAutoresizingMask.layerHeightSizable]
         playerLayer.frame = layer.bounds
-        playerLayer.contentsScale = NSScreen.main?.backingScaleFactor ?? 1.0
-
+        playerLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(playerLayer)
         
         textLayer = CATextLayer()
-/*        textLayer.frame = CGRect(x: 20, y: layer.bounds.height-60, width: layer.bounds.width-40, height: 40)
-        textLayer.font = NSFont(name: "Helvetica Neue Medium", size: 28)
-        if self.frame.height < 400 {
-            textLayer.fontSize = 12 // Seems needed despite line above
-
-        } else {
-            textLayer.fontSize = 28 // Seems needed despite line above
-        }*/
-        textLayer.string = ""
         textLayer.opacity = 0
         // Add a bit of shadow to give an outline and better readability
         textLayer.shadowRadius = 10
         textLayer.shadowOpacity = 1.0
         textLayer.shadowColor = CGColor.black
-        textLayer.contentsScale = NSScreen.main?.backingScaleFactor ?? 1.0
+        textLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(textLayer)
         
         // Clock Layer
@@ -176,7 +166,8 @@ class AerialView: ScreenSaverView {
         // Add a bit of shadow to give an outline and better readability
         clockLayer.shadowRadius = 10
         clockLayer.shadowOpacity = 1.0
-        clockLayer.contentsScale = NSScreen.main?.backingScaleFactor ?? 1.0
+        textLayer.shadowColor = CGColor.black
+        clockLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(clockLayer)
         
         // Message Layer
@@ -185,12 +176,13 @@ class AerialView: ScreenSaverView {
         // Add a bit of shadow to give an outline and better readability
         messageLayer.shadowRadius = 10
         messageLayer.shadowOpacity = 1.0
-        messageLayer.contentsScale = NSScreen.main?.backingScaleFactor ?? 1.0
+        textLayer.shadowColor = CGColor.black
+        messageLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(messageLayer)
     }
     
     func setup() {
-        NSLog("AerialMM : setup init")
+        debugLog("AerialView setup init")
         var localPlayer: AVPlayer?
         
         let notPreview = !isPreview
@@ -229,7 +221,7 @@ class AerialView: ScreenSaverView {
         }
         
         guard let player = localPlayer else {
-            NSLog("Aerial Error: Couldn't create AVPlayer!")
+            errorLog("Couldn't create AVPlayer!")
             return
         }
         
@@ -260,24 +252,23 @@ class AerialView: ScreenSaverView {
     // MARK: - AVPlayerItem Notifications
     
     @objc func playerItemFailedtoPlayToEnd(_ aNotification: Notification) {
-        NSLog("AVPlayerItemFailedToPlayToEndTimeNotification \(aNotification)")
+        warnLog("AVPlayerItemFailedToPlayToEndTimeNotification \(aNotification)")
         
         playNextVideo()
     }
     
     @objc func playerItemNewErrorLogEntryNotification(_ aNotification: Notification) {
-        NSLog("AVPlayerItemNewErrorLogEntryNotification \(aNotification)")
+        warnLog("AVPlayerItemNewErrorLogEntryNotification \(aNotification)")
     }
     
     @objc func playerItemPlaybackStalledNotification(_ aNotification: Notification) {
-        NSLog("AVPlayerItemPlaybackStalledNotification \(aNotification)")
+        warnLog("AVPlayerItemPlaybackStalledNotification \(aNotification)")
     }
     
     @objc func playerItemDidReachEnd(_ aNotification: Notification) {
         debugLog("played did reach end")
         debugLog("notification: \(aNotification)")
         playNextVideo()
-
         debugLog("playing next video for player \(String(describing: player))")
     }
     
@@ -323,7 +314,7 @@ class AerialView: ScreenSaverView {
         let randomVideo = ManifestLoader.instance.randomVideo(excluding: currentVideos)
         
         guard let video = randomVideo else {
-            NSLog("Aerial: Error grabbing random video!")
+            errorLog("Error grabbing random video!")
             return
         }
         self.currentVideo = video
@@ -349,7 +340,7 @@ class AerialView: ScreenSaverView {
         }
         
         guard let currentItem = player.currentItem else {
-            NSLog("Aerial Error: No current item!")
+            errorLog("No current item!")
             return
         }
         
@@ -430,7 +421,6 @@ class AerialView: ScreenSaverView {
 
                 for pkv in video.poi
                 {
-                    //print("time \(pkv.key) \(poiStringProvider.getString(key: video.poi[pkv.key]!))")
                     let timeStamp = Double(pkv.key)!
                     times.append(NSValue(time: CMTime(seconds: timeStamp, preferredTimescale: 1)))
                 }

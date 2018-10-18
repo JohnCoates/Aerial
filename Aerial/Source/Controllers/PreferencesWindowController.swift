@@ -105,6 +105,11 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var extraMessageFontLabel: NSTextField!
     @IBOutlet weak var extraCornerPopup: NSPopUpButton!
     
+    @IBOutlet var logPanel: NSPanel!
+    @IBOutlet weak var logTableView: NSTableView!
+    @IBOutlet weak var debugModeCheckbox: NSButton!
+@IBOutlet weak var logToDiskCheckbox: NSButton!
+    
     var player: AVPlayer = AVPlayer()
     
     var videos: [AerialVideo]?
@@ -143,6 +148,9 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
 
         loadJSON()  // Async loading
 
+        logTableView.delegate = self
+        logTableView.dataSource = self
+
         if let version = Bundle(identifier: "com.johncoates.Aerial-Test")?.infoDictionary?["CFBundleShortVersionString"] as? String {
             versionLabel.stringValue = version
         }
@@ -150,7 +158,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             versionLabel.stringValue = version
         }
 
-        // Some icons are 10.12.2+ only
+        // Some better icons are 10.12.2+ only
         if #available(OSX 10.12.2, *) {
             iconTime1.image = NSImage(named: NSImage.touchBarHistoryTemplateName)
             iconTime2.image = NSImage(named: NSImage.touchBarComposeTemplateName)
@@ -207,6 +215,15 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         if #available(OSX 10.12, *) {
         } else {
             showClockCheckbox.isEnabled = false
+        }
+
+        // Aerial panel
+        if preferences.debugMode {
+            debugModeCheckbox.state = NSControl.StateValue.on
+        }
+        
+        if preferences.logToDisk {
+            logToDiskCheckbox.state = NSControl.StateValue.on
         }
         
         // Text panel
@@ -321,6 +338,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     }
     
     @IBAction func close(_ sender: AnyObject?) {
+        logPanel.close()
         window?.sheetParent?.endSheet(window!)
     }
     
@@ -358,19 +376,67 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         secondProjectPageLink.attributedTitle = coloredLink
     }
     
-    // MARK: - Preferences
+    
+    // MARK: - Video panel
+    
+    @IBAction func popupVideoFormatChange(_ sender:NSPopUpButton) {
+        debugLog("UI popupVideoFormat: \(sender.indexOfSelectedItem)")
+        preferences.videoFormat = sender.indexOfSelectedItem
+        preferences.synchronize()
+        
+        outlineView.reloadData()
+    }
+
+    @IBAction func helpButtonClick(_ button: NSButton!) {
+        popover.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
+    }
+
+    @IBAction func multiMonitorModePopupChange(_ sender:NSPopUpButton) {
+        debugLog("UI multiMonitorMode: \(sender.indexOfSelectedItem)")
+        preferences.multiMonitorMode = sender.indexOfSelectedItem
+        preferences.synchronize()
+    }
+    
+    @IBAction func fadeInOutModePopupChange(_ sender:NSPopUpButton) {
+        debugLog("UI fadeInOutMode: \(sender.indexOfSelectedItem)")
+        preferences.fadeMode = sender.indexOfSelectedItem
+        preferences.synchronize()
+    }
+
+    // MARK: - Text panel
+    
+    @IBAction func showDescriptionsClick(button: NSButton?) {
+        let state = showDescriptionsCheckbox.state
+        let onState = (state == NSControl.StateValue.on)
+        preferences.showDescriptions = onState
+        debugLog("UI showDescriptions: \(onState)")
+    }
+    
+    @IBAction func localizeForTvOS12Click(button: NSButton?) {
+        let state = localizeForTvOS12Checkbox.state
+        let onState = (state == NSControl.StateValue.on)
+        preferences.localizeDescriptions = onState
+        debugLog("UI localizeDescriptions: \(onState)")
+    }
+    
+    @IBAction func descriptionModePopupChange(_ sender:NSPopUpButton) {
+        debugLog("UI descriptionMode: \(sender.indexOfSelectedItem)")
+        preferences.showDescriptionsMode = sender.indexOfSelectedItem
+        preferences.synchronize()
+    }
+    
     @IBAction func fontPickerClick(_ sender:NSButton?) {
         // Make a panel
         let fp = self.fontManager.fontPanel(true)
-
+        
         // Set current font
         if let font = NSFont(name: preferences.fontName!,size: CGFloat(preferences.fontSize!)) {
             fp?.setPanelFont(font, isMultiple: false)
-
+            
         } else {
             fp?.setPanelFont(NSFont(name: "Helvetica Neue Medium", size: 28)!, isMultiple: false)
         }
-
+        
         // push the panel but mark which one we are editing
         fontEditing = 0
         fp?.makeKeyAndOrderFront(sender)
@@ -383,7 +449,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         // Update our label
         currentFontLabel.stringValue = preferences.fontName! + ", \(preferences.fontSize!) pt"
     }
-
+    
     @IBAction func extraFontPickerClick(_ sender:NSButton?) {
         // Make a panel
         let fp = self.fontManager.fontPanel(true)
@@ -400,7 +466,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         fontEditing = 1
         fp?.makeKeyAndOrderFront(sender)
     }
-
+    
     @IBAction func extraFontResetClick(_ sender:NSButton?) {
         preferences.extraFontName = "Helvetica Neue Medium"
         preferences.extraFontSize = 28
@@ -408,23 +474,11 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         // Update our label
         extraMessageFontLabel.stringValue = preferences.extraFontName! + ", \(preferences.extraFontSize!) pt"
     }
-
+    
     
     @IBAction func extraTextFieldChange(_ sender: NSTextField) {
-        print("changed message \(sender.stringValue)")
+        debugLog("UI extraTextField \(sender.stringValue)")
         preferences.showMessageString = sender.stringValue
-    }
-    
-    @IBAction func timeModeChange(_ sender:NSButton?) {
-        if sender == timeDisabledRadio {
-            preferences.timeMode = Preferences.TimeMode.disabled.rawValue
-        } else if sender == timeNightShiftRadio {
-            preferences.timeMode = Preferences.TimeMode.nightShift.rawValue
-        } else if sender == timeManualRadio {
-            preferences.timeMode = Preferences.TimeMode.manual.rawValue
-        } else if sender == timeLightDarkModeRadio {
-            preferences.timeMode = Preferences.TimeMode.lightDarkMode.rawValue
-        }
     }
     
     @IBAction func descriptionCornerChange(_ sender:NSButton?) {
@@ -438,6 +492,102 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             preferences.descriptionCorner = Preferences.DescriptionCorner.bottomRight.rawValue
         } else if sender == cornerRandom {
             preferences.descriptionCorner = Preferences.DescriptionCorner.random.rawValue
+        }
+    }
+
+    @IBAction func showClockClick(_ sender: NSButton) {
+        let onState = (sender.state == NSControl.StateValue.on)
+        preferences.showClock = onState
+        debugLog("UI showClock: \(onState)")
+
+    }
+    
+    @IBAction func showExtraMessageClick(_ sender: NSButton) {
+        let onState = (sender.state == NSControl.StateValue.on)
+        // We also need to enable/disable our message field
+        extraMessageTextField.isEnabled = onState
+        preferences.showMessage = onState
+        debugLog("UI showExtraMessage: \(onState)")
+
+    }
+    
+    @IBAction func fadeInOutTextModePopupChange(_ sender: NSPopUpButton) {
+        debugLog("UI fadeInOutTextMode: \(sender.indexOfSelectedItem)")
+        preferences.fadeModeText = sender.indexOfSelectedItem
+        preferences.synchronize()
+    }
+    
+    @IBAction func extraCornerPopupChange(_ sender: NSPopUpButton) {
+        debugLog("UI extraCorner: \(sender.indexOfSelectedItem)")
+        preferences.extraCorner = sender.indexOfSelectedItem
+        preferences.synchronize()
+    }
+
+    // MARK: - Cache panel
+    
+    @IBAction func cacheAerialsAsTheyPlayClick(_ button: NSButton!) {
+        let onState = (button.state == NSControl.StateValue.on)
+        preferences.cacheAerials = onState
+        debugLog("UI cacheAerialAsTheyPlay: \(onState)")
+    }
+    
+    @IBAction func neverStreamVideosClick(_ button: NSButton!) {
+        let onState = (button.state == NSControl.StateValue.on)
+        preferences.neverStreamVideos = onState
+        debugLog("UI neverStreamVideos: \(onState)")
+    }
+    
+    @IBAction func neverStreamPreviewsClick(_ button: NSButton!) {
+        let onState = (button.state == NSControl.StateValue.on)
+        preferences.neverStreamPreviews = onState
+        debugLog("UI neverStreamPreviews: \(onState)")
+    }
+    
+    @IBAction func showInFinder(_ button: NSButton!) {
+        NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: VideoCache.cacheDirectory!)
+    }
+
+    @IBAction func userSetCacheLocation(_ button: NSButton?) {
+        let openPanel = NSOpenPanel()
+        
+        openPanel.canChooseDirectories = true
+        openPanel.canChooseFiles = false
+        openPanel.canCreateDirectories = true
+        openPanel.allowsMultipleSelection = false
+        openPanel.title = "Choose Aerial Cache Directory"
+        openPanel.prompt = "Choose"
+        openPanel.directoryURL = cacheLocation.url
+        
+        openPanel.begin { result in
+            guard result.rawValue == NSFileHandlingPanelOKButton,
+                openPanel.urls.count > 0 else {
+                    return
+            }
+            
+            let cacheDirectory = openPanel.urls[0]
+            self.preferences.customCacheDirectory = cacheDirectory.path
+            self.cacheLocation.url = cacheDirectory
+        }
+    }
+
+    @IBAction func resetCacheLocation(_ button: NSButton?) {
+        preferences.customCacheDirectory = nil
+        if let cacheDirectory = VideoCache.cacheDirectory {
+            cacheLocation.url = URL(fileURLWithPath: cacheDirectory as String)
+        }
+    }
+
+    // MARK: - Time panel
+
+    @IBAction func timeModeChange(_ sender:NSButton?) {
+        if sender == timeDisabledRadio {
+            preferences.timeMode = Preferences.TimeMode.disabled.rawValue
+        } else if sender == timeNightShiftRadio {
+            preferences.timeMode = Preferences.TimeMode.nightShift.rawValue
+        } else if sender == timeManualRadio {
+            preferences.timeMode = Preferences.TimeMode.manual.rawValue
+        } else if sender == timeLightDarkModeRadio {
+            preferences.timeMode = Preferences.TimeMode.lightDarkMode.rawValue
         }
     }
     
@@ -455,144 +605,51 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         preferences.manualSunset = sunsetString
     }
 
-    @IBAction func helpButtonClick(_ button: NSButton!) {
-        popover.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
-    }
-    
-    @IBAction func showInFinder(_ button: NSButton!) {
-        NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: VideoCache.cacheDirectory!)
-        
-    }
-    
-    @IBAction func showClockClick(_ sender: NSButton) {
-        debugLog("show clock click: \(convertFromNSControlStateValue(sender.state))")
-        
-        let onState = (sender.state == NSControl.StateValue.on)
-        preferences.showClock = onState
+    // MARK: - Aerial panel
 
+    @IBAction func logButtonClick(_ sender: NSButton) {
+        logTableView.reloadData()
+        if logPanel.isVisible {
+            logPanel.close()
+        } else {
+            logPanel.makeKeyAndOrderFront(sender)
+        }
     }
-    
-    @IBAction func showExtraMessageClick(_ sender: NSButton) {
-        debugLog("show extra message: \(convertFromNSControlStateValue(sender.state))")
-        
-        let onState = (sender.state == NSControl.StateValue.on)
-        // We also need to enable/disable our message field
-        extraMessageTextField.isEnabled = onState
-        preferences.showMessage = onState
-    }
-    
-    @IBAction func neverStreamVideosClick(_ button: NSButton!) {
-        debugLog("never stream videos: \(convertFromNSControlStateValue(button.state))")
-        
-        let onState = (button.state == NSControl.StateValue.on)
-        preferences.neverStreamVideos = onState
-    }
-    
-    @IBAction func neverStreamPreviewsClick(_ button: NSButton!) {
-        debugLog("never stream previews: \(convertFromNSControlStateValue(button.state))")
-        
-        let onState = (button.state == NSControl.StateValue.on)
-        preferences.neverStreamPreviews = onState
-    }
-    @IBAction func cacheAerialsAsTheyPlayClick(_ button: NSButton!) {
-        debugLog("cache aerials as they play: \(convertFromNSControlStateValue(button.state))")
-        
-        let onState = (button.state == NSControl.StateValue.on)
-        preferences.cacheAerials = onState
-    }
-    
-    @IBAction func userSetCacheLocation(_ button: NSButton?) {
-        let openPanel = NSOpenPanel()
-        
-        openPanel.canChooseDirectories = true
-        openPanel.canChooseFiles = false
-        openPanel.canCreateDirectories = true
-        openPanel.allowsMultipleSelection = false
-        openPanel.title = "Choose Aerial Cache Directory"
-        openPanel.prompt = "Choose"
-        openPanel.directoryURL = cacheLocation.url
-        
-        openPanel.begin { result in
-            guard result.rawValue == NSFileHandlingPanelOKButton,
-                openPanel.urls.count > 0 else {
-                return
+
+    @IBAction func logCopyToClipboardClick(_ sender: NSButton) {
+        if (errorMessages.count > 0) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .none
+            dateFormatter.timeStyle = .medium
+
+            var clipboard = ""
+            for log in errorMessages {
+                clipboard += dateFormatter.string(from:log.date) + " : " + log.message + "\n"
             }
             
-            let cacheDirectory = openPanel.urls[0]
-            self.preferences.customCacheDirectory = cacheDirectory.path
-            self.cacheLocation.url = cacheDirectory
+            let pasteBoard = NSPasteboard.general
+            pasteBoard.clearContents()
+            pasteBoard.setString(clipboard, forType: NSPasteboard.PasteboardType.string)
         }
     }
-    @IBAction func resetCacheLocation(_ button: NSButton?) {
-        preferences.customCacheDirectory = nil
-        if let cacheDirectory = VideoCache.cacheDirectory {
-            cacheLocation.url = URL(fileURLWithPath: cacheDirectory as String)
-        }
-    }
-    
-    @IBAction func popupVideoFormatChange(_ sender:NSPopUpButton) {
-        debugLog("index change : \(sender.indexOfSelectedItem)")
-        preferences.videoFormat = sender.indexOfSelectedItem
-        preferences.synchronize()
-        
-        outlineView.reloadData()
-    }
-    
-    @IBAction func descriptionModePopupChange(_ sender:NSPopUpButton) {
-        debugLog("dindex change : \(sender.indexOfSelectedItem)")
-        
-        preferences.showDescriptionsMode = sender.indexOfSelectedItem
-        preferences.synchronize()
-    }
-    
-    @IBAction func multiMonitorModePopupChange(_ sender:NSPopUpButton) {
-        debugLog("mm index change : \(sender.indexOfSelectedItem)")
-        
-        preferences.multiMonitorMode = sender.indexOfSelectedItem
-        preferences.synchronize()
-    }
-    
-    @IBAction func fadeInOutModePopupChange(_ sender:NSPopUpButton) {
-        debugLog("fm index change : \(sender.indexOfSelectedItem)")
-        
-        preferences.fadeMode = sender.indexOfSelectedItem
-        preferences.synchronize()
-    }
-    
-    @IBAction func fadeInOutTextModePopupChange(_ sender: NSPopUpButton) {
-        debugLog("fmt index change : \(sender.indexOfSelectedItem)")
-        
-        preferences.fadeModeText = sender.indexOfSelectedItem
-        preferences.synchronize()
-    }
-    
-    @IBAction func extraCornerPopupChange(_ sender: NSPopUpButton) {
-        debugLog("ec index change : \(sender.indexOfSelectedItem)")
-        
-        preferences.extraCorner = sender.indexOfSelectedItem
-        preferences.synchronize()
 
-    }
-
-    @IBAction func showDescriptionsClick(button: NSButton?) {
-        let state = showDescriptionsCheckbox.state
-        let onState = (state == NSControl.StateValue.on)
-        
-        preferences.showDescriptions = onState
-        
-        debugLog("set showDescriptions to \(onState)")
+    @IBAction func logRefreshClick(_ sender: NSButton) {
+        logTableView.reloadData()
     }
     
-    @IBAction func localizeForTvOS12Click(button: NSButton?) {
-        let state = localizeForTvOS12Checkbox.state
-        let onState = (state == NSControl.StateValue.on)
-        
-        preferences.localizeDescriptions = onState
-        
-        debugLog("set localizeDescriptions to \(onState)")
+    @IBAction func debugModeClick(_ button: NSButton) {
+        let onState = (button.state == NSControl.StateValue.on)
+        preferences.debugMode = onState
+        debugLog("UI debugMode: \(onState)")
     }
     
-    // MARK: Menu
+    @IBAction func logToDiskClick(_ button: NSButton) {
+        let onState = (button.state == NSControl.StateValue.on)
+        preferences.logToDisk = onState
+        debugLog("UI logToDisk: \(onState)")
+    }
+    
+    // MARK: - Menu
     @IBAction func outlineViewSettingsClick(_ button: NSButton) {
         let menu = NSMenu()
 
@@ -886,14 +943,14 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         switch item {
         case is City:
             let city = item as! City
-            let view = outlineView.makeView(withIdentifier: convertToNSUserInterfaceItemIdentifier("HeaderCell"),
+            let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "HeaderCell"),
                                         owner: nil) as! NSTableCellView     // if owner = self, awakeFromNib will be called for each created cell !
             view.textField?.stringValue = city.name
             
             return view
         case is TimeOfDay:
             let timeOfDay = item as! TimeOfDay
-            let view = outlineView.makeView(withIdentifier: convertToNSUserInterfaceItemIdentifier("DataCell"),
+            let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DataCell"),
                                         owner: nil) as! NSTableCellView     // if owner = self, awakeFromNib will be called for each created cell !
             
             view.textField?.stringValue = timeOfDay.title.capitalized
@@ -916,13 +973,13 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
                 // TODO, change the icons for dark mode
 
             } else {
-                NSLog("\(#file) failed to find time of day icon")
+                errorLog("\(#file) failed to find time of day icon")
             }
             
             return view
         case is AerialVideo:
             let video = item as! AerialVideo
-            let view = outlineView.makeView(withIdentifier: convertToNSUserInterfaceItemIdentifier("CheckCell"),
+            let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CheckCell"),
                                         owner: nil) as! CheckCellView   // if owner = self, awakeFromNib will be called for each created cell !
             // Mark the new view for this video for subsequent callbacks
             let videoManager = VideoManager.sharedInstance
@@ -943,7 +1000,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
                 guard
                     let numberString = numberFormatter.string(from: number as NSNumber)
                     else {
-                        print("failed to create number with formatter")
+                        errorLog("outlineView: failed to create number with formatter")
                         return nil
                 }
                 
@@ -978,7 +1035,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             playerView.player = player
             
             let video = item as! AerialVideo
-            debugLog("playing this preview \(video)")
+            debugLog("Playing this preview \(video)")
             // Workaround for cached videos generating online traffic
             if video.isAvailableOffline {
                 previewDisabledTextfield.isHidden = true
@@ -1052,11 +1109,11 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             return video.isAvailableOffline == false
         }
         
-        NSLog("uncached: \(uncached)")
+        debugLog("uncached: \(uncached)")
         
         totalProgress.maxValue = Double(manifestVideos.count)
         totalProgress.doubleValue = Double(manifestVideos.count) - Double(uncached.count)
-        NSLog("total process max value: \(totalProgress.maxValue), current value: \(totalProgress.doubleValue)")
+        debugLog("total process max value: \(totalProgress.maxValue), current value: \(totalProgress.doubleValue)")
         
         if uncached.count == 0 {
             cacheStatusLabel.stringValue = "All videos have been cached"
@@ -1086,15 +1143,16 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         
         preferences.synchronize()
         outlineView.reloadData()
-        NSLog("video download finished with success: \(success))")
+        debugLog("video download finished with success: \(success))")
     }
     
     func videoDownload(_ videoDownload: VideoDownload, receivedBytes: Int, progress: Float) {
         currentProgress.doubleValue = Double(progress)
-//     NSLog("received bytes: \(receivedBytes), progress: \(progress)")
     }
     
 }
+
+// MARK: - Font Panel Delegates
 
 extension PreferencesWindowController : NSFontChanging  {
     func validModesForFontPanel(_ fontPanel: NSFontPanel) -> NSFontPanel.ModeMask {
@@ -1102,7 +1160,6 @@ extension PreferencesWindowController : NSFontChanging  {
     }
     
     func changeFont(_ sender: NSFontManager?) {
-        print("change font")
         // Set current font
         var oldFont = NSFont(name: "Helvetica Neue Medium", size: 28)
 
@@ -1115,7 +1172,6 @@ extension PreferencesWindowController : NSFontChanging  {
                 oldFont = tryFont
             }
         }
-        
         
         let newFont = sender?.convert(oldFont!)
 
@@ -1137,14 +1193,56 @@ extension PreferencesWindowController : NSFontChanging  {
     
 }
 
+// MARK: - Log TableView Delegates
 
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromNSControlStateValue(_ input: NSControl.StateValue) -> Int {
-	return input.rawValue
+extension PreferencesWindowController: NSTableViewDataSource {
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return errorMessages.count
+    }
 }
 
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToNSUserInterfaceItemIdentifier(_ input: String) -> NSUserInterfaceItemIdentifier {
-	return NSUserInterfaceItemIdentifier(rawValue: input)
+extension PreferencesWindowController : NSTableViewDelegate {
+    fileprivate enum CellIdentifiers {
+        static let DateCell = "DateCellID"
+        static let MessageCell = "MessageCellID"
+    }
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        var image: NSImage?
+        var text: String = ""
+        var cellIdentifier: String = ""
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .medium
+        
+        let item = errorMessages[row]
+        
+        if tableColumn == tableView.tableColumns[0] {
+            text = dateFormatter.string(from: item.date)
+            cellIdentifier = CellIdentifiers.DateCell
+        } else if tableColumn == tableView.tableColumns[1] {
+            switch item.level {
+            case ErrorLevel.info:
+                image = NSImage.init(named: NSImage.infoName)
+            case ErrorLevel.warning:
+                image = NSImage.init(named: NSImage.cautionName)
+            case ErrorLevel.error:
+                image = NSImage.init(named: NSImage.stopProgressFreestandingTemplateName)
+            default:
+                image = NSImage.init(named: NSImage.actionTemplateName)
+            }
+            //image =
+            text = item.message
+            cellIdentifier = CellIdentifiers.MessageCell
+        }
+        
+        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: nil) as? NSTableCellView {
+            cell.textField?.stringValue = text
+            cell.imageView?.image = image ?? nil
+            return cell
+        }
+        
+        return nil
+    }
 }
-

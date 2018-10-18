@@ -241,10 +241,10 @@ class ManifestLoader {
         // - return a random one from the manifest that is cached
         // - return a random video that is not cached (slight betrayal of the Never stream videos)
         
-        NSLog("Aerial: empty playlist, not good !")
+        warnLog("Empty playlist, not good !")
 
         if lastPluckedFromPlaylist != nil {
-            NSLog("Aerial: returning last played video after condition change not met !")
+            warnLog("returning last played video after condition change not met !")
             return lastPluckedFromPlaylist!
         } else {
             // Start with a shuffled list
@@ -253,7 +253,7 @@ class ManifestLoader {
             if (shuffled.count == 0)
             {
                 // This is super bad, no manifest at all
-                NSLog("Aerial: No manifest, nothing to play !")
+                errorLog("No manifest, nothing to play !")
                 return nil
             }
             
@@ -263,42 +263,42 @@ class ManifestLoader {
                 
                 // If we find anything cached and in rotation, we send that back
                 if video.isAvailableOffline && inRotation {
-                    NSLog("Aerial: returning random cached in rotation video after condition change not met !")
+                    warnLog("returning random cached in rotation video after condition change not met !")
                     return video
                 }
             }
             // Nothing ? Sorry but you'll get a non cached file
-            NSLog("Aerial: returning random video after condition change not met !")
+            warnLog("returning random video after condition change not met !")
             return shuffled.first!
         }
     }
     
     init() {
-        NSLog("Aerial: Manifest init")
+        debugLog("Manifest init")
         // We try to load our video manifests in 3 steps :
-        // - use locally saved data in preferences plist
+        // - reload from local variables (unused for now)
         // - reprocess the saved files in cache directory (full offline mode)
         // - download the manifests from servers
 
-        NSLog("Aerial: 10 \(isManifestCached(manifest: .tvOS10))")
-        NSLog("Aerial: 11 \(isManifestCached(manifest: .tvOS11))")
-        NSLog("Aerial: 12 \(isManifestCached(manifest: .tvOS12))")
+        debugLog("isManifestCached 10 \(isManifestCached(manifest: .tvOS10))")
+        debugLog("isManifestCached 11 \(isManifestCached(manifest: .tvOS11))")
+        debugLog("isManifestCached 12 \(isManifestCached(manifest: .tvOS12))")
         
         if areManifestsFilesLoaded() {
-            NSLog("Aerial: Files were already loaded")
+            debugLog("Files were already loaded")
             loadManifestsFromLoadedFiles()
         }
         else
         {
-            NSLog("Aerial: Files were not already loaded")
+            debugLog("Files were not already loaded")
             // Manifests are not in our preferences plist, are they cached on disk ?
             if areManifestsCached() {
-                NSLog("Aerial: Manifests are cached on disk, loading")
+                debugLog("Manifests are cached on disk, loading")
                 loadCachedManifests()
             }
             else {
                 // Ok then, we fetch them...
-                NSLog("Aerial: Fetching missing manifests online")
+                debugLog("Fetching missing manifests online")
                 let downloadManager = DownloadManager()
                 
                 var urls: [URL] = []
@@ -317,7 +317,7 @@ class ManifestLoader {
                 }
 
                 let completion = BlockOperation {
-                    NSLog("Aerial: Fetching all done")
+                    debugLog("Fetching manifests all done")
                     // We can now load from the newly cached files
                     self.loadCachedManifests()
                     
@@ -336,11 +336,11 @@ class ManifestLoader {
     // Check if the Manifests have been loaded in this class already
     func areManifestsFilesLoaded() -> Bool {
         if (manifestTvOS12 != nil && manifestTvOS11 != nil && manifestTvOS10 != nil) {
-            NSLog("Aerial: manifests files were loaded in class")
+            debugLog("Manifests files were loaded in class")
             return true
         }
         else {
-            NSLog("Aerial: manifests files were not loaded in class")
+            debugLog("Manifests files were not loaded in class")
             return false
         }
     }
@@ -361,8 +361,6 @@ class ManifestLoader {
             if !fileManager.fileExists(atPath: cacheResourcesString) {
                 return false
             }
-            
-            NSLog("Aerial: \(manifest.rawValue) manifest is cached")
         }
         else
         {
@@ -383,7 +381,7 @@ class ManifestLoader {
                 manifestTvOS12 = ndata
             }
             catch {
-                NSLog("Aerial: Error can't load entries.json from cached directory (tvOS12)")
+                errorLog("Can't load entries.json from cached directory (tvOS12)")
             }
             
             // tvOS11
@@ -394,7 +392,7 @@ class ManifestLoader {
                 manifestTvOS11 = ndata
             }
             catch {
-                NSLog("Aerial: Error can't load tvos11.json from cached directory ")
+                errorLog("Can't load tvos11.json from cached directory")
             }
 
             // tvOS10
@@ -405,14 +403,14 @@ class ManifestLoader {
                 manifestTvOS10 = ndata
             }
             catch {
-                NSLog("Aerial: Error can't load tvos10.json from cached directory")
+                errorLog("Can't load tvos10.json from cached directory")
             }
 
             if manifestTvOS10 != nil || manifestTvOS11 != nil || manifestTvOS12 != nil {
                 loadManifestsFromLoadedFiles()
             } else {
                 // No internet, no anything, nothing to do
-                NSLog("Aerial: No video to load, no internet connexion ?")
+                errorLog("No video to load, no internet connexion ?")
             }
         }
     }
@@ -423,28 +421,39 @@ class ManifestLoader {
         processedVideos = []
 
         if (manifestTvOS12 != nil) {
-            NSLog("Aerial: LMFLF12")
             // We start with the more recent one, it has more information (poi, etc)
             readJSONFromData(manifestTvOS12!, manifest: .tvOS12)
+        } else {
+            warnLog("tvOS12 manifest is absent")
         }
+        
         if (manifestTvOS11 != nil) {
-            NSLog("Aerial: LMFLF12")
             // This one has a couple videos not in the tvOS12 JSON. No H264 for these !
             readJSONFromData(manifestTvOS11!, manifest: .tvOS11)
+        } else {
+            warnLog("tvOS11 manifest is absent")
         }
+        
         if (manifestTvOS10 != nil) {
-            NSLog("Aerial: LMFLF12")
             // The original manifest is in another format
             readOldJSONFromData(manifestTvOS10!, manifest: .tvOS10)
+        } else {
+            warnLog("tvOS10 manifest is absent")
         }
-
-        NSLog("Aerial: post json loading")
 
         processedVideos = processedVideos.sorted { $0.secondaryName < $1.secondaryName }    // We sort videos by secondary names, so they can display sorted in our view later
         
         self.loadedManifest = processedVideos
-        
-        NSLog("Aerial: \(processedVideos.count) videos processed !")
+        /*
+         // POI Extracter code
+        infoLog("\(processedVideos.count) videos processed !")
+        let poiStringProvider = PoiStringProvider.sharedInstance
+        for video in processedVideos {
+            infoLog(video.name + " " + video.secondaryName)
+            for poi in video.poi {
+                infoLog(poi.key + ": " + poiStringProvider.getString(key: poi.value))
+            }
+        }*/
         
         // callbacks
         for callback in self.callbacks {
@@ -454,14 +463,12 @@ class ManifestLoader {
     }
     
     func readJSONFromData(_ data: Data, manifest: Manifests) {
-        //var videos = [AerialVideo]()
-        
         do {
             let options = JSONSerialization.ReadingOptions.allowFragments
             let batches = try JSONSerialization.jsonObject(with: data, options: options)
             
             guard let batch = batches as? NSDictionary else {
-                NSLog("Aerial: Encountered unexpected content type for batch, please report !")
+                errorLog("Encountered unexpected content type for batch, please report !")
                 return
             }
             
@@ -486,16 +493,14 @@ class ManifestLoader {
                 if let mergeId = mergePOI[id] {
                     let poiStringProvider = PoiStringProvider.sharedInstance
                     poi = poiStringProvider.fetchExtraPoiForId(id: mergeId)
-                }
-                else {
+                } else {
                     poi = item["pointsOfInterest"] as? [String: String]
                 }
+                
                 let (isDupe,foundDupe) = findDuplicate(id: id, url1080pH264: url1080pH264 ?? "")
                 if (isDupe) {
-                    //debugLog("duplicate found, adding \(manifest) as source to \(name)")
                     foundDupe!.sources.append(manifest)
-                }
-                else {
+                } else {
                     let video = AerialVideo(id: id,             // Must have
                         name: name,                             // Must have
                         secondaryName: secondaryName,           // Optional
@@ -508,11 +513,10 @@ class ManifestLoader {
                         poi: poi ?? [:] )                       // tvOS12 only
                     
                     processedVideos.append(video)
-                    //checkContentLength(video)
                 }
             }
         } catch {
-            NSLog("Aerial: Error retrieving content listing.")
+            errorLog("Error retrieving content listing")
             return
         }
     }
@@ -537,32 +541,30 @@ class ManifestLoader {
                         continue
                     }
                     
-                    var secondaryName = ""
                     // We may have a secondary name
+                    var secondaryName = ""
                     if let mergeName = mergeName[id] {
                         secondaryName = mergeName
                     }
-                    
+
+                    // We may have POIs to merge
                     var poi : [String:String]?
                     if let mergeId = mergePOI[id] {
                         let poiStringProvider = PoiStringProvider.sharedInstance
                         poi = poiStringProvider.fetchExtraPoiForId(id: mergeId)
                     }
                     
+                    // We may have dupes...
                     let (isDupe,foundDupe) = findDuplicate(id: id, url1080pH264: url)
                     if isDupe {
                         if (foundDupe != nil) {
-                            //debugLog("duplicate found, adding \(manifest) as source to \(name)")
                             foundDupe!.sources.append(manifest)
                             
                             if (foundDupe?.url1080pH264 == "") {
-                                //debugLog("merging urls for \(url)")
                                 foundDupe?.url1080pH264 = url
                             }
-                            
                         }
-                    }
-                    else {
+                    } else {
                         var url4khevc = ""
                         var url1080phevc = ""
                         // Check if we have some HEVC urls to merge
@@ -571,6 +573,7 @@ class ManifestLoader {
                             url4khevc = val["url-4K-SDR"]!
                         }
 
+                        // Now we can finally add...
                         let video = AerialVideo(id: id,             // Must have
                             name: name,         // Must have
                             secondaryName: secondaryName,
@@ -583,23 +586,11 @@ class ManifestLoader {
                             poi: poi ?? [:])    // tvOS12 only
                         
                         processedVideos.append(video)
-                        //checkContentLength(video)
                     }
-                    /*let video = AerialVideo(id: id,
-                                            name: name,
-                                            type: type,
-                                            timeOfDay: timeOfDay,
-                                            url: url)
-                    
-                    videos.append(video)
-                    
-                    checkContentLength(video)*/
                 }
             }
-            
-            //self.loadedManifest = videos
         } catch {
-            NSLog("Aerial: Error retrieving content listing.")
+            errorLog("Error retrieving content listing")
             return
         }
     }
@@ -617,16 +608,13 @@ class ManifestLoader {
         if (url1080pH264 != "") {
             if (blacklist.contains((URL(string:url1080pH264)?.lastPathComponent)!))
             {
-                //debugLog("Blacklisted video : \(url1080pH264)")
                 return (true,nil)
             }
         }
         
         // We also have a Dictionary of duplicates that need source merging
         for (pid,replace) in dupePairs {
-            if (id == pid)
-            {
-                //debugLog("duplicate found by dupePairs \(id)")
+            if (id == pid) {
                 for vid in processedVideos {
                     if vid.id == replace {
                         return (true,vid)
@@ -637,12 +625,9 @@ class ManifestLoader {
         
         for video in processedVideos {
             if id == video.id {
-                //debugLog("duplicate found by ID")
                 return (true,video)
-            }
-            else if (url1080pH264 != "" && video.url1080pH264 != "") {
+            } else if (url1080pH264 != "" && video.url1080pH264 != "") {
                 if (URL(string:url1080pH264)?.lastPathComponent == URL(string:video.url1080pH264)?.lastPathComponent) {
-                    //debugLog("duplicate found by filename")
                     return (true,video)
                 }
             }

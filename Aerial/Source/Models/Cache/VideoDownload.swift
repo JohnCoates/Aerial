@@ -70,7 +70,7 @@ class VideoDownload: NSObject, NSURLConnectionDataDelegate {
         
         guard let connection = NSURLConnection(request: request as URLRequest,
                                                delegate: self, startImmediately: false) else {
-            NSLog("Aerial: Error creating connection with request: \(request)")
+            errorLog("Error creating connection with request: \(request)")
             return
         }
         
@@ -140,7 +140,7 @@ class VideoDownload: NSObject, NSURLConnectionDataDelegate {
     
     func receiveDataForStream(_ stream: VideoDownloadStream, receivedData: Data) {
         guard let videoData = self.data else {
-            NSLog("Aerial error: video data missing!")
+            errorLog("Aerial error: video data missing!")
             return
         }
         
@@ -152,13 +152,13 @@ class VideoDownload: NSObject, NSURLConnectionDataDelegate {
     
     func finishedDownload() {
         guard let videoCachePath = VideoCache.cachePath(forVideo: video) else {
-            print("Aerial Error: Couldn't save video because couldn't get cache path\n")
+            errorLog("Couldn't save video because couldn't get cache path\n")
             failedDownload("Couldn't get cache path")
             return
         }
         
         guard let videoData = self.data else {
-            print("Aerial error: video data missing!\n")
+            errorLog("video data missing!\n")
             return
         }
         
@@ -167,7 +167,7 @@ class VideoDownload: NSObject, NSURLConnectionDataDelegate {
         do {
             try videoData.write(toFile: videoCachePath, options: .atomicWrite)
         } catch let error {
-            NSLog("Aerial Error: Couldn't write cache file: \(error)")
+            errorLog("Couldn't write cache file: \(error)")
             errorMessage = "Couldn't write to cache file!"
             success = false
         }
@@ -186,7 +186,7 @@ class VideoDownload: NSObject, NSURLConnectionDataDelegate {
     
     func connection(_ connection: NSURLConnection, didReceive response: URLResponse) {
         guard let stream = streamForConnection(connection) else {
-            NSLog("Aerial Error: No matching stream for connection: \(connection) with response: \(response)")
+            errorLog("No matching stream for connection: \(connection) with response: \(response)")
             return
         }
         
@@ -206,7 +206,7 @@ class VideoDownload: NSObject, NSURLConnectionDataDelegate {
             
             queue.async(execute: { () -> Void in
                 guard let offset = self.startOffsetFromResponse(response) else {
-                    NSLog("Aerial Error: Couldn't get start offset from response: \(response)")
+                    errorLog("Couldn't get start offset from response: \(response)")
                     return
                 }
                 
@@ -226,7 +226,7 @@ class VideoDownload: NSObject, NSURLConnectionDataDelegate {
             delegate.videoDownload(self, receivedBytes: data.count, progress: progress)
             
             guard let stream = self.streamForConnection(connection) else {
-                NSLog("Aerial Error: No matching stream for connection: \(connection)")
+                errorLog("No matching stream for connection: \(connection)")
                 return
             }
             
@@ -239,12 +239,12 @@ class VideoDownload: NSObject, NSURLConnectionDataDelegate {
             debugLog("connectionDidFinishLoading")
             
             guard let stream = self.streamForConnection(connection) else {
-                NSLog("Aerial Error: No matching stream for connection: \(connection)")
+                errorLog("No matching stream for connection: \(connection)")
                 return
             }
             
             guard let index = self.streams.index(where: { $0.connection == stream.connection }) else {
-                NSLog("Aerial Error: Couldn't find index of stream for finished connection!")
+                errorLog("Couldn't find index of stream for finished connection!")
                 return
             }
             
@@ -258,14 +258,14 @@ class VideoDownload: NSObject, NSURLConnectionDataDelegate {
     }
     
     func connection(_ connection: NSURLConnection, didFailWithError error: Error) {
-        NSLog("Aerial Error: Couldn't download video: \(error)")
+        errorLog("Couldn't download video: \(error)")
         queue.async { () -> Void in
             self.failedDownload("Connection fail: \(error)")
         }
     }
     
     func connection(_ connection: NSURLConnection, didReceive challenge: URLAuthenticationChallenge) {
-        NSLog("Aerial Error: Didn't expect authentication challenge while downloading videos!")
+        errorLog("Didn't expect authentication challenge while downloading videos!")
         queue.async { () -> Void in
             self.failedDownload("Connection fail: Received authentication request!")
         }
@@ -280,29 +280,27 @@ class VideoDownload: NSObject, NSURLConnectionDataDelegate {
             regex = try NSRegularExpression(pattern: "bytes (\\d+)-\\d+/\\d+",
                                             options: NSRegularExpression.Options.caseInsensitive)
         } catch let error as NSError {
-            NSLog("Aerial: Error formatting regex: \(error)")
+            errorLog("Error formatting regex: \(error)")
             return nil
         }
         
         let httpResponse = response as! HTTPURLResponse
         
         guard let contentRange = httpResponse.allHeaderFields["Content-Range"] as? NSString else {
-            debugLog("Weird, no byte response: \(response)")
+            errorLog("Weird, no byte response: \(response)")
             return nil
         }
         
         guard let match = regex.firstMatch(in: contentRange as String,
                                            options: NSRegularExpression.MatchingOptions.anchored,
                                            range: NSRange(location:0, length: contentRange.length)) else {
-            debugLog("Weird, couldn't make a regex match for byte offset: \(contentRange)")
+            errorLog("Weird, couldn't make a regex match for byte offset: \(contentRange)")
             return nil
         }
         let offsetMatchRange = match.range(at: 1)
         let offsetString = contentRange.substring(with: offsetMatchRange) as NSString
         
         let offset = offsetString.longLongValue
-        
-//        debugLog("content range: \(contentRange), start offset: \(offset)")
         
         return Int(offset)
     }

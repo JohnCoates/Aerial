@@ -57,7 +57,7 @@ class VideoLoader: NSObject, NSURLConnectionDataDelegate {
         connection = NSURLConnection(request: request as URLRequest, delegate: self, startImmediately: false)
         
         guard let connection = connection else {
-            NSLog("Aerial error: Couldn't instantiate connection.")
+            errorLog("Couldn't instantiate connection.")
             return
         }
         
@@ -97,7 +97,7 @@ class VideoLoader: NSObject, NSURLConnectionDataDelegate {
             self.fillInContentInformation(self.loadingRequest)
             
             guard let dataRequest = self.loadingRequest.dataRequest else {
-                NSLog("Aerial Error: Data request missing for \(self.loadingRequest)")
+                errorLog("Data request missing for \(self.loadingRequest)")
                 return
             }
             let requestedRange = self.requestedRange
@@ -145,7 +145,7 @@ class VideoLoader: NSObject, NSURLConnectionDataDelegate {
                         self.connection?.cancel()
                     }
                 } else if inset < 1 {
-                    NSLog("Aerial Error: Inset is invalid value: \(inset)")
+                    errorLog("Inset is invalid value: \(inset)")
                 }
                 
             }
@@ -208,21 +208,21 @@ class VideoLoader: NSObject, NSURLConnectionDataDelegate {
             regex = try NSRegularExpression(pattern: "bytes (\\d+)-\\d+/\\d+",
                                             options: NSRegularExpression.Options.caseInsensitive)
         } catch let error as NSError {
-            NSLog("Aerial: Error formatting regex: \(error)")
+            errorLog("Error formatting regex: \(error)")
             return nil
         }
         
         let httpResponse = response as! HTTPURLResponse
         
         guard let contentRange = httpResponse.allHeaderFields["Content-Range"] as? NSString else {
-            debugLog("Weird, no byte response: \(response)")
+            errorLog("Weird, no byte response: \(response)")
             return nil
         }
         
         guard let match = regex.firstMatch(in: contentRange as String,
                                            options: NSRegularExpression.MatchingOptions.anchored,
                                            range: NSRange(location:0, length: contentRange.length)) else {
-            debugLog("Weird, couldn't make a regex match for byte offset: \(contentRange)")
+            errorLog("Weird, couldn't make a regex match for byte offset: \(contentRange)")
             return nil
         }
         let offsetMatchRange = match.range(at: 1)

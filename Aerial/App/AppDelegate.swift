@@ -17,13 +17,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         let objects = objectsFromNib(loadNibNamed: "PreferencesWindow")
         
-        guard let windowIndex = objects.index(where: { $0 is NSWindow }),
+        for object in objects {
+            if object is NSWindow {
+                if (object as! NSWindow).identifier!.rawValue == "preferencesWindow" {
+                    setUp(preferencesWindow: (object as! NSWindow))
+                }
+            }
+        }
+
+        /*guard let windowIndex = objects.index(where: { $0 is NSWindow }),
         let preferencesWindow = objects[windowIndex] as? NSWindow
         else {
             fatalError("Missing window object")
-        }
+        }*/
         
-        setUp(preferencesWindow: preferencesWindow)
     }
     
     private func setUp(preferencesWindow window: NSWindow) {

@@ -38,8 +38,16 @@ class Preferences {
         case extraFontName = "extraFontName"
         case extraFontSize = "extraFontSize"
         case extraCorner = "extraCorner"
+        case debugMode = "debugMode"
+        case logToDisk = "logToDisk"
+        case versionCheck = "versionCheck"
+        case alsoVersionCheckBeta = "alsoVersionCheckBeta"
     }
-
+    
+    enum VersionCheck : Int {
+        case never, daily, weekly, monthly
+    }
+    
     enum ExtraCorner : Int {
         case same, hOpposed, dOpposed
     }
@@ -73,7 +81,7 @@ class Preferences {
         let module = "com.JohnCoates.Aerial"
         
         guard let userDefaults = ScreenSaverDefaults(forModuleWithName: module) else {
-            print("Couldn't create ScreenSaverDefaults, creating generic UserDefaults")
+            warnLog("Couldn't create ScreenSaverDefaults, creating generic UserDefaults")
             return UserDefaults()
         }
         
@@ -111,7 +119,10 @@ class Preferences {
         defaultValues[.extraFontName] = "Helvetica Neue Medium"
         defaultValues[.extraFontSize] = 28
         defaultValues[.extraCorner] = ExtraCorner.same
-        
+        defaultValues[.debugMode] = false
+        defaultValues[.logToDisk] = false
+        defaultValues[.versionCheck] = VersionCheck.weekly
+        defaultValues[.alsoVersionCheckBeta] = false
         
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
@@ -124,6 +135,33 @@ class Preferences {
     }
     
     // MARK: - Variables
+
+    var debugMode: Bool {
+        get {
+            return value(forIdentifier: .debugMode)
+        }
+        set {
+            setValue(forIdentifier: .debugMode, value: newValue)
+        }
+    }
+    
+    var logToDisk: Bool {
+        get {
+            return value(forIdentifier: .logToDisk)
+        }
+        set {
+            setValue(forIdentifier: .logToDisk, value: newValue)
+        }
+    }
+
+    var alsoVersionCheckBeta : Bool {
+        get {
+            return value(forIdentifier: .alsoVersionCheckBeta)
+        }
+        set {
+            setValue(forIdentifier: .alsoVersionCheckBeta, value: newValue)
+        }
+    }
 
     var showClock: Bool {
         get {
@@ -261,6 +299,15 @@ class Preferences {
         }
     }
 
+    var versionCheck: Int? {
+        get {
+            return optionalValue(forIdentifier: .versionCheck)
+        }
+        set {
+            setValue(forIdentifier: .versionCheck, value: newValue)
+        }
+    }
+    
     var descriptionCorner: Int? {
         get {
             return optionalValue(forIdentifier: .descriptionCorner)
