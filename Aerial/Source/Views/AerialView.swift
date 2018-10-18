@@ -29,6 +29,8 @@ class AerialView: ScreenSaverView {
     var currentVideo: AerialVideo?
     
     var observerWasSet = false
+    var hasStartedPlaying = false
+    var isDisabled = false
     
     static var shouldFade: Bool {
         let preferences = Preferences.sharedInstance
@@ -107,7 +109,7 @@ class AerialView: ScreenSaverView {
     }
     
     deinit {
-        debugLog("deinit AerialView")
+        debugLog("\(self.description) deinit AerialView")
         NotificationCenter.default.removeObserver(self)
         
         // set player item to nil if not preview player
@@ -132,23 +134,27 @@ class AerialView: ScreenSaverView {
     }
     
     func setup() {
-        debugLog("AerialView setup init")
+        debugLog("\(self.description) AerialView setup init")
+        
         var localPlayer: AVPlayer?
         
         let notPreview = !isPreview
-        debugLog("isPreview : \(isPreview)")
+        debugLog("\(self.description) isPreview : \(isPreview)")
         
         if notPreview {
             let preferences = Preferences.sharedInstance
-            
+            debugLog("\(self.description) singlePlayerAlreadySetup \(AerialView.singlePlayerAlreadySetup)")
             if (AerialView.singlePlayerAlreadySetup && preferences.multiMonitorMode == Preferences.MultiMonitorMode.mainOnly.rawValue) {
+                isDisabled = true
                 return
             }
             
             // check if we should share preview's player
             let noPlayers = (AerialView.players.count == 0)
             let previewPlayerExists = (AerialView.previewPlayer != nil)
+            debugLog("\(self.description) nbPlayers \(AerialView.players.count) previewPlayerExists \(previewPlayerExists)")
             if noPlayers && previewPlayerExists {
+
                 localPlayer = AerialView.previewPlayer
             }
         } else {
@@ -160,6 +166,8 @@ class AerialView: ScreenSaverView {
         }
         
         if localPlayer == nil {
+            debugLog("\(self.description) no local player")
+
             if AerialView.sharingPlayers {
                 if AerialView.previewPlayer != nil {
                     localPlayer = AerialView.previewPlayer
@@ -172,7 +180,7 @@ class AerialView: ScreenSaverView {
         }
         
         guard let player = localPlayer else {
-            errorLog("Couldn't create AVPlayer!")
+            errorLog("\(self.description) Couldn't create AVPlayer!")
             return
         }
         
@@ -192,27 +200,44 @@ class AerialView: ScreenSaverView {
             self.playerLayer.opacity = 0
             return
         }
-        
-        AerialView.singlePlayerAlreadySetup = true
+
+        // We're NOT sharing the preview !!!!!
+        if !isPreview {
+            AerialView.singlePlayerAlreadySetup = true
+        }
         
         ManifestLoader.instance.addCallback { videos in
             self.playNextVideo()
         }
     }
     
+    override func viewDidChangeBackingProperties() {
+        debugLog("\(self.description) backing change \((self.window?.backingScaleFactor) ?? 1.0) isDisabled: \(isDisabled)")
+        if (!isDisabled)
+        {
+            self.layer!.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
+            self.playerLayer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
+            self.textLayer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
+            self.clockLayer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
+            self.messageLayer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
+        }
+    }
     
     func setupPlayerLayer(withPlayer player: AVPlayer) {
+        debugLog("\(self.description) setupPlayerLayer")
+        
         self.layer = CALayer()
         guard let layer = self.layer else {
-            errorLog("Couldn't create CALayer")
+            errorLog("\(self.description) Couldn't create CALayer")
             return
         }
         self.wantsLayer = true
         layer.backgroundColor = NSColor.black.cgColor
         layer.needsDisplayOnBoundsChange = true
         layer.frame = self.bounds
-        
-        debugLog("setting up player layer with frame: \(self.bounds) / \(self.frame)")
+
+        //self.
+        debugLog("\(self.description) setting up player layer with frame: \(self.bounds) / \(self.frame)")
         
         playerLayer = AVPlayerLayer(player: player)
         if #available(OSX 10.10, *) {
@@ -220,7 +245,7 @@ class AerialView: ScreenSaverView {
         }
         playerLayer.autoresizingMask = [CAAutoresizingMask.layerWidthSizable, CAAutoresizingMask.layerHeightSizable]
         playerLayer.frame = layer.bounds
-        playerLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
+        //playerLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(playerLayer)
         
         textLayer = CATextLayer()
@@ -229,7 +254,7 @@ class AerialView: ScreenSaverView {
         textLayer.shadowRadius = 10
         textLayer.shadowOpacity = 1.0
         textLayer.shadowColor = CGColor.black
-        textLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
+        //textLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(textLayer)
         
         // Clock Layer
@@ -239,7 +264,7 @@ class AerialView: ScreenSaverView {
         clockLayer.shadowRadius = 10
         clockLayer.shadowOpacity = 1.0
         textLayer.shadowColor = CGColor.black
-        clockLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
+        //clockLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(clockLayer)
         
         // Message Layer
@@ -249,7 +274,7 @@ class AerialView: ScreenSaverView {
         messageLayer.shadowRadius = 10
         messageLayer.shadowOpacity = 1.0
         textLayer.shadowColor = CGColor.black
-        messageLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
+        //messageLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(messageLayer)
     }
     
@@ -258,51 +283,54 @@ class AerialView: ScreenSaverView {
     }*/
     override func startAnimation() {
         super.startAnimation()
-        debugLog("startAnimation")
+        debugLog("\(self.description) startAnimation")
 
-        // Previews may be restarted, but our layer will hidden (somehow) so show it back
-        if (isPreview && player?.currentTime() != CMTime.zero) {
-            playerLayer.opacity = 1
-        }
-        
-        if player?.rate == 0 {
-            player?.play()
+        if !isDisabled{
+            // Previews may be restarted, but our layer will get hidden (somehow) so show it back
+            if (isPreview && player?.currentTime() != CMTime.zero) {
+                playerLayer.opacity = 1
+            }
+            
+            if player?.rate == 0 {
+                player?.play()
+            }
+            hasStartedPlaying = true
         }
     }
 
     override func stopAnimation() {
         super.stopAnimation()
-        debugLog("stopAnimation")
-        debugLog("player.rate : \(player!.rate)" )
-        player?.pause()
-        debugLog("player.rate : \(player!.rate)" )
+        debugLog("\(self.description) stopAnimation")
+        if !isDisabled {
+            player?.pause()
+        }
     }
+
     // MARK: - AVPlayerItem Notifications
     
     @objc func playerItemFailedtoPlayToEnd(_ aNotification: Notification) {
-        warnLog("AVPlayerItemFailedToPlayToEndTimeNotification \(aNotification)")
-        
+        warnLog("\(self.description) AVPlayerItemFailedToPlayToEndTimeNotification \(aNotification)")
         playNextVideo()
     }
     
     @objc func playerItemNewErrorLogEntryNotification(_ aNotification: Notification) {
-        warnLog("AVPlayerItemNewErrorLogEntryNotification \(aNotification)")
+        warnLog("\(self.description) AVPlayerItemNewErrorLogEntryNotification \(aNotification)")
     }
     
     @objc func playerItemPlaybackStalledNotification(_ aNotification: Notification) {
-        warnLog("AVPlayerItemPlaybackStalledNotification \(aNotification)")
+        warnLog("\(self.description) AVPlayerItemPlaybackStalledNotification \(aNotification)")
     }
     
     @objc func playerItemDidReachEnd(_ aNotification: Notification) {
-        debugLog("played did reach end")
-        debugLog("notification: \(aNotification)")
+        debugLog("\(self.description) played did reach end")
+        debugLog("\(self.description) notification: \(aNotification)")
         playNextVideo()
-        debugLog("playing next video for player \(String(describing: player))")
+        debugLog("\(self.description) playing next video for player \(String(describing: player))")
     }
     
     // Wait for the player to be ready
     internal override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        debugLog("observeValue \(String(describing: change))")
+        debugLog("\(self.description) observeValue \(keyPath)")
         if self.playerLayer.isReadyForDisplay {
             // All playerLayers should fade, we only have one shared player
             if AerialView.sharingPlayers {
@@ -342,7 +370,7 @@ class AerialView: ScreenSaverView {
             AerialView.previewPlayer = player
         }
         
-        debugLog("Setting player for all player layers in \(AerialView.sharedViews)")
+        debugLog("\(self.description) Setting player for all player layers in \(AerialView.sharedViews)")
         for view in AerialView.sharedViews {
             view.playerLayer.player = player
         }
@@ -362,7 +390,7 @@ class AerialView: ScreenSaverView {
         let randomVideo = ManifestLoader.instance.randomVideo(excluding: currentVideos)
         
         guard let video = randomVideo else {
-            errorLog("Error grabbing random video!")
+            errorLog("\(self.description) Error grabbing random video!")
             return
         }
         self.currentVideo = video
@@ -372,27 +400,27 @@ class AerialView: ScreenSaverView {
         if !video.isAvailableOffline
         {
             player.replaceCurrentItem(with: item)
-            debugLog("streaming video (not fully available offline) : \(video.url)")
+            debugLog("\(self.description) streaming video (not fully available offline) : \(video.url)")
         }
         else
         {
             let localurl = URL(fileURLWithPath: VideoCache.cachePath(forVideo: video)!)
             let localitem = AVPlayerItem(url: localurl)
             player.replaceCurrentItem(with: localitem)
-            debugLog("playing video (OFFLINE MODE) : \(localurl)")
+            debugLog("\(self.description) playing video (OFFLINE MODE) : \(localurl)")
         }
 
-        /*if player.rate == 0 {
+        // The first time we start from start animation !
+        if hasStartedPlaying && player.rate == 0 {
             player.play()
-            //player.rate = 32.0
-        }*/
+        }
         
         guard let currentItem = player.currentItem else {
-            errorLog("No current item!")
+            errorLog("\(self.description) No current item!")
             return
         }
         
-        debugLog("observing current item \(currentItem)")
+        debugLog("\(self.description) observing current item \(currentItem)")
 
         // Descriptions and fades are set when we begin playback
         if !observerWasSet {
@@ -591,7 +619,7 @@ class AerialView: ScreenSaverView {
     func setupTextLayer(string:String, duration: CFTimeInterval) {
         // Setup string
         self.textLayer.string = string
-
+        //self.textLayer.isWrapped = true
         let preferences = Preferences.sharedInstance
 
         // We override font size on previews
@@ -611,7 +639,7 @@ class AerialView: ScreenSaverView {
         self.textLayer.fontSize = fontSize
 
         let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : font as Any]
-
+        
         // Calculate bounding box
         let s = NSAttributedString(string: string, attributes: attributes)
         let rect = s.boundingRect(with: layer!.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
