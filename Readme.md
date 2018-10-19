@@ -37,13 +37,15 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 If Aerial.saver could not be opened, place Aerial.saver in `~/Library/Screen Savers`
 
-**Important** : Please note that if you are upgrading from a previous version, we strongly recommand you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated.
+**Important** : Please note that if you are upgrading from a previous version, we strongly recommend you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated.
 
 ### Brew Cask Support - (Updated for Version 1.4.1)
 
 If you're looking to install Aerial across many systems, remotely, or simply from terminal we recommend [Brew Cask](https://caskroom.github.io). Prefer this method if you're looking for auto-updates.
 
 Simply issue the following terminal command: `brew cask install aerial`
+
+To upgrade Aerial, run `brew cask upgrade` in terminal.
 
 ## Setting Aerial as Your Screen Saver
 
@@ -58,7 +60,7 @@ There are three options to uninstall Aerial from your Mac.
 
 * Right-click on the Aerial screen saver in System Preferences and select `Delete "Aerial"`.
 * Or delete the file(s) directly. macOS can store screen savers in two locations. `/Library/Screen Savers` and `/Users/YOURUSERNAME/Library/Screen Savers`. Check both locations for a file called "Aerial.saver" and delete any copies you find.
-* If you installed Aerial using brew, then the following command in a Terminal window should remove the brew installed version. `brew cask uninstall aerial`
+* If you installed Aerial using Brew Cask, then the following command in a Terminal window should remove the brew installed version. `brew cask uninstall aerial`
 
 You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aerial`. This is where Aerial stores the cached copies of the aerial videos. Last thing, you may want to delete the preferences `plist`. The file is `/Users/YOURUSERNAME/Library/Preferences/ByHost/com.JohnCoates.Aerial.{UUID}.plist`. It's highly recommended to remove that file if you purge the Cache folder.
 
