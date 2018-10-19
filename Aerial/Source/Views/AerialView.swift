@@ -289,12 +289,12 @@ class AerialView: ScreenSaverView {
             // Previews may be restarted, but our layer will get hidden (somehow) so show it back
             if (isPreview && player?.currentTime() != CMTime.zero) {
                 playerLayer.opacity = 1
-            }
-            
-            if player?.rate == 0 {
                 player?.play()
             }
-            hasStartedPlaying = true
+            
+            /*if player?.rate == 0 {
+             
+            }*/
         }
     }
 
@@ -330,8 +330,11 @@ class AerialView: ScreenSaverView {
     
     // Wait for the player to be ready
     internal override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        debugLog("\(self.description) observeValue \(keyPath)")
+        debugLog("\(self.description) observeValue \(String(describing: keyPath))")
         if self.playerLayer.isReadyForDisplay {
+            self.player!.play()
+            hasStartedPlaying = true
+
             // All playerLayers should fade, we only have one shared player
             if AerialView.sharingPlayers {
                 for view in AerialView.sharedViews {
@@ -409,12 +412,12 @@ class AerialView: ScreenSaverView {
             player.replaceCurrentItem(with: localitem)
             debugLog("\(self.description) playing video (OFFLINE MODE) : \(localurl)")
         }
-
+/*
         // The first time we start from start animation !
         if hasStartedPlaying && player.rate == 0 {
             player.play()
         }
-        
+  */
         guard let currentItem = player.currentItem else {
             errorLog("\(self.description) No current item!")
             return
@@ -579,8 +582,13 @@ class AerialView: ScreenSaverView {
             }
             else
             {
-                // We don't have any extended description, using video name (City)
-                let str = video.name
+                // We don't have any extended description, using Secondary name (location) or video name (City)
+                let str: String
+                if (video.secondaryName != "") {
+                    str = video.secondaryName
+                } else {
+                    str = video.name
+                }
                 var fadeAnimation:CAKeyframeAnimation
 
                 if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)

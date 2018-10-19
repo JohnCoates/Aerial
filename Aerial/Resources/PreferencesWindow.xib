@@ -85,7 +85,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Videos" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
+                                        <view key="view" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="614" height="322"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -173,7 +173,7 @@
                                                                                             <font key="font" metaFont="smallSystem"/>
                                                                                         </buttonCell>
                                                                                     </button>
-                                                                                    <textField verticalHuggingPriority="750" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="5qU-xC-8TY">
+                                                                                    <textField verticalHuggingPriority="750" allowsExpansionToolTips="YES" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="5qU-xC-8TY">
                                                                                         <rect key="frame" x="25" y="2" width="84" height="14"/>
                                                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="hxB-gg-rAu">
                                                                                             <font key="font" metaFont="smallSystem"/>
@@ -399,7 +399,7 @@ is disabled
                                                         <menu key="menu" id="Aex-M5-Ep9">
                                                             <items>
                                                                 <menuItem title="None" id="D0r-yP-Ehu"/>
-                                                                <menuItem title="0.5 Second" id="2wY-yk-9XD"/>
+                                                                <menuItem title="0.5 Seconds" id="2wY-yk-9XD"/>
                                                                 <menuItem title="1 Second" state="on" id="4aA-BM-bD5"/>
                                                                 <menuItem title="2 Seconds" id="dWP-Di-V3P">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -573,9 +573,9 @@ should appear</string>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2y8-kQ-UrX">
-                                                    <rect key="frame" x="29" y="47" width="151" height="18"/>
+                                                    <rect key="frame" x="29" y="47" width="170" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Show extra message:" bezelStyle="regularSquare" imagePosition="left" inset="2" id="M45-GZ-rJv">
+                                                    <buttonCell key="cell" type="check" title="Show an extra message:" bezelStyle="regularSquare" imagePosition="left" inset="2" id="M45-GZ-rJv">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
@@ -633,7 +633,7 @@ should appear</string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dch-FL-HdX">
-                                                    <rect key="frame" x="186" y="45" width="411" height="22"/>
+                                                    <rect key="frame" x="205" y="45" width="392" height="22"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Type your message here" drawsBackground="YES" id="tGt-hF-pSd">
                                                         <font key="font" metaFont="system"/>
@@ -662,7 +662,7 @@ should appear</string>
                                                         <menu key="menu" id="8QE-J3-wjY">
                                                             <items>
                                                                 <menuItem title="None" id="noA-G7-biS"/>
-                                                                <menuItem title="0.5 Second" id="Zwc-nM-OD0"/>
+                                                                <menuItem title="0.5 Seconds" id="Zwc-nM-OD0"/>
                                                                 <menuItem title="1 Second" state="on" id="A8B-Cb-jvo"/>
                                                                 <menuItem title="2 Seconds" id="3MV-ak-AHM">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -711,11 +711,11 @@ should appear</string>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button toolTip="Sunset/sunrise detection requires macOS 10.12.4, a compatible Mac, and location services enabled" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Su5-5y-7hV">
-                                                    <rect key="frame" x="73" y="246" width="510" height="34"/>
+                                                    <rect key="frame" x="73" y="246" width="517" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="nQ1-wT-jXy">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                        <string key="title">Use macOS Night Shift for sunrise and sunset (you do not need to activate Night
+                                                        <string key="title">Use macOS Night Shift for Sunrise and Sunset. (You do not need to activate Night
 Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
@@ -724,9 +724,9 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eFJ-La-jfN">
-                                                    <rect key="frame" x="73" y="194" width="271" height="18"/>
+                                                    <rect key="frame" x="73" y="194" width="274" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="radio" title="Manually specify sunrise and sunset time" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="P4i-a5-XX1">
+                                                    <buttonCell key="cell" type="radio" title="Manually specify Sunrise and Sunset time" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="P4i-a5-XX1">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
@@ -1011,13 +1011,13 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
-                                    <tabViewItem label="Aerial" identifier="" id="asf-lu-1rA">
-                                        <view key="view" id="303-Jh-DVp">
+                                    <tabViewItem label="Advanced" identifier="" id="asf-lu-1rA">
+                                        <view key="view" ambiguous="YES" id="303-Jh-DVp">
                                             <rect key="frame" x="10" y="33" width="614" height="322"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Veo-4u-pxN">
-                                                    <rect key="frame" x="15" y="279" width="100" height="18"/>
+                                                    <rect key="frame" x="15" y="241" width="100" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Debug mode" bezelStyle="regularSquare" imagePosition="left" inset="2" id="lpe-59-RED">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1028,7 +1028,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="roX-7H-4ec">
-                                                    <rect key="frame" x="15" y="252" width="89" height="18"/>
+                                                    <rect key="frame" x="15" y="214" width="89" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Log to disk" bezelStyle="regularSquare" imagePosition="left" inset="2" id="4Zh-Wo-icG">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1039,7 +1039,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </button>
                                                 <button toolTip="Show error messages" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YHz-Oa-hiw">
-                                                    <rect key="frame" x="131" y="270" width="98" height="32"/>
+                                                    <rect key="frame" x="131" y="232" width="98" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Show Logs" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NHO-B7-5DM">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1047,6 +1047,39 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="logButtonClick:" target="-2" id="c38-uj-aBt"/>
+                                                    </connections>
+                                                </button>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="580" translatesAutoresizingMaskIntoConstraints="NO" id="IOU-en-PQ2">
+                                                    <rect key="frame" x="15" y="268" width="584" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" id="9JF-PT-5mu">
+                                                        <font key="font" metaFont="system"/>
+                                                        <string key="title">If you are experiencing an issue with Aerial, we may ask you to enable the Debug and Log to disk options below. 
+ 
+
+ </string>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0gn-X6-Bho">
+                                                    <rect key="frame" x="137" y="214" width="311" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Logs are saved as AerialLog.txt in the Cache folder" id="Q2F-pr-2Jk">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TF9-0r-C9I">
+                                                    <rect key="frame" x="456" y="205" width="130" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="push" title="Show in Finder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HYt-mp-nmh">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="showLogInFinder:" target="-2" id="SMx-rK-07T"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

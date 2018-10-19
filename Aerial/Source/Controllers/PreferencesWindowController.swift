@@ -651,6 +651,18 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         debugLog("UI logToDisk: \(onState)")
     }
     
+    @IBAction func showLogInFinder(_ button: NSButton!) {
+        let logfile = VideoCache.cacheDirectory!.appending("/AerialLog.txt")
+
+        // If we don't have a log, just show the folder
+        if FileManager.default.fileExists(atPath: logfile) == false {
+            NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: VideoCache.cacheDirectory!)
+        }
+        else {
+            NSWorkspace.shared.selectFile(logfile, inFileViewerRootedAtPath: VideoCache.cacheDirectory!)
+        }
+    }
+
     // MARK: - Menu
     @IBAction func outlineViewSettingsClick(_ button: NSButton) {
         let menu = NSMenu()

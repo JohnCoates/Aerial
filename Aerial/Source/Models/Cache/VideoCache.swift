@@ -86,6 +86,7 @@ class VideoCache {
     }
     
     init(URL: Foundation.URL) {
+        debugLog("initvideocache")
         videoData = Data()
         loading = true
         self.URL = URL

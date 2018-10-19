@@ -100,3 +100,27 @@ func warnLog(_ message: String) {
 func errorLog(_ message: String) {
     Log(level:.error, message:message)
 }
+
+func dataLog(_ data:Data) {
+    let cacheDirectory = VideoCache.cacheDirectory!
+    var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
+    cacheFileUrl.appendPathComponent("AerialData.txt")
+
+    if FileManager.default.fileExists(atPath: cacheFileUrl.path) {
+        do {
+            let fileHandle = try FileHandle(forWritingTo: cacheFileUrl)
+            fileHandle.seekToEndOfFile()
+            fileHandle.write(data)
+            fileHandle.closeFile()
+        } catch {
+            print("Can't open handle")
+        }
+    } else {
+        do {
+            try data.write(to: cacheFileUrl, options: .atomic)
+        } catch {
+            print("Can't write to file")
+        }
+    }
+
+}
