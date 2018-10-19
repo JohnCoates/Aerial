@@ -5,9 +5,9 @@ Before logging an issue please check if one of the problems you are experiencing
 ### "You cannot use the Aerial screen saver with this version of OS X." message
 
 If you get a message saying `You cannot use the Aerial screen saver with this version of OS X. Please contact the vendor to get a newer version of the screen saver.` that is a known bug with macOS that was reported to Apple in April 2016 as [rdar://25569037](http://openradar.appspot.com/25569037). As of November 2017 the bug is still not fixed. To work around the bug:
-* select the Aerial screensaver in System Preferences
-* close System Preferences with Aerial selected
-* reopen System Preferences and the preview should work now
+* Select the Aerial screensaver in System Preferences
+* Close System Preferences with Aerial selected
+* Reopen System Preferences and the preview should work now
 
 ### Mac won't sleep with Aerial as screensaver
 
