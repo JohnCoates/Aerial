@@ -45,6 +45,8 @@ If you're looking to install Aerial across many systems, remotely, or simply fro
 
 Simply issue the following terminal command: `brew cask install aerial`
 
+To upgrade Aerial, run `brew cask upgrade` in terminal.
+
 ## Setting Aerial as Your Screen Saver
 
 1. Open `System Preferences` -> `Desktop & Screen Saver` -> `Screen Saver`
@@ -58,7 +60,7 @@ There are three options to uninstall Aerial from your Mac.
 
 * Right-click on the Aerial screen saver in System Preferences and select `Delete "Aerial"`.
 * Or delete the file(s) directly. macOS can store screen savers in two locations. `/Library/Screen Savers` and `/Users/YOURUSERNAME/Library/Screen Savers`. Check both locations for a file called "Aerial.saver" and delete any copies you find.
-* If you installed Aerial using Brew Cast, then the following command in a Terminal window should remove the brew installed version. `brew cask uninstall aerial`
+* If you installed Aerial using Brew Cask, then the following command in a Terminal window should remove the brew installed version. `brew cask uninstall aerial`
 
 You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aerial`. This is where Aerial stores the cached copies of the aerial videos. Last thing, you may want to delete the preferences `plist`. The file is `/Users/YOURUSERNAME/Library/Preferences/ByHost/com.JohnCoates.Aerial.{UUID}.plist`. It's highly recommended to remove that file if you purge the Cache folder.
 
