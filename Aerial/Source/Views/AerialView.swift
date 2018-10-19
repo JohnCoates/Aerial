@@ -249,6 +249,7 @@ class AerialView: ScreenSaverView {
         layer.addSublayer(playerLayer)
         
         textLayer = CATextLayer()
+        textLayer.frame = layer.bounds
         textLayer.opacity = 0
         // Add a bit of shadow to give an outline and better readability
         textLayer.shadowRadius = 10
@@ -627,7 +628,7 @@ class AerialView: ScreenSaverView {
     func setupTextLayer(string:String, duration: CFTimeInterval) {
         // Setup string
         self.textLayer.string = string
-        //self.textLayer.isWrapped = true
+        self.textLayer.isWrapped = true
         let preferences = Preferences.sharedInstance
 
         // We override font size on previews
@@ -645,13 +646,16 @@ class AerialView: ScreenSaverView {
         // Make sure we change the layer font/size
         self.textLayer.font = font
         self.textLayer.fontSize = fontSize
-
-        let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : font as Any]
         
+        let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : font as Any]
+
         // Calculate bounding box
         let s = NSAttributedString(string: string, attributes: attributes)
-        let rect = s.boundingRect(with: layer!.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
-
+        
+        var rect = s.boundingRect(with: layer!.visibleRect.size, options: [.truncatesLastVisibleLine, .usesLineFragmentOrigin])
+        // Last line won't appear if we don't adjust 
+        rect = CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width, height: rect.height+10)
+        
         // Rebind frame
         self.textLayer.frame = rect
 
