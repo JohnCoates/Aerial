@@ -258,9 +258,9 @@ class VideoDownload: NSObject, NSURLConnectionDataDelegate {
     }
     
     func connection(_ connection: NSURLConnection, didFailWithError error: Error) {
-        errorLog("Couldn't download video: \(error)")
+        errorLog("Couldn't download video: \(error.localizedDescription)")
         queue.async { () -> Void in
-            self.failedDownload("Connection fail: \(error)")
+            self.failedDownload("Connection fail: \(error.localizedDescription)")
         }
     }
     

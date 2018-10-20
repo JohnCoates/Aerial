@@ -334,6 +334,8 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         
         if let cacheDirectory = VideoCache.cacheDirectory {
             cacheLocation.url = URL(fileURLWithPath: cacheDirectory as String)
+        } else {
+            cacheLocation.url = nil
         }
         
         cacheStatusLabel.isEditable = false
