@@ -85,7 +85,14 @@ class PoiStringProvider {
             return ""
         }
         let preferences = Preferences.sharedInstance
-
+        let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
+        
+        if #available(OSX 10.12, *) {
+            if (preferences.localizeDescriptions && locale.languageCode != "en") {
+                return stringBundle!.localizedString(forKey: key, value: "", table: "Localizable.nocache")
+            }
+        }
+        
         if preferences.useCommunityDescriptions && video.communityPoi.count > 0 {
             return key  // We directly store the string in the key
         } else {
@@ -114,6 +121,13 @@ class PoiStringProvider {
     //
     func getPoiKeys(video: AerialVideo) -> [String:String] {
         let preferences = Preferences.sharedInstance
+        let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
+
+        if #available(OSX 10.12, *) {
+            if (preferences.localizeDescriptions && locale.languageCode != "en") {
+                return video.poi
+            }
+        }
         
         if preferences.useCommunityDescriptions && video.communityPoi.count > 0 {
             return video.communityPoi
@@ -123,7 +137,7 @@ class PoiStringProvider {
     }
     
     
-    // MARK - Community data
+    // MARK: - Community data
     
     // Load the community strings
     private func loadCommunity()
@@ -156,12 +170,12 @@ class PoiStringProvider {
                 let poi = item["pointsOfInterest"] as? [String: String]
                 
                 communityStrings.append(CommunityStrings(id: id, name: name, poi: poi ?? [:]))
-                print("\(id) \(name) \(String(describing: poi))")
             }
         } catch {
             // handle error
             errorLog("Community JSON ERROR")
         }
+        debugLog("Community JSON : \(communityStrings.count)")
     }
 
     func getCommunityName(id: String) -> String? {
