@@ -107,6 +107,8 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet weak var debugModeCheckbox: NSButton!
     @IBOutlet weak var logToDiskCheckbox: NSButton!
     
+    @IBOutlet weak var cacheSizeTextField: NSTextField!
+    
     var player: AVPlayer = AVPlayer()
     
     var videos: [AerialVideo]?
@@ -146,7 +148,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         /*if let previewPlayer = AerialView.previewPlayer {
             self.player = previewPlayer
         }*/
-
+        updateCacheSize()
         outlineView.floatsGroupRows = false
 
         loadJSON()  // Async loading
@@ -538,6 +540,27 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     }
 
     // MARK: - Cache panel
+    
+    func updateCacheSize() {
+        // get your directory url
+        let documentsDirectoryURL = URL(fileURLWithPath: VideoCache.cacheDirectory!)
+        
+        // FileManager.default.urls(for: VideoCache.cacheDirectory, in: .userDomainMask).first!
+        
+        // check if the url is a directory
+        if (try? documentsDirectoryURL.resourceValues(forKeys: [.isDirectoryKey]))?.isDirectory == true {
+            var folderSize = 0
+            (FileManager.default.enumerator(at: documentsDirectoryURL, includingPropertiesForKeys: nil)?.allObjects as? [URL])?.lazy.forEach {
+                folderSize += (try? $0.resourceValues(forKeys: [.totalFileAllocatedSizeKey]))?.totalFileAllocatedSize ?? 0
+            }
+            let byteCountFormatter =  ByteCountFormatter()
+            byteCountFormatter.allowedUnits = .useGB
+            byteCountFormatter.countStyle = .file
+            let sizeToDisplay = byteCountFormatter.string(for: folderSize) ?? ""
+            debugLog("Cache size : \(sizeToDisplay)")
+            cacheSizeTextField.stringValue = "Cache all videos (current cache size \(sizeToDisplay))"
+        }
+    }
     
     @IBAction func cacheAerialsAsTheyPlayClick(_ button: NSButton!) {
         let onState = (button.state == NSControl.StateValue.on)
@@ -1175,7 +1198,6 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     func videoDownload(_ videoDownload: VideoDownload, receivedBytes: Int, progress: Float) {
         currentProgress.doubleValue = Double(progress)
     }
-    
 }
 
 // MARK: - Font Panel Delegates
