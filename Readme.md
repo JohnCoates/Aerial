@@ -31,13 +31,13 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 ### Manual Installation
 *Rather install from Terminal or have auto-updates? Look at the Brew Cask section below!*
 
-1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.1/Aerial.saver.zip) (Version 1.4.1, october 16, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.1)) 
+1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.1/Aerial.saver.zip) (Version 1.4.1, October 16, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.1)) 
 2. Unzip the downloaded file.
 3. Open **Aerial.saver** and confirm installation.
 
 If Aerial.saver could not be opened, place Aerial.saver in `~/Library/Screen Savers`
 
-**Important** : Please note that if you are upgrading from a previous version, we strongly recommend you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated.
+**Important**: Please note that if you are upgrading from a previous version, we strongly recommend you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated.
 
 ### Brew Cask Support - (Updated for Version 1.4.1)
 
@@ -58,11 +58,11 @@ To upgrade Aerial, run `brew cask upgrade` in Terminal.
 
 There are three options to uninstall Aerial from your Mac.
 
-* Right-click on the Aerial screen saver in System Preferences and select `Delete "Aerial"`.
+* Right-click on the Aerial screensaver in System Preferences and select `Delete "Aerial"`.
 * Or delete the file(s) directly. macOS can store screen savers in two locations. `/Library/Screen Savers` and `/Users/YOURUSERNAME/Library/Screen Savers`. Check both locations for a file called "Aerial.saver" and delete any copies you find.
 * If you installed Aerial using Brew Cask, then the following command in a Terminal window should remove the Brew Cask installed version. `brew cask uninstall aerial`
 
-You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aerial`. This is where Aerial stores the cached copies of the Aerial videos. Last thing, you may want to delete the preferences `plist`. The file is `/Users/YOURUSERNAME/Library/Preferences/ByHost/com.JohnCoates.Aerial.{UUID}.plist`. It's highly recommended to remove that file if you purge the Cache folder.
+You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aerial`. This is where Aerial stores the cached copies of the Aerial videos. The last thing, you may want to delete the preferences `plist`. The file is `/Users/YOURUSERNAME/Library/Preferences/ByHost/com.JohnCoates.Aerial.{UUID}.plist`. It's highly recommended to remove that file if you purge the Cache folder.
 
 ## New features in version 1.4+
 
@@ -70,8 +70,8 @@ You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aeria
 
 * **Every Aerial video:** From the very first Aerials in San Francisco to the new space videos shot from the ISS! Now with better titles too so you can find your favorite videos faster.
 * **4K HEVC:** With the launch of Apple TV 4K, many videos are now available in this format. Aerial will show you the best format available based on your preferences.
-* **Different videos based on time:** Want to see night videos at night? You can either specify your sunset or sunrise time manually, or, if your Mac is compatible with Night Shift (See [here for a list of compatible Macs](https://support.apple.com/en-us/HT207513)), get those automatically (You do not need to enable Night Shift).
-* **Feeling Dark?:** Aerial is now compatible with Dark Mode in macOS 10.14 Mojave, and can play night videos when Dark Mode is enabled.
+* **Different videos based on time:** Want to see night videos at night? You can either specify your sunset or sunrise time manually or, if your Mac is compatible with Night Shift (See [here for a list of compatible Macs](https://support.apple.com/en-us/HT207513)), get those automatically (You do not need to enable Night Shift).
+* **Feeling Dark?:** Aerial is now compatible with Dark Mode in macOS 10.14 Mojave and can play night videos when Dark Mode is enabled.
 
 ![screen shot 2018-10-11 at 14 50 18](https://user-images.githubusercontent.com/37544189/46805577-b5c86400-cd65-11e8-8c04-252c5fa6c1eb.png)
 
@@ -104,9 +104,9 @@ You can then download the videos you want from the JSON files. In the 4K JSONs, 
 
 ## About HEVC and hardware decoding
 
-Aerial uses Apple's AV Framework to play the videos as your screensaver. When available, AV Framework will use hardware decoding (from your CPU or your graphic card) to minimize the resources needed for video playback. You can find guidelines in the help button next to the `Preferred video format` setting. By default, Aerial uses 1080p H.264 videos which is the most compatible format. Please note that all HEVC videos are encoded with the `Main10` profile, which may not be hardware accelerated by your machine, while some other HEVC videos (encoded in `Main` profile) will be.
+Aerial uses Apple's AV Framework to play the videos as your screensaver. When available, AV Framework will use hardware decoding (from your CPU or your graphics card) to minimize the resources needed for video playback. You can find guidelines in the help button next to the `Preferred video format` setting. By default, Aerial uses 1080p H.264 videos which is the most compatible format. Please note that all HEVC videos are encoded with the `Main10` profile, which may not be hardware accelerated by your machine, while some other HEVC videos (encoded in `Main` profile) will be.
 
-While we wish to provide everyone with the best setting for their machine, the GVA framework from Apple doesn't let us distinguish HEVC `Main10` profile acceleration from general HEVC acceleration. Early feedback we gathered also seems to point that on machines with multiple decoding option (Intel QuickSync and AMD UVD), QuickSync will always be prefered (even if you "force" the discrete GPU use with an external monitor).
+While we wish to provide everyone with the best setting for their machine, the GVA framework from Apple doesn't let us distinguish HEVC `Main10` profile acceleration from general HEVC acceleration. Early feedback we gathered also seems to point that on machines with multiple decoding options (Intel QuickSync and AMD UVD), QuickSync will always be preferred (even if you "force" the discrete GPU use with an external monitor).
 
 These are our recommendations so far:
 - Macs older than 2011 may lack H.264 acceleration. 
@@ -123,7 +123,7 @@ You can easily check for yourself what to expect by opening a video in Quicktime
 2) Download manually `https://sylvan.apple.com/Aerials/resources.tar` and put that file in the Aerial cache folder (you can open that folder from the Cache panel, by clicking the `Show in Finder` button. You will need to extract the tar. Make sure that the extracted files are at the root of the cache folder, and not in a resources subfolder (some unarchiving tools will do that by default). If so, just move the content of the resources folder to the parent directory.
 - Black screen: If you are behind a firewall (like Little Snitch or Hands Off!) try creating exceptions for Aerial to allow it access to Apple's servers. Be sure the applications `ScreenSaverEngine.app` and `System Preferences.app` are not being blocked access to *.phobos.apple.com, *.phobos.apple.com.edgesuite.net and sylvan.apple.com. If that isn't an option, please look at the Offline mode section. 
 - "You cannot use the Aerial screen saver with this version of macOS." error: Select Aerial, close System Preferences with Aerial still selected, re-open System Preferences and Aerial should now work. This is a known bug with Swift screensavers in macOS/OS X reported to Apple as [rdar://25569037](http://www.openradar.me/25569037).
-- High CPU usage/fan spinning all of a sudden: If you correctly configured the Prefered video format according to your Mac and still experience high CPU usage/fan spinning all of a sudden, please look for the cause with `Activity Monitor`, you may see   a `com.apple.photos.ImageConversionService` responsible for this CPU load. This is the iCloud Photos process, you can find more about [what it does here](https://support.apple.com/en-gu/HT204264) and how to pause it.
+- High CPU usage/fan spinning all of a sudden: If you correctly configured the preferred video format according to your Mac and still experience high CPU usage/fan spinning all of a sudden, please look for the cause with `Activity Monitor`, you may see   a `com.apple.photos.ImageConversionService` responsible for this CPU load. This is the iCloud Photos process, you can find more about [what it does here](https://support.apple.com/en-gu/HT204264) and how to pause it.
 
 
 ## License
