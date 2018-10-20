@@ -10,6 +10,8 @@
 		030D9B7C21551A8D00961E95 /* AerialPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */; };
 		03233B68217272640077D3F9 /* PoiStringProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03233B67217272640077D3F9 /* PoiStringProvider.swift */; };
 		03233B692172762C0077D3F9 /* PoiStringProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03233B67217272640077D3F9 /* PoiStringProvider.swift */; };
+		033192E1217B78240073B580 /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = 033192E0217B78240073B580 /* en.json */; };
+		033192E2217B78240073B580 /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = 033192E0217B78240073B580 /* en.json */; };
 		033D62AB216CADCD00F3AF83 /* icon-day-dark.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 033D62AA216CADCD00F3AF83 /* icon-day-dark.pdf */; };
 		033D62AC216CADCD00F3AF83 /* icon-day-dark.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 033D62AA216CADCD00F3AF83 /* icon-day-dark.pdf */; };
 		033D62AD216CADCD00F3AF83 /* icon-day-dark.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 033D62AA216CADCD00F3AF83 /* icon-day-dark.pdf */; };
@@ -79,6 +81,7 @@
 
 /* Begin PBXFileReference section */
 		03233B67217272640077D3F9 /* PoiStringProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoiStringProvider.swift; sourceTree = "<group>"; };
+		033192E0217B78240073B580 /* en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = en.json; sourceTree = "<group>"; };
 		033D62AA216CADCD00F3AF83 /* icon-day-dark.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icon-day-dark.pdf"; sourceTree = "<group>"; };
 		033D62AE216CAE2C00F3AF83 /* icon-night-dark.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icon-night-dark.pdf"; sourceTree = "<group>"; };
 		03893CB2217749F0008E7125 /* ErrorLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLog.swift; sourceTree = "<group>"; };
@@ -142,6 +145,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		033192DF217B77E90073B580 /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				033192E0217B78240073B580 /* en.json */,
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
 		03E8730D216501B3002B469B /* Downloads */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +202,7 @@
 		FAC36F361BE1756D007F2A20 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				033192DF217B77E90073B580 /* Community */,
 				033D62AA216CADCD00F3AF83 /* icon-day-dark.pdf */,
 				FAC36F371BE1756D007F2A20 /* icon-day.pdf */,
 				FAC36F381BE1756D007F2A20 /* icon-night.pdf */,
@@ -409,6 +421,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				033192E2217B78240073B580 /* en.json in Resources */,
 				FAC36F541BE1756D007F2A20 /* PreferencesWindow.xib in Resources */,
 				FAC36F4E1BE1756D007F2A20 /* icon-day.pdf in Resources */,
 				033D62B0216CAE2C00F3AF83 /* icon-night-dark.pdf in Resources */,
@@ -439,6 +452,7 @@
 				FAC36F551BE1756D007F2A20 /* thumbnail.png in Resources */,
 				033D62AF216CAE2C00F3AF83 /* icon-night-dark.pdf in Resources */,
 				FAC36F4F1BE1756D007F2A20 /* icon-night.pdf in Resources */,
+				033192E1217B78240073B580 /* en.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

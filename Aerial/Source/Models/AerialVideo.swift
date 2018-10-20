@@ -62,6 +62,7 @@ class AerialVideo: CustomStringConvertible, Equatable {
     let url4KHEVC: String
     var sources: [Manifests]
     let poi: [String: String]
+    let communityPoi: [String: String]
     var duration: Double
     
     var arrayPosition = 1
@@ -119,7 +120,7 @@ class AerialVideo: CustomStringConvertible, Equatable {
     }
     
     init(id: String, name: String, secondaryName: String, type: String,
-         timeOfDay: String, url1080pH264: String, url1080pHEVC: String, url4KHEVC: String, manifest: Manifests, poi: [String: String]) {
+         timeOfDay: String, url1080pH264: String, url1080pHEVC: String, url4KHEVC: String, manifest: Manifests, poi: [String: String], communityPoi: [String:String]) {
         self.id = id
 
         // We override names for known space videos
@@ -150,8 +151,9 @@ class AerialVideo: CustomStringConvertible, Equatable {
         self.url4KHEVC = url4KHEVC
         self.sources = [manifest]
         self.poi = poi
-        
+        self.communityPoi = communityPoi
         self.duration = 0
+        
         updateDuration()
     }
 

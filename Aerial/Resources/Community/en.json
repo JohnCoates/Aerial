@@ -1,0 +1,354 @@
+{
+    "version" : "0",
+    "language" : "en",
+    "assets" : [
+        {
+            "id" : "6C3D54AE-0871-498A-81D0-56ED24E5FE9F",
+            "name" : "Korea and Japan Night"  
+        },
+        {
+            "id" : "B876B645-3955-420E-99DF-60139E451CF3",
+            "name" :"Wulingyuan National Park 1"
+        },
+        {
+            "id" : "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C",
+            "name" : "Longji Rice Terraces"
+        },
+        {
+            "id" : "D5E76230-81A3-4F65-A1BA-51B8CADED625",
+            "name" : "Wulingyuan National Park 2"
+        },
+        {
+            "id" : "b6-1",
+            "name" : "Great Wall 1"
+        },
+        {
+            "id" : "b2-1",
+            "name" :"Great Wall 2"
+        },
+        {
+            "id" : "b5-1",
+            "name" : "Great Wall 3"
+        },
+
+        {
+            "id" : "AC9C09DD-1D97-4013-A09F-B0F5259E64C3",
+            "name" : "Sheikh Zayed Road"
+        },
+        {
+            "id" : "49790B7C-7D8C-466C-A09E-83E38B6BE87A",
+            "name" :"Marina 1"  
+        },
+        {
+            "id" : "02EA5DBE-3A67-4DFA-8528-12901DFD6CC1",
+            "name" : "Downtown"
+        },
+        {
+            "id" : "802866E6-4AAF-4A69-96EA-C582651391F1",
+            "name" : "Marina 2" 
+        },
+
+        {
+            "id" : "BAF76353-3475-4855-B7E1-CE96CC9BC3A7",
+            "name" : "Approaching Burj Khalifa"
+        },
+        {
+            "id" : "2F11E857-4F77-4476-8033-4A1E4610AFCC",
+            "name" : "Sheikh Zayed Road"
+        },
+
+        {
+            "id" : "E4ED0B22-EB81-4D4F-A29E-7E1EA6B6D980",
+            "name" : "Nuussuaq Peninsula"
+        },
+        {
+            "id" : "30047FDA-3AE3-4E74-9575-3520AD77865B",
+            "name" : "Ilulissat Icefjord" 
+        },
+
+        {
+            "id" : "7D4710EB-5BA4-42E6-AA60-68D77F67D9B9",
+            "name" : "Ilulissat Icefjord"
+        },
+
+        {
+            "id" : "b7-1",
+            "name" : "Laupāhoehoe Nui"
+        },
+        {
+            "id" : "b1-1",
+            "name" : "Waimanu Valley"
+        },
+        {
+            "id" : "b2-2",
+            "name" : "Honopū Valley"
+        },
+        {
+            "id" : "b4-1",
+            "name" : "Pu‘u O ‘Umi"
+        },
+
+        {
+            "id" : "b6-2",
+            "name" : "Kohala coastline"
+        },
+        {
+            "id" : "b8-1",
+            "name" : "Pu‘u O ‘Umi"
+        },        
+
+        {
+            "id" : "102C19D1-9D9F-48EC-B492-074C985C4D9F",
+            "name" : "Victoria Harbour 1"
+        },
+        {
+            "id" : "560E09E8-E89D-4ADB-8EEA-4754415383D4",
+            "name" : "Victoria Peak"
+        },
+        {
+            "id" : "024891DE-B7F6-4187-BFE0-E6D237702EF0",
+            "name" : "Wan Chai"
+        },
+        {
+            "id" : "786E674C-BB22-4AA9-9BD3-114D2020EC4D",
+            "name" : "Victoria Harbour 2"
+        },
+
+        {
+            "id" : "30313BC1-BF20-45EB-A7B1-5A6FFDBD2488",
+            "name" : "Victoria Harbour"
+        },
+
+        {
+            "id" : "6E2FC8AC-832D-46CF-B306-BB2A05030C17",
+            "name" : "Liwa Oasis"
+        },
+
+        {
+            "id" : "b6-3",
+            "name" : "River Thames",
+            "pointsOfInterest" : {
+                "0" : "Passing the Gherkin in the City of London, on the right",
+                "15" : "Approaching Tower Bridge on the River Thames, with City Hall behind and the Tower of London to the right",
+                "40" : "Approaching HMS Belfast in the River Thames, passing the Walkie-Talkie on the right",
+                "75" : "Traveling west up the River Thames, with The Shard on the left and St Paul’s Cathedral on the right",
+                "95" : "Passing over Southwark Cathedral, with St Paul's Cathedral on the right",
+                "130" : "Passing Shakespeare’s Globe in Southwark (right foreground)",
+                "195" : "Passing Waterloo Station on the left, with the Palace of Westminster (Houses of Parliament) across the Thames behind",
+                "210" : "Heading toward Westminster over the River Thames"
+            }
+        },
+        {
+            "id" : "b5-2",
+            "name" :"Buckingham Palace",
+            "pointsOfInterest" : {
+                "0" : "Flying over Buckingham Palace and the Victoria Memorial, London",
+                "25" : "Passing Wellington Barracks on the right, following Birdcage Walk along St James’s Park",
+                "65" : "Passing over the Foreign & Commonwealth Office in Whitehall, with Horse Guards Parade on the left and Her Majesty’s Treasury on the right",
+                "75" : "Passing over the Cenotaph, with the Ministy of Defence on the left and Big Ben and the Palace of Westmintser (Houses of Parliament) on the right",
+                "95" : "Crossing the River Thames, flying over the London Eye",
+                "130" : "Passing over Waterloo Station in South London",
+                "242" : "Passing Southwark Cathedral on the left",
+                "255" : "Passing The Shard on the right",
+                "275" : "Passing the cruiser HMS Belfast in the River Thames",
+                "300" : "Crossing the River Thames at Tower Bridge, with City Hall on the right and the Tower of London on the left"
+            }
+        },
+
+        {
+            "id" : "b1-2",
+            "name" : "River Thames near Sunset",
+            "pointsOfInterest" : {
+                "0" : "Heading up the River Thames in London toward Tower Bridge",
+                "25" : "Crossing the River Thames and passing over City Hall",
+                "35" : "Passing the cruiser HMS Belfast in the River Thames",
+                "60" : "Approaching The Shard",
+                "92" : "Flying west over Southwark toward Lambeth in South London",
+                "200" : "Passing Lambeth Palace on the left and Waterloo Station on the right",
+                "225" : "Crossing the River Thames toward the Palace of Westminster (Houses of Parliament)"
+            }
+        },
+        {
+            "id" : "b3-1",
+            "name" : "River Thames at Dusk",
+            "pointsOfInterest" : {
+                "0": "Heading up the River Thames in London toward Tower Bridge",
+                "28" : "Traveling west up the River Thames, past City Hall on the left",
+                "40" : "Passing HMS Belfast in the River Thames, with The Shard on the left and the Walkie-Talkie on the right",
+                "75" : "Passing Southwark Cathedral on the left",
+                "110" : "Passing St Paul’s Cathedral on the right",
+                "130" : "Passing Shakespeare’s Globe in the left foreground",
+                "210" : "Continuing up the River Thames toward Westminster",
+                "310" : "Passing the London Eye on the River Thames",
+                "325" : "Passing Big Ben and the Houses of Parliament, with Westminster Abbey on the right"
+            }
+        },        
+
+        {
+            "id" : "829E69BA-BB53-4841-A138-4DF0C2A74236",
+            "name" : "Los Angeles Int’l Airport",
+            "pointsOfInterest" : {
+                "0" : "Heading west over Los Angeles International Airport",
+                "80" : "Passing over the Theme Building",
+                "210" : "Passing over the Tom Bradley International Terminal"
+            }
+        },
+        {
+            "id" : "30A2A488-E708-42E7-9A90-B749A407AE1C",
+            "name" : "Harbor Freeway (Interstate 110)",
+            "pointsOfInterest" : {
+                "0" :"Following the Harbor Freeway (Interstate 110) north through South Los Angeles",
+                "50" : "Crossing the Century Freeway (Interstate 105)",
+                "65" : "Passing over the Harbor Freeway Station on the Metro Green Line, which runs along the Century Freeway",
+                "170" : "Crossing Imperial Highway"
+            }
+        },
+        {
+            "id" : "B730433D-1B3B-4B99-9500-A286BF7A9940",
+            "name" : "Santa Monica Beach"
+        },
+
+        {
+            "id" : "89B1643B-06DD-4DEC-B1B0-774493B0F7B7",
+            "name" : "Griffith Observatory"
+        },
+        {
+            "id" : "EC67726A-8212-4C5E-83CF-8412932740D2",
+            "name" : "Hollywood Hills",
+            "pointsOfInterest" : {
+                "0" : "Traveling north along Beachwood Drive through the Hollywood Hills in Los Angeles",
+                "60" : "Continuing north through Beachwood Canyon",
+                "250" : "Passing the Mount Lee Communications Center, heading toward Burbank, California"
+            }
+        },
+        {
+            "id" : "A284F0BF-E690-4C13-92E2-4672D93E8DE5",
+            "name" : "Downtown",
+            "pointsOfInterest" : {
+                "0" : "Approaching Downtown Los Angeles, with the MTA Building (in yellow) and Union Station (in pink) in the left mid-ground",
+                "60": "Passing the Cathedral of Our Lady of the Angels (in the center)",
+                "80": "Passing the Los Angeles County Music Center (in the center)",
+                "95": "Crossing the Hollywood Freeway, traveling south through Downtown along the Harbor Freeway",
+                "140": "Passing Disney Hall (in the center)",
+                "155": "Passing City Hall (in pale green, in the left mid-ground)",
+                "215": "Passing the Library Tower (in the center)",
+                "235": "Passing the Bonaventure Hotel (in the center)",
+                "265": "The Los Angeles Central Library, brightly lit, appears from behind the Bonaventure Hotel",
+                "310": "Passing the Wilshire Grand Center (under construction)",
+                "400": "Passing L.A. Live",
+                "435": "Passing the Ritz-Carlton Hotel and Staples Center",
+                "465": "Passing the Los Angeles Convention Center",
+                "520": "Approaching the Santa Monica Freeway"
+            }
+        },
+
+        {
+            "id" : "b7-2",
+            "name" : "Central Park"
+        },
+        {
+            "id" : "b1-3",
+            "name" : "Lower Manhattan"
+        },
+        {
+            "id" : "b3-2",
+            "name" : "Upper East Side"
+        },
+
+        {
+            "id" : "b2-3",
+            "name" : "Seventh avenue"
+        },
+        {
+            "id" : "b4-2",
+            "name" : "Lower Manhattan"
+        },
+
+        {
+            "id" : "b8-2",
+            "name" : "Marin Headlands"
+        },
+        {
+            "id" : "b10-3",
+            "name" : "Marin to Golden Gate",
+            "pointsOfInterest" : {
+                "0" : "Moving over the Marin Headlands along Highway 101 toward the Golden Gate Bridge",
+                "20" : "Horseshoe Cove appearing on the left",
+                "130" : "Passing over Battery Spencer",
+                "192" : "Crossing the Golden Gate Bridge toward San Francisco"
+            }
+        },
+        {
+            "id" : "b9-3",
+            "name" : "Bay and Golden Gate"
+        },
+        {
+            "id" : "b8-3.mov",
+            "name" : "Alamo Square",
+            "pointsOfInterest" : {
+                "0" : "Painted Ladies across from Alamo Square in San Francisco",
+                "35" : "St Mary’s Cathedral in the left mid-ground, with downtown SF in the background",
+                "70" : "The dome of City Hall appearing in the right mid-ground",
+                "210" : "The dome of City Hall clear in the right mid-ground"
+            }
+        },
+        {
+            "id" : "b3-3",
+            "name" : "Embarcadero, Market Street",
+            "pointsOfInterest" : {
+                "0" : "Heading southwest over San Francisco Bay to the San Francisco Ferry Building",
+                "110" : "Approaching the Port of San Francisco Ferry Building and the Embarcadero",
+                "160" : "Heading southwest along Market Street in downtown San Francisco"
+            }
+        },
+        {
+            "id" : "b4-3",
+            "name" : "Golden Gate from SF"
+        },
+ 
+        {
+            "id" : "b6-4",
+            "name" : "Downtown and Coit Tower",
+            "pointsOfInterest" : {
+                "0" : "Downtown San Francisco with the Transamerica Pyramid in the center",
+                "100" : "Downtown San Francisco with Coit Tower coming into view"
+            }
+        },
+        {
+            "id" : "b7-3",
+            "name" : "Fisherman’s Wharf",
+            "pointsOfInterest" : {
+                "0" : "Heading southeast over Fisherman’s Wharf in San Francisco",
+                "30" : "Passing the Liberty ship SS Jeremiah O’Brien",
+                "50" : "Passing over the submarine USS Pampanito",
+                "80" : "Passing over North Beach in San Francisco",
+                "120" : "Approaching Coit Tower on Telegraph Hill, with the Bay Bridge and downtown SF in the background",
+                "150" : "Passing Coit Tower on Telegraph Hill, with Sts Peter and Paul Church in the right mid-ground" 
+            }
+        },
+        {
+            "id" : "b5-3",
+            "name" : "Embarcadero, Market Street",
+            "pointsOfInterest" : {
+                "0" : "Heading southwest over San Francisco Bay to the San Francisco Ferry Building",
+                "150" : "Approaching the Port of San Francisco Ferry Building and the Embarcadero",
+                "210" : "Heading southwest along Market Street in San Francisco"
+            }
+        },
+        {
+            "id" : "b1-4",
+            "name" : "Bay Bridge"
+        },
+        {
+            "id" : "b2-4",
+            "name" : "Downtown and Sutro Tower",
+            "pointsOfInterest" : {
+                "0" : "Heading into San Francisco’s Financial District, with Sutro Tower in the background",
+                "10" : "Passing the Transamerica Pyramid",
+                "50" : "Former Bank of America headquarters blotting out the sun"
+            }
+        }
+    ]
+}
+
+

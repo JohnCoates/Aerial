@@ -478,13 +478,13 @@ class AerialView: ScreenSaverView {
         if (preferences.showDescriptions)
         {
             // Preventively, make sure we have poi as tvOS11/10 videos won't have them
-            if video.poi.count > 0 && poiStringProvider.loadedDescriptions
+            if (video.poi.count > 0 && poiStringProvider.loadedDescriptions) || (preferences.useCommunityDescriptions && video.communityPoi.count > 0)
             {
                 // Collect all the timestamps from the JSON
                 var times = [NSValue]()
-
-                for pkv in video.poi
-                {
+                let keys = poiStringProvider.getPoiKeys(video: video)
+                
+                for pkv in keys {
                     let timeStamp = Double(pkv.key)!
                     times.append(NSValue(time: CMTime(seconds: timeStamp, preferredTimescale: 1)))
                 }
@@ -492,8 +492,8 @@ class AerialView: ScreenSaverView {
                 times.sort(by: { ($0 as! CMTime).seconds < ($1 as! CMTime).seconds } )
                 
                 // Animate the very first one on it's own
-                let str = poiStringProvider.getString(key: video.poi["0"]!)
-                
+                let str = poiStringProvider.getString(key: keys["0"]!, video: video)
+
                 var fadeAnimation:CAKeyframeAnimation
                 
                 if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)
@@ -579,7 +579,7 @@ class AerialView: ScreenSaverView {
                     }
                     // Get the string for the current timestamp
                     let key = String(format: "%.0f",closestTime)
-                    let str = poiStringProvider.getString(key: video.poi[key]!)
+                    let str = poiStringProvider.getString(key: keys[key]!, video: video)
                     self.setupTextLayer(string: str, duration: fadeAnimation.duration, isInitial: false, totalDuration: video.duration-1)
 
                     self.textLayer.add(fadeAnimation, forKey: "textfade")

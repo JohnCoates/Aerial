@@ -46,81 +46,6 @@ class ManifestLoader {
         ["url-1080-SDR":"https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_2K_SDR_HEVC.mov",
          "url-4K-SDR":"https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_SDR_HEVC.mov"]]   // Dubai night 2
     
-    // Better Descriptions
-    let mergeName = [
-        "6C3D54AE-0871-498A-81D0-56ED24E5FE9F":"Korea and Japan Night",             // Fixint Typo
-        "B876B645-3955-420E-99DF-60139E451CF3":"Wulingyuan National Park 1",        // China day 1
-        "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C":"Longji Rice Terraces",              // China day 2
-        "D5E76230-81A3-4F65-A1BA-51B8CADED625":"Wulingyuan National Park 2",        // China day 3
-        "b6-1":"Great Wall 1",                                                      // China day 4
-        "b2-1":"Great Wall 2",                                                      // China day 5
-        "b5-1":"Great Wall 3",                                                      // China day 6
-        
-        "AC9C09DD-1D97-4013-A09F-B0F5259E64C3":"Sheikh Zayed Road",                 // Dubai day 1
-        "49790B7C-7D8C-466C-A09E-83E38B6BE87A":"Marina 1",                          // Dubai day 2
-        "02EA5DBE-3A67-4DFA-8528-12901DFD6CC1":"Downtown",                          // Dubai day 3
-        "802866E6-4AAF-4A69-96EA-C582651391F1":"Marina 2",                          // Dubai day 4
-        
-        "BAF76353-3475-4855-B7E1-CE96CC9BC3A7":"Approaching Burj Khalifa",          // Dubai night 1
-        "2F11E857-4F77-4476-8033-4A1E4610AFCC":"Sheikh Zayed Road",                 // Dubai night 2
-        
-        "E4ED0B22-EB81-4D4F-A29E-7E1EA6B6D980":"Nuussuaq Peninsula",                // Greenland day 1
-        "30047FDA-3AE3-4E74-9575-3520AD77865B":"Ilulissat Icefjord",                // Greenland day 2
-        
-        "7D4710EB-5BA4-42E6-AA60-68D77F67D9B9":"Ilulissat Icefjord",                // Greenland night 1
-        
-        "b7-1":"Laupāhoehoe Nui",                                                   // Hawaii day 1
-        "b1-1":"Waimanu Valley",                                                    // Hawaii day 2
-        "b2-2":"Honopū Valley",                                                     // Hawaii day 3
-        "b4-1":"Pu‘u O ‘Umi",                                                       // Hawaii day 4
-        
-        "b6-2":"Kohala coastline",                                                  // Hawaii night 1
-        "b8-1":"Pu‘u O ‘Umi",                                                       // Hawaii night 2
-        
-        "102C19D1-9D9F-48EC-B492-074C985C4D9F":"Victoria Harbour 1",                // Hong Kong day 1
-        "560E09E8-E89D-4ADB-8EEA-4754415383D4":"Victoria Peak",                     // Hong Kong day 2
-        "024891DE-B7F6-4187-BFE0-E6D237702EF0":"Wan Chai",                          // Hong Kong day 3
-        "786E674C-BB22-4AA9-9BD3-114D2020EC4D":"Victoria Harbour 2",                // Hong Kong day 4
-        
-        "30313BC1-BF20-45EB-A7B1-5A6FFDBD2488":"Victoria Harbour",                  // Hong Kong night 1
-        
-        "6E2FC8AC-832D-46CF-B306-BB2A05030C17":"Liwa Oasis",                        // Liwa day 1
-        
-        "b6-3":"Tower Bridge",                                                      // London day 1
-        "b5-2":"Buckingham Palace",                                                 // London day 2
-        
-        "b1-2":"Tower Bridge 1",                                                    // London night 1
-        "b3-1":"Tower Bridge 2",                                                    // London night 2
-        
-        "829E69BA-BB53-4841-A138-4DF0C2A74236":"Los Angeles International Airport",                               // Los Angeles day 1
-        "30A2A488-E708-42E7-9A90-B749A407AE1C":"Harbor Freeway (Interstate 110)",                    // Los Angeles day 2
-        "B730433D-1B3B-4B99-9500-A286BF7A9940":"Santa Monica Beach",                // Los Angeles day 3
-        
-        "89B1643B-06DD-4DEC-B1B0-774493B0F7B7":"Griffith Observatory",              // Los Angeles night 1
-        "EC67726A-8212-4C5E-83CF-8412932740D2":"Hollywood Hills",                    // Los Angeles night 2
-        "A284F0BF-E690-4C13-92E2-4672D93E8DE5":"Downtown",                          // Los Angeles night 3
-        
-        "b7-2":"Central Park",                                                      // New York day 1
-        "b1-3":"Lower Manhattan",                                                   // New York day 2
-        "b3-2":"Upper East Side",                                                   // New York day 3
-        
-        "b2-3":"7th avenue",                                                        // New York night 1
-        "b4-2":"Lower Manhattan",                                                   // New York night 2
-        
-        
-        "b8-2":"Marin Headlands",                                                   // San Francisco day 1
-        "b10-3":"Marin Headlands to Golden Gate",                                          // San Francisco day 2
-        "b9-3":"Bay and Golden Gate",                                               // San Francisco day 3
-        "b8-3":"Alamo Square",                                                      // San Francisco day 4
-        "b3-3":"The Embarcadero and Market Street",                                 // San Francisco day 5
-        "b4-3":"Golden Gate from SF",                                               // San Francisco day 6
-        
-        "b6-4":"Downtown and Coit Tower",                                               // San Francisco night 1
-        "b7-3":"Fisherman’s Wharf",                                                 // San Francisco night 2
-        "b5-3":"The Embarcadero and Market Street",                                      // San Francisco night 3
-        "b1-4":"Bay Bridge",                                                        // San Francisco night 4
-        "b2-4":"Downtown and Sutro Tower"                                               // San Francisco night 5
-    ]
     
     // Extra POI
     let mergePOI = [
@@ -160,14 +85,8 @@ class ManifestLoader {
         "b2-4":"A018_C014_"                                                 // San Francisco night 5
     ]
     
-    func addCallback(_ callback:@escaping manifestLoadCallback) {
-        if loadedManifest.count > 0 {
-            callback(loadedManifest)
-        } else {
-            callbacks.append(callback)
-        }
-    }
     
+    // MARK: - Playlist generation
     func generatePlaylist(isRestricted:Bool, restrictedTo:String) {
         // Start fresh
         playlist = [AerialVideo]()
@@ -226,7 +145,6 @@ class ManifestLoader {
         } else {
             return findBestEffortVideo()
         }
-
     }
     
     // Find a backup plan when conditions are not met
@@ -272,6 +190,8 @@ class ManifestLoader {
             return shuffled.first!
         }
     }
+    
+    // MARK: - Lifecycle
     
     init() {
         debugLog("Manifest init")
@@ -333,6 +253,16 @@ class ManifestLoader {
         }
     }
 
+    func addCallback(_ callback:@escaping manifestLoadCallback) {
+        if loadedManifest.count > 0 {
+            callback(loadedManifest)
+        } else {
+            callbacks.append(callback)
+        }
+    }
+
+    // MARK: - Manifests
+    
     // Check if the Manifests have been loaded in this class already
     func areManifestsFilesLoaded() -> Bool {
         if (manifestTvOS12 != nil && manifestTvOS11 != nil && manifestTvOS10 != nil) {
@@ -462,8 +392,11 @@ class ManifestLoader {
         self.callbacks.removeAll()
     }
     
+    // MARK: - JSON
     func readJSONFromData(_ data: Data, manifest: Manifests) {
         do {
+            let poiStringProvider = PoiStringProvider.sharedInstance
+            
             let options = JSONSerialization.ReadingOptions.allowFragments
             let batches = try JSONSerialization.jsonObject(with: data, options: options)
             
@@ -482,20 +415,24 @@ class ManifestLoader {
                 let name = item["accessibilityLabel"] as! String
                 var secondaryName = ""
                 // We may have a secondary name
-                if let mergeName = mergeName[id] {
-                    secondaryName = mergeName
+                if let mergename = poiStringProvider.getCommunityName(id: id) {
+                    secondaryName = mergename
                 }
+/*                if let mergeName = mergeName[id] {
+                    secondaryName = mergeName
+                }*/
                 
                 let timeOfDay = "day"   // TODO, this is hardcoded as it's no longer available in the modern JSONs
                 let type = "video"
                 var poi : [String:String]?
-
                 if let mergeId = mergePOI[id] {
-                    let poiStringProvider = PoiStringProvider.sharedInstance
                     poi = poiStringProvider.fetchExtraPoiForId(id: mergeId)
                 } else {
                     poi = item["pointsOfInterest"] as? [String: String]
                 }
+
+                let communityPoi = poiStringProvider.getCommunityPoi(id: id)
+                
                 
                 let (isDupe,foundDupe) = findDuplicate(id: id, url1080pH264: url1080pH264 ?? "")
                 if (isDupe) {
@@ -510,7 +447,8 @@ class ManifestLoader {
                         url1080pHEVC: url1080pHEVC ?? "",
                         url4KHEVC: url4KHEVC ?? "",
                         manifest: manifest,
-                        poi: poi ?? [:] )                       // tvOS12 only
+                        poi: poi ?? [:],
+                        communityPoi: communityPoi)
                     
                     processedVideos.append(video)
                 }
@@ -523,6 +461,8 @@ class ManifestLoader {
     
     func readOldJSONFromData(_ data: Data, manifest: Manifests) {
         do {
+            let poiStringProvider = PoiStringProvider.sharedInstance
+
             let options = JSONSerialization.ReadingOptions.allowFragments
             let batches = try JSONSerialization.jsonObject(with: data,
                                                            options: options) as! Array<NSDictionary>
@@ -543,8 +483,8 @@ class ManifestLoader {
                     
                     // We may have a secondary name
                     var secondaryName = ""
-                    if let mergeName = mergeName[id] {
-                        secondaryName = mergeName
+                    if let mergename = poiStringProvider.getCommunityName(id: id) {
+                        secondaryName = mergename
                     }
 
                     // We may have POIs to merge
@@ -553,7 +493,9 @@ class ManifestLoader {
                         let poiStringProvider = PoiStringProvider.sharedInstance
                         poi = poiStringProvider.fetchExtraPoiForId(id: mergeId)
                     }
-                    
+
+                    let communityPoi = poiStringProvider.getCommunityPoi(id: id)
+
                     // We may have dupes...
                     let (isDupe,foundDupe) = findDuplicate(id: id, url1080pH264: url)
                     if isDupe {
@@ -583,7 +525,8 @@ class ManifestLoader {
                             url1080pHEVC: url1080phevc,
                             url4KHEVC: url4khevc,
                             manifest: manifest,
-                            poi: poi ?? [:])    // tvOS12 only
+                            poi: poi ?? [:],
+                            communityPoi: communityPoi)
                         
                         processedVideos.append(video)
                     }
