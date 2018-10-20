@@ -520,7 +520,11 @@ class AerialView: ScreenSaverView {
                 }
 
                 self.textLayer.add(fadeAnimation, forKey: "textfade")
-                setupTextLayer(string: str, duration: fadeAnimation.duration)
+                if (video.duration > 0) {
+                    setupTextLayer(string: str, duration: fadeAnimation.duration, isInitial: true, totalDuration: video.duration - 1)
+                } else {
+                    setupTextLayer(string: str, duration: fadeAnimation.duration, isInitial: true, totalDuration: 807)
+                }
                 
                 let mainQueue = DispatchQueue.main
                 
@@ -576,7 +580,7 @@ class AerialView: ScreenSaverView {
                     // Get the string for the current timestamp
                     let key = String(format: "%.0f",closestTime)
                     let str = poiStringProvider.getString(key: video.poi[key]!)
-                    self.setupTextLayer(string: str, duration: fadeAnimation.duration)
+                    self.setupTextLayer(string: str, duration: fadeAnimation.duration, isInitial: false, totalDuration: video.duration-1)
 
                     self.textLayer.add(fadeAnimation, forKey: "textfade")
                 }
@@ -610,22 +614,12 @@ class AerialView: ScreenSaverView {
                     }
                 }
                 self.textLayer.add(fadeAnimation, forKey: "textfade")
-                setupTextLayer(string: str, duration : fadeAnimation.duration)
+                setupTextLayer(string: str, duration : fadeAnimation.duration, isInitial: false, totalDuration: video.duration)
             }
         }
     }
     
-    // Create a Fade In/Out animation
-    func createFadeInOutAnimation(duration: Double) -> CAKeyframeAnimation {
-        let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
-        fadeAnimation.values = [0, 0, 1, 1, 0] as [NSNumber]
-        fadeAnimation.keyTimes = [0, Double( 1/duration ), Double( (1+AerialView.textFadeDuration)/duration ), Double( 1-AerialView.textFadeDuration/duration ), 1] as [NSNumber]
-        fadeAnimation.duration = duration
-        
-        return fadeAnimation
-    }
-    
-    func setupTextLayer(string:String, duration: CFTimeInterval) {
+    func setupTextLayer(string:String, duration: CFTimeInterval, isInitial: Bool, totalDuration: Double) {
         // Setup string
         self.textLayer.string = string
         self.textLayer.isWrapped = true
@@ -669,65 +663,74 @@ class AerialView: ScreenSaverView {
             lastCorner = corner
             
             repositionTextLayer(position: corner)
-            setupAndRepositionExtra(position: corner, duration: duration)
+            setupAndRepositionExtra(position: corner, duration: duration, isInitial: isInitial, totalDuration: totalDuration)
         } else {
             repositionTextLayer(position: preferences.descriptionCorner!)   // Or set position from pref
-            setupAndRepositionExtra(position: preferences.descriptionCorner!, duration: duration)
+            setupAndRepositionExtra(position: preferences.descriptionCorner!, duration: duration, isInitial: isInitial, totalDuration: totalDuration)
         }
     }
     
-    private func setupAndRepositionExtra(position: Int, duration: CFTimeInterval)
+    private func setupAndRepositionExtra(position: Int, duration: CFTimeInterval, isInitial: Bool, totalDuration: Double)
     {
         let preferences = Preferences.sharedInstance
         if (preferences.showClock)
         {
-            if (clockTimer == nil)
-            {
-                if #available(OSX 10.12, *) {
-                    clockTimer =  Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (Timer) in
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
-                        let dateString = dateFormatter.string(from: Date())
-                        self.clockLayer.string = dateString
-                    })
+            if (isInitial) {
+                if (clockTimer == nil)
+                {
+                    if #available(OSX 10.12, *) {
+                        clockTimer =  Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (Timer) in
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
+                            let dateString = dateFormatter.string(from: Date())
+                            self.clockLayer.string = dateString
+                        })
+                    }
+                    
                 }
+
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
+                let dateString = dateFormatter.string(from: Date())
+                
+                self.clockLayer.string = dateString
+
+                let preferences = Preferences.sharedInstance
+                
+                // We override font size on previews
+                var fontSize = CGFloat(preferences.extraFontSize!)
+                if (layer!.bounds.height < 200) {
+                    fontSize = 12
+                }
+                
+                // Get font with a fallback in case
+                var font = NSFont(name: "Helvetica Neue Medium", size: 28)
+                if let tryFont = NSFont(name: preferences.extraFontName!,size: fontSize) {
+                    font = tryFont
+                }
+                
+                // Make sure we change the layer font/size
+                self.clockLayer.font = font
+                self.clockLayer.fontSize = fontSize
+                
+                let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : font as Any]
+                
+                // Calculate bounding box
+                let s = NSAttributedString(string: dateString, attributes: attributes)
+                let rect = s.boundingRect(with: layer!.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
+                
+                // Rebind frame
+                self.clockLayer.frame = rect
+                //clockLayer.anchorPoint = CGPoint(x: 0, y:0)
+                //clockLayer.position = CGPoint(x:10 ,y:10+textLayer.visibleRect.height)
+                //clockLayer.opacity = 1.0
             }
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
-            let dateString = dateFormatter.string(from: Date())
             
-            self.clockLayer.string = dateString
-            
-            let preferences = Preferences.sharedInstance
-            
-            // We override font size on previews
-            var fontSize = CGFloat(preferences.extraFontSize!)
-            if (layer!.bounds.height < 200) {
-                fontSize = 12
+            if (preferences.descriptionCorner == Preferences.DescriptionCorner.random.rawValue) {
+                clockLayer.add(createFadeInOutAnimation(duration: duration), forKey: "textfade")
+            } else if isInitial {
+                clockLayer.add(createFadeInOutAnimation(duration: totalDuration), forKey: "textfade")
             }
-            
-            // Get font with a fallback in case
-            var font = NSFont(name: "Helvetica Neue Medium", size: 28)
-            if let tryFont = NSFont(name: preferences.extraFontName!,size: fontSize) {
-                font = tryFont
-            }
-            
-            // Make sure we change the layer font/size
-            self.clockLayer.font = font
-            self.clockLayer.fontSize = fontSize
-            
-            let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : font as Any]
-            
-            // Calculate bounding box
-            let s = NSAttributedString(string: dateString, attributes: attributes)
-            let rect = s.boundingRect(with: layer!.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
-            
-            // Rebind frame
-            self.clockLayer.frame = rect
-            //clockLayer.anchorPoint = CGPoint(x: 0, y:0)
-            //clockLayer.position = CGPoint(x:10 ,y:10+textLayer.visibleRect.height)
-            //clockLayer.opacity = 1.0
-            clockLayer.add(createFadeInOutAnimation(duration: duration), forKey: "textfade")
         }
 
         if (preferences.showMessage && preferences.showMessageString != "") {
@@ -760,17 +763,66 @@ class AerialView: ScreenSaverView {
             //messageLayer.anchorPoint = CGPoint(x: 0, y:0)
             //messageLayer.position = CGPoint(x:10 ,y:10+textLayer.visibleRect.height)
             //messageLayer.opacity = 1.0
-            self.messageLayer.add(createFadeInOutAnimation(duration: duration), forKey: "textfade")
+            if (preferences.descriptionCorner == Preferences.DescriptionCorner.random.rawValue) {
+                self.messageLayer.add(createFadeInOutAnimation(duration: duration), forKey: "textfade")
+            } else if isInitial {
+                self.messageLayer.add(createFadeInOutAnimation(duration: totalDuration), forKey: "textfade")
+            }
         }
 
-        if preferences.extraCorner == Preferences.ExtraCorner.same.rawValue{
-            repositionClockAndMessageLayer(position: position, alone: false)
-        } else if preferences.extraCorner == Preferences.ExtraCorner.hOpposed.rawValue{
-            repositionClockAndMessageLayer(position: (position+2)%4, alone: true)
-        } else if preferences.extraCorner == Preferences.ExtraCorner.dOpposed.rawValue{
-            repositionClockAndMessageLayer(position: 3-position, alone: true)
+        if (preferences.descriptionCorner == Preferences.DescriptionCorner.random.rawValue) {
+            if preferences.extraCorner == Preferences.ExtraCorner.same.rawValue{
+                repositionClockAndMessageLayer(position: position, alone: false)
+            } else if preferences.extraCorner == Preferences.ExtraCorner.hOpposed.rawValue{
+                repositionClockAndMessageLayer(position: (position+2)%4, alone: true)
+            } else if preferences.extraCorner == Preferences.ExtraCorner.dOpposed.rawValue{
+                repositionClockAndMessageLayer(position: 3-position, alone: true)
+            }
+        } else {
+            if preferences.extraCorner == Preferences.ExtraCorner.same.rawValue {
+                if isInitial {
+                    repositionClockAndMessageLayer(position: position, alone: false)
+                } else {
+                    animateClockAndMessageLayer(position: position)
+                }
+            }
         }
     }
+    
+    private func animateClockAndMessageLayer(position: Int) {
+        var clockDecal : CGFloat = 0
+        var messageDecal : CGFloat = 0
+        let preferences = Preferences.sharedInstance
+
+        clockDecal += textLayer.visibleRect.height
+        messageDecal += textLayer.visibleRect.height
+        
+        if preferences.showMessage {
+            clockDecal += messageLayer.visibleRect.height
+        }
+        let duration = 1 + AerialView.textFadeDuration
+
+        var cto, mto : CGPoint
+        if (position == Preferences.DescriptionCorner.topLeft.rawValue) {
+            cto = CGPoint(x: 10, y: layer!.bounds.height-10-clockDecal)
+            mto = CGPoint(x: 10, y: layer!.bounds.height-10-messageDecal)
+        } else if (position == Preferences.DescriptionCorner.bottomLeft.rawValue) {
+            cto = CGPoint(x: 10, y: 10+clockDecal)
+            mto = CGPoint(x: 10, y: 10+messageDecal)
+        } else if (position == Preferences.DescriptionCorner.topRight.rawValue) {
+            cto = CGPoint(x: layer!.bounds.width-10, y: layer!.bounds.height-10-clockDecal)
+            mto = CGPoint(x: layer!.bounds.width-10, y: layer!.bounds.height-10-messageDecal)
+        } else {
+            cto = CGPoint(x: layer!.bounds.width-10, y: 10+clockDecal)
+            mto = CGPoint(x: layer!.bounds.width-10, y: 10+messageDecal)
+        }
+
+        self.clockLayer.add(createMoveAnimation(layer: clockLayer, to: cto, duration: duration), forKey: "position")
+        self.messageLayer.add(createMoveAnimation(layer: messageLayer, to: mto, duration: duration), forKey: "position")
+    }
+    
+    
+    
     
     private func repositionClockAndMessageLayer(position:Int, alone:Bool) {
         var clockDecal : CGFloat = 0
@@ -823,6 +875,26 @@ class AerialView: ScreenSaverView {
             self.textLayer.anchorPoint = CGPoint(x: 1, y: 0)
             self.textLayer.position = CGPoint(x: layer!.bounds.width-10, y: 10)
         }
+    }
+    
+    // Create a Fade In/Out animation
+    func createFadeInOutAnimation(duration: Double) -> CAKeyframeAnimation {
+        let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
+        fadeAnimation.values = [0, 0, 1, 1, 0] as [NSNumber]
+        fadeAnimation.keyTimes = [0, Double( 1/duration ), Double( (1+AerialView.textFadeDuration)/duration ), Double( 1-AerialView.textFadeDuration/duration ), 1] as [NSNumber]
+        fadeAnimation.duration = duration
+        
+        return fadeAnimation
+    }
+    
+    func createMoveAnimation(layer : CALayer, to: CGPoint, duration: Double) -> CABasicAnimation {
+        let moveAnimation = CABasicAnimation(keyPath: "position")
+        print(layer.position)
+        moveAnimation.fromValue = layer.position
+        moveAnimation.toValue = to
+        moveAnimation.duration = duration
+        layer.position = to;
+        return moveAnimation
     }
     
     // MARK: - Preferences
