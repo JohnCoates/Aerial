@@ -51,6 +51,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var outlineViewSettings: NSButton!
     @IBOutlet var playerView: AVPlayerView!
     @IBOutlet var showDescriptionsCheckbox: NSButton!
+    @IBOutlet weak var useCommunityCheckbox: NSButton!
     @IBOutlet var localizeForTvOS12Checkbox: NSButton!
     @IBOutlet var projectPageLink: NSButton!
     @IBOutlet var secondProjectPageLink: NSButton!
@@ -255,6 +256,10 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             neverStreamPreviewsCheckbox.state = NSControl.StateValue.on
         }
         
+        if !preferences.useCommunityDescriptions {
+            useCommunityCheckbox.state = NSControl.StateValue.off
+        }
+        
         if !preferences.cacheAerials {
             cacheAerialsAsTheyPlayCheckbox.state = NSControl.StateValue.off
         }
@@ -412,6 +417,13 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         let onState = (state == NSControl.StateValue.on)
         preferences.showDescriptions = onState
         debugLog("UI showDescriptions: \(onState)")
+    }
+    
+    @IBAction func useCommunityClick(_ button: NSButton) {
+        let state = useCommunityCheckbox.state
+        let onState = (state == NSControl.StateValue.on)
+        preferences.useCommunityDescriptions = onState
+        debugLog("UI useCommunity: \(onState)")
     }
     
     @IBAction func localizeForTvOS12Click(button: NSButton?) {

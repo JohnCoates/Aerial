@@ -20,6 +20,7 @@ class Preferences {
         case customCacheDirectory = "cacheDirectory"
         case videoFormat = "videoFormat"
         case showDescriptions = "showDescriptions"
+        case useCommunityDescriptions = "useCommunityDescriptions"
         case showDescriptionsMode = "showDescriptionsMode"
         case neverStreamVideos = "neverStreamVideos"
         case neverStreamPreviews = "neverStreamPreviews"
@@ -100,6 +101,7 @@ class Preferences {
         defaultValues[.cacheAerials] = true
         defaultValues[.videoFormat] = VideoFormat.v1080pH264
         defaultValues[.showDescriptions] = true
+        defaultValues[.useCommunityDescriptions] = true
         defaultValues[.showDescriptionsMode] = DescriptionMode.fade10seconds
         defaultValues[.neverStreamVideos] = false
         defaultValues[.neverStreamPreviews] = false
@@ -135,7 +137,16 @@ class Preferences {
     }
     
     // MARK: - Variables
-
+    
+    var useCommunityDescriptions: Bool {
+        get {
+            return value(forIdentifier: .useCommunityDescriptions)
+        }
+        set {
+            setValue(forIdentifier: .useCommunityDescriptions, value: newValue)
+        }
+    }
+    
     var debugMode: Bool {
         get {
             return value(forIdentifier: .debugMode)

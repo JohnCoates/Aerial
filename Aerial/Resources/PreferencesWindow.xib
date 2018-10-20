@@ -61,6 +61,7 @@
                 <outlet property="timeManualRadio" destination="eFJ-La-jfN" id="xu5-Re-SIV"/>
                 <outlet property="timeNightShiftRadio" destination="Su5-5y-7hV" id="cAW-nE-N0u"/>
                 <outlet property="totalProgress" destination="HH2-7L-HmQ" id="UgG-Xt-pR3"/>
+                <outlet property="useCommunityCheckbox" destination="1e6-Z5-uo6" id="gE7-Ed-YAE"/>
                 <outlet property="versionLabel" destination="Hwv-TU-zhn" id="EPq-JL-DCZ"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="B44-2j-OKw"/>
             </connections>
@@ -415,7 +416,7 @@ is disabled
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Text" identifier="" id="bPY-uP-DGa">
-                                        <view key="view" id="M1m-ud-C95">
+                                        <view key="view" ambiguous="YES" id="M1m-ud-C95">
                                             <rect key="frame" x="10" y="33" width="614" height="322"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -644,17 +645,8 @@ should appear</string>
                                                         <action selector="extraTextFieldChange:" target="-2" id="SPD-NN-nV1"/>
                                                     </connections>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UWx-zh-UlZ">
-                                                    <rect key="frame" x="47" y="234" width="72" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Fade in/out" id="Hkv-Ca-c6A">
-                                                        <font key="font" usesAppearanceFont="YES"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
                                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vwV-g6-SF4">
-                                                    <rect key="frame" x="125" y="229" width="107" height="25"/>
+                                                    <rect key="frame" x="273" y="257" width="107" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <popUpButtonCell key="cell" type="push" title="1 Second" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="A8B-Cb-jvo" id="YEr-La-tPj">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -675,9 +667,9 @@ should appear</string>
                                                     </connections>
                                                 </popUpButton>
                                                 <button toolTip="How long should the descriptions stay on screen" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="omO-3f-eoL">
-                                                    <rect key="frame" x="29" y="262" width="107" height="18"/>
+                                                    <rect key="frame" x="29" y="262" width="56" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Show location" bezelStyle="regularSquare" imagePosition="left" inset="2" id="F7m-zV-2tM">
+                                                    <buttonCell key="cell" type="check" title="Show" bezelStyle="regularSquare" imagePosition="left" inset="2" id="F7m-zV-2tM">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
@@ -686,7 +678,7 @@ should appear</string>
                                                     </connections>
                                                 </button>
                                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qmX-6m-Whj">
-                                                    <rect key="frame" x="140" y="258" width="107" height="25"/>
+                                                    <rect key="frame" x="89" y="257" width="107" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <popUpButtonCell key="cell" type="push" title="10 Seconds" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wjq-nI-072" id="S3w-hi-xoE">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -702,6 +694,26 @@ should appear</string>
                                                         <action selector="descriptionModePopupChange:" target="-2" id="Eas-vP-eBK"/>
                                                     </connections>
                                                 </popUpButton>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1e6-Z5-uo6">
+                                                    <rect key="frame" x="29" y="234" width="281" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Use community information when available" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6kr-NQ-0Qs">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="useCommunityClick:" target="-2" id="ylW-Ux-fuW"/>
+                                                    </connections>
+                                                </button>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UWx-zh-UlZ">
+                                                    <rect key="frame" x="199" y="262" width="72" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Fade in/out" id="Hkv-Ca-c6A">
+                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
@@ -1012,7 +1024,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Advanced" identifier="" id="asf-lu-1rA">
-                                        <view key="view" ambiguous="YES" id="303-Jh-DVp">
+                                        <view key="view" id="303-Jh-DVp">
                                             <rect key="frame" x="10" y="33" width="614" height="322"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>

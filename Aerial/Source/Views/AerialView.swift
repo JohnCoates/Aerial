@@ -728,8 +728,10 @@ class AerialView: ScreenSaverView {
             
             if (preferences.descriptionCorner == Preferences.DescriptionCorner.random.rawValue) {
                 clockLayer.add(createFadeInOutAnimation(duration: duration), forKey: "textfade")
-            } else if isInitial {
+            } else if isInitial && preferences.showDescriptionsMode == Preferences.DescriptionMode.always.rawValue {
                 clockLayer.add(createFadeInOutAnimation(duration: totalDuration), forKey: "textfade")
+            } else if preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue {
+                clockLayer.add(createFadeInOutAnimation(duration: duration), forKey: "textfade")
             }
         }
 
@@ -765,26 +767,24 @@ class AerialView: ScreenSaverView {
             //messageLayer.opacity = 1.0
             if (preferences.descriptionCorner == Preferences.DescriptionCorner.random.rawValue) {
                 self.messageLayer.add(createFadeInOutAnimation(duration: duration), forKey: "textfade")
-            } else if isInitial {
+            } else if isInitial && preferences.showDescriptionsMode == Preferences.DescriptionMode.always.rawValue {
                 self.messageLayer.add(createFadeInOutAnimation(duration: totalDuration), forKey: "textfade")
+            } else if preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue {
+                self.messageLayer.add(createFadeInOutAnimation(duration: duration), forKey: "textfade")
             }
+            
+        
         }
 
-        if (preferences.descriptionCorner == Preferences.DescriptionCorner.random.rawValue) {
+        if (!isInitial && preferences.extraCorner == Preferences.ExtraCorner.same.rawValue && preferences.showDescriptionsMode == Preferences.DescriptionMode.always.rawValue && preferences.descriptionCorner != Preferences.DescriptionCorner.random.rawValue) {
+            animateClockAndMessageLayer(position: position)
+        } else {
             if preferences.extraCorner == Preferences.ExtraCorner.same.rawValue{
                 repositionClockAndMessageLayer(position: position, alone: false)
             } else if preferences.extraCorner == Preferences.ExtraCorner.hOpposed.rawValue{
                 repositionClockAndMessageLayer(position: (position+2)%4, alone: true)
             } else if preferences.extraCorner == Preferences.ExtraCorner.dOpposed.rawValue{
                 repositionClockAndMessageLayer(position: 3-position, alone: true)
-            }
-        } else {
-            if preferences.extraCorner == Preferences.ExtraCorner.same.rawValue {
-                if isInitial {
-                    repositionClockAndMessageLayer(position: position, alone: false)
-                } else {
-                    animateClockAndMessageLayer(position: position)
-                }
             }
         }
     }
