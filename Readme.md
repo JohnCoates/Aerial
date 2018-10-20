@@ -37,7 +37,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 If Aerial.saver could not be opened, place Aerial.saver in `~/Library/Screen Savers`
 
-**Important**: Please note that if you are upgrading from a previous version, we strongly recommend you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated. Also please note that clicking on the Preview button with 1.4.1 in System Preferences will show you a black screen. The screensaver will still work correctly. This bug is fixed in 1.4.2 beta (see above)
+**Important**: Please note that if you are upgrading from a previous version, we strongly recommend you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated. Also please note that clicking on the Preview button with 1.4.1 in System Preferences will show you a black screen. The screensaver will still work correctly. This bug is fixed in 1.4.2 beta (See above)
 
 ### Brew Cask Support - (Updated for Version 1.4.1)
 
