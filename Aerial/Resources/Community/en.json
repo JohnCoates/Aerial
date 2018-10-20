@@ -303,7 +303,11 @@
         },
         {
             "id" : "b4-3",
-            "name" : "Golden Gate from SF"
+            "name" : "Presidio to Golden Gate",
+            "pointsOfInterest" : {
+                "0" : "Moving along the Presidio of San Francisco toward the Golden Gate Bridge",
+                "190" : "Crossing the Golden Gate Bridge toward the Marin Headlands"
+            }
         },
  
         {

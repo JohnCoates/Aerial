@@ -49,7 +49,6 @@ class PoiStringProvider {
         else {
             bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle/en.lproj/")
         }
-
         
         if let sb = Bundle.init(path: bundlePath) {
             let dictPath = VideoCache.cacheDirectory!.appending("/TVIdleScreenStrings.bundle/en.lproj/Localizable.nocache.strings")
@@ -146,13 +145,15 @@ class PoiStringProvider {
         
         var bundlePath: String
         if (preferences.localizeDescriptions) {
-            bundlePath = Bundle.main.path(forResource: "en", ofType: "json")!
+            bundlePath = Bundle(for: PoiStringProvider.self).path(forResource: "en", ofType: "json")!
+            //bundlePath = Bundle.main.path(forResource: "en", ofType: "json")!
         }
         else {
             // TODO
-            bundlePath = Bundle.main.path(forResource: "en", ofType: "json")!
+            bundlePath = Bundle(for: PoiStringProvider.self).path(forResource: "en", ofType: "json")!
+            //bundlePath = Bundle.main.path(forResource: "en", ofType: "json")!
         }
-        
+        debugLog("path : \(bundlePath)")
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: bundlePath), options: .mappedIfSafe)
             let batches = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
