@@ -30,6 +30,7 @@ class AerialView: ScreenSaverView {
     
     var observerWasSet = false
     var hasStartedPlaying = false
+    var wasStopped = false
     var isDisabled = false
     var timeObserver : Any?
 
@@ -72,10 +73,11 @@ class AerialView: ScreenSaverView {
     }
     
     static var sharedViews: [AerialView] = []
-    
     // MARK: - Shared Player
     
     static var singlePlayerAlreadySetup: Bool = false
+    static var sharedPlayerIndex: Int?
+
     class var sharedPlayer: AVPlayer {
         struct Static {
             static let instance: AVPlayer = AVPlayer()
@@ -136,6 +138,15 @@ class AerialView: ScreenSaverView {
     
     func setup() {
         debugLog("\(self.description) AerialView setup init")
+        if (AerialView.singlePlayerAlreadySetup) {
+            debugLog("\(AerialView.sharedViews[AerialView.sharedPlayerIndex!].wasStopped)")
+            // On previews, it's possible that our shared player was stopped and is not reusable
+            if AerialView.sharedViews[AerialView.sharedPlayerIndex!].wasStopped {
+                debugLog("Purging previous singlePlayer")
+                AerialView.singlePlayerAlreadySetup = false
+                AerialView.sharedPlayerIndex = nil
+            }
+        }
         
         var localPlayer: AVPlayer?
         
@@ -151,13 +162,13 @@ class AerialView: ScreenSaverView {
             }
             
             // check if we should share preview's player
-            let noPlayers = (AerialView.players.count == 0)
+            //let noPlayers = (AerialView.players.count == 0)
             let previewPlayerExists = (AerialView.previewPlayer != nil)
             debugLog("\(self.description) nbPlayers \(AerialView.players.count) previewPlayerExists \(previewPlayerExists)")
-            if noPlayers && previewPlayerExists {
+            /*if noPlayers && previewPlayerExists {
 
                 localPlayer = AerialView.previewPlayer
-            }
+            }*/
         } else {
             AerialView.previewView = self
         }
@@ -170,11 +181,12 @@ class AerialView: ScreenSaverView {
             debugLog("\(self.description) no local player")
 
             if AerialView.sharingPlayers {
-                if AerialView.previewPlayer != nil {
+                /*if AerialView.previewPlayer != nil {
                     localPlayer = AerialView.previewPlayer
-                } else {
-                    localPlayer = AerialView.sharedPlayer
-                }
+                } else {*/
+                
+                localPlayer = AerialView.sharedPlayer
+                //}
             } else {
                 localPlayer = AVPlayer()
             }
@@ -197,7 +209,7 @@ class AerialView: ScreenSaverView {
         setupPlayerLayer(withPlayer: player)
         
         if AerialView.sharingPlayers && AerialView.singlePlayerAlreadySetup {
-            self.playerLayer.player = AerialView.sharedViews[0].player
+            self.playerLayer.player = AerialView.sharedViews[AerialView.sharedPlayerIndex!].player
             self.playerLayer.opacity = 0
             return
         }
@@ -205,6 +217,7 @@ class AerialView: ScreenSaverView {
         // We're NOT sharing the preview !!!!!
         if !isPreview {
             AerialView.singlePlayerAlreadySetup = true
+            AerialView.sharedPlayerIndex = AerialView.sharedViews.count-1
         }
         
         ManifestLoader.instance.addCallback { videos in
@@ -302,6 +315,7 @@ class AerialView: ScreenSaverView {
 
     override func stopAnimation() {
         super.stopAnimation()
+        wasStopped = true
         debugLog("\(self.description) stopAnimation")
         if !isDisabled {
             player?.pause()

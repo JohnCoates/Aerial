@@ -1149,7 +1149,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                     <button hidden="YES" toolTip="Show error messages" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qtq-PW-JOS">
                         <rect key="frame" x="66" y="10" width="122" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundRect" title="Show Warning" bezelStyle="roundedRect" image="NSActionTemplate" imagePosition="leading" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nGM-Iz-Zkv">
+                        <buttonCell key="cell" type="roundRect" title="Show Warning" bezelStyle="roundedRect" image="NSActionTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nGM-Iz-Zkv">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="cellTitle"/>
                         </buttonCell>
