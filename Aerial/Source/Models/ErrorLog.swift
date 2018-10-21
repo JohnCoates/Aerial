@@ -26,11 +26,29 @@ class LogMessage {
         self.date = Date()
     }
 }
+typealias LoggerCallback = (ErrorLevel) -> (Void)
 
+class Logger {
+    static let sharedInstance = Logger()
+
+    var callbacks = [LoggerCallback]()
+    
+    func addCallback(_ callback:@escaping LoggerCallback) {
+        callbacks.append(callback)
+    }
+    
+    func callBack(level: ErrorLevel) {
+        for callback in callbacks {
+            callback(level)
+        }
+    }
+}
 var errorMessages = [LogMessage]()
 
 func Log(level: ErrorLevel, message: String) {
     errorMessages.append(LogMessage(level: level, message: message))
+    
+
     // We throw errors to console, they always matter
     if (level == .error) {
         if #available(OSX 10.12, *) {
@@ -43,8 +61,15 @@ func Log(level: ErrorLevel, message: String) {
         }
     }
     
-    // We may log to disk
     let preferences = Preferences.sharedInstance
+
+    // We may callback
+    if (level == .warning || level == .error || (level == .debug && preferences.debugMode)) {
+        let logger = Logger.sharedInstance
+        logger.callBack(level: level)
+    }
+    
+    // We may log to disk
     if (preferences.logToDisk) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .none

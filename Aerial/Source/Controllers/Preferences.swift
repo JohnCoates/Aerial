@@ -34,6 +34,7 @@ class Preferences {
         case fontName = "fontName"
         case fontSize = "fontSize"
         case showClock = "showClock"
+        case withSeconds = "withSeconds"
         case showMessage = "showMessage"
         case showMessageString = "showMessageString"
         case extraFontName = "extraFontName"
@@ -116,9 +117,10 @@ class Preferences {
         defaultValues[.fontName] = "Helvetica Neue Medium"
         defaultValues[.fontSize] = 28
         defaultValues[.showClock] = false
+        defaultValues[.withSeconds] = false
         defaultValues[.showMessage] = false
         defaultValues[.showMessageString] = ""
-        defaultValues[.extraFontName] = "Helvetica Neue Medium"
+        defaultValues[.extraFontName] = "Monaco"
         defaultValues[.extraFontSize] = 28
         defaultValues[.extraCorner] = ExtraCorner.same
         defaultValues[.debugMode] = false
@@ -182,7 +184,16 @@ class Preferences {
             setValue(forIdentifier: .showClock, value: newValue)
         }
     }
-
+    
+    var withSeconds: Bool {
+        get {
+            return value(forIdentifier: .withSeconds)
+        }
+        set {
+            setValue(forIdentifier: .withSeconds, value: newValue)
+        }
+    }
+    
     var showMessage: Bool {
         get {
             return value(forIdentifier: .showMessage)

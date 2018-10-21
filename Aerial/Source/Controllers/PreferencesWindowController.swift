@@ -97,12 +97,14 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var currentLocaleLabel: NSTextField!
     
     @IBOutlet var showClockCheckbox: NSButton!
+    @IBOutlet weak var withSecondsCheckbox: NSButton!
     @IBOutlet var showExtraMessage: NSButton!
     @IBOutlet var extraMessageTextField: NSTextField!
     @IBOutlet var extraMessageFontLabel: NSTextField!
     @IBOutlet weak var extraCornerPopup: NSPopUpButton!
     
     @IBOutlet var logPanel: NSPanel!
+    @IBOutlet weak var showLogBottomClick: NSButton!
     @IBOutlet weak var logTableView: NSTableView!
     @IBOutlet weak var debugModeCheckbox: NSButton!
     @IBOutlet weak var logToDiskCheckbox: NSButton!
@@ -122,6 +124,8 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     let fontManager: NSFontManager
     var fontEditing = 0     // To track the font we are changing
     
+    var highestLevel : ErrorLevel?  // To track the largest level of error received
+    
     // MARK: - Init
     required init?(coder decoder: NSCoder) {
         self.fontManager = NSFontManager.shared
@@ -140,6 +144,10 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        let logger = Logger.sharedInstance
+        logger.addCallback {level in
+            self.updateLogs(level:level)
+        }
 
         self.fontManager.target = self
 
@@ -234,8 +242,13 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         // Text panel
         if preferences.showClock {
             showClockCheckbox.state = NSControl.StateValue.on
+            withSecondsCheckbox.isEnabled = true
         }
-
+        
+        if preferences.withSeconds {
+            withSecondsCheckbox.state = NSControl.StateValue.on
+        }
+        
         if preferences.showMessage {
             showExtraMessage.state = NSControl.StateValue.on
             extraMessageTextField.isEnabled = true
@@ -516,8 +529,14 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBAction func showClockClick(_ sender: NSButton) {
         let onState = (sender.state == NSControl.StateValue.on)
         preferences.showClock = onState
+        withSecondsCheckbox.isEnabled = onState
         debugLog("UI showClock: \(onState)")
-
+    }
+    
+    @IBAction func withSecondsClick(_ sender: NSButton) {
+        let onState = (sender.state == NSControl.StateValue.on)
+        preferences.withSeconds = onState
+        debugLog("UI withSeconds: \(onState)")
     }
     
     @IBAction func showExtraMessageClick(_ sender: NSButton) {
@@ -700,6 +719,33 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         }
     }
 
+    func updateLogs(level:ErrorLevel)
+    {
+        logTableView.reloadData()
+        if (highestLevel == nil) {
+            highestLevel = level
+        } else if (level.rawValue > highestLevel!.rawValue) {
+            highestLevel = level
+        }
+        
+        switch highestLevel! {
+        case ErrorLevel.debug:
+            showLogBottomClick.title = "Show Debug"
+            showLogBottomClick.image = NSImage.init(named: NSImage.actionTemplateName)
+        case ErrorLevel.info:
+            showLogBottomClick.title = "Show Info"
+            showLogBottomClick.image = NSImage.init(named: NSImage.infoName)
+        case ErrorLevel.warning:
+            showLogBottomClick.title = "Show Warning"
+            showLogBottomClick.image = NSImage.init(named: NSImage.cautionName)
+        default:
+            showLogBottomClick.title = "Show Error"
+            showLogBottomClick.image = NSImage.init(named: NSImage.stopProgressFreestandingTemplateName)
+        }
+        
+        
+        showLogBottomClick.isHidden = false
+    }
     // MARK: - Menu
     @IBAction func outlineViewSettingsClick(_ button: NSButton) {
         let menu = NSMenu()

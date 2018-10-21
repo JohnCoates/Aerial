@@ -31,7 +31,8 @@ class AerialView: ScreenSaverView {
     var observerWasSet = false
     var hasStartedPlaying = false
     var isDisabled = false
-    
+    var timeObserver : Any?
+
     static var shouldFade: Bool {
         let preferences = Preferences.sharedInstance
         return (preferences.fadeMode != Preferences.FadeMode.disabled.rawValue)
@@ -356,6 +357,13 @@ class AerialView: ScreenSaverView {
         //let timeManagement = TimeManagement.sharedInstance
 
         let notificationCenter = NotificationCenter.default
+        // Clear everything
+        if (timeObserver != nil) {
+            self.player!.removeTimeObserver(timeObserver!)
+        }
+        self.textLayer.removeAllAnimations()
+        self.clockLayer.removeAllAnimations()
+        self.messageLayer.removeAllAnimations()
         
         // remove old entries
         notificationCenter.removeObserver(self)
@@ -483,7 +491,7 @@ class AerialView: ScreenSaverView {
                 // Collect all the timestamps from the JSON
                 var times = [NSValue]()
                 let keys = poiStringProvider.getPoiKeys(video: video)
-                
+
                 for pkv in keys {
                     let timeStamp = Double(pkv.key)!
                     times.append(NSValue(time: CMTime(seconds: timeStamp, preferredTimescale: 1)))
@@ -528,8 +536,9 @@ class AerialView: ScreenSaverView {
                 
                 let mainQueue = DispatchQueue.main
                 
+
                 // We then callback for each timestamp
-                player.addBoundaryTimeObserver(forTimes: times, queue: mainQueue) {
+                timeObserver = player.addBoundaryTimeObserver(forTimes: times, queue: mainQueue) {
                     var isLastTimeStamp = true
                     var intervalUntilNextTimeStamp = 0.0
                     
@@ -690,13 +699,15 @@ class AerialView: ScreenSaverView {
                 }
 
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
+                if (preferences.withSeconds) {
+                    dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
+                } else {
+                    dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm", options: 0, locale: Locale.current)
+                }
                 let dateString = dateFormatter.string(from: Date())
                 
                 self.clockLayer.string = dateString
 
-                let preferences = Preferences.sharedInstance
-                
                 // We override font size on previews
                 var fontSize = CGFloat(preferences.extraFontSize!)
                 if (layer!.bounds.height < 200) {
@@ -704,7 +715,7 @@ class AerialView: ScreenSaverView {
                 }
                 
                 // Get font with a fallback in case
-                var font = NSFont(name: "Helvetica Neue Medium", size: 28)
+                var font = NSFont(name: "Monaco", size: 28)
                 if let tryFont = NSFont(name: preferences.extraFontName!,size: fontSize) {
                     font = tryFont
                 }
@@ -889,7 +900,6 @@ class AerialView: ScreenSaverView {
     
     func createMoveAnimation(layer : CALayer, to: CGPoint, duration: Double) -> CABasicAnimation {
         let moveAnimation = CABasicAnimation(keyPath: "position")
-        print(layer.position)
         moveAnimation.fromValue = layer.position
         moveAnimation.toValue = to
         moveAnimation.duration = duration
