@@ -1,4 +1,4 @@
-## How to report an issue
+#### General troubleshooting tips
 
 Before logging an issue please check that :
 - [ ] You have the latest version installed (there may be a beta version that fixes your issue), see here for the latest releases and bug fixes : https://github.com/JohnCoates/Aerial/releases
@@ -7,9 +7,14 @@ Before logging an issue please check that :
 
 If none of this fixes your issue, tell us about the problem you are experiencing or the feature you'd like to request.
 
-**We do however ask that you provide the following information to help us sort your issue** :
-- [ ] Mac model
-- [ ] macOS version
-- [ ] monitor setup
+#### Required information
+In order to help us sort your issue, we ask that you provide the following information  :
+- [ ] Mac model :
+- [ ] macOS version : 
+- [ ] Monitor setup :
 
 If appropriate, please enable `Debug mode` and `Log to disk` in `Advanced`tab and replicate your bug, then attach the `AerialLog.txt` file (you can access this file through the Advanced tab).
+
+#### Description of issue / Feature request
+
+{{replace this}}
