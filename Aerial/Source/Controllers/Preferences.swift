@@ -18,11 +18,9 @@ class Preferences {
         case multiMonitorMode = "multiMonitorMode"
         case cacheAerials = "cacheAerials"
         case customCacheDirectory = "cacheDirectory"
-        case manifestTvOS10 = "manifestTvOS10"
-        case manifestTvOS11 = "manifestTvOS11"
-        case manifestTvOS12 = "manifestTvOS12"
         case videoFormat = "videoFormat"
         case showDescriptions = "showDescriptions"
+        case useCommunityDescriptions = "useCommunityDescriptions"
         case showDescriptionsMode = "showDescriptionsMode"
         case neverStreamVideos = "neverStreamVideos"
         case neverStreamPreviews = "neverStreamPreviews"
@@ -36,13 +34,22 @@ class Preferences {
         case fontName = "fontName"
         case fontSize = "fontSize"
         case showClock = "showClock"
+        case withSeconds = "withSeconds"
         case showMessage = "showMessage"
         case showMessageString = "showMessageString"
         case extraFontName = "extraFontName"
         case extraFontSize = "extraFontSize"
         case extraCorner = "extraCorner"
+        case debugMode = "debugMode"
+        case logToDisk = "logToDisk"
+        case versionCheck = "versionCheck"
+        case alsoVersionCheckBeta = "alsoVersionCheckBeta"
     }
-
+    
+    enum VersionCheck : Int {
+        case never, daily, weekly, monthly
+    }
+    
     enum ExtraCorner : Int {
         case same, hOpposed, dOpposed
     }
@@ -76,7 +83,7 @@ class Preferences {
         let module = "com.JohnCoates.Aerial"
         
         guard let userDefaults = ScreenSaverDefaults(forModuleWithName: module) else {
-            print("Couldn't create ScreenSaverDefaults, creating generic UserDefaults")
+            warnLog("Couldn't create ScreenSaverDefaults, creating generic UserDefaults")
             return UserDefaults()
         }
         
@@ -95,6 +102,7 @@ class Preferences {
         defaultValues[.cacheAerials] = true
         defaultValues[.videoFormat] = VideoFormat.v1080pH264
         defaultValues[.showDescriptions] = true
+        defaultValues[.useCommunityDescriptions] = true
         defaultValues[.showDescriptionsMode] = DescriptionMode.fade10seconds
         defaultValues[.neverStreamVideos] = false
         defaultValues[.neverStreamPreviews] = false
@@ -109,12 +117,16 @@ class Preferences {
         defaultValues[.fontName] = "Helvetica Neue Medium"
         defaultValues[.fontSize] = 28
         defaultValues[.showClock] = false
+        defaultValues[.withSeconds] = false
         defaultValues[.showMessage] = false
         defaultValues[.showMessageString] = ""
-        defaultValues[.extraFontName] = "Helvetica Neue Medium"
+        defaultValues[.extraFontName] = "Monaco"
         defaultValues[.extraFontSize] = 28
         defaultValues[.extraCorner] = ExtraCorner.same
-        
+        defaultValues[.debugMode] = false
+        defaultValues[.logToDisk] = false
+        defaultValues[.versionCheck] = VersionCheck.weekly
+        defaultValues[.alsoVersionCheckBeta] = false
         
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
@@ -127,6 +139,42 @@ class Preferences {
     }
     
     // MARK: - Variables
+    
+    var useCommunityDescriptions: Bool {
+        get {
+            return value(forIdentifier: .useCommunityDescriptions)
+        }
+        set {
+            setValue(forIdentifier: .useCommunityDescriptions, value: newValue)
+        }
+    }
+    
+    var debugMode: Bool {
+        get {
+            return value(forIdentifier: .debugMode)
+        }
+        set {
+            setValue(forIdentifier: .debugMode, value: newValue)
+        }
+    }
+    
+    var logToDisk: Bool {
+        get {
+            return value(forIdentifier: .logToDisk)
+        }
+        set {
+            setValue(forIdentifier: .logToDisk, value: newValue)
+        }
+    }
+
+    var alsoVersionCheckBeta : Bool {
+        get {
+            return value(forIdentifier: .alsoVersionCheckBeta)
+        }
+        set {
+            setValue(forIdentifier: .alsoVersionCheckBeta, value: newValue)
+        }
+    }
 
     var showClock: Bool {
         get {
@@ -136,7 +184,16 @@ class Preferences {
             setValue(forIdentifier: .showClock, value: newValue)
         }
     }
-
+    
+    var withSeconds: Bool {
+        get {
+            return value(forIdentifier: .withSeconds)
+        }
+        set {
+            setValue(forIdentifier: .withSeconds, value: newValue)
+        }
+    }
+    
     var showMessage: Bool {
         get {
             return value(forIdentifier: .showMessage)
@@ -264,33 +321,15 @@ class Preferences {
         }
     }
 
-    var manifestTvOS10: Data? {
+    var versionCheck: Int? {
         get {
-            return optionalValue(forIdentifier: .manifestTvOS10)
+            return optionalValue(forIdentifier: .versionCheck)
         }
         set {
-            setValue(forIdentifier: .manifestTvOS10, value: newValue)
+            setValue(forIdentifier: .versionCheck, value: newValue)
         }
     }
     
-    var manifestTvOS11: Data? {
-        get {
-            return optionalValue(forIdentifier: .manifestTvOS11)
-        }
-        set {
-            setValue(forIdentifier: .manifestTvOS11, value: newValue)
-        }
-    }
-    
-    var manifestTvOS12: Data? {
-        get {
-            return optionalValue(forIdentifier: .manifestTvOS12)
-        }
-        set {
-            setValue(forIdentifier: .manifestTvOS12, value: newValue)
-        }
-    }
-
     var descriptionCorner: Int? {
         get {
             return optionalValue(forIdentifier: .descriptionCorner)
@@ -410,12 +449,6 @@ class Preferences {
     fileprivate func optionalValue(forIdentifier identifier: Identifiers) -> Double? {
         let key = identifier.rawValue
         return userDefaults.double(forKey: key)
-    }
-    
-    fileprivate func optionalValue(forIdentifier
-        identifier: Identifiers) -> Data? {
-        let key = identifier.rawValue
-        return userDefaults.data(forKey: key)
     }
     
     fileprivate func setValue(forIdentifier identifier: Identifiers, value: Any?) {

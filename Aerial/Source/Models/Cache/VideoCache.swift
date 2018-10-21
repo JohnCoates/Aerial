@@ -30,7 +30,7 @@ class VideoCache {
                                                                      .userDomainMask,
                                                                      true)
                 if cachePaths.count == 0 {
-                    NSLog("Aerial Error: Couldn't find cache paths!")
+                    errorLog("Couldn't find cache paths!")
                     return nil
                 }
                 
@@ -50,7 +50,7 @@ class VideoCache {
                     try fileManager.createDirectory(atPath: appCacheDirectory as String,
                                                     withIntermediateDirectories: false, attributes: nil)
                 } catch let error {
-                    NSLog("Aerial Error: Couldn't create cache directory: \(error)")
+                    errorLog("Couldn't create cache directory: \(error)")
                     return nil
                 }
             }
@@ -60,7 +60,7 @@ class VideoCache {
     
     static func isAvailableOffline(video: AerialVideo) -> Bool {
         guard let videoCachePath = cachePath(forVideo: video) else {
-            NSLog("Aerial Error: Couldn't get video cache path!")
+            errorLog("Couldn't get video cache path!")
             return false
         }
 
@@ -86,6 +86,7 @@ class VideoCache {
     }
     
     init(URL: Foundation.URL) {
+        debugLog("initvideocache")
         videoData = Data()
         loading = true
         self.URL = URL
@@ -109,7 +110,7 @@ class VideoCache {
     
     func receivedData(_ data: Data, atRange range: NSRange) {
         guard let mutableVideoData = mutableVideoData else {
-            NSLog("Aerial Error: Received data without having mutable video data")
+            errorLog("Received data without having mutable video data")
             return
         }
         
@@ -149,25 +150,25 @@ class VideoCache {
         let fileManager = FileManager.default
         
         guard let videoCachePath = videoCachePath else {
-            NSLog("Aerial Error: Couldn't save cache file")
+            errorLog("Couldn't save cache file")
             return
         }
         
         guard fileManager.fileExists(atPath: videoCachePath) == false else {
-            NSLog("Aerial Error: Cache file \(videoCachePath) already exists.")
+            errorLog("Cache file \(videoCachePath) already exists.")
             return
         }
         
         loading = false
         guard let mutableVideoData = mutableVideoData else {
-            NSLog("Aerial Error: Missing video data for save.")
+            errorLog("Missing video data for save.")
             return
         }
         
         do {
             try mutableVideoData.write(toFile: videoCachePath, options: .atomicWrite)
         } catch let error {
-            NSLog("Aerial Error: Couldn't write cache file: \(error)")
+            errorLog("Couldn't write cache file: \(error)")
         }
     }
     
@@ -175,7 +176,7 @@ class VideoCache {
         let fileManager = FileManager.default
         
         guard let videoCachePath = self.videoCachePath else {
-            NSLog("Aerial Error: Couldn't load cache file.")
+            errorLog("Couldn't load cache file.")
             return
         }
         
@@ -184,7 +185,7 @@ class VideoCache {
         }
         
         guard let videoData = try? Data(contentsOf: Foundation.URL(fileURLWithPath: videoCachePath)) else {
-            NSLog("Aerial Error: NSData failed to load cache file \(videoCachePath)")
+            errorLog("NSData failed to load cache file \(videoCachePath)")
             return
         }
         
@@ -197,7 +198,7 @@ class VideoCache {
     
     func fulfillLoadingRequest(_ loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
         guard let dataRequest = loadingRequest.dataRequest else {
-            NSLog("Aerial Error: Missing data request for \(loadingRequest)")
+            errorLog("Missing data request for \(loadingRequest)")
             return false
         }
         
@@ -239,7 +240,7 @@ class VideoCache {
         }
         
         guard let dataRequest = loadingRequest.dataRequest else {
-            NSLog("Aerial Error: Missing data request for \(loadingRequest)")
+            errorLog("Missing data request for \(loadingRequest)")
             return false
         }
         

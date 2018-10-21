@@ -103,12 +103,21 @@ class CheckCellView: NSTableCellView {
         queuedImage.isHidden = true
         status = .downloaded
         
-        NSLog("video download finished")
+        debugLog("Video download finished")
         video!.updateDuration()
     }
     
+    func markAsNotDownloaded() {
+        addButton.isHidden = false
+        progressIndicator.isHidden = true
+        queuedImage.isHidden = true
+        status = .notAvailable
+        
+        debugLog("Video download finished with error/cancel")
+    }
+    
     func markAsQueued() {
-        debugLog("queued \(video!)")
+        debugLog("Queued \(video!)")
         status = .queued
         addButton.isHidden = true
         progressIndicator.isHidden = true

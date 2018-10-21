@@ -20,6 +20,10 @@ class ManifestLoader {
     var processedVideos = [AerialVideo]()
     var lastPluckedFromPlaylist: AerialVideo?
     
+    var manifestTvOS10: Data?
+    var manifestTvOS11: Data?
+    var manifestTvOS12: Data?
+
     // Playlist management
     var playlistIsRestricted = false
     var playlistRestrictedTo = ""
@@ -42,81 +46,6 @@ class ManifestLoader {
         ["url-1080-SDR":"https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_2K_SDR_HEVC.mov",
          "url-4K-SDR":"https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_SDR_HEVC.mov"]]   // Dubai night 2
     
-    // Better Descriptions
-    let mergeName = [
-        "6C3D54AE-0871-498A-81D0-56ED24E5FE9F":"Korea and Japan Night",             // Fixint Typo
-        "B876B645-3955-420E-99DF-60139E451CF3":"Wulingyuan National Park 1",        // China day 1
-        "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C":"Longji Rice Terraces",              // China day 2
-        "D5E76230-81A3-4F65-A1BA-51B8CADED625":"Wulingyuan National Park 2",        // China day 3
-        "b6-1":"Great Wall 1",                                                      // China day 4
-        "b2-1":"Great Wall 2",                                                      // China day 5
-        "b5-1":"Great Wall 3",                                                      // China day 6
-        
-        "AC9C09DD-1D97-4013-A09F-B0F5259E64C3":"Sheikh Zayed Road",                 // Dubai day 1
-        "49790B7C-7D8C-466C-A09E-83E38B6BE87A":"Marina 1",                          // Dubai day 2
-        "02EA5DBE-3A67-4DFA-8528-12901DFD6CC1":"Downtown",                          // Dubai day 3
-        "802866E6-4AAF-4A69-96EA-C582651391F1":"Marina 2",                          // Dubai day 4
-        
-        "BAF76353-3475-4855-B7E1-CE96CC9BC3A7":"Approaching Burj Khalifa",          // Dubai night 1
-        "2F11E857-4F77-4476-8033-4A1E4610AFCC":"Sheikh Zayed Road",                 // Dubai night 2
-        
-        "E4ED0B22-EB81-4D4F-A29E-7E1EA6B6D980":"Nuussuaq Peninsula",                // Greenland day 1
-        "30047FDA-3AE3-4E74-9575-3520AD77865B":"Ilulissat Icefjord",                // Greenland day 2
-        
-        "7D4710EB-5BA4-42E6-AA60-68D77F67D9B9":"Ilulissat Icefjord",                // Greenland night 1
-        
-        "b7-1":"Laupāhoehoe Nui",                                                   // Hawaii day 1
-        "b1-1":"Waimanu Valley",                                                    // Hawaii day 2
-        "b2-2":"Honopū Valley",                                                     // Hawaii day 3
-        "b4-1":"Pu‘u O ‘Umi",                                                       // Hawaii day 4
-        
-        "b6-2":"Kohala coastline",                                                  // Hawaii night 1
-        "b8-1":"Pu‘u O ‘Umi",                                                       // Hawaii night 2
-        
-        "102C19D1-9D9F-48EC-B492-074C985C4D9F":"Victoria Harbour 1",                // Hong Kong day 1
-        "560E09E8-E89D-4ADB-8EEA-4754415383D4":"Victoria Peak",                     // Hong Kong day 2
-        "024891DE-B7F6-4187-BFE0-E6D237702EF0":"Wan Chai",                          // Hong Kong day 3
-        "786E674C-BB22-4AA9-9BD3-114D2020EC4D":"Victoria Harbour 2",                // Hong Kong day 4
-        
-        "30313BC1-BF20-45EB-A7B1-5A6FFDBD2488":"Victoria Harbour",                  // Hong Kong night 1
-        
-        "6E2FC8AC-832D-46CF-B306-BB2A05030C17":"Liwa Oasis",                        // Liwa day 1
-        
-        "b6-3":"Tower Bridge",                                                      // London day 1
-        "b5-2":"Buckingham Palace",                                                 // London day 2
-        
-        "b1-2":"Tower Bridge 1",                                                    // London night 1
-        "b3-1":"Tower Bridge 2",                                                    // London night 2
-        
-        "829E69BA-BB53-4841-A138-4DF0C2A74236":"LAX",                               // Los Angeles day 1
-        "30A2A488-E708-42E7-9A90-B749A407AE1C":"Interstate 110",                    // Los Angeles day 2
-        "B730433D-1B3B-4B99-9500-A286BF7A9940":"Santa Monica Beach",                // Los Angeles day 3
-        
-        "89B1643B-06DD-4DEC-B1B0-774493B0F7B7":"Griffith Observatory",              // Los Angeles night 1
-        "EC67726A-8212-4C5E-83CF-8412932740D2":"Hollywood Sign",                    // Los Angeles night 2
-        "A284F0BF-E690-4C13-92E2-4672D93E8DE5":"Downtown",                          // Los Angeles night 3
-        
-        "b7-2":"Central Park",                                                      // New York day 1
-        "b1-3":"Lower Manhattan",                                                   // New York day 2
-        "b3-2":"Upper East Side",                                                   // New York day 3
-        
-        "b2-3":"7th avenue",                                                        // New York night 1
-        "b4-2":"Lower Manhattan",                                                   // New York night 2
-        
-        
-        "b8-2":"Marin Headlands",                                    // San Francisco day 1
-        "b10-3":"Presidio to Golden Gate",                                          // San Francisco day 2
-        "b9-3":"Bay and Golden Gate",                                               // San Francisco day 3
-        "b8-3":"Downtown",                                                          // San Francisco day 4
-        "b3-3":"Embarcadero/Market Street",                                      // San Francisco day 5
-        "b4-3":"Golden Gate from SF",                                               // San Francisco day 6
-        
-        "b6-4":"Downtown/Coit Tower",                                               // San Francisco night 1
-        "b7-3":"Fisherman's Wharf",                                                 // San Francisco night 2
-        "b5-3":"Embarcadero/Market Street",                                      // San Francisco night 3
-        "b1-4":"Bay Bridge",                                                        // San Francisco night 4
-        "b2-4":"Downtown/Sutro Tower"                                               // San Francisco night 5
-    ]
     
     // Extra POI
     let mergePOI = [
@@ -156,14 +85,8 @@ class ManifestLoader {
         "b2-4":"A018_C014_"                                                 // San Francisco night 5
     ]
     
-    func addCallback(_ callback:@escaping manifestLoadCallback) {
-        if loadedManifest.count > 0 {
-            callback(loadedManifest)
-        } else {
-            callbacks.append(callback)
-        }
-    }
     
+    // MARK: - Playlist generation
     func generatePlaylist(isRestricted:Bool, restrictedTo:String) {
         // Start fresh
         playlist = [AerialVideo]()
@@ -204,7 +127,6 @@ class ManifestLoader {
         
         // On regenerating a new playlist, we try to avoid repeating
         while (playlist.count > 1 && lastPluckedFromPlaylist == playlist.first) {
-            //NSLog("AerialDBG: Reshuffle")
             playlist.shuffle()
         }
     }
@@ -214,7 +136,6 @@ class ManifestLoader {
         let (shouldRestrictByDayNight,restrictTo) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
 
         if (playlist.count == 0 || (restrictTo != playlistRestrictedTo) || (shouldRestrictByDayNight != playlistIsRestricted)) {
-            //NSLog("AerialDBG: Generating new playlist")
             generatePlaylist(isRestricted: shouldRestrictByDayNight, restrictedTo: restrictTo)
         }
         
@@ -224,7 +145,6 @@ class ManifestLoader {
         } else {
             return findBestEffortVideo()
         }
-
     }
     
     // Find a backup plan when conditions are not met
@@ -239,10 +159,10 @@ class ManifestLoader {
         // - return a random one from the manifest that is cached
         // - return a random video that is not cached (slight betrayal of the Never stream videos)
         
-        NSLog("AerialDBG: empty playlist, not good !")
+        warnLog("Empty playlist, not good !")
 
         if lastPluckedFromPlaylist != nil {
-            NSLog("AerialDBG: returning last played video after condition change not met !")
+            warnLog("returning last played video after condition change not met !")
             return lastPluckedFromPlaylist!
         } else {
             // Start with a shuffled list
@@ -251,7 +171,7 @@ class ManifestLoader {
             if (shuffled.count == 0)
             {
                 // This is super bad, no manifest at all
-                NSLog("AerialDBG: No manifest, nothing to play !")
+                errorLog("No manifest, nothing to play !")
                 return nil
             }
             
@@ -261,42 +181,44 @@ class ManifestLoader {
                 
                 // If we find anything cached and in rotation, we send that back
                 if video.isAvailableOffline && inRotation {
-                    NSLog("AerialDBG: returning random cached in rotation video after condition change not met !")
+                    warnLog("returning random cached in rotation video after condition change not met !")
                     return video
                 }
             }
             // Nothing ? Sorry but you'll get a non cached file
-            NSLog("AerialDBG: returning random video after condition change not met !")
+            warnLog("returning random video after condition change not met !")
             return shuffled.first!
         }
     }
     
+    // MARK: - Lifecycle
+    
     init() {
-        NSLog("AerialML: Manifest init")
+        debugLog("Manifest init")
         // We try to load our video manifests in 3 steps :
-        // - use locally saved data in preferences plist
+        // - reload from local variables (unused for now)
         // - reprocess the saved files in cache directory (full offline mode)
         // - download the manifests from servers
 
-        NSLog("AerialML: 10 \(isManifestCached(manifest: .tvOS10))")
-        NSLog("AerialML: 11 \(isManifestCached(manifest: .tvOS11))")
-        NSLog("AerialML: 12 \(isManifestCached(manifest: .tvOS12))")
+        debugLog("isManifestCached 10 \(isManifestCached(manifest: .tvOS10))")
+        debugLog("isManifestCached 11 \(isManifestCached(manifest: .tvOS11))")
+        debugLog("isManifestCached 12 \(isManifestCached(manifest: .tvOS12))")
         
-        if areManifestsSaved() {
-            NSLog("AerialML: Loading from plist")
-            loadSavedManifests()
+        if areManifestsFilesLoaded() {
+            debugLog("Files were already loaded")
+            loadManifestsFromLoadedFiles()
         }
         else
         {
-            NSLog("AerialML: Not available from plist")
+            debugLog("Files were not already loaded")
             // Manifests are not in our preferences plist, are they cached on disk ?
             if areManifestsCached() {
-                NSLog("AerialML: Manifests are cached on disk, loading")
+                debugLog("Manifests are cached on disk, loading")
                 loadCachedManifests()
             }
             else {
                 // Ok then, we fetch them...
-                NSLog("AerialML: fetching missing manifests online")
+                debugLog("Fetching missing manifests online")
                 let downloadManager = DownloadManager()
                 
                 var urls: [URL] = []
@@ -315,7 +237,7 @@ class ManifestLoader {
                 }
 
                 let completion = BlockOperation {
-                    NSLog("AerialML: fetching all done")
+                    debugLog("Fetching manifests all done")
                     // We can now load from the newly cached files
                     self.loadCachedManifests()
                     
@@ -331,14 +253,24 @@ class ManifestLoader {
         }
     }
 
-    // Check if the Manifests have been saved in our preferences plist
-    func areManifestsSaved() -> Bool {
-        if (preferences.manifestTvOS12 != nil && preferences.manifestTvOS11 != nil && preferences.manifestTvOS10 != nil) {
-            NSLog("AerialML: manifests are saved in preferences")
+    func addCallback(_ callback:@escaping manifestLoadCallback) {
+        if loadedManifest.count > 0 {
+            callback(loadedManifest)
+        } else {
+            callbacks.append(callback)
+        }
+    }
+
+    // MARK: - Manifests
+    
+    // Check if the Manifests have been loaded in this class already
+    func areManifestsFilesLoaded() -> Bool {
+        if (manifestTvOS12 != nil && manifestTvOS11 != nil && manifestTvOS10 != nil) {
+            debugLog("Manifests files were loaded in class")
             return true
         }
         else {
-            NSLog("AerialML: manifests are NOT saved in preferences")
+            debugLog("Manifests files were not loaded in class")
             return false
         }
     }
@@ -359,8 +291,6 @@ class ManifestLoader {
             if !fileManager.fileExists(atPath: cacheResourcesString) {
                 return false
             }
-            
-            NSLog("AerialML: \(manifest.rawValue) manifest is cached")
         }
         else
         {
@@ -376,98 +306,102 @@ class ManifestLoader {
             // tvOS12
             var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
             cacheFileUrl.appendPathComponent("entries.json")
-            NSLog("AerialML: 12path : \(cacheFileUrl)")
             do {
                 let ndata = try Data(contentsOf: cacheFileUrl)
-                self.preferences.manifestTvOS12 = ndata
+                manifestTvOS12 = ndata
             }
             catch {
-                NSLog("Aerial: Error can't load entries.json from cached directory (tvOS12)")
+                errorLog("Can't load entries.json from cached directory (tvOS12)")
             }
             
             // tvOS11
             cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
             cacheFileUrl.appendPathComponent("tvos11.json")
-            NSLog("AerialML: 11path : \(cacheFileUrl)")
-
             do {
                 let ndata = try Data(contentsOf: cacheFileUrl)
-                self.preferences.manifestTvOS11 = ndata
+                manifestTvOS11 = ndata
             }
             catch {
-                NSLog("Aerial: Error can't load tvos11.json from cached directory ")
+                errorLog("Can't load tvos11.json from cached directory")
             }
 
             // tvOS10
             cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
             cacheFileUrl.appendPathComponent("tvos10.json")
-            NSLog("AerialML: 10path : \(cacheFileUrl)")
-
             do {
                 let ndata = try Data(contentsOf: cacheFileUrl)
-                self.preferences.manifestTvOS10 = ndata
+                manifestTvOS10 = ndata
             }
             catch {
-                NSLog("Aerial: Error can't load tvos10.json from cached directory")
+                errorLog("Can't load tvos10.json from cached directory")
             }
 
-            if self.preferences.manifestTvOS10 != nil || self.preferences.manifestTvOS11 != nil || self.preferences.manifestTvOS12 != nil {
-                loadSavedManifests()
+            if manifestTvOS10 != nil || manifestTvOS11 != nil || manifestTvOS12 != nil {
+                loadManifestsFromLoadedFiles()
             } else {
                 // No internet, no anything, nothing to do
-                NSLog("AerialDBG: No video to load, no internet connexion ?")
+                errorLog("No video to load, no internet connexion ?")
             }
         }
     }
     
     // Load Manifests from the saved preferences
-    func loadSavedManifests() {
-        NSLog("AerialML: LSM")
-        
+    func loadManifestsFromLoadedFiles() {
         // Reset our array
         processedVideos = []
 
-        if (preferences.manifestTvOS12 != nil) {
-            NSLog("AerialML: lsm12")
+        if (manifestTvOS12 != nil) {
             // We start with the more recent one, it has more information (poi, etc)
-            readJSONFromData(preferences.manifestTvOS12!, manifest: .tvOS12)
+            readJSONFromData(manifestTvOS12!, manifest: .tvOS12)
+        } else {
+            warnLog("tvOS12 manifest is absent")
         }
-        if (preferences.manifestTvOS11 != nil) {
-            NSLog("AerialML: lsm11")
+        
+        if (manifestTvOS11 != nil) {
             // This one has a couple videos not in the tvOS12 JSON. No H264 for these !
-            readJSONFromData(preferences.manifestTvOS11!, manifest: .tvOS11)
+            readJSONFromData(manifestTvOS11!, manifest: .tvOS11)
+        } else {
+            warnLog("tvOS11 manifest is absent")
         }
-        if (preferences.manifestTvOS10 != nil) {
-            NSLog("AerialML: lsm10")
+        
+        if (manifestTvOS10 != nil) {
             // The original manifest is in another format
-            readOldJSONFromData(preferences.manifestTvOS10!, manifest: .tvOS10)
+            readOldJSONFromData(manifestTvOS10!, manifest: .tvOS10)
+        } else {
+            warnLog("tvOS10 manifest is absent")
         }
 
-        NSLog("AerialML: post json loading")
-
-        processedVideos = processedVideos.sorted { $0.secondaryName < $1.secondaryName }    // Only matters for Space videos, this way they show sorted in the Space category
+        processedVideos = processedVideos.sorted { $0.secondaryName < $1.secondaryName }    // We sort videos by secondary names, so they can display sorted in our view later
         
         self.loadedManifest = processedVideos
-        
-        NSLog("AerialML: \(processedVideos.count) videos processed !")
+        /*
+         // POI Extracter code
+        infoLog("\(processedVideos.count) videos processed !")
+        let poiStringProvider = PoiStringProvider.sharedInstance
+        for video in processedVideos {
+            infoLog(video.name + " " + video.secondaryName)
+            for poi in video.poi {
+                infoLog(poi.key + ": " + poiStringProvider.getString(key: poi.value))
+            }
+        }*/
         
         // callbacks
         for callback in self.callbacks {
-            NSLog("AerialML: Calling back")
             callback(self.loadedManifest)
         }
         self.callbacks.removeAll()
     }
     
+    // MARK: - JSON
     func readJSONFromData(_ data: Data, manifest: Manifests) {
-        //var videos = [AerialVideo]()
-        
         do {
+            let poiStringProvider = PoiStringProvider.sharedInstance
+            
             let options = JSONSerialization.ReadingOptions.allowFragments
             let batches = try JSONSerialization.jsonObject(with: data, options: options)
             
             guard let batch = batches as? NSDictionary else {
-                NSLog("Aerial: Encountered unexpected content type for batch, please report !")
+                errorLog("Encountered unexpected content type for batch, please report !")
                 return
             }
             
@@ -481,27 +415,29 @@ class ManifestLoader {
                 let name = item["accessibilityLabel"] as! String
                 var secondaryName = ""
                 // We may have a secondary name
-                if let mergeName = mergeName[id] {
-                    secondaryName = mergeName
+                if let mergename = poiStringProvider.getCommunityName(id: id) {
+                    secondaryName = mergename
                 }
+/*                if let mergeName = mergeName[id] {
+                    secondaryName = mergeName
+                }*/
                 
                 let timeOfDay = "day"   // TODO, this is hardcoded as it's no longer available in the modern JSONs
                 let type = "video"
                 var poi : [String:String]?
-
                 if let mergeId = mergePOI[id] {
-                    let poiStringProvider = PoiStringProvider.sharedInstance
                     poi = poiStringProvider.fetchExtraPoiForId(id: mergeId)
-                }
-                else {
+                } else {
                     poi = item["pointsOfInterest"] as? [String: String]
                 }
+
+                let communityPoi = poiStringProvider.getCommunityPoi(id: id)
+                
+                
                 let (isDupe,foundDupe) = findDuplicate(id: id, url1080pH264: url1080pH264 ?? "")
                 if (isDupe) {
-                    //debugLog("duplicate found, adding \(manifest) as source to \(name)")
                     foundDupe!.sources.append(manifest)
-                }
-                else {
+                } else {
                     let video = AerialVideo(id: id,             // Must have
                         name: name,                             // Must have
                         secondaryName: secondaryName,           // Optional
@@ -511,20 +447,22 @@ class ManifestLoader {
                         url1080pHEVC: url1080pHEVC ?? "",
                         url4KHEVC: url4KHEVC ?? "",
                         manifest: manifest,
-                        poi: poi ?? [:] )                       // tvOS12 only
+                        poi: poi ?? [:],
+                        communityPoi: communityPoi)
                     
                     processedVideos.append(video)
-                    //checkContentLength(video)
                 }
             }
         } catch {
-            NSLog("Aerial: Error retrieving content listing.")
+            errorLog("Error retrieving content listing")
             return
         }
     }
     
     func readOldJSONFromData(_ data: Data, manifest: Manifests) {
         do {
+            let poiStringProvider = PoiStringProvider.sharedInstance
+
             let options = JSONSerialization.ReadingOptions.allowFragments
             let batches = try JSONSerialization.jsonObject(with: data,
                                                            options: options) as! Array<NSDictionary>
@@ -543,32 +481,32 @@ class ManifestLoader {
                         continue
                     }
                     
-                    var secondaryName = ""
                     // We may have a secondary name
-                    if let mergeName = mergeName[id] {
-                        secondaryName = mergeName
+                    var secondaryName = ""
+                    if let mergename = poiStringProvider.getCommunityName(id: id) {
+                        secondaryName = mergename
                     }
-                    
+
+                    // We may have POIs to merge
                     var poi : [String:String]?
                     if let mergeId = mergePOI[id] {
                         let poiStringProvider = PoiStringProvider.sharedInstance
                         poi = poiStringProvider.fetchExtraPoiForId(id: mergeId)
                     }
-                    
+
+                    let communityPoi = poiStringProvider.getCommunityPoi(id: id)
+
+                    // We may have dupes...
                     let (isDupe,foundDupe) = findDuplicate(id: id, url1080pH264: url)
                     if isDupe {
                         if (foundDupe != nil) {
-                            //debugLog("duplicate found, adding \(manifest) as source to \(name)")
                             foundDupe!.sources.append(manifest)
                             
                             if (foundDupe?.url1080pH264 == "") {
-                                //debugLog("merging urls for \(url)")
                                 foundDupe?.url1080pH264 = url
                             }
-                            
                         }
-                    }
-                    else {
+                    } else {
                         var url4khevc = ""
                         var url1080phevc = ""
                         // Check if we have some HEVC urls to merge
@@ -577,6 +515,7 @@ class ManifestLoader {
                             url4khevc = val["url-4K-SDR"]!
                         }
 
+                        // Now we can finally add...
                         let video = AerialVideo(id: id,             // Must have
                             name: name,         // Must have
                             secondaryName: secondaryName,
@@ -586,26 +525,15 @@ class ManifestLoader {
                             url1080pHEVC: url1080phevc,
                             url4KHEVC: url4khevc,
                             manifest: manifest,
-                            poi: poi ?? [:])    // tvOS12 only
+                            poi: poi ?? [:],
+                            communityPoi: communityPoi)
                         
                         processedVideos.append(video)
-                        //checkContentLength(video)
                     }
-                    /*let video = AerialVideo(id: id,
-                                            name: name,
-                                            type: type,
-                                            timeOfDay: timeOfDay,
-                                            url: url)
-                    
-                    videos.append(video)
-                    
-                    checkContentLength(video)*/
                 }
             }
-            
-            //self.loadedManifest = videos
         } catch {
-            NSLog("Aerial: Error retrieving content listing.")
+            errorLog("Error retrieving content listing")
             return
         }
     }
@@ -623,16 +551,13 @@ class ManifestLoader {
         if (url1080pH264 != "") {
             if (blacklist.contains((URL(string:url1080pH264)?.lastPathComponent)!))
             {
-                //debugLog("Blacklisted video : \(url1080pH264)")
                 return (true,nil)
             }
         }
         
         // We also have a Dictionary of duplicates that need source merging
         for (pid,replace) in dupePairs {
-            if (id == pid)
-            {
-                //debugLog("duplicate found by dupePairs \(id)")
+            if (id == pid) {
                 for vid in processedVideos {
                     if vid.id == replace {
                         return (true,vid)
@@ -643,12 +568,9 @@ class ManifestLoader {
         
         for video in processedVideos {
             if id == video.id {
-                //debugLog("duplicate found by ID")
                 return (true,video)
-            }
-            else if (url1080pH264 != "" && video.url1080pH264 != "") {
+            } else if (url1080pH264 != "" && video.url1080pH264 != "") {
                 if (URL(string:url1080pH264)?.lastPathComponent == URL(string:video.url1080pH264)?.lastPathComponent) {
-                    //debugLog("duplicate found by filename")
                     return (true,video)
                 }
             }
@@ -656,99 +578,4 @@ class ManifestLoader {
         
         return (false,nil)
     }
-    
-/*    func checkContentLength(_ video: AerialVideo) {
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        let request = NSMutableURLRequest(url: video.url as URL)
-        
-        request.httpMethod = "HEAD"
-        
-        let task = session.dataTask(with: request as URLRequest,
-                                    completionHandler: {
-                                        data, response, error in
-            video.contentLengthChecked = true
-            
-            if let error = error {
-                NSLog("error fetching content length: \(error)")
-                DispatchQueue.main.async(execute: { () -> Void in
-                    self.receivedContentLengthResponse()
-                })
-                return
-            }
-            
-            guard let response = response else {
-                return
-            }
-            
-            video.contentLength = Int(response.expectedContentLength)
-//            NSLog("content length: \(response.expectedContentLength)")
-            DispatchQueue.main.async(execute: { () -> Void in
-                self.receivedContentLengthResponse()
-            })
-        }) 
-        
-        task.resume()
-    }
-    
-    func receivedContentLengthResponse() {
-        // check if content length on all videos has been checked
-        for video in loadedManifest {
-            if video.contentLengthChecked == false {
-                return
-            }
-        }
-        
-        filterVideoAndProcessCallbacks()
-    }
-    
-    func filterVideoAndProcessCallbacks() {
-        let unfiltered = loadedManifest
-        
-        var filtered = [AerialVideo]()
-        for video in unfiltered {
-            // offline? eror? just put it through
-            if video.contentLength == 0 {
-                filtered.append(video)
-                continue
-            }
-            
-            // check to see if we find another video with the same content length
-            var isDuplicate = false
-            for videoCheck in filtered {
-                if videoCheck.id == video.id {
-                    isDuplicate = true
-                    continue
-                }
-                
-                if videoCheck.name != video.name {
-                    continue
-                }
-                
-                if videoCheck.timeOfDay != video.timeOfDay {
-                    continue
-                }
-                
-                if videoCheck.contentLength == video.contentLength {
-//                    NSLog("removing duplicate video \(videoCheck.name) \(videoCheck.timeOfDay)")
-                    isDuplicate = true
-                    break
-                }
-            } // dupe check
-            
-            if isDuplicate == true {
-                continue
-            }
-            
-            filtered.append(video)
-        }
-        
-        loadedManifest = filtered
-        
-        // callbacks
-        for callback in self.callbacks {
-            callback(filtered)
-        }
-        self.callbacks.removeAll()
-    }*/
 }

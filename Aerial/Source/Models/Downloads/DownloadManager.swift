@@ -110,28 +110,28 @@ extension DownloadOperation: URLSessionDownloadDelegate {
             
             // tvOS11 and tvOS10 JSONs are named entries.json, so we rename them here
             if downloadTask.originalRequest!.url!.absoluteString.contains("2x/entries.json") {
-                NSLog("Aerial: Caching tvos11.json")
+                debugLog("Caching tvos11.json")
                 destinationURL.appendPathComponent("tvos11.json")
             }
             else if downloadTask.originalRequest!.url!.absoluteString.contains("Autumn") {
-                NSLog("Aerial: Caching tvos10.json")
+                debugLog("Caching tvos10.json")
                 destinationURL.appendPathComponent("tvos10.json")
             }
             else {
-                NSLog("Aerial: Caching \(downloadTask.originalRequest!.url!.lastPathComponent)")
+                debugLog("Caching \(downloadTask.originalRequest!.url!.lastPathComponent)")
                 destinationURL.appendPathComponent(downloadTask.originalRequest!.url!.lastPathComponent)
             }
             
             try? manager.removeItem(at: destinationURL)
             try manager.moveItem(at: location, to: destinationURL)
         } catch {
-            print(error)
+            errorLog("\(error)")
         }
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        let progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
-        print("\(downloadTask.originalRequest!.url!.absoluteString) \(progress)")
+        //let progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
+        //print("\(downloadTask.originalRequest!.url!.absoluteString) \(progress)")
     }
 }
 
@@ -143,13 +143,13 @@ extension DownloadOperation: URLSessionTaskDelegate {
         defer { finish() }
         
         if let error = error {
-            print(error)
+            errorLog("\(error)")
             return
         }
 
         // We need to untar the resources.tar
         if task.originalRequest!.url!.absoluteString.contains("resources.tar") {
-            print("untaring resources.tar")
+            debugLog("untaring resources.tar")
 
             // Extract json
             let process:Process = Process()
@@ -167,8 +167,6 @@ extension DownloadOperation: URLSessionTaskDelegate {
             process.waitUntilExit()
         }
 
-        print("Finished \(task.originalRequest!.url!.absoluteString)")
-
+        debugLog("Finished downloading \(task.originalRequest!.url!.absoluteString)")
     }
-    
 }

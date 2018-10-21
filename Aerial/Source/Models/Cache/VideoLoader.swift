@@ -28,11 +28,12 @@ class VideoLoader: NSObject, NSURLConnectionDataDelegate {
     let queue = DispatchQueue.main
     
     init(url: URL, loadingRequest: AVAssetResourceLoadingRequest, delegate: VideoLoaderDelegate) {
+        //debugLog("videoloader init")
         self.delegate = delegate
         self.loadingRequest = loadingRequest
         
         let request = NSMutableURLRequest(url: url)
-        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
+        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData
         
         loadRange = false
         loadedRange = NSRange(location: 0, length: 0)
@@ -51,21 +52,22 @@ class VideoLoader: NSObject, NSURLConnectionDataDelegate {
                 request.setValue(requestRange, forHTTPHeaderField: "Range")
             }
         }
-        
+        //debugLog("loadedRange \(loadedRange)")
+        //debugLog("requestedRange \(requestedRange)")
         super.init()
         
         connection = NSURLConnection(request: request as URLRequest, delegate: self, startImmediately: false)
         
         guard let connection = connection else {
-            NSLog("Aerial error: Couldn't instantiate connection.")
+            errorLog("Couldn't instantiate connection.")
             return
         }
         
         connection.setDelegateQueue(OperationQueue.main)
         loadedRange = NSRange(location: requestedRange.location, length: 0)
-        
+
         connection.start()
-//        debugLog("Starting request: \(request)")
+        //debugLog("Starting request: \(request)")
     }
     
     deinit {
@@ -93,42 +95,52 @@ class VideoLoader: NSObject, NSURLConnectionDataDelegate {
     func connection(_ connection: NSURLConnection, didReceive data: Data) {
         
         queue.async { () -> Void in
-            
             self.fillInContentInformation(self.loadingRequest)
             
             guard let dataRequest = self.loadingRequest.dataRequest else {
-                NSLog("Aerial Error: Data request missing for \(self.loadingRequest)")
+                errorLog("Data request missing for \(self.loadingRequest)")
                 return
             }
+            //debugLog("drl \(dataRequest.requestedLength) dro \(dataRequest.requestedOffset)")
+            //debugLog("\(dataRequest)")
+            
+            /*if (data.count > 100000) {
+                debugLog("NOTGOOD")
+                dataLog(data)
+            }*/
             let requestedRange = self.requestedRange
             let loadedRange = self.loadedRange
             let loadedLocation = loadedRange.location + loadedRange.length
             
             let dataRange = NSRange(location: loadedRange.location + loadedRange.length,
                                     length: data.count)
+            //debugLog("\(dataRange)")
+            
             self.delegate?.videoLoader(self, receivedData: data, forRange: dataRange)
             
             // check if we've already been sending content, or we're at right byte offset
             if loadedLocation >= requestedRange.location {
-                
+                //debugLog("case1")
                 let requestedEndOffset = Int(dataRequest.requestedOffset + Int64(dataRequest.requestedLength))
-                
+
                 let pendingDataEndOffset = loadedLocation + data.count
+                //debugLog("r \(requestedEndOffset) p \(pendingDataEndOffset)")
                 
                 if pendingDataEndOffset > requestedEndOffset {
                     let truncateDataLength = pendingDataEndOffset - requestedEndOffset
                     let truncatedData = data.subdata(in: 0..<data.count - truncateDataLength)
-                    
                     dataRequest.respond(with: truncatedData)
                     self.loadingRequest.finishLoading()
                     self.connection?.cancel()
                 } else {
+                    //debugLog("rr")
                     dataRequest.respond(with: data)
                 }
-//                debugLog("Responding with data")
+                //debugLog("Responding with data")
             }
                 // check if we're at a point now where we can send content
             else if loadedLocation + data.count >= requestedRange.location {
+                //debugLog("case2")
                 // calculate how far along we need to be into the data before it's part of what
                 // was requested
                 let inset = requestedRange.location - loadedRange.location
@@ -145,12 +157,12 @@ class VideoLoader: NSObject, NSURLConnectionDataDelegate {
                         self.connection?.cancel()
                     }
                 } else if inset < 1 {
-                    NSLog("Aerial Error: Inset is invalid value: \(inset)")
+                    errorLog("Inset is invalid value: \(inset)")
                 }
                 
             }
             
-//            debugLog("Received data with length: \(data.count)")
+            //debugLog("Received data with length: \(data.count)")
             
             self.loadedRange.length += data.count
             
@@ -186,7 +198,7 @@ class VideoLoader: NSObject, NSURLConnectionDataDelegate {
             return
         }
         
-        //        debugLog("Processsing contentInformationRequest")
+        debugLog("Processsing contentInformationRequest")
         
         let contentType: String = uti.takeRetainedValue() as String
         
@@ -194,7 +206,7 @@ class VideoLoader: NSObject, NSURLConnectionDataDelegate {
         contentInformationRequest.contentType = contentType
         contentInformationRequest.contentLength = response.expectedContentLength
         
-        //debugLog("expected content length: \(response.expectedContentLength)")
+        debugLog("expected content length: \(response.expectedContentLength) type:\(contentType)")
     }
     
     // MARK: - Range
@@ -208,21 +220,21 @@ class VideoLoader: NSObject, NSURLConnectionDataDelegate {
             regex = try NSRegularExpression(pattern: "bytes (\\d+)-\\d+/\\d+",
                                             options: NSRegularExpression.Options.caseInsensitive)
         } catch let error as NSError {
-            NSLog("Aerial: Error formatting regex: \(error)")
+            errorLog("Error formatting regex: \(error)")
             return nil
         }
         
         let httpResponse = response as! HTTPURLResponse
         
         guard let contentRange = httpResponse.allHeaderFields["Content-Range"] as? NSString else {
-            debugLog("Weird, no byte response: \(response)")
+            errorLog("Weird, no byte response: \(response)")
             return nil
         }
         
         guard let match = regex.firstMatch(in: contentRange as String,
                                            options: NSRegularExpression.MatchingOptions.anchored,
                                            range: NSRange(location:0, length: contentRange.length)) else {
-            debugLog("Weird, couldn't make a regex match for byte offset: \(contentRange)")
+            errorLog("Weird, couldn't make a regex match for byte offset: \(contentRange)")
             return nil
         }
         let offsetMatchRange = match.range(at: 1)
@@ -230,7 +242,7 @@ class VideoLoader: NSObject, NSURLConnectionDataDelegate {
         
         let offset = offsetString.longLongValue
         
-//        debugLog("content range: \(contentRange), start offset: \(offset)")
+        //debugLog("content range: \(contentRange), start offset: \(offset)")
         
         return Int(offset)
     }
