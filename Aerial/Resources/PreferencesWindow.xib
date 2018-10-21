@@ -12,7 +12,6 @@
                 <outlet property="cacheAerialsAsTheyPlayCheckbox" destination="7HM-tD-v0b" id="29n-iQ-L36"/>
                 <outlet property="cacheLocation" destination="XAJ-Se-rwG" id="Qm8-0v-eOq"/>
                 <outlet property="cacheSizeTextField" destination="L70-Vj-qPk" id="EIq-de-VmH"/>
-                <outlet property="cacheStatusLabel" destination="Z45-8U-mbl" id="WxU-ME-7CP"/>
                 <outlet property="cornerBottomLeft" destination="Qhn-AB-VZ5" id="YIg-vu-QIS"/>
                 <outlet property="cornerBottomRight" destination="4Rr-4h-bRr" id="5oY-Eh-CdE"/>
                 <outlet property="cornerRandom" destination="u5m-Hq-OEe" id="Nrr-p1-591"/>
@@ -20,9 +19,11 @@
                 <outlet property="cornerTopRight" destination="KmD-a8-TgO" id="o5t-Ey-I2X"/>
                 <outlet property="currentFontLabel" destination="8Xa-gF-Xrb" id="ESX-xC-0VZ"/>
                 <outlet property="currentLocaleLabel" destination="AA1-DI-Dei" id="r76-vh-c2m"/>
-                <outlet property="currentProgress" destination="CLV-o6-oiA" id="CvS-m7-rdc"/>
                 <outlet property="debugModeCheckbox" destination="Veo-4u-pxN" id="GaX-67-URX"/>
                 <outlet property="descriptionModePopup" destination="qmX-6m-Whj" id="Ypl-kR-cJd"/>
+                <outlet property="downloadNowButton" destination="118-Gb-ppx" id="Q6V-xn-WpX"/>
+                <outlet property="downloadProgressIndicator" destination="0Nj-rn-Gmk" id="ftV-Yg-pCi"/>
+                <outlet property="downloadStopButton" destination="7SM-Cq-nPU" id="T8h-Uj-bJb"/>
                 <outlet property="extraCornerPopup" destination="3qM-Dd-kr0" id="uoR-zp-El8"/>
                 <outlet property="extraMessageFontLabel" destination="Hyj-eq-me5" id="wSX-G6-ry2"/>
                 <outlet property="extraMessageTextField" destination="dch-FL-HdX" id="dRi-6L-vQY"/>
@@ -49,6 +50,7 @@
                 <outlet property="popoverHEVCIndicator" destination="Kzc-o6-MCY" id="TxU-h9-Jx0"/>
                 <outlet property="popoverHEVCLabel" destination="RGL-6I-5Hp" id="Fgt-8f-0Vb"/>
                 <outlet property="popupVideoFormat" destination="rUc-qc-3p7" id="JNx-id-07t"/>
+                <outlet property="prefTabView" destination="B9U-tn-dsp" id="3c5-Fy-jcB"/>
                 <outlet property="previewDisabledTextfield" destination="kQD-aR-CSY" id="3BE-5n-RJW"/>
                 <outlet property="projectPageLink" destination="hOD-gE-gxl" id="UTt-Vt-cTP"/>
                 <outlet property="secondProjectPageLink" destination="1gS-Uu-hUv" id="UdX-F9-u8p"/>
@@ -62,7 +64,6 @@
                 <outlet property="timeLightDarkModeRadio" destination="R1G-07-UP0" id="zwe-eG-qzF"/>
                 <outlet property="timeManualRadio" destination="eFJ-La-jfN" id="xu5-Re-SIV"/>
                 <outlet property="timeNightShiftRadio" destination="Su5-5y-7hV" id="cAW-nE-N0u"/>
-                <outlet property="totalProgress" destination="HH2-7L-HmQ" id="UgG-Xt-pR3"/>
                 <outlet property="useCommunityCheckbox" destination="1e6-Z5-uo6" id="gE7-Ed-YAE"/>
                 <outlet property="versionLabel" destination="Hwv-TU-zhn" id="EPq-JL-DCZ"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="B44-2j-OKw"/>
@@ -419,7 +420,7 @@ is disabled
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Text" identifier="" id="bPY-uP-DGa">
-                                        <view key="view" ambiguous="YES" id="M1m-ud-C95">
+                                        <view key="view" id="M1m-ud-C95">
                                             <rect key="frame" x="10" y="33" width="614" height="322"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -883,7 +884,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Cache" identifier="2" id="kp1-xv-zNG">
-                                        <view key="view" id="93q-v8-yxM">
+                                        <view key="view" ambiguous="YES" id="93q-v8-yxM">
                                             <rect key="frame" x="10" y="33" width="614" height="322"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -928,18 +929,9 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <action selector="cacheAllNow:" target="-2" id="fZg-bQ-sWF"/>
+                                                        <action selector="downloadNowButton:" target="-2" id="xxi-76-2YU"/>
                                                     </connections>
                                                 </button>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z45-8U-mbl">
-                                                    <rect key="frame" x="162" y="61" width="437" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Idle" id="QNE-T2-Dpe">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
                                                 <pathControl verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XAJ-Se-rwG">
                                                     <rect key="frame" x="14" y="177" width="587" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -948,32 +940,6 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                         <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </pathCell>
                                                 </pathControl>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ELj-7t-LmS">
-                                                    <rect key="frame" x="16" y="30" width="134" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Total progress" id="7yK-FT-4Kh">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
-                                                <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="CLV-o6-oiA">
-                                                    <rect key="frame" x="201" y="7" width="130" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                </progressIndicator>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u6T-MT-X4f">
-                                                    <rect key="frame" x="199" y="30" width="134" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Current video" id="eyb-qY-C1D">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
-                                                <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="HH2-7L-HmQ">
-                                                    <rect key="frame" x="18" y="7" width="130" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                </progressIndicator>
                                                 <button toolTip="Enable if you don't want to stream preview. You won't be able to preview non cached videos" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cN4-52-cnH">
                                                     <rect key="frame" x="8" y="249" width="161" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1145,6 +1111,9 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="cellTitle"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="cancelDownloadsClick:" target="-2" id="4cs-b2-Gx9"/>
+                        </connections>
                     </button>
                     <button hidden="YES" toolTip="Show error messages" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qtq-PW-JOS">
                         <rect key="frame" x="66" y="10" width="122" height="19"/>

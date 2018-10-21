@@ -26,6 +26,7 @@ class LogMessage {
         self.date = Date()
     }
 }
+
 typealias LoggerCallback = (ErrorLevel) -> (Void)
 
 class Logger {
@@ -38,8 +39,10 @@ class Logger {
     }
     
     func callBack(level: ErrorLevel) {
-        for callback in callbacks {
-            callback(level)
+        DispatchQueue.main.async {
+            for callback in self.callbacks {
+                callback(level)
+            }
         }
     }
 }

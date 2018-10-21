@@ -107,6 +107,15 @@ class CheckCellView: NSTableCellView {
         video!.updateDuration()
     }
     
+    func markAsNotDownloaded() {
+        addButton.isHidden = false
+        progressIndicator.isHidden = true
+        queuedImage.isHidden = true
+        status = .notAvailable
+        
+        debugLog("Video download finished with error/cancel")
+    }
+    
     func markAsQueued() {
         debugLog("Queued \(video!)")
         status = .queued

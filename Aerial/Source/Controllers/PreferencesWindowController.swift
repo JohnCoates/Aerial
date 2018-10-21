@@ -45,8 +45,9 @@ class City {
 
 @objc(PreferencesWindowController)
 class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource,
-NSOutlineViewDelegate, VideoDownloadDelegate {
+NSOutlineViewDelegate {
 
+    @IBOutlet weak var prefTabView: NSTabView!
     @IBOutlet var outlineView: NSOutlineView!
     @IBOutlet var outlineViewSettings: NSButton!
     @IBOutlet var playerView: AVPlayerView!
@@ -59,6 +60,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var cacheAerialsAsTheyPlayCheckbox: NSButton!
     @IBOutlet var neverStreamVideosCheckbox: NSButton!
     @IBOutlet var neverStreamPreviewsCheckbox: NSButton!
+    @IBOutlet weak var downloadNowButton: NSButton!
     
     @IBOutlet var multiMonitorModePopup: NSPopUpButton!
     @IBOutlet var popupVideoFormat: NSPopUpButton!
@@ -66,7 +68,10 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBOutlet var fadeInOutModePopup: NSPopUpButton!
     @IBOutlet weak var fadeInOutTextModePopup: NSPopUpButton!
     
+    @IBOutlet weak var downloadProgressIndicator: NSProgressIndicator!
+    @IBOutlet weak var downloadStopButton: NSButton!
     @IBOutlet var versionLabel: NSTextField!
+    
     @IBOutlet var popover: NSPopover!
     @IBOutlet var popoverH264Indicator: NSButton!
     @IBOutlet var popoverHEVCIndicator: NSButton!
@@ -148,7 +153,11 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         logger.addCallback {level in
             self.updateLogs(level:level)
         }
-
+        let videoManager = VideoManager.sharedInstance
+        videoManager.addCallback { done,total in
+            self.updateDownloads(done: done,total: total)
+        }
+    
         self.fontManager.target = self
 
         // This used to grab the preview player and put it in our own video preview thing.
@@ -351,7 +360,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             cacheLocation.url = nil
         }
         
-        cacheStatusLabel.isEditable = false
+        //cacheStatusLabel.isEditable = false
     }
     
     override func windowDidLoad() {
@@ -427,6 +436,26 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         preferences.synchronize()
     }
 
+    func updateDownloads(done: Int, total: Int) {
+        print("VMQueue: done : \(done) \(total)")
+        if (total == 0) {
+            downloadProgressIndicator.isHidden = true
+            downloadStopButton.isHidden = true
+            downloadNowButton.isEnabled = true
+        } else {
+            downloadNowButton.isEnabled = false
+            downloadProgressIndicator.isHidden = false
+            downloadStopButton.isHidden = false
+            downloadProgressIndicator.doubleValue = Double(done)
+            downloadProgressIndicator.maxValue = Double(total)
+        }
+    }
+    @IBAction func cancelDownloadsClick(_ sender: Any) {
+        debugLog("UI cancelDownloadsClick")
+        let videoManager = VideoManager.sharedInstance
+        videoManager.cancelAll()
+    }
+    
     // MARK: - Text panel
     
     @IBAction func showDescriptionsClick(button: NSButton?) {
@@ -633,6 +662,12 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         if let cacheDirectory = VideoCache.cacheDirectory {
             cacheLocation.url = URL(fileURLWithPath: cacheDirectory as String)
         }
+    }
+
+    @IBAction func downloadNowButton(_ sender: Any) {
+        downloadNowButton.isEnabled = false
+        prefTabView.selectTabViewItem(at: 0)
+        downloadAllVideos()
     }
 
     // MARK: - Time panel
@@ -846,6 +881,10 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     }
     
     @objc func outlineViewDownloadAll(button: NSButton) {
+        downloadAllVideos()
+    }
+    
+    func downloadAllVideos() {
         guard let videos = videos else {
             return
         }
@@ -1176,10 +1215,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     }
     
     // MARK: - Caching
-    
-    @IBOutlet var totalProgress: NSProgressIndicator!
-    @IBOutlet var currentProgress: NSProgressIndicator!
-    @IBOutlet var cacheStatusLabel: NSTextField!
+    /*
     var currentVideoDownload: VideoDownload?
     var manifestVideos: [AerialVideo]?
     
@@ -1191,7 +1227,6 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
             DispatchQueue.main.async(execute: { () -> Void in
                 self.manifestVideos = manifestVideos
                 self.cacheNextVideo()
-                
             })
         }
     }
@@ -1245,7 +1280,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     
     func videoDownload(_ videoDownload: VideoDownload, receivedBytes: Int, progress: Float) {
         currentProgress.doubleValue = Double(progress)
-    }
+    }*/
 }
 
 // MARK: - Font Panel Delegates

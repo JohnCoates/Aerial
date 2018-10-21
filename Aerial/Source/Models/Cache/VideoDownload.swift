@@ -57,6 +57,14 @@ class VideoDownload: NSObject, NSURLConnectionDataDelegate {
         startDownloadForChunk(nil)
     }
     
+    func cancel() {
+        for stream in streams {
+            stream.connection.cancel()
+        }
+        infoLog("Video download cancelled")
+        delegate.videoDownload(self, finished: false, errorMessage: nil)
+    }
+    
     func startDownloadForChunk(_ chunk: NSRange?) {
         let request = NSMutableURLRequest(url: video.url as URL)
         request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
