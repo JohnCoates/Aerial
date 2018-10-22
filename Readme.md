@@ -31,7 +31,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 ### Manual Installation
 *Rather install from Terminal or have auto-updates? Look at the Brew Cask section below!*
 
-1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.1/Aerial.saver.zip) (Version 1.4.1, October 16, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.1)) (1.4.2 beta 3, October 21, 2018, is also available [here](https://github.com/JohnCoates/Aerial/releases/download/v1.4.2beta3/Aerial.saver.zip), [click here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.2beta3) for more information on what's changed)
+1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.1/Aerial.saver.zip) (Version 1.4.1, October 16, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.1)) (1.4.2 beta 4, October 22, 2018, is also available [here](https://github.com/JohnCoates/Aerial/releases/download/v1.4.2beta3/Aerial.saver.zip), [click here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.2beta4) for more information on what's changed)
 2. Unzip the downloaded file.
 3. Open **Aerial.saver** and confirm installation.
 
