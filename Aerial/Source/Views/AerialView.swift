@@ -73,6 +73,9 @@ class AerialView: ScreenSaverView {
     }
     
     static var sharedViews: [AerialView] = []
+    static var instanciatedViews: [AerialView] = []     // because of lifecycle in Preview, we may pile up old/no longer shared instanciated views that we need to track to not reuse
+    //var instanciatedIndex: Int
+    
     // MARK: - Shared Player
     
     static var singlePlayerAlreadySetup: Bool = false
@@ -138,13 +141,17 @@ class AerialView: ScreenSaverView {
     
     func setup() {
         debugLog("\(self.description) AerialView setup init")
+        
         if (AerialView.singlePlayerAlreadySetup) {
-            debugLog("\(AerialView.sharedViews[AerialView.sharedPlayerIndex!].wasStopped)")
+            debugLog("singlePlayerAlreadySetup, checking if was stopped to purge")
             // On previews, it's possible that our shared player was stopped and is not reusable
-            if AerialView.sharedViews[AerialView.sharedPlayerIndex!].wasStopped {
+            if AerialView.instanciatedViews[AerialView.sharedPlayerIndex!].wasStopped {
                 debugLog("Purging previous singlePlayer")
                 AerialView.singlePlayerAlreadySetup = false
                 AerialView.sharedPlayerIndex = nil
+                
+                AerialView.instanciatedViews = [AerialView]()   // Clear the list of instanciated stuff
+                AerialView.sharedViews = [AerialView]()         // And the list of sharedViews
             }
         }
         
@@ -176,6 +183,9 @@ class AerialView: ScreenSaverView {
         if AerialView.sharingPlayers {
             AerialView.sharedViews.append(self)
         }
+        
+        // We track all views here to clean the sharing code
+        AerialView.instanciatedViews.append(self)
         
         if localPlayer == nil {
             debugLog("\(self.description) no local player")
@@ -209,7 +219,7 @@ class AerialView: ScreenSaverView {
         setupPlayerLayer(withPlayer: player)
         
         if AerialView.sharingPlayers && AerialView.singlePlayerAlreadySetup {
-            self.playerLayer.player = AerialView.sharedViews[AerialView.sharedPlayerIndex!].player
+            self.playerLayer.player = AerialView.instanciatedViews[AerialView.sharedPlayerIndex!].player
             self.playerLayer.opacity = 0
             return
         }
@@ -217,7 +227,7 @@ class AerialView: ScreenSaverView {
         // We're NOT sharing the preview !!!!!
         if !isPreview {
             AerialView.singlePlayerAlreadySetup = true
-            AerialView.sharedPlayerIndex = AerialView.sharedViews.count-1
+            AerialView.sharedPlayerIndex = AerialView.instanciatedViews.count-1
         }
         
         ManifestLoader.instance.addCallback { videos in
