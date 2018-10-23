@@ -34,6 +34,8 @@ class AerialView: ScreenSaverView {
     var isDisabled = false
     var timeObserver : Any?
 
+    var brightnessToRestore: Float?
+    
     static var shouldFade: Bool {
         let preferences = Preferences.sharedInstance
         return (preferences.fadeMode != Preferences.FadeMode.disabled.rawValue)
@@ -118,6 +120,8 @@ class AerialView: ScreenSaverView {
         debugLog("\(self.description) deinit AerialView")
         NotificationCenter.default.removeObserver(self)
         
+        
+        
         // set player item to nil if not preview player
         if player != AerialView.previewPlayer {
             player?.rate = 0
@@ -141,7 +145,14 @@ class AerialView: ScreenSaverView {
     
     func setup() {
         debugLog("\(self.description) AerialView setup init")
-        
+ 
+        if !isPreview && brightnessToRestore == nil {
+            let timeManagement = TimeManagement.sharedInstance
+            brightnessToRestore = timeManagement.getBrightness()
+            debugLog("Brightness before Aerial was launched : \(String(describing: brightnessToRestore))")
+            timeManagement.setBrightness(level: 0.0)
+        }
+
         if (AerialView.singlePlayerAlreadySetup) {
             debugLog("singlePlayerAlreadySetup, checking if was stopped to purge")
             // On previews, it's possible that our shared player was stopped and is not reusable

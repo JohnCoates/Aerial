@@ -8,6 +8,7 @@
 
 import Foundation
 import Cocoa
+import CoreLocation
 
 class TimeManagement {
     static let sharedInstance = TimeManagement()
@@ -17,13 +18,15 @@ class TimeManagement {
     var nightShiftAvailable = false
     var nightShiftSunrise = Date()
     var nightShiftSunset = Date()
-    
+    var solar:Solar?
 
-    // MARK: init
+    // MARK: - Lifecycle
     init() {
         debugLog("Time Management initialized")
+        _ = calculateFromCoordinates()
     }
 
+    // MARK: - What should we play ?
     func shouldRestrictPlaybackToDayNightVideo() -> (Bool,String)
     {
         let preferences = Preferences.sharedInstance
@@ -32,6 +35,20 @@ class TimeManagement {
                 return (true, "night")
             } else {
                 return (true, "day")
+            }
+        }
+        else if preferences.timeMode == Preferences.TimeMode.coordinates.rawValue {
+            _ = calculateFromCoordinates()
+            
+            if (solar != nil) {
+                if (solar?.isDaytime)! {
+                    return (true, "day")
+                } else {
+                    return (true, "night")
+                }
+            } else {
+                errorLog("You need to input latitude and longitude for calculations to work")
+                return (false,"")
             }
         }
         else if preferences.timeMode == Preferences.TimeMode.nightShift.rawValue {
@@ -110,6 +127,26 @@ class TimeManagement {
         } else {
             return nil
         }
+    }
+    // MARK: Calculate using Solar
+    func calculateFromCoordinates() -> (Bool, String) {
+        let preferences = Preferences.sharedInstance
+
+        if (preferences.latitude != "" && preferences.longitude != "")
+        {
+            solar = Solar.init(coordinate: CLLocationCoordinate2D(latitude: Double(preferences.latitude!) ?? 0, longitude: Double(preferences.longitude!) ?? 0))
+            if solar != nil {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
+                let sunriseString = dateFormatter.string(from: (solar?.sunrise)!)
+                let sunsetString = dateFormatter.string(from: (solar?.sunset)!)
+                
+                return(true, "Today's Sunrise: " + sunriseString + "  Today's Sunset: " + sunsetString)
+            }
+        }
+
+        return (false, "Can't process your coordinates, please verify")
+
     }
     
     // MARK: Dark Mode
@@ -221,6 +258,7 @@ class TimeManagement {
         return (false,nil,nil,"Location services may be disabled")
     }
     
+   
     private func shell(launchPath: String, arguments: [String] = []) -> (String? , Int32) {
         let task = Process()
         task.launchPath = launchPath
@@ -237,5 +275,26 @@ class TimeManagement {
         task.waitUntilExit()
         
         return (output, task.terminationStatus)
+    }
+    
+    // MARK: - Brightness stuff (early, may get moved/will change)
+    
+    // pmset -g | grep "^[ ]*sleep" | awk '{ print $2 }'
+    func getBrightness() -> Float {
+        let service = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IODisplayConnect"))
+        let pointer = UnsafeMutablePointer<Float>.allocate(capacity: 1)
+        IODisplayGetFloatParameter(service, 0, kIODisplayBrightnessKey as CFString, pointer)
+        print(pointer.pointee)
+        let c = pointer.pointee
+        
+        IOObjectRelease(service)
+        return c
+    }
+    
+    func setBrightness(level: Float) {
+        let service = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IODisplayConnect"))
+        
+        IODisplaySetFloatParameter(service, 0, kIODisplayBrightnessKey as CFString, level)
+        IOObjectRelease(service)
     }
 }

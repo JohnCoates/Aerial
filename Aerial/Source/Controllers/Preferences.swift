@@ -44,6 +44,8 @@ class Preferences {
         case logToDisk = "logToDisk"
         case versionCheck = "versionCheck"
         case alsoVersionCheckBeta = "alsoVersionCheckBeta"
+        case latitude = "latitude"
+        case longitude = "longitude"
     }
     
     enum VersionCheck : Int {
@@ -66,7 +68,7 @@ class Preferences {
     }
     
     enum TimeMode : Int {
-        case disabled, nightShift, manual, lightDarkMode
+        case disabled, nightShift, manual, lightDarkMode, coordinates
     }
     
     enum VideoFormat : Int {
@@ -127,7 +129,9 @@ class Preferences {
         defaultValues[.logToDisk] = false
         defaultValues[.versionCheck] = VersionCheck.weekly
         defaultValues[.alsoVersionCheckBeta] = false
-        
+        defaultValues[.latitude] = "48.85837"
+        defaultValues[.longitude] = "2.294483"
+
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
             var mutable = result
@@ -203,6 +207,24 @@ class Preferences {
         }
     }
 
+    var latitude: String? {
+        get {
+            return optionalValue(forIdentifier: .latitude)
+        }
+        set {
+            setValue(forIdentifier: .latitude, value: newValue)
+        }
+    }
+    
+    var longitude: String? {
+        get {
+            return optionalValue(forIdentifier: .longitude)
+        }
+        set {
+            setValue(forIdentifier: .longitude, value: newValue)
+        }
+    }
+    
     var showMessageString: String? {
         get {
             return optionalValue(forIdentifier: .showMessageString)

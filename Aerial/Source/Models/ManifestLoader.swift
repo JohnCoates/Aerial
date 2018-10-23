@@ -134,7 +134,7 @@ class ManifestLoader {
     func randomVideo(excluding: [AerialVideo]) -> AerialVideo? {
         let timeManagement = TimeManagement.sharedInstance
         let (shouldRestrictByDayNight,restrictTo) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
-
+        debugLog("shouldRestrictByDayNight : \(shouldRestrictByDayNight) (\(restrictTo))")
         if (playlist.count == 0 || (restrictTo != playlistRestrictedTo) || (shouldRestrictByDayNight != playlistIsRestricted)) {
             generatePlaylist(isRestricted: shouldRestrictByDayNight, restrictedTo: restrictTo)
         }

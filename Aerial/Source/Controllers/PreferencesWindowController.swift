@@ -46,6 +46,9 @@ class City {
 @objc(PreferencesWindowController)
 class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource,
 NSOutlineViewDelegate {
+    enum HEVCMain10Support : Int {
+        case notsupported, unsure, partial, supported
+    }
 
     @IBOutlet weak var prefTabView: NSTabView!
     @IBOutlet var outlineView: NSOutlineView!
@@ -82,8 +85,15 @@ NSOutlineViewDelegate {
     @IBOutlet var timeNightShiftRadio: NSButton!
     @IBOutlet var timeManualRadio: NSButton!
     @IBOutlet var timeLightDarkModeRadio: NSButton!
+    @IBOutlet var timeCalculateRadio: NSButton!
+    
     @IBOutlet var nightShiftLabel: NSTextField!
     @IBOutlet var lightDarkModeLabel: NSTextField!
+
+    @IBOutlet var latitudeTextField: NSTextField!
+    @IBOutlet var longitudeTextField: NSTextField!
+    
+    @IBOutlet var calculateCoordinatesLabel: NSTextField!
     
     @IBOutlet var sunriseTime: NSDatePicker!
     @IBOutlet var sunsetTime: NSDatePicker!
@@ -195,8 +205,22 @@ NSOutlineViewDelegate {
             }
             if !VTIsHardwareDecodeSupported(kCMVideoCodecType_HEVC)
             {
-                popoverHEVCLabel.stringValue = "HEVC acceleration not supported"
+                popoverHEVCLabel.stringValue = "HEVC Main10 acceleration not supported"
                 popoverHEVCIndicator.image = NSImage(named: NSImage.statusUnavailableName)
+            } else {
+                if (isHEVCMain10HWDecodingAvailable() == .supported) {
+                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration is supported"
+                    popoverHEVCIndicator.image = NSImage(named: NSImage.statusAvailableName)
+                } else if (isHEVCMain10HWDecodingAvailable() == .notsupported) {
+                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration is not supported"
+                    popoverHEVCIndicator.image = NSImage(named: NSImage.statusUnavailableName)
+                } else if (isHEVCMain10HWDecodingAvailable() == .partial) {
+                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration is partially supported"
+                    popoverHEVCIndicator.image = NSImage(named: NSImage.statusPartiallyAvailableName)
+                } else {
+                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration status unknown"
+                    popoverHEVCIndicator.image = NSImage(named: NSImage.cautionName)
+                }
             }
         } else {
             // Fallback on earlier versions
@@ -303,6 +327,9 @@ NSOutlineViewDelegate {
             timeNightShiftRadio.isEnabled = false
         }
         nightShiftLabel.stringValue = NSReason
+        
+        let (_, reason) = timeManagement.calculateFromCoordinates()
+        calculateCoordinatesLabel.stringValue = reason
 
         
         let dateFormatter = DateFormatter()
@@ -314,6 +341,9 @@ NSOutlineViewDelegate {
             sunsetTime.dateValue = dateSunset
         }
         
+        latitudeTextField.stringValue = preferences.latitude!
+        longitudeTextField.stringValue = preferences.longitude!
+
         // Handle the time radios
         switch preferences.timeMode {
         case Preferences.TimeMode.nightShift.rawValue:
@@ -322,6 +352,8 @@ NSOutlineViewDelegate {
             timeManualRadio.state = NSControl.StateValue.on
         case Preferences.TimeMode.lightDarkMode.rawValue:
             timeLightDarkModeRadio.state = NSControl.StateValue.on
+        case Preferences.TimeMode.coordinates.rawValue:
+            timeCalculateRadio.state = .on
         default:
             timeDisabledRadio.state = NSControl.StateValue.on
         }
@@ -360,6 +392,7 @@ NSOutlineViewDelegate {
             cacheLocation.url = nil
         }
         
+
         //cacheStatusLabel.isEditable = false
     }
     
@@ -455,6 +488,68 @@ NSOutlineViewDelegate {
         let videoManager = VideoManager.sharedInstance
         videoManager.cancelAll()
     }
+    
+    // MARK: - Mac Model detection and HEVC Main10 detection
+    private func getMacModel() -> String {
+        var size = 0
+        sysctlbyname("hw.model", nil, &size, nil, 0)
+        var machine = [CChar](repeating: 0,  count: size)
+        sysctlbyname("hw.model", &machine, &size, nil, 0)
+        return String(cString: machine)
+    }
+
+    private func extractMacVersion(macModel: String, macSubmodel: String) -> NSNumber {
+        // Substring the thing
+        let s = macModel.dropFirst(macSubmodel.count)
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "fr_FR")
+        if let n = formatter.number(from: String(s)) {
+            return n
+        } else {
+            return 0
+        }
+    }
+    
+    private func getHEVCMain10Support(macModel: String, macSubmodel: String, partial: Double, full: Double) -> HEVCMain10Support {
+        let v = extractMacVersion(macModel: macModel, macSubmodel: macSubmodel)
+        
+        if v.doubleValue > full {
+            return .supported
+        } else if v.doubleValue > partial {
+            return .partial
+        } else {
+            return .notsupported
+        }
+    }
+    
+    private func isHEVCMain10HWDecodingAvailable() -> HEVCMain10Support {
+        let macModel = getMacModel()
+        
+        // iMacPro - always
+        if macModel.starts(with: "iMacPro") {
+            return .supported
+        } else if macModel.starts(with: "iMac") {
+            // iMacs, as far as we know, partial 17+, full 18+
+            return getHEVCMain10Support(macModel: macModel, macSubmodel: "iMac", partial: 17.0, full: 18.0)
+        } else if macModel.starts(with: "MacBookPro") {
+            // MacBookPro full 14+
+            return getHEVCMain10Support(macModel: macModel, macSubmodel: "MacBookPro", partial: 13.0, full: 14.0)
+        } else if macModel.starts(with: "MacBookAir") {
+            // MBA still on haswell/broadwell...
+            return .notsupported
+        } else if macModel.starts(with: "MacBook") {
+            // MacBook 10+
+            return getHEVCMain10Support(macModel: macModel, macSubmodel: "MacBook", partial: 9.0, full: 10.0)
+        } else if macModel.starts(with: "Macmini") || macModel.starts(with: "MacPro") {
+            // Right now no support on these
+            return .notsupported
+        }
+        // Older stuff (power/etc) should not even run this so list should be complete
+        // Hackintosh/new SKUs may fail this test
+        return .unsure
+    }
+    
+    
     
     // MARK: - Text panel
     
@@ -681,6 +776,8 @@ NSOutlineViewDelegate {
             preferences.timeMode = Preferences.TimeMode.manual.rawValue
         } else if sender == timeLightDarkModeRadio {
             preferences.timeMode = Preferences.TimeMode.lightDarkMode.rawValue
+        } else if sender == timeCalculateRadio {
+            preferences.timeMode = Preferences.TimeMode.coordinates.rawValue
         }
     }
     
@@ -698,6 +795,23 @@ NSOutlineViewDelegate {
         preferences.manualSunset = sunsetString
     }
 
+    @IBAction func latitudeChange(_ sender: NSTextField) {
+        preferences.latitude = sender.stringValue
+        updateLatitudeLongitude()
+        
+    }
+
+    @IBAction func longitudeChange(_ sender: NSTextField) {
+        preferences.longitude = sender.stringValue
+        updateLatitudeLongitude()
+    }
+    
+    func updateLatitudeLongitude() {
+        let timeManagement = TimeManagement.sharedInstance
+        let (_, reason) = timeManagement.calculateFromCoordinates()
+        calculateCoordinatesLabel.stringValue = reason
+    }
+    
     // MARK: - Aerial panel
 
     @IBAction func logButtonClick(_ sender: NSButton) {
