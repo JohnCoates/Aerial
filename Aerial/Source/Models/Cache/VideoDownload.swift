@@ -47,6 +47,10 @@ class VideoDownload: NSObject, NSURLConnectionDataDelegate {
         self.delegate = delegate
     }
     
+    deinit {
+        print("deinit VideoDownload")
+    }
+    
     func startDownload() {
         // first start content information download
         startDownloadForContentInformation()
@@ -165,7 +169,7 @@ class VideoDownload: NSObject, NSURLConnectionDataDelegate {
             return
         }
         
-        guard let videoData = self.data else {
+        if self.data == nil {
             errorLog("video data missing!\n")
             return
         }
@@ -173,7 +177,9 @@ class VideoDownload: NSObject, NSURLConnectionDataDelegate {
         var success: Bool = true
         var errorMessage: String?
         do {
-            try videoData.write(toFile: videoCachePath, options: .atomicWrite)
+            try self.data!.write(toFile: videoCachePath, options: .atomicWrite)
+            
+            self.data = nil
         } catch let error {
             errorLog("Couldn't write cache file: \(error)")
             errorMessage = "Couldn't write to cache file!"
@@ -182,7 +188,6 @@ class VideoDownload: NSObject, NSURLConnectionDataDelegate {
         
         // notify delegate
         delegate.videoDownload(self, finished: success, errorMessage: errorMessage)
-        
     }
     
     func failedDownload(_ errorMessage: String) {
