@@ -163,6 +163,7 @@ class VideoDownloadOperation : AsynchronousOperation {
         } else {
             videoManager.finishedDownload(id: self.video.id, success: false)
         }
+        self.download = nil
         super.cancel()
         //finish()
     }

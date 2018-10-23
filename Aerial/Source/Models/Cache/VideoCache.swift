@@ -160,13 +160,20 @@ class VideoCache {
         }
         
         loading = false
-        guard let mutableVideoData = mutableVideoData else {
+        if (mutableVideoData == nil) {
             errorLog("Missing video data for save.")
             return
         }
+        /* guard var mutableVideoData = mutableVideoData else {
+            errorLog("Missing video data for save.")
+            return
+        }*/
         
         do {
-            try mutableVideoData.write(toFile: videoCachePath, options: .atomicWrite)
+            try mutableVideoData!.write(toFile: videoCachePath, options: .atomicWrite)
+            
+            mutableVideoData = nil
+            videoData.removeAll()
         } catch let error {
             errorLog("Couldn't write cache file: \(error)")
         }
