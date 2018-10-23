@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		030D9B7C21551A8D00961E95 /* AerialPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */; };
+		0313A887217F11E0004D9F18 /* thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0313A885217F11E0004D9F18 /* thumbnail@2x.png */; };
+		0313A888217F11E0004D9F18 /* thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0313A885217F11E0004D9F18 /* thumbnail@2x.png */; };
 		03233B68217272640077D3F9 /* PoiStringProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03233B67217272640077D3F9 /* PoiStringProvider.swift */; };
 		03233B692172762C0077D3F9 /* PoiStringProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03233B67217272640077D3F9 /* PoiStringProvider.swift */; };
 		033192E1217B78240073B580 /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = 033192E0217B78240073B580 /* en.json */; };
@@ -23,6 +25,8 @@
 		0393857A2175D4B80040B850 /* AVPlayerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039385792175D4B80040B850 /* AVPlayerViewExtension.swift */; };
 		0393857B2175D4B80040B850 /* AVPlayerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039385792175D4B80040B850 /* AVPlayerViewExtension.swift */; };
 		0393857C2175D4B80040B850 /* AVPlayerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039385792175D4B80040B850 /* AVPlayerViewExtension.swift */; };
+		03958345217F123D008E8F9C /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 03958344217F123D008E8F9C /* thumbnail.png */; };
+		03958346217F123D008E8F9C /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 03958344217F123D008E8F9C /* thumbnail.png */; };
 		03A2CB9C216BA9AF0061E8E8 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A2CB9B216BA9AF0061E8E8 /* VideoManager.swift */; };
 		03A2CB9D216BB1490061E8E8 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A2CB9B216BA9AF0061E8E8 /* VideoManager.swift */; };
 		03E8730C2165013C002B469B /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8730B2165013C002B469B /* DownloadManager.swift */; };
@@ -48,8 +52,6 @@
 		FAC36F501BE1756D007F2A20 /* icon-night.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FAC36F381BE1756D007F2A20 /* icon-night.pdf */; };
 		FAC36F531BE1756D007F2A20 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC36F3A1BE1756D007F2A20 /* PreferencesWindow.xib */; };
 		FAC36F541BE1756D007F2A20 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC36F3A1BE1756D007F2A20 /* PreferencesWindow.xib */; };
-		FAC36F551BE1756D007F2A20 /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC36F3B1BE1756D007F2A20 /* thumbnail.png */; };
-		FAC36F561BE1756D007F2A20 /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC36F3B1BE1756D007F2A20 /* thumbnail.png */; };
 		FAC36F571BE1756D007F2A20 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F3E1BE1756D007F2A20 /* PreferencesWindowController.swift */; };
 		FAC36F581BE1756D007F2A20 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F3E1BE1756D007F2A20 /* PreferencesWindowController.swift */; };
 		FAC36F591BE1756D007F2A20 /* AerialVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F401BE1756D007F2A20 /* AerialVideo.swift */; };
@@ -80,12 +82,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0313A885217F11E0004D9F18 /* thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail@2x.png"; sourceTree = "<group>"; };
 		03233B67217272640077D3F9 /* PoiStringProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoiStringProvider.swift; sourceTree = "<group>"; };
 		033192E0217B78240073B580 /* en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = en.json; sourceTree = "<group>"; };
 		033D62AA216CADCD00F3AF83 /* icon-day-dark.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icon-day-dark.pdf"; sourceTree = "<group>"; };
 		033D62AE216CAE2C00F3AF83 /* icon-night-dark.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icon-night-dark.pdf"; sourceTree = "<group>"; };
 		03893CB2217749F0008E7125 /* ErrorLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLog.swift; sourceTree = "<group>"; };
 		039385792175D4B80040B850 /* AVPlayerViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerViewExtension.swift; sourceTree = "<group>"; };
+		03958344217F123D008E8F9C /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail.png; sourceTree = "<group>"; };
 		03A2CB9B216BA9AF0061E8E8 /* VideoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
 		03E8730B2165013C002B469B /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		03E8730E216501ED002B469B /* AsynchronousOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousOperation.swift; sourceTree = "<group>"; };
@@ -107,7 +111,6 @@
 		FAC36F381BE1756D007F2A20 /* icon-night.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icon-night.pdf"; sourceTree = "<group>"; };
 		FAC36F391BE1756D007F2A20 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAC36F3A1BE1756D007F2A20 /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
-		FAC36F3B1BE1756D007F2A20 /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail.png; sourceTree = "<group>"; };
 		FAC36F3E1BE1756D007F2A20 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesWindowController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		FAC36F401BE1756D007F2A20 /* AerialVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AerialVideo.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		FAC36F431BE1756D007F2A20 /* AerialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AerialView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -209,7 +212,8 @@
 				033D62AE216CAE2C00F3AF83 /* icon-night-dark.pdf */,
 				FAC36F391BE1756D007F2A20 /* Info.plist */,
 				FAC36F3A1BE1756D007F2A20 /* PreferencesWindow.xib */,
-				FAC36F3B1BE1756D007F2A20 /* thumbnail.png */,
+				03958344217F123D008E8F9C /* thumbnail.png */,
+				0313A885217F11E0004D9F18 /* thumbnail@2x.png */,
 			);
 			name = Resources;
 			path = Aerial/Resources;
@@ -424,9 +428,10 @@
 				033192E2217B78240073B580 /* en.json in Resources */,
 				FAC36F541BE1756D007F2A20 /* PreferencesWindow.xib in Resources */,
 				FAC36F4E1BE1756D007F2A20 /* icon-day.pdf in Resources */,
+				0313A888217F11E0004D9F18 /* thumbnail@2x.png in Resources */,
+				03958346217F123D008E8F9C /* thumbnail.png in Resources */,
 				033D62B0216CAE2C00F3AF83 /* icon-night-dark.pdf in Resources */,
 				FAC36F481BE1756D007F2A20 /* Assets.xcassets in Resources */,
-				FAC36F561BE1756D007F2A20 /* thumbnail.png in Resources */,
 				033D62AC216CADCD00F3AF83 /* icon-day-dark.pdf in Resources */,
 				FAC36F4A1BE1756D007F2A20 /* MainMenu.xib in Resources */,
 				FAC36F501BE1756D007F2A20 /* icon-night.pdf in Resources */,
@@ -447,9 +452,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAC36F531BE1756D007F2A20 /* PreferencesWindow.xib in Resources */,
+				0313A887217F11E0004D9F18 /* thumbnail@2x.png in Resources */,
 				FAC36F4D1BE1756D007F2A20 /* icon-day.pdf in Resources */,
 				033D62AB216CADCD00F3AF83 /* icon-day-dark.pdf in Resources */,
-				FAC36F551BE1756D007F2A20 /* thumbnail.png in Resources */,
+				03958345217F123D008E8F9C /* thumbnail.png in Resources */,
 				033D62AF216CAE2C00F3AF83 /* icon-night-dark.pdf in Resources */,
 				FAC36F4F1BE1756D007F2A20 /* icon-night.pdf in Resources */,
 				033192E1217B78240073B580 /* en.json in Resources */,
