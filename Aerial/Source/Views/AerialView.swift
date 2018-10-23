@@ -714,7 +714,12 @@ class AerialView: ScreenSaverView {
                     if #available(OSX 10.12, *) {
                         clockTimer =  Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (Timer) in
                             let dateFormatter = DateFormatter()
-                            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
+                            if (preferences.withSeconds) {
+                                dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
+                            } else {
+                                dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm", options: 0, locale: Locale.current)
+                            }
+
                             let dateString = dateFormatter.string(from: Date())
                             self.clockLayer.string = dateString
                         })
