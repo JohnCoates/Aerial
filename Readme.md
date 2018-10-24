@@ -45,7 +45,7 @@ If you're looking to install Aerial across many systems, remotely, or simply fro
 
 Simply issue the following Terminal command: `brew cask install aerial`
 
-To upgrade Aerial, run `brew cask upgrade` in Terminal. If you want this to happen periodically for you, you can check [this project](https://github.com/NightRaider73/Aerial-Updater) that does exactly this.
+To upgrade Aerial, run `brew cask upgrade` in Terminal. 
 
 ## Setting Aerial as Your Screen Saver
 
