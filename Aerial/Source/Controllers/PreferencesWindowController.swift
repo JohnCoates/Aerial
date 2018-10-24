@@ -118,6 +118,15 @@ NSOutlineViewDelegate {
     @IBOutlet var extraMessageFontLabel: NSTextField!
     @IBOutlet weak var extraCornerPopup: NSPopUpButton!
     
+    @IBOutlet var dimBrightness: NSButton!
+    @IBOutlet var dimStartFrom: NSSlider!
+    @IBOutlet var dimFadeTo: NSSlider!
+    @IBOutlet var dimFadeInMinutes: NSTextField!
+    @IBOutlet var dimOnlyAtNight: NSButton!
+    @IBOutlet var dimOnlyOnBattery: NSButton!
+    
+    
+    
     @IBOutlet var logPanel: NSPanel!
     @IBOutlet weak var showLogBottomClick: NSButton!
     @IBOutlet weak var logTableView: NSTableView!
@@ -265,52 +274,65 @@ NSOutlineViewDelegate {
 
         // Aerial panel
         if preferences.debugMode {
-            debugModeCheckbox.state = NSControl.StateValue.on
+            debugModeCheckbox.state = .on
         }
         
         if preferences.logToDisk {
-            logToDiskCheckbox.state = NSControl.StateValue.on
+            logToDiskCheckbox.state = .on
         }
         
         // Text panel
         if preferences.showClock {
-            showClockCheckbox.state = NSControl.StateValue.on
+            showClockCheckbox.state = .on
             withSecondsCheckbox.isEnabled = true
         }
         
         if preferences.withSeconds {
-            withSecondsCheckbox.state = NSControl.StateValue.on
+            withSecondsCheckbox.state = .on
         }
         
         if preferences.showMessage {
-            showExtraMessage.state = NSControl.StateValue.on
+            showExtraMessage.state = .on
             extraMessageTextField.isEnabled = true
         }
 
         if preferences.showDescriptions {
-            showDescriptionsCheckbox.state = NSControl.StateValue.on
+            showDescriptionsCheckbox.state = .on
         }
 
         if preferences.localizeDescriptions {
-            localizeForTvOS12Checkbox.state = NSControl.StateValue.on
+            localizeForTvOS12Checkbox.state = .on
         }
         
         // Cache panel
         if preferences.neverStreamVideos {
-            neverStreamVideosCheckbox.state = NSControl.StateValue.on
+            neverStreamVideosCheckbox.state = .on
         }
         
         if preferences.neverStreamPreviews {
-            neverStreamPreviewsCheckbox.state = NSControl.StateValue.on
+            neverStreamPreviewsCheckbox.state = .on
         }
         
         if !preferences.useCommunityDescriptions {
-            useCommunityCheckbox.state = NSControl.StateValue.off
+            useCommunityCheckbox.state = .off
         }
         
         if !preferences.cacheAerials {
-            cacheAerialsAsTheyPlayCheckbox.state = NSControl.StateValue.off
+            cacheAerialsAsTheyPlayCheckbox.state = .off
         }
+        
+        // Brightness panel
+        if preferences.dimBrightness {
+            dimBrightness.state = .on
+        }
+        if preferences.dimOnlyOnBattery {
+            dimOnlyOnBattery.state = .on
+        }
+        if preferences.dimOnlyAtNight {
+            dimOnlyAtNight.state = .on
+        }
+        dimStartFrom.doubleValue = preferences.startDim ?? 0.5
+        dimFadeTo.doubleValue = preferences.endDim ?? 0.1
         
         // Time mode
         let timeManagement = TimeManagement.sharedInstance
@@ -812,7 +834,36 @@ NSOutlineViewDelegate {
         calculateCoordinatesLabel.stringValue = reason
     }
     
-    // MARK: - Aerial panel
+    // MARK: - Brightness panel
+    
+    @IBAction func dimBrightnessClick(_ button: NSButton) {
+        let onState = (button.state == .on)
+        preferences.dimBrightness = onState
+        debugLog("UI dimBrightness: \(onState)")
+    }
+    
+    @IBAction func dimOnlyAtNightClick(_ button: NSButton) {
+        let onState = (button.state == .on)
+        preferences.dimOnlyAtNight = onState
+        debugLog("UI dimOnlyAtNight: \(onState)")
+    }
+    
+    @IBAction func dimOnlyOnBattery(_ button: NSButton) {
+        let onState = (button.state == .on)
+        preferences.dimOnlyOnBattery = onState
+        debugLog("UI dimOnlyOnBattery: \(onState)")
+    }
+    
+    @IBAction func dimStartFromChange(_ sender: NSSliderCell) {
+        preferences.startDim = sender.doubleValue
+        debugLog("UI startDim: \(sender.doubleValue)")
+    }
+    
+    
+    
+    @IBAction func dimInMinutes(_ sender: NSTextField) {
+    }
+    // MARK: - Advanced panel
 
     @IBAction func logButtonClick(_ sender: NSButton) {
         logTableView.reloadData()

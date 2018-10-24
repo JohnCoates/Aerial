@@ -145,12 +145,15 @@ class AerialView: ScreenSaverView {
     
     func setup() {
         debugLog("\(self.description) AerialView setup init")
- 
-        if !isPreview && brightnessToRestore == nil {
-            let timeManagement = TimeManagement.sharedInstance
-            brightnessToRestore = timeManagement.getBrightness()
-            debugLog("Brightness before Aerial was launched : \(String(describing: brightnessToRestore))")
-            timeManagement.setBrightness(level: 0.0)
+        let preferences = Preferences.sharedInstance
+
+        if preferences.dimBrightness {
+            if !isPreview && brightnessToRestore == nil {
+                let timeManagement = TimeManagement.sharedInstance
+                brightnessToRestore = timeManagement.getBrightness()
+                debugLog("Brightness before Aerial was launched : \(String(describing: brightnessToRestore))")
+                timeManagement.setBrightness(level: Float(preferences.startDim!))
+            }
         }
 
         if (AerialView.singlePlayerAlreadySetup) {
@@ -172,7 +175,6 @@ class AerialView: ScreenSaverView {
         debugLog("\(self.description) isPreview : \(isPreview)")
         
         if notPreview {
-            let preferences = Preferences.sharedInstance
             debugLog("\(self.description) singlePlayerAlreadySetup \(AerialView.singlePlayerAlreadySetup)")
             if (AerialView.singlePlayerAlreadySetup && preferences.multiMonitorMode == Preferences.MultiMonitorMode.mainOnly.rawValue) {
                 isDisabled = true
@@ -393,9 +395,9 @@ class AerialView: ScreenSaverView {
 
         let notificationCenter = NotificationCenter.default
         // Clear everything
-        if (timeObserver != nil) {
+        /*if (timeObserver != nil) {
             self.player!.removeTimeObserver(timeObserver!)
-        }
+        }*/
         self.textLayer.removeAllAnimations()
         self.clockLayer.removeAllAnimations()
         self.messageLayer.removeAllAnimations()
@@ -521,7 +523,7 @@ class AerialView: ScreenSaverView {
         if (preferences.showDescriptions)
         {
             // Preventively, make sure we have poi as tvOS11/10 videos won't have them
-            if (video.poi.count > 0 && poiStringProvider.loadedDescriptions) || (preferences.useCommunityDescriptions && video.communityPoi.count > 0)
+            if (video.poi.count > 0 && poiStringProvider.loadedDescriptions) || (preferences.useCommunityDescriptions && video.communityPoi.count > 0 && poiStringProvider.getPoiKeys(video: video).count > 0)
             {
                 // Collect all the timestamps from the JSON
                 var times = [NSValue]()

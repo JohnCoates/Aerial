@@ -22,6 +22,12 @@
                 <outlet property="currentLocaleLabel" destination="AA1-DI-Dei" id="r76-vh-c2m"/>
                 <outlet property="debugModeCheckbox" destination="Veo-4u-pxN" id="GaX-67-URX"/>
                 <outlet property="descriptionModePopup" destination="qmX-6m-Whj" id="Ypl-kR-cJd"/>
+                <outlet property="dimBrightness" destination="UKx-5p-svW" id="11y-bf-4b2"/>
+                <outlet property="dimFadeInMinutes" destination="b1I-CU-x0Y" id="yrt-Ik-3ht"/>
+                <outlet property="dimFadeTo" destination="jk2-CN-tQf" id="8No-r2-jmk"/>
+                <outlet property="dimOnlyAtNight" destination="bdT-Zs-z0b" id="HUL-YU-BcI"/>
+                <outlet property="dimOnlyOnBattery" destination="kE5-h7-m5u" id="Lnk-lZ-oHb"/>
+                <outlet property="dimStartFrom" destination="dlC-bg-30R" id="fwI-Cp-B8M"/>
                 <outlet property="downloadNowButton" destination="118-Gb-ppx" id="Q6V-xn-WpX"/>
                 <outlet property="downloadProgressIndicator" destination="0Nj-rn-Gmk" id="ftV-Yg-pCi"/>
                 <outlet property="downloadStopButton" destination="7SM-Cq-nPU" id="T8h-Uj-bJb"/>
@@ -1055,8 +1061,129 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
+                                    <tabViewItem label="Brightness" identifier="" id="qTo-kf-FbK">
+                                        <view key="view" ambiguous="YES" id="dIK-5r-Sr4">
+                                            <rect key="frame" x="10" y="33" width="614" height="322"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZVJ-u3-Qdy">
+                                                    <rect key="frame" x="15" y="292" width="328" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Brightness control (this may crash, you are warned !):" id="o2O-NQ-Vut">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y3W-x9-oeE">
+                                                    <rect key="frame" x="23" y="263" width="565" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Your Mac currently goes to sleeep after :" id="gAb-qb-rEm">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UKx-5p-svW">
+                                                    <rect key="frame" x="21" y="228" width="239" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Lower brightness when Aerial starts" bezelStyle="regularSquare" imagePosition="left" inset="2" id="MdD-Bf-9F4">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="dimBrightnessClick:" target="-2" id="Pp1-bD-PMA"/>
+                                                    </connections>
+                                                </button>
+                                                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dlC-bg-30R">
+                                                    <rect key="frame" x="125" y="184" width="190" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="above" numberOfTickMarks="5" sliderType="linear" id="I4E-qt-KMA">
+                                                        <connections>
+                                                            <action selector="dimStartFromChange:" target="-2" id="4sB-0Q-qT2"/>
+                                                        </connections>
+                                                    </sliderCell>
+                                                </slider>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Lh-UK-Euc">
+                                                    <rect key="frame" x="51" y="191" width="70" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Start from:" id="4xE-DP-dDM">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jk2-CN-tQf">
+                                                    <rect key="frame" x="125" y="144" width="190" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <sliderCell key="cell" enabled="NO" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="above" numberOfTickMarks="5" sliderType="linear" id="iiw-uZ-mJw"/>
+                                                </slider>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XIS-uZ-4bj">
+                                                    <rect key="frame" x="51" y="151" width="53" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Fade to:" id="0FN-lb-iDF">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NPR-wP-ZWs">
+                                                    <rect key="frame" x="331" y="151" width="19" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="in:" id="i5l-ZG-hfe">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b1I-CU-x0Y">
+                                                    <rect key="frame" x="365" y="148" width="46" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="123" drawsBackground="YES" id="XsB-mU-Zwm">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <connections>
+                                                        <action selector="dimInMinutes:" target="-2" id="8Ki-fM-0f3"/>
+                                                    </connections>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2SS-HB-7Mg">
+                                                    <rect key="frame" x="426" y="151" width="53" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="minutes" id="K58-3W-jYr">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bdT-Zs-z0b">
+                                                    <rect key="frame" x="51" y="105" width="100" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Only at night" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="bvC-tm-Maq">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="dimOnlyAtNightClick:" target="-2" id="i08-he-ajq"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kE5-h7-m5u">
+                                                    <rect key="frame" x="51" y="73" width="116" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Only on battery" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="FlL-ZF-N5z">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                        <connections>
+                                                            <action selector="dimOnlyOnBattery:" target="-2" id="OQi-7o-QAU"/>
+                                                        </connections>
+                                                    </buttonCell>
+                                                </button>
+                                            </subviews>
+                                        </view>
+                                    </tabViewItem>
                                     <tabViewItem label="Advanced" identifier="" id="asf-lu-1rA">
-                                        <view key="view" ambiguous="YES" id="303-Jh-DVp">
+                                        <view key="view" id="303-Jh-DVp">
                                             <rect key="frame" x="10" y="33" width="614" height="322"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1139,32 +1266,6 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X89-Yr-jKa">
-                                                    <rect key="frame" x="9" y="133" width="328" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Brightness control (this may crash, you are warned !):" id="d0R-fr-OKM">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CJT-Qp-FIL">
-                                                    <rect key="frame" x="17" y="108" width="565" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Your Mac currently goes to sleeep after :" id="6EF-Z5-p1F">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
-                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IK5-Jj-hTL">
-                                                    <rect key="frame" x="15" y="77" width="239" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Lower brightness when Aerial starts" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="hDP-Fs-qQK">
-                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                </button>
                                             </subviews>
                                         </view>
                                     </tabViewItem>

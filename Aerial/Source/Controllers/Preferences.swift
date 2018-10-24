@@ -46,6 +46,13 @@ class Preferences {
         case alsoVersionCheckBeta = "alsoVersionCheckBeta"
         case latitude = "latitude"
         case longitude = "longitude"
+
+        case dimBrightness = "dimBrightness"
+        case startDim = "startDim"
+        case endDim = "endDim"
+        case dimOnlyAtNight = "dimOnlyAtNight"
+        case dimOnlyOnBattery = "dimOnlyOnBattery"
+        case dimInMinutes = "dimInMinutes"
     }
     
     enum VersionCheck : Int {
@@ -131,6 +138,12 @@ class Preferences {
         defaultValues[.alsoVersionCheckBeta] = false
         defaultValues[.latitude] = "48.85837"
         defaultValues[.longitude] = "2.294483"
+        defaultValues[.dimBrightness] = false
+        defaultValues[.startDim] = 0.5
+        defaultValues[.endDim] = 0.0
+        defaultValues[.dimOnlyAtNight] = false
+        defaultValues[.dimOnlyOnBattery] = false
+        defaultValues[.dimInMinutes] = 30
 
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
@@ -150,6 +163,42 @@ class Preferences {
         }
         set {
             setValue(forIdentifier: .useCommunityDescriptions, value: newValue)
+        }
+    }
+
+    var dimBrightness: Bool {
+        get {
+            return value(forIdentifier: .dimBrightness)
+        }
+        set {
+            setValue(forIdentifier: .dimBrightness, value: newValue)
+        }
+    }
+
+    var dimOnlyAtNight: Bool {
+        get {
+            return value(forIdentifier: .dimOnlyAtNight)
+        }
+        set {
+            setValue(forIdentifier: .dimOnlyAtNight, value: newValue)
+        }
+    }
+
+    var dimOnlyOnBattery: Bool {
+        get {
+            return value(forIdentifier: .dimOnlyOnBattery)
+        }
+        set {
+            setValue(forIdentifier: .dimOnlyOnBattery, value: newValue)
+        }
+    }
+    
+    var dimInMinutes: Int? {
+        get {
+            return optionalValue(forIdentifier: .dimInMinutes)
+        }
+        set {
+            setValue(forIdentifier: .dimInMinutes, value: newValue)
         }
     }
     
@@ -285,6 +334,24 @@ class Preferences {
         }
         set {
             setValue(forIdentifier: .fontName, value: newValue)
+        }
+    }
+
+    var startDim: Double? {
+        get {
+            return optionalValue(forIdentifier: .startDim)
+        }
+        set {
+            setValue(forIdentifier: .startDim, value: newValue)
+        }
+    }
+
+    var endDim: Double? {
+        get {
+            return optionalValue(forIdentifier: .endDim)
+        }
+        set {
+            setValue(forIdentifier: .endDim, value: newValue)
         }
     }
     
