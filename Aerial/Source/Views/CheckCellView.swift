@@ -31,7 +31,7 @@ class CheckCellView: NSTableCellView {
             return
         }
         
-        onCheck(checkButton.state == NSControl.StateValue.onState)
+        onCheck(checkButton.state == NSControl.StateValue.on)
     }
     
     override func draw(_ dirtyRect: NSRect) {

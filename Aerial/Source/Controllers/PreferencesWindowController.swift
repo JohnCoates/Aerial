@@ -91,11 +91,11 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
         }
         
         if preferences.differentAerialsOnEachDisplay {
-            differentAerialCheckbox.state = NSControl.StateValue.onState
+            differentAerialCheckbox.state = NSControl.StateValue.on
         }
         
         if !preferences.cacheAerials {
-            cacheAerialsAsTheyPlayCheckbox.state = NSControl.StateValue.offState
+            cacheAerialsAsTheyPlayCheckbox.state = NSControl.StateValue.off
         }
         
         colorizeProjectPageLink()
@@ -125,7 +125,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     @IBAction func cacheAerialsAsTheyPlayClick(_ button: NSButton!) {
         debugLog("cache aerials as they play: \(button.state)")
         
-        let onState = (button.state == NSControl.StateValue.onState)
+        let onState = (button.state == NSControl.StateValue.on)
         preferences.cacheAerials = onState
     }
     
@@ -199,7 +199,7 @@ NSOutlineViewDelegate, VideoDownloadDelegate {
     
     @IBAction func differentAerialsOnEachDisplayCheckClick(_ button: NSButton?) {
         let state = differentAerialCheckbox.state
-        let onState = (state == NSControl.StateValue.onState)
+        let onState = (state == NSControl.StateValue.on)
         
         preferences.differentAerialsOnEachDisplay = onState
         
