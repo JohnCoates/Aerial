@@ -19,7 +19,6 @@ class TimeOfDay {
     init(title: String) {
         self.title = title
     }
-    
 }
 
 class City {
@@ -99,6 +98,7 @@ NSOutlineViewDelegate {
     @IBOutlet var sunsetTime: NSDatePicker!
     @IBOutlet var iconTime1: NSImageCell!
     @IBOutlet var iconTime2: NSImageCell!
+    @IBOutlet var iconTime3: NSImageCell!
 
     @IBOutlet var cornerTopLeft: NSButton!
     @IBOutlet var cornerTopRight: NSButton!
@@ -125,7 +125,7 @@ NSOutlineViewDelegate {
     @IBOutlet var dimOnlyAtNight: NSButton!
     @IBOutlet var dimOnlyOnBattery: NSButton!
     
-    
+    @IBOutlet var sleepAfterLabel: NSTextField!
     
     @IBOutlet var logPanel: NSPanel!
     @IBOutlet weak var showLogBottomClick: NSButton!
@@ -149,6 +149,8 @@ NSOutlineViewDelegate {
     var fontEditing = 0     // To track the font we are changing
     
     var highestLevel : ErrorLevel?  // To track the largest level of error received
+    
+    var savedBrightness: Float?
     
     // MARK: - Init
     required init?(coder decoder: NSCoder) {
@@ -203,6 +205,7 @@ NSOutlineViewDelegate {
         if #available(OSX 10.12.2, *) {
             iconTime1.image = NSImage(named: NSImage.touchBarHistoryTemplateName)
             iconTime2.image = NSImage(named: NSImage.touchBarComposeTemplateName)
+            iconTime3.image = NSImage(named: NSImage.touchBarOpenInBrowserTemplateName)
         }
         
         // Help popover, GVA detection requires 10.13
@@ -333,6 +336,7 @@ NSOutlineViewDelegate {
         }
         dimStartFrom.doubleValue = preferences.startDim ?? 0.5
         dimFadeTo.doubleValue = preferences.endDim ?? 0.1
+        dimFadeInMinutes.stringValue = String(preferences.dimInMinutes!)
         
         // Time mode
         let timeManagement = TimeManagement.sharedInstance
@@ -414,8 +418,12 @@ NSOutlineViewDelegate {
             cacheLocation.url = nil
         }
         
-
-        //cacheStatusLabel.isEditable = false
+        let sleepTime = timeManagement.getCurrentSleepTime()
+        if (sleepTime != 0) {
+            sleepAfterLabel.stringValue = "Your Mac currently goes to sleep after \(sleepTime) minutes"
+        } else {
+            sleepAfterLabel.stringValue = "Unable to determine your Mac sleep settings"
+        }
     }
     
     override func windowDidLoad() {
@@ -855,13 +863,59 @@ NSOutlineViewDelegate {
     }
     
     @IBAction func dimStartFromChange(_ sender: NSSliderCell) {
-        preferences.startDim = sender.doubleValue
-        debugLog("UI startDim: \(sender.doubleValue)")
+        let timeManagement = TimeManagement.sharedInstance
+        let event = NSApplication.shared.currentEvent
+        if (event != nil) {
+            if (event!.type != .leftMouseUp && event!.type != .leftMouseDown && event!.type != .leftMouseDragged)
+            {
+                warnLog("Unexepected event type \(event!.type)")
+            }
+            if event!.type == .leftMouseUp {
+                if savedBrightness != nil {
+                    timeManagement.setBrightness(level: savedBrightness!)
+                    savedBrightness = nil
+                }
+                preferences.startDim = sender.doubleValue
+                debugLog("UI startDim: \(sender.doubleValue)")
+            } else {
+                if savedBrightness == nil {
+                    savedBrightness = timeManagement.getBrightness()
+                }
+                timeManagement.setBrightness(level: sender.floatValue)
+            }
+        }
     }
     
-    
+    @IBAction func dimFadeToChange(_ sender: NSSliderCell) {
+        let timeManagement = TimeManagement.sharedInstance
+        let event = NSApplication.shared.currentEvent
+        if (event != nil) {
+            if (event!.type != .leftMouseUp && event!.type != .leftMouseDown && event!.type != .leftMouseDragged)
+            {
+                warnLog("Unexepected event type \(event!.type)")
+            }
+            if event!.type == .leftMouseUp {
+                if savedBrightness != nil {
+                    timeManagement.setBrightness(level: savedBrightness!)
+                    savedBrightness = nil
+                }
+                preferences.endDim = sender.doubleValue
+                debugLog("UI endDim: \(sender.doubleValue)")
+            } else {
+                if savedBrightness == nil {
+                    savedBrightness = timeManagement.getBrightness()
+                }
+                timeManagement.setBrightness(level: sender.floatValue)
+            }
+        }
+    }
     
     @IBAction func dimInMinutes(_ sender: NSTextField) {
+        if let i = Int(sender.stringValue) {
+            preferences.dimInMinutes = i
+        }
+        
+        debugLog("UI dimInMinutes \(sender.stringValue)")
     }
     // MARK: - Advanced panel
 
@@ -1447,6 +1501,7 @@ NSOutlineViewDelegate {
         currentProgress.doubleValue = Double(progress)
     }*/
 }
+
 
 // MARK: - Font Panel Delegates
 

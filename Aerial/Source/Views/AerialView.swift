@@ -143,6 +143,28 @@ class AerialView: ScreenSaverView {
         AerialView.players.remove(at: index)
     }
     
+    func setDimTimers() {
+        if #available(OSX 10.12, *) {
+            let preferences = Preferences.sharedInstance
+            if preferences.dimBrightness && preferences.dimInMinutes! > 0 && preferences.startDim != preferences.endDim {
+                debugLog("seting brightness timers from \(String(describing: preferences.startDim)) to \(String(describing: preferences.endDim)) in \(String(describing: preferences.dimInMinutes))")
+                let interval = preferences.dimInMinutes! * 6 // * 60 / 10, we make 10 intermediate steps
+                
+                for i in 1...10 {
+                    _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(interval*i), repeats: false) { (Timer) in
+                        let timeManagement = TimeManagement.sharedInstance
+                        let val = preferences.startDim! - ((preferences.startDim!-preferences.endDim!)/10 * Double(i))
+                        debugLog("Firing event \(i) brightness to \(val)")
+                        timeManagement.setBrightness(level: Float(val))
+                    }
+                }
+            }
+        } else {
+            // Fallback on earlier versions
+            warnLog("Brightness control not available < macOS 10.12")
+        }
+    }
+    
     func setup() {
         debugLog("\(self.description) AerialView setup init")
         let preferences = Preferences.sharedInstance
@@ -153,6 +175,7 @@ class AerialView: ScreenSaverView {
                 brightnessToRestore = timeManagement.getBrightness()
                 debugLog("Brightness before Aerial was launched : \(String(describing: brightnessToRestore))")
                 timeManagement.setBrightness(level: Float(preferences.startDim!))
+                setDimTimers()
             }
         }
 
@@ -343,6 +366,17 @@ class AerialView: ScreenSaverView {
         if !isDisabled {
             player?.pause()
         }
+        
+        let preferences = Preferences.sharedInstance
+        
+        if preferences.dimBrightness {
+            if !isPreview && brightnessToRestore != nil {
+                let timeManagement = TimeManagement.sharedInstance
+                timeManagement.setBrightness(level: brightnessToRestore!)
+                debugLog("Restoring brightness to : \(String(describing: brightnessToRestore))")
+                brightnessToRestore = nil
+            }
+        }
     }
 
     // MARK: - AVPlayerItem Notifications
@@ -395,9 +429,10 @@ class AerialView: ScreenSaverView {
 
         let notificationCenter = NotificationCenter.default
         // Clear everything
-        /*if (timeObserver != nil) {
+        if (timeObserver != nil) {
             self.player!.removeTimeObserver(timeObserver!)
-        }*/
+            timeObserver = nil
+        }
         self.textLayer.removeAllAnimations()
         self.clockLayer.removeAllAnimations()
         self.messageLayer.removeAllAnimations()

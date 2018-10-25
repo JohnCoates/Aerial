@@ -136,8 +136,8 @@ class Preferences {
         defaultValues[.logToDisk] = false
         defaultValues[.versionCheck] = VersionCheck.weekly
         defaultValues[.alsoVersionCheckBeta] = false
-        defaultValues[.latitude] = "48.85837"
-        defaultValues[.longitude] = "2.294483"
+        defaultValues[.latitude] = ""
+        defaultValues[.longitude] = ""
         defaultValues[.dimBrightness] = false
         defaultValues[.startDim] = 0.5
         defaultValues[.endDim] = 0.0

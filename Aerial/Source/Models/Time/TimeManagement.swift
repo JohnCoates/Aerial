@@ -278,22 +278,62 @@ class TimeManagement {
     }
     
     // MARK: - Brightness stuff (early, may get moved/will change)
+    func getCurrentSleepTime() -> Int {
+        // pmset -g | grep "^[ ]*sleep" | awk '{ print $2 }'
+
+        let pipe1 = Pipe()
+        let pmset = Process()
+        pmset.launchPath = "/usr/bin/env"
+        pmset.arguments = ["pmset","-g"]
+        pmset.standardOutput = pipe1
+        
+        let pipe2 = Pipe()
+        let grep = Process()
+        grep.launchPath = "/usr/bin/env"
+        grep.arguments = ["grep","^[ ]*sleep"]
+        grep.standardInput = pipe1
+        grep.standardOutput = pipe2
+        
+        let pipeOut = Pipe()
+        let awk = Process()
+        awk.launchPath = "/usr/bin/env"
+        awk.arguments = ["awk","{ print $2 }"]
+        awk.standardInput = pipe2
+        awk.standardOutput = pipeOut
+        awk.standardOutput = pipeOut
+        
+        pmset.launch()
+        grep.launch()
+        awk.launch()
+        awk.waitUntilExit()
+        
+        let data = pipeOut.fileHandleForReading.readDataToEndOfFile()
+        let output = String(data: data, encoding:.utf8)
+        
+        if output != nil {
+            let lines = output!.split(separator: "\n")
+            if lines.count == 1 {
+                let n = Int(lines[0])
+                if n != nil {
+                    return n!
+                }
+            }
+        }
+        
+        return 0
+    }
     
-    // pmset -g | grep "^[ ]*sleep" | awk '{ print $2 }'
     func getBrightness() -> Float {
         let service = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IODisplayConnect"))
         let pointer = UnsafeMutablePointer<Float>.allocate(capacity: 1)
         IODisplayGetFloatParameter(service, 0, kIODisplayBrightnessKey as CFString, pointer)
-        print(pointer.pointee)
         let c = pointer.pointee
-        
         IOObjectRelease(service)
         return c
     }
     
     func setBrightness(level: Float) {
         let service = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IODisplayConnect"))
-        
         IODisplaySetFloatParameter(service, 0, kIODisplayBrightnessKey as CFString, level)
         IOObjectRelease(service)
     }
