@@ -19,7 +19,6 @@ class TimeOfDay {
     init(title: String) {
         self.title = title
     }
-    
 }
 
 class City {
@@ -46,6 +45,9 @@ class City {
 @objc(PreferencesWindowController)
 class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource,
 NSOutlineViewDelegate {
+    enum HEVCMain10Support : Int {
+        case notsupported, unsure, partial, supported
+    }
 
     @IBOutlet weak var prefTabView: NSTabView!
     @IBOutlet var outlineView: NSOutlineView!
@@ -82,13 +84,21 @@ NSOutlineViewDelegate {
     @IBOutlet var timeNightShiftRadio: NSButton!
     @IBOutlet var timeManualRadio: NSButton!
     @IBOutlet var timeLightDarkModeRadio: NSButton!
+    @IBOutlet var timeCalculateRadio: NSButton!
+    
     @IBOutlet var nightShiftLabel: NSTextField!
     @IBOutlet var lightDarkModeLabel: NSTextField!
+
+    @IBOutlet var latitudeTextField: NSTextField!
+    @IBOutlet var longitudeTextField: NSTextField!
+    
+    @IBOutlet var calculateCoordinatesLabel: NSTextField!
     
     @IBOutlet var sunriseTime: NSDatePicker!
     @IBOutlet var sunsetTime: NSDatePicker!
     @IBOutlet var iconTime1: NSImageCell!
     @IBOutlet var iconTime2: NSImageCell!
+    @IBOutlet var iconTime3: NSImageCell!
 
     @IBOutlet var cornerTopLeft: NSButton!
     @IBOutlet var cornerTopRight: NSButton!
@@ -107,6 +117,15 @@ NSOutlineViewDelegate {
     @IBOutlet var extraMessageTextField: NSTextField!
     @IBOutlet var extraMessageFontLabel: NSTextField!
     @IBOutlet weak var extraCornerPopup: NSPopUpButton!
+    
+    @IBOutlet var dimBrightness: NSButton!
+    @IBOutlet var dimStartFrom: NSSlider!
+    @IBOutlet var dimFadeTo: NSSlider!
+    @IBOutlet var dimFadeInMinutes: NSTextField!
+    @IBOutlet var dimOnlyAtNight: NSButton!
+    @IBOutlet var dimOnlyOnBattery: NSButton!
+    
+    @IBOutlet var sleepAfterLabel: NSTextField!
     
     @IBOutlet var logPanel: NSPanel!
     @IBOutlet weak var showLogBottomClick: NSButton!
@@ -130,6 +149,8 @@ NSOutlineViewDelegate {
     var fontEditing = 0     // To track the font we are changing
     
     var highestLevel : ErrorLevel?  // To track the largest level of error received
+    
+    var savedBrightness: Float?
     
     // MARK: - Init
     required init?(coder decoder: NSCoder) {
@@ -184,6 +205,7 @@ NSOutlineViewDelegate {
         if #available(OSX 10.12.2, *) {
             iconTime1.image = NSImage(named: NSImage.touchBarHistoryTemplateName)
             iconTime2.image = NSImage(named: NSImage.touchBarComposeTemplateName)
+            iconTime3.image = NSImage(named: NSImage.touchBarOpenInBrowserTemplateName)
         }
         
         // Help popover, GVA detection requires 10.13
@@ -195,8 +217,22 @@ NSOutlineViewDelegate {
             }
             if !VTIsHardwareDecodeSupported(kCMVideoCodecType_HEVC)
             {
-                popoverHEVCLabel.stringValue = "HEVC acceleration not supported"
+                popoverHEVCLabel.stringValue = "HEVC Main10 acceleration not supported"
                 popoverHEVCIndicator.image = NSImage(named: NSImage.statusUnavailableName)
+            } else {
+                if (isHEVCMain10HWDecodingAvailable() == .supported) {
+                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration is supported"
+                    popoverHEVCIndicator.image = NSImage(named: NSImage.statusAvailableName)
+                } else if (isHEVCMain10HWDecodingAvailable() == .notsupported) {
+                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration is not supported"
+                    popoverHEVCIndicator.image = NSImage(named: NSImage.statusUnavailableName)
+                } else if (isHEVCMain10HWDecodingAvailable() == .partial) {
+                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration is partially supported"
+                    popoverHEVCIndicator.image = NSImage(named: NSImage.statusPartiallyAvailableName)
+                } else {
+                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration status unknown"
+                    popoverHEVCIndicator.image = NSImage(named: NSImage.cautionName)
+                }
             }
         } else {
             // Fallback on earlier versions
@@ -241,52 +277,66 @@ NSOutlineViewDelegate {
 
         // Aerial panel
         if preferences.debugMode {
-            debugModeCheckbox.state = NSControl.StateValue.on
+            debugModeCheckbox.state = .on
         }
         
         if preferences.logToDisk {
-            logToDiskCheckbox.state = NSControl.StateValue.on
+            logToDiskCheckbox.state = .on
         }
         
         // Text panel
         if preferences.showClock {
-            showClockCheckbox.state = NSControl.StateValue.on
+            showClockCheckbox.state = .on
             withSecondsCheckbox.isEnabled = true
         }
         
         if preferences.withSeconds {
-            withSecondsCheckbox.state = NSControl.StateValue.on
+            withSecondsCheckbox.state = .on
         }
         
         if preferences.showMessage {
-            showExtraMessage.state = NSControl.StateValue.on
+            showExtraMessage.state = .on
             extraMessageTextField.isEnabled = true
         }
 
         if preferences.showDescriptions {
-            showDescriptionsCheckbox.state = NSControl.StateValue.on
+            showDescriptionsCheckbox.state = .on
         }
 
         if preferences.localizeDescriptions {
-            localizeForTvOS12Checkbox.state = NSControl.StateValue.on
+            localizeForTvOS12Checkbox.state = .on
         }
         
         // Cache panel
         if preferences.neverStreamVideos {
-            neverStreamVideosCheckbox.state = NSControl.StateValue.on
+            neverStreamVideosCheckbox.state = .on
         }
         
         if preferences.neverStreamPreviews {
-            neverStreamPreviewsCheckbox.state = NSControl.StateValue.on
+            neverStreamPreviewsCheckbox.state = .on
         }
         
         if !preferences.useCommunityDescriptions {
-            useCommunityCheckbox.state = NSControl.StateValue.off
+            useCommunityCheckbox.state = .off
         }
         
         if !preferences.cacheAerials {
-            cacheAerialsAsTheyPlayCheckbox.state = NSControl.StateValue.off
+            cacheAerialsAsTheyPlayCheckbox.state = .off
         }
+        
+        // Brightness panel
+        if preferences.dimBrightness {
+            dimBrightness.state = .on
+        }
+        if preferences.dimOnlyOnBattery {
+            dimOnlyOnBattery.state = .on
+        }
+        if preferences.dimOnlyAtNight {
+            dimOnlyAtNight.state = .on
+        }
+        dimStartFrom.doubleValue = preferences.startDim ?? 0.5
+        dimFadeTo.doubleValue = preferences.endDim ?? 0.1
+        dimFadeInMinutes.stringValue = String(preferences.dimInMinutes!)
         
         // Time mode
         let timeManagement = TimeManagement.sharedInstance
@@ -303,6 +353,9 @@ NSOutlineViewDelegate {
             timeNightShiftRadio.isEnabled = false
         }
         nightShiftLabel.stringValue = NSReason
+        
+        let (_, reason) = timeManagement.calculateFromCoordinates()
+        calculateCoordinatesLabel.stringValue = reason
 
         
         let dateFormatter = DateFormatter()
@@ -314,6 +367,9 @@ NSOutlineViewDelegate {
             sunsetTime.dateValue = dateSunset
         }
         
+        latitudeTextField.stringValue = preferences.latitude!
+        longitudeTextField.stringValue = preferences.longitude!
+
         // Handle the time radios
         switch preferences.timeMode {
         case Preferences.TimeMode.nightShift.rawValue:
@@ -322,6 +378,8 @@ NSOutlineViewDelegate {
             timeManualRadio.state = NSControl.StateValue.on
         case Preferences.TimeMode.lightDarkMode.rawValue:
             timeLightDarkModeRadio.state = NSControl.StateValue.on
+        case Preferences.TimeMode.coordinates.rawValue:
+            timeCalculateRadio.state = .on
         default:
             timeDisabledRadio.state = NSControl.StateValue.on
         }
@@ -360,7 +418,12 @@ NSOutlineViewDelegate {
             cacheLocation.url = nil
         }
         
-        //cacheStatusLabel.isEditable = false
+        let sleepTime = timeManagement.getCurrentSleepTime()
+        if (sleepTime != 0) {
+            sleepAfterLabel.stringValue = "Your Mac currently goes to sleep after \(sleepTime) minutes"
+        } else {
+            sleepAfterLabel.stringValue = "Unable to determine your Mac sleep settings"
+        }
     }
     
     override func windowDidLoad() {
@@ -455,6 +518,68 @@ NSOutlineViewDelegate {
         let videoManager = VideoManager.sharedInstance
         videoManager.cancelAll()
     }
+    
+    // MARK: - Mac Model detection and HEVC Main10 detection
+    private func getMacModel() -> String {
+        var size = 0
+        sysctlbyname("hw.model", nil, &size, nil, 0)
+        var machine = [CChar](repeating: 0,  count: size)
+        sysctlbyname("hw.model", &machine, &size, nil, 0)
+        return String(cString: machine)
+    }
+
+    private func extractMacVersion(macModel: String, macSubmodel: String) -> NSNumber {
+        // Substring the thing
+        let s = macModel.dropFirst(macSubmodel.count)
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "fr_FR")
+        if let n = formatter.number(from: String(s)) {
+            return n
+        } else {
+            return 0
+        }
+    }
+    
+    private func getHEVCMain10Support(macModel: String, macSubmodel: String, partial: Double, full: Double) -> HEVCMain10Support {
+        let v = extractMacVersion(macModel: macModel, macSubmodel: macSubmodel)
+        
+        if v.doubleValue > full {
+            return .supported
+        } else if v.doubleValue > partial {
+            return .partial
+        } else {
+            return .notsupported
+        }
+    }
+    
+    private func isHEVCMain10HWDecodingAvailable() -> HEVCMain10Support {
+        let macModel = getMacModel()
+        
+        // iMacPro - always
+        if macModel.starts(with: "iMacPro") {
+            return .supported
+        } else if macModel.starts(with: "iMac") {
+            // iMacs, as far as we know, partial 17+, full 18+
+            return getHEVCMain10Support(macModel: macModel, macSubmodel: "iMac", partial: 17.0, full: 18.0)
+        } else if macModel.starts(with: "MacBookPro") {
+            // MacBookPro full 14+
+            return getHEVCMain10Support(macModel: macModel, macSubmodel: "MacBookPro", partial: 13.0, full: 14.0)
+        } else if macModel.starts(with: "MacBookAir") {
+            // MBA still on haswell/broadwell...
+            return .notsupported
+        } else if macModel.starts(with: "MacBook") {
+            // MacBook 10+
+            return getHEVCMain10Support(macModel: macModel, macSubmodel: "MacBook", partial: 9.0, full: 10.0)
+        } else if macModel.starts(with: "Macmini") || macModel.starts(with: "MacPro") {
+            // Right now no support on these
+            return .notsupported
+        }
+        // Older stuff (power/etc) should not even run this so list should be complete
+        // Hackintosh/new SKUs may fail this test
+        return .unsure
+    }
+    
+    
     
     // MARK: - Text panel
     
@@ -681,6 +806,8 @@ NSOutlineViewDelegate {
             preferences.timeMode = Preferences.TimeMode.manual.rawValue
         } else if sender == timeLightDarkModeRadio {
             preferences.timeMode = Preferences.TimeMode.lightDarkMode.rawValue
+        } else if sender == timeCalculateRadio {
+            preferences.timeMode = Preferences.TimeMode.coordinates.rawValue
         }
     }
     
@@ -698,7 +825,99 @@ NSOutlineViewDelegate {
         preferences.manualSunset = sunsetString
     }
 
-    // MARK: - Aerial panel
+    @IBAction func latitudeChange(_ sender: NSTextField) {
+        preferences.latitude = sender.stringValue
+        updateLatitudeLongitude()
+        
+    }
+
+    @IBAction func longitudeChange(_ sender: NSTextField) {
+        preferences.longitude = sender.stringValue
+        updateLatitudeLongitude()
+    }
+    
+    func updateLatitudeLongitude() {
+        let timeManagement = TimeManagement.sharedInstance
+        let (_, reason) = timeManagement.calculateFromCoordinates()
+        calculateCoordinatesLabel.stringValue = reason
+    }
+    
+    // MARK: - Brightness panel
+    
+    @IBAction func dimBrightnessClick(_ button: NSButton) {
+        let onState = (button.state == .on)
+        preferences.dimBrightness = onState
+        debugLog("UI dimBrightness: \(onState)")
+    }
+    
+    @IBAction func dimOnlyAtNightClick(_ button: NSButton) {
+        let onState = (button.state == .on)
+        preferences.dimOnlyAtNight = onState
+        debugLog("UI dimOnlyAtNight: \(onState)")
+    }
+    
+    @IBAction func dimOnlyOnBattery(_ button: NSButton) {
+        let onState = (button.state == .on)
+        preferences.dimOnlyOnBattery = onState
+        debugLog("UI dimOnlyOnBattery: \(onState)")
+    }
+    
+    @IBAction func dimStartFromChange(_ sender: NSSliderCell) {
+        let timeManagement = TimeManagement.sharedInstance
+        let event = NSApplication.shared.currentEvent
+        if (event != nil) {
+            if (event!.type != .leftMouseUp && event!.type != .leftMouseDown && event!.type != .leftMouseDragged)
+            {
+                warnLog("Unexepected event type \(event!.type)")
+            }
+            if event!.type == .leftMouseUp {
+                if savedBrightness != nil {
+                    timeManagement.setBrightness(level: savedBrightness!)
+                    savedBrightness = nil
+                }
+                preferences.startDim = sender.doubleValue
+                debugLog("UI startDim: \(sender.doubleValue)")
+            } else {
+                if savedBrightness == nil {
+                    savedBrightness = timeManagement.getBrightness()
+                }
+                timeManagement.setBrightness(level: sender.floatValue)
+            }
+        }
+    }
+    
+    @IBAction func dimFadeToChange(_ sender: NSSliderCell) {
+        let timeManagement = TimeManagement.sharedInstance
+        let event = NSApplication.shared.currentEvent
+        if (event != nil) {
+            if (event!.type != .leftMouseUp && event!.type != .leftMouseDown && event!.type != .leftMouseDragged)
+            {
+                warnLog("Unexepected event type \(event!.type)")
+            }
+            if event!.type == .leftMouseUp {
+                if savedBrightness != nil {
+                    timeManagement.setBrightness(level: savedBrightness!)
+                    savedBrightness = nil
+                }
+                preferences.endDim = sender.doubleValue
+                debugLog("UI endDim: \(sender.doubleValue)")
+            } else {
+                if savedBrightness == nil {
+                    savedBrightness = timeManagement.getBrightness()
+                }
+                timeManagement.setBrightness(level: sender.floatValue)
+            }
+        }
+    }
+    
+    @IBAction func dimInMinutes(_ sender: NSTextField) {
+        if let i = Int(sender.stringValue) {
+            preferences.dimInMinutes = i
+        }
+        
+        debugLog("UI dimInMinutes \(sender.stringValue)")
+    }
+    // MARK: - Advanced panel
 
     @IBAction func logButtonClick(_ sender: NSButton) {
         logTableView.reloadData()
@@ -1282,6 +1501,7 @@ NSOutlineViewDelegate {
         currentProgress.doubleValue = Double(progress)
     }*/
 }
+
 
 // MARK: - Font Panel Delegates
 

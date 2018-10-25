@@ -44,6 +44,15 @@ class Preferences {
         case logToDisk = "logToDisk"
         case versionCheck = "versionCheck"
         case alsoVersionCheckBeta = "alsoVersionCheckBeta"
+        case latitude = "latitude"
+        case longitude = "longitude"
+
+        case dimBrightness = "dimBrightness"
+        case startDim = "startDim"
+        case endDim = "endDim"
+        case dimOnlyAtNight = "dimOnlyAtNight"
+        case dimOnlyOnBattery = "dimOnlyOnBattery"
+        case dimInMinutes = "dimInMinutes"
     }
     
     enum VersionCheck : Int {
@@ -66,7 +75,7 @@ class Preferences {
     }
     
     enum TimeMode : Int {
-        case disabled, nightShift, manual, lightDarkMode
+        case disabled, nightShift, manual, lightDarkMode, coordinates
     }
     
     enum VideoFormat : Int {
@@ -127,7 +136,15 @@ class Preferences {
         defaultValues[.logToDisk] = false
         defaultValues[.versionCheck] = VersionCheck.weekly
         defaultValues[.alsoVersionCheckBeta] = false
-        
+        defaultValues[.latitude] = ""
+        defaultValues[.longitude] = ""
+        defaultValues[.dimBrightness] = false
+        defaultValues[.startDim] = 0.5
+        defaultValues[.endDim] = 0.0
+        defaultValues[.dimOnlyAtNight] = false
+        defaultValues[.dimOnlyOnBattery] = false
+        defaultValues[.dimInMinutes] = 30
+
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
             var mutable = result
@@ -146,6 +163,42 @@ class Preferences {
         }
         set {
             setValue(forIdentifier: .useCommunityDescriptions, value: newValue)
+        }
+    }
+
+    var dimBrightness: Bool {
+        get {
+            return value(forIdentifier: .dimBrightness)
+        }
+        set {
+            setValue(forIdentifier: .dimBrightness, value: newValue)
+        }
+    }
+
+    var dimOnlyAtNight: Bool {
+        get {
+            return value(forIdentifier: .dimOnlyAtNight)
+        }
+        set {
+            setValue(forIdentifier: .dimOnlyAtNight, value: newValue)
+        }
+    }
+
+    var dimOnlyOnBattery: Bool {
+        get {
+            return value(forIdentifier: .dimOnlyOnBattery)
+        }
+        set {
+            setValue(forIdentifier: .dimOnlyOnBattery, value: newValue)
+        }
+    }
+    
+    var dimInMinutes: Int? {
+        get {
+            return optionalValue(forIdentifier: .dimInMinutes)
+        }
+        set {
+            setValue(forIdentifier: .dimInMinutes, value: newValue)
         }
     }
     
@@ -203,6 +256,24 @@ class Preferences {
         }
     }
 
+    var latitude: String? {
+        get {
+            return optionalValue(forIdentifier: .latitude)
+        }
+        set {
+            setValue(forIdentifier: .latitude, value: newValue)
+        }
+    }
+    
+    var longitude: String? {
+        get {
+            return optionalValue(forIdentifier: .longitude)
+        }
+        set {
+            setValue(forIdentifier: .longitude, value: newValue)
+        }
+    }
+    
     var showMessageString: String? {
         get {
             return optionalValue(forIdentifier: .showMessageString)
@@ -263,6 +334,24 @@ class Preferences {
         }
         set {
             setValue(forIdentifier: .fontName, value: newValue)
+        }
+    }
+
+    var startDim: Double? {
+        get {
+            return optionalValue(forIdentifier: .startDim)
+        }
+        set {
+            setValue(forIdentifier: .startDim, value: newValue)
+        }
+    }
+
+    var endDim: Double? {
+        get {
+            return optionalValue(forIdentifier: .endDim)
+        }
+        set {
+            setValue(forIdentifier: .endDim, value: newValue)
         }
     }
     
