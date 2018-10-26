@@ -116,6 +116,10 @@ NSOutlineViewDelegate {
     @IBOutlet var cornerBottomRight: NSButton!
     @IBOutlet var cornerRandom: NSButton!
 
+    @IBOutlet var changeCornerMargins: NSButton!
+    @IBOutlet var marginHorizontalTextfield: NSTextField!
+    @IBOutlet var marginVerticalTextfield: NSTextField!
+    
     @IBOutlet var previewDisabledTextfield: NSTextField!
     @IBOutlet var fontPickerButton: NSButton!
     @IBOutlet var currentFontLabel: NSTextField!
@@ -325,6 +329,12 @@ NSOutlineViewDelegate {
             localizeForTvOS12Checkbox.state = .on
         }
         
+        if preferences.overrideMargins {
+            changeCornerMargins.state = .on
+            marginHorizontalTextfield.isEnabled = true
+            marginVerticalTextfield.isEnabled = true
+        }
+
         // Cache panel
         if preferences.neverStreamVideos {
             neverStreamVideosCheckbox.state = .on
@@ -388,6 +398,9 @@ NSOutlineViewDelegate {
         latitudeTextField.stringValue = preferences.latitude!
         longitudeTextField.stringValue = preferences.longitude!
 
+        marginHorizontalTextfield.stringValue = String(preferences.marginX!)
+        marginVerticalTextfield.stringValue = String(preferences.marginY!)
+        
         // Handle the time radios
         switch preferences.timeMode {
         case Preferences.TimeMode.nightShift.rawValue:
@@ -744,6 +757,24 @@ NSOutlineViewDelegate {
         preferences.synchronize()
     }
 
+    @IBAction func changeMarginsToCornerClick(_ sender: NSButton) {
+        let onState = (sender.state == NSControl.StateValue.on)
+        debugLog("UI changeMarginsToCorner: \(onState)")
+        
+        marginHorizontalTextfield.isEnabled = onState
+        marginVerticalTextfield.isEnabled = onState
+        preferences.overrideMargins = onState
+    }
+
+    @IBAction func marginXChange(_ sender: NSTextField) {
+        preferences.marginX = Int(sender.stringValue)
+        debugLog("UI marginXChange: \(sender.stringValue)")
+    }
+
+    @IBAction func marginYChange(_ sender: NSTextField) {
+        preferences.marginY = Int(sender.stringValue)
+        debugLog("UI marginYChange: \(sender.stringValue)")
+    }
     // MARK: - Cache panel
     
     func updateCacheSize() {

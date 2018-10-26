@@ -889,6 +889,17 @@ class AerialView: ScreenSaverView {
         var clockDecal : CGFloat = 0
         var messageDecal : CGFloat = 0
         let preferences = Preferences.sharedInstance
+        
+        var mx = CGFloat(preferences.marginX!)
+        var my = CGFloat(preferences.marginY!)
+        if !preferences.overrideMargins {
+            mx = 50
+            my = 50
+        }
+        if isPreview {
+            mx = 10
+            my = 10
+        }
 
         clockDecal += textLayer.visibleRect.height
         messageDecal += textLayer.visibleRect.height
@@ -900,17 +911,17 @@ class AerialView: ScreenSaverView {
 
         var cto, mto : CGPoint
         if (position == Preferences.DescriptionCorner.topLeft.rawValue) {
-            cto = CGPoint(x: 10, y: layer!.bounds.height-10-clockDecal)
-            mto = CGPoint(x: 10, y: layer!.bounds.height-10-messageDecal)
+            cto = CGPoint(x: mx, y: layer!.bounds.height-my-clockDecal)
+            mto = CGPoint(x: mx, y: layer!.bounds.height-my-messageDecal)
         } else if (position == Preferences.DescriptionCorner.bottomLeft.rawValue) {
-            cto = CGPoint(x: 10, y: 10+clockDecal)
-            mto = CGPoint(x: 10, y: 10+messageDecal)
+            cto = CGPoint(x: mx, y: my+clockDecal)
+            mto = CGPoint(x: mx, y: my+messageDecal)
         } else if (position == Preferences.DescriptionCorner.topRight.rawValue) {
-            cto = CGPoint(x: layer!.bounds.width-10, y: layer!.bounds.height-10-clockDecal)
-            mto = CGPoint(x: layer!.bounds.width-10, y: layer!.bounds.height-10-messageDecal)
+            cto = CGPoint(x: layer!.bounds.width-mx, y: layer!.bounds.height-my-clockDecal)
+            mto = CGPoint(x: layer!.bounds.width-mx, y: layer!.bounds.height-my-messageDecal)
         } else {
-            cto = CGPoint(x: layer!.bounds.width-10, y: 10+clockDecal)
-            mto = CGPoint(x: layer!.bounds.width-10, y: 10+messageDecal)
+            cto = CGPoint(x: layer!.bounds.width-mx, y: my+clockDecal)
+            mto = CGPoint(x: layer!.bounds.width-mx, y: my+messageDecal)
         }
 
         self.clockLayer.add(createMoveAnimation(layer: clockLayer, to: cto, duration: duration), forKey: "position")
@@ -925,6 +936,18 @@ class AerialView: ScreenSaverView {
         var messageDecal : CGFloat = 0
         let preferences = Preferences.sharedInstance
         
+        var mx = CGFloat(preferences.marginX!)
+        var my = CGFloat(preferences.marginY!)
+        if !preferences.overrideMargins {
+            mx = 50
+            my = 50
+        }
+        if isPreview {
+            mx = 10
+            my = 10
+        }
+
+        
         if !alone {
             clockDecal += textLayer.visibleRect.height
             messageDecal += textLayer.visibleRect.height
@@ -936,40 +959,52 @@ class AerialView: ScreenSaverView {
 
         if (position == Preferences.DescriptionCorner.topLeft.rawValue) {
             self.clockLayer.anchorPoint = CGPoint(x: 0, y: 1)
-            self.clockLayer.position = CGPoint(x: 10, y: layer!.bounds.height-10-clockDecal)
+            self.clockLayer.position = CGPoint(x: mx, y: layer!.bounds.height-my-clockDecal)
             self.messageLayer.anchorPoint = CGPoint(x: 0, y: 1)
-            self.messageLayer.position = CGPoint(x: 10, y: layer!.bounds.height-10-messageDecal)
+            self.messageLayer.position = CGPoint(x: mx, y: layer!.bounds.height-my-messageDecal)
         } else if (position == Preferences.DescriptionCorner.bottomLeft.rawValue) {
             self.clockLayer.anchorPoint = CGPoint(x: 0, y: 0)
-            self.clockLayer.position = CGPoint(x: 10, y: 10+clockDecal)
+            self.clockLayer.position = CGPoint(x: mx, y: my+clockDecal)
             self.messageLayer.anchorPoint = CGPoint(x: 0, y: 0)
-            self.messageLayer.position = CGPoint(x: 10, y: 10+messageDecal)
+            self.messageLayer.position = CGPoint(x: mx, y: my+messageDecal)
         } else if (position == Preferences.DescriptionCorner.topRight.rawValue) {
             self.clockLayer.anchorPoint = CGPoint(x: 1, y: 1)
-            self.clockLayer.position = CGPoint(x: layer!.bounds.width-10, y: layer!.bounds.height-10-clockDecal)
+            self.clockLayer.position = CGPoint(x: layer!.bounds.width-mx, y: layer!.bounds.height-my-clockDecal)
             self.messageLayer.anchorPoint = CGPoint(x: 1, y: 1)
-            self.messageLayer.position = CGPoint(x: layer!.bounds.width-10, y: layer!.bounds.height-10-messageDecal)
+            self.messageLayer.position = CGPoint(x: layer!.bounds.width-mx, y: layer!.bounds.height-my-messageDecal)
         } else if (position == Preferences.DescriptionCorner.bottomRight.rawValue) {
             self.clockLayer.anchorPoint = CGPoint(x: 1, y: 0)
-            self.clockLayer.position = CGPoint(x: layer!.bounds.width-10, y: 10+clockDecal)
+            self.clockLayer.position = CGPoint(x: layer!.bounds.width-mx, y: my+clockDecal)
             self.messageLayer.anchorPoint = CGPoint(x: 1, y: 0)
-            self.messageLayer.position = CGPoint(x: layer!.bounds.width-10, y: 10+messageDecal)
+            self.messageLayer.position = CGPoint(x: layer!.bounds.width-mx, y: my+messageDecal)
         }
     }
 
     private func repositionTextLayer(position:Int) {
+        let preferences = Preferences.sharedInstance
+        var mx = CGFloat(preferences.marginX!)
+        var my = CGFloat(preferences.marginY!)
+        if !preferences.overrideMargins {
+            mx = 50
+            my = 50
+        }
+        if isPreview {
+            mx = 10
+            my = 10
+        }
+        
         if (position == Preferences.DescriptionCorner.topLeft.rawValue) {
             self.textLayer.anchorPoint = CGPoint(x: 0, y: 1)
-            self.textLayer.position = CGPoint(x: 10, y: layer!.bounds.height-10)
+            self.textLayer.position = CGPoint(x: mx, y: layer!.bounds.height-my)
         } else if (position == Preferences.DescriptionCorner.bottomLeft.rawValue) {
             self.textLayer.anchorPoint = CGPoint(x: 0, y: 0)
-            self.textLayer.position = CGPoint(x: 10, y: 10)
+            self.textLayer.position = CGPoint(x: mx, y: my)
         } else if (position == Preferences.DescriptionCorner.topRight.rawValue) {
             self.textLayer.anchorPoint = CGPoint(x: 1, y: 1)
-            self.textLayer.position = CGPoint(x: layer!.bounds.width-10, y: layer!.bounds.height-10)
+            self.textLayer.position = CGPoint(x: layer!.bounds.width-mx, y: layer!.bounds.height-my)
         } else if (position == Preferences.DescriptionCorner.bottomRight.rawValue) {
             self.textLayer.anchorPoint = CGPoint(x: 1, y: 0)
-            self.textLayer.position = CGPoint(x: layer!.bounds.width-10, y: 10)
+            self.textLayer.position = CGPoint(x: layer!.bounds.width-mx, y: my)
         }
     }
     
