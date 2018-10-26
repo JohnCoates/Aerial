@@ -75,6 +75,10 @@ NSOutlineViewDelegate {
     @IBOutlet var versionLabel: NSTextField!
     
     @IBOutlet var popover: NSPopover!
+    
+    @IBOutlet var popoverTime: NSPopover!
+    @IBOutlet var linkTimeWikipediaButton: NSButton!
+    
     @IBOutlet var popoverH264Indicator: NSButton!
     @IBOutlet var popoverHEVCIndicator: NSButton!
     @IBOutlet var popoverH264Label: NSTextField!
@@ -112,6 +116,10 @@ NSOutlineViewDelegate {
     @IBOutlet var cornerBottomRight: NSButton!
     @IBOutlet var cornerRandom: NSButton!
 
+    @IBOutlet var changeCornerMargins: NSButton!
+    @IBOutlet var marginHorizontalTextfield: NSTextField!
+    @IBOutlet var marginVerticalTextfield: NSTextField!
+    
     @IBOutlet var previewDisabledTextfield: NSTextField!
     @IBOutlet var fontPickerButton: NSButton!
     @IBOutlet var currentFontLabel: NSTextField!
@@ -176,6 +184,12 @@ NSOutlineViewDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        // tmp
+        let tm = TimeManagement.sharedInstance
+        debugLog("isonbattery")
+        debugLog("\(tm.isOnBattery())")
+        //
         let logger = Logger.sharedInstance
         logger.addCallback {level in
             self.updateLogs(level:level)
@@ -184,10 +198,10 @@ NSOutlineViewDelegate {
         videoManager.addCallback { done,total in
             self.updateDownloads(done: done,total: total)
         }
-    
         self.fontManager.target = self
         latitudeFormatter.maximumSignificantDigits = 10
         longitudeFormatter.maximumSignificantDigits = 10
+
         
         // This used to grab the preview player and put it in our own video preview thing.
         // While kinda cool, it showed a random video that wasn't selected, and with new lifecycle, it was paused
@@ -315,6 +329,12 @@ NSOutlineViewDelegate {
             localizeForTvOS12Checkbox.state = .on
         }
         
+        if preferences.overrideMargins {
+            changeCornerMargins.state = .on
+            marginHorizontalTextfield.isEnabled = true
+            marginVerticalTextfield.isEnabled = true
+        }
+
         // Cache panel
         if preferences.neverStreamVideos {
             neverStreamVideosCheckbox.state = .on
@@ -378,6 +398,9 @@ NSOutlineViewDelegate {
         latitudeTextField.stringValue = preferences.latitude!
         longitudeTextField.stringValue = preferences.longitude!
 
+        marginHorizontalTextfield.stringValue = String(preferences.marginX!)
+        marginVerticalTextfield.stringValue = String(preferences.marginY!)
+        
         // Handle the time radios
         switch preferences.timeMode {
         case Preferences.TimeMode.nightShift.rawValue:
@@ -434,6 +457,7 @@ NSOutlineViewDelegate {
         } else {
             sleepAfterLabel.stringValue = "Unable to determine your Mac sleep settings"
         }
+
     }
     
     override func windowDidLoad() {
@@ -441,6 +465,7 @@ NSOutlineViewDelegate {
 
         // Workaround for garbled icons on non retina, we force redraw
         outlineView.reloadData()
+        debugLog("wdl")
     }
     
     @IBAction func close(_ sender: AnyObject?) {
@@ -480,6 +505,14 @@ NSOutlineViewDelegate {
                                  value: color,
                                  range: fullRange)
         secondProjectPageLink.attributedTitle = coloredLink
+        
+        // We have an extra project link on the video format popover, color it too
+        coloredLink = NSMutableAttributedString(attributedString: linkTimeWikipediaButton.attributedTitle)
+        fullRange = NSRange(location: 0, length: coloredLink.length)
+        coloredLink.addAttribute(NSAttributedString.Key.foregroundColor,
+                                 value: color,
+                                 range: fullRange)
+        linkTimeWikipediaButton.attributedTitle = coloredLink
     }
     
     
@@ -724,6 +757,24 @@ NSOutlineViewDelegate {
         preferences.synchronize()
     }
 
+    @IBAction func changeMarginsToCornerClick(_ sender: NSButton) {
+        let onState = (sender.state == NSControl.StateValue.on)
+        debugLog("UI changeMarginsToCorner: \(onState)")
+        
+        marginHorizontalTextfield.isEnabled = onState
+        marginVerticalTextfield.isEnabled = onState
+        preferences.overrideMargins = onState
+    }
+
+    @IBAction func marginXChange(_ sender: NSTextField) {
+        preferences.marginX = Int(sender.stringValue)
+        debugLog("UI marginXChange: \(sender.stringValue)")
+    }
+
+    @IBAction func marginYChange(_ sender: NSTextField) {
+        preferences.marginY = Int(sender.stringValue)
+        debugLog("UI marginYChange: \(sender.stringValue)")
+    }
     // MARK: - Cache panel
     
     func updateCacheSize() {
@@ -852,6 +903,21 @@ NSOutlineViewDelegate {
         calculateCoordinatesLabel.stringValue = reason
     }
     
+    @IBAction func solarModePopupChange(_ sender: NSPopUpButton) {
+        preferences.solarMode = sender.indexOfSelectedItem
+        debugLog("UI solarModePopupChange: \(sender.indexOfSelectedItem)")
+        updateLatitudeLongitude()
+    }
+    
+    @IBAction func helpTimeButtonClick(_ button: NSButton) {
+        popoverTime.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
+    }
+    
+    @IBAction func linkToWikipediaTimeClick(_ sender: NSButton) {
+        let workspace = NSWorkspace.shared
+        let url = URL(string: "https://en.wikipedia.org/wiki/Twilight")!
+        workspace.open(url)
+    }
     // MARK: - Brightness panel
     
     @IBAction func dimBrightnessClick(_ button: NSButton) {

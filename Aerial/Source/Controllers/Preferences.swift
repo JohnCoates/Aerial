@@ -55,10 +55,14 @@ class Preferences {
         case dimInMinutes = "dimInMinutes"
         
         case solarMode = "solarMode"
+        
+        case overrideMargins = "overrideMargins"
+        case marginX = "marginX"
+        case marginY = "marginY"
     }
     
     enum SolarMode : Int {
-        case official, intermediate, civil, nautical, astronomical
+        case strict, official, civil, nautical, astronomical
     }
     
     enum VersionCheck : Int {
@@ -151,7 +155,10 @@ class Preferences {
         defaultValues[.dimOnlyAtNight] = false
         defaultValues[.dimOnlyOnBattery] = false
         defaultValues[.dimInMinutes] = 30
-        defaultValues[.solarMode] = SolarMode.civil
+        defaultValues[.solarMode] = SolarMode.official
+        defaultValues[.overrideMargins] = false
+        defaultValues[.marginX] = 50
+        defaultValues[.marginY] = 50
 
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
@@ -201,6 +208,15 @@ class Preferences {
         }
     }
     
+    var overrideMargins: Bool {
+        get {
+            return value(forIdentifier: .overrideMargins)
+        }
+        set {
+            setValue(forIdentifier: .overrideMargins, value: newValue)
+        }
+    }
+    
     var dimInMinutes: Int? {
         get {
             return optionalValue(forIdentifier: .dimInMinutes)
@@ -209,7 +225,25 @@ class Preferences {
             setValue(forIdentifier: .dimInMinutes, value: newValue)
         }
     }
-    
+   
+    var marginX: Int? {
+        get {
+            return optionalValue(forIdentifier: .marginX)
+        }
+        set {
+            setValue(forIdentifier: .marginX, value: newValue)
+        }
+    }
+
+    var marginY: Int? {
+        get {
+            return optionalValue(forIdentifier: .marginY)
+        }
+        set {
+            setValue(forIdentifier: .marginY, value: newValue)
+        }
+    }
+
     var solarMode: Int? {
         get {
             return optionalValue(forIdentifier: .solarMode)
