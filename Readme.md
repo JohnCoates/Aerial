@@ -31,7 +31,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 ### Manual Installation
 *Rather install from Terminal or have auto-updates? Look at the Brew Cask section below!*
 
-1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.3/Aerial.saver.zip) (Version 1.4.3, October 23, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.3)) (**If you are experiencing crashes with 1.4.3, we highly suggest you downlod [1.4.4 beta 2](https://github.com/JohnCoates/Aerial/releases/download/v1.4.4beta2/Aerial.saver.zip) (see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.4beta2))**)
+1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.3/Aerial.saver.zip) (Version 1.4.3, October 23, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.3)), (**If you are experiencing crashes with 1.4.3, we highly suggest you download [1.4.4 beta 2](https://github.com/JohnCoates/Aerial/releases/download/v1.4.4beta2/Aerial.saver.zip) (See [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.4beta2))**.
 2. Unzip the downloaded file.
 3. Open **Aerial.saver** and confirm installation.
 
@@ -98,19 +98,19 @@ If you want to use Aerial on a Mac behind a firewall or with no network access, 
 If that's not an option, you can manually recreate a cache folder by downloading files manually. 
 - Download and untar `https://sylvan.apple.com/Aerials/resources.tar` (tvOS12 resources, keep the tar *and* extracted files)
 - Download and rename `https://sylvan.apple.com/Aerials/2x/entries.json` to `tvos11.json` (tvOS11 resources, also in 4K)
-- Download and rename `http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json` to `tvos10.json` (the original Aerials, in 1080p H.264 only)
+- Download and rename `http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json` to `tvos10.json` (The original Aerials, in 1080p H.264 only)
 
 You can then download the videos you want from the JSON files. In the 4K JSONs, you are looking for the `url-1080-H264` (1080p H.264, most compatible format), `url-1080-SDR` (1080p HEVC, better quality, requires a recent Mac for hardware decoding) or `url-4K-SDR` (4K HEVC).
 
 ## About HEVC and hardware decoding
 
-Aerial uses Apple's [AVFoundation framework](https://developer.apple.com/documentation/avfoundation) to play the videos as your screensaver. When available, AVFoundation will use hardware decoding (from your CPU or your graphics card) to minimize the resources needed for video playback. You can find guidelines in the help button next to the `Preferred video format` setting. By default, Aerial uses 1080p H.264 videos which is the most compatible format. Please note that all HEVC videos are encoded with the `Main10` profile, which may not be hardware accelerated by your machine, while some other HEVC videos (Encoded in `Main` profile) will be.
+Aerial uses Apple's [AVFoundation framework](https://developer.apple.com/documentation/avfoundation) to play the videos as your screensaver. When available, AVFoundation will use hardware decoding (From your CPU or your graphics card) to minimize the resources needed for video playback. You can find guidelines in the help button next to the `Preferred video format` setting. By default, Aerial uses 1080p H.264 videos which is the most compatible format. Please note that all HEVC videos are encoded with the `Main10` profile, which may not be hardware accelerated by your machine, while some other HEVC videos (Encoded in `Main` profile) will be.
 
 While we wish to provide everyone with the best setting for their machine, the GVA framework from Apple doesn't let us distinguish HEVC `Main10` profile acceleration from general HEVC acceleration. Early feedback we gathered also seems to point that on machines with multiple decoding options (Intel QuickSync and AMD UVD), QuickSync will always be preferred (Even if you "force" the discrete GPU use with an external monitor).
 
 These are our recommendations so far:
 - Macs older than 2011 may lack H.264 acceleration. 
-- Macs with an Intel CPU (with iGPU) from the Sandy Bridge (2011) generation to Broadwell (early 2015) should have H.264 hardware acceleration available.
+- Macs with an Intel CPU (With iGPU) from the Sandy Bridge (2011) generation to Broadwell (Early 2015) should have H.264 hardware acceleration available.
 - Late 2015 and 2016 Macs (Skylake and Kaby Lake) may only have partially accelerated HEVC decoding. We recommended you stick to 1080p H.264 on laptops. You may consider the HEVC format on desktops but understand that decoding may be CPU intensive and spin up your fans.
 - Macs 2017 and up should have full HEVC acceleration. 
 
@@ -119,10 +119,10 @@ You can easily check for yourself what to expect by opening a video in Quicktime
 ## Troubleshooting
 
 - Not seeing extended descriptions: Make sure you have version 1.4.2 or above.
-- Black screen: If you are behind a firewall (like Little Snitch or Hands Off!) try creating exceptions for Aerial to allow it access to Apple's servers. Be sure the applications `ScreenSaverEngine.app` and `System Preferences.app` are not being blocked access to *.phobos.apple.com, *.phobos.apple.com.edgesuite.net and sylvan.apple.com. If that isn't an option, please look at the Offline mode section. 
+- Black screen: If you are behind a firewall (Like Little Snitch or Hands Off!) try creating exceptions for Aerial to allow it access to Apple's servers. Be sure the applications `ScreenSaverEngine.app` and `System Preferences.app` are not being blocked access to *.phobos.apple.com, *.phobos.apple.com.edgesuite.net and sylvan.apple.com. If that isn't an option, please look at the Offline mode section. 
 - "You cannot use the Aerial screen saver with this version of macOS." error: Select Aerial, close System Preferences with Aerial still selected, re-open System Preferences and Aerial should now work. This is a known bug with Swift screensavers in macOS/OS X reported to Apple as [rdar://25569037](http://www.openradar.me/25569037).
 - High CPU usage/fan spinning all of a sudden: If you correctly configured the preferred video format according to your Mac and still experience high CPU usage/fan spinning all of a sudden, please look for the cause with `Activity Monitor`, you may see   a `com.apple.photos.ImageConversionService` responsible for this CPU load. This is the iCloud Photos process, you can find more about [what it does here](https://support.apple.com/en-gu/HT204264) and how to pause it.
-- Can't use Aerial as a login screensaver : As far as we know, using 3rd party screensavers before login is no longer possible on modern versions of macOS. More about this [here](https://github.com/JohnCoates/Aerial/issues/571).
+- Can't use Aerial as a login screensaver: As far as we know, using 3rd party screensavers before login is no longer possible on modern versions of macOS. More about this [here](https://github.com/JohnCoates/Aerial/issues/571).
 
 
 ## License
