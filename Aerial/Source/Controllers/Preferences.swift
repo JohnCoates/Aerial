@@ -53,6 +53,12 @@ class Preferences {
         case dimOnlyAtNight = "dimOnlyAtNight"
         case dimOnlyOnBattery = "dimOnlyOnBattery"
         case dimInMinutes = "dimInMinutes"
+        
+        case solarMode = "solarMode"
+    }
+    
+    enum SolarMode : Int {
+        case official, intermediate, civil, nautical, astronomical
     }
     
     enum VersionCheck : Int {
@@ -62,6 +68,7 @@ class Preferences {
     enum ExtraCorner : Int {
         case same, hOpposed, dOpposed
     }
+    
     enum DescriptionCorner : Int {
         case topLeft, topRight, bottomLeft, bottomRight, random
     }
@@ -144,6 +151,7 @@ class Preferences {
         defaultValues[.dimOnlyAtNight] = false
         defaultValues[.dimOnlyOnBattery] = false
         defaultValues[.dimInMinutes] = 30
+        defaultValues[.solarMode] = SolarMode.civil
 
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
@@ -199,6 +207,15 @@ class Preferences {
         }
         set {
             setValue(forIdentifier: .dimInMinutes, value: newValue)
+        }
+    }
+    
+    var solarMode: Int? {
+        get {
+            return optionalValue(forIdentifier: .solarMode)
+        }
+        set {
+            setValue(forIdentifier: .solarMode, value: newValue)
         }
     }
     

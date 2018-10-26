@@ -94,6 +94,12 @@ NSOutlineViewDelegate {
     
     @IBOutlet var calculateCoordinatesLabel: NSTextField!
     
+    @IBOutlet var latitudeFormatter: NumberFormatter!
+    
+    @IBOutlet var longitudeFormatter: NumberFormatter!
+    
+    @IBOutlet var solarModePopup: NSPopUpButton!
+    
     @IBOutlet var sunriseTime: NSDatePicker!
     @IBOutlet var sunsetTime: NSDatePicker!
     @IBOutlet var iconTime1: NSImageCell!
@@ -180,7 +186,9 @@ NSOutlineViewDelegate {
         }
     
         self.fontManager.target = self
-
+        latitudeFormatter.maximumSignificantDigits = 10
+        longitudeFormatter.maximumSignificantDigits = 10
+        
         // This used to grab the preview player and put it in our own video preview thing.
         // While kinda cool, it showed a random video that wasn't selected, and with new lifecycle, it was paused
         /*if let previewPlayer = AerialView.previewPlayer {
@@ -398,6 +406,8 @@ NSOutlineViewDelegate {
             cornerRandom.state = NSControl.StateValue.on
         }
 
+        solarModePopup.selectItem(at: preferences.solarMode!)
+        
         multiMonitorModePopup.selectItem(at: preferences.multiMonitorMode!)
         
         popupVideoFormat.selectItem(at: preferences.videoFormat!)

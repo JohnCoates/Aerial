@@ -138,8 +138,8 @@ class TimeManagement {
             if solar != nil {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
-                let sunriseString = dateFormatter.string(from: (solar?.sunrise)!)
-                let sunsetString = dateFormatter.string(from: (solar?.sunset)!)
+                let sunriseString = dateFormatter.string(from: (solar?.civilSunrise)!)
+                let sunsetString = dateFormatter.string(from: (solar?.civilSunset)!)
                 
                 return(true, "Today's Sunrise: " + sunriseString + "  Today's Sunset: " + sunsetString)
             }
