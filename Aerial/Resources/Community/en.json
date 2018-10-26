@@ -159,7 +159,7 @@
             "id" : "b1-2",
             "name" : "River Thames near Sunset",
             "pointsOfInterest" : {
-                "0" : "Heading up the River Thames in London toward Tower Bridge",
+                "0" : "Heading up the River Thames toward Tower Bridge, with the Tower of London to the right",
                 "25" : "Crossing the River Thames and passing over City Hall",
                 "35" : "Passing the cruiser HMS Belfast in the River Thames",
                 "60" : "Approaching The Shard",
@@ -172,7 +172,7 @@
             "id" : "b3-1",
             "name" : "River Thames at Dusk",
             "pointsOfInterest" : {
-                "0": "Heading up the River Thames in London toward Tower Bridge",
+                "0": "Heading up the River Thames toward Tower Bridge, with the Tower of London to the right",
                 "28" : "Traveling west up the River Thames, past City Hall on the left",
                 "40" : "Passing HMS Belfast in the River Thames, with The Shard on the left and the Walkie-Talkie on the right",
                 "75" : "Passing Southwark Cathedral on the left",
@@ -195,7 +195,7 @@
         },
         {
             "id" : "30A2A488-E708-42E7-9A90-B749A407AE1C",
-            "name" : "Harbor Freeway (Interstate 110)",
+            "name" : "Harbor Freeway",
             "pointsOfInterest" : {
                 "0" :"Following the Harbor Freeway (Interstate 110) north through South Los Angeles",
                 "50" : "Crossing the Century Freeway (Interstate 105)",
@@ -257,7 +257,7 @@
 
         {
             "id" : "b2-3",
-            "name" : "Seventh avenue"
+            "name" : "Seventh Avenue"
         },
         {
             "id" : "b4-2",
@@ -270,7 +270,7 @@
         },
         {
             "id" : "b10-3",
-            "name" : "Marin to Golden Gate",
+            "name" : "Marin Headlands in Fog",
             "pointsOfInterest" : {
                 "0" : "Moving over the Marin Headlands along Highway 101 toward the Golden Gate Bridge",
                 "20" : "Horseshoe Cove appearing on the left",
