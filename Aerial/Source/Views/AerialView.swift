@@ -169,13 +169,21 @@ class AerialView: ScreenSaverView {
         debugLog("\(self.description) AerialView setup init")
         let preferences = Preferences.sharedInstance
 
+        // Ugly, we make sure we should dim, we're not a preview, we haven't dimmed yet (multi monitor)
+        // and ensure we properly apply the night/battery restrictions !
         if preferences.dimBrightness {
             if !isPreview && brightnessToRestore == nil {
                 let timeManagement = TimeManagement.sharedInstance
-                brightnessToRestore = timeManagement.getBrightness()
-                debugLog("Brightness before Aerial was launched : \(String(describing: brightnessToRestore))")
-                timeManagement.setBrightness(level: Float(preferences.startDim!))
-                setDimTimers()
+                let (should,to) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
+                
+                if !preferences.dimOnlyAtNight || (preferences.dimOnlyAtNight && should && to == "night") {
+                    if !preferences.dimOnlyOnBattery || (preferences.dimOnlyOnBattery && timeManagement.isOnBattery()) {
+                        brightnessToRestore = timeManagement.getBrightness()
+                        debugLog("Brightness before Aerial was launched : \(String(describing: brightnessToRestore))")
+                        timeManagement.setBrightness(level: Float(preferences.startDim!))
+                        setDimTimers()
+                    }
+                }
             }
         }
 

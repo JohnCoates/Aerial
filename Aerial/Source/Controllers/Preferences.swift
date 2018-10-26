@@ -58,7 +58,7 @@ class Preferences {
     }
     
     enum SolarMode : Int {
-        case official, intermediate, civil, nautical, astronomical
+        case strict, official, civil, nautical, astronomical
     }
     
     enum VersionCheck : Int {
@@ -151,7 +151,7 @@ class Preferences {
         defaultValues[.dimOnlyAtNight] = false
         defaultValues[.dimOnlyOnBattery] = false
         defaultValues[.dimInMinutes] = 30
-        defaultValues[.solarMode] = SolarMode.civil
+        defaultValues[.solarMode] = SolarMode.official
 
         let defaults = defaultValues.reduce([String: Any]()) {
             (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in

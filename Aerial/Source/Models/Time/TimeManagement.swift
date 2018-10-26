@@ -41,7 +41,21 @@ class TimeManagement {
             _ = calculateFromCoordinates()
             
             if (solar != nil) {
-                if (solar?.isDaytime)! {
+                var zenith : Solar.Zenith
+                switch preferences.solarMode {
+                case Preferences.SolarMode.strict.rawValue:
+                    zenith = .strict
+                case Preferences.SolarMode.official.rawValue:
+                    zenith = .official
+                case Preferences.SolarMode.civil.rawValue:
+                    zenith = .civil
+                case Preferences.SolarMode.nautical.rawValue:
+                    zenith = .nautical
+                default:
+                    zenith = .astronimical
+                }
+
+                if (solar?.isDaytime(zenith: zenith))! {
                     return (true, "day")
                 } else {
                     return (true, "night")
@@ -128,6 +142,7 @@ class TimeManagement {
             return nil
         }
     }
+    
     // MARK: Calculate using Solar
     func calculateFromCoordinates() -> (Bool, String) {
         let preferences = Preferences.sharedInstance
@@ -138,15 +153,33 @@ class TimeManagement {
             if solar != nil {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
-                let sunriseString = dateFormatter.string(from: (solar?.civilSunrise)!)
-                let sunsetString = dateFormatter.string(from: (solar?.civilSunset)!)
+
+                var sunriseString, sunsetString: String
+
+                switch preferences.solarMode {
+                case Preferences.SolarMode.official.rawValue:
+                    sunriseString = dateFormatter.string(from: (solar?.sunrise)!)
+                    sunsetString = dateFormatter.string(from: (solar?.sunset)!)
+                case Preferences.SolarMode.strict.rawValue:
+                    sunriseString = dateFormatter.string(from: (solar?.strictSunrise)!)
+                    sunsetString = dateFormatter.string(from: (solar?.strictSunset)!)
+                case Preferences.SolarMode.civil.rawValue:
+                    sunriseString = dateFormatter.string(from: (solar?.civilSunrise)!)
+                    sunsetString = dateFormatter.string(from: (solar?.civilSunset)!)
+                case Preferences.SolarMode.nautical.rawValue:
+                    sunriseString = dateFormatter.string(from: (solar?.nauticalSunrise)!)
+                    sunsetString = dateFormatter.string(from: (solar?.nauticalSunset)!)
+                default:
+                    sunriseString = dateFormatter.string(from: (solar?.astronomicalSunrise)!)
+                    sunsetString = dateFormatter.string(from: (solar?.astronomicalSunset)!)
+
+                }
                 
                 return(true, "Today's Sunrise: " + sunriseString + "  Today's Sunset: " + sunsetString)
             }
         }
 
         return (false, "Can't process your coordinates, please verify")
-
     }
     
     // MARK: Dark Mode
@@ -337,4 +370,15 @@ class TimeManagement {
         IODisplaySetFloatParameter(service, 0, kIODisplayBrightnessKey as CFString, level)
         IOObjectRelease(service)
     }
+
+    // MARK: - Battery detection
+    func isOnBattery() -> Bool {
+        let timeRemaining: CFTimeInterval = IOPSGetTimeRemainingEstimate()
+        if timeRemaining == -2.0 {
+            return false
+        } else {
+            return true
+        }
+    }
+    
 }

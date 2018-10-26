@@ -23,6 +23,9 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
+//  Modifications for Aerial/glouel
+//      26/10/2018: - added an intermediate mode that's closer to night shift sunset/sunrise times
+//                  - added a isDaylight(zenith: Zenith) function
 
 import Foundation
 import CoreLocation
@@ -39,6 +42,8 @@ public struct Solar {
     public fileprivate(set) var sunset: Date?
     public fileprivate(set) var civilSunrise: Date?
     public fileprivate(set) var civilSunset: Date?
+    public fileprivate(set) var strictSunrise: Date?
+    public fileprivate(set) var strictSunset: Date?
     public fileprivate(set) var nauticalSunrise: Date?
     public fileprivate(set) var nauticalSunset: Date?
     public fileprivate(set) var astronomicalSunrise: Date?
@@ -64,6 +69,8 @@ public struct Solar {
     /// Sets all of the Solar object's sunrise / sunset variables, if possible.
     /// - Note: Can return `nil` objects if sunrise / sunset does not occur on that day.
     public mutating func calculate() {
+        strictSunrise = calculate(.sunrise, for: date, and: .strict)
+        strictSunset = calculate(.sunset, for: date, and: .strict)
         sunrise = calculate(.sunrise, for: date, and: .official)
         sunset = calculate(.sunset, for: date, and: .official)
         civilSunrise = calculate(.sunrise, for: date, and: .civil)
@@ -82,7 +89,8 @@ public struct Solar {
     }
     
     /// Used for generating several of the possible sunrise / sunset times
-    fileprivate enum Zenith: Double {
+    public enum Zenith: Double {
+        case strict = 90
         case official = 90.83
         case civil = 96
         case nautical = 102
@@ -230,6 +238,45 @@ extension Solar {
         return !isDaytime
     }
     
+    /// Whether the location specified by the `latitude` and `longitude` is in daytime on `date`
+    /// Takes an extra Zenith parameter to handle all cases
+    /// - Complexity: O(1)
+    public func isDaytime(zenith:Zenith) -> Bool {
+        guard
+            let _ = sunrise,
+            let _ = sunset
+            else {
+                return false
+        }
+        
+        var lsunrise, lsunset : Date
+        switch zenith {
+        case .strict:
+            lsunrise = strictSunrise!
+            lsunset = strictSunset!
+        case .civil:
+            lsunrise = civilSunrise!
+            lsunset = civilSunset!
+        case .nautical:
+            lsunrise = nauticalSunrise!
+            lsunset = nauticalSunset!
+        case .astronimical:
+            lsunrise = astronomicalSunrise!
+            lsunset = astronomicalSunset!
+        default:
+            lsunrise = sunrise!
+            lsunset = sunset!
+        }
+        
+        let beginningOfDay = lsunrise.timeIntervalSince1970
+        let endOfDay = lsunset.timeIntervalSince1970
+        let currentTime = self.date.timeIntervalSince1970
+        
+        let isSunriseOrLater = currentTime >= beginningOfDay
+        let isBeforeSunset = currentTime < endOfDay
+        
+        return isSunriseOrLater && isBeforeSunset
+    }
 }
 
 // MARK: - Helper extensions
