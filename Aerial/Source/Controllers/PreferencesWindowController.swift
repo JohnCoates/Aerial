@@ -110,6 +110,7 @@ NSOutlineViewDelegate {
     @IBOutlet var iconTime2: NSImageCell!
     @IBOutlet var iconTime3: NSImageCell!
 
+    @IBOutlet var cornerContainer: NSTextField!
     @IBOutlet var cornerTopLeft: NSButton!
     @IBOutlet var cornerTopRight: NSButton!
     @IBOutlet var cornerBottomLeft: NSButton!
@@ -122,6 +123,10 @@ NSOutlineViewDelegate {
     
     @IBOutlet var previewDisabledTextfield: NSTextField!
     @IBOutlet var fontPickerButton: NSButton!
+    
+    @IBOutlet var fontResetButton: NSButton!
+    @IBOutlet var extraFontPickerButton: NSButton!
+    @IBOutlet var extraFontResetButton: NSButton!
     @IBOutlet var currentFontLabel: NSTextField!
     @IBOutlet var currentLocaleLabel: NSTextField!
     
@@ -323,6 +328,9 @@ NSOutlineViewDelegate {
 
         if preferences.showDescriptions {
             showDescriptionsCheckbox.state = .on
+            changeTextState(to: true)
+        } else {
+            changeTextState(to: false)
         }
 
         if preferences.localizeDescriptions {
@@ -355,7 +363,19 @@ NSOutlineViewDelegate {
         // Brightness panel
         if preferences.dimBrightness {
             dimBrightness.state = .on
+            dimOnlyAtNight.isEnabled = true
+            dimOnlyOnBattery.isEnabled = true
+            dimStartFrom.isEnabled = true
+            dimFadeTo.isEnabled = true
+            dimFadeInMinutes.isEnabled = true
+        } else {
+            dimOnlyAtNight.isEnabled = false
+            dimOnlyOnBattery.isEnabled = false
+            dimStartFrom.isEnabled = false
+            dimFadeTo.isEnabled = false
+            dimFadeInMinutes.isEnabled = false
         }
+        
         if preferences.dimOnlyOnBattery {
             dimOnlyOnBattery.state = .on
         }
@@ -631,6 +651,45 @@ NSOutlineViewDelegate {
         let onState = (state == NSControl.StateValue.on)
         preferences.showDescriptions = onState
         debugLog("UI showDescriptions: \(onState)")
+        
+        changeTextState(to:onState)
+    }
+    
+    func changeTextState(to:Bool)
+    {
+        // Location information
+        useCommunityCheckbox.isEnabled = to
+        localizeForTvOS12Checkbox.isEnabled = to
+        descriptionModePopup.isEnabled = to
+        fadeInOutTextModePopup.isEnabled = to
+        fontPickerButton.isEnabled = to
+        fontResetButton.isEnabled = to
+        currentFontLabel.isEnabled = to
+        changeCornerMargins.isEnabled = to
+        if (to && changeCornerMargins.state == .on) || !to {
+            marginHorizontalTextfield.isEnabled = to
+            marginVerticalTextfield.isEnabled = to
+        }
+        cornerContainer.isEnabled = to
+        cornerTopLeft.isEnabled = to
+        cornerTopRight.isEnabled = to
+        cornerBottomLeft.isEnabled = to
+        cornerBottomRight.isEnabled = to
+        cornerRandom.isEnabled = to
+        
+        // Extra info, linked too
+        showClockCheckbox.isEnabled = to
+        if (to && showClockCheckbox.state == .on) || !to {
+            withSecondsCheckbox.isEnabled = to
+        }
+        showExtraMessage.isEnabled = to
+        if (to && showExtraMessage.state == .on) || !to {
+            extraMessageTextField.isEnabled = to
+        }
+        extraFontPickerButton.isEnabled = to
+        extraFontResetButton.isEnabled = to
+        extraMessageFontLabel.isEnabled = to
+        extraCornerPopup.isEnabled = to
     }
     
     @IBAction func useCommunityClick(_ button: NSButton) {
@@ -923,6 +982,13 @@ NSOutlineViewDelegate {
     @IBAction func dimBrightnessClick(_ button: NSButton) {
         let onState = (button.state == .on)
         preferences.dimBrightness = onState
+        
+        dimOnlyAtNight.isEnabled = onState
+        dimOnlyOnBattery.isEnabled = onState
+        dimStartFrom.isEnabled = onState
+        dimFadeTo.isEnabled = onState
+        dimFadeInMinutes.isEnabled = onState
+        
         debugLog("UI dimBrightness: \(onState)")
     }
     
