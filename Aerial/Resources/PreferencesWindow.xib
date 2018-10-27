@@ -444,7 +444,7 @@ is disabled
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Text" identifier="" id="bPY-uP-DGa">
-                                        <view key="view" id="M1m-ud-C95">
+                                        <view key="view" ambiguous="YES" id="M1m-ud-C95">
                                             <rect key="frame" x="10" y="33" width="614" height="348"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1163,7 +1163,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Brightness" identifier="" id="qTo-kf-FbK">
-                                        <view key="view" ambiguous="YES" id="dIK-5r-Sr4">
+                                        <view key="view" id="dIK-5r-Sr4">
                                             <rect key="frame" x="10" y="33" width="614" height="348"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>

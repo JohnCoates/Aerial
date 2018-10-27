@@ -1010,7 +1010,8 @@ NSOutlineViewDelegate {
         if (event != nil) {
             if (event!.type != .leftMouseUp && event!.type != .leftMouseDown && event!.type != .leftMouseDragged)
             {
-                warnLog("Unexepected event type \(event!.type)")
+                //warnLog("Unexepected event type \(event!.type)")
+                return
             }
             if event!.type == .leftMouseUp {
                 if savedBrightness != nil {
