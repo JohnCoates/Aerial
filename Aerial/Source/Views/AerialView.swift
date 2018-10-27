@@ -703,7 +703,7 @@ class AerialView: ScreenSaverView {
                     }
                 }
                 self.textLayer.add(fadeAnimation, forKey: "textfade")
-                setupTextLayer(string: str, duration : fadeAnimation.duration, isInitial: false, totalDuration: video.duration)
+                setupTextLayer(string: str, duration : fadeAnimation.duration, isInitial: true, totalDuration: video.duration)
             }
         }
     }
@@ -758,6 +758,44 @@ class AerialView: ScreenSaverView {
             setupAndRepositionExtra(position: preferences.descriptionCorner!, duration: duration, isInitial: isInitial, totalDuration: totalDuration)
         }
     }
+    private func reRectClock() {
+        let preferences = Preferences.sharedInstance
+
+        let dateFormatter = DateFormatter()
+        if (preferences.withSeconds) {
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
+        } else {
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm", options: 0, locale: Locale.current)
+        }
+        
+        let dateString = dateFormatter.string(from: Date())
+        self.clockLayer.string = dateString
+        // We override font size on previews
+        var fontSize = CGFloat(preferences.extraFontSize!)
+        if (layer!.bounds.height < 200) {
+            fontSize = 12
+        }
+        
+        // Get font with a fallback in case
+        var font = NSFont(name: "Monaco", size: 28)
+        if let tryFont = NSFont(name: preferences.extraFontName!,size: fontSize) {
+            font = tryFont
+        }
+        
+        // Make sure we change the layer font/size
+        self.clockLayer.font = font
+        self.clockLayer.fontSize = fontSize
+        
+        let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : font as Any]
+        
+        // Calculate bounding box
+        let s = NSAttributedString(string: dateString, attributes: attributes)
+        let rect = s.boundingRect(with: layer!.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
+        
+        // Rebind frame
+        let oldRect = self.clockLayer.frame
+        self.clockLayer.frame = CGRect(x: oldRect.minX, y: oldRect.minY, width: rect.maxX, height: rect.maxY)
+    }
     
     private func setupAndRepositionExtra(position: Int, duration: CFTimeInterval, isInitial: Bool, totalDuration: Double)
     {
@@ -769,15 +807,7 @@ class AerialView: ScreenSaverView {
                 {
                     if #available(OSX 10.12, *) {
                         clockTimer =  Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (Timer) in
-                            let dateFormatter = DateFormatter()
-                            if (preferences.withSeconds) {
-                                dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
-                            } else {
-                                dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm", options: 0, locale: Locale.current)
-                            }
-
-                            let dateString = dateFormatter.string(from: Date())
-                            self.clockLayer.string = dateString
+                            self.reRectClock()
                         })
                     }
                     

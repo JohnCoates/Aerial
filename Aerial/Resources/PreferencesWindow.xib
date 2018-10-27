@@ -16,6 +16,7 @@
                 <outlet property="changeCornerMargins" destination="VPG-cS-U1N" id="F9P-rV-FaD"/>
                 <outlet property="cornerBottomLeft" destination="Qhn-AB-VZ5" id="YIg-vu-QIS"/>
                 <outlet property="cornerBottomRight" destination="4Rr-4h-bRr" id="5oY-Eh-CdE"/>
+                <outlet property="cornerContainer" destination="NQf-K9-FZk" id="SU0-YA-s4F"/>
                 <outlet property="cornerRandom" destination="u5m-Hq-OEe" id="Nrr-p1-591"/>
                 <outlet property="cornerTopLeft" destination="YXy-49-EyS" id="6OY-bd-JrE"/>
                 <outlet property="cornerTopRight" destination="KmD-a8-TgO" id="o5t-Ey-I2X"/>
@@ -33,11 +34,14 @@
                 <outlet property="downloadProgressIndicator" destination="0Nj-rn-Gmk" id="ftV-Yg-pCi"/>
                 <outlet property="downloadStopButton" destination="7SM-Cq-nPU" id="T8h-Uj-bJb"/>
                 <outlet property="extraCornerPopup" destination="3qM-Dd-kr0" id="uoR-zp-El8"/>
+                <outlet property="extraFontPickerButton" destination="nyd-g5-bjz" id="GcC-aa-1rb"/>
+                <outlet property="extraFontResetButton" destination="pJn-ac-CGy" id="FPD-Tb-T9q"/>
                 <outlet property="extraMessageFontLabel" destination="Hyj-eq-me5" id="wSX-G6-ry2"/>
                 <outlet property="extraMessageTextField" destination="dch-FL-HdX" id="dRi-6L-vQY"/>
                 <outlet property="fadeInOutModePopup" destination="405-v4-6d2" id="eli-xQ-IOg"/>
                 <outlet property="fadeInOutTextModePopup" destination="vwV-g6-SF4" id="qkT-13-zQb"/>
                 <outlet property="fontPickerButton" destination="DqU-8n-gZ9" id="BEa-9N-ipc"/>
+                <outlet property="fontResetButton" destination="jAg-ik-PDU" id="XUX-ui-hMu"/>
                 <outlet property="iconTime1" destination="lQX-Ux-Sz8" id="JNc-dR-kDA"/>
                 <outlet property="iconTime2" destination="VuJ-HC-hN5" id="AbN-SY-Tux"/>
                 <outlet property="iconTime3" destination="W77-TL-rnp" id="ncL-NO-Mb0"/>
@@ -440,12 +444,12 @@ is disabled
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Text" identifier="" id="bPY-uP-DGa">
-                                        <view key="view" id="M1m-ud-C95">
+                                        <view key="view" ambiguous="YES" id="M1m-ud-C95">
                                             <rect key="frame" x="10" y="33" width="614" height="348"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button toolTip="Translates descriptions, if available, to your preferred language (as set in System Preferences : Language &amp; Region)" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R3K-TR-uHC">
-                                                    <rect key="frame" x="29" y="259" width="292" height="18"/>
+                                                    <rect key="frame" x="48" y="259" width="292" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Display in preferred language when available" bezelStyle="regularSquare" imagePosition="left" inset="2" id="xbp-av-nHy">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -456,7 +460,7 @@ is disabled
                                                     </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NQf-K9-FZk">
-                                                    <rect key="frame" x="385" y="202" width="212" height="124"/>
+                                                    <rect key="frame" x="408" y="202" width="189" height="124"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" borderStyle="border" alignment="center" drawsBackground="YES" id="j0E-uW-wQH">
                                                         <font key="font" metaFont="system"/>
@@ -469,17 +473,6 @@ should appear</string>
                                                         <color key="backgroundColor" name="quaternaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <button toolTip="Top left corner" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YXy-49-EyS">
-                                                    <rect key="frame" x="394" y="299" width="22" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="eqE-SR-JNx">
-                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="descriptionCornerChange:" target="-2" id="5ZS-9A-ew0"/>
-                                                    </connections>
-                                                </button>
                                                 <button toolTip="Top right corner" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KmD-a8-TgO">
                                                     <rect key="frame" x="570" y="299" width="22" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -489,28 +482,6 @@ should appear</string>
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="descriptionCornerChange:" target="-2" id="c6F-1e-C9M"/>
-                                                    </connections>
-                                                </button>
-                                                <button toolTip="Bottom left corner" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qhn-AB-VZ5">
-                                                    <rect key="frame" x="394" y="210" width="22" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="yWr-Bk-Lwd">
-                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="descriptionCornerChange:" target="-2" id="iEg-Lk-xvS"/>
-                                                    </connections>
-                                                </button>
-                                                <button toolTip="Random corner" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u5m-Hq-OEe">
-                                                    <rect key="frame" x="394" y="177" width="119" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="radio" title=" Random corner" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="OKv-Q2-o61">
-                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="descriptionCornerChange:" target="-2" id="yiB-fS-NDl"/>
                                                     </connections>
                                                 </button>
                                                 <button toolTip="Bottom right corner" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Rr-4h-bRr">
@@ -534,7 +505,7 @@ should appear</string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <button toolTip="Change font" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DqU-8n-gZ9">
-                                                    <rect key="frame" x="311" y="176" width="22" height="22"/>
+                                                    <rect key="frame" x="330" y="176" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSActionTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FGg-1N-5mQ">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -545,7 +516,7 @@ should appear</string>
                                                     </connections>
                                                 </button>
                                                 <button toolTip="Reset font to default" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jAg-ik-PDU">
-                                                    <rect key="frame" x="343" y="176" width="22" height="22"/>
+                                                    <rect key="frame" x="362" y="176" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSGoLeftTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9DW-Iy-33i">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -556,7 +527,7 @@ should appear</string>
                                                     </connections>
                                                 </button>
                                                 <textField toolTip="This is the font that will be used to display locationn descriptions" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Xa-gF-Xrb">
-                                                    <rect key="frame" x="31" y="176" width="272" height="22"/>
+                                                    <rect key="frame" x="50" y="176" width="272" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" borderStyle="bezel" title="Label" bezelStyle="round" id="Igd-fx-DFw">
                                                         <font key="font" metaFont="system"/>
@@ -565,7 +536,7 @@ should appear</string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AA1-DI-Dei">
-                                                    <rect key="frame" x="47" y="236" width="332" height="17"/>
+                                                    <rect key="frame" x="66" y="236" width="313" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Your current locale is " id="FRS-mq-r4b">
                                                         <font key="font" metaFont="system"/>
@@ -587,7 +558,7 @@ should appear</string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="83x-xb-rDh">
-                                                    <rect key="frame" x="29" y="76" width="91" height="18"/>
+                                                    <rect key="frame" x="48" y="76" width="91" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Show clock" bezelStyle="regularSquare" imagePosition="left" inset="2" id="7vP-TN-hCp">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -598,7 +569,7 @@ should appear</string>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2y8-kQ-UrX">
-                                                    <rect key="frame" x="29" y="46" width="170" height="18"/>
+                                                    <rect key="frame" x="48" y="46" width="170" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Show an extra message:" bezelStyle="regularSquare" imagePosition="left" inset="2" id="M45-GZ-rJv">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -627,7 +598,7 @@ should appear</string>
                                                     </connections>
                                                 </popUpButton>
                                                 <button toolTip="Change font" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nyd-g5-bjz">
-                                                    <rect key="frame" x="311" y="10" width="22" height="22"/>
+                                                    <rect key="frame" x="330" y="10" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSActionTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4ul-wq-JSa">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -638,7 +609,7 @@ should appear</string>
                                                     </connections>
                                                 </button>
                                                 <button toolTip="Reset font to default" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pJn-ac-CGy">
-                                                    <rect key="frame" x="343" y="10" width="22" height="22"/>
+                                                    <rect key="frame" x="362" y="10" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSGoLeftTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eJC-bd-Qa9">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -649,7 +620,7 @@ should appear</string>
                                                     </connections>
                                                 </button>
                                                 <textField toolTip="This is the font that will be used to display locationn descriptions" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hyj-eq-me5">
-                                                    <rect key="frame" x="31" y="10" width="272" height="22"/>
+                                                    <rect key="frame" x="50" y="10" width="272" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" borderStyle="bezel" title="Label" bezelStyle="round" id="Fkj-t0-I5q">
                                                         <font key="font" metaFont="system"/>
@@ -658,7 +629,7 @@ should appear</string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dch-FL-HdX">
-                                                    <rect key="frame" x="205" y="44" width="392" height="22"/>
+                                                    <rect key="frame" x="224" y="44" width="373" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Type your message here" drawsBackground="YES" id="tGt-hF-pSd">
                                                         <font key="font" metaFont="system"/>
@@ -690,17 +661,6 @@ should appear</string>
                                                         <action selector="fadeInOutTextModePopupChange:" target="-2" id="oYq-Zs-e8C"/>
                                                     </connections>
                                                 </popUpButton>
-                                                <button toolTip="How long should the descriptions stay on screen" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="omO-3f-eoL">
-                                                    <rect key="frame" x="29" y="288" width="56" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Show" bezelStyle="regularSquare" imagePosition="left" inset="2" id="F7m-zV-2tM">
-                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="showDescriptionsClickWithButton:" target="-2" id="LWZ-gL-jo6"/>
-                                                    </connections>
-                                                </button>
                                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qmX-6m-Whj">
                                                     <rect key="frame" x="89" y="283" width="107" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -719,7 +679,7 @@ should appear</string>
                                                     </connections>
                                                 </popUpButton>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1e6-Z5-uo6">
-                                                    <rect key="frame" x="29" y="212" width="281" height="18"/>
+                                                    <rect key="frame" x="48" y="212" width="281" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Use community information when available" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6kr-NQ-0Qs">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -739,7 +699,7 @@ should appear</string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h3J-Gc-SIR">
-                                                    <rect key="frame" x="134" y="76" width="105" height="18"/>
+                                                    <rect key="frame" x="153" y="76" width="105" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="With seconds" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="RhQ-hz-Pxt">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -750,7 +710,7 @@ should appear</string>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VPG-cS-U1N">
-                                                    <rect key="frame" x="29" y="142" width="252" height="18"/>
+                                                    <rect key="frame" x="48" y="142" width="252" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Change margins to corner. Horizontal:" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Yqe-zy-Vzd">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -761,7 +721,7 @@ should appear</string>
                                                     </connections>
                                                 </button>
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qya-NI-lYj">
-                                                    <rect key="frame" x="293" y="140" width="57" height="22"/>
+                                                    <rect key="frame" x="312" y="140" width="57" height="22"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="kTd-YJ-WbM">
                                                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="ahW-xZ-AFJ">
@@ -775,17 +735,8 @@ should appear</string>
                                                         <action selector="marginXChange:" target="-2" id="gsz-Z2-rHe"/>
                                                     </connections>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7iB-WA-f0f">
-                                                    <rect key="frame" x="362" y="143" width="54" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Vertical:" id="efe-G6-HzC">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Neu-QE-nZl">
-                                                    <rect key="frame" x="426" y="140" width="57" height="22"/>
+                                                    <rect key="frame" x="445" y="140" width="57" height="22"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="07I-O8-ews">
                                                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="HXe-VS-hoz">
@@ -799,6 +750,59 @@ should appear</string>
                                                         <action selector="marginYChange:" target="-2" id="0Hf-Ee-hLW"/>
                                                     </connections>
                                                 </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7iB-WA-f0f">
+                                                    <rect key="frame" x="381" y="143" width="54" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Vertical:" id="efe-G6-HzC">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <button toolTip="How long should the descriptions stay on screen" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="omO-3f-eoL">
+                                                    <rect key="frame" x="29" y="288" width="56" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Show" bezelStyle="regularSquare" imagePosition="left" inset="2" id="F7m-zV-2tM">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="showDescriptionsClickWithButton:" target="-2" id="LWZ-gL-jo6"/>
+                                                    </connections>
+                                                </button>
+                                                <button toolTip="Top left corner" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YXy-49-EyS">
+                                                    <rect key="frame" x="416" y="299" width="22" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="eqE-SR-JNx">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="descriptionCornerChange:" target="-2" id="5ZS-9A-ew0"/>
+                                                    </connections>
+                                                </button>
+                                                <button toolTip="Bottom left corner" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qhn-AB-VZ5">
+                                                    <rect key="frame" x="416" y="210" width="22" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="yWr-Bk-Lwd">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="descriptionCornerChange:" target="-2" id="iEg-Lk-xvS"/>
+                                                    </connections>
+                                                </button>
+                                                <button toolTip="Random corner" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u5m-Hq-OEe">
+                                                    <rect key="frame" x="416" y="177" width="119" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="radio" title=" Random corner" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="OKv-Q2-o61">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="descriptionCornerChange:" target="-2" id="yiB-fS-NDl"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
@@ -1159,14 +1163,14 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Brightness" identifier="" id="qTo-kf-FbK">
-                                        <view key="view" ambiguous="YES" id="dIK-5r-Sr4">
+                                        <view key="view" id="dIK-5r-Sr4">
                                             <rect key="frame" x="10" y="33" width="614" height="348"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZVJ-u3-Qdy">
-                                                    <rect key="frame" x="15" y="318" width="328" height="17"/>
+                                                    <rect key="frame" x="15" y="318" width="119" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Brightness control (this may crash, you are warned !):" id="o2O-NQ-Vut">
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Brightness control:" id="o2O-NQ-Vut">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
