@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -27,7 +29,11 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Aerial uses location services to calculate Sunset and Sunrise times from your position</string>
 	<key>NSPrincipalClass</key>
 	<string>AerialView</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Aerial uses location services to calculate Sunset and Sunrise times from your position</string>
 </dict>
 </plist>

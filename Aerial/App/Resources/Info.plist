@@ -31,8 +31,12 @@
 	</dict>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2015 John Coates. All rights reserved.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Aerial uses location services to calculate Sunset and Sunrise times from your position</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Aerial uses location services to calculate Sunset and Sunrise times from your position</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

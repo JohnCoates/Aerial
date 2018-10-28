@@ -23,6 +23,8 @@
 		03510C6F21834F38008F74F2 /* IOBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 03510C6E21834F38008F74F2 /* IOBridge.m */; };
 		03510C7021834FC3008F74F2 /* Aerial-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 03510C6D21834F38008F74F2 /* Aerial-Bridging-Header.h */; };
 		03510C7121834FC7008F74F2 /* IOBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 03510C6E21834F38008F74F2 /* IOBridge.m */; };
+		03510C732185EF76008F74F2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03510C722185EF76008F74F2 /* CoreLocation.framework */; };
+		03510C772185EF8F008F74F2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03510C722185EF76008F74F2 /* CoreLocation.framework */; };
 		03893CB3217749F0008E7125 /* ErrorLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03893CB2217749F0008E7125 /* ErrorLog.swift */; };
 		03893CB4217753AC008E7125 /* ErrorLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03893CB2217749F0008E7125 /* ErrorLog.swift */; };
 		0393857A2175D4B80040B850 /* AVPlayerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039385792175D4B80040B850 /* AVPlayerViewExtension.swift */; };
@@ -96,6 +98,7 @@
 		03510C6A21834EB2008F74F2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		03510C6D21834F38008F74F2 /* Aerial-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aerial-Bridging-Header.h"; sourceTree = "<group>"; };
 		03510C6E21834F38008F74F2 /* IOBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOBridge.m; sourceTree = "<group>"; };
+		03510C722185EF76008F74F2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		03893CB2217749F0008E7125 /* ErrorLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLog.swift; sourceTree = "<group>"; };
 		039385792175D4B80040B850 /* AVPlayerViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerViewExtension.swift; sourceTree = "<group>"; };
 		03958348217F4416008E8F9C /* Solar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solar.swift; sourceTree = "<group>"; };
@@ -138,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03510C772185EF8F008F74F2 /* CoreLocation.framework in Frameworks */,
 				03510C6B21834EB2008F74F2 /* IOKit.framework in Frameworks */,
 				FA143CE61BDA3EEF0041A82B /* AVKit.framework in Frameworks */,
 			);
@@ -154,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03510C732185EF76008F74F2 /* CoreLocation.framework in Frameworks */,
 				03510C6C21834EFF008F74F2 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,6 +197,7 @@
 		FA2D7AA01BDD849E009EA54C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03510C722185EF76008F74F2 /* CoreLocation.framework */,
 				03510C6A21834EB2008F74F2 /* IOKit.framework */,
 				FA143CE51BDA3EEF0041A82B /* AVKit.framework */,
 			);
