@@ -172,6 +172,8 @@ NSOutlineViewDelegate {
     
     var savedBrightness: Float?
     
+    var locationManager: CLLocationManager?
+    
     // MARK: - Init
     required init?(coder decoder: NSCoder) {
         self.fontManager = NSFontManager.shared
@@ -955,6 +957,7 @@ NSOutlineViewDelegate {
     }
 
     @IBAction func longitudeChange(_ sender: NSTextField) {
+        debugLog("longitudechange")
         preferences.longitude = sender.stringValue
         updateLatitudeLongitude()
     }
@@ -987,17 +990,17 @@ NSOutlineViewDelegate {
         
         tm.startLocationDetection()*/
         
-        let locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 100
-        locationManager.purpose = "Aerial uses your location to calculate sunrise and sunset times"
+        locationManager = CLLocationManager()
+        locationManager!.delegate = self
+        locationManager!.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager!.distanceFilter = 100
+        locationManager!.purpose = "Aerial uses your location to calculate sunrise and sunset times"
         
         if CLLocationManager.locationServicesEnabled() {
             debugLog("Location services enabled")
             //print(locationManager.location)
 
-            _ = CLLocationManager.authorizationStatus()
+            _ = CLLocationManager.authorizationStatus() 
             /*if status == .restricted || status == .denied {
                 print("Location Denied")
             }
@@ -1007,22 +1010,29 @@ NSOutlineViewDelegate {
             else if status == .authorized {
                 print("This should work?")
             }*/
-
-
-
+            locationManager!.startUpdatingLocation()
         } else {
             errorLog("Location services are disabled, please check your macOS settings!")
             return
         }
-        
+        /*
         if #available(OSX 10.14, *) {
             locationManager.requestLocation()
         } else {
             // Fallback on earlier versions
             locationManager.startUpdatingLocation()
-        }
+        }*/
     }
     
+    func pushCoordinates(_ coordinates: CLLocationCoordinate2D)
+    {
+        latitudeTextField.stringValue = String(coordinates.latitude)
+        longitudeTextField.stringValue = String(coordinates.longitude)
+
+        preferences.latitude = String(coordinates.latitude)
+        preferences.longitude = String(coordinates.longitude)
+        updateLatitudeLongitude()
+    }
     // MARK: - Brightness panel
     
     @IBAction func dimBrightnessClick(_ button: NSButton) {
@@ -1694,14 +1704,14 @@ NSOutlineViewDelegate {
 // MARK: - Core Location Delegates
 extension PreferencesWindowController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        debugLog("lmc")
+        debugLog("LM Coordinates")
         let currentLocation = locations[locations.count - 1]
-        debugLog("\(currentLocation)")
+        pushCoordinates(currentLocation.coordinate)
+        locationManager!.stopUpdatingLocation()     // We only want them once
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        debugLog("auth status change : \(status)")
-        
+        debugLog("LMauth status change : \(status.rawValue)")
     }
 
     /*func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
