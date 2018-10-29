@@ -246,8 +246,7 @@
 				0395835121807D1F008E8F9C /* thumbnail@2x.png */,
 				FAC36F3A1BE1756D007F2A20 /* PreferencesWindow.xib */,
 			);
-			name = Resources;
-			path = Aerial/Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		FAC36F3C1BE1756D007F2A20 /* Source */ = {

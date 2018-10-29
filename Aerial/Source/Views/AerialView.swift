@@ -720,6 +720,17 @@ class AerialView: ScreenSaverView {
             fontSize = 12
         }
 
+        // We get the horizontal margin
+        var mx = CGFloat(preferences.marginX!)
+
+        if !preferences.overrideMargins {
+            mx = 50
+        }
+        if isPreview {
+            mx = 10
+        }
+        let boundingRect = CGSize(width: layer!.visibleRect.size.width-2*mx, height: layer!.visibleRect.size.height)
+
         // Get font with a fallback in case
         var font = NSFont(name: "Helvetica Neue Medium", size: 28)
         if let tryFont = NSFont(name: preferences.fontName!,size: fontSize) {
@@ -735,13 +746,13 @@ class AerialView: ScreenSaverView {
         // Calculate bounding box
         let s = NSAttributedString(string: string, attributes: attributes)
         
-        var rect = s.boundingRect(with: layer!.visibleRect.size, options: [.truncatesLastVisibleLine, .usesLineFragmentOrigin])
+        var rect = s.boundingRect(with: boundingRect, options: [.truncatesLastVisibleLine, .usesLineFragmentOrigin])
         // Last line won't appear if we don't adjust 
         rect = CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width, height: rect.height+10)
         
         // Rebind frame
         self.textLayer.frame = rect
-
+        
         // At the position the user wants
         if preferences.descriptionCorner == Preferences.DescriptionCorner.random.rawValue {
             // Randomish, we still want something different
@@ -1026,15 +1037,19 @@ class AerialView: ScreenSaverView {
         if (position == Preferences.DescriptionCorner.topLeft.rawValue) {
             self.textLayer.anchorPoint = CGPoint(x: 0, y: 1)
             self.textLayer.position = CGPoint(x: mx, y: layer!.bounds.height-my)
+            self.textLayer.alignmentMode = .left
         } else if (position == Preferences.DescriptionCorner.bottomLeft.rawValue) {
             self.textLayer.anchorPoint = CGPoint(x: 0, y: 0)
             self.textLayer.position = CGPoint(x: mx, y: my)
+            self.textLayer.alignmentMode = .left
         } else if (position == Preferences.DescriptionCorner.topRight.rawValue) {
             self.textLayer.anchorPoint = CGPoint(x: 1, y: 1)
             self.textLayer.position = CGPoint(x: layer!.bounds.width-mx, y: layer!.bounds.height-my)
+            self.textLayer.alignmentMode = .right
         } else if (position == Preferences.DescriptionCorner.bottomRight.rawValue) {
             self.textLayer.anchorPoint = CGPoint(x: 1, y: 0)
             self.textLayer.position = CGPoint(x: layer!.bounds.width-mx, y: my)
+            self.textLayer.alignmentMode = .right
         }
     }
     
@@ -1044,10 +1059,10 @@ class AerialView: ScreenSaverView {
         fadeAnimation.values = [0, 0, 1, 1, 0] as [NSNumber]
         fadeAnimation.keyTimes = [0, Double( 1/duration ), Double( (1+AerialView.textFadeDuration)/duration ), Double( 1-AerialView.textFadeDuration/duration ), 1] as [NSNumber]
         fadeAnimation.duration = duration
-        
         return fadeAnimation
     }
-    
+
+    // Create a move animation
     func createMoveAnimation(layer : CALayer, to: CGPoint, duration: Double) -> CABasicAnimation {
         let moveAnimation = CABasicAnimation(keyPath: "position")
         moveAnimation.fromValue = layer.position

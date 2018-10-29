@@ -173,10 +173,14 @@ class TimeManagement : NSObject {
                 default:
                     sunriseString = dateFormatter.string(from: (solar?.astronomicalSunrise)!)
                     sunsetString = dateFormatter.string(from: (solar?.astronomicalSunset)!)
-
                 }
-                
-                return(true, "Today's Sunrise: " + sunriseString + "  Today's Sunset: " + sunsetString)
+
+                if preferences.solarMode == Preferences.SolarMode.official.rawValue ||
+                    preferences.solarMode == Preferences.SolarMode.strict.rawValue {
+                    return(true, "Today’s sunrise: " + sunriseString + "  Today’s sunset: " + sunsetString)
+                } else {
+                    return(true, "Today’s dawn: " + sunriseString + "  Today’s dusk: " + sunsetString)
+                }
             }
         }
 
@@ -219,7 +223,7 @@ class TimeManagement : NSObject {
                 let sunriseString = dateFormatter.string(from: sunriseDate!)
                 let sunsetString = dateFormatter.string(from: sunsetDate!)
 
-                return (true,"Today's Sunrise: " + sunriseString + "  Today's Sunset: " + sunsetString)
+                return (true,"Today’s sunrise: " + sunriseString + "  Today’s sunset: " + sunsetString)
 
             } else {
                 isNightShiftDataCached = true
