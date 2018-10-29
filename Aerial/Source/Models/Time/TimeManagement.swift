@@ -10,7 +10,7 @@ import Foundation
 import Cocoa
 import CoreLocation
 
-class TimeManagement {
+class TimeManagement : NSObject {
     static let sharedInstance = TimeManagement()
 
     // Night shift
@@ -21,7 +21,8 @@ class TimeManagement {
     var solar:Solar?
 
     // MARK: - Lifecycle
-    init() {
+    override init() {
+        super.init()
         debugLog("Time Management initialized")
         _ = calculateFromCoordinates()
     }
@@ -172,10 +173,14 @@ class TimeManagement {
                 default:
                     sunriseString = dateFormatter.string(from: (solar?.astronomicalSunrise)!)
                     sunsetString = dateFormatter.string(from: (solar?.astronomicalSunset)!)
-
                 }
-                
-                return(true, "Today's Sunrise: " + sunriseString + "  Today's Sunset: " + sunsetString)
+
+                if preferences.solarMode == Preferences.SolarMode.official.rawValue ||
+                    preferences.solarMode == Preferences.SolarMode.strict.rawValue {
+                    return(true, "Today’s sunrise: " + sunriseString + "  Today’s sunset: " + sunsetString)
+                } else {
+                    return(true, "Today’s dawn: " + sunriseString + "  Today’s dusk: " + sunsetString)
+                }
             }
         }
 
@@ -218,7 +223,7 @@ class TimeManagement {
                 let sunriseString = dateFormatter.string(from: sunriseDate!)
                 let sunsetString = dateFormatter.string(from: sunsetDate!)
 
-                return (true,"Today's Sunrise: " + sunriseString + "  Today's Sunset: " + sunsetString)
+                return (true,"Today’s sunrise: " + sunriseString + "  Today’s sunset: " + sunsetString)
 
             } else {
                 isNightShiftDataCached = true
@@ -381,4 +386,62 @@ class TimeManagement {
         }
     }
     
+    // MARK: - Location detection
+    func startLocationDetection()
+    {
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        
+        if CLLocationManager.locationServicesEnabled() {
+            debugLog("Location services enabled")
+            locationManager.startUpdatingLocation()
+        } else {
+            errorLog("Location services are disabled, please check your macOS settings!")
+        }
+        
+        /*let status = CLLocationManager.authorizationStatus()
+        if status == .restricted || status == .denied {
+            
+            print("Location Denied")
+            
+            return
+        }
+        else if status == .notDetermined {
+            
+            print("Show ask for location")
+            
+            return
+        }
+        else if status == .authorized {
+            print("This should work?")
+            
+            return
+        }*/
+
+        if #available(OSX 10.14, *) {
+            print("reqloc")
+            locationManager.requestLocation()
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
+}
+
+// MARK: - Core Location Delegates
+extension TimeManagement : CLLocationManagerDelegate {
+/*    func locationManager(_ manager: CLLocationManager, didUpdateTo newLocation: CLLocation, from oldLocation: CLLocation) {
+        
+        print("\(newLocation) \(oldLocation)")
+        
+    }*/
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let currentLocation = locations[locations.count - 1]
+        print("\(currentLocation)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        errorLog("Location Manager error : \(error)")
+    }
 }

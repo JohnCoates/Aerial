@@ -11,7 +11,7 @@ import AVKit
 import AVFoundation
 import ScreenSaver
 import VideoToolbox
-
+import CoreLocation
 class TimeOfDay {
     let title: String
     var videos: [AerialVideo] = [AerialVideo]()
@@ -95,6 +95,7 @@ NSOutlineViewDelegate {
 
     @IBOutlet var latitudeTextField: NSTextField!
     @IBOutlet var longitudeTextField: NSTextField!
+    @IBOutlet var findCoordinatesButton: NSButton!
     
     @IBOutlet var calculateCoordinatesLabel: NSTextField!
     
@@ -171,6 +172,8 @@ NSOutlineViewDelegate {
     
     var savedBrightness: Float?
     
+    var locationManager: CLLocationManager?
+    
     // MARK: - Init
     required init?(coder decoder: NSCoder) {
         self.fontManager = NSFontManager.shared
@@ -208,6 +211,7 @@ NSOutlineViewDelegate {
         longitudeFormatter.maximumSignificantDigits = 10
 
         
+        
         // This used to grab the preview player and put it in our own video preview thing.
         // While kinda cool, it showed a random video that wasn't selected, and with new lifecycle, it was paused
         /*if let previewPlayer = AerialView.previewPlayer {
@@ -233,6 +237,7 @@ NSOutlineViewDelegate {
             iconTime1.image = NSImage(named: NSImage.touchBarHistoryTemplateName)
             iconTime2.image = NSImage(named: NSImage.touchBarComposeTemplateName)
             iconTime3.image = NSImage(named: NSImage.touchBarOpenInBrowserTemplateName)
+            findCoordinatesButton.image = NSImage(named: NSImage.touchBarOpenInBrowserTemplateName)
         }
         
         // Help popover, GVA detection requires 10.13
@@ -952,6 +957,7 @@ NSOutlineViewDelegate {
     }
 
     @IBAction func longitudeChange(_ sender: NSTextField) {
+        debugLog("longitudechange")
         preferences.longitude = sender.stringValue
         updateLatitudeLongitude()
     }
@@ -976,6 +982,56 @@ NSOutlineViewDelegate {
         let workspace = NSWorkspace.shared
         let url = URL(string: "https://en.wikipedia.org/wiki/Twilight")!
         workspace.open(url)
+    }
+    
+    @IBAction func findCoordinatesButtonClick(_ sender: NSButton) {
+        debugLog("UI findCoordinatesButton")
+        /*let tm = TimeManagement.sharedInstance
+        
+        tm.startLocationDetection()*/
+        
+        locationManager = CLLocationManager()
+        locationManager!.delegate = self
+        locationManager!.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager!.distanceFilter = 100
+        locationManager!.purpose = "Aerial uses your location to calculate sunrise and sunset times"
+        
+        if CLLocationManager.locationServicesEnabled() {
+            debugLog("Location services enabled")
+            //print(locationManager.location)
+
+            _ = CLLocationManager.authorizationStatus() 
+            /*if status == .restricted || status == .denied {
+                print("Location Denied")
+            }
+            else if status == .notDetermined {
+                print("Show ask for location")
+            }
+            else if status == .authorized {
+                print("This should work?")
+            }*/
+            locationManager!.startUpdatingLocation()
+        } else {
+            errorLog("Location services are disabled, please check your macOS settings!")
+            return
+        }
+        /*
+        if #available(OSX 10.14, *) {
+            locationManager.requestLocation()
+        } else {
+            // Fallback on earlier versions
+            locationManager.startUpdatingLocation()
+        }*/
+    }
+    
+    func pushCoordinates(_ coordinates: CLLocationCoordinate2D)
+    {
+        latitudeTextField.stringValue = String(coordinates.latitude)
+        longitudeTextField.stringValue = String(coordinates.longitude)
+
+        preferences.latitude = String(coordinates.latitude)
+        preferences.longitude = String(coordinates.longitude)
+        updateLatitudeLongitude()
     }
     // MARK: - Brightness panel
     
@@ -1642,6 +1698,24 @@ NSOutlineViewDelegate {
     
     func videoDownload(_ videoDownload: VideoDownload, receivedBytes: Int, progress: Float) {
         currentProgress.doubleValue = Double(progress)
+    }*/
+}
+
+// MARK: - Core Location Delegates
+extension PreferencesWindowController : CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        debugLog("LM Coordinates")
+        let currentLocation = locations[locations.count - 1]
+        pushCoordinates(currentLocation.coordinate)
+        locationManager!.stopUpdatingLocation()     // We only want them once
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        debugLog("LMauth status change : \(status.rawValue)")
+    }
+
+    /*func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        errorLog("Location Manager error : \(error)")
     }*/
 }
 
