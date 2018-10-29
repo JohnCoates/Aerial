@@ -15,14 +15,10 @@ Aerial is completely open source, so feel free to contribute to its development.
 ###### Windows user? Try [cDima/Aerial](https://github.com/cDima/Aerial/)
 ###### Linux user? Try [graysky2/xscreensaver-aerial](https://github.com/graysky2/xscreensaver-aerial/)
 
-#### Coded with Love by John Coates
-
-[![Twitter](http://i.imgur.com/KzOiue1.png)](https://twitter.com/JohnCoatesDev)
-[![Email](http://i.imgur.com/FvDZudR.png)](mailto:john@johncoates.me)
+#### Coded with Love by John Coates ([Twitter](https://twitter.com/JohnCoatesDev), [Email](mailto:john@johncoates.me))
 
 Version 1.4 is also maintained by:
 - [Guillaume Louel](https://github.com/glouel) ([Twitter](https://twitter.com/C_Wiz))
-- [Ethan Setnik](https://github.com/esetnik)
 
 You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/graphs/contributors). 
 
@@ -31,7 +27,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 ### Manual Installation
 *Rather install from Terminal or have auto-updates? Look at the Brew Cask section below!*
 
-1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.3/Aerial.saver.zip) (Version 1.4.3, October 23, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.3)), (**If you are experiencing crashes with 1.4.3, we highly suggest you download [1.4.4 beta 4](https://github.com/JohnCoates/Aerial/releases/download/v1.4.4beta4/Aerial.saver.zip) (See [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.4beta4))**.
+1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.4/Aerial.saver.zip) (Version 1.4.4, October 29, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.4)).
 2. Unzip the downloaded file.
 3. Open **Aerial.saver** and confirm installation.
 
@@ -39,7 +35,7 @@ If Aerial.saver could not be opened, place Aerial.saver in `~/Library/Screen Sav
 
 **Important**: Please note that if you are upgrading from a previous version, we strongly recommend you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated. 
 
-### Brew Cask Support - (Updated for 1.4.3)
+### Brew Cask Support - (1.4.4 coming soon)
 
 If you're looking to install Aerial across many systems, remotely, or simply from Terminal we recommend [Brew Cask](https://caskroom.github.io). Prefer this method if you're looking for auto-updates.
 
@@ -52,7 +48,7 @@ To upgrade Aerial, run `brew cask upgrade` in Terminal.
 1. Open `System Preferences` -> `Desktop & Screen Saver` -> `Screen Saver`
 2. Choose Aerial and click on Screen Saver Options to select your settings.
 
-![screen shot 2018-10-11 at 14 47 09](https://user-images.githubusercontent.com/37544189/46805565-ad702900-cd65-11e8-9779-91243ee9e634.png)
+![screen shot 2018-10-29 at 13 17 23](https://user-images.githubusercontent.com/37544189/47649971-1f76a980-db7f-11e8-97be-d1f90b943c9d.png)
 
 ## Uninstallation
 
@@ -64,19 +60,26 @@ There are three options to uninstall Aerial from your Mac.
 
 You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aerial`. This is where Aerial stores the cached copies of the Aerial videos. The last thing, you may want to delete the preferences `plist`. The file is `/Users/YOURUSERNAME/Library/Preferences/ByHost/com.JohnCoates.Aerial.{UUID}.plist`. It's highly recommended to remove that file if you purge the Cache folder.
 
-## New features in version 1.4+
+## New features 
 
-![screen shot 2018-10-11 at 14 49 52](https://user-images.githubusercontent.com/37544189/46805573-b3660a00-cd65-11e8-9e40-152d170ffd8e.png)
+![screen shot 2018-10-29 at 13 21 05](https://user-images.githubusercontent.com/37544189/47649972-1f76a980-db7f-11e8-910b-1d5d50931ae2.png)
 
 * **Every Aerial video:** From the very first Aerials in San Francisco to the new space videos shot from the ISS! Now with better titles too so you can find your favorite videos faster.
 * **4K HEVC:** With the launch of Apple TV 4K, many videos are now available in this format. Aerial will show you the best format available based on your preferences.
-* **Different videos based on time:** Want to see night videos at night? You can either specify your sunset or sunrise time manually or, if your Mac is compatible with Night Shift (See [here for a list of compatible Macs](https://support.apple.com/en-us/HT207513)), get those automatically (You do not need to enable Night Shift).
+
+![screen shot 2018-10-29 at 13 24 36](https://user-images.githubusercontent.com/37544189/47649973-1f76a980-db7f-11e8-8aef-301307d48fa2.png)
+
+* **Different videos based on time:** Want to see night videos at night? Aerial can calculate for you the dusk/dawn times. You can also use Night Shift sunset and sunrise detection (See [here for a list of compatible Macs](https://support.apple.com/en-us/HT207513), you do not need to enable Night Shift).
 * **Feeling Dark?:** Aerial is now compatible with Dark Mode in macOS 10.14 Mojave and can play night videos when Dark Mode is enabled.
 
-![screen shot 2018-10-11 at 14 50 18](https://user-images.githubusercontent.com/37544189/46805577-b5c86400-cd65-11e8-8c04-252c5fa6c1eb.png)
+![screen shot 2018-10-29 at 13 24 46](https://user-images.githubusercontent.com/37544189/47649974-1f76a980-db7f-11e8-8339-3f0424652b8c.png)
 
-* **Descriptions:** Wondering where an Aerial view was shot? Aerial can now tell you as they play. New in 1.4.1, we even have extra descriptions on the "original" videos (London, New York, San Francisco...)
-* **Full offline mode::** Behind a firewall? Just copy the cache folder from another Mac and you are all set. You can also disable all streaming. 
+* **Descriptions:** Wondering where an Aerial view was shot? Aerial can now tell you as they play. We even have extended descriptions written by our community of users.
+
+![screen shot 2018-10-29 at 13 25 10](https://user-images.githubusercontent.com/37544189/47649975-200f4000-db7f-11e8-9e8b-f75c4a5ebde4.png)
+
+* **Brightness control:** Aerial can progressively dim your screens brightness before your Mac goes to sleep. You can even enable this feature only at night, or only on battery if you prefer.
+* **Full offline mode:** Behind a firewall? Just copy the cache folder from another Mac and you are all set. You can also disable all streaming. 
 * **Better cache management:** You can now cache your favorite videos individually, no need to grab them all. Or just stream them as you go, they'll get cached automatically too.
 * **Clock:** We even have a properly styled clock if that's your thing! 
 * **And many bug fixes!**
@@ -121,7 +124,7 @@ You can easily check for yourself what to expect by opening a video in Quicktime
 - Not seeing extended descriptions: Make sure you have version 1.4.2 or above.
 - Black screen: If you are behind a firewall (Like Little Snitch or Hands Off!) try creating exceptions for Aerial to allow it access to Apple's servers. Be sure the applications `ScreenSaverEngine.app` and `System Preferences.app` are not being blocked access to *.phobos.apple.com, *.phobos.apple.com.edgesuite.net and sylvan.apple.com. If that isn't an option, please look at the Offline mode section. 
 - "You cannot use the Aerial screen saver with this version of macOS." error: Select Aerial, close System Preferences with Aerial still selected, re-open System Preferences and Aerial should now work. This is a known bug with Swift screensavers in macOS/OS X reported to Apple as [rdar://25569037](http://www.openradar.me/25569037).
-- High CPU usage/fan spinning all of a sudden: If you correctly configured the preferred video format according to your Mac and still experience high CPU usage/fan spinning all of a sudden, please look for the cause with `Activity Monitor`, you may see   a `com.apple.photos.ImageConversionService` responsible for this CPU load. This is the iCloud Photos process, you can find more about [what it does here](https://support.apple.com/en-gu/HT204264) and how to pause it.
+- High CPU usage/fan spinning all of a sudden: If you correctly configured the preferred video format according to your Mac and still experience high CPU usage/fan spinning all of a sudden, please look for the cause with `Activity Monitor`, you may see a `com.apple.photos.ImageConversionService` responsible for this CPU load. This is the iCloud Photos process, you can find more about [what it does here](https://support.apple.com/en-gu/HT204264) and how to pause it.
 - Can't use Aerial as a login screensaver: As far as we know, using 3rd party screensavers before login is no longer possible on modern versions of macOS. More about this [here](https://github.com/JohnCoates/Aerial/issues/571).
 
 
