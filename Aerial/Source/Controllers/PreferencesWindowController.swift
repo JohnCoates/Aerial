@@ -282,7 +282,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         // Grab preferred language as proper string
         let printOutputLocale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
         if let deviceLanguageName: String = printOutputLocale.displayName(forKey: NSLocale.Key.identifier, value: Locale.preferredLanguages[0]) {
-            currentLocaleLabel.stringValue = "Preferred language : \(deviceLanguageName)"
+            currentLocaleLabel.stringValue = "Preferred language: \(deviceLanguageName)"
         } else {
             currentLocaleLabel.stringValue = ""
         }
@@ -850,7 +850,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             byteCountFormatter.countStyle = .file
             let sizeToDisplay = byteCountFormatter.string(for: folderSize) ?? ""
             debugLog("Cache size : \(sizeToDisplay)")
-            cacheSizeTextField.stringValue = "Cache all videos (current cache size \(sizeToDisplay))"
+            cacheSizeTextField.stringValue = "Cache all videos (Current cache size \(sizeToDisplay))"
         }
     }
 
@@ -1083,7 +1083,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         }
 
         if event.type != .leftMouseUp && event.type != .leftMouseDown && event.type != .leftMouseDragged {
-            warnLog("Unexepected event type \(event.type)")
+            //warnLog("Unexepected event type \(event.type)")
         }
 
         if event.type == .leftMouseUp {
