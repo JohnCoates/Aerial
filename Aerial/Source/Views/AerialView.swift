@@ -12,35 +12,36 @@ import AVFoundation
 import AVKit
 
 @objc(AerialView)
+// swiftlint:disable:next type_body_length
 class AerialView: ScreenSaverView {
     var playerLayer: AVPlayerLayer!
     var textLayer: CATextLayer!
     var clockLayer: CATextLayer!
     var messageLayer: CATextLayer!
     var lastCorner = -1
-    var clockTimer : Timer?
-    
+    var clockTimer: Timer?
+
     var preferencesController: PreferencesWindowController?
     static var players: [AVPlayer] = [AVPlayer]()
     static var previewPlayer: AVPlayer?
     static var previewView: AerialView?
-    
+
     var player: AVPlayer?
     var currentVideo: AerialVideo?
-    
+
     var observerWasSet = false
     var hasStartedPlaying = false
     var wasStopped = false
     var isDisabled = false
-    var timeObserver : Any?
+    var timeObserver: Any?
 
     var brightnessToRestore: Float?
-    
+
     static var shouldFade: Bool {
         let preferences = Preferences.sharedInstance
         return (preferences.fadeMode != Preferences.FadeMode.disabled.rawValue)
     }
-    
+
     static var fadeDuration: Double {
         let preferences = Preferences.sharedInstance
         switch preferences.fadeMode {
@@ -54,7 +55,7 @@ class AerialView: ScreenSaverView {
             return 0.10
         }
     }
-    
+
     static var textFadeDuration: Double {
         let preferences = Preferences.sharedInstance
         switch preferences.fadeModeText {
@@ -68,18 +69,20 @@ class AerialView: ScreenSaverView {
             return 0.10
         }
     }
-    
+
     static var sharingPlayers: Bool {
         let preferences = Preferences.sharedInstance
         return (preferences.multiMonitorMode == Preferences.MultiMonitorMode.mirrored.rawValue)
     }
-    
+
     static var sharedViews: [AerialView] = []
-    static var instanciatedViews: [AerialView] = []     // because of lifecycle in Preview, we may pile up old/no longer shared instanciated views that we need to track to not reuse
+    // because of lifecycle in Preview, we may pile up old/no longer
+    // shared instanciated views that we need to track to not reuse
+    static var instanciatedViews: [AerialView] = []
     //var instanciatedIndex: Int
-    
+
     // MARK: - Shared Player
-    
+
     static var singlePlayerAlreadySetup: Bool = false
     static var sharedPlayerIndex: Int?
 
@@ -96,10 +99,10 @@ class AerialView: ScreenSaverView {
                 return _player!
             }
         }
-        
+
         return Static.player
     }
-    
+
     // MARK: - Init / Setup
     // This is the one used by System Preferences
     override init?(frame: NSRect, isPreview: Bool) {
@@ -108,53 +111,52 @@ class AerialView: ScreenSaverView {
         self.animationTimeInterval = 1.0 / 30.0
         setup()
     }
-    
+
     // This is the one used by App
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         debugLog("avInit2")
         setup()
     }
-    
+
     deinit {
         debugLog("\(self.description) deinit AerialView")
         NotificationCenter.default.removeObserver(self)
-        
-        
-        
+
         // set player item to nil if not preview player
         if player != AerialView.previewPlayer {
             player?.rate = 0
             player?.replaceCurrentItem(with: nil)
         }
-        
+
         guard let player = self.player else {
             return
         }
-        
+
         // Remove from player index
-        
+
         let indexMaybe = AerialView.players.index(of: player)
-        
+
         guard let index = indexMaybe else {
             return
         }
-        
+
         AerialView.players.remove(at: index)
     }
-    
+
     func setDimTimers() {
         if #available(OSX 10.12, *) {
             let preferences = Preferences.sharedInstance
             if preferences.dimBrightness && preferences.dimInMinutes! > 0 && preferences.startDim != preferences.endDim {
+                // swiftlint:disable:next line_length
                 debugLog("seting brightness timers from \(String(describing: preferences.startDim)) to \(String(describing: preferences.endDim)) in \(String(describing: preferences.dimInMinutes))")
                 let interval = preferences.dimInMinutes! * 6 // * 60 / 10, we make 10 intermediate steps
-                
-                for i in 1...10 {
-                    _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(interval*i), repeats: false) { (Timer) in
+
+                for idx in 1...10 {
+                    _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(interval * idx), repeats: false) { (_) in
                         let timeManagement = TimeManagement.sharedInstance
-                        let val = preferences.startDim! - ((preferences.startDim!-preferences.endDim!)/10 * Double(i))
-                        debugLog("Firing event \(i) brightness to \(val)")
+                        let val = preferences.startDim! - ((preferences.startDim! - preferences.endDim!) / 10 * Double(idx))
+                        debugLog("Firing event \(idx) brightness to \(val)")
                         timeManagement.setBrightness(level: Float(val))
                     }
                 }
@@ -164,7 +166,8 @@ class AerialView: ScreenSaverView {
             warnLog("Brightness control not available < macOS 10.12")
         }
     }
-    
+
+    // swiftlint:disable:next cyclomatic_complexity
     func setup() {
         debugLog("\(self.description) AerialView setup init")
         let preferences = Preferences.sharedInstance
@@ -174,8 +177,8 @@ class AerialView: ScreenSaverView {
         if preferences.dimBrightness {
             if !isPreview && brightnessToRestore == nil {
                 let timeManagement = TimeManagement.sharedInstance
-                let (should,to) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
-                
+                let (should, to) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
+
                 if !preferences.dimOnlyAtNight || (preferences.dimOnlyAtNight && should && to == "night") {
                     if !preferences.dimOnlyOnBattery || (preferences.dimOnlyOnBattery && timeManagement.isOnBattery()) {
                         brightnessToRestore = timeManagement.getBrightness()
@@ -187,31 +190,31 @@ class AerialView: ScreenSaverView {
             }
         }
 
-        if (AerialView.singlePlayerAlreadySetup) {
+        if AerialView.singlePlayerAlreadySetup {
             debugLog("singlePlayerAlreadySetup, checking if was stopped to purge")
             // On previews, it's possible that our shared player was stopped and is not reusable
             if AerialView.instanciatedViews[AerialView.sharedPlayerIndex!].wasStopped {
                 debugLog("Purging previous singlePlayer")
                 AerialView.singlePlayerAlreadySetup = false
                 AerialView.sharedPlayerIndex = nil
-                
+
                 AerialView.instanciatedViews = [AerialView]()   // Clear the list of instanciated stuff
                 AerialView.sharedViews = [AerialView]()         // And the list of sharedViews
             }
         }
-        
+
         var localPlayer: AVPlayer?
-        
+
         let notPreview = !isPreview
         debugLog("\(self.description) isPreview : \(isPreview)")
-        
+
         if notPreview {
             debugLog("\(self.description) singlePlayerAlreadySetup \(AerialView.singlePlayerAlreadySetup)")
-            if (AerialView.singlePlayerAlreadySetup && preferences.multiMonitorMode == Preferences.MultiMonitorMode.mainOnly.rawValue) {
+            if AerialView.singlePlayerAlreadySetup && preferences.multiMonitorMode == Preferences.MultiMonitorMode.mainOnly.rawValue {
                 isDisabled = true
                 return
             }
-            
+
             // check if we should share preview's player
             //let noPlayers = (AerialView.players.count == 0)
             let previewPlayerExists = (AerialView.previewPlayer != nil)
@@ -223,14 +226,14 @@ class AerialView: ScreenSaverView {
         } else {
             AerialView.previewView = self
         }
-        
+
         if AerialView.sharingPlayers {
             AerialView.sharedViews.append(self)
         }
-        
+
         // We track all views here to clean the sharing code
         AerialView.instanciatedViews.append(self)
-        
+
         if localPlayer == nil {
             debugLog("\(self.description) no local player")
 
@@ -238,30 +241,30 @@ class AerialView: ScreenSaverView {
                 /*if AerialView.previewPlayer != nil {
                     localPlayer = AerialView.previewPlayer
                 } else {*/
-                
+
                 localPlayer = AerialView.sharedPlayer
                 //}
             } else {
                 localPlayer = AVPlayer()
             }
         }
-        
+
         guard let player = localPlayer else {
             errorLog("\(self.description) Couldn't create AVPlayer!")
             return
         }
-        
+
         self.player = player
-        
+
         if self.isPreview {
             AerialView.previewPlayer = player
         } else if !AerialView.sharingPlayers {
             // add to player list
             AerialView.players.append(player)
         }
-        
+
         setupPlayerLayer(withPlayer: player)
-        
+
         if AerialView.sharingPlayers && AerialView.singlePlayerAlreadySetup {
             self.playerLayer.player = AerialView.instanciatedViews[AerialView.sharedPlayerIndex!].player
             self.playerLayer.opacity = 0
@@ -273,16 +276,15 @@ class AerialView: ScreenSaverView {
             AerialView.singlePlayerAlreadySetup = true
             AerialView.sharedPlayerIndex = AerialView.instanciatedViews.count-1
         }
-        
-        ManifestLoader.instance.addCallback { videos in
+
+        ManifestLoader.instance.addCallback { _ in
             self.playNextVideo()
         }
     }
-    
+
     override func viewDidChangeBackingProperties() {
         debugLog("\(self.description) backing change \((self.window?.backingScaleFactor) ?? 1.0) isDisabled: \(isDisabled)")
-        if (!isDisabled)
-        {
+        if !isDisabled {
             self.layer!.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
             self.playerLayer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
             self.textLayer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
@@ -290,10 +292,10 @@ class AerialView: ScreenSaverView {
             self.messageLayer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
         }
     }
-    
+
     func setupPlayerLayer(withPlayer player: AVPlayer) {
         debugLog("\(self.description) setupPlayerLayer")
-        
+
         self.layer = CALayer()
         guard let layer = self.layer else {
             errorLog("\(self.description) Couldn't create CALayer")
@@ -306,7 +308,7 @@ class AerialView: ScreenSaverView {
 
         //self.
         debugLog("\(self.description) setting up player layer with frame: \(self.bounds) / \(self.frame)")
-        
+
         playerLayer = AVPlayerLayer(player: player)
         if #available(OSX 10.10, *) {
             playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
@@ -315,7 +317,7 @@ class AerialView: ScreenSaverView {
         playerLayer.frame = layer.bounds
         //playerLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(playerLayer)
-        
+
         textLayer = CATextLayer()
         textLayer.frame = layer.bounds
         textLayer.opacity = 0
@@ -325,7 +327,7 @@ class AerialView: ScreenSaverView {
         textLayer.shadowColor = CGColor.black
         //textLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(textLayer)
-        
+
         // Clock Layer
         clockLayer = CATextLayer()
         clockLayer.opacity = 0
@@ -335,7 +337,7 @@ class AerialView: ScreenSaverView {
         textLayer.shadowColor = CGColor.black
         //clockLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(clockLayer)
-        
+
         // Message Layer
         messageLayer = CATextLayer()
         messageLayer.opacity = 0
@@ -346,7 +348,7 @@ class AerialView: ScreenSaverView {
         //messageLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(messageLayer)
     }
-    
+
     // MARK: - Lifecycle stuff
 /*    override func draw(_ rect: NSRect) {
     }*/
@@ -354,13 +356,13 @@ class AerialView: ScreenSaverView {
         super.startAnimation()
         debugLog("\(self.description) startAnimation")
 
-        if !isDisabled{
+        if !isDisabled {
             // Previews may be restarted, but our layer will get hidden (somehow) so show it back
-            if (isPreview && player?.currentTime() != CMTime.zero) {
+            if isPreview && player?.currentTime() != CMTime.zero {
                 playerLayer.opacity = 1
                 player?.play()
             }
-            
+
             /*if player?.rate == 0 {
              
             }*/
@@ -374,9 +376,9 @@ class AerialView: ScreenSaverView {
         if !isDisabled {
             player?.pause()
         }
-        
+
         let preferences = Preferences.sharedInstance
-        
+
         if preferences.dimBrightness {
             if !isPreview && brightnessToRestore != nil {
                 let timeManagement = TimeManagement.sharedInstance
@@ -388,29 +390,32 @@ class AerialView: ScreenSaverView {
     }
 
     // MARK: - AVPlayerItem Notifications
-    
+
     @objc func playerItemFailedtoPlayToEnd(_ aNotification: Notification) {
         warnLog("\(self.description) AVPlayerItemFailedToPlayToEndTimeNotification \(aNotification)")
         playNextVideo()
     }
-    
+
     @objc func playerItemNewErrorLogEntryNotification(_ aNotification: Notification) {
         warnLog("\(self.description) AVPlayerItemNewErrorLogEntryNotification \(aNotification)")
     }
-    
+
     @objc func playerItemPlaybackStalledNotification(_ aNotification: Notification) {
         warnLog("\(self.description) AVPlayerItemPlaybackStalledNotification \(aNotification)")
     }
-    
+
     @objc func playerItemDidReachEnd(_ aNotification: Notification) {
         debugLog("\(self.description) played did reach end")
         debugLog("\(self.description) notification: \(aNotification)")
         playNextVideo()
         debugLog("\(self.description) playing next video for player \(String(describing: player))")
     }
-    
+
     // Wait for the player to be ready
-    internal override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    // swiftlint:disable:next block_based_kvo
+    internal override func observeValue(forKeyPath keyPath: String?,
+                                        of object: Any?, change: [NSKeyValueChangeKey: Any]?,
+                                        context: UnsafeMutableRawPointer?) {
         debugLog("\(self.description) observeValue \(String(describing: keyPath))")
         if self.playerLayer.isReadyForDisplay {
             self.player!.play()
@@ -424,30 +429,30 @@ class AerialView: ScreenSaverView {
             } else {
                 self.addPlayerFades(player: self.player!, playerLayer: self.playerLayer, video: self.currentVideo!)
             }
-            
+
             // Descriptions on main only for now
-            
+
             self.addDescriptions(player: self.player!, video: self.currentVideo!)
         }
     }
-    
+
     // MARK: - playNextVideo()
     func playNextVideo() {
         //let timeManagement = TimeManagement.sharedInstance
 
         let notificationCenter = NotificationCenter.default
         // Clear everything
-        if (timeObserver != nil) {
+        if timeObserver != nil {
             self.player!.removeTimeObserver(timeObserver!)
             timeObserver = nil
         }
         self.textLayer.removeAllAnimations()
         self.clockLayer.removeAllAnimations()
         self.messageLayer.removeAllAnimations()
-        
+
         // remove old entries
         notificationCenter.removeObserver(self)
-        
+
         let player = AVPlayer()
         // play another video
         let oldPlayer = self.player
@@ -461,16 +466,16 @@ class AerialView: ScreenSaverView {
         if self.isPreview {
             AerialView.previewPlayer = player
         }
-        
+
         debugLog("\(self.description) Setting player for all player layers in \(AerialView.sharedViews)")
         for view in AerialView.sharedViews {
             view.playerLayer.player = player
         }
-        
+
         if oldPlayer == AerialView.previewPlayer {
             AerialView.previewView?.playerLayer.player = self.player
         }
-        
+
         // get a list of current videos that should be excluded from the candidate selection
         // for the next video. This prevents the same video from being shown twice in a row
         // as well as the same video being shown on two different monitors even when sharingPlayers
@@ -480,7 +485,7 @@ class AerialView: ScreenSaverView {
         }
 
         let randomVideo = ManifestLoader.instance.randomVideo(excluding: currentVideos)
-        
+
         guard let video = randomVideo else {
             errorLog("\(self.description) Error grabbing random video!")
             return
@@ -489,13 +494,10 @@ class AerialView: ScreenSaverView {
 
         // Workaround to avoid local playback making network calls
         let item = AerialPlayerItem(video: video)
-        if !video.isAvailableOffline
-        {
+        if !video.isAvailableOffline {
             player.replaceCurrentItem(with: item)
             debugLog("\(self.description) streaming video (not fully available offline) : \(video.url)")
-        }
-        else
-        {
+        } else {
             let localurl = URL(fileURLWithPath: VideoCache.cachePath(forVideo: video)!)
             let localitem = AVPlayerItem(url: localurl)
             player.replaceCurrentItem(with: localitem)
@@ -511,7 +513,7 @@ class AerialView: ScreenSaverView {
             errorLog("\(self.description) No current item!")
             return
         }
-        
+
         debugLog("\(self.description) observing current item \(currentItem)")
 
         // Descriptions and fades are set when we begin playback
@@ -519,7 +521,7 @@ class AerialView: ScreenSaverView {
             observerWasSet = true
             playerLayer.addObserver(self, forKeyPath: "readyForDisplay", options: .initial, context: nil)
         }
-        
+
         notificationCenter.addObserver(self,
                                        selector: #selector(AerialView.playerItemDidReachEnd(_:)),
                                        name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
@@ -538,11 +540,10 @@ class AerialView: ScreenSaverView {
                                        object: currentItem)
         player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
     }
-    
+
     // MARK: - Extra Animations
 
-    private func addPlayerFades(player: AVPlayer, playerLayer: AVPlayerLayer, video: AerialVideo)
-    {
+    private func addPlayerFades(player: AVPlayer, playerLayer: AVPlayerLayer, video: AerialVideo) {
         // We only fade in/out if we have duration
         if video.duration > 0 && AerialView.shouldFade {
             playerLayer.opacity = 0
@@ -552,22 +553,20 @@ class AerialView: ScreenSaverView {
             fadeAnimation.duration = video.duration
             fadeAnimation.calculationMode = CAAnimationCalculationMode.cubic
             playerLayer.add(fadeAnimation, forKey: "mainfade")
-        }
-        else {
+        } else {
             playerLayer.opacity = 1.0
         }
     }
-    
-    private func addDescriptions(player: AVPlayer, video: AerialVideo)
-    {
+
+    // swiftlint:disable:next cyclomatic_complexity
+    private func addDescriptions(player: AVPlayer, video: AerialVideo) {
         let poiStringProvider = PoiStringProvider.sharedInstance
         let preferences = Preferences.sharedInstance
-        
-        if (preferences.showDescriptions)
-        {
+
+        if preferences.showDescriptions {
             // Preventively, make sure we have poi as tvOS11/10 videos won't have them
-            if (video.poi.count > 0 && poiStringProvider.loadedDescriptions) || (preferences.useCommunityDescriptions && video.communityPoi.count > 0 && poiStringProvider.getPoiKeys(video: video).count > 0)
-            {
+            if (!video.poi.isEmpty && poiStringProvider.loadedDescriptions) ||
+                (preferences.useCommunityDescriptions && !video.communityPoi.isEmpty && !poiStringProvider.getPoiKeys(video: video).isEmpty) {
                 // Collect all the timestamps from the JSON
                 var times = [NSValue]()
                 let keys = poiStringProvider.getPoiKeys(video: video)
@@ -577,56 +576,47 @@ class AerialView: ScreenSaverView {
                     times.append(NSValue(time: CMTime(seconds: timeStamp, preferredTimescale: 1)))
                 }
                 // The JSON isn't sorted so we fix that
-                times.sort(by: { ($0 as! CMTime).seconds < ($1 as! CMTime).seconds } )
-                
+                times.sort(by: { ($0 as! CMTime).seconds < ($1 as! CMTime).seconds })
+
                 // Animate the very first one on it's own
                 let str = poiStringProvider.getString(key: keys["0"]!, video: video)
 
-                var fadeAnimation:CAKeyframeAnimation
-                
-                if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)
-                {
+                var fadeAnimation: CAKeyframeAnimation
+
+                if preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue {
                     fadeAnimation = createFadeInOutAnimation(duration: 11)
-                }
-                else
-                {
+                } else {
                     // Always show mode, if there's more than one point, use that, if not either use known video duration or some hardcoded duration
-                    if times.count > 1
-                    {
+                    if times.count > 1 {
                         let duration = (times[1] as! CMTime).seconds - 1
                         fadeAnimation = createFadeInOutAnimation(duration: duration)
-                    }
-                    else if video.duration > 0
-                    {
+                    } else if video.duration > 0 {
                         fadeAnimation = createFadeInOutAnimation(duration: video.duration - 1)
-                    }
-                    else
-                    {
+                    } else {
                         // We should have the duration, if we don't, hardcode the longest known duration
                         fadeAnimation = createFadeInOutAnimation(duration: 807)
                     }
                 }
 
                 self.textLayer.add(fadeAnimation, forKey: "textfade")
-                if (video.duration > 0) {
+                if video.duration > 0 {
                     setupTextLayer(string: str, duration: fadeAnimation.duration, isInitial: true, totalDuration: video.duration - 1)
                 } else {
                     setupTextLayer(string: str, duration: fadeAnimation.duration, isInitial: true, totalDuration: 807)
                 }
-                
+
                 let mainQueue = DispatchQueue.main
-                
 
                 // We then callback for each timestamp
                 timeObserver = player.addBoundaryTimeObserver(forTimes: times, queue: mainQueue) {
                     var isLastTimeStamp = true
                     var intervalUntilNextTimeStamp = 0.0
-                    
+
                     // find closest timestamp to when we're waking up
                     var closest = 1000.0
                     var closestTime = 0.0
-                    var closestTimeValue: NSValue = NSValue(time:CMTime.zero)
-                    
+                    var closestTimeValue: NSValue = NSValue(time: CMTime.zero)
+
                     for time in times {
                         let ts = (time as! CMTime).seconds
                         let distance = abs(ts - player.currentTime().seconds)
@@ -636,79 +626,66 @@ class AerialView: ScreenSaverView {
                             closestTimeValue = time
                         }
                     }
-                    
+
                     // We also need the next timeStamp
                     let index = times.firstIndex(of: closestTimeValue)
                     if index! < times.count - 1 {
                         isLastTimeStamp = false
                         intervalUntilNextTimeStamp = (times[index!+1] as! CMTime).seconds - closestTime - 1
-                    }
-                    else if video.duration > 0 {
+                    } else if video.duration > 0 {
                         isLastTimeStamp = true
                         // If we have a duration for the video, we may not !
                         intervalUntilNextTimeStamp = video.duration - closestTime - 1
                     }
-                    
+
                     // Animate text
                     var fadeAnimation: CAKeyframeAnimation
-                    
-                    if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)
-                    {
+
+                    if preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue {
                         fadeAnimation = self.createFadeInOutAnimation(duration: 11)
-                    }
-                    else
-                    {
+                    } else {
                         if isLastTimeStamp, video.duration == 0 {
                             // We have no idea when the video ends, so 2 minutes it is
                             fadeAnimation = self.createFadeInOutAnimation(duration: 120)
-                        }
-                        else {
+                        } else {
                             fadeAnimation = self.createFadeInOutAnimation(duration: intervalUntilNextTimeStamp)
                         }
                     }
                     // Get the string for the current timestamp
-                    let key = String(format: "%.0f",closestTime)
+                    let key = String(format: "%.0f", closestTime)
                     let str = poiStringProvider.getString(key: keys[key]!, video: video)
                     self.setupTextLayer(string: str, duration: fadeAnimation.duration, isInitial: false, totalDuration: video.duration-1)
 
                     self.textLayer.add(fadeAnimation, forKey: "textfade")
                 }
-            }
-            else
-            {
+            } else {
                 // We don't have any extended description, using Secondary name (location) or video name (City)
                 let str: String
-                if (video.secondaryName != "") {
+                if video.secondaryName != "" {
                     str = video.secondaryName
                 } else {
                     str = video.name
                 }
-                var fadeAnimation:CAKeyframeAnimation
+                var fadeAnimation: CAKeyframeAnimation
 
-                if (preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue)
-                {
+                if preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue {
                     fadeAnimation = createFadeInOutAnimation(duration: 11)
-                }
-                else
-                {
+                } else {
                     // Always show mode, use known video duration or some hardcoded duration
-                    if video.duration > 0
-                    {
+                    if video.duration > 0 {
                         fadeAnimation = createFadeInOutAnimation(duration: video.duration - 1)
-                    }
-                    else
-                    {
+                    } else {
                         // We should have the duration, if we don't, hardcode the longest known duration
                         fadeAnimation = createFadeInOutAnimation(duration: 807)
                     }
                 }
                 self.textLayer.add(fadeAnimation, forKey: "textfade")
-                setupTextLayer(string: str, duration : fadeAnimation.duration, isInitial: true, totalDuration: video.duration)
+                setupTextLayer(string: str, duration: fadeAnimation.duration, isInitial: true, totalDuration: video.duration)
             }
         }
     }
-    
-    func setupTextLayer(string:String, duration: CFTimeInterval, isInitial: Bool, totalDuration: Double) {
+
+    func setupTextLayer(string: String, duration: CFTimeInterval, isInitial: Bool, totalDuration: Double) {
         // Setup string
         self.textLayer.string = string
         self.textLayer.isWrapped = true
@@ -716,7 +693,7 @@ class AerialView: ScreenSaverView {
 
         // We override font size on previews
         var fontSize = CGFloat(preferences.fontSize!)
-        if (layer!.bounds.height < 200) {
+        if layer!.bounds.height < 200 {
             fontSize = 12
         }
 
@@ -733,26 +710,26 @@ class AerialView: ScreenSaverView {
 
         // Get font with a fallback in case
         var font = NSFont(name: "Helvetica Neue Medium", size: 28)
-        if let tryFont = NSFont(name: preferences.fontName!,size: fontSize) {
+        if let tryFont = NSFont(name: preferences.fontName!, size: fontSize) {
             font = tryFont
         }
 
         // Make sure we change the layer font/size
         self.textLayer.font = font
         self.textLayer.fontSize = fontSize
-        
-        let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : font as Any]
+
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font as Any]
 
         // Calculate bounding box
-        let s = NSAttributedString(string: string, attributes: attributes)
-        
-        var rect = s.boundingRect(with: boundingRect, options: [.truncatesLastVisibleLine, .usesLineFragmentOrigin])
+        let str = NSAttributedString(string: string, attributes: attributes)
+
+        var rect = str.boundingRect(with: boundingRect, options: [.truncatesLastVisibleLine, .usesLineFragmentOrigin])
         // Last line won't appear if we don't adjust 
-        rect = CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width, height: rect.height+10)
-        
+        rect = CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width, height: rect.height + 10)
+
         // Rebind frame
         self.textLayer.frame = rect
-        
+
         // At the position the user wants
         if preferences.descriptionCorner == Preferences.DescriptionCorner.random.rawValue {
             // Randomish, we still want something different
@@ -761,7 +738,7 @@ class AerialView: ScreenSaverView {
                 corner = Int.random(in: 0...3)
             }
             lastCorner = corner
-            
+
             repositionTextLayer(position: corner)
             setupAndRepositionExtra(position: corner, duration: duration, isInitial: isInitial, totalDuration: totalDuration)
         } else {
@@ -769,101 +746,100 @@ class AerialView: ScreenSaverView {
             setupAndRepositionExtra(position: preferences.descriptionCorner!, duration: duration, isInitial: isInitial, totalDuration: totalDuration)
         }
     }
+
     private func reRectClock() {
         let preferences = Preferences.sharedInstance
 
         let dateFormatter = DateFormatter()
-        if (preferences.withSeconds) {
+        if preferences.withSeconds {
             dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
         } else {
             dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm", options: 0, locale: Locale.current)
         }
-        
+
         let dateString = dateFormatter.string(from: Date())
         self.clockLayer.string = dateString
         // We override font size on previews
         var fontSize = CGFloat(preferences.extraFontSize!)
-        if (layer!.bounds.height < 200) {
+        if layer!.bounds.height < 200 {
             fontSize = 12
         }
-        
+
         // Get font with a fallback in case
         var font = NSFont(name: "Monaco", size: 28)
-        if let tryFont = NSFont(name: preferences.extraFontName!,size: fontSize) {
+        if let tryFont = NSFont(name: preferences.extraFontName!, size: fontSize) {
             font = tryFont
         }
-        
+
         // Make sure we change the layer font/size
         self.clockLayer.font = font
         self.clockLayer.fontSize = fontSize
-        
-        let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : font as Any]
-        
+
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font as Any]
+
         // Calculate bounding box
-        let s = NSAttributedString(string: dateString, attributes: attributes)
-        let rect = s.boundingRect(with: layer!.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
-        
+        let str = NSAttributedString(string: dateString, attributes: attributes)
+        let rect = str.boundingRect(with: layer!.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
+
         // Rebind frame
         let oldRect = self.clockLayer.frame
         self.clockLayer.frame = CGRect(x: oldRect.minX, y: oldRect.minY, width: rect.maxX, height: rect.maxY)
     }
-    
-    private func setupAndRepositionExtra(position: Int, duration: CFTimeInterval, isInitial: Bool, totalDuration: Double)
-    {
+
+    // swiftlint:disable:next cyclomatic_complexity
+    private func setupAndRepositionExtra(position: Int, duration: CFTimeInterval, isInitial: Bool, totalDuration: Double) {
         let preferences = Preferences.sharedInstance
-        if (preferences.showClock)
-        {
-            if (isInitial) {
-                if (clockTimer == nil)
-                {
+        if preferences.showClock {
+            if isInitial {
+                if clockTimer == nil {
                     if #available(OSX 10.12, *) {
-                        clockTimer =  Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (Timer) in
+                        clockTimer =  Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (_) in
                             self.reRectClock()
                         })
                     }
-                    
+
                 }
 
                 let dateFormatter = DateFormatter()
-                if (preferences.withSeconds) {
+                if preferences.withSeconds {
                     dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
                 } else {
                     dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm", options: 0, locale: Locale.current)
                 }
                 let dateString = dateFormatter.string(from: Date())
-                
+
                 self.clockLayer.string = dateString
 
                 // We override font size on previews
                 var fontSize = CGFloat(preferences.extraFontSize!)
-                if (layer!.bounds.height < 200) {
+                if layer!.bounds.height < 200 {
                     fontSize = 12
                 }
-                
+
                 // Get font with a fallback in case
                 var font = NSFont(name: "Monaco", size: 28)
-                if let tryFont = NSFont(name: preferences.extraFontName!,size: fontSize) {
+                if let tryFont = NSFont(name: preferences.extraFontName!, size: fontSize) {
                     font = tryFont
                 }
-                
+
                 // Make sure we change the layer font/size
                 self.clockLayer.font = font
                 self.clockLayer.fontSize = fontSize
-                
-                let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : font as Any]
-                
+
+                let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font as Any]
+
                 // Calculate bounding box
-                let s = NSAttributedString(string: dateString, attributes: attributes)
-                let rect = s.boundingRect(with: layer!.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
-                
+                let str = NSAttributedString(string: dateString, attributes: attributes)
+                let rect = str.boundingRect(with: layer!.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
+
                 // Rebind frame
                 self.clockLayer.frame = rect
                 //clockLayer.anchorPoint = CGPoint(x: 0, y:0)
                 //clockLayer.position = CGPoint(x:10 ,y:10+textLayer.visibleRect.height)
                 //clockLayer.opacity = 1.0
             }
-            
-            if (preferences.descriptionCorner == Preferences.DescriptionCorner.random.rawValue) {
+
+            if preferences.descriptionCorner == Preferences.DescriptionCorner.random.rawValue {
                 clockLayer.add(createFadeInOutAnimation(duration: duration), forKey: "textfade")
             } else if isInitial && preferences.showDescriptionsMode == Preferences.DescriptionMode.always.rawValue {
                 clockLayer.add(createFadeInOutAnimation(duration: totalDuration), forKey: "textfade")
@@ -872,65 +848,66 @@ class AerialView: ScreenSaverView {
             }
         }
 
-        if (preferences.showMessage && preferences.showMessageString != "") {
+        if preferences.showMessage && preferences.showMessageString != "" {
             self.messageLayer.string = preferences.showMessageString
-            
+
             // We override font size on previews
             var fontSize = CGFloat(preferences.extraFontSize!)
-            if (layer!.bounds.height < 200) {
+            if layer!.bounds.height < 200 {
                 fontSize = 12
             }
-            
+
             // Get font with a fallback in case
             var font = NSFont(name: "Helvetica Neue Medium", size: 28)
-            if let tryFont = NSFont(name: preferences.extraFontName!,size: fontSize) {
+            if let tryFont = NSFont(name: preferences.extraFontName!, size: fontSize) {
                 font = tryFont
             }
-            
+
             // Make sure we change the layer font/size
             self.messageLayer.font = font
             self.messageLayer.fontSize = fontSize
-            
-            let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : font as Any]
-            
+
+            let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font as Any]
+
             // Calculate bounding box
-            let s = NSAttributedString(string: preferences.showMessageString!, attributes: attributes)
-            let rect = s.boundingRect(with: layer!.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
-            
+            let str = NSAttributedString(string: preferences.showMessageString!, attributes: attributes)
+            let rect = str.boundingRect(with: layer!.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
+
             // Rebind frame
             self.messageLayer.frame = rect
             //messageLayer.anchorPoint = CGPoint(x: 0, y:0)
             //messageLayer.position = CGPoint(x:10 ,y:10+textLayer.visibleRect.height)
             //messageLayer.opacity = 1.0
-            if (preferences.descriptionCorner == Preferences.DescriptionCorner.random.rawValue) {
+            if preferences.descriptionCorner == Preferences.DescriptionCorner.random.rawValue {
                 self.messageLayer.add(createFadeInOutAnimation(duration: duration), forKey: "textfade")
             } else if isInitial && preferences.showDescriptionsMode == Preferences.DescriptionMode.always.rawValue {
                 self.messageLayer.add(createFadeInOutAnimation(duration: totalDuration), forKey: "textfade")
             } else if preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue {
                 self.messageLayer.add(createFadeInOutAnimation(duration: duration), forKey: "textfade")
             }
-            
-        
+
         }
 
-        if (!isInitial && preferences.extraCorner == Preferences.ExtraCorner.same.rawValue && preferences.showDescriptionsMode == Preferences.DescriptionMode.always.rawValue && preferences.descriptionCorner != Preferences.DescriptionCorner.random.rawValue) {
+        if !isInitial && preferences.extraCorner == Preferences.ExtraCorner.same.rawValue &&
+            preferences.showDescriptionsMode == Preferences.DescriptionMode.always.rawValue &&
+            preferences.descriptionCorner != Preferences.DescriptionCorner.random.rawValue {
             animateClockAndMessageLayer(position: position)
         } else {
-            if preferences.extraCorner == Preferences.ExtraCorner.same.rawValue{
+            if preferences.extraCorner == Preferences.ExtraCorner.same.rawValue {
                 repositionClockAndMessageLayer(position: position, alone: false)
-            } else if preferences.extraCorner == Preferences.ExtraCorner.hOpposed.rawValue{
+            } else if preferences.extraCorner == Preferences.ExtraCorner.hOpposed.rawValue {
                 repositionClockAndMessageLayer(position: (position+2)%4, alone: true)
-            } else if preferences.extraCorner == Preferences.ExtraCorner.dOpposed.rawValue{
+            } else if preferences.extraCorner == Preferences.ExtraCorner.dOpposed.rawValue {
                 repositionClockAndMessageLayer(position: 3-position, alone: true)
             }
         }
     }
-    
+
     private func animateClockAndMessageLayer(position: Int) {
-        var clockDecal : CGFloat = 0
-        var messageDecal : CGFloat = 0
+        var clockDecal: CGFloat = 0
+        var messageDecal: CGFloat = 0
         let preferences = Preferences.sharedInstance
-        
+
         var mx = CGFloat(preferences.marginX!)
         var my = CGFloat(preferences.marginY!)
         if !preferences.overrideMargins {
@@ -944,20 +921,20 @@ class AerialView: ScreenSaverView {
 
         clockDecal += textLayer.visibleRect.height
         messageDecal += textLayer.visibleRect.height
-        
+
         if preferences.showMessage {
             clockDecal += messageLayer.visibleRect.height
         }
         let duration = 1 + AerialView.textFadeDuration
 
-        var cto, mto : CGPoint
-        if (position == Preferences.DescriptionCorner.topLeft.rawValue) {
+        var cto, mto: CGPoint
+        if position == Preferences.DescriptionCorner.topLeft.rawValue {
             cto = CGPoint(x: mx, y: layer!.bounds.height-my-clockDecal)
             mto = CGPoint(x: mx, y: layer!.bounds.height-my-messageDecal)
-        } else if (position == Preferences.DescriptionCorner.bottomLeft.rawValue) {
+        } else if position == Preferences.DescriptionCorner.bottomLeft.rawValue {
             cto = CGPoint(x: mx, y: my+clockDecal)
             mto = CGPoint(x: mx, y: my+messageDecal)
-        } else if (position == Preferences.DescriptionCorner.topRight.rawValue) {
+        } else if position == Preferences.DescriptionCorner.topRight.rawValue {
             cto = CGPoint(x: layer!.bounds.width-mx, y: layer!.bounds.height-my-clockDecal)
             mto = CGPoint(x: layer!.bounds.width-mx, y: layer!.bounds.height-my-messageDecal)
         } else {
@@ -968,15 +945,12 @@ class AerialView: ScreenSaverView {
         self.clockLayer.add(createMoveAnimation(layer: clockLayer, to: cto, duration: duration), forKey: "position")
         self.messageLayer.add(createMoveAnimation(layer: messageLayer, to: mto, duration: duration), forKey: "position")
     }
-    
-    
-    
-    
-    private func repositionClockAndMessageLayer(position:Int, alone:Bool) {
-        var clockDecal : CGFloat = 0
-        var messageDecal : CGFloat = 0
+
+    private func repositionClockAndMessageLayer(position: Int, alone: Bool) {
+        var clockDecal: CGFloat = 0
+        var messageDecal: CGFloat = 0
         let preferences = Preferences.sharedInstance
-        
+
         var mx = CGFloat(preferences.marginX!)
         var my = CGFloat(preferences.marginY!)
         if !preferences.overrideMargins {
@@ -988,32 +962,31 @@ class AerialView: ScreenSaverView {
             my = 10
         }
 
-        
         if !alone {
             clockDecal += textLayer.visibleRect.height
             messageDecal += textLayer.visibleRect.height
         }
-        
+
         if preferences.showMessage {
             clockDecal += messageLayer.visibleRect.height
         }
 
-        if (position == Preferences.DescriptionCorner.topLeft.rawValue) {
+        if position == Preferences.DescriptionCorner.topLeft.rawValue {
             self.clockLayer.anchorPoint = CGPoint(x: 0, y: 1)
             self.clockLayer.position = CGPoint(x: mx, y: layer!.bounds.height-my-clockDecal)
             self.messageLayer.anchorPoint = CGPoint(x: 0, y: 1)
             self.messageLayer.position = CGPoint(x: mx, y: layer!.bounds.height-my-messageDecal)
-        } else if (position == Preferences.DescriptionCorner.bottomLeft.rawValue) {
+        } else if position == Preferences.DescriptionCorner.bottomLeft.rawValue {
             self.clockLayer.anchorPoint = CGPoint(x: 0, y: 0)
             self.clockLayer.position = CGPoint(x: mx, y: my+clockDecal)
             self.messageLayer.anchorPoint = CGPoint(x: 0, y: 0)
             self.messageLayer.position = CGPoint(x: mx, y: my+messageDecal)
-        } else if (position == Preferences.DescriptionCorner.topRight.rawValue) {
+        } else if position == Preferences.DescriptionCorner.topRight.rawValue {
             self.clockLayer.anchorPoint = CGPoint(x: 1, y: 1)
             self.clockLayer.position = CGPoint(x: layer!.bounds.width-mx, y: layer!.bounds.height-my-clockDecal)
             self.messageLayer.anchorPoint = CGPoint(x: 1, y: 1)
             self.messageLayer.position = CGPoint(x: layer!.bounds.width-mx, y: layer!.bounds.height-my-messageDecal)
-        } else if (position == Preferences.DescriptionCorner.bottomRight.rawValue) {
+        } else if position == Preferences.DescriptionCorner.bottomRight.rawValue {
             self.clockLayer.anchorPoint = CGPoint(x: 1, y: 0)
             self.clockLayer.position = CGPoint(x: layer!.bounds.width-mx, y: my+clockDecal)
             self.messageLayer.anchorPoint = CGPoint(x: 1, y: 0)
@@ -1021,7 +994,7 @@ class AerialView: ScreenSaverView {
         }
     }
 
-    private func repositionTextLayer(position:Int) {
+    private func repositionTextLayer(position: Int) {
         let preferences = Preferences.sharedInstance
         var mx = CGFloat(preferences.marginX!)
         var my = CGFloat(preferences.marginY!)
@@ -1033,59 +1006,65 @@ class AerialView: ScreenSaverView {
             mx = 10
             my = 10
         }
-        
-        if (position == Preferences.DescriptionCorner.topLeft.rawValue) {
+
+        if position == Preferences.DescriptionCorner.topLeft.rawValue {
             self.textLayer.anchorPoint = CGPoint(x: 0, y: 1)
             self.textLayer.position = CGPoint(x: mx, y: layer!.bounds.height-my)
             self.textLayer.alignmentMode = .left
-        } else if (position == Preferences.DescriptionCorner.bottomLeft.rawValue) {
+        } else if position == Preferences.DescriptionCorner.bottomLeft.rawValue {
             self.textLayer.anchorPoint = CGPoint(x: 0, y: 0)
             self.textLayer.position = CGPoint(x: mx, y: my)
             self.textLayer.alignmentMode = .left
-        } else if (position == Preferences.DescriptionCorner.topRight.rawValue) {
+        } else if position == Preferences.DescriptionCorner.topRight.rawValue {
             self.textLayer.anchorPoint = CGPoint(x: 1, y: 1)
             self.textLayer.position = CGPoint(x: layer!.bounds.width-mx, y: layer!.bounds.height-my)
             self.textLayer.alignmentMode = .right
-        } else if (position == Preferences.DescriptionCorner.bottomRight.rawValue) {
+        } else if position == Preferences.DescriptionCorner.bottomRight.rawValue {
             self.textLayer.anchorPoint = CGPoint(x: 1, y: 0)
             self.textLayer.position = CGPoint(x: layer!.bounds.width-mx, y: my)
             self.textLayer.alignmentMode = .right
         }
     }
-    
+
     // Create a Fade In/Out animation
     func createFadeInOutAnimation(duration: Double) -> CAKeyframeAnimation {
         let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
         fadeAnimation.values = [0, 0, 1, 1, 0] as [NSNumber]
-        fadeAnimation.keyTimes = [0, Double( 1/duration ), Double( (1+AerialView.textFadeDuration)/duration ), Double( 1-AerialView.textFadeDuration/duration ), 1] as [NSNumber]
+        fadeAnimation.keyTimes = [
+            0,
+            Double(1 / duration ),
+            Double((1 + AerialView.textFadeDuration) / duration),
+            Double(1 - AerialView.textFadeDuration / duration),
+            1,
+        ] as [NSNumber]
         fadeAnimation.duration = duration
         return fadeAnimation
     }
 
     // Create a move animation
-    func createMoveAnimation(layer : CALayer, to: CGPoint, duration: Double) -> CABasicAnimation {
+    func createMoveAnimation(layer: CALayer, to: CGPoint, duration: Double) -> CABasicAnimation {
         let moveAnimation = CABasicAnimation(keyPath: "position")
         moveAnimation.fromValue = layer.position
         moveAnimation.toValue = to
         moveAnimation.duration = duration
-        layer.position = to;
+        layer.position = to
         return moveAnimation
     }
-    
+
     // MARK: - Preferences
-    
+
     override var hasConfigureSheet: Bool {
         return true
     }
-    
+
     override var configureSheet: NSWindow? {
         if let controller = preferencesController {
             return controller.window
         }
-        
+
         let controller = PreferencesWindowController(windowNibName: "PreferencesWindow")
-    
+
         preferencesController = controller
         return controller.window
     }
-}
+} // swiftlint:disable:this file_length

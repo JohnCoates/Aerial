@@ -9,17 +9,17 @@
 import Cocoa
 import os.log
 
-enum ErrorLevel : Int {
+enum ErrorLevel: Int {
     case info, debug, warning, error
 }
 
 class LogMessage {
-    let date : Date
-    let level : ErrorLevel
-    let message : String
-    var actionName : String?
-    var actionBlock : BlockOperation?
-    
+    let date: Date
+    let level: ErrorLevel
+    let message: String
+    var actionName: String?
+    var actionBlock: BlockOperation?
+
     init(level: ErrorLevel, message: String) {
         self.level = level
         self.message = message
@@ -27,17 +27,17 @@ class LogMessage {
     }
 }
 
-typealias LoggerCallback = (ErrorLevel) -> (Void)
+typealias LoggerCallback = (ErrorLevel) -> Void
 
 class Logger {
     static let sharedInstance = Logger()
 
     var callbacks = [LoggerCallback]()
-    
+
     func addCallback(_ callback:@escaping LoggerCallback) {
         callbacks.append(callback)
     }
-    
+
     func callBack(level: ErrorLevel) {
         DispatchQueue.main.async {
             for callback in self.callbacks {
@@ -48,12 +48,12 @@ class Logger {
 }
 var errorMessages = [LogMessage]()
 
+// swiftlint:disable:next identifier_name
 func Log(level: ErrorLevel, message: String) {
     errorMessages.append(LogMessage(level: level, message: message))
-    
 
     // We throw errors to console, they always matter
-    if (level == .error) {
+    if level == .error {
         if #available(OSX 10.12, *) {
             // This is faster when available
             let log = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "Screensaver")
@@ -63,17 +63,17 @@ func Log(level: ErrorLevel, message: String) {
             NSLog("AerialError: \(message)")
         }
     }
-    
+
     let preferences = Preferences.sharedInstance
 
     // We may callback
-    if (level == .warning || level == .error || (level == .debug && preferences.debugMode)) {
+    if level == .warning || level == .error || (level == .debug && preferences.debugMode) {
         let logger = Logger.sharedInstance
         logger.callBack(level: level)
     }
-    
+
     // We may log to disk
-    if (preferences.logToDisk) {
+    if preferences.logToDisk {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .none
         dateFormatter.timeStyle = .medium
@@ -82,10 +82,10 @@ func Log(level: ErrorLevel, message: String) {
         if let cacheDirectory = VideoCache.cacheDirectory {
             var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
             cacheFileUrl.appendPathComponent("AerialLog.txt")
-            
+
             let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)!
             //let data = message.data(using: String.Encoding.utf8, allowLossyConversion: false)!
-            
+
             if FileManager.default.fileExists(atPath: cacheFileUrl.path) {
                 do {
                     let fileHandle = try FileHandle(forWritingTo: cacheFileUrl)
@@ -112,24 +112,24 @@ func debugLog(_ message: String) {
     #endif
 
     let preferences = Preferences.sharedInstance
-    if (preferences.debugMode) {
-        Log(level:.debug, message:message)
+    if preferences.debugMode {
+        Log(level: .debug, message: message)
     }
 }
 
 func infoLog(_ message: String) {
-    Log(level:.info, message:message)
+    Log(level: .info, message: message)
 }
 
 func warnLog(_ message: String) {
-    Log(level:.warning, message:message)
+    Log(level: .warning, message: message)
 }
 
 func errorLog(_ message: String) {
-    Log(level:.error, message:message)
+    Log(level: .error, message: message)
 }
 
-func dataLog(_ data:Data) {
+func dataLog(_ data: Data) {
     let cacheDirectory = VideoCache.cacheDirectory!
     var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
     cacheFileUrl.appendPathComponent("AerialData.txt")
