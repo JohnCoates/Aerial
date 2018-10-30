@@ -347,6 +347,29 @@ class AerialView: ScreenSaverView {
         textLayer.shadowColor = CGColor.black
         //messageLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(messageLayer)
+        
+        if #available(OSX 10.14, *) {
+        } else {
+            debugLog("Using dot workaround for video driver corruption")
+            // Tentative fix for high sierra issues
+            let highSierraLayer = CATextLayer()
+            highSierraLayer.frame = self.bounds
+            highSierraLayer.opacity = 0.1
+            highSierraLayer.font = NSFont(name: "Helvetica Neue Medium", size: 4)
+            highSierraLayer.fontSize = 4
+            highSierraLayer.string = "."
+            
+            let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : highSierraLayer.font as Any]
+            
+            // Calculate bounding box
+            let s = NSAttributedString(string: highSierraLayer.string as! String, attributes: attributes)
+            let rect = s.boundingRect(with: layer.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
+            
+            highSierraLayer.frame = rect
+            highSierraLayer.position = CGPoint(x: 2, y: 2)
+            highSierraLayer.anchorPoint = CGPoint(x: 0, y: 0)
+            layer.addSublayer(highSierraLayer)
+        }
     }
 
     // MARK: - Lifecycle stuff
