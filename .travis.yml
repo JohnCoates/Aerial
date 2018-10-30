@@ -1,6 +1,8 @@
 language: objective-c
 osx_image: xcode10
 after_success:
-- bash <(curl -s https://raw.githubusercontent.com/codecov/codecov-bash/04845559fe1caefe990968cc9e3851573012b756/codecov) -J 'AerialApp'
+  - bash <(curl -s https://raw.githubusercontent.com/codecov/codecov-bash/04845559fe1caefe990968cc9e3851573012b756/codecov) -J 'AerialApp'
+before_script:
+  - make lint
 script:
-- xcodebuild -scheme 'AerialApp' -enableCodeCoverage YES clean test
+  - make test

@@ -15,7 +15,7 @@ import CoreLocation
 class TimeOfDay {
     let title: String
     var videos: [AerialVideo] = [AerialVideo]()
-    
+
     init(title: String) {
         self.title = title
     }
@@ -26,7 +26,7 @@ class City {
     var day: TimeOfDay = TimeOfDay(title: "day")
     let name: String
     //var videos: [AerialVideo] = [AerialVideo]()
-    
+
     init(name: String) {
         self.name = name
     }
@@ -43,9 +43,9 @@ class City {
 }
 
 @objc(PreferencesWindowController)
-class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource,
-NSOutlineViewDelegate {
-    enum HEVCMain10Support : Int {
+// swiftlint:disable:next type_body_length
+class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, NSOutlineViewDelegate {
+    enum HEVCMain10Support: Int {
         case notsupported, unsure, partial, supported
     }
 
@@ -63,22 +63,22 @@ NSOutlineViewDelegate {
     @IBOutlet var neverStreamVideosCheckbox: NSButton!
     @IBOutlet var neverStreamPreviewsCheckbox: NSButton!
     @IBOutlet weak var downloadNowButton: NSButton!
-    
+
     @IBOutlet var multiMonitorModePopup: NSPopUpButton!
     @IBOutlet var popupVideoFormat: NSPopUpButton!
     @IBOutlet var descriptionModePopup: NSPopUpButton!
     @IBOutlet var fadeInOutModePopup: NSPopUpButton!
     @IBOutlet weak var fadeInOutTextModePopup: NSPopUpButton!
-    
+
     @IBOutlet weak var downloadProgressIndicator: NSProgressIndicator!
     @IBOutlet weak var downloadStopButton: NSButton!
     @IBOutlet var versionLabel: NSTextField!
-    
+
     @IBOutlet var popover: NSPopover!
-    
+
     @IBOutlet var popoverTime: NSPopover!
     @IBOutlet var linkTimeWikipediaButton: NSButton!
-    
+
     @IBOutlet var popoverH264Indicator: NSButton!
     @IBOutlet var popoverHEVCIndicator: NSButton!
     @IBOutlet var popoverH264Label: NSTextField!
@@ -89,22 +89,22 @@ NSOutlineViewDelegate {
     @IBOutlet var timeManualRadio: NSButton!
     @IBOutlet var timeLightDarkModeRadio: NSButton!
     @IBOutlet var timeCalculateRadio: NSButton!
-    
+
     @IBOutlet var nightShiftLabel: NSTextField!
     @IBOutlet var lightDarkModeLabel: NSTextField!
 
     @IBOutlet var latitudeTextField: NSTextField!
     @IBOutlet var longitudeTextField: NSTextField!
     @IBOutlet var findCoordinatesButton: NSButton!
-    
+
     @IBOutlet var calculateCoordinatesLabel: NSTextField!
-    
+
     @IBOutlet var latitudeFormatter: NumberFormatter!
-    
+
     @IBOutlet var longitudeFormatter: NumberFormatter!
-    
+
     @IBOutlet var solarModePopup: NSPopUpButton!
-    
+
     @IBOutlet var sunriseTime: NSDatePicker!
     @IBOutlet var sunsetTime: NSDatePicker!
     @IBOutlet var iconTime1: NSImageCell!
@@ -121,78 +121,79 @@ NSOutlineViewDelegate {
     @IBOutlet var changeCornerMargins: NSButton!
     @IBOutlet var marginHorizontalTextfield: NSTextField!
     @IBOutlet var marginVerticalTextfield: NSTextField!
-    
+
     @IBOutlet var previewDisabledTextfield: NSTextField!
     @IBOutlet var fontPickerButton: NSButton!
-    
+
     @IBOutlet var fontResetButton: NSButton!
     @IBOutlet var extraFontPickerButton: NSButton!
     @IBOutlet var extraFontResetButton: NSButton!
     @IBOutlet var currentFontLabel: NSTextField!
     @IBOutlet var currentLocaleLabel: NSTextField!
-    
+
     @IBOutlet var showClockCheckbox: NSButton!
     @IBOutlet weak var withSecondsCheckbox: NSButton!
     @IBOutlet var showExtraMessage: NSButton!
     @IBOutlet var extraMessageTextField: NSTextField!
     @IBOutlet var extraMessageFontLabel: NSTextField!
     @IBOutlet weak var extraCornerPopup: NSPopUpButton!
-    
+
     @IBOutlet var dimBrightness: NSButton!
     @IBOutlet var dimStartFrom: NSSlider!
     @IBOutlet var dimFadeTo: NSSlider!
     @IBOutlet var dimFadeInMinutes: NSTextField!
     @IBOutlet var dimOnlyAtNight: NSButton!
     @IBOutlet var dimOnlyOnBattery: NSButton!
-    
+
     @IBOutlet var sleepAfterLabel: NSTextField!
-    
+
     @IBOutlet var logPanel: NSPanel!
     @IBOutlet weak var showLogBottomClick: NSButton!
     @IBOutlet weak var logTableView: NSTableView!
     @IBOutlet weak var debugModeCheckbox: NSButton!
     @IBOutlet weak var logToDiskCheckbox: NSButton!
-    
+
     @IBOutlet weak var cacheSizeTextField: NSTextField!
-    
+
     var player: AVPlayer = AVPlayer()
-    
+
     var videos: [AerialVideo]?
     // cities -> time of day -> videos
     var cities = [City]()
-    
+
     static var loadedJSON: Bool = false
-    
+
     lazy var preferences = Preferences.sharedInstance
-    
+
     let fontManager: NSFontManager
     var fontEditing = 0     // To track the font we are changing
-    
-    var highestLevel : ErrorLevel?  // To track the largest level of error received
-    
+
+    var highestLevel: ErrorLevel?  // To track the largest level of error received
+
     var savedBrightness: Float?
-    
+
     var locationManager: CLLocationManager?
-    
+
     // MARK: - Init
     required init?(coder decoder: NSCoder) {
         self.fontManager = NSFontManager.shared
         debugLog("pwc init1")
         super.init(coder: decoder)
     }
-    
+
     // We start here from SysPref and App mode
     override init(window: NSWindow?) {
         self.fontManager = NSFontManager.shared
         debugLog("pwc init2")
         super.init(window: window)
     }
-    
+
     // MARK: - Lifecycle
-    
+
+    // swiftlint:disable:next cyclomatic_complexity
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         // tmp
         let tm = TimeManagement.sharedInstance
         debugLog("isonbattery")
@@ -200,18 +201,16 @@ NSOutlineViewDelegate {
         //
         let logger = Logger.sharedInstance
         logger.addCallback {level in
-            self.updateLogs(level:level)
+            self.updateLogs(level: level)
         }
         let videoManager = VideoManager.sharedInstance
-        videoManager.addCallback { done,total in
-            self.updateDownloads(done: done,total: total)
+        videoManager.addCallback { done, total in
+            self.updateDownloads(done: done, total: total)
         }
         self.fontManager.target = self
         latitudeFormatter.maximumSignificantDigits = 10
         longitudeFormatter.maximumSignificantDigits = 10
 
-        
-        
         // This used to grab the preview player and put it in our own video preview thing.
         // While kinda cool, it showed a random video that wasn't selected, and with new lifecycle, it was paused
         /*if let previewPlayer = AerialView.previewPlayer {
@@ -239,29 +238,28 @@ NSOutlineViewDelegate {
             iconTime3.image = NSImage(named: NSImage.touchBarOpenInBrowserTemplateName)
             findCoordinatesButton.image = NSImage(named: NSImage.touchBarOpenInBrowserTemplateName)
         }
-        
+
         // Help popover, GVA detection requires 10.13
         if #available(OSX 10.13, *) {
-            if !VTIsHardwareDecodeSupported(kCMVideoCodecType_H264)
-            {
+            if !VTIsHardwareDecodeSupported(kCMVideoCodecType_H264) {
                 popoverH264Label.stringValue = "H264 acceleration not supported"
                 popoverH264Indicator.image = NSImage(named: NSImage.statusUnavailableName)
             }
-            if !VTIsHardwareDecodeSupported(kCMVideoCodecType_HEVC)
-            {
+            if !VTIsHardwareDecodeSupported(kCMVideoCodecType_HEVC) {
                 popoverHEVCLabel.stringValue = "HEVC Main10 acceleration not supported"
                 popoverHEVCIndicator.image = NSImage(named: NSImage.statusUnavailableName)
             } else {
-                if (isHEVCMain10HWDecodingAvailable() == .supported) {
+                switch isHEVCMain10HWDecodingAvailable() {
+                case .supported:
                     popoverHEVCLabel.stringValue = "HEVC Main10 acceleration is supported"
                     popoverHEVCIndicator.image = NSImage(named: NSImage.statusAvailableName)
-                } else if (isHEVCMain10HWDecodingAvailable() == .notsupported) {
+                case .notsupported:
                     popoverHEVCLabel.stringValue = "HEVC Main10 acceleration is not supported"
                     popoverHEVCIndicator.image = NSImage(named: NSImage.statusUnavailableName)
-                } else if (isHEVCMain10HWDecodingAvailable() == .partial) {
+                case .partial:
                     popoverHEVCLabel.stringValue = "HEVC Main10 acceleration is partially supported"
                     popoverHEVCIndicator.image = NSImage(named: NSImage.statusPartiallyAvailableName)
-                } else {
+                default:
                     popoverHEVCLabel.stringValue = "HEVC Main10 acceleration status unknown"
                     popoverHEVCIndicator.image = NSImage(named: NSImage.cautionName)
                 }
@@ -273,14 +271,14 @@ NSOutlineViewDelegate {
             popoverH264Label.stringValue = "macOS 10.13 or above required"
             popoverHEVCLabel.stringValue = "Hardware acceleration status unknown"
         }
-        
+
         // Fonts for descriptions and extra (clock/msg)
         currentFontLabel.stringValue = preferences.fontName! + ", \(preferences.fontSize!) pt"
         extraMessageFontLabel.stringValue = preferences.extraFontName! + ", \(preferences.extraFontSize!) pt"
 
         // Extra message
         extraMessageTextField.stringValue = preferences.showMessageString!
-        
+
         // Grab preferred language as proper string
         let printOutputLocale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
         if let deviceLanguageName: String = printOutputLocale.displayName(forKey: NSLocale.Key.identifier, value: Locale.preferredLanguages[0]) {
@@ -288,7 +286,7 @@ NSOutlineViewDelegate {
         } else {
             currentLocaleLabel.stringValue = ""
         }
-        
+
         // Videos panel
         playerView.player = player
         playerView.controlsStyle = .none
@@ -301,7 +299,7 @@ NSOutlineViewDelegate {
                                                selector: #selector(playerItemDidReachEnd(notification:)),
                                                name: Notification.Name.AVPlayerItemDidPlayToEndTime,
                                                object: player.currentItem)
-        
+
         if #available(OSX 10.12, *) {
         } else {
             showClockCheckbox.isEnabled = false
@@ -311,21 +309,21 @@ NSOutlineViewDelegate {
         if preferences.debugMode {
             debugModeCheckbox.state = .on
         }
-        
+
         if preferences.logToDisk {
             logToDiskCheckbox.state = .on
         }
-        
+
         // Text panel
         if preferences.showClock {
             showClockCheckbox.state = .on
             withSecondsCheckbox.isEnabled = true
         }
-        
+
         if preferences.withSeconds {
             withSecondsCheckbox.state = .on
         }
-        
+
         if preferences.showMessage {
             showExtraMessage.state = .on
             extraMessageTextField.isEnabled = true
@@ -341,7 +339,7 @@ NSOutlineViewDelegate {
         if preferences.localizeDescriptions {
             localizeForTvOS12Checkbox.state = .on
         }
-        
+
         if preferences.overrideMargins {
             changeCornerMargins.state = .on
             marginHorizontalTextfield.isEnabled = true
@@ -352,19 +350,19 @@ NSOutlineViewDelegate {
         if preferences.neverStreamVideos {
             neverStreamVideosCheckbox.state = .on
         }
-        
+
         if preferences.neverStreamPreviews {
             neverStreamPreviewsCheckbox.state = .on
         }
-        
+
         if !preferences.useCommunityDescriptions {
             useCommunityCheckbox.state = .off
         }
-        
+
         if !preferences.cacheAerials {
             cacheAerialsAsTheyPlayCheckbox.state = .off
         }
-        
+
         // Brightness panel
         if preferences.dimBrightness {
             dimBrightness.state = .on
@@ -380,7 +378,7 @@ NSOutlineViewDelegate {
             dimFadeTo.isEnabled = false
             dimFadeInMinutes.isEnabled = false
         }
-        
+
         if preferences.dimOnlyOnBattery {
             dimOnlyOnBattery.state = .on
         }
@@ -390,7 +388,7 @@ NSOutlineViewDelegate {
         dimStartFrom.doubleValue = preferences.startDim ?? 0.5
         dimFadeTo.doubleValue = preferences.endDim ?? 0.1
         dimFadeInMinutes.stringValue = String(preferences.dimInMinutes!)
-        
+
         // Time mode
         let timeManagement = TimeManagement.sharedInstance
         // Light/Dark mode only available on Mojave+
@@ -406,11 +404,10 @@ NSOutlineViewDelegate {
             timeNightShiftRadio.isEnabled = false
         }
         nightShiftLabel.stringValue = NSReason
-        
+
         let (_, reason) = timeManagement.calculateFromCoordinates()
         calculateCoordinatesLabel.stringValue = reason
 
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         if let dateSunrise = dateFormatter.date(from: preferences.manualSunrise!) {
@@ -419,13 +416,13 @@ NSOutlineViewDelegate {
         if let dateSunset = dateFormatter.date(from: preferences.manualSunset!) {
             sunsetTime.dateValue = dateSunset
         }
-        
+
         latitudeTextField.stringValue = preferences.latitude!
         longitudeTextField.stringValue = preferences.longitude!
 
         marginHorizontalTextfield.stringValue = String(preferences.marginX!)
         marginVerticalTextfield.stringValue = String(preferences.marginY!)
-        
+
         // Handle the time radios
         switch preferences.timeMode {
         case Preferences.TimeMode.nightShift.rawValue:
@@ -439,7 +436,7 @@ NSOutlineViewDelegate {
         default:
             timeDisabledRadio.state = NSControl.StateValue.on
         }
-        
+
         // Handle the corner radios
         switch preferences.descriptionCorner {
         case Preferences.DescriptionCorner.topLeft.rawValue:
@@ -455,36 +452,36 @@ NSOutlineViewDelegate {
         }
 
         solarModePopup.selectItem(at: preferences.solarMode!)
-        
+
         multiMonitorModePopup.selectItem(at: preferences.multiMonitorMode!)
-        
+
         popupVideoFormat.selectItem(at: preferences.videoFormat!)
-        
+
         descriptionModePopup.selectItem(at: preferences.showDescriptionsMode!)
-        
+
         fadeInOutModePopup.selectItem(at: preferences.fadeMode!)
 
         fadeInOutTextModePopup.selectItem(at: preferences.fadeModeText!)
 
         extraCornerPopup.selectItem(at: preferences.extraCorner!)
-        
+
         colorizeProjectPageLinks()
-        
+
         if let cacheDirectory = VideoCache.cacheDirectory {
             cacheLocation.url = URL(fileURLWithPath: cacheDirectory as String)
         } else {
             cacheLocation.url = nil
         }
-        
+
         let sleepTime = timeManagement.getCurrentSleepTime()
-        if (sleepTime != 0) {
+        if sleepTime != 0 {
             sleepAfterLabel.stringValue = "Your Mac currently goes to sleep after \(sleepTime) minutes"
         } else {
             sleepAfterLabel.stringValue = "Unable to determine your Mac sleep settings"
         }
 
     }
-    
+
     override func windowDidLoad() {
         super.windowDidLoad()
 
@@ -492,28 +489,28 @@ NSOutlineViewDelegate {
         outlineView.reloadData()
         debugLog("wdl")
     }
-    
+
     @IBAction func close(_ sender: AnyObject?) {
         logPanel.close()
         window?.sheetParent?.endSheet(window!)
     }
-    
+
     // MARK: Video playback
-    
+
     // Rewind preview video when reaching end
     @objc func playerItemDidReachEnd(notification: Notification) {
         if let playerItem: AVPlayerItem = notification.object as? AVPlayerItem {
-            let url:URL? = (playerItem.asset as? AVURLAsset)?.url
+            let url: URL? = (playerItem.asset as? AVURLAsset)?.url
 
-            if (url!.absoluteString.starts(with: "file")) {
+            if url!.absoluteString.starts(with: "file") {
                 playerItem.seek(to: CMTime.zero, completionHandler: nil)
                 self.player.play()
             }
         }
     }
-    
+
     // MARK: - Setup
-    
+
     fileprivate func colorizeProjectPageLinks() {
         let color = NSColor(calibratedRed: 0.18, green: 0.39, blue: 0.76, alpha: 1)
         var coloredLink = NSMutableAttributedString(attributedString: projectPageLink.attributedTitle)
@@ -530,7 +527,7 @@ NSOutlineViewDelegate {
                                  value: color,
                                  range: fullRange)
         secondProjectPageLink.attributedTitle = coloredLink
-        
+
         // We have an extra project link on the video format popover, color it too
         coloredLink = NSMutableAttributedString(attributedString: linkTimeWikipediaButton.attributedTitle)
         fullRange = NSRange(location: 0, length: coloredLink.length)
@@ -539,15 +536,14 @@ NSOutlineViewDelegate {
                                  range: fullRange)
         linkTimeWikipediaButton.attributedTitle = coloredLink
     }
-    
-    
+
     // MARK: - Video panel
-    
-    @IBAction func popupVideoFormatChange(_ sender:NSPopUpButton) {
+
+    @IBAction func popupVideoFormatChange(_ sender: NSPopUpButton) {
         debugLog("UI popupVideoFormat: \(sender.indexOfSelectedItem)")
         preferences.videoFormat = sender.indexOfSelectedItem
         preferences.synchronize()
-        
+
         outlineView.reloadData()
     }
 
@@ -555,13 +551,13 @@ NSOutlineViewDelegate {
         popover.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
     }
 
-    @IBAction func multiMonitorModePopupChange(_ sender:NSPopUpButton) {
+    @IBAction func multiMonitorModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI multiMonitorMode: \(sender.indexOfSelectedItem)")
         preferences.multiMonitorMode = sender.indexOfSelectedItem
         preferences.synchronize()
     }
-    
-    @IBAction func fadeInOutModePopupChange(_ sender:NSPopUpButton) {
+
+    @IBAction func fadeInOutModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI fadeInOutMode: \(sender.indexOfSelectedItem)")
         preferences.fadeMode = sender.indexOfSelectedItem
         preferences.synchronize()
@@ -569,7 +565,7 @@ NSOutlineViewDelegate {
 
     func updateDownloads(done: Int, total: Int) {
         print("VMQueue: done : \(done) \(total)")
-        if (total == 0) {
+        if total == 0 {
             downloadProgressIndicator.isHidden = true
             downloadStopButton.isHidden = true
             downloadNowButton.isEnabled = true
@@ -586,43 +582,43 @@ NSOutlineViewDelegate {
         let videoManager = VideoManager.sharedInstance
         videoManager.cancelAll()
     }
-    
+
     // MARK: - Mac Model detection and HEVC Main10 detection
     private func getMacModel() -> String {
         var size = 0
         sysctlbyname("hw.model", nil, &size, nil, 0)
-        var machine = [CChar](repeating: 0,  count: size)
+        var machine = [CChar](repeating: 0, count: size)
         sysctlbyname("hw.model", &machine, &size, nil, 0)
         return String(cString: machine)
     }
 
     private func extractMacVersion(macModel: String, macSubmodel: String) -> NSNumber {
         // Substring the thing
-        let s = macModel.dropFirst(macSubmodel.count)
+        let str = macModel.dropFirst(macSubmodel.count)
         let formatter = NumberFormatter()
         formatter.locale = Locale(identifier: "fr_FR")
-        if let n = formatter.number(from: String(s)) {
-            return n
+        if let number = formatter.number(from: String(str)) {
+            return number
         } else {
             return 0
         }
     }
-    
+
     private func getHEVCMain10Support(macModel: String, macSubmodel: String, partial: Double, full: Double) -> HEVCMain10Support {
-        let v = extractMacVersion(macModel: macModel, macSubmodel: macSubmodel)
-        
-        if v.doubleValue > full {
+        let ver = extractMacVersion(macModel: macModel, macSubmodel: macSubmodel)
+
+        if ver.doubleValue > full {
             return .supported
-        } else if v.doubleValue > partial {
+        } else if ver.doubleValue > partial {
             return .partial
         } else {
             return .notsupported
         }
     }
-    
+
     private func isHEVCMain10HWDecodingAvailable() -> HEVCMain10Support {
         let macModel = getMacModel()
-        
+
         // iMacPro - always
         if macModel.starts(with: "iMacPro") {
             return .supported
@@ -646,22 +642,19 @@ NSOutlineViewDelegate {
         // Hackintosh/new SKUs may fail this test
         return .unsure
     }
-    
-    
-    
+
     // MARK: - Text panel
-    
+
     @IBAction func showDescriptionsClick(button: NSButton?) {
         let state = showDescriptionsCheckbox.state
         let onState = (state == NSControl.StateValue.on)
         preferences.showDescriptions = onState
         debugLog("UI showDescriptions: \(onState)")
-        
-        changeTextState(to:onState)
+
+        changeTextState(to: onState)
     }
-    
-    func changeTextState(to:Bool)
-    {
+
+    func changeTextState(to: Bool) {
         // Location information
         useCommunityCheckbox.isEnabled = to
         localizeForTvOS12Checkbox.isEnabled = to
@@ -681,7 +674,7 @@ NSOutlineViewDelegate {
         cornerBottomLeft.isEnabled = to
         cornerBottomRight.isEnabled = to
         cornerRandom.isEnabled = to
-        
+
         // Extra info, linked too
         showClockCheckbox.isEnabled = to
         if (to && showClockCheckbox.state == .on) || !to {
@@ -696,84 +689,83 @@ NSOutlineViewDelegate {
         extraMessageFontLabel.isEnabled = to
         extraCornerPopup.isEnabled = to
     }
-    
+
     @IBAction func useCommunityClick(_ button: NSButton) {
         let state = useCommunityCheckbox.state
         let onState = (state == NSControl.StateValue.on)
         preferences.useCommunityDescriptions = onState
         debugLog("UI useCommunity: \(onState)")
     }
-    
+
     @IBAction func localizeForTvOS12Click(button: NSButton?) {
         let state = localizeForTvOS12Checkbox.state
         let onState = (state == NSControl.StateValue.on)
         preferences.localizeDescriptions = onState
         debugLog("UI localizeDescriptions: \(onState)")
     }
-    
-    @IBAction func descriptionModePopupChange(_ sender:NSPopUpButton) {
+
+    @IBAction func descriptionModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI descriptionMode: \(sender.indexOfSelectedItem)")
         preferences.showDescriptionsMode = sender.indexOfSelectedItem
         preferences.synchronize()
     }
-    
-    @IBAction func fontPickerClick(_ sender:NSButton?) {
+
+    @IBAction func fontPickerClick(_ sender: NSButton?) {
         // Make a panel
         let fp = self.fontManager.fontPanel(true)
-        
+
         // Set current font
-        if let font = NSFont(name: preferences.fontName!,size: CGFloat(preferences.fontSize!)) {
+        if let font = NSFont(name: preferences.fontName!, size: CGFloat(preferences.fontSize!)) {
             fp?.setPanelFont(font, isMultiple: false)
-            
+
         } else {
             fp?.setPanelFont(NSFont(name: "Helvetica Neue Medium", size: 28)!, isMultiple: false)
         }
-        
+
         // push the panel but mark which one we are editing
         fontEditing = 0
         fp?.makeKeyAndOrderFront(sender)
     }
-    
-    @IBAction func fontResetClick(_ sender:NSButton?) {
+
+    @IBAction func fontResetClick(_ sender: NSButton?) {
         preferences.fontName = "Helvetica Neue Medium"
         preferences.fontSize = 28
-        
+
         // Update our label
         currentFontLabel.stringValue = preferences.fontName! + ", \(preferences.fontSize!) pt"
     }
-    
-    @IBAction func extraFontPickerClick(_ sender:NSButton?) {
+
+    @IBAction func extraFontPickerClick(_ sender: NSButton?) {
         // Make a panel
         let fp = self.fontManager.fontPanel(true)
-        
+
         // Set current font
-        if let font = NSFont(name: preferences.extraFontName!,size: CGFloat(preferences.extraFontSize!)) {
+        if let font = NSFont(name: preferences.extraFontName!, size: CGFloat(preferences.extraFontSize!)) {
             fp?.setPanelFont(font, isMultiple: false)
-            
+
         } else {
             fp?.setPanelFont(NSFont(name: "Helvetica Neue Medium", size: 28)!, isMultiple: false)
         }
-        
+
         // push the panel but mark which one we are editing
         fontEditing = 1
         fp?.makeKeyAndOrderFront(sender)
     }
-    
-    @IBAction func extraFontResetClick(_ sender:NSButton?) {
+
+    @IBAction func extraFontResetClick(_ sender: NSButton?) {
         preferences.extraFontName = "Helvetica Neue Medium"
         preferences.extraFontSize = 28
-        
+
         // Update our label
         extraMessageFontLabel.stringValue = preferences.extraFontName! + ", \(preferences.extraFontSize!) pt"
     }
-    
-    
+
     @IBAction func extraTextFieldChange(_ sender: NSTextField) {
         debugLog("UI extraTextField \(sender.stringValue)")
         preferences.showMessageString = sender.stringValue
     }
-    
-    @IBAction func descriptionCornerChange(_ sender:NSButton?) {
+
+    @IBAction func descriptionCornerChange(_ sender: NSButton?) {
         if sender == cornerTopLeft {
             preferences.descriptionCorner = Preferences.DescriptionCorner.topLeft.rawValue
         } else if sender == cornerTopRight {
@@ -793,13 +785,13 @@ NSOutlineViewDelegate {
         withSecondsCheckbox.isEnabled = onState
         debugLog("UI showClock: \(onState)")
     }
-    
+
     @IBAction func withSecondsClick(_ sender: NSButton) {
         let onState = (sender.state == NSControl.StateValue.on)
         preferences.withSeconds = onState
         debugLog("UI withSeconds: \(onState)")
     }
-    
+
     @IBAction func showExtraMessageClick(_ sender: NSButton) {
         let onState = (sender.state == NSControl.StateValue.on)
         // We also need to enable/disable our message field
@@ -808,13 +800,13 @@ NSOutlineViewDelegate {
         debugLog("UI showExtraMessage: \(onState)")
 
     }
-    
+
     @IBAction func fadeInOutTextModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI fadeInOutTextMode: \(sender.indexOfSelectedItem)")
         preferences.fadeModeText = sender.indexOfSelectedItem
         preferences.synchronize()
     }
-    
+
     @IBAction func extraCornerPopupChange(_ sender: NSPopUpButton) {
         debugLog("UI extraCorner: \(sender.indexOfSelectedItem)")
         preferences.extraCorner = sender.indexOfSelectedItem
@@ -824,7 +816,7 @@ NSOutlineViewDelegate {
     @IBAction func changeMarginsToCornerClick(_ sender: NSButton) {
         let onState = (sender.state == NSControl.StateValue.on)
         debugLog("UI changeMarginsToCorner: \(onState)")
-        
+
         marginHorizontalTextfield.isEnabled = onState
         marginVerticalTextfield.isEnabled = onState
         preferences.overrideMargins = onState
@@ -840,13 +832,13 @@ NSOutlineViewDelegate {
         debugLog("UI marginYChange: \(sender.stringValue)")
     }
     // MARK: - Cache panel
-    
+
     func updateCacheSize() {
         // get your directory url
         let documentsDirectoryURL = URL(fileURLWithPath: VideoCache.cacheDirectory!)
-        
+
         // FileManager.default.urls(for: VideoCache.cacheDirectory, in: .userDomainMask).first!
-        
+
         // check if the url is a directory
         if (try? documentsDirectoryURL.resourceValues(forKeys: [.isDirectoryKey]))?.isDirectory == true {
             var folderSize = 0
@@ -861,32 +853,32 @@ NSOutlineViewDelegate {
             cacheSizeTextField.stringValue = "Cache all videos (current cache size \(sizeToDisplay))"
         }
     }
-    
+
     @IBAction func cacheAerialsAsTheyPlayClick(_ button: NSButton!) {
         let onState = (button.state == NSControl.StateValue.on)
         preferences.cacheAerials = onState
         debugLog("UI cacheAerialAsTheyPlay: \(onState)")
     }
-    
+
     @IBAction func neverStreamVideosClick(_ button: NSButton!) {
         let onState = (button.state == NSControl.StateValue.on)
         preferences.neverStreamVideos = onState
         debugLog("UI neverStreamVideos: \(onState)")
     }
-    
+
     @IBAction func neverStreamPreviewsClick(_ button: NSButton!) {
         let onState = (button.state == NSControl.StateValue.on)
         preferences.neverStreamPreviews = onState
         debugLog("UI neverStreamPreviews: \(onState)")
     }
-    
+
     @IBAction func showInFinder(_ button: NSButton!) {
         NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: VideoCache.cacheDirectory!)
     }
 
     @IBAction func userSetCacheLocation(_ button: NSButton?) {
         let openPanel = NSOpenPanel()
-        
+
         openPanel.canChooseDirectories = true
         openPanel.canChooseFiles = false
         openPanel.canCreateDirectories = true
@@ -894,13 +886,12 @@ NSOutlineViewDelegate {
         openPanel.title = "Choose Aerial Cache Directory"
         openPanel.prompt = "Choose"
         openPanel.directoryURL = cacheLocation.url
-        
+
         openPanel.begin { result in
-            guard result.rawValue == NSFileHandlingPanelOKButton,
-                openPanel.urls.count > 0 else {
-                    return
+            guard result.rawValue == NSFileHandlingPanelOKButton, !openPanel.urls.isEmpty else {
+                return
             }
-            
+
             let cacheDirectory = openPanel.urls[0]
             self.preferences.customCacheDirectory = cacheDirectory.path
             self.cacheLocation.url = cacheDirectory
@@ -922,7 +913,7 @@ NSOutlineViewDelegate {
 
     // MARK: - Time panel
 
-    @IBAction func timeModeChange(_ sender:NSButton?) {
+    @IBAction func timeModeChange(_ sender: NSButton?) {
         if sender == timeDisabledRadio {
             preferences.timeMode = Preferences.TimeMode.disabled.rawValue
         } else if sender == timeNightShiftRadio {
@@ -935,15 +926,15 @@ NSOutlineViewDelegate {
             preferences.timeMode = Preferences.TimeMode.coordinates.rawValue
         }
     }
-    
-    @IBAction func sunriseChange(_ sender:NSDatePicker?) {
+
+    @IBAction func sunriseChange(_ sender: NSDatePicker?) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let sunriseString = dateFormatter.string(from: (sender?.dateValue)!)
         preferences.manualSunrise = sunriseString
     }
 
-    @IBAction func sunsetChange(_ sender:NSDatePicker?) {
+    @IBAction func sunsetChange(_ sender: NSDatePicker?) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let sunsetString = dateFormatter.string(from: (sender?.dateValue)!)
@@ -953,7 +944,7 @@ NSOutlineViewDelegate {
     @IBAction func latitudeChange(_ sender: NSTextField) {
         preferences.latitude = sender.stringValue
         updateLatitudeLongitude()
-        
+
     }
 
     @IBAction func longitudeChange(_ sender: NSTextField) {
@@ -961,46 +952,46 @@ NSOutlineViewDelegate {
         preferences.longitude = sender.stringValue
         updateLatitudeLongitude()
     }
-    
+
     func updateLatitudeLongitude() {
         let timeManagement = TimeManagement.sharedInstance
         let (_, reason) = timeManagement.calculateFromCoordinates()
         calculateCoordinatesLabel.stringValue = reason
     }
-    
+
     @IBAction func solarModePopupChange(_ sender: NSPopUpButton) {
         preferences.solarMode = sender.indexOfSelectedItem
         debugLog("UI solarModePopupChange: \(sender.indexOfSelectedItem)")
         updateLatitudeLongitude()
     }
-    
+
     @IBAction func helpTimeButtonClick(_ button: NSButton) {
         popoverTime.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
     }
-    
+
     @IBAction func linkToWikipediaTimeClick(_ sender: NSButton) {
         let workspace = NSWorkspace.shared
         let url = URL(string: "https://en.wikipedia.org/wiki/Twilight")!
         workspace.open(url)
     }
-    
+
     @IBAction func findCoordinatesButtonClick(_ sender: NSButton) {
         debugLog("UI findCoordinatesButton")
         /*let tm = TimeManagement.sharedInstance
         
         tm.startLocationDetection()*/
-        
+
         locationManager = CLLocationManager()
         locationManager!.delegate = self
         locationManager!.desiredAccuracy = kCLLocationAccuracyBest
         locationManager!.distanceFilter = 100
         locationManager!.purpose = "Aerial uses your location to calculate sunrise and sunset times"
-        
+
         if CLLocationManager.locationServicesEnabled() {
             debugLog("Location services enabled")
             //print(locationManager.location)
 
-            _ = CLLocationManager.authorizationStatus() 
+            _ = CLLocationManager.authorizationStatus()
             /*if status == .restricted || status == .denied {
                 print("Location Denied")
             }
@@ -1023,9 +1014,8 @@ NSOutlineViewDelegate {
             locationManager.startUpdatingLocation()
         }*/
     }
-    
-    func pushCoordinates(_ coordinates: CLLocationCoordinate2D)
-    {
+
+    func pushCoordinates(_ coordinates: CLLocationCoordinate2D) {
         latitudeTextField.stringValue = String(coordinates.latitude)
         longitudeTextField.stringValue = String(coordinates.longitude)
 
@@ -1034,88 +1024,91 @@ NSOutlineViewDelegate {
         updateLatitudeLongitude()
     }
     // MARK: - Brightness panel
-    
+
     @IBAction func dimBrightnessClick(_ button: NSButton) {
         let onState = (button.state == .on)
         preferences.dimBrightness = onState
-        
+
         dimOnlyAtNight.isEnabled = onState
         dimOnlyOnBattery.isEnabled = onState
         dimStartFrom.isEnabled = onState
         dimFadeTo.isEnabled = onState
         dimFadeInMinutes.isEnabled = onState
-        
+
         debugLog("UI dimBrightness: \(onState)")
     }
-    
+
     @IBAction func dimOnlyAtNightClick(_ button: NSButton) {
         let onState = (button.state == .on)
         preferences.dimOnlyAtNight = onState
         debugLog("UI dimOnlyAtNight: \(onState)")
     }
-    
+
     @IBAction func dimOnlyOnBattery(_ button: NSButton) {
         let onState = (button.state == .on)
         preferences.dimOnlyOnBattery = onState
         debugLog("UI dimOnlyOnBattery: \(onState)")
     }
-    
+
     @IBAction func dimStartFromChange(_ sender: NSSliderCell) {
         let timeManagement = TimeManagement.sharedInstance
-        let event = NSApplication.shared.currentEvent
-        if (event != nil) {
-            if (event!.type != .leftMouseUp && event!.type != .leftMouseDown && event!.type != .leftMouseDragged)
-            {
-                //warnLog("Unexepected event type \(event!.type)")
-                return
+        guard let event = NSApplication.shared.currentEvent else {
+            return
+        }
+
+        if event.type != .leftMouseUp && event.type != .leftMouseDown && event.type != .leftMouseDragged {
+            //warnLog("Unexepected event type \(event.type)")
+            return
+        }
+
+        if event.type == .leftMouseUp {
+            if savedBrightness != nil {
+                timeManagement.setBrightness(level: savedBrightness!)
+                savedBrightness = nil
             }
-            if event!.type == .leftMouseUp {
-                if savedBrightness != nil {
-                    timeManagement.setBrightness(level: savedBrightness!)
-                    savedBrightness = nil
-                }
-                preferences.startDim = sender.doubleValue
-                debugLog("UI startDim: \(sender.doubleValue)")
-            } else {
-                if savedBrightness == nil {
-                    savedBrightness = timeManagement.getBrightness()
-                }
-                timeManagement.setBrightness(level: sender.floatValue)
+            preferences.startDim = sender.doubleValue
+            debugLog("UI startDim: \(sender.doubleValue)")
+        } else {
+            if savedBrightness == nil {
+                savedBrightness = timeManagement.getBrightness()
             }
+            timeManagement.setBrightness(level: sender.floatValue)
         }
     }
-    
+
     @IBAction func dimFadeToChange(_ sender: NSSliderCell) {
         let timeManagement = TimeManagement.sharedInstance
-        let event = NSApplication.shared.currentEvent
-        if (event != nil) {
-            if (event!.type != .leftMouseUp && event!.type != .leftMouseDown && event!.type != .leftMouseDragged)
-            {
-                warnLog("Unexepected event type \(event!.type)")
+        guard let event = NSApplication.shared.currentEvent else {
+            return
+        }
+
+        if event.type != .leftMouseUp && event.type != .leftMouseDown && event.type != .leftMouseDragged {
+            warnLog("Unexepected event type \(event.type)")
+        }
+
+        if event.type == .leftMouseUp {
+            if savedBrightness != nil {
+                timeManagement.setBrightness(level: savedBrightness!)
+                savedBrightness = nil
             }
-            if event!.type == .leftMouseUp {
-                if savedBrightness != nil {
-                    timeManagement.setBrightness(level: savedBrightness!)
-                    savedBrightness = nil
-                }
-                preferences.endDim = sender.doubleValue
-                debugLog("UI endDim: \(sender.doubleValue)")
-            } else {
-                if savedBrightness == nil {
-                    savedBrightness = timeManagement.getBrightness()
-                }
-                timeManagement.setBrightness(level: sender.floatValue)
+            preferences.endDim = sender.doubleValue
+            debugLog("UI endDim: \(sender.doubleValue)")
+        } else {
+            if savedBrightness == nil {
+                savedBrightness = timeManagement.getBrightness()
             }
+            timeManagement.setBrightness(level: sender.floatValue)
         }
     }
-    
+
     @IBAction func dimInMinutes(_ sender: NSTextField) {
-        if let i = Int(sender.stringValue) {
-            preferences.dimInMinutes = i
+        if let intValue = Int(sender.stringValue) {
+            preferences.dimInMinutes = intValue
         }
-        
+
         debugLog("UI dimInMinutes \(sender.stringValue)")
     }
+
     // MARK: - Advanced panel
 
     @IBAction func logButtonClick(_ sender: NSButton) {
@@ -1128,59 +1121,59 @@ NSOutlineViewDelegate {
     }
 
     @IBAction func logCopyToClipboardClick(_ sender: NSButton) {
-        if (errorMessages.count > 0) {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .none
-            dateFormatter.timeStyle = .medium
-
-            var clipboard = ""
-            for log in errorMessages {
-                clipboard += dateFormatter.string(from:log.date) + " : " + log.message + "\n"
-            }
-            
-            let pasteBoard = NSPasteboard.general
-            pasteBoard.clearContents()
-            pasteBoard.setString(clipboard, forType: NSPasteboard.PasteboardType.string)
+        guard !errorMessages.isEmpty else {
+            return
         }
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .medium
+
+        var clipboard = ""
+        for log in errorMessages {
+            clipboard += dateFormatter.string(from: log.date) + " : " + log.message + "\n"
+        }
+
+        let pasteBoard = NSPasteboard.general
+        pasteBoard.clearContents()
+        pasteBoard.setString(clipboard, forType: NSPasteboard.PasteboardType.string)
     }
 
     @IBAction func logRefreshClick(_ sender: NSButton) {
         logTableView.reloadData()
     }
-    
+
     @IBAction func debugModeClick(_ button: NSButton) {
         let onState = (button.state == NSControl.StateValue.on)
         preferences.debugMode = onState
         debugLog("UI debugMode: \(onState)")
     }
-    
+
     @IBAction func logToDiskClick(_ button: NSButton) {
         let onState = (button.state == NSControl.StateValue.on)
         preferences.logToDisk = onState
         debugLog("UI logToDisk: \(onState)")
     }
-    
+
     @IBAction func showLogInFinder(_ button: NSButton!) {
         let logfile = VideoCache.cacheDirectory!.appending("/AerialLog.txt")
 
         // If we don't have a log, just show the folder
         if FileManager.default.fileExists(atPath: logfile) == false {
             NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: VideoCache.cacheDirectory!)
-        }
-        else {
+        } else {
             NSWorkspace.shared.selectFile(logfile, inFileViewerRootedAtPath: VideoCache.cacheDirectory!)
         }
     }
 
-    func updateLogs(level:ErrorLevel)
-    {
+    func updateLogs(level: ErrorLevel) {
         logTableView.reloadData()
-        if (highestLevel == nil) {
+        if highestLevel == nil {
             highestLevel = level
-        } else if (level.rawValue > highestLevel!.rawValue) {
+        } else if level.rawValue > highestLevel!.rawValue {
             highestLevel = level
         }
-        
+
         switch highestLevel! {
         case ErrorLevel.debug:
             showLogBottomClick.title = "Show Debug"
@@ -1195,10 +1188,10 @@ NSOutlineViewDelegate {
             showLogBottomClick.title = "Show Error"
             showLogBottomClick.image = NSImage.init(named: NSImage.stopProgressFreestandingTemplateName)
         }
-        
-        
+
         showLogBottomClick.isHidden = false
     }
+
     // MARK: - Menu
     @IBAction func outlineViewSettingsClick(_ button: NSButton) {
         let menu = NSMenu()
@@ -1228,7 +1221,7 @@ NSOutlineViewDelegate {
                         action: #selector(PreferencesWindowController.outlineViewDownloadAll(button:)),
                         keyEquivalent: "",
                         at: 6)
-        
+
         let event = NSApp.currentEvent
         NSMenu.popUpContextMenu(menu, with: event!, for: button)
     }
@@ -1236,16 +1229,16 @@ NSOutlineViewDelegate {
     @objc func outlineViewUncheckAll(button: NSButton) {
         setAllVideos(inRotation: false)
     }
-    
+
     @objc func outlineViewCheckAll(button: NSButton) {
         setAllVideos(inRotation: true)
     }
-    
+
     @objc func outlineViewCheck4K(button: NSButton) {
         guard let videos = videos else {
             return
         }
-        
+
         for video in videos {
             if video.url4KHEVC != "" {
                 preferences.setVideo(videoID: video.id,
@@ -1258,15 +1251,15 @@ NSOutlineViewDelegate {
             }
         }
         preferences.synchronize()
-        
+
         outlineView.reloadData()
     }
-    
+
     @objc func outlineViewCheckCached(button: NSButton) {
         guard let videos = videos else {
             return
         }
-        
+
         for video in videos {
             if video.isAvailableOffline {
                 preferences.setVideo(videoID: video.id,
@@ -1279,10 +1272,10 @@ NSOutlineViewDelegate {
             }
         }
         preferences.synchronize()
-        
+
         outlineView.reloadData()
     }
-    
+
     @objc func outlineViewDownloadChecked(button: NSButton) {
         guard let videos = videos else {
             return
@@ -1297,62 +1290,60 @@ NSOutlineViewDelegate {
             }
         }
     }
-    
+
     @objc func outlineViewDownloadAll(button: NSButton) {
         downloadAllVideos()
     }
-    
+
     func downloadAllVideos() {
         guard let videos = videos else {
             return
         }
         let videoManager = VideoManager.sharedInstance
-        
-        for video in videos {
-            if !video.isAvailableOffline {
-                if !videoManager.isVideoQueued(id: video.id) {
-                    videoManager.queueDownload(video)
-                }
+
+        for video in videos where !video.isAvailableOffline {
+            if !videoManager.isVideoQueued(id: video.id) {
+                videoManager.queueDownload(video)
             }
         }
     }
-    
+
     func setAllVideos(inRotation: Bool) {
         guard let videos = videos else {
             return
         }
-        
+
         for video in videos {
             preferences.setVideo(videoID: video.id,
                                  inRotation: inRotation,
                                  synchronize: false)
         }
         preferences.synchronize()
-        
+
         outlineView.reloadData()
     }
-    
+
     // MARK: - Links
-    
+
     @IBAction func pageProjectClick(_ button: NSButton?) {
         let workspace = NSWorkspace.shared
         let url = URL(string: "http://github.com/JohnCoates/Aerial")!
         workspace.open(url)
     }
-    
+
     // MARK: - Manifest
-    
+
     func loadJSON() {
         if PreferencesWindowController.loadedJSON {
             return
         }
         PreferencesWindowController.loadedJSON = true
-        
+
         ManifestLoader.instance.addCallback { manifestVideos in
             self.loaded(manifestVideos: manifestVideos)
        }
     }
-    
+
     func loaded(manifestVideos: [AerialVideo]) {
         var videos = [AerialVideo]()
         var cities = [String: City]()
@@ -1360,20 +1351,20 @@ NSOutlineViewDelegate {
         // First day, then night
         for video in manifestVideos {
             let name = video.name
-            
+
             if cities.keys.contains(name) == false {
                 cities[name] = City(name: name)
             }
             let city = cities[name]!
-        
+
             let timeOfDay = video.timeOfDay
             city.addVideoForTimeOfDay(timeOfDay, video: video)
-            
+
             videos.append(video)
         }
 
         self.videos = videos
-        
+
         // sort cities by name
         let unsortedCities = cities.values
         let sortedCities = unsortedCities.sorted { $0.name < $1.name }
@@ -1385,40 +1376,40 @@ NSOutlineViewDelegate {
             self.outlineView.expandItem(nil, expandChildren: true)
         }
     }
-    
+
     // MARK: - Outline View Delegate & Data Source
-    
+
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         if item == nil {
             return cities.count
         }
-        
-        switch item {
-            case is TimeOfDay:
-                let timeOfDay = item as! TimeOfDay
-                return timeOfDay.videos.count
-            case is City:
-                let city = item as! City
-                
-                var count = 0
-                
-                if city.night.videos.count > 0 {
-                    count += 1
-                }
-                
-                if city.day.videos.count > 0 {
-                    count += 1
-                }
-                return count
 
-                //let city = item as! City
-                //return city.day.videos.count + city.night.videos.count
-            default:
-                return 0
+        switch item {
+        case is TimeOfDay:
+            let timeOfDay = item as! TimeOfDay
+            return timeOfDay.videos.count
+        case is City:
+            let city = item as! City
+
+            var count = 0
+
+            if !city.night.videos.isEmpty {
+                count += 1
+            }
+
+            if !city.day.videos.isEmpty {
+                count += 1
+            }
+            return count
+
+            //let city = item as! City
+            //return city.day.videos.count + city.night.videos.count
+        default:
+            return 0
         }
-        
+
     }
-    
+
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
         switch item {
         case is TimeOfDay:
@@ -1429,34 +1420,33 @@ NSOutlineViewDelegate {
             return false
         }
     }
-    
+
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         if item == nil {
             return cities[index]
         }
-        
+
         switch item {
         case is City:
-            
             let city = item as! City
-            
-            if index == 0 && city.day.videos.count > 0 {
+
+            if index == 0 && !city.day.videos.isEmpty {
                 return city.day
             } else {
                 return city.night
             }
             //let city = item as! City
             //return city.videos[index]
-            
+
         case is TimeOfDay:
             let timeOfDay = item as! TimeOfDay
             return timeOfDay.videos[index]
-        
+
         default:
             return false
         }
     }
-    
+
     func outlineView(_ outlineView: NSOutlineView,
                      objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any? {
         switch item {
@@ -1466,21 +1456,21 @@ NSOutlineViewDelegate {
         case is TimeOfDay:
             let timeOfDay = item as! TimeOfDay
             return timeOfDay.title
-            
+
         default:
             return "untitled"
         }
     }
-    
+
     func outlineView(_ outlineView: NSOutlineView, shouldEdit tableColumn: NSTableColumn?, item: Any) -> Bool {
         return false
     }
-    
+
     func outlineView(_ outlineView: NSOutlineView, dataCellFor tableColumn: NSTableColumn?, item: Any) -> NSCell? {
         let row = outlineView.row(forItem: item)
         return tableColumn!.dataCell(forRow: row) as? NSCell
     }
-    
+
     func outlineView(_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool {
         switch item {
         case is TimeOfDay:
@@ -1492,34 +1482,33 @@ NSOutlineViewDelegate {
         }
     }
 
-    func outlineView(_ outlineView: NSOutlineView,
-                     viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
+    func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         switch item {
         case is City:
             let city = item as! City
             let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "HeaderCell"),
                                         owner: nil) as! NSTableCellView     // if owner = self, awakeFromNib will be called for each created cell !
             view.textField?.stringValue = city.name
-            
+
             return view
         case is TimeOfDay:
             let timeOfDay = item as! TimeOfDay
             let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DataCell"),
                                         owner: nil) as! NSTableCellView     // if owner = self, awakeFromNib will be called for each created cell !
-            
+
             view.textField?.stringValue = timeOfDay.title.capitalized
-            
+
             let bundle = Bundle(for: PreferencesWindowController.self)
-            
+
             // Use -dark icons in macOS 10.14+ Dark Mode
             let timeManagement = TimeManagement.sharedInstance
             var postfix = ""
             if timeManagement.isDarkModeEnabled() {
                 postfix = "-dark"
             }
-            
+
             if let imagePath = bundle.path(forResource: "icon-\(timeOfDay.title)"+postfix,
-                ofType:"pdf") {
+                ofType: "pdf") {
                 let image = NSImage(contentsOfFile: imagePath)
                 image!.size.width = 13
                 image!.size.height = 13
@@ -1529,7 +1518,7 @@ NSOutlineViewDelegate {
             } else {
                 errorLog("\(#file) failed to find time of day icon")
             }
-            
+
             return view
         case is AerialVideo:
             let video = item as! AerialVideo
@@ -1542,14 +1531,13 @@ NSOutlineViewDelegate {
             view.setVideo(video: video)     // For our Add button
             view.adaptIndicators()
 
-            if (video.secondaryName != "") {
+            if video.secondaryName != "" {
                 view.textField?.stringValue = video.secondaryName
-            }
-            else {
+            } else {
                 // One based index
                 let number = video.arrayPosition + 1
                 let numberFormatter = NumberFormatter()
-                
+
                 numberFormatter.numberStyle = NumberFormatter.Style.spellOut
                 guard
                     let numberString = numberFormatter.string(from: number as NSNumber)
@@ -1557,20 +1545,18 @@ NSOutlineViewDelegate {
                         errorLog("outlineView: failed to create number with formatter")
                         return nil
                 }
-                
+
                 view.textField?.stringValue = numberString.capitalized
             }
 
-
-            
             let isInRotation = preferences.videoIsInRotation(videoID: video.id)
-            
+
             if isInRotation {
                 view.checkButton.state = NSControl.StateValue.on
             } else {
                 view.checkButton.state = NSControl.StateValue.off
             }
-            
+
             view.onCheck = { checked in
                 self.preferences.setVideo(videoID: video.id,
                                           inRotation: checked)
@@ -1581,13 +1567,13 @@ NSOutlineViewDelegate {
             return nil
         }
     }
-    
+
     func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
         switch item {
         case is AerialVideo:
             player = AVPlayer()
             playerView.player = player
-            
+
             let video = item as! AerialVideo
             debugLog("Playing this preview \(video)")
             // Workaround for cached videos generating online traffic
@@ -1597,17 +1583,16 @@ NSOutlineViewDelegate {
                 let localitem = AVPlayerItem(url: localurl)
                 player.replaceCurrentItem(with: localitem)
                 player.play()
-            }
-            else if !preferences.neverStreamPreviews {
+            } else if !preferences.neverStreamPreviews {
                 previewDisabledTextfield.isHidden = true
-                let asset = CachedOrCachingAsset(video.url)
+                let asset = cachedOrCachingAsset(video.url)
                 let item = AVPlayerItem(asset: asset)
                 player.replaceCurrentItem(with: item)
                 player.play()
             } else {
                 previewDisabledTextfield.isHidden = false
             }
-            
+
             return true
         case is TimeOfDay:
             return false
@@ -1615,23 +1600,23 @@ NSOutlineViewDelegate {
             return false
         }
     }
-    
+
     func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
         switch item {
-            case is AerialVideo:
-                return 19
-            case is TimeOfDay:
-                return 18
-            case is City:
-                return 17
-            default:
-                fatalError("unhandled item in heightOfRowByItem for \(item)")
+        case is AerialVideo:
+            return 19
+        case is TimeOfDay:
+            return 18
+        case is City:
+            return 17
+        default:
+            fatalError("unhandled item in heightOfRowByItem for \(item)")
         }
     }
     func outlineView(_ outlineView: NSOutlineView, sizeToFitWidthOfColumn column: Int) -> CGFloat {
         return 0
     }
-    
+
     // MARK: - Caching
     /*
     var currentVideoDownload: VideoDownload?
@@ -1702,14 +1687,14 @@ NSOutlineViewDelegate {
 }
 
 // MARK: - Core Location Delegates
-extension PreferencesWindowController : CLLocationManagerDelegate {
+extension PreferencesWindowController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         debugLog("LM Coordinates")
         let currentLocation = locations[locations.count - 1]
         pushCoordinates(currentLocation.coordinate)
         locationManager!.stopUpdatingLocation()     // We only want them once
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         debugLog("LMauth status change : \(status.rawValue)")
     }
@@ -1719,46 +1704,44 @@ extension PreferencesWindowController : CLLocationManagerDelegate {
     }*/
 }
 
-
 // MARK: - Font Panel Delegates
 
-extension PreferencesWindowController : NSFontChanging  {
+extension PreferencesWindowController: NSFontChanging {
     func validModesForFontPanel(_ fontPanel: NSFontPanel) -> NSFontPanel.ModeMask {
         return [.size, .collection, .face]
     }
-    
+
     func changeFont(_ sender: NSFontManager?) {
         // Set current font
         var oldFont = NSFont(name: "Helvetica Neue Medium", size: 28)
 
-        if (fontEditing == 0) {
-            if let tryFont = NSFont(name: preferences.fontName!,size: CGFloat(preferences.fontSize!)) {
+        if fontEditing == 0 {
+            if let tryFont = NSFont(name: preferences.fontName!, size: CGFloat(preferences.fontSize!)) {
                 oldFont = tryFont
             }
         } else {
-            if let tryFont = NSFont(name: preferences.extraFontName!,size: CGFloat(preferences.extraFontSize!)) {
+            if let tryFont = NSFont(name: preferences.extraFontName!, size: CGFloat(preferences.extraFontSize!)) {
                 oldFont = tryFont
             }
         }
-        
+
         let newFont = sender?.convert(oldFont!)
 
-        if (fontEditing == 0) {
+        if fontEditing == 0 {
             preferences.fontName = newFont?.fontName
             preferences.fontSize = Double((newFont?.pointSize)!)
-            
+
             // Update our label
             currentFontLabel.stringValue = preferences.fontName! + ", \(preferences.fontSize!) pt"
         } else {
             preferences.extraFontName = newFont?.fontName
             preferences.extraFontSize = Double((newFont?.pointSize)!)
-            
+
             // Update our label
             extraMessageFontLabel.stringValue = preferences.extraFontName! + ", \(preferences.extraFontSize!) pt"
         }
         preferences.synchronize()
     }
-    
 }
 
 // MARK: - Log TableView Delegates
@@ -1769,23 +1752,23 @@ extension PreferencesWindowController: NSTableViewDataSource {
     }
 }
 
-extension PreferencesWindowController : NSTableViewDelegate {
+extension PreferencesWindowController: NSTableViewDelegate {
     fileprivate enum CellIdentifiers {
         static let DateCell = "DateCellID"
         static let MessageCell = "MessageCellID"
     }
-    
+
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var image: NSImage?
         var text: String = ""
         var cellIdentifier: String = ""
-        
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .none
         dateFormatter.timeStyle = .medium
-        
+
         let item = errorMessages[row]
-        
+
         if tableColumn == tableView.tableColumns[0] {
             text = dateFormatter.string(from: item.date)
             cellIdentifier = CellIdentifiers.DateCell
@@ -1804,13 +1787,13 @@ extension PreferencesWindowController : NSTableViewDelegate {
             text = item.message
             cellIdentifier = CellIdentifiers.MessageCell
         }
-        
+
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: nil) as? NSTableCellView {
             cell.textField?.stringValue = text
             cell.imageView?.image = image ?? nil
             return cell
         }
-        
+
         return nil
     }
-}
+} // swiftlint:disable:this file_length

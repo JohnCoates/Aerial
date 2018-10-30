@@ -7,9 +7,9 @@
 //
 
 import Foundation
-typealias VideoManagerCallback = (Int,Int) -> (Void)
+typealias VideoManagerCallback = (Int, Int) -> Void
 
-class VideoManager : NSObject {
+class VideoManager: NSObject {
     static let sharedInstance = VideoManager()
     var managerCallbacks = [VideoManagerCallback]()
 
@@ -18,7 +18,7 @@ class VideoManager : NSObject {
 
     /// List of queued videos, by video.id
     private var queuedVideos = [String]()
-    
+
     /// Dictionary of operations, keyed by the video.id
     fileprivate var operations = [String: VideoDownloadOperation]()
 
@@ -28,24 +28,25 @@ class VideoManager : NSObject {
 
     //var downloadItems: [VideoDownloadItem]
     /// Serial OperationQueue for downloads
-    
+
     private let queue: OperationQueue = {
+        // swiftlint:disable:next identifier_name
         let _queue = OperationQueue()
         _queue.name = "videodownload"
         _queue.maxConcurrentOperationCount = 1
-        
+
         return _queue
     }()
-    
+
     // MARK: Tracking CheckCellView
     func addCheckCellView(id: String, checkCellView: CheckCellView) {
         checkCells[id] = checkCellView
     }
-    
+
     func addCallback(_ callback:@escaping VideoManagerCallback) {
         managerCallbacks.append(callback)
     }
-    
+
     // Is the video queued for download ?
     func isVideoQueued(id: String) -> Bool {
         if queuedVideos.firstIndex(of: id) != nil {
@@ -54,7 +55,7 @@ class VideoManager : NSObject {
             return false
         }
     }
-    
+
     @discardableResult
     func queueDownload(_ video: AerialVideo) -> VideoDownloadOperation {
         print(queue.isSuspended)
@@ -64,14 +65,14 @@ class VideoManager : NSObject {
 
         print(queue.operations)
 
-        let operation = VideoDownloadOperation(video:video, delegate: self)
+        let operation = VideoDownloadOperation(video: video, delegate: self)
         operations[video.id] = operation
         queue.addOperation(operation)
 
         queuedVideos.append(video.id)       // Our Internal List of queued videos
         markAsQueued(id: video.id)          // Callback the CheckCellView
-        totalQueued = totalQueued+1                       // Increment our count
-        
+        totalQueued += 1                    // Increment our count
+
         DispatchQueue.main.async {
             // Callback the callbacks
             for callback in self.managerCallbacks {
@@ -80,19 +81,18 @@ class VideoManager : NSObject {
         }
         return operation
     }
-    
+
     // Callbacks for Items
-    func finishedDownload(id: String, success: Bool)
-    {
+    func finishedDownload(id: String, success: Bool) {
         // Manage our queuedVideo index
         if let index = queuedVideos.firstIndex(of: id) {
             queuedVideos.remove(at: index)
         }
-        
+
         if queuedVideos.isEmpty {
             totalQueued = 0
         }
-        
+
         DispatchQueue.main.async {
             // Callback the callbacks
             for callback in self.managerCallbacks {
@@ -108,8 +108,8 @@ class VideoManager : NSObject {
             }
         }
     }
-    
-    func markAsQueued(id:String) {
+
+    func markAsQueued(id: String) {
         // Manage our queuedVideo index
         if let cell = checkCells[id] {
             cell.markAsQueued()
@@ -120,26 +120,24 @@ class VideoManager : NSObject {
             cell.updateProgressIndicator(progress: progress)
         }
     }
-    
+
     /// Cancel all queued operations
-    
+
     func cancelAll() {
         stopAll = true
         queue.cancelAllOperations()
     }
 }
 
-
-
-class VideoDownloadOperation : AsynchronousOperation {
+class VideoDownloadOperation: AsynchronousOperation {
     var video: AerialVideo
     var download: VideoDownload?
-    
+
     init(video: AerialVideo, delegate: VideoManager) {
         debugLog("Video queued \(video.name)")
         self.video = video
     }
-    
+
     override func main() {
         let videoManager = VideoManager.sharedInstance
         if videoManager.stopAll {
@@ -153,12 +151,12 @@ class VideoDownloadOperation : AsynchronousOperation {
             self.download!.startDownload()
         }
     }
-    
+
     override func cancel() {
         defer { finish() }
         let videoManager = VideoManager.sharedInstance
 
-        if ((self.download) != nil) {
+        if let _ = self.download {
             self.download!.cancel()
         } else {
             videoManager.finishedDownload(id: self.video.id, success: false)
@@ -169,7 +167,7 @@ class VideoDownloadOperation : AsynchronousOperation {
     }
 }
 
-extension VideoDownloadOperation : VideoDownloadDelegate {
+extension VideoDownloadOperation: VideoDownloadDelegate {
     func videoDownload(_ videoDownload: VideoDownload,
                        finished success: Bool, errorMessage: String?) {
         debugLog("Finished")
@@ -180,14 +178,14 @@ extension VideoDownloadOperation : VideoDownloadDelegate {
             // Call up to clean the view
             videoManager.finishedDownload(id: videoDownload.video.id, success: true)
         } else {
-            if (errorMessage != nil) {
+            if let _ = errorMessage {
                 errorLog(errorMessage!)
             }
-            
+
             videoManager.finishedDownload(id: videoDownload.video.id, success: false)
         }
     }
-    
+
     func videoDownload(_ videoDownload: VideoDownload, receivedBytes: Int, progress: Float) {
         // Call up to update the view
         let videoManager = VideoManager.sharedInstance

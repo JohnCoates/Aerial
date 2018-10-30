@@ -355,7 +355,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA143CE01BDA3E880041A82B /* Build configuration list for PBXNativeTarget "AerialApp" */;
 			buildPhases = (
-				FA74B8481D94DCE0004FE056 /* ShellScript */,
+				FA74B8481D94DCE0004FE056 /* Run Script - Swiftlint */,
 				FA143CD21BDA3E880041A82B /* Sources */,
 				FA143CD31BDA3E880041A82B /* Frameworks */,
 				FA143CD41BDA3E880041A82B /* Resources */,
@@ -391,6 +391,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FACAF1AF1BD9FC6000E539DC /* Build configuration list for PBXNativeTarget "Aerial" */;
 			buildPhases = (
+				7E9B50FB2187D302002895ED /* Run Script - Swiftlint */,
 				FACAF1A01BD9FC6000E539DC /* Sources */,
 				FACAF1A11BD9FC6000E539DC /* Frameworks */,
 				FACAF1A21BD9FC6000E539DC /* Headers */,
@@ -496,18 +497,33 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		FA74B8481D94DCE0004FE056 /* ShellScript */ = {
+		7E9B50FB2187D302002895ED /* Run Script - Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script - Swiftlint";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "";
+			shellScript = "if which swiftlint >/dev/null; then\n    if [ -z \"$CI\" ]; then\n        make --directory=${SRCROOT} xcode-lint\n    fi\nelse\n    echo \"warning: SwiftLint not installed, install using `brew install swiftlint`\"\nfi";
+		};
+		FA74B8481D94DCE0004FE056 /* Run Script - Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - Swiftlint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    if [ -z \"$CI\" ]; then\n        make --directory=${SRCROOT} xcode-lint\n    fi\nelse\n    echo \"warning: SwiftLint not installed, install using `brew install swiftlint`\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -615,7 +631,6 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Aerial/Source/Models/Time/Aerial-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -634,7 +649,6 @@
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OBJC_BRIDGING_HEADER = "Aerial/Source/Models/Time/Aerial-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -655,7 +669,6 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AerialApp.app/Contents/MacOS/AerialApp";
 			};
 			name = Debug;
@@ -675,7 +688,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AerialApp.app/Contents/MacOS/AerialApp";
 			};
 			name = Release;
@@ -795,7 +807,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Aerial/Source/Models/Time/Aerial-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Debug;
@@ -813,7 +824,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Aerial/Source/Models/Time/Aerial-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
