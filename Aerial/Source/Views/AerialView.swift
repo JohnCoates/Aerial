@@ -334,7 +334,7 @@ class AerialView: ScreenSaverView {
         // Add a bit of shadow to give an outline and better readability
         clockLayer.shadowRadius = 10
         clockLayer.shadowOpacity = 1.0
-        textLayer.shadowColor = CGColor.black
+        clockLayer.shadowColor = CGColor.black
         //clockLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(clockLayer)
 
@@ -344,7 +344,7 @@ class AerialView: ScreenSaverView {
         // Add a bit of shadow to give an outline and better readability
         messageLayer.shadowRadius = 10
         messageLayer.shadowOpacity = 1.0
-        textLayer.shadowColor = CGColor.black
+        messageLayer.shadowColor = CGColor.black
         //messageLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(messageLayer)
         
