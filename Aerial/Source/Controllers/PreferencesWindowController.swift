@@ -493,6 +493,15 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     @IBAction func close(_ sender: AnyObject?) {
         logPanel.close()
         window?.sheetParent?.endSheet(window!)
+        if #available(OSX 10.14, *) {
+        } else {
+            // Is there a better feeling than fixing a weird bug calling methods
+            // documented as "never invoke this method directly" ?
+            window?.resignMain()
+            window?.resignKey()
+            window?.becomeMain()
+            window?.becomeKey()
+        }
     }
 
     // MARK: Video playback
