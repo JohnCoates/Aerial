@@ -174,6 +174,8 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
     var locationManager: CLLocationManager?
 
+    public var appMode: Bool = false
+
     // MARK: - Init
     required init?(coder decoder: NSCoder) {
         self.fontManager = NSFontManager.shared
@@ -479,7 +481,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         } else {
             sleepAfterLabel.stringValue = "Unable to determine your Mac sleep settings"
         }
-
+        debugLog("appMode : \(appMode)")
     }
 
     override func windowDidLoad() {
@@ -492,15 +494,10 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
     @IBAction func close(_ sender: AnyObject?) {
         logPanel.close()
-        window?.sheetParent?.endSheet(window!)
-        if #available(OSX 10.14, *) {
+        if appMode {
+            NSApplication.shared.terminate(nil)
         } else {
-            // Is there a better feeling than fixing a weird bug calling methods
-            // documented as "never invoke this method directly" ?
-            window?.resignMain()
-            window?.resignKey()
-            window?.becomeMain()
-            window?.becomeKey()
+            window?.sheetParent?.endSheet(window!)
         }
     }
 
