@@ -27,7 +27,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 ### Manual Installation
 *Rather install from Terminal or have auto-updates? Look at the Brew Cask section below!*
 
-1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.4/Aerial.saver.zip) (Version 1.4.4, October 29, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.4)).
+1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.4/Aerial.saver.zip) (Version 1.4.4, October 29, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.4)). If you are experiencing issues, particularly with macOS High Sierra, please have a look at the latest beta version ([Version 1.4.5, October 31, 2018](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.5beta2), please read the instructions regarding High Sierra issues)
 2. Unzip the downloaded file.
 3. Open **Aerial.saver** and confirm installation.
 
@@ -121,6 +121,7 @@ You can easily check for yourself what to expect by opening a video in Quicktime
 
 ## Troubleshooting
 
+- Can't type into textfields with macOS High Sierra: Aerial may exhibit this issue in versions of macOS prior to Mojave. We now provide a workaround through a separate AerialConfig.app. This is a standalone application that brings you the same control panel that you see in System Preferences. Changes you make in the app will be applied to the screensaver as they share settings. You can download the AerialConfig.app on the [latest beta page](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.5beta2). You **must** install the corresponding version of Aerial.saver (the regular screensaver) for this to work, AerialConfig.app is **NOT** a full replacement for Aerial.saver !
 - Brightness control does not control external displays: Aerial uses the brightness API from macOS to change your screens brightness. Depending on your external screens (brand, the way they are connected, etc), macOS may not be able to control their brightness. Please check first if you can control your external screens brightness using the brightness keys from your keyboard. If you can't, Aerial won't be able to control their brightness either. If you can control their brightness through those keybord keys but see an issue with Aerial, please open an issue. 
 - Not seeing extended descriptions: Make sure you have version 1.4.2 or above.
 - Black screen: If you are behind a firewall (Like Little Snitch or Hands Off!) try creating exceptions for Aerial to allow it access to Apple's servers. Be sure the applications `ScreenSaverEngine.app` and `System Preferences.app` are not being blocked access to *.phobos.apple.com, *.phobos.apple.com.edgesuite.net and sylvan.apple.com. If that isn't an option, please look at the Offline mode section. 
