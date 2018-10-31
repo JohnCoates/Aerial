@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         let objects = objectsFromNib(loadNibNamed: "PreferencesWindow")
-
+        preferencesWindowController.appMode = true
         // We need to find the correct window in our nib
         let object = objects.first { object in
             if let window = object as? NSWindow, window.identifier?.rawValue == "preferencesWindow" {

@@ -63,10 +63,16 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     @IBOutlet var neverStreamVideosCheckbox: NSButton!
     @IBOutlet var neverStreamPreviewsCheckbox: NSButton!
     @IBOutlet weak var downloadNowButton: NSButton!
+    @IBOutlet var overrideOnBatteryCheckbox: NSButton!
+    @IBOutlet var powerSavingOnLowBatteryCheckbox: NSButton!
+
+    @IBOutlet var overrideNightOnDarkMode: NSButton!
 
     @IBOutlet var multiMonitorModePopup: NSPopUpButton!
     @IBOutlet var popupVideoFormat: NSPopUpButton!
+    @IBOutlet var alternatePopupVideoFormat: NSPopUpButton!
     @IBOutlet var descriptionModePopup: NSPopUpButton!
+
     @IBOutlet var fadeInOutModePopup: NSPopUpButton!
     @IBOutlet weak var fadeInOutTextModePopup: NSPopUpButton!
 
@@ -75,8 +81,9 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     @IBOutlet var versionLabel: NSTextField!
 
     @IBOutlet var popover: NSPopover!
-
     @IBOutlet var popoverTime: NSPopover!
+    @IBOutlet var popoverPower: NSPopover!
+
     @IBOutlet var linkTimeWikipediaButton: NSButton!
 
     @IBOutlet var popoverH264Indicator: NSButton!
@@ -173,6 +180,8 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     var savedBrightness: Float?
 
     var locationManager: CLLocationManager?
+
+    public var appMode: Bool = false
 
     // MARK: - Init
     required init?(coder decoder: NSCoder) {
@@ -282,7 +291,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         // Grab preferred language as proper string
         let printOutputLocale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
         if let deviceLanguageName: String = printOutputLocale.displayName(forKey: NSLocale.Key.identifier, value: Locale.preferredLanguages[0]) {
-            currentLocaleLabel.stringValue = "Preferred language : \(deviceLanguageName)"
+            currentLocaleLabel.stringValue = "Preferred language: \(deviceLanguageName)"
         } else {
             currentLocaleLabel.stringValue = ""
         }
@@ -305,11 +314,21 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             showClockCheckbox.isEnabled = false
         }
 
+        // Videos panel
+        if preferences.overrideOnBattery {
+            overrideOnBatteryCheckbox.state = .on
+            changeBatteryOverrideState(to: true)
+        } else {
+            changeBatteryOverrideState(to: false)
+        }
+        if preferences.powerSavingOnLowBattery {
+            powerSavingOnLowBatteryCheckbox.state = .on
+        }
+
         // Aerial panel
         if preferences.debugMode {
             debugModeCheckbox.state = .on
         }
-
         if preferences.logToDisk {
             logToDiskCheckbox.state = .on
         }
@@ -319,27 +338,22 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             showClockCheckbox.state = .on
             withSecondsCheckbox.isEnabled = true
         }
-
         if preferences.withSeconds {
             withSecondsCheckbox.state = .on
         }
-
         if preferences.showMessage {
             showExtraMessage.state = .on
             extraMessageTextField.isEnabled = true
         }
-
         if preferences.showDescriptions {
             showDescriptionsCheckbox.state = .on
             changeTextState(to: true)
         } else {
             changeTextState(to: false)
         }
-
         if preferences.localizeDescriptions {
             localizeForTvOS12Checkbox.state = .on
         }
-
         if preferences.overrideMargins {
             changeCornerMargins.state = .on
             marginHorizontalTextfield.isEnabled = true
@@ -350,15 +364,12 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         if preferences.neverStreamVideos {
             neverStreamVideosCheckbox.state = .on
         }
-
         if preferences.neverStreamPreviews {
             neverStreamPreviewsCheckbox.state = .on
         }
-
         if !preferences.useCommunityDescriptions {
             useCommunityCheckbox.state = .off
         }
-
         if !preferences.cacheAerials {
             cacheAerialsAsTheyPlayCheckbox.state = .off
         }
@@ -390,6 +401,14 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         dimFadeInMinutes.stringValue = String(preferences.dimInMinutes!)
 
         // Time mode
+        if #available(OSX 10.14, *) {
+            if preferences.darkModeNightOverride {
+                overrideNightOnDarkMode.state = .on
+            }
+        } else {
+            overrideNightOnDarkMode.isEnabled = false
+        }
+
         let timeManagement = TimeManagement.sharedInstance
         // Light/Dark mode only available on Mojave+
         let (isLDMCapable, reason: LDMReason) = timeManagement.isLightDarkModeAvailable()
@@ -456,6 +475,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         multiMonitorModePopup.selectItem(at: preferences.multiMonitorMode!)
 
         popupVideoFormat.selectItem(at: preferences.videoFormat!)
+        alternatePopupVideoFormat.selectItem(at: preferences.alternateVideoFormat!)
 
         descriptionModePopup.selectItem(at: preferences.showDescriptionsMode!)
 
@@ -479,7 +499,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         } else {
             sleepAfterLabel.stringValue = "Unable to determine your Mac sleep settings"
         }
-
+        debugLog("appMode : \(appMode)")
     }
 
     override func windowDidLoad() {
@@ -492,7 +512,11 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
     @IBAction func close(_ sender: AnyObject?) {
         logPanel.close()
-        window?.sheetParent?.endSheet(window!)
+        if appMode {
+            NSApplication.shared.terminate(nil)
+        } else {
+            window?.sheetParent?.endSheet(window!)
+        }
     }
 
     // MARK: Video playback
@@ -538,17 +562,47 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     }
 
     // MARK: - Video panel
+    @IBAction func overrideOnBatteryClick(_ sender: NSButton) {
+        let onState = (sender.state == NSControl.StateValue.on)
+        preferences.overrideOnBattery = onState
+        changeBatteryOverrideState(to: onState)
+        debugLog("UI overrideOnBattery \(onState)")
+    }
+
+    @IBAction func powerSavingOnLowClick(_ sender: NSButton) {
+        let onState = (sender.state == NSControl.StateValue.on)
+        preferences.powerSavingOnLowBattery = onState
+        debugLog("UI powerSavingOnLow \(onState)")
+    }
+
+    @IBAction func alternateVideoFormatChange(_ sender: NSPopUpButton) {
+        debugLog("UI alternatePopupVideoFormat: \(sender.indexOfSelectedItem)")
+        preferences.alternateVideoFormat = sender.indexOfSelectedItem
+        changeBatteryOverrideState(to: true)
+    }
+
+    func changeBatteryOverrideState(to: Bool) {
+        alternatePopupVideoFormat.isEnabled = to
+        if !to || (to && preferences.alternateVideoFormat != Preferences.AlternateVideoFormat.powerSaving.rawValue) {
+            powerSavingOnLowBatteryCheckbox.isEnabled = to
+        } else {
+            powerSavingOnLowBatteryCheckbox.isEnabled = false
+        }
+    }
 
     @IBAction func popupVideoFormatChange(_ sender: NSPopUpButton) {
         debugLog("UI popupVideoFormat: \(sender.indexOfSelectedItem)")
         preferences.videoFormat = sender.indexOfSelectedItem
         preferences.synchronize()
-
         outlineView.reloadData()
     }
 
     @IBAction func helpButtonClick(_ button: NSButton!) {
         popover.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
+    }
+
+    @IBAction func helpPowerButtonClick(_ button: NSButton!) {
+        popoverPower.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
     }
 
     @IBAction func multiMonitorModePopupChange(_ sender: NSPopUpButton) {
@@ -577,6 +631,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             downloadProgressIndicator.maxValue = Double(total)
         }
     }
+
     @IBAction func cancelDownloadsClick(_ sender: Any) {
         debugLog("UI cancelDownloadsClick")
         let videoManager = VideoManager.sharedInstance
@@ -850,7 +905,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             byteCountFormatter.countStyle = .file
             let sizeToDisplay = byteCountFormatter.string(for: folderSize) ?? ""
             debugLog("Cache size : \(sizeToDisplay)")
-            cacheSizeTextField.stringValue = "Cache all videos (current cache size \(sizeToDisplay))"
+            cacheSizeTextField.stringValue = "Cache all videos (Current cache size \(sizeToDisplay))"
         }
     }
 
@@ -1083,7 +1138,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         }
 
         if event.type != .leftMouseUp && event.type != .leftMouseDown && event.type != .leftMouseDragged {
-            warnLog("Unexepected event type \(event.type)")
+            //warnLog("Unexepected event type \(event.type)")
         }
 
         if event.type == .leftMouseUp {

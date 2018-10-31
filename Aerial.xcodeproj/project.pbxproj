@@ -109,7 +109,7 @@
 		03E8730E216501ED002B469B /* AsynchronousOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousOperation.swift; sourceTree = "<group>"; };
 		03E8731221675FE0002B469B /* TimeManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManagement.swift; sourceTree = "<group>"; };
 		AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialPlayerItem.swift; sourceTree = "<group>"; };
-		FA143CD61BDA3E880041A82B /* AerialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA143CD61BDA3E880041A82B /* AerialConfig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerialConfig.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA143CE51BDA3EEF0041A82B /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = VideoDownload.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		FA6F81DB1D939455007975FE /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
@@ -331,7 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				FACAF1A51BD9FC6000E539DC /* Aerial.saver */,
-				FA143CD61BDA3E880041A82B /* AerialApp.app */,
+				FA143CD61BDA3E880041A82B /* AerialConfig.app */,
 				FA71996E1D94EC5A00FBC99B /* Aerial Tests.xctest */,
 			);
 			name = Products;
@@ -351,9 +351,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		FA143CD51BDA3E880041A82B /* AerialApp */ = {
+		FA143CD51BDA3E880041A82B /* AerialConfig */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA143CE01BDA3E880041A82B /* Build configuration list for PBXNativeTarget "AerialApp" */;
+			buildConfigurationList = FA143CE01BDA3E880041A82B /* Build configuration list for PBXNativeTarget "AerialConfig" */;
 			buildPhases = (
 				FA74B8481D94DCE0004FE056 /* Run Script - Swiftlint */,
 				FA143CD21BDA3E880041A82B /* Sources */,
@@ -364,9 +364,9 @@
 			);
 			dependencies = (
 			);
-			name = AerialApp;
+			name = AerialConfig;
 			productName = "Aerial Test";
-			productReference = FA143CD61BDA3E880041A82B /* AerialApp.app */;
+			productReference = FA143CD61BDA3E880041A82B /* AerialConfig.app */;
 			productType = "com.apple.product-type.application";
 		};
 		FA71996D1D94EC5A00FBC99B /* Aerial Tests */ = {
@@ -413,7 +413,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "John Coates";
 				TargetAttributes = {
 					FA143CD51BDA3E880041A82B = {
@@ -446,7 +446,7 @@
 			projectRoot = "";
 			targets = (
 				FACAF1A41BD9FC6000E539DC /* Aerial */,
-				FA143CD51BDA3E880041A82B /* AerialApp */,
+				FA143CD51BDA3E880041A82B /* AerialConfig */,
 				FA71996D1D94EC5A00FBC99B /* Aerial Tests */,
 			);
 		};
@@ -599,7 +599,7 @@
 /* Begin PBXTargetDependency section */
 		FA7199741D94EC5A00FBC99B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FA143CD51BDA3E880041A82B /* AerialApp */;
+			target = FA143CD51BDA3E880041A82B /* AerialConfig */;
 			targetProxy = FA7199731D94EC5A00FBC99B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -646,7 +646,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "Aerial/Source/Models/Time/Aerial-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 			};
@@ -831,7 +831,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FA143CE01BDA3E880041A82B /* Build configuration list for PBXNativeTarget "AerialApp" */ = {
+		FA143CE01BDA3E880041A82B /* Build configuration list for PBXNativeTarget "AerialConfig" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA143CE11BDA3E880041A82B /* Debug */,

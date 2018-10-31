@@ -32,6 +32,12 @@ class TimeManagement: NSObject {
     // swiftlint:disable:next cyclomatic_complexity
     func shouldRestrictPlaybackToDayNightVideo() -> (Bool, String) {
         let preferences = Preferences.sharedInstance
+        // We can override everything on dark mode if we need to
+        if preferences.darkModeNightOverride && isDarkModeEnabled() {
+            return (true, "night")
+        }
+
+        // If not we check the modes
         if preferences.timeMode == Preferences.TimeMode.lightDarkMode.rawValue {
             if isDarkModeEnabled() {
                 return (true, "night")
@@ -377,6 +383,11 @@ class TimeManagement: NSObject {
         } else {
             return true
         }
+    }
+
+    func isBatteryLow() -> Bool {
+        let level = IOPSGetBatteryWarningLevel()
+        return (level == kIOPSLowBatteryWarningEarly || level == kIOPSLowBatteryWarningFinal)
     }
 
     // MARK: - Location detection

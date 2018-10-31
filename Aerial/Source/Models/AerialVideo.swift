@@ -75,8 +75,14 @@ class AerialVideo: CustomStringConvertible, Equatable {
 
     var url: URL {
         let preferences = Preferences.sharedInstance
+        let timeManagement = TimeManagement.sharedInstance
+        // We may override on battery
+        if preferences.overrideOnBattery && timeManagement.isOnBattery() {
+            return getClosestAvailable(wanted: preferences.alternateVideoFormat!-1) // Slightly dirty
+        }
 
-        // We need to return the closest available format, not pretty
+        return getClosestAvailable(wanted: preferences.videoFormat!)
+/*        // We need to return the closest available format, not pretty
         if preferences.videoFormat == Preferences.VideoFormat.v4KHEVC.rawValue {
             if url4KHEVC != "" {
                 return URL(string: self.url4KHEVC)!
@@ -102,9 +108,37 @@ class AerialVideo: CustomStringConvertible, Equatable {
             } else {
                 return URL(string: self.url4KHEVC)!
             }
-        }
+        }*/
     }
 
+    func getClosestAvailable(wanted: Int) -> URL {
+        if wanted == Preferences.VideoFormat.v4KHEVC.rawValue {
+            if url4KHEVC != "" {
+                return URL(string: self.url4KHEVC)!
+            } else if url1080pHEVC != "" {
+                return URL(string: self.url1080pHEVC)!
+            } else {
+                return URL(string: self.url1080pH264)!
+            }
+        } else if wanted == Preferences.VideoFormat.v1080pHEVC.rawValue {
+            if url1080pHEVC != "" {
+                return URL(string: self.url1080pHEVC)!
+            } else if url1080pH264 != "" {
+                return URL(string: self.url1080pH264)!
+            } else {
+                return URL(string: self.url4KHEVC)!
+            }
+        } else {
+            if url1080pH264 != "" {
+                return URL(string: self.url1080pH264)!
+            } else if url1080pHEVC != "" {
+                // With the latest versions, we should always have a H.264 fallback so this is just for future proofing
+                return URL(string: self.url1080pHEVC)!
+            } else {
+                return URL(string: self.url4KHEVC)!
+            }
+        }
+    }
     init(id: String,
          name: String,
          secondaryName: String,

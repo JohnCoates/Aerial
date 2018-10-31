@@ -57,9 +57,11 @@
         },
         {
             "id" : "2F11E857-4F77-4476-8033-4A1E4610AFCC",
-            "name" : "Sheikh Zayed Road"
+            "name" : "Sheikh Zayed Road",
+            "pointsOfInterest" : {
+                "0" : "Traveling along Sheikh Zayed Road in Dubai, United Arab Emirates"
+            }
         },
-
         {
             "id" : "E4ED0B22-EB81-4D4F-A29E-7E1EA6B6D980",
             "name" : "Nuussuaq Peninsula"

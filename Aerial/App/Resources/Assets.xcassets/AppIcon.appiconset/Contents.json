@@ -46,8 +46,9 @@
       "scale" : "1x"
     },
     {
-      "idiom" : "mac",
       "size" : "512x512",
+      "idiom" : "mac",
+      "filename" : "icon-1024.png",
       "scale" : "2x"
     }
   ],
