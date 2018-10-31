@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FA143CD51BDA3E880041A82B"
-               BuildableName = "AerialApp.app"
-               BlueprintName = "AerialApp"
+               BuildableName = "AerialConfig.app"
+               BlueprintName = "AerialConfig"
                ReferencedContainer = "container:Aerial.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,8 +44,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA143CD51BDA3E880041A82B"
-            BuildableName = "AerialApp.app"
-            BlueprintName = "AerialApp"
+            BuildableName = "AerialConfig.app"
+            BlueprintName = "AerialConfig"
             ReferencedContainer = "container:Aerial.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -67,8 +67,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA143CD51BDA3E880041A82B"
-            BuildableName = "AerialApp.app"
-            BlueprintName = "AerialApp"
+            BuildableName = "AerialConfig.app"
+            BlueprintName = "AerialConfig"
             ReferencedContainer = "container:Aerial.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -93,8 +93,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA143CD51BDA3E880041A82B"
-            BuildableName = "AerialApp.app"
-            BlueprintName = "AerialApp"
+            BuildableName = "AerialConfig.app"
+            BlueprintName = "AerialConfig"
             ReferencedContainer = "container:Aerial.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

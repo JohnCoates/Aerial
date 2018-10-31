@@ -171,12 +171,20 @@ class AerialView: ScreenSaverView {
     func setup() {
         debugLog("\(self.description) AerialView setup init")
         let preferences = Preferences.sharedInstance
+        let timeManagement = TimeManagement.sharedInstance
+
+        if preferences.overrideOnBattery && timeManagement.isOnBattery() {
+            if preferences.alternateVideoFormat == Preferences.AlternateVideoFormat.powerSaving.rawValue ||
+                (preferences.powerSavingOnLowBattery && timeManagement.isBatteryLow()) {
+                timeManagement.setBrightness(level: 0.0)
+                return
+            }
+        }
 
         // Ugly, we make sure we should dim, we're not a preview, we haven't dimmed yet (multi monitor)
         // and ensure we properly apply the night/battery restrictions !
         if preferences.dimBrightness {
             if !isPreview && brightnessToRestore == nil {
-                let timeManagement = TimeManagement.sharedInstance
                 let (should, to) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
 
                 if !preferences.dimOnlyAtNight || (preferences.dimOnlyAtNight && should && to == "night") {

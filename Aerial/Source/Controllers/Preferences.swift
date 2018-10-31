@@ -60,6 +60,12 @@ class Preferences {
         case overrideMargins = "overrideMargins"
         case marginX = "marginX"
         case marginY = "marginY"
+
+        case alternateVideoFormat = "alternateVideoFormat"
+        case overrideOnBattery = "overrideOnBattery"
+        case powerSavingOnLowBattery = "powerSavingOnLowBattery"
+
+        case darkModeNightOverride = "darkModeNightOverride"
     }
 
     enum SolarMode: Int {
@@ -93,6 +99,10 @@ class Preferences {
 
     enum VideoFormat: Int {
         case v1080pH264, v1080pHEVC, v4KHEVC
+    }
+
+    enum AlternateVideoFormat: Int {
+        case powerSaving, v1080pH264, v1080pHEVC, v4KHEVC
     }
 
     enum DescriptionMode: Int {
@@ -161,6 +171,10 @@ class Preferences {
         defaultValues[.overrideMargins] = false
         defaultValues[.marginX] = 50
         defaultValues[.marginY] = 50
+        defaultValues[.overrideOnBattery] = false
+        defaultValues[.powerSavingOnLowBattery] = false
+        defaultValues[.alternateVideoFormat] = AlternateVideoFormat.powerSaving
+        defaultValues[.darkModeNightOverride] = false
 
         let defaults = defaultValues.reduce([String: Any]()) { (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
             var mutable = result
@@ -172,6 +186,41 @@ class Preferences {
     }
 
     // MARK: - Variables
+    var alternateVideoFormat: Int? {
+        get {
+            return optionalValue(forIdentifier: .alternateVideoFormat)
+        }
+        set {
+            setValue(forIdentifier: .alternateVideoFormat, value: newValue)
+        }
+    }
+
+    var darkModeNightOverride: Bool {
+        get {
+            return value(forIdentifier: .darkModeNightOverride)
+        }
+        set {
+            setValue(forIdentifier: .darkModeNightOverride, value: newValue)
+        }
+    }
+
+    var overrideOnBattery: Bool {
+        get {
+            return value(forIdentifier: .overrideOnBattery)
+        }
+        set {
+            setValue(forIdentifier: .overrideOnBattery, value: newValue)
+        }
+    }
+
+    var powerSavingOnLowBattery: Bool {
+        get {
+            return value(forIdentifier: .powerSavingOnLowBattery)
+        }
+        set {
+            setValue(forIdentifier: .powerSavingOnLowBattery, value: newValue)
+        }
+    }
 
     var useCommunityDescriptions: Bool {
         get {
