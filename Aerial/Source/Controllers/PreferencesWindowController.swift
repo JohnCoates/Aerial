@@ -578,11 +578,16 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     @IBAction func alternateVideoFormatChange(_ sender: NSPopUpButton) {
         debugLog("UI alternatePopupVideoFormat: \(sender.indexOfSelectedItem)")
         preferences.alternateVideoFormat = sender.indexOfSelectedItem
+        changeBatteryOverrideState(to: true)
     }
 
     func changeBatteryOverrideState(to: Bool) {
-        powerSavingOnLowBatteryCheckbox.isEnabled = to
         alternatePopupVideoFormat.isEnabled = to
+        if !to || (to && preferences.alternateVideoFormat != Preferences.AlternateVideoFormat.powerSaving.rawValue) {
+            powerSavingOnLowBatteryCheckbox.isEnabled = to
+        } else {
+            powerSavingOnLowBatteryCheckbox.isEnabled = false
+        }
     }
 
     @IBAction func popupVideoFormatChange(_ sender: NSPopUpButton) {

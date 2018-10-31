@@ -173,9 +173,10 @@ class AerialView: ScreenSaverView {
         let preferences = Preferences.sharedInstance
         let timeManagement = TimeManagement.sharedInstance
 
-        if preferences.overrideOnBattery && timeManagement.isOnBattery() {
+        if preferences.overrideOnBattery && timeManagement.isOnBattery() && !isPreview {
             if preferences.alternateVideoFormat == Preferences.AlternateVideoFormat.powerSaving.rawValue ||
                 (preferences.powerSavingOnLowBattery && timeManagement.isBatteryLow()) {
+                isDisabled = true
                 timeManagement.setBrightness(level: 0.0)
                 return
             }
