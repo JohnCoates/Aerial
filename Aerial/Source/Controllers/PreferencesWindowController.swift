@@ -103,12 +103,17 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     @IBOutlet var latitudeTextField: NSTextField!
     @IBOutlet var longitudeTextField: NSTextField!
     @IBOutlet var findCoordinatesButton: NSButton!
+    @IBOutlet var extraLatitudeTextField: NSTextField!
+    @IBOutlet var extraLongitudeTextField: NSTextField!
+    @IBOutlet var enterCoordinatesButton: NSButton!
 
+    @IBOutlet var enterCoordinatesPanel: NSPanel!
     @IBOutlet var calculateCoordinatesLabel: NSTextField!
 
     @IBOutlet var latitudeFormatter: NumberFormatter!
-
     @IBOutlet var longitudeFormatter: NumberFormatter!
+    @IBOutlet var extraLatitudeFormatter: NumberFormatter!
+    @IBOutlet var extraLongitudeFormatter: NumberFormatter!
 
     @IBOutlet var solarModePopup: NSPopUpButton!
 
@@ -128,7 +133,10 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     @IBOutlet var changeCornerMargins: NSButton!
     @IBOutlet var marginHorizontalTextfield: NSTextField!
     @IBOutlet var marginVerticalTextfield: NSTextField!
+    @IBOutlet var secondaryMarginHorizontalTextfield: NSTextField!
+    @IBOutlet var secondaryMarginVerticalTextfield: NSTextField!
 
+    @IBOutlet var editMarginButton: NSButton!
     @IBOutlet var previewDisabledTextfield: NSTextField!
     @IBOutlet var fontPickerButton: NSButton!
 
@@ -142,19 +150,27 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     @IBOutlet weak var withSecondsCheckbox: NSButton!
     @IBOutlet var showExtraMessage: NSButton!
     @IBOutlet var extraMessageTextField: NSTextField!
+    @IBOutlet var secondaryExtraMessageTextField: NSTextField!
     @IBOutlet var extraMessageFontLabel: NSTextField!
     @IBOutlet weak var extraCornerPopup: NSPopUpButton!
+    @IBOutlet var editExtraMessageButton: NSButton!
 
     @IBOutlet var dimBrightness: NSButton!
     @IBOutlet var dimStartFrom: NSSlider!
     @IBOutlet var dimFadeTo: NSSlider!
     @IBOutlet var dimFadeInMinutes: NSTextField!
+    @IBOutlet var dimFadeInMinutesStepper: NSStepper!
     @IBOutlet var dimOnlyAtNight: NSButton!
     @IBOutlet var dimOnlyOnBattery: NSButton!
+    @IBOutlet var overrideDimFadeCheckbox: NSButton!
 
     @IBOutlet var sleepAfterLabel: NSTextField!
 
     @IBOutlet var logPanel: NSPanel!
+
+    @IBOutlet var editMarginsPanel: NSPanel!
+    @IBOutlet var editExtraMessagePanel: NSPanel!
+
     @IBOutlet weak var showLogBottomClick: NSButton!
     @IBOutlet weak var logTableView: NSTableView!
     @IBOutlet weak var debugModeCheckbox: NSButton!
@@ -219,12 +235,9 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         self.fontManager.target = self
         latitudeFormatter.maximumSignificantDigits = 10
         longitudeFormatter.maximumSignificantDigits = 10
+        extraLatitudeFormatter.maximumSignificantDigits = 10
+        extraLongitudeFormatter.maximumSignificantDigits = 10
 
-        // This used to grab the preview player and put it in our own video preview thing.
-        // While kinda cool, it showed a random video that wasn't selected, and with new lifecycle, it was paused
-        /*if let previewPlayer = AerialView.previewPlayer {
-            self.player = previewPlayer
-        }*/
         updateCacheSize()
         outlineView.floatsGroupRows = false
 
@@ -287,6 +300,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
         // Extra message
         extraMessageTextField.stringValue = preferences.showMessageString!
+        secondaryExtraMessageTextField.stringValue = preferences.showMessageString!
 
         // Grab preferred language as proper string
         let printOutputLocale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
@@ -343,6 +357,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         }
         if preferences.showMessage {
             showExtraMessage.state = .on
+            editExtraMessageButton.isEnabled = true
             extraMessageTextField.isEnabled = true
         }
         if preferences.showDescriptions {
@@ -358,6 +373,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             changeCornerMargins.state = .on
             marginHorizontalTextfield.isEnabled = true
             marginVerticalTextfield.isEnabled = true
+            editMarginButton.isEnabled = true
         }
 
         // Cache panel
@@ -375,19 +391,15 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         }
 
         // Brightness panel
+        if preferences.overrideDimInMinutes {
+            overrideDimFadeCheckbox.state = .on
+        }
+
         if preferences.dimBrightness {
             dimBrightness.state = .on
-            dimOnlyAtNight.isEnabled = true
-            dimOnlyOnBattery.isEnabled = true
-            dimStartFrom.isEnabled = true
-            dimFadeTo.isEnabled = true
-            dimFadeInMinutes.isEnabled = true
+            changeBrightnessState(to: true)
         } else {
-            dimOnlyAtNight.isEnabled = false
-            dimOnlyOnBattery.isEnabled = false
-            dimStartFrom.isEnabled = false
-            dimFadeTo.isEnabled = false
-            dimFadeInMinutes.isEnabled = false
+            changeBrightnessState(to: false)
         }
 
         if preferences.dimOnlyOnBattery {
@@ -399,6 +411,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         dimStartFrom.doubleValue = preferences.startDim ?? 0.5
         dimFadeTo.doubleValue = preferences.endDim ?? 0.1
         dimFadeInMinutes.stringValue = String(preferences.dimInMinutes!)
+        dimFadeInMinutesStepper.intValue = Int32(preferences.dimInMinutes!)
 
         // Time mode
         if #available(OSX 10.14, *) {
@@ -438,9 +451,13 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
         latitudeTextField.stringValue = preferences.latitude!
         longitudeTextField.stringValue = preferences.longitude!
+        extraLatitudeTextField.stringValue = preferences.latitude!
+        extraLongitudeTextField.stringValue = preferences.longitude!
 
         marginHorizontalTextfield.stringValue = String(preferences.marginX!)
         marginVerticalTextfield.stringValue = String(preferences.marginY!)
+        secondaryMarginHorizontalTextfield.stringValue = String(preferences.marginX!)
+        secondaryMarginVerticalTextfield.stringValue = String(preferences.marginY!)
 
         // Handle the time radios
         switch preferences.timeMode {
@@ -499,6 +516,21 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         } else {
             sleepAfterLabel.stringValue = "Unable to determine your Mac sleep settings"
         }
+
+        // To workaround our High Sierra issues with textfields, we have separate panels
+        // that replicate the features and are editable. They are hidden unless needed.
+        if #available(OSX 10.14, *) {
+            editMarginButton.isHidden = true
+            editExtraMessageButton.isHidden = true
+            enterCoordinatesButton.isHidden = true
+        } else {
+            marginHorizontalTextfield.isEnabled = false
+            marginVerticalTextfield.isEnabled = false
+            extraMessageTextField.isEnabled = false
+            latitudeTextField.isEnabled = false
+            longitudeTextField.isEnabled = false
+        }
+
         debugLog("appMode : \(appMode)")
     }
 
@@ -700,6 +732,31 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
     // MARK: - Text panel
 
+    // We have a secondary panel for entering margins as a workaround on < Mojave
+    @IBAction func openExtraMessagePanelClick(_ sender: Any) {
+        if editExtraMessagePanel.isVisible {
+            editExtraMessagePanel.close()
+        } else {
+            editExtraMessagePanel.makeKeyAndOrderFront(sender)
+        }
+    }
+
+    @IBAction func openExtraMarginPanelClick(_ sender: Any) {
+        if editMarginsPanel.isVisible {
+            editMarginsPanel.close()
+        } else {
+            editMarginsPanel.makeKeyAndOrderFront(sender)
+        }
+    }
+
+    @IBAction func closeExtraMarginPanelClick(_ sender: Any) {
+        editMarginsPanel.close()
+    }
+
+    @IBAction func closeExtraMessagePanelClick(_ sender: Any) {
+        editExtraMessagePanel.close()
+    }
+
     @IBAction func showDescriptionsClick(button: NSButton?) {
         let state = showDescriptionsCheckbox.state
         let onState = (state == NSControl.StateValue.on)
@@ -722,6 +779,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         if (to && changeCornerMargins.state == .on) || !to {
             marginHorizontalTextfield.isEnabled = to
             marginVerticalTextfield.isEnabled = to
+            editExtraMessageButton.isEnabled = to
         }
         cornerContainer.isEnabled = to
         cornerTopLeft.isEnabled = to
@@ -738,6 +796,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         showExtraMessage.isEnabled = to
         if (to && showExtraMessage.state == .on) || !to {
             extraMessageTextField.isEnabled = to
+            editExtraMessageButton.isEnabled = to
         }
         extraFontPickerButton.isEnabled = to
         extraFontResetButton.isEnabled = to
@@ -817,6 +876,9 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
     @IBAction func extraTextFieldChange(_ sender: NSTextField) {
         debugLog("UI extraTextField \(sender.stringValue)")
+        if sender == secondaryExtraMessageTextField {
+            extraMessageTextField.stringValue = sender.stringValue
+        }
         preferences.showMessageString = sender.stringValue
     }
 
@@ -851,9 +913,9 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         let onState = (sender.state == NSControl.StateValue.on)
         // We also need to enable/disable our message field
         extraMessageTextField.isEnabled = onState
+        editExtraMessageButton.isEnabled = onState
         preferences.showMessage = onState
         debugLog("UI showExtraMessage: \(onState)")
-
     }
 
     @IBAction func fadeInOutTextModePopupChange(_ sender: NSPopUpButton) {
@@ -875,15 +937,24 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         marginHorizontalTextfield.isEnabled = onState
         marginVerticalTextfield.isEnabled = onState
         preferences.overrideMargins = onState
+        editExtraMessageButton.isEnabled = onState
     }
 
     @IBAction func marginXChange(_ sender: NSTextField) {
         preferences.marginX = Int(sender.stringValue)
+        if sender == secondaryMarginHorizontalTextfield {
+            marginHorizontalTextfield.stringValue = sender.stringValue
+        }
+
         debugLog("UI marginXChange: \(sender.stringValue)")
     }
 
     @IBAction func marginYChange(_ sender: NSTextField) {
         preferences.marginY = Int(sender.stringValue)
+        if sender == secondaryMarginVerticalTextfield {
+            marginVerticalTextfield.stringValue = sender.stringValue
+        }
+
         debugLog("UI marginYChange: \(sender.stringValue)")
     }
     // MARK: - Cache panel
@@ -968,6 +1039,18 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
     // MARK: - Time panel
 
+    @IBAction func enterCoordinatesButtonClick(_ sender: Any) {
+        if enterCoordinatesPanel.isVisible {
+            enterCoordinatesPanel.close()
+        } else {
+            enterCoordinatesPanel.makeKeyAndOrderFront(sender)
+        }
+    }
+
+    @IBAction func closeCoordinatesPanel(_ sender: Any) {
+        enterCoordinatesPanel.close()
+    }
+
     @IBAction func timeModeChange(_ sender: NSButton?) {
         if sender == timeDisabledRadio {
             preferences.timeMode = Preferences.TimeMode.disabled.rawValue
@@ -998,13 +1081,18 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
     @IBAction func latitudeChange(_ sender: NSTextField) {
         preferences.latitude = sender.stringValue
+        if sender == extraLatitudeTextField {
+            latitudeTextField.stringValue = sender.stringValue
+        }
         updateLatitudeLongitude()
-
     }
 
     @IBAction func longitudeChange(_ sender: NSTextField) {
         debugLog("longitudechange")
         preferences.longitude = sender.stringValue
+        if sender == extraLongitudeTextField {
+            longitudeTextField.stringValue = sender.stringValue
+        }
         updateLatitudeLongitude()
     }
 
@@ -1032,9 +1120,6 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
     @IBAction func findCoordinatesButtonClick(_ sender: NSButton) {
         debugLog("UI findCoordinatesButton")
-        /*let tm = TimeManagement.sharedInstance
-        
-        tm.startLocationDetection()*/
 
         locationManager = CLLocationManager()
         locationManager!.delegate = self
@@ -1044,30 +1129,14 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
         if CLLocationManager.locationServicesEnabled() {
             debugLog("Location services enabled")
-            //print(locationManager.location)
 
             _ = CLLocationManager.authorizationStatus()
-            /*if status == .restricted || status == .denied {
-                print("Location Denied")
-            }
-            else if status == .notDetermined {
-                print("Show ask for location")
-            }
-            else if status == .authorized {
-                print("This should work?")
-            }*/
+
             locationManager!.startUpdatingLocation()
         } else {
             errorLog("Location services are disabled, please check your macOS settings!")
             return
         }
-        /*
-        if #available(OSX 10.14, *) {
-            locationManager.requestLocation()
-        } else {
-            // Fallback on earlier versions
-            locationManager.startUpdatingLocation()
-        }*/
     }
 
     func pushCoordinates(_ coordinates: CLLocationCoordinate2D) {
@@ -1079,17 +1148,32 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         updateLatitudeLongitude()
     }
     // MARK: - Brightness panel
+    func changeBrightnessState(to: Bool) {
+        dimOnlyAtNight.isEnabled = to
+        dimOnlyOnBattery.isEnabled = to
+        dimStartFrom.isEnabled = to
+        dimFadeTo.isEnabled = to
+        overrideDimFadeCheckbox.isEnabled = to
+        if (to && preferences.overrideDimInMinutes) || !to {
+            dimFadeInMinutes.isEnabled = to
+            dimFadeInMinutesStepper.isEnabled = to
+        } else {
+            dimFadeInMinutes.isEnabled = false
+            dimFadeInMinutesStepper.isEnabled = false
+        }
+    }
+
+    @IBAction func overrideFadeDurationClick(_ sender: NSButton) {
+        let onState = (sender.state == .on)
+        preferences.overrideDimInMinutes = onState
+        changeBrightnessState(to: preferences.dimBrightness)
+        debugLog("UI dimBrightness: \(onState)")
+    }
 
     @IBAction func dimBrightnessClick(_ button: NSButton) {
         let onState = (button.state == .on)
         preferences.dimBrightness = onState
-
-        dimOnlyAtNight.isEnabled = onState
-        dimOnlyOnBattery.isEnabled = onState
-        dimStartFrom.isEnabled = onState
-        dimFadeTo.isEnabled = onState
-        dimFadeInMinutes.isEnabled = onState
-
+        changeBrightnessState(to: onState)
         debugLog("UI dimBrightness: \(onState)")
     }
 
@@ -1156,11 +1240,16 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         }
     }
 
-    @IBAction func dimInMinutes(_ sender: NSTextField) {
-        if let intValue = Int(sender.stringValue) {
-            preferences.dimInMinutes = intValue
+    @IBAction func dimInMinutes(_ sender: NSControl) {
+        if sender == dimFadeInMinutes {
+            if let intValue = Int(sender.stringValue) {
+                preferences.dimInMinutes = intValue
+                dimFadeInMinutesStepper.intValue = Int32(intValue)
+            }
+        } else {
+            preferences.dimInMinutes = Int(sender.intValue)
+            dimFadeInMinutes.stringValue = String(sender.intValue)
         }
-
         debugLog("UI dimInMinutes \(sender.stringValue)")
     }
 

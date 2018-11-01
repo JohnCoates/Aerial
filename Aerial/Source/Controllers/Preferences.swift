@@ -54,7 +54,7 @@ class Preferences {
         case dimOnlyAtNight = "dimOnlyAtNight"
         case dimOnlyOnBattery = "dimOnlyOnBattery"
         case dimInMinutes = "dimInMinutes"
-
+        case overrideDimInMinutes = "overrideDimInMinutes"
         case solarMode = "solarMode"
 
         case overrideMargins = "overrideMargins"
@@ -167,6 +167,7 @@ class Preferences {
         defaultValues[.dimOnlyAtNight] = false
         defaultValues[.dimOnlyOnBattery] = false
         defaultValues[.dimInMinutes] = 30
+        defaultValues[.overrideDimInMinutes] = false
         defaultValues[.solarMode] = SolarMode.official
         defaultValues[.overrideMargins] = false
         defaultValues[.marginX] = 50
@@ -192,6 +193,15 @@ class Preferences {
         }
         set {
             setValue(forIdentifier: .alternateVideoFormat, value: newValue)
+        }
+    }
+
+    var overrideDimInMinutes: Bool {
+        get {
+            return value(forIdentifier: .overrideDimInMinutes)
+        }
+        set {
+            setValue(forIdentifier: .overrideDimInMinutes, value: newValue)
         }
     }
 
