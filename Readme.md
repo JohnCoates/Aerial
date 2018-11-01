@@ -17,7 +17,7 @@ Aerial is completely open source, so feel free to contribute to its development.
 
 #### Coded with Love by John Coates ([Twitter](https://twitter.com/JohnCoatesDev), [Email](mailto:john@johncoates.me))
 
-Version 1.4 is also maintained by:
+Starting with version 1.4, Aerial is also maintained by:
 - [Guillaume Louel](https://github.com/glouel) ([Twitter](https://twitter.com/C_Wiz))
 
 You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/graphs/contributors). 
