@@ -122,7 +122,7 @@ You can easily check for yourself what to expect by opening a video in Quicktime
 
 ## Troubleshooting
 
-- Can't type into text fields with macOS High Sierra: Please install the beta version that has proper support for High Sierra, ([1.4.5 beta 4](https://github.com/JohnCoates/Aerial/releases/download/v1.4.5beta3/Aerial.saver.zip)). 
+- Can't type into text fields with macOS High Sierra: Please install the beta version that has proper support for High Sierra, ([1.4.5 beta 4](https://github.com/JohnCoates/Aerial/releases/download/v1.4.5beta4/Aerial.saver.zip)). 
 - Brightness control does not control external displays: Aerial uses the brightness API from macOS to change brightness of your screens. Depending on your external screens (brand, the way they are connected, etc), macOS may not be able to control their brightness. Please check first if you can control the brightness of your external screen(s) using the brightness keys from your keyboard. If you can't, Aerial won't be able to control their brightness either. If you can control their brightness through those keyboard keys but see an issue with Aerial, please open an issue. 
 - Not seeing extended descriptions: Make sure you have version 1.4.2 or above.
 - Black screen: If you are behind a firewall (Like Little Snitch or Hands Off!) try creating exceptions for Aerial to allow it access to Apple's servers. Be sure the applications `ScreenSaverEngine.app` and `System Preferences.app` are not being blocked access to *.phobos.apple.com, *.phobos.apple.com.edgesuite.net and sylvan.apple.com. If that isn't an option, please look at the Offline mode section. 
