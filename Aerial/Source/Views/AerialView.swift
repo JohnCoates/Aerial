@@ -147,14 +147,22 @@ class AerialView: ScreenSaverView {
     func setDimTimers() {
         if #available(OSX 10.12, *) {
             let preferences = Preferences.sharedInstance
-            if preferences.dimBrightness && preferences.dimInMinutes! > 0 && preferences.startDim != preferences.endDim {
-                // swiftlint:disable:next line_length
-                debugLog("seting brightness timers from \(String(describing: preferences.startDim)) to \(String(describing: preferences.endDim)) in \(String(describing: preferences.dimInMinutes))")
-                let interval = preferences.dimInMinutes! * 6 // * 60 / 10, we make 10 intermediate steps
+            let timeManagement = TimeManagement.sharedInstance
+            if preferences.dimBrightness && preferences.startDim != preferences.endDim {
+                debugLog("setting brightness timers from \(String(describing: preferences.startDim)) to \(String(describing: preferences.endDim))")
+                var interval: Int
+                if preferences.overrideDimInMinutes {
+                    interval = preferences.dimInMinutes! * 6 // * 60 / 10, we make 10 intermediate steps
+                } else {
+                    interval = timeManagement.getCurrentSleepTime() * 6
+                    if interval == 0 {
+                        interval = 180 // Fallback to 30 mins if no sleep
+                    }
+                }
+                debugLog("Step size: \(interval) seconds")
 
                 for idx in 1...10 {
                     _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(interval * idx), repeats: false) { (_) in
-                        let timeManagement = TimeManagement.sharedInstance
                         let val = preferences.startDim! - ((preferences.startDim! - preferences.endDim!) / 10 * Double(idx))
                         debugLog("Firing event \(idx) brightness to \(val)")
                         timeManagement.setBrightness(level: Float(val))
@@ -176,6 +184,7 @@ class AerialView: ScreenSaverView {
         if preferences.overrideOnBattery && timeManagement.isOnBattery() && !isPreview {
             if preferences.alternateVideoFormat == Preferences.AlternateVideoFormat.powerSaving.rawValue ||
                 (preferences.powerSavingOnLowBattery && timeManagement.isBatteryLow()) {
+                debugLog("Engaging power saving mode")
                 isDisabled = true
                 timeManagement.setBrightness(level: 0.0)
                 return
@@ -187,7 +196,6 @@ class AerialView: ScreenSaverView {
         if preferences.dimBrightness {
             if !isPreview && brightnessToRestore == nil {
                 let (should, to) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
-
                 if !preferences.dimOnlyAtNight || (preferences.dimOnlyAtNight && should && to == "night") {
                     if !preferences.dimOnlyOnBattery || (preferences.dimOnlyOnBattery && timeManagement.isOnBattery()) {
                         brightnessToRestore = timeManagement.getBrightness()
@@ -315,7 +323,6 @@ class AerialView: ScreenSaverView {
         layer.needsDisplayOnBoundsChange = true
         layer.frame = self.bounds
 
-        //self.
         debugLog("\(self.description) setting up player layer with frame: \(self.bounds) / \(self.frame)")
 
         playerLayer = AVPlayerLayer(player: player)
@@ -324,7 +331,6 @@ class AerialView: ScreenSaverView {
         }
         playerLayer.autoresizingMask = [CAAutoresizingMask.layerWidthSizable, CAAutoresizingMask.layerHeightSizable]
         playerLayer.frame = layer.bounds
-        //playerLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(playerLayer)
 
         textLayer = CATextLayer()
@@ -334,7 +340,6 @@ class AerialView: ScreenSaverView {
         textLayer.shadowRadius = 10
         textLayer.shadowOpacity = 1.0
         textLayer.shadowColor = CGColor.black
-        //textLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(textLayer)
 
         // Clock Layer
@@ -344,7 +349,6 @@ class AerialView: ScreenSaverView {
         clockLayer.shadowRadius = 10
         clockLayer.shadowOpacity = 1.0
         clockLayer.shadowColor = CGColor.black
-        //clockLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(clockLayer)
 
         // Message Layer
@@ -354,7 +358,6 @@ class AerialView: ScreenSaverView {
         messageLayer.shadowRadius = 10
         messageLayer.shadowOpacity = 1.0
         messageLayer.shadowColor = CGColor.black
-        //messageLayer.contentsScale = 1.0 // NSScreen.main?.backingScaleFactor ?? 1.0
         layer.addSublayer(messageLayer)
 
         if #available(OSX 10.14, *) {
