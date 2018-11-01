@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import AerialApp
+@testable import AerialConfig
 
 class PreferencesTests: XCTestCase {
 
