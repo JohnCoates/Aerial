@@ -27,13 +27,14 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 ### Manual Installation
 *Rather install from Terminal or have auto-updates? Look at the Brew Cask section below!*
 
-1. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.4/Aerial.saver.zip) (Version 1.4.4, October 29, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.4)). If you are experiencing issues, particularly with macOS High Sierra, please have a look at the latest beta version ([Version 1.4.5 beta 2, October 31, 2018](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.5beta2), please carefully read the instructions regarding High Sierra issues)
-2. Unzip the downloaded file.
-3. Open **Aerial.saver** and confirm installation.
+1. Close System Preferences
+2. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.4/Aerial.saver.zip) (Version 1.4.4, October 29, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.4)). If you are experiencing issues, particularly with macOS High Sierra, please have a look at the latest beta version ([Version 1.4.5 beta 2, October 31, 2018](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.5beta2), please carefully read the instructions regarding High Sierra issues)
+3. Unzip the downloaded file (if you use Safari, it should already be done for you).
+4. Open **Aerial.saver** (double click), it will open System Preferences and ask you if you want to install for all users or for your user only. 
 
-If Aerial.saver could not be opened, place Aerial.saver in `~/Library/Screen Savers`
+If you see an error message saying "This app is damaged and can't be opened, you should move it to the trash", we suggest that **you download the file with Safari**, to prevent macOS Gatekeeper from throwing that error. 
 
-**Important**: Please note that if you are upgrading from a previous version, we strongly recommend you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated. 
+**Important**: If you haven't closed System Preferences before installation and were upgrading from a previous version, we strongly recommend you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated. 
 
 ### Brew Cask Support - (Updated for 1.4.4)
 
