@@ -27,12 +27,12 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 ### Manual Installation
 *Rather install from Terminal or have auto-updates? Look at the Brew Cask section below!*
 
-1. Close System Preferences
-2. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.4/Aerial.saver.zip) (Version 1.4.4, October 29, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.4)). If you are experiencing issues, particularly with macOS High Sierra, please have a look at the latest beta version ([Version 1.4.5 beta 2, October 31, 2018](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.5beta2), please carefully read the instructions regarding High Sierra issues)
+1. **Close System Preferences**
+2. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.4/Aerial.saver.zip) (Version 1.4.4, October 29, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.4)). If you are experiencing issues, particularly with macOS High Sierra, please get the latest beta version instead ([Version 1.4.5 beta 3, November 1, 2018](https://github.com/JohnCoates/Aerial/releases/download/v1.4.5beta3/Aerial.saver.zip))
 3. Unzip the downloaded file (if you use Safari, it should already be done for you).
 4. Open **Aerial.saver** (double click), it will open System Preferences and ask you if you want to install for all users or for your user only. 
 
-If you see an error message saying "This app is damaged and can't be opened, you should move it to the trash", we suggest that **you download the file with Safari**, to prevent macOS Gatekeeper from throwing that error (some outdated unzip software may cause that issue). 
+If you see an error message saying "This app is damaged and can't be opened, you should move it to the trash", we suggest that **you download the file with Safari**, to prevent macOS Gatekeeper from throwing that error. Note that some outdated unzip software may cause that issue too. 
 
 **Important**: If you haven't closed System Preferences before installation and were upgrading from a previous version, we strongly recommend you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated. 
 
@@ -122,7 +122,7 @@ You can easily check for yourself what to expect by opening a video in Quicktime
 
 ## Troubleshooting
 
-- Can't type into text fields with macOS High Sierra: Aerial may exhibit this issue in versions of macOS prior to Mojave. We now provide a workaround through a separate AerialConfig.app. This is a standalone application that brings you the same control panel that you see in System Preferences. Changes you make in the app will be applied to the screensaver as they share settings. You can download the AerialConfig.app on the [latest beta page](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.5beta2). You **must** install the corresponding version of Aerial.saver (the regular screensaver) for this to work, AerialConfig.app is **NOT** a full replacement for Aerial.saver!
+- Can't type into text fields with macOS High Sierra: Please install the beta version that has proper support for High Sierra, ([1.4.5 beta 3](https://github.com/JohnCoates/Aerial/releases/download/v1.4.5beta3/Aerial.saver.zip)). 
 - Brightness control does not control external displays: Aerial uses the brightness API from macOS to change brightness of your screens. Depending on your external screens (brand, the way they are connected, etc), macOS may not be able to control their brightness. Please check first if you can control the brightness of your external screen(s) using the brightness keys from your keyboard. If you can't, Aerial won't be able to control their brightness either. If you can control their brightness through those keyboard keys but see an issue with Aerial, please open an issue. 
 - Not seeing extended descriptions: Make sure you have version 1.4.2 or above.
 - Black screen: If you are behind a firewall (Like Little Snitch or Hands Off!) try creating exceptions for Aerial to allow it access to Apple's servers. Be sure the applications `ScreenSaverEngine.app` and `System Preferences.app` are not being blocked access to *.phobos.apple.com, *.phobos.apple.com.edgesuite.net and sylvan.apple.com. If that isn't an option, please look at the Offline mode section. 
