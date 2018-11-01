@@ -32,13 +32,13 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 3. Unzip the downloaded file (if you use Safari, it should already be done for you).
 4. Open **Aerial.saver** (double click), it will open System Preferences and ask you if you want to install for all users or for your user only. 
 
-If you see an error message saying "This app is damaged and can't be opened, you should move it to the trash", we suggest that **you download the file with Safari**, to prevent macOS Gatekeeper from throwing that error (Some outdated unzip software may cause that issue). 
+If you see an error message saying "This app is damaged and can't be opened, you should move it to the trash", we suggest that **you download the file with Safari**, to prevent macOS Gatekeeper from throwing that error (some outdated unzip software may cause that issue). 
 
 **Important**: If you haven't closed System Preferences before installation and were upgrading from a previous version, we strongly recommend you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated. 
 
 ### Brew Cask Support - (Updated for 1.4.4)
 
-If you're looking to install Aerial across many systems, remotely, or simply from Terminal we recommend [Brew Cask](https://caskroom.github.io).  Prefer this method if you're looking for auto-updates.
+If you're looking to install Aerial across many systems, remotely, or simply from Terminal we recommend [Brew Cask](https://caskroom.github.io). Prefer this method if you're looking for auto-updates.
 
 Simply issue the following Terminal command: `brew cask install aerial`
 
@@ -56,10 +56,10 @@ To upgrade Aerial, run `brew cask upgrade` in Terminal.
 There are three options to uninstall Aerial from your Mac.
 
 * Right-click on the Aerial screensaver in System Preferences and select `Delete "Aerial"`.
-* Or delete the file(s) directly.  macOS can store screen savers in two locations. `/Library/Screen Savers` and `/Users/YOURUSERNAME/Library/Screen Savers`.  Check both locations for a file called "Aerial.saver" and delete any copies you find.
+* Or delete the file(s) directly. macOS can store screen savers in two locations. `/Library/Screen Savers` and `/Users/YOURUSERNAME/Library/Screen Savers`. Check both locations for a file called "Aerial.saver" and delete any copies you find.
 * If you installed Aerial using Brew Cask, then enter the following command in a Terminal window to uninstall: `brew cask uninstall aerial`.
 
-You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aerial`.  This is where Aerial stores the cached copies of the Aerial videos.  The last thing, you may want to delete the preferences `plist`.  The file is `/Users/YOURUSERNAME/Library/Preferences/ByHost/com.JohnCoates.Aerial.{UUID}.plist`. 
+You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aerial`. This is where Aerial stores the cached copies of the Aerial videos.  The last thing, you may want to delete the preferences `plist`. The file is `/Users/YOURUSERNAME/Library/Preferences/ByHost/com.JohnCoates.Aerial.{UUID}.plist`. 
 
 ## New features 
 
@@ -75,11 +75,11 @@ You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aeria
 
 ![screen shot 2018-10-29 at 13 24 46](https://user-images.githubusercontent.com/37544189/47649974-1f76a980-db7f-11e8-8339-3f0424652b8c.png)
 
-* **Descriptions:** Wondering where an Aerial view was shot? Aerial can now tell you as they play.  We even have extended descriptions written by our community of users.
+* **Descriptions:** Wondering where an Aerial view was shot? Aerial can now tell you as they play. We even have extended descriptions written by our community of users.
 
 ![screen shot 2018-10-29 at 13 25 10](https://user-images.githubusercontent.com/37544189/47649975-200f4000-db7f-11e8-9e8b-f75c4a5ebde4.png)
 
-* **Brightness control:** Aerial can progressively dim the brightness of your screens before your Mac goes to sleep.  You can even enable this feature only at night, or only on battery if you prefer.
+* **Brightness control:** Aerial can progressively dim the brightness of your screens before your Mac goes to sleep. You can even enable this feature only at night, or only on battery if you prefer.
 * **Full offline mode:** Behind a firewall? Just copy the cache folder from another Mac and you are all set. You can also disable all streaming. 
 * **Better cache management:** You can now cache your favorite videos individually, no need to grab them all. Or just stream them as you go, they'll get cached automatically too.
 * **Clock:** We even have a properly styled clock if that's your thing! 
@@ -110,25 +110,25 @@ You can then download the videos you want from the JSON files.  In the 4K JSONs,
 
 Aerial uses Apple's [AVFoundation framework](https://developer.apple.com/documentation/avfoundation) to play the videos as your screensaver. When available, AVFoundation will use hardware decoding (From your CPU or your graphics card) to minimize the resources needed for video playback. You can find guidelines in the help button next to the `Preferred video format` setting. By default, Aerial uses 1080p H.264 videos which is the most compatible format. Please note that all HEVC videos are encoded with the `Main10` profile, which may not be hardware accelerated by your machine, while some other HEVC videos (Encoded in `Main`  profile) will be.
 
-While we wish to provide everyone with the best setting for their machine, the GVA framework from Apple doesn't let us distinguish HEVC `Main10` profile acceleration from general HEVC acceleration.  Early feedback we gathered also seems to point that on machines with multiple decoding options (Intel QuickSync and AMD UVD), QuickSync will always be preferred (Even if you "force" the discrete GPU use with an external monitor).
+While we wish to provide everyone with the best setting for their machine, the GVA framework from Apple doesn't let us distinguish HEVC `Main10` profile acceleration from general HEVC acceleration. Early feedback we gathered also seems to point that on machines with multiple decoding options (Intel QuickSync and AMD UVD), QuickSync will always be preferred (Even if you "force" the discrete GPU use with an external monitor).
 
 These are our recommendations so far:
 - Macs older than 2011 may lack H.264 acceleration. 
 - Macs with an Intel CPU (With iGPU) from the Sandy Bridge (2011) generation to Broadwell (Early 2015) should have H.264 hardware acceleration available.
-- Late 2015 and 2016 Macs (Skylake and Kaby Lake) may only have partially accelerated HEVC decoding.  We recommended you stick to 1080p H.264 on laptops.  You may consider the HEVC format on desktops but understand that decoding may be CPU intensive and spin up your fans.
+- Late 2015 and 2016 Macs (Skylake and Kaby Lake) may only have partially accelerated HEVC decoding. We recommended you stick to 1080p H.264 on laptops. You may consider the HEVC format on desktops but understand that decoding may be CPU intensive and spin up your fans.
 - Macs 2017 and up should have full HEVC acceleration. 
 
 You can easily check for yourself what to expect by opening a video in Quicktime (Use the `Show in Finder` option in the `Cache` tab to find the cached videos). In Activity Monitor, the AV Framework GVA process is called `VTDecoderXPCService`.
 
 ## Troubleshooting
 
-- Can't type into text fields with macOS High Sierra: Aerial may exhibit this issue in versions of macOS prior to Mojave.  We now provide a workaround through a separate AerialConfig.app.  This is a standalone application that brings you the same control panel that you see in System Preferences. Changes you make in the app will be applied to the screensaver as they share settings. You can download the AerialConfig.app on the [latest beta page](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.5beta2). You **must** install the corresponding version of Aerial.saver (the regular screensaver) for this to work, AerialConfig.app is **NOT** a full replacement for Aerial.saver!
-- Brightness control does not control external displays: Aerial uses the brightness API from macOS to change brightness of your screens.  Depending on your external screens (brand, the way they are connected, etc), macOS may not be able to control their brightness.  Please check first if you can control the brightness of your external screen(s) using the brightness keys from your keyboard.  If you can't, Aerial won't be able to control their brightness either.  If you can control their brightness through those keyboard keys but see an issue with Aerial, please open an issue. 
+- Can't type into text fields with macOS High Sierra: Aerial may exhibit this issue in versions of macOS prior to Mojave. We now provide a workaround through a separate AerialConfig.app. This is a standalone application that brings you the same control panel that you see in System Preferences. Changes you make in the app will be applied to the screensaver as they share settings. You can download the AerialConfig.app on the [latest beta page](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.5beta2). You **must** install the corresponding version of Aerial.saver (the regular screensaver) for this to work, AerialConfig.app is **NOT** a full replacement for Aerial.saver!
+- Brightness control does not control external displays: Aerial uses the brightness API from macOS to change brightness of your screens. Depending on your external screens (brand, the way they are connected, etc), macOS may not be able to control their brightness. Please check first if you can control the brightness of your external screen(s) using the brightness keys from your keyboard. If you can't, Aerial won't be able to control their brightness either. If you can control their brightness through those keyboard keys but see an issue with Aerial, please open an issue. 
 - Not seeing extended descriptions: Make sure you have version 1.4.2 or above.
 - Black screen: If you are behind a firewall (Like Little Snitch or Hands Off!) try creating exceptions for Aerial to allow it access to Apple's servers. Be sure the applications `ScreenSaverEngine.app` and `System Preferences.app` are not being blocked access to *.phobos.apple.com, *.phobos.apple.com.edgesuite.net and sylvan.apple.com. If that isn't an option, please look at the Offline mode section. 
-- "You cannot use the Aerial screen saver with this version of macOS." error: Select Aerial, close System Preferences with Aerial still selected, re-open System Preferences and Aerial should now work.  This is a known bug with Swift screensavers in macOS/OS X reported to Apple as [rdar://25569037](http://www.openradar.me/25569037).
+- "You cannot use the Aerial screen saver with this version of macOS." error: Select Aerial, close System Preferences with Aerial still selected, re-open System Preferences and Aerial should now work. This is a known bug with Swift screensavers in macOS/OS X reported to Apple as [rdar://25569037](http://www.openradar.me/25569037).
 - High CPU usage/fan spinning all of a sudden: If you correctly configured the preferred video format according to your Mac and still experience high CPU usage/fan spinning all of a sudden, please look for the cause with `Activity Monitor`, you may see a `com.apple.photos.ImageConversionService` responsible for this CPU load.  This is the iCloud Photos process, you can find more about [what it does here](https://support.apple.com/en-gu/HT204264) and how to pause it.
-- Can't use Aerial as a login screensaver: As far as we know, using 3rd party screensavers before login is no longer possible on modern versions of macOS.  More about this [here](https://github.com/JohnCoates/Aerial/issues/571).
+- Can't use Aerial as a login screensaver: As far as we know, using 3rd party screensavers before login is no longer possible on modern versions of macOS. More about this [here](https://github.com/JohnCoates/Aerial/issues/571).
 
 
 ## License
