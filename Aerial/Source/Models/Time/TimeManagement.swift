@@ -162,20 +162,35 @@ class TimeManagement: NSObject {
 
                 switch preferences.solarMode {
                 case Preferences.SolarMode.official.rawValue:
-                    sunriseString = dateFormatter.string(from: (solar?.sunrise)!)
-                    sunsetString = dateFormatter.string(from: (solar?.sunset)!)
+                    guard let sunrise = solar?.sunrise, let sunset = solar?.sunset else {
+                       return (false, "Can't process your coordinates, please verify")
+                    }
+                    sunriseString = dateFormatter.string(from: sunrise)
+                    sunsetString = dateFormatter.string(from: sunset)
                 case Preferences.SolarMode.strict.rawValue:
-                    sunriseString = dateFormatter.string(from: (solar?.strictSunrise)!)
-                    sunsetString = dateFormatter.string(from: (solar?.strictSunset)!)
+                    guard let sunrise = solar?.strictSunrise, let sunset = solar?.strictSunset else {
+                        return (false, "Can't process your coordinates, please verify")
+                    }
+                    sunriseString = dateFormatter.string(from: sunrise)
+                    sunsetString = dateFormatter.string(from: sunset)
                 case Preferences.SolarMode.civil.rawValue:
-                    sunriseString = dateFormatter.string(from: (solar?.civilSunrise)!)
-                    sunsetString = dateFormatter.string(from: (solar?.civilSunset)!)
+                    guard let sunrise = solar?.civilSunrise, let sunset = solar?.civilSunset else {
+                        return (false, "Can't process your coordinates, please verify")
+                    }
+                    sunriseString = dateFormatter.string(from: sunrise)
+                    sunsetString = dateFormatter.string(from: sunset)
                 case Preferences.SolarMode.nautical.rawValue:
-                    sunriseString = dateFormatter.string(from: (solar?.nauticalSunrise)!)
-                    sunsetString = dateFormatter.string(from: (solar?.nauticalSunset)!)
+                    guard let sunrise = solar?.nauticalSunrise, let sunset = solar?.nauticalSunset else {
+                        return (false, "Can't process your coordinates, please verify")
+                    }
+                    sunriseString = dateFormatter.string(from: sunrise)
+                    sunsetString = dateFormatter.string(from: sunset)
                 default:
-                    sunriseString = dateFormatter.string(from: (solar?.astronomicalSunrise)!)
-                    sunsetString = dateFormatter.string(from: (solar?.astronomicalSunset)!)
+                    guard let sunrise = solar?.astronomicalSunrise, let sunset = solar?.astronomicalSunset else {
+                        return (false, "Can't process your coordinates, please verify")
+                    }
+                    sunriseString = dateFormatter.string(from: sunrise)
+                    sunsetString = dateFormatter.string(from: sunset)
                 }
 
                 if preferences.solarMode == Preferences.SolarMode.official.rawValue ||
