@@ -32,7 +32,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 3. Unzip the downloaded file (if you use Safari, it should already be done for you).
 4. Open **Aerial.saver** (double click), it will open System Preferences and ask you if you want to install for all users or for your user only. 
 
-If you see an error message saying "This app is damaged and can't be opened, you should move it to the trash", we suggest that **you download the file with Safari**, to prevent macOS Gatekeeper from throwing that error. 
+If you see an error message saying "This app is damaged and can't be opened, you should move it to the trash", we suggest that **you download the file with Safari**, to prevent macOS Gatekeeper from throwing that error (some outdated unzip software may cause that issue). 
 
 **Important**: If you haven't closed System Preferences before installation and were upgrading from a previous version, we strongly recommend you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated. 
 
