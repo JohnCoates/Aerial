@@ -72,12 +72,12 @@ class ManifestLoader {
         "b4-2": "N008_C003_",                                                // New York night 2
 
         "b8-2": "A008_C007_",                                                // San Francisco day 1
-        "b10-3": "A013_C005_",                                               // San Francisco day 2
+        // "b10-3": ,                                               // San Francisco day 2
         "b9-3": "A006_C003_",                                                // San Francisco day 3
         //"b8-3":"",     San Francisco day 4 (no extra poi ?)
         "b3-3": "A012_C014_",                                                // San Francisco day 5
                                                                             //   maybe A013_C004 ?
-        "b4-3": "A013_C012_",                                                // San Francisco day 6
+        "b4-3": "A013_C005_",                                                // San Francisco day 6
         "b6-4": "A004_C012_",                                                // San Francisco night 1
         "b7-3": "A007_C017_",                                                // San Francisco night 2
         "b5-3": "A015_C014_",                                                // San Francisco night 3
