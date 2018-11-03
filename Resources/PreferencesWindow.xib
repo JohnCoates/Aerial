@@ -904,7 +904,7 @@ should appear</string>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Time" identifier="" id="PtY-yV-jgj">
-                                        <view key="view" id="ziy-Hg-uzO">
+                                        <view key="view" ambiguous="YES" id="ziy-Hg-uzO">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1149,12 +1149,15 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSHomeTemplate" id="lQX-Ux-Sz8"/>
                                                 </imageView>
                                                 <button toolTip="This will override the time settings to always show night videos if you have enabled dark mode" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YJt-Nf-qyK">
-                                                    <rect key="frame" x="8" y="7" width="264" height="18"/>
+                                                    <rect key="frame" x="8" y="7" width="246" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Always show night videos on dark mode" bezelStyle="regularSquare" imagePosition="left" inset="2" id="nZy-k8-5B4">
+                                                    <buttonCell key="cell" type="check" title="Show only night videos in Dark Mode" bezelStyle="regularSquare" imagePosition="left" inset="2" id="nZy-k8-5B4">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="overrideNightOnDarkModeClick:" target="-2" id="PVR-uW-k3k"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a7p-Yo-yfa">
                                                     <rect key="frame" x="403" y="338" width="207" height="32"/>
@@ -1437,7 +1440,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Advanced" identifier="" id="asf-lu-1rA">
-                                        <view key="view" ambiguous="YES" id="303-Jh-DVp">
+                                        <view key="view" id="303-Jh-DVp">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
