@@ -418,6 +418,10 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             if preferences.darkModeNightOverride {
                 overrideNightOnDarkMode.state = .on
             }
+            // We disable the checkbox if we are on nightShift mode
+            if preferences.timeMode == Preferences.TimeMode.lightDarkMode.rawValue {
+                overrideNightOnDarkMode.isEnabled = false
+            }
         } else {
             overrideNightOnDarkMode.isEnabled = false
         }
@@ -1039,6 +1043,12 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
     // MARK: - Time panel
 
+    @IBAction func overrideNightOnDarkModeClick(_ button: NSButton) {
+        let onState = (button.state == NSControl.StateValue.on)
+        preferences.darkModeNightOverride = onState
+        debugLog("UI overrideNightDarkMode: \(onState)")
+    }
+
     @IBAction func enterCoordinatesButtonClick(_ sender: Any) {
         if enterCoordinatesPanel.isVisible {
             enterCoordinatesPanel.close()
@@ -1052,6 +1062,16 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     }
 
     @IBAction func timeModeChange(_ sender: NSButton?) {
+        debugLog("UI timeModeChange")
+        if sender == timeLightDarkModeRadio {
+            print("dis")
+            overrideNightOnDarkMode.isEnabled = false
+        } else {
+            if #available(OSX 10.14, *) {
+                overrideNightOnDarkMode.isEnabled = true
+            }
+        }
+
         if sender == timeDisabledRadio {
             preferences.timeMode = Preferences.TimeMode.disabled.rawValue
         } else if sender == timeNightShiftRadio {
