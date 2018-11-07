@@ -36,7 +36,7 @@ If you see an error message saying "This app is damaged and can't be opened, you
 
 **Important**: If you haven't closed System Preferences before installation and were upgrading from a previous version, we strongly recommend you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated. 
 
-### Brew Cask Support - (Updated for 1.4.4)
+### Brew Cask Support - (Updated for 1.4.5)
 
 If you're looking to install Aerial across many systems, remotely, or simply from Terminal we recommend [Brew Cask](https://caskroom.github.io). Prefer this method if you're looking for auto-updates.
 
