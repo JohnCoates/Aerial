@@ -138,7 +138,7 @@
                 "15" : "Approaching Tower Bridge on the River Thames, with City Hall behind and the Tower of London to the right",
                 "40" : "Approaching HMS Belfast in the River Thames, passing the Walkie-Talkie on the right",
                 "75" : "Traveling west up the River Thames, with The Shard on the left and St. Paul’s Cathedral on the right",
-                "95" : "Passing over Southwark Cathedral, with St Paul's Cathedral on the right",
+                "95" : "Passing over Southwark Cathedral, with St. Paul's Cathedral on the right",
                 "130" : "Passing Shakespeare’s Globe in Southwark (right foreground)",
                 "195" : "Passing Waterloo Station on the left, with the Palace of Westminster (Houses of Parliament) across the Thames behind",
                 "210" : "Heading toward Westminster over the River Thames"
@@ -149,9 +149,9 @@
             "name" :"Buckingham Palace",
             "pointsOfInterest" : {
                 "0" : "Flying over Buckingham Palace and the Victoria Memorial, London",
-                "25" : "Passing Wellington Barracks on the right, following Birdcage Walk along St James’s Park",
+                "25" : "Passing Wellington Barracks on the right, following Birdcage Walk along St. James’s Park",
                 "65" : "Passing over the Foreign & Commonwealth Office in Whitehall, with Horse Guards Parade on the left and Her Majesty’s Treasury on the right",
-                "75" : "Passing over the Cenotaph, with the Ministy of Defence on the left and Big Ben and the Palace of Westmintser (Houses of Parliament) on the right",
+                "75" : "Passing over the Cenotaph, with the Ministry of Defence on the left and Big Ben and the Palace of Westminster (Houses of Parliament) on the right",
                 "95" : "Crossing the River Thames, flying over the London Eye",
                 "130" : "Passing over Waterloo Station in South London",
                 "242" : "Passing Southwark Cathedral on the left",
@@ -165,7 +165,7 @@
             "id" : "b1-2",
             "name" : "River Thames near Sunset",
             "pointsOfInterest" : {
-                "0" : "Heading up the River Thames toward Tower Bridge, with the Tower of London to the right",
+                "0" : "Heading up the River Thames towards Tower Bridge, with the Tower of London to the right",
                 "25" : "Crossing the River Thames and passing over City Hall",
                 "35" : "Passing the cruiser HMS Belfast in the River Thames",
                 "60" : "Approaching The Shard",
@@ -178,11 +178,11 @@
             "id" : "b3-1",
             "name" : "River Thames at Dusk",
             "pointsOfInterest" : {
-                "0": "Heading up the River Thames toward Tower Bridge, with the Tower of London to the right",
+                "0": "Heading up the River Thames towards Tower Bridge, with the Tower of London to the right",
                 "28" : "Traveling west up the River Thames, past City Hall on the left",
                 "40" : "Passing HMS Belfast in the River Thames, with The Shard on the left and the Walkie-Talkie on the right",
                 "75" : "Passing Southwark Cathedral on the left",
-                "110" : "Passing St Paul’s Cathedral on the right",
+                "110" : "Passing St. Paul’s Cathedral on the right",
                 "130" : "Passing Shakespeare’s Globe in the left foreground",
                 "210" : "Continuing up the River Thames toward Westminster",
                 "310" : "Passing the London Eye on the River Thames",
