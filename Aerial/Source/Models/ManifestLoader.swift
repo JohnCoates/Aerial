@@ -229,19 +229,24 @@ class ManifestLoader {
     init() {
         debugLog("Manifest init")
         // We try to load our video manifests in 3 steps :
-        // - reload from local variables (unused for now)
+        // - reload from local variables (unused for now, maybe with previews+screensaver
+        // in some weird edge case on some systems)
         // - reprocess the saved files in cache directory (full offline mode)
         // - download the manifests from servers
+        //
+        // Starting with 1.4.6, we also may now periodically recheck for changed files!
 
         debugLog("isManifestCached 10 \(isManifestCached(manifest: .tvOS10))")
         debugLog("isManifestCached 11 \(isManifestCached(manifest: .tvOS11))")
         debugLog("isManifestCached 12 \(isManifestCached(manifest: .tvOS12))")
 
+        checkIfShouldRedownloadFiles()
+
         if areManifestsFilesLoaded() {
-            debugLog("Files were already loaded")
+            debugLog("Files were already loaded in memory")
             loadManifestsFromLoadedFiles()
         } else {
-            debugLog("Files were not already loaded")
+            debugLog("Files were not already loaded in memory")
             // Manifests are not in our preferences plist, are they cached on disk ?
             if areManifestsCached() {
                 debugLog("Manifests are cached on disk, loading")
@@ -291,6 +296,72 @@ class ManifestLoader {
         }
     }
 
+    // MARK: - Periodically check for new videos
+    func checkIfShouldRedownloadFiles() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale.init(identifier: "en_GB")
+        let dateObj = dateFormatter.date(from: preferences.lastVideoCheck!)
+
+        var dayCheck = 7
+        if preferences.newVideosMode == Preferences.NewVideosMode.monthly.rawValue {
+            dayCheck = 30
+        }
+
+        let cacheDirectory = VideoCache.cacheDirectory!
+        var cacheResourcesString = cacheDirectory
+        cacheResourcesString.append(contentsOf: "/backups")
+        let cacheUrl = URL(fileURLWithPath: cacheResourcesString)
+
+        if #available(OSX 10.11, *) {
+            if !cacheUrl.hasDirectoryPath {
+                moveOldManifests()
+                return
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+
+        if Int((dateObj?.timeIntervalSinceNow)!) > dayCheck * 1440 {
+            // We need to redownload
+            debugLog("Checking for new videos")
+            moveOldManifests()
+        } else {
+            debugLog("No need to check for new videos")
+        }
+    }
+
+    func moveOldManifests() {
+        debugLog("move")
+        let cacheDirectory = VideoCache.cacheDirectory!
+        var cacheResourcesString = cacheDirectory
+
+        let dateFormatter = DateFormatter()
+        let current = Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let today = dateFormatter.string(from: current)
+
+        cacheResourcesString.append(contentsOf: "/backups/"+today)
+        let previous = URL(fileURLWithPath: cacheDirectory.appending("/entries.json"))
+        if FileManager.default.fileExists(atPath: cacheDirectory.appending("/entries.json")) {
+            let new = URL(fileURLWithPath: cacheResourcesString.appending("/entries.json"))
+
+            let cacheUrl = URL(fileURLWithPath: cacheResourcesString)
+            if #available(OSX 10.11, *) {
+                if !cacheUrl.hasDirectoryPath {
+                    do {
+                        try FileManager.default.createDirectory(atPath: cacheResourcesString, withIntermediateDirectories: true, attributes: nil)
+                        debugLog("creating dir \(cacheResourcesString)")
+
+                        try FileManager.default.moveItem(at: previous, to: new)
+                        debugLog("moving entries.json")
+                    } catch {
+                        errorLog("\(error.localizedDescription)")
+                    }
+                }
+            }
+        }
+    }
     // MARK: - Manifests
 
     // Check if the Manifests have been loaded in this class already
@@ -428,40 +499,6 @@ class ManifestLoader {
         self.callbacks.removeAll()
     }
 
-    // MARK: - Merge missing videos
-    func mergeMissingVideos() {
-        for merge in mergeInfo {
-            var found = false
-            for video in processedVideos {
-                if merge.key == video.id {
-                    found = true
-                }
-            }
-
-            if !found {
-                // Then we should maybe add it again
-                if merge.value["name"] != nil {
-                    // Ok we can
-                    let poiStringProvider = PoiStringProvider.sharedInstance
-                    debugLog("Adding back missing video : \(merge.value["name"] as! String)")
-                    let video = AerialVideo(id: merge.key,             // Must have
-                        name: merge.value["name"] as! String,                             // Must have
-                        secondaryName: "",
-                        type: "video",                             // Not sure the point of this one ?
-                        timeOfDay: merge.value["timeOfDay"] as! String,
-                        url1080pH264: merge.value["url-1080-H264"] as! String,
-                        url1080pHEVC: merge.value["url-1080-SDR"] as! String,
-                        url4KHEVC: merge.value["url-4K-SDR"] as! String,
-                        manifest: Manifests.tvOS12,
-                        poi: merge.value["pointsOfInterest"] as! [String : String],
-                        communityPoi: poiStringProvider.getCommunityPoi(id: merge.key))
-
-                    processedVideos.append(video)
-                }
-            }
-        }
-    }
-
     // MARK: - JSON
     func readJSONFromData(_ data: Data, manifest: Manifests) {
         do {
@@ -580,8 +617,8 @@ class ManifestLoader {
                         var url1080phevc = ""
                         // Check if we have some HEVC urls to merge
                         if let val = mergeInfo[id] {
-                            url1080phevc = val["url-1080-SDR"]! as! String
-                            url4khevc = val["url-4K-SDR"]! as! String
+                            url1080phevc = val["url-1080-SDR"]!
+                            url4khevc = val["url-4K-SDR"]!
                         }
 
                         // Now we can finally add...
