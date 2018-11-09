@@ -177,6 +177,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     @IBOutlet weak var logToDiskCheckbox: NSButton!
 
     @IBOutlet weak var cacheSizeTextField: NSTextField!
+    @IBOutlet var newVideosModePopup: NSPopUpButton!
 
     var player: AVPlayer = AVPlayer()
 
@@ -496,6 +497,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         multiMonitorModePopup.selectItem(at: preferences.multiMonitorMode!)
 
         popupVideoFormat.selectItem(at: preferences.videoFormat!)
+
         alternatePopupVideoFormat.selectItem(at: preferences.alternateVideoFormat!)
 
         descriptionModePopup.selectItem(at: preferences.showDescriptionsMode!)
@@ -505,6 +507,8 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         fadeInOutTextModePopup.selectItem(at: preferences.fadeModeText!)
 
         extraCornerPopup.selectItem(at: preferences.extraCorner!)
+
+        newVideosModePopup.selectItem(at: preferences.newVideosMode!)
 
         colorizeProjectPageLinks()
 
@@ -1039,6 +1043,11 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         downloadNowButton.isEnabled = false
         prefTabView.selectTabViewItem(at: 0)
         downloadAllVideos()
+    }
+
+    @IBAction func newVideosModeChange(_ sender: NSPopUpButton) {
+        debugLog("UI newVideosMode: \(sender.indexOfSelectedItem)")
+        preferences.newVideosMode = sender.indexOfSelectedItem
     }
 
     // MARK: - Time panel

@@ -66,6 +66,12 @@ class Preferences {
         case powerSavingOnLowBattery = "powerSavingOnLowBattery"
 
         case darkModeNightOverride = "darkModeNightOverride"
+        case newVideosMode = "newVideosMode"
+        case lastVideoCheck = "lastVideoCheck"
+    }
+
+    enum NewVideosMode: Int {
+        case weekly, monthly, never
     }
 
     enum SolarMode: Int {
@@ -176,6 +182,14 @@ class Preferences {
         defaultValues[.powerSavingOnLowBattery] = false
         defaultValues[.alternateVideoFormat] = AlternateVideoFormat.powerSaving
         defaultValues[.darkModeNightOverride] = false
+        defaultValues[.newVideosMode] = NewVideosMode.weekly
+
+        // Set today's date as default
+        let dateFormatter = DateFormatter()
+        let current = Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let today = dateFormatter.string(from: current)
+        defaultValues[.lastVideoCheck] = today
 
         let defaults = defaultValues.reduce([String: Any]()) { (result, pair:(key: Identifiers, value: Any)) -> [String: Any] in
             var mutable = result
@@ -187,6 +201,24 @@ class Preferences {
     }
 
     // MARK: - Variables
+    var lastVideoCheck: String? {
+        get {
+            return optionalValue(forIdentifier: .lastVideoCheck)
+        }
+        set {
+            setValue(forIdentifier: .lastVideoCheck, value: newValue)
+        }
+    }
+
+    var newVideosMode: Int? {
+        get {
+            return optionalValue(forIdentifier: .newVideosMode)
+        }
+        set {
+            setValue(forIdentifier: .newVideosMode, value: newValue)
+        }
+    }
+
     var alternateVideoFormat: Int? {
         get {
             return optionalValue(forIdentifier: .alternateVideoFormat)
