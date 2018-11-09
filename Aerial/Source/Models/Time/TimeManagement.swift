@@ -148,6 +148,7 @@ class TimeManagement: NSObject {
     }
 
     // MARK: Calculate using Solar
+    // swiftlint:disable:next cyclomatic_complexity
     func calculateFromCoordinates() -> (Bool, String) {
         let preferences = Preferences.sharedInstance
 
