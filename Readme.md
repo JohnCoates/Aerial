@@ -28,7 +28,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 *Rather install from Terminal or have auto-updates? Look at the Brew Cask section below!*
 
 1. **Close System Preferences**
-2. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.5/Aerial.saver.zip) (Version 1.4.5, November 3, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.5)). 
+2. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.5/Aerial.saver.zip) (Version 1.4.5, November 3, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.5)). (**If you are a new user**, Apple has just added some new videos, so you may see duplicates in the user interface, a new version that handles those videos is coming shortly! You can find more on what changed on [this issue](https://github.com/JohnCoates/Aerial/issues/630).)
 3. Unzip the downloaded file (if you use Safari, it should already be done for you).
 4. Open **Aerial.saver** (double click), it will open System Preferences and ask you if you want to install for all users or for your user only. 
 
