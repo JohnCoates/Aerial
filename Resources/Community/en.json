@@ -165,7 +165,7 @@
             "id" : "b1-2",
             "name" : "River Thames near Sunset",
             "pointsOfInterest" : {
-                "0" : "Heading up the River Thames towards Tower Bridge, with the Tower of London to the right",
+                "0" : "Heading up the River Thames toward Tower Bridge, with the Tower of London to the right",
                 "25" : "Crossing the River Thames and passing over City Hall",
                 "35" : "Passing the cruiser HMS Belfast in the River Thames",
                 "60" : "Approaching The Shard",
@@ -178,7 +178,7 @@
             "id" : "b3-1",
             "name" : "River Thames at Dusk",
             "pointsOfInterest" : {
-                "0": "Heading up the River Thames towards Tower Bridge, with the Tower of London to the right",
+                "0": "Heading up the River Thames toward Tower Bridge, with the Tower of London to the right",
                 "28" : "Traveling west up the River Thames, past City Hall on the left",
                 "40" : "Passing HMS Belfast in the River Thames, with The Shard on the left and the Walkie-Talkie on the right",
                 "75" : "Passing Southwark Cathedral on the left",
@@ -281,7 +281,7 @@
                 "0" : "Moving over the Marin Headlands along Highway 101 toward the Golden Gate Bridge",
                 "20" : "Horseshoe Cove appearing on the left",
                 "130" : "Passing over Battery Spencer",
-                "192" : "Crossing the Golden Gate Bridge toward San Francisco"
+                "192" : "Crossing the Golden Gate Bridge towards San Francisco"
             }
         },
         {
@@ -311,7 +311,7 @@
             "id" : "b4-3",
             "name" : "Presidio to Golden Gate",
             "pointsOfInterest" : {
-                "0" : "Moving along the Presidio of San Francisco toward the Golden Gate Bridge",
+                "0" : "Moving along the Presidio of San Francisco towards the Golden Gate Bridge",
                 "190" : "Crossing the Golden Gate Bridge toward the Marin Headlands"
             }
         },
