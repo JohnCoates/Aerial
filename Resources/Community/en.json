@@ -137,11 +137,11 @@
                 "0" : "Passing the Gherkin in the City of London, on the right",
                 "15" : "Approaching Tower Bridge on the River Thames, with City Hall behind and the Tower of London to the right",
                 "40" : "Approaching HMS Belfast in the River Thames, passing the Walkie-Talkie on the right",
-                "75" : "Traveling west up the River Thames, with The Shard on the left and St Paul’s Cathedral on the right",
-                "95" : "Passing over Southwark Cathedral, with St Paul's Cathedral on the right",
+                "75" : "Traveling west up the River Thames, with The Shard on the left and Saint Paul’s Cathedral on the right",
+                "95" : "Passing over Southwark Cathedral, with Saint Paul’s Cathedral on the right",
                 "130" : "Passing Shakespeare’s Globe in Southwark (right foreground)",
                 "195" : "Passing Waterloo Station on the left, with the Palace of Westminster (Houses of Parliament) across the Thames behind",
-                "210" : "Heading toward Westminster over the River Thames"
+                "210" : "Heading towards Westminster over the River Thames"
             }
         },
         {
@@ -149,9 +149,9 @@
             "name" :"Buckingham Palace",
             "pointsOfInterest" : {
                 "0" : "Flying over Buckingham Palace and the Victoria Memorial, London",
-                "25" : "Passing Wellington Barracks on the right, following Birdcage Walk along St James’s Park",
+                "25" : "Passing Wellington Barracks on the right, following Birdcage Walk along Saint James’s Park",
                 "65" : "Passing over the Foreign & Commonwealth Office in Whitehall, with Horse Guards Parade on the left and Her Majesty’s Treasury on the right",
-                "75" : "Passing over the Cenotaph, with the Ministy of Defence on the left and Big Ben and the Palace of Westmintser (Houses of Parliament) on the right",
+                "75" : "Passing over the Cenotaph, with the Ministry of Defence on the left and Big Ben and the Palace of Westminster (Houses of Parliament) on the right",
                 "95" : "Crossing the River Thames, flying over the London Eye",
                 "130" : "Passing over Waterloo Station in South London",
                 "242" : "Passing Southwark Cathedral on the left",
@@ -165,26 +165,26 @@
             "id" : "b1-2",
             "name" : "River Thames near Sunset",
             "pointsOfInterest" : {
-                "0" : "Heading up the River Thames toward Tower Bridge, with the Tower of London to the right",
+                "0" : "Heading up the River Thames towards Tower Bridge, with the Tower of London to the right",
                 "25" : "Crossing the River Thames and passing over City Hall",
                 "35" : "Passing the cruiser HMS Belfast in the River Thames",
                 "60" : "Approaching The Shard",
-                "92" : "Flying west over Southwark toward Lambeth in South London",
+                "92" : "Flying west over Southwark towards Lambeth in South London",
                 "200" : "Passing Lambeth Palace on the left and Waterloo Station on the right",
-                "225" : "Crossing the River Thames toward the Palace of Westminster (Houses of Parliament)"
+                "225" : "Crossing the River Thames towards the Palace of Westminster (Houses of Parliament)"
             }
         },
         {
             "id" : "b3-1",
             "name" : "River Thames at Dusk",
             "pointsOfInterest" : {
-                "0": "Heading up the River Thames toward Tower Bridge, with the Tower of London to the right",
+                "0": "Heading up the River Thames towards Tower Bridge, with the Tower of London to the right",
                 "28" : "Traveling west up the River Thames, past City Hall on the left",
                 "40" : "Passing HMS Belfast in the River Thames, with The Shard on the left and the Walkie-Talkie on the right",
                 "75" : "Passing Southwark Cathedral on the left",
-                "110" : "Passing St Paul’s Cathedral on the right",
+                "110" : "Passing Saint Paul’s Cathedral on the right",
                 "130" : "Passing Shakespeare’s Globe in the left foreground",
-                "210" : "Continuing up the River Thames toward Westminster",
+                "210" : "Continuing up the River Thames towards Westminster",
                 "310" : "Passing the London Eye on the River Thames",
                 "325" : "Passing Big Ben and the Houses of Parliament, with Westminster Abbey on the right"
             }
@@ -224,7 +224,7 @@
             "pointsOfInterest" : {
                 "0" : "Traveling north along Beachwood Drive through the Hollywood Hills in Los Angeles",
                 "60" : "Continuing north through Beachwood Canyon",
-                "250" : "Passing the Mount Lee Communications Center, heading toward Burbank, California"
+                "250" : "Passing the Mount Lee Communications Center, heading towards Burbank, California"
             }
         },
         {
@@ -278,10 +278,10 @@
             "id" : "EE533FBD-90AE-419A-AD13-D7A60E2015D6",
             "name" : "Marin Headlands in Fog",
             "pointsOfInterest" : {
-                "0" : "Moving over the Marin Headlands along Highway 101 toward the Golden Gate Bridge",
+                "0" : "Moving over the Marin Headlands along Highway 101 towards the Golden Gate Bridge",
                 "20" : "Horseshoe Cove appearing on the left",
                 "130" : "Passing over Battery Spencer",
-                "192" : "Crossing the Golden Gate Bridge toward San Francisco"
+                "192" : "Crossing the Golden Gate Bridge towards San Francisco"
             }
         },
         {
@@ -293,7 +293,7 @@
             "name" : "Alamo Square",
             "pointsOfInterest" : {
                 "0" : "Painted Ladies across from Alamo Square in San Francisco",
-                "35" : "St Mary’s Cathedral in the left mid-ground, with downtown SF in the background",
+                "35" : "Saint Mary’s Cathedral in the left mid-ground, with downtown SF in the background",
                 "70" : "The dome of City Hall appearing in the right mid-ground",
                 "210" : "The dome of City Hall clear in the right mid-ground"
             }
@@ -311,8 +311,8 @@
             "id" : "b4-3",
             "name" : "Presidio to Golden Gate",
             "pointsOfInterest" : {
-                "0" : "Moving along the Presidio of San Francisco toward the Golden Gate Bridge",
-                "190" : "Crossing the Golden Gate Bridge toward the Marin Headlands"
+                "0" : "Moving along the Presidio of San Francisco towards the Golden Gate Bridge",
+                "190" : "Crossing the Golden Gate Bridge towards the Marin Headlands"
             }
         },
         {
@@ -336,7 +336,7 @@
                 "50" : "Passing over the submarine USS Pampanito",
                 "80" : "Passing over North Beach in San Francisco",
                 "120" : "Approaching Coit Tower on Telegraph Hill, with the Bay Bridge and downtown SF in the background",
-                "150" : "Passing Coit Tower on Telegraph Hill, with Sts Peter and Paul Church in the right mid-ground" 
+                "150" : "Passing Coit Tower on Telegraph Hill, with Saints Peter and Paul Church in the right mid-ground" 
             }
         },
         {
