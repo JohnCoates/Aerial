@@ -137,8 +137,8 @@
                 "0" : "Passing the Gherkin in the City of London, on the right",
                 "15" : "Approaching Tower Bridge on the River Thames, with City Hall behind and the Tower of London to the right",
                 "40" : "Approaching HMS Belfast in the River Thames, passing the Walkie-Talkie on the right",
-                "75" : "Traveling west up the River Thames, with The Shard on the left and St. Paul’s Cathedral on the right",
-                "95" : "Passing over Southwark Cathedral, with St. Paul's Cathedral on the right",
+                "75" : "Traveling west up the River Thames, with The Shard on the left and St Paul’s Cathedral on the right",
+                "95" : "Passing over Southwark Cathedral, with St Paul's Cathedral on the right",
                 "130" : "Passing Shakespeare’s Globe in Southwark (right foreground)",
                 "195" : "Passing Waterloo Station on the left, with the Palace of Westminster (Houses of Parliament) across the Thames behind",
                 "210" : "Heading toward Westminster over the River Thames"
@@ -182,7 +182,7 @@
                 "28" : "Traveling west up the River Thames, past City Hall on the left",
                 "40" : "Passing HMS Belfast in the River Thames, with The Shard on the left and the Walkie-Talkie on the right",
                 "75" : "Passing Southwark Cathedral on the left",
-                "110" : "Passing St. Paul’s Cathedral on the right",
+                "110" : "Passing St Paul’s Cathedral on the right",
                 "130" : "Passing Shakespeare’s Globe in the left foreground",
                 "210" : "Continuing up the River Thames toward Westminster",
                 "310" : "Passing the London Eye on the River Thames",
@@ -293,7 +293,7 @@
             "name" : "Alamo Square",
             "pointsOfInterest" : {
                 "0" : "Painted Ladies across from Alamo Square in San Francisco",
-                "35" : "St Mary’s Cathedral in the left mid-ground, with downtown SF in the background",
+                "35" : "St. Mary’s Cathedral in the left mid-ground, with downtown SF in the background",
                 "70" : "The dome of City Hall appearing in the right mid-ground",
                 "210" : "The dome of City Hall clear in the right mid-ground"
             }
