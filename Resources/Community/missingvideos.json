@@ -1,0 +1,25 @@
+{
+    "assets" : [
+        {
+            "pointsOfInterest" : {
+                "285" : "A009_C001_10181A_285",
+                "245" : "A009_C001_10181A_245",
+                "310" : "A009_C001_10181A_310",
+                "0" : "A009_C001_10181A_0",
+                "30" : "A009_C001_10181A_30",
+                "195" : "A009_C001_10181A_195",
+                "110" : "A009_C001_10181A_110",
+                "230" : "A009_C001_10181A_230",
+                "155" : "A009_C001_10181A_155",
+                "210" : "A009_C001_10181A_210"
+            },
+            "url-1080-H264" : "https:\/\/sylvan.apple.com\/Videos\/comp_A009_C001_010181A_v09_SDR_PS_FINAL_20180725_SDR_2K_AVC.mov",
+            "accessibilityLabel" : "Sahara and Italy",
+            "id" : "D60B4DDA-69EB-4841-9690-E8BAE7BC4F80",
+            "url-1080-HDR" : "https:\/\/sylvan.apple.com\/Aerials\/2x\/Videos\/comp_A009_C001_010181A_v09_HDR_PS_FINAL_20180725_HDR_2K_HEVC.mov",
+            "url-1080-SDR" : "https:\/\/sylvan.apple.com\/Aerials\/2x\/Videos\/comp_A009_C001_010181A_v09_SDR_PS_FINAL_20180725_SDR_2K_HEVC.mov",
+            "url-4K-SDR" : "https:\/\/sylvan.apple.com\/Aerials\/2x\/Videos\/comp_A009_C001_010181A_v09_SDR_PS_FINAL_20180725_SDR_4K_HEVC.mov",
+            "url-4K-HDR" : "https:\/\/sylvan.apple.com\/Aerials\/2x\/Videos\/comp_A009_C001_010181A_v09_HDR_PS_FINAL_20180725_HDR_4K_HEVC.mov"
+        },
+    ]
+}

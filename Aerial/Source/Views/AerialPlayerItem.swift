@@ -10,10 +10,10 @@ import AVKit
 
 class AerialPlayerItem: AVPlayerItem {
     var video: AerialVideo?
-    
+
     init(video: AerialVideo) {
         let videoURL = video.url
-        let asset = CachedOrCachingAsset(videoURL)
+        let asset = cachedOrCachingAsset(videoURL)
         super.init(asset: asset, automaticallyLoadedAssetKeys: nil)
         self.video = video
     }

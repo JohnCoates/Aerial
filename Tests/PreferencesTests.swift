@@ -10,19 +10,19 @@ import XCTest
 @testable import AerialApp
 
 class PreferencesTests: XCTestCase {
-    
+
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
-    
+
     func testPreferenceSaving() {
         let preferences = Preferences.sharedInstance
         preferences.cacheAerials = false
-        
+
         let newPreferences = Preferences()
         XCTAssertFalse(newPreferences.cacheAerials, "Property write verified")
     }

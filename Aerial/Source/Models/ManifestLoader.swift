@@ -9,17 +9,18 @@
 import Foundation
 import ScreenSaver
 
-typealias manifestLoadCallback = ([AerialVideo]) -> (Void)
+typealias ManifestLoadCallback = ([AerialVideo]) -> Void
 
+// swiftlint:disable:next type_body_length
 class ManifestLoader {
     static let instance: ManifestLoader = ManifestLoader()
 
     lazy var preferences = Preferences.sharedInstance
-    var callbacks = [manifestLoadCallback]()
+    var callbacks = [ManifestLoadCallback]()
     var loadedManifest = [AerialVideo]()
     var processedVideos = [AerialVideo]()
     var lastPluckedFromPlaylist: AerialVideo?
-    
+
     var manifestTvOS10: Data?
     var manifestTvOS11: Data?
     var manifestTvOS12: Data?
@@ -28,7 +29,7 @@ class ManifestLoader {
     var playlistIsRestricted = false
     var playlistRestrictedTo = ""
     var playlist = [AerialVideo]()
-    
+
     // Those videos will be ignored
     let blacklist = ["b10-1.mov",           // Dupe of b1-1 (Hawaii, day)
                      "b10-2.mov",           // Dupe of b2-3 (New York, night)
@@ -36,70 +37,103 @@ class ManifestLoader {
                      "b9-1.mov",            // Dupe of b2-2 (Hawaii, day)
                      "b9-2.mov",            // Dupe of b3-1 (London, night)
                      "comp_LA_A005_C009_v05_t9_6M.mov",     // Low quality version of Los Angeles day 687B36CB-BA5D-4434-BA99-2F2B8B6EC163
-                     "comp_LA_A009_C009_t9_6M_tag0.mov"]    // Low quality version of Los Angeles night 89B1643B-06DD-4DEC-B1B0-774493B0F7B7
-    
+                     "comp_LA_A009_C009_t9_6M_tag0.mov", ]    // Low quality version of Los Angeles night 89B1643B-06DD-4DEC-B1B0-774493B0F7B7
+
     // This is used for videos where URLs should be merged with different ID
-    let dupePairs = ["88025454-6D58-48E8-A2DB-924988FAD7AC":"6E2FC8AC-832D-46CF-B306-BB2A05030C17"] // Liwa
-    
+    // This is used to dedupe old versions of videos
+    // old : new
+    let dupePairs = [
+        "A2BE2E4A-AD4B-428A-9C41-BDAE1E78E816": "12318CCB-3F78-43B7-A854-EFDCCE5312CD",     // California to Vegas (v7 -> v8)
+        "6A74D52E-2447-4B84-AE45-0DEF2836C3CC": "7825C73A-658F-48EE-B14C-EC56673094AC",     // China
+        "6C3D54AE-0871-498A-81D0-56ED24E5FE9F": "009BA758-7060-4479-8EE8-FB9B40C8FB97",     // Korean and Japan night
+        "b2-1": "22162A9B-DB90-4517-867C-C676BC3E8E95",                                     // Great wall 2
+        "b6-1": "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF",                                     // Great wall 1
+        "BAF76353-3475-4855-B7E1-CE96CC9BC3A7": "9680B8EB-CE2A-4395-AF41-402801F4D6A6",     // Approaching Burj Khalifa (night)
+        "B3BDC635-756D-4B82-B01A-A2620D1DBF10": "9680B8EB-CE2A-4395-AF41-402801F4D6A6",     // Approaching Burj Khalifa (night)
+        "15F9B681-9EA8-4DD1-AD26-F111BC5CF64B": "E991AC0C-F272-44D8-88F3-05F44EDFE3AE",     // Marina 1
+        "49790B7C-7D8C-466C-A09E-83E38B6BE87A": "E991AC0C-F272-44D8-88F3-05F44EDFE3AE",     // Marina 1
+        "802866E6-4AAF-4A69-96EA-C582651391F1": "3FFA2A97-7D28-49EA-AA39-5BC9051B2745",     // Marina 2
+        "D34A7B19-EC33-4300-B4ED-0C8BC494C035": "3FFA2A97-7D28-49EA-AA39-5BC9051B2745",     // Marina 2
+        "02EA5DBE-3A67-4DFA-8528-12901DFD6CC1": "00BA71CD-2C54-415A-A68A-8358E677D750",     // Downtown
+        "D388F00A-5A32-4431-A95C-38BF7FF7268D": "B8F204CE-6024-49AB-85F9-7CA2F6DCD226",     // Nuusuaq Peninsula
+        "E4ED0B22-EB81-4D4F-A29E-7E1EA6B6D980": "B8F204CE-6024-49AB-85F9-7CA2F6DCD226",     // Nuusuaq Peninsula
+        "7D4710EB-5BA4-42E6-AA60-68D77F67D9B9": "EE01F02D-1413-436C-AB05-410F224A5B7B",     // Ilulissat Icefjord Night
+        "30313BC1-BF20-45EB-A7B1-5A6FFDBD2488": "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A",     // Hong Kong Victoria Harbour night
+        "2A57BB93-1825-484C-9609-FF8580CAE77B": "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A",     // Hong Kong Victoria Harbour night
+        "102C19D1-9D9F-48EC-B492-074C985C4D9F": "FE8E1F9D-59BA-4207-B626-28E34D810D0A",     // Hong Kong Victoria Harbour 1
+        "786E674C-BB22-4AA9-9BD3-114D2020EC4D": "64EA30BD-C4B5-4CDD-86D7-DFE47E9CB9AA",     // Hong Kong Victoria Harbour 2
+        "6E2FC8AC-832D-46CF-B306-BB2A05030C17": "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8",     // Liwa oasis 1
+        "88025454-6D58-48E8-A2DB-924988FAD7AC": "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8",     // Liwa oasis 1
+        "BEED64EC-2DB7-47E1-A67E-59C101E73C04": "CE279831-1CA7-4A83-A97B-FF1E20234396",     // LAX
+        "829E69BA-BB53-4841-A138-4DF0C2A74236": "CE279831-1CA7-4A83-A97B-FF1E20234396",     // LAX
+        "60CD8E2E-35CD-4192-A5A4-D5E10BFE158B": "92E48DE9-13A1-4172-B560-29B4668A87EE",     // Santa Monica Beach
+        "B730433D-1B3B-4B99-9500-A286BF7A9940": "92E48DE9-13A1-4172-B560-29B4668A87EE",     // Santa Monica Beach
+        "30A2A488-E708-42E7-9A90-B749A407AE1C": "35693AEA-F8C4-4A80-B77D-C94B20A68956",     // Harbor Freeway
+        "b10-3": "EE533FBD-90AE-419A-AD13-D7A60E2015D6",                                    // Marin Headlands in Fog
+        "b1-4": "3E94AE98-EAF2-4B09-96E3-452F46BC114E",                                     // Bay bridge night
+        "b9-3": "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51",                                     // Bay and Golden Bridge
+        "b7-3": "29BDF297-EB43-403A-8719-A78DA11A2948",                                     // Fisherman's Wharf
+    ]
+
     // Extra info to be merged for a given ID, as of right now only one known video
-    let mergeInfo = ["2F11E857-4F77-4476-8033-4A1E4610AFCC":
-        ["url-1080-SDR":"https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_2K_SDR_HEVC.mov",
-         "url-4K-SDR":"https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_SDR_HEVC.mov"]]   // Dubai night 2
-    
-    
+    let mergeInfo = [
+        "2F11E857-4F77-4476-8033-4A1E4610AFCC":
+            ["url-1080-SDR": "https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_2K_SDR_HEVC.mov",
+             "url-4K-SDR": "https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_SDR_HEVC.mov", ],    // Dubai night 2
+    ]
+
     // Extra POI
     let mergePOI = [
-        "b6-1":"C001_C005_",    // China day 4
-        "b2-1":"C004_C003_",    // China day 5
-        "b5-1":"C003_C003_",    // China day 6
-        "7D4710EB-5BA4-42E6-AA60-68D77F67D9B9":"GL_G010_C006_",             // Greenland night 1
-        "b7-1":"H007_C003",                                                 // Hawaii day 1
-        "b1-1":"H005_C012_",                                                // Hawaii day 2
-        "b2-2":"H010_C006_",                                                // Hawaii day 3
-        "b4-1":"H004_C007_",                                                // Hawaii day 4
-        "b6-2":"H012_C009_",                                                // Hawaii night 1
-        "b8-1":"H004_C009_",                                                // Hawaii night 2
-        "6E2FC8AC-832D-46CF-B306-BB2A05030C17":"LW_L001_C006_",             // Liwa day 1 LW_L001_C006_0
-        "b6-3":"L010_C006_",                                                // London day 1
-        "b5-2":"L007_C007_",                                                // London day 2
-        "b1-2":"L012_C002_",                                                // London night 1
-        "b3-1":"L004_C011_",                                                // London night 2
-        "A284F0BF-E690-4C13-92E2-4672D93E8DE5":"LA_A011_C003_",             // Los Angeles night 3
-        "b7-2":"N008_C009_",                                                // New York day 1
-        "b1-3":"N006_C003_",                                                // New York day 2
-        "b3-2":"N003_C006_",                                                // New York day 3
-        "b2-3":"N013_C004_",                                                // New York night 1
-        "b4-2":"N008_C003_",                                                // New York night 2
+        "b6-1": "C001_C005_",    // China day 4
+        "b2-1": "C004_C003_",    // China day 5
+        "b5-1": "C003_C003_",    // China day 6
+        "7D4710EB-5BA4-42E6-AA60-68D77F67D9B9": "GL_G010_C006_",             // Greenland night 1
+        "b7-1": "H007_C003",                                                 // Hawaii day 1
+        "b1-1": "H005_C012_",                                                // Hawaii day 2
+        "b2-2": "H010_C006_",                                                // Hawaii day 3
+        "b4-1": "H004_C007_",                                                // Hawaii day 4
+        "b6-2": "H012_C009_",                                                // Hawaii night 1
+        "b8-1": "H004_C009_",                                                // Hawaii night 2
+        "6E2FC8AC-832D-46CF-B306-BB2A05030C17": "LW_L001_C006_",             // Liwa day 1 LW_L001_C006_0
+        "b6-3": "L010_C006_",                                                // London day 1
+        "b5-2": "L007_C007_",                                                // London day 2
+        "b1-2": "L012_C002_",                                                // London night 1
+        "b3-1": "L004_C011_",                                                // London night 2
+        "A284F0BF-E690-4C13-92E2-4672D93E8DE5": "LA_A011_C003_",             // Los Angeles night 3
+        "b7-2": "N008_C009_",                                                // New York day 1
+        "b1-3": "N006_C003_",                                                // New York day 2
+        "b3-2": "N003_C006_",                                                // New York day 3
+        "b2-3": "N013_C004_",                                                // New York night 1
+        "b4-2": "N008_C003_",                                                // New York night 2
 
-        "b8-2":"A008_C007_",                                                // San Francisco day 1
-        "b10-3":"A013_C005_",                                               // San Francisco day 2
-        "b9-3":"A006_C003_",                                                // San Francisco day 3
+        "b8-2": "A008_C007_",                                                // San Francisco day 1
+        // "b10-3": ,                                               // San Francisco day 2
+        "b9-3": "A006_C003_",                                                // San Francisco day 3
         //"b8-3":"",     San Francisco day 4 (no extra poi ?)
-        "b3-3":"A012_C014_",                                                // San Francisco day 5
+        "b3-3": "A012_C014_",                                                // San Francisco day 5
                                                                             //   maybe A013_C004 ?
-        "b4-3":"A013_C012_",                                                // San Francisco day 6
-        "b6-4":"A004_C012_",                                                // San Francisco night 1
-        "b7-3":"A007_C017_",                                                // San Francisco night 2
-        "b5-3":"A015_C014_",                                                // San Francisco night 3
-        "b1-4":"A015_C018_",                                                // San Francisco night 4
-        "b2-4":"A018_C014_"                                                 // San Francisco night 5
+        "b4-3": "A013_C005_",                                                // San Francisco day 6
+        "b6-4": "A004_C012_",                                                // San Francisco night 1
+        "b7-3": "A007_C017_",                                                // San Francisco night 2
+        "b5-3": "A015_C014_",                                                // San Francisco night 3
+        "b1-4": "A015_C018_",                                                // San Francisco night 4
+        "b2-4": "A018_C014_",                                                 // San Francisco night 5
     ]
-    
-    
+
     // MARK: - Playlist generation
-    func generatePlaylist(isRestricted:Bool, restrictedTo:String) {
+    func generatePlaylist(isRestricted: Bool, restrictedTo: String) {
         // Start fresh
         playlist = [AerialVideo]()
         playlistIsRestricted = isRestricted
         playlistRestrictedTo = restrictedTo
-        
+
         // Start with a shuffled list
         let shuffled = loadedManifest.shuffled()
 
         for video in shuffled {
             // We exclude videos not in rotation
             let inRotation = preferences.videoIsInRotation(videoID: video.id)
-            
+
             if !inRotation {
                 //debugLog("randomVideo: video is disabled: \(video)")
                 continue
@@ -112,7 +146,7 @@ class ManifestLoader {
                     continue
                 }
             }
-            
+
             // We may not want to stream
             if preferences.neverStreamVideos == true {
                 if video.isAvailableOffline == false {
@@ -124,29 +158,29 @@ class ManifestLoader {
             // All good ? Add to playlist
             playlist.append(video)
         }
-        
+
         // On regenerating a new playlist, we try to avoid repeating
-        while (playlist.count > 1 && lastPluckedFromPlaylist == playlist.first) {
+        while playlist.count > 1 && lastPluckedFromPlaylist == playlist.first {
             playlist.shuffle()
         }
     }
-    
+
     func randomVideo(excluding: [AerialVideo]) -> AerialVideo? {
         let timeManagement = TimeManagement.sharedInstance
-        let (shouldRestrictByDayNight,restrictTo) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
+        let (shouldRestrictByDayNight, restrictTo) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
         debugLog("shouldRestrictByDayNight : \(shouldRestrictByDayNight) (\(restrictTo))")
-        if (playlist.count == 0 || (restrictTo != playlistRestrictedTo) || (shouldRestrictByDayNight != playlistIsRestricted)) {
+        if playlist.isEmpty || restrictTo != playlistRestrictedTo || shouldRestrictByDayNight != playlistIsRestricted {
             generatePlaylist(isRestricted: shouldRestrictByDayNight, restrictedTo: restrictTo)
         }
-        
-        if playlist.count > 0 {
+
+        if !playlist.isEmpty {
             lastPluckedFromPlaylist = playlist.removeFirst()
             return lastPluckedFromPlaylist
         } else {
             return findBestEffortVideo()
         }
     }
-    
+
     // Find a backup plan when conditions are not met
     func findBestEffortVideo() -> AerialVideo? {
         // So this is embarassing. This can happen if :
@@ -158,7 +192,7 @@ class ManifestLoader {
         // - Did we play something previously ? If so play that back (will loop)
         // - return a random one from the manifest that is cached
         // - return a random video that is not cached (slight betrayal of the Never stream videos)
-        
+
         warnLog("Empty playlist, not good !")
 
         if lastPluckedFromPlaylist != nil {
@@ -167,18 +201,17 @@ class ManifestLoader {
         } else {
             // Start with a shuffled list
             let shuffled = loadedManifest.shuffled()
-            
-            if (shuffled.count == 0)
-            {
+
+            if shuffled.isEmpty {
                 // This is super bad, no manifest at all
                 errorLog("No manifest, nothing to play !")
                 return nil
             }
-            
+
             for video in shuffled {
                 // We exclude videos not in rotation
                 let inRotation = preferences.videoIsInRotation(videoID: video.id)
-                
+
                 // If we find anything cached and in rotation, we send that back
                 if video.isAvailableOffline && inRotation {
                     warnLog("returning random cached in rotation video after condition change not met !")
@@ -190,49 +223,51 @@ class ManifestLoader {
             return shuffled.first!
         }
     }
-    
+
     // MARK: - Lifecycle
-    
+
     init() {
         debugLog("Manifest init")
         // We try to load our video manifests in 3 steps :
-        // - reload from local variables (unused for now)
+        // - reload from local variables (unused for now, maybe with previews+screensaver
+        // in some weird edge case on some systems)
         // - reprocess the saved files in cache directory (full offline mode)
         // - download the manifests from servers
+        //
+        // Starting with 1.4.6, we also may now periodically recheck for changed files!
 
         debugLog("isManifestCached 10 \(isManifestCached(manifest: .tvOS10))")
         debugLog("isManifestCached 11 \(isManifestCached(manifest: .tvOS11))")
         debugLog("isManifestCached 12 \(isManifestCached(manifest: .tvOS12))")
-        
+
+        checkIfShouldRedownloadFiles()
+
         if areManifestsFilesLoaded() {
-            debugLog("Files were already loaded")
+            debugLog("Files were already loaded in memory")
             loadManifestsFromLoadedFiles()
-        }
-        else
-        {
-            debugLog("Files were not already loaded")
+        } else {
+            debugLog("Files were not already loaded in memory")
             // Manifests are not in our preferences plist, are they cached on disk ?
             if areManifestsCached() {
                 debugLog("Manifests are cached on disk, loading")
                 loadCachedManifests()
-            }
-            else {
+            } else {
                 // Ok then, we fetch them...
                 debugLog("Fetching missing manifests online")
                 let downloadManager = DownloadManager()
-                
+
                 var urls: [URL] = []
-                
+
                 // For tvOS12, json is now in a tar file
-                if (!isManifestCached(manifest: .tvOS12)) {
+                if !isManifestCached(manifest: .tvOS12) {
                     urls.append(URL(string: "https://sylvan.apple.com/Aerials/resources.tar")!)
                 }
 
-                if (!isManifestCached(manifest: .tvOS11)) {
+                if !isManifestCached(manifest: .tvOS11) {
                     urls.append(URL(string: "https://sylvan.apple.com/Aerials/2x/entries.json")!)
                 }
-                
-                if (!isManifestCached(manifest: .tvOS10)) {
+
+                if !isManifestCached(manifest: .tvOS10) {
                     urls.append(URL(string: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json")!)
                 }
 
@@ -240,36 +275,101 @@ class ManifestLoader {
                     debugLog("Fetching manifests all done")
                     // We can now load from the newly cached files
                     self.loadCachedManifests()
-                    
+
                 }
-                
+
                 for url in urls {
                     let operation = downloadManager.queueDownload(url)
                     completion.addDependency(operation)
                 }
-                
+
                 OperationQueue.main.addOperation(completion)
             }
         }
     }
 
-    func addCallback(_ callback:@escaping manifestLoadCallback) {
-        if loadedManifest.count > 0 {
+    func addCallback(_ callback:@escaping ManifestLoadCallback) {
+        if !loadedManifest.isEmpty {
             callback(loadedManifest)
         } else {
             callbacks.append(callback)
         }
     }
 
+    // MARK: - Periodically check for new videos
+    func checkIfShouldRedownloadFiles() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale.init(identifier: "en_GB")
+        let dateObj = dateFormatter.date(from: preferences.lastVideoCheck!)
+
+        var dayCheck = 7
+        if preferences.newVideosMode == Preferences.NewVideosMode.monthly.rawValue {
+            dayCheck = 30
+        }
+
+        let cacheDirectory = VideoCache.cacheDirectory!
+        var cacheResourcesString = cacheDirectory
+        cacheResourcesString.append(contentsOf: "/backups")
+        let cacheUrl = URL(fileURLWithPath: cacheResourcesString)
+
+        if #available(OSX 10.11, *) {
+            if !cacheUrl.hasDirectoryPath {
+                moveOldManifests()
+                return
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+
+        if Int((dateObj?.timeIntervalSinceNow)!) > dayCheck * 1440 {
+            // We need to redownload
+            debugLog("Checking for new videos")
+            moveOldManifests()
+        } else {
+            debugLog("No need to check for new videos")
+        }
+    }
+
+    func moveOldManifests() {
+        debugLog("move")
+        let cacheDirectory = VideoCache.cacheDirectory!
+        var cacheResourcesString = cacheDirectory
+
+        let dateFormatter = DateFormatter()
+        let current = Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let today = dateFormatter.string(from: current)
+
+        cacheResourcesString.append(contentsOf: "/backups/"+today)
+        let previous = URL(fileURLWithPath: cacheDirectory.appending("/entries.json"))
+        if FileManager.default.fileExists(atPath: cacheDirectory.appending("/entries.json")) {
+            let new = URL(fileURLWithPath: cacheResourcesString.appending("/entries.json"))
+
+            let cacheUrl = URL(fileURLWithPath: cacheResourcesString)
+            if #available(OSX 10.11, *) {
+                if !cacheUrl.hasDirectoryPath {
+                    do {
+                        try FileManager.default.createDirectory(atPath: cacheResourcesString, withIntermediateDirectories: true, attributes: nil)
+                        debugLog("creating dir \(cacheResourcesString)")
+
+                        try FileManager.default.moveItem(at: previous, to: new)
+                        debugLog("moving entries.json")
+                    } catch {
+                        errorLog("\(error.localizedDescription)")
+                    }
+                }
+            }
+        }
+    }
     // MARK: - Manifests
-    
+
     // Check if the Manifests have been loaded in this class already
     func areManifestsFilesLoaded() -> Bool {
-        if (manifestTvOS12 != nil && manifestTvOS11 != nil && manifestTvOS10 != nil) {
+        if manifestTvOS12 != nil && manifestTvOS11 != nil && manifestTvOS10 != nil {
             debugLog("Manifests files were loaded in class")
             return true
-        }
-        else {
+        } else {
             debugLog("Manifests files were not loaded in class")
             return false
         }
@@ -279,27 +379,25 @@ class ManifestLoader {
     func areManifestsCached() -> Bool {
         return isManifestCached(manifest: .tvOS10) && isManifestCached(manifest: .tvOS11) && isManifestCached(manifest: .tvOS12)
     }
-    
+
     // Check if a Manifest is saved in our cache directory
     func isManifestCached(manifest: Manifests) -> Bool {
         if let cacheDirectory = VideoCache.cacheDirectory {
             let fileManager = FileManager.default
-            
+
             var cacheResourcesString = cacheDirectory
             cacheResourcesString.append(contentsOf: "/" + manifest.rawValue)
-            
+
             if !fileManager.fileExists(atPath: cacheResourcesString) {
                 return false
             }
-        }
-        else
-        {
+        } else {
             return false
         }
-        
+
         return true
     }
-    
+
     // Load the JSON Data cached on disk
     func loadCachedManifests() {
         if let cacheDirectory = VideoCache.cacheDirectory {
@@ -309,19 +407,17 @@ class ManifestLoader {
             do {
                 let ndata = try Data(contentsOf: cacheFileUrl)
                 manifestTvOS12 = ndata
-            }
-            catch {
+            } catch {
                 errorLog("Can't load entries.json from cached directory (tvOS12)")
             }
-            
+
             // tvOS11
             cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
             cacheFileUrl.appendPathComponent("tvos11.json")
             do {
                 let ndata = try Data(contentsOf: cacheFileUrl)
                 manifestTvOS11 = ndata
-            }
-            catch {
+            } catch {
                 errorLog("Can't load tvos11.json from cached directory")
             }
 
@@ -331,8 +427,7 @@ class ManifestLoader {
             do {
                 let ndata = try Data(contentsOf: cacheFileUrl)
                 manifestTvOS10 = ndata
-            }
-            catch {
+            } catch {
                 errorLog("Can't load tvos10.json from cached directory")
             }
 
@@ -344,36 +439,47 @@ class ManifestLoader {
             }
         }
     }
-    
+
     // Load Manifests from the saved preferences
     func loadManifestsFromLoadedFiles() {
         // Reset our array
         processedVideos = []
 
-        if (manifestTvOS12 != nil) {
+        if manifestTvOS12 != nil {
             // We start with the more recent one, it has more information (poi, etc)
             readJSONFromData(manifestTvOS12!, manifest: .tvOS12)
+
+            // We also need to add the missing videos
+            let bundlePath = Bundle(for: ManifestLoader.self).path(forResource: "missingvideos", ofType: "json")!
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: bundlePath), options: .mappedIfSafe)
+                readJSONFromData(data, manifest: .tvOS12)
+            } catch {
+                errorLog("missingvideos.json was not found in the bundle")
+            }
         } else {
             warnLog("tvOS12 manifest is absent")
         }
-        
-        if (manifestTvOS11 != nil) {
+
+        if manifestTvOS11 != nil {
             // This one has a couple videos not in the tvOS12 JSON. No H264 for these !
             readJSONFromData(manifestTvOS11!, manifest: .tvOS11)
         } else {
             warnLog("tvOS11 manifest is absent")
         }
-        
-        if (manifestTvOS10 != nil) {
+
+        if manifestTvOS10 != nil {
             // The original manifest is in another format
             readOldJSONFromData(manifestTvOS10!, manifest: .tvOS10)
         } else {
             warnLog("tvOS10 manifest is absent")
         }
 
-        processedVideos = processedVideos.sorted { $0.secondaryName < $1.secondaryName }    // We sort videos by secondary names, so they can display sorted in our view later
-        
+        // We sort videos by secondary names, so they can display sorted in our view later
+        processedVideos = processedVideos.sorted { $0.secondaryName < $1.secondaryName }
+
         self.loadedManifest = processedVideos
+
         /*
          // POI Extracter code
         infoLog("\(processedVideos.count) videos processed !")
@@ -384,29 +490,30 @@ class ManifestLoader {
                 infoLog(poi.key + ": " + poiStringProvider.getString(key: poi.value))
             }
         }*/
-        
+
+        debugLog("Total videos processed : \(processedVideos.count)")
         // callbacks
         for callback in self.callbacks {
             callback(self.loadedManifest)
         }
         self.callbacks.removeAll()
     }
-    
+
     // MARK: - JSON
     func readJSONFromData(_ data: Data, manifest: Manifests) {
         do {
             let poiStringProvider = PoiStringProvider.sharedInstance
-            
+
             let options = JSONSerialization.ReadingOptions.allowFragments
             let batches = try JSONSerialization.jsonObject(with: data, options: options)
-            
+
             guard let batch = batches as? NSDictionary else {
                 errorLog("Encountered unexpected content type for batch, please report !")
                 return
             }
-            
-            let assets = batch["assets"] as! Array<NSDictionary>
-            
+
+            let assets = batch["assets"] as! [NSDictionary]
+
             for item in assets {
                 let id = item["id"] as! String
                 let url1080pH264 = item["url-1080-H264"] as? String
@@ -421,10 +528,10 @@ class ManifestLoader {
 /*                if let mergeName = mergeName[id] {
                     secondaryName = mergeName
                 }*/
-                
+
                 let timeOfDay = "day"   // TODO, this is hardcoded as it's no longer available in the modern JSONs
                 let type = "video"
-                var poi : [String:String]?
+                var poi: [String: String]?
                 if let mergeId = mergePOI[id] {
                     poi = poiStringProvider.fetchExtraPoiForId(id: mergeId)
                 } else {
@@ -432,10 +539,9 @@ class ManifestLoader {
                 }
 
                 let communityPoi = poiStringProvider.getCommunityPoi(id: id)
-                
-                
-                let (isDupe,foundDupe) = findDuplicate(id: id, url1080pH264: url1080pH264 ?? "")
-                if (isDupe) {
+
+                let (isDupe, foundDupe) = findDuplicate(id: id, url1080pH264: url1080pH264 ?? "")
+                if isDupe {
                     foundDupe!.sources.append(manifest)
                 } else {
                     let video = AerialVideo(id: id,             // Must have
@@ -449,7 +555,7 @@ class ManifestLoader {
                         manifest: manifest,
                         poi: poi ?? [:],
                         communityPoi: communityPoi)
-                    
+
                     processedVideos.append(video)
                 }
             }
@@ -458,29 +564,29 @@ class ManifestLoader {
             return
         }
     }
-    
+
     func readOldJSONFromData(_ data: Data, manifest: Manifests) {
         do {
             let poiStringProvider = PoiStringProvider.sharedInstance
 
             let options = JSONSerialization.ReadingOptions.allowFragments
             let batches = try JSONSerialization.jsonObject(with: data,
-                                                           options: options) as! Array<NSDictionary>
-            
+                                                           options: options) as! [NSDictionary]
+
             for batch: NSDictionary in batches {
-                let assets = batch["assets"] as! Array<NSDictionary>
-                
+                let assets = batch["assets"] as! [NSDictionary]
+
                 for item in assets {
                     let url = item["url"] as! String
                     let name = item["accessibilityLabel"] as! String
                     let timeOfDay = item["timeOfDay"] as! String
                     let id = item["id"] as! String
                     let type = item["type"] as! String
-                    
+
                     if type != "video" {
                         continue
                     }
-                    
+
                     // We may have a secondary name
                     var secondaryName = ""
                     if let mergename = poiStringProvider.getCommunityName(id: id) {
@@ -488,7 +594,7 @@ class ManifestLoader {
                     }
 
                     // We may have POIs to merge
-                    var poi : [String:String]?
+                    var poi: [String: String]?
                     if let mergeId = mergePOI[id] {
                         let poiStringProvider = PoiStringProvider.sharedInstance
                         poi = poiStringProvider.fetchExtraPoiForId(id: mergeId)
@@ -497,12 +603,12 @@ class ManifestLoader {
                     let communityPoi = poiStringProvider.getCommunityPoi(id: id)
 
                     // We may have dupes...
-                    let (isDupe,foundDupe) = findDuplicate(id: id, url1080pH264: url)
+                    let (isDupe, foundDupe) = findDuplicate(id: id, url1080pH264: url)
                     if isDupe {
-                        if (foundDupe != nil) {
+                        if foundDupe != nil {
                             foundDupe!.sources.append(manifest)
-                            
-                            if (foundDupe?.url1080pH264 == "") {
+
+                            if foundDupe?.url1080pH264 == "" {
                                 foundDupe?.url1080pH264 = url
                             }
                         }
@@ -527,7 +633,7 @@ class ManifestLoader {
                             manifest: manifest,
                             poi: poi ?? [:],
                             communityPoi: communityPoi)
-                        
+
                         processedVideos.append(video)
                     }
                 }
@@ -537,7 +643,7 @@ class ManifestLoader {
             return
         }
     }
-    
+
     // Look for a previously processed similar video
     //
     // tvOS11 and 12 JSON are using the same ID (and tvOS12 JSON always has better data,
@@ -545,37 +651,32 @@ class ManifestLoader {
     //
     // tvOS10 however JSON DOES NOT use the same ID, so we need to dupecheck on the h264
     // (only available format there) filename (they actually have different URLs !)
-    func findDuplicate(id: String, url1080pH264: String) -> (Bool,AerialVideo?)
-    {
+    func findDuplicate(id: String, url1080pH264: String) -> (Bool, AerialVideo?) {
         // We blacklist some duplicates
-        if (url1080pH264 != "") {
-            if (blacklist.contains((URL(string:url1080pH264)?.lastPathComponent)!))
-            {
-                return (true,nil)
+        if url1080pH264 != "" {
+            if blacklist.contains((URL(string: url1080pH264)?.lastPathComponent)!) {
+                return (true, nil)
             }
         }
-        
+
         // We also have a Dictionary of duplicates that need source merging
-        for (pid,replace) in dupePairs {
-            if (id == pid) {
-                for vid in processedVideos {
-                    if vid.id == replace {
-                        return (true,vid)
-                    }
-                }
+        for (pid, replace) in dupePairs where id == pid {
+            for vid in processedVideos where vid.id == replace {
+                // Found dupe pair
+                return (true, vid)
             }
         }
-        
+
         for video in processedVideos {
             if id == video.id {
-                return (true,video)
-            } else if (url1080pH264 != "" && video.url1080pH264 != "") {
-                if (URL(string:url1080pH264)?.lastPathComponent == URL(string:video.url1080pH264)?.lastPathComponent) {
-                    return (true,video)
+                return (true, video)
+            } else if url1080pH264 != "" && video.url1080pH264 != "" {
+                if URL(string: url1080pH264)?.lastPathComponent == URL(string: video.url1080pH264)?.lastPathComponent {
+                    return (true, video)
                 }
             }
         }
-        
-        return (false,nil)
+
+        return (false, nil)
     }
-}
+} //swiftlint:disable:this file_length

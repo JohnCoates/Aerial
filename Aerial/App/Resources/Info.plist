@@ -17,11 +17,13 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4.4test2</string>
+	<string>1.4.6beta1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.utilities</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSAppTransportSecurity</key>
@@ -31,6 +33,10 @@
 	</dict>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2015 John Coates. All rights reserved.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Aerial uses location services to calculate Sunset and Sunrise times from your position</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Aerial uses location services to calculate Sunset and Sunrise times from your position</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

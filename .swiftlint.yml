@@ -1,13 +1,30 @@
 disabled_rules:
-    - trailing_whitespace
-    - force_cast
-    - function_body_length
-    - type_body_length
-    - file_length
+  # Allow force-casting (e.g. `x as! UICollectionViewCell`).
+  # We may want to re-enable and address this rule.
+  - force_cast
+  # Allow `TODO` and `FIXME` comments.
+  - todo
+  # Allow the use of `let _ = <optional>`
+  - unused_optional_binding
+  # Allow the use of parantheses when calling methods with trailing completion closures
+  - empty_parentheses_with_trailing_closure
+  # We use enum "namespaces" which leads to nesting violations
+  - nesting
+  # Re-evalature to shorten functions up
+  - function_body_length
+  # Allow declaring operators without extra whitespace, like so: `func ==(_ lhs, ...)`
+  - operator_whitespace
 
-variable_name:
+opt_in_rules:
+  # Prefer checking `isEmpty` over `count > 0`
+  - empty_count
+
+file_length:
+  warning: 600
+  error: 1000
+line_length: 150
+trailing_comma:
+  mandatory_comma: true
+identifier_name:
   min_length:
     warning: 2
-    error: 2
-line_length:
-  warning: 120

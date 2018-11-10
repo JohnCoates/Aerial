@@ -3,12 +3,16 @@
     "language" : "en",
     "assets" : [
         {
-            "id" : "6C3D54AE-0871-498A-81D0-56ED24E5FE9F",
-            "name" : "Korea and Japan Night"  
+            "id" : "009BA758-7060-4479-8EE8-FB9B40C8FB97",
+            "name" : "Korea and Japan Night"
+        },
+        {
+            "id" : "7719B48A-2005-4011-9280-2F64EEC6FD91",
+            "name" : "Northern California to Baja"  
         },
         {
             "id" : "B876B645-3955-420E-99DF-60139E451CF3",
-            "name" :"Wulingyuan National Park 1"
+            "name" : "Wulingyuan National Park 1"
         },
         {
             "id" : "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C",
@@ -19,46 +23,46 @@
             "name" : "Wulingyuan National Park 2"
         },
         {
-            "id" : "b6-1",
+            "id" : "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF",
             "name" : "Great Wall 1"
         },
         {
-            "id" : "b2-1",
-            "name" :"Great Wall 2"
+            "id" : "22162A9B-DB90-4517-867C-C676BC3E8E95",
+            "name" : "Great Wall 2"
         },
         {
             "id" : "b5-1",
             "name" : "Great Wall 3"
         },
-
         {
             "id" : "AC9C09DD-1D97-4013-A09F-B0F5259E64C3",
             "name" : "Sheikh Zayed Road"
         },
         {
-            "id" : "49790B7C-7D8C-466C-A09E-83E38B6BE87A",
-            "name" :"Marina 1"  
+            "id" : "E991AC0C-F272-44D8-88F3-05F44EDFE3AE",
+            "name" : "Marina 1"
         },
         {
-            "id" : "02EA5DBE-3A67-4DFA-8528-12901DFD6CC1",
+            "id" : "00BA71CD-2C54-415A-A68A-8358E677D750",
             "name" : "Downtown"
         },
         {
-            "id" : "802866E6-4AAF-4A69-96EA-C582651391F1",
+            "id" : "3FFA2A97-7D28-49EA-AA39-5BC9051B2745",
             "name" : "Marina 2" 
         },
-
         {
-            "id" : "BAF76353-3475-4855-B7E1-CE96CC9BC3A7",
+            "id" : "9680B8EB-CE2A-4395-AF41-402801F4D6A6",
             "name" : "Approaching Burj Khalifa"
         },
         {
             "id" : "2F11E857-4F77-4476-8033-4A1E4610AFCC",
-            "name" : "Sheikh Zayed Road"
+            "name" : "Sheikh Zayed Road",
+            "pointsOfInterest" : {
+                "0" : "Traveling along Sheikh Zayed Road in Dubai, United Arab Emirates"
+            }
         },
-
         {
-            "id" : "E4ED0B22-EB81-4D4F-A29E-7E1EA6B6D980",
+            "id" : "B8F204CE-6024-49AB-85F9-7CA2F6DCD226",
             "name" : "Nuussuaq Peninsula"
         },
         {
@@ -67,7 +71,7 @@
         },
 
         {
-            "id" : "7D4710EB-5BA4-42E6-AA60-68D77F67D9B9",
+            "id" : "EE01F02D-1413-436C-AB05-410F224A5B7B",
             "name" : "Ilulissat Icefjord"
         },
 
@@ -98,7 +102,7 @@
         },        
 
         {
-            "id" : "102C19D1-9D9F-48EC-B492-074C985C4D9F",
+            "id" : "FE8E1F9D-59BA-4207-B626-28E34D810D0A",
             "name" : "Victoria Harbour 1"
         },
         {
@@ -110,20 +114,22 @@
             "name" : "Wan Chai"
         },
         {
-            "id" : "786E674C-BB22-4AA9-9BD3-114D2020EC4D",
+            "id" : "64EA30BD-C4B5-4CDD-86D7-DFE47E9CB9AA",
             "name" : "Victoria Harbour 2"
         },
 
         {
-            "id" : "30313BC1-BF20-45EB-A7B1-5A6FFDBD2488",
+            "id" : "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A",
             "name" : "Victoria Harbour"
         },
-
         {
-            "id" : "6E2FC8AC-832D-46CF-B306-BB2A05030C17",
-            "name" : "Liwa Oasis"
+            "id" : "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8",
+            "name" : "Liwa Oasis 1"
         },
-
+        {
+            "id" : "AFA22C08-A486-4CE8-9A13-E355B6C38559",
+            "name" : "Liwa Oasis 2"
+        },
         {
             "id" : "b6-3",
             "name" : "River Thames",
@@ -185,7 +191,7 @@
         },        
 
         {
-            "id" : "829E69BA-BB53-4841-A138-4DF0C2A74236",
+            "id" : "CE279831-1CA7-4A83-A97B-FF1E20234396",
             "name" : "Los Angeles Int’l Airport",
             "pointsOfInterest" : {
                 "0" : "Heading west over Los Angeles International Airport",
@@ -194,7 +200,7 @@
             }
         },
         {
-            "id" : "30A2A488-E708-42E7-9A90-B749A407AE1C",
+            "id" : "35693AEA-F8C4-4A80-B77D-C94B20A68956",
             "name" : "Harbor Freeway",
             "pointsOfInterest" : {
                 "0" :"Following the Harbor Freeway (Interstate 110) north through South Los Angeles",
@@ -204,7 +210,7 @@
             }
         },
         {
-            "id" : "B730433D-1B3B-4B99-9500-A286BF7A9940",
+            "id" : "92E48DE9-13A1-4172-B560-29B4668A87EE",
             "name" : "Santa Monica Beach"
         },
 
@@ -269,7 +275,7 @@
             "name" : "Marin Headlands"
         },
         {
-            "id" : "b10-3",
+            "id" : "EE533FBD-90AE-419A-AD13-D7A60E2015D6",
             "name" : "Marin Headlands in Fog",
             "pointsOfInterest" : {
                 "0" : "Moving over the Marin Headlands along Highway 101 toward the Golden Gate Bridge",
@@ -279,7 +285,7 @@
             }
         },
         {
-            "id" : "b9-3",
+            "id" : "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51",
             "name" : "Bay and Golden Gate"
         },
         {
@@ -309,7 +315,10 @@
                 "190" : "Crossing the Golden Gate Bridge toward the Marin Headlands"
             }
         },
- 
+        {
+            "id" : "72B4390D-DF1D-4D51-B179-229BBAEFFF2C",
+            "name" : "Golden Gate from SF"
+        },
         {
             "id" : "b6-4",
             "name" : "Downtown and Coit Tower",
@@ -319,7 +328,7 @@
             }
         },
         {
-            "id" : "b7-3",
+            "id" : "29BDF297-EB43-403A-8719-A78DA11A2948",
             "name" : "Fisherman’s Wharf",
             "pointsOfInterest" : {
                 "0" : "Heading southeast over Fisherman’s Wharf in San Francisco",
@@ -340,7 +349,7 @@
             }
         },
         {
-            "id" : "b1-4",
+            "id" : "3E94AE98-EAF2-4B09-96E3-452F46BC114E",
             "name" : "Bay Bridge"
         },
         {
