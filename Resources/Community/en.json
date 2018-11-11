@@ -280,8 +280,8 @@
             "pointsOfInterest" : {
                 "0" : "Moving over the Marin Headlands along Highway 101 towards the Golden Gate Bridge",
                 "20" : "Horseshoe Cove appearing on the left",
-                "130" : "Passing over Battery Spencer",
-                "192" : "Crossing the Golden Gate Bridge towards San Francisco"
+                "105" : "Passing Battery Spencer on the right",
+                "155" : "Crossing the Golden Gate Bridge towards San Francisco"
             }
         },
         {
@@ -332,11 +332,11 @@
             "name" : "Fisherman’s Wharf",
             "pointsOfInterest" : {
                 "0" : "Heading southeast over Fisherman’s Wharf in San Francisco",
-                "30" : "Passing the Liberty ship SS Jeremiah O’Brien",
-                "50" : "Passing over the submarine USS Pampanito",
+                "27" : "Passing the Liberty ship SS Jeremiah O’Brien",
+                "47" : "Passing over the submarine USS Pampanito",
                 "80" : "Passing over North Beach in San Francisco",
-                "120" : "Approaching Coit Tower on Telegraph Hill, with the Bay Bridge and downtown SF in the background",
-                "150" : "Passing Coit Tower on Telegraph Hill, with Saints Peter and Paul Church in the right mid-ground" 
+                "115" : "Approaching Coit Tower on Telegraph Hill, with the Bay Bridge and downtown SF in the background",
+                "135" : "Approaching Coit Tower on Telegraph Hill, with Saints Peter and Paul Church in the right mid-ground" 
             }
         },
         {
