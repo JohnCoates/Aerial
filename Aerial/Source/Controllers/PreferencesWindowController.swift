@@ -180,7 +180,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     @IBOutlet var newVideosModePopup: NSPopUpButton!
 
     @IBOutlet var lastCheckedVideosLabel: NSTextField!
-    
+
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?
