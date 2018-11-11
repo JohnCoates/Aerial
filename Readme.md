@@ -28,7 +28,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 *Rather install from Terminal or have auto-updates? Look at the Brew Cask section below!*
 
 1. **Close System Preferences**
-2. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.5/Aerial.saver.zip) (Version 1.4.5, November 3, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.5)). (**If you are a new user**, Apple has just added some new videos and made some changes that can confuse Aerial 1.4.5. Because of this, you may see duplicates in the user interface with version 1.4.5. We suggest you give [1.4.6beta1 a try instead](https://github.com/JohnCoates/Aerial/releases/download/v1.4.6beta1/Aerial.saver.zip), this version will properly handle the dupllicate issue. You can find more information on changes on [this issue](https://github.com/JohnCoates/Aerial/issues/630).)
+2. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.5/Aerial.saver.zip) (Version 1.4.5, November 3, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.5)). (**If you are a new user**, Apple has just added some new videos and made some changes that can confuse Aerial 1.4.5. Because of this, you may see duplicates in the user interface with version 1.4.5. We suggest you give [1.4.6beta1 a try instead](https://github.com/JohnCoates/Aerial/releases/download/v1.4.6beta1/Aerial.saver.zip), this version will properly handle the duplicate issue. You can find more information on changes on [this issue](https://github.com/JohnCoates/Aerial/issues/630).)
 3. Unzip the downloaded file (if you use Safari, it should already be done for you).
 4. Open **Aerial.saver** (double click), it will open System Preferences and ask you if you want to install for all users or for your user only. 
 
@@ -92,7 +92,7 @@ Aerial is written in Swift, which requires OS X Mavericks (10.9) or above.
 ## Community
 - **Found a bug?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Try to be as specific as possible.
 - **Have a feature request?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Tell us why this feature would be useful, and why you and others would want it.
-- Curious about the videos and on a slow connection ? Check [this guide](https://paper.dropbox.com/doc/Aerial-macOS-screen-saver-list--ARLYUjAa1UrRyjC8HPKJv4DBAQ-HvOeL0gNhLpqpIFgmLHaS) by [Hidehiro Nagaoka](https://github.com/hidehiro98).
+- Curious about the videos and on a slow connection? Check [this guide](https://paper.dropbox.com/doc/Aerial-macOS-screen-saver-list--ARLYUjAa1UrRyjC8HPKJv4DBAQ-HvOeL0gNhLpqpIFgmLHaS) by [Hidehiro Nagaoka](https://github.com/hidehiro98).
 
 ## Contribute
 We appreciate all pull requests.
@@ -124,8 +124,8 @@ You can easily check for yourself what to expect by opening a video in Quicktime
 ## Troubleshooting
 - "Done" button doesn't close Aerial: Please update to latest available version, this is a bug on Mojave with very old versions of Aerial (1.2 and below).
 - Can't type into text fields with macOS High Sierra/Video corruption issue on High Sierra: Please make sure you have at least version 1.4.5. 
-- "This app is damaged and can't be opened, you should move it to the trash" when double clicking the Aerial.saver file: Please see the installation notes above, this is a GateKeeper issue.
-- Brightness control does not control external displays: Aerial uses the brightness API from macOS to change brightness of your screens. Depending on your external screens (brand, the way they are connected, etc), macOS may not be able to control their brightness. Please check first if you can control the brightness of your external screen(s) using the brightness keys from your keyboard. If you can't, Aerial won't be able to control their brightness either. If you can control their brightness through those keyboard keys but see an issue with Aerial, please open an issue. 
+- "This app is damaged and can't be opened, you should move it to the trash" when double-clicking the Aerial.saver file: Please see the installation notes above, this is a GateKeeper issue.
+- Brightness control does not control external displays: Aerial uses the brightness API from macOS to change the brightness of your screens. Depending on your external screens (brand, the way they are connected, etc), macOS may not be able to control their brightness. Please check first if you can control the brightness of your external screen(s) using the brightness keys from your keyboard. If you can't, Aerial won't be able to control their brightness either. If you can control their brightness through those keyboard keys but see an issue with Aerial, please open an issue. 
 - Not seeing extended descriptions: Make sure you have version 1.4.2 or above.
 - Black screen: If you are behind a firewall (Like Little Snitch or Hands Off!) try creating exceptions for Aerial to allow it access to Apple's servers. Be sure the applications `ScreenSaverEngine.app` and `System Preferences.app` are not being blocked access to *.phobos.apple.com, *.phobos.apple.com.edgesuite.net and sylvan.apple.com. If that isn't an option, please look at the Offline mode section. 
 - "You cannot use the Aerial screen saver with this version of macOS." error: Select Aerial, close System Preferences with Aerial still selected, re-open System Preferences and Aerial should now work. This is a known bug with Swift screensavers in macOS/OS X reported to Apple as [rdar://25569037](http://www.openradar.me/25569037).
