@@ -29,7 +29,7 @@ class PoiStringProvider {
     var stringDict: NSDictionary?
 
     var communityStrings = [CommunityStrings]()
-
+    var communityLanguage = ""
     // MARK: - Lifecycle
     init() {
         debugLog("Poi Strings Provider initialized")
@@ -86,7 +86,7 @@ class PoiStringProvider {
         let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
 
         if #available(OSX 10.12, *) {
-            if preferences.localizeDescriptions && locale.languageCode != "en" {
+            if preferences.localizeDescriptions && locale.languageCode != communityLanguage {
                 return stringBundle!.localizedString(forKey: key, value: "", table: "Localizable.nocache")
             }
         }
@@ -121,7 +121,7 @@ class PoiStringProvider {
         let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
 
         if #available(OSX 10.12, *) {
-            if preferences.localizeDescriptions && locale.languageCode != "en" {
+            if preferences.localizeDescriptions && locale.languageCode != communityLanguage {
                 return video.poi
             }
         }
@@ -135,20 +135,60 @@ class PoiStringProvider {
 
     // MARK: - Community data
 
+    private func getCommunityPathForLocale() -> String {
+        let preferences = Preferences.sharedInstance
+        let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
+
+        if #available(OSX 10.12, *) {
+            // First we look in the Cache Folder for a locale directory
+            let cacheDirectory = VideoCache.cacheDirectory!
+            var cacheResourcesString = cacheDirectory
+            cacheResourcesString.append(contentsOf: "/locale")
+            let cacheUrl = URL(fileURLWithPath: cacheResourcesString)
+
+            if cacheUrl.hasDirectoryPath {
+                debugLog("Aerial cache directory contains /locale")
+                var cc = locale.countryCode!.lowercased()
+                if !preferences.localizeDescriptions {
+                    cc = "en"
+                }
+                debugLog("Looking for \(cc).json")
+
+                let fileUrl = URL(fileURLWithPath: cacheResourcesString.appending("/\(cc).json"))
+                debugLog(fileUrl.absoluteString)
+                let fileManager = FileManager.default
+                if fileManager.fileExists(atPath: fileUrl.path) {
+                    debugLog("Locale description found")
+                    communityLanguage = cc
+                    return fileUrl.path
+                } else {
+                    debugLog("Locale description not found")
+                }
+            }
+            debugLog("Defaulting to bundle")
+            let cc = locale.countryCode!.lowercased()
+            if preferences.localizeDescriptions {
+                let path = Bundle(for: PoiStringProvider.self).path(forResource: cc, ofType: "json")
+                if path != nil {
+                    let fileManager = FileManager.default
+                    if fileManager.fileExists(atPath: path!) {
+                        communityLanguage = cc
+                        return path!
+                    }
+                }
+            }
+        }
+
+        // Fallback to english in bundle
+        communityLanguage = "en"
+        return Bundle(for: PoiStringProvider.self).path(forResource: "en", ofType: "json")!
+    }
+
     // Load the community strings
     private func loadCommunity() {
-        let preferences = Preferences.sharedInstance
-
-        var bundlePath: String
-        if preferences.localizeDescriptions {
-            bundlePath = Bundle(for: PoiStringProvider.self).path(forResource: "en", ofType: "json")!
-            //bundlePath = Bundle.main.path(forResource: "en", ofType: "json")!
-        } else {
-            // TODO
-            bundlePath = Bundle(for: PoiStringProvider.self).path(forResource: "en", ofType: "json")!
-            //bundlePath = Bundle.main.path(forResource: "en", ofType: "json")!
-        }
+        let bundlePath = getCommunityPathForLocale()
         debugLog("path : \(bundlePath)")
+
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: bundlePath), options: .mappedIfSafe)
             let batches = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
@@ -168,9 +208,9 @@ class PoiStringProvider {
             }
         } catch {
             // handle error
-            errorLog("Community JSON ERROR")
+            errorLog("Community JSON ERROR : \(error)")
         }
-        debugLog("Community JSON : \(communityStrings.count)")
+        debugLog("Community JSON : \(communityStrings.count) entries")
     }
 
     func getCommunityName(id: String) -> String? {

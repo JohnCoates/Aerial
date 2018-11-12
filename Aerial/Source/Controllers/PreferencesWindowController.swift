@@ -179,6 +179,8 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     @IBOutlet weak var cacheSizeTextField: NSTextField!
     @IBOutlet var newVideosModePopup: NSPopUpButton!
 
+    @IBOutlet var lastCheckedVideosLabel: NSTextField!
+
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?
@@ -509,7 +511,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         extraCornerPopup.selectItem(at: preferences.extraCorner!)
 
         newVideosModePopup.selectItem(at: preferences.newVideosMode!)
-
+        lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
         colorizeProjectPageLinks()
 
         if let cacheDirectory = VideoCache.cacheDirectory {

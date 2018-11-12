@@ -254,6 +254,11 @@ class ManifestLoader {
             } else {
                 // Ok then, we fetch them...
                 debugLog("Fetching missing manifests online")
+                let dateFormatter = DateFormatter()
+                let current = Date()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                preferences.lastVideoCheck = dateFormatter.string(from: current)
+
                 let downloadManager = DownloadManager()
 
                 var urls: [URL] = []
@@ -322,7 +327,8 @@ class ManifestLoader {
             // Fallback on earlier versions
         }
 
-        if Int((dateObj?.timeIntervalSinceNow)!) > dayCheck * 1440 {
+        debugLog("Interval : \(String(describing: dateObj?.timeIntervalSinceNow))")
+        if Int((dateObj?.timeIntervalSinceNow)!) < -dayCheck * 86400 {
             // We need to redownload
             debugLog("Checking for new videos")
             moveOldManifests()
