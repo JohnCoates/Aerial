@@ -650,15 +650,10 @@ class Preferences {
         return !removed
     }
 
-    func setVideo(videoID: String, inRotation: Bool,
-                  synchronize: Bool = true) {
+    func setVideo(videoID: String, inRotation: Bool) {
         let key = "remove\(videoID)"
         let removed = !inRotation
         userDefaults.set(removed, forKey: key)
-
-        if synchronize {
-            self.synchronize()
-        }
     }
 
     // MARK: - Setting, Getting
@@ -690,10 +685,5 @@ class Preferences {
         } else {
             userDefaults.set(value, forKey: key)
         }
-        synchronize()
-    }
-
-    func synchronize() {
-        userDefaults.synchronize()
     }
 } //swiftlint:disable:this file_length
