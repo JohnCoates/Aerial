@@ -13,3 +13,6 @@ Aérea es completamente de código abierto, por lo que se siente libre de contri
 [![codecov](https://codecov.io/gh/JohnCoates/Aerial/branch/master/graph/badge.svg)](https://codecov.io/gh/JohnCoates/Aerial)
 
 ###### Usuario de Windows? Prueba [cDima/Aerial](https://github.com/cDima/Aerial/)
+###### Usuario de Linux? Tratar [graysky2/xscreensaver-aerial](https://github.com/graysky2/xscreensaver-aerial/)
+
+#### Codificado con amor por John Coates ([Twitter](https://twitter.com/JohnCoatesDev), [correo electrónico](mailto:john@johncoates.me))
