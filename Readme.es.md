@@ -15,4 +15,4 @@ Aerial es completamente de código abierto, así que siéntase libre de contribu
 ###### Usuario de Windows? Prueba [cDima/Aerial](https://github.com/cDima/Aerial/)
 ###### Usuario de Linux? Tratar [graysky2/xscreensaver-aerial](https://github.com/graysky2/xscreensaver-aerial/)
 
-#### Codificado con amor por John Coates ([Twitter](https://twitter.com/JohnCoatesDev), [correo electrónico](mailto:john@johncoates.me))
+#### Codificado con amor por John Coates ([Twitter](https://twitter.com/JohnCoatesDev), [correo Electrónico](mailto:john@johncoates.me))
