@@ -72,8 +72,6 @@
 		FAC36F5D1BE1756D007F2A20 /* CheckCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F441BE1756D007F2A20 /* CheckCellView.swift */; };
 		FAC36F5E1BE1756D007F2A20 /* CheckCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F441BE1756D007F2A20 /* CheckCellView.swift */; };
 		FAC36F601BE175CF007F2A20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F301BE1756D007F2A20 /* AppDelegate.swift */; };
-		FAC36F641BE1772F007F2A20 /* CollectionType+Shuffling.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F631BE1772F007F2A20 /* CollectionType+Shuffling.swift */; };
-		FAC36F651BE1772F007F2A20 /* CollectionType+Shuffling.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F631BE1772F007F2A20 /* CollectionType+Shuffling.swift */; };
 		FAC36F671BE1778C007F2A20 /* ManifestLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F661BE1778C007F2A20 /* ManifestLoader.swift */; };
 		FAC36F681BE1778C007F2A20 /* ManifestLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F661BE1778C007F2A20 /* ManifestLoader.swift */; };
 		FAF450211BE2B45D00C1F98A /* VideoLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF450201BE2B45D00C1F98A /* VideoLoader.swift */; };
@@ -132,7 +130,6 @@
 		FAC36F401BE1756D007F2A20 /* AerialVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AerialVideo.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		FAC36F431BE1756D007F2A20 /* AerialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AerialView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		FAC36F441BE1756D007F2A20 /* CheckCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CheckCellView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		FAC36F631BE1772F007F2A20 /* CollectionType+Shuffling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionType+Shuffling.swift"; sourceTree = "<group>"; };
 		FAC36F661BE1778C007F2A20 /* ManifestLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ManifestLoader.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		FACAF1A51BD9FC6000E539DC /* Aerial.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Aerial.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF450201BE2B45D00C1F98A /* VideoLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = VideoLoader.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -313,7 +310,6 @@
 		FAC36F621BE17701007F2A20 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FAC36F631BE1772F007F2A20 /* CollectionType+Shuffling.swift */,
 				039385792175D4B80040B850 /* AVPlayerViewExtension.swift */,
 			);
 			path = Extensions;
@@ -546,7 +542,6 @@
 				03E8731121662AEB002B469B /* AsynchronousOperation.swift in Sources */,
 				03510C7121834FC7008F74F2 /* IOBridge.m in Sources */,
 				030D9B7C21551A8D00961E95 /* AerialPlayerItem.swift in Sources */,
-				FAC36F651BE1772F007F2A20 /* CollectionType+Shuffling.swift in Sources */,
 				FAC36F5E1BE1756D007F2A20 /* CheckCellView.swift in Sources */,
 				FAC36F5C1BE1756D007F2A20 /* AerialView.swift in Sources */,
 				FAC36F681BE1778C007F2A20 /* ManifestLoader.swift in Sources */,
@@ -595,7 +590,6 @@
 				03958349217F4416008E8F9C /* Solar.swift in Sources */,
 				03233B68217272640077D3F9 /* PoiStringProvider.swift in Sources */,
 				FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */,
-				FAC36F641BE1772F007F2A20 /* CollectionType+Shuffling.swift in Sources */,
 				03E8730C2165013C002B469B /* DownloadManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
