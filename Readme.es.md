@@ -3,7 +3,7 @@
 ## Aérea - Vistas de Apple TV aérea de protector de pantalla
 Aerial es un protector de pantalla para Mac basado en el nuevo protector de pantalla de Apple TV que muestra las películas aéreas que Apple filmó en Nueva York, San Francisco, Hawai, China, etc. ¡A partir de la versión 1.4, esto también incluye los nuevos videos ISS disponibles en tvOS 12!
 
-Aérea es completamente de código abierto, por lo que se siente libre de contribuir a su desarrollo.
+Aerial es completamente de código abierto, así que siéntase libre de contribuir a su desarrollo.
 
 [![Github All Releases](https://img.shields.io/github/downloads/johncoates/aerial/total.svg?maxAge=86400)]()
 [![GitHub contributors](https://img.shields.io/github/contributors/johncoates/aerial.svg?maxAge=2592000)]()
