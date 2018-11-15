@@ -71,6 +71,9 @@ class CheckCellView: NSTableCellView {
             addButton.isHidden = false
             progressIndicator.isHidden = true
             queuedImage.isHidden = true
+            //debugLog("w \(mainTextField.frame.height) \(mainTextField.bounds.height)")
+            //let size = CGSize(width: 120, height: mainTextField.frame.height)
+            //mainTextField.setBoundsSize(size)
         }
 
         if video!.url4KHEVC == "" {

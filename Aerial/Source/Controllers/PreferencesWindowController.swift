@@ -1576,9 +1576,6 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
                 count += 1
             }
             return count
-
-            //let city = item as! City
-            //return city.day.videos.count + city.night.videos.count
         default:
             return 0
         }
