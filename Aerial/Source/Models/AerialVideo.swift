@@ -102,33 +102,6 @@ class AerialVideo: CustomStringConvertible, Equatable {
         }
 
         return getClosestAvailable(wanted: preferences.videoFormat!)
-/*        // We need to return the closest available format, not pretty
-        if preferences.videoFormat == Preferences.VideoFormat.v4KHEVC.rawValue {
-            if url4KHEVC != "" {
-                return URL(string: self.url4KHEVC)!
-            } else if url1080pHEVC != "" {
-                return URL(string: self.url1080pHEVC)!
-            } else {
-                return URL(string: self.url1080pH264)!
-            }
-        } else if preferences.videoFormat == Preferences.VideoFormat.v1080pHEVC.rawValue {
-            if url1080pHEVC != "" {
-                return URL(string: self.url1080pHEVC)!
-            } else if url1080pH264 != "" {
-                return URL(string: self.url1080pH264)!
-            } else {
-                return URL(string: self.url4KHEVC)!
-            }
-        } else {
-            if url1080pH264 != "" {
-                return URL(string: self.url1080pH264)!
-            } else if url1080pHEVC != "" {
-                // With the latest versions, we should always have a H.264 fallback so this is just for future proofing
-                return URL(string: self.url1080pHEVC)!
-            } else {
-                return URL(string: self.url4KHEVC)!
-            }
-        }*/
     }
 
     func getClosestAvailable(wanted: Int) -> URL {

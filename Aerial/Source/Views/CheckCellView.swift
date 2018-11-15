@@ -87,7 +87,6 @@ class CheckCellView: NSTableCellView {
             queuedImage.isHidden = true
             status = .downloading
         }
-
         progressIndicator.doubleValue = Double(progress)
     }
 

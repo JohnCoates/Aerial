@@ -8,10 +8,12 @@
 
 import Foundation
 typealias VideoManagerCallback = (Int, Int) -> Void
+typealias VideoProgressCallback = (Int, Int, Double) -> Void
 
 class VideoManager: NSObject {
     static let sharedInstance = VideoManager()
     var managerCallbacks = [VideoManagerCallback]()
+    var progressCallbacks = [VideoProgressCallback]()
 
     /// Dictionary of CheckCellView, keyed by the video.id
     private var checkCells = [String: CheckCellView]()
@@ -45,6 +47,10 @@ class VideoManager: NSObject {
 
     func addCallback(_ callback:@escaping VideoManagerCallback) {
         managerCallbacks.append(callback)
+    }
+
+    func addProgressCallback(_ callback:@escaping VideoProgressCallback) {
+        progressCallbacks.append(callback)
     }
 
     // Is the video queued for download ?
@@ -118,6 +124,12 @@ class VideoManager: NSObject {
     func updateProgress(id: String, progress: Double) {
         if let cell = checkCells[id] {
             cell.updateProgressIndicator(progress: progress)
+        }
+        DispatchQueue.main.async {
+            // Callback the callbacks
+            for callback in self.progressCallbacks {
+                callback(self.totalQueued-self.queuedVideos.count, self.totalQueued, progress)
+            }
         }
     }
 
