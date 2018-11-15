@@ -225,7 +225,7 @@
                                                                                             <font key="font" metaFont="smallSystem"/>
                                                                                         </buttonCell>
                                                                                     </button>
-                                                                                    <textField verticalHuggingPriority="750" allowsExpansionToolTips="YES" preferredMaxLayoutWidth="190" translatesAutoresizingMaskIntoConstraints="NO" id="5qU-xC-8TY">
+                                                                                    <textField verticalHuggingPriority="750" allowsExpansionToolTips="YES" preferredMaxLayoutWidth="165" translatesAutoresizingMaskIntoConstraints="NO" id="5qU-xC-8TY">
                                                                                         <rect key="frame" x="25" y="2" width="84" height="14"/>
                                                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="hxB-gg-rAu">
                                                                                             <font key="font" metaFont="smallSystem"/>
@@ -253,8 +253,8 @@
                                                                                             <action selector="addClick:" target="X6H-3G-WWn" id="mUe-e1-8i1"/>
                                                                                         </connections>
                                                                                     </button>
-                                                                                    <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="gBT-Ey-6hF">
-                                                                                        <rect key="frame" x="196" y="-1" width="39" height="20"/>
+                                                                                    <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="1" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="gBT-Ey-6hF">
+                                                                                        <rect key="frame" x="219" y="2" width="16" height="16"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                                                     </progressIndicator>
                                                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F3z-q1-m5V">
@@ -1726,7 +1726,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" ambiguous="YES" id="rFk-xj-xKP">
                             <rect key="frame" x="1" y="1" width="659" height="337"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" viewBased="YES" id="btT-0Y-wSk">
                                     <rect key="frame" x="0.0" y="0.0" width="659" height="337"/>

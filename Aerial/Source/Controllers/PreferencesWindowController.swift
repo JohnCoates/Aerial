@@ -234,7 +234,10 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         }
         let videoManager = VideoManager.sharedInstance
         videoManager.addCallback { done, total in
-            self.updateDownloads(done: done, total: total)
+            self.updateDownloads(done: done, total: total, progress: 0)
+        }
+        videoManager.addProgressCallback { done, total, progress in
+            self.updateDownloads(done: done, total: total, progress: progress)
         }
         self.fontManager.target = self
         latitudeFormatter.maximumSignificantDigits = 10
@@ -651,18 +654,22 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         preferences.fadeMode = sender.indexOfSelectedItem
     }
 
-    func updateDownloads(done: Int, total: Int) {
-        print("VMQueue: done : \(done) \(total)")
+    func updateDownloads(done: Int, total: Int, progress: Double) {
+        print("VMQueue: done : \(done) \(total) \(progress)")
+
         if total == 0 {
             downloadProgressIndicator.isHidden = true
             downloadStopButton.isHidden = true
             downloadNowButton.isEnabled = true
-        } else {
+        } else if progress == 0 {
             downloadNowButton.isEnabled = false
             downloadProgressIndicator.isHidden = false
             downloadStopButton.isHidden = false
             downloadProgressIndicator.doubleValue = Double(done)
             downloadProgressIndicator.maxValue = Double(total)
+            downloadProgressIndicator.toolTip = "\(done) / \(total) video(s) downloaded"
+        } else {
+            downloadProgressIndicator.doubleValue = Double(done) + progress
         }
     }
 
