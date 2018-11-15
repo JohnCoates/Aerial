@@ -1536,16 +1536,12 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     // MARK: - Outline View Delegate & Data Source
 
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        if item == nil {
-            return cities.count
-        }
+        guard let item = item else { return cities.count }
 
         switch item {
-        case is TimeOfDay:
-            let timeOfDay = item as! TimeOfDay
+        case let timeOfDay as TimeOfDay:
             return timeOfDay.videos.count
-        case is City:
-            let city = item as! City
+        case let city as City:
 
             var count = 0
 
@@ -1578,13 +1574,10 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     }
 
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-        if item == nil {
-            return cities[index]
-        }
+        guard let item = item else { return cities[index] }
 
         switch item {
-        case is City:
-            let city = item as! City
+        case let city as City:
 
             if index == 0 && !city.day.videos.isEmpty {
                 return city.day
@@ -1594,8 +1587,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             //let city = item as! City
             //return city.videos[index]
 
-        case is TimeOfDay:
-            let timeOfDay = item as! TimeOfDay
+        case let timeOfDay as TimeOfDay:
             return timeOfDay.videos[index]
 
         default:
@@ -1606,13 +1598,10 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     func outlineView(_ outlineView: NSOutlineView,
                      objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any? {
         switch item {
-        case is City:
-            let city = item as! City
+        case let city as City:
             return city.name
-        case is TimeOfDay:
-            let timeOfDay = item as! TimeOfDay
+        case let timeOfDay as TimeOfDay:
             return timeOfDay.title
-
         default:
             return "untitled"
         }
@@ -1640,15 +1629,13 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         switch item {
-        case is City:
-            let city = item as! City
+        case let city as City:
             let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "HeaderCell"),
                                         owner: nil) as! NSTableCellView     // if owner = self, awakeFromNib will be called for each created cell !
             view.textField?.stringValue = city.name
 
             return view
-        case is TimeOfDay:
-            let timeOfDay = item as! TimeOfDay
+        case let timeOfDay as TimeOfDay:
             let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DataCell"),
                                         owner: nil) as! NSTableCellView     // if owner = self, awakeFromNib will be called for each created cell !
 
@@ -1676,8 +1663,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             }
 
             return view
-        case is AerialVideo:
-            let video = item as! AerialVideo
+        case let video as AerialVideo:
             let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CheckCell"),
                                         owner: nil) as! CheckCellView   // if owner = self, awakeFromNib will be called for each created cell !
             // Mark the new view for this video for subsequent callbacks
@@ -1726,11 +1712,10 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
     func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
         switch item {
-        case is AerialVideo:
+        case let video as AerialVideo:
             player = AVPlayer()
             playerView.player = player
 
-            let video = item as! AerialVideo
             debugLog("Playing this preview \(video)")
             // Workaround for cached videos generating online traffic
             if video.isAvailableOffline {
