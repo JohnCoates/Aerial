@@ -12,7 +12,8 @@ import AVFoundation
 import ScreenSaver
 import VideoToolbox
 import CoreLocation
-class TimeOfDay {
+
+final class TimeOfDay {
     let title: String
     var videos: [AerialVideo] = [AerialVideo]()
 
@@ -21,7 +22,7 @@ class TimeOfDay {
     }
 }
 
-class City {
+final class City {
     var night: TimeOfDay = TimeOfDay(title: "night")
     var day: TimeOfDay = TimeOfDay(title: "day")
     let name: String
@@ -44,7 +45,7 @@ class City {
 
 @objc(PreferencesWindowController)
 // swiftlint:disable:next type_body_length
-class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, NSOutlineViewDelegate {
+final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, NSOutlineViewDelegate {
     enum HEVCMain10Support: Int {
         case notsupported, unsure, partial, supported
     }
@@ -307,7 +308,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
         // Grab preferred language as proper string
         let printOutputLocale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
-        if let deviceLanguageName: String = printOutputLocale.displayName(forKey: NSLocale.Key.identifier, value: Locale.preferredLanguages[0]) {
+        if let deviceLanguageName: String = printOutputLocale.displayName(forKey: .identifier, value: Locale.preferredLanguages[0]) {
             currentLocaleLabel.stringValue = "Preferred language: \(deviceLanguageName)"
         } else {
             currentLocaleLabel.stringValue = ""
@@ -317,13 +318,13 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         playerView.player = player
         playerView.controlsStyle = .none
         if #available(OSX 10.10, *) {
-            playerView.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            playerView.videoGravity = .resizeAspectFill
         }
 
         // To loop playback, we catch the end of the video to rewind
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(playerItemDidReachEnd(notification:)),
-                                               name: Notification.Name.AVPlayerItemDidPlayToEndTime,
+                                               selector: #selector(playerItemDidReachEnd),
+                                               name: .AVPlayerItemDidPlayToEndTime,
                                                object: player.currentItem)
 
         if #available(OSX 10.12, *) {
@@ -469,29 +470,29 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         // Handle the time radios
         switch preferences.timeMode {
         case Preferences.TimeMode.nightShift.rawValue:
-            timeNightShiftRadio.state = NSControl.StateValue.on
+            timeNightShiftRadio.state = .on
         case Preferences.TimeMode.manual.rawValue:
-            timeManualRadio.state = NSControl.StateValue.on
+            timeManualRadio.state = .on
         case Preferences.TimeMode.lightDarkMode.rawValue:
-            timeLightDarkModeRadio.state = NSControl.StateValue.on
+            timeLightDarkModeRadio.state = .on
         case Preferences.TimeMode.coordinates.rawValue:
             timeCalculateRadio.state = .on
         default:
-            timeDisabledRadio.state = NSControl.StateValue.on
+            timeDisabledRadio.state = .on
         }
 
         // Handle the corner radios
         switch preferences.descriptionCorner {
         case Preferences.DescriptionCorner.topLeft.rawValue:
-            cornerTopLeft.state = NSControl.StateValue.on
+            cornerTopLeft.state = .on
         case Preferences.DescriptionCorner.topRight.rawValue:
-            cornerTopRight.state = NSControl.StateValue.on
+            cornerTopRight.state = .on
         case Preferences.DescriptionCorner.bottomLeft.rawValue:
-            cornerBottomLeft.state = NSControl.StateValue.on
+            cornerBottomLeft.state = .on
         case Preferences.DescriptionCorner.bottomRight.rawValue:
-            cornerBottomRight.state = NSControl.StateValue.on
+            cornerBottomRight.state = .on
         default:
-            cornerRandom.state = NSControl.StateValue.on
+            cornerRandom.state = .on
         }
 
         solarModePopup.selectItem(at: preferences.solarMode!)
@@ -581,38 +582,32 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         let color = NSColor(calibratedRed: 0.18, green: 0.39, blue: 0.76, alpha: 1)
         var coloredLink = NSMutableAttributedString(attributedString: projectPageLink.attributedTitle)
         var fullRange = NSRange(location: 0, length: coloredLink.length)
-        coloredLink.addAttribute(NSAttributedString.Key.foregroundColor,
-                                 value: color,
-                                  range: fullRange)
+        coloredLink.addAttribute(.foregroundColor, value: color, range: fullRange)
         projectPageLink.attributedTitle = coloredLink
 
         // We have an extra project link on the video format popover, color it too
         coloredLink = NSMutableAttributedString(attributedString: secondProjectPageLink.attributedTitle)
         fullRange = NSRange(location: 0, length: coloredLink.length)
-        coloredLink.addAttribute(NSAttributedString.Key.foregroundColor,
-                                 value: color,
-                                 range: fullRange)
+        coloredLink.addAttribute(.foregroundColor, value: color, range: fullRange)
         secondProjectPageLink.attributedTitle = coloredLink
 
         // We have an extra project link on the video format popover, color it too
         coloredLink = NSMutableAttributedString(attributedString: linkTimeWikipediaButton.attributedTitle)
         fullRange = NSRange(location: 0, length: coloredLink.length)
-        coloredLink.addAttribute(NSAttributedString.Key.foregroundColor,
-                                 value: color,
-                                 range: fullRange)
+        coloredLink.addAttribute(.foregroundColor, value: color, range: fullRange)
         linkTimeWikipediaButton.attributedTitle = coloredLink
     }
 
     // MARK: - Video panel
     @IBAction func overrideOnBatteryClick(_ sender: NSButton) {
-        let onState = (sender.state == NSControl.StateValue.on)
+        let onState = sender.state == .on
         preferences.overrideOnBattery = onState
         changeBatteryOverrideState(to: onState)
         debugLog("UI overrideOnBattery \(onState)")
     }
 
     @IBAction func powerSavingOnLowClick(_ sender: NSButton) {
-        let onState = (sender.state == NSControl.StateValue.on)
+        let onState = sender.state == .on
         preferences.powerSavingOnLowBattery = onState
         debugLog("UI powerSavingOnLow \(onState)")
     }
@@ -635,7 +630,6 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     @IBAction func popupVideoFormatChange(_ sender: NSPopUpButton) {
         debugLog("UI popupVideoFormat: \(sender.indexOfSelectedItem)")
         preferences.videoFormat = sender.indexOfSelectedItem
-        preferences.synchronize()
         outlineView.reloadData()
     }
 
@@ -650,13 +644,11 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     @IBAction func multiMonitorModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI multiMonitorMode: \(sender.indexOfSelectedItem)")
         preferences.multiMonitorMode = sender.indexOfSelectedItem
-        preferences.synchronize()
     }
 
     @IBAction func fadeInOutModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI fadeInOutMode: \(sender.indexOfSelectedItem)")
         preferences.fadeMode = sender.indexOfSelectedItem
-        preferences.synchronize()
     }
 
     func updateDownloads(done: Int, total: Int) {
@@ -769,7 +761,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
     @IBAction func showDescriptionsClick(button: NSButton?) {
         let state = showDescriptionsCheckbox.state
-        let onState = (state == NSControl.StateValue.on)
+        let onState = state == .on
         preferences.showDescriptions = onState
         debugLog("UI showDescriptions: \(onState)")
 
@@ -816,14 +808,14 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
     @IBAction func useCommunityClick(_ button: NSButton) {
         let state = useCommunityCheckbox.state
-        let onState = (state == NSControl.StateValue.on)
+        let onState = state == .on
         preferences.useCommunityDescriptions = onState
         debugLog("UI useCommunity: \(onState)")
     }
 
     @IBAction func localizeForTvOS12Click(button: NSButton?) {
         let state = localizeForTvOS12Checkbox.state
-        let onState = (state == NSControl.StateValue.on)
+        let onState = state == .on
         preferences.localizeDescriptions = onState
         debugLog("UI localizeDescriptions: \(onState)")
     }
@@ -831,7 +823,6 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     @IBAction func descriptionModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI descriptionMode: \(sender.indexOfSelectedItem)")
         preferences.showDescriptionsMode = sender.indexOfSelectedItem
-        preferences.synchronize()
     }
 
     @IBAction func fontPickerClick(_ sender: NSButton?) {
@@ -893,34 +884,37 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     }
 
     @IBAction func descriptionCornerChange(_ sender: NSButton?) {
-        if sender == cornerTopLeft {
+        switch sender {
+        case cornerTopLeft:
             preferences.descriptionCorner = Preferences.DescriptionCorner.topLeft.rawValue
-        } else if sender == cornerTopRight {
+        case cornerTopRight:
             preferences.descriptionCorner = Preferences.DescriptionCorner.topRight.rawValue
-        } else if sender == cornerBottomLeft {
+        case cornerBottomLeft:
             preferences.descriptionCorner = Preferences.DescriptionCorner.bottomLeft.rawValue
-        } else if sender == cornerBottomRight {
+        case cornerBottomRight:
             preferences.descriptionCorner = Preferences.DescriptionCorner.bottomRight.rawValue
-        } else if sender == cornerRandom {
+        case cornerRandom:
             preferences.descriptionCorner = Preferences.DescriptionCorner.random.rawValue
+        default:
+            ()
         }
     }
 
     @IBAction func showClockClick(_ sender: NSButton) {
-        let onState = (sender.state == NSControl.StateValue.on)
+        let onState = sender.state == .on
         preferences.showClock = onState
         withSecondsCheckbox.isEnabled = onState
         debugLog("UI showClock: \(onState)")
     }
 
     @IBAction func withSecondsClick(_ sender: NSButton) {
-        let onState = (sender.state == NSControl.StateValue.on)
+        let onState = sender.state == .on
         preferences.withSeconds = onState
         debugLog("UI withSeconds: \(onState)")
     }
 
     @IBAction func showExtraMessageClick(_ sender: NSButton) {
-        let onState = (sender.state == NSControl.StateValue.on)
+        let onState = sender.state == .on
         // We also need to enable/disable our message field
         extraMessageTextField.isEnabled = onState
         editExtraMessageButton.isEnabled = onState
@@ -931,17 +925,15 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     @IBAction func fadeInOutTextModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI fadeInOutTextMode: \(sender.indexOfSelectedItem)")
         preferences.fadeModeText = sender.indexOfSelectedItem
-        preferences.synchronize()
     }
 
     @IBAction func extraCornerPopupChange(_ sender: NSPopUpButton) {
         debugLog("UI extraCorner: \(sender.indexOfSelectedItem)")
         preferences.extraCorner = sender.indexOfSelectedItem
-        preferences.synchronize()
     }
 
     @IBAction func changeMarginsToCornerClick(_ sender: NSButton) {
-        let onState = (sender.state == NSControl.StateValue.on)
+        let onState = sender.state == .on
         debugLog("UI changeMarginsToCorner: \(onState)")
 
         marginHorizontalTextfield.isEnabled = onState
@@ -991,19 +983,19 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     }
 
     @IBAction func cacheAerialsAsTheyPlayClick(_ button: NSButton!) {
-        let onState = (button.state == NSControl.StateValue.on)
+        let onState = button.state == .on
         preferences.cacheAerials = onState
         debugLog("UI cacheAerialAsTheyPlay: \(onState)")
     }
 
     @IBAction func neverStreamVideosClick(_ button: NSButton!) {
-        let onState = (button.state == NSControl.StateValue.on)
+        let onState = button.state == .on
         preferences.neverStreamVideos = onState
         debugLog("UI neverStreamVideos: \(onState)")
     }
 
     @IBAction func neverStreamPreviewsClick(_ button: NSButton!) {
-        let onState = (button.state == NSControl.StateValue.on)
+        let onState = button.state == .on
         preferences.neverStreamPreviews = onState
         debugLog("UI neverStreamPreviews: \(onState)")
     }
@@ -1055,7 +1047,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     // MARK: - Time panel
 
     @IBAction func overrideNightOnDarkModeClick(_ button: NSButton) {
-        let onState = (button.state == NSControl.StateValue.on)
+        let onState = button.state == .on
         preferences.darkModeNightOverride = onState
         debugLog("UI overrideNightDarkMode: \(onState)")
     }
@@ -1083,16 +1075,19 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             }
         }
 
-        if sender == timeDisabledRadio {
+        switch sender {
+        case timeDisabledRadio:
             preferences.timeMode = Preferences.TimeMode.disabled.rawValue
-        } else if sender == timeNightShiftRadio {
+        case timeNightShiftRadio:
             preferences.timeMode = Preferences.TimeMode.nightShift.rawValue
-        } else if sender == timeManualRadio {
+        case timeManualRadio:
             preferences.timeMode = Preferences.TimeMode.manual.rawValue
-        } else if sender == timeLightDarkModeRadio {
+        case timeLightDarkModeRadio:
             preferences.timeMode = Preferences.TimeMode.lightDarkMode.rawValue
-        } else if sender == timeCalculateRadio {
+        case timeCalculateRadio:
             preferences.timeMode = Preferences.TimeMode.coordinates.rawValue
+        default:
+            ()
         }
     }
 
@@ -1195,27 +1190,27 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     }
 
     @IBAction func overrideFadeDurationClick(_ sender: NSButton) {
-        let onState = (sender.state == .on)
+        let onState = sender.state == .on
         preferences.overrideDimInMinutes = onState
         changeBrightnessState(to: preferences.dimBrightness)
         debugLog("UI dimBrightness: \(onState)")
     }
 
     @IBAction func dimBrightnessClick(_ button: NSButton) {
-        let onState = (button.state == .on)
+        let onState = button.state == .on
         preferences.dimBrightness = onState
         changeBrightnessState(to: onState)
         debugLog("UI dimBrightness: \(onState)")
     }
 
     @IBAction func dimOnlyAtNightClick(_ button: NSButton) {
-        let onState = (button.state == .on)
+        let onState = button.state == .on
         preferences.dimOnlyAtNight = onState
         debugLog("UI dimOnlyAtNight: \(onState)")
     }
 
     @IBAction func dimOnlyOnBattery(_ button: NSButton) {
-        let onState = (button.state == .on)
+        let onState = button.state == .on
         preferences.dimOnlyOnBattery = onState
         debugLog("UI dimOnlyOnBattery: \(onState)")
     }
@@ -1311,7 +1306,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
         let pasteBoard = NSPasteboard.general
         pasteBoard.clearContents()
-        pasteBoard.setString(clipboard, forType: NSPasteboard.PasteboardType.string)
+        pasteBoard.setString(clipboard, forType: .string)
     }
 
     @IBAction func logRefreshClick(_ sender: NSButton) {
@@ -1319,13 +1314,13 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     }
 
     @IBAction func debugModeClick(_ button: NSButton) {
-        let onState = (button.state == NSControl.StateValue.on)
+        let onState = button.state == .on
         preferences.debugMode = onState
         debugLog("UI debugMode: \(onState)")
     }
 
     @IBAction func logToDiskClick(_ button: NSButton) {
-        let onState = (button.state == NSControl.StateValue.on)
+        let onState = button.state == .on
         preferences.logToDisk = onState
         debugLog("UI logToDisk: \(onState)")
     }
@@ -1350,18 +1345,18 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         }
 
         switch highestLevel! {
-        case ErrorLevel.debug:
+        case .debug:
             showLogBottomClick.title = "Show Debug"
-            showLogBottomClick.image = NSImage.init(named: NSImage.actionTemplateName)
-        case ErrorLevel.info:
+            showLogBottomClick.image = NSImage(named: NSImage.actionTemplateName)
+        case .info:
             showLogBottomClick.title = "Show Info"
-            showLogBottomClick.image = NSImage.init(named: NSImage.infoName)
-        case ErrorLevel.warning:
+            showLogBottomClick.image = NSImage(named: NSImage.infoName)
+        case .warning:
             showLogBottomClick.title = "Show Warning"
-            showLogBottomClick.image = NSImage.init(named: NSImage.cautionName)
+            showLogBottomClick.image = NSImage(named: NSImage.cautionName)
         default:
             showLogBottomClick.title = "Show Error"
-            showLogBottomClick.image = NSImage.init(named: NSImage.stopProgressFreestandingTemplateName)
+            showLogBottomClick.image = NSImage(named: NSImage.stopProgressFreestandingTemplateName)
         }
 
         showLogBottomClick.isHidden = false
@@ -1370,35 +1365,16 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     // MARK: - Menu
     @IBAction func outlineViewSettingsClick(_ button: NSButton) {
         let menu = NSMenu()
-
-        menu.insertItem(withTitle: "Check Only Cached",
-                        action: #selector(PreferencesWindowController.outlineViewCheckCached(button:)),
-                        keyEquivalent: "",
-                        at: 0)
-        menu.insertItem(withTitle: "Check Only 4K",
-                        action: #selector(PreferencesWindowController.outlineViewCheck4K(button:)),
-                        keyEquivalent: "",
-                        at: 1)
-        menu.insertItem(withTitle: "Check All",
-                        action: #selector(PreferencesWindowController.outlineViewCheckAll(button:)),
-                        keyEquivalent: "",
-                        at: 2)
-        menu.insertItem(withTitle: "Uncheck All",
-                        action: #selector(PreferencesWindowController.outlineViewUncheckAll(button:)),
-                        keyEquivalent: "",
-                        at: 3)
-        menu.insertItem(NSMenuItem.separator(), at: 4)
-        menu.insertItem(withTitle: "Download Checked",
-                        action: #selector(PreferencesWindowController.outlineViewDownloadChecked(button:)),
-                        keyEquivalent: "",
-                        at: 5)
-        menu.insertItem(withTitle: "Download All",
-                        action: #selector(PreferencesWindowController.outlineViewDownloadAll(button:)),
-                        keyEquivalent: "",
-                        at: 6)
-
-        let event = NSApp.currentEvent
-        NSMenu.popUpContextMenu(menu, with: event!, for: button)
+        menu.items = [
+            NSMenuItem(title: "Check Only Cached", action: #selector(outlineViewCheckCached), keyEquivalent: ""),
+            NSMenuItem(title: "Check Only 4K", action: #selector(outlineViewCheck4K), keyEquivalent: ""),
+            NSMenuItem(title: "Check All", action: #selector(outlineViewCheckAll), keyEquivalent: ""),
+            NSMenuItem(title: "Uncheck All", action: #selector(outlineViewUncheckAll), keyEquivalent: ""),
+            NSMenuItem.separator(),
+            NSMenuItem(title: "Download Checked", action: #selector(outlineViewDownloadChecked), keyEquivalent: ""),
+            NSMenuItem(title: "Download All", action: #selector(outlineViewDownloadAll), keyEquivalent: ""),
+        ]
+        NSMenu.popUpContextMenu(menu, with: NSApp.currentEvent!, for: button)
     }
 
     @objc func outlineViewUncheckAll(button: NSButton) {
@@ -1416,16 +1392,11 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
         for video in videos {
             if video.url4KHEVC != "" {
-                preferences.setVideo(videoID: video.id,
-                                     inRotation: true,
-                                     synchronize: false)
+                preferences.setVideo(videoID: video.id, inRotation: true)
             } else {
-                preferences.setVideo(videoID: video.id,
-                                     inRotation: false,
-                                     synchronize: false)
+                preferences.setVideo(videoID: video.id, inRotation: false)
             }
         }
-        preferences.synchronize()
 
         outlineView.reloadData()
     }
@@ -1437,16 +1408,11 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
         for video in videos {
             if video.isAvailableOffline {
-                preferences.setVideo(videoID: video.id,
-                                     inRotation: true,
-                                     synchronize: false)
+                preferences.setVideo(videoID: video.id, inRotation: true)
             } else {
-                preferences.setVideo(videoID: video.id,
-                                     inRotation: false,
-                                     synchronize: false)
+                preferences.setVideo(videoID: video.id, inRotation: false)
             }
         }
-        preferences.synchronize()
 
         outlineView.reloadData()
     }
@@ -1489,11 +1455,8 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
         }
 
         for video in videos {
-            preferences.setVideo(videoID: video.id,
-                                 inRotation: inRotation,
-                                 synchronize: false)
+            preferences.setVideo(videoID: video.id, inRotation: inRotation)
         }
-        preferences.synchronize()
 
         outlineView.reloadData()
     }
@@ -1555,16 +1518,12 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     // MARK: - Outline View Delegate & Data Source
 
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        if item == nil {
-            return cities.count
-        }
+        guard let item = item else { return cities.count }
 
         switch item {
-        case is TimeOfDay:
-            let timeOfDay = item as! TimeOfDay
+        case let timeOfDay as TimeOfDay:
             return timeOfDay.videos.count
-        case is City:
-            let city = item as! City
+        case let city as City:
 
             var count = 0
 
@@ -1594,13 +1553,10 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     }
 
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-        if item == nil {
-            return cities[index]
-        }
+        guard let item = item else { return cities[index] }
 
         switch item {
-        case is City:
-            let city = item as! City
+        case let city as City:
 
             if index == 0 && !city.day.videos.isEmpty {
                 return city.day
@@ -1610,8 +1566,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             //let city = item as! City
             //return city.videos[index]
 
-        case is TimeOfDay:
-            let timeOfDay = item as! TimeOfDay
+        case let timeOfDay as TimeOfDay:
             return timeOfDay.videos[index]
 
         default:
@@ -1622,13 +1577,10 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     func outlineView(_ outlineView: NSOutlineView,
                      objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any? {
         switch item {
-        case is City:
-            let city = item as! City
+        case let city as City:
             return city.name
-        case is TimeOfDay:
-            let timeOfDay = item as! TimeOfDay
+        case let timeOfDay as TimeOfDay:
             return timeOfDay.title
-
         default:
             return "untitled"
         }
@@ -1656,15 +1608,13 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         switch item {
-        case is City:
-            let city = item as! City
+        case let city as City:
             let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "HeaderCell"),
                                         owner: nil) as! NSTableCellView     // if owner = self, awakeFromNib will be called for each created cell !
             view.textField?.stringValue = city.name
 
             return view
-        case is TimeOfDay:
-            let timeOfDay = item as! TimeOfDay
+        case let timeOfDay as TimeOfDay:
             let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DataCell"),
                                         owner: nil) as! NSTableCellView     // if owner = self, awakeFromNib will be called for each created cell !
 
@@ -1692,8 +1642,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             }
 
             return view
-        case is AerialVideo:
-            let video = item as! AerialVideo
+        case let video as AerialVideo:
             let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CheckCell"),
                                         owner: nil) as! CheckCellView   // if owner = self, awakeFromNib will be called for each created cell !
             // Mark the new view for this video for subsequent callbacks
@@ -1723,11 +1672,7 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
             let isInRotation = preferences.videoIsInRotation(videoID: video.id)
 
-            if isInRotation {
-                view.checkButton.state = NSControl.StateValue.on
-            } else {
-                view.checkButton.state = NSControl.StateValue.off
-            }
+            view.checkButton.state = isInRotation ? .on : .off
 
             view.onCheck = { checked in
                 self.preferences.setVideo(videoID: video.id,
@@ -1742,11 +1687,10 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
 
     func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
         switch item {
-        case is AerialVideo:
+        case let video as AerialVideo:
             player = AVPlayer()
             playerView.player = player
 
-            let video = item as! AerialVideo
             debugLog("Playing this preview \(video)")
             // Workaround for cached videos generating online traffic
             if video.isAvailableOffline {
@@ -1912,7 +1856,6 @@ extension PreferencesWindowController: NSFontChanging {
             // Update our label
             extraMessageFontLabel.stringValue = preferences.extraFontName! + ", \(preferences.extraFontSize!) pt"
         }
-        preferences.synchronize()
     }
 }
 
@@ -1946,14 +1889,14 @@ extension PreferencesWindowController: NSTableViewDelegate {
             cellIdentifier = CellIdentifiers.DateCell
         } else if tableColumn == tableView.tableColumns[1] {
             switch item.level {
-            case ErrorLevel.info:
-                image = NSImage.init(named: NSImage.infoName)
-            case ErrorLevel.warning:
-                image = NSImage.init(named: NSImage.cautionName)
-            case ErrorLevel.error:
-                image = NSImage.init(named: NSImage.stopProgressFreestandingTemplateName)
+            case .info:
+                image = NSImage(named: NSImage.infoName)
+            case .warning:
+                image = NSImage(named: NSImage.cautionName)
+            case .error:
+                image = NSImage(named: NSImage.stopProgressFreestandingTemplateName)
             default:
-                image = NSImage.init(named: NSImage.actionTemplateName)
+                image = NSImage(named: NSImage.actionTemplateName)
             }
             //image =
             text = item.message
