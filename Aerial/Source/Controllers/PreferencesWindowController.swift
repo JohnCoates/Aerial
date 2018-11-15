@@ -12,7 +12,8 @@ import AVFoundation
 import ScreenSaver
 import VideoToolbox
 import CoreLocation
-class TimeOfDay {
+
+final class TimeOfDay {
     let title: String
     var videos: [AerialVideo] = [AerialVideo]()
 
@@ -21,7 +22,7 @@ class TimeOfDay {
     }
 }
 
-class City {
+final class City {
     var night: TimeOfDay = TimeOfDay(title: "night")
     var day: TimeOfDay = TimeOfDay(title: "day")
     let name: String
@@ -44,7 +45,7 @@ class City {
 
 @objc(PreferencesWindowController)
 // swiftlint:disable:next type_body_length
-class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, NSOutlineViewDelegate {
+final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, NSOutlineViewDelegate {
     enum HEVCMain10Support: Int {
         case notsupported, unsure, partial, supported
     }
