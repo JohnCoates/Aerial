@@ -889,16 +889,19 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
     }
 
     @IBAction func descriptionCornerChange(_ sender: NSButton?) {
-        if sender == cornerTopLeft {
+        switch sender {
+        case cornerTopLeft:
             preferences.descriptionCorner = Preferences.DescriptionCorner.topLeft.rawValue
-        } else if sender == cornerTopRight {
+        case cornerTopRight:
             preferences.descriptionCorner = Preferences.DescriptionCorner.topRight.rawValue
-        } else if sender == cornerBottomLeft {
+        case cornerBottomLeft:
             preferences.descriptionCorner = Preferences.DescriptionCorner.bottomLeft.rawValue
-        } else if sender == cornerBottomRight {
+        case cornerBottomRight:
             preferences.descriptionCorner = Preferences.DescriptionCorner.bottomRight.rawValue
-        } else if sender == cornerRandom {
+        case cornerRandom:
             preferences.descriptionCorner = Preferences.DescriptionCorner.random.rawValue
+        default:
+            ()
         }
     }
 
@@ -1077,16 +1080,19 @@ class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, 
             }
         }
 
-        if sender == timeDisabledRadio {
+        switch sender {
+        case timeDisabledRadio:
             preferences.timeMode = Preferences.TimeMode.disabled.rawValue
-        } else if sender == timeNightShiftRadio {
+        case timeNightShiftRadio:
             preferences.timeMode = Preferences.TimeMode.nightShift.rawValue
-        } else if sender == timeManualRadio {
+        case timeManualRadio:
             preferences.timeMode = Preferences.TimeMode.manual.rawValue
-        } else if sender == timeLightDarkModeRadio {
+        case timeLightDarkModeRadio:
             preferences.timeMode = Preferences.TimeMode.lightDarkMode.rawValue
-        } else if sender == timeCalculateRadio {
+        case timeCalculateRadio:
             preferences.timeMode = Preferences.TimeMode.coordinates.rawValue
+        default:
+            ()
         }
     }
 
