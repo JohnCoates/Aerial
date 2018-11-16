@@ -9,7 +9,7 @@
 import Foundation
 typealias VideoManagerCallback = (Int, Int) -> Void
 
-class VideoManager: NSObject {
+final class VideoManager: NSObject {
     static let sharedInstance = VideoManager()
     var managerCallbacks = [VideoManagerCallback]()
 
@@ -129,7 +129,7 @@ class VideoManager: NSObject {
     }
 }
 
-class VideoDownloadOperation: AsynchronousOperation {
+final class VideoDownloadOperation: AsynchronousOperation {
     var video: AerialVideo
     var download: VideoDownload?
 

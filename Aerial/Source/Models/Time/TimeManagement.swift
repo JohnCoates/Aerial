@@ -11,7 +11,7 @@ import Cocoa
 import CoreLocation
 
 // swiftlint:disable:next type_body_length
-class TimeManagement: NSObject {
+final class TimeManagement: NSObject {
     static let sharedInstance = TimeManagement()
 
     // Night shift

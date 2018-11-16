@@ -13,7 +13,7 @@ enum Manifests: String {
     case tvOS10 = "tvos10.json", tvOS11 = "tvos11.json", tvOS12 = "entries.json"
 }
 
-let spaceVideos = [
+private let spaceVideos = [
     "A837FA8C-C643-4705-AE92-074EFDD067F7",
     "2F72BC1E-3D76-456C-81EB-842EBA488C27",
     "A2BE2E4A-AD4B-428A-9C41-BDAE1E78E816",
@@ -35,7 +35,7 @@ let spaceVideos = [
     "B1B5DDC5-73C8-4920-8133-BACCE38A08DE",
 ]
 
-let timeInformation = [
+private let timeInformation = [
     "A837FA8C-C643-4705-AE92-074EFDD067F7": "night",    // Africa Night
     "2F72BC1E-3D76-456C-81EB-842EBA488C27": "day",      // Africa and the Middle East
     "A2BE2E4A-AD4B-428A-9C41-BDAE1E78E816": "night",    // California to Vegas (v7)
@@ -67,7 +67,7 @@ let timeInformation = [
     "29BDF297-EB43-403A-8719-A78DA11A2948": "night",    // Fisherman's Wharf
 ]
 
-class AerialVideo: CustomStringConvertible, Equatable {
+final class AerialVideo: CustomStringConvertible, Equatable {
     static func ==(lhs: AerialVideo, rhs: AerialVideo) -> Bool {
         return lhs.id == rhs.id && lhs.url1080pHEVC == rhs.url1080pHEVC
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CommunityStrings {
+final class CommunityStrings {
     let id: String
     let name: String
     let poi: [String: String]
@@ -20,7 +20,7 @@ class CommunityStrings {
     }
 }
 
-class PoiStringProvider {
+final class PoiStringProvider {
     static let sharedInstance = PoiStringProvider()
     var loadedDescriptions = false
     var loadedDescriptionsWasLocalized = false
