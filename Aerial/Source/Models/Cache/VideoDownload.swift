@@ -16,7 +16,7 @@ protocol VideoDownloadDelegate: NSObjectProtocol {
                        receivedBytes: Int, progress: Float)
 }
 
-class VideoDownloadStream {
+final class VideoDownloadStream {
     var connection: NSURLConnection
     var response: URLResponse?
     var contentInformationRequest: Bool = false
@@ -30,7 +30,7 @@ class VideoDownloadStream {
     }
 }
 
-class VideoDownload: NSObject, NSURLConnectionDataDelegate {
+final class VideoDownload: NSObject, NSURLConnectionDataDelegate {
     var streams: [VideoDownloadStream] = []
     weak var delegate: VideoDownloadDelegate!
 

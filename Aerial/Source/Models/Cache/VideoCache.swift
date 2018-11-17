@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 import ScreenSaver
 
-class VideoCache {
+final class VideoCache {
     var videoData: Data
     var mutableVideoData: NSMutableData?
 

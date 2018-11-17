@@ -13,7 +13,7 @@ enum ErrorLevel: Int {
     case info, debug, warning, error
 }
 
-class LogMessage {
+final class LogMessage {
     let date: Date
     let level: ErrorLevel
     let message: String
@@ -29,7 +29,7 @@ class LogMessage {
 
 typealias LoggerCallback = (ErrorLevel) -> Void
 
-class Logger {
+final class Logger {
     static let sharedInstance = Logger()
 
     var callbacks = [LoggerCallback]()

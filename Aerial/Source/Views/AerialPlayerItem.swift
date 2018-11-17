@@ -8,7 +8,7 @@
 import AVFoundation
 import AVKit
 
-class AerialPlayerItem: AVPlayerItem {
+final class AerialPlayerItem: AVPlayerItem {
     var video: AerialVideo?
 
     init(video: AerialVideo) {

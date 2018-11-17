@@ -14,7 +14,7 @@ protocol VideoLoaderDelegate: NSObjectProtocol {
     func videoLoader(_ videoLoader: VideoLoader, receivedData data: Data, forRange range: NSRange)
 }
 
-class VideoLoader: NSObject, NSURLConnectionDataDelegate {
+final class VideoLoader: NSObject, NSURLConnectionDataDelegate {
     var connection: NSURLConnection?
     var response: HTTPURLResponse?
     weak var delegate: VideoLoaderDelegate?

@@ -13,7 +13,7 @@ import AVKit
 
 @objc(AerialView)
 // swiftlint:disable:next type_body_length
-class AerialView: ScreenSaverView {
+final class AerialView: ScreenSaverView {
     var playerLayer: AVPlayerLayer!
     var textLayer: CATextLayer!
     var clockLayer: CATextLayer!
