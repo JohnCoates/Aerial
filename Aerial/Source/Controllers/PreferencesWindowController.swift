@@ -699,24 +699,20 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         return String(cString: machine)
     }
 
-    private func extractMacVersion(macModel: String, macSubmodel: String) -> NSNumber {
+    private func extractMacVersion(macModel: String, macSubmodel: String) -> Double {
         // Substring the thing
-        let str = macModel.dropFirst(macSubmodel.count)
+        let str = String(macModel.dropFirst(macSubmodel.count))
         let formatter = NumberFormatter()
         formatter.locale = Locale(identifier: "fr_FR")
-        if let number = formatter.number(from: String(str)) {
-            return number
-        } else {
-            return 0
-        }
+        return formatter.number(from: str)?.doubleValue ?? 0.0
     }
 
     private func getHEVCMain10Support(macModel: String, macSubmodel: String, partial: Double, full: Double) -> HEVCMain10Support {
         let ver = extractMacVersion(macModel: macModel, macSubmodel: macSubmodel)
 
-        if ver.doubleValue > full {
+        if ver > full {
             return .supported
-        } else if ver.doubleValue > partial {
+        } else if ver > partial {
             return .partial
         } else {
             return .notsupported
