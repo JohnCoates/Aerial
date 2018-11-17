@@ -1156,8 +1156,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         locationManager = CLLocationManager()
         locationManager!.delegate = self
-        locationManager!.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager!.distanceFilter = 100
+        locationManager!.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         locationManager!.purpose = "Aerial uses your location to calculate sunrise and sunset times"
 
         if CLLocationManager.locationServicesEnabled() {
