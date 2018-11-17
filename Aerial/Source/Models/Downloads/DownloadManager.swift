@@ -9,7 +9,7 @@ import Cocoa
 
 /// Manager of asynchronous download `Operation` objects
 
-class DownloadManager: NSObject {
+final class DownloadManager: NSObject {
 
     /// Dictionary of operations, keyed by the `taskIdentifier` of the `URLSessionTask`
 
@@ -96,7 +96,7 @@ extension DownloadManager: URLSessionTaskDelegate {
 
 /// Asynchronous Operation subclass for downloading
 
-class DownloadOperation: AsynchronousOperation {
+final class DownloadOperation: AsynchronousOperation {
     let task: URLSessionTask
 
     init(session: URLSession, url: URL) {

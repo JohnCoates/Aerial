@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CommunityStrings {
+final class CommunityStrings {
     let id: String
     let name: String
     let poi: [String: String]
@@ -20,13 +20,13 @@ class CommunityStrings {
     }
 }
 
-class PoiStringProvider {
+final class PoiStringProvider {
     static let sharedInstance = PoiStringProvider()
     var loadedDescriptions = false
     var loadedDescriptionsWasLocalized = false
 
     var stringBundle: Bundle?
-    var stringDict: NSDictionary?
+    var stringDict: [String: String]?
 
     var communityStrings = [CommunityStrings]()
     var communityLanguage = ""
@@ -53,7 +53,7 @@ class PoiStringProvider {
             let dictPath = VideoCache.cacheDirectory!.appending("/TVIdleScreenStrings.bundle/en.lproj/Localizable.nocache.strings")
 
             // We could probably only work with that...
-            if let sd = NSDictionary(contentsOfFile: dictPath) {
+            if let sd = NSDictionary(contentsOfFile: dictPath) as? [String: String] {
                 self.stringDict = sd
             }
 
@@ -79,9 +79,8 @@ class PoiStringProvider {
 
     // Return the Localized (or english) string for a key from the Strings Bundle
     func getString(key: String, video: AerialVideo) -> String {
-        if !ensureLoadedBundle() {
-            return ""
-        }
+        guard ensureLoadedBundle() else { return "" }
+
         let preferences = Preferences.sharedInstance
         let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
 
@@ -100,16 +99,11 @@ class PoiStringProvider {
 
     // Return all POIs for an id
     func fetchExtraPoiForId(id: String) -> [String: String]? {
-        if !ensureLoadedBundle() {
-            return [:]
-        }
+        guard let stringDict = stringDict, ensureLoadedBundle() else { return [:] }
 
         var found = [String: String]()
-        for kv in stringDict! {
-            let key = (kv.key as! String)
-            if key.starts(with: id) {
-                found[String(key.split(separator: "_").last!)] = key
-            }
+        for key in stringDict.keys where key.starts(with: id) {
+            found[String(key.split(separator: "_").last!)] = key // FIXME: crash if key doesn't have "_"
         }
 
         return found

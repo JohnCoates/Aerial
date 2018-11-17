@@ -11,7 +11,7 @@ import Cocoa
 import CoreLocation
 
 // swiftlint:disable:next type_body_length
-class TimeManagement: NSObject {
+final class TimeManagement: NSObject {
     static let sharedInstance = TimeManagement()
 
     // Night shift
@@ -393,18 +393,12 @@ class TimeManagement: NSObject {
 
     // MARK: - Battery detection
     func isOnBattery() -> Bool {
-        let timeRemaining: CFTimeInterval = IOPSGetTimeRemainingEstimate()
-        if timeRemaining == -2.0 {
-            return false
-        } else {
-            return true
-        }
+        return IOPSGetTimeRemainingEstimate() != -2.0
     }
 
     func isBatteryLow() -> Bool {
-        let level = IOPSGetBatteryWarningLevel()
-        return (level == kIOPSLowBatteryWarningEarly || level == kIOPSLowBatteryWarningFinal)
-    }
+        return [kIOPSLowBatteryWarningEarly, kIOPSLowBatteryWarningFinal].contains(IOPSGetBatteryWarningLevel())
+     }
 
     // MARK: - Location detection
     func startLocationDetection() {

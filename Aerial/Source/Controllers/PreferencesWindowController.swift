@@ -204,6 +204,19 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     public var appMode: Bool = false
 
+    private lazy var timeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
+
+    private lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .medium
+        return formatter
+    }()
+
     // MARK: - Init
     required init?(coder decoder: NSCoder) {
         self.fontManager = NSFontManager.shared
@@ -452,12 +465,10 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         let (_, reason) = timeManagement.calculateFromCoordinates()
         calculateCoordinatesLabel.stringValue = reason
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        if let dateSunrise = dateFormatter.date(from: preferences.manualSunrise!) {
+        if let dateSunrise = timeFormatter.date(from: preferences.manualSunrise!) {
             sunriseTime.dateValue = dateSunrise
         }
-        if let dateSunset = dateFormatter.date(from: preferences.manualSunset!) {
+        if let dateSunset = timeFormatter.date(from: preferences.manualSunset!) {
             sunsetTime.dateValue = dateSunset
         }
 
@@ -570,14 +581,11 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     // Rewind preview video when reaching end
     @objc func playerItemDidReachEnd(notification: Notification) {
-        if let playerItem: AVPlayerItem = notification.object as? AVPlayerItem {
-            let url: URL? = (playerItem.asset as? AVURLAsset)?.url
-
-            if url!.absoluteString.starts(with: "file") {
-                playerItem.seek(to: CMTime.zero, completionHandler: nil)
-                self.player.play()
-            }
-        }
+        guard let playerItem: AVPlayerItem = notification.object as? AVPlayerItem,
+              let asset = playerItem.asset as? AVURLAsset, asset.url.isFileURL
+            else { return }
+        playerItem.seek(to: .zero, completionHandler: nil)
+        player.play()
     }
 
     // MARK: - Setup
@@ -689,24 +697,20 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         return String(cString: machine)
     }
 
-    private func extractMacVersion(macModel: String, macSubmodel: String) -> NSNumber {
+    private func extractMacVersion(macModel: String, macSubmodel: String) -> Double {
         // Substring the thing
-        let str = macModel.dropFirst(macSubmodel.count)
+        let str = String(macModel.dropFirst(macSubmodel.count))
         let formatter = NumberFormatter()
         formatter.locale = Locale(identifier: "fr_FR")
-        if let number = formatter.number(from: String(str)) {
-            return number
-        } else {
-            return 0
-        }
+        return formatter.number(from: str)?.doubleValue ?? 0.0
     }
 
     private func getHEVCMain10Support(macModel: String, macSubmodel: String, partial: Double, full: Double) -> HEVCMain10Support {
         let ver = extractMacVersion(macModel: macModel, macSubmodel: macSubmodel)
 
-        if ver.doubleValue > full {
+        if ver > full {
             return .supported
-        } else if ver.doubleValue > partial {
+        } else if ver > partial {
             return .partial
         } else {
             return .notsupported
@@ -1105,17 +1109,13 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     @IBAction func sunriseChange(_ sender: NSDatePicker?) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        let sunriseString = dateFormatter.string(from: (sender?.dateValue)!)
-        preferences.manualSunrise = sunriseString
+        guard let date = sender?.dateValue else { return }
+        preferences.manualSunrise = timeFormatter.string(from: date)
     }
 
     @IBAction func sunsetChange(_ sender: NSDatePicker?) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        let sunsetString = dateFormatter.string(from: (sender?.dateValue)!)
-        preferences.manualSunset = sunsetString
+        guard let date = sender?.dateValue else { return }
+        preferences.manualSunset = timeFormatter.string(from: date)
     }
 
     @IBAction func latitudeChange(_ sender: NSTextField) {
@@ -1162,8 +1162,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         locationManager = CLLocationManager()
         locationManager!.delegate = self
-        locationManager!.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager!.distanceFilter = 100
+        locationManager!.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         locationManager!.purpose = "Aerial uses your location to calculate sunrise and sunset times"
 
         if CLLocationManager.locationServicesEnabled() {
@@ -1894,10 +1893,6 @@ extension PreferencesWindowController: NSTableViewDelegate {
         var image: NSImage?
         var text: String = ""
         var cellIdentifier: String = ""
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .none
-        dateFormatter.timeStyle = .medium
 
         let item = errorMessages[row]
 
