@@ -181,7 +181,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var newVideosModePopup: NSPopUpButton!
 
     @IBOutlet var lastCheckedVideosLabel: NSTextField!
-
+    @IBOutlet var checkNowButton: NSButton!
+    
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?
@@ -1051,6 +1052,11 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         preferences.newVideosMode = sender.indexOfSelectedItem
     }
 
+    @IBAction func checkNowButtonClick(_ sender: NSButton) {
+        checkNowButton.isEnabled = false
+        
+    }
+
     // MARK: - Time panel
 
     @IBAction func overrideNightOnDarkModeClick(_ button: NSButton) {
@@ -1487,6 +1493,10 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         ManifestLoader.instance.addCallback { manifestVideos in
             self.loaded(manifestVideos: manifestVideos)
        }
+    }
+    
+    func reloadJson() {
+        ManifestLoader.instance.reloadFiles()
     }
 
     func loaded(manifestVideos: [AerialVideo]) {

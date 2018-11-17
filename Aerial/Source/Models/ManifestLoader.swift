@@ -293,6 +293,10 @@ class ManifestLoader {
         }
     }
 
+    func reloadFiles() {
+        
+    }
+
     func addCallback(_ callback:@escaping ManifestLoadCallback) {
         if !loadedManifest.isEmpty {
             callback(loadedManifest)

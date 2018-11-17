@@ -15,6 +15,7 @@
                 <outlet property="cacheSizeTextField" destination="L70-Vj-qPk" id="EIq-de-VmH"/>
                 <outlet property="calculateCoordinatesLabel" destination="YXF-Ei-ZTD" id="LEn-QN-uyy"/>
                 <outlet property="changeCornerMargins" destination="VPG-cS-U1N" id="F9P-rV-FaD"/>
+                <outlet property="checkNowButton" destination="EeC-Lg-0GW" id="3zr-3y-AW9"/>
                 <outlet property="cornerBottomLeft" destination="Qhn-AB-VZ5" id="YIg-vu-QIS"/>
                 <outlet property="cornerBottomRight" destination="4Rr-4h-bRr" id="5oY-Eh-CdE"/>
                 <outlet property="cornerContainer" destination="NQf-K9-FZk" id="SU0-YA-s4F"/>
@@ -137,7 +138,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Videos" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
+                                        <view key="view" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1323,7 +1324,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Cache" identifier="2" id="kp1-xv-zNG">
-                                        <view key="view" id="93q-v8-yxM">
+                                        <view key="view" ambiguous="YES" id="93q-v8-yxM">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1474,6 +1475,17 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EeC-Lg-0GW">
+                                                    <rect key="frame" x="239" y="264" width="109" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="push" title="Check Now" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BzW-k0-hBJ">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="checkNowButtonClick:" target="-2" id="m24-Vz-0bi"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
