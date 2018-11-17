@@ -569,14 +569,11 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     // Rewind preview video when reaching end
     @objc func playerItemDidReachEnd(notification: Notification) {
-        if let playerItem: AVPlayerItem = notification.object as? AVPlayerItem {
-            let url: URL? = (playerItem.asset as? AVURLAsset)?.url
-
-            if url!.absoluteString.starts(with: "file") {
-                playerItem.seek(to: CMTime.zero, completionHandler: nil)
-                self.player.play()
-            }
-        }
+        guard let playerItem: AVPlayerItem = notification.object as? AVPlayerItem,
+              let asset = playerItem.asset as? AVURLAsset, asset.url.isFileURL
+            else { return }
+        playerItem.seek(to: .zero, completionHandler: nil)
+        player.play()
     }
 
     // MARK: - Setup
