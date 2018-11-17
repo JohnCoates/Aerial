@@ -203,6 +203,19 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     public var appMode: Bool = false
 
+    private lazy var timeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
+
+    private lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .medium
+        return formatter
+    }()
+
     // MARK: - Init
     required init?(coder decoder: NSCoder) {
         self.fontManager = NSFontManager.shared
@@ -451,12 +464,10 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         let (_, reason) = timeManagement.calculateFromCoordinates()
         calculateCoordinatesLabel.stringValue = reason
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        if let dateSunrise = dateFormatter.date(from: preferences.manualSunrise!) {
+        if let dateSunrise = timeFormatter.date(from: preferences.manualSunrise!) {
             sunriseTime.dateValue = dateSunrise
         }
-        if let dateSunset = dateFormatter.date(from: preferences.manualSunset!) {
+        if let dateSunset = timeFormatter.date(from: preferences.manualSunset!) {
             sunsetTime.dateValue = dateSunset
         }
 
@@ -1099,17 +1110,13 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     @IBAction func sunriseChange(_ sender: NSDatePicker?) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        let sunriseString = dateFormatter.string(from: (sender?.dateValue)!)
-        preferences.manualSunrise = sunriseString
+        guard let date = sender?.dateValue else { return }
+        preferences.manualSunrise = timeFormatter.string(from: date)
     }
 
     @IBAction func sunsetChange(_ sender: NSDatePicker?) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        let sunsetString = dateFormatter.string(from: (sender?.dateValue)!)
-        preferences.manualSunset = sunsetString
+        guard let date = sender?.dateValue else { return }
+        preferences.manualSunset = timeFormatter.string(from: date)
     }
 
     @IBAction func latitudeChange(_ sender: NSTextField) {
@@ -1884,10 +1891,6 @@ extension PreferencesWindowController: NSTableViewDelegate {
         var image: NSImage?
         var text: String = ""
         var cellIdentifier: String = ""
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .none
-        dateFormatter.timeStyle = .medium
 
         let item = errorMessages[row]
 
