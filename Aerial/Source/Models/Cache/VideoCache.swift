@@ -20,15 +20,21 @@ final class VideoCache {
 
     static var cacheDirectory: String? {
         var cacheDirectory: String?
-
         let preferences = Preferences.sharedInstance
+
         if let customCacheDirectory = preferences.customCacheDirectory {
+            //NSLog("AerialP: \(customCacheDirectory)")
             cacheDirectory = customCacheDirectory
         } else {
             let cachePaths = NSSearchPathForDirectoriesInDomains(.cachesDirectory,
                                                                  .userDomainMask,
                                                                  true)
+
+            //NSLog("AerialP: cachePaths.count : \(cachePaths.count)")
+            //NSLog("AerialP: cachePaths \(cachePaths)")
+
             if cachePaths.isEmpty {
+                //NSLog("AerialP: no cache paths")
                 errorLog("Couldn't find cache paths!")
                 return nil
             }
@@ -38,6 +44,8 @@ final class VideoCache {
 
             cacheDirectory = defaultCacheDirectory
         }
+
+        //NSLog("AerialP: cd \(String(describing: cacheDirectory))")
 
         guard let appCacheDirectory = cacheDirectory else {
             return nil
@@ -49,10 +57,13 @@ final class VideoCache {
                 try fileManager.createDirectory(atPath: appCacheDirectory as String,
                                                 withIntermediateDirectories: false, attributes: nil)
             } catch let error {
+                //NSLog("AerialP: couldn't create cache directory")
                 errorLog("Couldn't create cache directory: \(error)")
                 return nil
             }
         }
+
+        //NSLog("AerialP: acd \(appCacheDirectory)")
         return appCacheDirectory
     }
 

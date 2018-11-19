@@ -181,6 +181,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var newVideosModePopup: NSPopUpButton!
 
     @IBOutlet var lastCheckedVideosLabel: NSTextField!
+    @IBOutlet var checkNowButton: NSButton!
 
     var player: AVPlayer = AVPlayer()
 
@@ -568,6 +569,9 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     @IBAction func close(_ sender: AnyObject?) {
+        // This seems needed for screensavers as our lifecycle is different from a regular app
+        preferences.synchronize()
+
         logPanel.close()
         if appMode {
             NSApplication.shared.terminate(nil)
@@ -1061,6 +1065,11 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         preferences.newVideosMode = sender.indexOfSelectedItem
     }
 
+    @IBAction func checkNowButtonClick(_ sender: NSButton) {
+        checkNowButton.isEnabled = false
+        // TODO
+    }
+
     // MARK: - Time panel
 
     @IBAction func overrideNightOnDarkModeClick(_ button: NSButton) {
@@ -1478,14 +1487,17 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     func downloadAllVideos() {
-        guard let videos = videos else {
-            return
-        }
         let videoManager = VideoManager.sharedInstance
-
-        for video in videos where !video.isAvailableOffline {
-            if !videoManager.isVideoQueued(id: video.id) {
-                videoManager.queueDownload(video)
+        for city in cities {
+            for video in city.day.videos where !video.isAvailableOffline {
+                if !videoManager.isVideoQueued(id: video.id) {
+                    videoManager.queueDownload(video)
+                }
+            }
+            for video in city.night.videos where !video.isAvailableOffline {
+                if !videoManager.isVideoQueued(id: video.id) {
+                    videoManager.queueDownload(video)
+                }
             }
         }
     }
@@ -1524,6 +1536,10 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         ManifestLoader.instance.addCallback { manifestVideos in
             self.loaded(manifestVideos: manifestVideos)
        }
+    }
+
+    func reloadJson() {
+        ManifestLoader.instance.reloadFiles()
     }
 
     func loaded(manifestVideos: [AerialVideo]) {
