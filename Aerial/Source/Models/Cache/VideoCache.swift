@@ -13,12 +13,18 @@ import ScreenSaver
 final class VideoCache {
     var videoData: Data
     var mutableVideoData: NSMutableData?
-
     var loading: Bool
     var loadedRanges: [NSRange] = []
     let URL: URL
 
+    static var computedCacheDirectory: String?
+
     static var cacheDirectory: String? {
+        // We only process this once if successful
+        if computedCacheDirectory != nil {
+            return computedCacheDirectory
+        }
+
         var cacheDirectory: String?
         let preferences = Preferences.sharedInstance
 
@@ -32,16 +38,27 @@ final class VideoCache {
 
             //NSLog("AerialP: cachePaths.count : \(cachePaths.count)")
             //NSLog("AerialP: cachePaths \(cachePaths)")
-
             if cachePaths.isEmpty {
                 //NSLog("AerialP: no cache paths")
                 errorLog("Couldn't find cache paths!")
                 return nil
             }
 
-            let userCacheDirectory = cachePaths[0] as NSString
-            let defaultCacheDirectory = userCacheDirectory.appendingPathComponent("Aerial")
+            var userCacheDirectory: NSString?
+            userCacheDirectory = cachePaths[0] as NSString
 
+            if cachePaths.count > 1 {
+                // Maybe on some systems we have more than one, if so try to find one that actually exists ?
+                for cachePath in cachePaths {
+                    if FileManager.default.fileExists(atPath: cachePath) {
+                        debugLog("using this directory")
+                        userCacheDirectory = cachePath as NSString
+                        break
+                    }
+                }
+            }
+
+            let defaultCacheDirectory = userCacheDirectory!.appendingPathComponent("Aerial")
             cacheDirectory = defaultCacheDirectory
         }
 
@@ -64,6 +81,9 @@ final class VideoCache {
         }
 
         //NSLog("AerialP: acd \(appCacheDirectory)")
+
+        // Cache the computed value
+        computedCacheDirectory = appCacheDirectory
         return appCacheDirectory
     }
 
