@@ -1487,9 +1487,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     func downloadAllVideos() {
-        guard let videos = videos else {
-            return
-        }
         let videoManager = VideoManager.sharedInstance
         for city in cities {
             for video in city.day.videos where !video.isAvailableOffline {
