@@ -1377,16 +1377,35 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     // MARK: - Menu
     @IBAction func outlineViewSettingsClick(_ button: NSButton) {
         let menu = NSMenu()
-        menu.items = [
-            NSMenuItem(title: "Check Only Cached", action: #selector(outlineViewCheckCached), keyEquivalent: ""),
-            NSMenuItem(title: "Check Only 4K", action: #selector(outlineViewCheck4K), keyEquivalent: ""),
-            NSMenuItem(title: "Check All", action: #selector(outlineViewCheckAll), keyEquivalent: ""),
-            NSMenuItem(title: "Uncheck All", action: #selector(outlineViewUncheckAll), keyEquivalent: ""),
-            NSMenuItem.separator(),
-            NSMenuItem(title: "Download Checked", action: #selector(outlineViewDownloadChecked), keyEquivalent: ""),
-            NSMenuItem(title: "Download All", action: #selector(outlineViewDownloadAll), keyEquivalent: ""),
-        ]
-        NSMenu.popUpContextMenu(menu, with: NSApp.currentEvent!, for: button)
+
+        menu.insertItem(withTitle: "Check Only Cached",
+                        action: #selector(PreferencesWindowController.outlineViewCheckCached(button:)),
+                        keyEquivalent: "",
+                        at: 0)
+        menu.insertItem(withTitle: "Check Only 4K",
+                        action: #selector(PreferencesWindowController.outlineViewCheck4K(button:)),
+                        keyEquivalent: "",
+                        at: 1)
+        menu.insertItem(withTitle: "Check All",
+                        action: #selector(PreferencesWindowController.outlineViewCheckAll(button:)),
+                        keyEquivalent: "",
+                        at: 2)
+        menu.insertItem(withTitle: "Uncheck All",
+                        action: #selector(PreferencesWindowController.outlineViewUncheckAll(button:)),
+                        keyEquivalent: "",
+                        at: 3)
+        menu.insertItem(NSMenuItem.separator(), at: 4)
+        menu.insertItem(withTitle: "Download Checked",
+                        action: #selector(PreferencesWindowController.outlineViewDownloadChecked(button:)),
+                        keyEquivalent: "",
+                        at: 5)
+        menu.insertItem(withTitle: "Download All",
+                        action: #selector(PreferencesWindowController.outlineViewDownloadAll(button:)),
+                        keyEquivalent: "",
+                        at: 6)
+
+        let event = NSApp.currentEvent
+        NSMenu.popUpContextMenu(menu, with: event!, for: button)
     }
 
     @objc func outlineViewUncheckAll(button: NSButton) {
