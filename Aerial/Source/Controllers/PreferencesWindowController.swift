@@ -641,6 +641,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBAction func popupVideoFormatChange(_ sender: NSPopUpButton) {
         debugLog("UI popupVideoFormat: \(sender.indexOfSelectedItem)")
         preferences.videoFormat = sender.indexOfSelectedItem
+        preferences.synchronize()
         outlineView.reloadData()
     }
 
@@ -655,11 +656,13 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBAction func multiMonitorModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI multiMonitorMode: \(sender.indexOfSelectedItem)")
         preferences.multiMonitorMode = sender.indexOfSelectedItem
+        preferences.synchronize()
     }
 
     @IBAction func fadeInOutModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI fadeInOutMode: \(sender.indexOfSelectedItem)")
         preferences.fadeMode = sender.indexOfSelectedItem
+        preferences.synchronize()
     }
 
     func updateDownloads(done: Int, total: Int, progress: Double) {
@@ -834,6 +837,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBAction func descriptionModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI descriptionMode: \(sender.indexOfSelectedItem)")
         preferences.showDescriptionsMode = sender.indexOfSelectedItem
+        preferences.synchronize()
     }
 
     @IBAction func fontPickerClick(_ sender: NSButton?) {
@@ -936,11 +940,13 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBAction func fadeInOutTextModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI fadeInOutTextMode: \(sender.indexOfSelectedItem)")
         preferences.fadeModeText = sender.indexOfSelectedItem
+        preferences.synchronize()
     }
 
     @IBAction func extraCornerPopupChange(_ sender: NSPopUpButton) {
         debugLog("UI extraCorner: \(sender.indexOfSelectedItem)")
         preferences.extraCorner = sender.indexOfSelectedItem
+        preferences.synchronize()
     }
 
     @IBAction func changeMarginsToCornerClick(_ sender: NSButton) {
@@ -1398,11 +1404,16 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         for video in videos {
             if video.url4KHEVC != "" {
-                preferences.setVideo(videoID: video.id, inRotation: true)
+                preferences.setVideo(videoID: video.id,
+                                     inRotation: true,
+                                     synchronize: false)
             } else {
-                preferences.setVideo(videoID: video.id, inRotation: false)
+                preferences.setVideo(videoID: video.id,
+                                     inRotation: false,
+                                     synchronize: false)
             }
         }
+        preferences.synchronize()
 
         outlineView.reloadData()
     }
@@ -1414,11 +1425,16 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         for video in videos {
             if video.isAvailableOffline {
-                preferences.setVideo(videoID: video.id, inRotation: true)
+                preferences.setVideo(videoID: video.id,
+                                     inRotation: true,
+                                     synchronize: false)
             } else {
-                preferences.setVideo(videoID: video.id, inRotation: false)
+                preferences.setVideo(videoID: video.id,
+                                     inRotation: false,
+                                     synchronize: false)
             }
         }
+        preferences.synchronize()
 
         outlineView.reloadData()
     }
@@ -1461,8 +1477,11 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         }
 
         for video in videos {
-            preferences.setVideo(videoID: video.id, inRotation: inRotation)
+            preferences.setVideo(videoID: video.id,
+                                 inRotation: inRotation,
+                                 synchronize: false)
         }
+        preferences.synchronize()
 
         outlineView.reloadData()
     }
@@ -1862,6 +1881,7 @@ extension PreferencesWindowController: NSFontChanging {
             // Update our label
             extraMessageFontLabel.stringValue = preferences.extraFontName! + ", \(preferences.extraFontSize!) pt"
         }
+        preferences.synchronize()
     }
 }
 
