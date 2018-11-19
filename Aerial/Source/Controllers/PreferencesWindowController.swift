@@ -182,7 +182,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var lastCheckedVideosLabel: NSTextField!
     @IBOutlet var checkNowButton: NSButton!
-    
+
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?
@@ -1058,7 +1058,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBAction func checkNowButtonClick(_ sender: NSButton) {
         checkNowButton.isEnabled = false
-        
+        // TODO
     }
 
     // MARK: - Time panel
@@ -1493,7 +1493,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
             self.loaded(manifestVideos: manifestVideos)
        }
     }
-    
+
     func reloadJson() {
         ManifestLoader.instance.reloadFiles()
     }
