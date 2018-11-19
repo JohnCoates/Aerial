@@ -569,6 +569,9 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     @IBAction func close(_ sender: AnyObject?) {
+        // This seems needed for screensavers as our lifecycle is different from a regular app
+        preferences.synchronize()
+
         logPanel.close()
         if appMode {
             NSApplication.shared.terminate(nil)
@@ -1469,10 +1472,16 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
             return
         }
         let videoManager = VideoManager.sharedInstance
-
-        for video in videos where !video.isAvailableOffline {
-            if !videoManager.isVideoQueued(id: video.id) {
-                videoManager.queueDownload(video)
+        for city in cities {
+            for video in city.day.videos where !video.isAvailableOffline {
+                if !videoManager.isVideoQueued(id: video.id) {
+                    videoManager.queueDownload(video)
+                }
+            }
+            for video in city.night.videos where !video.isAvailableOffline {
+                if !videoManager.isVideoQueued(id: video.id) {
+                    videoManager.queueDownload(video)
+                }
             }
         }
     }
