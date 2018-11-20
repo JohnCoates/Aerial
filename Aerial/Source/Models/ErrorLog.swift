@@ -81,10 +81,6 @@ func Log(level: ErrorLevel, message: String) {
             let string = dateFormatter.string(from: Date()) + " : " + message + "\n"
             //let string = message + "\n"
             if let cacheDirectory = VideoCache.cacheDirectory {
-                if VideoCache.cacheDirectory == nil {
-                    NSLog("AerialError: No cache directory, this is super bad")
-                }
-
                 var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
                 cacheFileUrl.appendPathComponent("AerialLog.txt")
 
@@ -107,6 +103,8 @@ func Log(level: ErrorLevel, message: String) {
                         print("Can't write to file")
                     }
                 }
+            } else {
+                NSLog("AerialError: No cache directory, this is super bad")
             }
         }
     }
