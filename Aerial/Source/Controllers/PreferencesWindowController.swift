@@ -1237,19 +1237,17 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     @IBAction func dimStartFromChange(_ sender: NSSliderCell) {
-        let timeManagement = TimeManagement.sharedInstance
-        guard let event = NSApplication.shared.currentEvent else {
-            return
-        }
+        guard let event = NSApplication.shared.currentEvent else { return }
 
-        if event.type != .leftMouseUp && event.type != .leftMouseDown && event.type != .leftMouseDragged {
+        guard [.leftMouseUp, .leftMouseDown, .leftMouseDragged].contains(event.type) else {
             //warnLog("Unexepected event type \(event.type)")
             return
         }
 
+        let timeManagement = TimeManagement.sharedInstance
         if event.type == .leftMouseUp {
-            if savedBrightness != nil {
-                timeManagement.setBrightness(level: savedBrightness!)
+            if let brightness = savedBrightness {
+                timeManagement.setBrightness(level: brightness)
                 savedBrightness = nil
             }
             preferences.startDim = sender.doubleValue
@@ -1263,18 +1261,16 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     @IBAction func dimFadeToChange(_ sender: NSSliderCell) {
-        let timeManagement = TimeManagement.sharedInstance
-        guard let event = NSApplication.shared.currentEvent else {
-            return
-        }
+        guard let event = NSApplication.shared.currentEvent else { return }
 
-        if event.type != .leftMouseUp && event.type != .leftMouseDown && event.type != .leftMouseDragged {
+        if ![.leftMouseUp, .leftMouseDown, .leftMouseDragged].contains(event.type) {
             //warnLog("Unexepected event type \(event.type)")
         }
 
+        let timeManagement = TimeManagement.sharedInstance
         if event.type == .leftMouseUp {
-            if savedBrightness != nil {
-                timeManagement.setBrightness(level: savedBrightness!)
+            if let brightness = savedBrightness {
+                timeManagement.setBrightness(level: brightness)
                 savedBrightness = nil
             }
             preferences.endDim = sender.doubleValue
@@ -1312,18 +1308,10 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     @IBAction func logCopyToClipboardClick(_ sender: NSButton) {
-        guard !errorMessages.isEmpty else {
-            return
-        }
+        guard !errorMessages.isEmpty else { return }
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .none
-        dateFormatter.timeStyle = .medium
-
-        var clipboard = ""
-        for log in errorMessages {
-            clipboard += dateFormatter.string(from: log.date) + " : " + log.message + "\n"
-        }
+        let clipboard = errorMessages.map { dateFormatter.string(from: $0.date) + " : " + $0.message}
+                                     .joined(separator: "\n")
 
         let pasteBoard = NSPasteboard.general
         pasteBoard.clearContents()
