@@ -81,8 +81,7 @@ final class VideoCache {
         }
 
         //NSLog("AerialP: acd \(appCacheDirectory)")
-
-        // Cache the computed value
+        // Cache the value
         computedCacheDirectory = appCacheDirectory
         return appCacheDirectory
     }
