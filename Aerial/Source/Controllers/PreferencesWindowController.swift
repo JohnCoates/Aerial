@@ -1312,18 +1312,10 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     @IBAction func logCopyToClipboardClick(_ sender: NSButton) {
-        guard !errorMessages.isEmpty else {
-            return
-        }
+        guard !errorMessages.isEmpty else { return }
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .none
-        dateFormatter.timeStyle = .medium
-
-        var clipboard = ""
-        for log in errorMessages {
-            clipboard += dateFormatter.string(from: log.date) + " : " + log.message + "\n"
-        }
+        let clipboard = errorMessages.map { dateFormatter.string(from: $0.date) + " : " + $0.message}
+                                     .joined(separator: "\n")
 
         let pasteBoard = NSPasteboard.general
         pasteBoard.clearContents()
