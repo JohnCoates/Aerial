@@ -182,6 +182,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var lastCheckedVideosLabel: NSTextField!
     @IBOutlet var checkNowButton: NSButton!
+    @IBOutlet var videoMenu: NSMenu!
 
     var player: AVPlayer = AVPlayer()
 
@@ -261,6 +262,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         updateCacheSize()
         outlineView.floatsGroupRows = false
+        outlineView.menu = videoMenu
+        videoMenu.delegate = self
 
         loadJSON()  // Async loading
 
@@ -692,6 +695,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         debugLog("UI cancelDownloadsClick")
         let videoManager = VideoManager.sharedInstance
         videoManager.cancelAll()
+    }
+
+    @IBAction func openInQuickTime(_ sender: NSMenuItem) {
+        if let video = sender.representedObject as? AerialVideo {
+            NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: VideoCache.cachePath(forVideo: video)!)
+        }
     }
 
     // MARK: - Mac Model detection and HEVC Main10 detection
@@ -1850,7 +1859,35 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }*/
 }
 
+// MARK: - Menu delegate
+
+extension PreferencesWindowController: NSMenuDelegate {
+    func menuNeedsUpdate(_ menu: NSMenu) {
+        let row = self.outlineView.clickedRow
+        guard row != -1 else { return }
+        let rowItem = self.outlineView.item(atRow: row)
+
+        if let video = rowItem as? AerialVideo {
+            if video.isAvailableOffline {
+                for item in menu.items {
+                    item.isHidden = false
+                    item.representedObject = rowItem
+                }
+            } else {
+                for item in menu.items {
+                    item.isHidden = true
+                }
+            }
+        } else {
+            for item in menu.items {
+                item.isHidden = true
+            }
+        }
+    }
+}
+
 // MARK: - Core Location Delegates
+
 extension PreferencesWindowController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         debugLog("LM Coordinates")
