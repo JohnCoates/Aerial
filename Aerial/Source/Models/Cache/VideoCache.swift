@@ -29,53 +29,61 @@ final class VideoCache {
         let preferences = Preferences.sharedInstance
 
         if let customCacheDirectory = preferences.customCacheDirectory {
+            // We may have overriden the cache directory
             cacheDirectory = customCacheDirectory
         } else {
-            let cachePaths = NSSearchPathForDirectoriesInDomains(.cachesDirectory,
+            let localCachePaths = NSSearchPathForDirectoriesInDomains(.cachesDirectory,
+                                                                 .localDomainMask,
+                                                                 true)
+            let userCachePaths = NSSearchPathForDirectoriesInDomains(.cachesDirectory,
                                                                  .userDomainMask,
                                                                  true)
 
-            if cachePaths.isEmpty {
+            if localCachePaths.isEmpty || userCachePaths.isEmpty {
                 errorLog("Couldn't find cache paths!")
                 return nil
             }
 
-            var userCacheDirectory: NSString?
-            userCacheDirectory = cachePaths[0] as NSString
+            let localCacheDirectory = localCachePaths[0] as NSString
+            let userCacheDirectory = userCachePaths[0] as NSString
 
-            if cachePaths.count > 1 {
-                // Maybe on some systems we have more than one, if so try to find one that actually exists ?
-                for cachePath in cachePaths {
-                    if FileManager.default.fileExists(atPath: cachePath) {
-                        debugLog("using this directory")
-                        userCacheDirectory = cachePath as NSString
-                        break
+            if aerialCacheExists(at: localCacheDirectory) {
+                debugLog("local cache exists")
+                cacheDirectory = localCacheDirectory.appendingPathComponent("Aerial")
+            } else if aerialCacheExists(at: userCacheDirectory) {
+                debugLog("user cache exists")
+                cacheDirectory = userCacheDirectory.appendingPathComponent("Aerial")
+            } else {
+                debugLog("create local cache")
+                // We create in local cache directory (/Library/Caches)
+                cacheDirectory = localCacheDirectory.appendingPathComponent("Aerial")
+
+                let fileManager = FileManager.default
+                if fileManager.fileExists(atPath: cacheDirectory!) == false {
+                    do {
+                        try fileManager.createDirectory(atPath: cacheDirectory!,
+                                                        withIntermediateDirectories: false, attributes: nil)
+                    } catch let error {
+                        errorLog("Couldn't create cache directory: \(error)")
+                        return nil
                     }
                 }
-            }
-
-            let defaultCacheDirectory = userCacheDirectory!.appendingPathComponent("Aerial")
-            cacheDirectory = defaultCacheDirectory
-        }
-
-        guard let appCacheDirectory = cacheDirectory else {
-            return nil
-        }
-
-        let fileManager = FileManager.default
-        if fileManager.fileExists(atPath: appCacheDirectory as String) == false {
-            do {
-                try fileManager.createDirectory(atPath: appCacheDirectory as String,
-                                                withIntermediateDirectories: false, attributes: nil)
-            } catch let error {
-                errorLog("Couldn't create cache directory: \(error)")
-                return nil
             }
         }
 
         // Cache the computed value
-        computedCacheDirectory = appCacheDirectory
-        return appCacheDirectory
+        computedCacheDirectory = cacheDirectory
+        debugLog("cache to be used : \(String(describing: cacheDirectory))")
+        return cacheDirectory
+    }
+
+    static func aerialCacheExists(at: NSString) -> Bool {
+        let aerialCache = at.appendingPathComponent("Aerial")
+        if FileManager.default.fileExists(atPath: aerialCache as String) {
+            return true
+        } else {
+            return false
+        }
     }
 
     static func isAvailableOffline(video: AerialVideo) -> Bool {
