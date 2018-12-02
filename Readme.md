@@ -28,9 +28,9 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 *Rather install from Terminal or have auto-updates? Look at the Brew Cask section below!*
 
 1. Quit **System Preferences**.
-2. [Download the latest release of Aerial.saver.zip](https://github.com/JohnCoates/Aerial/releases/latest).
+2. [Download the latest release of Aerial.saver.zip](https://github.com/JohnCoates/Aerial/releases/download/v1.4.5/Aerial.saver.zip) (Version 1.4.5), [Get more information here](https://github.com/JohnCoates/Aerial/releases/latest).
 
-    **If you are a new user**, Apple has just added some new videos and made some changes that can confuse the current build of Aerial. Because of this, you may see duplicates in the user interface. We suggest you [give the current beta (1.4.6beta5+) a try instead](https://github.com/JohnCoates/Aerial/releases), as this version will properly handle the duplicate issue (you can find more information on changes on [this issue](https://github.com/JohnCoates/Aerial/issues/630)).
+    **If you are a new user**, Apple has just added some new videos and made some changes that can confuse the current build of Aerial. Because of this, you may see duplicates in the user interface. We suggest you [give the current beta (1.4.6beta5) a try instead](https://github.com/JohnCoates/Aerial/releases/download/v1.4.5beta5), as this version will properly handle the duplicate issue (You can find more information on changes on [this issue](https://github.com/JohnCoates/Aerial/issues/630)).
 
 3. Unzip the downloaded file (if you use Safari, it should already be done for you).
 4. Double-click **Aerial.saver**; it will open in **System Preferences > Desktop & Screen Saver** and ask you if you want to install for all users or for your user only.
