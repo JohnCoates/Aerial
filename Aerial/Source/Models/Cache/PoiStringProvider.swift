@@ -160,7 +160,7 @@ final class PoiStringProvider {
                 }
             }
             debugLog("Defaulting to bundle")
-            let cc = locale.countryCode!.lowercased()
+            let cc = "en" //locale.countryCode!.lowercased()
             if preferences.localizeDescriptions {
                 let path = Bundle(for: PoiStringProvider.self).path(forResource: cc, ofType: "json")
                 if path != nil {
