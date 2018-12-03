@@ -312,6 +312,7 @@ class ManifestLoader {
         dateFormatter.locale = Locale.init(identifier: "en_GB")
         let dateObj = dateFormatter.date(from: preferences.lastVideoCheck!)
 
+        debugLog(preferences.lastVideoCheck!)
         var dayCheck = 7
         if preferences.newVideosMode == Preferences.NewVideosMode.monthly.rawValue {
             dayCheck = 30
@@ -324,6 +325,7 @@ class ManifestLoader {
 
         if #available(OSX 10.11, *) {
             if !cacheUrl.hasDirectoryPath {
+                // If there's no backup directory, we force the first check
                 moveOldManifests()
                 return
             }
@@ -333,7 +335,7 @@ class ManifestLoader {
 
         debugLog("Interval : \(String(describing: dateObj?.timeIntervalSinceNow))")
         if Int((dateObj?.timeIntervalSinceNow)!) < -dayCheck * 86400 {
-            // We need to redownload
+            // We need to redownload then
             debugLog("Checking for new videos")
             moveOldManifests()
         } else {
