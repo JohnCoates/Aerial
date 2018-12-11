@@ -21,5 +21,17 @@
             "url-4K-SDR" : "https:\/\/sylvan.apple.com\/Aerials\/2x\/Videos\/comp_A009_C001_010181A_v09_SDR_PS_FINAL_20180725_SDR_4K_HEVC.mov",
             "url-4K-HDR" : "https:\/\/sylvan.apple.com\/Aerials\/2x\/Videos\/comp_A009_C001_010181A_v09_HDR_PS_FINAL_20180725_HDR_4K_HEVC.mov"
         },
+        {
+            "pointsOfInterest" : {
+                "0" : "HK_H004_C001_0"
+            },
+            "url-1080-H264" : "https:\/\/sylvan.apple.com\/Videos\/comp_HK_H004_C001_PSNK_DENOISE_v14_SDR_PS_FINAL_20180731_SDR_2K_AVC.mov",
+            "accessibilityLabel" : "Hong Kong",
+            "id" : "64EA30BD-C4B5-4CDD-86D7-DFE47E9CB9AA",
+            "url-1080-HDR" : "https:\/\/sylvan.apple.com\/Aerials\/2x\/Videos\/comp_HK_H004_C001_PSNK_DENOISE_v14_HDR_PS_FINAL_20180731_HDR_2K_HEVC.mov",
+            "url-1080-SDR" : "https:\/\/sylvan.apple.com\/Aerials\/2x\/Videos\/comp_HK_H004_C001_PSNK_DENOISE_v14_SDR_PS_FINAL_20180731_SDR_2K_HEVC.mov",
+            "url-4K-SDR" : "https:\/\/sylvan.apple.com\/Aerials\/2x\/Videos\/comp_HK_H004_C001_PSNK_DENOISE_v14_SDR_PS_FINAL_20180731_SDR_4K_HEVC.mov",
+            "url-4K-HDR" : "https:\/\/sylvan.apple.com\/Aerials\/2x\/Videos\/comp_HK_H004_C001_PSNK_DENOISE_v14_HDR_PS_FINAL_20180731_HDR_4K_HEVC.mov"
+        },
     ]
 }

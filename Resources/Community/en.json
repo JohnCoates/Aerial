@@ -35,7 +35,7 @@
             "name" : "Great Wall 2"
         },
         {
-            "id" : "b5-1",
+            "id" : "044AD56C-A107-41B2-90CC-E60CCACFBCF5",
             "name" : "Great Wall 3"
         },
         {
@@ -70,7 +70,7 @@
             "name" : "Nuussuaq Peninsula"
         },
         {
-            "id" : "30047FDA-3AE3-4E74-9575-3520AD77865B",
+            "id" : "2F52E34C-39D4-4AB1-9025-8F7141FAA720",
             "name" : "Ilulissat Icefjord" 
         },
 
@@ -80,28 +80,28 @@
         },
 
         {
-            "id" : "b7-1",
-            "name" : "Laupāhoehoe Nui"
+            "id" : "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943",
+            "name" : "Waimanu Valley"
         },
         {
-            "id" : "b1-1",
-            "name" : "Waimanu Valley"
+            "id" : "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7",
+            "name" : "Laupāhoehoe Nui"
         },
         {
             "id" : "b2-2",
             "name" : "Honopū Valley"
         },
         {
-            "id" : "b4-1",
+            "id" : "258A6797-CC13-4C3A-AB35-4F25CA3BF474",
             "name" : "Pu‘u O ‘Umi"
         },
 
         {
-            "id" : "b6-2",
-            "name" : "Kohala coastline"
+            "id" : "3D729CFC-9000-48D3-A052-C5BD5B7A6842",
+            "name" : "Kohala Coastline"
         },
         {
-            "id" : "b8-1",
+            "id" : "82BD33C9-B6D2-47E7-9C42-AA3B7758921A",
             "name" : "Pu‘u O ‘Umi"
         },        
 
@@ -110,7 +110,7 @@
             "name" : "Victoria Harbour 1"
         },
         {
-            "id" : "560E09E8-E89D-4ADB-8EEA-4754415383D4",
+            "id" : "C8559883-6F3E-4AF2-8960-903710CD47B7",
             "name" : "Victoria Peak"
         },
         {
@@ -135,7 +135,7 @@
             "name" : "Liwa Oasis 2"
         },
         {
-            "id" : "b6-3",
+            "id" : "58754319-8709-4AB0-8674-B34F04E7FFE2",
             "name" : "River Thames",
             "pointsOfInterest" : {
                 "0" : "Passing the Gherkin in the City of London, on the right",
@@ -149,7 +149,7 @@
             }
         },
         {
-            "id" : "b5-2",
+            "id" : "A5AAFF5D-8887-42BB-8AFD-867EF557ED85",
             "name" :"Buckingham Palace",
             "pointsOfInterest" : {
                 "0" : "Flying over Buckingham Palace and the Victoria Memorial, London",
@@ -166,7 +166,7 @@
         },
 
         {
-            "id" : "b1-2",
+            "id" : "F604AF56-EA77-4960-AEF7-82533CC1A8B3",
             "name" : "River Thames near Sunset",
             "pointsOfInterest" : {
                 "0" : "Heading up the River Thames towards Tower Bridge, with the Tower of London to the right",
@@ -179,7 +179,7 @@
             }
         },
         {
-            "id" : "b3-1",
+            "id" : "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97",
             "name" : "River Thames at Dusk",
             "pointsOfInterest" : {
                 "0": "Heading up the River Thames towards Tower Bridge, with the Tower of London to the right",
@@ -232,7 +232,7 @@
             }
         },
         {
-            "id" : "A284F0BF-E690-4C13-92E2-4672D93E8DE5",
+            "id" : "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9",
             "name" : "Downtown",
             "pointsOfInterest" : {
                 "0" : "Approaching Downtown Los Angeles, with the MTA Building (in yellow) and Union Station (in pink) in the left mid-ground",
@@ -253,7 +253,7 @@
         },
 
         {
-            "id" : "b7-2",
+            "id" : "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89",
             "name" : "Central Park"
         },
         {
@@ -261,16 +261,16 @@
             "name" : "Lower Manhattan"
         },
         {
-            "id" : "b3-2",
+            "id" : "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8",
             "name" : "Upper East Side"
         },
 
         {
-            "id" : "b2-3",
+            "id" : "44166C39-8566-4ECA-BD16-43159429B52F",
             "name" : "Seventh Avenue"
         },
         {
-            "id" : "b4-2",
+            "id" : "640DFB00-FBB9-45DA-9444-9F663859F4BC",
             "name" : "Lower Manhattan"
         },
 
