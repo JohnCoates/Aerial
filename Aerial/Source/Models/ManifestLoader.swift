@@ -46,6 +46,7 @@ class ManifestLoader {
         "A2BE2E4A-AD4B-428A-9C41-BDAE1E78E816": "12318CCB-3F78-43B7-A854-EFDCCE5312CD",     // California to Vegas (v7 -> v8)
         "6A74D52E-2447-4B84-AE45-0DEF2836C3CC": "7825C73A-658F-48EE-B14C-EC56673094AC",     // China
         "6C3D54AE-0871-498A-81D0-56ED24E5FE9F": "009BA758-7060-4479-8EE8-FB9B40C8FB97",     // Korean and Japan night
+        "b5-1": "044AD56C-A107-41B2-90CC-E60CCACFBCF5",                                     // Great Wall 3
         "b2-1": "22162A9B-DB90-4517-867C-C676BC3E8E95",                                     // Great wall 2
         "b6-1": "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF",                                     // Great wall 1
         "BAF76353-3475-4855-B7E1-CE96CC9BC3A7": "9680B8EB-CE2A-4395-AF41-402801F4D6A6",     // Approaching Burj Khalifa (night)
@@ -57,18 +58,34 @@ class ManifestLoader {
         "02EA5DBE-3A67-4DFA-8528-12901DFD6CC1": "00BA71CD-2C54-415A-A68A-8358E677D750",     // Downtown
         "D388F00A-5A32-4431-A95C-38BF7FF7268D": "B8F204CE-6024-49AB-85F9-7CA2F6DCD226",     // Nuusuaq Peninsula
         "E4ED0B22-EB81-4D4F-A29E-7E1EA6B6D980": "B8F204CE-6024-49AB-85F9-7CA2F6DCD226",     // Nuusuaq Peninsula
+        "30047FDA-3AE3-4E74-9575-3520AD77865B": "2F52E34C-39D4-4AB1-9025-8F7141FAA720",     // Ilulissat Icefjord day
         "7D4710EB-5BA4-42E6-AA60-68D77F67D9B9": "EE01F02D-1413-436C-AB05-410F224A5B7B",     // Ilulissat Icefjord Night
+        "b8-1": "82BD33C9-B6D2-47E7-9C42-AA3B7758921A",                                     // Pu'u O 'Umi Night
+        "b4-1": "258A6797-CC13-4C3A-AB35-4F25CA3BF474",                                     // Pu'u O 'Umi day
+        "b1-1": "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7",                                     // Waimanu Valley
+        "b7-1": "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943",                                     // Laupāhoehoe Nui
+        "b6-2": "3D729CFC-9000-48D3-A052-C5BD5B7A6842",                                     // Kohala coastline
         "30313BC1-BF20-45EB-A7B1-5A6FFDBD2488": "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A",     // Hong Kong Victoria Harbour night
         "2A57BB93-1825-484C-9609-FF8580CAE77B": "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A",     // Hong Kong Victoria Harbour night
         "102C19D1-9D9F-48EC-B492-074C985C4D9F": "FE8E1F9D-59BA-4207-B626-28E34D810D0A",     // Hong Kong Victoria Harbour 1
         "786E674C-BB22-4AA9-9BD3-114D2020EC4D": "64EA30BD-C4B5-4CDD-86D7-DFE47E9CB9AA",     // Hong Kong Victoria Harbour 2
+        "560E09E8-E89D-4ADB-8EEA-4754415383D4": "C8559883-6F3E-4AF2-8960-903710CD47B7",     // Hong Kong Victoria Peak
         "6E2FC8AC-832D-46CF-B306-BB2A05030C17": "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8",     // Liwa oasis 1
         "88025454-6D58-48E8-A2DB-924988FAD7AC": "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8",     // Liwa oasis 1
+        "b6-3": "58754319-8709-4AB0-8674-B34F04E7FFE2",                                     // River Thames
+        "b1-2": "F604AF56-EA77-4960-AEF7-82533CC1A8B3",                                     // River Thames near sunset
+        "b3-1": "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97",                                     // River Times at Dusk
+        "b5-2": "A5AAFF5D-8887-42BB-8AFD-867EF557ED85",                                     // Buckingham Palace
         "BEED64EC-2DB7-47E1-A67E-59C101E73C04": "CE279831-1CA7-4A83-A97B-FF1E20234396",     // LAX
         "829E69BA-BB53-4841-A138-4DF0C2A74236": "CE279831-1CA7-4A83-A97B-FF1E20234396",     // LAX
         "60CD8E2E-35CD-4192-A5A4-D5E10BFE158B": "92E48DE9-13A1-4172-B560-29B4668A87EE",     // Santa Monica Beach
         "B730433D-1B3B-4B99-9500-A286BF7A9940": "92E48DE9-13A1-4172-B560-29B4668A87EE",     // Santa Monica Beach
         "30A2A488-E708-42E7-9A90-B749A407AE1C": "35693AEA-F8C4-4A80-B77D-C94B20A68956",     // Harbor Freeway
+        "A284F0BF-E690-4C13-92E2-4672D93E8DE5": "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9",     // Downtown
+        "b3-2": "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8",                                     // Upper East side
+        "b4-2": "640DFB00-FBB9-45DA-9444-9F663859F4BC",                                     // Lower Manhattan (night)
+        "b2-3": "44166C39-8566-4ECA-BD16-43159429B52F",                                     // Seventh Avenue
+        "b7-2": "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89",                                     // Central Park
         "b10-3": "EE533FBD-90AE-419A-AD13-D7A60E2015D6",                                    // Marin Headlands in Fog
         "b1-4": "3E94AE98-EAF2-4B09-96E3-452F46BC114E",                                     // Bay bridge night
         "b9-3": "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51",                                     // Bay and Golden Bridge

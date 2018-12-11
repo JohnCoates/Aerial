@@ -65,6 +65,13 @@ private let timeInformation = [
     "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": "night",    // Hong Kong Victoria Harbour
     "3E94AE98-EAF2-4B09-96E3-452F46BC114E": "night",    // Bay Bridge
     "29BDF297-EB43-403A-8719-A78DA11A2948": "night",    // Fisherman's Wharf
+    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": "night",    // Pu'u O 'Umi Night
+    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": "night",    // Kohala Coastline
+    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": "night",    // River Thames near sunset
+    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": "night",    // River Thames at dusk
+    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": "night",    // Downtown (LA)
+    "640DFB00-FBB9-45DA-9444-9F663859F4BC": "night",    // Lower Manhattan
+    "44166C39-8566-4ECA-BD16-43159429B52F": "night",    // Seventh Avenue
 ]
 
 final class AerialVideo: CustomStringConvertible, Equatable {
@@ -156,7 +163,12 @@ final class AerialVideo: CustomStringConvertible, Equatable {
                 self.secondaryName = name
             }
         } else {
-            self.name = name
+            // We align to the new jsons...
+            if name == "New York City" {
+                self.name = "New York"
+            } else {
+                self.name = name
+            }
             self.secondaryName = secondaryName      // We may have a secondary name from our merges too now !
         }
 
