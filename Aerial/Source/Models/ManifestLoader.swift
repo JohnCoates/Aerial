@@ -312,43 +312,42 @@ class ManifestLoader {
 
     func reloadFiles() {
         moveOldManifests()
-        
+
         // Ok then, we fetch them...
         debugLog("Fetching missing manifests online")
         let dateFormatter = DateFormatter()
         let current = Date()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         preferences.lastVideoCheck = dateFormatter.string(from: current)
-        
+
         let downloadManager = DownloadManager()
-        
+
         var urls: [URL] = []
-        
+
         // For tvOS12, json is now in a tar file
         if !isManifestCached(manifest: .tvOS12) {
             urls.append(URL(string: "https://sylvan.apple.com/Aerials/resources.tar")!)
         }
-        
+
         if !isManifestCached(manifest: .tvOS11) {
             urls.append(URL(string: "https://sylvan.apple.com/Aerials/2x/entries.json")!)
         }
-        
+
         if !isManifestCached(manifest: .tvOS10) {
             urls.append(URL(string: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json")!)
         }
-        
+
         let completion = BlockOperation {
             debugLog("Fetching manifests all done")
             // We can now load from the newly cached files
             self.loadCachedManifests()
-            
         }
-        
+
         for url in urls {
             let operation = downloadManager.queueDownload(url)
             completion.addDependency(operation)
         }
-        
+
         OperationQueue.main.addOperation(completion)
     }
 
