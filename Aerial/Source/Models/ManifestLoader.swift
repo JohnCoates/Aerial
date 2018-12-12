@@ -311,7 +311,45 @@ class ManifestLoader {
     }
 
     func reloadFiles() {
-        // TODO
+        moveOldManifests()
+        
+        // Ok then, we fetch them...
+        debugLog("Fetching missing manifests online")
+        let dateFormatter = DateFormatter()
+        let current = Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        preferences.lastVideoCheck = dateFormatter.string(from: current)
+        
+        let downloadManager = DownloadManager()
+        
+        var urls: [URL] = []
+        
+        // For tvOS12, json is now in a tar file
+        if !isManifestCached(manifest: .tvOS12) {
+            urls.append(URL(string: "https://sylvan.apple.com/Aerials/resources.tar")!)
+        }
+        
+        if !isManifestCached(manifest: .tvOS11) {
+            urls.append(URL(string: "https://sylvan.apple.com/Aerials/2x/entries.json")!)
+        }
+        
+        if !isManifestCached(manifest: .tvOS10) {
+            urls.append(URL(string: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json")!)
+        }
+        
+        let completion = BlockOperation {
+            debugLog("Fetching manifests all done")
+            // We can now load from the newly cached files
+            self.loadCachedManifests()
+            
+        }
+        
+        for url in urls {
+            let operation = downloadManager.queueDownload(url)
+            completion.addDependency(operation)
+        }
+        
+        OperationQueue.main.addOperation(completion)
     }
 
     func addCallback(_ callback:@escaping ManifestLoadCallback) {
@@ -708,4 +746,220 @@ class ManifestLoader {
 
         return (false, nil)
     }
+
+    // MARK: - Old video management
+    // Try to estimate how many old (unlinked) files we have
+    // swiftlint:disable:next cyclomatic_complexity
+    func getOldFilesEstimation() -> (String, Int) {
+        // loadedManifests contains the full deduplicated list of videos
+        debugLog("Looking for outdated files")
+
+        if loadedManifest.isEmpty {
+            warnLog("We have no videos in the manifest")
+            return ("Can't estimate duplicates", 0)
+        }
+        guard let cacheDirectory = VideoCache.cacheDirectory else {
+            warnLog("No cache directory")
+            return ("Can't estimate duplicates", 0)
+        }
+
+        var foundOldFiles = 0
+
+        let cacheDirectoryUrl = URL(fileURLWithPath: cacheDirectory as String)
+        let fileManager = FileManager.default
+        do {
+            let directoryContent = try fileManager.contentsOfDirectory(at: cacheDirectoryUrl, includingPropertiesForKeys: nil)
+            let videoFileURLs = directoryContent.filter { $0.pathExtension == "mov" }
+
+            // We check the 3 fields
+            for fileURL in videoFileURLs {
+                var found = false
+                for video in loadedManifest {
+                    if video.url1080pH264 != "" {
+                        if fileURL.lastPathComponent == URL(string: video.url1080pH264)?.lastPathComponent {
+                            found = true
+                            break
+                        }
+                    }
+                    if video.url1080pHEVC != "" {
+                        if fileURL.lastPathComponent == URL(string: video.url1080pHEVC)?.lastPathComponent {
+                            found = true
+                            break
+                        }
+                    }
+                    if video.url4KHEVC != "" {
+                        if fileURL.lastPathComponent == URL(string: video.url4KHEVC)?.lastPathComponent {
+                            found = true
+                            break
+                        }
+                    }
+                }
+
+                if !found {
+                    debugLog("\(fileURL.lastPathComponent) NOT FOUND in manifest")
+                    foundOldFiles += 1
+                }
+            }
+        } catch {
+            errorLog("Error while enumerating files \(cacheDirectoryUrl.path): \(error.localizedDescription)")
+        }
+
+        if foundOldFiles == 0 {
+            debugLog("No old files found")
+            return ("No old files found", 0)
+        }
+        debugLog("\(foundOldFiles) old files found")
+        return ("\(foundOldFiles) old files found", foundOldFiles)
+    }
+
+    // swiftlint:disable:next cyclomatic_complexity
+    func moveOldVideos() {
+        debugLog("move old videos")
+        let cacheDirectory = VideoCache.cacheDirectory!
+        var cacheResourcesString = cacheDirectory
+
+        let dateFormatter = DateFormatter()
+        let current = Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let today = dateFormatter.string(from: current)
+
+        cacheResourcesString.append(contentsOf: "/oldvideos/"+today)
+
+        let cacheUrl = URL(fileURLWithPath: cacheResourcesString)
+        if #available(OSX 10.11, *) {
+            if !cacheUrl.hasDirectoryPath {
+                do {
+                    try FileManager.default.createDirectory(atPath: cacheResourcesString, withIntermediateDirectories: true, attributes: nil)
+                    debugLog("creating dir \(cacheResourcesString)")
+                } catch {
+                    errorLog("\(error.localizedDescription)")
+                }
+            }
+        }
+
+        if loadedManifest.isEmpty {
+            warnLog("We have no videos in the manifest")
+            return
+        }
+
+        let cacheDirectoryUrl = URL(fileURLWithPath: cacheDirectory as String)
+        let fileManager = FileManager.default
+        do {
+            let directoryContent = try fileManager.contentsOfDirectory(at: cacheDirectoryUrl, includingPropertiesForKeys: nil)
+            let videoFileURLs = directoryContent.filter { $0.pathExtension == "mov" }
+
+            // We check the 3 fields
+            for fileURL in videoFileURLs {
+                var found = false
+                for video in loadedManifest {
+                    if video.url1080pH264 != "" {
+                        if fileURL.lastPathComponent == URL(string: video.url1080pH264)?.lastPathComponent {
+                            found = true
+                            break
+                        }
+                    }
+                    if video.url1080pHEVC != "" {
+                        if fileURL.lastPathComponent == URL(string: video.url1080pHEVC)?.lastPathComponent {
+                            found = true
+                            break
+                        }
+                    }
+                    if video.url4KHEVC != "" {
+                        if fileURL.lastPathComponent == URL(string: video.url4KHEVC)?.lastPathComponent {
+                            found = true
+                            break
+                        }
+                    }
+                }
+
+                if !found {
+                    do {
+                        debugLog("moving \(fileURL.lastPathComponent)")
+                        let new = URL(fileURLWithPath: cacheResourcesString.appending("/\(fileURL.lastPathComponent)"))
+                        try FileManager.default.moveItem(at: fileURL, to: new)
+                    } catch {
+                        errorLog("\(error.localizedDescription)")
+                    }
+                }
+            }
+        } catch {
+            errorLog("Error while enumerating files \(cacheDirectoryUrl.path): \(error.localizedDescription)")
+        }
+    }
+
+    // swiftlint:disable:next cyclomatic_complexity
+    func trashOldVideos() {
+        debugLog("trash old videos")
+        let cacheDirectory = VideoCache.cacheDirectory!
+        var cacheResourcesString = cacheDirectory
+
+        let dateFormatter = DateFormatter()
+        let current = Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let today = dateFormatter.string(from: current)
+
+        cacheResourcesString.append(contentsOf: "/oldvideos/"+today)
+
+        let cacheUrl = URL(fileURLWithPath: cacheResourcesString)
+        if #available(OSX 10.11, *) {
+            if !cacheUrl.hasDirectoryPath {
+                do {
+                    try FileManager.default.createDirectory(atPath: cacheResourcesString, withIntermediateDirectories: true, attributes: nil)
+                    debugLog("creating dir \(cacheResourcesString)")
+                } catch {
+                    errorLog("\(error.localizedDescription)")
+                }
+            }
+        }
+
+        if loadedManifest.isEmpty {
+            warnLog("We have no videos in the manifest")
+            return
+        }
+
+        let cacheDirectoryUrl = URL(fileURLWithPath: cacheDirectory as String)
+        let fileManager = FileManager.default
+        do {
+            let directoryContent = try fileManager.contentsOfDirectory(at: cacheDirectoryUrl, includingPropertiesForKeys: nil)
+            let videoFileURLs = directoryContent.filter { $0.pathExtension == "mov" }
+
+            // We check the 3 fields
+            for fileURL in videoFileURLs {
+                var found = false
+                for video in loadedManifest {
+                    if video.url1080pH264 != "" {
+                        if fileURL.lastPathComponent == URL(string: video.url1080pH264)?.lastPathComponent {
+                            found = true
+                            break
+                        }
+                    }
+                    if video.url1080pHEVC != "" {
+                        if fileURL.lastPathComponent == URL(string: video.url1080pHEVC)?.lastPathComponent {
+                            found = true
+                            break
+                        }
+                    }
+                    if video.url4KHEVC != "" {
+                        if fileURL.lastPathComponent == URL(string: video.url4KHEVC)?.lastPathComponent {
+                            found = true
+                            break
+                        }
+                    }
+                }
+
+                if !found {
+                    debugLog("trashing \(fileURL.lastPathComponent)")
+
+                    NSWorkspace.shared.recycle([fileURL]) { trashedFiles, error in
+                        for file in [fileURL] where trashedFiles[file] == nil {
+                            errorLog("\(file.relativePath) could not be moved to trash \(error!.localizedDescription)")
+                        }
+                    }
+                }
+            }
+        } catch {
+            errorLog("Error while enumerating files \(cacheDirectoryUrl.path): \(error.localizedDescription)")
+        }
+    }
+
 } //swiftlint:disable:this file_length

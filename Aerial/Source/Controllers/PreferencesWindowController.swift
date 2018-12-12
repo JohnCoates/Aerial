@@ -183,7 +183,10 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var lastCheckedVideosLabel: NSTextField!
     @IBOutlet var checkNowButton: NSButton!
     @IBOutlet var videoMenu: NSMenu!
+    @IBOutlet var videoVersionsLabel: NSTextField!
 
+    @IBOutlet var moveOldVideosButton: NSButton!
+    @IBOutlet var trashOldVideosButton: NSButton!
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?
@@ -1076,7 +1079,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBAction func checkNowButtonClick(_ sender: NSButton) {
         checkNowButton.isEnabled = false
-        // TODO
+        ManifestLoader.instance.reloadFiles()
     }
 
     // MARK: - Time panel
@@ -1380,6 +1383,35 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         showLogBottomClick.isHidden = false
     }
 
+    @IBAction func moveOldVideosClick(_ sender: Any) {
+        ManifestLoader.instance.moveOldVideos()
+
+        let (description, total) = ManifestLoader.instance.getOldFilesEstimation()
+        videoVersionsLabel.stringValue = description
+        if total > 0 {
+            moveOldVideosButton.isEnabled = true
+            trashOldVideosButton.isEnabled = true
+        } else {
+            moveOldVideosButton.isEnabled = false
+            trashOldVideosButton.isEnabled = false
+        }
+
+    }
+
+    @IBAction func trashOldVideosClick(_ sender: Any) {
+        ManifestLoader.instance.trashOldVideos()
+
+        let (description, total) = ManifestLoader.instance.getOldFilesEstimation()
+        videoVersionsLabel.stringValue = description
+        if total > 0 {
+            moveOldVideosButton.isEnabled = true
+            trashOldVideosButton.isEnabled = true
+        } else {
+            moveOldVideosButton.isEnabled = false
+            trashOldVideosButton.isEnabled = false
+        }
+
+    }
     // MARK: - Menu
     @IBAction func outlineViewSettingsClick(_ button: NSButton) {
         let menu = NSMenu()
@@ -1532,7 +1564,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         ManifestLoader.instance.addCallback { manifestVideos in
             self.loaded(manifestVideos: manifestVideos)
-       }
+        }
     }
 
     func reloadJson() {
@@ -1569,6 +1601,15 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         DispatchQueue.main.async {
             self.outlineView.reloadData()
             self.outlineView.expandItem(nil, expandChildren: true)
+        }
+        let (description, total) = ManifestLoader.instance.getOldFilesEstimation()
+        videoVersionsLabel.stringValue = description
+        if total > 0 {
+            moveOldVideosButton.isEnabled = true
+            trashOldVideosButton.isEnabled = true
+        } else {
+            moveOldVideosButton.isEnabled = false
+            trashOldVideosButton.isEnabled = false
         }
     }
 

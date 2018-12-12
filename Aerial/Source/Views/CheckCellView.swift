@@ -56,7 +56,6 @@ final class CheckCellView: NSTableCellView {
         if #available(OSX 10.12.2, *) {
             queuedImage.image = NSImage(named: NSImage.touchBarDownloadTemplateName)
         }
-
         if video!.isAvailableOffline {
             status = .downloaded
             addButton.isHidden = true
