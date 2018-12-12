@@ -36,7 +36,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
     **Important**: If you haven't quit System Preferences before installation and were upgrading from a previous version, we strongly recommend you quit the application after installation, then reopen it, as updated Swift screensavers aren't loaded correctly in an active System Preferences session.
 
-### Brew Cask Support - (Updated for 1.4.5)
+### Brew Cask Support - (Will be updated soon to 1.4.6)
 
 If you're looking to install Aerial across many systems, remotely, or simply from Terminal we recommend [Brew Cask](https://caskroom.github.io). Prefer this method if you're looking for auto-updates.
 
