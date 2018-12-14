@@ -13,7 +13,7 @@ enum Manifests: String {
     case tvOS10 = "tvos10.json", tvOS11 = "tvos11.json", tvOS12 = "entries.json"
 }
 
-let spaceVideos = [
+private let spaceVideos = [
     "A837FA8C-C643-4705-AE92-074EFDD067F7",
     "2F72BC1E-3D76-456C-81EB-842EBA488C27",
     "A2BE2E4A-AD4B-428A-9C41-BDAE1E78E816",
@@ -35,7 +35,7 @@ let spaceVideos = [
     "B1B5DDC5-73C8-4920-8133-BACCE38A08DE",
 ]
 
-let timeInformation = [
+private let timeInformation = [
     "A837FA8C-C643-4705-AE92-074EFDD067F7": "night",    // Africa Night
     "2F72BC1E-3D76-456C-81EB-842EBA488C27": "day",      // Africa and the Middle East
     "A2BE2E4A-AD4B-428A-9C41-BDAE1E78E816": "night",    // California to Vegas (v7)
@@ -65,9 +65,16 @@ let timeInformation = [
     "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": "night",    // Hong Kong Victoria Harbour
     "3E94AE98-EAF2-4B09-96E3-452F46BC114E": "night",    // Bay Bridge
     "29BDF297-EB43-403A-8719-A78DA11A2948": "night",    // Fisherman's Wharf
+    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": "night",    // Pu'u O 'Umi Night
+    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": "night",    // Kohala Coastline
+    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": "night",    // River Thames near sunset
+    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": "night",    // River Thames at dusk
+    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": "night",    // Downtown (LA)
+    "640DFB00-FBB9-45DA-9444-9F663859F4BC": "night",    // Lower Manhattan
+    "44166C39-8566-4ECA-BD16-43159429B52F": "night",    // Seventh Avenue
 ]
 
-class AerialVideo: CustomStringConvertible, Equatable {
+final class AerialVideo: CustomStringConvertible, Equatable {
     static func ==(lhs: AerialVideo, rhs: AerialVideo) -> Bool {
         return lhs.id == rhs.id && lhs.url1080pHEVC == rhs.url1080pHEVC
     }
@@ -102,33 +109,6 @@ class AerialVideo: CustomStringConvertible, Equatable {
         }
 
         return getClosestAvailable(wanted: preferences.videoFormat!)
-/*        // We need to return the closest available format, not pretty
-        if preferences.videoFormat == Preferences.VideoFormat.v4KHEVC.rawValue {
-            if url4KHEVC != "" {
-                return URL(string: self.url4KHEVC)!
-            } else if url1080pHEVC != "" {
-                return URL(string: self.url1080pHEVC)!
-            } else {
-                return URL(string: self.url1080pH264)!
-            }
-        } else if preferences.videoFormat == Preferences.VideoFormat.v1080pHEVC.rawValue {
-            if url1080pHEVC != "" {
-                return URL(string: self.url1080pHEVC)!
-            } else if url1080pH264 != "" {
-                return URL(string: self.url1080pH264)!
-            } else {
-                return URL(string: self.url4KHEVC)!
-            }
-        } else {
-            if url1080pH264 != "" {
-                return URL(string: self.url1080pH264)!
-            } else if url1080pHEVC != "" {
-                // With the latest versions, we should always have a H.264 fallback so this is just for future proofing
-                return URL(string: self.url1080pHEVC)!
-            } else {
-                return URL(string: self.url4KHEVC)!
-            }
-        }*/
     }
 
     func getClosestAvailable(wanted: Int) -> URL {
@@ -183,7 +163,12 @@ class AerialVideo: CustomStringConvertible, Equatable {
                 self.secondaryName = name
             }
         } else {
-            self.name = name
+            // We align to the new jsons...
+            if name == "New York City" {
+                self.name = "New York"
+            } else {
+                self.name = name
+            }
             self.secondaryName = secondaryName      // We may have a secondary name from our merges too now !
         }
 

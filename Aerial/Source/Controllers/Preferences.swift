@@ -10,7 +10,7 @@ import Foundation
 import ScreenSaver
 
 // swiftlint:disable:next type_body_length
-class Preferences {
+final class Preferences {
 
     // MARK: - Types
 

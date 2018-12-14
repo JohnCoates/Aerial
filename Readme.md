@@ -27,16 +27,16 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 ### Manual Installation
 *Rather install from Terminal or have auto-updates? Look at the Brew Cask section below!*
 
-1. **Close System Preferences**
-2. [Click here to Download](https://github.com/JohnCoates/Aerial/releases/download/v1.4.5/Aerial.saver.zip) (Version 1.4.5, November 3, 2018, see [changes here](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.5)). (**If you are a new user**, Apple has just added some new videos and made some changes that can confuse Aerial 1.4.5. Because of this, you may see duplicates in the user interface with version 1.4.5. We suggest you give [1.4.6beta2 a try instead](https://github.com/JohnCoates/Aerial/releases/download/v1.4.6beta2/Aerial.saver.zip), this version will properly handle the duplicate issue. You can find more information on changes on [this issue](https://github.com/JohnCoates/Aerial/issues/630).)
+1. Quit **System Preferences**.
+2. [Download the latest release of Aerial.saver.zip](https://github.com/JohnCoates/Aerial/releases/latest). (Version 1.4.6, December 12th 2018)
 3. Unzip the downloaded file (if you use Safari, it should already be done for you).
-4. Open **Aerial.saver** (double click), it will open System Preferences and ask you if you want to install for all users or for your user only. 
+4. Double-click **Aerial.saver**; it will open in **System Preferences > Desktop & Screen Saver** and ask you if you want to install for all users or for your user only.
 
-If you see an error message saying "This app is damaged and can't be opened, you should move it to the trash", we suggest that **you download the file with Safari**, to prevent macOS Gatekeeper from throwing that error. Note that some outdated unzip software may cause that issue too. 
+    If you see an error message saying "This app is damaged and can't be opened, you should move it to the trash", we suggest that **you download the file with Safari**, to prevent macOS Gatekeeper from throwing that error. Note that some outdated unzip software may cause that issue too.
 
-**Important**: If you haven't closed System Preferences before installation and were upgrading from a previous version, we strongly recommend you close System Preferences after the installation and reopen it, as Swift screensavers aren't loaded correctly otherwise when updated. 
+    **Important**: If you haven't quit System Preferences before installation and were upgrading from a previous version, we strongly recommend you quit the application after installation, then reopen it, as updated Swift screensavers aren't loaded correctly in an active System Preferences session.
 
-### Brew Cask Support - (Updated for 1.4.5)
+### Brew Cask Support - (Updated to 1.4.6)
 
 If you're looking to install Aerial across many systems, remotely, or simply from Terminal we recommend [Brew Cask](https://caskroom.github.io). Prefer this method if you're looking for auto-updates.
 
@@ -61,12 +61,22 @@ There are three options to uninstall Aerial from your Mac.
 
 You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aerial`. This is where Aerial stores the cached copies of the Aerial videos.  The last thing, you may want to delete the preferences `plist`. The file is `/Users/YOURUSERNAME/Library/Preferences/ByHost/com.JohnCoates.Aerial.{UUID}.plist`. 
 
-## New features 
+## New features in 1.4.6
+
+* **25 extra videos now available in 4K:** Following the content updates from October 30th and December 5th, Aerial now includes 70 videos, 60 of which are also available in 4K. Aerial will periodically check for new videos, you can disable this feature in the Cache tab. 
+* **Show videos in Quicktime:** You can now right click a video to open it in Quicktime. 
+* **Remove video duplicates:** Aerial can now cleanup your old videos (They are periodically updated to fix colors, provide longer versions of previously existing videos, or upgraded to 4K). Go to the Advanced Tab and either move the files away or send them to the trash to reclaim free space.  
+
+![capture d ecran 2018-12-13 a 15 06 49](https://user-images.githubusercontent.com/37544189/49943901-60394080-fee9-11e8-93b0-3cc68087b70e.png)
+
+* **More battery controls:** Using Aerial on a Macbook ? You can now specify a different video format on battery mode if you wish, or simply video playback using the Power Saving mode (Aerial will show a blank screen and reduce screen brightness instead of showing videos).
+
+## Features
 
 ![screen shot 2018-10-29 at 13 21 05](https://user-images.githubusercontent.com/37544189/47649972-1f76a980-db7f-11e8-910b-1d5d50931ae2.png)
 
 * **Every Aerial video:** From the very first Aerials in San Francisco to the new space videos shot from the ISS! Now with better titles too so you can find your favorite videos faster.
-* **4K HEVC:** With the launch of Apple TV 4K, many videos are now available in this format. Aerial will show you the best format available based on your preferences.
+* **4K HEVC:** With the launch of Apple TV 4K, many videos are now available in this format (With version 1.4.6, 60 of the 70 videos are available in 4K!). Aerial will show you the best format available, based on your preferences.
 
 ![screen shot 2018-10-29 at 13 24 36](https://user-images.githubusercontent.com/37544189/47649973-1f76a980-db7f-11e8-8aef-301307d48fa2.png)
 

@@ -13,7 +13,7 @@ enum ErrorLevel: Int {
     case info, debug, warning, error
 }
 
-class LogMessage {
+final class LogMessage {
     let date: Date
     let level: ErrorLevel
     let message: String
@@ -29,7 +29,7 @@ class LogMessage {
 
 typealias LoggerCallback = (ErrorLevel) -> Void
 
-class Logger {
+final class Logger {
     static let sharedInstance = Logger()
 
     var callbacks = [LoggerCallback]()
@@ -72,35 +72,39 @@ func Log(level: ErrorLevel, message: String) {
         logger.callBack(level: level)
     }
 
-    // We may log to disk
+    // We may log to disk, asyncly
     if preferences.logToDisk {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .none
-        dateFormatter.timeStyle = .medium
-        let string = dateFormatter.string(from: Date()) + " : " + message + "\n"
-        //let string = message + "\n"
-        if let cacheDirectory = VideoCache.cacheDirectory {
-            var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
-            cacheFileUrl.appendPathComponent("AerialLog.txt")
+        DispatchQueue.main.async {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .none
+            dateFormatter.timeStyle = .medium
+            let string = dateFormatter.string(from: Date()) + " : " + message + "\n"
+            //let string = message + "\n"
+            if let cacheDirectory = VideoCache.cacheDirectory {
+                var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
+                cacheFileUrl.appendPathComponent("AerialLog.txt")
 
-            let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)!
-            //let data = message.data(using: String.Encoding.utf8, allowLossyConversion: false)!
+                let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)!
+                //let data = message.data(using: String.Encoding.utf8, allowLossyConversion: false)!
 
-            if FileManager.default.fileExists(atPath: cacheFileUrl.path) {
-                do {
-                    let fileHandle = try FileHandle(forWritingTo: cacheFileUrl)
-                    fileHandle.seekToEndOfFile()
-                    fileHandle.write(data)
-                    fileHandle.closeFile()
-                } catch {
-                    print("Can't open handle")
+                if FileManager.default.fileExists(atPath: cacheFileUrl.path) {
+                    do {
+                        let fileHandle = try FileHandle(forWritingTo: cacheFileUrl)
+                        fileHandle.seekToEndOfFile()
+                        fileHandle.write(data)
+                        fileHandle.closeFile()
+                    } catch {
+                        print("Can't open handle")
+                    }
+                } else {
+                    do {
+                        try data.write(to: cacheFileUrl, options: .atomic)
+                    } catch {
+                        print("Can't write to file")
+                    }
                 }
             } else {
-                do {
-                    try data.write(to: cacheFileUrl, options: .atomic)
-                } catch {
-                    print("Can't write to file")
-                }
+                NSLog("AerialError: No cache directory, this is super bad")
             }
         }
     }

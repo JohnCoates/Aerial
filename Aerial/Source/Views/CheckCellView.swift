@@ -11,7 +11,8 @@ import Cocoa
 enum VideoStatus {
     case unknown, notAvailable, queued, downloading, downloaded
 }
-class CheckCellView: NSTableCellView {
+
+final class CheckCellView: NSTableCellView {
 
     @IBOutlet var checkButton: NSButton!
     @IBOutlet var addButton: NSButton!
@@ -55,7 +56,6 @@ class CheckCellView: NSTableCellView {
         if #available(OSX 10.12.2, *) {
             queuedImage.image = NSImage(named: NSImage.touchBarDownloadTemplateName)
         }
-
         if video!.isAvailableOffline {
             status = .downloaded
             addButton.isHidden = true
@@ -87,7 +87,6 @@ class CheckCellView: NSTableCellView {
             queuedImage.isHidden = true
             status = .downloading
         }
-
         progressIndicator.doubleValue = Double(progress)
     }
 
@@ -134,7 +133,7 @@ class CheckCellView: NSTableCellView {
 
 }
 
-class VerticallyAlignedTextFieldCell: NSTextFieldCell {
+final class VerticallyAlignedTextFieldCell: NSTextFieldCell {
     override func drawingRect(forBounds rect: NSRect) -> NSRect {
         let newRect = NSRect(x: 0, y: (rect.size.height - 20) / 2, width: rect.size.width, height: 20)
         return super.drawingRect(forBounds: newRect)

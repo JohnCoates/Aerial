@@ -21,7 +21,7 @@ func cachedOrCachingAsset(_ URL: Foundation.URL) -> AVURLAsset {
     return asset
 }
 
-class AssetLoaderDelegate: NSObject, AVAssetResourceLoaderDelegate, VideoLoaderDelegate {
+final class AssetLoaderDelegate: NSObject, AVAssetResourceLoaderDelegate, VideoLoaderDelegate {
 
     let URL: Foundation.URL
     var videoLoaders: [VideoLoader] = []
