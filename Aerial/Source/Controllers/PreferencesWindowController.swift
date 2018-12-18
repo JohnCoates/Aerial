@@ -12,6 +12,7 @@ import AVFoundation
 import ScreenSaver
 import VideoToolbox
 import CoreLocation
+import Sparkle
 
 final class TimeOfDay {
     let title: String
@@ -1398,6 +1399,11 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     }
 
+    @IBAction func checkForUpdatesButton(_ sender: Any) {
+        debugLog("check for updates")
+        let supd = SUUpdater.init(for: Bundle(for: PreferencesWindowController.self))
+        supd?.checkForUpdates(self)
+    }
     @IBAction func trashOldVideosClick(_ sender: Any) {
         ManifestLoader.instance.trashOldVideos()
 

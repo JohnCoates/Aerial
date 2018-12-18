@@ -10,6 +10,7 @@ import Foundation
 import ScreenSaver
 import AVFoundation
 import AVKit
+import Sparkle
 
 @objc(AerialView)
 // swiftlint:disable:next type_body_length
@@ -177,6 +178,9 @@ final class AerialView: ScreenSaverView {
 
     // swiftlint:disable:next cyclomatic_complexity
     func setup() {
+        // Initialize Sparkle updater
+        _ = SUUpdater.init(for: Bundle(for: AerialView.self))
+
         debugLog("\(self.description) AerialView setup init")
         let preferences = Preferences.sharedInstance
         let timeManagement = TimeManagement.sharedInstance

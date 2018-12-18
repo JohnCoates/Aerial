@@ -15,11 +15,11 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4.6beta7</string>
+	<string>1.4.6test1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.4.6beta7</string>
+	<string>1.4.6test1</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSMinimumSystemVersion</key>
@@ -35,5 +35,9 @@
 	<string>Aerial uses location services to calculate Sunset and Sunrise times from your position</string>
 	<key>NSPrincipalClass</key>
 	<string>AerialView</string>
+	<key>SUFeedURL</key>
+	<string>https://raw.githubusercontent.com/JohnCoates/Aerial/master/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>fbiQGEFq55xl4bjwj2/SpIO4JMsKmEyhHEWlMMueyDY=</string>
 </dict>
 </plist>
