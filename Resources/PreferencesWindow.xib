@@ -1591,7 +1591,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" id="Fme-fD-NSb">
                                                         <font key="font" metaFont="system"/>
-                                                        <string key="title">Apple periodically updates it's JSON, to either add new videos, or add new versions of existing videos. This will result, over time, as duplicate videos on your disk. You can use the settings below to put aside the old versions of videos or reclaim disk space.
+                                                        <string key="title">Apple periodically updates its JSON, to either add new videos, or add new versions of existing videos. This will result, over time, in duplicate videos on your disk. You can use the settings below to put aside the old versions of videos or reclaim disk space.
  
 
  </string>

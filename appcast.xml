@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="yes"?><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+<channel>
+<title>Aerial</title>
+<item>
+<title>1.4.7test1</title>
+<pubDate>jeu., 13 déc. 2018 20:37:29 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/glouel/Aerial/releases/download/v1.4.7test1/Aerial.saver.zip" sparkle:version="1.4.7test1" sparkle:shortVersionString="1.4.7test1" sparkle:edSignature="Ek6ZheVltTMz82xlinhdsUXcKUHMtTB496Ugn45qy5WXymoQpyIIWxwvZzONsFy60llsu1hA0L2kMtUi/9hsBg==" length="6054328" type="application/octet-stream"/>
+</item>
+</channel></rss>

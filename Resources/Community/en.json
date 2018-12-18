@@ -138,30 +138,38 @@
             "id" : "58754319-8709-4AB0-8674-B34F04E7FFE2",
             "name" : "River Thames",
             "pointsOfInterest" : {
-                "0" : "Passing the Gherkin in the City of London, on the right",
-                "15" : "Approaching Tower Bridge on the River Thames, with City Hall behind and the Tower of London to the right",
-                "40" : "Approaching HMS Belfast in the River Thames, passing the Walkie-Talkie on the right",
-                "75" : "Traveling west up the River Thames, with The Shard on the left and Saint Paul’s Cathedral on the right",
-                "95" : "Passing over Southwark Cathedral, with Saint Paul’s Cathedral on the right",
-                "130" : "Passing Shakespeare’s Globe in Southwark (right foreground)",
-                "195" : "Passing Waterloo Station on the left, with the Palace of Westminster (Houses of Parliament) across the Thames behind",
-                "210" : "Heading towards Westminster over the River Thames"
+                "0" : "Approaching Tower Bridge on the River Thames in London",
+                "40" : "Passing the Gherkin in the City of London, on the right",
+                "70" : "Passing over Tower Bridge on the River Thames, with City Hall behind and the Tower of London to the right",
+                "85" : "Approaching HMS Belfast in the River Thames, passing the Walkie-Talkie on the right",
+                "115" : "Traveling west up the River Thames, with The Shard on the left and Saint Paul’s Cathedral on the right",
+                "135" : "Passing over Southwark Cathedral, with Saint Paul’s Cathedral on the right",
+                "175" : "Passing Shakespeare’s Globe in Southwark (right foreground)",
+                "230" : "Passing Waterloo Station on the left, with the Palace of Westminster (Houses of Parliament) across the Thames behind",
+                "260" : "Passing BFI IMAX in the left foreground, with the London Eye behind",
+                "280" : "Heading towards Westminster over the River Thames",
+                "300" : "Approaching Charing Cross Station in the right foreground",
+                "312" : "Approaching Horse Guards Parade and Saint James’s Park in the left mid-ground",
+                "324" : "Passing Saint Martin-in-the-Fields on the right, with Admiralty Arch, Nelson’s Column, and Trafalgar Square to its left"
             }
         },
         {
             "id" : "A5AAFF5D-8887-42BB-8AFD-867EF557ED85",
             "name" :"Buckingham Palace",
             "pointsOfInterest" : {
-                "0" : "Flying over Buckingham Palace and the Victoria Memorial, London",
-                "25" : "Passing Wellington Barracks on the right, following Birdcage Walk along Saint James’s Park",
-                "65" : "Passing over the Foreign & Commonwealth Office in Whitehall, with Horse Guards Parade on the left and Her Majesty’s Treasury on the right",
-                "75" : "Passing over the Cenotaph, with the Ministry of Defence on the left and Big Ben and the Palace of Westminster (Houses of Parliament) on the right",
-                "95" : "Crossing the River Thames, flying over the London Eye",
-                "130" : "Passing over Waterloo Station in South London",
-                "242" : "Passing Southwark Cathedral on the left",
-                "255" : "Passing The Shard on the right",
-                "275" : "Passing the cruiser HMS Belfast in the River Thames",
-                "300" : "Crossing the River Thames at Tower Bridge, with City Hall on the right and the Tower of London on the left"
+                "0" : "Passing Wellington Arch in London on the left",
+                "12" : "Flying over the Buckingham Palace Gardens, with Green Park on the left",
+                "24" : "Flying over Buckingham Palace in London",
+                "40" : "Flying over the Victoria Memorial, passing Wellington Barracks on the right",
+                "55" : "Following Birdcage Walk along Saint James’s Park",
+                "90" : "Passing over the Foreign & Commonwealth Office in Whitehall, with Horse Guards Parade on the left and Her Majesty’s Treasury on the right",
+                "102" : "Passing over the Cenotaph, with the Ministry of Defence on the left and Big Ben and the Palace of Westminster (Houses of Parliament) on the right",
+                "125" : "Crossing the River Thames, flying over the London Eye",
+                "160" : "Passing over Waterloo Station in South London, with BFI IMAX on the left",
+                "270" : "Passing Southwark Cathedral on the left",
+                "285" : "Passing The Shard on the right",
+                "305" : "Passing the cruiser HMS Belfast in the River Thames",
+                "330" : "Crossing the River Thames at Tower Bridge, with City Hall on the right and the Tower of London on the left"
             }
         },
 
@@ -175,7 +183,8 @@
                 "60" : "Approaching The Shard",
                 "92" : "Flying west over Southwark towards Lambeth in South London",
                 "200" : "Passing Lambeth Palace on the left and Waterloo Station on the right",
-                "225" : "Crossing the River Thames towards the Palace of Westminster (Houses of Parliament)"
+                "245" : "Crossing the River Thames towards the Palace of Westminster (Houses of Parliament)",
+                "265" : "Passing the Palace of Westminster (Houses of Parliament), with Westminster Abbey behind"
             }
         },
         {
@@ -189,8 +198,8 @@
                 "110" : "Passing Saint Paul’s Cathedral on the right",
                 "130" : "Passing Shakespeare’s Globe in the left foreground",
                 "210" : "Continuing up the River Thames towards Westminster",
-                "310" : "Passing the London Eye on the River Thames",
-                "325" : "Passing Big Ben and the Houses of Parliament, with Westminster Abbey on the right"
+                "300" : "Passing the London Eye on the River Thames",
+                "315" : "Approaching Big Ben and the Houses of Parliament, with Westminster Abbey to the right"
             }
         },        
 
@@ -236,19 +245,19 @@
             "name" : "Downtown",
             "pointsOfInterest" : {
                 "0" : "Approaching Downtown Los Angeles, with the MTA Building (in yellow) and Union Station (in pink) in the left mid-ground",
-                "60": "Passing the Cathedral of Our Lady of the Angels (in the center)",
-                "80": "Passing the Los Angeles County Music Center (in the center)",
-                "95": "Crossing the Hollywood Freeway, traveling south through Downtown along the Harbor Freeway",
-                "140": "Passing Disney Hall (in the center)",
-                "155": "Passing City Hall (in pale green, in the left mid-ground)",
-                "215": "Passing the Library Tower (in the center)",
-                "235": "Passing the Bonaventure Hotel (in the center)",
-                "265": "The Los Angeles Central Library, brightly lit, appears from behind the Bonaventure Hotel",
-                "310": "Passing the Wilshire Grand Center (under construction)",
-                "400": "Passing L.A. Live",
-                "435": "Passing the Ritz-Carlton Hotel and Staples Center",
-                "465": "Passing the Los Angeles Convention Center",
-                "520": "Approaching the Santa Monica Freeway"
+                "35": "Passing the Cathedral of Our Lady of the Angels (in the center)",
+                "55": "Passing the Los Angeles County Music Center (in the center)",
+                "65": "Crossing the Hollywood Freeway, traveling south through Downtown along the Harbor Freeway",
+                "105": "Passing the Walt Disney Concert Hall (in the center)",
+                "120": "Passing City Hall (in pale blue, in the left mid-ground)",
+                "180": "Passing the Library Tower (in the center)",
+                "200": "Passing the Bonaventure Hotel (in the center)",
+                "230": "The Los Angeles Central Library, brightly lit, appears from behind the Bonaventure Hotel",
+                "275": "Passing the Wilshire Grand Center (under construction)",
+                "365": "Passing L.A. Live",
+                "395": "Passing the Ritz-Carlton Hotel and Staples Center",
+                "425": "Passing the Los Angeles Convention Center",
+                "495": "Approaching the Santa Monica Freeway"
             }
         },
 
