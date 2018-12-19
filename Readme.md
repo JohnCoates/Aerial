@@ -102,7 +102,7 @@ Aerial is written in Swift, which requires OS X Mavericks (10.9) or above.
 ## Community
 - **Found a bug?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Try to be as specific as possible.
 - **Have a feature request?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Tell us why this feature would be useful, and why you and others would want it.
-- Curious about the videos and on a slow connection? Check [this guide](https://paper.dropbox.com/doc/Aerial-macOS-screen-saver-list--ARLYUjAa1UrRyjC8HPKJv4DBAQ-HvOeL0gNhLpqpIFgmLHaS) by [Hidehiro Nagaoka](https://github.com/hidehiro98).
+- Curious about the videos and on a slow connection? Check [this guide](https://paper.dropbox.com/doc/Aerial-macOS-screen-saver-list-with-version-1.4.6-HvOeL0gNhLpqpIFgmLHaS) by [Hidehiro Nagaoka](https://github.com/hidehiro98).
 
 ## Contribute
 We appreciate all pull requests.
