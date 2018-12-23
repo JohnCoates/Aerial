@@ -30,7 +30,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 1. Quit **System Preferences**.
 2. [Download the latest release of Aerial.saver.zip](https://github.com/JohnCoates/Aerial/releases/latest). (Version 1.4.6, December 12th 2018)
 3. Unzip the downloaded file (if you use Safari, it should already be done for you).
-4. Double-click **Aerial.saver**; it will open in **System Preferences > Desktop & Screen Saver** and ask you if you want to install for all users or for your user only.
+4. Double-click `Aerial.saver`; it will open in `System Preferences` > `Desktop & Screen Saver` and ask you if you want to install for all users or for your user only.
 
     If you see an error message saying "This app is damaged and can't be opened, you should move it to the trash", we suggest that **you download the file with Safari**, to prevent macOS Gatekeeper from throwing that error. Note that some outdated unzip software may cause that issue too.
 
@@ -40,14 +40,18 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 If you're looking to install Aerial across many systems, remotely, or simply from Terminal we recommend [Brew Cask](https://caskroom.github.io). Prefer this method if you're looking for auto-updates.
 
-Simply issue the following Terminal command: `brew cask install aerial`
-
-To upgrade Aerial, run `brew cask upgrade` in Terminal. 
-
+Simply issue the following Terminal command: 
+```
+brew cask install aerial
+```
+To upgrade Aerial, run the following Terminal command:
+```
+brew cask upgrade
+```
 ## Setting Aerial as Your Screen Saver
 
 1. Open `System Preferences` -> `Desktop & Screen Saver` -> `Screen Saver`
-2. Choose Aerial and click on Screen Saver Options to select your settings.
+2. Choose Aerial and click on `Screen Saver` Options to select your settings.
 
 ![screen shot 2018-10-29 at 13 17 23](https://user-images.githubusercontent.com/37544189/47649971-1f76a980-db7f-11e8-97be-d1f90b943c9d.png)
 
@@ -55,17 +59,19 @@ To upgrade Aerial, run `brew cask upgrade` in Terminal.
 
 There are three options to uninstall Aerial from your Mac.
 
-* Right-click on the Aerial screensaver in System Preferences and select `Delete "Aerial"`.
-* Or delete the file(s) directly. macOS can store screen savers in two locations. `/Library/Screen Savers` and `/Users/YOURUSERNAME/Library/Screen Savers`. Check both locations for a file called "Aerial.saver" and delete any copies you find.
-* If you installed Aerial using Brew Cask, then enter the following command in a Terminal window to uninstall: `brew cask uninstall aerial`.
-
+* Right-click on the Aerial screensaver in `System Preferences` and select `Delete "Aerial"`.
+* Or delete the file(s) directly. macOS can store screen savers in two locations. `/Library/Screen Savers` and `/Users/YOURUSERNAME/Library/Screen Savers`. Check both locations for a file called `Aerial.saver` and delete any copies you find.
+* If you installed Aerial using Brew Cask, then enter the following command in a Terminal window to uninstall: 
+```
+brew cask uninstall aerial.
+```
 You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aerial` (or `/Library/Caches/Aerial`). This is where Aerial stores the cached copies of the Aerial videos.  The last thing, you may want to delete the preferences `plist`. The file is `/Users/YOURUSERNAME/Library/Preferences/ByHost/com.JohnCoates.Aerial.{UUID}.plist`. 
 
 ## New features in 1.4.6
 
-* **25 extra videos now available in 4K:** Following the content updates from October 30th and December 5th, Aerial now includes 70 videos, 60 of which are also available in 4K. Aerial will periodically check for new videos, you can disable this feature in the Cache tab. 
+* **25 extra videos now available in 4K:** Following the content updates from October 30th and December 5th, Aerial now includes 70 videos, 60 of which are also available in 4K. Aerial will periodically check for new videos, you can disable this feature in the `Cache` tab. 
 * **Show videos in Quicktime:** You can now right click a video to open it in Quicktime. 
-* **Remove video duplicates:** Aerial can now cleanup your old videos (They are periodically updated to fix colors, provide longer versions of previously existing videos, or upgraded to 4K). Go to the Advanced Tab and either move the files away or send them to the trash to reclaim free space.  
+* **Remove video duplicates:** Aerial can now cleanup your old videos (They are periodically updated to fix colors, provide longer versions of previously existing videos, or upgraded to 4K). Go to the `Advanced` Tab and either move the files away or send them to the trash to reclaim free space.  
 
 ![capture d ecran 2018-12-13 a 15 06 49](https://user-images.githubusercontent.com/37544189/49943901-60394080-fee9-11e8-93b0-3cc68087b70e.png)
 
@@ -119,7 +125,7 @@ You can then download the videos you want from the JSON files.  In the 4K JSONs,
 
 ## About HEVC and hardware decoding
 
-Aerial uses Apple's [AVFoundation framework](https://developer.apple.com/documentation/avfoundation) to play the videos as your screensaver. When available, AVFoundation will use hardware decoding (From your CPU or your graphics card) to minimize the resources needed for video playback. You can find guidelines in the help button next to the `Preferred video format` setting. By default, Aerial uses 1080p H.264 videos which is the most compatible format. Please note that all HEVC videos are encoded with the `Main10` profile, which may not be hardware accelerated by your machine, while some other HEVC videos (Encoded in `Main`  profile) will be.
+Aerial uses Apple's [AVFoundation framework](https://developer.apple.com/documentation/avfoundation) to play the videos as your screensaver. When available, AVFoundation will use hardware decoding (From your CPU or your graphics card) to minimize the resources needed for video playback. You can find guidelines in the help button next to the `Preferred video format` setting. By default, Aerial uses 1080p H.264 videos which is the most compatible format. Please note that all HEVC videos are encoded with the `Main10` profile, which may not be hardware accelerated by your machine, while some other HEVC videos (Encoded in `Main` profile) will be.
 
 While we wish to provide everyone with the best setting for their machine, the GVA framework from Apple doesn't let us distinguish HEVC `Main10` profile acceleration from general HEVC acceleration. Early feedback we gathered also seems to point that on machines with multiple decoding options (Intel QuickSync and AMD UVD), QuickSync will always be preferred (Even if you "force" the discrete GPU use with an external monitor).
 
@@ -134,11 +140,11 @@ You can easily check for yourself what to expect by opening a video in Quicktime
 ## Troubleshooting
 - "Done" button doesn't close Aerial: Please update to latest available version, this is a bug on Mojave with very old versions of Aerial (1.2 and below).
 - Can't type into text fields with macOS High Sierra/Video corruption issue on High Sierra: Please make sure you have at least version 1.4.5. 
-- "This app is damaged and can't be opened, you should move it to the trash" when double-clicking the Aerial.saver file: Please see the installation notes above, this is a GateKeeper issue.
+- "This app is damaged and can't be opened, you should move it to the trash" when double-clicking the `Aerial.saver` file: Please see the installation notes above, this is a GateKeeper issue.
 - Brightness control does not control external displays: Aerial uses the brightness API from macOS to change the brightness of your screens. Depending on your external screens (brand, the way they are connected, etc), macOS may not be able to control their brightness. Please check first if you can control the brightness of your external screen(s) using the brightness keys from your keyboard. If you can't, Aerial won't be able to control their brightness either. If you can control their brightness through those keyboard keys but see an issue with Aerial, please open an issue. 
 - Not seeing extended descriptions: Make sure you have version 1.4.2 or above.
-- Black screen: If you are behind a firewall (Like Little Snitch or Hands Off!) try creating exceptions for Aerial to allow it access to Apple's servers. Be sure the applications `ScreenSaverEngine.app` and `System Preferences.app` are not being blocked access to *.phobos.apple.com, *.phobos.apple.com.edgesuite.net and sylvan.apple.com. If that isn't an option, please look at the Offline mode section. 
-- "You cannot use the Aerial screen saver with this version of macOS." error: Select Aerial, close System Preferences with Aerial still selected, re-open System Preferences and Aerial should now work. This is a known bug with Swift screensavers in macOS/OS X reported to Apple as [rdar://25569037](http://www.openradar.me/25569037).
+- Black screen: If you are behind a firewall (Like Little Snitch or Hands Off!) try creating exceptions for Aerial to allow it access to Apple's servers. Be sure the applications `ScreenSaverEngine.app` and `System Preferences.app` are not being blocked access to `*.phobos.apple.com`, `*.phobos.apple.com.edgesuite.net` and `sylvan.apple.com`. If that isn't an option, please look at the Offline mode section. 
+- "You cannot use the Aerial screen saver with this version of macOS." error: Select Aerial, close `System Preferences` with Aerial still selected, re-open System Preferences and Aerial should now work. This is a known bug with Swift screensavers in macOS/OS X reported to Apple as [rdar://25569037](http://www.openradar.me/25569037).
 - High CPU usage/fan spinning all of a sudden: If you correctly configured the preferred video format according to your Mac and still experience high CPU usage/fan spinning all of a sudden, please look for the cause with `Activity Monitor`, you may see a `com.apple.photos.ImageConversionService` responsible for this CPU load.  This is the iCloud Photos process, you can find more about [what it does here](https://support.apple.com/en-gu/HT204264) and how to pause it.
 - Can't use Aerial as a login screensaver: As far as we know, using 3rd party screensavers before login is no longer possible on modern versions of macOS. More about this [here](https://github.com/JohnCoates/Aerial/issues/571).
 
