@@ -393,7 +393,7 @@ final class TimeManagement: NSObject {
 
     // MARK: - Battery detection
     func isOnBattery() -> Bool {
-        return IOPSGetTimeRemainingEstimate() != -2.0
+        return IOPSGetTimeRemainingEstimate() != kIOPSTimeRemainingUnlimited
     }
 
     func isBatteryLow() -> Bool {
