@@ -46,7 +46,7 @@ brew cask install aerial
 ```
 To upgrade Aerial, run the following Terminal command:
 ```
-brew cask upgrade
+brew cask upgrade aerial
 ```
 ## Setting Aerial as Your Screen Saver
 
