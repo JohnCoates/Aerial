@@ -3,14 +3,6 @@
 <title>Aerial</title>
 <item>
 <title>1.4.7 beta 2</title>
-<description>
-          <![CDATA[
-            <ul>
-              <li>First public test of the Sparkle auto update system.</li>
-              <li>Removed forced logging to desktop introduced by mistake in beta 1.</li>
-            </ul>
-          ]]>
-</description>
 <pubDate>sam., 26 jan. 2019 16:21:29 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
 <enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.7beta2/Aerial.saver.zip" sparkle:version="1.4.7beta2" sparkle:shortVersionString="1.4.7beta2" sparkle:edSignature="f+UadDIpuxmOMm2Vr64Eg6Y8Ckagee4VczXBYfPndJFf6UzZEyiDEMK3JeeoYBeISesXx3iPkIV1A7r54IaKCg==" length="6057325"type="application/octet-stream"/>
