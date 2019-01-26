@@ -39,7 +39,7 @@
             "name" : "Great Wall 3"
         },
         {
-            "id" : "AC9C09DD-1D97-4013-A09F-B0F5259E64C3",
+            "id" : "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9",
             "name" : "Sheikh Zayed Road"
         },
         {
@@ -312,7 +312,7 @@
             }
         },
         {
-            "id" : "b3-3",
+            "id" : "85CE77BF-3413-4A7B-9B0F-732E96229A73",
             "name" : "Embarcadero, Market Street",
             "pointsOfInterest" : {
                 "0" : "Heading southwest over San Francisco Bay to the San Francisco Ferry Building",
@@ -373,6 +373,10 @@
                 "10" : "Passing the Transamerica Pyramid",
                 "50" : "Former Bank of America headquarters blotting out the sun"
             }
+        },
+        {
+            "id" : "4AD99907-9E76-408D-A7FC-8429FF014201",
+            "name" : "Bay and Embarcadero"
         }
     ]
 }

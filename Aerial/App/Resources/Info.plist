@@ -39,11 +39,11 @@
 	<string>Aerial uses location services to calculate Sunset and Sunrise times from your position</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
-	<key>SUPublicEDKey</key>
-	<string>fbiQGEFq55xl4bjwj2/SpIO4JMsKmEyhHEWlMMueyDY=</string>
-	<key>SUFeedURL</key>
-	<string>https://raw.githubusercontent.com/JohnCoates/Aerial/master/appcast.xml</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SUFeedURL</key>
+	<string>https://raw.githubusercontent.com/JohnCoates/Aerial/master/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>fbiQGEFq55xl4bjwj2/SpIO4JMsKmEyhHEWlMMueyDY=</string>
 </dict>
 </plist>

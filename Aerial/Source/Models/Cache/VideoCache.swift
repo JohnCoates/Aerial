@@ -29,9 +29,16 @@ final class VideoCache {
         let preferences = Preferences.sharedInstance
 
         if let customCacheDirectory = preferences.customCacheDirectory {
-            // We may have overriden the cache directory
-            cacheDirectory = customCacheDirectory
-        } else {
+            // We may have overriden the cache directory, but it may no longer exist !
+            if FileManager.default.fileExists(atPath: customCacheDirectory as String) {
+                cacheDirectory = customCacheDirectory
+            } else {
+                // If it doesn't we need to reset that preference
+                preferences.customCacheDirectory = nil
+            }
+        }
+
+        if cacheDirectory == nil {
             let localCachePaths = NSSearchPathForDirectoriesInDomains(.cachesDirectory,
                                                                  .localDomainMask,
                                                                  true)
