@@ -33,6 +33,9 @@ private let spaceVideos = [
     "7719B48A-2005-4011-9280-2F64EEC6FD91",
     "63C042F0-90EF-4A95-B7CC-CC9A64BF8421",
     "B1B5DDC5-73C8-4920-8133-BACCE38A08DE",
+    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182",             // 25/01 Antartica Aurora
+    "737E9E24-49BE-4104-9B72-F352DE1AD2BF",             // North America Aurora
+    "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4",             // Sahara and Italy
 ]
 
 private let timeInformation = [
@@ -52,6 +55,7 @@ private let timeInformation = [
     "009BA758-7060-4479-8EE8-FB9B40C8FB97": "night",    // Korean and Japan Night (v18)
     "78911B7E-3C69-47AD-B635-9C2486F6301D": "day",      // New Zealand (sunrise...)
     "D60B4DDA-69EB-4841-9690-E8BAE7BC4F80": "day",      // Sahara and Italy
+    "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": "day",      // Sahara and Italy
     "7719B48A-2005-4011-9280-2F64EEC6FD91": "day",      // Southern California to Baja
     "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": "day",      // Western Africa to the Alps (sunset...)
     "BAF76353-3475-4855-B7E1-CE96CC9BC3A7": "night",    // Dubai
@@ -72,6 +76,8 @@ private let timeInformation = [
     "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": "night",    // Downtown (LA)
     "640DFB00-FBB9-45DA-9444-9F663859F4BC": "night",    // Lower Manhattan
     "44166C39-8566-4ECA-BD16-43159429B52F": "night",    // Seventh Avenue
+    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": "night",    // Antartica Aurora
+    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": "night",    // North America Aurora
 ]
 
 final class AerialVideo: CustomStringConvertible, Equatable {

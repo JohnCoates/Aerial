@@ -12,6 +12,7 @@ import AVFoundation
 import ScreenSaver
 import VideoToolbox
 import CoreLocation
+import Sparkle
 
 final class TimeOfDay {
     let title: String
@@ -187,6 +188,11 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var moveOldVideosButton: NSButton!
     @IBOutlet var trashOldVideosButton: NSButton!
+
+    @IBOutlet var automaticallyCheckForUpdatesCheckbox: NSButton!
+
+    @IBOutlet var lastCheckedSparkle: NSTextField!
+
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?
@@ -205,6 +211,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     var savedBrightness: Float?
 
     var locationManager: CLLocationManager?
+    var sparkleUpdater: SUUpdater?
 
     public var appMode: Bool = false
 
@@ -240,6 +247,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     // swiftlint:disable:next cyclomatic_complexity
     override func awakeFromNib() {
         super.awakeFromNib()
+        sparkleUpdater = SUUpdater.init(for: Bundle(for: PreferencesWindowController.self))
 
         // tmp
         let tm = TimeManagement.sharedInstance
@@ -534,6 +542,16 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         newVideosModePopup.selectItem(at: preferences.newVideosMode!)
         lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
+
+        // Format date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let sparkleDate = dateFormatter.string(from: sparkleUpdater!.lastUpdateCheckDate)
+        lastCheckedSparkle.stringValue = "Last checked on " + sparkleDate
+        if sparkleUpdater!.automaticallyChecksForUpdates {
+            automaticallyCheckForUpdatesCheckbox.state = .on
+        }
+
         colorizeProjectPageLinks()
 
         if let cacheDirectory = VideoCache.cacheDirectory {
@@ -1308,6 +1326,13 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         debugLog("UI dimInMinutes \(sender.stringValue)")
     }
 
+    // MARK: - Update panel
+    @IBAction func automaticallyCheckForUpdatesChange(_ button: NSButton) {
+        let onState = button.state == .on
+        sparkleUpdater!.automaticallyChecksForUpdates = onState
+        debugLog("UI automaticallyCheckForUpdatesChange: \(onState)")
+    }
+
     // MARK: - Advanced panel
 
     @IBAction func logButtonClick(_ sender: NSButton) {
@@ -1396,6 +1421,11 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
             trashOldVideosButton.isEnabled = false
         }
 
+    }
+
+    @IBAction func checkForUpdatesButton(_ sender: Any) {
+        debugLog("check for updates")
+        sparkleUpdater!.checkForUpdates(self)
     }
 
     @IBAction func trashOldVideosClick(_ sender: Any) {

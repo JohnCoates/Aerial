@@ -37,7 +37,8 @@ class ManifestLoader {
                      "b9-1.mov",            // Dupe of b2-2 (Hawaii, day)
                      "b9-2.mov",            // Dupe of b3-1 (London, night)
                      "comp_LA_A005_C009_v05_t9_6M.mov",     // Low quality version of Los Angeles day 687B36CB-BA5D-4434-BA99-2F2B8B6EC163
-                     "comp_LA_A009_C009_t9_6M_tag0.mov", ]    // Low quality version of Los Angeles night 89B1643B-06DD-4DEC-B1B0-774493B0F7B7
+                     "comp_LA_A009_C009_t9_6M_tag0.mov",
+                     ]    // Low quality version of Los Angeles night 89B1643B-06DD-4DEC-B1B0-774493B0F7B7
 
     // This is used for videos where URLs should be merged with different ID
     // This is used to dedupe old versions of videos
@@ -56,6 +57,8 @@ class ManifestLoader {
         "802866E6-4AAF-4A69-96EA-C582651391F1": "3FFA2A97-7D28-49EA-AA39-5BC9051B2745",     // Marina 2
         "D34A7B19-EC33-4300-B4ED-0C8BC494C035": "3FFA2A97-7D28-49EA-AA39-5BC9051B2745",     // Marina 2
         "02EA5DBE-3A67-4DFA-8528-12901DFD6CC1": "00BA71CD-2C54-415A-A68A-8358E677D750",     // Downtown
+        "AC9C09DD-1D97-4013-A09F-B0F5259E64C3": "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9",     // Sheikh Zayed Road (day)
+        "DFA399FA-620A-4517-94D6-BF78BF8C5E5A": "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9",     // Sheikh Zayed Road (day)
         "D388F00A-5A32-4431-A95C-38BF7FF7268D": "B8F204CE-6024-49AB-85F9-7CA2F6DCD226",     // Nuusuaq Peninsula
         "E4ED0B22-EB81-4D4F-A29E-7E1EA6B6D980": "B8F204CE-6024-49AB-85F9-7CA2F6DCD226",     // Nuusuaq Peninsula
         "30047FDA-3AE3-4E74-9575-3520AD77865B": "2F52E34C-39D4-4AB1-9025-8F7141FAA720",     // Ilulissat Icefjord day
@@ -90,6 +93,7 @@ class ManifestLoader {
         "b1-4": "3E94AE98-EAF2-4B09-96E3-452F46BC114E",                                     // Bay bridge night
         "b9-3": "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51",                                     // Bay and Golden Bridge
         "b7-3": "29BDF297-EB43-403A-8719-A78DA11A2948",                                     // Fisherman's Wharf
+        "b3-3": "85CE77BF-3413-4A7B-9B0F-732E96229A73",                                     // Embarcadero, Market Street
     ]
 
     // Extra info to be merged for a given ID, as of right now only one known video

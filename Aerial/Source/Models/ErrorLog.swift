@@ -73,6 +73,7 @@ func Log(level: ErrorLevel, message: String) {
     }
 
     // We may log to disk, asyncly
+    // Comment the firt if to always log to disk
     if preferences.logToDisk {
         DispatchQueue.main.async {
             let dateFormatter = DateFormatter()
@@ -80,6 +81,10 @@ func Log(level: ErrorLevel, message: String) {
             dateFormatter.timeStyle = .medium
             let string = dateFormatter.string(from: Date()) + " : " + message + "\n"
             //let string = message + "\n"
+
+            // tmpOverride
+            //if var cacheFileUrl = try? FileManager.default.url(for: .desktopDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+
             if let cacheDirectory = VideoCache.cacheDirectory {
                 var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
                 cacheFileUrl.appendPathComponent("AerialLog.txt")
@@ -115,6 +120,7 @@ func debugLog(_ message: String) {
     print("\(message)\n")
     #endif
 
+    // Comment the condition to always log debug mode
     let preferences = Preferences.sharedInstance
     if preferences.debugMode {
         Log(level: .debug, message: message)

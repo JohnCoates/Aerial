@@ -2,9 +2,9 @@
 <channel>
 <title>Aerial</title>
 <item>
-<title>1.4.7test1</title>
-<pubDate>jeu., 13 déc. 2018 20:37:29 +0100</pubDate>
+<title>1.4.7 beta 2</title>
+<pubDate>sam., 26 jan. 2019 16:21:29 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/glouel/Aerial/releases/download/v1.4.7test1/Aerial.saver.zip" sparkle:version="1.4.7test1" sparkle:shortVersionString="1.4.7test1" sparkle:edSignature="Ek6ZheVltTMz82xlinhdsUXcKUHMtTB496Ugn45qy5WXymoQpyIIWxwvZzONsFy60llsu1hA0L2kMtUi/9hsBg==" length="6054328" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.7beta2/Aerial.saver.zip" sparkle:version="1.4.7beta2" sparkle:shortVersionString="1.4.7beta2" sparkle:edSignature="f+UadDIpuxmOMm2Vr64Eg6Y8Ckagee4VczXBYfPndJFf6UzZEyiDEMK3JeeoYBeISesXx3iPkIV1A7r54IaKCg==" length="6057325" type="application/octet-stream"/>
 </item>
 </channel></rss>
