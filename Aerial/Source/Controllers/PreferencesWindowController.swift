@@ -552,7 +552,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         } else {
             lastCheckedSparkle.stringValue = "Never checked for update"
         }
-        
+
         if sparkleUpdater!.automaticallyChecksForUpdates {
             automaticallyCheckForUpdatesCheckbox.state = .on
         }
