@@ -544,10 +544,15 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
 
         // Format date
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let sparkleDate = dateFormatter.string(from: sparkleUpdater!.lastUpdateCheckDate)
-        lastCheckedSparkle.stringValue = "Last checked on " + sparkleDate
+        if sparkleUpdater!.lastUpdateCheckDate != nil {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let sparkleDate = dateFormatter.string(from: sparkleUpdater!.lastUpdateCheckDate)
+            lastCheckedSparkle.stringValue = "Last checked on " + sparkleDate
+        } else {
+            lastCheckedSparkle.stringValue = "Never checked for update"
+        }
+        
         if sparkleUpdater!.automaticallyChecksForUpdates {
             automaticallyCheckForUpdatesCheckbox.state = .on
         }
