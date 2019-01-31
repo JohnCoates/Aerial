@@ -46,6 +46,9 @@
 		03E8731121662AEB002B469B /* AsynchronousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8730E216501ED002B469B /* AsynchronousOperation.swift */; };
 		03E8731321675FE0002B469B /* TimeManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8731221675FE0002B469B /* TimeManagement.swift */; };
 		03E87314216760B7002B469B /* TimeManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8731221675FE0002B469B /* TimeManagement.swift */; };
+		1CE1414C7F559B453E61831F /* Pods_AerialApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0922E026F9FAC43AF7A569 /* Pods_AerialApp.framework */; };
+		42813D561DB8096CC34CB535 /* Pods_Aerial_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7FC91C9058F0A22FBCC762 /* Pods_Aerial_Tests.framework */; };
+		70CA722D8D5D59C803F3B81B /* Pods_Aerial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C010F2542FCE112D8A6E5CA /* Pods_Aerial.framework */; };
 		AA7E2E5E1FC62E8B00E5F320 /* AerialPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */; };
 		FA143CE61BDA3EEF0041A82B /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA143CE51BDA3EEF0041A82B /* AVKit.framework */; };
 		FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */; };
@@ -109,7 +112,16 @@
 		03E8730B2165013C002B469B /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		03E8730E216501ED002B469B /* AsynchronousOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousOperation.swift; sourceTree = "<group>"; };
 		03E8731221675FE0002B469B /* TimeManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManagement.swift; sourceTree = "<group>"; };
+		0C8FC8BFBDB12119C417B384 /* Pods-AerialApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AerialApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AerialApp/Pods-AerialApp.debug.xcconfig"; sourceTree = "<group>"; };
+		16D0EAF0612223CDB1E938A3 /* Pods-Aerial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aerial.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aerial/Pods-Aerial.debug.xcconfig"; sourceTree = "<group>"; };
+		431164E9C62B702ED573DE22 /* Pods-Aerial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aerial.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aerial/Pods-Aerial.release.xcconfig"; sourceTree = "<group>"; };
+		6F861C9769B40A0B8FBDC0E6 /* Pods-Aerial Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aerial Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aerial Tests/Pods-Aerial Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		7E7FC91C9058F0A22FBCC762 /* Pods_Aerial_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aerial_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C010F2542FCE112D8A6E5CA /* Pods_Aerial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aerial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialPlayerItem.swift; sourceTree = "<group>"; };
+		C2789CB51C64430F9CDEABF1 /* Pods-Aerial Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aerial Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aerial Tests/Pods-Aerial Tests.release.xcconfig"; sourceTree = "<group>"; };
+		E783122BE370B662D207D98F /* Pods-AerialApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AerialApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-AerialApp/Pods-AerialApp.release.xcconfig"; sourceTree = "<group>"; };
+		FA0922E026F9FAC43AF7A569 /* Pods_AerialApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AerialApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA143CD61BDA3E880041A82B /* AerialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA143CE51BDA3EEF0041A82B /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = VideoDownload.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -144,6 +156,7 @@
 				03510C772185EF8F008F74F2 /* CoreLocation.framework in Frameworks */,
 				03510C6B21834EB2008F74F2 /* IOKit.framework in Frameworks */,
 				FA143CE61BDA3EEF0041A82B /* AVKit.framework in Frameworks */,
+				1CE1414C7F559B453E61831F /* Pods_AerialApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42813D561DB8096CC34CB535 /* Pods_Aerial_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +174,7 @@
 			files = (
 				03510C732185EF76008F74F2 /* CoreLocation.framework in Frameworks */,
 				03510C6C21834EFF008F74F2 /* IOKit.framework in Frameworks */,
+				70CA722D8D5D59C803F3B81B /* Pods_Aerial.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,12 +210,28 @@
 			path = Downloads;
 			sourceTree = "<group>";
 		};
+		F1B1238D786BBB1C50CB8803 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				16D0EAF0612223CDB1E938A3 /* Pods-Aerial.debug.xcconfig */,
+				431164E9C62B702ED573DE22 /* Pods-Aerial.release.xcconfig */,
+				6F861C9769B40A0B8FBDC0E6 /* Pods-Aerial Tests.debug.xcconfig */,
+				C2789CB51C64430F9CDEABF1 /* Pods-Aerial Tests.release.xcconfig */,
+				0C8FC8BFBDB12119C417B384 /* Pods-AerialApp.debug.xcconfig */,
+				E783122BE370B662D207D98F /* Pods-AerialApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FA2D7AA01BDD849E009EA54C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				03510C722185EF76008F74F2 /* CoreLocation.framework */,
 				03510C6A21834EB2008F74F2 /* IOKit.framework */,
 				FA143CE51BDA3EEF0041A82B /* AVKit.framework */,
+				8C010F2542FCE112D8A6E5CA /* Pods_Aerial.framework */,
+				7E7FC91C9058F0A22FBCC762 /* Pods_Aerial_Tests.framework */,
+				FA0922E026F9FAC43AF7A569 /* Pods_AerialApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -324,6 +355,7 @@
 				FA71996F1D94EC5A00FBC99B /* Tests */,
 				FA2D7AA01BDD849E009EA54C /* Frameworks */,
 				FACAF1A61BD9FC6000E539DC /* Products */,
+				F1B1238D786BBB1C50CB8803 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -355,10 +387,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA143CE01BDA3E880041A82B /* Build configuration list for PBXNativeTarget "AerialApp" */;
 			buildPhases = (
+				B326E4EB5930FD08EEA5D212 /* [CP] Check Pods Manifest.lock */,
 				FA74B8481D94DCE0004FE056 /* Run Script - Swiftlint */,
 				FA143CD21BDA3E880041A82B /* Sources */,
 				FA143CD31BDA3E880041A82B /* Frameworks */,
 				FA143CD41BDA3E880041A82B /* Resources */,
+				6F6791269A5D5F62796AE75A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -373,6 +407,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA7199751D94EC5A00FBC99B /* Build configuration list for PBXNativeTarget "Aerial Tests" */;
 			buildPhases = (
+				3B10443BE2EC7A75E1F031DF /* [CP] Check Pods Manifest.lock */,
 				FA71996A1D94EC5A00FBC99B /* Sources */,
 				FA71996B1D94EC5A00FBC99B /* Frameworks */,
 				FA71996C1D94EC5A00FBC99B /* Resources */,
@@ -391,11 +426,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FACAF1AF1BD9FC6000E539DC /* Build configuration list for PBXNativeTarget "Aerial" */;
 			buildPhases = (
+				910394578D35CCEBAEE0D456 /* [CP] Check Pods Manifest.lock */,
 				7E9B50FB2187D302002895ED /* Run Script - Swiftlint */,
 				FACAF1A01BD9FC6000E539DC /* Sources */,
 				FACAF1A11BD9FC6000E539DC /* Frameworks */,
 				FACAF1A21BD9FC6000E539DC /* Headers */,
 				FACAF1A31BD9FC6000E539DC /* Resources */,
+				030E8CFC21C2CC13008272B9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -418,7 +455,9 @@
 				TargetAttributes = {
 					FA143CD51BDA3E880041A82B = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 3L54M5L5KK;
 						LastSwiftMigration = 1000;
+						ProvisioningStyle = Automatic;
 					};
 					FA71996D1D94EC5A00FBC99B = {
 						CreatedOnToolsVersion = 8.0;
@@ -428,7 +467,9 @@
 					};
 					FACAF1A41BD9FC6000E539DC = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 3L54M5L5KK;
 						LastSwiftMigration = 1000;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -499,6 +540,67 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		030E8CFC21C2CC13008272B9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Aerial/Pods-Aerial-frameworks.sh",
+				"${PODS_ROOT}/Sparkle/Sparkle.framework",
+				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${SRCROOT}/Pods/Target Support Files/Pods-Aerial/Pods-Aerial-frameworks.sh\"\n";
+		};
+		3B10443BE2EC7A75E1F031DF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Aerial Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F6791269A5D5F62796AE75A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AerialApp/Pods-AerialApp-frameworks.sh",
+				"${PODS_ROOT}/Sparkle/Sparkle.framework",
+				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AerialApp/Pods-AerialApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7E9B50FB2187D302002895ED /* Run Script - Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -511,7 +613,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    if [ -z \"$CI\" ]; then\n        make --directory=${SRCROOT} xcode-lint\n    fi\nelse\n    echo \"warning: SwiftLint not installed, install using `brew install swiftlint`\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\n    if [ -z \"$CI\" ]; then\n        make --directory=${SRCROOT} xcode-lint\n    fi\nelse\n    echo \"warning: SwiftLint not installed, install using `brew install swiftlint`\"\nfi\n";
+		};
+		910394578D35CCEBAEE0D456 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Aerial-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B326E4EB5930FD08EEA5D212 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AerialApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 		FA74B8481D94DCE0004FE056 /* Run Script - Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -618,16 +756,20 @@
 /* Begin XCBuildConfiguration section */
 		FA143CE11BDA3E880041A82B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C8FC8BFBDB12119C417B384 /* Pods-AerialApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Aerial/App/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Aerial/Source/Models/Time/Aerial-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -636,16 +778,20 @@
 		};
 		FA143CE21BDA3E880041A82B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E783122BE370B662D207D98F /* Pods-AerialApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Aerial/App/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "Aerial/Source/Models/Time/Aerial-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -654,6 +800,7 @@
 		};
 		FA7199761D94EC5A00FBC99B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F861C9769B40A0B8FBDC0E6 /* Pods-Aerial Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -675,6 +822,7 @@
 		};
 		FA7199771D94EC5A00FBC99B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2789CB51C64430F9CDEABF1 /* Pods-Aerial Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -795,16 +943,22 @@
 		};
 		FACAF1B01BD9FC6000E539DC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16D0EAF0612223CDB1E938A3 /* Pods-Aerial.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Aerial/Source/Models/Time/Aerial-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = saver;
@@ -813,16 +967,22 @@
 		};
 		FACAF1B11BD9FC6000E539DC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 431164E9C62B702ED573DE22 /* Pods-Aerial.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Aerial/Source/Models/Time/Aerial-Bridging-Header.h";
 				WRAPPER_EXTENSION = saver;
 			};
