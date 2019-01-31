@@ -2,9 +2,17 @@
 <channel>
 <title>Aerial</title>
 <item>
-<title>1.4.7 beta 2</title>
-<pubDate>sam., 26 jan. 2019 16:21:29 +0100</pubDate>
+<title>1.4.7 beta 3</title>
+  <description>
+          <![CDATA[
+            <ul>
+              <li>Fix video check button not getting reenabled and message not being updated</li>
+              <li>Fix crashing startup bug with Sparkle never being initialized </li>
+            </ul>
+          ]]>
+    </description>
+<pubDate>lun., 28 jan. 2019 16:45:29 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.7beta2/Aerial.saver.zip" sparkle:version="1.4.7beta2" sparkle:shortVersionString="1.4.7beta2" sparkle:edSignature="f+UadDIpuxmOMm2Vr64Eg6Y8Ckagee4VczXBYfPndJFf6UzZEyiDEMK3JeeoYBeISesXx3iPkIV1A7r54IaKCg==" length="6057325" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.7beta3/Aerial.saver.zip" sparkle:version="1.4.7beta3" sparkle:shortVersionString="1.4.7beta3" sparkle:edSignature="95ggAm2ekU6hk1/Mf7VkenmerXsjxRLyCbLv6IVyx5SKc0r1vfeqhfDW0R3IijKb6u8oQc5CKPwVFXYQAMF/AA==" length="6057856" type="application/octet-stream"/>
 </item>
 </channel></rss>

@@ -544,10 +544,15 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
 
         // Format date
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let sparkleDate = dateFormatter.string(from: sparkleUpdater!.lastUpdateCheckDate)
-        lastCheckedSparkle.stringValue = "Last checked on " + sparkleDate
+        if sparkleUpdater!.lastUpdateCheckDate != nil {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let sparkleDate = dateFormatter.string(from: sparkleUpdater!.lastUpdateCheckDate)
+            lastCheckedSparkle.stringValue = "Last checked on " + sparkleDate
+        } else {
+            lastCheckedSparkle.stringValue = "Never checked for update"
+        }
+
         if sparkleUpdater!.automaticallyChecksForUpdates {
             automaticallyCheckForUpdatesCheckbox.state = .on
         }
@@ -1095,11 +1100,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         preferences.newVideosMode = sender.indexOfSelectedItem
     }
 
-    @IBAction func checkNowButtonClick(_ sender: NSButton) {
-        checkNowButton.isEnabled = false
-        ManifestLoader.instance.reloadFiles()
-    }
-
     // MARK: - Time panel
 
     @IBAction func overrideNightOnDarkModeClick(_ button: NSButton) {
@@ -1217,11 +1217,11 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     func pushCoordinates(_ coordinates: CLLocationCoordinate2D) {
-        latitudeTextField.stringValue = String(coordinates.latitude)
-        longitudeTextField.stringValue = String(coordinates.longitude)
+        latitudeTextField.stringValue = String(format: "%.3f", coordinates.latitude)
+        longitudeTextField.stringValue = String(format: "%.3f", coordinates.longitude)
 
-        preferences.latitude = String(coordinates.latitude)
-        preferences.longitude = String(coordinates.longitude)
+        preferences.latitude = String(format: "%.3f", coordinates.latitude)
+        preferences.longitude = String(format: "%.3f", coordinates.longitude)
         updateLatitudeLongitude()
     }
     // MARK: - Brightness panel
@@ -1333,8 +1333,18 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         debugLog("UI automaticallyCheckForUpdatesChange: \(onState)")
     }
 
-    // MARK: - Advanced panel
+    @IBAction func checkNowButtonClick(_ sender: NSButton) {
+        checkNowButton.isEnabled = false
+        ManifestLoader.instance.addCallback(reloadJSONCallback)
+        ManifestLoader.instance.reloadFiles()
+    }
 
+    func reloadJSONCallback(manifestVideos: [AerialVideo]) {
+        checkNowButton.isEnabled = true
+        lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
+    }
+
+    // MARK: - Advanced panel
     @IBAction func logButtonClick(_ sender: NSButton) {
         logTableView.reloadData()
         if logPanel.isVisible {
@@ -1602,6 +1612,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     func loaded(manifestVideos: [AerialVideo]) {
+        debugLog("Callback after manifest loading")
         var videos = [AerialVideo]()
         var cities = [String: City]()
 
