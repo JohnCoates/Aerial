@@ -179,7 +179,7 @@ final class AerialView: ScreenSaverView {
     // swiftlint:disable:next cyclomatic_complexity
     func setup() {
         // Initialize Sparkle updater
-        _ = SUUpdater.init(for: Bundle(for: AerialView.self))
+        //_ = SUUpdater.init(for: Bundle(for: AerialView.self))
 
         debugLog("\(self.description) AerialView setup init")
         let preferences = Preferences.sharedInstance
