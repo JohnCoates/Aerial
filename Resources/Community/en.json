@@ -316,8 +316,8 @@
             "name" : "Embarcadero, Market Street",
             "pointsOfInterest" : {
                 "0" : "Heading southwest over San Francisco Bay to the San Francisco Ferry Building",
-                "110" : "Approaching the Port of San Francisco Ferry Building and the Embarcadero",
-                "160" : "Heading southwest along Market Street in downtown San Francisco"
+                "150" : "Approaching the Port of San Francisco Ferry Building and the Embarcadero",
+                "210" : "Heading southwest along Market Street in downtown San Francisco"
             }
         },
         {

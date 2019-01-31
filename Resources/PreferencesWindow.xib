@@ -2073,7 +2073,7 @@ You can either enter those manually or try to use Location Services on your Mac 
                         <font key="font" metaFont="smallSystem"/>
                         <string key="title">On Power Saving mode, Aerial will no longer play videos. It will show a black screen instead and lower your screen brightness to the minimum.
 
-You can enable it when on battery, or only when your battery reach 20%.</string>
+You can enable it when on battery, or only when your battery reaches 20%.</string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
