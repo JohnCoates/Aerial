@@ -376,6 +376,62 @@
         {
             "id": "4AD99907-9E76-408D-A7FC-8429FF014201",
             "name": "Bahía de San Francisco y Embarcadero"
+        },
+        {
+            "id": "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182",
+            "name": "Antártida"
+        },
+        {
+            "id": "737E9E24-49BE-4104-9B72-F352DE1AD2BF",
+            "name": "Aurora Boreal Norteamericana"
+        },
+        {
+            "id": "A837FA8C-C643-4705-AE92-074EFDD067F7",
+            "name": "Noche Africana"
+        },
+        {
+            "id": "2F72BC1E-3D76-456C-81EB-842EBA488C27",
+            "name": "Africa y Oriente Medio por la noche."
+        },
+        {
+            "id": "12318CCB-3F78-43B7-A854-EFDCCE5312CD",
+            "name": "De California a Las Vegas"
+        },
+        {
+            "id": "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8",
+            "name": "El Caribe"
+        },
+        {
+            "id": "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589",
+            "name": "El Caribe de dia"
+        },
+        {
+            "id": "7825C73A-658F-48EE-B14C-EC56673094AC",
+            "name": "China"
+        },
+        {
+            "id": "E5DB138A-F04E-4619-B896-DE5CB538C534",
+            "name": "De Italia a Asia"
+        },
+        {
+            "id": "F439B0A7-D18C-4B14-9681-6520E6A74FE9",
+            "name": "Irán y Afganistán"
+        },
+        {
+            "id": "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E",
+            "name": "De Irlanda a Asia"
+        },
+        {
+            "id": "63C042F0-90EF-4A95-B7CC-CC9A64BF8421",
+            "name": "De África Occidental a los Alpes"
+        },
+        {
+            "id": "78911B7E-3C69-47AD-B635-9C2486F6301D",
+            "name": "Nueva Zelanda"
+        },
+        {
+            "id": "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4",
+            "name": "El Sahara e Italia"
         }
     ]
 }
