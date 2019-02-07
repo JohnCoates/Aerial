@@ -1762,7 +1762,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="close:" target="-2" id="nLW-f8-F6Y"/>
+                            <action selector="close:" target="-2" id="WXm-YG-isp"/>
                         </connections>
                     </button>
                 </subviews>
