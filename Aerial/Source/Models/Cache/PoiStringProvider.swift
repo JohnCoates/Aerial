@@ -113,8 +113,8 @@ final class PoiStringProvider {
     func getPoiKeys(video: AerialVideo) -> [String: String] {
         let preferences = Preferences.sharedInstance
         let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
-
         if #available(OSX 10.12, *) {
+            debugLog("locale.languageCode \(locale.languageCode)")
             if preferences.localizeDescriptions && locale.languageCode != communityLanguage {
                 return video.poi
             }
@@ -142,7 +142,7 @@ final class PoiStringProvider {
 
             if cacheUrl.hasDirectoryPath {
                 debugLog("Aerial cache directory contains /locale")
-                var cc = locale.countryCode!.lowercased()
+                var cc = locale.languageCode
                 if !preferences.localizeDescriptions {
                     cc = "en"
                 }
@@ -160,14 +160,17 @@ final class PoiStringProvider {
                 }
             }
             debugLog("Defaulting to bundle")
-            let cc = "en" //locale.countryCode!.lowercased()
-            if preferences.localizeDescriptions {
-                let path = Bundle(for: PoiStringProvider.self).path(forResource: cc, ofType: "json")
-                if path != nil {
-                    let fileManager = FileManager.default
-                    if fileManager.fileExists(atPath: path!) {
-                        communityLanguage = cc
-                        return path!
+            let cc = locale.languageCode
+            // Just in case, cause we had a crash earlier with the fr one for some reason...
+            if cc == "en" || cc == "es" {
+                if preferences.localizeDescriptions {
+                    let path = Bundle(for: PoiStringProvider.self).path(forResource: cc, ofType: "json")
+                    if path != nil {
+                        let fileManager = FileManager.default
+                        if fileManager.fileExists(atPath: path!) {
+                            communityLanguage = cc
+                            return path!
+                        }
                     }
                 }
             }
@@ -197,7 +200,6 @@ final class PoiStringProvider {
                 let id = item["id"] as! String
                 let name = item["name"] as! String
                 let poi = item["pointsOfInterest"] as? [String: String]
-
                 communityStrings.append(CommunityStrings(id: id, name: name, poi: poi ?? [:]))
             }
         } catch {

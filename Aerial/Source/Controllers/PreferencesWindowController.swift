@@ -244,11 +244,13 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     // MARK: - Lifecycle
 
+
     // swiftlint:disable:next cyclomatic_complexity
     override func awakeFromNib() {
         super.awakeFromNib()
         sparkleUpdater = SUUpdater.init(for: Bundle(for: PreferencesWindowController.self))
-
+        //sparkleUpdater?.delegate = self
+        
         // tmp
         let tm = TimeManagement.sharedInstance
         debugLog("isonbattery")
@@ -340,7 +342,11 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         // Grab preferred language as proper string
         let printOutputLocale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
         if let deviceLanguageName: String = printOutputLocale.displayName(forKey: .identifier, value: Locale.preferredLanguages[0]) {
-            currentLocaleLabel.stringValue = "Preferred language: \(deviceLanguageName)"
+            if #available(OSX 10.12, *) {
+                currentLocaleLabel.stringValue = "Preferred language: \(deviceLanguageName) [\(printOutputLocale.languageCode)]"
+            } else {
+                currentLocaleLabel.stringValue = "Preferred language: \(deviceLanguageName)"
+            }
         } else {
             currentLocaleLabel.stringValue = ""
         }
