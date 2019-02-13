@@ -147,7 +147,7 @@ You can easily check for yourself what to expect by opening a video in Quicktime
 - "You cannot use the Aerial screen saver with this version of macOS." error: Select Aerial, close `System Preferences` with Aerial still selected, re-open System Preferences and Aerial should now work. This is a known bug with Swift screensavers in macOS/OS X reported to Apple as [rdar://25569037](http://www.openradar.me/25569037).
 - High CPU usage/fan spinning all of a sudden: If you correctly configured the preferred video format according to your Mac and still experience high CPU usage/fan spinning all of a sudden, please look for the cause with `Activity Monitor`, you may see a `com.apple.photos.ImageConversionService` responsible for this CPU load.  This is the iCloud Photos process, you can find more about [what it does here](https://support.apple.com/en-gu/HT204264) and how to pause it.
 - Can't use Aerial as a login screensaver: As far as we know, using 3rd party screensavers before login is no longer possible on modern versions of macOS. More about this [here](https://github.com/JohnCoates/Aerial/issues/571).
-
+- Change cache location : This option simply changes *the location* of the Cache folder that Aerial uses. It does *not* move your files for you. Please note that this change will only be taken into account the next time Aerial starts (you may need to fully close System Preferences). We strongly recommend you use a path that's always accessible, as Aerial can't work without a Cache directory. In case the path is no longer available (missing USB key, etc), starting with Aerial 1.4.7, it will reset the Cache location to it's default location. 
 
 ## License
 [MIT License](https://raw.githubusercontent.com/JohnCoates/Aerial/master/LICENSE)
