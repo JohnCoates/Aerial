@@ -162,7 +162,8 @@ final class PoiStringProvider {
             debugLog("Defaulting to bundle")
             let cc = locale.languageCode
             // Just in case, cause we had a crash earlier with the fr one for some reason...
-            if cc == "en" || cc == "es" {
+            // This is probably no longer needed
+            if cc == "en" || cc == "es" || cc == "fr" {
                 if preferences.localizeDescriptions {
                     let path = Bundle(for: PoiStringProvider.self).path(forResource: cc, ofType: "json")
                     if path != nil {
