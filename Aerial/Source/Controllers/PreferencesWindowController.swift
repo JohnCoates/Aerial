@@ -244,13 +244,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     // MARK: - Lifecycle
 
-
     // swiftlint:disable:next cyclomatic_complexity
     override func awakeFromNib() {
         super.awakeFromNib()
         sparkleUpdater = SUUpdater.init(for: Bundle(for: PreferencesWindowController.self))
         //sparkleUpdater?.delegate = self
-        
+
         // tmp
         let tm = TimeManagement.sharedInstance
         debugLog("isonbattery")

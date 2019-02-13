@@ -162,7 +162,8 @@ final class PoiStringProvider {
             debugLog("Defaulting to bundle")
             let cc = locale.languageCode
             // Just in case, cause we had a crash earlier with the fr one for some reason...
-            if cc == "en" || cc == "es" {
+            // This is probably no longer needed
+            if cc == "en" || cc == "es" || cc == "fr" {
                 if preferences.localizeDescriptions {
                     let path = Bundle(for: PoiStringProvider.self).path(forResource: cc, ofType: "json")
                     if path != nil {
@@ -195,11 +196,11 @@ final class PoiStringProvider {
                 return
             }
 
-            let assets = batch["assets"] as! [NSDictionary]
-            for item in assets {
-                let id = item["id"] as! String
-                let name = item["name"] as! String
-                let poi = item["pointsOfInterest"] as? [String: String]
+            for item in batch {
+                let id = item.key as! String
+                let name = (item.value as! NSDictionary)["name"] as! String
+                let poi = (item.value as! NSDictionary)["pointsOfInterest"] as? [String: String]
+
                 communityStrings.append(CommunityStrings(id: id, name: name, poi: poi ?? [:]))
             }
         } catch {
