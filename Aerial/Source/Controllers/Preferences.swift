@@ -96,7 +96,7 @@ final class Preferences {
     }
 
     enum MultiMonitorMode: Int {
-        case mainOnly, mirrored, independant
+        case mainOnly, mirrored, independant, secondaryOnly
     }
 
     enum TimeMode: Int {
