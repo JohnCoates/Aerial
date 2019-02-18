@@ -27,3 +27,9 @@ The translation workflow follows a pull mode, meaning that new strings will be d
 2. Once the CLI has been installed you can pull the latest versions of each language with the following command:
    `lokalise --config lokalise.cfg d --type json --dest Resources/Community --unzip_to Resources/Community`
 3. Commit and push the new `*.json` files to the repo.
+
+## Sponsorship
+
+![Lokalise logo](https://user-images.githubusercontent.com/4295/52958944-73f39e00-3395-11e9-9350-79bb7ee43d14.png)
+
+[Lokalise](https://lokalise.co) supports Aerial and provides us with a free plan to make the translation of this project possible. Check it out for your next i18n project!

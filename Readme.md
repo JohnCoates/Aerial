@@ -77,6 +77,16 @@ brew cask uninstall aerial.
 
 You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aerial` (or `/Library/Caches/Aerial`). This is where Aerial stores the cached copies of the Aerial videos. The last thing, you may want to delete the preferences `plist`. The file is `/Users/YOURUSERNAME/Library/Preferences/ByHost/com.JohnCoates.Aerial.{UUID}.plist`.
 
+## Multilanguage support
+
+Aerial features overlay descriptions of the main geographical features displayed in the videos.
+
+![Community Strings example](https://user-images.githubusercontent.com/4295/52958947-75bd6180-3395-11e9-947f-3c77d9f41928.jpg)
+
+Currently these descriptions are available in **English**, **French** and **Spanish**. This is possible thanks to the collaboration and uninterested work of many. To best serve the international community we've defined a translation workflow that allows any person, even with **no technical background** to help translating these descriptions.
+
+If you want to collaborate, please [read the details here](Resources/Community/Readme.md).
+
 ## New features in 1.4.6
 
 - **25 extra videos now available in 4K:** Following the content updates from October 30th and December 5th, Aerial now includes 70 videos, 60 of which are also available in 4K. Aerial will periodically check for new videos, you can disable this feature in the `Cache` tab.
@@ -101,7 +111,7 @@ You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aeria
 
 ![screen shot 2018-10-29 at 13 24 46](https://user-images.githubusercontent.com/37544189/47649974-1f76a980-db7f-11e8-8339-3f0424652b8c.png)
 
-- **Descriptions:** Wondering where an Aerial view was shot? Aerial can now tell you as they play. We even have extended descriptions written by our community of users.
+- **Descriptions:** Wondering where an Aerial view was shot? Aerial can now tell you as they play. We even have extended descriptions written by our community of users. Help us to improve these descriptions by [translating them to your language](Resources/Community/Readme.md).
 
 ![screen shot 2018-10-29 at 13 25 10](https://user-images.githubusercontent.com/37544189/47649975-200f4000-db7f-11e8-9e8b-f75c4a5ebde4.png)
 
@@ -118,12 +128,12 @@ Aerial is written in Swift, which requires OS X Mavericks (10.9) or above.
 ## Community
 
 - **Found a bug?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Try to be as specific as possible.
-- **Have a feature request?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Tell us why this feature would be useful, and why you and others would want it.
-- Curious about the videos and on a slow connection? Check [this guide](https://paper.dropbox.com/doc/Aerial-macOS-screen-saver-list-with-version-1.4.6-HvOeL0gNhLpqpIFgmLHaS) by [Hidehiro Nagaoka](https://github.com/hidehiro98).
+- **Have fixed a bug?** We appreciate all pull requests.
+- **Can you translate the video descriptions?**. Awesome! [Read here for details](Resources/Community/Readme.md) on how to help us.
+- **Have a feature request?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Tell us why it be useful, and why you and others would want it.
+- **Curious about the videos and on a slow connection?** Check [this guide](https://paper.dropbox.com/doc/Aerial-macOS-screen-saver-list-with-version-1.4.6-HvOeL0gNhLpqpIFgmLHaS) by [Hidehiro Nagaoka](https://github.com/hidehiro98).
 
 ## Contribute
-
-We appreciate all pull requests.
 
 ## Offline Mode
 
