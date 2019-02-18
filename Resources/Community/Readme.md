@@ -6,7 +6,7 @@ In the following sections we explain how to collaborate in the internationalizat
 
 ## For translators
 
-1. Contact @glouel or @aitor to get added to the Translators team at Lokalise.
+1. Contact [glouel](/glouel) or [aitor](/aitor) to get added to the Translators team at Lokalise.
 2. Access the translations dashboard at https://lokalise.co/ and translate or update the existing strings to your language.
 3. PROFIT!
 
@@ -16,7 +16,7 @@ The translation workflow follows a pull mode, meaning that new strings will be d
 
 ### Setting up the project
 
-1. Contact @glouel to get added to the Devs team at Lokalise.
+1. Contact [glouel](/glouel) or [aitor](/aitor) to get added to the Translators team at Lokalise.
 2. Use the existing configuration example file to create your local configuration
    `cp lokalise.example.cfg lokalise.cfg`
 3. In the created file update the `Token` string with your token. To get your token visit the section `API Tokens` at https://lokalise.co/profile
@@ -27,3 +27,9 @@ The translation workflow follows a pull mode, meaning that new strings will be d
 2. Once the CLI has been installed you can pull the latest versions of each language with the following command:
    `lokalise --config lokalise.cfg d --type json --dest Resources/Community --unzip_to Resources/Community`
 3. Commit and push the new `*.json` files to the repo.
+
+## Sponsorship
+
+![Lokalise logo](https://user-images.githubusercontent.com/4295/52958944-73f39e00-3395-11e9-9350-79bb7ee43d14.png)
+
+[Lokalise](https://lokalise.co) supports Aerial and provides us with a free plan to make the translation of this project possible. Check it out for your next i18n project!
