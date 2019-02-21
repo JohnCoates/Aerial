@@ -1,0 +1,350 @@
+{
+    "009BA758-7060-4479-8EE8-FB9B40C8FB97": {
+        "name": "Korea i Japonia"
+    },
+    "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
+        "name": "Od Mexico City do Nowego Jorku"
+    },
+    "7719B48A-2005-4011-9280-2F64EEC6FD91": {
+        "name": "Od Kalifornii do Baja"
+    },
+    "B876B645-3955-420E-99DF-60139E451CF3": {
+        "name": "Park Narodowy Wulingyuan 1"
+    },
+    "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C": {
+        "name": "Tarasy ryżowe Longji"
+    },
+    "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
+        "name": "Park Narodowy Wulingyuan 2"
+    },
+    "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
+        "name": "Wielki Mur 1"
+    },
+    "22162A9B-DB90-4517-867C-C676BC3E8E95": {
+        "name": "Wielki Mur 2"
+    },
+    "044AD56C-A107-41B2-90CC-E60CCACFBCF5": {
+        "name": "Wielki Mur 3"
+    },
+    "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
+        "name": "Droga Sheikh Zayed"
+    },
+    "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
+        "name": "Przystań 1"
+    },
+    "00BA71CD-2C54-415A-A68A-8358E677D750": {
+        "name": "Śródmieście"
+    },
+    "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
+        "name": "Przystań 2"
+    },
+    "9680B8EB-CE2A-4395-AF41-402801F4D6A6": {
+        "name": "Zbliżając się do Burj Khalifa"
+    },
+    "2F11E857-4F77-4476-8033-4A1E4610AFCC": {
+        "name": "Droga Sheikh Zayed",
+        "pointsOfInterest": {
+            "0": "Nad drogą Sheikh Zayed w Dubaju, Zjednoczone Emiraty Arabskie"
+        }
+    },
+    "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
+        "name": "Półwysep Nuussuaq"
+    },
+    "2F52E34C-39D4-4AB1-9025-8F7141FAA720": {
+        "name": "Fjord lodowy w llulissat"
+    },
+    "EE01F02D-1413-436C-AB05-410F224A5B7B": {
+        "name": "Fjord lodowy w llulissat"
+    },
+    "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943": {
+        "name": "Dolina Waimanu"
+    },
+    "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7": {
+        "name": "Laupāhoehoe Nui"
+    },
+    "b2-2": {
+        "name": "Dolina Honopū"
+    },
+    "258A6797-CC13-4C3A-AB35-4F25CA3BF474": {
+        "name": "Pu'u O 'Umi"
+    },
+    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": {
+        "name": "Wybrzeże Kohala"
+    },
+    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": {
+        "name": "Pu'u O 'Umi"
+    },
+    "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {
+        "name": "Port Wiktorii 1"
+    },
+    "C8559883-6F3E-4AF2-8960-903710CD47B7": {
+        "name": "Szczyt Wiktorii"
+    },
+    "024891DE-B7F6-4187-BFE0-E6D237702EF0": {
+        "name": "Wan Chai"
+    },
+    "64EA30BD-C4B5-4CDD-86D7-DFE47E9CB9AA": {
+        "name": "Port Wiktorii 2"
+    },
+    "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
+        "name": "Port Wiktorii"
+    },
+    "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8": {
+        "name": "Oaza Liwa 1"
+    },
+    "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
+        "name": "Oaza Liwa 2"
+    },
+    "58754319-8709-4AB0-8674-B34F04E7FFE2": {
+        "name": "Tamiza",
+        "pointsOfInterest": {
+            "0": "Zbliżając się do mostu Tower Bridge na Tamizie w Londynie",
+            "40": "Mijając Gherkin w londyńskim City, po prawej stronie",
+            "70": "Przelot nad mostem Tower Bridge na Tamizie, z Ratuszem i Wieżą Londynu po prawej stronie",
+            "85": "Zbliżając się do krążownika HMS Belfast na Tamizie, mijając po prawej stronie Walkie-Talkie",
+            "115": "Podróżując na zachód w górę Tamizy, z The Shard po lewej stronie i Katedrą Świętego Pawła po prawej",
+            "135": "Mijająć Katedrę Southwark, z Katedry Świętego Pawła po prawej",
+            "175": "W pobliżu Globu Shakespeare'a (pierwszy plan po prawej stronie)",
+            "230": "Mijając stację Waterloo po lewej stronie, z Pałacem Westminster (Izby Parlamentu) po drugiej stronie Tamizy",
+            "260": "Mijając BFI IMAX na lewym pierwszym planie, z London Eye z tyłu",
+            "280": "W kierunku Westminster nad Tamizą",
+            "300": "Zbliżając się do stacji Charing Cross na prawym, pierwszym planie",
+            "312": "W pobliżu Parady Strażników Konnych i Parku Świętego Jakuba po lewej środkowym planie",
+            "324": "Przelot nad Saint Martin-in-the-Fields po prawej stronie, z Łukiem Admirała, Kolumną Nelsona i Placem Trafalgar po lewej stronie"
+        }
+    },
+    "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
+        "name": "Pałac Buckingham",
+        "pointsOfInterest": {
+            "0": "W pobliżu Łuku Wellington w Londynie, po lewej stronie",
+            "12": "Przelot nad Ogrodami Pałacu Buckingham, z Zielonym Parkiem po lewej",
+            "24": "Przelot nad Pałacem Buckingham w Londynie",
+            "40": "Przelot nad Memorialem Wiktorii, mijając po prawej stronie Koszary Wellington",
+            "55": "Wzdłuż Ptasich Klatek w Parku Świętego Jakuba",
+            "90": "Przelot nad Biurem Spraw Zagranicznych i Brytyjskiej Wspólnoty Narodów w Whitehall, z Paradą Straży Konnej po lewej stronie i Skarbem Jej Królewskiej Mości po prawej",
+            "102": "Przelot nad Cenotaf, z Ministerstwem Obrony po lewej stronie i Big Ben oraz Pałacem Westminster (Izby Parlamentu) po prawej",
+            "125": "Przeprawa przez rzekę Tamizę, przelatując nad London Eye",
+            "160": "Nad stacją Waterloo w południowym Londynie, z BFI IMAX po lewej",
+            "270": "W pobliżu Katedry Southwark, po lewej",
+            "285": "Mijając The Shard po prawej stronie",
+            "305": "Nad krążownikiem HMS Belfast na Tamizie",
+            "330": "Przeprawa przez rzekę Tamizę na moście Tower Bridge, z Ratuszem po prawej stronie i Wieżą Londynu po lewej stronie"
+        }
+    },
+    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
+        "name": "Rzeka Tamiza podczas zachodu słońca",
+        "pointsOfInterest": {
+            "0": "W kierunku mostu Tower Bridge na Tamizie, z Wieżą Londynu po prawej stronie",
+            "25": "Przeprawa przez rzekę Tamizę i przelot nad Ratuszem",
+            "35": "Nad krążownikiem HMS Belfast na Tamizie",
+            "60": "Zbliżając się do The Shard",
+            "92": "Lecąc na zachód nad Southwark, w kierunku Lambeth w południowym Londynie",
+            "200": "Pałac Lambeth po lewej stronie i stacja Waterloo po prawej",
+            "245": "Przeprawa przez rzekę Tamizę w kierunku Pałacu Westminsterskiego (Izby Parlamentu)",
+            "265": "W pobliżu Pałacu Westminster (Izby Parlamentu), z opactwem Westminster w tle"
+        }
+    },
+    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
+        "name": "Tamiza o zmierzchu",
+        "pointsOfInterest": {
+            "0": "Kierując się wzdłuż Tamizy w stronę mostu Tower Bridge, z Wieżą Londynu po prawej",
+            "28": "Podróżując na zachód wzdłuż Tamizy, mijając Ratusz po lewej stronie",
+            "40": "Nad krążownikiem HMS Belfast na Tamizie, z The Shard po lewej stronie i Walkie-Talkie po prawej",
+            "75": "W pobliżu katedry Southwark, po lewej",
+            "110": "W pobliżu katedry Św. Pawła, po prawej stronie",
+            "130": "W pobliżu Globu Shakespeare'a na pierwszym planie po lewej stronie",
+            "210": "Kontynuując wzdłuż Tamizy w kierunku Westminster",
+            "300": "Nad London Eye na Tamizie",
+            "315": "Zbliżając się do Big Bena i Izby Parlamentu, z opactwem Westminster po prawej"
+        }
+    },
+    "CE279831-1CA7-4A83-A97B-FF1E20234396": {
+        "name": "Międzynarodowy port lotniczy Los Angeles",
+        "pointsOfInterest": {
+            "0": "W kierunku zachodnim nad międzynarodowym portem lotniczym Los Angeles (LAX)",
+            "80": "Nad Theme Building",
+            "210": "Nad Międzynarodowym Terminalem Tom Bradley"
+        }
+    },
+    "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
+        "name": "Harbor Freeway",
+        "pointsOfInterest": {
+            "0": "Przelot nad Harbor Freeway (Interstate 110) na południe od Los Angeles",
+            "50": "Skrzyżowanie z Century Freeway (interstate 105)",
+            "65": "Nad stacją Harbor Freeway na zielonej linii metra, która biegnie wzdłuż Century Freeway",
+            "170": "Skrzyżowanie Imperial Highway"
+        }
+    },
+    "92E48DE9-13A1-4172-B560-29B4668A87EE": {
+        "name": "Plaża Santa Monica"
+    },
+    "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
+        "name": "Obserwatorium Griffitha"
+    },
+    "EC67726A-8212-4C5E-83CF-8412932740D2": {
+        "name": "Wzgórza Hollywood",
+        "pointsOfInterest": {
+            "0": "Podróżując na północ wzdłuż Beachwood Drive przez Hollywood Hills w Los Angeles",
+            "60": "Kontynuując na północ przez kanion Beachwood",
+            "250": "W pobliżu centrum komunikacji Mount Lee, w kierunku Burbank, Kalifornia"
+        }
+    },
+    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
+        "name": "Śródmieście",
+        "pointsOfInterest": {
+            "0": "Zbliżając się do śródmieścia Los Angeles, z budynkiem MTA (na żółto) i Union Station (na różowo) po lewej stronie",
+            "35": "W pobliżu katedry Matki Bożej Anielskiej (w środku)",
+            "55": "Nad Centrum Muzyki Hrabstwa Los Angeles (w środku)",
+            "65": "Przekraczając Hollywood Freeway, w kieurnku południowym przez centrum miasta wzdłuż Harbor Freeway",
+            "105": "W pobliżu sali koncertowej Walta Disneya (w środku)",
+            "120": "W pobliżu ratusza (w kolorze jasnoniebieskim, po lewej)",
+            "180": "W pobliżu Library Tower (w środku)",
+            "200": "W pobliżu hotelu Bonaventure (w środku)",
+            "230": "Centralna Biblioteka w Los Angeles, jaskrawo oświetlona, znajduje się za hotelem Bonaventure",
+            "275": "W pobliżu Wilshire Grand Center (w budowie)",
+            "365": "Nad L.A. Live",
+            "395": "W pobliżu hotelu Ritz-Carlton i Staples Center",
+            "425": "W pobliżu Centrum Kongresowego w Los Angeles",
+            "495": "Zbliżając się do autostrady Santa Monica"
+        }
+    },
+    "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
+        "name": "Central Park"
+    },
+    "b1-3": {
+        "name": "Dolny Manhattan"
+    },
+    "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8": {
+        "name": "Upper East Side"
+    },
+    "44166C39-8566-4ECA-BD16-43159429B52F": {
+        "name": "Siódma Aleja"
+    },
+    "640DFB00-FBB9-45DA-9444-9F663859F4BC": {
+        "name": "Dolny Manhattan"
+    },
+    "b8-2": {
+        "name": "Marin Headlands"
+    },
+    "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
+        "name": "Marin Headlands we mgle",
+        "pointsOfInterest": {
+            "0": "Nad Headlands Marin wzdłuż autostrady 101 w kierunku mostu Golden Gate",
+            "20": "Horseshoe Cove pojawia się po lewej stronie",
+            "105": "Przemierzając przez Battery Spencer po prawej",
+            "155": "Przemierzając przez most Golden Gate w kierunku San Francisco"
+        }
+    },
+    "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
+        "name": "Zatoka i Most Golden Gate"
+    },
+    "b8-3": {
+        "name": "Plac Alama",
+        "pointsOfInterest": {
+            "0": "\"Malowane Panie\" naprzeciwko placu Alamo w San Francisco",
+            "35": "Katedra Najświętszej Marii Panny po lewej, z centrum San Francisco w tle",
+            "70": "Kopuła ratusza pojawiająca się po prawej stronie",
+            "210": "Kopuła ratusza, widoczna po prawej"
+        }
+    },
+    "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
+        "name": "Embarcadero, Market Street",
+        "pointsOfInterest": {
+            "0": "W kierunku południowo-zachodnim nad Zatoką San Francisco do \"Ferry Building\"",
+            "150": "Zbliżając się do \"Ferry Building\" w San Francisco i Embarcadero",
+            "210": "W kierunku południowo-zachodnim wzdłuż ulicy Market Street w centrum San Francisco"
+        }
+    },
+    "b4-3": {
+        "name": "Od Prezydium do Mostu Golden Gate",
+        "pointsOfInterest": {
+            "0": "Poruszając się wzdłuż Prezydium San Francisco w kierunku mostu Golden Gate",
+            "190": "Przekraczając most Golden Gate w kierunku Marin Headlands"
+        }
+    },
+    "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
+        "name": "Most Golden Gate od strony San Franciso"
+    },
+    "b6-4": {
+        "name": "Śródmieście i Wieża Coit",
+        "pointsOfInterest": {
+            "0": "Śródmieście San Francisco z piramidą Transamerica w centrum",
+            "100": "Śródmieście San Francisco z widokiem na Wieżę Coit"
+        }
+    },
+    "29BDF297-EB43-403A-8719-A78DA11A2948": {
+        "name": "Fisherman's Wharf",
+        "pointsOfInterest": {
+            "0": "W kierunku południowo-wschodnim nad Fisherman's Wharf w San Francisco",
+            "27": "Przepłynięcie statku typu Liberty, SS Jeremiah O'Brien",
+            "47": "Nad okrętem podwodnym USS Pampanito",
+            "80": "Nad North Beach w San Francisco",
+            "115": "Zbliżając się do Wieży Coit na wzgórzu Telegraph, z Mostem Zatokowym i centrum miasta San Franciso w tle",
+            "135": "Zbliżając się do Wieży Coit na wzgórzu Telegraph, z Kościołem Świętych Piotra i Pawła na prawyo-środkowym planie"
+        }
+    },
+    "b5-3": {
+        "name": "Embarcadero, Market Street",
+        "pointsOfInterest": {
+            "0": "W kierunku południowo-zachodnim nad Zatoką San Francisco do \"Ferry Building\"",
+            "150": "Podejście do \"Ferry Building\" w San Francisco i Embarcadero",
+            "210": "W kierunku południowo-zachodnim wzdłuż Market Street w San Francisco"
+        }
+    },
+    "3E94AE98-EAF2-4B09-96E3-452F46BC114E": {
+        "name": "Most Zatokowy"
+    },
+    "b2-4": {
+        "name": "Śródmieście i wieża Sutro",
+        "pointsOfInterest": {
+            "0": "W kierunku dzielnicy finansowej San Francisco, z wieżą Sutro w tle",
+            "10": "Przelot nad Piramidą Transamerica",
+            "50": "Dawna siedziba Banku Centralnego Ameryki w słońcu"
+        }
+    },
+    "4AD99907-9E76-408D-A7FC-8429FF014201": {
+        "name": "Zatoka San Francisco i Embarcadero"
+    },
+    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": {
+        "name": "Antarktyda"
+    },
+    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
+        "name": "Zorza nad Ameryką Północną"
+    },
+    "A837FA8C-C643-4705-AE92-074EFDD067F7": {
+        "name": "Noc afrykańska"
+    },
+    "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
+        "name": "Afryka i Bliski Wschód"
+    },
+    "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
+        "name": "Od Kalifornii do Vegas"
+    },
+    "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
+        "name": "Karaiby"
+    },
+    "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589": {
+        "name": "Karaiby za dnia"
+    },
+    "7825C73A-658F-48EE-B14C-EC56673094AC": {
+        "name": "Chiny"
+    },
+    "E5DB138A-F04E-4619-B896-DE5CB538C534": {
+        "name": "Od Włoch do Azji"
+    },
+    "F439B0A7-D18C-4B14-9681-6520E6A74FE9": {
+        "name": "Iran i Afganistan"
+    },
+    "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": {
+        "name": "Od Irlandii do Azji"
+    },
+    "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": {
+        "name": "Od Afryki Zachodniej do Alp"
+    },
+    "78911B7E-3C69-47AD-B635-9C2486F6301D": {
+        "name": "Nowa Zelandia"
+    },
+    "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
+        "name": "Sahara i Włochy"
+    }
+}

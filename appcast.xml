@@ -2,16 +2,16 @@
 <channel>
 <title>Aerial</title>
 <item>
-<title>1.4.7 beta 4</title>
+<title>1.4.7 beta 5</title>
   <description>
           <![CDATA[
             <ul>
-              <li>Adds spanish community descriptions</li>
+              <li>Spanish and French community translations are now bundled, with early support for more. Check the readme for more information about the tooling we use (lokalise.co), we more than welcome new languages if you want to contribute !</li>
             </ul>
           ]]>
     </description>
-<pubDate>lun., 28 jan. 2019 16:45:29 +0100</pubDate>
+<pubDate>mer., 13 fev. 2019 18:45:29 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.7beta4/Aerial.saver.zip" sparkle:version="1.4.7beta4" sparkle:shortVersionString="1.4.7beta4" sparkle:edSignature="HgucnSrMrOvy7HLi5FW3dh/MVUqQYql+nOGhhKGICSZhd2g/b0eHW4PZ9aJz/trctucIAFGbn/iV692QWjniDQ==" length="6063608" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.7beta5/Aerial.saver.zip" sparkle:version="1.4.7beta5" sparkle:shortVersionString="1.4.7beta5" sparkle:edSignature="0wPfXXK7erLawzJrCnD1I5FeBCFXpcUyaA0LGxeYIdaG2GAMPArC3znuIbLn9wD9OVz9MMLRBQrNFtj2JwYrCA==" length="6069327" type="application/octet-stream"/>
 </item>
 </channel></rss>
