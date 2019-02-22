@@ -6,7 +6,7 @@ In the following sections we explain how to collaborate in the internationalizat
 
 ## For translators
 
-1. Contact [glouel](/glouel) or [aitor](/aitor) to get added to the Translators team at Lokalise.
+1. Contact [@glouel](https://github.com/glouel) or [@aitor](https://github.com/aitor) to get added to the Translators team at Lokalise.
 2. Access the translations dashboard at https://lokalise.co/ and translate or update the existing strings to your language.
 3. PROFIT!
 
@@ -16,7 +16,7 @@ The translation workflow follows a pull mode, meaning that new strings will be d
 
 ### Setting up the project
 
-1. Contact [glouel](/glouel) or [aitor](/aitor) to get added to the Translators team at Lokalise.
+1. Contact [@glouel](https://github.com/glouel) or [@aitor](https://github.com/aitor) to get added to the Translators team at Lokalise.
 2. Use the existing configuration example file to create your local configuration
    `cp lokalise.example.cfg lokalise.cfg`
 3. In the created file update the `Token` string with your token. To get your token visit the section `API Tokens` at https://lokalise.co/profile
@@ -32,10 +32,10 @@ The translation workflow follows a pull mode, meaning that new strings will be d
 
 The following people has helped to improve Aerial by providing translations and text corrections. Thanks everybody!
 
-- English by [@SeanMSmith](/SeanMSmith)
-- Spanish by [@aitor](/aitor)
-- French by [@glouel](/glouel)
-- Polish by [@Soruk](/Soruk)
+- English by [@SeanMSmith](https://github.com/SeanMSmith)
+- Spanish by [@aitor](https://github.com/aitor)
+- French by [@glouel](https://github.com/glouel)
+- Polish by [@Soruk](https://github.com/Soruk)
 
 ## Sponsorship
 
