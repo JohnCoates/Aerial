@@ -32,7 +32,7 @@ The translation workflow follows a pull mode, meaning that new strings will be d
 
 The following people has helped to improve Aerial by providing translations and text corrections. Thanks everybody!
 
-- English by [@Soruk](/Soruk)
+- English by [@SeanMSmith](/SeanMSmith)
 - Spanish by [@aitor](/aitor)
 - French by [@glouel](/glouel)
 - Polish by [@Soruk](/Soruk)
