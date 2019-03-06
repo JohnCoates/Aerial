@@ -36,6 +36,7 @@ The following people has helped to improve Aerial by providing translations and 
 - Spanish by [@aitor](https://github.com/aitor)
 - French by [@glouel](https://github.com/glouel)
 - Polish by [@Soruk](https://github.com/Soruk)
+- German by [@moeffju](https://github.com/moeffju)
 
 ## Sponsorship
 

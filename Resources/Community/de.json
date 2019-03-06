@@ -1,0 +1,350 @@
+{
+    "009BA758-7060-4479-8EE8-FB9B40C8FB97": {
+        "name": "Korea und Japan bei Nacht"
+    },
+    "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
+        "name": "Mexiko-Stadt nach New York"
+    },
+    "7719B48A-2005-4011-9280-2F64EEC6FD91": {
+        "name": "Nordkalifornien nach Baja"
+    },
+    "B876B645-3955-420E-99DF-60139E451CF3": {
+        "name": "Wulingyuan Nationalpark 1"
+    },
+    "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C": {
+        "name": "Longji Reisterrassen"
+    },
+    "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
+        "name": "Wulingyuan National Park 2"
+    },
+    "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
+        "name": "Große Mauer 1"
+    },
+    "22162A9B-DB90-4517-867C-C676BC3E8E95": {
+        "name": "Große Mauer 2"
+    },
+    "044AD56C-A107-41B2-90CC-E60CCACFBCF5": {
+        "name": "Große Mauer 3"
+    },
+    "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
+        "name": "Sheikh Zayed Road"
+    },
+    "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
+        "name": "Marina 1"
+    },
+    "00BA71CD-2C54-415A-A68A-8358E677D750": {
+        "name": "Innenstadt"
+    },
+    "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
+        "name": "Marina 2"
+    },
+    "9680B8EB-CE2A-4395-AF41-402801F4D6A6": {
+        "name": "Anflug zum Burj Khalifa"
+    },
+    "2F11E857-4F77-4476-8033-4A1E4610AFCC": {
+        "name": "Sheikh Zayed Road",
+        "pointsOfInterest": {
+            "0": "Auf der Sheikh Zayed Road in Dubai, Vereinigte Arabische Emirate"
+        }
+    },
+    "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
+        "name": "Nuussuaq-Halbinsel"
+    },
+    "2F52E34C-39D4-4AB1-9025-8F7141FAA720": {
+        "name": "Ilulissat-Eisfjord"
+    },
+    "EE01F02D-1413-436C-AB05-410F224A5B7B": {
+        "name": "Ilulissat-Eisfjord"
+    },
+    "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943": {
+        "name": "Waimanu-Tal"
+    },
+    "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7": {
+        "name": "Laupāhoehoe Nui"
+    },
+    "b2-2": {
+        "name": "Honopū-Tal"
+    },
+    "258A6797-CC13-4C3A-AB35-4F25CA3BF474": {
+        "name": "Pu'u O 'Umi"
+    },
+    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": {
+        "name": "Küste von Kohala"
+    },
+    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": {
+        "name": "Pu'u O 'Umi"
+    },
+    "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {
+        "name": "Victoria Harbour 1"
+    },
+    "C8559883-6F3E-4AF2-8960-903710CD47B7": {
+        "name": "Victoria Peak"
+    },
+    "024891DE-B7F6-4187-BFE0-E6D237702EF0": {
+        "name": "Wan Chai"
+    },
+    "64EA30BD-C4B5-4CDD-86D7-DFE47E9CB9AA": {
+        "name": "Victoria Harbour 2"
+    },
+    "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
+        "name": "Victoria Harbour"
+    },
+    "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8": {
+        "name": "Liwa-Oase 1"
+    },
+    "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
+        "name": "Liwa-Oase 2"
+    },
+    "58754319-8709-4AB0-8674-B34F04E7FFE2": {
+        "name": "Die Themse",
+        "pointsOfInterest": {
+            "0": "In Richtung Tower Bridge an der Themse in London",
+            "40": "Vorbei an “the Gherkin” in der Londoner City, rechts",
+            "70": "Über die Tower Bridge an der Themse, dahinter die City Hall und rechts der Tower of London",
+            "85": "In Richtung der HMS Belfast in der Themse, vorbei am Walkie-Talkie auf der rechten Seite",
+            "115": "Auf dem Weg nach Westen die Themse hinauf, mit The Shard auf der linken Seite und der St. Paul's Cathedral auf der rechten Seite",
+            "135": "Über die Southwark Cathedral, rechts die Saint Paul's Cathedral",
+            "175": "Vorbei an Shakespeare's Globe in Southwark (rechter Vordergrund)",
+            "230": "Vorbei an der Waterloo Station auf der linken Seite, mit dem Palast von Westminster (Häuser des Parlaments) am anderen Themse-Ufer dahinter",
+            "260": "Vorbei an BFI IMAX im linken Vordergrund, mit dem London Eye im Rücken",
+            "280": "In Richtung Westminster über die Themse",
+            "300": "Charing Cross Station im rechten Vordergrund",
+            "312": "In Richtung der Horse Guards Parade und den Saint James's Park in der linken Mitte",
+            "324": "Rechts am Saint Martin-in-the-Fields vorbei, mit dem Admiralty Arch, der Nelson-Säule und dem Trafalgar Square zu seiner Linken"
+        }
+    },
+    "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
+        "name": "Buckingham Palace",
+        "pointsOfInterest": {
+            "0": "Vorbei am Wellington Arch in London auf der linken Seite",
+            "12": "Flug über die Buckingham Palace Gardens, mit Green Park auf der linken Seite",
+            "24": "Flug über den Buckingham Palace in London",
+            "40": "Überflug über das Victoria Memorial, vorbei an der Wellington-Kaserne auf der rechten Seite",
+            "55": "Auf dem Weg nach Birdcage entlang des Saint James's Parks",
+            "90": "Über das Foreign & Commonwealth Office in Whitehall, mit Horse Guards Parade auf der linken Seite und der Schatzkammer Ihrer Majestät auf der rechten Seite",
+            "102": "Über den Cenotaph, mit dem Verteidigungsministerium auf der linken Seite und Big Ben und dem Palast von Westminster (Parlamentsgebäude) auf der rechten Seite",
+            "125": "Überquerung der Themse, Flug über das London Eye",
+            "160": "Vorbei an der Waterloo Station in Südlondon, mit BFI IMAX auf der linken Seite",
+            "270": "Vorbei an der Southwark Cathedral auf der linken Seite",
+            "285": "Vorbei an The Shard auf der rechten Seite",
+            "305": "Vorbei an dem Kreuzer HMS Belfast in der Themse",
+            "330": "Überqueren der Themse an der Tower Bridge, mit der City Hall auf der rechten Seite und dem Tower of London auf der linken Seite"
+        }
+    },
+    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
+        "name": "Die Themse bei Sonnenuntergang",
+        "pointsOfInterest": {
+            "0": "Aufstieg zur Tower Bridge über die Themse, rechts der Tower of London",
+            "25": "Überqueren der Themse und Überflug des Rathauses",
+            "35": "Vorbei an dem Kreuzer HMS Belfast in der Themse",
+            "60": "In Richtung von “The Shard”",
+            "92": "Über Southwark nach Westen Richtung Lambeth in Südlondon",
+            "200": "Vorbei am Lambeth Palace auf der linken Seite und Waterloo Station auf der rechten Seite",
+            "245": "Überquerung der Themse zum Palast von Westminster (Parlamentsgebäude)",
+            "265": "Vorbei am Palast von Westminster (Houses of Parliament), dahinter die Westminster Abbey"
+        }
+    },
+    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
+        "name": "Themse in der Abenddämmerung",
+        "pointsOfInterest": {
+            "0": "Die Themse hinauf in Richtung Tower Bridge, rechts der Tower of London",
+            "28": "Auf dem Weg nach Westen die Themse hinauf, vorbei am Rathaus auf der linken Seite",
+            "40": "Vorbei an der HMS Belfast in der Themse, links The Shard und rechts das Walkie-Talkie",
+            "75": "Vorbei an der Southwark Cathedral auf der linken Seite",
+            "110": "Vorbei am Paulusdom auf der rechten Seite",
+            "130": "Vorbei an Shakespeare's Globe im linken Vordergrund",
+            "210": "Weiter aufwärts der Themse in Richtung Westminster",
+            "300": "Vorbei am London Eye an der Themse",
+            "315": "Anflug auf Big Ben und die Houses of Parliament mit der Westminster Abbey auf der rechten Seite"
+        }
+    },
+    "CE279831-1CA7-4A83-A97B-FF1E20234396": {
+        "name": "Internationaler Flughafen von Los Angeles",
+        "pointsOfInterest": {
+            "0": "Richtung Westen über den Los Angeles International Airport",
+            "80": "Über das Theme Building",
+            "210": "Über das Tom Bradley International Terminal"
+        }
+    },
+    "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
+        "name": "Harbor Freeway",
+        "pointsOfInterest": {
+            "0": "Den Harbor Freeway (Interstate 110) entlang nach Norden durch South Los Angeles",
+            "50": "Über den Century Freeway (Interstate 105)",
+            "65": "Über die Harbour Freeway Station der Metro Green Line, die entlang des Century Freeway verläuft",
+            "170": "Überquerung des Imperial Highway"
+        }
+    },
+    "92E48DE9-13A1-4172-B560-29B4668A87EE": {
+        "name": "Strand von Santa Monica"
+    },
+    "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
+        "name": "Griffith-Sternwarte"
+    },
+    "EC67726A-8212-4C5E-83CF-8412932740D2": {
+        "name": "Hollywood Hills",
+        "pointsOfInterest": {
+            "0": "Auf dem Beachwood Drive durch die Hollywood Hills in Los Angeles nach Norden",
+            "60": "Weiter Richtung Norden durch Beachwood Canyon",
+            "250": "Vorbei am Mount Lee Communications Center, Richtung Burbank, Kalifornien"
+        }
+    },
+    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
+        "name": "Innenstadt",
+        "pointsOfInterest": {
+            "0": "Richtung Innenstadt von Los Angeles, mit dem MTA Building (in gelb) und der Union Station (in rosa) in der linken Mitte",
+            "35": "Vorbei an der Kathedrale Unserer Lieben Frau von den Engeln (in der Mitte)",
+            "55": "Vorbei am Los Angeles County Music Center (in der Mitte)",
+            "65": "Vorbei am Hollywood Freeway, Richtung Süden durch die Innenstadt entlang des Harbor Freeway",
+            "105": "Vorbei an der Walt Disney Concert Hall (in der Mitte)",
+            "120": "Vorbei am Rathaus (in hellblau, in der linken Mitte)",
+            "180": "Am Library Tower vorbei (in der Mitte)",
+            "200": "Vorbei am Bonaventure Hotel (in der Mitte)",
+            "230": "Die hell beleuchtete Zentralbibliothek von Los Angeles erscheint hinter dem Bonaventure Hotel",
+            "275": "Vorbei am Wilshire Grand Center (im Bau)",
+            "365": "Vorbei an L.A. Live",
+            "395": "Vorbei am Ritz-Carlton Hotel und Staples Center",
+            "425": "Vorbei am Los Angeles Convention Center",
+            "495": "In Richtung Santa Monica Freeway"
+        }
+    },
+    "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
+        "name": "Central Park"
+    },
+    "b1-3": {
+        "name": "Lower Manhattan"
+    },
+    "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8": {
+        "name": "Upper East Side"
+    },
+    "44166C39-8566-4ECA-BD16-43159429B52F": {
+        "name": "Seventh Avenue"
+    },
+    "640DFB00-FBB9-45DA-9444-9F663859F4BC": {
+        "name": "Lower Manhattan"
+    },
+    "b8-2": {
+        "name": "Marin Headlands"
+    },
+    "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
+        "name": "Marin Headlands im Nebel",
+        "pointsOfInterest": {
+            "0": "Über die Marin Headlands entlang des Highway 101 zur Golden Gate Bridge",
+            "20": "Horseshoe Cove auf der linken Seite",
+            "105": "Vorbei an Battery Spencer auf der rechten Seite",
+            "155": "Über die Golden Gate Bridge in Richtung San Francisco"
+        }
+    },
+    "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
+        "name": "Bucht und Golden Gate"
+    },
+    "b8-3": {
+        "name": "Alamo Square",
+        "pointsOfInterest": {
+            "0": "Painted Ladies gegenüber des Alamo Square in San Francisco",
+            "35": "Saint Mary's Cathedral in der linken Mitte, mit der Innenstadt von SF im Hintergrund",
+            "70": "Die Kuppel des Rathauses erscheint in der rechten Mitte",
+            "210": "Die Kuppel des Rathauses freistehend in der rechten Mitte"
+        }
+    },
+    "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
+        "name": "Embarcadero, Market Street",
+        "pointsOfInterest": {
+            "0": "Auf dem Weg südwestlich über die Bucht von San Francisco zum San Francisco Ferry Building",
+            "150": "Anflug auf das Port of San Francisco Ferry Building und die Embarcadero",
+            "210": "In südwestlicher Richtung entlang der Market Street in der Innenstadt von San Francisco"
+        }
+    },
+    "b4-3": {
+        "name": "Presidio zur Golden Gate",
+        "pointsOfInterest": {
+            "0": "Entlang des Presidio von San Francisco in Richtung Golden Gate Bridge",
+            "190": "Überqueren der Golden Gate Bridge in Richtung Marin Headlands"
+        }
+    },
+    "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
+        "name": "Golden Gate aus Richtung San Francisco"
+    },
+    "b6-4": {
+        "name": "Innenstadt und Coit Tower",
+        "pointsOfInterest": {
+            "0": "Downtown San Francisco mit der Transamerica-Pyramide in der Mittel",
+            "100": "Downtown San Francisco mit Coit Tower im Blickfeld"
+        }
+    },
+    "29BDF297-EB43-403A-8719-A78DA11A2948": {
+        "name": "Fisherman's Wharf",
+        "pointsOfInterest": {
+            "0": "Nach Südosten über Fisherman's Wharf in San Francisco",
+            "27": "Vorbei am Liberty-Schiff SS Jeremiah O'Brien",
+            "47": "Über das U-Boot USS Pampanito",
+            "80": "Über den North Beach in San Francisco",
+            "115": "Unterwegs zum Coit Tower am Telegraph Hill, mit der Bay Bridge und der Innenstadt von SF im Hintergrund",
+            "135": "Unterwegs zum Coit Tower auf dem Telegraph Hill, mit der St. Peter und Paul Kirche in der rechten Bodenmitte"
+        }
+    },
+    "b5-3": {
+        "name": "Embarcadero, Market Street",
+        "pointsOfInterest": {
+            "0": "Richtung Südwesten über die Bucht von San Francisco zum San Francisco Ferry Building",
+            "150": "Anflug an das Port of San Francisco Ferry Building und Embarcadero",
+            "210": "In südwestlicher Richtung entlang der Market Street in San Francisco"
+        }
+    },
+    "3E94AE98-EAF2-4B09-96E3-452F46BC114E": {
+        "name": "Brücke über die San Francisco Bay"
+    },
+    "b2-4": {
+        "name": "Innenstadt und Sutro Tower",
+        "pointsOfInterest": {
+            "0": "Hinein ins Finanzviertel von San Francisco, mit dem Sutro Tower im Hintergrund",
+            "10": "Vorbei an der Transamerica-Pyramide",
+            "50": "Ehemaliges Hauptquartier der Bank of America, das die Sonne verdeckt."
+        }
+    },
+    "4AD99907-9E76-408D-A7FC-8429FF014201": {
+        "name": "Bucht von San Francisco und Embarcadero"
+    },
+    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": {
+        "name": "Antarktis"
+    },
+    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
+        "name": "Nordamerikanische Aurora"
+    },
+    "A837FA8C-C643-4705-AE92-074EFDD067F7": {
+        "name": "Afrika bei Nacht"
+    },
+    "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
+        "name": "Afrika und der Nahe Osten"
+    },
+    "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
+        "name": "Kalifornien nach Vegas"
+    },
+    "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
+        "name": "Karibik"
+    },
+    "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589": {
+        "name": "Tag in der Karibik"
+    },
+    "7825C73A-658F-48EE-B14C-EC56673094AC": {
+        "name": "China"
+    },
+    "E5DB138A-F04E-4619-B896-DE5CB538C534": {
+        "name": "Italien nach Asien"
+    },
+    "F439B0A7-D18C-4B14-9681-6520E6A74FE9": {
+        "name": "Iran und Afghanistan"
+    },
+    "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": {
+        "name": "Irland bis Asien"
+    },
+    "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": {
+        "name": "Westafrika bis zu den Alpen"
+    },
+    "78911B7E-3C69-47AD-B635-9C2486F6301D": {
+        "name": "Neuseeland"
+    },
+    "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
+        "name": "Sahara und Italien"
+    }
+}
