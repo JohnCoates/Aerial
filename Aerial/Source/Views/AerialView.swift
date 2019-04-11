@@ -373,28 +373,28 @@ final class AerialView: ScreenSaverView {
         messageLayer.shadowColor = CGColor.black
         layer.addSublayer(messageLayer)
 
-        if #available(OSX 10.14, *) {
-        } else {
-            debugLog("Using dot workaround for video driver corruption")
-            // Tentative fix for high sierra issues
-            let highSierraLayer = CATextLayer()
-            highSierraLayer.frame = self.bounds
-            highSierraLayer.opacity = 0.5
-            highSierraLayer.font = NSFont(name: "Helvetica Neue Medium", size: 4)
-            highSierraLayer.fontSize = 4
-            highSierraLayer.string = "."
+        //if #available(OSX 10.14, *) {
+        //} else {
+        // This bug is back in 10.14.5 beta, so enabling the workaround all the time now.
+        debugLog("Using dot workaround for video driver corruption")
+        // Tentative fix for high sierra issues
+        let highSierraLayer = CATextLayer()
+        highSierraLayer.frame = self.bounds
+        highSierraLayer.opacity = 0.5
+        highSierraLayer.font = NSFont(name: "Helvetica Neue Medium", size: 4)
+        highSierraLayer.fontSize = 4
+        highSierraLayer.string = "."
 
-            let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: highSierraLayer.font as Any]
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: highSierraLayer.font as Any]
 
-            // Calculate bounding box
-            let attrString = NSAttributedString(string: highSierraLayer.string as! String, attributes: attributes)
-            let rect = attrString.boundingRect(with: layer.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
+        // Calculate bounding box
+        let attrString = NSAttributedString(string: highSierraLayer.string as! String, attributes: attributes)
+        let rect = attrString.boundingRect(with: layer.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
 
-            highSierraLayer.frame = rect
-            highSierraLayer.position = CGPoint(x: 2, y: 2)
-            highSierraLayer.anchorPoint = CGPoint(x: 0, y: 0)
-            layer.addSublayer(highSierraLayer)
-        }
+        highSierraLayer.frame = rect
+        highSierraLayer.position = CGPoint(x: 2, y: 2)
+        highSierraLayer.anchorPoint = CGPoint(x: 0, y: 0)
+        layer.addSublayer(highSierraLayer)
     }
 
     // MARK: - Lifecycle stuff
