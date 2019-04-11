@@ -83,7 +83,7 @@ Aerial features overlay descriptions of the main geographical features displayed
 
 ![Community Strings example](https://user-images.githubusercontent.com/4295/52958947-75bd6180-3395-11e9-947f-3c77d9f41928.jpg)
 
-Currently these descriptions are available in **English**, **French** and **Spanish**. This is possible thanks to the collaboration and uninterested work of many. To best serve the international community we've defined a translation workflow that allows any person, even with **no technical background** to help translating these descriptions.
+Currently these descriptions are available in **English**, **French**, **German**, **Hebrew**, **Polish** and **Spanish**. This is possible thanks to the collaboration and uninterested work of many. To best serve the international community we've defined a translation workflow that allows any person, even with **no technical background** to help translating these descriptions.
 
 If you want to collaborate, please [read the details here](Resources/Community/Readme.md).
 
