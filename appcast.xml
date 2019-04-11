@@ -2,16 +2,18 @@
 <channel>
 <title>Aerial</title>
 <item>
-<title>1.4.7 beta 6</title>
+<title>1.4.7 beta 7</title>
   <description>
           <![CDATA[
             <ul>
-              <li>Polish translation thanks to Soruk ! If you want to contribute a new language, check our github repository for more information, it's really easy and we more than welcome all contributions !</li>
+              <li>German translation thanks to @moeffju !</li>
+              <li>Hebrew translation thanks to @kaaspad !</li>
+              <li>Fix for crashes in latest macOS 10.14.5 beta with Intel Graphics</li>
             </ul>
           ]]>
     </description>
-<pubDate>jeu., 21 fev. 2019 18:45:29 +0100</pubDate>
+<pubDate>jeu., 11 avr. 2019 17:34:29 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.7beta6/Aerial.saver.zip" sparkle:version="1.4.7beta6" sparkle:shortVersionString="1.4.7beta6" sparkle:edSignature="hWN9CkkGot9WMW/JuQzRzo3gYcHDDoq3998in8REtZH1x10hiy4rvOY76F1gVzqawQwRtW5kEgfXGUYyTyEVAA==" length="6075894" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.7beta7/Aerial.saver.zip" sparkle:version="1.4.7beta7" sparkle:shortVersionString="1.4.7beta7"  sparkle:edSignature="kVKnI9VREn2z0fbRgjoTGHDeaLU9TcuxA5hfvJueedTN7IRiOpgHaTmRUW3VoD8ZtJpI97yUsw9sfo875toyBw==" length="5918284" type="application/octet-stream"/>
 </item>
 </channel></rss>
