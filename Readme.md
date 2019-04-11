@@ -162,6 +162,7 @@ You can easily check for yourself what to expect by opening a video in Quicktime
 
 ## Troubleshooting
 
+- Aerial logs you out of your user account everytime it starts: This looks like a new bug with macOS 10.14.5 beta 18F108f, possibly only for Macs with Intel graphics. As a workaround, please tick the Show Clock option in the main screensaver settings (not on Aerial settings). More information here : https://github.com/JohnCoates/Aerial/issues/738
 - Videos keeps disappearing, Aerial may not restart once in a while: Aerial stores all it's data in a Cache folder. This cache may get deleted by some third party software trying to free disk space. If you use such a "Cleaning" tool, we recommend you set a manual folder location in the Cache tab of Aerial. For example, you can create an Aerial folder in your User folder, and point to it. This will ensure Aerial files don't get deleted.  
 - "Done" button doesn't close Aerial: Please update to latest available version, this is a bug on Mojave with very old versions of Aerial (1.2 and below).
 - Can't type into text fields with macOS High Sierra/Video corruption issue on High Sierra: Please make sure you have at least version 1.4.5.
