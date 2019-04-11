@@ -25,6 +25,10 @@
 		03510C7121834FC7008F74F2 /* IOBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 03510C6E21834F38008F74F2 /* IOBridge.m */; };
 		03510C732185EF76008F74F2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03510C722185EF76008F74F2 /* CoreLocation.framework */; };
 		03510C772185EF8F008F74F2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03510C722185EF76008F74F2 /* CoreLocation.framework */; };
+		035A92A6225F8C480095AB85 /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92A4225F8C480095AB85 /* de.json */; };
+		035A92A7225F8C480095AB85 /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92A4225F8C480095AB85 /* de.json */; };
+		035A92A8225F8C480095AB85 /* he.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92A5225F8C480095AB85 /* he.json */; };
+		035A92A9225F8C480095AB85 /* he.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92A5225F8C480095AB85 /* he.json */; };
 		0369985D2196103300E359D3 /* missingvideos.json in Resources */ = {isa = PBXBuildFile; fileRef = 0369985C2196103300E359D3 /* missingvideos.json */; };
 		0369985E2196129C00E359D3 /* missingvideos.json in Resources */ = {isa = PBXBuildFile; fileRef = 0369985C2196103300E359D3 /* missingvideos.json */; };
 		03893CB3217749F0008E7125 /* ErrorLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03893CB2217749F0008E7125 /* ErrorLog.swift */; };
@@ -108,6 +112,8 @@
 		03510C6D21834F38008F74F2 /* Aerial-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aerial-Bridging-Header.h"; sourceTree = "<group>"; };
 		03510C6E21834F38008F74F2 /* IOBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOBridge.m; sourceTree = "<group>"; };
 		03510C722185EF76008F74F2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		035A92A4225F8C480095AB85 /* de.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = de.json; sourceTree = "<group>"; };
+		035A92A5225F8C480095AB85 /* he.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = he.json; sourceTree = "<group>"; };
 		0369985C2196103300E359D3 /* missingvideos.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = missingvideos.json; sourceTree = "<group>"; };
 		03893CB2217749F0008E7125 /* ErrorLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLog.swift; sourceTree = "<group>"; };
 		039385792175D4B80040B850 /* AVPlayerViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerViewExtension.swift; sourceTree = "<group>"; };
@@ -193,6 +199,8 @@
 		033192DF217B77E90073B580 /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				035A92A4225F8C480095AB85 /* de.json */,
+				035A92A5225F8C480095AB85 /* he.json */,
 				03D3DAC3221F286700BDA52F /* pl.json */,
 				03D37FD722145487005A146F /* es.json */,
 				03D37FD822145487005A146F /* fr.json */,
@@ -490,6 +498,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -522,6 +531,8 @@
 				033D62AC216CADCD00F3AF83 /* icon-day-dark.pdf in Resources */,
 				FAC36F4A1BE1756D007F2A20 /* MainMenu.xib in Resources */,
 				FAC36F501BE1756D007F2A20 /* icon-night.pdf in Resources */,
+				035A92A9225F8C480095AB85 /* he.json in Resources */,
+				035A92A7225F8C480095AB85 /* de.json in Resources */,
 				0395835421807D1F008E8F9C /* thumbnail@2x.png in Resources */,
 				03D37FDC22145487005A146F /* fr.json in Resources */,
 			);
@@ -541,8 +552,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAC36F531BE1756D007F2A20 /* PreferencesWindow.xib in Resources */,
+				035A92A6225F8C480095AB85 /* de.json in Resources */,
 				03D37FDB22145487005A146F /* fr.json in Resources */,
 				FAC36F4D1BE1756D007F2A20 /* icon-day.pdf in Resources */,
+				035A92A8225F8C480095AB85 /* he.json in Resources */,
 				03D3DAC4221F286700BDA52F /* pl.json in Resources */,
 				033D62AB216CADCD00F3AF83 /* icon-day-dark.pdf in Resources */,
 				0395835321807D1F008E8F9C /* thumbnail@2x.png in Resources */,
