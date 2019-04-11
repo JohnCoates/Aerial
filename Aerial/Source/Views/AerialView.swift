@@ -86,6 +86,7 @@ final class AerialView: ScreenSaverView {
 
     static var singlePlayerAlreadySetup: Bool = false
     static var sharedPlayerIndex: Int?
+    static var didSkipMain: Bool = false
 
     class var sharedPlayer: AVPlayer {
         struct Static {
@@ -179,7 +180,7 @@ final class AerialView: ScreenSaverView {
     // swiftlint:disable:next cyclomatic_complexity
     func setup() {
         // Initialize Sparkle updater
-        //_ = SUUpdater.init(for: Bundle(for: AerialView.self))
+        _ = SUUpdater.init(for: Bundle(for: AerialView.self))
 
         debugLog("\(self.description) AerialView setup init")
         let preferences = Preferences.sharedInstance
@@ -234,6 +235,14 @@ final class AerialView: ScreenSaverView {
             if AerialView.singlePlayerAlreadySetup && preferences.multiMonitorMode == Preferences.MultiMonitorMode.mainOnly.rawValue {
                 isDisabled = true
                 return
+            }
+
+            if preferences.multiMonitorMode == Preferences.MultiMonitorMode.secondaryOnly.rawValue {
+                if !AerialView.didSkipMain {
+                    AerialView.didSkipMain = true
+                    isDisabled = true
+                    return
+                }
             }
 
             // check if we should share preview's player

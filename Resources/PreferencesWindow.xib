@@ -144,7 +144,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Videos" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" id="zsM-Ha-kCO">
+                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -422,6 +422,9 @@ is disabled
                                                                 <menuItem title="Only on Main Display" state="on" id="ajH-jt-gZt"/>
                                                                 <menuItem title="Mirrored on All Displays" id="V9X-dq-asD"/>
                                                                 <menuItem title="Different on Each Display" id="pui-N6-dxE"/>
+                                                                <menuItem title="Only on Secondary Displays" id="bRZ-vP-z9k" userLabel="Only on Secondary Displays">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                </menuItem>
                                                             </items>
                                                         </menu>
                                                     </popUpButtonCell>
@@ -913,7 +916,7 @@ should appear</string>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Time" identifier="" id="PtY-yV-jgj">
-                                        <view key="view" ambiguous="YES" id="ziy-Hg-uzO">
+                                        <view key="view" id="ziy-Hg-uzO">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
