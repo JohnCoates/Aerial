@@ -77,6 +77,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var fadeInOutModePopup: NSPopUpButton!
     @IBOutlet weak var fadeInOutTextModePopup: NSPopUpButton!
+    @IBOutlet var ciOverrideLanguagePopup: NSPopUpButton!
 
     @IBOutlet weak var downloadProgressIndicator: NSProgressIndicator!
     @IBOutlet weak var downloadStopButton: NSButton!
@@ -349,6 +350,11 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         } else {
             currentLocaleLabel.stringValue = ""
         }
+
+        let poisp = PoiStringProvider.sharedInstance
+
+        // Should we override the community language ?
+        ciOverrideLanguagePopup.selectItem(at: poisp.getLanguagePosition())
 
         // Videos panel
         playerView.player = player
@@ -869,6 +875,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         let onState = state == .on
         preferences.useCommunityDescriptions = onState
         debugLog("UI useCommunity: \(onState)")
+    }
+
+    @IBAction func communityLanguagePopupChange(_ sender: NSPopUpButton) {
+        debugLog("UI communityLanguagePopupChange: \(sender.indexOfSelectedItem)")
+        let poisp = PoiStringProvider.sharedInstance
+        preferences.ciOverrideLanguage = poisp.getLanguageStringFromPosition(pos: sender.indexOfSelectedItem)
     }
 
     @IBAction func localizeForTvOS12Click(button: NSButton?) {

@@ -91,6 +91,7 @@ final class AerialView: ScreenSaverView {
     class var sharedPlayer: AVPlayer {
         struct Static {
             static let instance: AVPlayer = AVPlayer()
+            // swiftlint:disable:next identifier_name
             static var _player: AVPlayer?
             static var player: AVPlayer {
                 if let activePlayer = _player {
