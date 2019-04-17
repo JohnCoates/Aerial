@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.AVKitIBPlugin" version="14460.31"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,6 +17,7 @@
                 <outlet property="calculateCoordinatesLabel" destination="YXF-Ei-ZTD" id="LEn-QN-uyy"/>
                 <outlet property="changeCornerMargins" destination="VPG-cS-U1N" id="F9P-rV-FaD"/>
                 <outlet property="checkNowButton" destination="EeC-Lg-0GW" id="3zr-3y-AW9"/>
+                <outlet property="ciOverrideLanguagePopup" destination="Thy-6K-bQe" id="eGe-Iv-gxJ"/>
                 <outlet property="cornerBottomLeft" destination="Qhn-AB-VZ5" id="YIg-vu-QIS"/>
                 <outlet property="cornerBottomRight" destination="4Rr-4h-bRr" id="5oY-Eh-CdE"/>
                 <outlet property="cornerContainer" destination="NQf-K9-FZk" id="SU0-YA-s4F"/>
@@ -144,7 +145,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Videos" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
+                                        <view key="view" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -531,7 +532,7 @@ is disabled
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Text" identifier="" id="bPY-uP-DGa">
-                                        <view key="view" id="M1m-ud-C95">
+                                        <view key="view" ambiguous="YES" id="M1m-ud-C95">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -766,9 +767,9 @@ should appear</string>
                                                     </connections>
                                                 </popUpButton>
                                                 <button toolTip="Aerial includes community location information for some of the videos that lacks them" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1e6-Z5-uo6">
-                                                    <rect key="frame" x="48" y="245" width="313" height="18"/>
+                                                    <rect key="frame" x="48" y="245" width="204" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Use community information when available" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6kr-NQ-0Qs">
+                                                    <buttonCell key="cell" type="check" title="Use community information " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6kr-NQ-0Qs">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
@@ -912,6 +913,39 @@ should appear</string>
                                                         <action selector="openExtraMessagePanelClick:" target="-2" id="wbb-xx-rwF"/>
                                                     </connections>
                                                 </button>
+                                                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" verifyAmbiguity="off" translatesAutoresizingMaskIntoConstraints="NO" id="Thy-6K-bQe">
+                                                    <rect key="frame" x="266" y="241" width="114" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <popUpButtonCell key="cell" type="push" title="Preferred" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="xCg-g0-Bhx" id="nf2-lO-M2x">
+                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="menu"/>
+                                                        <menu key="menu" id="hcD-mb-d4o">
+                                                            <items>
+                                                                <menuItem title="Preferred" state="on" id="xCg-g0-Bhx"/>
+                                                                <menuItem title="Arabic" identifier="ar" id="ff1-1V-Nvx"/>
+                                                                <menuItem title="English" id="s5O-ET-pwQ"/>
+                                                                <menuItem title="French" id="vbj-hw-EYv">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                </menuItem>
+                                                                <menuItem title="German" id="G44-Tt-1ZX">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                </menuItem>
+                                                                <menuItem title="Hebrew" id="QpG-d9-xro">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                </menuItem>
+                                                                <menuItem title="Polish" id="zqo-Rm-Pz1">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                </menuItem>
+                                                                <menuItem title="Spanish" id="QDZ-R9-uaF">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                </menuItem>
+                                                            </items>
+                                                        </menu>
+                                                    </popUpButtonCell>
+                                                    <connections>
+                                                        <action selector="communityLanguagePopupChange:" target="-2" id="LqZ-oy-tyk"/>
+                                                    </connections>
+                                                </popUpButton>
                                             </subviews>
                                         </view>
                                     </tabViewItem>

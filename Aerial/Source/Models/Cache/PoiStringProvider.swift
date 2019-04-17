@@ -85,7 +85,7 @@ final class PoiStringProvider {
         let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
 
         if #available(OSX 10.12, *) {
-            if preferences.localizeDescriptions && locale.languageCode != communityLanguage {
+            if preferences.localizeDescriptions && locale.languageCode != communityLanguage && preferences.ciOverrideLanguage == "" {
                 return stringBundle!.localizedString(forKey: key, value: "", table: "Localizable.nocache")
             }
         }
@@ -115,7 +115,7 @@ final class PoiStringProvider {
         let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
         if #available(OSX 10.12, *) {
             debugLog("locale.languageCode \(locale.languageCode)")
-            if preferences.localizeDescriptions && locale.languageCode != communityLanguage {
+            if preferences.localizeDescriptions && locale.languageCode != communityLanguage && preferences.ciOverrideLanguage == "" {
                 return video.poi
             }
         }
@@ -128,10 +128,23 @@ final class PoiStringProvider {
     }
 
     // MARK: - Community data
-
+    // swiftlint:disable:next cyclomatic_complexity
     private func getCommunityPathForLocale() -> String {
         let preferences = Preferences.sharedInstance
         let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
+
+        // Do we have a community language override ?
+        if preferences.localizeDescriptions && preferences.ciOverrideLanguage != "" {
+            let path = Bundle(for: PoiStringProvider.self).path(forResource: preferences.ciOverrideLanguage, ofType: "json")
+            if path != nil {
+                let fileManager = FileManager.default
+                if fileManager.fileExists(atPath: path!) {
+                    debugLog("Community Language overriden to : \(preferences.ciOverrideLanguage!)")
+                    communityLanguage = preferences.ciOverrideLanguage!
+                    return path!
+                }
+            }
+        }
 
         if #available(OSX 10.12, *) {
             // First we look in the Cache Folder for a locale directory
@@ -163,7 +176,7 @@ final class PoiStringProvider {
             let cc = locale.languageCode
             // Just in case, cause we had a crash earlier with the fr one for some reason...
             // This is probably no longer needed
-            if cc == "en" || cc == "es" || cc == "fr" || cc == "pl" || cc == "de" || cc == "he" {
+            if cc == "en" || cc == "es" || cc == "fr" || cc == "pl" || cc == "de" || cc == "he" || cc == "ar" {
                 if preferences.localizeDescriptions {
                     let path = Bundle(for: PoiStringProvider.self).path(forResource: cc, ofType: "json")
                     if path != nil {
@@ -216,5 +229,50 @@ final class PoiStringProvider {
 
     func getCommunityPoi(id: String) -> [String: String] {
         return communityStrings.first(where: { $0.id == id }).map { $0.poi } ?? [:]
+    }
+
+    // Helpers for the main popup
+    func getLanguagePosition() -> Int {
+        let preferences = Preferences.sharedInstance
+        // The list is alphabetized based on their english name in the UI
+        switch preferences.ciOverrideLanguage {
+        case "ar":  // Arabic
+            return 1
+        case "en":  // English
+            return 2
+        case "fr":  // French
+            return 3
+        case "de":  // German
+            return 4
+        case "he":  // Hebrew
+            return 5
+        case "pl":  // Polish
+            return 6
+        case "es":  // Spanish
+            return 7
+        default:    // This is the default, preferred language
+            return 0
+        }
+    }
+
+    func getLanguageStringFromPosition(pos: Int) -> String {
+        switch pos {
+        case 1:
+            return "ar"
+        case 2:
+            return "en"
+        case 3:
+            return "fr"
+        case 4:
+            return "de"
+        case 5:
+            return "he"
+        case 6:
+            return "pl"
+        case 7:
+            return "es"
+        default:
+            return ""
+        }
     }
 }
