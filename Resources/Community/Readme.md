@@ -28,7 +28,7 @@ The translation workflow follows a pull mode, meaning that new strings will be d
    `lokalise --config lokalise.cfg d --type json --dest Resources/Community --unzip_to Resources/Community`
 3. Commit and push the new `*.json` files to the repo.
 
-## Kudos
+## Supported languages & Kudos
 
 The following people has helped to improve Aerial by providing translations and text corrections. Thanks everybody!
 
@@ -38,6 +38,7 @@ The following people has helped to improve Aerial by providing translations and 
 - Polish by [@Soruk](https://github.com/Soruk)
 - German by [@moeffju](https://github.com/moeffju)
 - Hebrew by [@kaaspad](https://github.com/kaaspad)
+- Arabic by [@kachikulu](https://github.com/kachikulu)
 
 ## Sponsorship
 
