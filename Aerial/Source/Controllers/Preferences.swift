@@ -207,13 +207,13 @@ final class Preferences {
     // MARK: - Variables
     var videoSets: [String: [String]] {
         get {
-            return userDefaults.dictionary(forKey: "videoSets") as! [String : [String]]
+            return userDefaults.dictionary(forKey: "videoSets") as! [String: [String]]
         }
         set {
             setValue(forIdentifier: .videoSets, value: newValue)
         }
     }
-    
+
     var lastVideoCheck: String? {
         get {
             return optionalValue(forIdentifier: .lastVideoCheck)
