@@ -69,6 +69,7 @@ final class Preferences {
         case newVideosMode = "newVideosMode"
         case lastVideoCheck = "lastVideoCheck"
         case ciOverrideLanguage = "ciOverrideLanguage"
+        case videoSets = "videoSets"
     }
 
     enum NewVideosMode: Int {
@@ -185,6 +186,7 @@ final class Preferences {
         defaultValues[.darkModeNightOverride] = false
         defaultValues[.newVideosMode] = NewVideosMode.weekly
         defaultValues[.ciOverrideLanguage] = ""
+        defaultValues[.videoSets] = [String: [String]]()
 
         // Set today's date as default
         let dateFormatter = DateFormatter()
@@ -203,6 +205,15 @@ final class Preferences {
     }
 
     // MARK: - Variables
+    var videoSets: [String: [String]] {
+        get {
+            return userDefaults.dictionary(forKey: "videoSets") as! [String : [String]]
+        }
+        set {
+            setValue(forIdentifier: .videoSets, value: newValue)
+        }
+    }
+    
     var lastVideoCheck: String? {
         get {
             return optionalValue(forIdentifier: .lastVideoCheck)

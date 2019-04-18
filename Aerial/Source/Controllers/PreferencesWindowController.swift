@@ -54,6 +54,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet weak var prefTabView: NSTabView!
     @IBOutlet var outlineView: NSOutlineView!
     @IBOutlet var outlineViewSettings: NSButton!
+    @IBOutlet var videoSetsButton: NSButton!
     @IBOutlet var playerView: AVPlayerView!
     @IBOutlet var showDescriptionsCheckbox: NSButton!
     @IBOutlet weak var useCommunityCheckbox: NSButton!
@@ -193,6 +194,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var automaticallyCheckForUpdatesCheckbox: NSButton!
 
     @IBOutlet var lastCheckedSparkle: NSTextField!
+    @IBOutlet var closeButton: NSButton!
 
     var player: AVPlayer = AVPlayer()
 
@@ -244,18 +246,26 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     // MARK: - Lifecycle
+    // Before Sparkle tries to restart Aerial, we dismiss the sheet *and* quit System Preferences
+    // This is required as killing Aerial will crash the preview outside of Aerial, in System Preferences
+    @objc func sparkleWillRestart() {
+        debugLog("Sparkle will restart, properly quitting")
+        window?.sheetParent?.endSheet(window!)
+        for app in NSWorkspace.shared.runningApplications where app.bundleIdentifier == "com.apple.systempreferences" {
+            app.terminate()
+        }
+    }
 
     // swiftlint:disable:next cyclomatic_complexity
     override func awakeFromNib() {
         super.awakeFromNib()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.sparkleWillRestart),
+            name: Notification.Name.SUUpdaterWillRestart,
+            object: nil)    // We register for the notification just before Sparkle tries to terminate Aerial
         sparkleUpdater = SUUpdater.init(for: Bundle(for: PreferencesWindowController.self))
-        //sparkleUpdater?.delegate = self
 
-        // tmp
-        let tm = TimeManagement.sharedInstance
-        debugLog("isonbattery")
-        debugLog("\(tm.isOnBattery())")
-        //
         let logger = Logger.sharedInstance
         logger.addCallback {level in
             self.updateLogs(level: level)
@@ -611,7 +621,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBAction func close(_ sender: AnyObject?) {
         // This seems needed for screensavers as our lifecycle is different from a regular app
         preferences.synchronize()
-
         logPanel.close()
         if appMode {
             NSApplication.shared.terminate(nil)
@@ -1469,7 +1478,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         }
 
     }
-    // MARK: - Menu
+    // MARK: - Main Menu
     @IBAction func outlineViewSettingsClick(_ button: NSButton) {
         let menu = NSMenu()
 
@@ -1601,6 +1610,16 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         preferences.synchronize()
 
         outlineView.reloadData()
+    }
+
+    // MARK: - Video sets menu
+    @IBAction func videoSetsButtonClick(_ sender: NSButton) {
+        window?.sheetParent?.endSheet(window!)
+
+        for app in NSWorkspace.shared.runningApplications where app.bundleIdentifier == "com.apple.systempreferences" {
+            app.terminate()
+        }
+        //NSApplication.shared.terminate(nil)
     }
 
     // MARK: - Links
