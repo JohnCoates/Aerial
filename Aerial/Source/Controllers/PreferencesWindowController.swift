@@ -68,6 +68,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet weak var downloadNowButton: NSButton!
     @IBOutlet var overrideOnBatteryCheckbox: NSButton!
     @IBOutlet var powerSavingOnLowBatteryCheckbox: NSButton!
+    @IBOutlet var rightArrowKeyPlaysNextCheckbox: NSButton!
 
     @IBOutlet var overrideNightOnDarkMode: NSButton!
 
@@ -399,6 +400,9 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         if preferences.powerSavingOnLowBattery {
             powerSavingOnLowBatteryCheckbox.state = .on
         }
+        if !preferences.allowSkips {
+            rightArrowKeyPlaysNextCheckbox.state = .off
+        }
 
         // Aerial panel
         if preferences.debugMode {
@@ -668,6 +672,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     // MARK: - Video panel
+    @IBAction func rightArrowKeyPlaysNextClick(_ sender: NSButton) {
+        let onState = sender.state == .on
+        preferences.allowSkips = onState
+        debugLog("UI allowSkips \(onState)")
+    }
+
     @IBAction func overrideOnBatteryClick(_ sender: NSButton) {
         let onState = sender.state == .on
         preferences.overrideOnBattery = onState

@@ -70,6 +70,7 @@ final class Preferences {
         case lastVideoCheck = "lastVideoCheck"
         case ciOverrideLanguage = "ciOverrideLanguage"
         case videoSets = "videoSets"
+        case allowSkips = "allowSkips"
     }
 
     enum NewVideosMode: Int {
@@ -187,6 +188,7 @@ final class Preferences {
         defaultValues[.newVideosMode] = NewVideosMode.weekly
         defaultValues[.ciOverrideLanguage] = ""
         defaultValues[.videoSets] = [String: [String]]()
+        defaultValues[.allowSkips] = true
 
         // Set today's date as default
         let dateFormatter = DateFormatter()
@@ -238,6 +240,15 @@ final class Preferences {
         }
         set {
             setValue(forIdentifier: .alternateVideoFormat, value: newValue)
+        }
+    }
+
+    var allowSkips: Bool {
+        get {
+            return value(forIdentifier: .allowSkips)
+        }
+        set {
+            setValue(forIdentifier: .allowSkips, value: newValue)
         }
     }
 
