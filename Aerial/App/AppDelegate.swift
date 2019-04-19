@@ -14,6 +14,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
     lazy var preferencesWindowController: PreferencesWindowController = PreferencesWindowController()
 
+    /*func applicationWillTerminate(_ notification: Notification) {
+        debugLog("Received application will terminate")
+        preferencesWindowController.close(self)
+    }*/
+
     func applicationDidFinishLaunching(_ notification: Notification) {
         let objects = objectsFromNib(loadNibNamed: "PreferencesWindow")
         preferencesWindowController.appMode = true

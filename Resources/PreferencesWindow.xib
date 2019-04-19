@@ -9,6 +9,11 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController">
             <connections>
+                <outlet property="addVideoSetCancelButton" destination="hZB-yc-Afz" id="3lF-dU-ky0"/>
+                <outlet property="addVideoSetConfirmButton" destination="w4E-GL-DxJ" id="xEL-wF-x3W"/>
+                <outlet property="addVideoSetErrorLabel" destination="ncC-P6-0of" id="XFh-KI-6Ks"/>
+                <outlet property="addVideoSetPanel" destination="chX-6d-c0t" id="guU-sC-5gm"/>
+                <outlet property="addVideoSetTextField" destination="XhC-cC-tzz" id="bvo-cf-u7B"/>
                 <outlet property="alternatePopupVideoFormat" destination="9xO-ny-a0c" id="FuP-7M-R3o"/>
                 <outlet property="automaticallyCheckForUpdatesCheckbox" destination="eDw-MF-oVs" id="Mlh-Pm-oeY"/>
                 <outlet property="cacheAerialsAsTheyPlayCheckbox" destination="7HM-tD-v0b" id="29n-iQ-L36"/>
@@ -18,6 +23,7 @@
                 <outlet property="changeCornerMargins" destination="VPG-cS-U1N" id="F9P-rV-FaD"/>
                 <outlet property="checkNowButton" destination="EeC-Lg-0GW" id="3zr-3y-AW9"/>
                 <outlet property="ciOverrideLanguagePopup" destination="Thy-6K-bQe" id="eGe-Iv-gxJ"/>
+                <outlet property="closeButton" destination="cvY-s8-rnf" id="rfu-11-yJe"/>
                 <outlet property="cornerBottomLeft" destination="Qhn-AB-VZ5" id="YIg-vu-QIS"/>
                 <outlet property="cornerBottomRight" destination="4Rr-4h-bRr" id="5oY-Eh-CdE"/>
                 <outlet property="cornerContainer" destination="NQf-K9-FZk" id="SU0-YA-s4F"/>
@@ -120,6 +126,7 @@
                 <outlet property="useCommunityCheckbox" destination="1e6-Z5-uo6" id="gE7-Ed-YAE"/>
                 <outlet property="versionLabel" destination="Hwv-TU-zhn" id="EPq-JL-DCZ"/>
                 <outlet property="videoMenu" destination="5cW-cT-ZqM" id="weH-xZ-kqz"/>
+                <outlet property="videoSetsButton" destination="3ly-5z-7Yd" id="5vu-na-onN"/>
                 <outlet property="videoVersionsLabel" destination="jfq-Ye-7dR" id="PEo-cF-0Qd"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="B44-2j-OKw"/>
                 <outlet property="withSecondsCheckbox" destination="h3J-Gc-SIR" id="01D-sf-fVd"/>
@@ -145,7 +152,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Videos" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" id="zsM-Ha-kCO">
+                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -528,11 +535,22 @@ is disabled
                                                         <action selector="helpPowerButtonClick:" target="-2" id="IoR-ba-SVJ"/>
                                                     </connections>
                                                 </button>
+                                                <button toolTip="Option menu" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ly-5z-7Yd">
+                                                    <rect key="frame" x="52" y="10" width="32" height="19"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSBookmarksTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kGs-X6-tPb">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="cellTitle"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="videoSetsButtonClick:" target="-2" id="aDh-Hf-5AD"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Text" identifier="" id="bPY-uP-DGa">
-                                        <view key="view" ambiguous="YES" id="M1m-ud-C95">
+                                        <view key="view" id="M1m-ud-C95">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1797,6 +1815,9 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                         <buttonCell key="cell" type="roundTextured" title="Done" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GFI-5x-G9o">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
                         </buttonCell>
                         <connections>
                             <action selector="close:" target="-2" id="WXm-YG-isp"/>
@@ -2319,6 +2340,71 @@ You can enable it when on battery, or only when your battery reaches 20%.</strin
             </items>
             <point key="canvasLocation" x="-265" y="474"/>
         </menu>
+        <window title="Add a new video set" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="chX-6d-c0t" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="272" y="172" width="343" height="136"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <view key="contentView" id="DbQ-Vd-sYh">
+                <rect key="frame" x="0.0" y="0.0" width="343" height="136"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JIJ-Nf-50h">
+                        <rect key="frame" x="18" y="99" width="141" height="17"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Name of the video set:" id="dOs-T0-xbL">
+                            <font key="font" usesAppearanceFont="YES"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XhC-cC-tzz">
+                        <rect key="frame" x="20" y="60" width="303" height="22"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Type your set name here" drawsBackground="YES" id="bz4-RC-Msf">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w4E-GL-DxJ">
+                        <rect key="frame" x="247" y="13" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vjr-Mk-xt0">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="createNewVideoSetConfirm:" target="-2" id="aPm-xu-xnB"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hZB-yc-Afz">
+                        <rect key="frame" x="167" y="13" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="H36-L0-RK9">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="createNewVideoSetCancel:" target="-2" id="U7s-9C-i1u"/>
+                        </connections>
+                    </button>
+                    <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ncC-P6-0of">
+                        <rect key="frame" x="18" y="23" width="132" height="17"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="This set already exist" id="xKE-a0-wx0">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="-304.5" y="933"/>
+        </window>
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>

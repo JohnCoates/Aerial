@@ -54,6 +54,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet weak var prefTabView: NSTabView!
     @IBOutlet var outlineView: NSOutlineView!
     @IBOutlet var outlineViewSettings: NSButton!
+    @IBOutlet var videoSetsButton: NSButton!
     @IBOutlet var playerView: AVPlayerView!
     @IBOutlet var showDescriptionsCheckbox: NSButton!
     @IBOutlet weak var useCommunityCheckbox: NSButton!
@@ -193,7 +194,13 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var automaticallyCheckForUpdatesCheckbox: NSButton!
 
     @IBOutlet var lastCheckedSparkle: NSTextField!
+    @IBOutlet var closeButton: NSButton!
 
+    @IBOutlet var addVideoSetPanel: NSPanel!
+    @IBOutlet var addVideoSetTextField: NSTextField!
+    @IBOutlet var addVideoSetConfirmButton: NSButton!
+    @IBOutlet var addVideoSetCancelButton: NSButton!
+    @IBOutlet var addVideoSetErrorLabel: NSTextField!
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?
@@ -244,18 +251,26 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     // MARK: - Lifecycle
+    // Before Sparkle tries to restart Aerial, we dismiss the sheet *and* quit System Preferences
+    // This is required as killing Aerial will crash the preview outside of Aerial, in System Preferences
+    @objc func sparkleWillRestart() {
+        debugLog("Sparkle will restart, properly quitting")
+        window?.sheetParent?.endSheet(window!)
+        for app in NSWorkspace.shared.runningApplications where app.bundleIdentifier == "com.apple.systempreferences" {
+            app.terminate()
+        }
+    }
 
     // swiftlint:disable:next cyclomatic_complexity
     override func awakeFromNib() {
         super.awakeFromNib()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.sparkleWillRestart),
+            name: Notification.Name.SUUpdaterWillRestart,
+            object: nil)    // We register for the notification just before Sparkle tries to terminate Aerial
         sparkleUpdater = SUUpdater.init(for: Bundle(for: PreferencesWindowController.self))
-        //sparkleUpdater?.delegate = self
 
-        // tmp
-        let tm = TimeManagement.sharedInstance
-        debugLog("isonbattery")
-        debugLog("\(tm.isOnBattery())")
-        //
         let logger = Logger.sharedInstance
         logger.addCallback {level in
             self.updateLogs(level: level)
@@ -611,7 +626,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBAction func close(_ sender: AnyObject?) {
         // This seems needed for screensavers as our lifecycle is different from a regular app
         preferences.synchronize()
-
         logPanel.close()
         if appMode {
             NSApplication.shared.terminate(nil)
@@ -1469,7 +1483,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         }
 
     }
-    // MARK: - Menu
+    // MARK: - Main Menu
     @IBAction func outlineViewSettingsClick(_ button: NSButton) {
         let menu = NSMenu()
 
@@ -1603,6 +1617,131 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         outlineView.reloadData()
     }
 
+    // MARK: - Video sets menu
+    @IBAction func videoSetsButtonClick(_ sender: NSButton) {
+        // First we make an array of the sorted dictionnary keys
+        let sortedKeys = Array(preferences.videoSets).sorted(by: {$0.0 < $1.0})
+
+        // We make a submenu with the current sets to save/override or create a new one
+        let saveSubMenu = NSMenu()
+        saveSubMenu.insertItem(withTitle: "New set...",
+                               action: #selector(PreferencesWindowController.createNewVideoSet),
+                               keyEquivalent: "",
+                               at: 0)
+        saveSubMenu.insertItem(NSMenuItem.separator(), at: 1)
+        var ssi = 2
+        for key in sortedKeys {
+            saveSubMenu.insertItem(withTitle: key.key,
+                                   action: #selector(PreferencesWindowController.updateVideoSet(menuItem:)),
+                                   keyEquivalent: "",
+                                   at: ssi)
+            ssi += 1
+        }
+
+        // We make a submenu with the current sets to be deleted
+        let deleteSubMenu = NSMenu()
+        ssi = 0
+        for key in sortedKeys {
+            deleteSubMenu.insertItem(withTitle: key.key,
+                                   action: #selector(PreferencesWindowController.deleteVideoSet(menuItem:)),
+                                   keyEquivalent: "",
+                                   at: ssi)
+            ssi += 1
+        }
+
+        // Main menu
+        let menu = NSMenu()
+        let saveMenuItem = menu.insertItem(withTitle: "Save as...",
+                        action: nil,
+                        keyEquivalent: "",
+                        at: 0)
+        menu.setSubmenu(saveSubMenu, for: saveMenuItem)         // We attach the submenu created above
+
+        let deleteMenuItem = menu.insertItem(withTitle: "Delete set",
+                        action: nil,
+                        keyEquivalent: "",
+                        at: 1)
+
+        if !preferences.videoSets.isEmpty {
+            menu.setSubmenu(deleteSubMenu, for: deleteMenuItem) // We attach the submenu created above, if any
+        }
+
+        menu.insertItem(NSMenuItem.separator(), at: 2)
+
+        ssi = 3
+        for key in sortedKeys {
+            menu.insertItem(withTitle: key.key,
+                                     action: #selector(PreferencesWindowController.activateVideoSet(menuItem:)),
+                                     keyEquivalent: "",
+                                     at: ssi)
+            ssi += 1
+        }
+        let event = NSApp.currentEvent
+        NSMenu.popUpContextMenu(menu, with: event!, for: sender)
+    }
+
+    @objc func createNewVideoSet() {
+        addVideoSetPanel.makeKeyAndOrderFront(self)
+    }
+
+    @IBAction func createNewVideoSetConfirm(_ sender: Any) {
+        if preferences.videoSets.keys.contains(addVideoSetTextField.stringValue) {
+            addVideoSetErrorLabel.isHidden = false
+        } else {
+            addVideoSetErrorLabel.isHidden = true
+
+            var playlist = [String]()
+            for video in videos! {
+                let isInRotation = preferences.videoIsInRotation(videoID: video.id)
+                if isInRotation {
+                    playlist.append(video.id)
+                }
+            }
+
+            preferences.videoSets[addVideoSetTextField.stringValue] = playlist
+
+            addVideoSetPanel.close()
+        }
+    }
+
+    @IBAction func createNewVideoSetCancel(_ sender: Any) {
+        addVideoSetPanel.close()
+    }
+
+    @objc func updateVideoSet(menuItem: NSMenuItem) {
+        if preferences.videoSets.keys.contains(menuItem.title) {
+            var playlist = [String]()
+            for video in videos! {
+                let isInRotation = preferences.videoIsInRotation(videoID: video.id)
+                if isInRotation {
+                    playlist.append(video.id)
+                }
+            }
+
+            preferences.videoSets[menuItem.title] = playlist
+        }
+    }
+
+    @objc func deleteVideoSet(menuItem: NSMenuItem) {
+        debugLog("Deleting video set : \(menuItem.title)")
+        if preferences.videoSets.keys.contains(menuItem.title) {
+            preferences.videoSets.removeValue(forKey: menuItem.title)
+        }
+    }
+
+    @objc func activateVideoSet(menuItem: NSMenuItem) {
+        if preferences.videoSets.keys.contains(menuItem.title) {
+            // First we disable every video
+            setAllVideos(inRotation: false)
+
+            // Then we enable the set
+            for videoid in preferences.videoSets[menuItem.title]! {
+                preferences.setVideo(videoID: videoid,
+                                     inRotation: true,
+                                     synchronize: false)
+            }
+        }
+    }
     // MARK: - Links
 
     @IBAction func pageProjectClick(_ button: NSButton?) {
