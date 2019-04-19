@@ -14,7 +14,7 @@ import Sparkle
 
 @objc(AerialView)
 // swiftlint:disable:next type_body_length
-final class AerialView: ScreenSaverView {
+final class AerialView: ScreenSaverView, NSResponder {
     var playerLayer: AVPlayerLayer!
     var textLayer: CATextLayer!
     var clockLayer: CATextLayer!
@@ -588,6 +588,15 @@ final class AerialView: ScreenSaverView {
                                        name: NSNotification.Name.AVPlayerItemPlaybackStalled,
                                        object: currentItem)
         player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
+    }
+    
+    override func keyDown(with event: NSEvent) {
+        switch event.modifierFlags.intersection(.deviceIndependentFlagsMask) {
+        case [.command] where event.characters == NSRightArrowFunctionKey:
+            playNextVideo()
+        default:
+            break
+        }
     }
 
     // MARK: - Extra Animations
