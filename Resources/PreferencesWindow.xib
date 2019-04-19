@@ -105,6 +105,7 @@
                 <outlet property="prefTabView" destination="B9U-tn-dsp" id="3c5-Fy-jcB"/>
                 <outlet property="previewDisabledTextfield" destination="kQD-aR-CSY" id="3BE-5n-RJW"/>
                 <outlet property="projectPageLink" destination="hOD-gE-gxl" id="UTt-Vt-cTP"/>
+                <outlet property="rightArrowKeyPlaysNextCheckbox" destination="r6a-he-iOc" id="3Kb-8Q-RNS"/>
                 <outlet property="secondProjectPageLink" destination="1gS-Uu-hUv" id="UdX-F9-u8p"/>
                 <outlet property="secondaryExtraMessageTextField" destination="Gfy-gr-PdM" id="Lpb-Jo-NEn"/>
                 <outlet property="secondaryMarginHorizontalTextfield" destination="BX9-RZ-ZYU" id="RvT-Qq-uBa"/>
@@ -152,7 +153,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Videos" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
+                                        <view key="view" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -342,7 +343,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hOD-gE-gxl">
-                                                    <rect key="frame" x="488" y="4" width="119" height="32"/>
+                                                    <rect key="frame" x="495" y="0.0" width="119" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                     <buttonCell key="cell" type="bevel" title="Visit Project Page" bezelStyle="rounded" alignment="center" inset="2" id="5mJ-Tt-2db">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -544,6 +545,17 @@ is disabled
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="videoSetsButtonClick:" target="-2" id="aDh-Hf-5AD"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r6a-he-iOc">
+                                                    <rect key="frame" x="307" y="21" width="190" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Right arrow key plays next" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="P4b-25-o9o">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="rightArrowKeyPlaysNextClick:" target="-2" id="HSu-RO-zN1"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1504,7 +1516,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Updates" identifier="" id="7Rb-Ma-4dK">
-                                        <view key="view" id="2qs-gJ-aIh">
+                                        <view key="view" ambiguous="YES" id="2qs-gJ-aIh">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
