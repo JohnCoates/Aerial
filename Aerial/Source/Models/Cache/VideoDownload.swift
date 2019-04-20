@@ -249,7 +249,7 @@ final class VideoDownload: NSObject, NSURLConnectionDataDelegate {
                 return
             }
 
-            guard let index = self.streams.index(where: { $0.connection == stream.connection }) else {
+            guard let index = self.streams.firstIndex(where: { $0.connection == stream.connection }) else {
                 errorLog("Couldn't find index of stream for finished connection!")
                 return
             }
