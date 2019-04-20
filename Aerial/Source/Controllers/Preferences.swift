@@ -71,6 +71,8 @@ final class Preferences {
         case ciOverrideLanguage = "ciOverrideLanguage"
         case videoSets = "videoSets"
         case allowSkips = "allowSkips"
+        case updateWhileSaverMode = "updateWhileSaverMode"
+        case allowBetas = "allowBetas"
     }
 
     enum NewVideosMode: Int {
@@ -189,6 +191,8 @@ final class Preferences {
         defaultValues[.ciOverrideLanguage] = ""
         defaultValues[.videoSets] = [String: [String]]()
         defaultValues[.allowSkips] = true
+        defaultValues[.updateWhileSaverMode] = true
+        defaultValues[.allowBetas] = false
 
         // Set today's date as default
         let dateFormatter = DateFormatter()
@@ -240,6 +244,24 @@ final class Preferences {
         }
         set {
             setValue(forIdentifier: .alternateVideoFormat, value: newValue)
+        }
+    }
+
+    var allowBetas: Bool {
+        get {
+            return value(forIdentifier: .allowBetas)
+        }
+        set {
+            setValue(forIdentifier: .allowBetas, value: newValue)
+        }
+    }
+
+    var updateWhileSaverMode: Bool {
+        get {
+            return value(forIdentifier: .updateWhileSaverMode)
+        }
+        set {
+            setValue(forIdentifier: .updateWhileSaverMode, value: newValue)
         }
     }
 

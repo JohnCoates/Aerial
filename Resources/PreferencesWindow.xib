@@ -14,6 +14,8 @@
                 <outlet property="addVideoSetErrorLabel" destination="ncC-P6-0of" id="XFh-KI-6Ks"/>
                 <outlet property="addVideoSetPanel" destination="chX-6d-c0t" id="guU-sC-5gm"/>
                 <outlet property="addVideoSetTextField" destination="XhC-cC-tzz" id="bvo-cf-u7B"/>
+                <outlet property="allowBetasCheckbox" destination="jdq-FS-ByJ" id="Vyy-Ka-YN6"/>
+                <outlet property="allowScreenSaverModeUpdateCheckbox" destination="2Fo-sN-gby" id="mdQ-nu-jNK"/>
                 <outlet property="alternatePopupVideoFormat" destination="9xO-ny-a0c" id="FuP-7M-R3o"/>
                 <outlet property="automaticallyCheckForUpdatesCheckbox" destination="eDw-MF-oVs" id="Mlh-Pm-oeY"/>
                 <outlet property="cacheAerialsAsTheyPlayCheckbox" destination="7HM-tD-v0b" id="29n-iQ-L36"/>
@@ -100,6 +102,7 @@
                 <outlet property="popoverHEVCLabel" destination="RGL-6I-5Hp" id="Fgt-8f-0Vb"/>
                 <outlet property="popoverPower" destination="7lP-6F-c7D" id="Ozn-hU-sAe"/>
                 <outlet property="popoverTime" destination="6un-1I-4G4" id="ZD7-ym-bLw"/>
+                <outlet property="popoverUpdate" destination="YTC-a3-Mrn" id="4UV-3D-X5W"/>
                 <outlet property="popupVideoFormat" destination="rUc-qc-3p7" id="JNx-id-07t"/>
                 <outlet property="powerSavingOnLowBatteryCheckbox" destination="J8F-d4-4Mv" id="JMZ-iR-8Lt"/>
                 <outlet property="prefTabView" destination="B9U-tn-dsp" id="3c5-Fy-jcB"/>
@@ -343,7 +346,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hOD-gE-gxl">
-                                                    <rect key="frame" x="495" y="0.0" width="119" height="29"/>
+                                                    <rect key="frame" x="496" y="0.0" width="119" height="26"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                     <buttonCell key="cell" type="bevel" title="Visit Project Page" bezelStyle="rounded" alignment="center" inset="2" id="5mJ-Tt-2db">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -548,9 +551,9 @@ is disabled
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r6a-he-iOc">
-                                                    <rect key="frame" x="307" y="21" width="190" height="18"/>
+                                                    <rect key="frame" x="307" y="21" width="204" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Right arrow key plays next" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="P4b-25-o9o">
+                                                    <buttonCell key="cell" type="check" title="Allow Right arrow key to skip" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="P4b-25-o9o">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
@@ -944,7 +947,7 @@ should appear</string>
                                                     </connections>
                                                 </button>
                                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" verifyAmbiguity="off" translatesAutoresizingMaskIntoConstraints="NO" id="Thy-6K-bQe">
-                                                    <rect key="frame" x="266" y="241" width="114" height="25"/>
+                                                    <rect key="frame" x="266" y="240" width="114" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <popUpButtonCell key="cell" type="push" title="Preferred" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="xCg-g0-Bhx" id="nf2-lO-M2x">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1539,7 +1542,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </popUpButton>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N4V-cr-IpU">
-                                                    <rect key="frame" x="35" y="253" width="573" height="17"/>
+                                                    <rect key="frame" x="40" y="254" width="573" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Last checked on " id="bSi-OR-QoO">
                                                         <font key="font" metaFont="system"/>
@@ -1631,7 +1634,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eIe-xw-mO4">
-                                                    <rect key="frame" x="37" y="80" width="549" height="17"/>
+                                                    <rect key="frame" x="40" y="28" width="549" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Last checked on" id="EIr-1t-CAG">
                                                         <font key="font" metaFont="system"/>
@@ -1639,6 +1642,39 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jdq-FS-ByJ">
+                                                    <rect key="frame" x="40" y="57" width="171" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Look for beta updates" bezelStyle="regularSquare" imagePosition="left" inset="2" id="box-3M-XOp">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="allowBetasChange:" target="-2" id="o4q-ve-H8A"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Fo-sN-gby">
+                                                    <rect key="frame" x="40" y="87" width="327" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Auto install updates while the screensaver runs" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Seh-Cs-hWI">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="allowScreenSaverModeUpdatesChange:" target="-2" id="at9-X1-bzh"/>
+                                                    </connections>
+                                                </button>
+                                                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4mO-5g-tT9">
+                                                    <rect key="frame" x="365" y="81" width="25" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DaI-Vw-jcP">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="popoverUpdateClick:" target="-2" id="gCm-6k-BWz"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
@@ -2341,6 +2377,17 @@ You can enable it when on battery, or only when your battery reaches 20%.</strin
             </view>
             <point key="canvasLocation" x="-651" y="485"/>
         </window>
+        <viewController id="Szu-Zo-2S4" userLabel="PopoverUpdate View Controller">
+            <connections>
+                <outlet property="view" destination="oKA-6w-IA7" id="m8j-LB-YH8"/>
+            </connections>
+        </viewController>
+        <popover behavior="t" id="YTC-a3-Mrn" userLabel="PopoverUpdate">
+            <connections>
+                <outlet property="contentViewController" destination="Szu-Zo-2S4" id="8Gy-Uw-ima"/>
+                <outlet property="delegate" destination="-3" id="CtQ-G8-ha7"/>
+            </connections>
+        </popover>
         <menu id="5cW-cT-ZqM">
             <items>
                 <menuItem title="Open in QuickTime" id="1t6-YL-1aJ">
@@ -2417,6 +2464,29 @@ Gw
             </view>
             <point key="canvasLocation" x="-304.5" y="933"/>
         </window>
+        <customView id="oKA-6w-IA7">
+            <rect key="frame" x="0.0" y="0.0" width="325" height="236"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="285" translatesAutoresizingMaskIntoConstraints="NO" id="iZU-qs-CDe">
+                    <rect key="frame" x="18" y="20" width="289" height="196"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" selectable="YES" id="Zfb-df-GY5">
+                        <font key="font" metaFont="smallSystem"/>
+                        <string key="title">Automatic Updates
+
+If you uncheck this box, Aerial will only check for updates when you are running this control panel.
+
+When checked, Aerial will also look when appropriate for a new version while the screensaver is running. As a side effect, when a new update is available, it will wake up from the screensaver to install the new version (your mac will eventually go to sleep afterwards.
+
+Unless you want to manually manage your updates, we highly recommand you leave this box checked!</string>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="1218.5" y="559"/>
+        </customView>
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>

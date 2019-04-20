@@ -180,16 +180,21 @@ final class AerialView: ScreenSaverView {
 
     // swiftlint:disable:next cyclomatic_complexity
     func setup() {
-        // Initialize Sparkle updater
-        /*if !isPreview {
-            let suu = SUUpdater.init(for: Bundle(for: AerialView.self))
-            suu?.resetUpdateCycle()
-            suu?.installUpdatesIfAvailable()
-        }*/
-
         debugLog("\(self.description) AerialView setup init")
         let preferences = Preferences.sharedInstance
         let timeManagement = TimeManagement.sharedInstance
+
+        // Initialize Sparkle updater
+        if !isPreview && preferences.updateWhileSaverMode {
+            let suu = SUUpdater.init(for: Bundle(for: AerialView.self))
+
+            // We manually ensure a day passed since last check
+            if suu!.lastUpdateCheckDate.timeIntervalSinceNow.distance(to: -86400) > 0 {
+                // Then force check/install udpates
+                suu!.resetUpdateCycle()
+                suu!.installUpdatesIfAvailable()
+            }
+        }
 
         if preferences.overrideOnBattery && timeManagement.isOnBattery() && !isPreview {
             if preferences.alternateVideoFormat == Preferences.AlternateVideoFormat.powerSaving.rawValue ||
