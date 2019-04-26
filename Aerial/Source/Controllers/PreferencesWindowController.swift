@@ -54,6 +54,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet weak var prefTabView: NSTabView!
     @IBOutlet var outlineView: NSOutlineView!
     @IBOutlet var outlineViewSettings: NSButton!
+    @IBOutlet var videoSetsButton: NSButton!
     @IBOutlet var playerView: AVPlayerView!
     @IBOutlet var showDescriptionsCheckbox: NSButton!
     @IBOutlet weak var useCommunityCheckbox: NSButton!
@@ -67,6 +68,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet weak var downloadNowButton: NSButton!
     @IBOutlet var overrideOnBatteryCheckbox: NSButton!
     @IBOutlet var powerSavingOnLowBatteryCheckbox: NSButton!
+    @IBOutlet var rightArrowKeyPlaysNextCheckbox: NSButton!
 
     @IBOutlet var overrideNightOnDarkMode: NSButton!
 
@@ -77,6 +79,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var fadeInOutModePopup: NSPopUpButton!
     @IBOutlet weak var fadeInOutTextModePopup: NSPopUpButton!
+    @IBOutlet var ciOverrideLanguagePopup: NSPopUpButton!
 
     @IBOutlet weak var downloadProgressIndicator: NSProgressIndicator!
     @IBOutlet weak var downloadStopButton: NSButton!
@@ -85,6 +88,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var popover: NSPopover!
     @IBOutlet var popoverTime: NSPopover!
     @IBOutlet var popoverPower: NSPopover!
+    @IBOutlet var popoverUpdate: NSPopover!
 
     @IBOutlet var linkTimeWikipediaButton: NSButton!
 
@@ -192,7 +196,15 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var automaticallyCheckForUpdatesCheckbox: NSButton!
 
     @IBOutlet var lastCheckedSparkle: NSTextField!
+    @IBOutlet var allowScreenSaverModeUpdateCheckbox: NSButton!
+    @IBOutlet var allowBetasCheckbox: NSButton!
+    @IBOutlet var closeButton: NSButton!
 
+    @IBOutlet var addVideoSetPanel: NSPanel!
+    @IBOutlet var addVideoSetTextField: NSTextField!
+    @IBOutlet var addVideoSetConfirmButton: NSButton!
+    @IBOutlet var addVideoSetCancelButton: NSButton!
+    @IBOutlet var addVideoSetErrorLabel: NSTextField!
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?
@@ -243,17 +255,32 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     // MARK: - Lifecycle
+    // Before Sparkle tries to restart Aerial, we dismiss the sheet *and* quit System Preferences
+    // This is required as killing Aerial will crash the preview outside of Aerial, in System Preferences
+    @objc func sparkleWillRestart() {
+        debugLog("Sparkle will restart, properly quitting")
+        window?.sheetParent?.endSheet(window!)
+        for app in NSWorkspace.shared.runningApplications where app.bundleIdentifier == "com.apple.systempreferences" {
+            app.terminate()
+        }
+    }
 
     // swiftlint:disable:next cyclomatic_complexity
     override func awakeFromNib() {
         super.awakeFromNib()
-        sparkleUpdater = SUUpdater.init(for: Bundle(for: PreferencesWindowController.self))
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.sparkleWillRestart),
+            name: Notification.Name.SUUpdaterWillRestart,
+            object: nil)    // We register for the notification just before Sparkle tries to terminate Aerial
 
-        // tmp
-        let tm = TimeManagement.sharedInstance
-        debugLog("isonbattery")
-        debugLog("\(tm.isOnBattery())")
-        //
+        // Starting the Sparkle update system
+        sparkleUpdater = SUUpdater.init(for: Bundle(for: PreferencesWindowController.self))
+        // We override the feeds for betas
+        if preferences.allowBetas {
+            sparkleUpdater?.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/beta-appcast.xml")
+        }
+
         let logger = Logger.sharedInstance
         logger.addCallback {level in
             self.updateLogs(level: level)
@@ -340,10 +367,19 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         // Grab preferred language as proper string
         let printOutputLocale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
         if let deviceLanguageName: String = printOutputLocale.displayName(forKey: .identifier, value: Locale.preferredLanguages[0]) {
-            currentLocaleLabel.stringValue = "Preferred language: \(deviceLanguageName)"
+            if #available(OSX 10.12, *) {
+                currentLocaleLabel.stringValue = "Preferred language: \(deviceLanguageName) [\(printOutputLocale.languageCode)]"
+            } else {
+                currentLocaleLabel.stringValue = "Preferred language: \(deviceLanguageName)"
+            }
         } else {
             currentLocaleLabel.stringValue = ""
         }
+
+        let poisp = PoiStringProvider.sharedInstance
+
+        // Should we override the community language ?
+        ciOverrideLanguagePopup.selectItem(at: poisp.getLanguagePosition())
 
         // Videos panel
         playerView.player = player
@@ -372,6 +408,9 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         }
         if preferences.powerSavingOnLowBattery {
             powerSavingOnLowBatteryCheckbox.state = .on
+        }
+        if !preferences.allowSkips {
+            rightArrowKeyPlaysNextCheckbox.state = .off
         }
 
         // Aerial panel
@@ -544,12 +583,23 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
 
         // Format date
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let sparkleDate = dateFormatter.string(from: sparkleUpdater!.lastUpdateCheckDate)
-        lastCheckedSparkle.stringValue = "Last checked on " + sparkleDate
+        if sparkleUpdater!.lastUpdateCheckDate != nil {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let sparkleDate = dateFormatter.string(from: sparkleUpdater!.lastUpdateCheckDate)
+            lastCheckedSparkle.stringValue = "Last checked on " + sparkleDate
+        } else {
+            lastCheckedSparkle.stringValue = "Never checked for update"
+        }
+
         if sparkleUpdater!.automaticallyChecksForUpdates {
             automaticallyCheckForUpdatesCheckbox.state = .on
+        }
+        if preferences.updateWhileSaverMode {
+            allowScreenSaverModeUpdateCheckbox.state = .on
+        }
+        if preferences.allowBetas {
+            allowBetasCheckbox.state = .on
         }
 
         colorizeProjectPageLinks()
@@ -595,7 +645,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBAction func close(_ sender: AnyObject?) {
         // This seems needed for screensavers as our lifecycle is different from a regular app
         preferences.synchronize()
-
         logPanel.close()
         if appMode {
             NSApplication.shared.terminate(nil)
@@ -638,6 +687,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     // MARK: - Video panel
+    @IBAction func rightArrowKeyPlaysNextClick(_ sender: NSButton) {
+        let onState = sender.state == .on
+        preferences.allowSkips = onState
+        debugLog("UI allowSkips \(onState)")
+    }
+
     @IBAction func overrideOnBatteryClick(_ sender: NSButton) {
         let onState = sender.state == .on
         preferences.overrideOnBattery = onState
@@ -859,6 +914,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         let onState = state == .on
         preferences.useCommunityDescriptions = onState
         debugLog("UI useCommunity: \(onState)")
+    }
+
+    @IBAction func communityLanguagePopupChange(_ sender: NSPopUpButton) {
+        debugLog("UI communityLanguagePopupChange: \(sender.indexOfSelectedItem)")
+        let poisp = PoiStringProvider.sharedInstance
+        preferences.ciOverrideLanguage = poisp.getLanguageStringFromPosition(pos: sender.indexOfSelectedItem)
     }
 
     @IBAction func localizeForTvOS12Click(button: NSButton?) {
@@ -1095,11 +1156,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         preferences.newVideosMode = sender.indexOfSelectedItem
     }
 
-    @IBAction func checkNowButtonClick(_ sender: NSButton) {
-        checkNowButton.isEnabled = false
-        ManifestLoader.instance.reloadFiles()
-    }
-
     // MARK: - Time panel
 
     @IBAction func overrideNightOnDarkModeClick(_ button: NSButton) {
@@ -1217,11 +1273,11 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     func pushCoordinates(_ coordinates: CLLocationCoordinate2D) {
-        latitudeTextField.stringValue = String(coordinates.latitude)
-        longitudeTextField.stringValue = String(coordinates.longitude)
+        latitudeTextField.stringValue = String(format: "%.3f", coordinates.latitude)
+        longitudeTextField.stringValue = String(format: "%.3f", coordinates.longitude)
 
-        preferences.latitude = String(coordinates.latitude)
-        preferences.longitude = String(coordinates.longitude)
+        preferences.latitude = String(format: "%.3f", coordinates.latitude)
+        preferences.longitude = String(format: "%.3f", coordinates.longitude)
         updateLatitudeLongitude()
     }
     // MARK: - Brightness panel
@@ -1327,14 +1383,46 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     // MARK: - Update panel
+    @IBAction func popoverUpdateClick(_ button: NSButton) {
+        popoverUpdate.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
+    }
     @IBAction func automaticallyCheckForUpdatesChange(_ button: NSButton) {
         let onState = button.state == .on
         sparkleUpdater!.automaticallyChecksForUpdates = onState
         debugLog("UI automaticallyCheckForUpdatesChange: \(onState)")
     }
 
-    // MARK: - Advanced panel
+    @IBAction func allowScreenSaverModeUpdatesChange(_ button: NSButton) {
+        let onState = button.state == .on
+        preferences.updateWhileSaverMode = onState
+        debugLog("UI allowScreenSaverModeUpdatesChange: \(onState)")
+    }
 
+    @IBAction func allowBetasChange(_ button: NSButton) {
+        let onState = button.state == .on
+        preferences.allowBetas = onState
+        debugLog("UI allowBetasChange: \(onState)")
+
+        // We also update the feed url so subsequent checks go to the right feed
+        if preferences.allowBetas {
+            sparkleUpdater?.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/beta-appcast.xml")
+        } else {
+            sparkleUpdater?.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/appcast.xml")
+        }
+    }
+
+    @IBAction func checkNowButtonClick(_ sender: NSButton) {
+        checkNowButton.isEnabled = false
+        ManifestLoader.instance.addCallback(reloadJSONCallback)
+        ManifestLoader.instance.reloadFiles()
+    }
+
+    func reloadJSONCallback(manifestVideos: [AerialVideo]) {
+        checkNowButton.isEnabled = true
+        lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
+    }
+
+    // MARK: - Advanced panel
     @IBAction func logButtonClick(_ sender: NSButton) {
         logTableView.reloadData()
         if logPanel.isVisible {
@@ -1442,7 +1530,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         }
 
     }
-    // MARK: - Menu
+    // MARK: - Main Menu
     @IBAction func outlineViewSettingsClick(_ button: NSButton) {
         let menu = NSMenu()
 
@@ -1576,6 +1664,131 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         outlineView.reloadData()
     }
 
+    // MARK: - Video sets menu
+    @IBAction func videoSetsButtonClick(_ sender: NSButton) {
+        // First we make an array of the sorted dictionnary keys
+        let sortedKeys = Array(preferences.videoSets).sorted(by: {$0.0 < $1.0})
+
+        // We make a submenu with the current sets to save/override or create a new one
+        let saveSubMenu = NSMenu()
+        saveSubMenu.insertItem(withTitle: "New set...",
+                               action: #selector(PreferencesWindowController.createNewVideoSet),
+                               keyEquivalent: "",
+                               at: 0)
+        saveSubMenu.insertItem(NSMenuItem.separator(), at: 1)
+        var ssi = 2
+        for key in sortedKeys {
+            saveSubMenu.insertItem(withTitle: key.key,
+                                   action: #selector(PreferencesWindowController.updateVideoSet(menuItem:)),
+                                   keyEquivalent: "",
+                                   at: ssi)
+            ssi += 1
+        }
+
+        // We make a submenu with the current sets to be deleted
+        let deleteSubMenu = NSMenu()
+        ssi = 0
+        for key in sortedKeys {
+            deleteSubMenu.insertItem(withTitle: key.key,
+                                   action: #selector(PreferencesWindowController.deleteVideoSet(menuItem:)),
+                                   keyEquivalent: "",
+                                   at: ssi)
+            ssi += 1
+        }
+
+        // Main menu
+        let menu = NSMenu()
+        let saveMenuItem = menu.insertItem(withTitle: "Save as...",
+                        action: nil,
+                        keyEquivalent: "",
+                        at: 0)
+        menu.setSubmenu(saveSubMenu, for: saveMenuItem)         // We attach the submenu created above
+
+        let deleteMenuItem = menu.insertItem(withTitle: "Delete set",
+                        action: nil,
+                        keyEquivalent: "",
+                        at: 1)
+
+        if !preferences.videoSets.isEmpty {
+            menu.setSubmenu(deleteSubMenu, for: deleteMenuItem) // We attach the submenu created above, if any
+        }
+
+        menu.insertItem(NSMenuItem.separator(), at: 2)
+
+        ssi = 3
+        for key in sortedKeys {
+            menu.insertItem(withTitle: key.key,
+                                     action: #selector(PreferencesWindowController.activateVideoSet(menuItem:)),
+                                     keyEquivalent: "",
+                                     at: ssi)
+            ssi += 1
+        }
+        let event = NSApp.currentEvent
+        NSMenu.popUpContextMenu(menu, with: event!, for: sender)
+    }
+
+    @objc func createNewVideoSet() {
+        addVideoSetPanel.makeKeyAndOrderFront(self)
+    }
+
+    @IBAction func createNewVideoSetConfirm(_ sender: Any) {
+        if preferences.videoSets.keys.contains(addVideoSetTextField.stringValue) {
+            addVideoSetErrorLabel.isHidden = false
+        } else {
+            addVideoSetErrorLabel.isHidden = true
+
+            var playlist = [String]()
+            for video in videos! {
+                let isInRotation = preferences.videoIsInRotation(videoID: video.id)
+                if isInRotation {
+                    playlist.append(video.id)
+                }
+            }
+
+            preferences.videoSets[addVideoSetTextField.stringValue] = playlist
+
+            addVideoSetPanel.close()
+        }
+    }
+
+    @IBAction func createNewVideoSetCancel(_ sender: Any) {
+        addVideoSetPanel.close()
+    }
+
+    @objc func updateVideoSet(menuItem: NSMenuItem) {
+        if preferences.videoSets.keys.contains(menuItem.title) {
+            var playlist = [String]()
+            for video in videos! {
+                let isInRotation = preferences.videoIsInRotation(videoID: video.id)
+                if isInRotation {
+                    playlist.append(video.id)
+                }
+            }
+
+            preferences.videoSets[menuItem.title] = playlist
+        }
+    }
+
+    @objc func deleteVideoSet(menuItem: NSMenuItem) {
+        debugLog("Deleting video set : \(menuItem.title)")
+        if preferences.videoSets.keys.contains(menuItem.title) {
+            preferences.videoSets.removeValue(forKey: menuItem.title)
+        }
+    }
+
+    @objc func activateVideoSet(menuItem: NSMenuItem) {
+        if preferences.videoSets.keys.contains(menuItem.title) {
+            // First we disable every video
+            setAllVideos(inRotation: false)
+
+            // Then we enable the set
+            for videoid in preferences.videoSets[menuItem.title]! {
+                preferences.setVideo(videoID: videoid,
+                                     inRotation: true,
+                                     synchronize: false)
+            }
+        }
+    }
     // MARK: - Links
 
     @IBAction func pageProjectClick(_ button: NSButton?) {
@@ -1602,6 +1815,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     func loaded(manifestVideos: [AerialVideo]) {
+        debugLog("Callback after manifest loading")
         var videos = [AerialVideo]()
         var cities = [String: City]()
 

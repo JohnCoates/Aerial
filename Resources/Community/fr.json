@@ -1,0 +1,350 @@
+{
+    "009BA758-7060-4479-8EE8-FB9B40C8FB97": {
+        "name": "Corée et Japon"
+    },
+    "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
+        "name": "Mexico City vers New York"
+    },
+    "7719B48A-2005-4011-9280-2F64EEC6FD91": {
+        "name": "Californie vers Baja"
+    },
+    "B876B645-3955-420E-99DF-60139E451CF3": {
+        "name": "Parc National Wulingyuan 1"
+    },
+    "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C": {
+        "name": "Rizières en terrasses de Longji"
+    },
+    "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
+        "name": "Parc National Wulingyuan 2"
+    },
+    "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
+        "name": "Grande Muraille 1"
+    },
+    "22162A9B-DB90-4517-867C-C676BC3E8E95": {
+        "name": "Grande Muraille 2"
+    },
+    "044AD56C-A107-41B2-90CC-E60CCACFBCF5": {
+        "name": "Grande Muraille 3"
+    },
+    "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
+        "name": "Route Sheikh Zayed"
+    },
+    "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
+        "name": "Marina 1"
+    },
+    "00BA71CD-2C54-415A-A68A-8358E677D750": {
+        "name": "Centre ville"
+    },
+    "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
+        "name": "Marina 2"
+    },
+    "9680B8EB-CE2A-4395-AF41-402801F4D6A6": {
+        "name": "A l'approche de la Burj Khalifa"
+    },
+    "2F11E857-4F77-4476-8033-4A1E4610AFCC": {
+        "name": "Route Sheikh Zayed",
+        "pointsOfInterest": {
+            "0": "Au-dessus de la Route Sheikh Zayed à Dubai, aux Emirats Arabes Unis"
+        }
+    },
+    "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
+        "name": "Péninsule Nuussuaq"
+    },
+    "2F52E34C-39D4-4AB1-9025-8F7141FAA720": {
+        "name": "Fjord glacé d'Ilulissat"
+    },
+    "EE01F02D-1413-436C-AB05-410F224A5B7B": {
+        "name": "Fjord glacé d'Ilulissat"
+    },
+    "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943": {
+        "name": "Vallée Waimanu"
+    },
+    "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7": {
+        "name": "Laupāhoehoe Nui"
+    },
+    "b2-2": {
+        "name": "Vallée Honopū"
+    },
+    "258A6797-CC13-4C3A-AB35-4F25CA3BF474": {
+        "name": "Pu‘u O ‘Umi"
+    },
+    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": {
+        "name": "Côte Kohala"
+    },
+    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": {
+        "name": "Pu‘u O ‘Umi"
+    },
+    "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {
+        "name": "Port Victoria 1"
+    },
+    "C8559883-6F3E-4AF2-8960-903710CD47B7": {
+        "name": "Pic Victoria"
+    },
+    "024891DE-B7F6-4187-BFE0-E6D237702EF0": {
+        "name": "Wan Chai"
+    },
+    "64EA30BD-C4B5-4CDD-86D7-DFE47E9CB9AA": {
+        "name": "Port Victoria 2"
+    },
+    "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
+        "name": "Port Victoria"
+    },
+    "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8": {
+        "name": "Oasis de Liwa 1"
+    },
+    "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
+        "name": "Oasis de Liwa 2"
+    },
+    "58754319-8709-4AB0-8674-B34F04E7FFE2": {
+        "name": "Tamise",
+        "pointsOfInterest": {
+            "0": "A l'approche de Tower Bridge sur la Tamise, à Londres",
+            "40": "Passage à côté du Gherkin, à droite, dans la Cité de Londres",
+            "70": "Survol de Tower Bridge sur la Tamise, avec City Hall en arrière plan et la Tour de Londres sur la droite",
+            "85": "A l'approche du HMS Belfast sur la Tamise, avec le Walkie-Talkie sur la droite",
+            "115": "En voyage vers l'ouest sur la Tamise, avec The Shard sur la gauche et la Cathédrale St Paul à droite",
+            "135": "Au-dessus de la Cathédrale Southwark, avec la Cathédrale St Paul sur la droite",
+            "175": "Près du Globe Shakespeare à Southwark (premier plan à droite)",
+            "230": "Près de Waterloo Station sur la gauche, avec le Palais de Westminster en arrière plan",
+            "260": "Près de l'IMAX du BFI sur la gauche, avec le London Eye à l'arrière",
+            "280": "En direction de Westminster sur la Tamise",
+            "300": "A l'approche de Charing Cross Station sur la droite",
+            "312": "Près de la parade des Horse Guards et de Saint James’s Park sur la gauche",
+            "324": "Survol de Saint Martin-in-the-Fields sur la droite, avec l'Admiralty Arch, la Nelson’s Column, et Trafalgar Square à gauche"
+        }
+    },
+    "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
+        "name": "Palais de Buckingham",
+        "pointsOfInterest": {
+            "0": "Près de Wellington Arch à Londres, sur la gauche",
+            "12": "Au-dessus des jardins du Palais de Buckingham, avec le Green Park sur la gauche",
+            "24": "Au-dessus du Palais de Buckingham à Londres",
+            "40": "Au-dessus du Mémorial Victoria, avec les Wellington Barracks sur la droite",
+            "55": "Dans le Parc St James, le long de Birdcage Walk",
+            "90": "Au-dessus du Bureau des Affaires Etrangères et du Commonwealth à Whitehall, avec la parade des Horse Guards à gauche et le Trésor de Sa Majesté à droite",
+            "102": "Au-dessus du Cenotaph, avec le Ministère de la Défense sur la gauche et Big Ben et le Palais de Westiminster à droite",
+            "125": "Traversant la Tamise, passant au-dessus du London Eye",
+            "160": "Au-dessus de la Gare de Waterloo dans le Sud de Londres, avec l'IMAX du BFI sur la gauche",
+            "270": "Près de la Cathédrale Southwark sur la gauche",
+            "285": "Au-dessus de The Shard sur la droite",
+            "305": "Au-dessus du croiseur HMS Belfast sur la Tamise",
+            "330": "Traversant la Tamise à Tower Bridge, avec City Hall sur la droite et la Tour de Londres à gauche"
+        }
+    },
+    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
+        "name": "Tamise au coucher du soleil",
+        "pointsOfInterest": {
+            "0": "En direction de Tower Bridge sur la Tamise, avec la Tour de Londres sur la droite",
+            "25": "Traversée de la Tamise en passant au-dessus de City Hall",
+            "35": "Passage au-dessus du HMS Belfast sur la Tamise",
+            "60": "En approche de The Shard",
+            "92": "En voyage vers l'ouest au-dessus de Southwark, en direction de Lambeth dans le Sud de Londres",
+            "200": "Le Palais Lambeth sur la gauche, et la Gare de Waterloo sur la droite",
+            "245": "Traversée de la Tamise vers le Palais de Westminster",
+            "265": "Près du Palais de Westminster, avec son Abbaye en arrière-plan"
+        }
+    },
+    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
+        "name": "Tamise au crépuscule",
+        "pointsOfInterest": {
+            "0": "Remontée de la Tamise vers Tower Bridge, avec la Tour de Londres sur la droite",
+            "28": "En voyage vers l'ouest sur la Tamise, passant City Hall sur la gauche",
+            "40": "Au-dessus du HMS Belfast sur la Tamise, avec The Shard sur la gauche et le Walkie-Talkie sur la droite",
+            "75": "A côté de la Cathédrale Southwark sur la gauche",
+            "110": "A côté de la Cathédrale St Paul sur la droite",
+            "130": "Près du Globe de Shakespeare au premier plan à gauche",
+            "210": "Remontée de la Tamise vers Westminster",
+            "300": "Au-dessus du London Eye sur la Tamise",
+            "315": "Passage à côté de Big Ben et des Parlements, avec l'Abbaye de Westminster sur la droite"
+        }
+    },
+    "CE279831-1CA7-4A83-A97B-FF1E20234396": {
+        "name": "Aéroport de Los Angeles",
+        "pointsOfInterest": {
+            "0": "En voyage vers l'ouest, au-dessus de l'Aeroport International de Los Angeles (LAX)",
+            "80": "Passage au-dessus du Theme Building",
+            "210": "Passage au-dessus du Terminal International Tom Bradley"
+        }
+    },
+    "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
+        "name": "Harbor Freeway (I-110)",
+        "pointsOfInterest": {
+            "0": "Survol de Harbor Freeway (Interstate 110) au Sud de Los Angeles",
+            "50": "Croisement avec Century Freeway (Interstate 105)",
+            "65": "Au-dessus de la Station de Metro Harbor Freeway sur la Green Line du Metro, qui suit le long de Century Freeway",
+            "170": "Croisement avec l'Imperial Highway"
+        }
+    },
+    "92E48DE9-13A1-4172-B560-29B4668A87EE": {
+        "name": "Plage Santa Monica"
+    },
+    "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
+        "name": "Observatoire Griffith"
+    },
+    "EC67726A-8212-4C5E-83CF-8412932740D2": {
+        "name": "Collines d'Hollywood",
+        "pointsOfInterest": {
+            "0": "En voyage vers le nord, le long de Beachwood Drive au travers des Hollywood Hills à Los Angeles",
+            "60": "Continuant vers le nord, traversant Beachwood Canyon",
+            "250": "Au-dessus du Centre de Communications Mount Lee, en direction de Burbank en California"
+        }
+    },
+    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
+        "name": "Centre ville",
+        "pointsOfInterest": {
+            "0": "En approche du centre de Los Angeles, avec le building MTA (en jaune) et Union Station (en rose) sur la gauche",
+            "35": "Près de la Cathédrale Notre Dame des Anges (au centre)",
+            "55": "Au-dessus du Los Angeles County Music Center (au centre)",
+            "65": "Traversée de Hollywood Freeway, en direction du sur vers le centre le long de Harbor Freeway",
+            "105": "Près du Walt Disney Concert Hall (au centre)",
+            "120": "Près de City Hall (en bleu clair, sur la gauche)",
+            "180": "Près de Library Tower (au centre)",
+            "200": "Près de l'Hotel Bonaventure (au centre)",
+            "230": "La Bibliothèque Centrale de Los Angeles, illuminée, se distingue derrière l'Hotel Bonaventure",
+            "275": "Près du site de construction du Wilshire Grand Center",
+            "365": "Au-dessus du L.A. Live",
+            "395": "Près de l'Hotel Ritz-Carlton et du Staples Center",
+            "425": "Près du Centre de Convention de Los Angeles",
+            "495": "En approche de Santa Monica Freeway"
+        }
+    },
+    "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
+        "name": "Central Park"
+    },
+    "b1-3": {
+        "name": "Sud de Manhattan"
+    },
+    "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8": {
+        "name": "Upper East Side"
+    },
+    "44166C39-8566-4ECA-BD16-43159429B52F": {
+        "name": "Septième Avenue"
+    },
+    "640DFB00-FBB9-45DA-9444-9F663859F4BC": {
+        "name": "Sud de Manhattan"
+    },
+    "b8-2": {
+        "name": "Marin Headlands"
+    },
+    "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
+        "name": "Marin Headlands dans le brouillard",
+        "pointsOfInterest": {
+            "0": "Au-dessus des Marin Headlands le long de la Highway 101, en direction du Golden Gate",
+            "20": "Horseshoe Cove se distingue sur la gauche",
+            "105": "Au-dessus de Battery Spencer",
+            "155": "Traversée du Golden Gate vers San Francisco"
+        }
+    },
+    "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
+        "name": "Bay et Golden Gate"
+    },
+    "b8-3": {
+        "name": "Parc d'Alamo Square",
+        "pointsOfInterest": {
+            "0": "Les « Dames Peintes » derrière Alamo Square à San Francisco",
+            "35": "La Cathédrale St Mary sur la gauche, avec le centre de San Francisco en arrière plan",
+            "70": "Le dôme de City Hall commence à apparaitre sur la droite",
+            "210": "Le dôme de City Hall, visible sur la droite"
+        }
+    },
+    "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
+        "name": "Embarcadero, Market Street",
+        "pointsOfInterest": {
+            "0": "En direction du sud-ouest sur la baie de San Francisco, vers le \"Ferry Building\"",
+            "150": "En approche du \"Ferry Building\" de San Francisco et de l’Embarcadero",
+            "210": "En direction du sud-ouest sur Market Street, dans le centre-ville de San Francisco"
+        }
+    },
+    "b4-3": {
+        "name": "Presidio vers Golden Gate",
+        "pointsOfInterest": {
+            "0": "Le long du Presidio de San Francisco en direction du Golden Gate",
+            "190": "Traversée du Golden Gate en direction de Marin Headlands"
+        }
+    },
+    "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
+        "name": "Golden Gate depuis SF"
+    },
+    "b6-4": {
+        "name": "Centre ville et Tour Coit",
+        "pointsOfInterest": {
+            "0": "Centre-ville de San Francisco avec la \"Transamerica Pyramid\" au centre",
+            "100": "La Coit Tower se laisse entrevoir dans le Centre-ville de San Francisco"
+        }
+    },
+    "29BDF297-EB43-403A-8719-A78DA11A2948": {
+        "name": "Fisherman's Wharf",
+        "pointsOfInterest": {
+            "0": "En direction du sud-est au dessus de Fisherman's Wharf à San Francisco",
+            "27": "Passage du navire Liberty SS Jeremiah O'Brien",
+            "47": "Passage au dessus du sous-marin USS Pampanito",
+            "80": "En passant par le quartier North Beach à San Francisco",
+            "115": "A l'approche de Coit Tower sur Telegraph Hill, avec le Bay Bridge et le centre-ville de SF en arrière-plan",
+            "135": "A l'approche de Coit Tower sur Telegraph Hill, avec l'église Saint-Pierre-et Saint-Paul à mi-chemin à droite"
+        }
+    },
+    "b5-3": {
+        "name": "Embarcadero, Market Street",
+        "pointsOfInterest": {
+            "0": "En direction du sud-ouest sur la baie de San Francisco, vers le \"Ferry Building\"",
+            "150": "En approche du \"Ferry Building\" de San Francisco et de l’Embarcadero",
+            "210": "En direction du sud-ouest sur Market Street, dans San Francisco"
+        }
+    },
+    "3E94AE98-EAF2-4B09-96E3-452F46BC114E": {
+        "name": "Bay Bridge"
+    },
+    "b2-4": {
+        "name": "Centre-ville et tour Sutro",
+        "pointsOfInterest": {
+            "0": "Vers le quartier financier de San Francisco, avec la tour Sutro à l'arrière-plan",
+            "10": "En passant la \"Transamerica Pyramid\"",
+            "50": "L'ancien siège de la Bank of America éclipsant le soleil"
+        }
+    },
+    "4AD99907-9E76-408D-A7FC-8429FF014201": {
+        "name": "Bay et Embarcadero"
+    },
+    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": {
+        "name": "Antarctique"
+    },
+    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
+        "name": "Aurore en Amérique du Nord"
+    },
+    "A837FA8C-C643-4705-AE92-074EFDD067F7": {
+        "name": "Nuit Africaine"
+    },
+    "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
+        "name": "Afrique et Moyen-Orient"
+    },
+    "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
+        "name": "Californie vers Vegas"
+    },
+    "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
+        "name": "Caraïbes"
+    },
+    "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589": {
+        "name": "Caraïbes de jour"
+    },
+    "7825C73A-658F-48EE-B14C-EC56673094AC": {
+        "name": "Chine"
+    },
+    "E5DB138A-F04E-4619-B896-DE5CB538C534": {
+        "name": "Italie vers l’Asie"
+    },
+    "F439B0A7-D18C-4B14-9681-6520E6A74FE9": {
+        "name": "Iran et Afghanistan"
+    },
+    "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": {
+        "name": "Irlande vers l’Asie"
+    },
+    "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": {
+        "name": "Afrique de l'Ouest vers les Alpes"
+    },
+    "78911B7E-3C69-47AD-B635-9C2486F6301D": {
+        "name": "Nouvelle-Zélande"
+    },
+    "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
+        "name": "Sahara et Italie"
+    }
+}

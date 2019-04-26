@@ -86,10 +86,12 @@ final class AerialView: ScreenSaverView {
 
     static var singlePlayerAlreadySetup: Bool = false
     static var sharedPlayerIndex: Int?
+    static var didSkipMain: Bool = false
 
     class var sharedPlayer: AVPlayer {
         struct Static {
             static let instance: AVPlayer = AVPlayer()
+            // swiftlint:disable:next identifier_name
             static var _player: AVPlayer?
             static var player: AVPlayer {
                 if let activePlayer = _player {
@@ -136,7 +138,7 @@ final class AerialView: ScreenSaverView {
 
         // Remove from player index
 
-        let indexMaybe = AerialView.players.index(of: player)
+        let indexMaybe = AerialView.players.firstIndex(of: player)
 
         guard let index = indexMaybe else {
             return
@@ -178,12 +180,21 @@ final class AerialView: ScreenSaverView {
 
     // swiftlint:disable:next cyclomatic_complexity
     func setup() {
-        // Initialize Sparkle updater
-        _ = SUUpdater.init(for: Bundle(for: AerialView.self))
-
         debugLog("\(self.description) AerialView setup init")
         let preferences = Preferences.sharedInstance
         let timeManagement = TimeManagement.sharedInstance
+
+        // Initialize Sparkle updater
+        if !isPreview && preferences.updateWhileSaverMode {
+            let suu = SUUpdater.init(for: Bundle(for: AerialView.self))
+
+            // We manually ensure a day passed since last check
+            if suu!.lastUpdateCheckDate.timeIntervalSinceNow.distance(to: -86400) > 0 {
+                // Then force check/install udpates
+                suu!.resetUpdateCycle()
+                suu!.installUpdatesIfAvailable()
+            }
+        }
 
         if preferences.overrideOnBattery && timeManagement.isOnBattery() && !isPreview {
             if preferences.alternateVideoFormat == Preferences.AlternateVideoFormat.powerSaving.rawValue ||
@@ -234,6 +245,14 @@ final class AerialView: ScreenSaverView {
             if AerialView.singlePlayerAlreadySetup && preferences.multiMonitorMode == Preferences.MultiMonitorMode.mainOnly.rawValue {
                 isDisabled = true
                 return
+            }
+
+            if preferences.multiMonitorMode == Preferences.MultiMonitorMode.secondaryOnly.rawValue {
+                if !AerialView.didSkipMain {
+                    AerialView.didSkipMain = true
+                    isDisabled = true
+                    return
+                }
             }
 
             // check if we should share preview's player
@@ -364,28 +383,28 @@ final class AerialView: ScreenSaverView {
         messageLayer.shadowColor = CGColor.black
         layer.addSublayer(messageLayer)
 
-        if #available(OSX 10.14, *) {
-        } else {
-            debugLog("Using dot workaround for video driver corruption")
-            // Tentative fix for high sierra issues
-            let highSierraLayer = CATextLayer()
-            highSierraLayer.frame = self.bounds
-            highSierraLayer.opacity = 0.5
-            highSierraLayer.font = NSFont(name: "Helvetica Neue Medium", size: 4)
-            highSierraLayer.fontSize = 4
-            highSierraLayer.string = "."
+        //if #available(OSX 10.14, *) {
+        //} else {
+        // This bug is back in 10.14.5 beta, so enabling the workaround all the time now.
+        debugLog("Using dot workaround for video driver corruption")
+        // Tentative fix for high sierra issues
+        let highSierraLayer = CATextLayer()
+        highSierraLayer.frame = self.bounds
+        highSierraLayer.opacity = 0.5
+        highSierraLayer.font = NSFont(name: "Helvetica Neue Medium", size: 4)
+        highSierraLayer.fontSize = 4
+        highSierraLayer.string = "."
 
-            let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: highSierraLayer.font as Any]
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: highSierraLayer.font as Any]
 
-            // Calculate bounding box
-            let attrString = NSAttributedString(string: highSierraLayer.string as! String, attributes: attributes)
-            let rect = attrString.boundingRect(with: layer.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
+        // Calculate bounding box
+        let attrString = NSAttributedString(string: highSierraLayer.string as! String, attributes: attributes)
+        let rect = attrString.boundingRect(with: layer.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
 
-            highSierraLayer.frame = rect
-            highSierraLayer.position = CGPoint(x: 2, y: 2)
-            highSierraLayer.anchorPoint = CGPoint(x: 0, y: 0)
-            layer.addSublayer(highSierraLayer)
-        }
+        highSierraLayer.frame = rect
+        highSierraLayer.position = CGPoint(x: 2, y: 2)
+        highSierraLayer.anchorPoint = CGPoint(x: 0, y: 0)
+        layer.addSublayer(highSierraLayer)
     }
 
     // MARK: - Lifecycle stuff
@@ -578,6 +597,21 @@ final class AerialView: ScreenSaverView {
                                        name: NSNotification.Name.AVPlayerItemPlaybackStalled,
                                        object: currentItem)
         player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
+    }
+
+    override func keyDown(with event: NSEvent) {
+        debugLog("keyDown")
+        let preferences = Preferences.sharedInstance
+
+        if preferences.allowSkips {
+            if event.keyCode == 124 {
+                playNextVideo()
+            } else {
+                super.keyDown(with: event)
+            }
+        } else {
+            super.keyDown(with: event)
+        }
     }
 
     // MARK: - Extra Animations

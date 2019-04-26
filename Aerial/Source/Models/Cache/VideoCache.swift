@@ -66,13 +66,32 @@ final class VideoCache {
                 cacheDirectory = localCacheDirectory.appendingPathComponent("Aerial")
 
                 let fileManager = FileManager.default
+                var didCreate = true
                 if fileManager.fileExists(atPath: cacheDirectory!) == false {
                     do {
                         try fileManager.createDirectory(atPath: cacheDirectory!,
                                                         withIntermediateDirectories: false, attributes: nil)
                     } catch let error {
-                        errorLog("Couldn't create cache directory: \(error)")
-                        return nil
+                        errorLog("Couldn't create cache directory in Library: \(error)")
+                        didCreate = false
+                    }
+                }
+
+                if !didCreate {
+                    // Last ditch effort, probably the user has some restriction on its account,
+                    // so we try creating in its user directory as a fallback
+                    cacheDirectory = userCacheDirectory.appendingPathComponent("Aerial")
+
+                    let fileManager = FileManager.default
+                    if fileManager.fileExists(atPath: cacheDirectory!) == false {
+                        do {
+                            try fileManager.createDirectory(atPath: cacheDirectory!,
+                                                            withIntermediateDirectories: false, attributes: nil)
+                        } catch let error {
+                            errorLog("Couldn't create cache directory in user Library: \(error)")
+                            errorLog("FATAL : There's nothing more we can do at this point")
+                            return nil
+                        }
                     }
                 }
             }

@@ -68,6 +68,11 @@ final class Preferences {
         case darkModeNightOverride = "darkModeNightOverride"
         case newVideosMode = "newVideosMode"
         case lastVideoCheck = "lastVideoCheck"
+        case ciOverrideLanguage = "ciOverrideLanguage"
+        case videoSets = "videoSets"
+        case allowSkips = "allowSkips"
+        case updateWhileSaverMode = "updateWhileSaverMode"
+        case allowBetas = "allowBetas"
     }
 
     enum NewVideosMode: Int {
@@ -96,7 +101,7 @@ final class Preferences {
     }
 
     enum MultiMonitorMode: Int {
-        case mainOnly, mirrored, independant
+        case mainOnly, mirrored, independant, secondaryOnly
     }
 
     enum TimeMode: Int {
@@ -183,6 +188,11 @@ final class Preferences {
         defaultValues[.alternateVideoFormat] = AlternateVideoFormat.powerSaving
         defaultValues[.darkModeNightOverride] = false
         defaultValues[.newVideosMode] = NewVideosMode.weekly
+        defaultValues[.ciOverrideLanguage] = ""
+        defaultValues[.videoSets] = [String: [String]]()
+        defaultValues[.allowSkips] = true
+        defaultValues[.updateWhileSaverMode] = true
+        defaultValues[.allowBetas] = false
 
         // Set today's date as default
         let dateFormatter = DateFormatter()
@@ -201,6 +211,15 @@ final class Preferences {
     }
 
     // MARK: - Variables
+    var videoSets: [String: [String]] {
+        get {
+            return userDefaults.dictionary(forKey: "videoSets") as! [String: [String]]
+        }
+        set {
+            setValue(forIdentifier: .videoSets, value: newValue)
+        }
+    }
+
     var lastVideoCheck: String? {
         get {
             return optionalValue(forIdentifier: .lastVideoCheck)
@@ -225,6 +244,33 @@ final class Preferences {
         }
         set {
             setValue(forIdentifier: .alternateVideoFormat, value: newValue)
+        }
+    }
+
+    var allowBetas: Bool {
+        get {
+            return value(forIdentifier: .allowBetas)
+        }
+        set {
+            setValue(forIdentifier: .allowBetas, value: newValue)
+        }
+    }
+
+    var updateWhileSaverMode: Bool {
+        get {
+            return value(forIdentifier: .updateWhileSaverMode)
+        }
+        set {
+            setValue(forIdentifier: .updateWhileSaverMode, value: newValue)
+        }
+    }
+
+    var allowSkips: Bool {
+        get {
+            return value(forIdentifier: .allowSkips)
+        }
+        set {
+            setValue(forIdentifier: .allowSkips, value: newValue)
         }
     }
 
@@ -396,6 +442,15 @@ final class Preferences {
         }
         set {
             setValue(forIdentifier: .showMessage, value: newValue)
+        }
+    }
+
+    var ciOverrideLanguage: String? {
+        get {
+            return optionalValue(forIdentifier: .ciOverrideLanguage)
+        }
+        set {
+            setValue(forIdentifier: .ciOverrideLanguage, value: newValue)
         }
     }
 

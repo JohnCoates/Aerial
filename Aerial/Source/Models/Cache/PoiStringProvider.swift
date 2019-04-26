@@ -85,7 +85,7 @@ final class PoiStringProvider {
         let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
 
         if #available(OSX 10.12, *) {
-            if preferences.localizeDescriptions && locale.languageCode != communityLanguage {
+            if preferences.localizeDescriptions && locale.languageCode != communityLanguage && preferences.ciOverrideLanguage == "" {
                 return stringBundle!.localizedString(forKey: key, value: "", table: "Localizable.nocache")
             }
         }
@@ -113,9 +113,9 @@ final class PoiStringProvider {
     func getPoiKeys(video: AerialVideo) -> [String: String] {
         let preferences = Preferences.sharedInstance
         let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
-
         if #available(OSX 10.12, *) {
-            if preferences.localizeDescriptions && locale.languageCode != communityLanguage {
+            debugLog("locale.languageCode \(locale.languageCode)")
+            if preferences.localizeDescriptions && locale.languageCode != communityLanguage && preferences.ciOverrideLanguage == "" {
                 return video.poi
             }
         }
@@ -128,10 +128,23 @@ final class PoiStringProvider {
     }
 
     // MARK: - Community data
-
+    // swiftlint:disable:next cyclomatic_complexity
     private func getCommunityPathForLocale() -> String {
         let preferences = Preferences.sharedInstance
         let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
+
+        // Do we have a community language override ?
+        if preferences.localizeDescriptions && preferences.ciOverrideLanguage != "" {
+            let path = Bundle(for: PoiStringProvider.self).path(forResource: preferences.ciOverrideLanguage, ofType: "json")
+            if path != nil {
+                let fileManager = FileManager.default
+                if fileManager.fileExists(atPath: path!) {
+                    debugLog("Community Language overriden to : \(preferences.ciOverrideLanguage!)")
+                    communityLanguage = preferences.ciOverrideLanguage!
+                    return path!
+                }
+            }
+        }
 
         if #available(OSX 10.12, *) {
             // First we look in the Cache Folder for a locale directory
@@ -142,7 +155,7 @@ final class PoiStringProvider {
 
             if cacheUrl.hasDirectoryPath {
                 debugLog("Aerial cache directory contains /locale")
-                var cc = locale.countryCode!.lowercased()
+                var cc = locale.languageCode
                 if !preferences.localizeDescriptions {
                     cc = "en"
                 }
@@ -160,7 +173,10 @@ final class PoiStringProvider {
                 }
             }
             debugLog("Defaulting to bundle")
-            let cc = "en" //locale.countryCode!.lowercased()
+            let cc = locale.languageCode
+            // Just in case, cause we had a crash earlier with the fr one for some reason...
+            // This is probably no longer needed
+            // if cc == "en" || cc == "es" || cc == "fr" || cc == "pl" || cc == "de" || cc == "he" || cc == "ar" {
             if preferences.localizeDescriptions {
                 let path = Bundle(for: PoiStringProvider.self).path(forResource: cc, ofType: "json")
                 if path != nil {
@@ -171,6 +187,7 @@ final class PoiStringProvider {
                     }
                 }
             }
+            //}
         }
 
         // Fallback to english in bundle
@@ -192,11 +209,10 @@ final class PoiStringProvider {
                 return
             }
 
-            let assets = batch["assets"] as! [NSDictionary]
-            for item in assets {
-                let id = item["id"] as! String
-                let name = item["name"] as! String
-                let poi = item["pointsOfInterest"] as? [String: String]
+            for item in batch {
+                let id = item.key as! String
+                let name = (item.value as! NSDictionary)["name"] as! String
+                let poi = (item.value as! NSDictionary)["pointsOfInterest"] as? [String: String]
 
                 communityStrings.append(CommunityStrings(id: id, name: name, poi: poi ?? [:]))
             }
@@ -213,5 +229,54 @@ final class PoiStringProvider {
 
     func getCommunityPoi(id: String) -> [String: String] {
         return communityStrings.first(where: { $0.id == id }).map { $0.poi } ?? [:]
+    }
+
+    // Helpers for the main popup
+    func getLanguagePosition() -> Int {
+        let preferences = Preferences.sharedInstance
+        // The list is alphabetized based on their english name in the UI
+        switch preferences.ciOverrideLanguage {
+        case "ar":  // Arabic
+            return 1
+        case "zh_CN":  // English
+            return 2
+        case "en":  // English
+            return 3
+        case "fr":  // French
+            return 4
+        case "de":  // German
+            return 5
+        case "he":  // Hebrew
+            return 6
+        case "pl":  // Polish
+            return 7
+        case "es":  // Spanish
+            return 8
+        default:    // This is the default, preferred language
+            return 0
+        }
+    }
+
+    func getLanguageStringFromPosition(pos: Int) -> String {
+        switch pos {
+        case 1:
+            return "ar"
+        case 2:
+            return "zh_CN"
+        case 3:
+            return "en"
+        case 4:
+            return "fr"
+        case 5:
+            return "de"
+        case 6:
+            return "he"
+        case 7:
+            return "pl"
+        case 8:
+            return "es"
+        default:
+            return ""
+        }
     }
 }

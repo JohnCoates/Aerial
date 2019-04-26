@@ -6,6 +6,7 @@
   <description>
           <![CDATA[
             <ul>
+              <li>This is the beta feed!</li>
               <li>You can now get beta updates optionnally through Sparkle!</li>
               <li>Auto updates now work when the screensaver is playing, so you don't have to periodically launch control panel anymore!</li>
               <li>Chinese simplified thanks to @LinkeyLeo!</li>
