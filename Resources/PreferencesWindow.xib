@@ -1659,7 +1659,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Fo-sN-gby">
                                                     <rect key="frame" x="40" y="87" width="327" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Auto install updates while the screensaver runs" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Seh-Cs-hWI">
+                                                    <buttonCell key="cell" type="check" title="Auto install updates while the screen saver runs" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Seh-Cs-hWI">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
@@ -2480,7 +2480,7 @@ Gw
 
 If you uncheck this box, Aerial will only check for updates when you are running this control panel.
 
-When checked, Aerial will also look when appropriate for a new version while the screensaver is running. As a side effect, when a new update is available, it will wake up from the screensaver to install the new version (your mac will eventually go to sleep afterwards.
+When checked, Aerial will also look when appropriate for a new version while the screen saver is running. As a side effect, when a new update is available, it will wake up from the screen saver to install the new version (your Mac will eventually go to sleep afterwards).
 
 Unless you want to manually manage your updates, we highly recommand you leave this box checked!</string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
