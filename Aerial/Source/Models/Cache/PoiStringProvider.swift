@@ -176,18 +176,18 @@ final class PoiStringProvider {
             let cc = locale.languageCode
             // Just in case, cause we had a crash earlier with the fr one for some reason...
             // This is probably no longer needed
-            if cc == "en" || cc == "es" || cc == "fr" || cc == "pl" || cc == "de" || cc == "he" || cc == "ar" {
-                if preferences.localizeDescriptions {
-                    let path = Bundle(for: PoiStringProvider.self).path(forResource: cc, ofType: "json")
-                    if path != nil {
-                        let fileManager = FileManager.default
-                        if fileManager.fileExists(atPath: path!) {
-                            communityLanguage = cc
-                            return path!
-                        }
+            // if cc == "en" || cc == "es" || cc == "fr" || cc == "pl" || cc == "de" || cc == "he" || cc == "ar" {
+            if preferences.localizeDescriptions {
+                let path = Bundle(for: PoiStringProvider.self).path(forResource: cc, ofType: "json")
+                if path != nil {
+                    let fileManager = FileManager.default
+                    if fileManager.fileExists(atPath: path!) {
+                        communityLanguage = cc
+                        return path!
                     }
                 }
             }
+            //}
         }
 
         // Fallback to english in bundle
@@ -238,18 +238,20 @@ final class PoiStringProvider {
         switch preferences.ciOverrideLanguage {
         case "ar":  // Arabic
             return 1
-        case "en":  // English
+        case "zh_CN":  // English
             return 2
-        case "fr":  // French
+        case "en":  // English
             return 3
-        case "de":  // German
+        case "fr":  // French
             return 4
-        case "he":  // Hebrew
+        case "de":  // German
             return 5
-        case "pl":  // Polish
+        case "he":  // Hebrew
             return 6
-        case "es":  // Spanish
+        case "pl":  // Polish
             return 7
+        case "es":  // Spanish
+            return 8
         default:    // This is the default, preferred language
             return 0
         }
@@ -260,16 +262,18 @@ final class PoiStringProvider {
         case 1:
             return "ar"
         case 2:
-            return "en"
+            return "zh_CN"
         case 3:
-            return "fr"
+            return "en"
         case 4:
-            return "de"
+            return "fr"
         case 5:
-            return "he"
+            return "de"
         case 6:
-            return "pl"
+            return "he"
         case 7:
+            return "pl"
+        case 8:
             return "es"
         default:
             return ""
