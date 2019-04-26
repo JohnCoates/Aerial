@@ -88,6 +88,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var popover: NSPopover!
     @IBOutlet var popoverTime: NSPopover!
     @IBOutlet var popoverPower: NSPopover!
+    @IBOutlet var popoverUpdate: NSPopover!
 
     @IBOutlet var linkTimeWikipediaButton: NSButton!
 
@@ -195,6 +196,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var automaticallyCheckForUpdatesCheckbox: NSButton!
 
     @IBOutlet var lastCheckedSparkle: NSTextField!
+    @IBOutlet var allowScreenSaverModeUpdateCheckbox: NSButton!
+    @IBOutlet var allowBetasCheckbox: NSButton!
     @IBOutlet var closeButton: NSButton!
 
     @IBOutlet var addVideoSetPanel: NSPanel!
@@ -270,7 +273,13 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
             selector: #selector(self.sparkleWillRestart),
             name: Notification.Name.SUUpdaterWillRestart,
             object: nil)    // We register for the notification just before Sparkle tries to terminate Aerial
+
+        // Starting the Sparkle update system
         sparkleUpdater = SUUpdater.init(for: Bundle(for: PreferencesWindowController.self))
+        // We override the feeds for betas
+        if preferences.allowBetas {
+            sparkleUpdater?.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/beta-appcast.xml")
+        }
 
         let logger = Logger.sharedInstance
         logger.addCallback {level in
@@ -585,6 +594,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         if sparkleUpdater!.automaticallyChecksForUpdates {
             automaticallyCheckForUpdatesCheckbox.state = .on
+        }
+        if preferences.updateWhileSaverMode {
+            allowScreenSaverModeUpdateCheckbox.state = .on
+        }
+        if preferences.allowBetas {
+            allowBetasCheckbox.state = .on
         }
 
         colorizeProjectPageLinks()
@@ -1368,10 +1383,32 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     // MARK: - Update panel
+    @IBAction func popoverUpdateClick(_ button: NSButton) {
+        popoverUpdate.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
+    }
     @IBAction func automaticallyCheckForUpdatesChange(_ button: NSButton) {
         let onState = button.state == .on
         sparkleUpdater!.automaticallyChecksForUpdates = onState
         debugLog("UI automaticallyCheckForUpdatesChange: \(onState)")
+    }
+
+    @IBAction func allowScreenSaverModeUpdatesChange(_ button: NSButton) {
+        let onState = button.state == .on
+        preferences.updateWhileSaverMode = onState
+        debugLog("UI allowScreenSaverModeUpdatesChange: \(onState)")
+    }
+
+    @IBAction func allowBetasChange(_ button: NSButton) {
+        let onState = button.state == .on
+        preferences.allowBetas = onState
+        debugLog("UI allowBetasChange: \(onState)")
+
+        // We also update the feed url so subsequent checks go to the right feed
+        if preferences.allowBetas {
+            sparkleUpdater?.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/beta-appcast.xml")
+        } else {
+            sparkleUpdater?.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/appcast.xml")
+        }
     }
 
     @IBAction func checkNowButtonClick(_ sender: NSButton) {

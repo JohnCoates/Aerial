@@ -72,7 +72,7 @@ final class AssetLoaderDelegate: NSObject, AVAssetResourceLoaderDelegate, VideoL
         }
 
         if let removeLoader = remove {
-            if let index = videoLoaders.index(of: removeLoader) {
+            if let index = videoLoaders.firstIndex(of: removeLoader) {
                 videoLoaders.remove(at: index)
             }
         }
