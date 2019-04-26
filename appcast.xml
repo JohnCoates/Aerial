@@ -2,17 +2,18 @@
 <channel>
 <title>Aerial</title>
 <item>
-<title>1.4.7 beta 9</title>
+<title>1.4.7 beta 10</title>
   <description>
           <![CDATA[
             <ul>
-              <li>Adds the ability to save your favorite sets of videos for easy reuse!</li>
-              <li>Fix the broken auto update process, next time you auto update (not this time), Aerial/System Preferences will restart cleanly !</li>
+              <li>You can now get beta updates optionnally through Sparkle!</li>
+              <li>Auto updates now work when the screensaver is playing, so you don't have to periodically launch control panel anymore!</li>
+              <li>Chinese simplified thanks to @LinkeyLeo!</li>
             </ul>
           ]]>
     </description>
-<pubDate>mer., 19 avr. 2019 15:00:29 +0100</pubDate>
+<pubDate>ven., 26 avr. 2019 12:12:29 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.7beta9/Aerial.saver.zip" sparkle:version="1.4.7beta9" sparkle:shortVersionString="1.4.7beta9"  sparkle:edSignature="Z8MgKgtK1O/txk2IgbyveOF+6MFM5PLmBW4H8f90MXD8Setz4xiWWVWXJk7/OcnM9ks11JYFZ5XE12f9vYLfDA==" length="5660691" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.7beta10/Aerial.saver.zip" sparkle:version="1.4.7beta10" sparkle:shortVersionString="1.4.7beta10"  sparkle:edSignature="t5HCJROJvbQ0M3JDAXpA/CM+sDjyqlTnG45KYxlEstPDwaDaXne0hCw0dQS2AkO4k8qnGz07oTC2gYMdzaipBw==" length="5672972" type="application/octet-stream"/>
 </item>
 </channel></rss>
