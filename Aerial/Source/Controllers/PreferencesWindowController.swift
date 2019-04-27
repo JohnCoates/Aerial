@@ -585,7 +585,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         // Format date
         if sparkleUpdater!.lastUpdateCheckDate != nil {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateFormatter.dateFormat = "yyyy-MM-dd 'at' HH:mm"
             let sparkleDate = dateFormatter.string(from: sparkleUpdater!.lastUpdateCheckDate)
             lastCheckedSparkle.stringValue = "Last checked on " + sparkleDate
         } else {
@@ -1415,8 +1415,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         checkNowButton.isEnabled = false
         ManifestLoader.instance.addCallback(reloadJSONCallback)
         ManifestLoader.instance.reloadFiles()
-        lastCheckedVideosLabel.stringValue = "Last checked today"
-
     }
 
     func reloadJSONCallback(manifestVideos: [AerialVideo]) {
