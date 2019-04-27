@@ -2,6 +2,22 @@
 <channel>
 <title>Aerial</title>
 <item>
+<title>1.4.7 beta 11</title>
+  <description>
+          <![CDATA[
+            <ul>
+              <li>This is the beta feed!</li>
+              <li>Check now buttons for updates now gives better feedback</li>
+              <li>Stylistic cleanup by @SeanMSmith!</li>
+              <li>This update will only be available on the beta track in order to test the update system</li>
+            </ul>
+          ]]>
+    </description>
+<pubDate>ven., 27 avr. 2019 15:25:29 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.7beta11/Aerial.saver.zip" sparkle:version="1.4.7beta11" sparkle:shortVersionString="1.4.7beta11"  sparkle:edSignature="uGYyTlgzKuLqCqlWDdvCoJLZ+Y2E14uWvq/aldOX3Rf55Z09bNB50ICSBdKd8Duoehz5UGupc3dpWJ5ipDYeAw==" length="5672996" type="application/octet-stream"/>
+</item>
+<item>
 <title>1.4.7 beta 10</title>
   <description>
           <![CDATA[
