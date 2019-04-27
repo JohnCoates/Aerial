@@ -1415,6 +1415,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         checkNowButton.isEnabled = false
         ManifestLoader.instance.addCallback(reloadJSONCallback)
         ManifestLoader.instance.reloadFiles()
+        lastCheckedVideosLabel.stringValue = "Last checked today"
+
     }
 
     func reloadJSONCallback(manifestVideos: [AerialVideo]) {
@@ -1514,6 +1516,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBAction func checkForUpdatesButton(_ sender: Any) {
         debugLog("check for updates")
         sparkleUpdater!.checkForUpdates(self)
+
+        lastCheckedSparkle.stringValue = "Last checked today"
     }
 
     @IBAction func trashOldVideosClick(_ sender: Any) {

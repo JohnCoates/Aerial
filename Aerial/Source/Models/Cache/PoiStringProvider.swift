@@ -128,7 +128,7 @@ final class PoiStringProvider {
     }
 
     // MARK: - Community data
-    // swiftlint:disable:next cyclomatic_complexity
+    // aswiftlint:disable:next cyclomatic_complexity
     private func getCommunityPathForLocale() -> String {
         let preferences = Preferences.sharedInstance
         let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
