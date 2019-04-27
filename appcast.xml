@@ -6,8 +6,8 @@
   <description>
           <![CDATA[
             <ul>
-              <li>You can now get beta updates optionnally through Sparkle!</li>
-              <li>Auto updates now work when the screensaver is playing, so you don't have to periodically launch control panel anymore!</li>
+              <li>You can now get beta updates optionally through Sparkle!</li>
+              <li>Auto updates now work when the screen saver is playing, so you don't have to periodically open the System Preferences Screen Saver pane anymore!</li>
               <li>Chinese simplified thanks to @LinkeyLeo!</li>
             </ul>
           ]]>
