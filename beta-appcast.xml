@@ -1,6 +1,21 @@
 <?xml version="1.0" standalone="yes"?><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
 <channel>
 <title>Aerial</title>
+
+<item>
+<title>1.4.7 beta 12</title>
+  <description>
+          <![CDATA[
+            <ul>
+              <li>This is the beta feed!</li>
+              <li>This is just the last test version for the beta update system, specifically for @SeanMSmith ! Everyone else can safely skip this update.</li>
+            </ul>
+          ]]>
+    </description>
+<pubDate>lun., 29 avr. 2019 15:25:29 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.7beta12/Aerial.saver.zip" sparkle:version="1.4.7beta12" sparkle:shortVersionString="1.4.7beta12"  sparkle:edSignature="DUJMuXrFScFPJAdmI7RU9zgoNcwxmQ7f/MyDwZbDig0dRBDuqxTByhB7ZvtLAOt41Um5C5Y9bPgVCXf9KAKpDA==" length="5673180" type="application/octet-stream"/>
+</item>
 <item>
 <title>1.4.7 beta 11</title>
   <description>
