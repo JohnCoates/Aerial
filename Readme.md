@@ -32,7 +32,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 _Rather install from Terminal or have auto-updates? Look at the Brew Cask section below!_
 
 1. Quit **System Preferences**.
-2. [Download the latest release of Aerial.saver.zip](https://github.com/JohnCoates/Aerial/releases/latest). (Version 1.4.6, December 12th 2018). Alternatively, you can try the latest beta version [following this link](https://github.com/JohnCoates/Aerial/releases). Version 1.4.7 brings support for the newest videos (updated January 25th 2019), and preliminary support for automatic updates through [Sparkle](https://sparkle-project.org).
+2. [Download the latest release of Aerial.saver.zip](https://github.com/JohnCoates/Aerial/releases/latest). (Version 1.4.8, April 30th 2018). Alternatively, you can try the latest beta version [following this link](https://github.com/JohnCoates/Aerial/releases). 
 3. Unzip the downloaded file (if you use Safari, it should already be done for you).
 4. Double-click `Aerial.saver`; it will open in `System Preferences` > `Desktop & Screen Saver` and ask you if you want to install for all users or for your user only.
 
@@ -77,6 +77,21 @@ brew cask uninstall aerial.
 
 You may also want to delete the folder `/Users/YOURUSERNAME/Library/Caches/Aerial` (or `/Library/Caches/Aerial`). This is where Aerial stores the cached copies of the Aerial videos. The last thing, you may want to delete the preferences `plist`. The file is `/Users/YOURUSERNAME/Library/Preferences/ByHost/com.JohnCoates.Aerial.{UUID}.plist`.
 
+## New features in 1.4.8
+
+This latest version includes many new features and enhancements:
+
+- **5 new videos available in 4K:** Following the content update from January 25th, Aerial now includes 73 videos, 65 of which are also available in 4K. Aerial will periodically check for new videos, you can manage this in the `Updates` tab. 
+- **Automatic updates support through Sparkle:** Aerial now uses Sparkle to automatically updates itself, including when your screensaver runs. All of this can be managed in the `Updates` tab. 
+
+![Capture d’écran 2019-04-30 à 18 31 20](https://user-images.githubusercontent.com/37544189/56977789-4afe3f00-6b76-11e9-9985-1ca1a1866d6b.jpg)
+
+- **Localization for community support** in Arabic, Chinese Simplified, English, French, German, Hebrew, Polish and Spanish! Thanks to all the contributors. If you want to help,  please [read the details here](Resources/Community/Readme.md).
+- **You can now skip an Aerial with the right arrow key**
+- **You can now save your favorite videos sets to enable them quickly**
+
+<img width="377" alt="Capture d’écran 2019-04-19 à 14 28 55" src="https://user-images.githubusercontent.com/37544189/56425106-35099800-62b3-11e9-9689-315a34132e21.png">
+
 ## Multilanguage support
 
 Aerial features overlay descriptions of the main geographical features displayed in the videos.
@@ -86,16 +101,6 @@ Aerial features overlay descriptions of the main geographical features displayed
 These descriptions are available in many languages (Spanish, French, Polish… [check the complete list here](Resources/Community/Readme.md)) and that is only possible thanks to the collaboration and uninterested work of many. To best serve the international community we've defined a translation workflow that allows any person, even with **no technical background** to help translating these descriptions.
 
 If you want to collaborate, please [read the details here](Resources/Community/Readme.md).
-
-## New features in 1.4.6
-
-- **25 extra videos now available in 4K:** Following the content updates from October 30th and December 5th, Aerial now includes 70 videos, 60 of which are also available in 4K. Aerial will periodically check for new videos, you can disable this feature in the `Cache` tab.
-- **Show videos in Quicktime:** You can now right click a video to open it in Quicktime.
-- **Remove video duplicates:** Aerial can now cleanup your old videos (They are periodically updated to fix colors, provide longer versions of previously existing videos, or upgraded to 4K). Go to the `Advanced` Tab and either move the files away or send them to the trash to reclaim free space. The `Move old videos` button will move the video files to a directory created within the Aerial cache called `oldvideos`, which will contain a dated directory within it. You can find them at `/Users/YOURUSERNAME/Library/Caches/Aerial/oldvideos/YYYY-MM-DD`
-
-![capture d ecran 2018-12-13 a 15 06 49](https://user-images.githubusercontent.com/37544189/49943901-60394080-fee9-11e8-93b0-3cc68087b70e.png)
-
-- **More battery controls:** Using Aerial on a Macbook ? You can now specify a different video format on battery mode if you wish, or simply video playback using the Power Saving mode (Aerial will show a blank screen and reduce screen brightness instead of showing videos).
 
 ## Features
 
@@ -115,9 +120,15 @@ If you want to collaborate, please [read the details here](Resources/Community/R
 
 ![screen shot 2018-10-29 at 13 25 10](https://user-images.githubusercontent.com/37544189/47649975-200f4000-db7f-11e8-9e8b-f75c4a5ebde4.png)
 
+- **Remove video duplicates:** Aerial can now cleanup your old videos (They are periodically updated to fix colors, provide longer versions of previously existing videos, or upgraded to 4K). Go to the `Advanced` Tab and either move the files away or send them to the trash to reclaim free space. The `Move old videos` button will move the video files to a directory created within the Aerial cache called `oldvideos`, which will contain a dated directory within it. You can find them at `/Users/YOURUSERNAME/Library/Caches/Aerial/oldvideos/YYYY-MM-DD`
+
+![capture d ecran 2018-12-13 a 15 06 49](https://user-images.githubusercontent.com/37544189/49943901-60394080-fee9-11e8-93b0-3cc68087b70e.png)
+
 - **Brightness control:** Aerial can progressively dim the brightness of your screens before your Mac goes to sleep. You can even enable this feature only at night, or only on battery if you prefer.
 - **Full offline mode:** Behind a firewall? Just copy the cache folder from another Mac and you are all set. You can also disable all streaming.
 - **Better cache management:** You can now cache your favorite videos individually, no need to grab them all. Or just stream them as you go, they'll get cached automatically too.
+- **Show videos in Quicktime:** You can now right click a video to open it in Quicktime.
+- **More battery controls:** Using Aerial on a Macbook? You can now specify a different video format on battery mode if you wish, or simply video playback using the Power Saving mode (Aerial will show a blank screen and reduce screen brightness instead of showing videos).
 - **Clock:** We even have a properly styled clock if that's your thing!
 - **And many bug fixes!**
 
