@@ -3,49 +3,22 @@
 <title>Aerial</title>
 
 <item>
-<title>1.4.7 beta 12</title>
+<title>1.4.8</title>
   <description>
           <![CDATA[
+            <p>This is the beta feed.</p>
+            <p>This new version includes many new features and enhancements:</p>
             <ul>
-              <li>This is the beta feed!</li>
-              <li>This is just the last test version for the beta update system, specifically for @SeanMSmith ! Everyone else can safely skip this update.</li>
+              <li>Support for January 25th video updates (finally)</li>
+              <li>Automatic updates support through Sparkle. You can manage how Aerial updates itself in the settings</li>
+              <li>Localization for community support in Arabic, Chinese Simplified, English, French, German, Hebrew, Polish and Spanish! Thanks to all the contributors. If you want to help, check our repository we very much welcome new contributions</li>
+              <li>You can now skip an Aerial with the right arrow key</li>
+              <li>You can now save your favorite videos sets to enable them quickly</li>
             </ul>
           ]]>
     </description>
-<pubDate>lun., 29 avr. 2019 15:25:29 +0100</pubDate>
+<pubDate>mar., 30 avr. 2019 18:40:29 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.7beta12/Aerial.saver.zip" sparkle:version="1.4.7beta12" sparkle:shortVersionString="1.4.7beta12"  sparkle:edSignature="DUJMuXrFScFPJAdmI7RU9zgoNcwxmQ7f/MyDwZbDig0dRBDuqxTByhB7ZvtLAOt41Um5C5Y9bPgVCXf9KAKpDA==" length="5673180" type="application/octet-stream"/>
-</item>
-<item>
-<title>1.4.7 beta 11</title>
-  <description>
-          <![CDATA[
-            <ul>
-              <li>This is the beta feed!</li>
-              <li>Check now buttons for updates now gives better feedback</li>
-              <li>Stylistic cleanup by @SeanMSmith!</li>
-              <li>This update will only be available on the beta track in order to test the update system</li>
-            </ul>
-          ]]>
-    </description>
-<pubDate>ven., 27 avr. 2019 15:25:29 +0100</pubDate>
-<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.7beta11/Aerial.saver.zip" sparkle:version="1.4.7beta11" sparkle:shortVersionString="1.4.7beta11"  sparkle:edSignature="uGYyTlgzKuLqCqlWDdvCoJLZ+Y2E14uWvq/aldOX3Rf55Z09bNB50ICSBdKd8Duoehz5UGupc3dpWJ5ipDYeAw==" length="5672996" type="application/octet-stream"/>
-</item>
-<item>
-<title>1.4.7 beta 10</title>
-  <description>
-          <![CDATA[
-            <ul>
-              <li>This is the beta feed!</li>
-              <li>You can now get beta updates optionally through Sparkle!</li>
-              <li>Auto updates now work when the screen saver is playing, so you don't have to periodically open the System Preferences Screen Saver pane anymore!</li>
-              <li>Chinese simplified thanks to @LinkeyLeo!</li>
-            </ul>
-          ]]>
-    </description>
-<pubDate>ven., 26 avr. 2019 12:12:29 +0100</pubDate>
-<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.7beta10/Aerial.saver.zip" sparkle:version="1.4.7beta10" sparkle:shortVersionString="1.4.7beta10"  sparkle:edSignature="t5HCJROJvbQ0M3JDAXpA/CM+sDjyqlTnG45KYxlEstPDwaDaXne0hCw0dQS2AkO4k8qnGz07oTC2gYMdzaipBw==" length="5672972" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.8/Aerial.saver.zip" sparkle:version="1.4.8" sparkle:shortVersionString="1.4.8"  sparkle:edSignature="5QFV0eqGRqCoZ8/TYbLXWOiVSifwNRUk4wuNFdjXJXpk/cRrceaTcs7SG168dawfOTpy9TOu283mb6WJGRQuDw==" length="5674805" type="application/octet-stream"/>
 </item>
 </channel></rss>
