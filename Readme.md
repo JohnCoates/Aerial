@@ -40,7 +40,7 @@ _Rather install from Terminal or have auto-updates? Look at the Brew Cask sectio
 
    **Important**: If you haven't quit System Preferences before installation and were upgrading from a previous version, we strongly recommend you quit the application after installation, then reopen it, as updated Swift screensavers aren't loaded correctly in an active System Preferences session.
 
-### Brew Cask Support - (Updated to 1.4.6)
+### Brew Cask Support - (Updated to 1.4.6, 1.4.8 submitted and coming soon)
 
 If you're looking to install Aerial across many systems, remotely, or simply from Terminal we recommend [Brew Cask](https://caskroom.github.io). Prefer this method if you're looking for auto-updates.
 
