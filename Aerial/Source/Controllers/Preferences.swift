@@ -73,6 +73,11 @@ final class Preferences {
         case allowSkips = "allowSkips"
         case updateWhileSaverMode = "updateWhileSaverMode"
         case allowBetas = "allowBetas"
+        case betaCheckFrequency = "betaCheckFrequency"
+    }
+
+    enum BetaCheckFrequency: Int {
+        case hourly, bidaily, daily
     }
 
     enum NewVideosMode: Int {
@@ -193,6 +198,7 @@ final class Preferences {
         defaultValues[.allowSkips] = true
         defaultValues[.updateWhileSaverMode] = true
         defaultValues[.allowBetas] = false
+        defaultValues[.betaCheckFrequency] = BetaCheckFrequency.daily
 
         // Set today's date as default
         let dateFormatter = DateFormatter()
@@ -226,6 +232,15 @@ final class Preferences {
         }
         set {
             setValue(forIdentifier: .lastVideoCheck, value: newValue)
+        }
+    }
+
+    var betaCheckFrequency: Int? {
+        get {
+            return optionalValue(forIdentifier: .betaCheckFrequency)
+        }
+        set {
+            setValue(forIdentifier: .betaCheckFrequency, value: newValue)
         }
     }
 
