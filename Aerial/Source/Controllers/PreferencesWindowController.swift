@@ -196,6 +196,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var automaticallyCheckForUpdatesCheckbox: NSButton!
 
     @IBOutlet var lastCheckedSparkle: NSTextField!
+    @IBOutlet var betaCheckFrequencyPopup: NSPopUpButton!
     @IBOutlet var allowScreenSaverModeUpdateCheckbox: NSButton!
     @IBOutlet var allowBetasCheckbox: NSButton!
     @IBOutlet var closeButton: NSButton!
@@ -580,6 +581,9 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         extraCornerPopup.selectItem(at: preferences.extraCorner!)
 
         newVideosModePopup.selectItem(at: preferences.newVideosMode!)
+
+        betaCheckFrequencyPopup.selectItem(at: preferences.betaCheckFrequency!)
+
         lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
 
         // Format date
@@ -600,6 +604,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         }
         if preferences.allowBetas {
             allowBetasCheckbox.state = .on
+            betaCheckFrequencyPopup.isEnabled = true
         }
 
         colorizeProjectPageLinks()
@@ -1151,10 +1156,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         downloadAllVideos()
     }
 
-    @IBAction func newVideosModeChange(_ sender: NSPopUpButton) {
-        debugLog("UI newVideosMode: \(sender.indexOfSelectedItem)")
-        preferences.newVideosMode = sender.indexOfSelectedItem
-    }
+
 
     // MARK: - Time panel
 
@@ -1383,9 +1385,20 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     // MARK: - Update panel
+    @IBAction func newVideosModeChange(_ sender: NSPopUpButton) {
+        debugLog("UI newVideosMode: \(sender.indexOfSelectedItem)")
+        preferences.newVideosMode = sender.indexOfSelectedItem
+    }
+
+    @IBAction func betaCheckFrequencyChange(_ sender: NSPopUpButton) {
+        debugLog("UI betaCheckFrequency: \(sender.indexOfSelectedItem)")
+        preferences.betaCheckFrequency = sender.indexOfSelectedItem
+    }
+
     @IBAction func popoverUpdateClick(_ button: NSButton) {
         popoverUpdate.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
     }
+
     @IBAction func automaticallyCheckForUpdatesChange(_ button: NSButton) {
         let onState = button.state == .on
         sparkleUpdater!.automaticallyChecksForUpdates = onState
@@ -1405,8 +1418,10 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         // We also update the feed url so subsequent checks go to the right feed
         if preferences.allowBetas {
+            betaCheckFrequencyPopup.isEnabled = true
             sparkleUpdater?.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/beta-appcast.xml")
         } else {
+            betaCheckFrequencyPopup.isEnabled = false
             sparkleUpdater?.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/appcast.xml")
         }
     }

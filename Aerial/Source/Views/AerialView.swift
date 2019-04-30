@@ -187,9 +187,19 @@ final class AerialView: ScreenSaverView {
         // Initialize Sparkle updater
         if !isPreview && preferences.updateWhileSaverMode {
             let suu = SUUpdater.init(for: Bundle(for: AerialView.self))
+            if preferences.allowBetas {
+                suu!.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/beta-appcast.xml")
+            }
 
-            // We manually ensure a day passed since last check
-            if suu!.lastUpdateCheckDate.timeIntervalSinceNow.distance(to: -86400) > 0 {
+            // We manually ensure the correct amount of time passed since last check
+            var distance = -86400       // 1 day
+            if preferences.betaCheckFrequency == 0 {
+                distance = -3600        // 1 hour
+            } else if preferences.betaCheckFrequency == 1 {
+                distance = -43200       // 12 hours
+            }
+
+            if suu!.lastUpdateCheckDate.timeIntervalSinceNow.distance(to: Double(distance)) > 0 {
                 // Then force check/install udpates
                 suu!.resetUpdateCycle()
                 suu!.installUpdatesIfAvailable()
