@@ -186,23 +186,30 @@ final class AerialView: ScreenSaverView {
 
         // Initialize Sparkle updater
         if !isPreview && preferences.updateWhileSaverMode {
-            let suu = SUUpdater.init(for: Bundle(for: AerialView.self))
-            if preferences.allowBetas {
-                suu!.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/beta-appcast.xml")
-            }
+            let suup = SUUpdater.init(for: Bundle(for: AerialView.self))
 
-            // We manually ensure the correct amount of time passed since last check
-            var distance = -86400       // 1 day
-            if preferences.betaCheckFrequency == 0 {
-                distance = -3600        // 1 hour
-            } else if preferences.betaCheckFrequency == 1 {
-                distance = -43200       // 12 hours
-            }
+            // Make sure we can create SUUpdater
+            if let suu = suup {
+                if preferences.allowBetas {
+                    suu.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/beta-appcast.xml")
+                }
 
-            if suu!.lastUpdateCheckDate.timeIntervalSinceNow.distance(to: Double(distance)) > 0 {
-                // Then force check/install udpates
-                suu!.resetUpdateCycle()
-                suu!.installUpdatesIfAvailable()
+                // We manually ensure the correct amount of time passed since last check
+                var distance = -86400       // 1 day
+                if preferences.betaCheckFrequency == 0 {
+                    distance = -3600        // 1 hour
+                } else if preferences.betaCheckFrequency == 1 {
+                    distance = -43200       // 12 hours
+                }
+
+                // If we never went into System Preferences, we may not have a lastUpdateCheckDate
+                if suu.lastUpdateCheckDate != nil {
+                    if suu.lastUpdateCheckDate.timeIntervalSinceNow.distance(to: Double(distance)) > 0 {
+                        // Then force check/install udpates
+                        suu.resetUpdateCycle()
+                        suu.installUpdatesIfAvailable()
+                    }
+                }
             }
         }
 
