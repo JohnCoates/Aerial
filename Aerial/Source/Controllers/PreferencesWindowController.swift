@@ -1156,8 +1156,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         downloadAllVideos()
     }
 
-
-
     // MARK: - Time panel
 
     @IBAction func overrideNightOnDarkModeClick(_ button: NSButton) {
