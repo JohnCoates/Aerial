@@ -1,6 +1,19 @@
 <?xml version="1.0" standalone="yes"?><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
 <channel>
 <title>Aerial</title>
+  
+<item>
+<title>1.4.10beta1</title>
+  <description>
+          <![CDATA[
+            <p>This is the beta feed.</p>
+            <p>This version updates Sparkle to 1.21.3, trying to fix a Chrome download issue.</p>
+          ]]>
+    </description>
+<pubDate>mer., 1 mai. 2019 16:22:29 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.10beta1/Aerial.saver.zip" sparkle:version="1.4.10beta1" sparkle:shortVersionString="1.4.10beta1"  sparkle:edSignature="jv59hLh5ROt7I8yMWOJhmtuqgz0QUCBGgmk2BDzworgxn7O8h54rkOGM+/ZWmyDm8fbcmfTrQOQE0oRLDz5hCQ==" length="5679194" type="application/octet-stream"/>
+</item>
 
 <item>
 <title>1.4.9</title>
