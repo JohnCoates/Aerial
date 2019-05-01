@@ -2,6 +2,17 @@
 <channel>
 <title>Aerial</title>
 <item>
+<title>1.4.9</title>
+  <description>
+          <![CDATA[
+            <p>This is a bugfix for a crash for homebrew users and users who never starts the control panel. Sorry about that !</p>
+          ]]>
+    </description>
+<pubDate>mer., 1 mai. 2019 13:58:29 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.9/Aerial.saver.zip" sparkle:version="1.4.9" sparkle:shortVersionString="1.4.9"  sparkle:edSignature="C2SILYsMpGsvIVjlKvGmKxUhS2/95DrvD3xOzf2YAiZRh0gnHpNgDXt5OCMwzNd99iVinUAHq2nubqj1XqNPDA==" length="5674907" type="application/octet-stream"/>
+</item>
+<item>
 <title>1.4.8</title>
   <description>
           <![CDATA[
