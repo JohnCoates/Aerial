@@ -184,6 +184,9 @@ final class AerialView: ScreenSaverView {
         let preferences = Preferences.sharedInstance
         let timeManagement = TimeManagement.sharedInstance
 
+        debugLog("isOnBattery : \(timeManagement.isOnBattery())")
+        debugLog("isBatteryLow : \(timeManagement.isBatteryLow())")
+
         // Initialize Sparkle updater
         if !isPreview && preferences.updateWhileSaverMode {
             let suup = SUUpdater.init(for: Bundle(for: AerialView.self))
