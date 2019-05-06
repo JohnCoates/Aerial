@@ -3,16 +3,16 @@
 <title>Aerial</title>
   
 <item>
-<title>1.4.10beta1</title>
+<title>1.4.10beta2</title>
   <description>
           <![CDATA[
-            <p>This is the beta feed.</p>
-            <p>This version updates Sparkle to 1.21.3, trying to fix a Chrome download issue.</p>
+            <p>This is the beta feed!</p>
+            <p>Fix for the Power saving on low power option!</p>
           ]]>
     </description>
-<pubDate>mer., 1 mai. 2019 16:22:29 +0100</pubDate>
+<pubDate>lun., 6 mai. 2019 15:04:29 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.10beta1/Aerial.saver.zip" sparkle:version="1.4.10beta1" sparkle:shortVersionString="1.4.10beta1"  sparkle:edSignature="jv59hLh5ROt7I8yMWOJhmtuqgz0QUCBGgmk2BDzworgxn7O8h54rkOGM+/ZWmyDm8fbcmfTrQOQE0oRLDz5hCQ==" length="5679194" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.10beta2/Aerial.saver.zip" sparkle:version="1.4.10beta2" sparkle:shortVersionString="1.4.10beta2"  sparkle:edSignature="JWsNxP17ELS/abn2CKh48ZkNleuDtSCucZji2b8ZOID60orJHGQi5t8tdCXeEjzMUcDgRt5f2WyVzU63xCiQBA==" length="5681770" type="application/octet-stream"/>
 </item>
 
 <item>
