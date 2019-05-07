@@ -3,16 +3,18 @@
 <title>Aerial</title>
   
 <item>
-<title>1.4.10beta2</title>
+<title>1.4.10beta3</title>
   <description>
           <![CDATA[
             <p>This is the beta feed!</p>
-            <p>Fix for the Power saving on low power option!</p>
+            <ul>
+            <li>Tentative fix for right arrow doesn't skip all views when running multiple monitors and different Aerial on each monitor</li>
+            <li>Tentative fix for missing key eventsFix for the Power saving on low power option!</li></ul>
           ]]>
     </description>
-<pubDate>lun., 6 mai. 2019 15:04:29 +0100</pubDate>
+<pubDate>mar., 7 mai. 2019 18:50:29 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.10beta2/Aerial.saver.zip" sparkle:version="1.4.10beta2" sparkle:shortVersionString="1.4.10beta2"  sparkle:edSignature="JWsNxP17ELS/abn2CKh48ZkNleuDtSCucZji2b8ZOID60orJHGQi5t8tdCXeEjzMUcDgRt5f2WyVzU63xCiQBA==" length="5681770" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.10beta3/Aerial.saver.zip" sparkle:version="1.4.10beta3" sparkle:shortVersionString="1.4.10beta3"  sparkle:edSignature="8FJBzgnhi63SLcKlYCOhpd7QTbQUolAooJP7giUP3KlZNi0CzfllcRpZ8LOCRDd8L0de4J1pauGir39SsnOkDw==" length="5682008" type="application/octet-stream"/>
 </item>
 
 <item>
