@@ -625,12 +625,25 @@ final class AerialView: ScreenSaverView {
 
         if preferences.allowSkips {
             if event.keyCode == 124 {
-                playNextVideo()
+                //playNextVideo()
+                // We need to skip forward all our views
+                for view in AerialView.instanciatedViews {
+                    view.playNextVideo()
+                }
             } else {
-                super.keyDown(with: event)
+                self.nextResponder!.keyDown(with: event)
+                //super.keyDown(with: event)
             }
         } else {
-            super.keyDown(with: event)
+            self.nextResponder?.keyDown(with: event)
+            //super.keyDown(with: event)
+        }
+    }
+
+    override var acceptsFirstResponder: Bool {
+        // swiftlint:disable:next implicit_getter
+        get {
+            return true
         }
     }
 
