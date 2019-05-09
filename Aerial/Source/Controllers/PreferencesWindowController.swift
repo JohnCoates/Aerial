@@ -206,6 +206,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var addVideoSetConfirmButton: NSButton!
     @IBOutlet var addVideoSetCancelButton: NSButton!
     @IBOutlet var addVideoSetErrorLabel: NSTextField!
+
+    // Display tab
+    @IBOutlet var newDisplayModePopup: NSPopUpButton!
+    @IBOutlet var newViewingModePopup: NSPopUpButton!
+    @IBOutlet var displayInstructionLabel: NSTextField!
+
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?
@@ -309,8 +315,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         logTableView.delegate = self
         logTableView.dataSource = self
-        
-        //displayView = new DisplayView()
 
         if let version = Bundle(identifier: "com.johncoates.Aerial-Test")?.infoDictionary?["CFBundleShortVersionString"] as? String {
             versionLabel.stringValue = version
@@ -589,6 +593,14 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
 
+        // Displays Tab
+        newDisplayModePopup.selectItem(at: preferences.newDisplayMode!)
+        newViewingModePopup.selectItem(at: preferences.newViewingMode!)
+
+        if preferences.newDisplayMode == Preferences.NewDisplayMode.selection.rawValue {
+            displayInstructionLabel.isHidden = false
+        }
+
         // Format date
         if sparkleUpdater!.lastUpdateCheckDate != nil {
             let dateFormatter = DateFormatter()
@@ -841,6 +853,23 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         // Older stuff (power/etc) should not even run this so list should be complete
         // Hackintosh/new SKUs may fail this test
         return .unsure
+    }
+    // MARK: - Displays panel
+    @IBAction func newDisplayModeClick(_ sender: NSPopUpButton) {
+        debugLog("UI newDisplayModeClick: \(sender.indexOfSelectedItem)")
+        preferences.newDisplayMode = sender.indexOfSelectedItem
+        if preferences.newDisplayMode == Preferences.NewDisplayMode.selection.rawValue {
+            displayInstructionLabel.isHidden = false
+        } else {
+            displayInstructionLabel.isHidden = true
+        }
+        displayView.needsDisplay = true
+    }
+
+    @IBAction func newViewingModeClick(_ sender: NSPopUpButton) {
+        debugLog("UI newViewingModeClick: \(sender.indexOfSelectedItem)")
+        preferences.newViewingMode = sender.indexOfSelectedItem
+        displayView.needsDisplay = true
     }
 
     // MARK: - Text panel

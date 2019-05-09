@@ -77,10 +77,8 @@ func Log(level: ErrorLevel, message: String) {
     if preferences.logToDisk {
         DispatchQueue.main.async {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .none
-            dateFormatter.timeStyle = .medium
+            dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm:ss"
             let string = dateFormatter.string(from: Date()) + " : " + message + "\n"
-            //let string = message + "\n"
 
             // tmpOverride
             //if var cacheFileUrl = try? FileManager.default.url(for: .desktopDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {

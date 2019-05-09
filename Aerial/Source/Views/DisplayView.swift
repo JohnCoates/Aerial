@@ -9,12 +9,21 @@
 import Foundation
 import Cocoa
 
-class DisplayView: NSView {
-    /*override init() {
-        debugLog("************************DisplayView init")
-        super.init()
-    }*/
+class DisplayPreview: NSObject {
+    var screen: Screen
+    var previewRect: CGRect
 
+    init(screen: Screen, previewRect: CGRect) {
+        self.screen = screen
+        self.previewRect = previewRect
+    }
+}
+
+class DisplayView: NSView {
+    // We store our computed previews here
+    var displayPreviews = [DisplayPreview]()
+
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -23,14 +32,16 @@ class DisplayView: NSView {
         super.init(coder: coder)
     }
 
+    // MARK: - Drawing
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
+        let preferences = Preferences.sharedInstance
 
         // We need to handle dark mode
         var backgroundColor = NSColor.init(white: 0.9, alpha: 1.0)
         var borderColor = NSColor.init(white: 0.8, alpha: 1.0)
 
-        let screenColor = NSColor.init(red: 0.44, green: 0.60, blue: 0.82, alpha: 1.0)
+        //let screenColor = NSColor.init(red: 0.38, green: 0.60, blue: 0.85, alpha: 1.0)
         let screenBorderColor = NSColor.black
 
         let timeManagement = TimeManagement.sharedInstance
@@ -48,15 +59,135 @@ class DisplayView: NSView {
         path.fill()
 
         let displayDetection = DisplayDetection.sharedInstance
+        displayPreviews = [DisplayPreview]()    // Empty the array in case we redraw
 
-        let sRect = NSRect(x: 20, y: 20, width:
-            150, height: 50)
-        let sPath = NSBezierPath(rect: sRect)
-        screenBorderColor.setFill()
-        sPath.fill()
+        // In order to draw the screen we need to know the total size of all
+        // the displays together
+        let globalRect = displayDetection.getGlobalScreenRect()
 
-        let sInPath = NSBezierPath(rect: sRect.insetBy(dx: 1, dy: 1))
-        screenColor.setFill()
-        sInPath.fill()
+        var minX: CGFloat, minY: CGFloat, maxX: CGFloat, maxY: CGFloat, scaleFactor: CGFloat
+        if (frame.width / frame.height) > (globalRect.width / globalRect.height) {
+            // We fill vertically then
+            maxY = frame.height - 60
+            minY = 30
+            scaleFactor = globalRect.height / maxY
+            maxX = globalRect.width / scaleFactor
+            minX = (frame.width - maxX)/2
+        } else {
+            // We fill horizontally
+            maxX = frame.width - 60
+            minX = 30
+            scaleFactor = globalRect.width / maxX
+            maxY = globalRect.height / scaleFactor
+            minY = (frame.height - maxY)/2
+        }
+
+        var idx = 0
+        // Now we draw each individual screen
+        for screen in displayDetection.screens {
+            let sRect = NSRect(x: minX + (screen.zeroedOrigin.x/scaleFactor),
+                               y: minY + (screen.zeroedOrigin.y/scaleFactor),
+                               width: screen.bottomLeftFrame.width/scaleFactor,
+                               height: screen.bottomLeftFrame.height/scaleFactor)
+
+            let sPath = NSBezierPath(rect: sRect)
+            screenBorderColor.setFill()
+            sPath.fill()
+
+            let sInRect = sRect.insetBy(dx: 1, dy: 1)
+
+            if preferences.newViewingMode == Preferences.NewViewingMode.independant.rawValue ||
+                preferences.newViewingMode == Preferences.NewViewingMode.mirrored.rawValue {
+                if displayDetection.isScreenActive(id: screen.id) {
+                    let bundle = Bundle(for: PreferencesWindowController.self)
+                    if let imagePath = bundle.path(forResource: "screen"+String(idx), ofType: "jpg") {
+                        let image = NSImage(contentsOfFile: imagePath)
+                        //image!.draw(in: sInRect)
+                        image!.draw(in: sInRect, from: calcScreenshotRect(src: sInRect), operation: NSCompositingOperation.copy, fraction: 1.0)
+                    } else {
+                        errorLog("\(#file) screenshot is missing!!!")
+                    }
+
+                    // Show difference images in independant mode to simulate
+                    if preferences.newViewingMode == Preferences.NewViewingMode.independant.rawValue {
+                        if idx < 2 {
+                            idx += 1
+                        } else {
+                            idx = 0
+                        }
+                    }
+                } else {
+                    // If the screen is innactive we fill it with a near black color
+                    let sInPath = NSBezierPath(rect: sInRect)
+                    let grey = NSColor(white: 0.1, alpha: 1.0)
+                    grey.setFill()
+                    sInPath.fill()
+                }
+            } else {
+                // Spanned mode TODO
+            }
+
+            // We preserve those calculations to handle our clicking logic
+            displayPreviews.append(DisplayPreview(screen: screen, previewRect: sInRect))
+
+            // We put a white bar on the main screen
+            if screen.isMain {
+                let mainRect = CGRect(x: sRect.origin.x, y: sRect.origin.y + sRect.height-8, width: sRect.width, height: 8)
+                let sMainPath = NSBezierPath(rect: mainRect)
+                NSColor.black.setFill()
+                sMainPath.fill()
+                let sMainInPath = NSBezierPath(rect: mainRect.insetBy(dx: 1, dy: 1))
+                NSColor.white.setFill()
+                sMainInPath.fill()
+            }
+        }
+    }
+
+    // Helper to keep aspect ratio of screenshots to be displayed
+    func calcScreenshotRect(src: CGRect) -> CGRect {
+        var minX: CGFloat, minY: CGFloat, maxX: CGFloat, maxY: CGFloat, scaleFactor: CGFloat
+
+        let imgw: CGFloat = 720
+        let imgh: CGFloat = 400
+
+        if (imgw/imgh) < (src.width/src.height) {
+            minX = 0
+            maxX = imgw
+            scaleFactor = src.width / maxX
+            maxY = src.height / scaleFactor
+            minY = (imgh - maxY)/2
+        } else {
+            minY = 0
+            maxY = imgh
+            scaleFactor = src.height / maxY
+            maxX = src.width / scaleFactor
+            minX = (imgw - maxX)/2
+        }
+
+        return CGRect(x: minX, y: minY, width: maxX, height: maxY)
+    }
+
+    // MARK: - Clicking
+    override func mouseDown(with event: NSEvent) {
+        let displayDetection = DisplayDetection.sharedInstance
+        let preferences = Preferences.sharedInstance
+
+        // Grab relative location of the click in view
+        let point = convert(event.locationInWindow, from: nil)
+
+        // If in selection mode, toggle the screen & redraw
+        if preferences.newDisplayMode == Preferences.NewDisplayMode.selection.rawValue {
+            for displayPreview in displayPreviews {
+                if displayPreview.previewRect.contains(point) {
+                    if displayDetection.isScreenActive(id: displayPreview.screen.id) {
+                        displayDetection.unselectScreen(id: displayPreview.screen.id)
+                    } else {
+                        displayDetection.selectScreen(id: displayPreview.screen.id)
+                    }
+                    debugLog("Clicked on \(displayPreview.screen.id)")
+                    self.needsDisplay = true
+                }
+            }
+        }
     }
 }

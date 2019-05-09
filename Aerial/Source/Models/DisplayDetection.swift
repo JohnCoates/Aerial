@@ -9,12 +9,13 @@
 import Foundation
 import Cocoa
 
-class Screen {
+class Screen: NSObject {
     var id: CGDirectDisplayID
     var width: Int
     var height: Int
     var bottomLeftFrame: CGRect
     var topRightCorner: CGPoint
+    var zeroedOrigin: CGPoint
     var isMain: Bool
     var backingScaleFactor: CGFloat
 
@@ -26,11 +27,12 @@ class Screen {
         // We precalculate the right corner too, as we will need this !
         self.topRightCorner = CGPoint(x: bottomLeftFrame.origin.x + CGFloat(width),
                                       y: bottomLeftFrame.origin.y + CGFloat(height))
+        self.zeroedOrigin = CGPoint(x: 0, y: 0)
         self.isMain = isMain
         self.backingScaleFactor = 1
     }
 
-    var description: String {
+    override var description: String {
         //swiftlint:disable:next line_length
         return "[id=\(self.id), width=\(self.width), height=\(self.height), bottomLeftFrame=\(self.bottomLeftFrame), topRightCorner=\(self.topRightCorner), isMain=\(self.isMain), backingScaleFactor=\(self.backingScaleFactor)]"
     }
@@ -89,13 +91,26 @@ final class DisplayDetection: NSObject {
             }
         }
 
-        debugLog("***Display Detection Done***")
+        // Before we finish, we calculate the origin of each screen from a 0,0 perspective
+        calculateZeroedOrigins()
+
         for screen in screens {
-            debugLog("\(screen.description)")
+            debugLog("\(screen)")
         }
+        debugLog("\(getGlobalScreenRect())")
+        debugLog("***Display Detection Done***")
     }
 
     // MARK: - Helpers
+
+    func calculateZeroedOrigins() {
+        let orect = getGlobalScreenRect()
+
+        for screen in screens {
+            screen.zeroedOrigin = CGPoint(x: screen.bottomLeftFrame.origin.x - orect.origin.x,
+                                          y: screen.bottomLeftFrame.origin.y - orect.origin.y)
+        }
+    }
 
     func findScreenWith(frame: CGRect) -> Screen? {
         for screen in screens where frame == screen.bottomLeftFrame {
@@ -112,19 +127,87 @@ final class DisplayDetection: NSObject {
 
         return nil
     }
-/*
-    func getGlobalScreenRect -> CGRect {
-        var minX, minY, maxX, maxY = 0
+
+    // Calculate the size of the global screen (the composite of all the displays attached)
+    func getGlobalScreenRect() -> CGRect {
+        var minX: CGFloat = 0.0, minY: CGFloat = 0.0, maxX: CGFloat = 0.0, maxY: CGFloat = 0.0
         for screen in screens {
-            if screen.origin.x
+            if screen.bottomLeftFrame.origin.x < minX {
+                minX = screen.bottomLeftFrame.origin.x
+            }
+            if screen.bottomLeftFrame.origin.y < minY {
+                minY = screen.bottomLeftFrame.origin.y
+            }
+            if screen.topRightCorner.x > maxX {
+                maxX = screen.topRightCorner.x
+            }
+            if screen.topRightCorner.y > maxY {
+                maxY = screen.topRightCorner.y
+            }
         }
-    }*/
+
+        return CGRect(x: minX, y: minY, width: maxX-minX, height: maxY-minY)
+    }
+
     // NSScreen coordinates are with a bottom left origin, whereas CGDisplay
     // coordinates are top left origin, this function converts the origin.y value
     func convertTopLeftToBottomLeft(rect: CGRect) -> CGRect {
         let screenFrame = (NSScreen.main?.frame)!
         let newY = 0 - (rect.origin.y - screenFrame.size.height + rect.height)
         return CGRect(x: rect.origin.x, y: newY, width: rect.width, height: rect.height)
+    }
+
+    // MARK: - Public utility fuctions
+    func isScreenActive(id: CGDirectDisplayID) -> Bool {
+        let preferences = Preferences.sharedInstance
+        let screen = findScreenWith(id: id)
+        // TODO SELECTION MODE
+        switch preferences.newDisplayMode {
+        case Preferences.NewDisplayMode.allDisplays.rawValue:
+            // This one is easy
+            return true
+        case Preferences.NewDisplayMode.mainOnly.rawValue:
+            if let scr = screen {
+                if scr.isMain {
+                    return true
+                }
+            }
+            return false
+        case Preferences.NewDisplayMode.secondaryOnly.rawValue:
+            if let scr = screen {
+                if scr.isMain {
+                    return false
+                }
+            }
+            return true
+        case Preferences.NewDisplayMode.selection.rawValue:
+            if isScreenSelected(id: id) {
+                return true
+            }
+            return false
+        default:
+            return true // Why not?
+        }
+    }
+
+    func isScreenSelected(id: CGDirectDisplayID) -> Bool {
+        let preferences = Preferences.sharedInstance
+
+        // If we have it in the dictionnary, then return that
+        if preferences.newDisplayDict.keys.contains(String(id)) {
+            return preferences.newDisplayDict[String(id)]!
+        }
+        return false    // Unknown screens will not be considered selected
+    }
+
+    func selectScreen(id: CGDirectDisplayID) {
+        let preferences = Preferences.sharedInstance
+        preferences.newDisplayDict[String(id)] = true
+    }
+
+    func unselectScreen(id: CGDirectDisplayID) {
+        let preferences = Preferences.sharedInstance
+        preferences.newDisplayDict[String(id)] = false
     }
 
 }
