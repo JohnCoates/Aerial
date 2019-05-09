@@ -226,6 +226,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     var locationManager: CLLocationManager?
     var sparkleUpdater: SUUpdater?
 
+    @IBOutlet var displayView: DisplayView!
     public var appMode: Bool = false
 
     private lazy var timeFormatter: DateFormatter = {
@@ -308,6 +309,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         logTableView.delegate = self
         logTableView.dataSource = self
+        
+        //displayView = new DisplayView()
 
         if let version = Bundle(identifier: "com.johncoates.Aerial-Test")?.infoDictionary?["CFBundleShortVersionString"] as? String {
             versionLabel.stringValue = version

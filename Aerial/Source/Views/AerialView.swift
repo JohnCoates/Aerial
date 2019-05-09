@@ -110,7 +110,7 @@ final class AerialView: ScreenSaverView {
     // This is the one used by System Preferences
     override init?(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)
-        debugLog("avInit1")
+        debugLog("avInit1 \(frame)")
         self.animationTimeInterval = 1.0 / 30.0
         setup()
     }
