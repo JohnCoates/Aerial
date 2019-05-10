@@ -616,12 +616,12 @@ is disabled
                                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zEv-yC-DYA">
                                                     <rect key="frame" x="131" y="47" width="167" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <popUpButtonCell key="cell" type="push" title="Independant" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="MKb-uC-u8v" id="uOr-6E-QJA">
+                                                    <popUpButtonCell key="cell" type="push" title="Independent" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="MKb-uC-u8v" id="uOr-6E-QJA">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="menu"/>
                                                         <menu key="menu" id="3Bi-za-9u6">
                                                             <items>
-                                                                <menuItem title="Independant" state="on" id="MKb-uC-u8v"/>
+                                                                <menuItem title="Independent" state="on" id="MKb-uC-u8v"/>
                                                                 <menuItem title="Mirrored" id="mW5-ZK-gX1"/>
                                                                 <menuItem title="Spanned" id="1hP-Py-Qcq">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
