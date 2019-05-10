@@ -33,6 +33,7 @@ class DisplayView: NSView {
     }
 
     // MARK: - Drawing
+    //swiftlint:disable:next cyclomatic_complexity
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         let preferences = Preferences.sharedInstance
@@ -82,6 +83,24 @@ class DisplayView: NSView {
             minY = (frame.height - maxY)/2
         }
 
+        // In spanned mode, we start by a faint full view of the span
+        if preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue {
+            let activeRect = displayDetection.getZeroedActiveSpannedRect()
+            debugLog("spanned active rect \(activeRect)")
+            let activeSRect = NSRect(x: minX + (activeRect.origin.x/scaleFactor),
+                               y: minY + (activeRect.origin.y/scaleFactor),
+                               width: activeRect.width/scaleFactor,
+                               height: activeRect.height/scaleFactor)
+
+            let bundle = Bundle(for: PreferencesWindowController.self)
+            if let imagePath = bundle.path(forResource: "screen0", ofType: "jpg") {
+                let image = NSImage(contentsOfFile: imagePath)
+                image!.draw(in: activeSRect, from: calcScreenshotRect(src: activeSRect), operation: NSCompositingOperation.copy, fraction: 0.1)
+            } else {
+                errorLog("\(#file) screenshot is missing!!!")
+            }
+        }
+
         var idx = 0
         // Now we draw each individual screen
         for screen in displayDetection.screens {
@@ -124,7 +143,32 @@ class DisplayView: NSView {
                     sInPath.fill()
                 }
             } else {
-                // Spanned mode TODO
+                // Spanned mode
+                if displayDetection.isScreenActive(id: screen.id) {
+                    // Calculate which portion of the image to display
+                    let activeRect = displayDetection.getZeroedActiveSpannedRect()
+                    let activeSRect = NSRect(x: minX + (activeRect.origin.x/scaleFactor),
+                                             y: minY + (activeRect.origin.y/scaleFactor),
+                                             width: activeRect.width/scaleFactor,
+                                             height: activeRect.height/scaleFactor)
+                    let ssRect = calcScreenshotRect(src: activeSRect)
+                    let xFactor = ssRect.width / activeSRect.width
+                    let yFactor = ssRect.height / activeSRect.height
+                    // ...
+                    let sFRect = CGRect(x: (sInRect.origin.x - activeSRect.origin.x) * xFactor + ssRect.origin.x,
+                                        y: (sInRect.origin.y - activeSRect.origin.y) * yFactor + ssRect.origin.y,
+                                        width: sInRect.width*xFactor,
+                                        height: sInRect.height*yFactor)
+
+                    let bundle = Bundle(for: PreferencesWindowController.self)
+                    if let imagePath = bundle.path(forResource: "screen0", ofType: "jpg") {
+                        let image = NSImage(contentsOfFile: imagePath)
+                        //image!.draw(in: sInRect)
+                        image!.draw(in: sInRect, from: sFRect, operation: NSCompositingOperation.copy, fraction: 1.0)
+                    } else {
+                        errorLog("\(#file) screenshot is missing!!!")
+                    }
+                }
             }
 
             // We preserve those calculations to handle our clicking logic

@@ -149,6 +149,32 @@ final class DisplayDetection: NSObject {
         return CGRect(x: minX, y: minY, width: maxX-minX, height: maxY-minY)
     }
 
+    func getZeroedActiveSpannedRect() -> CGRect {
+        var minX: CGFloat = 0.0, minY: CGFloat = 0.0, maxX: CGFloat = 0.0, maxY: CGFloat = 0.0
+        for screen in screens where isScreenActive(id: screen.id) {
+            if screen.bottomLeftFrame.origin.x < minX {
+                minX = screen.bottomLeftFrame.origin.x
+            }
+            if screen.bottomLeftFrame.origin.y < minY {
+                minY = screen.bottomLeftFrame.origin.y
+            }
+            if screen.topRightCorner.x > maxX {
+                maxX = screen.topRightCorner.x
+            }
+            if screen.topRightCorner.y > maxY {
+                maxY = screen.topRightCorner.y
+            }
+        }
+
+        let width = maxX - minX
+        let height = maxY - minY
+        // Zero the origin to the global rect
+        let orect = getGlobalScreenRect()
+        minX -= orect.origin.x
+        minY -= orect.origin.y
+        return CGRect(x: minX, y: minY, width: width, height: height)
+    }
+
     // NSScreen coordinates are with a bottom left origin, whereas CGDisplay
     // coordinates are top left origin, this function converts the origin.y value
     func convertTopLeftToBottomLeft(rect: CGRect) -> CGRect {
@@ -161,7 +187,7 @@ final class DisplayDetection: NSObject {
     func isScreenActive(id: CGDirectDisplayID) -> Bool {
         let preferences = Preferences.sharedInstance
         let screen = findScreenWith(id: id)
-        // TODO SELECTION MODE
+
         switch preferences.newDisplayMode {
         case Preferences.NewDisplayMode.allDisplays.rawValue:
             // This one is easy
@@ -186,7 +212,7 @@ final class DisplayDetection: NSObject {
             }
             return false
         default:
-            return true // Why not?
+            return true // Will never get called
         }
     }
 
