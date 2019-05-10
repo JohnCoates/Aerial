@@ -72,7 +72,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var overrideNightOnDarkMode: NSButton!
 
-    @IBOutlet var multiMonitorModePopup: NSPopUpButton!
     @IBOutlet var popupVideoFormat: NSPopUpButton!
     @IBOutlet var alternatePopupVideoFormat: NSPopUpButton!
     @IBOutlet var descriptionModePopup: NSPopUpButton!
@@ -573,8 +572,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         solarModePopup.selectItem(at: preferences.solarMode!)
 
-        multiMonitorModePopup.selectItem(at: preferences.multiMonitorMode!)
-
         popupVideoFormat.selectItem(at: preferences.videoFormat!)
 
         alternatePopupVideoFormat.selectItem(at: preferences.alternateVideoFormat!)
@@ -754,12 +751,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBAction func helpPowerButtonClick(_ button: NSButton!) {
         popoverPower.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
-    }
-
-    @IBAction func multiMonitorModePopupChange(_ sender: NSPopUpButton) {
-        debugLog("UI multiMonitorMode: \(sender.indexOfSelectedItem)")
-        preferences.multiMonitorMode = sender.indexOfSelectedItem
-        preferences.synchronize()
     }
 
     @IBAction func fadeInOutModePopupChange(_ sender: NSPopUpButton) {
