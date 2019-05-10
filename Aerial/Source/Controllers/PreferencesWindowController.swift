@@ -72,7 +72,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var overrideNightOnDarkMode: NSButton!
 
-    @IBOutlet var multiMonitorModePopup: NSPopUpButton!
     @IBOutlet var popupVideoFormat: NSPopUpButton!
     @IBOutlet var alternatePopupVideoFormat: NSPopUpButton!
     @IBOutlet var descriptionModePopup: NSPopUpButton!
@@ -206,6 +205,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var addVideoSetConfirmButton: NSButton!
     @IBOutlet var addVideoSetCancelButton: NSButton!
     @IBOutlet var addVideoSetErrorLabel: NSTextField!
+
+    // Display tab
+    @IBOutlet var newDisplayModePopup: NSPopUpButton!
+    @IBOutlet var newViewingModePopup: NSPopUpButton!
+    @IBOutlet var displayInstructionLabel: NSTextField!
+
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?
@@ -226,6 +231,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     var locationManager: CLLocationManager?
     var sparkleUpdater: SUUpdater?
 
+    @IBOutlet var displayView: DisplayView!
     public var appMode: Bool = false
 
     private lazy var timeFormatter: DateFormatter = {
@@ -566,8 +572,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         solarModePopup.selectItem(at: preferences.solarMode!)
 
-        multiMonitorModePopup.selectItem(at: preferences.multiMonitorMode!)
-
         popupVideoFormat.selectItem(at: preferences.videoFormat!)
 
         alternatePopupVideoFormat.selectItem(at: preferences.alternateVideoFormat!)
@@ -585,6 +589,14 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         betaCheckFrequencyPopup.selectItem(at: preferences.betaCheckFrequency!)
 
         lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
+
+        // Displays Tab
+        newDisplayModePopup.selectItem(at: preferences.newDisplayMode!)
+        newViewingModePopup.selectItem(at: preferences.newViewingMode!)
+
+        if preferences.newDisplayMode == Preferences.NewDisplayMode.selection.rawValue {
+            displayInstructionLabel.isHidden = false
+        }
 
         // Format date
         if sparkleUpdater!.lastUpdateCheckDate != nil {
@@ -741,12 +753,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         popoverPower.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
     }
 
-    @IBAction func multiMonitorModePopupChange(_ sender: NSPopUpButton) {
-        debugLog("UI multiMonitorMode: \(sender.indexOfSelectedItem)")
-        preferences.multiMonitorMode = sender.indexOfSelectedItem
-        preferences.synchronize()
-    }
-
     @IBAction func fadeInOutModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI fadeInOutMode: \(sender.indexOfSelectedItem)")
         preferences.fadeMode = sender.indexOfSelectedItem
@@ -838,6 +844,23 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         // Older stuff (power/etc) should not even run this so list should be complete
         // Hackintosh/new SKUs may fail this test
         return .unsure
+    }
+    // MARK: - Displays panel
+    @IBAction func newDisplayModeClick(_ sender: NSPopUpButton) {
+        debugLog("UI newDisplayModeClick: \(sender.indexOfSelectedItem)")
+        preferences.newDisplayMode = sender.indexOfSelectedItem
+        if preferences.newDisplayMode == Preferences.NewDisplayMode.selection.rawValue {
+            displayInstructionLabel.isHidden = false
+        } else {
+            displayInstructionLabel.isHidden = true
+        }
+        displayView.needsDisplay = true
+    }
+
+    @IBAction func newViewingModeClick(_ sender: NSPopUpButton) {
+        debugLog("UI newViewingModeClick: \(sender.indexOfSelectedItem)")
+        preferences.newViewingMode = sender.indexOfSelectedItem
+        displayView.needsDisplay = true
     }
 
     // MARK: - Text panel

@@ -74,6 +74,17 @@ final class Preferences {
         case updateWhileSaverMode = "updateWhileSaverMode"
         case allowBetas = "allowBetas"
         case betaCheckFrequency = "betaCheckFrequency"
+        case newDisplayMode = "newDisplayMode"
+        case newViewingMode = "newViewingMode"
+        case newDisplayDict = "newDisplayDict"
+    }
+
+    enum NewDisplayMode: Int {
+        case allDisplays, mainOnly, secondaryOnly, selection
+    }
+
+    enum NewViewingMode: Int {
+        case independant, mirrored, spanned
     }
 
     enum BetaCheckFrequency: Int {
@@ -199,6 +210,9 @@ final class Preferences {
         defaultValues[.updateWhileSaverMode] = true
         defaultValues[.allowBetas] = false
         defaultValues[.betaCheckFrequency] = BetaCheckFrequency.daily
+        defaultValues[.newDisplayMode] = NewDisplayMode.allDisplays
+        defaultValues[.newViewingMode] = NewViewingMode.independant
+        defaultValues[.newDisplayDict] = [String: Bool]()
 
         // Set today's date as default
         let dateFormatter = DateFormatter()
@@ -223,6 +237,33 @@ final class Preferences {
         }
         set {
             setValue(forIdentifier: .videoSets, value: newValue)
+        }
+    }
+
+    var newDisplayDict: [String: Bool] {
+        get {
+            return userDefaults.dictionary(forKey: "newDisplayDict") as! [String: Bool]
+        }
+        set {
+            setValue(forIdentifier: .newDisplayDict, value: newValue)
+        }
+    }
+
+    var newDisplayMode: Int? {
+        get {
+            return optionalValue(forIdentifier: .newDisplayMode)
+        }
+        set {
+            setValue(forIdentifier: .newDisplayMode, value: newValue)
+        }
+    }
+
+    var newViewingMode: Int? {
+        get {
+            return optionalValue(forIdentifier: .newViewingMode)
+        }
+        set {
+            setValue(forIdentifier: .newViewingMode, value: newValue)
         }
     }
 

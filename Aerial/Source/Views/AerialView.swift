@@ -71,19 +71,19 @@ final class AerialView: ScreenSaverView {
         }
     }
 
+    // Mirrored viewing mode and Spanned viewing mode share the same player for sync & ressource saving
     static var sharingPlayers: Bool {
         let preferences = Preferences.sharedInstance
-        return (preferences.multiMonitorMode == Preferences.MultiMonitorMode.mirrored.rawValue)
+        return (preferences.newViewingMode == Preferences.NewViewingMode.mirrored.rawValue) ||
+            (preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue)
     }
 
     static var sharedViews: [AerialView] = []
-    // because of lifecycle in Preview, we may pile up old/no longer
+    // Because of lifecycle in Preview, we may pile up old/no longer
     // shared instanciated views that we need to track to not reuse
     static var instanciatedViews: [AerialView] = []
-    //var instanciatedIndex: Int
 
     // MARK: - Shared Player
-
     static var singlePlayerAlreadySetup: Bool = false
     static var sharedPlayerIndex: Int?
     static var didSkipMain: Bool = false
@@ -110,7 +110,7 @@ final class AerialView: ScreenSaverView {
     // This is the one used by System Preferences
     override init?(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)
-        debugLog("avInit1")
+        debugLog("avInit1 \(frame)")
         self.animationTimeInterval = 1.0 / 30.0
         setup()
     }
@@ -137,13 +137,11 @@ final class AerialView: ScreenSaverView {
         }
 
         // Remove from player index
-
         let indexMaybe = AerialView.players.firstIndex(of: player)
 
         guard let index = indexMaybe else {
             return
         }
-
         AerialView.players.remove(at: index)
     }
 
@@ -183,9 +181,6 @@ final class AerialView: ScreenSaverView {
         debugLog("\(self.description) AerialView setup init")
         let preferences = Preferences.sharedInstance
         let timeManagement = TimeManagement.sharedInstance
-
-        debugLog("isOnBattery : \(timeManagement.isOnBattery())")
-        debugLog("isBatteryLow : \(timeManagement.isBatteryLow())")
 
         // Initialize Sparkle updater
         if !isPreview && preferences.updateWhileSaverMode {
@@ -255,34 +250,29 @@ final class AerialView: ScreenSaverView {
             }
         }
 
+        let displayDetection = DisplayDetection.sharedInstance
+        // We look for the screen in our detected list. In case of preview or unknown screen
+        // result will be nil
+        let thisScreen = displayDetection.findScreenWith(frame: self.frame)
         var localPlayer: AVPlayer?
-
-        let notPreview = !isPreview
         debugLog("\(self.description) isPreview : \(isPreview)")
+        debugLog("Using : \(String(describing: thisScreen))")
 
-        if notPreview {
-            debugLog("\(self.description) singlePlayerAlreadySetup \(AerialView.singlePlayerAlreadySetup)")
-            if AerialView.singlePlayerAlreadySetup && preferences.multiMonitorMode == Preferences.MultiMonitorMode.mainOnly.rawValue {
-                isDisabled = true
-                return
-            }
-
-            if preferences.multiMonitorMode == Preferences.MultiMonitorMode.secondaryOnly.rawValue {
-                if !AerialView.didSkipMain {
-                    AerialView.didSkipMain = true
+        if !isPreview {
+            if let screen = thisScreen {
+                // Is the screen active according to user settings or not ?
+                if !displayDetection.isScreenActive(id: screen.id) {
+                    // Then we disable and exit
+                    debugLog("This display is not active, disabling")
                     isDisabled = true
                     return
                 }
+            } else {
+                // If we don't know this screen, we disable
+                debugLog("This is an unknown display, disabling")
+                isDisabled = true
+                return
             }
-
-            // check if we should share preview's player
-            //let noPlayers = (AerialView.players.count == 0)
-            let previewPlayerExists = (AerialView.previewPlayer != nil)
-            debugLog("\(self.description) nbPlayers \(AerialView.players.count) previewPlayerExists \(previewPlayerExists)")
-            /*if noPlayers && previewPlayerExists {
-
-                localPlayer = AerialView.previewPlayer
-            }*/
         } else {
             AerialView.previewView = self
         }
@@ -298,12 +288,7 @@ final class AerialView: ScreenSaverView {
             debugLog("\(self.description) no local player")
 
             if AerialView.sharingPlayers {
-                /*if AerialView.previewPlayer != nil {
-                    localPlayer = AerialView.previewPlayer
-                } else {*/
-
                 localPlayer = AerialView.sharedPlayer
-                //}
             } else {
                 localPlayer = AVPlayer()
             }
@@ -325,6 +310,7 @@ final class AerialView: ScreenSaverView {
 
         setupPlayerLayer(withPlayer: player)
 
+        // In mirror mode we use the main instance player
         if AerialView.sharingPlayers && AerialView.singlePlayerAlreadySetup {
             self.playerLayer.player = AerialView.instanciatedViews[AerialView.sharedPlayerIndex!].player
             self.playerLayer.opacity = 0
@@ -355,6 +341,8 @@ final class AerialView: ScreenSaverView {
 
     func setupPlayerLayer(withPlayer player: AVPlayer) {
         debugLog("\(self.description) setupPlayerLayer")
+        let displayDetection = DisplayDetection.sharedInstance
+        let preferences = Preferences.sharedInstance
 
         self.layer = CALayer()
         guard let layer = self.layer else {
@@ -365,15 +353,32 @@ final class AerialView: ScreenSaverView {
         layer.backgroundColor = NSColor.black.cgColor
         layer.needsDisplayOnBoundsChange = true
         layer.frame = self.bounds
-
-        debugLog("\(self.description) setting up player layer with frame: \(self.bounds) / \(self.frame)")
+        debugLog("\(self.description) setting up player layer with bounds/frame: \(layer.bounds) / \(layer.frame)")
 
         playerLayer = AVPlayerLayer(player: player)
         if #available(OSX 10.10, *) {
             playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         }
         playerLayer.autoresizingMask = [CAAutoresizingMask.layerWidthSizable, CAAutoresizingMask.layerHeightSizable]
-        playerLayer.frame = layer.bounds
+
+        // In case of span mode we need to compute the size of our layer
+        if preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue && !isPreview {
+            let zRect = displayDetection.getZeroedActiveSpannedRect()
+            let screen = displayDetection.findScreenWith(frame: self.frame)
+            if let scr = screen {
+                let tRect = CGRect(x: zRect.origin.x - scr.zeroedOrigin.x,
+                                   y: zRect.origin.y - scr.zeroedOrigin.y,
+                                   width: zRect.width,
+                                   height: zRect.height)
+                playerLayer.frame = tRect
+            } else {
+                errorLog("This is an unknown screen in span mode, this is not good")
+                playerLayer.frame = layer.bounds
+            }
+        } else {
+            playerLayer.frame = layer.bounds
+        }
+
         layer.addSublayer(playerLayer)
 
         textLayer = CATextLayer()

@@ -44,6 +44,8 @@
                 <outlet property="dimOnlyAtNight" destination="bdT-Zs-z0b" id="HUL-YU-BcI"/>
                 <outlet property="dimOnlyOnBattery" destination="kE5-h7-m5u" id="Lnk-lZ-oHb"/>
                 <outlet property="dimStartFrom" destination="dlC-bg-30R" id="fwI-Cp-B8M"/>
+                <outlet property="displayInstructionLabel" destination="ChJ-fV-htb" id="lez-fe-tP4"/>
+                <outlet property="displayView" destination="e84-HM-3YL" id="1ac-Bu-YHo"/>
                 <outlet property="downloadNowButton" destination="118-Gb-ppx" id="Q6V-xn-WpX"/>
                 <outlet property="downloadProgressIndicator" destination="0Nj-rn-Gmk" id="ftV-Yg-pCi"/>
                 <outlet property="downloadStopButton" destination="7SM-Cq-nPU" id="T8h-Uj-bJb"/>
@@ -85,10 +87,11 @@
                 <outlet property="marginHorizontalTextfield" destination="qya-NI-lYj" id="ent-lE-R62"/>
                 <outlet property="marginVerticalTextfield" destination="Neu-QE-nZl" id="81a-w4-PSX"/>
                 <outlet property="moveOldVideosButton" destination="DS7-dE-PeA" id="lj3-hD-4gY"/>
-                <outlet property="multiMonitorModePopup" destination="VMF-XF-l84" id="pHc-KU-Cnb"/>
                 <outlet property="neverStreamPreviewsCheckbox" destination="cN4-52-cnH" id="hFw-FV-TAL"/>
                 <outlet property="neverStreamVideosCheckbox" destination="TFE-JE-tOy" id="sWg-72-tEe"/>
+                <outlet property="newDisplayModePopup" destination="Ibo-Vt-0u8" id="kp5-FC-WgV"/>
                 <outlet property="newVideosModePopup" destination="NGH-dx-e1C" id="at6-1Y-KkQ"/>
+                <outlet property="newViewingModePopup" destination="zEv-yC-DYA" id="NYE-kn-7J1"/>
                 <outlet property="nightShiftLabel" destination="Epa-Ok-cwG" id="Iks-ZE-JaS"/>
                 <outlet property="outlineView" destination="gP6-w2-1UT" id="xdh-0c-TK2"/>
                 <outlet property="outlineViewSettings" destination="Mx1-yH-imM" id="GPv-FN-JD6"/>
@@ -320,7 +323,7 @@
                                                     </scroller>
                                                 </scrollView>
                                                 <popUpButton toolTip="Pick your preferred video format, see help for more information" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUc-qc-3p7">
-                                                    <rect key="frame" x="456" y="110" width="115" height="25"/>
+                                                    <rect key="frame" x="456" y="142" width="115" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <popUpButtonCell key="cell" type="push" title="1080p H264" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="xf3-qe-aEd" id="kDC-Tc-OTg">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -338,7 +341,7 @@
                                                     </connections>
                                                 </popUpButton>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="79" translatesAutoresizingMaskIntoConstraints="NO" id="zff-sA-hBB">
-                                                    <rect key="frame" x="307" y="115" width="153" height="17"/>
+                                                    <rect key="frame" x="307" y="147" width="153" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Preferred video format" id="F2h-co-bje">
                                                         <font key="font" metaFont="system"/>
@@ -415,38 +418,8 @@ is disabled
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aMY-cT-Beh">
-                                                    <rect key="frame" x="307" y="183" width="74" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Play Aerials" id="aZj-Wd-2jX">
-                                                        <font key="font" usesAppearanceFont="YES"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
-                                                <popUpButton toolTip="Pick how to handle multiple monitor setups" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VMF-XF-l84">
-                                                    <rect key="frame" x="385" y="178" width="215" height="25"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <popUpButtonCell key="cell" type="push" title="Only on Main Display" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ajH-jt-gZt" id="X1b-79-RBP">
-                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="menu"/>
-                                                        <menu key="menu" id="xWe-Y1-5l5">
-                                                            <items>
-                                                                <menuItem title="Only on Main Display" state="on" id="ajH-jt-gZt"/>
-                                                                <menuItem title="Mirrored on All Displays" id="V9X-dq-asD"/>
-                                                                <menuItem title="Different on Each Display" id="pui-N6-dxE"/>
-                                                                <menuItem title="Only on Secondary Displays" id="bRZ-vP-z9k" userLabel="Only on Secondary Displays">
-                                                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                                                </menuItem>
-                                                            </items>
-                                                        </menu>
-                                                    </popUpButtonCell>
-                                                    <connections>
-                                                        <action selector="multiMonitorModePopupChange:" target="-2" id="9Tn-OC-JQE"/>
-                                                    </connections>
-                                                </popUpButton>
                                                 <button toolTip="Click for more information on Video Formats" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m7D-Ed-ZCH">
-                                                    <rect key="frame" x="574" y="109" width="25" height="25"/>
+                                                    <rect key="frame" x="574" y="141" width="25" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6wW-GF-py9">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -457,7 +430,7 @@ is disabled
                                                     </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j0k-lf-UM7">
-                                                    <rect key="frame" x="307" y="149" width="81" height="17"/>
+                                                    <rect key="frame" x="307" y="181" width="81" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Fade in/out" id="gXx-65-S5a">
                                                         <font key="font" usesAppearanceFont="YES"/>
@@ -466,7 +439,7 @@ is disabled
                                                     </textFieldCell>
                                                 </textField>
                                                 <popUpButton toolTip="The duration of the fades at the beginning and the end of each video" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="405-v4-6d2">
-                                                    <rect key="frame" x="385" y="144" width="107" height="25"/>
+                                                    <rect key="frame" x="385" y="176" width="107" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <popUpButtonCell key="cell" type="push" title="1 Second" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="4aA-BM-bD5" id="WDB-Zy-UB4">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -487,7 +460,7 @@ is disabled
                                                     </connections>
                                                 </popUpButton>
                                                 <button toolTip="Use a different video format on battery" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bw6-Ue-9DG">
-                                                    <rect key="frame" x="307" y="81" width="153" height="18"/>
+                                                    <rect key="frame" x="307" y="113" width="153" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Override on battery" bezelStyle="regularSquare" imagePosition="left" inset="2" id="JUa-dm-8H0">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -498,7 +471,7 @@ is disabled
                                                     </connections>
                                                 </button>
                                                 <popUpButton toolTip="Alternate video format to be used on battery" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9xO-ny-a0c">
-                                                    <rect key="frame" x="456" y="76" width="115" height="25"/>
+                                                    <rect key="frame" x="456" y="108" width="115" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <popUpButtonCell key="cell" type="push" title="Power Saving" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="cOy-X5-itc" id="VMG-n7-jo8">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -519,7 +492,7 @@ is disabled
                                                     </connections>
                                                 </popUpButton>
                                                 <button toolTip="Force Power saving mode when your battery is low" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J8F-d4-4Mv">
-                                                    <rect key="frame" x="325" y="51" width="216" height="18"/>
+                                                    <rect key="frame" x="325" y="83" width="216" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Power saving on low battery" bezelStyle="regularSquare" imagePosition="left" inset="2" id="uS6-Sb-3uu">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -530,7 +503,7 @@ is disabled
                                                     </connections>
                                                 </button>
                                                 <button toolTip="Click for more information on Power Saving" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1SL-9J-jhX">
-                                                    <rect key="frame" x="574" y="45" width="25" height="25"/>
+                                                    <rect key="frame" x="574" y="77" width="25" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TCe-vE-1An">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -552,7 +525,7 @@ is disabled
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r6a-he-iOc">
-                                                    <rect key="frame" x="307" y="21" width="204" height="18"/>
+                                                    <rect key="frame" x="307" y="53" width="204" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Allow Right arrow key to skip" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="P4b-25-o9o">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -562,6 +535,104 @@ is disabled
                                                         <action selector="rightArrowKeyPlaysNextClick:" target="-2" id="HSu-RO-zN1"/>
                                                     </connections>
                                                 </button>
+                                            </subviews>
+                                        </view>
+                                    </tabViewItem>
+                                    <tabViewItem label="Displays" identifier="" id="P6g-Pf-AmY">
+                                        <view key="view" ambiguous="YES" id="65A-Ae-cVB">
+                                            <rect key="frame" x="10" y="33" width="614" height="381"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <customView toolTip="DisplayView" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e84-HM-3YL" customClass="DisplayView" customModule="Aerial" customModuleProvider="target">
+                                                    <rect key="frame" x="17" y="153" width="580" height="212"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <subviews>
+                                                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ChJ-fV-htb">
+                                                            <rect key="frame" x="190" y="191" width="200" height="14"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Click on a Display to enable/disable it" id="S5I-D9-vrV">
+                                                                <font key="font" metaFont="smallSystem"/>
+                                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                    </subviews>
+                                                </customView>
+                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxx-vb-ydF">
+                                                    <rect key="frame" x="23" y="130" width="18" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSInfo" id="UgU-q4-ES1"/>
+                                                </imageView>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="880-Nm-7O6">
+                                                    <rect key="frame" x="44" y="132" width="414" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="You can modify your arrangement in System Preferences &gt; Displays" id="lF9-wo-95u">
+                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tbe-5v-aNi">
+                                                    <rect key="frame" x="34" y="87" width="93" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Play Aerials on" id="XlC-VY-aPg">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ibo-Vt-0u8">
+                                                    <rect key="frame" x="131" y="82" width="167" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <popUpButtonCell key="cell" type="push" title="All Displays" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="bsU-Q9-p45" id="Mke-Zn-abI">
+                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="menu"/>
+                                                        <menu key="menu" id="d9E-aS-0F8">
+                                                            <items>
+                                                                <menuItem title="All Displays" state="on" id="bsU-Q9-p45"/>
+                                                                <menuItem title="Main Display" id="5tw-Or-1o6">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                </menuItem>
+                                                                <menuItem title="Secondary Display(s)" id="tPK-5E-KMm">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                </menuItem>
+                                                                <menuItem title="Selected Displays" id="C0R-XL-2Ao"/>
+                                                            </items>
+                                                        </menu>
+                                                    </popUpButtonCell>
+                                                    <connections>
+                                                        <action selector="newDisplayModeClick:" target="-2" id="MDN-em-vyU"/>
+                                                    </connections>
+                                                </popUpButton>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qJc-b4-gJU">
+                                                    <rect key="frame" x="34" y="52" width="90" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Viewing Mode" id="Eag-SW-zxj">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zEv-yC-DYA">
+                                                    <rect key="frame" x="131" y="47" width="167" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <popUpButtonCell key="cell" type="push" title="Independent" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="MKb-uC-u8v" id="uOr-6E-QJA">
+                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="menu"/>
+                                                        <menu key="menu" id="3Bi-za-9u6">
+                                                            <items>
+                                                                <menuItem title="Independent" state="on" id="MKb-uC-u8v"/>
+                                                                <menuItem title="Mirrored" id="mW5-ZK-gX1"/>
+                                                                <menuItem title="Spanned" id="1hP-Py-Qcq">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                </menuItem>
+                                                            </items>
+                                                        </menu>
+                                                    </popUpButtonCell>
+                                                    <connections>
+                                                        <action selector="newViewingModeClick:" target="-2" id="Uib-5d-Vpy"/>
+                                                    </connections>
+                                                </popUpButton>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
@@ -1523,7 +1594,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Updates" identifier="" id="7Rb-Ma-4dK">
-                                        <view key="view" ambiguous="YES" id="2qs-gJ-aIh">
+                                        <view key="view" id="2qs-gJ-aIh">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -2278,7 +2349,7 @@ You can enable it when on battery, or only when your battery reaches 20%.</strin
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o5k-aQ-Uat">
-                        <rect key="frame" x="55" y="18" width="75" height="23"/>
+                        <rect key="frame" x="55" y="18" width="76" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="Close" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fKH-8c-Z22">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2323,7 +2394,7 @@ You can enable it when on battery, or only when your battery reaches 20%.</strin
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E5p-nj-gZ4">
-                        <rect key="frame" x="152" y="19" width="75" height="23"/>
+                        <rect key="frame" x="152" y="19" width="76" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="Close" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4qy-3L-F9e">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2385,7 +2456,7 @@ You can enable it when on battery, or only when your battery reaches 20%.</strin
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wl3-PC-us0">
-                        <rect key="frame" x="114" y="20" width="81" height="23"/>
+                        <rect key="frame" x="114" y="20" width="82" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="Close" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="w4q-SR-gcV">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2516,6 +2587,7 @@ Unless you want to manually manage your updates, we highly recommand you leave t
         <image name="NSCaution" width="32" height="32"/>
         <image name="NSGoLeftTemplate" width="9" height="12"/>
         <image name="NSHomeTemplate" width="14" height="14"/>
+        <image name="NSInfo" width="32" height="32"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="NSRightFacingTriangleTemplate" width="9" height="12"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
