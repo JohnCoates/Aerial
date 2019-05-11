@@ -79,6 +79,7 @@
                 <outlet property="lightDarkModeLabel" destination="XQ7-f2-0uN" id="UUs-Je-cud"/>
                 <outlet property="linkTimeWikipediaButton" destination="ZA3-j4-vME" id="CcR-ee-smd"/>
                 <outlet property="localizeForTvOS12Checkbox" destination="R3K-TR-uHC" id="8bm-PN-gTd"/>
+                <outlet property="logMillisecondsButton" destination="SN4-T0-wVK" id="rgB-Db-REK"/>
                 <outlet property="logPanel" destination="dhR-hQ-iIQ" id="g5B-mU-Fka"/>
                 <outlet property="logTableView" destination="btT-0Y-wSk" id="2Rw-YU-x2R"/>
                 <outlet property="logToDiskCheckbox" destination="roX-7H-4ec" id="Tcj-tM-SPp"/>
@@ -161,7 +162,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Videos" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
+                                        <view key="view" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1773,12 +1774,12 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Advanced" identifier="" id="asf-lu-1rA">
-                                        <view key="view" id="303-Jh-DVp">
+                                        <view key="view" ambiguous="YES" id="303-Jh-DVp">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kxy-3m-oZ7">
-                                                    <rect key="frame" x="7" y="189" width="160" height="17"/>
+                                                    <rect key="frame" x="7" y="159" width="160" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Video versions:" id="K3g-rm-43U">
                                                         <font key="font" metaFont="system"/>
@@ -1787,7 +1788,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="580" translatesAutoresizingMaskIntoConstraints="NO" id="Znq-cI-muh">
-                                                    <rect key="frame" x="15" y="117" width="584" height="58"/>
+                                                    <rect key="frame" x="15" y="87" width="584" height="58"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" id="Fme-fD-NSb">
                                                         <font key="font" metaFont="system"/>
@@ -1800,7 +1801,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jfq-Ye-7dR">
-                                                    <rect key="frame" x="24" y="92" width="564" height="17"/>
+                                                    <rect key="frame" x="24" y="62" width="564" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="QT2-qS-KTw">
                                                         <font key="font" metaFont="system"/>
@@ -1809,7 +1810,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DS7-dE-PeA">
-                                                    <rect key="frame" x="11" y="43" width="198" height="32"/>
+                                                    <rect key="frame" x="11" y="13" width="198" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Move old videos" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rs1-GF-usp">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1886,7 +1887,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </button>
                                                 <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="ucg-WU-qbv">
-                                                    <rect key="frame" x="9" y="221" width="595" height="5"/>
+                                                    <rect key="frame" x="9" y="191" width="595" height="5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 </box>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="40L-6p-w4z">
@@ -1899,7 +1900,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="55F-Qw-lIh">
-                                                    <rect key="frame" x="399" y="43" width="198" height="32"/>
+                                                    <rect key="frame" x="399" y="13" width="198" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Trash old videos" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2Xr-CA-2Gk">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1907,6 +1908,17 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="trashOldVideosClick:" target="-2" id="FpQ-0L-fBx"/>
+                                                    </connections>
+                                                </button>
+                                                <button toolTip="Add milliseconds to logs for fine grain performance debugging" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SN4-T0-wVK">
+                                                    <rect key="frame" x="15" y="216" width="123" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="check" title="Log milliseconds" bezelStyle="regularSquare" imagePosition="left" inset="2" id="raM-I3-S7B">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="logMillisecondsClick:" target="-2" id="C8t-s3-TZv"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -2581,7 +2593,7 @@ Unless you want to manually manage your updates, we highly recommand you leave t
             </subviews>
             <point key="canvasLocation" x="1218.5" y="559"/>
         </customView>
-        <window title="Video downloads in progress" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" id="qE0-Sq-kqZ" customClass="NSPanel">
+        <window title="Video downloads in progress" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="qE0-Sq-kqZ" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="272" y="172" width="419" height="154"/>
@@ -2595,7 +2607,7 @@ Unless you want to manually manage your updates, we highly recommand you leave t
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSCaution" id="cis-rM-Ub9"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iGd-ab-Ono">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="311" translatesAutoresizingMaskIntoConstraints="NO" id="iGd-ab-Ono">
                         <rect key="frame" x="86" y="61" width="315" height="59"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" selectable="YES" id="eXZ-Ly-MSV">
