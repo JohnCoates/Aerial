@@ -210,7 +210,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var newDisplayModePopup: NSPopUpButton!
     @IBOutlet var newViewingModePopup: NSPopUpButton!
     @IBOutlet var displayInstructionLabel: NSTextField!
-
+    @IBOutlet var quitConfirmationPanel: NSPanel!
+    
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?
@@ -660,7 +661,23 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     @IBAction func close(_ sender: AnyObject?) {
-        // This seems needed for screensavers as our lifecycle is different from a regular app
+        // We ask for confirmation in case downloads are ongoing
+        if !downloadProgressIndicator.isHidden {
+            quitConfirmationPanel.makeKeyAndOrderFront(self)
+        } else {
+            // This seems needed for screensavers as our lifecycle is different from a regular app
+            preferences.synchronize()
+            logPanel.close()
+            if appMode {
+                NSApplication.shared.terminate(nil)
+            } else {
+                window?.sheetParent?.endSheet(window!)
+            }
+        }
+    }
+
+    @IBAction func confirmQuitClick(_ sender: Any) {
+        quitConfirmationPanel.close()
         preferences.synchronize()
         logPanel.close()
         if appMode {
@@ -668,6 +685,10 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         } else {
             window?.sheetParent?.endSheet(window!)
         }
+    }
+
+    @IBAction func cancelQuitClick(_ sender: Any) {
+        quitConfirmationPanel.close()
     }
 
     // MARK: Video playback
