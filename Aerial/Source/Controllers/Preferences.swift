@@ -84,7 +84,7 @@ final class Preferences {
     }
 
     enum NewViewingMode: Int {
-        case independant, mirrored, spanned
+        case independent, mirrored, spanned
     }
 
     enum BetaCheckFrequency: Int {
@@ -211,7 +211,7 @@ final class Preferences {
         defaultValues[.allowBetas] = false
         defaultValues[.betaCheckFrequency] = BetaCheckFrequency.daily
         defaultValues[.newDisplayMode] = NewDisplayMode.allDisplays
-        defaultValues[.newViewingMode] = NewViewingMode.independant
+        defaultValues[.newViewingMode] = NewViewingMode.independent
         defaultValues[.newDisplayDict] = [String: Bool]()
 
         // Set today's date as default

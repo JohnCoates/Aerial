@@ -112,6 +112,7 @@
                 <outlet property="prefTabView" destination="B9U-tn-dsp" id="3c5-Fy-jcB"/>
                 <outlet property="previewDisabledTextfield" destination="kQD-aR-CSY" id="3BE-5n-RJW"/>
                 <outlet property="projectPageLink" destination="hOD-gE-gxl" id="UTt-Vt-cTP"/>
+                <outlet property="quitConfirmationPanel" destination="qE0-Sq-kqZ" id="quU-hu-obz"/>
                 <outlet property="rightArrowKeyPlaysNextCheckbox" destination="r6a-he-iOc" id="3Kb-8Q-RNS"/>
                 <outlet property="secondProjectPageLink" destination="1gS-Uu-hUv" id="UdX-F9-u8p"/>
                 <outlet property="secondaryExtraMessageTextField" destination="Gfy-gr-PdM" id="Lpb-Jo-NEn"/>
@@ -160,7 +161,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Videos" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" id="zsM-Ha-kCO">
+                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -539,7 +540,7 @@ is disabled
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Displays" identifier="" id="P6g-Pf-AmY">
-                                        <view key="view" ambiguous="YES" id="65A-Ae-cVB">
+                                        <view key="view" id="65A-Ae-cVB">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -2580,6 +2581,59 @@ Unless you want to manually manage your updates, we highly recommand you leave t
             </subviews>
             <point key="canvasLocation" x="1218.5" y="559"/>
         </customView>
+        <window title="Video downloads in progress" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" id="qE0-Sq-kqZ" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="272" y="172" width="419" height="154"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <view key="contentView" id="kM4-JC-6hm">
+                <rect key="frame" x="0.0" y="0.0" width="419" height="154"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="46d-yk-rZX">
+                        <rect key="frame" x="20" y="67" width="48" height="48"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSCaution" id="cis-rM-Ub9"/>
+                    </imageView>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iGd-ab-Ono">
+                        <rect key="frame" x="86" y="61" width="315" height="59"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" selectable="YES" id="eXZ-Ly-MSV">
+                            <font key="font" metaFont="system"/>
+                            <string key="title">You are currently downloading videos, if you quit the configuration panel those downloads will be cancelled. Are you sure you want to quit ?</string>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5qg-M8-hia">
+                        <rect key="frame" x="323" y="13" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PLo-ua-umE">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="confirmQuitClick:" target="-2" id="M86-Yq-5ju"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5rC-q2-BQz">
+                        <rect key="frame" x="243" y="13" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Y8-wS-kQ8">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="cancelQuitClick:" target="-2" id="v8v-cj-xnJ"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="192.5" y="924"/>
+        </window>
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
