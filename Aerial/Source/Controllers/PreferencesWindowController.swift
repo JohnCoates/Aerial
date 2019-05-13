@@ -211,7 +211,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var newViewingModePopup: NSPopUpButton!
     @IBOutlet var displayInstructionLabel: NSTextField!
     @IBOutlet var quitConfirmationPanel: NSPanel!
-    
+
+    @IBOutlet var logMillisecondsButton: NSButton!
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?
@@ -421,12 +422,15 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
             rightArrowKeyPlaysNextCheckbox.state = .off
         }
 
-        // Aerial panel
+        // Advanced panel
         if preferences.debugMode {
             debugModeCheckbox.state = .on
         }
         if preferences.logToDisk {
             logToDiskCheckbox.state = .on
+        }
+        if preferences.logMilliseconds {
+            logMillisecondsButton.state = .on
         }
 
         // Text panel
@@ -1480,6 +1484,13 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     // MARK: - Advanced panel
+
+    @IBAction func logMillisecondsClick(_ button: NSButton) {
+        let onState = button.state == .on
+        preferences.logMilliseconds = onState
+        debugLog("UI logMilliseconds: \(onState)")
+    }
+
     @IBAction func logButtonClick(_ sender: NSButton) {
         logTableView.reloadData()
         if logPanel.isVisible {

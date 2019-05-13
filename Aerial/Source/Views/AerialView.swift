@@ -269,9 +269,9 @@ final class AerialView: ScreenSaverView {
                 }
             } else {
                 // If we don't know this screen, we disable
-                debugLog("This is an unknown display, disabling")
-                isDisabled = true
-                return
+                //debugLog("This is an unknown display, disabling")
+                //isDisabled = false
+                //return
             }
         } else {
             AerialView.previewView = self
@@ -356,11 +356,12 @@ final class AerialView: ScreenSaverView {
         debugLog("\(self.description) setting up player layer with bounds/frame: \(layer.bounds) / \(layer.frame)")
 
         playerLayer = AVPlayerLayer(player: player)
+
         if #available(OSX 10.10, *) {
             playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         }
         playerLayer.autoresizingMask = [CAAutoresizingMask.layerWidthSizable, CAAutoresizingMask.layerHeightSizable]
-
+        
         // In case of span mode we need to compute the size of our layer
         if preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue && !isPreview {
             let zRect = displayDetection.getZeroedActiveSpannedRect()
@@ -371,6 +372,7 @@ final class AerialView: ScreenSaverView {
                                    width: zRect.width,
                                    height: zRect.height)
                 playerLayer.frame = tRect
+                //playerLayer.bounds = layer.bounds
             } else {
                 errorLog("This is an unknown screen in span mode, this is not good")
                 playerLayer.frame = layer.bounds
@@ -378,7 +380,6 @@ final class AerialView: ScreenSaverView {
         } else {
             playerLayer.frame = layer.bounds
         }
-
         layer.addSublayer(playerLayer)
 
         textLayer = CATextLayer()
@@ -582,7 +583,7 @@ final class AerialView: ScreenSaverView {
             debugLog("\(self.description) streaming video (not fully available offline) : \(video.url)")
         } else {
             let localurl = URL(fileURLWithPath: VideoCache.cachePath(forVideo: video)!)
-            let localitem = AVPlayerItem(url: localurl)
+            var localitem = AVPlayerItem(url: localurl)
             player.replaceCurrentItem(with: localitem)
             debugLog("\(self.description) playing video (OFFLINE MODE) : \(localurl)")
         }

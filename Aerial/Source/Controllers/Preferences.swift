@@ -77,6 +77,7 @@ final class Preferences {
         case newDisplayMode = "newDisplayMode"
         case newViewingMode = "newViewingMode"
         case newDisplayDict = "newDisplayDict"
+        case logMilliseconds = "logMilliseconds"
     }
 
     enum NewDisplayMode: Int {
@@ -213,6 +214,7 @@ final class Preferences {
         defaultValues[.newDisplayMode] = NewDisplayMode.allDisplays
         defaultValues[.newViewingMode] = NewViewingMode.independent
         defaultValues[.newDisplayDict] = [String: Bool]()
+        defaultValues[.logMilliseconds] = false
 
         // Set today's date as default
         let dateFormatter = DateFormatter()
@@ -300,6 +302,15 @@ final class Preferences {
         }
         set {
             setValue(forIdentifier: .alternateVideoFormat, value: newValue)
+        }
+    }
+
+    var logMilliseconds: Bool {
+        get {
+            return value(forIdentifier: .logMilliseconds)
+        }
+        set {
+            setValue(forIdentifier: .logMilliseconds, value: newValue)
         }
     }
 
