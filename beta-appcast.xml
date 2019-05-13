@@ -3,24 +3,23 @@
 <title>Aerial</title>
   
 <item>
-<title>1.4.99beta1</title>
+<title>1.4.99beta2</title>
   <description>
           <![CDATA[
             <p>This is the beta feed!</p>
-<p>This beta makes pretty important changes for multiple monitor users. Please understand you may experience bugs and crashes. This will be the first of many beta on the road to 1.5.0.</p>
-
 <ul>
-<li>New Displays tab, Display selection is now independent from viewing mode (mirrored, etc). This tab includes a visualisation of your current setup (mirroring what you see in System Preferences > Displays) 🎉</li>
-<li>You can now manually select the screens you want to use in Aerial (see this issue :  https://github.com/JohnCoates/Aerial/issues/732) 🎉🎉</li>
-<li>You can now span an Aerial on your selection of screen (see this issue : https://github.com/JohnCoates/Aerial/issues/194) 🎉🎉🎉</li>
+<li>Add quit confirmation if downloads are ongoing</li>
+<li>Add optional milliseconds to logs for finer performance debugging</li>
+<li>Add the ability to add an horizontal margin in cm between displays for the new spanned mode</li>
+<li>Fix performance bug with right arrow to skip in mirrored and spanned mode</li>
 </ul>
 
 <p>Please report any bug you find !</p>            
           ]]>
     </description>
-<pubDate>ven., 10 mai. 2019 18:10:29 +0100</pubDate>
+<pubDate>lun., 13 mai. 2019 19:10:29 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.99beta1/Aerial.saver.zip" sparkle:version="1.4.99beta1" sparkle:shortVersionString="1.4.99beta1"  sparkle:edSignature="66YGllQexeWvqcMs10JB68/Emafi4vWjBm9QySNe3gd4K769QNHx3dAw3P3jm37LYwF20mNiT1MrTQ7rbCV/BQ==" length="5809227" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.99beta2/Aerial.saver.zip" sparkle:version="1.4.99beta2" sparkle:shortVersionString="1.4.99beta2"  sparkle:edSignature="y0cRS1iyWPcRzAeG2hxF09Dm+Bftt4lBbzBXb56PXmgnho53CKvwJvx91xijGDsmvnRCO2J2La8itX+XaOQiBQ==" length="5815076" type="application/octet-stream"/>
 </item>
 
 <item>
