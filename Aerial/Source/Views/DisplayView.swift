@@ -115,7 +115,7 @@ class DisplayView: NSView {
 
             let sInRect = sRect.insetBy(dx: 1, dy: 1)
 
-            if preferences.newViewingMode == Preferences.NewViewingMode.independant.rawValue ||
+            if preferences.newViewingMode == Preferences.NewViewingMode.independent.rawValue ||
                 preferences.newViewingMode == Preferences.NewViewingMode.mirrored.rawValue {
                 if displayDetection.isScreenActive(id: screen.id) {
                     let bundle = Bundle(for: PreferencesWindowController.self)
@@ -128,7 +128,7 @@ class DisplayView: NSView {
                     }
 
                     // Show difference images in independant mode to simulate
-                    if preferences.newViewingMode == Preferences.NewViewingMode.independant.rawValue {
+                    if preferences.newViewingMode == Preferences.NewViewingMode.independent.rawValue {
                         if idx < 2 {
                             idx += 1
                         } else {

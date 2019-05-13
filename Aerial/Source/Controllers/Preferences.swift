@@ -77,6 +77,8 @@ final class Preferences {
         case newDisplayMode = "newDisplayMode"
         case newViewingMode = "newViewingMode"
         case newDisplayDict = "newDisplayDict"
+        case logMilliseconds = "logMilliseconds"
+        case horizontalMargin = "horizontalMargin"
     }
 
     enum NewDisplayMode: Int {
@@ -84,7 +86,7 @@ final class Preferences {
     }
 
     enum NewViewingMode: Int {
-        case independant, mirrored, spanned
+        case independent, mirrored, spanned
     }
 
     enum BetaCheckFrequency: Int {
@@ -211,8 +213,10 @@ final class Preferences {
         defaultValues[.allowBetas] = false
         defaultValues[.betaCheckFrequency] = BetaCheckFrequency.daily
         defaultValues[.newDisplayMode] = NewDisplayMode.allDisplays
-        defaultValues[.newViewingMode] = NewViewingMode.independant
+        defaultValues[.newViewingMode] = NewViewingMode.independent
         defaultValues[.newDisplayDict] = [String: Bool]()
+        defaultValues[.logMilliseconds] = false
+        defaultValues[.horizontalMargin] = 0
 
         // Set today's date as default
         let dateFormatter = DateFormatter()
@@ -246,6 +250,15 @@ final class Preferences {
         }
         set {
             setValue(forIdentifier: .newDisplayDict, value: newValue)
+        }
+    }
+
+    var horizontalMargin: Double? {
+        get {
+            return optionalValue(forIdentifier: .horizontalMargin)
+        }
+        set {
+            setValue(forIdentifier: .horizontalMargin, value: newValue)
         }
     }
 
@@ -300,6 +313,15 @@ final class Preferences {
         }
         set {
             setValue(forIdentifier: .alternateVideoFormat, value: newValue)
+        }
+    }
+
+    var logMilliseconds: Bool {
+        get {
+            return value(forIdentifier: .logMilliseconds)
+        }
+        set {
+            setValue(forIdentifier: .logMilliseconds, value: newValue)
         }
     }
 

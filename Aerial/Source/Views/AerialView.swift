@@ -269,9 +269,9 @@ final class AerialView: ScreenSaverView {
                 }
             } else {
                 // If we don't know this screen, we disable
-                debugLog("This is an unknown display, disabling")
-                isDisabled = true
-                return
+                //debugLog("This is an unknown display, disabling")
+                //isDisabled = false
+                //return
             }
         } else {
             AerialView.previewView = self
@@ -356,6 +356,7 @@ final class AerialView: ScreenSaverView {
         debugLog("\(self.description) setting up player layer with bounds/frame: \(layer.bounds) / \(layer.frame)")
 
         playerLayer = AVPlayerLayer(player: player)
+
         if #available(OSX 10.10, *) {
             playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         }
@@ -370,7 +371,9 @@ final class AerialView: ScreenSaverView {
                                    y: zRect.origin.y - scr.zeroedOrigin.y,
                                    width: zRect.width,
                                    height: zRect.height)
+                debugLog("tRect : \(tRect)")
                 playerLayer.frame = tRect
+                //playerLayer.bounds = layer.bounds
             } else {
                 errorLog("This is an unknown screen in span mode, this is not good")
                 playerLayer.frame = layer.bounds
@@ -378,7 +381,6 @@ final class AerialView: ScreenSaverView {
         } else {
             playerLayer.frame = layer.bounds
         }
-
         layer.addSublayer(playerLayer)
 
         textLayer = CATextLayer()
@@ -630,10 +632,14 @@ final class AerialView: ScreenSaverView {
 
         if preferences.allowSkips {
             if event.keyCode == 124 {
-                //playNextVideo()
-                // We need to skip forward all our views
-                for view in AerialView.instanciatedViews {
-                    view.playNextVideo()
+                // If we share, just call this on our main view
+                if AerialView.sharingPlayers {
+                    playNextVideo()
+                } else {
+                    // If we do independant playback we have to skip all views
+                    for view in AerialView.instanciatedViews {
+                        view.playNextVideo()
+                    }
                 }
             } else {
                 self.nextResponder!.keyDown(with: event)
