@@ -361,7 +361,7 @@ final class AerialView: ScreenSaverView {
             playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         }
         playerLayer.autoresizingMask = [CAAutoresizingMask.layerWidthSizable, CAAutoresizingMask.layerHeightSizable]
-        
+
         // In case of span mode we need to compute the size of our layer
         if preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue && !isPreview {
             let zRect = displayDetection.getZeroedActiveSpannedRect()
@@ -371,6 +371,7 @@ final class AerialView: ScreenSaverView {
                                    y: zRect.origin.y - scr.zeroedOrigin.y,
                                    width: zRect.width,
                                    height: zRect.height)
+                debugLog("tRect : \(tRect)")
                 playerLayer.frame = tRect
                 //playerLayer.bounds = layer.bounds
             } else {
@@ -583,7 +584,7 @@ final class AerialView: ScreenSaverView {
             debugLog("\(self.description) streaming video (not fully available offline) : \(video.url)")
         } else {
             let localurl = URL(fileURLWithPath: VideoCache.cachePath(forVideo: video)!)
-            var localitem = AVPlayerItem(url: localurl)
+            let localitem = AVPlayerItem(url: localurl)
             player.replaceCurrentItem(with: localitem)
             debugLog("\(self.description) playing video (OFFLINE MODE) : \(localurl)")
         }
@@ -631,10 +632,14 @@ final class AerialView: ScreenSaverView {
 
         if preferences.allowSkips {
             if event.keyCode == 124 {
-                //playNextVideo()
-                // We need to skip forward all our views
-                for view in AerialView.instanciatedViews {
-                    view.playNextVideo()
+                // If we share, just call this on our main view
+                if AerialView.sharingPlayers {
+                    playNextVideo()
+                } else {
+                    // If we do independant playback we have to skip all views
+                    for view in AerialView.instanciatedViews {
+                        view.playNextVideo()
+                    }
                 }
             } else {
                 self.nextResponder!.keyDown(with: event)

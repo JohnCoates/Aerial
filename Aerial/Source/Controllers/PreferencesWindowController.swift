@@ -213,6 +213,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var quitConfirmationPanel: NSPanel!
 
     @IBOutlet var logMillisecondsButton: NSButton!
+    @IBOutlet var displayMarginBox: NSBox!
+    @IBOutlet var horizontalDisplayMarginTextfield: NSTextField!
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?
@@ -421,6 +423,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         if !preferences.allowSkips {
             rightArrowKeyPlaysNextCheckbox.state = .off
         }
+        horizontalDisplayMarginTextfield.doubleValue = preferences.horizontalMargin!
 
         // Advanced panel
         if preferences.debugMode {
@@ -886,6 +889,17 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         debugLog("UI newViewingModeClick: \(sender.indexOfSelectedItem)")
         preferences.newViewingMode = sender.indexOfSelectedItem
         displayView.needsDisplay = true
+
+        if preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue {
+            displayMarginBox.isHidden = false
+        } else {
+            displayMarginBox.isHidden = true
+        }
+    }
+
+    @IBAction func horizontalDisplayMarginChange(_ sender: NSTextField) {
+        debugLog("UI horizontalDisplayMarginChange \(sender.stringValue)")
+        preferences.horizontalMargin = sender.doubleValue
     }
 
     // MARK: - Text panel
