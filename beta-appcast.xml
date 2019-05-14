@@ -3,23 +3,24 @@
 <title>Aerial</title>
   
 <item>
-<title>1.4.99beta2</title>
+<title>1.4.99beta3</title>
   <description>
           <![CDATA[
             <p>This is the beta feed!</p>
 <ul>
-<li>Add quit confirmation if downloads are ongoing</li>
-<li>Add optional milliseconds to logs for finer performance debugging</li>
-<li>Add the ability to add an horizontal margin in cm between displays for the new spanned mode</li>
-<li>Fix performance bug with right arrow to skip in mirrored and spanned mode</li>
+<li>Fix misplaced text in mirroring/spanned mode after using the right arrow key</li>
+<li>Add a fade out when using the right arrow key for cleaner transition</li>
+<li>Fix live update of spanned margins in preview panel</li>
+<li>Add vertical margin value to spanned mode</li>
+<li>Add new right click actions on video list, download video and move to trash</li>
 </ul>
 
 <p>Please report any bug you find !</p>            
           ]]>
     </description>
-<pubDate>lun., 13 mai. 2019 19:10:29 +0100</pubDate>
+<pubDate>mar., 14 mai. 2019 18:05:29 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.99beta2/Aerial.saver.zip" sparkle:version="1.4.99beta2" sparkle:shortVersionString="1.4.99beta2"  sparkle:edSignature="y0cRS1iyWPcRzAeG2hxF09Dm+Bftt4lBbzBXb56PXmgnho53CKvwJvx91xijGDsmvnRCO2J2La8itX+XaOQiBQ==" length="5815076" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.99beta3/Aerial.saver.zip" sparkle:version="1.4.99beta3" sparkle:shortVersionString="1.4.99beta3"  sparkle:edSignature="fQMC9RVWT6/JIaZcon8VV9DX5LBfSoevTX9UyKxF6HTO85/lLsQCRu0/xBNNjCfiwTY2G7wkbMP6wEz9WHzmAw==" length="5821001" type="application/octet-stream"/>
 </item>
 
 <item>
