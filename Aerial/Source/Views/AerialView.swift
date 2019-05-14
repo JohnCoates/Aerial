@@ -646,7 +646,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                     } else {
                         // If we do independant playback we have to skip all views
                         for view in AerialView.instanciatedViews {
-                            view.playNextVideo()
+                            view.fastFadeOut(andPlayNext: true)
                         }
                     }
                 } else {

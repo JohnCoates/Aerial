@@ -79,6 +79,7 @@ final class Preferences {
         case newDisplayDict = "newDisplayDict"
         case logMilliseconds = "logMilliseconds"
         case horizontalMargin = "horizontalMargin"
+        case verticalMargin = "verticalMargin"
     }
 
     enum NewDisplayMode: Int {
@@ -217,6 +218,7 @@ final class Preferences {
         defaultValues[.newDisplayDict] = [String: Bool]()
         defaultValues[.logMilliseconds] = false
         defaultValues[.horizontalMargin] = 0
+        defaultValues[.verticalMargin] = 0
 
         // Set today's date as default
         let dateFormatter = DateFormatter()
@@ -259,6 +261,15 @@ final class Preferences {
         }
         set {
             setValue(forIdentifier: .horizontalMargin, value: newValue)
+        }
+    }
+
+    var verticalMargin: Double? {
+        get {
+            return optionalValue(forIdentifier: .verticalMargin)
+        }
+        set {
+            setValue(forIdentifier: .verticalMargin, value: newValue)
         }
     }
 

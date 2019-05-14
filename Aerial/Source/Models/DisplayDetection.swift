@@ -121,30 +121,54 @@ final class DisplayDetection: NSObject {
         let orect = getGlobalScreenRect()
 
         // First we check for the screen relative position and calculate how many screens we have horizontally
-        // TODO Vertical + H/V mix
         for screen in screens {
             debugLog("src orig : \(screen.bottomLeftFrame.origin)")
-            var leftScreens: CGFloat = 0
-            // Very rough, horizontal spans only
-            for otherScreen in screens {
-                if otherScreen.bottomLeftFrame.origin.x != screen.bottomLeftFrame.origin.x &&
-                    otherScreen.bottomLeftFrame.origin.x < screen.bottomLeftFrame.origin.x {
-                    leftScreens += 1
-                }
-            }
+
+            let (leftScreens, belowScreens) = detectBorders(forScreen: screen)
 
             if leftScreens > maxLeftScreens {
                 maxLeftScreens = leftScreens
             }
+            if belowScreens > maxBelowScreens {
+                maxBelowScreens = belowScreens
+            }
 
             screen.zeroedOrigin = CGPoint(x: screen.bottomLeftFrame.origin.x - orect.origin.x + (leftScreens * leftMargin()),
-                                          y: screen.bottomLeftFrame.origin.y - orect.origin.y)
+                                          y: screen.bottomLeftFrame.origin.y - orect.origin.y + (belowScreens * belowMargin()))
         }
+    }
+
+    // Border detection
+    // This will work for most cases, but will fail in some grid/tetris like arrangements
+    func detectBorders(forScreen: Screen) -> (CGFloat, CGFloat) {
+        var leftScreens: CGFloat = 0
+        var belowScreens: CGFloat = 0
+
+        for screen in screens where screen != forScreen {
+            if screen.bottomLeftFrame.origin.x < forScreen.bottomLeftFrame.origin.x &&
+                screen.bottomLeftFrame.origin.x + CGFloat(screen.width) <=
+                forScreen.bottomLeftFrame.origin.x {
+                leftScreens += 1
+            }
+            if screen.bottomLeftFrame.origin.y < forScreen.bottomLeftFrame.origin.y &&
+                screen.bottomLeftFrame.origin.y + CGFloat(screen.height) <=
+                forScreen.bottomLeftFrame.origin.y {
+                belowScreens += 1
+            }
+        }
+        debugLog("left \(leftScreens) below \(belowScreens)")
+
+        return (leftScreens, belowScreens)
     }
 
     func leftMargin() -> CGFloat {
         let preferences = Preferences.sharedInstance
         return cmInPoints * CGFloat(preferences.horizontalMargin!)
+    }
+
+    func belowMargin() -> CGFloat {
+        let preferences = Preferences.sharedInstance
+        return cmInPoints * CGFloat(preferences.verticalMargin!)
     }
 
     func findScreenWith(frame: CGRect) -> Screen? {
@@ -181,7 +205,7 @@ final class DisplayDetection: NSObject {
             }
         }
 
-        return CGRect(x: minX, y: minY, width: maxX-minX+(maxLeftScreens*leftMargin()), height: maxY-minY)
+        return CGRect(x: minX, y: minY, width: maxX-minX+(maxLeftScreens*leftMargin()), height: maxY-minY+(maxBelowScreens*belowMargin()))
     }
 
     func getZeroedActiveSpannedRect() -> CGRect {
@@ -207,7 +231,7 @@ final class DisplayDetection: NSObject {
         let orect = getGlobalScreenRect()
         minX -= orect.origin.x
         minY -= orect.origin.y
-        return CGRect(x: minX, y: minY, width: width+(maxLeftScreens*leftMargin()), height: height)
+        return CGRect(x: minX, y: minY, width: width+(maxLeftScreens*leftMargin()), height: height+(maxBelowScreens*belowMargin()))
     }
 
     // NSScreen coordinates are with a bottom left origin, whereas CGDisplay
