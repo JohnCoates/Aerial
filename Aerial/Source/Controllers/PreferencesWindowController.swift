@@ -216,6 +216,9 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var displayMarginBox: NSBox!
     @IBOutlet var horizontalDisplayMarginTextfield: NSTextField!
     @IBOutlet var verticalDisplayMarginTextfield: NSTextField!
+    @IBOutlet var rightClickOpenQuickTimeMenuItem: NSMenuItem!
+    @IBOutlet var rightClickDownloadVideoMenuItem: NSMenuItem!
+    @IBOutlet var rightClickMoveToTrashMenuItem: NSMenuItem!
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?
@@ -817,6 +820,23 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBAction func openInQuickTime(_ sender: NSMenuItem) {
         if let video = sender.representedObject as? AerialVideo {
             NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: VideoCache.cachePath(forVideo: video)!)
+        }
+    }
+
+    @IBAction func rightClickDownloadVideo(_ sender: NSMenuItem) {
+        if let video = sender.representedObject as? AerialVideo {
+            let videoManager = VideoManager.sharedInstance
+            if !videoManager.isVideoQueued(id: video.id) {
+                videoManager.queueDownload(video)
+            }
+        }
+    }
+
+    @IBAction func rightClickMoveToTrash(_ sender: NSMenuItem) {
+        if let video = sender.representedObject as? AerialVideo {
+            VideoCache.moveToTrash(video: video)
+            let videoManager = VideoManager.sharedInstance
+            videoManager.updateAllCheckCellView()
         }
     }
 
@@ -1959,7 +1979,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     // MARK: - Outline View Delegate & Data Source
-
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         guard let item = item else { return cities.count }
 
@@ -2255,13 +2274,18 @@ extension PreferencesWindowController: NSMenuDelegate {
 
         if let video = rowItem as? AerialVideo {
             if video.isAvailableOffline {
+                rightClickOpenQuickTimeMenuItem.isHidden = false
+                rightClickMoveToTrashMenuItem.isHidden = false
+                rightClickDownloadVideoMenuItem.isHidden = true
                 for item in menu.items {
-                    item.isHidden = false
                     item.representedObject = rowItem
                 }
             } else {
+                rightClickOpenQuickTimeMenuItem.isHidden = true
+                rightClickMoveToTrashMenuItem.isHidden = true
+                rightClickDownloadVideoMenuItem.isHidden = false
                 for item in menu.items {
-                    item.isHidden = true
+                    item.representedObject = rowItem
                 }
             }
         } else {

@@ -10,6 +10,7 @@ import Foundation
 import AVFoundation
 import ScreenSaver
 
+// swiftlint:disable:next type_body_length
 final class VideoCache {
     var videoData: Data
     var mutableVideoData: NSMutableData?
@@ -121,6 +122,21 @@ final class VideoCache {
         let fileManager = FileManager.default
 
         return fileManager.fileExists(atPath: videoCachePath)
+    }
+
+    static func moveToTrash(video: AerialVideo) {
+        guard let videoCachePath = cachePath(forVideo: video) else {
+            errorLog("Couldn't get video cache path to trash!")
+            return
+        }
+
+        let vurl = Foundation.URL(fileURLWithPath: videoCachePath as String)
+        debugLog("trashing \(vurl))")
+        do {
+            try FileManager.default.trashItem(at: vurl, resultingItemURL: nil)
+        } catch let error {
+            errorLog("Could not move  \(video.url) to trash \(error)")
+        }
     }
 
     static func cachePath(forVideo video: AerialVideo) -> String? {
