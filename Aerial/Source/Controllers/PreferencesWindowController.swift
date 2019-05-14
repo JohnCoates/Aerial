@@ -215,6 +215,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var logMillisecondsButton: NSButton!
     @IBOutlet var displayMarginBox: NSBox!
     @IBOutlet var horizontalDisplayMarginTextfield: NSTextField!
+    @IBOutlet var verticalDisplayMarginTextfield: NSTextField!
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?
@@ -424,6 +425,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
             rightArrowKeyPlaysNextCheckbox.state = .off
         }
         horizontalDisplayMarginTextfield.doubleValue = preferences.horizontalMargin!
+        verticalDisplayMarginTextfield.doubleValue = preferences.verticalMargin!
 
         // Advanced panel
         if preferences.debugMode {
@@ -888,6 +890,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBAction func newViewingModeClick(_ sender: NSPopUpButton) {
         debugLog("UI newViewingModeClick: \(sender.indexOfSelectedItem)")
         preferences.newViewingMode = sender.indexOfSelectedItem
+        let displayDetection = DisplayDetection.sharedInstance
+        displayDetection.detectDisplays()   // Force redetection to update our margin calculations in spanned mode
         displayView.needsDisplay = true
 
         if preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue {
@@ -900,6 +904,19 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBAction func horizontalDisplayMarginChange(_ sender: NSTextField) {
         debugLog("UI horizontalDisplayMarginChange \(sender.stringValue)")
         preferences.horizontalMargin = sender.doubleValue
+
+        let displayDetection = DisplayDetection.sharedInstance
+        displayDetection.detectDisplays()   // Force redetection to update our margin calculations in spanned mode
+        displayView.needsDisplay = true
+    }
+
+    @IBAction func verticalDisplayMarginChange(_ sender: NSTextField) {
+        debugLog("UI verticalDisplayMarginChange \(sender.stringValue)")
+        preferences.verticalMargin = sender.doubleValue
+
+        let displayDetection = DisplayDetection.sharedInstance
+        displayDetection.detectDisplays()   // Force redetection to update our margin calculations in spanned mode
+        displayView.needsDisplay = true
     }
 
     // MARK: - Text panel

@@ -14,7 +14,7 @@ import Sparkle
 
 @objc(AerialView)
 // swiftlint:disable:next type_body_length
-final class AerialView: ScreenSaverView {
+final class AerialView: ScreenSaverView, CAAnimationDelegate {
     var playerLayer: AVPlayerLayer!
     var textLayer: CATextLayer!
     var clockLayer: CATextLayer!
@@ -35,6 +35,8 @@ final class AerialView: ScreenSaverView {
     var wasStopped = false
     var isDisabled = false
     var timeObserver: Any?
+
+    var isQuickFading = false
 
     var brightnessToRestore: Float?
 
@@ -632,14 +634,23 @@ final class AerialView: ScreenSaverView {
 
         if preferences.allowSkips {
             if event.keyCode == 124 {
-                // If we share, just call this on our main view
-                if AerialView.sharingPlayers {
-                    playNextVideo()
-                } else {
-                    // If we do independant playback we have to skip all views
-                    for view in AerialView.instanciatedViews {
-                        view.playNextVideo()
+                if !isQuickFading {
+                    // If we share, just call this on our main view
+                    if AerialView.sharingPlayers {
+                        // The first view with the player gets the fade and the play next instruction,
+                        // it controls the others
+                        AerialView.sharedViews.first!.fastFadeOut(andPlayNext: true)
+                        for view in AerialView.sharedViews where AerialView.sharedViews.first != view {
+                            view.fastFadeOut(andPlayNext: false)
+                        }
+                    } else {
+                        // If we do independant playback we have to skip all views
+                        for view in AerialView.instanciatedViews {
+                            view.fastFadeOut(andPlayNext: true)
+                        }
                     }
+                } else {
+                    debugLog("Right arrow key currently locked")
                 }
             } else {
                 self.nextResponder!.keyDown(with: event)
@@ -659,6 +670,37 @@ final class AerialView: ScreenSaverView {
     }
 
     // MARK: - Extra Animations
+    private func fastFadeOut(andPlayNext: Bool) {
+        // We need to clear the current animations running on playerLayer
+        isQuickFading = true    // Lock the use of keydown
+        playerLayer.removeAllAnimations()
+        let fadeOutAnimation = CAKeyframeAnimation(keyPath: "opacity")
+        fadeOutAnimation.values = [1, 0] as [Int]
+        fadeOutAnimation.keyTimes = [0, AerialView.fadeDuration] as [NSNumber]
+        fadeOutAnimation.duration = AerialView.fadeDuration
+        fadeOutAnimation.delegate = self
+        fadeOutAnimation.isRemovedOnCompletion = false
+        fadeOutAnimation.calculationMode = CAAnimationCalculationMode.cubic
+        if andPlayNext {
+            playerLayer.add(fadeOutAnimation, forKey: "quickfadeandnext")
+        } else {
+            playerLayer.add(fadeOutAnimation, forKey: "quickfade")
+        }
+    }
+
+    // Stop callback for fastFadeOut
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        isQuickFading = false   // Release our ugly lock
+        playerLayer.opacity = 0
+        if anim == playerLayer.animation(forKey: "quickfadeandnext") {
+            debugLog("stop and next")
+            playerLayer.removeAllAnimations()   // Make sure we get rid of our anim
+            playNextVideo()
+        } else {
+            debugLog("stop")
+            playerLayer.removeAllAnimations()   // Make sure we get rid of our anim
+        }
+    }
 
     private func addPlayerFades(player: AVPlayer, playerLayer: AVPlayerLayer, video: AerialVideo) {
         // We only fade in/out if we have duration
