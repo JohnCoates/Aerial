@@ -676,8 +676,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         playerLayer.removeAllAnimations()
         let fadeOutAnimation = CAKeyframeAnimation(keyPath: "opacity")
         fadeOutAnimation.values = [1, 0] as [Int]
-        fadeOutAnimation.keyTimes = [0, 1] as [NSNumber]
-        fadeOutAnimation.duration = 1
+        fadeOutAnimation.keyTimes = [0, AerialView.fadeDuration] as [NSNumber]
+        fadeOutAnimation.duration = AerialView.fadeDuration
         fadeOutAnimation.delegate = self
         fadeOutAnimation.isRemovedOnCompletion = false
         fadeOutAnimation.calculationMode = CAAnimationCalculationMode.cubic
