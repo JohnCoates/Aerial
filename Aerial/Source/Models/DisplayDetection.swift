@@ -61,6 +61,11 @@ final class DisplayDetection: NSObject {
         // - Through NSScreen to get the backingScaleFactor (retinaness of a screen)
 
         debugLog("***Display Detection***")
+        // Cleanup a bit in case of redetection
+        screens = [Screen]()
+        maxLeftScreens = 0
+        maxBelowScreens = 0
+
         // First pass
         let maxDisplays: UInt32 = 32
         var onlineDisplays = [CGDirectDisplayID](repeating: 0, count: Int(maxDisplays))
