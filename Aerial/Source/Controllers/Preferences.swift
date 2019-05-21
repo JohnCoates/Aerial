@@ -80,6 +80,8 @@ final class Preferences {
         case logMilliseconds = "logMilliseconds"
         case horizontalMargin = "horizontalMargin"
         case verticalMargin = "verticalMargin"
+
+        case synchronizedMode = "synchronizedMode"
     }
 
     enum NewDisplayMode: Int {
@@ -219,6 +221,7 @@ final class Preferences {
         defaultValues[.logMilliseconds] = false
         defaultValues[.horizontalMargin] = 0
         defaultValues[.verticalMargin] = 0
+        defaultValues[.synchronizedMode] = false
 
         // Set today's date as default
         let dateFormatter = DateFormatter()
@@ -324,6 +327,15 @@ final class Preferences {
         }
         set {
             setValue(forIdentifier: .alternateVideoFormat, value: newValue)
+        }
+    }
+
+    var synchronizedMode: Bool {
+        get {
+            return value(forIdentifier: .synchronizedMode)
+        }
+        set {
+            setValue(forIdentifier: .synchronizedMode, value: newValue)
         }
     }
 

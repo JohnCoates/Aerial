@@ -504,7 +504,12 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                                         of object: Any?, change: [NSKeyValueChangeKey: Any]?,
                                         context: UnsafeMutableRawPointer?) {
         debugLog("\(self.description) observeValue \(String(describing: keyPath))")
-        if self.playerLayer.isReadyForDisplay {
+
+        if keyPath == "rate" {
+            if self.player!.rate > 0 {
+                debugLog("video started playing")
+            }
+        } else if self.playerLayer.isReadyForDisplay {
             self.player!.play()
             hasStartedPlaying = true
 
@@ -544,6 +549,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         // play another video
         let oldPlayer = self.player
         self.player = player
+        player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
+
         self.playerLayer.player = self.player
         if AerialView.shouldFade {
             self.playerLayer.opacity = 0

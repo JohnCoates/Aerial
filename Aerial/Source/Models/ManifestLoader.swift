@@ -8,6 +8,7 @@
 
 import Foundation
 import ScreenSaver
+import GameplayKit
 
 typealias ManifestLoadCallback = ([AerialVideo]) -> Void
 
@@ -149,7 +150,25 @@ class ManifestLoader {
         playlistRestrictedTo = restrictedTo
 
         // Start with a shuffled list
-        let shuffled = loadedManifest.shuffled()
+        //let shuffled = loadedManifest.shuffled()
+        var shuffled: [AerialVideo]
+        let preferences = Preferences.sharedInstance
+        if preferences.synchronizedMode {
+            if #available(OSX 10.11, *) {
+                let date = Date()
+                let calendar = NSCalendar.current
+                let minutes = calendar.component(.minute, from: date)
+                debugLog("seed : \(minutes)")
+
+                var generator = SeededGenerator(seed: UInt64(minutes))
+                shuffled = loadedManifest.shuffled(using: &generator)
+            } else {
+                // Fallback on earlier versions
+                shuffled = loadedManifest.shuffled()
+            }
+        } else {
+            shuffled = loadedManifest.shuffled()
+        }
 
         for video in shuffled {
             // We exclude videos not in rotation
