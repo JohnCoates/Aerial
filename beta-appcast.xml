@@ -3,17 +3,17 @@
 <title>Aerial</title>
   
 <item>
-<title>1.4.99beta4</title>
+<title>1.4.99beta5</title>
   <description>
           <![CDATA[
             <p>This is the beta feed!</p>
-<p>This build is similar to beta3 but add extra logging to track a performance bug. Feel free to skip it if not concerned, more information here : https://github.com/JohnCoates/Aerial/issues/780</p>
+<p>This version adds a new Synchronized Mode to allow you to synchronize the shuffled videos when running simultaneously on multiple computers.</p>
 <p>Please report any bug you find !</p>            
           ]]>
     </description>
-<pubDate>mer., 15 mai. 2019 15:50:29 +0100</pubDate>
+<pubDate>mar., 21 mai. 2019 15:50:29 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.99beta4/Aerial.saver.zip" sparkle:version="1.4.99beta4" sparkle:shortVersionString="1.4.99beta4"  sparkle:edSignature="Wu8ymjB/IK9fNc47s6bEzkLuFuss5+mGeJoOW1fCmmos2jA6U5aU+KcRP7ixana6fU3AuVRCDYn56+N4nq4hBA==" length="5821226" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.99beta5/Aerial.saver.zip" sparkle:version="1.4.99beta5" sparkle:shortVersionString="1.4.99beta5"  sparkle:edSignature="CXvPIQVROoHY/54gorkpkMyeyn4zYWL31KUYbc4ALCb7xz7U5R5yViGhAQe1viIskRsOMr+tfE3Myjn/3lRZAA==" length="5898409" type="application/octet-stream"/>
 </item>
 
 <item>
