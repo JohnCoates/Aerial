@@ -48,7 +48,6 @@
 		03893CB4217753AC008E7125 /* ErrorLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03893CB2217749F0008E7125 /* ErrorLog.swift */; };
 		0393857A2175D4B80040B850 /* AVPlayerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039385792175D4B80040B850 /* AVPlayerViewExtension.swift */; };
 		0393857B2175D4B80040B850 /* AVPlayerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039385792175D4B80040B850 /* AVPlayerViewExtension.swift */; };
-		0393857C2175D4B80040B850 /* AVPlayerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039385792175D4B80040B850 /* AVPlayerViewExtension.swift */; };
 		03958349217F4416008E8F9C /* Solar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03958348217F4416008E8F9C /* Solar.swift */; };
 		0395834A217F442A008E8F9C /* Solar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03958348217F4416008E8F9C /* Solar.swift */; };
 		0395835321807D1F008E8F9C /* thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0395835121807D1F008E8F9C /* thumbnail@2x.png */; };
@@ -61,7 +60,6 @@
 		03D1E7882284367200D10CF7 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1E78622842FB300D10CF7 /* DisplayView.swift */; };
 		03D1E78A2284471A00D10CF7 /* DisplayDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1E7892284471A00D10CF7 /* DisplayDetection.swift */; };
 		03D1E78B22844AFD00D10CF7 /* DisplayDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1E7892284471A00D10CF7 /* DisplayDetection.swift */; };
-		03D1E78C22844AFE00D10CF7 /* DisplayDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1E7892284471A00D10CF7 /* DisplayDetection.swift */; };
 		03D1E79122848F7F00D10CF7 /* screen2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03D1E78E22848F7F00D10CF7 /* screen2.jpg */; };
 		03D1E79222848F7F00D10CF7 /* screen2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03D1E78E22848F7F00D10CF7 /* screen2.jpg */; };
 		03D1E79322848F7F00D10CF7 /* screen2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03D1E78E22848F7F00D10CF7 /* screen2.jpg */; };
@@ -808,8 +806,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03D1E78C22844AFE00D10CF7 /* DisplayDetection.swift in Sources */,
-				0393857C2175D4B80040B850 /* AVPlayerViewExtension.swift in Sources */,
 				FA7199711D94EC5A00FBC99B /* PreferencesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

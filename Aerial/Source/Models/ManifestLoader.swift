@@ -269,14 +269,15 @@ class ManifestLoader {
 
     init() {
         debugLog("Manifest init")
-
+        // tmp
         do {
             if let cacheDirectory = VideoCache.cacheDirectory {
                 // tvOS12
                 var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
                 cacheFileUrl.appendPathComponent("testmodel.json")
                 debugLog("custom file : \(cacheFileUrl)")
-                customVideoFolders = try CustomVideoFolders(cacheFileUrl.absoluteString)
+                let ndata = try Data(contentsOf: cacheFileUrl)
+                customVideoFolders = try CustomVideoFolders(data: ndata)
             }
         } catch {
             debugLog("No testmodel.json \(error)")
