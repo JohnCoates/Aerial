@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CustomVideoController" customModule="Aerial" customModuleProvider="target">
             <connections>
+                <outlet property="folderOutlineView" destination="NS6-lm-7hO" id="dek-Xm-0hw"/>
                 <outlet property="mainPanel" destination="QvC-M9-y7g" id="of1-JA-evN"/>
             </connections>
         </customObject>
@@ -26,17 +27,17 @@
                         <rect key="frame" x="-7" y="-1" width="1171" height="632"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" ambiguous="YES" id="Ril-bY-Guv">
-                            <rect key="frame" x="1" y="0.0" width="1169" height="631"/>
+                            <rect key="frame" x="1" y="1" width="1169" height="630"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="vMe-2b-UMC" viewBased="YES" indentationPerLevel="16" outlineTableColumn="OM8-ZD-XmW" id="NS6-lm-7hO">
-                                    <rect key="frame" x="0.0" y="0.0" width="1169" height="606"/>
+                                <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="OM8-ZD-XmW" id="NS6-lm-7hO">
+                                    <rect key="frame" x="0.0" y="0.0" width="1169" height="630"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="116" minWidth="40" maxWidth="1000" id="OM8-ZD-XmW">
+                                        <tableColumn identifier="folderColumn" width="116" minWidth="40" maxWidth="1000" id="OM8-ZD-XmW">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -49,7 +50,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView id="7Ix-SV-cB3">
+                                                <tableCellView identifier="folderCell" id="7Ix-SV-cB3">
                                                     <rect key="frame" x="1" y="1" width="116" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
@@ -69,39 +70,6 @@
                                                 </tableCellView>
                                             </prototypeCellViews>
                                         </tableColumn>
-                                        <tableColumn width="1000" minWidth="40" maxWidth="1000" id="qFo-si-Ybk">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                            </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="LSZ-Rf-6j3">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                            <prototypeCellViews>
-                                                <tableCellView id="Mb3-lI-XSe">
-                                                    <rect key="frame" x="120" y="1" width="1000" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <subviews>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cKN-1i-UZu">
-                                                            <rect key="frame" x="0.0" y="0.0" width="1000" height="17"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="iSg-k1-CCP">
-                                                                <font key="font" metaFont="system"/>
-                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                        </textField>
-                                                    </subviews>
-                                                    <connections>
-                                                        <outlet property="textField" destination="cKN-1i-UZu" id="5Dq-W1-wRu"/>
-                                                    </connections>
-                                                </tableCellView>
-                                            </prototypeCellViews>
-                                        </tableColumn>
                                     </tableColumns>
                                 </outlineView>
                             </subviews>
@@ -110,14 +78,10 @@
                             <rect key="frame" x="1" y="615" width="965" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Mv2-tb-xir">
+                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="Mv2-tb-xir">
                             <rect key="frame" x="224" y="17" width="15" height="102"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <tableHeaderView key="headerView" wantsLayer="YES" id="vMe-2b-UMC">
-                            <rect key="frame" x="0.0" y="0.0" width="1169" height="25"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </tableHeaderView>
                     </scrollView>
                 </subviews>
             </view>
@@ -147,12 +111,14 @@
                         </button>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="ZK4-sx-7Jg"/>
-                    <toolbarItem implicitItemIdentifier="D514D6B8-4DE6-4DC0-8383-134C5EC281B0" label="Custom View" paletteLabel="Custom View" image="NSRefreshTemplate" sizingBehavior="auto" id="y3l-Eb-zBq">
+                    <toolbarItem implicitItemIdentifier="D514D6B8-4DE6-4DC0-8383-134C5EC281B0" label="Custom View" paletteLabel="Custom View" image="NSRefreshTemplate" id="y3l-Eb-zBq">
                         <nil key="toolTip"/>
+                        <size key="minSize" width="44" height="43"/>
+                        <size key="maxSize" width="44" height="43"/>
                         <button key="view" verticalHuggingPriority="750" id="89H-zY-ZHR">
-                            <rect key="frame" x="0.0" y="14" width="201" height="32"/>
+                            <rect key="frame" x="16" y="14" width="44" height="43"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="push" title="Rescan For New Videos" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="m3y-73-fpV">
+                            <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="m3y-73-fpV">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>

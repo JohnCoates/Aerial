@@ -11,6 +11,7 @@ import AppKit
 
 class CustomVideoController: NSWindowController {
     @IBOutlet var mainPanel: NSWindow!
+    @IBOutlet var folderOutlineView: NSOutlineView!
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         debugLog("cvcinit")

@@ -1698,12 +1698,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
                         action: #selector(PreferencesWindowController.outlineViewDownloadAll(button:)),
                         keyEquivalent: "",
                         at: 6)
-        /*menu.insertItem(NSMenuItem.separator(), at: 7)
+        menu.insertItem(NSMenuItem.separator(), at: 7)
         menu.insertItem(withTitle: "Custom Videos...",
                         action: #selector(PreferencesWindowController.outlineViewCustomVideos(button:)),
                         keyEquivalent: "",
                         at: 8)
-*/
+
         let event = NSApp.currentEvent
         NSMenu.popUpContextMenu(menu, with: event!, for: button)
     }

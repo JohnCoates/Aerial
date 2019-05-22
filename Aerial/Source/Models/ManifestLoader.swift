@@ -21,6 +21,7 @@ class ManifestLoader {
     var loadedManifest = [AerialVideo]()
     var processedVideos = [AerialVideo]()
     var lastPluckedFromPlaylist: AerialVideo?
+    var customVideoFolders: CustomVideoFolders?
 
     var manifestTvOS10: Data?
     var manifestTvOS11: Data?
@@ -268,6 +269,18 @@ class ManifestLoader {
 
     init() {
         debugLog("Manifest init")
+
+        do {
+            if let cacheDirectory = VideoCache.cacheDirectory {
+                // tvOS12
+                var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
+                cacheFileUrl.appendPathComponent("testmodel.json")
+                debugLog("custom file : \(cacheFileUrl)")
+                customVideoFolders = try CustomVideoFolders(cacheFileUrl.absoluteString)
+            }
+        } catch {
+            debugLog("No testmodel.json \(error)")
+        }
         // We try to load our video manifests in 3 steps :
         // - reload from local variables (unused for now, maybe with previews+screensaver
         // in some weird edge case on some systems)
