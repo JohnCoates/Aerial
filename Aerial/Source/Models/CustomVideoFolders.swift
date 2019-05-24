@@ -7,7 +7,7 @@ import Foundation
 
 // MARK: - CustomVideoFolders
 class CustomVideoFolders: Codable {
-    let folders: [Folder]
+    var folders: [Folder]
 
     enum CodingKeys: String, CodingKey {
         case folders = "folders"
@@ -56,16 +56,19 @@ extension CustomVideoFolders {
 
 // MARK: - Folder
 class Folder: Codable {
-    let url: String
-    let assets: [Asset]
+    var url: String
+    var label: String
+    var assets: [Asset]
 
     enum CodingKeys: String, CodingKey {
         case url = "url"
+        case label = "label"
         case assets = "assets"
     }
 
-    init(url: String, assets: [Asset]) {
+    init(url: String, label: String, assets: [Asset]) {
         self.url = url
+        self.label = label
         self.assets = assets
     }
 }
@@ -75,7 +78,7 @@ class Folder: Codable {
 extension Folder {
     convenience init(data: Data) throws {
         let me = try newJSONDecoder().decode(Folder.self, from: data)
-        self.init(url: me.url, assets: me.assets)
+        self.init(url: me.url, label: me.label, assets: me.assets)
     }
 
     convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -91,10 +94,12 @@ extension Folder {
 
     func with(
         url: String? = nil,
+        label: String? = nil,
         assets: [Asset]? = nil
         ) -> Folder {
         return Folder(
             url: url ?? self.url,
+            label: label ?? self.label,
             assets: assets ?? self.assets
         )
     }
@@ -110,23 +115,23 @@ extension Folder {
 
 // MARK: - Asset
 class Asset: Codable {
-    let pointsOfInterest: [String: String]
-    let filename: String
-    let accessibilityLabel: String
-    let id: String
-    let time: String
+    var pointsOfInterest: [String: String]
+    var url: String
+    var accessibilityLabel: String
+    var id: String
+    var time: String
 
     enum CodingKeys: String, CodingKey {
         case pointsOfInterest = "pointsOfInterest"
-        case filename = "filename"
+        case url = "url"
         case accessibilityLabel = "accessibilityLabel"
         case id = "id"
         case time = "time"
     }
 
-    init(pointsOfInterest: [String: String], filename: String, accessibilityLabel: String, id: String, time: String) {
+    init(pointsOfInterest: [String: String], url: String, accessibilityLabel: String, id: String, time: String) {
         self.pointsOfInterest = pointsOfInterest
-        self.filename = filename
+        self.url = url
         self.accessibilityLabel = accessibilityLabel
         self.id = id
         self.time = time
@@ -138,7 +143,7 @@ class Asset: Codable {
 extension Asset {
     convenience init(data: Data) throws {
         let me = try newJSONDecoder().decode(Asset.self, from: data)
-        self.init(pointsOfInterest: me.pointsOfInterest, filename: me.filename, accessibilityLabel: me.accessibilityLabel, id: me.id, time: me.time)
+        self.init(pointsOfInterest: me.pointsOfInterest, url: me.url, accessibilityLabel: me.accessibilityLabel, id: me.id, time: me.time)
     }
 
     convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -154,14 +159,14 @@ extension Asset {
 
     func with(
         pointsOfInterest: [String: String]? = nil,
-        filename: String? = nil,
+        url: String? = nil,
         accessibilityLabel: String? = nil,
         id: String? = nil,
         time: String? = nil
         ) -> Asset {
         return Asset(
             pointsOfInterest: pointsOfInterest ?? self.pointsOfInterest,
-            filename: filename ?? self.filename,
+            url: url ?? self.url,
             accessibilityLabel: accessibilityLabel ?? self.accessibilityLabel,
             id: id ?? self.id,
             time: time ?? self.time
