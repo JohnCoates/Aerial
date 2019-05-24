@@ -270,18 +270,7 @@ class ManifestLoader {
     init() {
         debugLog("Manifest init")
         // tmp
-        do {
-            if let cacheDirectory = VideoCache.cacheDirectory {
-                // tvOS12
-                var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
-                cacheFileUrl.appendPathComponent("testmodel.json")
-                debugLog("custom file : \(cacheFileUrl)")
-                let ndata = try Data(contentsOf: cacheFileUrl)
-                customVideoFolders = try CustomVideoFolders(data: ndata)
-            }
-        } catch {
-            debugLog("No testmodel.json \(error)")
-        }
+        loadCustomVideos()
         // We try to load our video manifests in 3 steps :
         // - reload from local variables (unused for now, maybe with previews+screensaver
         // in some weird edge case on some systems)
@@ -393,6 +382,60 @@ class ManifestLoader {
             callback(loadedManifest)
         } else {
             callbacks.append(callback)
+        }
+    }
+
+    // MARK: - Custom videos
+    func loadCustomVideos() {
+        do {
+            if let cacheDirectory = VideoCache.cacheDirectory {
+                // tvOS12
+                var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
+                cacheFileUrl.appendPathComponent("customvideos.json")
+                debugLog("custom file : \(cacheFileUrl)")
+                let ndata = try Data(contentsOf: cacheFileUrl)
+                customVideoFolders = try CustomVideoFolders(data: ndata)
+            }
+        } catch {
+            debugLog("No customvideos.json \(error)")
+        }
+    }
+
+    func saveCustomVideos() {
+        if let cvf = customVideoFolders, let cacheDirectory = VideoCache.cacheDirectory {
+            var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
+            cacheFileUrl.appendPathComponent("customvideos.json")
+
+            do {
+                if let encodedData = try? cvf.jsonData() {
+                    try encodedData.write(to: cacheFileUrl)
+                    debugLog("customvideos.json saved successfully!")
+                }
+            } catch let error as NSError {
+                errorLog("customvideos.json could not be saved: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    // This is where we merge with the processed list
+    func mergeCustomVideos() {
+        if let cvf = customVideoFolders {
+            for folder in cvf.folders {
+                for asset in folder.assets {
+                    let video = AerialVideo(id: asset.id,
+                                                name: folder.label,
+                                                secondaryName: asset.accessibilityLabel,
+                                                type: "video",
+                                                timeOfDay: asset.time,
+                                                url1080pH264: URL(fileURLWithPath: asset.url).absoluteString,
+                                                url1080pHEVC: "",
+                                                url4KHEVC: "",
+                                                manifest: .customVideos,
+                                                poi: [:],
+                                                communityPoi: asset.pointsOfInterest)
+                    processedVideos.append(video)
+                }
+            }
         }
     }
 
@@ -576,6 +619,10 @@ class ManifestLoader {
             readOldJSONFromData(manifestTvOS10!, manifest: .tvOS10)
         } else {
             warnLog("tvOS10 manifest is absent")
+        }
+
+        if customVideoFolders != nil {
+            mergeCustomVideos()
         }
 
         // We sort videos by secondary names, so they can display sorted in our view later

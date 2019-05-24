@@ -114,14 +114,18 @@ final class VideoCache {
     }
 
     static func isAvailableOffline(video: AerialVideo) -> Bool {
-        guard let videoCachePath = cachePath(forVideo: video) else {
-            errorLog("Couldn't get video cache path!")
-            return false
-        }
-
         let fileManager = FileManager.default
 
-        return fileManager.fileExists(atPath: videoCachePath)
+        if video.url.absoluteString.starts(with: "file") {
+            return fileManager.fileExists(atPath: video.url.path)
+        } else {
+            guard let videoCachePath = cachePath(forVideo: video) else {
+                errorLog("Couldn't get video cache path!")
+                return false
+            }
+
+            return fileManager.fileExists(atPath: videoCachePath)
+        }
     }
 
     static func moveToTrash(video: AerialVideo) {
@@ -140,6 +144,10 @@ final class VideoCache {
     }
 
     static func cachePath(forVideo video: AerialVideo) -> String? {
+        if video.url.absoluteString.starts(with: "file") {
+            return video.url.path
+        }
+
         let vurl = video.url
         let filename = vurl.lastPathComponent
         return cachePath(forFilename: filename)
