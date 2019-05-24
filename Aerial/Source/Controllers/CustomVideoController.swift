@@ -35,6 +35,7 @@ class CustomVideoController: NSWindowController, NSWindowDelegate {
     var currentAsset: Asset?
     var hasAwokenAlready = false
     var sw: NSWindow?
+    var controller: PreferencesWindowController?
 
     // MARK: - Lifecycle
     required init?(coder: NSCoder) {
@@ -51,7 +52,6 @@ class CustomVideoController: NSWindowController, NSWindowDelegate {
     override func awakeFromNib() {
         if !hasAwokenAlready {
             debugLog("cvcawake")
-
             folderOutlineView.dataSource = self
             folderOutlineView.delegate = self
             poiTableView.dataSource = self
@@ -70,19 +70,27 @@ class CustomVideoController: NSWindowController, NSWindowDelegate {
 
     // We will receive this notification for every panel/window so we need to ensure it's the correct one
     func windowWillClose(_ notification: Notification) {
-        if let wobj = notification.object as? NSWindow {
+        if let wobj = notification.object as? NSPanel {
             if wobj.title == "Manage Custom Videos" {
                 debugLog("Closing cvc")
                 let manifestInstance = ManifestLoader.instance
                 manifestInstance.saveCustomVideos()
+
+                manifestInstance.addCallback { manifestVideos in
+                    if let contr = self.controller {
+                        contr.loaded(manifestVideos: manifestVideos)
+                    }
+                }
+                manifestInstance.loadManifestsFromLoadedFiles()
             }
         }
     }
 
     // This is the public function to make this visible
-    func show() {
+    func show(sender: NSButton, controller: PreferencesWindowController) {
+        self.controller = controller
         if !mainPanel.isVisible {
-            mainPanel.makeKeyAndOrderFront(self)
+            mainPanel.makeKeyAndOrderFront(sender)
             folderOutlineView.expandItem(nil, expandChildren: true)
             folderOutlineView.deselectAll(self)
             folderView.isHidden = true
@@ -90,6 +98,7 @@ class CustomVideoController: NSWindowController, NSWindowDelegate {
             topPathControl.isHidden = true
         }
     }
+
     // MARK: - Edit Folders
     @IBAction func folderNameChange(_ sender: NSTextField) {
         if let folder = currentFolder {
@@ -106,14 +115,59 @@ class CustomVideoController: NSWindowController, NSWindowDelegate {
         addFolderPanel.canCreateDirectories = false
         addFolderPanel.canChooseFiles = false
         addFolderPanel.title = "Select a folder containing videos"
-        //addFolderPanel.allowedFileTypes = ["jpg","png"]
 
-        addFolderPanel.beginSheetModal(for: sw!) { (response) in
+        addFolderPanel.begin { (response) in
             if response.rawValue == NSFileHandlingPanelOKButton {
-                let selectedPath = addFolderPanel.url!.path
-                // do whatever you what with the file path
+                self.processPathForVideos(url: addFolderPanel.url!)
             }
             addFolderPanel.close()
+        }
+
+    }
+
+    func processPathForVideos(url: URL) {
+        debugLog("processing url for videos : \(url) ")
+        let folderName = url.lastPathComponent
+        let manifestInstance = ManifestLoader.instance
+
+        do {
+            let urls = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
+            var assets = [Asset]()
+
+            for lurl in urls {
+                if lurl.path.lowercased().hasSuffix(".mp4") || lurl.path.lowercased().hasSuffix(".mov") {
+                    assets.append(Asset(pointsOfInterest: [:],
+                                        url: lurl.path,
+                                        accessibilityLabel: lurl.lastPathComponent,
+                                        id: NSUUID().uuidString,
+                                        time: "day"))
+                }
+            }
+
+            if let cvf = manifestInstance.customVideoFolders {
+                // check if we have this folder already ?
+                if !cvf.hasFolder(withUrl: url.path) && !assets.isEmpty {
+                    cvf.folders.append(Folder(url: url.path, label: folderName, assets: assets))
+                } else if !assets.isEmpty {
+                    // We need to append in place those that don't exist yet
+                    let folderIndex = cvf.getFolderIndex(withUrl: url.path)
+                    for asset in assets {
+                        if !cvf.folders[folderIndex].hasAsset(withUrl: asset.url) {
+                            cvf.folders[folderIndex].assets.append(asset)
+                        }
+                    }
+                }
+            } else {
+                // Create our initial CVF with the parsed folder
+                manifestInstance.customVideoFolders = CustomVideoFolders(folders: [Folder(url: url.path, label: folderName, assets: assets)])
+            }
+
+            folderOutlineView.reloadData()
+            folderOutlineView.expandItem(nil, expandChildren: true)
+            folderOutlineView.deselectAll(self)
+
+        } catch {
+            errorLog("Could not process directory")
         }
     }
 

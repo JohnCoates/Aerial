@@ -667,11 +667,15 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         }
 
         // We also load our CustomVideos nib
-        let bundle = Bundle.main
+        //if appMode {
+            //let bundle = Bundle.main
+        let bundle = Bundle(for: PreferencesWindowController.self)
         var topLevelObjects: NSArray? = NSArray()
-        bundle.loadNibNamed(NSNib.Name("CustomVideos"),
+        if !bundle.loadNibNamed(NSNib.Name("CustomVideos"),
                             owner: customVideosController,
-                            topLevelObjects: &topLevelObjects)
+                            topLevelObjects: &topLevelObjects) {
+            errorLog("Could not load nib for CustomVideos, please report")
+        }
 
         debugLog("appMode : \(appMode)")
     }
@@ -1709,7 +1713,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     @objc func outlineViewCustomVideos(button: NSButton) {
-        customVideosController.show()
+        customVideosController.show(sender: button, controller: self)
     }
 
     @objc func outlineViewUncheckAll(button: NSButton) {
