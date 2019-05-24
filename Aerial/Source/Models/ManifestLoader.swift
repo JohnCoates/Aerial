@@ -8,6 +8,7 @@
 
 import Foundation
 import ScreenSaver
+import GameplayKit
 
 typealias ManifestLoadCallback = ([AerialVideo]) -> Void
 
@@ -20,6 +21,7 @@ class ManifestLoader {
     var loadedManifest = [AerialVideo]()
     var processedVideos = [AerialVideo]()
     var lastPluckedFromPlaylist: AerialVideo?
+    var customVideoFolders: CustomVideoFolders?
 
     var manifestTvOS10: Data?
     var manifestTvOS11: Data?
@@ -149,7 +151,25 @@ class ManifestLoader {
         playlistRestrictedTo = restrictedTo
 
         // Start with a shuffled list
-        let shuffled = loadedManifest.shuffled()
+        //let shuffled = loadedManifest.shuffled()
+        var shuffled: [AerialVideo]
+        let preferences = Preferences.sharedInstance
+        if preferences.synchronizedMode {
+            if #available(OSX 10.11, *) {
+                let date = Date()
+                let calendar = NSCalendar.current
+                let minutes = calendar.component(.minute, from: date)
+                debugLog("seed : \(minutes)")
+
+                var generator = SeededGenerator(seed: UInt64(minutes))
+                shuffled = loadedManifest.shuffled(using: &generator)
+            } else {
+                // Fallback on earlier versions
+                shuffled = loadedManifest.shuffled()
+            }
+        } else {
+            shuffled = loadedManifest.shuffled()
+        }
 
         for video in shuffled {
             // We exclude videos not in rotation
@@ -249,6 +269,19 @@ class ManifestLoader {
 
     init() {
         debugLog("Manifest init")
+        // tmp
+        do {
+            if let cacheDirectory = VideoCache.cacheDirectory {
+                // tvOS12
+                var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
+                cacheFileUrl.appendPathComponent("testmodel.json")
+                debugLog("custom file : \(cacheFileUrl)")
+                let ndata = try Data(contentsOf: cacheFileUrl)
+                customVideoFolders = try CustomVideoFolders(data: ndata)
+            }
+        } catch {
+            debugLog("No testmodel.json \(error)")
+        }
         // We try to load our video manifests in 3 steps :
         // - reload from local variables (unused for now, maybe with previews+screensaver
         // in some weird edge case on some systems)

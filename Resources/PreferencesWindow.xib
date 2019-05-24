@@ -132,6 +132,7 @@
                 <outlet property="solarModePopup" destination="7nt-0g-1hP" id="Ej9-u5-ZaL"/>
                 <outlet property="sunriseTime" destination="tJX-T8-xe2" id="j6N-wq-wIp"/>
                 <outlet property="sunsetTime" destination="dvf-XO-Pzj" id="Cbe-l8-8v5"/>
+                <outlet property="synchronizedModeCheckbox" destination="PWQ-sH-YlW" id="8U6-cU-1De"/>
                 <outlet property="timeCalculateRadio" destination="DLM-V1-CqG" id="YPs-g8-z4m"/>
                 <outlet property="timeDisabledRadio" destination="pLZ-Bs-k9D" id="Yxk-v9-bsU"/>
                 <outlet property="timeLightDarkModeRadio" destination="R1G-07-UP0" id="zwe-eG-qzF"/>
@@ -168,7 +169,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Videos" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" id="zsM-Ha-kCO">
+                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -368,17 +369,6 @@
                                                         <action selector="pageProjectClick:" target="-2" id="NxR-9l-IEB"/>
                                                     </connections>
                                                 </button>
-                                                <button toolTip="Option menu" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mx1-yH-imM">
-                                                    <rect key="frame" x="12" y="10" width="32" height="19"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSActionTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nxM-5Y-pQM">
-                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="cellTitle"/>
-                                                    </buttonCell>
-                                                    <connections>
-                                                        <action selector="outlineViewSettingsClick:" target="-2" id="foF-Fr-895"/>
-                                                    </connections>
-                                                </button>
                                                 <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQD-aR-CSY">
                                                     <rect key="frame" x="375" y="281" width="158" height="39"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
@@ -541,6 +531,29 @@ is disabled
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="rightArrowKeyPlaysNextClick:" target="-2" id="HSu-RO-zN1"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PWQ-sH-YlW">
+                                                    <rect key="frame" x="307" y="21" width="143" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <string key="toolTip">When running Aerial simultaneously on multiple computers, enabling this will synchronize the video shuffle based on current time</string>
+                                                    <buttonCell key="cell" type="check" title="Synchronized mode" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fo3-Di-Fl8">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="synchronizedModeClick:" target="-2" id="R1j-Tw-UX2"/>
+                                                    </connections>
+                                                </button>
+                                                <button toolTip="Option menu" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mx1-yH-imM">
+                                                    <rect key="frame" x="12" y="10" width="32" height="19"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSActionTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nxM-5Y-pQM">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="cellTitle"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="outlineViewSettingsClick:" target="-2" id="foF-Fr-895"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1861,7 +1874,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Advanced" identifier="" id="asf-lu-1rA">
-                                        <view key="view" ambiguous="YES" id="303-Jh-DVp">
+                                        <view key="view" id="303-Jh-DVp">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -2176,7 +2189,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" ambiguous="YES" id="rFk-xj-xKP">
                             <rect key="frame" x="1" y="1" width="659" height="337"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" viewBased="YES" id="btT-0Y-wSk">
                                     <rect key="frame" x="0.0" y="0.0" width="659" height="337"/>

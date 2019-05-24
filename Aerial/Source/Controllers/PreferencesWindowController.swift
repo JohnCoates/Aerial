@@ -50,6 +50,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     enum HEVCMain10Support: Int {
         case notsupported, unsure, partial, supported
     }
+    lazy var customVideosController: CustomVideoController = CustomVideoController()
 
     @IBOutlet weak var prefTabView: NSTabView!
     @IBOutlet var outlineView: NSOutlineView!
@@ -219,6 +220,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var rightClickOpenQuickTimeMenuItem: NSMenuItem!
     @IBOutlet var rightClickDownloadVideoMenuItem: NSMenuItem!
     @IBOutlet var rightClickMoveToTrashMenuItem: NSMenuItem!
+    @IBOutlet var synchronizedModeCheckbox: NSButton!
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?
@@ -502,6 +504,9 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         if preferences.dimOnlyAtNight {
             dimOnlyAtNight.state = .on
         }
+        if preferences.synchronizedMode {
+            synchronizedModeCheckbox.state = .on
+        }
         dimStartFrom.doubleValue = preferences.startDim ?? 0.5
         dimFadeTo.doubleValue = preferences.endDim ?? 0.1
         dimFadeInMinutes.stringValue = String(preferences.dimInMinutes!)
@@ -661,6 +666,13 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
             longitudeTextField.isEnabled = false
         }
 
+        // We also load our CustomVideos nib
+        let bundle = Bundle.main
+        var topLevelObjects: NSArray? = NSArray()
+        bundle.loadNibNamed(NSNib.Name("CustomVideos"),
+                            owner: customVideosController,
+                            topLevelObjects: &topLevelObjects)
+
         debugLog("appMode : \(appMode)")
     }
 
@@ -741,6 +753,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         let onState = sender.state == .on
         preferences.allowSkips = onState
         debugLog("UI allowSkips \(onState)")
+    }
+
+    @IBAction func synchronizedModeClick(_ sender: NSButton) {
+        let onState = sender.state == .on
+        preferences.synchronizedMode = onState
+        debugLog("UI synchronizedMode \(onState)")
     }
 
     @IBAction func overrideOnBatteryClick(_ sender: NSButton) {
@@ -1680,9 +1698,18 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
                         action: #selector(PreferencesWindowController.outlineViewDownloadAll(button:)),
                         keyEquivalent: "",
                         at: 6)
+        menu.insertItem(NSMenuItem.separator(), at: 7)
+        menu.insertItem(withTitle: "Custom Videos...",
+                        action: #selector(PreferencesWindowController.outlineViewCustomVideos(button:)),
+                        keyEquivalent: "",
+                        at: 8)
 
         let event = NSApp.currentEvent
         NSMenu.popUpContextMenu(menu, with: event!, for: button)
+    }
+
+    @objc func outlineViewCustomVideos(button: NSButton) {
+        customVideosController.show()
     }
 
     @objc func outlineViewUncheckAll(button: NSButton) {
