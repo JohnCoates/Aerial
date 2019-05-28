@@ -2183,6 +2183,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         case let video as AerialVideo:
             player = AVPlayer()
             playerView.player = player
+            player.isMuted = true
 
             debugLog("Playing this preview \(video)")
             // Workaround for cached videos generating online traffic

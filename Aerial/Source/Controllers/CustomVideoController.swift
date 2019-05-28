@@ -338,6 +338,9 @@ extension CustomVideoController: NSOutlineViewDelegate {
 
             if let player = editPlayerView.player {
                 let localitem = AVPlayerItem(url: URL(fileURLWithPath: file.url))
+                // let currentAssetDuration = localitem.asset.duration.convertScale(1, method: .default).value
+                debugLog("resolution \(getResolution(asset: localitem.asset))")
+
                 player.replaceCurrentItem(with: localitem)
             }
 
@@ -349,6 +352,12 @@ extension CustomVideoController: NSOutlineViewDelegate {
         }
 
         return true
+    }
+
+    func getResolution(asset: AVAsset) -> CGSize {
+        guard let track = asset.tracks(withMediaType: AVMediaType.video).first else { return CGSize.zero }
+        let size = track.naturalSize.applying(track.preferredTransform)
+        return CGSize(width: abs(size.width), height: abs(size.height))
     }
 }
 
