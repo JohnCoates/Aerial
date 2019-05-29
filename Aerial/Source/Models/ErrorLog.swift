@@ -82,6 +82,7 @@ func Log(level: ErrorLevel, message: String) {
             } else {
                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             }
+
             let string = dateFormatter.string(from: Date()) + " : " + message + "\n"
 
             // tmpOverride
