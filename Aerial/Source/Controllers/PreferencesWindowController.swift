@@ -50,6 +50,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     enum HEVCMain10Support: Int {
         case notsupported, unsure, partial, supported
     }
+    lazy var customVideosController: CustomVideoController = CustomVideoController()
 
     @IBOutlet weak var prefTabView: NSTabView!
     @IBOutlet var outlineView: NSOutlineView!
@@ -72,7 +73,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var overrideNightOnDarkMode: NSButton!
 
-    @IBOutlet var multiMonitorModePopup: NSPopUpButton!
     @IBOutlet var popupVideoFormat: NSPopUpButton!
     @IBOutlet var alternatePopupVideoFormat: NSPopUpButton!
     @IBOutlet var descriptionModePopup: NSPopUpButton!
@@ -206,6 +206,21 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var addVideoSetConfirmButton: NSButton!
     @IBOutlet var addVideoSetCancelButton: NSButton!
     @IBOutlet var addVideoSetErrorLabel: NSTextField!
+
+    // Display tab
+    @IBOutlet var newDisplayModePopup: NSPopUpButton!
+    @IBOutlet var newViewingModePopup: NSPopUpButton!
+    @IBOutlet var displayInstructionLabel: NSTextField!
+    @IBOutlet var quitConfirmationPanel: NSPanel!
+
+    @IBOutlet var logMillisecondsButton: NSButton!
+    @IBOutlet var displayMarginBox: NSBox!
+    @IBOutlet var horizontalDisplayMarginTextfield: NSTextField!
+    @IBOutlet var verticalDisplayMarginTextfield: NSTextField!
+    @IBOutlet var rightClickOpenQuickTimeMenuItem: NSMenuItem!
+    @IBOutlet var rightClickDownloadVideoMenuItem: NSMenuItem!
+    @IBOutlet var rightClickMoveToTrashMenuItem: NSMenuItem!
+    @IBOutlet var synchronizedModeCheckbox: NSButton!
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?
@@ -226,6 +241,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     var locationManager: CLLocationManager?
     var sparkleUpdater: SUUpdater?
 
+    @IBOutlet var displayView: DisplayView!
     public var appMode: Bool = false
 
     private lazy var timeFormatter: DateFormatter = {
@@ -413,13 +429,18 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         if !preferences.allowSkips {
             rightArrowKeyPlaysNextCheckbox.state = .off
         }
+        horizontalDisplayMarginTextfield.doubleValue = preferences.horizontalMargin!
+        verticalDisplayMarginTextfield.doubleValue = preferences.verticalMargin!
 
-        // Aerial panel
+        // Advanced panel
         if preferences.debugMode {
             debugModeCheckbox.state = .on
         }
         if preferences.logToDisk {
             logToDiskCheckbox.state = .on
+        }
+        if preferences.logMilliseconds {
+            logMillisecondsButton.state = .on
         }
 
         // Text panel
@@ -482,6 +503,9 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         }
         if preferences.dimOnlyAtNight {
             dimOnlyAtNight.state = .on
+        }
+        if preferences.synchronizedMode {
+            synchronizedModeCheckbox.state = .on
         }
         dimStartFrom.doubleValue = preferences.startDim ?? 0.5
         dimFadeTo.doubleValue = preferences.endDim ?? 0.1
@@ -566,8 +590,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         solarModePopup.selectItem(at: preferences.solarMode!)
 
-        multiMonitorModePopup.selectItem(at: preferences.multiMonitorMode!)
-
         popupVideoFormat.selectItem(at: preferences.videoFormat!)
 
         alternatePopupVideoFormat.selectItem(at: preferences.alternateVideoFormat!)
@@ -585,6 +607,14 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         betaCheckFrequencyPopup.selectItem(at: preferences.betaCheckFrequency!)
 
         lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
+
+        // Displays Tab
+        newDisplayModePopup.selectItem(at: preferences.newDisplayMode!)
+        newViewingModePopup.selectItem(at: preferences.newViewingMode!)
+
+        if preferences.newDisplayMode == Preferences.NewDisplayMode.selection.rawValue {
+            displayInstructionLabel.isHidden = false
+        }
 
         // Format date
         if sparkleUpdater!.lastUpdateCheckDate != nil {
@@ -636,6 +666,17 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
             longitudeTextField.isEnabled = false
         }
 
+        // We also load our CustomVideos nib
+        //if appMode {
+            //let bundle = Bundle.main
+        let bundle = Bundle(for: PreferencesWindowController.self)
+        var topLevelObjects: NSArray? = NSArray()
+        if !bundle.loadNibNamed(NSNib.Name("CustomVideos"),
+                            owner: customVideosController,
+                            topLevelObjects: &topLevelObjects) {
+            errorLog("Could not load nib for CustomVideos, please report")
+        }
+
         debugLog("appMode : \(appMode)")
     }
 
@@ -648,7 +689,23 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     @IBAction func close(_ sender: AnyObject?) {
-        // This seems needed for screensavers as our lifecycle is different from a regular app
+        // We ask for confirmation in case downloads are ongoing
+        if !downloadProgressIndicator.isHidden {
+            quitConfirmationPanel.makeKeyAndOrderFront(self)
+        } else {
+            // This seems needed for screensavers as our lifecycle is different from a regular app
+            preferences.synchronize()
+            logPanel.close()
+            if appMode {
+                NSApplication.shared.terminate(nil)
+            } else {
+                window?.sheetParent?.endSheet(window!)
+            }
+        }
+    }
+
+    @IBAction func confirmQuitClick(_ sender: Any) {
+        quitConfirmationPanel.close()
         preferences.synchronize()
         logPanel.close()
         if appMode {
@@ -656,6 +713,10 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         } else {
             window?.sheetParent?.endSheet(window!)
         }
+    }
+
+    @IBAction func cancelQuitClick(_ sender: Any) {
+        quitConfirmationPanel.close()
     }
 
     // MARK: Video playback
@@ -696,6 +757,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         let onState = sender.state == .on
         preferences.allowSkips = onState
         debugLog("UI allowSkips \(onState)")
+    }
+
+    @IBAction func synchronizedModeClick(_ sender: NSButton) {
+        let onState = sender.state == .on
+        preferences.synchronizedMode = onState
+        debugLog("UI synchronizedMode \(onState)")
     }
 
     @IBAction func overrideOnBatteryClick(_ sender: NSButton) {
@@ -741,12 +808,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         popoverPower.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
     }
 
-    @IBAction func multiMonitorModePopupChange(_ sender: NSPopUpButton) {
-        debugLog("UI multiMonitorMode: \(sender.indexOfSelectedItem)")
-        preferences.multiMonitorMode = sender.indexOfSelectedItem
-        preferences.synchronize()
-    }
-
     @IBAction func fadeInOutModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI fadeInOutMode: \(sender.indexOfSelectedItem)")
         preferences.fadeMode = sender.indexOfSelectedItem
@@ -781,6 +842,23 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBAction func openInQuickTime(_ sender: NSMenuItem) {
         if let video = sender.representedObject as? AerialVideo {
             NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: VideoCache.cachePath(forVideo: video)!)
+        }
+    }
+
+    @IBAction func rightClickDownloadVideo(_ sender: NSMenuItem) {
+        if let video = sender.representedObject as? AerialVideo {
+            let videoManager = VideoManager.sharedInstance
+            if !videoManager.isVideoQueued(id: video.id) {
+                videoManager.queueDownload(video)
+            }
+        }
+    }
+
+    @IBAction func rightClickMoveToTrash(_ sender: NSMenuItem) {
+        if let video = sender.representedObject as? AerialVideo {
+            VideoCache.moveToTrash(video: video)
+            let videoManager = VideoManager.sharedInstance
+            videoManager.updateAllCheckCellView()
         }
     }
 
@@ -838,6 +916,49 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         // Older stuff (power/etc) should not even run this so list should be complete
         // Hackintosh/new SKUs may fail this test
         return .unsure
+    }
+    // MARK: - Displays panel
+    @IBAction func newDisplayModeClick(_ sender: NSPopUpButton) {
+        debugLog("UI newDisplayModeClick: \(sender.indexOfSelectedItem)")
+        preferences.newDisplayMode = sender.indexOfSelectedItem
+        if preferences.newDisplayMode == Preferences.NewDisplayMode.selection.rawValue {
+            displayInstructionLabel.isHidden = false
+        } else {
+            displayInstructionLabel.isHidden = true
+        }
+        displayView.needsDisplay = true
+    }
+
+    @IBAction func newViewingModeClick(_ sender: NSPopUpButton) {
+        debugLog("UI newViewingModeClick: \(sender.indexOfSelectedItem)")
+        preferences.newViewingMode = sender.indexOfSelectedItem
+        let displayDetection = DisplayDetection.sharedInstance
+        displayDetection.detectDisplays()   // Force redetection to update our margin calculations in spanned mode
+        displayView.needsDisplay = true
+
+        if preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue {
+            displayMarginBox.isHidden = false
+        } else {
+            displayMarginBox.isHidden = true
+        }
+    }
+
+    @IBAction func horizontalDisplayMarginChange(_ sender: NSTextField) {
+        debugLog("UI horizontalDisplayMarginChange \(sender.stringValue)")
+        preferences.horizontalMargin = sender.doubleValue
+
+        let displayDetection = DisplayDetection.sharedInstance
+        displayDetection.detectDisplays()   // Force redetection to update our margin calculations in spanned mode
+        displayView.needsDisplay = true
+    }
+
+    @IBAction func verticalDisplayMarginChange(_ sender: NSTextField) {
+        debugLog("UI verticalDisplayMarginChange \(sender.stringValue)")
+        preferences.verticalMargin = sender.doubleValue
+
+        let displayDetection = DisplayDetection.sharedInstance
+        displayDetection.detectDisplays()   // Force redetection to update our margin calculations in spanned mode
+        displayView.needsDisplay = true
     }
 
     // MARK: - Text panel
@@ -1436,6 +1557,13 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     // MARK: - Advanced panel
+
+    @IBAction func logMillisecondsClick(_ button: NSButton) {
+        let onState = button.state == .on
+        preferences.logMilliseconds = onState
+        debugLog("UI logMilliseconds: \(onState)")
+    }
+
     @IBAction func logButtonClick(_ sender: NSButton) {
         logTableView.reloadData()
         if logPanel.isVisible {
@@ -1574,9 +1702,18 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
                         action: #selector(PreferencesWindowController.outlineViewDownloadAll(button:)),
                         keyEquivalent: "",
                         at: 6)
+        menu.insertItem(NSMenuItem.separator(), at: 7)
+        menu.insertItem(withTitle: "Custom Videos...",
+                        action: #selector(PreferencesWindowController.outlineViewCustomVideos(button:)),
+                        keyEquivalent: "",
+                        at: 8)
 
         let event = NSApp.currentEvent
         NSMenu.popUpContextMenu(menu, with: event!, for: button)
+    }
+
+    @objc func outlineViewCustomVideos(button: NSButton) {
+        customVideosController.show(sender: button, controller: self)
     }
 
     @objc func outlineViewUncheckAll(button: NSButton) {
@@ -1834,8 +1971,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         var videos = [AerialVideo]()
         var cities = [String: City]()
 
+        // Grab a fresh version, because our callback can be feeding us wrong data in CVC
+        let freshManifestVideos = ManifestLoader.instance.loadedManifest
+        //debugLog("freshManifestVideos count : \(freshManifestVideos.count)")
+
         // First day, then night
-        for video in manifestVideos {
+        for video in freshManifestVideos {
             let name = video.name
 
             if cities.keys.contains(name) == false {
@@ -1873,7 +2014,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     }
 
     // MARK: - Outline View Delegate & Data Source
-
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         guard let item = item else { return cities.count }
 
@@ -2047,6 +2187,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         case let video as AerialVideo:
             player = AVPlayer()
             playerView.player = player
+            player.isMuted = true
 
             debugLog("Playing this preview \(video)")
             // Workaround for cached videos generating online traffic
@@ -2169,13 +2310,18 @@ extension PreferencesWindowController: NSMenuDelegate {
 
         if let video = rowItem as? AerialVideo {
             if video.isAvailableOffline {
+                rightClickOpenQuickTimeMenuItem.isHidden = false
+                rightClickMoveToTrashMenuItem.isHidden = false
+                rightClickDownloadVideoMenuItem.isHidden = true
                 for item in menu.items {
-                    item.isHidden = false
                     item.representedObject = rowItem
                 }
             } else {
+                rightClickOpenQuickTimeMenuItem.isHidden = true
+                rightClickMoveToTrashMenuItem.isHidden = true
+                rightClickDownloadVideoMenuItem.isHidden = false
                 for item in menu.items {
-                    item.isHidden = true
+                    item.representedObject = rowItem
                 }
             }
         } else {

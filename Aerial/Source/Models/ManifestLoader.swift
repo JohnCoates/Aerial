@@ -8,6 +8,8 @@
 
 import Foundation
 import ScreenSaver
+import GameplayKit
+import AVFoundation
 
 typealias ManifestLoadCallback = ([AerialVideo]) -> Void
 
@@ -20,6 +22,7 @@ class ManifestLoader {
     var loadedManifest = [AerialVideo]()
     var processedVideos = [AerialVideo]()
     var lastPluckedFromPlaylist: AerialVideo?
+    var customVideoFolders: CustomVideoFolders?
 
     var manifestTvOS10: Data?
     var manifestTvOS11: Data?
@@ -149,7 +152,25 @@ class ManifestLoader {
         playlistRestrictedTo = restrictedTo
 
         // Start with a shuffled list
-        let shuffled = loadedManifest.shuffled()
+        //let shuffled = loadedManifest.shuffled()
+        var shuffled: [AerialVideo]
+        let preferences = Preferences.sharedInstance
+        if preferences.synchronizedMode {
+            if #available(OSX 10.11, *) {
+                let date = Date()
+                let calendar = NSCalendar.current
+                let minutes = calendar.component(.minute, from: date)
+                debugLog("seed : \(minutes)")
+
+                var generator = SeededGenerator(seed: UInt64(minutes))
+                shuffled = loadedManifest.shuffled(using: &generator)
+            } else {
+                // Fallback on earlier versions
+                shuffled = loadedManifest.shuffled()
+            }
+        } else {
+            shuffled = loadedManifest.shuffled()
+        }
 
         for video in shuffled {
             // We exclude videos not in rotation
@@ -249,6 +270,8 @@ class ManifestLoader {
 
     init() {
         debugLog("Manifest init")
+        // tmp
+        loadCustomVideos()
         // We try to load our video manifests in 3 steps :
         // - reload from local variables (unused for now, maybe with previews+screensaver
         // in some weird edge case on some systems)
@@ -361,6 +384,77 @@ class ManifestLoader {
         } else {
             callbacks.append(callback)
         }
+    }
+
+    // MARK: - Custom videos
+    func loadCustomVideos() {
+        do {
+            if let cacheDirectory = VideoCache.cacheDirectory {
+                // tvOS12
+                var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
+                cacheFileUrl.appendPathComponent("customvideos.json")
+                debugLog("custom file : \(cacheFileUrl)")
+                let ndata = try Data(contentsOf: cacheFileUrl)
+                customVideoFolders = try CustomVideoFolders(data: ndata)
+            }
+        } catch {
+            debugLog("No customvideos.json \(error)")
+        }
+    }
+
+    func saveCustomVideos() {
+        if let cvf = customVideoFolders, let cacheDirectory = VideoCache.cacheDirectory {
+            var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
+            cacheFileUrl.appendPathComponent("customvideos.json")
+
+            do {
+                if let encodedData = try? cvf.jsonData() {
+                    try encodedData.write(to: cacheFileUrl)
+                    debugLog("customvideos.json saved successfully!")
+                    loadedManifest.removeAll()  // we remove our previously loaded manifest, it's invalid
+                }
+            } catch let error as NSError {
+                errorLog("customvideos.json could not be saved: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    // This is where we merge with the processed list
+    func mergeCustomVideos() {
+        if let cvf = customVideoFolders {
+            for folder in cvf.folders {
+                for asset in folder.assets {
+                    let avResolution = getResolution(asset: AVAsset(url: URL(fileURLWithPath: asset.url)))
+                    var url1080p = ""
+                    var url4K = ""
+
+                    if avResolution.height > 1080 {
+                        url4K = URL(fileURLWithPath: asset.url).absoluteString
+                    } else {
+                        url1080p = URL(fileURLWithPath: asset.url).absoluteString
+                    }
+
+                    let video = AerialVideo(id: asset.id,
+                                                name: folder.label,
+                                                secondaryName: asset.accessibilityLabel,
+                                                type: "video",
+                                                timeOfDay: asset.time,
+                                                url1080pH264: url1080p,
+                                                url1080pHEVC: "",
+                                                url4KHEVC: url4K,
+                                                manifest: .customVideos,
+                                                poi: [:],
+                                                communityPoi: asset.pointsOfInterest)
+                    processedVideos.append(video)
+                }
+            }
+        }
+    }
+
+    func getResolution(asset: AVAsset) -> CGSize {
+        guard let track = asset.tracks(withMediaType: AVMediaType.video).first else { return CGSize.zero }
+        let size = track.naturalSize.applying(track.preferredTransform)
+        return CGSize(width: abs(size.width), height: abs(size.height))
     }
 
     // MARK: - Periodically check for new videos
@@ -545,6 +639,10 @@ class ManifestLoader {
             warnLog("tvOS10 manifest is absent")
         }
 
+        if customVideoFolders != nil {
+            mergeCustomVideos()
+        }
+
         // We sort videos by secondary names, so they can display sorted in our view later
         processedVideos = processedVideos.sorted { $0.secondaryName < $1.secondaryName }
 
@@ -561,7 +659,7 @@ class ManifestLoader {
             }
         }*/
 
-        debugLog("Total videos processed : \(processedVideos.count)")
+        debugLog("Total videos processed : \(processedVideos.count) callbacks : \(callbacks.count)")
         // callbacks
         for callback in self.callbacks {
             callback(self.loadedManifest)

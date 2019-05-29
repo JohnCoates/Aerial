@@ -77,7 +77,11 @@ func Log(level: ErrorLevel, message: String) {
     if preferences.logToDisk {
         DispatchQueue.main.async {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm:ss"
+            if preferences.logMilliseconds {
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
+            } else {
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            }
 
             let string = dateFormatter.string(from: Date()) + " : " + message + "\n"
 
