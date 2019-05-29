@@ -1,6 +1,7 @@
 #  Add your own videos to Aerial
 
 Starting with version 1.5.0 of Aerial, you can now add your own videos to the playlilst. In order to do this, click "Custom Videos..." at the bottom of the menu:
+
 ![Capture d’écran 2019-05-24 à 17 13 22](https://user-images.githubusercontent.com/37544189/58338271-c090be80-7e47-11e9-833a-d70ada56232b.jpg)
 
 This will open the "Manage Custom Videos" window. Click the "Add folder" at the top of the window, and point it to a folder that contains videos. Aerial will scan that folder and show you the videos it found in the left panel. For long time users, a good way to try this is your `oldvideos` folder in your Aerial cache folder. 

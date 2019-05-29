@@ -24,6 +24,8 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 ## Installation
 
+Aerial now includes an auto-update mechanism using the [Sparkle open-source project](https://github.com/sparkle-project/Sparkle). You will need to download it manually the first time :
+
 1. Quit **System Preferences**.
 2. [Download the latest release of Aerial.saver.zip](https://github.com/JohnCoates/Aerial/releases/latest). Alternatively, you can try the latest beta version [following this link](https://github.com/JohnCoates/Aerial/releases). 
 3. Unzip the downloaded file (if you use Safari, it should already be done for you).
