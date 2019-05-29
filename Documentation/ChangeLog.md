@@ -26,7 +26,7 @@ You can find more [information here](CustomVideos.md).
 
 ## [1.4.8](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.8) - April 30, 2019
 
-- Add support for the 5 new 4K videos.
+- Add support for the 5 new 4K videos (January 25th update).
 - Automatic updates through Sparkle.
 - Localization for community support in Arabic, Chinese Simplified, English, French, German, Hebrew, Polish and Spanish! Thanks to all the contributors. If you want to help, check here, we very much welcome new contributions !
 - You can now skip an Aerial with the right arrow key.
