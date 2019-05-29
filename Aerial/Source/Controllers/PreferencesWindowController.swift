@@ -432,6 +432,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         horizontalDisplayMarginTextfield.doubleValue = preferences.horizontalMargin!
         verticalDisplayMarginTextfield.doubleValue = preferences.verticalMargin!
 
+        if preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue {
+            displayMarginBox.isHidden = false
+        } else {
+            displayMarginBox.isHidden = true
+        }
+
         // Advanced panel
         if preferences.debugMode {
             debugModeCheckbox.state = .on
