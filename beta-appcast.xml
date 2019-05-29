@@ -3,17 +3,24 @@
 <title>Aerial</title>
   
 <item>
-<title>1.4.99beta6</title>
+<title>1.4.99beta7</title>
   <description>
           <![CDATA[
             <p>This is the beta feed!</p>
-<p>This version adds the ability to add your own (custom) videos for Aerial to playback with a new editor. Find more information in this issue #786 !</p>
+<p>This version fixes many bugs in the new custom videos feature : </p>
+<ul><li>Videos will now play muted (!)</li>
+<li>Video manager now shows informations about resolution and duration of a video</li>
+<li>Fix stepper not working when adding a poi, fixed seeking when adding a poi</li>
+<li>4K custom videos now have the correct 4K badge in main UI</li>
+<li>customvideos.json is now pretty printed for easier manual editing</li>
+<li>Closing the custom video manager now properly reloads the video list in main UI</li></ul> 
+<p>Find more information in this issue #786 !</p>
 <p>Please report any bug you find !</p>            
           ]]>
     </description>
-<pubDate>ven., 24 mai. 2019 17:40:29 +0100</pubDate>
+<pubDate>mer., 29 mai. 2019 12:40:29 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.99beta6/Aerial.saver.zip" sparkle:version="1.4.99beta6" sparkle:shortVersionString="1.4.99beta6"  sparkle:edSignature="u31N1Ch4LdH1N7P34ziC0H5hDGO/Yu/ISYztCIrrB6nazXjEJyL1stQ2FwlqTcP6NjXYbl/y7Ia3M1avcCczAQ==" length="5942527" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.99beta7/Aerial.saver.zip" sparkle:version="1.4.99beta7" sparkle:shortVersionString="1.4.99beta7"  sparkle:edSignature="yT16QQHx3Dyg1A3M2zriuzKc3eLxeHeFdug0lO8T2yLIBFXPoy64gP2thowESfqBWKqh1pentCrYycPZSJ+7Cg==" length="5944919" type="application/octet-stream"/>
 </item>
 
 <item>
