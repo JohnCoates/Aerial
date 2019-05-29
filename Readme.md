@@ -37,11 +37,11 @@ Need more information on install, setup, or uninstall ? Or want to install via h
 
 ![Capture d’écran 2019-05-29 à 14 43 52](https://user-images.githubusercontent.com/37544189/58558342-d116af80-8220-11e9-8bb0-8d26f1e1b6ed.jpg)
 
-- You can now add your own videos to Aerial using the new Custom Videos feature, and play them alongside Aerial videos:
+- You can now add your own videos to Aerial using the new [Custom Videos feature](Documentation/CustomVideos.md), and play them alongside Aerial videos:
 
 ![Capture d’écran 2019-05-29 à 12 52 29](https://user-images.githubusercontent.com/37544189/58552781-8478a780-8213-11e9-99bc-2b55c75b6bd3.jpg)
 
-You can find more about [version changes here](Documentation/Changelog.md).
+You can find more about [version changes here](Documentation/ChangeLog.md).
 
 ## Compatibility
 
@@ -72,6 +72,7 @@ Looking for more information ?
 - [Have an issues ? Check our list of common issues right here, including workaround for macOS bugs!](Documentation/Troubleshooting.md)
 - [Learn more about configuring and running Aerial in offline mode with no network access.](Documentation/OfflineMode.md)
 - [Information about HEVC, HDR and hardware decoding](Documentation/HardwareDecoding.md) 
+- [How to add your own videos to Aerial](Documentation/CustomVideos.md)
 
 ## License
 
