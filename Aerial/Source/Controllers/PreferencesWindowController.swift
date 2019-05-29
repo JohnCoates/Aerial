@@ -1971,8 +1971,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         var videos = [AerialVideo]()
         var cities = [String: City]()
 
+        // Grab a fresh version, because our callback can be feeding us wrong data in CVC
+        let freshManifestVideos = ManifestLoader.instance.loadedManifest
+        debugLog("freshManifestVideos count : \(freshManifestVideos.count)")
+
         // First day, then night
-        for video in manifestVideos {
+        for video in freshManifestVideos {
             let name = video.name
 
             if cities.keys.contains(name) == false {
