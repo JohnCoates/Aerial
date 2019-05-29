@@ -168,6 +168,9 @@
 		03DAD46F229EAC66000DA6D1 /* Installation.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Installation.md; sourceTree = "<group>"; };
 		03DAD471229EB1E9000DA6D1 /* ChangeLog.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ChangeLog.md; sourceTree = "<group>"; };
 		03DAD472229EC031000DA6D1 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		03DAD474229EC3CD000DA6D1 /* OfflineMode.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = OfflineMode.md; sourceTree = "<group>"; };
+		03DAD475229EC544000DA6D1 /* HardwareDecoding.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = HardwareDecoding.md; sourceTree = "<group>"; };
+		03DAD476229EC64D000DA6D1 /* Troubleshooting.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Troubleshooting.md; sourceTree = "<group>"; };
 		03E8730B2165013C002B469B /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		03E8730E216501ED002B469B /* AsynchronousOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousOperation.swift; sourceTree = "<group>"; };
 		03E8731221675FE0002B469B /* TimeManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManagement.swift; sourceTree = "<group>"; };
@@ -282,6 +285,9 @@
 			children = (
 				03DAD46F229EAC66000DA6D1 /* Installation.md */,
 				03DAD471229EB1E9000DA6D1 /* ChangeLog.md */,
+				03DAD474229EC3CD000DA6D1 /* OfflineMode.md */,
+				03DAD475229EC544000DA6D1 /* HardwareDecoding.md */,
+				03DAD476229EC64D000DA6D1 /* Troubleshooting.md */,
 			);
 			path = Documentation;
 			sourceTree = "<group>";
