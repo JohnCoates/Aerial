@@ -39,6 +39,9 @@ You can find more [information here](CustomVideos.md).
 ## [1.4.6](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.6) - December 28, 2018
 
 - **25 extra videos now available in 4K:** Following the content updates from October 30th and December 5th, Aerial now includes 70 videos, 60 of which are also available in 4K. Aerial will periodically check for new videos, you can disable this feature in the `Cache` tab.
+
+![screen shot 2018-10-29 at 13 21 05](https://user-images.githubusercontent.com/37544189/47649972-1f76a980-db7f-11e8-910b-1d5d50931ae2.png)
+
 - **Show videos in Quicktime:** You can now right click a video to open it in Quicktime.
 - **Remove video duplicates:** Aerial can now cleanup your old videos (They are periodically updated to fix colors, provide longer versions of previously existing videos, or upgraded to 4K). Go to the `Advanced` Tab and either move the files away or send them to the trash to reclaim free space. The `Move old videos` button will move the video files to a directory created within the Aerial cache called `oldvideos`, which will contain a dated directory within it. You can find them at `/Users/YOURUSERNAME/Library/Caches/Aerial/oldvideos/YYYY-MM-DD`
 
@@ -54,7 +57,13 @@ You can find more [information here](CustomVideos.md).
 ## [1.4.4](https://github.com/JohnCoates/Aerial/releases/tag/v1.4.4) - October 29, 2018
 
 - New sunset/sunrise dusk/dawn calculation modes from coordinates, Aerial can gather your location using your Mac's location service (you'll be asked for permission). Includes multiple calculations modes for dusk to better suite everyone's needs
+
+![screen shot 2018-10-29 at 13 24 46](https://user-images.githubusercontent.com/37544189/47649974-1f76a980-db7f-11e8-8339-3f0424652b8c.png)
+
 - Control brightness, Aerial can progressively dim the brightness of your screen when it plays. Includes extra options to only enable at night or on battery
+
+![screen shot 2018-10-29 at 13 25 10](https://user-images.githubusercontent.com/37544189/47649975-200f4000-db7f-11e8-9e8b-f75c4a5ebde4.png)
+
 - Add an option to define the margins from the border where descriptions should appear, changed the default for something more sensible
 - And many bug fixes/ui tweaks!
 

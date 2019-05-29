@@ -34,6 +34,16 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 Need more information on install, setup, or uninstall ? Or want to install via homebrew ? Check our extended [instructions here](Documentation/Installation.md). 
 
+## What's new in Aerial 1.5.0 ?
+
+- Completely rewritten multi monitor support. You can now enable and disable individual displays in the new Display tab. There is also a new "Spanned" viewing mode. Selecting this mode will span an Aerial video on all your (selected) screens. You can even adjust the margins between your screens:
+
+![Capture d’écran 2019-05-29 à 14 43 52](https://user-images.githubusercontent.com/37544189/58558342-d116af80-8220-11e9-8bb0-8d26f1e1b6ed.jpg)
+
+- You can now add your own videos to Aerial using the new Custom Videos features and play them alongside Aerial videos:
+
+![Capture d’écran 2019-05-29 à 12 52 29](https://user-images.githubusercontent.com/37544189/58552781-8478a780-8213-11e9-99bc-2b55c75b6bd3.jpg)
+
 ## Multilanguage support
 
 Aerial features overlay descriptions of the main geographical features displayed in the videos.
@@ -44,19 +54,9 @@ These descriptions are available in many languages (Spanish, French, Polish… [
 
 If you want to collaborate, please [read the details here](Resources/Community/Readme.md).
 
-## New features in 1.4.6
-
-- **25 extra videos now available in 4K:** Following the content updates from October 30th and December 5th, Aerial now includes 70 videos, 60 of which are also available in 4K. Aerial will periodically check for new videos, you can disable this feature in the `Cache` tab.
-- **Show videos in Quicktime:** You can now right click a video to open it in Quicktime.
-- **Remove video duplicates:** Aerial can now cleanup your old videos (They are periodically updated to fix colors, provide longer versions of previously existing videos, or upgraded to 4K). Go to the `Advanced` Tab and either move the files away or send them to the trash to reclaim free space. The `Move old videos` button will move the video files to a directory created within the Aerial cache called `oldvideos`, which will contain a dated directory within it. You can find them at `/Users/YOURUSERNAME/Library/Caches/Aerial/oldvideos/YYYY-MM-DD`
-
-![capture d ecran 2018-12-13 a 15 06 49](https://user-images.githubusercontent.com/37544189/49943901-60394080-fee9-11e8-93b0-3cc68087b70e.png)
-
-- **More battery controls:** Using Aerial on a Macbook ? You can now specify a different video format on battery mode if you wish, or simply video playback using the Power Saving mode (Aerial will show a blank screen and reduce screen brightness instead of showing videos).
 
 ## Features
 
-![screen shot 2018-10-29 at 13 21 05](https://user-images.githubusercontent.com/37544189/47649972-1f76a980-db7f-11e8-910b-1d5d50931ae2.png)
 
 - **Every Aerial video:** From the very first Aerials in San Francisco to the new space videos shot from the ISS! Now with better titles too so you can find your favorite videos faster.
 - **4K HEVC:** With the launch of Apple TV 4K, many videos are now available in this format (With version 1.4.6, 60 of the 70 videos are available in 4K!). Aerial will show you the best format available, based on your preferences.
