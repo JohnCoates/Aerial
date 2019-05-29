@@ -84,9 +84,7 @@ class CustomVideoController: NSWindowController, NSWindowDelegate {
                 manifestInstance.saveCustomVideos()
 
                 manifestInstance.addCallback { manifestVideos in
-                    debugLog("addCallback")
                     if let contr = self.controller {
-                        debugLog("addLoadedCallback")
                         contr.loaded(manifestVideos: [])
                     }
                 }

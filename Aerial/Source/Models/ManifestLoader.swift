@@ -411,6 +411,7 @@ class ManifestLoader {
                 if let encodedData = try? cvf.jsonData() {
                     try encodedData.write(to: cacheFileUrl)
                     debugLog("customvideos.json saved successfully!")
+                    loadedManifest.removeAll()  // we remove our previously loaded manifest, it's invalid
                 }
             } catch let error as NSError {
                 errorLog("customvideos.json could not be saved: \(error.localizedDescription)")
@@ -658,7 +659,7 @@ class ManifestLoader {
             }
         }*/
 
-        debugLog("Total videos processed : \(processedVideos.count)")
+        debugLog("Total videos processed : \(processedVideos.count) callbacks : \(callbacks.count)")
         // callbacks
         for callback in self.callbacks {
             callback(self.loadedManifest)

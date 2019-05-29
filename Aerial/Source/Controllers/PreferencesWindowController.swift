@@ -1973,7 +1973,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         // Grab a fresh version, because our callback can be feeding us wrong data in CVC
         let freshManifestVideos = ManifestLoader.instance.loadedManifest
-        debugLog("freshManifestVideos count : \(freshManifestVideos.count)")
+        //debugLog("freshManifestVideos count : \(freshManifestVideos.count)")
 
         // First day, then night
         for video in freshManifestVideos {
