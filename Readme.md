@@ -16,11 +16,9 @@ Aerial is completely open source, so feel free to contribute to its development.
 ###### Windows user? Try [cDima/Aerial](https://github.com/cDima/Aerial/)
 ###### Linux user? Try [graysky2/xscreensaver-aerial](https://github.com/graysky2/xscreensaver-aerial/)
 
-#### Coded with Love by John Coates ([Twitter](https://twitter.com/JohnCoatesDev), [Email](mailto:john@johncoates.me))
+Aerial was started in 2015 by John Coates ([Twitter](https://twitter.com/JohnCoatesDev), [Email](mailto:john@johncoates.me))
 
-Starting with version 1.4, Aerial is also maintained by:
-
-- [Guillaume Louel](https://github.com/glouel) ([Twitter](https://twitter.com/C_Wiz), [![Support via PayPal][paypal-button]][paypal-glouel])
+Starting with version 1.4, Aerial is also maintained by [Guillaume Louel](https://github.com/glouel) ([Twitter](https://twitter.com/C_Wiz), [PayPal](https://paypal.me/glouel?locale.x=fr_FR)).
 
 You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/graphs/contributors).
 
@@ -43,7 +41,7 @@ Need more information on install, setup, or uninstall ? Or want to install via h
 
 ![Capture d’écran 2019-05-29 à 12 52 29](https://user-images.githubusercontent.com/37544189/58552781-8478a780-8213-11e9-99bc-2b55c75b6bd3.jpg)
 
-You can find more about [version changes here](Documentation\Changelog.md).
+You can find more about [version changes here](Documentation/Changelog.md).
 
 ## Compatibility
 
@@ -71,9 +69,9 @@ If you want to collaborate, please [read the details here](Resources/Community/R
 
 Looking for more information ?
 
-- [Have an issues ? Check our list of common issues right here, including workaround for macOS bugs!](Documentation\Troubleshooting.md)
-- [Learn more about configuring and running Aerial in offline mode with no network access.](Documentation\OfflineMode.md)
-- [Information about HEVC, HDR and hardware decoding](Documentation\HardwareDecoding.md) 
+- [Have an issues ? Check our list of common issues right here, including workaround for macOS bugs!](Documentation/Troubleshooting.md)
+- [Learn more about configuring and running Aerial in offline mode with no network access.](Documentation/OfflineMode.md)
+- [Information about HEVC, HDR and hardware decoding](Documentation/HardwareDecoding.md) 
 
 ## License
 

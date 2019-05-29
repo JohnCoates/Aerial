@@ -171,6 +171,7 @@
 		03DAD474229EC3CD000DA6D1 /* OfflineMode.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = OfflineMode.md; sourceTree = "<group>"; };
 		03DAD475229EC544000DA6D1 /* HardwareDecoding.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = HardwareDecoding.md; sourceTree = "<group>"; };
 		03DAD476229EC64D000DA6D1 /* Troubleshooting.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Troubleshooting.md; sourceTree = "<group>"; };
+		03DAD477229ECAAA000DA6D1 /* CustomVideos.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CustomVideos.md; sourceTree = "<group>"; };
 		03E8730B2165013C002B469B /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		03E8730E216501ED002B469B /* AsynchronousOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousOperation.swift; sourceTree = "<group>"; };
 		03E8731221675FE0002B469B /* TimeManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManagement.swift; sourceTree = "<group>"; };
@@ -288,6 +289,7 @@
 				03DAD474229EC3CD000DA6D1 /* OfflineMode.md */,
 				03DAD475229EC544000DA6D1 /* HardwareDecoding.md */,
 				03DAD476229EC64D000DA6D1 /* Troubleshooting.md */,
+				03DAD477229ECAAA000DA6D1 /* CustomVideos.md */,
 			);
 			path = Documentation;
 			sourceTree = "<group>";
