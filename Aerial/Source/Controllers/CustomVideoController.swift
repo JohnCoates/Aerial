@@ -365,6 +365,8 @@ extension CustomVideoController: NSOutlineViewDelegate {
                 timeTextStepper.maxValue = Double(currentAssetDuration!)
                 timeTextFormatter.minimum = 0
                 timeTextFormatter.maximum = NSNumber(value: currentAssetDuration!)
+                //timeTableFormatter.minimum = 0
+                //timeTableFormatter.maximum = NSNumber(value: currentAssetDuration!)
 
                 durationLabel.stringValue = String(currentAssetDuration!) + " seconds"
                 resolutionLabel.stringValue = crString
