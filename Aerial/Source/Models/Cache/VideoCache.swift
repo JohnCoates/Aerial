@@ -10,6 +10,7 @@ import Foundation
 import AVFoundation
 import ScreenSaver
 
+// swiftlint:disable:next type_body_length
 final class VideoCache {
     var videoData: Data
     var mutableVideoData: NSMutableData?
@@ -113,17 +114,40 @@ final class VideoCache {
     }
 
     static func isAvailableOffline(video: AerialVideo) -> Bool {
-        guard let videoCachePath = cachePath(forVideo: video) else {
-            errorLog("Couldn't get video cache path!")
-            return false
-        }
-
         let fileManager = FileManager.default
 
-        return fileManager.fileExists(atPath: videoCachePath)
+        if video.url.absoluteString.starts(with: "file") {
+            return fileManager.fileExists(atPath: video.url.path)
+        } else {
+            guard let videoCachePath = cachePath(forVideo: video) else {
+                errorLog("Couldn't get video cache path!")
+                return false
+            }
+
+            return fileManager.fileExists(atPath: videoCachePath)
+        }
+    }
+
+    static func moveToTrash(video: AerialVideo) {
+        guard let videoCachePath = cachePath(forVideo: video) else {
+            errorLog("Couldn't get video cache path to trash!")
+            return
+        }
+
+        let vurl = Foundation.URL(fileURLWithPath: videoCachePath as String)
+        debugLog("trashing \(vurl))")
+        do {
+            try FileManager.default.trashItem(at: vurl, resultingItemURL: nil)
+        } catch let error {
+            errorLog("Could not move  \(video.url) to trash \(error)")
+        }
     }
 
     static func cachePath(forVideo video: AerialVideo) -> String? {
+        if video.url.absoluteString.starts(with: "file") {
+            return video.url.path
+        }
+
         let vurl = video.url
         let filename = vurl.lastPathComponent
         return cachePath(forFilename: filename)

@@ -14,6 +14,7 @@ disabled_rules:
   - function_body_length
   # Allow declaring operators without extra whitespace, like so: `func ==(_ lhs, ...)`
   - operator_whitespace
+  - redundant_string_enum_value
 
 opt_in_rules:
   # Prefer checking `isEmpty` over `count > 0`

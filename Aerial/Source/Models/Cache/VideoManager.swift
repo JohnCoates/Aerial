@@ -53,6 +53,12 @@ final class VideoManager: NSObject {
         progressCallbacks.append(callback)
     }
 
+    func updateAllCheckCellView() {
+        for view in checkCells {
+            view.value.adaptIndicators()
+        }
+    }
+
     // Is the video queued for download ?
     func isVideoQueued(id: String) -> Bool {
         if queuedVideos.firstIndex(of: id) != nil {

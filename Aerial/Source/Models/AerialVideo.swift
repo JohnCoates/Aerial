@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 
 enum Manifests: String {
-    case tvOS10 = "tvos10.json", tvOS11 = "tvos11.json", tvOS12 = "entries.json"
+    case tvOS10 = "tvos10.json", tvOS11 = "tvos11.json", tvOS12 = "entries.json", customVideos = "customvideos.json"
 }
 
 private let spaceVideos = [
@@ -205,32 +205,45 @@ final class AerialVideo: CustomStringConvertible, Equatable {
         // working on a cached copy which makes the native duration retrieval fail
 
         // Not the prettiest code !
-        let cacheDirectoryPath = VideoCache.cacheDirectory! as NSString
         let fileManager = FileManager.default
 
-        var videoCache1080pH264Path = "", videoCache1080pHEVCPath = "", videoCache4KHEVCPath = ""
-        if self.url1080pH264 != "" {
-            videoCache1080pH264Path = cacheDirectoryPath.appendingPathComponent((URL(string: url1080pH264)?.lastPathComponent)!)
-        }
-        if self.url1080pHEVC != "" {
-            videoCache1080pHEVCPath = cacheDirectoryPath.appendingPathComponent((URL(string: url1080pHEVC)?.lastPathComponent)!)
-        }
-        if self.url4KHEVC != "" {
-            videoCache4KHEVCPath = cacheDirectoryPath.appendingPathComponent((URL(string: url4KHEVC)?.lastPathComponent)!)
-        }
-
-        if fileManager.fileExists(atPath: videoCache4KHEVCPath) {
-            let asset = AVAsset(url: URL(fileURLWithPath: videoCache4KHEVCPath))
-            self.duration = CMTimeGetSeconds(asset.duration)
-        } else if fileManager.fileExists(atPath: videoCache1080pHEVCPath) {
-            let asset = AVAsset(url: URL(fileURLWithPath: videoCache1080pHEVCPath))
-            self.duration = CMTimeGetSeconds(asset.duration)
-        } else if fileManager.fileExists(atPath: videoCache1080pH264Path) {
-            let asset = AVAsset(url: URL(fileURLWithPath: videoCache1080pH264Path))
-            self.duration = CMTimeGetSeconds(asset.duration)
+        // And with local custom videos it's worse !
+        if self.url.absoluteString.starts(with: "file") {
+            if fileManager.fileExists(atPath: self.url.path) {
+                let asset = AVAsset(url: self.url)
+                self.duration = CMTimeGetSeconds(asset.duration)
+            } else {
+                errorLog("Custom video is missing : \(self.url.path)")
+                self.duration = 0
+            }
         } else {
-            debugLog("Could not determine duration, video is not cached in any format")
-            self.duration = 0
+            let cacheDirectoryPath = VideoCache.cacheDirectory! as NSString
+
+            var videoCache1080pH264Path = "", videoCache1080pHEVCPath = "", videoCache4KHEVCPath = ""
+            if self.url1080pH264 != "" {
+                videoCache1080pH264Path = cacheDirectoryPath.appendingPathComponent((URL(string: url1080pH264)?.lastPathComponent)!)
+            }
+            if self.url1080pHEVC != "" {
+                videoCache1080pHEVCPath = cacheDirectoryPath.appendingPathComponent((URL(string: url1080pHEVC)?.lastPathComponent)!)
+            }
+            if self.url4KHEVC != "" {
+                videoCache4KHEVCPath = cacheDirectoryPath.appendingPathComponent((URL(string: url4KHEVC)?.lastPathComponent)!)
+            }
+
+            if fileManager.fileExists(atPath: videoCache4KHEVCPath) {
+                let asset = AVAsset(url: URL(fileURLWithPath: videoCache4KHEVCPath))
+                self.duration = CMTimeGetSeconds(asset.duration)
+            } else if fileManager.fileExists(atPath: videoCache1080pHEVCPath) {
+                let asset = AVAsset(url: URL(fileURLWithPath: videoCache1080pHEVCPath))
+                self.duration = CMTimeGetSeconds(asset.duration)
+            } else if fileManager.fileExists(atPath: videoCache1080pH264Path) {
+                let asset = AVAsset(url: URL(fileURLWithPath: videoCache1080pH264Path))
+                self.duration = CMTimeGetSeconds(asset.duration)
+            } else {
+                debugLog("Could not determine duration, video is not cached in any format")
+                self.duration = 0
+            }
+
         }
     }
 

@@ -14,7 +14,7 @@ import Sparkle
 
 @objc(AerialView)
 // swiftlint:disable:next type_body_length
-final class AerialView: ScreenSaverView {
+final class AerialView: ScreenSaverView, CAAnimationDelegate {
     var playerLayer: AVPlayerLayer!
     var textLayer: CATextLayer!
     var clockLayer: CATextLayer!
@@ -35,6 +35,8 @@ final class AerialView: ScreenSaverView {
     var wasStopped = false
     var isDisabled = false
     var timeObserver: Any?
+
+    var isQuickFading = false
 
     var brightnessToRestore: Float?
 
@@ -71,19 +73,19 @@ final class AerialView: ScreenSaverView {
         }
     }
 
+    // Mirrored viewing mode and Spanned viewing mode share the same player for sync & ressource saving
     static var sharingPlayers: Bool {
         let preferences = Preferences.sharedInstance
-        return (preferences.multiMonitorMode == Preferences.MultiMonitorMode.mirrored.rawValue)
+        return (preferences.newViewingMode == Preferences.NewViewingMode.mirrored.rawValue) ||
+            (preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue)
     }
 
     static var sharedViews: [AerialView] = []
-    // because of lifecycle in Preview, we may pile up old/no longer
+    // Because of lifecycle in Preview, we may pile up old/no longer
     // shared instanciated views that we need to track to not reuse
     static var instanciatedViews: [AerialView] = []
-    //var instanciatedIndex: Int
 
     // MARK: - Shared Player
-
     static var singlePlayerAlreadySetup: Bool = false
     static var sharedPlayerIndex: Int?
     static var didSkipMain: Bool = false
@@ -110,7 +112,7 @@ final class AerialView: ScreenSaverView {
     // This is the one used by System Preferences
     override init?(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)
-        debugLog("avInit1")
+        debugLog("avInit1 \(frame)")
         self.animationTimeInterval = 1.0 / 30.0
         setup()
     }
@@ -137,13 +139,11 @@ final class AerialView: ScreenSaverView {
         }
 
         // Remove from player index
-
         let indexMaybe = AerialView.players.firstIndex(of: player)
 
         guard let index = indexMaybe else {
             return
         }
-
         AerialView.players.remove(at: index)
     }
 
@@ -183,9 +183,6 @@ final class AerialView: ScreenSaverView {
         debugLog("\(self.description) AerialView setup init")
         let preferences = Preferences.sharedInstance
         let timeManagement = TimeManagement.sharedInstance
-
-        debugLog("isOnBattery : \(timeManagement.isOnBattery())")
-        debugLog("isBatteryLow : \(timeManagement.isBatteryLow())")
 
         // Initialize Sparkle updater
         if !isPreview && preferences.updateWhileSaverMode {
@@ -255,34 +252,29 @@ final class AerialView: ScreenSaverView {
             }
         }
 
+        let displayDetection = DisplayDetection.sharedInstance
+        // We look for the screen in our detected list. In case of preview or unknown screen
+        // result will be nil
+        let thisScreen = displayDetection.findScreenWith(frame: self.frame)
         var localPlayer: AVPlayer?
-
-        let notPreview = !isPreview
         debugLog("\(self.description) isPreview : \(isPreview)")
+        debugLog("Using : \(String(describing: thisScreen))")
 
-        if notPreview {
-            debugLog("\(self.description) singlePlayerAlreadySetup \(AerialView.singlePlayerAlreadySetup)")
-            if AerialView.singlePlayerAlreadySetup && preferences.multiMonitorMode == Preferences.MultiMonitorMode.mainOnly.rawValue {
-                isDisabled = true
-                return
-            }
-
-            if preferences.multiMonitorMode == Preferences.MultiMonitorMode.secondaryOnly.rawValue {
-                if !AerialView.didSkipMain {
-                    AerialView.didSkipMain = true
+        if !isPreview {
+            if let screen = thisScreen {
+                // Is the screen active according to user settings or not ?
+                if !displayDetection.isScreenActive(id: screen.id) {
+                    // Then we disable and exit
+                    debugLog("This display is not active, disabling")
                     isDisabled = true
                     return
                 }
+            } else {
+                // If we don't know this screen, we disable
+                //debugLog("This is an unknown display, disabling")
+                //isDisabled = false
+                //return
             }
-
-            // check if we should share preview's player
-            //let noPlayers = (AerialView.players.count == 0)
-            let previewPlayerExists = (AerialView.previewPlayer != nil)
-            debugLog("\(self.description) nbPlayers \(AerialView.players.count) previewPlayerExists \(previewPlayerExists)")
-            /*if noPlayers && previewPlayerExists {
-
-                localPlayer = AerialView.previewPlayer
-            }*/
         } else {
             AerialView.previewView = self
         }
@@ -298,12 +290,7 @@ final class AerialView: ScreenSaverView {
             debugLog("\(self.description) no local player")
 
             if AerialView.sharingPlayers {
-                /*if AerialView.previewPlayer != nil {
-                    localPlayer = AerialView.previewPlayer
-                } else {*/
-
                 localPlayer = AerialView.sharedPlayer
-                //}
             } else {
                 localPlayer = AVPlayer()
             }
@@ -325,6 +312,7 @@ final class AerialView: ScreenSaverView {
 
         setupPlayerLayer(withPlayer: player)
 
+        // In mirror mode we use the main instance player
         if AerialView.sharingPlayers && AerialView.singlePlayerAlreadySetup {
             self.playerLayer.player = AerialView.instanciatedViews[AerialView.sharedPlayerIndex!].player
             self.playerLayer.opacity = 0
@@ -355,6 +343,8 @@ final class AerialView: ScreenSaverView {
 
     func setupPlayerLayer(withPlayer player: AVPlayer) {
         debugLog("\(self.description) setupPlayerLayer")
+        let displayDetection = DisplayDetection.sharedInstance
+        let preferences = Preferences.sharedInstance
 
         self.layer = CALayer()
         guard let layer = self.layer else {
@@ -365,15 +355,34 @@ final class AerialView: ScreenSaverView {
         layer.backgroundColor = NSColor.black.cgColor
         layer.needsDisplayOnBoundsChange = true
         layer.frame = self.bounds
-
-        debugLog("\(self.description) setting up player layer with frame: \(self.bounds) / \(self.frame)")
+        debugLog("\(self.description) setting up player layer with bounds/frame: \(layer.bounds) / \(layer.frame)")
 
         playerLayer = AVPlayerLayer(player: player)
+
         if #available(OSX 10.10, *) {
             playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         }
         playerLayer.autoresizingMask = [CAAutoresizingMask.layerWidthSizable, CAAutoresizingMask.layerHeightSizable]
-        playerLayer.frame = layer.bounds
+
+        // In case of span mode we need to compute the size of our layer
+        if preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue && !isPreview {
+            let zRect = displayDetection.getZeroedActiveSpannedRect()
+            let screen = displayDetection.findScreenWith(frame: self.frame)
+            if let scr = screen {
+                let tRect = CGRect(x: zRect.origin.x - scr.zeroedOrigin.x,
+                                   y: zRect.origin.y - scr.zeroedOrigin.y,
+                                   width: zRect.width,
+                                   height: zRect.height)
+                debugLog("tRect : \(tRect)")
+                playerLayer.frame = tRect
+                //playerLayer.bounds = layer.bounds
+            } else {
+                errorLog("This is an unknown screen in span mode, this is not good")
+                playerLayer.frame = layer.bounds
+            }
+        } else {
+            playerLayer.frame = layer.bounds
+        }
         layer.addSublayer(playerLayer)
 
         textLayer = CATextLayer()
@@ -495,7 +504,12 @@ final class AerialView: ScreenSaverView {
                                         of object: Any?, change: [NSKeyValueChangeKey: Any]?,
                                         context: UnsafeMutableRawPointer?) {
         debugLog("\(self.description) observeValue \(String(describing: keyPath))")
-        if self.playerLayer.isReadyForDisplay {
+
+        if keyPath == "rate" {
+            if self.player!.rate > 0 {
+                debugLog("video started playing")
+            }
+        } else if self.playerLayer.isReadyForDisplay {
             self.player!.play()
             hasStartedPlaying = true
 
@@ -535,6 +549,9 @@ final class AerialView: ScreenSaverView {
         // play another video
         let oldPlayer = self.player
         self.player = player
+        player.isMuted = true
+        player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
+
         self.playerLayer.player = self.player
         if AerialView.shouldFade {
             self.playerLayer.opacity = 0
@@ -625,10 +642,23 @@ final class AerialView: ScreenSaverView {
 
         if preferences.allowSkips {
             if event.keyCode == 124 {
-                //playNextVideo()
-                // We need to skip forward all our views
-                for view in AerialView.instanciatedViews {
-                    view.playNextVideo()
+                if !isQuickFading {
+                    // If we share, just call this on our main view
+                    if AerialView.sharingPlayers {
+                        // The first view with the player gets the fade and the play next instruction,
+                        // it controls the others
+                        AerialView.sharedViews.first!.fastFadeOut(andPlayNext: true)
+                        for view in AerialView.sharedViews where AerialView.sharedViews.first != view {
+                            view.fastFadeOut(andPlayNext: false)
+                        }
+                    } else {
+                        // If we do independant playback we have to skip all views
+                        for view in AerialView.instanciatedViews {
+                            view.fastFadeOut(andPlayNext: true)
+                        }
+                    }
+                } else {
+                    debugLog("Right arrow key currently locked")
                 }
             } else {
                 self.nextResponder!.keyDown(with: event)
@@ -648,6 +678,37 @@ final class AerialView: ScreenSaverView {
     }
 
     // MARK: - Extra Animations
+    private func fastFadeOut(andPlayNext: Bool) {
+        // We need to clear the current animations running on playerLayer
+        isQuickFading = true    // Lock the use of keydown
+        playerLayer.removeAllAnimations()
+        let fadeOutAnimation = CAKeyframeAnimation(keyPath: "opacity")
+        fadeOutAnimation.values = [1, 0] as [Int]
+        fadeOutAnimation.keyTimes = [0, AerialView.fadeDuration] as [NSNumber]
+        fadeOutAnimation.duration = AerialView.fadeDuration
+        fadeOutAnimation.delegate = self
+        fadeOutAnimation.isRemovedOnCompletion = false
+        fadeOutAnimation.calculationMode = CAAnimationCalculationMode.cubic
+        if andPlayNext {
+            playerLayer.add(fadeOutAnimation, forKey: "quickfadeandnext")
+        } else {
+            playerLayer.add(fadeOutAnimation, forKey: "quickfade")
+        }
+    }
+
+    // Stop callback for fastFadeOut
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        isQuickFading = false   // Release our ugly lock
+        playerLayer.opacity = 0
+        if anim == playerLayer.animation(forKey: "quickfadeandnext") {
+            debugLog("stop and next")
+            playerLayer.removeAllAnimations()   // Make sure we get rid of our anim
+            playNextVideo()
+        } else {
+            debugLog("stop")
+            playerLayer.removeAllAnimations()   // Make sure we get rid of our anim
+        }
+    }
 
     private func addPlayerFades(player: AVPlayer, playerLayer: AVPlayerLayer, video: AerialVideo) {
         // We only fade in/out if we have duration
