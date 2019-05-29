@@ -14,14 +14,13 @@ Aerial is completely open source, so feel free to contribute to its development.
 [![codecov](https://codecov.io/gh/JohnCoates/Aerial/branch/master/graph/badge.svg)](https://codecov.io/gh/JohnCoates/Aerial)
 
 ###### Windows user? Try [cDima/Aerial](https://github.com/cDima/Aerial/)
-
 ###### Linux user? Try [graysky2/xscreensaver-aerial](https://github.com/graysky2/xscreensaver-aerial/)
 
 #### Coded with Love by John Coates ([Twitter](https://twitter.com/JohnCoatesDev), [Email](mailto:john@johncoates.me))
 
 Starting with version 1.4, Aerial is also maintained by:
 
-- [Guillaume Louel](https://github.com/glouel) ([Twitter](https://twitter.com/C_Wiz))
+- [Guillaume Louel](https://github.com/glouel) ([Twitter](https://twitter.com/C_Wiz), [![Support via PayPal][paypal-button]][paypal-glouel])
 
 You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/graphs/contributors).
 
