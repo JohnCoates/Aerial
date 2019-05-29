@@ -9,6 +9,7 @@
 import Foundation
 import ScreenSaver
 import GameplayKit
+import AVFoundation
 
 typealias ManifestLoadCallback = ([AerialVideo]) -> Void
 
@@ -410,6 +411,7 @@ class ManifestLoader {
                 if let encodedData = try? cvf.jsonData() {
                     try encodedData.write(to: cacheFileUrl)
                     debugLog("customvideos.json saved successfully!")
+                    loadedManifest.removeAll()  // we remove our previously loaded manifest, it's invalid
                 }
             } catch let error as NSError {
                 errorLog("customvideos.json could not be saved: \(error.localizedDescription)")
@@ -422,14 +424,24 @@ class ManifestLoader {
         if let cvf = customVideoFolders {
             for folder in cvf.folders {
                 for asset in folder.assets {
+                    let avResolution = getResolution(asset: AVAsset(url: URL(fileURLWithPath: asset.url)))
+                    var url1080p = ""
+                    var url4K = ""
+
+                    if avResolution.height > 1080 {
+                        url4K = URL(fileURLWithPath: asset.url).absoluteString
+                    } else {
+                        url1080p = URL(fileURLWithPath: asset.url).absoluteString
+                    }
+
                     let video = AerialVideo(id: asset.id,
                                                 name: folder.label,
                                                 secondaryName: asset.accessibilityLabel,
                                                 type: "video",
                                                 timeOfDay: asset.time,
-                                                url1080pH264: URL(fileURLWithPath: asset.url).absoluteString,
+                                                url1080pH264: url1080p,
                                                 url1080pHEVC: "",
-                                                url4KHEVC: "",
+                                                url4KHEVC: url4K,
                                                 manifest: .customVideos,
                                                 poi: [:],
                                                 communityPoi: asset.pointsOfInterest)
@@ -437,6 +449,12 @@ class ManifestLoader {
                 }
             }
         }
+    }
+
+    func getResolution(asset: AVAsset) -> CGSize {
+        guard let track = asset.tracks(withMediaType: AVMediaType.video).first else { return CGSize.zero }
+        let size = track.naturalSize.applying(track.preferredTransform)
+        return CGSize(width: abs(size.width), height: abs(size.height))
     }
 
     // MARK: - Periodically check for new videos
@@ -641,7 +659,7 @@ class ManifestLoader {
             }
         }*/
 
-        debugLog("Total videos processed : \(processedVideos.count)")
+        debugLog("Total videos processed : \(processedVideos.count) callbacks : \(callbacks.count)")
         // callbacks
         for callback in self.callbacks {
             callback(self.loadedManifest)

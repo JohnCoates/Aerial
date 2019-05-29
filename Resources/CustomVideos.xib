@@ -12,6 +12,7 @@
                 <outlet property="addPoi" destination="KBT-QW-v1Y" id="mgo-Tc-dzf"/>
                 <outlet property="addPoiPopover" destination="6xN-bb-mFa" id="ZoY-sG-uBj"/>
                 <outlet property="descriptionTextField" destination="3KO-Vs-fx0" id="8Hk-eS-HvF"/>
+                <outlet property="durationLabel" destination="2Y8-Ra-MML" id="Yli-Hc-JAX"/>
                 <outlet property="editPlayerView" destination="PnC-8m-1v6" id="qS2-DG-dnh"/>
                 <outlet property="fileView" destination="Nz4-zd-m53" id="GG8-xr-Lm6"/>
                 <outlet property="folderOutlineView" destination="NS6-lm-7hO" id="dek-Xm-0hw"/>
@@ -20,8 +21,11 @@
                 <outlet property="mainPanel" destination="QvC-M9-y7g" id="of1-JA-evN"/>
                 <outlet property="poiTableView" destination="n5i-pm-jIu" id="Uns-u2-Hf9"/>
                 <outlet property="removePoi" destination="EBI-tO-TJo" id="w10-SS-DnA"/>
+                <outlet property="resolutionLabel" destination="HdI-qF-NRI" id="9l4-zp-gM7"/>
                 <outlet property="timePopUpButton" destination="6cg-pb-yCE" id="6aq-zq-oTy"/>
                 <outlet property="timeTextField" destination="SpE-ag-aCO" id="vCQ-5I-aLR"/>
+                <outlet property="timeTextFormatter" destination="Ixe-Fx-2fC" id="jh8-Z9-AMe"/>
+                <outlet property="timeTextStepper" destination="Zrt-uf-nIH" id="E4f-xd-pht"/>
                 <outlet property="topPathControl" destination="aLi-9f-2VM" id="HY7-Se-sE3"/>
                 <outlet property="videoNameTextField" destination="kpy-af-zIL" id="4ac-rk-8p8"/>
             </connections>
@@ -221,7 +225,6 @@
                                                                                     <rect key="frame" x="0.0" y="0.0" width="98" height="17"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="Nof-g1-FBo">
-                                                                                        <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="0" negativeFormat="0" numberStyle="decimal" allowsFloats="NO" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="2000000000" id="aYu-iF-a4H"/>
                                                                                         <font key="font" metaFont="system"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -294,10 +297,6 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableHeaderView>
                                             </scrollView>
-                                            <avPlayerView fixedFrame="YES" controlsStyle="none" translatesAutoresizingMaskIntoConstraints="NO" id="PnC-8m-1v6">
-                                                <rect key="frame" x="256" y="15" width="410" height="231"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
-                                            </avPlayerView>
                                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KBT-QW-v1Y">
                                                 <rect key="frame" x="886" y="515" width="40" height="32"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
@@ -346,6 +345,52 @@
                                                     <action selector="timePopUpChange:" target="-2" id="u0F-iB-vDf"/>
                                                 </connections>
                                             </popUpButton>
+                                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gip-M3-2o4">
+                                                <rect key="frame" x="129" y="7" width="683" height="244"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hMF-uK-jzF">
+                                                        <rect key="frame" x="450" y="194" width="56" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Duration" id="LKV-Wr-NmT">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Y8-Ra-MML">
+                                                        <rect key="frame" x="547" y="194" width="118" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="00:00" id="qbW-H7-qPq">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <avPlayerView fixedFrame="YES" controlsStyle="none" translatesAutoresizingMaskIntoConstraints="NO" id="PnC-8m-1v6">
+                                                        <rect key="frame" x="8" y="6" width="410" height="231"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                                                    </avPlayerView>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T97-3N-PVi">
+                                                        <rect key="frame" x="450" y="169" width="68" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Resolution" id="7B0-6o-dm6">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HdI-qF-NRI">
+                                                        <rect key="frame" x="547" y="169" width="118" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="0x0" id="8Ja-a9-MbP">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                            </customView>
                                         </subviews>
                                     </customView>
                                 </subviews>
@@ -421,20 +466,22 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zrt-uf-nIH">
-                    <rect key="frame" x="236" y="191" width="19" height="27"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="SZI-E5-Sxg"/>
-                </stepper>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SpE-ag-aCO">
                     <rect key="frame" x="135" y="194" width="96" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Y8d-4d-DtZ">
-                        <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="0" negativeFormat="0" numberStyle="decimal" allowsFloats="NO" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="2000000000" id="Ixe-Fx-2fC"/>
+                        <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="0" negativeFormat="0" numberStyle="decimal" allowsFloats="NO" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="2000000000" id="Ixe-Fx-2fC">
+                            <real key="minimum" value="0.0"/>
+                            <real key="maximum" value="100"/>
+                        </numberFormatter>
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <action selector="timeTextChange:" target="-2" id="U2B-bB-bGx"/>
+                        <binding destination="-2" name="value" keyPath="self.timeTextStepper.intValue" id="V9h-dy-h1q"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="COF-GU-6D3">
                     <rect key="frame" x="18" y="145" width="74" height="17"/>
@@ -477,9 +524,19 @@ DQ
                         <action selector="addPoiValidate:" target="-2" id="18Z-aT-BQU"/>
                     </connections>
                 </button>
+                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zrt-uf-nIH">
+                    <rect key="frame" x="236" y="191" width="19" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="SZI-E5-Sxg"/>
+                    <connections>
+                        <action selector="timeStepperChange:" target="-2" id="5r2-JP-RWu"/>
+                        <binding destination="-2" name="value" keyPath="self.timeTextField.intValue" id="Qsc-Li-7TT"/>
+                    </connections>
+                </stepper>
             </subviews>
             <point key="canvasLocation" x="-830" y="47"/>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="FbY-zM-wGg"/>
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>

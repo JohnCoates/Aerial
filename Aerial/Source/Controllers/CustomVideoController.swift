@@ -29,10 +29,17 @@ class CustomVideoController: NSWindowController, NSWindowDelegate {
 
     @IBOutlet var addPoiPopover: NSPopover!
     @IBOutlet var timeTextField: NSTextField!
+    @IBOutlet var timeTextStepper: NSStepper!
+    @IBOutlet var timeTextFormatter: NumberFormatter!
     @IBOutlet var descriptionTextField: NSTextField!
+
+    @IBOutlet var durationLabel: NSTextField!
+    @IBOutlet var resolutionLabel: NSTextField!
 
     var currentFolder: Folder?
     var currentAsset: Asset?
+    var currentAssetDuration: Int?
+
     var hasAwokenAlready = false
     var sw: NSWindow?
     var controller: PreferencesWindowController?
@@ -78,7 +85,7 @@ class CustomVideoController: NSWindowController, NSWindowDelegate {
 
                 manifestInstance.addCallback { manifestVideos in
                     if let contr = self.controller {
-                        contr.loaded(manifestVideos: manifestVideos)
+                        contr.loaded(manifestVideos: [])
                     }
                 }
                 manifestInstance.loadManifestsFromLoadedFiles()
@@ -219,6 +226,18 @@ class CustomVideoController: NSWindowController, NSWindowDelegate {
         }
     }
 
+    @IBAction func timeStepperChange(_ sender: NSStepper) {
+        if let player = editPlayerView.player {
+            player.seek(to: CMTime(seconds: Double(sender.intValue), preferredTimescale: 1))
+        }
+    }
+
+    @IBAction func timeTextChange(_ sender: NSTextField) {
+        if let player = editPlayerView.player {
+            player.seek(to: CMTime(seconds: Double(sender.intValue), preferredTimescale: 1))
+        }
+    }
+
     @IBAction func tableViewTimeField(_ sender: NSTextField) {
         if let asset = currentAsset {
             if poiTableView.selectedRow != -1 {
@@ -338,6 +357,20 @@ extension CustomVideoController: NSOutlineViewDelegate {
 
             if let player = editPlayerView.player {
                 let localitem = AVPlayerItem(url: URL(fileURLWithPath: file.url))
+                currentAssetDuration = Int(localitem.asset.duration.convertScale(1, method: .default).value)
+                let currentResolution = getResolution(asset: localitem.asset)
+                let crString = String(Int(currentResolution.width)) + "x" + String(Int(currentResolution.height))
+
+                timeTextStepper.minValue = 0
+                timeTextStepper.maxValue = Double(currentAssetDuration!)
+                timeTextFormatter.minimum = 0
+                timeTextFormatter.maximum = NSNumber(value: currentAssetDuration!)
+                //timeTableFormatter.minimum = 0
+                //timeTableFormatter.maximum = NSNumber(value: currentAssetDuration!)
+
+                durationLabel.stringValue = String(currentAssetDuration!) + " seconds"
+                resolutionLabel.stringValue = crString
+
                 player.replaceCurrentItem(with: localitem)
             }
 
@@ -349,6 +382,12 @@ extension CustomVideoController: NSOutlineViewDelegate {
         }
 
         return true
+    }
+
+    func getResolution(asset: AVAsset) -> CGSize {
+        guard let track = asset.tracks(withMediaType: AVMediaType.video).first else { return CGSize.zero }
+        let size = track.naturalSize.applying(track.preferredTransform)
+        return CGSize(width: abs(size.width), height: abs(size.height))
     }
 }
 
