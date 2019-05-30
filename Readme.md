@@ -32,7 +32,7 @@ Aerial now includes an auto-update mechanism using the [Sparkle open-source proj
 
 Need more information on install, setup, or uninstall ? Or want to install via homebrew ? Check our extended [instructions here](Documentation/Installation.md). Curious about auto-updates ? [Have a look here](Documentation/AutoUpdates.md).
 
-## What's new in Aerial 1.5.0 ?
+## What's new in Aerial 1.5.0 (May 31 2019)?
 
 - Completely rewritten multi monitor support. You can now enable and disable individual displays in the new Display tab. There is also a new "Spanned" viewing mode. Selecting this mode will span an Aerial video on all your (selected) screens. You can even adjust the margins between your screens:
 

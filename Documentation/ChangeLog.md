@@ -12,7 +12,7 @@
 
 - Add your own videos to Aerial using the new Custom Videos features. You can add your own videos in the new video manager (found in the menu below the video list):
 
-![Capture d’écran 2019-05-29 à 12 52 29](https://user-images.githubusercontent.com/37544189/58552781-8478a780-8213-11e9-99bc-2b55c75b6bd3.jpg)
+![Capture d’écran 2019-05-30 à 18 01 36](https://user-images.githubusercontent.com/37544189/58646171-24fac480-8305-11e9-98fd-c9ec7ef3a64c.jpg)
 
 You can find more [information here](CustomVideos.md).
 
