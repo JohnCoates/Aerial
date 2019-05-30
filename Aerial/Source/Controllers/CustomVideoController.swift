@@ -17,6 +17,7 @@ class CustomVideoController: NSWindowController, NSWindowDelegate {
 
     @IBOutlet var folderView: NSView!
     @IBOutlet var fileView: NSView!
+    @IBOutlet var onboardingLabel: NSTextField!
 
     @IBOutlet var folderShortNameTextField: NSTextField!
     @IBOutlet var timePopUpButton: NSPopUpButton!
@@ -334,6 +335,7 @@ extension CustomVideoController: NSOutlineViewDelegate {
             topPathControl.isHidden = false
             folderView.isHidden = false
             fileView.isHidden = true
+            onboardingLabel.isHidden = true
 
             topPathControl.url = URL(fileURLWithPath: folder.url)
             folderShortNameTextField.stringValue = folder.label
@@ -343,6 +345,7 @@ extension CustomVideoController: NSOutlineViewDelegate {
             topPathControl.isHidden = false
             folderView.isHidden = true
             fileView.isHidden = false
+            onboardingLabel.isHidden = true
 
             topPathControl.url = URL(fileURLWithPath: file.url)
             videoNameTextField.stringValue = file.accessibilityLabel
@@ -379,6 +382,7 @@ extension CustomVideoController: NSOutlineViewDelegate {
             topPathControl.isHidden = true
             folderView.isHidden = true
             fileView.isHidden = true
+            onboardingLabel.isHidden = false
         }
 
         return true

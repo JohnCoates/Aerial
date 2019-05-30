@@ -11,9 +11,11 @@ _Rather install from Terminal? Look at the Brew Cask section below!_
 1. Quit **System Preferences**.
 2. [Download the latest release of Aerial.saver.zip](https://github.com/JohnCoates/Aerial/releases/latest). Alternatively, you can try the latest beta version [following this link](https://github.com/JohnCoates/Aerial/releases). 
 3. Unzip the downloaded file (if you use Safari, it should already be done for you).
-4. Double-click `Aerial.saver`; it will open in `System Preferences` > `Desktop & Screen Saver` and ask you if you want to install for all users or for your user only. Be aware that installing for all users will require a password at install **and each update, including auto-updates.**
+4. Double-click `Aerial.saver`; it will open in `System Preferences` > `Desktop & Screen Saver` and ask you if you want to install for all users or for your user only. Be aware that installing for all users will require a password at install **and each subsequent update, including auto-updates.**
 
 If you see an error message saying "This app is damaged and can't be opened, you should move it to the trash", we suggest that **you download the file with Safari**, to prevent macOS Gatekeeper from throwing that error. Note that some outdated unzip software may cause that issue too.
+
+On very recent releases (less than a day), Chrome may complain that the file is uncommon and potentially dangerous. This warning will go away after a few hours/days, more information in our [troubleshooting section](Troubleshooting.md).
 
 **Important**: If you haven't quit System Preferences before installation, you will need to quit and reopen System Preferences after installation for Aerial to work correcly. This is a macOS bug. 
 
@@ -46,8 +48,8 @@ Please note that if you prefer using homebrew to update Aerial, we recommend you
 
 There are three ways to uninstall Aerial from your Mac.
 
-- Right-click on the Aerial screen saver in `System Preferences` and select `Delete "Aerial"`.
-- Or delete the file(s) directly. macOS can store screen savers in two locations, `/Library/Screen Savers` (if you installed for All Users) and `/Users/YOURUSERNAME/Library/Screen Savers` (installed for your user only). Check both locations for a file called `Aerial.saver` and delete any copies you find.
+- Right-click on the Aerial screen saver in `System Preferences` and select `Delete "Aerial"`. This will uninstall the screen saver automatically.
+- If you prefer, you can delete the files manually. macOS can store screen savers in two locations depending on your choices, `/Library/Screen Savers` (if you installed for All Users) and `/Users/YOURUSERNAME/Library/Screen Savers` (installed for your user only). Check both locations for a file called `Aerial.saver` and delete any copies you find.
 - If you installed Aerial using Brew Cask, then enter the following command in a Terminal window to uninstall:
 
 ```sh

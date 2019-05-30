@@ -39,3 +39,7 @@ Each update is signed with a private EdDSA key when a release is built by the ma
 If you installed the screen saver for all users the first time (instead of for your individual user), macOS prompted you at install for your administrator password. The same thing will happen for automatic updates with the two mechanisms. Because of this, with the "Auto update when screen saver runs" checked, you will get a password prompt from Aerial/Sparkle when waking up your system.
 
 This is working as intended for macOS, if you are bothered by those prompt, consider reinstalling Aerial for your user account only. If you have multiple accounts, you can still install Aerial for each account, by default each will use the same shared cache for videos (in `/Library/Caches/Aerial/`).
+
+## Homebrew and auto-updates
+
+If you installed Aerial through Homebrew, you will get updates automatically from that channel. Note that because of the way brew cask works, it may take a few hours for the update to show, compared to the Sparkle auto-update. We recommend that you disable the built in auto-updates if you use Homebrew. 

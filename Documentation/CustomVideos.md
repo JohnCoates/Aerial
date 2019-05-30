@@ -4,7 +4,11 @@ Starting with version 1.5.0 of Aerial, you can now add your own videos to the pl
 
 ![Capture d’écran 2019-05-24 à 17 13 22](https://user-images.githubusercontent.com/37544189/58338271-c090be80-7e47-11e9-833a-d70ada56232b.jpg)
 
-This will open the "Manage Custom Videos" window. Click the "Add folder" at the top of the window, and point it to a folder that contains videos. Aerial will scan that folder and show you the videos it found in the left panel. For long time users, a good way to try this is your `oldvideos` folder in your Aerial cache folder. 
+This will open the "Manage Custom Videos" window. 
+
+![Capture d’écran 2019-05-30 à 17 45 15](https://user-images.githubusercontent.com/37544189/58646170-24622e00-8305-11e9-9235-9e7960bdf95e.jpg)
+
+Click the "Add folder" at the top of the window, and point it to a folder that contains videos. Aerial will scan that folder and show you the videos it found in the left panel. For long time users, a good way to try this is your `oldvideos` folder in your Aerial cache folder. 
 
 ## Folders and files
 
@@ -16,9 +20,12 @@ You can override that name here. This folder name will be used to categorize tho
 
 If you click a file, you'll get the asset editor: 
 
-![Capture d’écran 2019-05-29 à 12 52 29](https://user-images.githubusercontent.com/37544189/58552781-8478a780-8213-11e9-99bc-2b55c75b6bd3.jpg)
+![Capture d’écran 2019-05-30 à 18 01 36](https://user-images.githubusercontent.com/37544189/58646171-24fac480-8305-11e9-98fd-c9ec7ef3a64c.jpg)
+
 
 You can change the name of the video, whether it's a day or night video (by default every file is imported as day) and let's you add points of interests. Points of interests are the descriptions that are shown periodically on screens when videos play. The format is simple, a time in seconds, and the description you would like to appear. We highly recommend you leave at least 10 to 15 seconds between two points of interests. 
+
+![Capture d’écran 2019-05-29 à 12 52 29](https://user-images.githubusercontent.com/37544189/58552781-8478a780-8213-11e9-99bc-2b55c75b6bd3.jpg)
 
 ## How is this stored ?
 
