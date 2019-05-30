@@ -31,7 +31,7 @@ Aerial now includes an auto-update mechanism using the [Sparkle open-source proj
 3. Unzip the downloaded file (if you use Safari, it should already be done for you).
 4. Double-click `Aerial.saver`; it will open in `System Preferences` > `Desktop & Screen Saver` and ask you if you want to install for all users or for your user only. Be aware that installing for all users will require a password at install **and each update, including auto-updates.**
 
-Need more information on install, setup, or uninstall ? Or want to install via homebrew ? Check our extended [instructions here](Documentation/Installation.md). 
+Need more information on install, setup, or uninstall ? Or want to install via homebrew ? Check our extended [instructions here](Documentation/Installation.md). Curious about auto-updates ? [Have a look here](Documentation/AutoUpdates.md).
 
 ## What's new in Aerial 1.5.0 ?
 
@@ -71,10 +71,11 @@ If you want to collaborate, please [read the details here](Resources/Community/R
 
 Looking for more information ?
 
-- [Have an issues ? Check our list of common issues right here, including workaround for macOS bugs!](Documentation/Troubleshooting.md)
+- [Having an issue ? Check our list of common issues right here, including workaround for common macOS bugs (like "You cannot use the Aerial screen saver with this version of macOS.") !](Documentation/Troubleshooting.md)
 - [Learn more about configuring and running Aerial in offline mode with no network access.](Documentation/OfflineMode.md)
 - [Information about HEVC, HDR and hardware decoding](Documentation/HardwareDecoding.md) 
 - [How to add your own videos to Aerial](Documentation/CustomVideos.md)
+- [More details than you need on the auto-update mechanisms](Documentation/AutoUpdates.md)
 
 ## License
 

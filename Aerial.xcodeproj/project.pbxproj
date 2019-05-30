@@ -133,6 +133,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		030B5E32229FDD26008F2910 /* AutoUpdates.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AutoUpdates.md; sourceTree = "<group>"; };
 		0313F9E522942AA500B074BB /* CustomVideos.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomVideos.xib; sourceTree = "<group>"; };
 		0313F9E722942B4500B074BB /* CustomVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVideoController.swift; sourceTree = "<group>"; };
 		0313F9EB2294468600B074BB /* SeededGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeededGenerator.swift; sourceTree = "<group>"; };
@@ -290,6 +291,7 @@
 				03DAD475229EC544000DA6D1 /* HardwareDecoding.md */,
 				03DAD476229EC64D000DA6D1 /* Troubleshooting.md */,
 				03DAD477229ECAAA000DA6D1 /* CustomVideos.md */,
+				030B5E32229FDD26008F2910 /* AutoUpdates.md */,
 			);
 			path = Documentation;
 			sourceTree = "<group>";
