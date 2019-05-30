@@ -46,7 +46,7 @@ Please note that if you prefer using homebrew to update Aerial, we recommend you
 
 There are three ways to uninstall Aerial from your Mac.
 
-- Right-click on the Aerial screensaver in `System Preferences` and select `Delete "Aerial"`.
+- Right-click on the Aerial screen saver in `System Preferences` and select `Delete "Aerial"`.
 - Or delete the file(s) directly. macOS can store screen savers in two locations, `/Library/Screen Savers` (if you installed for All Users) and `/Users/YOURUSERNAME/Library/Screen Savers` (installed for your user only). Check both locations for a file called `Aerial.saver` and delete any copies you find.
 - If you installed Aerial using Brew Cask, then enter the following command in a Terminal window to uninstall:
 
