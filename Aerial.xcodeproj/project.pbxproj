@@ -166,6 +166,7 @@
 		03D37FD722145487005A146F /* es.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = es.json; sourceTree = "<group>"; };
 		03D37FD822145487005A146F /* fr.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fr.json; sourceTree = "<group>"; };
 		03D3DAC3221F286700BDA52F /* pl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pl.json; sourceTree = "<group>"; };
+		03D6C78922A0384F00DE830B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		03DAD46F229EAC66000DA6D1 /* Installation.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Installation.md; sourceTree = "<group>"; };
 		03DAD471229EB1E9000DA6D1 /* ChangeLog.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ChangeLog.md; sourceTree = "<group>"; };
 		03DAD472229EC031000DA6D1 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
@@ -292,6 +293,7 @@
 				03DAD476229EC64D000DA6D1 /* Troubleshooting.md */,
 				03DAD477229ECAAA000DA6D1 /* CustomVideos.md */,
 				030B5E32229FDD26008F2910 /* AutoUpdates.md */,
+				03D6C78922A0384F00DE830B /* README.md */,
 			);
 			path = Documentation;
 			sourceTree = "<group>";
