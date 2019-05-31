@@ -2,6 +2,24 @@
 <channel>
 <title>Aerial</title>
 <item>
+<title>1.5.0</title>
+  <description>
+          <![CDATA[
+<p>1.5.0 brings some pretty big features to Aerial, most importantly:</p>
+
+<ul><li>- Completely rewritten multi monitor support. You can now enable and disable individual displays in the new Display tab.</li>
+<li>- New "Spanned" viewing mode. Selecting this mode will span an Aerial video on all your (selected) screens. You can even adjust margins.</li>
+<li>- Add your own videos to Aerial using the new Custom Videos features. You can add your own videos in the new video manager (found in the menu below the video list).</li></ul>
+
+<p>This version also includes many, many bugfixes! You can check the changelog for more information https://github.com/JohnCoates/Aerial/blob/master/Documentation/ChangeLog.md</p>
+          ]]>
+    </description>
+<pubDate>ven., 31 mai. 2019 11:30:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.5.0/Aerial.saver.zip" sparkle:version="1.5.0" sparkle:shortVersionString="1.5.0" sparkle:edSignature="Q3QYagdIRRrsRBst/W0FsR5w+J0dxIW4pHBjLw7J5aDB14v8nPsEKsJlj75eYXheCDWq/q+3brm7hD8Pypm7Ag==" length="5946329" type="application/octet-stream"/>
+</item>
+  
+<item>
 <title>1.4.9</title>
   <description>
           <![CDATA[
