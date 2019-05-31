@@ -19,6 +19,7 @@
                 <outlet property="folderShortNameTextField" destination="MFU-Dj-anp" id="uCp-AT-vUi"/>
                 <outlet property="folderView" destination="k3L-uV-wCN" id="mco-c5-WPA"/>
                 <outlet property="mainPanel" destination="QvC-M9-y7g" id="of1-JA-evN"/>
+                <outlet property="onboardingLabel" destination="zeW-AH-yaN" id="YQc-15-2jO"/>
                 <outlet property="poiTableView" destination="n5i-pm-jIu" id="Uns-u2-Hf9"/>
                 <outlet property="removePoi" destination="EBI-tO-TJo" id="w10-SS-DnA"/>
                 <outlet property="resolutionLabel" destination="HdI-qF-NRI" id="9l4-zp-gM7"/>
@@ -115,7 +116,17 @@
                                 <rect key="frame" x="223" y="0.0" width="940" height="631"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k3L-uV-wCN" userLabel="Folder Panel">
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="862" translatesAutoresizingMaskIntoConstraints="NO" id="zeW-AH-yaN">
+                                        <rect key="frame" x="37" y="307" width="866" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <textFieldCell key="cell" selectable="YES" id="4j6-f0-YpW">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <string key="title">Click the "+ Add Folder" button on top of the window and point to a folder containing your personal videos that you would like to add to Aerial. </string>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k3L-uV-wCN" userLabel="Folder Panel">
                                         <rect key="frame" x="0.0" y="0.0" width="940" height="598"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
@@ -165,8 +176,8 @@
                                             </pathControl>
                                         </subviews>
                                     </customView>
-                                    <customView identifier="folderEdit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nz4-zd-m53">
-                                        <rect key="frame" x="0.0" y="0.0" width="940" height="598"/>
+                                    <customView identifier="folderEdit" hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nz4-zd-m53">
+                                        <rect key="frame" x="0.0" y="1" width="940" height="598"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DWo-O9-7MP">

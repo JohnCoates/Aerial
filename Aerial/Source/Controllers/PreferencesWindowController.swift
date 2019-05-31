@@ -83,8 +83,9 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet weak var downloadProgressIndicator: NSProgressIndicator!
     @IBOutlet weak var downloadStopButton: NSButton!
-    @IBOutlet var versionLabel: NSTextField!
+    //@IBOutlet var versionLabel: NSTextField!
 
+    @IBOutlet var versionButton: NSButton!
     @IBOutlet var popover: NSPopover!
     @IBOutlet var popoverTime: NSPopover!
     @IBOutlet var popoverPower: NSPopover!
@@ -326,10 +327,9 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         logTableView.dataSource = self
 
         if let version = Bundle(identifier: "com.johncoates.Aerial-Test")?.infoDictionary?["CFBundleShortVersionString"] as? String {
-            versionLabel.stringValue = version
-        }
-        if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
-            versionLabel.stringValue = version
+            versionButton.title = version
+        } else if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
+            versionButton.title = version
         }
 
         // Some better icons are 10.12.2+ only
@@ -431,6 +431,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         }
         horizontalDisplayMarginTextfield.doubleValue = preferences.horizontalMargin!
         verticalDisplayMarginTextfield.doubleValue = preferences.verticalMargin!
+
+        if preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue {
+            displayMarginBox.isHidden = false
+        } else {
+            displayMarginBox.isHidden = true
+        }
 
         // Advanced panel
         if preferences.debugMode {
@@ -750,6 +756,26 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         fullRange = NSRange(location: 0, length: coloredLink.length)
         coloredLink.addAttribute(.foregroundColor, value: color, range: fullRange)
         linkTimeWikipediaButton.attributedTitle = coloredLink
+
+        // We have an extra project link on the video format popover, color it too
+        coloredLink = NSMutableAttributedString(attributedString: versionButton.attributedTitle)
+        fullRange = NSRange(location: 0, length: coloredLink.length)
+        coloredLink.addAttribute(.foregroundColor, value: color, range: fullRange)
+        versionButton.attributedTitle = coloredLink
+
+    }
+
+    @IBAction func versionButtonClick(_ sender: Any) {
+        let workspace = NSWorkspace.shared
+        var url: URL
+
+        if versionButton.title.contains("beta") {
+            url = URL(string: "https://github.com/JohnCoates/Aerial/releases/tag/v" + versionButton.title)!
+        } else {
+            url = URL(string: "https://github.com/JohnCoates/Aerial/blob/master/Documentation/ChangeLog.md")!
+        }
+
+        workspace.open(url)
     }
 
     // MARK: - Video panel
