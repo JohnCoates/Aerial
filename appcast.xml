@@ -2,18 +2,32 @@
 <channel>
 <title>Aerial</title>
 <item>
-<title>1.4.7 beta 10</title>
+<title>1.4.9</title>
   <description>
           <![CDATA[
+            <p>This is a bugfix for a crash for homebrew users and users who never starts the control panel. Sorry about that !</p>
+          ]]>
+    </description>
+<pubDate>mer., 1 mai. 2019 13:58:29 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.9/Aerial.saver.zip" sparkle:version="1.4.9" sparkle:shortVersionString="1.4.9"  sparkle:edSignature="C2SILYsMpGsvIVjlKvGmKxUhS2/95DrvD3xOzf2YAiZRh0gnHpNgDXt5OCMwzNd99iVinUAHq2nubqj1XqNPDA==" length="5674907" type="application/octet-stream"/>
+</item>
+<item>
+<title>1.4.8</title>
+  <description>
+          <![CDATA[
+            <p>This new version includes many new features and enhancements:</p>
             <ul>
-              <li>You can now get beta updates optionally through Sparkle!</li>
-              <li>Auto updates now work when the screen saver is playing, so you don't have to periodically open the System Preferences Screen Saver pane anymore!</li>
-              <li>Chinese simplified thanks to @LinkeyLeo!</li>
+              <li>Support for January 25th video updates (finally)</li>
+              <li>Automatic updates support through Sparkle. You can manage how Aerial updates itself in the settings</li>
+              <li>Localization for community support in Arabic, Chinese Simplified, English, French, German, Hebrew, Polish and Spanish! Thanks to all the contributors. If you want to help, check our repository we very much welcome new contributions</li>
+              <li>You can now skip an Aerial with the right arrow key</li>
+              <li>You can now save your favorite videos sets to enable them quickly</li>
             </ul>
           ]]>
     </description>
-<pubDate>ven., 26 avr. 2019 12:12:29 +0100</pubDate>
+<pubDate>mar., 30 avr. 2019 12:12:29 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.7beta10/Aerial.saver.zip" sparkle:version="1.4.7beta10" sparkle:shortVersionString="1.4.7beta10"  sparkle:edSignature="t5HCJROJvbQ0M3JDAXpA/CM+sDjyqlTnG45KYxlEstPDwaDaXne0hCw0dQS2AkO4k8qnGz07oTC2gYMdzaipBw==" length="5672972" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.4.8/Aerial.saver.zip" sparkle:version="1.4.8" sparkle:shortVersionString="1.4.8"  sparkle:edSignature="5QFV0eqGRqCoZ8/TYbLXWOiVSifwNRUk4wuNFdjXJXpk/cRrceaTcs7SG168dawfOTpy9TOu283mb6WJGRQuDw==" length="5674805" type="application/octet-stream"/>
 </item>
 </channel></rss>

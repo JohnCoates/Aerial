@@ -36,7 +36,7 @@ Need more information on install, setup, or uninstall ? Or want to install via h
 
 - Completely rewritten multi monitor support. You can now enable and disable individual displays in the new Display tab. There is also a new "Spanned" viewing mode. Selecting this mode will span an Aerial video on all your (selected) screens. You can even adjust the margins between your screens:
 
-![Capture d’écran 2019-05-29 à 14 43 52](https://user-images.githubusercontent.com/37544189/58558342-d116af80-8220-11e9-8bb0-8d26f1e1b6ed.jpg)
+![Capture d’écran 2019-05-29 à 14 43 52](https://user-images.githubusercontent.com/37544189/58558342-d116af80-8220-11e9-8bb0-8d26f1e1b6ed.jpg)
 
 - You can now add your own videos to Aerial using the new [Custom Videos feature](Documentation/CustomVideos.md), and play them alongside Aerial videos:
 
