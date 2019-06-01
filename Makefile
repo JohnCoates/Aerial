@@ -15,6 +15,9 @@ build: clean
 test: clean
 	$(XCODEBUILD) test $(BUILD_FLAGS) -enableCodeCoverage YES
 
+test-travis: clean
+	$(XCODEBUILD) test -workspace Aerial.xcworkspace $(BUILD_FLAGS) -enableCodeCoverage YES CODE_SIGNING_ALLOWED=NO
+
 lint:
 	@echo SwiftLint Version: $(shell swiftlint version)
 	@echo PWD: $(shell pwd)
