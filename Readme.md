@@ -1,4 +1,6 @@
-![screencast](https://cloud.githubusercontent.com/assets/499192/10754100/c0e1cc4c-7c95-11e5-9d3b-842d3acc2fd5.gif)
+<p align="center">
+  <img src="https://cloud.githubusercontent.com/assets/499192/10754100/c0e1cc4c-7c95-11e5-9d3b-842d3acc2fd5.gif">
+</p>
 
 # Aerial - Apple TV Aerial Views Screen Saver
 
