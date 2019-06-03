@@ -37,6 +37,7 @@ extension CustomVideoFolders {
         return nil
     }
 }
+
 extension Folder {
     func hasAsset(withUrl: String) -> Bool {
         for asset in assets where asset.url == withUrl {
