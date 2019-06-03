@@ -10,6 +10,34 @@
 import Cocoa
 
 extension PreferencesWindowController {
+    func setupUpdatesTab() {
+        newVideosModePopup.selectItem(at: preferences.newVideosMode!)
+
+        betaCheckFrequencyPopup.selectItem(at: preferences.betaCheckFrequency!)
+
+        lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
+
+        // Format date
+        if sparkleUpdater!.lastUpdateCheckDate != nil {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd 'at' HH:mm"
+            let sparkleDate = dateFormatter.string(from: sparkleUpdater!.lastUpdateCheckDate)
+            lastCheckedSparkle.stringValue = "Last checked on " + sparkleDate
+        } else {
+            lastCheckedSparkle.stringValue = "Never checked for update"
+        }
+
+        if sparkleUpdater!.automaticallyChecksForUpdates {
+            automaticallyCheckForUpdatesCheckbox.state = .on
+        }
+        if preferences.updateWhileSaverMode {
+            allowScreenSaverModeUpdateCheckbox.state = .on
+        }
+        if preferences.allowBetas {
+            allowBetasCheckbox.state = .on
+            betaCheckFrequencyPopup.isEnabled = true
+        }
+    }
     // MARK: - Update panel
     @IBAction func newVideosModeChange(_ sender: NSPopUpButton) {
         debugLog("UI newVideosMode: \(sender.indexOfSelectedItem)")

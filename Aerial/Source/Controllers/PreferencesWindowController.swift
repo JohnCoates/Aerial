@@ -10,7 +10,6 @@ import Cocoa
 import AVKit
 import AVFoundation
 import ScreenSaver
-import VideoToolbox
 import CoreLocation
 import Sparkle
 
@@ -265,14 +264,16 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         }
     }
 
-    // swiftlint:disable:next cyclomatic_complexity
+    // sawiftlint:disable:next cyclomatic_complexity
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        // We register for the notification just before Sparkle tries to terminate Aerial
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.sparkleWillRestart),
             name: Notification.Name.SUUpdaterWillRestart,
-            object: nil)    // We register for the notification just before Sparkle tries to terminate Aerial
+            object: nil)
 
         // Starting the Sparkle update system
         sparkleUpdater = SUUpdater.init(for: Bundle(for: PreferencesWindowController.self))
@@ -281,10 +282,13 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
             sparkleUpdater?.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/beta-appcast.xml")
         }
 
+        // Setup the updates for the Logs
         let logger = Logger.sharedInstance
         logger.addCallback {level in
             self.updateLogs(level: level)
         }
+
+        // Setup the updates for the download status
         let videoManager = VideoManager.sharedInstance
         videoManager.addCallback { done, total in
             self.updateDownloads(done: done, total: total, progress: 0)
@@ -292,354 +296,29 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         videoManager.addProgressCallback { done, total, progress in
             self.updateDownloads(done: done, total: total, progress: progress)
         }
-        self.fontManager.target = self
-        latitudeFormatter.maximumSignificantDigits = 10
-        longitudeFormatter.maximumSignificantDigits = 10
-        extraLatitudeFormatter.maximumSignificantDigits = 10
-        extraLongitudeFormatter.maximumSignificantDigits = 10
-
-        updateCacheSize()
-        outlineView.floatsGroupRows = false
-        outlineView.menu = videoMenu
-        videoMenu.delegate = self
 
         loadJSON()  // Async loading
 
         logTableView.delegate = self
         logTableView.dataSource = self
 
+        // Grab version from bundle
         if let version = Bundle(identifier: "com.johncoates.Aerial-Test")?.infoDictionary?["CFBundleShortVersionString"] as? String {
             versionButton.title = version
         } else if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
             versionButton.title = version
         }
 
-        // Some better icons are 10.12.2+ only
-        if #available(OSX 10.12.2, *) {
-            iconTime1.image = NSImage(named: NSImage.touchBarHistoryTemplateName)
-            iconTime2.image = NSImage(named: NSImage.touchBarComposeTemplateName)
-            iconTime3.image = NSImage(named: NSImage.touchBarOpenInBrowserTemplateName)
-            findCoordinatesButton.image = NSImage(named: NSImage.touchBarOpenInBrowserTemplateName)
-        }
-
-        // Help popover, GVA detection requires 10.13
-        if #available(OSX 10.13, *) {
-            if !VTIsHardwareDecodeSupported(kCMVideoCodecType_H264) {
-                popoverH264Label.stringValue = "H264 acceleration not supported"
-                popoverH264Indicator.image = NSImage(named: NSImage.statusUnavailableName)
-            }
-            if !VTIsHardwareDecodeSupported(kCMVideoCodecType_HEVC) {
-                popoverHEVCLabel.stringValue = "HEVC Main10 acceleration not supported"
-                popoverHEVCIndicator.image = NSImage(named: NSImage.statusUnavailableName)
-            } else {
-                let hardwareDetection = HardwareDetection.sharedInstance
-                switch hardwareDetection.isHEVCMain10HWDecodingAvailable() {
-                case .supported:
-                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration is supported"
-                    popoverHEVCIndicator.image = NSImage(named: NSImage.statusAvailableName)
-                case .notsupported:
-                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration is not supported"
-                    popoverHEVCIndicator.image = NSImage(named: NSImage.statusUnavailableName)
-                case .partial:
-                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration is partially supported"
-                    popoverHEVCIndicator.image = NSImage(named: NSImage.statusPartiallyAvailableName)
-                default:
-                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration status unknown"
-                    popoverHEVCIndicator.image = NSImage(named: NSImage.cautionName)
-                }
-            }
-        } else {
-            // Fallback on earlier versions
-            popoverHEVCIndicator.isHidden = true
-            popoverH264Indicator.image = NSImage(named: NSImage.cautionName)
-            popoverH264Label.stringValue = "macOS 10.13 or above required"
-            popoverHEVCLabel.stringValue = "Hardware acceleration status unknown"
-        }
-
-        // Fonts for descriptions and extra (clock/msg)
-        currentFontLabel.stringValue = preferences.fontName! + ", \(preferences.fontSize!) pt"
-        extraMessageFontLabel.stringValue = preferences.extraFontName! + ", \(preferences.extraFontSize!) pt"
-
-        // Extra message
-        extraMessageTextField.stringValue = preferences.showMessageString!
-        secondaryExtraMessageTextField.stringValue = preferences.showMessageString!
-
-        // Grab preferred language as proper string
-        let printOutputLocale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
-        if let deviceLanguageName: String = printOutputLocale.displayName(forKey: .identifier, value: Locale.preferredLanguages[0]) {
-            if #available(OSX 10.12, *) {
-                currentLocaleLabel.stringValue = "Preferred language: \(deviceLanguageName) [\(printOutputLocale.languageCode)]"
-            } else {
-                currentLocaleLabel.stringValue = "Preferred language: \(deviceLanguageName)"
-            }
-        } else {
-            currentLocaleLabel.stringValue = ""
-        }
-
-        let poisp = PoiStringProvider.sharedInstance
-
-        // Should we override the community language ?
-        ciOverrideLanguagePopup.selectItem(at: poisp.getLanguagePosition())
-
-        // Videos panel
-        playerView.player = player
-        playerView.controlsStyle = .none
-        if #available(OSX 10.10, *) {
-            playerView.videoGravity = .resizeAspectFill
-        }
-
-        // To loop playback, we catch the end of the video to rewind
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(playerItemDidReachEnd),
-                                               name: .AVPlayerItemDidPlayToEndTime,
-                                               object: player.currentItem)
-
-        if #available(OSX 10.12, *) {
-        } else {
-            showClockCheckbox.isEnabled = false
-        }
-
-        // Videos panel
-        if preferences.overrideOnBattery {
-            overrideOnBatteryCheckbox.state = .on
-            changeBatteryOverrideState(to: true)
-        } else {
-            changeBatteryOverrideState(to: false)
-        }
-        if preferences.powerSavingOnLowBattery {
-            powerSavingOnLowBatteryCheckbox.state = .on
-        }
-        if !preferences.allowSkips {
-            rightArrowKeyPlaysNextCheckbox.state = .off
-        }
-        horizontalDisplayMarginTextfield.doubleValue = preferences.horizontalMargin!
-        verticalDisplayMarginTextfield.doubleValue = preferences.verticalMargin!
-
-        if preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue {
-            displayMarginBox.isHidden = false
-        } else {
-            displayMarginBox.isHidden = true
-        }
-
-        // Advanced panel
-        if preferences.debugMode {
-            debugModeCheckbox.state = .on
-        }
-        if preferences.logToDisk {
-            logToDiskCheckbox.state = .on
-        }
-        if preferences.logMilliseconds {
-            logMillisecondsButton.state = .on
-        }
-
-        // Text panel
-        if preferences.showClock {
-            showClockCheckbox.state = .on
-            withSecondsCheckbox.isEnabled = true
-        }
-        if preferences.withSeconds {
-            withSecondsCheckbox.state = .on
-        }
-        if preferences.showMessage {
-            showExtraMessage.state = .on
-            editExtraMessageButton.isEnabled = true
-            extraMessageTextField.isEnabled = true
-        }
-        if preferences.showDescriptions {
-            showDescriptionsCheckbox.state = .on
-            changeTextState(to: true)
-        } else {
-            changeTextState(to: false)
-        }
-        if preferences.localizeDescriptions {
-            localizeForTvOS12Checkbox.state = .on
-        }
-        if preferences.overrideMargins {
-            changeCornerMargins.state = .on
-            marginHorizontalTextfield.isEnabled = true
-            marginVerticalTextfield.isEnabled = true
-            editMarginButton.isEnabled = true
-        }
-
-        // Cache panel
-        if preferences.neverStreamVideos {
-            neverStreamVideosCheckbox.state = .on
-        }
-        if preferences.neverStreamPreviews {
-            neverStreamPreviewsCheckbox.state = .on
-        }
-        if !preferences.useCommunityDescriptions {
-            useCommunityCheckbox.state = .off
-        }
-        if !preferences.cacheAerials {
-            cacheAerialsAsTheyPlayCheckbox.state = .off
-        }
-
-        // Brightness panel
-        if preferences.overrideDimInMinutes {
-            overrideDimFadeCheckbox.state = .on
-        }
-
-        if preferences.dimBrightness {
-            dimBrightness.state = .on
-            changeBrightnessState(to: true)
-        } else {
-            changeBrightnessState(to: false)
-        }
-
-        if preferences.dimOnlyOnBattery {
-            dimOnlyOnBattery.state = .on
-        }
-        if preferences.dimOnlyAtNight {
-            dimOnlyAtNight.state = .on
-        }
-        if preferences.synchronizedMode {
-            synchronizedModeCheckbox.state = .on
-        }
-        dimStartFrom.doubleValue = preferences.startDim ?? 0.5
-        dimFadeTo.doubleValue = preferences.endDim ?? 0.1
-        dimFadeInMinutes.stringValue = String(preferences.dimInMinutes!)
-        dimFadeInMinutesStepper.intValue = Int32(preferences.dimInMinutes!)
-
-        // Time mode
-        if #available(OSX 10.14, *) {
-            if preferences.darkModeNightOverride {
-                overrideNightOnDarkMode.state = .on
-            }
-            // We disable the checkbox if we are on nightShift mode
-            if preferences.timeMode == Preferences.TimeMode.lightDarkMode.rawValue {
-                overrideNightOnDarkMode.isEnabled = false
-            }
-        } else {
-            overrideNightOnDarkMode.isEnabled = false
-        }
-
-        let timeManagement = TimeManagement.sharedInstance
-        // Light/Dark mode only available on Mojave+
-        let (isLDMCapable, reason: LDMReason) = timeManagement.isLightDarkModeAvailable()
-        if !isLDMCapable {
-            timeLightDarkModeRadio.isEnabled = false
-        }
-        lightDarkModeLabel.stringValue = LDMReason
-
-        // Night Shift requires 10.12.4+ and a compatible Mac
-        let (isNSCapable, reason: NSReason) = timeManagement.isNightShiftAvailable()
-        if !isNSCapable {
-            timeNightShiftRadio.isEnabled = false
-        }
-        nightShiftLabel.stringValue = NSReason
-
-        let (_, reason) = timeManagement.calculateFromCoordinates()
-        calculateCoordinatesLabel.stringValue = reason
-
-        if let dateSunrise = timeFormatter.date(from: preferences.manualSunrise!) {
-            sunriseTime.dateValue = dateSunrise
-        }
-        if let dateSunset = timeFormatter.date(from: preferences.manualSunset!) {
-            sunsetTime.dateValue = dateSunset
-        }
-
-        latitudeTextField.stringValue = preferences.latitude!
-        longitudeTextField.stringValue = preferences.longitude!
-        extraLatitudeTextField.stringValue = preferences.latitude!
-        extraLongitudeTextField.stringValue = preferences.longitude!
-
-        marginHorizontalTextfield.stringValue = String(preferences.marginX!)
-        marginVerticalTextfield.stringValue = String(preferences.marginY!)
-        secondaryMarginHorizontalTextfield.stringValue = String(preferences.marginX!)
-        secondaryMarginVerticalTextfield.stringValue = String(preferences.marginY!)
-
-        // Handle the time radios
-        switch preferences.timeMode {
-        case Preferences.TimeMode.nightShift.rawValue:
-            timeNightShiftRadio.state = .on
-        case Preferences.TimeMode.manual.rawValue:
-            timeManualRadio.state = .on
-        case Preferences.TimeMode.lightDarkMode.rawValue:
-            timeLightDarkModeRadio.state = .on
-        case Preferences.TimeMode.coordinates.rawValue:
-            timeCalculateRadio.state = .on
-        default:
-            timeDisabledRadio.state = .on
-        }
-
-        // Handle the corner radios
-        switch preferences.descriptionCorner {
-        case Preferences.DescriptionCorner.topLeft.rawValue:
-            cornerTopLeft.state = .on
-        case Preferences.DescriptionCorner.topRight.rawValue:
-            cornerTopRight.state = .on
-        case Preferences.DescriptionCorner.bottomLeft.rawValue:
-            cornerBottomLeft.state = .on
-        case Preferences.DescriptionCorner.bottomRight.rawValue:
-            cornerBottomRight.state = .on
-        default:
-            cornerRandom.state = .on
-        }
-
-        solarModePopup.selectItem(at: preferences.solarMode!)
-
-        popupVideoFormat.selectItem(at: preferences.videoFormat!)
-
-        alternatePopupVideoFormat.selectItem(at: preferences.alternateVideoFormat!)
-
-        descriptionModePopup.selectItem(at: preferences.showDescriptionsMode!)
-
-        fadeInOutModePopup.selectItem(at: preferences.fadeMode!)
-
-        fadeInOutTextModePopup.selectItem(at: preferences.fadeModeText!)
-
-        extraCornerPopup.selectItem(at: preferences.extraCorner!)
-
-        newVideosModePopup.selectItem(at: preferences.newVideosMode!)
-
-        betaCheckFrequencyPopup.selectItem(at: preferences.betaCheckFrequency!)
-
-        lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
-
-        // Displays Tab
-        newDisplayModePopup.selectItem(at: preferences.newDisplayMode!)
-        newViewingModePopup.selectItem(at: preferences.newViewingMode!)
-
-        if preferences.newDisplayMode == Preferences.NewDisplayMode.selection.rawValue {
-            displayInstructionLabel.isHidden = false
-        }
-
-        // Format date
-        if sparkleUpdater!.lastUpdateCheckDate != nil {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd 'at' HH:mm"
-            let sparkleDate = dateFormatter.string(from: sparkleUpdater!.lastUpdateCheckDate)
-            lastCheckedSparkle.stringValue = "Last checked on " + sparkleDate
-        } else {
-            lastCheckedSparkle.stringValue = "Never checked for update"
-        }
-
-        if sparkleUpdater!.automaticallyChecksForUpdates {
-            automaticallyCheckForUpdatesCheckbox.state = .on
-        }
-        if preferences.updateWhileSaverMode {
-            allowScreenSaverModeUpdateCheckbox.state = .on
-        }
-        if preferences.allowBetas {
-            allowBetasCheckbox.state = .on
-            betaCheckFrequencyPopup.isEnabled = true
-        }
+        setupVideosTab()
+        setupDisplaysTab()
+        setupTextTab()
+        setupTimeTab()
+        setupBrightnessTab()
+        setupCacheTab()
+        setupUpdatesTab()
+        setupAdvancedTab()
 
         colorizeProjectPageLinks()
-
-        if let cacheDirectory = VideoCache.cacheDirectory {
-            cacheLocation.url = URL(fileURLWithPath: cacheDirectory as String)
-        } else {
-            cacheLocation.url = nil
-        }
-
-        let sleepTime = timeManagement.getCurrentSleepTime()
-        if sleepTime != 0 {
-            sleepAfterLabel.stringValue = "Your Mac currently goes to sleep after \(sleepTime) minutes"
-        } else {
-            sleepAfterLabel.stringValue = "Unable to determine your Mac sleep settings"
-        }
 
         // To workaround our High Sierra issues with textfields, we have separate panels
         // that replicate the features and are editable. They are hidden unless needed.
@@ -655,9 +334,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
             longitudeTextField.isEnabled = false
         }
 
-        // We also load our CustomVideos nib
-        //if appMode {
-            //let bundle = Bundle.main
+        // We also load our CustomVideos nib here
         let bundle = Bundle(for: PreferencesWindowController.self)
         var topLevelObjects: NSArray? = NSArray()
         if !bundle.loadNibNamed(NSNib.Name("CustomVideos"),
@@ -665,8 +342,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
                             topLevelObjects: &topLevelObjects) {
             errorLog("Could not load nib for CustomVideos, please report")
         }
-
-        debugLog("appMode : \(appMode)")
     }
 
     override func windowDidLoad() {
@@ -821,7 +496,4 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
             trashOldVideosButton.isEnabled = false
         }
     }
-
 }
-
-// swiftlint:disable:this file_length

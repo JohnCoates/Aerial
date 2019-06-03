@@ -10,6 +10,83 @@ import Cocoa
 import CoreLocation
 
 extension PreferencesWindowController {
+    // swiftlint:disable:next cyclomatic_complexity
+    func setupTimeTab() {
+        let timeManagement = TimeManagement.sharedInstance
+
+        // Some better icons are 10.12.2+ only
+        if #available(OSX 10.12.2, *) {
+            iconTime1.image = NSImage(named: NSImage.touchBarHistoryTemplateName)
+            iconTime2.image = NSImage(named: NSImage.touchBarComposeTemplateName)
+            iconTime3.image = NSImage(named: NSImage.touchBarOpenInBrowserTemplateName)
+            findCoordinatesButton.image = NSImage(named: NSImage.touchBarOpenInBrowserTemplateName)
+        }
+
+        // Dark Mode is Mojave+
+        if #available(OSX 10.14, *) {
+            if preferences.darkModeNightOverride {
+                overrideNightOnDarkMode.state = .on
+            }
+            // We disable the checkbox if we are on nightShift mode
+            if preferences.timeMode == Preferences.TimeMode.lightDarkMode.rawValue {
+                overrideNightOnDarkMode.isEnabled = false
+            }
+        } else {
+            overrideNightOnDarkMode.isEnabled = false
+        }
+
+        // Light/Dark mode only available on Mojave+
+        let (isLDMCapable, reason: LDMReason) = timeManagement.isLightDarkModeAvailable()
+        if !isLDMCapable {
+            timeLightDarkModeRadio.isEnabled = false
+        }
+        lightDarkModeLabel.stringValue = LDMReason
+
+        // Night Shift requires 10.12.4+ and a compatible Mac
+        let (isNSCapable, reason: NSReason) = timeManagement.isNightShiftAvailable()
+        if !isNSCapable {
+            timeNightShiftRadio.isEnabled = false
+        }
+        nightShiftLabel.stringValue = NSReason
+
+        let (_, reason) = timeManagement.calculateFromCoordinates()
+        calculateCoordinatesLabel.stringValue = reason
+
+        if let dateSunrise = timeFormatter.date(from: preferences.manualSunrise!) {
+            sunriseTime.dateValue = dateSunrise
+        }
+        if let dateSunset = timeFormatter.date(from: preferences.manualSunset!) {
+            sunsetTime.dateValue = dateSunset
+        }
+        latitudeTextField.stringValue = preferences.latitude!
+        longitudeTextField.stringValue = preferences.longitude!
+        extraLatitudeTextField.stringValue = preferences.latitude!
+        extraLongitudeTextField.stringValue = preferences.longitude!
+
+        // Handle the time radios
+        switch preferences.timeMode {
+        case Preferences.TimeMode.nightShift.rawValue:
+            timeNightShiftRadio.state = .on
+        case Preferences.TimeMode.manual.rawValue:
+            timeManualRadio.state = .on
+        case Preferences.TimeMode.lightDarkMode.rawValue:
+            timeLightDarkModeRadio.state = .on
+        case Preferences.TimeMode.coordinates.rawValue:
+            timeCalculateRadio.state = .on
+        default:
+            timeDisabledRadio.state = .on
+        }
+
+        let sleepTime = timeManagement.getCurrentSleepTime()
+        if sleepTime != 0 {
+            sleepAfterLabel.stringValue = "Your Mac currently goes to sleep after \(sleepTime) minutes"
+        } else {
+            sleepAfterLabel.stringValue = "Unable to determine your Mac sleep settings"
+        }
+
+        solarModePopup.selectItem(at: preferences.solarMode!)
+    }
+
     @IBAction func overrideNightOnDarkModeClick(_ button: NSButton) {
         let onState = button.state == .on
         preferences.darkModeNightOverride = onState

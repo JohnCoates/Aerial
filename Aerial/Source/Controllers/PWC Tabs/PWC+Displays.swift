@@ -10,6 +10,25 @@
 import Cocoa
 
 extension PreferencesWindowController {
+    func setupDisplaysTab() {
+        horizontalDisplayMarginTextfield.doubleValue = preferences.horizontalMargin!
+        verticalDisplayMarginTextfield.doubleValue = preferences.verticalMargin!
+
+        if preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue {
+            displayMarginBox.isHidden = false
+        } else {
+            displayMarginBox.isHidden = true
+        }
+
+        // Displays Tab
+        newDisplayModePopup.selectItem(at: preferences.newDisplayMode!)
+        newViewingModePopup.selectItem(at: preferences.newViewingMode!)
+
+        if preferences.newDisplayMode == Preferences.NewDisplayMode.selection.rawValue {
+            displayInstructionLabel.isHidden = false
+        }
+    }
+
     @IBAction func newDisplayModeClick(_ sender: NSPopUpButton) {
         debugLog("UI newDisplayModeClick: \(sender.indexOfSelectedItem)")
         preferences.newDisplayMode = sender.indexOfSelectedItem

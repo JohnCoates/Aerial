@@ -10,6 +10,100 @@
 import Cocoa
 
 extension PreferencesWindowController {
+    // swiftlint:disable:next cyclomatic_complexity
+    func setupTextTab() {
+        self.fontManager.target = self
+        latitudeFormatter.maximumSignificantDigits = 10
+        longitudeFormatter.maximumSignificantDigits = 10
+        extraLatitudeFormatter.maximumSignificantDigits = 10
+        extraLongitudeFormatter.maximumSignificantDigits = 10
+
+        // Fonts for descriptions and extra (clock/msg)
+        currentFontLabel.stringValue = preferences.fontName! + ", \(preferences.fontSize!) pt"
+        extraMessageFontLabel.stringValue = preferences.extraFontName! + ", \(preferences.extraFontSize!) pt"
+
+        // Extra message
+        extraMessageTextField.stringValue = preferences.showMessageString!
+        secondaryExtraMessageTextField.stringValue = preferences.showMessageString!
+
+        // Grab preferred language as proper string
+        currentLocaleLabel.stringValue = getPreferredLanguage()
+
+        // Should we override the community language ?
+        let poisp = PoiStringProvider.sharedInstance
+        ciOverrideLanguagePopup.selectItem(at: poisp.getLanguagePosition())
+
+        if #available(OSX 10.12, *) {
+        } else {
+            showClockCheckbox.isEnabled = false
+        }
+
+        // Text panel
+        if preferences.showClock {
+            showClockCheckbox.state = .on
+            withSecondsCheckbox.isEnabled = true
+        }
+        if preferences.withSeconds {
+            withSecondsCheckbox.state = .on
+        }
+        if preferences.showMessage {
+            showExtraMessage.state = .on
+            editExtraMessageButton.isEnabled = true
+            extraMessageTextField.isEnabled = true
+        }
+        if preferences.showDescriptions {
+            showDescriptionsCheckbox.state = .on
+            changeTextState(to: true)
+        } else {
+            changeTextState(to: false)
+        }
+        if preferences.localizeDescriptions {
+            localizeForTvOS12Checkbox.state = .on
+        }
+        if preferences.overrideMargins {
+            changeCornerMargins.state = .on
+            marginHorizontalTextfield.isEnabled = true
+            marginVerticalTextfield.isEnabled = true
+            editMarginButton.isEnabled = true
+        }
+
+        marginHorizontalTextfield.stringValue = String(preferences.marginX!)
+        marginVerticalTextfield.stringValue = String(preferences.marginY!)
+        secondaryMarginHorizontalTextfield.stringValue = String(preferences.marginX!)
+        secondaryMarginVerticalTextfield.stringValue = String(preferences.marginY!)
+
+        // Handle the corner radios
+        switch preferences.descriptionCorner {
+        case Preferences.DescriptionCorner.topLeft.rawValue:
+            cornerTopLeft.state = .on
+        case Preferences.DescriptionCorner.topRight.rawValue:
+            cornerTopRight.state = .on
+        case Preferences.DescriptionCorner.bottomLeft.rawValue:
+            cornerBottomLeft.state = .on
+        case Preferences.DescriptionCorner.bottomRight.rawValue:
+            cornerBottomRight.state = .on
+        default:
+            cornerRandom.state = .on
+        }
+
+        descriptionModePopup.selectItem(at: preferences.showDescriptionsMode!)
+        fadeInOutTextModePopup.selectItem(at: preferences.fadeModeText!)
+        extraCornerPopup.selectItem(at: preferences.extraCorner!)
+    }
+
+    func getPreferredLanguage() -> String {
+        let printOutputLocale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
+        if let deviceLanguageName: String = printOutputLocale.displayName(forKey: .identifier, value: Locale.preferredLanguages[0]) {
+            if #available(OSX 10.12, *) {
+                return "Preferred language: \(deviceLanguageName) [\(printOutputLocale.languageCode)]"
+            } else {
+                return "Preferred language: \(deviceLanguageName)"
+            }
+        } else {
+            return ""
+        }
+    }
+
     // We have a secondary panel for entering margins as a workaround on < Mojave
     @IBAction func openExtraMessagePanelClick(_ sender: Any) {
         if editExtraMessagePanel.isVisible {

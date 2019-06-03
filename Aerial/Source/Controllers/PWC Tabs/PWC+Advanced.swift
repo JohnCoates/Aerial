@@ -10,6 +10,18 @@
 import Cocoa
 
 extension PreferencesWindowController {
+    func setupAdvancedTab() {
+        // Advanced panel
+        if preferences.debugMode {
+            debugModeCheckbox.state = .on
+        }
+        if preferences.logToDisk {
+            logToDiskCheckbox.state = .on
+        }
+        if preferences.logMilliseconds {
+            logMillisecondsButton.state = .on
+        }
+    }
     // MARK: - Advanced panel
 
     @IBAction func logMillisecondsClick(_ button: NSButton) {

@@ -9,6 +9,7 @@
 
 import Cocoa
 import AVFoundation
+import VideoToolbox
 
 final class TimeOfDay {
     let title: String
@@ -41,6 +42,81 @@ final class City {
 }
 
 extension PreferencesWindowController {
+    // swiftlint:disable:next cyclomatic_complexity
+    func setupVideosTab() {
+        // Help popover, GVA detection requires 10.13
+        if #available(OSX 10.13, *) {
+            if !VTIsHardwareDecodeSupported(kCMVideoCodecType_H264) {
+                popoverH264Label.stringValue = "H264 acceleration not supported"
+                popoverH264Indicator.image = NSImage(named: NSImage.statusUnavailableName)
+            }
+            if !VTIsHardwareDecodeSupported(kCMVideoCodecType_HEVC) {
+                popoverHEVCLabel.stringValue = "HEVC Main10 acceleration not supported"
+                popoverHEVCIndicator.image = NSImage(named: NSImage.statusUnavailableName)
+            } else {
+                let hardwareDetection = HardwareDetection.sharedInstance
+                switch hardwareDetection.isHEVCMain10HWDecodingAvailable() {
+                case .supported:
+                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration is supported"
+                    popoverHEVCIndicator.image = NSImage(named: NSImage.statusAvailableName)
+                case .notsupported:
+                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration is not supported"
+                    popoverHEVCIndicator.image = NSImage(named: NSImage.statusUnavailableName)
+                case .partial:
+                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration is partially supported"
+                    popoverHEVCIndicator.image = NSImage(named: NSImage.statusPartiallyAvailableName)
+                default:
+                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration status unknown"
+                    popoverHEVCIndicator.image = NSImage(named: NSImage.cautionName)
+                }
+            }
+        } else {
+            // Fallback on earlier versions
+            popoverHEVCIndicator.isHidden = true
+            popoverH264Indicator.image = NSImage(named: NSImage.cautionName)
+            popoverH264Label.stringValue = "macOS 10.13 or above required"
+            popoverHEVCLabel.stringValue = "Hardware acceleration status unknown"
+        }
+
+        // Preview video
+        playerView.player = player
+        playerView.controlsStyle = .none
+        if #available(OSX 10.10, *) {
+            playerView.videoGravity = .resizeAspectFill
+        }
+
+        updateCacheSize()
+        outlineView.floatsGroupRows = false
+        outlineView.menu = videoMenu
+        videoMenu.delegate = self
+
+        // To loop playback, we catch the end of the video to rewind
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(playerItemDidReachEnd),
+                                               name: .AVPlayerItemDidPlayToEndTime,
+                                               object: player.currentItem)
+
+        if preferences.overrideOnBattery {
+            overrideOnBatteryCheckbox.state = .on
+            changeBatteryOverrideState(to: true)
+        } else {
+            changeBatteryOverrideState(to: false)
+        }
+        if preferences.powerSavingOnLowBattery {
+            powerSavingOnLowBatteryCheckbox.state = .on
+        }
+        if !preferences.allowSkips {
+            rightArrowKeyPlaysNextCheckbox.state = .off
+        }
+
+        popupVideoFormat.selectItem(at: preferences.videoFormat!)
+
+        alternatePopupVideoFormat.selectItem(at: preferences.alternateVideoFormat!)
+
+        fadeInOutModePopup.selectItem(at: preferences.fadeMode!)
+
+    }
+
     @IBAction func rightArrowKeyPlaysNextClick(_ sender: NSButton) {
         let onState = sender.state == .on
         preferences.allowSkips = onState

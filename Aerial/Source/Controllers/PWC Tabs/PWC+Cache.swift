@@ -10,6 +10,27 @@
 import Cocoa
 
 extension PreferencesWindowController {
+    func setupCacheTab() {
+        // Cache panel
+        if preferences.neverStreamVideos {
+            neverStreamVideosCheckbox.state = .on
+        }
+        if preferences.neverStreamPreviews {
+            neverStreamPreviewsCheckbox.state = .on
+        }
+        if !preferences.useCommunityDescriptions {
+            useCommunityCheckbox.state = .off
+        }
+        if !preferences.cacheAerials {
+            cacheAerialsAsTheyPlayCheckbox.state = .off
+        }
+
+        if let cacheDirectory = VideoCache.cacheDirectory {
+            cacheLocation.url = URL(fileURLWithPath: cacheDirectory as String)
+        } else {
+            cacheLocation.url = nil
+        }
+    }
     func updateCacheSize() {
         // get your directory url
         let documentsDirectoryURL = URL(fileURLWithPath: VideoCache.cacheDirectory!)

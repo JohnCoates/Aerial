@@ -10,6 +10,35 @@
 import Cocoa
 
 extension PreferencesWindowController {
+    func setupBrightnessTab() {
+        // Brightness panel
+        if preferences.overrideDimInMinutes {
+            overrideDimFadeCheckbox.state = .on
+        }
+
+        if preferences.dimBrightness {
+            dimBrightness.state = .on
+            changeBrightnessState(to: true)
+        } else {
+            changeBrightnessState(to: false)
+        }
+
+        if preferences.dimOnlyOnBattery {
+            dimOnlyOnBattery.state = .on
+        }
+        if preferences.dimOnlyAtNight {
+            dimOnlyAtNight.state = .on
+        }
+        if preferences.synchronizedMode {
+            synchronizedModeCheckbox.state = .on
+        }
+        dimStartFrom.doubleValue = preferences.startDim ?? 0.5
+        dimFadeTo.doubleValue = preferences.endDim ?? 0.1
+        dimFadeInMinutes.stringValue = String(preferences.dimInMinutes!)
+        dimFadeInMinutesStepper.intValue = Int32(preferences.dimInMinutes!)
+
+    }
+
     func changeBrightnessState(to: Bool) {
         dimOnlyAtNight.isEnabled = to
         dimOnlyOnBattery.isEnabled = to
