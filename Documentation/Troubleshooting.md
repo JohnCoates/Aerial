@@ -7,6 +7,10 @@
 - Chrome complains that "This download is uncommon and potentilally malicious" on very fresh releases. Google seems to flag very recent files as "uncommon" and may block the download (more info on [Google's site here](https://support.google.com/chrome/answer/6261569). After a few hours/days, this warning will disappear. More info in this [issue](https://github.com/JohnCoates/Aerial/issues/759#issuecomment-489616050).
 - Can't use Aerial as a login screen saver: As far as we know, using 3rd party screen savers before login is no longer possible on modern versions of macOS (probably and rightly so for securoty reasons). More about this [here](https://github.com/JohnCoates/Aerial/issues/571).
 
+## About custom videos
+
+- After playing a video, Aerial is stuck on the last frame for a while and does not go to the next video : Please check that your video contains correct duration information. Some export tools may generate incorrect video files and Aerial will not be able to properly detect the end of the file. To fix your files, you will need to "remux" them using a tool such as Handbrake or MP4Box.
+
 ## About video caching
 
 - Change cache location : This option simply changes _the location_ of the Cache folder that Aerial uses. It does _not_ move your files for you. Please note that this change will only be taken into account the next time Aerial starts (you may need to fully close System Preferences). We strongly recommend you use a path that's always accessible, as Aerial **can't work** without a Cache directory. In case the path is no longer available (missing USB key, etc), starting with Aerial 1.4.7, it will reset the Cache location to it's default location (usually `/Library/Caches/Aerial/` or, if unavailable `~/Library/Caches/Aerial`) to avoid crashing.
@@ -21,7 +25,7 @@
 - Can't type into text fields with macOS High Sierra/Video corruption issue on High Sierra: Please make sure you have at least version 1.4.5.
 - Aerial logs you out of your user account everytime it starts: This looks like a new bug with macOS 10.14.5 beta 18F108f (similar to the Video corruption issue on High Sierra above), possibly only for Macs with Intel graphics. Please update to Aerial 1.5.0. More information here : https://github.com/JohnCoates/Aerial/issues/738
 
-# Misc.
+## Misc.
 
 - Brightness control does not control external displays: Aerial uses the brightness API from macOS to change the brightness of your screens. As of version 1.5.0, this does not allow us to control the brightness of external screens.
 - High CPU usage/fan spinning all of a sudden: If you correctly configured the preferred video format [according to your Mac](HardwareDecoding.md) and still experience high CPU usage/fan spinning all of a sudden, please look for the cause with `Activity Monitor`, you may see a `com.apple.photos.ImageConversionService` responsible for this CPU load. This is the iCloud Photos process, you can find more about [what it does here](https://support.apple.com/en-gu/HT204264) and how to pause it.
