@@ -23,6 +23,7 @@ extension PreferencesWindowController {
         // Displays Tab
         newDisplayModePopup.selectItem(at: preferences.newDisplayMode!)
         newViewingModePopup.selectItem(at: preferences.newViewingMode!)
+        aspectModePopup.selectItem(at: preferences.aspectMode!)
 
         if preferences.newDisplayMode == Preferences.NewDisplayMode.selection.rawValue {
             displayInstructionLabel.isHidden = false
@@ -52,6 +53,11 @@ extension PreferencesWindowController {
         } else {
             displayMarginBox.isHidden = true
         }
+    }
+
+    @IBAction func aspectModePopupClick(_ sender: NSPopUpButton) {
+        debugLog("UI aspectModeClick: \(sender.indexOfSelectedItem)")
+        preferences.aspectMode = sender.indexOfSelectedItem
     }
 
     @IBAction func horizontalDisplayMarginChange(_ sender: NSTextField) {

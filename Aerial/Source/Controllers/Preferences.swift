@@ -82,6 +82,11 @@ final class Preferences {
         case verticalMargin = "verticalMargin"
 
         case synchronizedMode = "synchronizedMode"
+        case aspectMode = "aspectMode"
+    }
+
+    enum AspectMode: Int {
+        case fill, fit
     }
 
     enum NewDisplayMode: Int {
@@ -222,6 +227,7 @@ final class Preferences {
         defaultValues[.horizontalMargin] = 0
         defaultValues[.verticalMargin] = 0
         defaultValues[.synchronizedMode] = false
+        defaultValues[.aspectMode] = AspectMode.fill
 
         // Set today's date as default
         let dateFormatter = DateFormatter()
@@ -273,6 +279,15 @@ final class Preferences {
         }
         set {
             setValue(forIdentifier: .verticalMargin, value: newValue)
+        }
+    }
+
+    var aspectMode: Int? {
+        get {
+            return optionalValue(forIdentifier: .aspectMode)
+        }
+        set {
+            setValue(forIdentifier: .aspectMode, value: newValue)
         }
     }
 

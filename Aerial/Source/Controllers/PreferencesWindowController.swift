@@ -67,6 +67,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var displayInstructionLabel: NSTextField!
     @IBOutlet var newDisplayModePopup: NSPopUpButton!
     @IBOutlet var newViewingModePopup: NSPopUpButton!
+    @IBOutlet var aspectModePopup: NSPopUpButton!
 
     @IBOutlet var displayMarginBox: NSBox!
     @IBOutlet var horizontalDisplayMarginTextfield: NSTextField!
@@ -308,6 +309,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         } else if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
             versionButton.title = version
         }
+        debugLog("Aerial control panel V\(versionButton.title)")
 
         setupVideosTab()
         setupDisplaysTab()
