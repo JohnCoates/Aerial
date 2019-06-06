@@ -40,59 +40,45 @@ final class VideoCache {
         }
 
         if cacheDirectory == nil {
-            let localCachePaths = NSSearchPathForDirectoriesInDomains(.cachesDirectory,
-                                                                 .localDomainMask,
-                                                                 true)
             let userCachePaths = NSSearchPathForDirectoriesInDomains(.cachesDirectory,
                                                                  .userDomainMask,
                                                                  true)
-
-            if localCachePaths.isEmpty || userCachePaths.isEmpty {
+            debugLog("userCachePath : \(userCachePaths)")
+            if userCachePaths.isEmpty {
                 errorLog("Couldn't find cache paths!")
                 return nil
             }
-
-            let localCacheDirectory = localCachePaths[0] as NSString
             let userCacheDirectory = userCachePaths[0] as NSString
+            if #available(OSX 10.15, *) {
+            } else {
+                // Still look for /Library for pre Catalina OS
+                let localCachePaths = NSSearchPathForDirectoriesInDomains(.cachesDirectory,
+                                                                          .localDomainMask,
+                                                                          true)
+                let localCacheDirectory = localCachePaths[0] as NSString
+                if aerialCacheExists(at: localCacheDirectory) {
+                    debugLog("local cache exists")
+                    cacheDirectory = localCacheDirectory.appendingPathComponent("Aerial")
+                }
+            }
 
-            if aerialCacheExists(at: localCacheDirectory) {
-                debugLog("local cache exists")
-                cacheDirectory = localCacheDirectory.appendingPathComponent("Aerial")
-            } else if aerialCacheExists(at: userCacheDirectory) {
+            if cacheDirectory == nil && aerialCacheExists(at: userCacheDirectory) {
                 debugLog("user cache exists")
                 cacheDirectory = userCacheDirectory.appendingPathComponent("Aerial")
             } else {
-                debugLog("create local cache")
-                // We create in local cache directory (/Library/Caches)
-                cacheDirectory = localCacheDirectory.appendingPathComponent("Aerial")
+                debugLog("create user cache")
+                // We create in user cache directory (~/Library/Caches)
+                cacheDirectory = userCacheDirectory.appendingPathComponent("Aerial")
 
                 let fileManager = FileManager.default
-                var didCreate = true
                 if fileManager.fileExists(atPath: cacheDirectory!) == false {
                     do {
                         try fileManager.createDirectory(atPath: cacheDirectory!,
                                                         withIntermediateDirectories: false, attributes: nil)
                     } catch let error {
-                        errorLog("Couldn't create cache directory in Library: \(error)")
-                        didCreate = false
-                    }
-                }
-
-                if !didCreate {
-                    // Last ditch effort, probably the user has some restriction on its account,
-                    // so we try creating in its user directory as a fallback
-                    cacheDirectory = userCacheDirectory.appendingPathComponent("Aerial")
-
-                    let fileManager = FileManager.default
-                    if fileManager.fileExists(atPath: cacheDirectory!) == false {
-                        do {
-                            try fileManager.createDirectory(atPath: cacheDirectory!,
-                                                            withIntermediateDirectories: false, attributes: nil)
-                        } catch let error {
-                            errorLog("Couldn't create cache directory in user Library: \(error)")
-                            errorLog("FATAL : There's nothing more we can do at this point")
-                            return nil
-                        }
+                        errorLog("Couldn't create cache directory in User directory: \(error)")
+                        errorLog("FATAL : There's nothing more we can do at this point")
+                        return nil
                     }
                 }
             }
@@ -100,6 +86,10 @@ final class VideoCache {
 
         // Cache the computed value
         computedCacheDirectory = cacheDirectory
+
+        // Save it
+        preferences.customCacheDirectory = computedCacheDirectory
+        preferences.synchronize()
         debugLog("cache to be used : \(String(describing: cacheDirectory))")
         return cacheDirectory
     }

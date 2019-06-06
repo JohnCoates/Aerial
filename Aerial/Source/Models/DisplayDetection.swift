@@ -87,6 +87,8 @@ final class DisplayDetection: NSObject {
                 cmInPoints = CGFloat(wide) / CGFloat(mmsize.width) * 10
                 debugLog("1cm = \(cmInPoints) points")
             }
+            // swiftlint:disable:next line_length
+            debugLog("pass1: id \(currentDisplay), width: \(CGDisplayPixelsWide(currentDisplay)), height: \(CGDisplayPixelsHigh(currentDisplay)), bottomLeftFrame: \(rect), isMain isMain \(isMain)")
             screens.append(Screen(id: currentDisplay,
                                   width: CGDisplayPixelsWide(currentDisplay),
                                   height: CGDisplayPixelsHigh(currentDisplay),
@@ -95,6 +97,8 @@ final class DisplayDetection: NSObject {
 
         // Second pass on NSScreen to grab the retina factor
         for screen in NSScreen.screens {
+            debugLog("pass2: dict \(screen.deviceDescription)")
+            debugLog("       bottomLeftFrame \(screen.frame)")
             let dscreen = findScreenWith(frame: screen.frame)
 
             if dscreen != nil {
