@@ -360,7 +360,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         playerLayer = AVPlayerLayer(player: player)
 
         if #available(OSX 10.10, *) {
-            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            if preferences.aspectMode == Preferences.AspectMode.fill.rawValue {
+                playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            } else {
+                playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
+            }
         }
         playerLayer.autoresizingMask = [CAAutoresizingMask.layerWidthSizable, CAAutoresizingMask.layerHeightSizable]
 

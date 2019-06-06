@@ -12,14 +12,23 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
-    lazy var preferencesWindowController: PreferencesWindowController = PreferencesWindowController()
+    //lazy var preferencesWindowController: PreferencesWindowController = PreferencesWindowController()
+    var preferencesWindowController: PreferencesWindowController
 
     /*func applicationWillTerminate(_ notification: Notification) {
         debugLog("Received application will terminate")
         preferencesWindowController.close(self)
     }*/
 
+    override init() {
+        preferencesWindowController = PreferencesWindowController()
+        print("pwc : \(preferencesWindowController)")
+        super.init()
+
+    }
+
     func applicationDidFinishLaunching(_ notification: Notification) {
+
         let objects = objectsFromNib(loadNibNamed: "PreferencesWindow")
         preferencesWindowController.appMode = true
         // We need to find the correct window in our nib
@@ -47,10 +56,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func objectsFromNib(loadNibNamed nibName: String) -> [AnyObject] {
         let bundle = Bundle.main
         var topLevelObjects: NSArray? = NSArray()
-        bundle.loadNibNamed(NSNib.Name(nibName),
-                            owner: preferencesWindowController,
-                            topLevelObjects: &topLevelObjects)
+        print("bundle \(bundle)")
 
+        let res =  Bundle.main.loadNibNamed(nibName, owner: preferencesWindowController, topLevelObjects: &topLevelObjects)
+
+        /*let res = bundle.loadNibNamed(nibName,
+                                          owner: preferencesWindowController,
+                                          topLevelObjects: &topLevelObjects)
+         */
+        print("res")
         return topLevelObjects! as [AnyObject]
     }
 }

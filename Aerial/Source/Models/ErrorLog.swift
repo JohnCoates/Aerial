@@ -51,29 +51,21 @@ var errorMessages = [LogMessage]()
 // swiftlint:disable:next identifier_name
 func Log(level: ErrorLevel, message: String) {
     errorMessages.append(LogMessage(level: level, message: message))
-
-    // We throw errors to console, they always matter
     if level == .error {
         if #available(OSX 10.12, *) {
             // This is faster when available
             let log = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "Screensaver")
             os_log("AerialError: %@", log: log, type: .error, message)
         } else {
-            // Fallback on earlier versions
             NSLog("AerialError: \(message)")
         }
     }
 
     let preferences = Preferences.sharedInstance
-
-    // We may callback
     if level == .warning || level == .error || (level == .debug && preferences.debugMode) {
-        let logger = Logger.sharedInstance
-        logger.callBack(level: level)
+        Logger.sharedInstance.callBack(level: level)
     }
 
-    // We may log to disk, asyncly
-    // Comment the firt if to always log to disk
     if preferences.logToDisk {
         DispatchQueue.main.async {
             let dateFormatter = DateFormatter()
@@ -82,19 +74,12 @@ func Log(level: ErrorLevel, message: String) {
             } else {
                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             }
-
             let string = dateFormatter.string(from: Date()) + " : " + message + "\n"
-
-            // tmpOverride
-            //if var cacheFileUrl = try? FileManager.default.url(for: .desktopDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
 
             if let cacheDirectory = VideoCache.cacheDirectory {
                 var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
                 cacheFileUrl.appendPathComponent("AerialLog.txt")
-
                 let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)!
-                //let data = message.data(using: String.Encoding.utf8, allowLossyConversion: false)!
-
                 if FileManager.default.fileExists(atPath: cacheFileUrl.path) {
                     do {
                         let fileHandle = try FileHandle(forWritingTo: cacheFileUrl)
@@ -102,17 +87,15 @@ func Log(level: ErrorLevel, message: String) {
                         fileHandle.write(data)
                         fileHandle.closeFile()
                     } catch {
-                        print("Can't open handle")
+                        NSLog("AerialError: Can't open handle for AerialLog.txt")
                     }
                 } else {
                     do {
-                        try data.write(to: cacheFileUrl, options: .atomic)
+                        try data.write(to: cacheFileUrl, options: .atomic)  // Create the file
                     } catch {
-                        print("Can't write to file")
+                        NSLog("AerialError: Can't write to file AerialLog.txt")
                     }
                 }
-            } else {
-                NSLog("AerialError: No cache directory, this is super bad")
             }
         }
     }
