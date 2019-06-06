@@ -48,9 +48,21 @@ final class VideoCache {
                 errorLog("Couldn't find cache paths!")
                 return nil
             }
-
             let userCacheDirectory = userCachePaths[0] as NSString
-            if aerialCacheExists(at: userCacheDirectory) {
+            if #available(OSX 10.15, *) {
+            } else {
+                // Still look for /Library for pre Catalina OS
+                let localCachePaths = NSSearchPathForDirectoriesInDomains(.cachesDirectory,
+                                                                          .localDomainMask,
+                                                                          true)
+                let localCacheDirectory = localCachePaths[0] as NSString
+                if aerialCacheExists(at: localCacheDirectory) {
+                    debugLog("local cache exists")
+                    cacheDirectory = localCacheDirectory.appendingPathComponent("Aerial")
+                }
+            }
+
+            if cacheDirectory == nil && aerialCacheExists(at: userCacheDirectory) {
                 debugLog("user cache exists")
                 cacheDirectory = userCacheDirectory.appendingPathComponent("Aerial")
             } else {

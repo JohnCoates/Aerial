@@ -182,7 +182,12 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     // swiftlint:disable:next cyclomatic_complexity
     func setup() {
-        debugLog("\(self.description) AerialView setup init")
+        if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
+            debugLog("\(self.description) AerialView setup init (V\(version))")
+        } else {
+            debugLog("\(self.description) AerialView setup init")
+        }
+
         let preferences = Preferences.sharedInstance
         let timeManagement = TimeManagement.sharedInstance
 
