@@ -151,8 +151,10 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         if #available(OSX 10.12, *) {
             let preferences = Preferences.sharedInstance
             let timeManagement = TimeManagement.sharedInstance
-            if preferences.dimBrightness && preferences.startDim != preferences.endDim {
-                debugLog("setting brightness timers from \(String(describing: preferences.startDim)) to \(String(describing: preferences.endDim))")
+            let startValue = min(preferences.startDim!, Double(brightnessToRestore!))
+
+            if preferences.dimBrightness && startValue > preferences.endDim! {
+                debugLog("setting brightness timers from \(String(describing: startValue)) to \(String(describing: preferences.endDim))")
                 var interval: Int
                 if preferences.overrideDimInMinutes {
                     interval = preferences.dimInMinutes! * 6 // * 60 / 10, we make 10 intermediate steps
@@ -166,7 +168,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
                 for idx in 1...10 {
                     _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(interval * idx), repeats: false) { (_) in
-                        let val = preferences.startDim! - ((preferences.startDim! - preferences.endDim!) / 10 * Double(idx))
+                        let val = startValue - ((startValue - preferences.endDim!) / 10 * Double(idx))
                         debugLog("Firing event \(idx) brightness to \(val)")
                         timeManagement.setBrightness(level: Float(val))
                     }
@@ -232,7 +234,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                     if !preferences.dimOnlyOnBattery || (preferences.dimOnlyOnBattery && timeManagement.isOnBattery()) {
                         brightnessToRestore = timeManagement.getBrightness()
                         debugLog("Brightness before Aerial was launched : \(String(describing: brightnessToRestore))")
-                        timeManagement.setBrightness(level: Float(preferences.startDim!))
+                        timeManagement.setBrightness(level: min(Float(preferences.startDim!), brightnessToRestore!))
                         setDimTimers()
                     }
                 }

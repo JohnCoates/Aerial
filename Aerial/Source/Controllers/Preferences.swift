@@ -192,8 +192,8 @@ final class Preferences {
         defaultValues[.extraFontName] = "Monaco"
         defaultValues[.extraFontSize] = 28
         defaultValues[.extraCorner] = ExtraCorner.same
-        defaultValues[.debugMode] = false
-        defaultValues[.logToDisk] = false
+        defaultValues[.debugMode] = true
+        defaultValues[.logToDisk] = true
         defaultValues[.versionCheck] = VersionCheck.weekly
         defaultValues[.alsoVersionCheckBeta] = false
         defaultValues[.latitude] = ""
