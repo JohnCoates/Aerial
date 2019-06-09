@@ -3,23 +3,19 @@
 <title>Aerial</title>
 
 <item>
-<title>1.5.1beta2</title>
+<title>1.5.1beta3</title>
   <description>
           <![CDATA[
-<p>This is the beta feed !</p>
-
-<ul><li>Starting with this release, Aerial is properly signed and notarized 🎉</li>
-<li>Default cache path will now go to user directory, this will no longer be configurable under macOS 10.15 Catalina as screensavers are now sandboxed</li>
-<li>Add optional "fit" mode instead of filling the screen with videos, this feature is subject to change !</li>
-<li>Add extra debugging options for multiple displays configurations</li></ul>
-
-<p>If you plan to install macOS 10.15 Catalina, we suggest you first check this issue : https://github.com/JohnCoates/Aerial/issues/801</p>
+<p>This is the beta feed ! Aerial is properly signed and notarized 🎉</p>
+<ul>
+<li>HDR support on macOS Catalina</li></ul>
+<p>macOS 10.15 Catalina users, we suggest you first check this issue : https://github.com/JohnCoates/Aerial/issues/801</p>
           ]]>
     </description>
-<pubDate>jeu., 6 mai. 2019 18:30:00 +0100</pubDate>
+<pubDate>dim., 9 jui. 2019 16:00:00 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.5.1beta2/Aerial.saver.zip" sparkle:version="1.5.1beta2" sparkle:shortVersionString="1.5.1beta2" sparkle:edSignature="Qb26Ix7TziCXWHNcfqPXkIBpwsBrygY6w/qCrry32P1zFwiEMK1j8k45Ph0VXYbIGh/sSugUtlqLJ0peztCUAg==" length="6037263" type="application/octet-stream"/>
-</item>  
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.5.1beta3/Aerial.saver.zip" sparkle:version="1.5.1beta3" sparkle:shortVersionString="1.5.1beta3" sparkle:edSignature="4XfNAqdH/wyoz4YRaEBBz0uGUUUvH6Z5rZB90KI9vJedlwA+tFDiwpECI308ZGtWsepXmkri5LBUCw+nqbEUDQ==" length="6038953" type="application/octet-stream"/>
+</item> 
   
 <item>
 <title>1.5.0</title>
