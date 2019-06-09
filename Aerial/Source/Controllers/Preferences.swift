@@ -83,6 +83,7 @@ final class Preferences {
 
         case synchronizedMode = "synchronizedMode"
         case aspectMode = "aspectMode"
+        case useHDR = "useHDR"
     }
 
     enum AspectMode: Int {
@@ -228,6 +229,7 @@ final class Preferences {
         defaultValues[.verticalMargin] = 0
         defaultValues[.synchronizedMode] = false
         defaultValues[.aspectMode] = AspectMode.fill
+        defaultValues[.useHDR] = true
 
         // Set today's date as default
         let dateFormatter = DateFormatter()
@@ -342,6 +344,15 @@ final class Preferences {
         }
         set {
             setValue(forIdentifier: .alternateVideoFormat, value: newValue)
+        }
+    }
+
+    var useHDR: Bool {
+        get {
+            return value(forIdentifier: .useHDR)
+        }
+        set {
+            setValue(forIdentifier: .useHDR, value: newValue)
         }
     }
 

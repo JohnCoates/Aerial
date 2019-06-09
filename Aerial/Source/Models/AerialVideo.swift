@@ -90,9 +90,13 @@ final class AerialVideo: CustomStringConvertible, Equatable {
     let secondaryName: String
     let type: String
     let timeOfDay: String
+
     var url1080pH264: String
     let url1080pHEVC: String
+    let url1080pHDR: String
     let url4KHEVC: String
+    let url4KHDR: String
+
     var sources: [Manifests]
     let poi: [String: String]
     let communityPoi: [String: String]
@@ -106,6 +110,7 @@ final class AerialVideo: CustomStringConvertible, Equatable {
         return VideoCache.isAvailableOffline(video: self)
     }
 
+    // MARK: - Public getter
     var url: URL {
         let preferences = Preferences.sharedInstance
         let timeManagement = TimeManagement.sharedInstance
@@ -117,35 +122,56 @@ final class AerialVideo: CustomStringConvertible, Equatable {
         return getClosestAvailable(wanted: preferences.videoFormat!)
     }
 
+    // Returns the closest video we have in the manifests
     func getClosestAvailable(wanted: Int) -> URL {
         if wanted == Preferences.VideoFormat.v4KHEVC.rawValue {
-            if url4KHEVC != "" {
-                return URL(string: self.url4KHEVC)!
-            } else if url1080pHEVC != "" {
-                return URL(string: self.url1080pHEVC)!
-            } else {
-                return URL(string: self.url1080pH264)!
-            }
+            return getVideoFormatFrom(best: .v4KHEVC, option2: .v1080pHEVC, option3: .v1080pH264)
         } else if wanted == Preferences.VideoFormat.v1080pHEVC.rawValue {
-            if url1080pHEVC != "" {
-                return URL(string: self.url1080pHEVC)!
-            } else if url1080pH264 != "" {
-                return URL(string: self.url1080pH264)!
-            } else {
-                return URL(string: self.url4KHEVC)!
-            }
+            return getVideoFormatFrom(best: .v1080pHEVC, option2: .v1080pH264, option3: .v4KHEVC)
         } else {
-            if url1080pH264 != "" {
-                return URL(string: self.url1080pH264)!
-            } else if url1080pHEVC != "" {
-                // With the latest versions, we should always have a H.264 fallback so this is just for future proofing
-                return URL(string: self.url1080pHEVC)!
-            } else {
-                return URL(string: self.url4KHEVC)!
-            }
+            return getVideoFormatFrom(best: .v1080pH264, option2: .v1080pHEVC, option3: .v4KHEVC)
         }
     }
 
+    // Helper to find the best available format from the 3 options given, in that order
+    func getVideoFormatFrom(best: Preferences.VideoFormat, option2: Preferences.VideoFormat, option3: Preferences.VideoFormat) -> URL {
+        if urlFor(videoFormat: best) != "" {
+            return getDynamicRange(wanted: best)
+        } else if urlFor(videoFormat: option2) != "" {
+            return getDynamicRange(wanted: option2)
+        } else {
+            return getDynamicRange(wanted: option3)
+        }
+    }
+
+    // Helper to get the url for a given format
+    private func urlFor(videoFormat: Preferences.VideoFormat) -> String {
+        if videoFormat == .v4KHEVC {
+            return url4KHEVC
+        } else if videoFormat == .v1080pHEVC {
+            return url1080pHEVC
+        } else {
+            return url1080pH264
+        }
+    }
+
+    // Helper to get the correct Dynamic Range version based on Format, preferences, and OS availability
+    func getDynamicRange(wanted: Preferences.VideoFormat) -> URL {
+        let preferences = Preferences.sharedInstance
+        if #available(OSX 10.15, *), preferences.useHDR && wanted == .v4KHEVC {
+            return URL(string: url4KHDR)!
+        } else if wanted == .v4KHEVC {
+            return URL(string: url4KHEVC)!
+        } else if #available(OSX 10.15, *), preferences.useHDR && wanted == .v1080pHEVC {
+            return URL(string: url1080pHDR)!
+        } else if wanted == .v1080pHEVC {
+            return URL(string: url1080pHEVC)!
+        } else {
+            return URL(string: url1080pH264)!
+        }
+    }
+
+    // MARK: - Init
     init(id: String,
          name: String,
          secondaryName: String,
@@ -153,7 +179,9 @@ final class AerialVideo: CustomStringConvertible, Equatable {
          timeOfDay: String,
          url1080pH264: String,
          url1080pHEVC: String,
+         url1080pHDR: String,
          url4KHEVC: String,
+         url4KHDR: String,
          manifest: Manifests,
          poi: [String: String],
          communityPoi: [String: String]
@@ -189,13 +217,15 @@ final class AerialVideo: CustomStringConvertible, Equatable {
 
         self.url1080pH264 = url1080pH264
         self.url1080pHEVC = url1080pHEVC
+        self.url1080pHDR = url1080pHDR
         self.url4KHEVC = url4KHEVC
+        self.url4KHDR = url4KHDR
         self.sources = [manifest]
         self.poi = poi
         self.communityPoi = communityPoi
         self.duration = 0
 
-        updateDuration()
+        updateDuration()    // We need to have the video duration
     }
 
     func updateDuration() {
@@ -255,7 +285,9 @@ final class AerialVideo: CustomStringConvertible, Equatable {
         timeofDay=\(timeOfDay),
         url1080pH264=\(url1080pH264),
         url1080pHEVC=\(url1080pHEVC),
+        url1080pHDR=\(url1080pHDR),
         url4KHEVC=\(url4KHEVC)"
+        url4KHDR=\(url4KHDR)"
         """
     }
 }

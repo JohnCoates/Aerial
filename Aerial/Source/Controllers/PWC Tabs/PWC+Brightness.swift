@@ -29,9 +29,6 @@ extension PreferencesWindowController {
         if preferences.dimOnlyAtNight {
             dimOnlyAtNight.state = .on
         }
-        if preferences.synchronizedMode {
-            synchronizedModeCheckbox.state = .on
-        }
         dimStartFrom.doubleValue = preferences.startDim ?? 0.5
         dimFadeTo.doubleValue = preferences.endDim ?? 0.1
         dimFadeInMinutes.stringValue = String(preferences.dimInMinutes!)

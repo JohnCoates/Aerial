@@ -115,18 +115,21 @@ extension PreferencesWindowController {
 
         fadeInOutModePopup.selectItem(at: preferences.fadeMode!)
 
+        // We need catalina for HDR !
+        if #available(OSX 10.15, *) {
+            if preferences.useHDR {
+                useHDRCheckbox.state = .off
+            }
+        } else {
+            useHDRCheckbox.state = .off
+            useHDRCheckbox.isEnabled = false
+        }
     }
 
     @IBAction func rightArrowKeyPlaysNextClick(_ sender: NSButton) {
         let onState = sender.state == .on
         preferences.allowSkips = onState
         debugLog("UI allowSkips \(onState)")
-    }
-
-    @IBAction func synchronizedModeClick(_ sender: NSButton) {
-        let onState = sender.state == .on
-        preferences.synchronizedMode = onState
-        debugLog("UI synchronizedMode \(onState)")
     }
 
     @IBAction func overrideOnBatteryClick(_ sender: NSButton) {
@@ -162,6 +165,12 @@ extension PreferencesWindowController {
         preferences.videoFormat = sender.indexOfSelectedItem
         preferences.synchronize()
         outlineView.reloadData()
+    }
+
+    @IBAction func useHDRChange(_ sender: NSButton) {
+        let onState = sender.state == .on
+        preferences.useHDR = onState
+        debugLog("UI useHDR \(onState)")
     }
 
     @IBAction func helpButtonClick(_ button: NSButton!) {

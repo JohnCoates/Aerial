@@ -21,6 +21,9 @@ extension PreferencesWindowController {
         if preferences.logMilliseconds {
             logMillisecondsButton.state = .on
         }
+        if preferences.synchronizedMode {
+            synchronizedModeCheckbox.state = .on
+        }
     }
     // MARK: - Advanced panel
 
@@ -101,6 +104,12 @@ extension PreferencesWindowController {
         }
 
         showLogBottomClick.isHidden = false
+    }
+
+    @IBAction func synchronizedModeClick(_ sender: NSButton) {
+        let onState = sender.state == .on
+        preferences.synchronizedMode = onState
+        debugLog("UI synchronizedMode \(onState)")
     }
 
     @IBAction func moveOldVideosClick(_ sender: Any) {

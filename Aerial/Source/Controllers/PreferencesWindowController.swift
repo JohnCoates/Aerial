@@ -56,6 +56,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var fadeInOutModePopup: NSPopUpButton!
     @IBOutlet var popupVideoFormat: NSPopUpButton!
+    @IBOutlet var useHDRCheckbox: NSButton!
+
     @IBOutlet var overrideOnBatteryCheckbox: NSButton!
     @IBOutlet var alternatePopupVideoFormat: NSPopUpButton!
     @IBOutlet var powerSavingOnLowBatteryCheckbox: NSButton!
