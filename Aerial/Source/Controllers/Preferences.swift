@@ -170,7 +170,7 @@ final class Preferences {
         var defaultValues = [Identifiers: Any]()
         defaultValues[.differentAerialsOnEachDisplay] = false
         defaultValues[.cacheAerials] = true
-        defaultValues[.videoFormat] = VideoFormat.v1080pHEVC
+        defaultValues[.videoFormat] = VideoFormat.v1080pH264
         defaultValues[.showDescriptions] = true
         defaultValues[.useCommunityDescriptions] = true
         defaultValues[.showDescriptionsMode] = DescriptionMode.fade10seconds
