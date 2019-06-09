@@ -103,7 +103,9 @@ class ManifestLoader {
     let mergeInfo = [
         "2F11E857-4F77-4476-8033-4A1E4610AFCC":
             ["url-1080-SDR": "https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_2K_SDR_HEVC.mov",
-             "url-4K-SDR": "https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_SDR_HEVC.mov", ],    // Dubai night 2
+             "url-1080-HDR": "https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_2K_HDR_HEVC.mov",
+             "url-4K-SDR": "https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_SDR_HEVC.mov",
+             "url-4K-HDR": "https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_HDR_HEVC.mov", ],    // Dubai night 2
     ]
 
     // Extra POI
@@ -151,8 +153,7 @@ class ManifestLoader {
         playlistIsRestricted = isRestricted
         playlistRestrictedTo = restrictedTo
 
-        // Start with a shuffled list
-        //let shuffled = loadedManifest.shuffled()
+        // Start with a shuffled list, we may have synchronized seed shuffle
         var shuffled: [AerialVideo]
         let preferences = Preferences.sharedInstance
         if preferences.synchronizedMode {
@@ -177,14 +178,12 @@ class ManifestLoader {
             let inRotation = preferences.videoIsInRotation(videoID: video.id)
 
             if !inRotation {
-                //debugLog("randomVideo: video is disabled: \(video)")
                 continue
             }
 
             // Do we restrict video types by day/night ?
             if isRestricted {
                 if video.timeOfDay != restrictedTo {
-                    //debugLog("randomVideo: video is excluded as we only play \(restrictTo) (is: \(video.timeOfDay))")
                     continue
                 }
             }
@@ -192,7 +191,6 @@ class ManifestLoader {
             // We may not want to stream
             if preferences.neverStreamVideos == true {
                 if video.isAvailableOffline == false {
-                    //debugLog("randomVideo: video is excluded because it's not available offline \(video)")
                     continue
                 }
             }
@@ -201,7 +199,7 @@ class ManifestLoader {
             playlist.append(video)
         }
 
-        // On regenerating a new playlist, we try to avoid repeating
+        // On regenerating a new playlist, we try to avoid repeating the last thing we played!
         while playlist.count > 1 && lastPluckedFromPlaylist == playlist.first {
             playlist.shuffle()
         }
@@ -210,15 +208,18 @@ class ManifestLoader {
     func randomVideo(excluding: [AerialVideo]) -> AerialVideo? {
         let timeManagement = TimeManagement.sharedInstance
         let (shouldRestrictByDayNight, restrictTo) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
-        debugLog("shouldRestrictByDayNight : \(shouldRestrictByDayNight) (\(restrictTo))")
+
+        // We may need to regenerate a playlist!
         if playlist.isEmpty || restrictTo != playlistRestrictedTo || shouldRestrictByDayNight != playlistIsRestricted {
             generatePlaylist(isRestricted: shouldRestrictByDayNight, restrictedTo: restrictTo)
         }
 
+        // If not pluck one from current playlist and return that
         if !playlist.isEmpty {
             lastPluckedFromPlaylist = playlist.removeFirst()
             return lastPluckedFromPlaylist
         } else {
+            // If we don't have any playlist, something's got awfully wrong so deal with that!
             return findBestEffortVideo()
         }
     }
@@ -238,7 +239,7 @@ class ManifestLoader {
         warnLog("Empty playlist, not good !")
 
         if lastPluckedFromPlaylist != nil {
-            warnLog("returning last played video after condition change not met !")
+            warnLog("Repeating last played video, after condition change not met !")
             return lastPluckedFromPlaylist!
         } else {
             // Start with a shuffled list
@@ -337,6 +338,7 @@ class ManifestLoader {
         }
     }
 
+    // MARK: - This will refetch the manifests online
     func reloadFiles() {
         moveOldManifests()
 
@@ -364,17 +366,16 @@ class ManifestLoader {
             urls.append(URL(string: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json")!)
         }
 
+        // Setup and start async fetching
         let completion = BlockOperation {
             debugLog("Fetching manifests all done")
             // We can now load from the newly cached files
             self.loadCachedManifests()
         }
-
         for url in urls {
             let operation = downloadManager.queueDownload(url)
             completion.addDependency(operation)
         }
-
         OperationQueue.main.addOperation(completion)
     }
 
@@ -441,7 +442,9 @@ class ManifestLoader {
                                                 timeOfDay: asset.time,
                                                 url1080pH264: url1080p,
                                                 url1080pHEVC: "",
+                                                url1080pHDR: "",
                                                 url4KHEVC: url4K,
+                                                url4KHDR: "",
                                                 manifest: .customVideos,
                                                 poi: [:],
                                                 communityPoi: asset.pointsOfInterest)
@@ -526,6 +529,7 @@ class ManifestLoader {
             }
         }
     }
+
     // MARK: - Manifests
 
     // Check if the Manifests have been loaded in this class already
@@ -686,7 +690,9 @@ class ManifestLoader {
                 let id = item["id"] as! String
                 let url1080pH264 = item["url-1080-H264"] as? String
                 let url1080pHEVC = item["url-1080-SDR"] as? String
+                let url1080pHDR = item["url-1080-HDR"] as? String
                 let url4KHEVC = item["url-4K-SDR"] as? String
+                let url4KHDR = item["url-4K-HDR"] as? String
                 let name = item["accessibilityLabel"] as! String
                 var secondaryName = ""
                 // We may have a secondary name
@@ -719,7 +725,9 @@ class ManifestLoader {
                         timeOfDay: timeOfDay,
                         url1080pH264: url1080pH264 ?? "",
                         url1080pHEVC: url1080pHEVC ?? "",
+                        url1080pHDR: url1080pHDR ?? "",
                         url4KHEVC: url4KHEVC ?? "",
+                        url4KHDR: url4KHDR ?? "",
                         manifest: manifest,
                         poi: poi ?? [:],
                         communityPoi: communityPoi)
@@ -781,12 +789,16 @@ class ManifestLoader {
                             }
                         }
                     } else {
-                        var url4khevc = ""
                         var url1080phevc = ""
+                        var url1080phdr = ""
+                        var url4khevc = ""
+                        var url4khdr = ""
                         // Check if we have some HEVC urls to merge
                         if let val = mergeInfo[id] {
                             url1080phevc = val["url-1080-SDR"]!
+                            url1080phdr = val["url-1080-HDR"]!
                             url4khevc = val["url-4K-SDR"]!
+                            url4khdr = val["url-4K-HDR"]!
                         }
 
                         // Now we can finally add...
@@ -797,7 +809,9 @@ class ManifestLoader {
                             timeOfDay: timeOfDay,
                             url1080pH264: url,
                             url1080pHEVC: url1080phevc,
+                            url1080pHDR: url1080phdr,
                             url4KHEVC: url4khevc,
+                            url4KHDR: url4khdr,
                             manifest: manifest,
                             poi: poi ?? [:],
                             communityPoi: communityPoi)

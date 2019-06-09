@@ -99,6 +99,7 @@ final class DisplayDetection: NSObject {
         for screen in NSScreen.screens {
             debugLog("pass2: dict \(screen.deviceDescription)")
             debugLog("       bottomLeftFrame \(screen.frame)")
+
             let dscreen = findScreenWith(frame: screen.frame)
 
             if dscreen != nil {
