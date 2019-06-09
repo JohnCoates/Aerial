@@ -124,7 +124,6 @@ final class AerialVideo: CustomStringConvertible, Equatable {
 
     // Returns the closest video we have in the manifests
     func getClosestAvailable(wanted: Int) -> URL {
-        debugLog("Format \(wanted)")
         if wanted == Preferences.VideoFormat.v4KHEVC.rawValue {
             return getVideoFormatFrom(best: .v4KHEVC, option2: .v1080pHEVC, option3: .v1080pH264)
         } else if wanted == Preferences.VideoFormat.v1080pHEVC.rawValue {
@@ -159,7 +158,6 @@ final class AerialVideo: CustomStringConvertible, Equatable {
     // Helper to get the correct Dynamic Range version based on Format, preferences, and OS availability
     func getDynamicRange(wanted: Preferences.VideoFormat) -> URL {
         let preferences = Preferences.sharedInstance
-        debugLog("Format \(wanted), HDR \(preferences.useHDR)")
         if #available(OSX 10.15, *), preferences.useHDR && wanted == .v4KHEVC {
             return URL(string: url4KHDR)!
         } else if wanted == .v4KHEVC {
