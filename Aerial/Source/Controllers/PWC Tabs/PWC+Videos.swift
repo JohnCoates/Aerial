@@ -109,7 +109,13 @@ extension PreferencesWindowController {
             rightArrowKeyPlaysNextCheckbox.state = .off
         }
 
-        popupVideoFormat.selectItem(at: preferences.videoFormat!)
+        if #available(OSX 10.13, *) {
+            popupVideoFormat.selectItem(at: preferences.videoFormat!)
+        } else {
+            preferences.videoFormat = Preferences.VideoFormat.v1080pH264.rawValue
+            popupVideoFormat.selectItem(at: preferences.videoFormat!)
+            popupVideoFormat.isEnabled = false
+        }
 
         alternatePopupVideoFormat.selectItem(at: preferences.alternateVideoFormat!)
 
