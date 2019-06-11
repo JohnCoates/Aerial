@@ -19,7 +19,7 @@ class Screen: NSObject {
     var isMain: Bool
     var backingScaleFactor: CGFloat
 
-    init(id: CGDirectDisplayID, width: Int, height: Int, bottomLeftFrame: CGRect, isMain: Bool) {
+    init(id: CGDirectDisplayID, width: Int, height: Int, bottomLeftFrame: CGRect, isMain: Bool, backingScaleFactor: CGFloat) {
         self.id = id
         self.width = width
         self.height = height
@@ -29,7 +29,7 @@ class Screen: NSObject {
                                       y: bottomLeftFrame.origin.y + CGFloat(height))
         self.zeroedOrigin = CGPoint(x: 0, y: 0)
         self.isMain = isMain
-        self.backingScaleFactor = 1
+        self.backingScaleFactor = backingScaleFactor
     }
 
     override var description: String {
@@ -73,40 +73,42 @@ final class DisplayDetection: NSObject {
 
         _ = CGGetOnlineDisplayList(maxDisplays, &onlineDisplays, &displayCount)
         debugLog("\(displayCount) display(s) detected")
+        var mainID: CGDirectDisplayID?
 
         for currentDisplay in onlineDisplays[0..<Int(displayCount)] {
             let isMain = CGDisplayIsMain(currentDisplay)
 
-            var rect = CGDisplayBounds(currentDisplay)
-            if isMain == 0 {
-                rect = convertTopLeftToBottomLeft(rect: rect)
-            } else {
+            if isMain == 1 {
                 // We calculate the equivalent of a centimeter in points on the main screen as a reference
                 let mmsize = CGDisplayScreenSize(currentDisplay)
                 let wide = CGDisplayPixelsWide(currentDisplay)
                 cmInPoints = CGFloat(wide) / CGFloat(mmsize.width) * 10
                 debugLog("1cm = \(cmInPoints) points")
+                mainID = currentDisplay
             }
+
             // swiftlint:disable:next line_length
-            debugLog("pass1: id \(currentDisplay), width: \(CGDisplayPixelsWide(currentDisplay)), height: \(CGDisplayPixelsHigh(currentDisplay)), bottomLeftFrame: \(rect), isMain isMain \(isMain)")
-            screens.append(Screen(id: currentDisplay,
-                                  width: CGDisplayPixelsWide(currentDisplay),
-                                  height: CGDisplayPixelsHigh(currentDisplay),
-                                  bottomLeftFrame: rect, isMain: isMain == 1 ? true : false))
+            //debugLog("pass1: id \(currentDisplay), width: \(CGDisplayPixelsWide(currentDisplay)), height: \(CGDisplayPixelsHigh(currentDisplay)),isMain isMain \(isMain)")
         }
 
         // Second pass on NSScreen to grab the retina factor
         for screen in NSScreen.screens {
-            debugLog("pass2: dict \(screen.deviceDescription)")
+            let screenID = screen.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as! CGDirectDisplayID
+
+            var thisIsMain = false
+            if screenID == mainID {
+                thisIsMain = true
+            }
+
+            debugLog("npass: dict \(screen.deviceDescription)")
             debugLog("       bottomLeftFrame \(screen.frame)")
 
-            let dscreen = findScreenWith(frame: screen.frame)
-
-            if dscreen != nil {
-                dscreen?.backingScaleFactor = screen.backingScaleFactor
-            } else {
-                debugLog("Unkown screen on second pass please report")
-            }
+            screens.append(Screen(id: screenID,
+                                  width: Int(screen.frame.width),
+                                  height: Int(screen.frame.height),
+                                  bottomLeftFrame: screen.frame,
+                                  isMain: thisIsMain,
+                                  backingScaleFactor: screen.backingScaleFactor))
         }
 
         // Before we finish, we calculate the origin of each screen from a 0,0 perspective

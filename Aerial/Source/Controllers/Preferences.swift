@@ -229,7 +229,7 @@ final class Preferences {
         defaultValues[.verticalMargin] = 0
         defaultValues[.synchronizedMode] = false
         defaultValues[.aspectMode] = AspectMode.fill
-        defaultValues[.useHDR] = true
+        defaultValues[.useHDR] = false
 
         // Set today's date as default
         let dateFormatter = DateFormatter()
