@@ -3,18 +3,20 @@
 <title>Aerial</title>
 
 <item>
-<title>1.5.1beta3</title>
+<title>1.5.1beta4</title>
   <description>
           <![CDATA[
 <p>This is the beta feed ! Aerial is properly signed and notarized 🎉</p>
 <ul>
-<li>HDR support on macOS Catalina</li></ul>
+<li>Disable HEVC on older macOS versions that don't support it</li>
+<li>Fix multiple display detection</li>
+<li>The default for HDR for Catalina is set to off in this build. If you installed beta3 and are already using HDR, this will not change a thing for you. See below on how to change configuration in Catalina and enable/disable HDR.HDR support on macOS Catalina</li></ul>
 <p>macOS 10.15 Catalina users, we suggest you first check this issue : https://github.com/JohnCoates/Aerial/issues/801</p>
           ]]>
     </description>
-<pubDate>dim., 9 jui. 2019 16:00:00 +0100</pubDate>
+<pubDate>mar., 11 jui. 2019 16:45:00 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.5.1beta3/Aerial.saver.zip" sparkle:version="1.5.1beta3" sparkle:shortVersionString="1.5.1beta3" sparkle:edSignature="4XfNAqdH/wyoz4YRaEBBz0uGUUUvH6Z5rZB90KI9vJedlwA+tFDiwpECI308ZGtWsepXmkri5LBUCw+nqbEUDQ==" length="6038953" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.5.1beta4/Aerial.saver.zip" sparkle:version="1.5.1beta4" sparkle:shortVersionString="1.5.1beta4" sparkle:edSignature="hoQOGV8kZyWOx49qADwm2WhrPkVTpwU+juez4mY/bX1QoOfPEu1WYs6A9E9rJAQc8ZjOgMcpx6Q9SpJ6XFZPDA==" length="6038690" type="application/octet-stream"/>
 </item> 
   
 <item>
