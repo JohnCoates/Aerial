@@ -77,6 +77,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     // Text tab
     @IBOutlet var showDescriptionsCheckbox: NSButton!
+    @IBOutlet var showDescriptionsOnKeypressCheckbox: NSButton!
     @IBOutlet var descriptionModePopup: NSPopUpButton!
     @IBOutlet weak var fadeInOutTextModePopup: NSPopUpButton!
     @IBOutlet var localizeForTvOS12Checkbox: NSButton!

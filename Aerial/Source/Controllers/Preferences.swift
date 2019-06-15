@@ -21,6 +21,7 @@ final class Preferences {
         case customCacheDirectory = "cacheDirectory"
         case videoFormat = "videoFormat"
         case showDescriptions = "showDescriptions"
+		case showDescriptionsOnKeypress = "showDescriptionsOnKeypress"
         case useCommunityDescriptions = "useCommunityDescriptions"
         case showDescriptionsMode = "showDescriptionsMode"
         case neverStreamVideos = "neverStreamVideos"
@@ -172,6 +173,7 @@ final class Preferences {
         defaultValues[.cacheAerials] = true
         defaultValues[.videoFormat] = VideoFormat.v1080pH264
         defaultValues[.showDescriptions] = true
+		defaultValues[.showDescriptionsOnKeypress] = true
         defaultValues[.useCommunityDescriptions] = true
         defaultValues[.showDescriptionsMode] = DescriptionMode.fade10seconds
         defaultValues[.neverStreamVideos] = false
@@ -825,6 +827,16 @@ final class Preferences {
                      value: newValue)
         }
     }
+
+	var showDescriptionsOnKeypress: Bool {
+		get {
+			return value(forIdentifier: .showDescriptionsOnKeypress)
+		}
+		set {
+			setValue(forIdentifier: .showDescriptionsOnKeypress,
+					 value: newValue)
+		}
+	}
 
     func videoIsInRotation(videoID: String) -> Bool {
         let key = "remove\(videoID)"

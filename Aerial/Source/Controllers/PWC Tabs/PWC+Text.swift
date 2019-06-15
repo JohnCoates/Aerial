@@ -57,6 +57,11 @@ extension PreferencesWindowController {
         } else {
             changeTextState(to: false)
         }
+		if preferences.showDescriptionsMode == Preferences.DescriptionMode.always.rawValue { showDescriptionsOnKeypressCheckbox.isEnabled = false
+		}
+		if preferences.showDescriptionsOnKeypress {
+			showDescriptionsOnKeypressCheckbox.state = .on
+		}
         if preferences.localizeDescriptions {
             localizeForTvOS12Checkbox.state = .on
         }
@@ -138,8 +143,18 @@ extension PreferencesWindowController {
         changeTextState(to: onState)
     }
 
+	@IBAction func showDescriptionsOnKeypressClick(button: NSButton?) {
+		let state = showDescriptionsOnKeypressCheckbox.state
+		let onState = state == .on
+		preferences.showDescriptionsOnKeypress = onState
+		debugLog("UI showDescriptionsOnKeypress \(onState)")
+	}
+
     func changeTextState(to: Bool) {
         // Location information
+		if (to && preferences.showDescriptionsMode != Preferences.DescriptionMode.always.rawValue) || !to {
+			showDescriptionsOnKeypressCheckbox.isEnabled = to
+		}
         useCommunityCheckbox.isEnabled = to
         localizeForTvOS12Checkbox.isEnabled = to
         descriptionModePopup.isEnabled = to
@@ -199,6 +214,11 @@ extension PreferencesWindowController {
     @IBAction func descriptionModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI descriptionMode: \(sender.indexOfSelectedItem)")
         preferences.showDescriptionsMode = sender.indexOfSelectedItem
+		// Disable Keypress checkbox on "Always"
+		if preferences.showDescriptionsMode == Preferences.DescriptionMode.always.rawValue { showDescriptionsOnKeypressCheckbox.isEnabled = false
+		} else {
+			showDescriptionsOnKeypressCheckbox.isEnabled = true
+		}
         preferences.synchronize()
     }
 
