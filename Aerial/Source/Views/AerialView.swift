@@ -40,6 +40,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     var brightnessToRestore: Float?
 
+    var lastTextLayerAnimationEnding: Double = -1
+
     static var shouldFade: Bool {
         let preferences = Preferences.sharedInstance
         return (preferences.fadeMode != Preferences.FadeMode.disabled.rawValue)
@@ -573,6 +575,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             AerialView.previewPlayer = player
         }
 
+        self.lastTextLayerAnimationEnding = -1
+
         debugLog("\(self.description) Setting player for all player layers in \(AerialView.sharedViews)")
         for view in AerialView.sharedViews {
             view.playerLayer.player = player
@@ -671,8 +675,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             } else {
                 debugLog("Right arrow key currently locked")
             }
-        } else if preferences.showDescriptions &&
-            preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue &&
+        } else if preferences.showDescriptionsMode != Preferences.DescriptionMode.always.rawValue &&
             preferences.showDescriptionsOnKeypress &&
             event.keyCode == 42 {
                 if !isQuickFading {
@@ -683,7 +686,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
                     if (!video.poi.isEmpty && poiStringProvider.loadedDescriptions) ||
                             (preferences.useCommunityDescriptions && !video.communityPoi.isEmpty &&
-								!poiStringProvider.getPoiKeys(video: video).isEmpty) {
+                                !poiStringProvider.getPoiKeys(video: video).isEmpty) {
                         // Collect all the timestamps from the JSON
                         var times = [NSValue]()
                         let keys = poiStringProvider.getPoiKeys(video: video)
@@ -695,7 +698,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                         // The JSON isn't sorted so we fix that
                         times.sort(by: { ($0 as! CMTime).seconds < ($1 as! CMTime).seconds })
 
-                        self.setupCurrentTextLayer(times: times, player: player, video: video)
+                        self.setupCurrentTextLayer(times: times, player: player, video: video, keypress: true)
                     } else {
                         // We don't have any extended description, using Secondary name (location) or video name (City)
                         let str: String
@@ -718,7 +721,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                             }
                         }
                         self.textLayer.add(fadeAnimation, forKey: "textfade")
-                        setupTextLayer(string: str, duration: fadeAnimation.duration, isInitial: false, totalDuration: video.duration)
+                        setupTextLayer(string: str, duration: fadeAnimation.duration, isInitial: true, totalDuration: video.duration)
                     }
                 } else {
                     debugLog("Backslash key currently locked")
@@ -823,18 +826,21 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                     }
                 }
 
+                self.lastTextLayerAnimationEnding = player.currentTime().seconds + fadeAnimation.duration
                 self.textLayer.add(fadeAnimation, forKey: "textfade")
+                var totalDuration: Double
                 if video.duration > 0 {
-                    setupTextLayer(string: str, duration: fadeAnimation.duration, isInitial: true, totalDuration: video.duration - 1)
+                    totalDuration = video.duration - 1
                 } else {
-                    setupTextLayer(string: str, duration: fadeAnimation.duration, isInitial: true, totalDuration: 807)
+                    totalDuration = 807
                 }
+                setupTextLayer(string: str, duration: fadeAnimation.duration, isInitial: true, totalDuration: totalDuration)
 
                 let mainQueue = DispatchQueue.main
 
                 // We then callback for each timestamp
                 timeObserver = player.addBoundaryTimeObserver(forTimes: times, queue: mainQueue) {
-                    self.setupCurrentTextLayer(times: times, player: player, video: video)
+                    self.setupCurrentTextLayer(times: times, player: player, video: video, keypress: false)
                 }
             } else {
                 // We don't have any extended description, using Secondary name (location) or video name (City)
@@ -857,17 +863,28 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                         fadeAnimation = createFadeInOutAnimation(duration: 807)
                     }
                 }
+                self.lastTextLayerAnimationEnding = player.currentTime().seconds + fadeAnimation.duration
                 self.textLayer.add(fadeAnimation, forKey: "textfade")
                 setupTextLayer(string: str, duration: fadeAnimation.duration, isInitial: true, totalDuration: video.duration)
             }
         }
     }
 
-    func setupCurrentTextLayer(times: [NSValue], player: AVPlayer, video: AerialVideo) {
+    func setupCurrentTextLayer(times: [NSValue], player: AVPlayer, video: AerialVideo, keypress: Bool) {
         let poiStringProvider = PoiStringProvider.sharedInstance
         let preferences = Preferences.sharedInstance
 
         let keys = poiStringProvider.getPoiKeys(video: video)
+        if keypress && player.currentTime().seconds < self.lastTextLayerAnimationEnding {
+            return
+        }
+
+        var totalDuration: Double
+        if video.duration > 0 {
+            totalDuration = video.duration - 1
+        } else {
+            totalDuration = 807
+        }
 
         var isLastTimeStamp = true
         var intervalUntilNextTimeStamp = 0.0
@@ -914,7 +931,9 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         // Get the string for the current timestamp
         let key = String(format: "%.0f", closestTime)
         let str = poiStringProvider.getString(key: keys[key]!, video: video)
-        self.setupTextLayer(string: str, duration: fadeAnimation.duration, isInitial: false, totalDuration: video.duration-1)
+        let isInitial = (keypress && self.lastTextLayerAnimationEnding == -1)
+        self.lastTextLayerAnimationEnding = player.currentTime().seconds + fadeAnimation.duration
+        self.setupTextLayer(string: str, duration: fadeAnimation.duration, isInitial: isInitial, totalDuration: totalDuration)
 
         self.textLayer.add(fadeAnimation, forKey: "textfade")
     }
