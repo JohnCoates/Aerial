@@ -21,6 +21,7 @@ final class VideoCache {
     static var computedCacheDirectory: String?
     static var computedAppSupportDirectory: String?
 
+    // MARK: - Application Support directory
     static var appSupportDirectory: String? {
         // We only process this once if successful
         if computedAppSupportDirectory != nil {
@@ -67,13 +68,13 @@ final class VideoCache {
         return computedAppSupportDirectory
     }
 
+    // MARK: - User Video cache directory
     static var cacheDirectory: String? {
 
         // We only process this once if successful
         if computedCacheDirectory != nil {
             return computedCacheDirectory
         }
-        debugLog("appSupport : \(appSupportDirectory)")
 
         var cacheDirectory: String?
         let preferences = Preferences.sharedInstance
@@ -140,6 +141,7 @@ final class VideoCache {
         return cacheDirectory
     }
 
+    // MARK: - Helpers
     static func aerialFolderExists(at: NSString) -> Bool {
         let aerialFolder = at.appendingPathComponent("Aerial")
         if FileManager.default.fileExists(atPath: aerialFolder as String) {
@@ -149,6 +151,7 @@ final class VideoCache {
         }
     }
 
+    // Is a video cached (in either appSupport or cache)
     static func isAvailableOffline(video: AerialVideo) -> Bool {
         let fileManager = FileManager.default
 
@@ -190,13 +193,32 @@ final class VideoCache {
     }
 
     static func cachePath(forFilename filename: String) -> String? {
-        guard let cacheDirectory = VideoCache.cacheDirectory else {
+        guard let cacheDirectory = VideoCache.cacheDirectory, let appSupportDirectory = VideoCache.appSupportDirectory else {
             return nil
         }
 
+        // Let's compute both
+        let appSupportPath = appSupportDirectory as NSString
+        let appSupportVideoPath = appSupportPath.appendingPathComponent(filename)
+
         let cacheDirectoryPath = cacheDirectory as NSString
-        let videoCachePath = cacheDirectoryPath.appendingPathComponent(filename)
-        return videoCachePath
+        let cacheVideoPath = cacheDirectoryPath.appendingPathComponent(filename)
+
+        // If the file exists in either dir, returns that
+        if FileManager.default.fileExists(atPath: appSupportVideoPath as String) {
+            return appSupportVideoPath
+        } else if FileManager.default.fileExists(atPath: cacheVideoPath as String) {
+            return cacheVideoPath
+        } else {
+            // File doesn't have to exist, this is also used to compute the save location
+            // So now with Catalina, considering containerization we need to use appSupport
+            // Pre catalina we return cache folder instead (no change for users)
+            if #available(OSX 10.15, *) {
+                return appSupportVideoPath
+            } else {
+                return cacheVideoPath
+            }
+        }
     }
 
     init(URL: Foundation.URL) {

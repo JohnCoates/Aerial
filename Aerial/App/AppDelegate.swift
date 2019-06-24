@@ -28,7 +28,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-
         let objects = objectsFromNib(loadNibNamed: "PreferencesWindow")
         preferencesWindowController.appMode = true
         // We need to find the correct window in our nib
@@ -54,17 +53,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func objectsFromNib(loadNibNamed nibName: String) -> [AnyObject] {
-        let bundle = Bundle.main
         var topLevelObjects: NSArray? = NSArray()
-        print("bundle \(bundle)")
 
-        //let res =  Bundle.main.loadNibNamed(nibName, owner: preferencesWindowController, topLevelObjects: &topLevelObjects)
+        _ =  Bundle.main.loadNibNamed(nibName, owner: preferencesWindowController,
+                                      topLevelObjects: &topLevelObjects)
 
-        let res = bundle.loadNibNamed(nibName,
-                                          owner: preferencesWindowController,
-                                          topLevelObjects: &topLevelObjects)
-
-        print("res")
         return topLevelObjects! as [AnyObject]
     }
 }

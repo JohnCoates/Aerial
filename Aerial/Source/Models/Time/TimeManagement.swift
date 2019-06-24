@@ -252,7 +252,8 @@ final class TimeManagement: NSObject {
         }
     }
 
-    // swiftlint:disable:next cyclomatic_complexity large_tuple
+    // siftlint:disable:next cyclomatic_complexity large_tuple
+    // swiftlint:disable:next large_tuple
     func getNightShiftInformation() -> (Bool, sunrise: Date?, sunset: Date?, error: String?) {
         // Catalina workaround, /usr/bin/corebrightnessdiag no longer exists
         return (false, nil, nil, "Nightshift disabled because of Catalina")
