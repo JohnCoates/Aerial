@@ -70,13 +70,13 @@ extension PreferencesWindowController {
     }
 
     @IBAction func showLogInFinder(_ button: NSButton!) {
-        let logfile = VideoCache.cacheDirectory!.appending("/AerialLog.txt")
+        let logfile = VideoCache.appSupportDirectory!.appending("/AerialLog.txt")
 
         // If we don't have a log, just show the folder
         if FileManager.default.fileExists(atPath: logfile) == false {
-            NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: VideoCache.cacheDirectory!)
+            NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: VideoCache.appSupportDirectory!)
         } else {
-            NSWorkspace.shared.selectFile(logfile, inFileViewerRootedAtPath: VideoCache.cacheDirectory!)
+            NSWorkspace.shared.selectFile(logfile, inFileViewerRootedAtPath: VideoCache.appSupportDirectory!)
         }
     }
 

@@ -316,7 +316,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         setupVideosTab()
         setupDisplaysTab()
         setupTextTab()
-        //setupTimeTab()
+        setupTimeTab()
         setupBrightnessTab()
         setupCacheTab()
         setupUpdatesTab()

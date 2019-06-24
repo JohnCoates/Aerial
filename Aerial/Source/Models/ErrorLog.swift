@@ -76,7 +76,7 @@ func Log(level: ErrorLevel, message: String) {
             }
             let string = dateFormatter.string(from: Date()) + " : " + message + "\n"
 
-            if let cacheDirectory = VideoCache.cacheDirectory {
+            if let cacheDirectory = VideoCache.appSupportDirectory {
                 var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
                 cacheFileUrl.appendPathComponent("AerialLog.txt")
                 let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)!
@@ -126,7 +126,7 @@ func errorLog(_ message: String) {
 }
 
 func dataLog(_ data: Data) {
-    let cacheDirectory = VideoCache.cacheDirectory!
+    let cacheDirectory = VideoCache.appSupportDirectory!
     var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
     cacheFileUrl.appendPathComponent("AerialData.txt")
 
