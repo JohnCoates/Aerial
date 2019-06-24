@@ -316,7 +316,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         setupVideosTab()
         setupDisplaysTab()
         setupTextTab()
-        //setupTimeTab()
+        setupTimeTab()
         setupBrightnessTab()
         setupCacheTab()
         setupUpdatesTab()
@@ -339,13 +339,13 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         }
 
         // We also load our CustomVideos nib here
-        /*let bundle = Bundle(for: PreferencesWindowController.self)
+        let bundle = Bundle(for: PreferencesWindowController.self)
         var topLevelObjects: NSArray? = NSArray()
         if !bundle.loadNibNamed(NSNib.Name("CustomVideos"),
                             owner: customVideosController,
                             topLevelObjects: &topLevelObjects) {
             errorLog("Could not load nib for CustomVideos, please report")
-        }*/
+        }
     }
 
     override func windowDidLoad() {
