@@ -136,9 +136,6 @@ final class VideoCache {
         // Cache the computed value
         computedCacheDirectory = cacheDirectory
 
-        // Save it
-        //preferences.customCacheDirectory = computedCacheDirectory
-        //preferences.synchronize()
         debugLog("cache to be used : \(String(describing: cacheDirectory))")
         return cacheDirectory
     }
