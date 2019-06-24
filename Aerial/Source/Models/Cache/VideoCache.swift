@@ -19,12 +19,61 @@ final class VideoCache {
     let URL: URL
 
     static var computedCacheDirectory: String?
+    static var computedAppSupportDirectory: String?
+
+    static var appSupportDirectory: String? {
+        // We only process this once if successful
+        if computedAppSupportDirectory != nil {
+            return computedAppSupportDirectory
+        }
+
+        var foundDirectory: String?
+
+        let appSupportPaths = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory,
+                                                                 .userDomainMask,
+                                                                 true)
+
+        if appSupportPaths.isEmpty {
+            errorLog("Couldn't find appSupport paths!")
+            return nil
+        }
+        let appSupportDirectory = appSupportPaths[0] as NSString
+        if aerialFolderExists(at: appSupportDirectory) {
+            debugLog("app support exists")
+            foundDirectory = appSupportDirectory.appendingPathComponent("Aerial")
+        } else {
+            debugLog("creating app support directory")
+            // We create in user appSupport which may be containairized
+            // so ~/Library/Application Support/ on pre 10.15
+            // or ~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver
+            //    /Data/Library/Application Support/
+            foundDirectory = appSupportDirectory.appendingPathComponent("Aerial")
+
+            let fileManager = FileManager.default
+            if fileManager.fileExists(atPath: foundDirectory!) == false {
+                do {
+                    try fileManager.createDirectory(atPath: foundDirectory!,
+                                                    withIntermediateDirectories: false, attributes: nil)
+                } catch let error {
+                    errorLog("Couldn't create appSupport directory in User directory: \(error)")
+                    errorLog("FATAL : There's nothing more we can do at this point")
+                    return nil
+                }
+            }
+        }
+
+        // Cache the computed value
+        computedAppSupportDirectory = foundDirectory
+        return computedAppSupportDirectory
+    }
 
     static var cacheDirectory: String? {
+
         // We only process this once if successful
         if computedCacheDirectory != nil {
             return computedCacheDirectory
         }
+        debugLog("appSupport : \(appSupportDirectory)")
 
         var cacheDirectory: String?
         let preferences = Preferences.sharedInstance
@@ -56,13 +105,13 @@ final class VideoCache {
                                                                           .localDomainMask,
                                                                           true)
                 let localCacheDirectory = localCachePaths[0] as NSString
-                if aerialCacheExists(at: localCacheDirectory) {
+                if aerialFolderExists(at: localCacheDirectory) {
                     debugLog("local cache exists")
                     cacheDirectory = localCacheDirectory.appendingPathComponent("Aerial")
                 }
             }
 
-            if cacheDirectory == nil && aerialCacheExists(at: userCacheDirectory) {
+            if cacheDirectory == nil && aerialFolderExists(at: userCacheDirectory) {
                 debugLog("user cache exists")
                 cacheDirectory = userCacheDirectory.appendingPathComponent("Aerial")
             } else {
@@ -88,15 +137,15 @@ final class VideoCache {
         computedCacheDirectory = cacheDirectory
 
         // Save it
-        preferences.customCacheDirectory = computedCacheDirectory
-        preferences.synchronize()
+        //preferences.customCacheDirectory = computedCacheDirectory
+        //preferences.synchronize()
         debugLog("cache to be used : \(String(describing: cacheDirectory))")
         return cacheDirectory
     }
 
-    static func aerialCacheExists(at: NSString) -> Bool {
-        let aerialCache = at.appendingPathComponent("Aerial")
-        if FileManager.default.fileExists(atPath: aerialCache as String) {
+    static func aerialFolderExists(at: NSString) -> Bool {
+        let aerialFolder = at.appendingPathComponent("Aerial")
+        if FileManager.default.fileExists(atPath: aerialFolder as String) {
             return true
         } else {
             return false
