@@ -58,12 +58,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var topLevelObjects: NSArray? = NSArray()
         print("bundle \(bundle)")
 
-        let res =  Bundle.main.loadNibNamed(nibName, owner: preferencesWindowController, topLevelObjects: &topLevelObjects)
+        //let res =  Bundle.main.loadNibNamed(nibName, owner: preferencesWindowController, topLevelObjects: &topLevelObjects)
 
-        /*let res = bundle.loadNibNamed(nibName,
+        let res = bundle.loadNibNamed(nibName,
                                           owner: preferencesWindowController,
                                           topLevelObjects: &topLevelObjects)
-         */
+
         print("res")
         return topLevelObjects! as [AnyObject]
     }

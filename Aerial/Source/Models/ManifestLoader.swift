@@ -390,7 +390,7 @@ class ManifestLoader {
     // MARK: - Custom videos
     func loadCustomVideos() {
         do {
-            if let cacheDirectory = VideoCache.cacheDirectory {
+            if let cacheDirectory = VideoCache.appSupportDirectory {
                 // tvOS12
                 var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
                 cacheFileUrl.appendPathComponent("customvideos.json")
@@ -404,7 +404,7 @@ class ManifestLoader {
     }
 
     func saveCustomVideos() {
-        if let cvf = customVideoFolders, let cacheDirectory = VideoCache.cacheDirectory {
+        if let cvf = customVideoFolders, let cacheDirectory = VideoCache.appSupportDirectory {
             var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
             cacheFileUrl.appendPathComponent("customvideos.json")
 
@@ -473,7 +473,7 @@ class ManifestLoader {
             dayCheck = 30
         }
 
-        let cacheDirectory = VideoCache.cacheDirectory!
+        let cacheDirectory = VideoCache.appSupportDirectory!
         var cacheResourcesString = cacheDirectory
         cacheResourcesString.append(contentsOf: "/backups")
         let cacheUrl = URL(fileURLWithPath: cacheResourcesString)
@@ -500,7 +500,7 @@ class ManifestLoader {
 
     func moveOldManifests() {
         debugLog("move")
-        let cacheDirectory = VideoCache.cacheDirectory!
+        let cacheDirectory = VideoCache.appSupportDirectory!
         var cacheResourcesString = cacheDirectory
 
         let dateFormatter = DateFormatter()
@@ -550,7 +550,7 @@ class ManifestLoader {
 
     // Check if a Manifest is saved in our cache directory
     func isManifestCached(manifest: Manifests) -> Bool {
-        if let cacheDirectory = VideoCache.cacheDirectory {
+        if let cacheDirectory = VideoCache.appSupportDirectory {
             let fileManager = FileManager.default
 
             var cacheResourcesString = cacheDirectory
@@ -568,7 +568,7 @@ class ManifestLoader {
 
     // Load the JSON Data cached on disk
     func loadCachedManifests() {
-        if let cacheDirectory = VideoCache.cacheDirectory {
+        if let cacheDirectory = VideoCache.appSupportDirectory {
             // tvOS12
             var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
             cacheFileUrl.appendPathComponent("entries.json")
@@ -651,17 +651,6 @@ class ManifestLoader {
         processedVideos = processedVideos.sorted { $0.secondaryName < $1.secondaryName }
 
         self.loadedManifest = processedVideos
-
-        /*
-         // POI Extracter code
-        infoLog("\(processedVideos.count) videos processed !")
-        let poiStringProvider = PoiStringProvider.sharedInstance
-        for video in processedVideos {
-            infoLog(video.name + " " + video.secondaryName)
-            for poi in video.poi {
-                infoLog(poi.key + ": " + poiStringProvider.getString(key: poi.value))
-            }
-        }*/
 
         debugLog("Total videos processed : \(processedVideos.count) callbacks : \(callbacks.count)")
         // callbacks
@@ -930,7 +919,7 @@ class ManifestLoader {
     // swiftlint:disable:next cyclomatic_complexity
     func moveOldVideos() {
         debugLog("move old videos")
-        let cacheDirectory = VideoCache.cacheDirectory!
+        let cacheDirectory = VideoCache.appSupportDirectory!
         var cacheResourcesString = cacheDirectory
 
         let dateFormatter = DateFormatter()

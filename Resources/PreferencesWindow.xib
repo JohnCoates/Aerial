@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.AVKitIBPlugin" version="14810.11"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14810.11"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="14810.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14810.12"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -195,12 +195,12 @@
                                                                 <tableColumns>
                                                                     <tableColumn width="274" minWidth="12" maxWidth="1000" id="Grd-eN-eTf">
                                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                                            <font key="font" metaFont="label" size="11"/>
+                                                                            <font key="font" metaFont="message" size="11"/>
                                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                         </tableHeaderCell>
                                                                         <textFieldCell key="dataCell" controlSize="small" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="0wF-mr-lO5">
-                                                                            <font key="font" metaFont="label" size="11"/>
+                                                                            <font key="font" metaFont="message" size="11"/>
                                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                         </textFieldCell>
@@ -214,7 +214,7 @@
                                                                                         <rect key="frame" x="0.0" y="-2" width="233" height="14"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="HEADER CELL" id="0xW-C7-M1h">
-                                                                                            <font key="font" metaFont="label" size="11"/>
+                                                                                            <font key="font" metaFont="message" size="11"/>
                                                                                             <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -237,7 +237,7 @@
                                                                                         <rect key="frame" x="25" y="0.0" width="249" height="14"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="hJP-hV-AM5">
-                                                                                            <font key="font" metaFont="label" size="11"/>
+                                                                                            <font key="font" metaFont="message" size="11"/>
                                                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -256,13 +256,13 @@
                                                                                         <rect key="frame" x="2" y="0.0" width="22" height="18"/>
                                                                                         <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="9L7-4L-A4w">
                                                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                                            <font key="font" metaFont="label" size="11"/>
+                                                                                            <font key="font" metaFont="message" size="11"/>
                                                                                         </buttonCell>
                                                                                     </button>
                                                                                     <textField verticalHuggingPriority="750" allowsExpansionToolTips="YES" preferredMaxLayoutWidth="165" translatesAutoresizingMaskIntoConstraints="NO" id="5qU-xC-8TY">
                                                                                         <rect key="frame" x="25" y="2" width="84" height="14"/>
                                                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="hxB-gg-rAu">
-                                                                                            <font key="font" metaFont="label" size="11"/>
+                                                                                            <font key="font" metaFont="message" size="11"/>
                                                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -271,7 +271,7 @@
                                                                                         <rect key="frame" x="241" y="1" width="26" height="17"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" borderStyle="border" alignment="center" title="4K" drawsBackground="YES" id="8vf-Ke-XDl" customClass="VerticallyAlignedTextFieldCell" customModule="Aerial" customModuleProvider="target">
-                                                                                            <font key="font" metaFont="label" size="11"/>
+                                                                                            <font key="font" metaFont="message" size="11"/>
                                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -281,7 +281,7 @@
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                                                         <buttonCell key="cell" type="round" title="+" bezelStyle="circular" imagePosition="overlaps" alignment="center" controlSize="small" borderStyle="border" baseWritingDirection="rightToLeft" userInterfaceLayoutDirection="rightToLeft" imageScaling="axesIndependently" inset="2" id="g2R-vU-3dF">
                                                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                            <font key="font" metaFont="label" size="11"/>
+                                                                                            <font key="font" metaFont="message" size="11"/>
                                                                                         </buttonCell>
                                                                                         <connections>
                                                                                             <action selector="addClick:" target="X6H-3G-WWn" id="mUe-e1-8i1"/>
@@ -387,7 +387,7 @@ is disabled
                                                     <rect key="frame" x="153" y="21" width="108" height="14"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Available in 4K/HDR" id="HJw-4S-2ev">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -396,7 +396,7 @@ is disabled
                                                     <rect key="frame" x="264" y="19" width="26" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" borderStyle="border" alignment="center" title="4K" drawsBackground="YES" id="eOu-8R-igj" customClass="VerticallyAlignedTextFieldCell" customModule="Aerial" customModuleProvider="target">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -406,14 +406,14 @@ is disabled
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                     <buttonCell key="cell" type="round" title="+" bezelStyle="circular" imagePosition="overlaps" alignment="center" controlSize="small" enabled="NO" borderStyle="border" baseWritingDirection="rightToLeft" userInterfaceLayoutDirection="rightToLeft" imageScaling="axesIndependently" inset="2" id="FYn-z5-tcl">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                     </buttonCell>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uRh-Iz-deI">
                                                     <rect key="frame" x="173" y="3" width="88" height="14"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Download video" id="V9x-vb-dly">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -518,7 +518,7 @@ is disabled
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSBookmarksTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kGs-X6-tPb">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="cellTitle"/>
+                                                        <font key="font" metaFont="label" size="12"/>
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="videoSetsButtonClick:" target="-2" id="aDh-Hf-5AD"/>
@@ -540,7 +540,7 @@ is disabled
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSActionTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nxM-5Y-pQM">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="cellTitle"/>
+                                                        <font key="font" metaFont="label" size="12"/>
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="outlineViewSettingsClick:" target="-2" id="foF-Fr-895"/>
@@ -573,7 +573,7 @@ is disabled
                                                             <rect key="frame" x="190" y="191" width="200" height="14"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Click on a Display to enable/disable it" id="S5I-D9-vrV">
-                                                                <font key="font" metaFont="label" size="11"/>
+                                                                <font key="font" metaFont="message" size="11"/>
                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>

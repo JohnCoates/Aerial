@@ -121,7 +121,7 @@ extension DownloadOperation: URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         do {
             let manager = FileManager.default
-            var destinationURL = URL(fileURLWithPath: VideoCache.cacheDirectory!)
+            var destinationURL = URL(fileURLWithPath: VideoCache.appSupportDirectory!)
 
             // tvOS11 and tvOS10 JSONs are named entries.json, so we rename them here
             if downloadTask.originalRequest!.url!.absoluteString.contains("2x/entries.json") {
@@ -172,7 +172,7 @@ extension DownloadOperation: URLSessionTaskDelegate {
 
             // Extract json
             let process: Process = Process()
-            let cacheDirectory = VideoCache.cacheDirectory!
+            let cacheDirectory = VideoCache.appSupportDirectory!
 
             var cacheResourcesString = cacheDirectory
             cacheResourcesString.append(contentsOf: "/resources.tar")

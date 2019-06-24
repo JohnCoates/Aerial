@@ -123,7 +123,7 @@ extension PreferencesWindowController {
 
         // We need catalina for HDR !
         if #available(OSX 10.15, *) {
-            if preferences.useHDR {
+            if !preferences.useHDR {
                 useHDRCheckbox.state = .off
             }
         } else {

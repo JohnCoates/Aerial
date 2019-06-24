@@ -254,10 +254,16 @@ final class TimeManagement: NSObject {
 
     // swiftlint:disable:next cyclomatic_complexity large_tuple
     func getNightShiftInformation() -> (Bool, sunrise: Date?, sunset: Date?, error: String?) {
+        // Catalina workaround, /usr/bin/corebrightnessdiag no longer exists
+        return (false, nil, nil, "Nightshift disabled because of Catalina")
+
+        /*
+
         if isNightShiftDataCached {
             return (nightShiftAvailable, nightShiftSunrise, nightShiftSunset, nil)
         }
-
+        
+        
         let (nsInfo, ts) = shell(launchPath: "/usr/bin/corebrightnessdiag", arguments: ["nightshift-internal"])
 
         if ts != 0 {
@@ -311,6 +317,8 @@ final class TimeManagement: NSObject {
         // /usr/bin/corebrightnessdiag nightshift-internal | grep nextSunset | cut -d \" -f2
         warnLog("Location services may be disabled, Night Shift can't detect Sunrise and Sunset times without them")
         return (false, nil, nil, "Location services may be disabled")
+ 
+        */
     }
 
     private func shell(launchPath: String, arguments: [String] = []) -> (String?, Int32) {
