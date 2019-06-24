@@ -228,6 +228,7 @@ final class AerialVideo: CustomStringConvertible, Equatable {
         updateDuration()    // We need to have the video duration
     }
 
+    // swiftlint:disable:next cyclomatic_complexity 
     func updateDuration() {
         // We need to retrieve video duration from the cached files.
         // This is a workaround as currently, the VideoCache infrastructure
@@ -247,24 +248,39 @@ final class AerialVideo: CustomStringConvertible, Equatable {
                 self.duration = 0
             }
         } else {
-            let cacheDirectoryPath = VideoCache.cacheDirectory! as NSString
+            // let cacheDirectoryPath = VideoCache.cacheDirectory! as NSString
 
-            var videoCache1080pH264Path = "", videoCache1080pHEVCPath = "", videoCache4KHEVCPath = ""
+            var videoCache1080pH264Path = "", videoCache1080pHEVCPath = "",
+                videoCache4KHEVCPath = "", videoCache1080pHDRPath = "",
+                videoCache4KHDRPath = ""
+
             if self.url1080pH264 != "" {
-                videoCache1080pH264Path = cacheDirectoryPath.appendingPathComponent((URL(string: url1080pH264)?.lastPathComponent)!)
+                videoCache1080pH264Path = VideoCache.cachePath(forFilename: (URL(string: url1080pH264)?.lastPathComponent)!)!
             }
             if self.url1080pHEVC != "" {
-                videoCache1080pHEVCPath = cacheDirectoryPath.appendingPathComponent((URL(string: url1080pHEVC)?.lastPathComponent)!)
+                videoCache1080pHEVCPath = VideoCache.cachePath(forFilename: (URL(string: url1080pHEVC)?.lastPathComponent)!)!
             }
             if self.url4KHEVC != "" {
-                videoCache4KHEVCPath = cacheDirectoryPath.appendingPathComponent((URL(string: url4KHEVC)?.lastPathComponent)!)
+                videoCache4KHEVCPath = VideoCache.cachePath(forFilename: (URL(string: url4KHEVC)?.lastPathComponent)!)!
+            }
+            if self.url1080pHDR != "" {
+                videoCache1080pHDRPath = VideoCache.cachePath(forFilename: (URL(string: url1080pHDR)?.lastPathComponent)!)!
+            }
+            if self.url4KHDR != "" {
+                videoCache4KHDRPath = VideoCache.cachePath(forFilename: (URL(string: url4KHDR)?.lastPathComponent)!)!
             }
 
             if fileManager.fileExists(atPath: videoCache4KHEVCPath) {
                 let asset = AVAsset(url: URL(fileURLWithPath: videoCache4KHEVCPath))
                 self.duration = CMTimeGetSeconds(asset.duration)
+            } else if fileManager.fileExists(atPath: videoCache4KHDRPath) {
+                let asset = AVAsset(url: URL(fileURLWithPath: videoCache4KHDRPath))
+                self.duration = CMTimeGetSeconds(asset.duration)
             } else if fileManager.fileExists(atPath: videoCache1080pHEVCPath) {
                 let asset = AVAsset(url: URL(fileURLWithPath: videoCache1080pHEVCPath))
+                self.duration = CMTimeGetSeconds(asset.duration)
+            } else if fileManager.fileExists(atPath: videoCache1080pHDRPath) {
+                let asset = AVAsset(url: URL(fileURLWithPath: videoCache1080pHDRPath))
                 self.duration = CMTimeGetSeconds(asset.duration)
             } else if fileManager.fileExists(atPath: videoCache1080pH264Path) {
                 let asset = AVAsset(url: URL(fileURLWithPath: videoCache1080pH264Path))
