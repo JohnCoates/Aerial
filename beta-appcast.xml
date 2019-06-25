@@ -3,20 +3,21 @@
 <title>Aerial</title>
 
 <item>
-<title>1.5.1beta6</title>
+<title>1.5.1beta7</title>
   <description>
           <![CDATA[
 <p>This is the beta feed ! Aerial is properly signed and notarized 🎉</p>
 <ul>
-<li>Fix many many many many bugs regarding new split cache introduced in beta5.</li>
-<li>Aerial should be near fully usable in Catalina, except changing Cache Folder and Night shift. More info on the thread below on what changed.</li>
-<li>If you are NOT using Catalina, while this should be much safer than beta5, you may still want to wait one more beta. Feedback on non Catalina OS would be welcome though !</li></ul>
+<li>Add workaround message box to change cache folder in Catalina.</li>
+<li>Fix POI no longer loading in beta 5/6.</li>
+<li>Aerial will now use ~/Library/Application Support/Aerial as it's default cache for new users</li>
+<li>If you are not using Catalina, this beta should be safe enough to use.</li></ul>
 <p>macOS 10.15 Catalina users, we suggest you first check this issue : https://github.com/JohnCoates/Aerial/issues/801</p>
           ]]>
     </description>
-<pubDate>lun., 24 jui. 2019 20:45:00 +0100</pubDate>
+<pubDate>lun., 25 jui. 2019 18:16:00 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.5.1beta6/Aerial.saver.zip" sparkle:version="1.5.1beta6" sparkle:shortVersionString="1.5.1beta6" sparkle:edSignature="CdQzCHeThi+URTMrZzrTfUHTvK+guRn/qJPFmXXYwZZYUzlgwNlcAZLwuSaXo9JfNORAH2BrBsRvcr6lkQP7CA==" length="6036137" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.5.1beta7/Aerial.saver.zip" sparkle:version="1.5.1beta7" sparkle:shortVersionString="1.5.1beta7" sparkle:edSignature="y1ODQMdepLV1n/YzNZVih3B76g4KJhVO7FZEfUB2MXO29mw6rfKyvVcmVZ1xgfPkNKmrHhZ4fyYT3JTtI5GeBw==" length="6039309" type="application/octet-stream"/>
 </item> 
 
 <item>
