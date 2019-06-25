@@ -31,6 +31,7 @@ extension PreferencesWindowController {
             cacheLocation.url = nil
         }
     }
+
     func updateCacheSize() {
         // get your directory url
         let documentsDirectoryURL = URL(fileURLWithPath: VideoCache.cacheDirectory!)
@@ -75,25 +76,38 @@ extension PreferencesWindowController {
     }
 
     @IBAction func userSetCacheLocation(_ button: NSButton?) {
-        let openPanel = NSOpenPanel()
+        if #available(OSX 10.15, *) {
+            cacheFolderTextField.stringValue = VideoCache.cacheDirectory!
+            changeCacheFolderPanel.makeKeyAndOrderFront(self)
+        } else {
+            let openPanel = NSOpenPanel()
 
-        openPanel.canChooseDirectories = true
-        openPanel.canChooseFiles = false
-        openPanel.canCreateDirectories = true
-        openPanel.allowsMultipleSelection = false
-        openPanel.title = "Choose Aerial Cache Directory"
-        openPanel.prompt = "Choose"
-        openPanel.directoryURL = cacheLocation.url
+            openPanel.canChooseDirectories = true
+            openPanel.canChooseFiles = false
+            openPanel.canCreateDirectories = true
+            openPanel.allowsMultipleSelection = false
+            openPanel.title = "Choose Aerial Cache Directory"
+            openPanel.prompt = "Choose"
+            openPanel.directoryURL = cacheLocation.url
 
-        openPanel.begin { result in
-            guard result.rawValue == NSFileHandlingPanelOKButton, !openPanel.urls.isEmpty else {
-                return
+            openPanel.begin { result in
+                guard result.rawValue == NSFileHandlingPanelOKButton, !openPanel.urls.isEmpty else {
+                    return
+                }
+
+                let cacheDirectory = openPanel.urls[0]
+                self.preferences.customCacheDirectory = cacheDirectory.path
+                self.cacheLocation.url = cacheDirectory
             }
-
-            let cacheDirectory = openPanel.urls[0]
-            self.preferences.customCacheDirectory = cacheDirectory.path
-            self.cacheLocation.url = cacheDirectory
         }
+    }
+
+    // This is part of the Catalina workaround of showing a Panel
+    @IBAction func validateChangeFolderButton(_ sender: Any) {
+        debugLog("Changed cache Folder to : \(cacheFolderTextField.stringValue)")
+        self.preferences.customCacheDirectory = cacheFolderTextField.stringValue
+        self.cacheLocation.url = URL(fileURLWithPath: cacheFolderTextField.stringValue)
+        changeCacheFolderPanel.close()
     }
 
     @IBAction func resetCacheLocation(_ button: NSButton?) {

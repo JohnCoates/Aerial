@@ -206,6 +206,10 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     // Quit confirmation Panel
     @IBOutlet var quitConfirmationPanel: NSPanel!
 
+    // Change cache folder Panel
+    @IBOutlet var changeCacheFolderPanel: NSPanel!
+    @IBOutlet var cacheFolderTextField: NSTextField!
+
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?

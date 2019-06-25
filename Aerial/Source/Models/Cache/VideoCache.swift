@@ -70,7 +70,6 @@ final class VideoCache {
 
     // MARK: - User Video cache directory
     static var cacheDirectory: String? {
-
         // We only process this once if successful
         if computedCacheDirectory != nil {
             return computedCacheDirectory
@@ -82,54 +81,39 @@ final class VideoCache {
         if let customCacheDirectory = preferences.customCacheDirectory {
             // We may have overriden the cache directory, but it may no longer exist !
             if FileManager.default.fileExists(atPath: customCacheDirectory as String) {
+                debugLog("Using exiting customCacheDirectory : \(customCacheDirectory)")
                 cacheDirectory = customCacheDirectory
-            } else {
+            } /*else {
                 // If it doesn't we need to reset that preference
                 preferences.customCacheDirectory = nil
-            }
+            }*/
         }
 
         if cacheDirectory == nil {
             let userCachePaths = NSSearchPathForDirectoriesInDomains(.cachesDirectory,
                                                                  .userDomainMask,
                                                                  true)
-            debugLog("userCachePath : \(userCachePaths)")
-            if userCachePaths.isEmpty {
-                errorLog("Couldn't find cache paths!")
-                return nil
-            }
-            let userCacheDirectory = userCachePaths[0] as NSString
-            if #available(OSX 10.15, *) {
-            } else {
-                // Still look for /Library for pre Catalina OS
-                let localCachePaths = NSSearchPathForDirectoriesInDomains(.cachesDirectory,
-                                                                          .localDomainMask,
-                                                                          true)
+            let localCachePaths = NSSearchPathForDirectoriesInDomains(.cachesDirectory,
+                                                                      .localDomainMask,
+                                                                      true)
+
+            if !localCachePaths.isEmpty {
                 let localCacheDirectory = localCachePaths[0] as NSString
                 if aerialFolderExists(at: localCacheDirectory) {
-                    debugLog("local cache exists")
+                    debugLog("Using existing local cache /Library/Caches/Aerial")
                     cacheDirectory = localCacheDirectory.appendingPathComponent("Aerial")
                 }
             }
 
-            if cacheDirectory == nil && aerialFolderExists(at: userCacheDirectory) {
-                debugLog("user cache exists")
-                cacheDirectory = userCacheDirectory.appendingPathComponent("Aerial")
-            } else {
-                debugLog("create user cache")
-                // We create in user cache directory (~/Library/Caches)
-                cacheDirectory = userCacheDirectory.appendingPathComponent("Aerial")
+            if !userCachePaths.isEmpty {
+                let userCacheDirectory = userCachePaths[0] as NSString
 
-                let fileManager = FileManager.default
-                if fileManager.fileExists(atPath: cacheDirectory!) == false {
-                    do {
-                        try fileManager.createDirectory(atPath: cacheDirectory!,
-                                                        withIntermediateDirectories: false, attributes: nil)
-                    } catch let error {
-                        errorLog("Couldn't create cache directory in User directory: \(error)")
-                        errorLog("FATAL : There's nothing more we can do at this point")
-                        return nil
-                    }
+                if cacheDirectory == nil && aerialFolderExists(at: userCacheDirectory) {
+                    debugLog("Using existing user cache ~/Library/Caches/Aerial")
+                    cacheDirectory = userCacheDirectory.appendingPathComponent("Aerial")
+                } else {
+                    debugLog("No local or user cache exists, using ~/Library/Application Support/Aerial")
+                    cacheDirectory = appSupportDirectory
                 }
             }
         }

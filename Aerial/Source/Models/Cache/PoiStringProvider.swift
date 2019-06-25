@@ -42,7 +42,7 @@ final class PoiStringProvider {
         // Idle string bundle
         let preferences = Preferences.sharedInstance
 
-        var bundlePath = VideoCache.cacheDirectory!
+        var bundlePath = VideoCache.appSupportDirectory!
         if preferences.localizeDescriptions {
             bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle")
         } else {
@@ -50,7 +50,7 @@ final class PoiStringProvider {
         }
 
         if let sb = Bundle.init(path: bundlePath) {
-            let dictPath = VideoCache.cacheDirectory!.appending("/TVIdleScreenStrings.bundle/en.lproj/Localizable.nocache.strings")
+            let dictPath = VideoCache.appSupportDirectory!.appending("/TVIdleScreenStrings.bundle/en.lproj/Localizable.nocache.strings")
 
             // We could probably only work with that...
             if let sd = NSDictionary(contentsOfFile: dictPath) as? [String: String] {
@@ -148,7 +148,7 @@ final class PoiStringProvider {
 
         if #available(OSX 10.12, *) {
             // First we look in the Cache Folder for a locale directory
-            let cacheDirectory = VideoCache.cacheDirectory!
+            let cacheDirectory = VideoCache.appSupportDirectory!
             var cacheResourcesString = cacheDirectory
             cacheResourcesString.append(contentsOf: "/locale")
             let cacheUrl = URL(fileURLWithPath: cacheResourcesString)
