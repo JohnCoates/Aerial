@@ -13,5 +13,9 @@ These are our recommendations so far:
 
 You can easily check for yourself what to expect by opening a video in Quicktime (Use the `Show in Finder` option in the `Cache` tab to find the cached videos). In Activity Monitor, the AV Framework GVA process is called `VTDecoderXPCService`.
 
-Please note that as of macOS Mojave, AVFoundation is not able to play the HDR versions of the videos that you can see on Apple TV. This option is available only starting with macOS 10.15 Catalina (requires Aerial 1.5.1 above).
+# About macOS versions
+
+Because we use Apple's Framework, what is supported will depend on the version of macOS you use.
+- You need at least macOS 10.13 to play HEVC videos
+- You need at least macOS 10.15 to play HDR videos 
 
