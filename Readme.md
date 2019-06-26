@@ -30,7 +30,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 Aerial now includes an auto-update mechanism using the [Sparkle open-source project](https://github.com/sparkle-project/Sparkle). You will need to download it manually the first time :
 
 1. Quit **System Preferences**.
-2. [Download the latest release of `Aerial.saver.zip`](https://github.com/JohnCoates/Aerial/releases/latest). Alternatively, you can try the latest beta version [following this link](https://github.com/JohnCoates/Aerial/releases). **(macOS Catalina users, you need the beta version, more information here : https://github.com/JohnCoates/Aerial/issues/801)
+2. [Download the latest release of `Aerial.saver.zip`](https://github.com/JohnCoates/Aerial/releases/latest). Alternatively, you can try the latest beta version [following this link](https://github.com/JohnCoates/Aerial/releases). **(macOS Catalina users, you need the beta version, more information here : https://github.com/JohnCoates/Aerial/issues/801)**
 3. Unzip the downloaded file (if you use Safari, it should already be done for you).
 4. Double-click `Aerial.saver`; it will open in `System Preferences` > `Desktop & Screen Saver` and ask you if you want to install for all users or for your user only. Be aware that installing for all users will require a password at install **and each subsequent update, including auto-updates.** By default, Aerial will still share it's video cache if you install multiple times on the same system for each user.
 
