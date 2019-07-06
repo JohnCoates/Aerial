@@ -391,15 +391,19 @@ class ManifestLoader {
     func loadCustomVideos() {
         do {
             if let cacheDirectory = VideoCache.appSupportDirectory {
-                // tvOS12
+                // customvideos.json
                 var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
                 cacheFileUrl.appendPathComponent("customvideos.json")
-                debugLog("custom file : \(cacheFileUrl)")
-                let ndata = try Data(contentsOf: cacheFileUrl)
-                customVideoFolders = try CustomVideoFolders(data: ndata)
+                if FileManager.default.fileExists(atPath: cacheFileUrl.absoluteString) {
+                    debugLog("loading custom file : \(cacheFileUrl)")
+                    let ndata = try Data(contentsOf: cacheFileUrl)
+                    customVideoFolders = try CustomVideoFolders(data: ndata)
+                } else {
+                    debugLog("No customvideos.json at : \(cacheFileUrl)")
+                }
             }
         } catch {
-            debugLog("No customvideos.json \(error)")
+            debugLog("Error loading customvideos.json : \(error)")
         }
     }
 
