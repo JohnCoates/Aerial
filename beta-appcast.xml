@@ -3,21 +3,20 @@
 <title>Aerial</title>
 
 <item>
-<title>1.5.1beta7</title>
+<title>1.5.1beta8</title>
   <description>
           <![CDATA[
 <p>This is the beta feed ! Aerial is properly signed and notarized 🎉</p>
 <ul>
-<li>Add workaround message box to change cache folder in Catalina.</li>
-<li>Fix POI no longer loading in beta 5/6.</li>
-<li>Aerial will now use ~/Library/Application Support/Aerial as it's default cache for new users</li>
-<li>If you are not using Catalina, this beta should be safe enough to use.</li></ul>
+<li>Add Dutch translation by @sebastiaanspeck !</li>
+<li>Fix "Reset to default" cache button that failed in betas</li>
+<li>Fix false "customvideos.json" error message</li></ul>
 <p>macOS 10.15 Catalina users, we suggest you first check this issue : https://github.com/JohnCoates/Aerial/issues/801</p>
           ]]>
     </description>
-<pubDate>lun., 25 jui. 2019 18:16:00 +0100</pubDate>
+<pubDate>sam., 6 jui. 2019 12:52:00 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.5.1beta7/Aerial.saver.zip" sparkle:version="1.5.1beta7" sparkle:shortVersionString="1.5.1beta7" sparkle:edSignature="y1ODQMdepLV1n/YzNZVih3B76g4KJhVO7FZEfUB2MXO29mw6rfKyvVcmVZ1xgfPkNKmrHhZ4fyYT3JTtI5GeBw==" length="6039309" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.5.1beta8/Aerial.saver.zip" sparkle:version="1.5.1beta8" sparkle:shortVersionString="1.5.1beta8" sparkle:edSignature="VIJ9o+2ZV/f8foTD2UTBuMeSA7MZNimD7pQHjSthC2q1Hr9oGCSLdN8e7nVQKQnyManxaxtRu2Idzo63fE1gCw==" length="6044068" type="application/octet-stream"/>
 </item> 
 
 <item>
