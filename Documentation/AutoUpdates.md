@@ -2,7 +2,7 @@
 
 Starting with version 1.4.8, Aerial now includes the open source project [Sparkle](https://sparkle-project.org) to provide automatic updates. You can configure if and how you want this to work in the `Updates` tab:
 
-![Capture d’écran 2019-05-30 à 11 45 55](https://user-images.githubusercontent.com/37544189/58624482-a5eb9900-82d0-11e9-8a93-0aeb71988802.jpg)
+![Capture d’écran 2019-05-30 à 11 45 55](https://user-images.githubusercontent.com/37544189/58624482-a5eb9900-82d0-11e9-8a93-0aeb71988802.jpg)
 
 What you are seeing above are the out-of-the-box default. 
 
@@ -12,7 +12,7 @@ Because Aerial is "just" a screen saver (technically, a plugin to System Prefere
 
 - The first setting controls whether you want automatic updates or not. This check is done periodically (if 24 hours elapsed since last check), but *only* when the screen saver panel (the one you see in the screenshot) is open. When an update is available, you will see this window pop:
 
-![Capture d’écran 2019-05-30 à 11 58 34](https://user-images.githubusercontent.com/37544189/58625280-6a51ce80-82d2-11e9-8dd0-a5ed92fa74f4.jpg)
+![Capture d’écran 2019-05-30 à 11 58 34](https://user-images.githubusercontent.com/37544189/58625280-6a51ce80-82d2-11e9-8dd0-a5ed92fa74f4.jpg)
 
 You can then decide if you want to install or not, the checkbox controls whether you want this to be done automatically for you *for this specific mechanism*. 
 
@@ -32,7 +32,7 @@ While Sparkle optionally allows to [collect anonymous user data](https://sparkle
 
 ## Security?
 
-Each update is signed with a private EdDSA key when a release is built by the maintainer ([glouel](https://github.com/glouel). The [appcast.xml](https://github.com/JohnCoates/Aerial/blob/master/appcast.xml) provides that signature (and file size, for example for 1.4.9 :  `sparkle:edSignature="5QFV0eqGRqCoZ8/TYbLXWOiVSifwNRUk4wuNFdjXJXpk/cRrceaTcs7SG168dawfOTpy9TOu283mb6WJGRQuDw==" length="5674805"` ) which will be checked against the public key bundled with Aerial. If the signature doesn't match, the update won't be installed. Each `Aerial.saver` is also signed with my ([glouel](https://github.com/glouel)) Apple ID certificate, which is also [checked by Sparkle](https://github.com/sparkle-project/Sparkle/issues/1283). 
+Each update is signed with a private EdDSA key when a release is built by the maintainer ([glouel](https://github.com/glouel). The [appcast.xml](https://github.com/JohnCoates/Aerial/blob/master/appcast.xml) provides that signature (and file size, for example for 1.4.9 :  `sparkle:edSignature="5QFV0eqGRqCoZ8/TYbLXWOiVSifwNRUk4wuNFdjXJXpk/cRrceaTcs7SG168dawfOTpy9TOu283mb6WJGRQuDw==" length="5674805"` ) which will be checked against the public key bundled with Aerial. If the signature doesn't match, the update won't be installed. Each `Aerial.saver` is also signed with my ([glouel](https://github.com/glouel)) Apple ID certificate, which is also [checked by Sparkle](https://github.com/sparkle-project/Sparkle/issues/1283). Starting with 1.5.1 all Aerial builds are also notarized by Apple.
 
 ## Installed for all users and password prompt
 
