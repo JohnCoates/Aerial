@@ -77,6 +77,7 @@ extension PreferencesWindowController {
 
     @IBAction func userSetCacheLocation(_ button: NSButton?) {
         if #available(OSX 10.15, *) {
+            // On Catalina, we can't use NSOpenPanel right now
             cacheFolderTextField.stringValue = VideoCache.cacheDirectory!
             changeCacheFolderPanel.makeKeyAndOrderFront(self)
         } else {
@@ -112,7 +113,8 @@ extension PreferencesWindowController {
 
     @IBAction func resetCacheLocation(_ button: NSButton?) {
         preferences.customCacheDirectory = nil
-        if let cacheDirectory = VideoCache.cacheDirectory {
+        if let cacheDirectory = VideoCache.appSupportDirectory {
+            preferences.customCacheDirectory = cacheDirectory
             cacheLocation.url = URL(fileURLWithPath: cacheDirectory as String)
         }
     }
