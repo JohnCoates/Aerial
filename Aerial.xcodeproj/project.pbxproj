@@ -66,6 +66,8 @@
 		036A34B722730A0700A49135 /* zh_CN.json in Resources */ = {isa = PBXBuildFile; fileRef = 036A34B4227309FB00A49135 /* zh_CN.json */; };
 		03893CB3217749F0008E7125 /* ErrorLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03893CB2217749F0008E7125 /* ErrorLog.swift */; };
 		03893CB4217753AC008E7125 /* ErrorLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03893CB2217749F0008E7125 /* ErrorLog.swift */; };
+		038EBE9422D0AA3D00C7AD02 /* nl.json in Resources */ = {isa = PBXBuildFile; fileRef = 038EBE9322D0AA3D00C7AD02 /* nl.json */; };
+		038EBE9522D0AA3D00C7AD02 /* nl.json in Resources */ = {isa = PBXBuildFile; fileRef = 038EBE9322D0AA3D00C7AD02 /* nl.json */; };
 		0393857A2175D4B80040B850 /* AVPlayerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039385792175D4B80040B850 /* AVPlayerViewExtension.swift */; };
 		0393857B2175D4B80040B850 /* AVPlayerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039385792175D4B80040B850 /* AVPlayerViewExtension.swift */; };
 		03958349217F4416008E8F9C /* Solar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03958348217F4416008E8F9C /* Solar.swift */; };
@@ -182,6 +184,7 @@
 		0369985C2196103300E359D3 /* missingvideos.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = missingvideos.json; sourceTree = "<group>"; };
 		036A34B4227309FB00A49135 /* zh_CN.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zh_CN.json; sourceTree = "<group>"; };
 		03893CB2217749F0008E7125 /* ErrorLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLog.swift; sourceTree = "<group>"; };
+		038EBE9322D0AA3D00C7AD02 /* nl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nl.json; sourceTree = "<group>"; };
 		039385792175D4B80040B850 /* AVPlayerViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerViewExtension.swift; sourceTree = "<group>"; };
 		03958348217F4416008E8F9C /* Solar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solar.swift; sourceTree = "<group>"; };
 		0395835121807D1F008E8F9C /* thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail@2x.png"; sourceTree = "<group>"; };
@@ -279,6 +282,7 @@
 		033192DF217B77E90073B580 /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				038EBE9322D0AA3D00C7AD02 /* nl.json */,
 				036A34B4227309FB00A49135 /* zh_CN.json */,
 				035A92AB226754760095AB85 /* ar.json */,
 				035A92A4225F8C480095AB85 /* de.json */,
@@ -661,6 +665,7 @@
 				FAC36F4E1BE1756D007F2A20 /* icon-day.pdf in Resources */,
 				03D37FDA22145487005A146F /* es.json in Resources */,
 				0369985E2196129C00E359D3 /* missingvideos.json in Resources */,
+				038EBE9522D0AA3D00C7AD02 /* nl.json in Resources */,
 				033D62B0216CAE2C00F3AF83 /* icon-night-dark.pdf in Resources */,
 				0395835621807D1F008E8F9C /* thumbnail.png in Resources */,
 				035A92AD226754760095AB85 /* ar.json in Resources */,
@@ -712,6 +717,7 @@
 				0395835521807D1F008E8F9C /* thumbnail.png in Resources */,
 				03D37FD922145487005A146F /* es.json in Resources */,
 				03D1E79422848F7F00D10CF7 /* screen1.jpg in Resources */,
+				038EBE9422D0AA3D00C7AD02 /* nl.json in Resources */,
 				033D62AF216CAE2C00F3AF83 /* icon-night-dark.pdf in Resources */,
 				0369985D2196103300E359D3 /* missingvideos.json in Resources */,
 				FAC36F4F1BE1756D007F2A20 /* icon-night.pdf in Resources */,
@@ -1169,7 +1175,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.5.1beta7a;
+				CURRENT_PROJECT_VERSION = 1.5.1beta8;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1177,7 +1183,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MARKETING_VERSION = 1.5.1beta7a;
+				MARKETING_VERSION = 1.5.1beta8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1198,7 +1204,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.5.1beta7a;
+				CURRENT_PROJECT_VERSION = 1.5.1beta8;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1206,7 +1212,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MARKETING_VERSION = 1.5.1beta7a;
+				MARKETING_VERSION = 1.5.1beta8;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

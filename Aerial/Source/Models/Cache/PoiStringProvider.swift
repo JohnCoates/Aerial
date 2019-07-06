@@ -240,18 +240,20 @@ final class PoiStringProvider {
             return 1
         case "zh_CN":  // English
             return 2
-        case "en":  // English
+        case "nl":  // Dutch
             return 3
-        case "fr":  // French
+        case "en":  // English
             return 4
-        case "de":  // German
+        case "fr":  // French
             return 5
-        case "he":  // Hebrew
+        case "de":  // German
             return 6
-        case "pl":  // Polish
+        case "he":  // Hebrew
             return 7
-        case "es":  // Spanish
+        case "pl":  // Polish
             return 8
+        case "es":  // Spanish
+            return 9
         default:    // This is the default, preferred language
             return 0
         }
@@ -264,16 +266,18 @@ final class PoiStringProvider {
         case 2:
             return "zh_CN"
         case 3:
-            return "en"
+            return "nl"
         case 4:
-            return "fr"
+            return "en"
         case 5:
-            return "de"
+            return "fr"
         case 6:
-            return "he"
+            return "de"
         case 7:
-            return "pl"
+            return "he"
         case 8:
+            return "pl"
+        case 9:
             return "es"
         default:
             return ""
