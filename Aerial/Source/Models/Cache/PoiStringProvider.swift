@@ -43,10 +43,12 @@ final class PoiStringProvider {
         let preferences = Preferences.sharedInstance
 
         var bundlePath = VideoCache.appSupportDirectory!
-        if preferences.localizeDescriptions {
+        if preferences.ciOverrideLanguage == "" {
+            // We load the bundle and let system grab the closest available preferred language
             bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle")
         } else {
-            bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle/en.lproj/")
+            // Or we load the overriden one
+            bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle/" + preferences.ciOverrideLanguage! + ".lproj/")
         }
 
         if let sb = Bundle.init(path: bundlePath) {
@@ -59,7 +61,6 @@ final class PoiStringProvider {
 
             self.stringBundle = sb
             self.loadedDescriptions = true
-            self.loadedDescriptionsWasLocalized = preferences.localizeDescriptions
         } else {
             errorLog("TVIdleScreenStrings.bundle is missing, please remove entries.json in Cache folder to fix the issue")
         }
@@ -67,9 +68,7 @@ final class PoiStringProvider {
 
     // Make sure we have the correct bundle loaded
     private func ensureLoadedBundle() -> Bool {
-        let preferences = Preferences.sharedInstance
-
-        if loadedDescriptions && loadedDescriptionsWasLocalized == preferences.localizeDescriptions {
+        if loadedDescriptions {
             return true
         } else {
             loadBundle()
@@ -81,16 +80,16 @@ final class PoiStringProvider {
     func getString(key: String, video: AerialVideo) -> String {
         guard ensureLoadedBundle() else { return "" }
 
-        let preferences = Preferences.sharedInstance
+        /*let preferences = Preferences.sharedInstance
         let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
 
         if #available(OSX 10.12, *) {
             if preferences.localizeDescriptions && locale.languageCode != communityLanguage && preferences.ciOverrideLanguage == "" {
                 return stringBundle!.localizedString(forKey: key, value: "", table: "Localizable.nocache")
             }
-        }
+        }*/
 
-        if preferences.useCommunityDescriptions && !video.communityPoi.isEmpty {
+        if !video.communityPoi.isEmpty {
             return key  // We directly store the string in the key
         } else {
             return stringBundle!.localizedString(forKey: key, value: "", table: "Localizable.nocache")
@@ -111,16 +110,16 @@ final class PoiStringProvider {
 
     //
     func getPoiKeys(video: AerialVideo) -> [String: String] {
-        let preferences = Preferences.sharedInstance
+        /*let preferences = Preferences.sharedInstance
         let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
         if #available(OSX 10.12, *) {
             debugLog("locale.languageCode \(locale.languageCode)")
             if preferences.localizeDescriptions && locale.languageCode != communityLanguage && preferences.ciOverrideLanguage == "" {
                 return video.poi
             }
-        }
+        }*/
 
-        if preferences.useCommunityDescriptions && !video.communityPoi.isEmpty {
+        if !video.communityPoi.isEmpty {
             return video.communityPoi
         } else {
             return video.poi
@@ -133,8 +132,8 @@ final class PoiStringProvider {
         let preferences = Preferences.sharedInstance
         let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
 
-        // Do we have a community language override ?
-        if preferences.localizeDescriptions && preferences.ciOverrideLanguage != "" {
+        // Do we have a language override ?
+        if preferences.ciOverrideLanguage != "" {
             let path = Bundle(for: PoiStringProvider.self).path(forResource: preferences.ciOverrideLanguage, ofType: "json")
             if path != nil {
                 let fileManager = FileManager.default
@@ -155,10 +154,8 @@ final class PoiStringProvider {
 
             if cacheUrl.hasDirectoryPath {
                 debugLog("Aerial cache directory contains /locale")
-                var cc = locale.languageCode
-                if !preferences.localizeDescriptions {
-                    cc = "en"
-                }
+
+                let cc = locale.languageCode
                 debugLog("Looking for \(cc).json")
 
                 let fileUrl = URL(fileURLWithPath: cacheResourcesString.appending("/\(cc).json"))
@@ -174,20 +171,15 @@ final class PoiStringProvider {
             }
             debugLog("Defaulting to bundle")
             let cc = locale.languageCode
-            // Just in case, cause we had a crash earlier with the fr one for some reason...
-            // This is probably no longer needed
-            // if cc == "en" || cc == "es" || cc == "fr" || cc == "pl" || cc == "de" || cc == "he" || cc == "ar" {
-            if preferences.localizeDescriptions {
-                let path = Bundle(for: PoiStringProvider.self).path(forResource: cc, ofType: "json")
-                if path != nil {
-                    let fileManager = FileManager.default
-                    if fileManager.fileExists(atPath: path!) {
-                        communityLanguage = cc
-                        return path!
-                    }
+
+            let path = Bundle(for: PoiStringProvider.self).path(forResource: cc, ofType: "json")
+            if path != nil {
+                let fileManager = FileManager.default
+                if fileManager.fileExists(atPath: path!) {
+                    communityLanguage = cc
+                    return path!
                 }
             }
-            //}
         }
 
         // Fallback to english in bundle

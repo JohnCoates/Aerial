@@ -744,7 +744,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         if preferences.showDescriptions {
             // Preventively, make sure we have poi as tvOS11/10 videos won't have them
             if (!video.poi.isEmpty && poiStringProvider.loadedDescriptions) ||
-                (preferences.useCommunityDescriptions && !video.communityPoi.isEmpty && !poiStringProvider.getPoiKeys(video: video).isEmpty) {
+                (!video.communityPoi.isEmpty && !poiStringProvider.getPoiKeys(video: video).isEmpty) {
                 // Collect all the timestamps from the JSON
                 var times = [NSValue]()
                 let keys = poiStringProvider.getPoiKeys(video: video)
