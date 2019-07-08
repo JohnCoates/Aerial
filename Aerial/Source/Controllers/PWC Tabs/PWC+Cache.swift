@@ -18,9 +18,6 @@ extension PreferencesWindowController {
         if preferences.neverStreamPreviews {
             neverStreamPreviewsCheckbox.state = .on
         }
-        if !preferences.useCommunityDescriptions {
-            useCommunityCheckbox.state = .off
-        }
         if !preferences.cacheAerials {
             cacheAerialsAsTheyPlayCheckbox.state = .off
         }

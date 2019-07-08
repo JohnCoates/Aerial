@@ -21,11 +21,9 @@ final class Preferences {
         case customCacheDirectory = "cacheDirectory"
         case videoFormat = "videoFormat"
         case showDescriptions = "showDescriptions"
-        case useCommunityDescriptions = "useCommunityDescriptions"
         case showDescriptionsMode = "showDescriptionsMode"
         case neverStreamVideos = "neverStreamVideos"
         case neverStreamPreviews = "neverStreamPreviews"
-        case localizeDescriptions = "localizeDescriptions"
         case timeMode = "timeMode"
         case manualSunrise = "manualSunrise"
         case manualSunset = "manualSunset"
@@ -172,11 +170,9 @@ final class Preferences {
         defaultValues[.cacheAerials] = true
         defaultValues[.videoFormat] = VideoFormat.v1080pH264
         defaultValues[.showDescriptions] = true
-        defaultValues[.useCommunityDescriptions] = true
         defaultValues[.showDescriptionsMode] = DescriptionMode.fade10seconds
         defaultValues[.neverStreamVideos] = false
         defaultValues[.neverStreamPreviews] = false
-        defaultValues[.localizeDescriptions] = false
         defaultValues[.timeMode] = TimeMode.disabled
         defaultValues[.manualSunrise] = "09:00"
         defaultValues[.manualSunset] = "19:00"
@@ -437,15 +433,6 @@ final class Preferences {
         }
     }
 
-    var useCommunityDescriptions: Bool {
-        get {
-            return value(forIdentifier: .useCommunityDescriptions)
-        }
-        set {
-            setValue(forIdentifier: .useCommunityDescriptions, value: newValue)
-        }
-    }
-
     var dimBrightness: Bool {
         get {
             return value(forIdentifier: .dimBrightness)
@@ -641,15 +628,6 @@ final class Preferences {
         }
         set {
             setValue(forIdentifier: .neverStreamPreviews, value: newValue)
-        }
-    }
-
-    var localizeDescriptions: Bool {
-        get {
-            return value(forIdentifier: .localizeDescriptions)
-        }
-        set {
-            setValue(forIdentifier: .localizeDescriptions, value: newValue)
         }
     }
 

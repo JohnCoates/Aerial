@@ -57,9 +57,6 @@ extension PreferencesWindowController {
         } else {
             changeTextState(to: false)
         }
-        if preferences.localizeDescriptions {
-            localizeForTvOS12Checkbox.state = .on
-        }
         if preferences.overrideMargins {
             changeCornerMargins.state = .on
             marginHorizontalTextfield.isEnabled = true
@@ -140,8 +137,8 @@ extension PreferencesWindowController {
 
     func changeTextState(to: Bool) {
         // Location information
-        useCommunityCheckbox.isEnabled = to
-        localizeForTvOS12Checkbox.isEnabled = to
+        //useCommunityCheckbox.isEnabled = to
+        //localizeForTvOS12Checkbox.isEnabled = to
         descriptionModePopup.isEnabled = to
         fadeInOutTextModePopup.isEnabled = to
         fontPickerButton.isEnabled = to
@@ -176,24 +173,10 @@ extension PreferencesWindowController {
         extraCornerPopup.isEnabled = to
     }
 
-    @IBAction func useCommunityClick(_ button: NSButton) {
-        let state = useCommunityCheckbox.state
-        let onState = state == .on
-        preferences.useCommunityDescriptions = onState
-        debugLog("UI useCommunity: \(onState)")
-    }
-
     @IBAction func communityLanguagePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI communityLanguagePopupChange: \(sender.indexOfSelectedItem)")
         let poisp = PoiStringProvider.sharedInstance
         preferences.ciOverrideLanguage = poisp.getLanguageStringFromPosition(pos: sender.indexOfSelectedItem)
-    }
-
-    @IBAction func localizeForTvOS12Click(button: NSButton?) {
-        let state = localizeForTvOS12Checkbox.state
-        let onState = state == .on
-        preferences.localizeDescriptions = onState
-        debugLog("UI localizeDescriptions: \(onState)")
     }
 
     @IBAction func descriptionModePopupChange(_ sender: NSPopUpButton) {
