@@ -766,7 +766,7 @@ is disabled
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Text" identifier="" id="bPY-uP-DGa">
-                                        <view key="view" ambiguous="YES" id="M1m-ud-C95">
+                                        <view key="view" id="M1m-ud-C95">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1129,6 +1129,9 @@ should appear</string>
                                                                 <menuItem title="Chinese Simplified" id="TGo-cK-qCu">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                                 </menuItem>
+                                                                <menuItem title="Chinese Traditional" id="KHw-BR-2Mk">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                </menuItem>
                                                                 <menuItem title="Dutch" id="aO2-Av-7xe">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                                 </menuItem>
@@ -1177,7 +1180,7 @@ should appear</string>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Time" identifier="" id="PtY-yV-jgj">
-                                        <view key="view" id="ziy-Hg-uzO">
+                                        <view key="view" ambiguous="YES" id="ziy-Hg-uzO">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -2808,7 +2811,7 @@ Gw
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fx9-wP-BAV">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="499" translatesAutoresizingMaskIntoConstraints="NO" id="fx9-wP-BAV">
                         <rect key="frame" x="74" y="281" width="503" height="40"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" alignment="justified" title="With macOS Catalina, Aerial has limited access (read only) to your local disk and now lives in a sandbox. " id="N0S-xL-ig4">
@@ -2822,7 +2825,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSCaution" id="Xv7-LA-jpF"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="asM-kR-rgt">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="555" translatesAutoresizingMaskIntoConstraints="NO" id="asM-kR-rgt">
                         <rect key="frame" x="18" y="43" width="559" height="90"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" selectable="YES" alignment="justified" id="JiG-Ah-D6O">
@@ -2835,7 +2838,7 @@ After changing the folder, please close System Preferences for this to be taken 
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aI8-Vj-v9Y">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="553" translatesAutoresizingMaskIntoConstraints="NO" id="aI8-Vj-v9Y">
                         <rect key="frame" x="19" y="180" width="557" height="93"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" selectable="YES" alignment="justified" id="3kv-uO-49e">
