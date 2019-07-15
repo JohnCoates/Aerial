@@ -224,33 +224,37 @@ final class PoiStringProvider {
     }
 
     // Helpers for the main popup
+    // swiftlint:disable:next cyclomatic_complexity
     func getLanguagePosition() -> Int {
         let preferences = Preferences.sharedInstance
         // The list is alphabetized based on their english name in the UI
         switch preferences.ciOverrideLanguage {
         case "ar":  // Arabic
             return 1
-        case "zh_CN":  // English
+        case "zh_CN":  // Chinese Simplified
             return 2
-        case "nl":  // Dutch
+        case "zh_TW":  // Chinese Traditional
             return 3
-        case "en":  // English
+        case "nl":  // Dutch
             return 4
-        case "fr":  // French
+        case "en":  // English
             return 5
-        case "de":  // German
+        case "fr":  // French
             return 6
-        case "he":  // Hebrew
+        case "de":  // German
             return 7
-        case "pl":  // Polish
+        case "he":  // Hebrew
             return 8
-        case "es":  // Spanish
+        case "pl":  // Polish
             return 9
+        case "es":  // Spanish
+            return 10
         default:    // This is the default, preferred language
             return 0
         }
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     func getLanguageStringFromPosition(pos: Int) -> String {
         switch pos {
         case 1:
@@ -258,18 +262,20 @@ final class PoiStringProvider {
         case 2:
             return "zh_CN"
         case 3:
-            return "nl"
+            return "zh_TW"
         case 4:
-            return "en"
+            return "nl"
         case 5:
-            return "fr"
+            return "en"
         case 6:
-            return "de"
+            return "fr"
         case 7:
-            return "he"
+            return "de"
         case 8:
-            return "pl"
+            return "he"
         case 9:
+            return "pl"
+        case 10:
             return "es"
         default:
             return ""

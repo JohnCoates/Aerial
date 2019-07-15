@@ -101,6 +101,9 @@
 		03D3DAC5221F286D00BDA52F /* pl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D3DAC3221F286700BDA52F /* pl.json */; };
 		03DAD470229EAC66000DA6D1 /* Installation.md in Resources */ = {isa = PBXBuildFile; fileRef = 03DAD46F229EAC66000DA6D1 /* Installation.md */; };
 		03DAD473229EC031000DA6D1 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 03DAD472229EC031000DA6D1 /* Readme.md */; };
+		03E4B20D22DC7F8800C22EBE /* zh_TW.json in Resources */ = {isa = PBXBuildFile; fileRef = 03E4B20C22DC7F8700C22EBE /* zh_TW.json */; };
+		03E4B20E22DC7FE200C22EBE /* zh_TW.json in Resources */ = {isa = PBXBuildFile; fileRef = 03E4B20C22DC7F8700C22EBE /* zh_TW.json */; };
+		03E4B20F22DC7FE600C22EBE /* zh_TW.json in Resources */ = {isa = PBXBuildFile; fileRef = 03E4B20C22DC7F8700C22EBE /* zh_TW.json */; };
 		03E8730C2165013C002B469B /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8730B2165013C002B469B /* DownloadManager.swift */; };
 		03E8730F216501ED002B469B /* AsynchronousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8730E216501ED002B469B /* AsynchronousOperation.swift */; };
 		03E8731021662AEB002B469B /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8730B2165013C002B469B /* DownloadManager.swift */; };
@@ -207,6 +210,7 @@
 		03DAD475229EC544000DA6D1 /* HardwareDecoding.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = HardwareDecoding.md; sourceTree = "<group>"; };
 		03DAD476229EC64D000DA6D1 /* Troubleshooting.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Troubleshooting.md; sourceTree = "<group>"; };
 		03DAD477229ECAAA000DA6D1 /* CustomVideos.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CustomVideos.md; sourceTree = "<group>"; };
+		03E4B20C22DC7F8700C22EBE /* zh_TW.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zh_TW.json; sourceTree = "<group>"; };
 		03E8730B2165013C002B469B /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		03E8730E216501ED002B469B /* AsynchronousOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousOperation.swift; sourceTree = "<group>"; };
 		03E8731221675FE0002B469B /* TimeManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManagement.swift; sourceTree = "<group>"; };
@@ -282,6 +286,7 @@
 		033192DF217B77E90073B580 /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				03E4B20C22DC7F8700C22EBE /* zh_TW.json */,
 				038EBE9322D0AA3D00C7AD02 /* nl.json */,
 				036A34B4227309FB00A49135 /* zh_CN.json */,
 				035A92AB226754760095AB85 /* ar.json */,
@@ -677,6 +682,7 @@
 				03D1E79222848F7F00D10CF7 /* screen2.jpg in Resources */,
 				FAC36F4A1BE1756D007F2A20 /* MainMenu.xib in Resources */,
 				FAC36F501BE1756D007F2A20 /* icon-night.pdf in Resources */,
+				03E4B20E22DC7FE200C22EBE /* zh_TW.json in Resources */,
 				035A92A9225F8C480095AB85 /* he.json in Resources */,
 				035A92A7225F8C480095AB85 /* de.json in Resources */,
 				0395835421807D1F008E8F9C /* thumbnail@2x.png in Resources */,
@@ -691,6 +697,7 @@
 			files = (
 				03D1E79322848F7F00D10CF7 /* screen2.jpg in Resources */,
 				036A34B722730A0700A49135 /* zh_CN.json in Resources */,
+				03E4B20F22DC7FE600C22EBE /* zh_TW.json in Resources */,
 				033D62B1216CAE2C00F3AF83 /* icon-night-dark.pdf in Resources */,
 				03D1E79622848F7F00D10CF7 /* screen1.jpg in Resources */,
 				03D1E79922848F7F00D10CF7 /* screen0.jpg in Resources */,
@@ -720,6 +727,7 @@
 				038EBE9422D0AA3D00C7AD02 /* nl.json in Resources */,
 				033D62AF216CAE2C00F3AF83 /* icon-night-dark.pdf in Resources */,
 				0369985D2196103300E359D3 /* missingvideos.json in Resources */,
+				03E4B20D22DC7F8800C22EBE /* zh_TW.json in Resources */,
 				FAC36F4F1BE1756D007F2A20 /* icon-night.pdf in Resources */,
 				0313F9E622942AA500B074BB /* CustomVideos.xib in Resources */,
 				033192E1217B78240073B580 /* en.json in Resources */,
