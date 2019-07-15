@@ -6,7 +6,7 @@
 - Screensaver hangs at start once a day or so, or unable to quit screensaver. Users of third party firewalls like Little Snitch have reported that it may interact by either blocking by default or popping a window while Aerial tries to connect (for update or download purposes). Please either disable "Auto update while the screen saver is running" in Advanced tab, or allow the connexion in your firewall to fix the issue. 
 - "This app is damaged and can't be opened, you should move it to the trash" when double-clicking the `Aerial.saver` file: Please see the [installation notes](Installation.md), this is a GateKeeper issue.
 - Chrome complains that "This download is uncommon and potentilally malicious" on very fresh releases. Google seems to flag very recent files as "uncommon" and may block the download (more info on [Google's site here](https://support.google.com/chrome/answer/6261569). After a few hours/days, this warning will disappear. More info in this [issue](https://github.com/JohnCoates/Aerial/issues/759#issuecomment-489616050).
-- Can't use Aerial as a login screen saver: As far as we know, using 3rd party screen savers before login is no longer possible on modern versions of macOS (probably and rightly so for securoty reasons). More about this [here](https://github.com/JohnCoates/Aerial/issues/571).
+- Can't use Aerial as a login screen saver: As far as we know, using 3rd party screen savers before login is no longer possible on modern versions of macOS (probably and rightly so for security reasons). More about this [here](https://github.com/JohnCoates/Aerial/issues/571).
 
 ## About custom videos
 
