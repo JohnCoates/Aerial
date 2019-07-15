@@ -3,19 +3,19 @@
 <title>Aerial</title>
 
 <item>
-<title>1.5.1beta9</title>
+<title>1.5.1beta10</title>
   <description>
           <![CDATA[
 <p>This is the beta feed ! Aerial is properly signed and notarized 🎉</p>
 <ul>
-<li>Massive simplification of the localization concept, you now simply either leave default (use preferred language) or pick from the list.</li>
+<li>Add Traditional Chinese and update Simplified Chinese translations. Many thanks to @LinkeyLeo !</li>
 </ul>
 <p>macOS 10.15 Catalina users, we suggest you first check this issue : https://github.com/JohnCoates/Aerial/issues/801</p>
           ]]>
     </description>
-<pubDate>lun., 8 jul. 2019 14:00:00 +0100</pubDate>
+<pubDate>lun., 15 jul. 2019 17:45:00 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.5.1beta9/Aerial.saver.zip" sparkle:version="1.5.1beta9" sparkle:shortVersionString="1.5.1beta9"  sparkle:edSignature="SLpPuYwfzblgNnKWs9AlESbdXAnIq2xAwSAN2rIErZ8BDXx+0o5RF19HZvdbNOIsVDzD5D+X1CNx39P8aIy+AA==" length="6040692" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.5.1beta10/Aerial.saver.zip" sparkle:version="1.5.1beta10" sparkle:shortVersionString="1.5.1beta10"  sparkle:edSignature="uZpiH3hhha26lpvXtj3Os4DXWpvgvfS5O5fZU19h2LBV/aenDHJhhFbLEGxrXxdvR2iibIcBPEPD6+O8RokTBA==" length="6045700" type="application/octet-stream"/>
 </item> 
 
 <item>
