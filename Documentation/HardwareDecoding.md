@@ -9,7 +9,7 @@ These are our recommendations so far:
 - Macs older than 2011 may lack H.264 acceleration.
 - Macs with an Intel CPU (With iGPU) from the Sandy Bridge (2011) generation to Broadwell (Early 2015) should have H.264 hardware acceleration available.
 - Late 2015 and 2016 Macs (Skylake and Kaby Lake) may only have partially accelerated HEVC decoding. We recommended you stick to 1080p H.264 on laptops. You may consider the HEVC format on desktops but understand that decoding may be CPU intensive and spin up your fans.
-- Macs 2017 and up should have full HEVC acceleration.
+- Macs 2017 and up should have full HEVC acceleration (the 2017 12 inch Macbook being a notable exception, only having partially accelerated HEVC decoding).
 
 You can easily check for yourself what to expect by opening a video in Quicktime (Use the `Show in Finder` option in the `Cache` tab to find the cached videos). In Activity Monitor, the AV Framework GVA process is called `VTDecoderXPCService`.
 
