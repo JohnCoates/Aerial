@@ -39,6 +39,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     var isQuickFading = false
 
     var brightnessToRestore: Float?
+    var isCatalinaPreview = false
 
     static var shouldFade: Bool {
         let preferences = Preferences.sharedInstance
@@ -111,7 +112,13 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     // MARK: - Init / Setup
     // This is the one used by System Preferences
     override init?(frame: NSRect, isPreview: Bool) {
-        super.init(frame: frame, isPreview: isPreview)
+        // This is a workaround for Catalina beta5 and down which always return isPreview while it shouldn't
+        if frame.width < 400 && frame.height < 300 {
+            super.init(frame: frame, isPreview: true)
+        } else {
+            super.init(frame: frame, isPreview: false)
+        }
+
         debugLog("avInit1 \(frame)")
         self.animationTimeInterval = 1.0 / 30.0
         setup()
