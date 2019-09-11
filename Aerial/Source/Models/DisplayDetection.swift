@@ -38,6 +38,7 @@ class Screen: NSObject {
     }
 }
 
+// swiftlint:disable:next type_body_length
 final class DisplayDetection: NSObject {
     static let sharedInstance = DisplayDetection()
 
@@ -45,6 +46,9 @@ final class DisplayDetection: NSObject {
     var cmInPoints: CGFloat = 40
     var maxLeftScreens: CGFloat = 0
     var maxBelowScreens: CGFloat = 0
+
+    var advancedScreenRect: CGRect?
+    var advancedZeroedScreenRect: CGRect?
 
     // MARK: - Lifecycle
     override init() {
@@ -112,7 +116,13 @@ final class DisplayDetection: NSObject {
         }
 
         // Before we finish, we calculate the origin of each screen from a 0,0 perspective
-        calculateZeroedOrigins()
+        // This calculation is pretty different in advanced mode so it got split up
+        let preferences = Preferences.sharedInstance
+        if preferences.displayMarginsAdvanced && !advancedMargins.displays.isEmpty {
+            calculateAdvancedZeroedOrigins()
+        } else {
+            calculateZeroedOrigins()
+        }
 
         for screen in screens {
             debugLog("\(screen)")
@@ -123,11 +133,10 @@ final class DisplayDetection: NSObject {
     }
 
     // MARK: - Helpers
-
+    // Regular calculation
     func calculateZeroedOrigins() {
         let orect = getGlobalScreenRect()
 
-        // First we check for the screen relative position and calculate how many screens we have horizontally
         for screen in screens {
             debugLog("src orig : \(screen.bottomLeftFrame.origin)")
 
@@ -143,6 +152,42 @@ final class DisplayDetection: NSObject {
             screen.zeroedOrigin = CGPoint(x: screen.bottomLeftFrame.origin.x - orect.origin.x + (leftScreens * leftMargin()),
                                           y: screen.bottomLeftFrame.origin.y - orect.origin.y + (belowScreens * belowMargin()))
         }
+    }
+
+    // Advanced calculation, this is a bit messy...
+    func calculateAdvancedZeroedOrigins() {
+        // 2 pass, first we calculate the real position of each screen with offsets applied
+        for screen in screens {
+            debugLog("Asrc orig : \(screen.bottomLeftFrame.origin)")
+            var offsetleft: CGFloat = 0
+            var offsettop: CGFloat = 0
+
+            if let display = findDisplayAdvancedMargins(x: screen.bottomLeftFrame.origin.x, y: screen.bottomLeftFrame.origin.y) {
+                offsetleft = display.offsetleft
+                offsettop = display.offsettop
+            }
+
+            // These are NOT zeroed at this point !!!
+            screen.zeroedOrigin = CGPoint(x: screen.bottomLeftFrame.origin.x + (offsetleft * cmInPoints),
+                                          y: screen.bottomLeftFrame.origin.y + (offsettop * cmInPoints))
+        }
+
+        // We get an intermediate representation of whole bunch, non zeroed
+        let irect = getIntermediateAdvancedScreenRect()
+        advancedScreenRect = irect  // We store this for later...
+        // And now we zero them !
+        for screen in screens {
+            screen.zeroedOrigin = CGPoint(x: screen.zeroedOrigin.x - irect.origin.x,
+                                          y: screen.zeroedOrigin.y - irect.origin.y)
+            debugLog("Zorig : \(screen.zeroedOrigin)")
+        }
+
+        // Now that zeroed is really zeroed, we can cheat a bit
+        let i0rect = getIntermediateAdvancedScreenRect()
+        advancedZeroedScreenRect = i0rect  // We store this for later...
+
+        let orect = getGlobalScreenRect()
+        debugLog("Orect : \(orect)")
     }
 
     // Border detection
@@ -196,49 +241,82 @@ final class DisplayDetection: NSObject {
 
     // Calculate the size of the global screen (the composite of all the displays attached)
     func getGlobalScreenRect() -> CGRect {
+        let preferences = Preferences.sharedInstance
+        if preferences.displayMarginsAdvanced && !advancedMargins.displays.isEmpty, let adv = advancedScreenRect {
+            // Now this is awkward... we precalculated this at detectdisplays->advancedZeroedOrigins
+            return adv
+        } else {
+            var minX: CGFloat = 0.0, minY: CGFloat = 0.0, maxX: CGFloat = 0.0, maxY: CGFloat = 0.0
+            for screen in screens {
+                if screen.bottomLeftFrame.origin.x < minX {
+                    minX = screen.bottomLeftFrame.origin.x
+                }
+                if screen.bottomLeftFrame.origin.y < minY {
+                    minY = screen.bottomLeftFrame.origin.y
+                }
+                if screen.topRightCorner.x > maxX {
+                    maxX = screen.topRightCorner.x
+                }
+                if screen.topRightCorner.y > maxY {
+                    maxY = screen.topRightCorner.y
+                }
+            }
+
+            return CGRect(x: minX, y: minY, width: maxX-minX+(maxLeftScreens*leftMargin()), height: maxY-minY+(maxBelowScreens*belowMargin()))
+        }
+    }
+
+    func getIntermediateAdvancedScreenRect() -> CGRect {
+        // At this point, this is non zeroed
         var minX: CGFloat = 0.0, minY: CGFloat = 0.0, maxX: CGFloat = 0.0, maxY: CGFloat = 0.0
         for screen in screens {
-            if screen.bottomLeftFrame.origin.x < minX {
-                minX = screen.bottomLeftFrame.origin.x
+            if screen.zeroedOrigin.x < minX {
+                minX = screen.zeroedOrigin.x
             }
-            if screen.bottomLeftFrame.origin.y < minY {
-                minY = screen.bottomLeftFrame.origin.y
+            if screen.zeroedOrigin.y < minY {
+                minY = screen.zeroedOrigin.y
             }
-            if screen.topRightCorner.x > maxX {
-                maxX = screen.topRightCorner.x
+            if (screen.zeroedOrigin.x + CGFloat(screen.width)) > maxX {
+                maxX = screen.zeroedOrigin.x + CGFloat(screen.width)
             }
-            if screen.topRightCorner.y > maxY {
-                maxY = screen.topRightCorner.y
+            if (screen.zeroedOrigin.y + CGFloat(screen.height)) > maxY {
+                maxY = screen.zeroedOrigin.y + CGFloat(screen.height)
             }
         }
 
-        return CGRect(x: minX, y: minY, width: maxX-minX+(maxLeftScreens*leftMargin()), height: maxY-minY+(maxBelowScreens*belowMargin()))
+        return CGRect(x: minX, y: minY, width: maxX-minX, height: maxY-minY)
     }
 
     func getZeroedActiveSpannedRect() -> CGRect {
-        var minX: CGFloat = 0.0, minY: CGFloat = 0.0, maxX: CGFloat = 0.0, maxY: CGFloat = 0.0
-        for screen in screens where isScreenActive(id: screen.id) {
-            if screen.bottomLeftFrame.origin.x < minX {
-                minX = screen.bottomLeftFrame.origin.x
+        let preferences = Preferences.sharedInstance
+        if preferences.displayMarginsAdvanced && !advancedMargins.displays.isEmpty, let advz = advancedZeroedScreenRect {
+            // Now this is awkward... we precalculated this at detectdisplays->advancedZeroedOrigins
+            return advz
+        } else {
+            var minX: CGFloat = 0.0, minY: CGFloat = 0.0, maxX: CGFloat = 0.0, maxY: CGFloat = 0.0
+            for screen in screens where isScreenActive(id: screen.id) {
+                if screen.bottomLeftFrame.origin.x < minX {
+                    minX = screen.bottomLeftFrame.origin.x
+                }
+                if screen.bottomLeftFrame.origin.y < minY {
+                    minY = screen.bottomLeftFrame.origin.y
+                }
+                if screen.topRightCorner.x > maxX {
+                    maxX = screen.topRightCorner.x
+                }
+                if screen.topRightCorner.y > maxY {
+                    maxY = screen.topRightCorner.y
+                }
             }
-            if screen.bottomLeftFrame.origin.y < minY {
-                minY = screen.bottomLeftFrame.origin.y
-            }
-            if screen.topRightCorner.x > maxX {
-                maxX = screen.topRightCorner.x
-            }
-            if screen.topRightCorner.y > maxY {
-                maxY = screen.topRightCorner.y
-            }
-        }
 
-        let width = maxX - minX
-        let height = maxY - minY
-        // Zero the origin to the global rect
-        let orect = getGlobalScreenRect()
-        minX -= orect.origin.x
-        minY -= orect.origin.y
-        return CGRect(x: minX, y: minY, width: width+(maxLeftScreens*leftMargin()), height: height+(maxBelowScreens*belowMargin()))
+            let width = maxX - minX
+            let height = maxY - minY
+            // Zero the origin to the global rect
+            let orect = getGlobalScreenRect()
+            minX -= orect.origin.x
+            minY -= orect.origin.y
+            return CGRect(x: minX, y: minY, width: width+(maxLeftScreens*leftMargin()), height: height+(maxBelowScreens*belowMargin()))
+        }
     }
 
     // NSScreen coordinates are with a bottom left origin, whereas CGDisplay
@@ -302,4 +380,100 @@ final class DisplayDetection: NSObject {
         preferences.newDisplayDict[String(id)] = false
     }
 
+    func getMarginsJSON() -> String {
+        let preferences = Preferences.sharedInstance
+        var adv: AdvancedMargin
+
+        if !advancedMargins.displays.isEmpty {
+            // If we have something already in preferences, return that
+            adv = advancedMargins
+        } else {
+            // Generate a JSON from current config
+            var marginArray = [DisplayAdvancedMargin]()
+
+            for screen in screens {
+                let zleft = screen.bottomLeftFrame.origin.x
+                let ztop = screen.bottomLeftFrame.origin.y
+
+                let (leftScreens, belowScreens) = detectBorders(forScreen: screen)
+
+                let offsetleft = leftScreens * CGFloat(preferences.horizontalMargin!)
+                let offsettop = belowScreens * CGFloat(preferences.verticalMargin!)
+
+                marginArray.append(DisplayAdvancedMargin(zleft: zleft, ztop: ztop, offsetleft: offsetleft, offsettop: offsettop))
+            }
+
+            adv = AdvancedMargin(displays: marginArray)
+        }
+
+        print(adv)
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+
+        do {
+            let jsonData = try encoder.encode(adv)
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                return jsonString
+            }
+        } catch {
+            print("error encoding")
+            return ""
+        }
+
+        return ""
+    }
+
+    func findDisplayAdvancedMargins(x: CGFloat, y: CGFloat) -> DisplayAdvancedMargin? {
+        for display in advancedMargins.displays {
+            if x == display.zleft && y == display.ztop {
+                return display
+            }
+        }
+
+        return nil
+    }
+    var advancedMargins: AdvancedMargin {
+        get {
+            let preferences = Preferences.sharedInstance
+            let jsonString = preferences.advancedMargins!
+
+            if let jsonData = jsonString.data(using: .utf8) {
+                let decoder = JSONDecoder()
+
+                do {
+                    let adv = try decoder.decode(AdvancedMargin.self, from: jsonData)
+                    return adv
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+            return AdvancedMargin(displays: [DisplayAdvancedMargin]())
+        }
+        set {
+            let preferences = Preferences.sharedInstance
+
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+
+            do {
+                let jsonData = try encoder.encode(newValue)
+                if let jsonString = String(data: jsonData, encoding: .utf8) {
+                    preferences.advancedMargins = jsonString
+                }
+            } catch {
+                print("error encoding")
+            }
+        }
+    }
+}
+
+struct AdvancedMargin: Codable {
+    let displays: [DisplayAdvancedMargin]
+}
+
+struct DisplayAdvancedMargin: Codable {
+    var zleft: CGFloat
+    var ztop: CGFloat
+    var offsetleft: CGFloat
+    var offsettop: CGFloat
 }
