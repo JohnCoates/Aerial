@@ -75,6 +75,9 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var horizontalDisplayMarginTextfield: NSTextField!
     @IBOutlet var verticalDisplayMarginTextfield: NSTextField!
 
+    @IBOutlet var displayMarginAdvancedMode: NSButton!
+
+    @IBOutlet var displayMarginAdvancedEdit: NSButton!
     // Text tab
     @IBOutlet var showDescriptionsCheckbox: NSButton!
     @IBOutlet var descriptionModePopup: NSPopUpButton!
@@ -210,6 +213,9 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var changeCacheFolderPanel: NSPanel!
     @IBOutlet var cacheFolderTextField: NSTextField!
 
+    @IBOutlet var displayMarginAdvancedPanel: NSPanel!
+    @IBOutlet var displayMarginAdvancedTextfield: NSTextField!
+
     var player: AVPlayer = AVPlayer()
 
     var videos: [AerialVideo]?
@@ -330,7 +336,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         // To workaround our High Sierra issues with textfields, we have separate panels
         // that replicate the features and are editable. They are hidden unless needed.
-        if #available(OSX 10.14, *) {
+        if #available(OSX 10.16, *) {
             editMarginButton.isHidden = true
             editExtraMessageButton.isHidden = true
             enterCoordinatesButton.isHidden = true

@@ -19,6 +19,13 @@ extension PreferencesWindowController {
         } else {
             displayMarginBox.isHidden = true
         }
+        if preferences.displayMarginsAdvanced {
+            displayMarginAdvancedMode.state = .on
+            displayMarginAdvancedEdit.isEnabled = true
+        } else {
+            displayMarginAdvancedMode.state = .off
+            displayMarginAdvancedEdit.isEnabled = false
+        }
 
         // Displays Tab
         newDisplayModePopup.selectItem(at: preferences.newDisplayMode!)
@@ -76,5 +83,54 @@ extension PreferencesWindowController {
         let displayDetection = DisplayDetection.sharedInstance
         displayDetection.detectDisplays()   // Force redetection to update our margin calculations in spanned mode
         displayView.needsDisplay = true
+    }
+
+    // This is for managing the advanced mode for spanned margins
+    @IBAction func displayMarginAdvancedModeChange(_ sender: NSButton) {
+        let onState = sender.state == .on
+
+        debugLog("UI displayMarginAdvancedModeClick: \(onState)")
+        preferences.displayMarginsAdvanced = onState
+        if preferences.displayMarginsAdvanced {
+            displayMarginAdvancedEdit.isEnabled = true
+        } else {
+            displayMarginAdvancedEdit.isEnabled = false
+        }
+        displayView.needsDisplay = true
+    }
+
+    // Open close the panel
+    @IBAction func displayMarginAdvancedEditClick(_ sender: Any) {
+        if displayMarginAdvancedPanel.isVisible {
+            displayMarginAdvancedPanel.close()
+        } else {
+            // Grab the JSON
+            let displayDetection = DisplayDetection.sharedInstance
+            displayMarginAdvancedTextfield.stringValue = displayDetection.getMarginsJSON()
+
+            displayMarginAdvancedPanel.makeKeyAndOrderFront(sender)
+        }
+    }
+
+    @IBAction func displayMarginAdvancedApplyClick(_ sender: Any) {
+        // We save the JSON as String
+        let preferences = Preferences.sharedInstance
+        preferences.advancedMargins = displayMarginAdvancedTextfield.stringValue
+        // And redetect
+        let displayDetection = DisplayDetection.sharedInstance
+        displayDetection.detectDisplays()   // Force redetection to update our margin calculations in spanned mode
+
+        displayView.needsDisplay = true
+    }
+    @IBAction func displayMarginAdvancedCloseClick(_ sender: Any) {
+        // We save the JSON as String
+        let preferences = Preferences.sharedInstance
+        preferences.advancedMargins = displayMarginAdvancedTextfield.stringValue
+        // And redetect
+        let displayDetection = DisplayDetection.sharedInstance
+        displayDetection.detectDisplays()   // Force redetection to update our margin calculations in spanned mode
+
+        displayView.needsDisplay = true
+        displayMarginAdvancedPanel.close()
     }
 }

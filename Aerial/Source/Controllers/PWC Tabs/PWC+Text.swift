@@ -101,7 +101,11 @@ extension PreferencesWindowController {
         }
     }
 
-    // We have a secondary panel for entering margins as a workaround on < Mojave
+    // We have secondary panels for entering margins and extra message as a workaround
+    // for < Mojave where a swift screensaver can't get focus which makes textfields
+    // unusable
+
+    // Extra message workaround
     @IBAction func openExtraMessagePanelClick(_ sender: Any) {
         if editExtraMessagePanel.isVisible {
             editExtraMessagePanel.close()
@@ -110,6 +114,22 @@ extension PreferencesWindowController {
         }
     }
 
+    @IBAction func extraTextFieldChange(_ sender: NSTextField) {
+        debugLog("UI extraTextField \(sender.stringValue)")
+        if sender == secondaryExtraMessageTextField {
+            extraMessageTextField.stringValue = sender.stringValue
+        }
+        preferences.showMessageString = sender.stringValue
+    }
+
+    @IBAction func closeExtraMessagePanelClick(_ sender: Any) {
+        // On close we apply what's in the textfield
+        extraMessageTextField.stringValue = secondaryExtraMessageTextField.stringValue
+        preferences.showMessageString = secondaryExtraMessageTextField.stringValue
+        editExtraMessagePanel.close()
+    }
+
+    // Extra margins workaround
     @IBAction func openExtraMarginPanelClick(_ sender: Any) {
         if editMarginsPanel.isVisible {
             editMarginsPanel.close()
@@ -119,11 +139,14 @@ extension PreferencesWindowController {
     }
 
     @IBAction func closeExtraMarginPanelClick(_ sender: Any) {
-        editMarginsPanel.close()
-    }
+        // On close we apply what's in the textfields
+        marginHorizontalTextfield.stringValue = secondaryMarginHorizontalTextfield.stringValue
+        preferences.marginX = Int(secondaryMarginHorizontalTextfield.stringValue)
 
-    @IBAction func closeExtraMessagePanelClick(_ sender: Any) {
-        editExtraMessagePanel.close()
+        marginVerticalTextfield.stringValue = secondaryMarginVerticalTextfield.stringValue
+        preferences.marginY = Int(secondaryMarginVerticalTextfield.stringValue)
+
+        editMarginsPanel.close()
     }
 
     @IBAction func showDescriptionsClick(button: NSButton?) {
@@ -233,14 +256,6 @@ extension PreferencesWindowController {
 
         // Update our label
         extraMessageFontLabel.stringValue = preferences.extraFontName! + ", \(preferences.extraFontSize!) pt"
-    }
-
-    @IBAction func extraTextFieldChange(_ sender: NSTextField) {
-        debugLog("UI extraTextField \(sender.stringValue)")
-        if sender == secondaryExtraMessageTextField {
-            extraMessageTextField.stringValue = sender.stringValue
-        }
-        preferences.showMessageString = sender.stringValue
     }
 
     @IBAction func descriptionCornerChange(_ sender: NSButton?) {

@@ -78,6 +78,8 @@ final class Preferences {
         case logMilliseconds = "logMilliseconds"
         case horizontalMargin = "horizontalMargin"
         case verticalMargin = "verticalMargin"
+        case displayMarginsAdvanced = "displayMarginsAdvanced"
+        case advancedMargins = "advancedMargins"
 
         case synchronizedMode = "synchronizedMode"
         case aspectMode = "aspectMode"
@@ -223,9 +225,12 @@ final class Preferences {
         defaultValues[.logMilliseconds] = false
         defaultValues[.horizontalMargin] = 0
         defaultValues[.verticalMargin] = 0
+        defaultValues[.displayMarginsAdvanced] = false
+
         defaultValues[.synchronizedMode] = false
         defaultValues[.aspectMode] = AspectMode.fill
         defaultValues[.useHDR] = false
+        defaultValues[.advancedMargins] = ""
 
         // Set today's date as default
         let dateFormatter = DateFormatter()
@@ -244,6 +249,15 @@ final class Preferences {
     }
 
     // MARK: - Variables
+    var advancedMargins: String? {
+        get {
+            return optionalValue(forIdentifier: .advancedMargins)
+        }
+        set {
+            setValue(forIdentifier: .advancedMargins, value: newValue)
+        }
+    }
+
     var videoSets: [String: [String]] {
         get {
             return userDefaults.dictionary(forKey: "videoSets") as! [String: [String]]
@@ -259,6 +273,15 @@ final class Preferences {
         }
         set {
             setValue(forIdentifier: .newDisplayDict, value: newValue)
+        }
+    }
+
+    var displayMarginsAdvanced: Bool {
+        get {
+            return value(forIdentifier: .displayMarginsAdvanced)
+        }
+        set {
+            setValue(forIdentifier: .displayMarginsAdvanced, value: newValue)
         }
     }
 

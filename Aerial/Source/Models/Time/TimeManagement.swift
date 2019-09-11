@@ -252,20 +252,20 @@ final class TimeManagement: NSObject {
         }
     }
 
-    // siftlint:disable:next cyclomatic_complexity large_tuple
-    // swiftlint:disable:next large_tuple
+    // siftlint:disable:next large_tuple
+    // swiftlint:disable:next cyclomatic_complexity large_tuple
     func getNightShiftInformation() -> (Bool, sunrise: Date?, sunset: Date?, error: String?) {
-        // Catalina workaround, /usr/bin/corebrightnessdiag no longer exists
-        return (false, nil, nil, "Nightshift disabled because of Catalina")
-
-        /*
-
         if isNightShiftDataCached {
             return (nightShiftAvailable, nightShiftSunrise, nightShiftSunset, nil)
         }
-        
-        
-        let (nsInfo, ts) = shell(launchPath: "/usr/bin/corebrightnessdiag", arguments: ["nightshift-internal"])
+
+        // On Catalina, corebrightnessdiag was moved to /usr/libexec/ !
+        var cbdpath = "/usr/bin/corebrightnessdiag"
+        if #available(OSX 10.15, *) {
+            cbdpath = "/usr/libexec/corebrightnessdiag"
+        }
+
+        let (nsInfo, ts) = shell(launchPath: cbdpath, arguments: ["nightshift-internal"])
 
         if ts != 0 {
             // Task didn't return correctly ? Abort
@@ -282,25 +282,23 @@ final class TimeManagement: NSObject {
             if line.contains("sunrise") {
                 let tmp = line.split(separator: "\"")
                 if tmp.count > 1 {
+                    print(String(tmp[1]))
                     let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
+                    // Catalina fix, this seems to be the correct way to parse the date
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
 
-                    if let dateObj =  dateFormatter.date(from: String(tmp[1])) {
+                    if let dateObj = dateFormatter.date(from: String(tmp[1])) {
                         sunrise = dateObj
-                        //dateFormatter.dateFormat = "HH:mm:ss"
-                        //sunrise = dateFormatter.string(from: dateObj)
                     }
                 }
             } else if line.contains("sunset") {
                 let tmp = line.split(separator: "\"")
                 if tmp.count > 1 {
                     let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
 
                     if let dateObj = dateFormatter.date(from: String(tmp[1])) {
                         sunset = dateObj
-                        //dateFormatter.dateFormat = "HH:mm:ss"
-                        //sunset = dateFormatter.string(from: dateObj)
                     }
                 }
             }
@@ -318,8 +316,6 @@ final class TimeManagement: NSObject {
         // /usr/bin/corebrightnessdiag nightshift-internal | grep nextSunset | cut -d \" -f2
         warnLog("Location services may be disabled, Night Shift can't detect Sunrise and Sunset times without them")
         return (false, nil, nil, "Location services may be disabled")
- 
-        */
     }
 
     private func shell(launchPath: String, arguments: [String] = []) -> (String?, Int32) {
