@@ -3,19 +3,20 @@
 <title>Aerial</title>
 
 <item>
-<title>1.5.1beta11</title>
+<title>1.5.1beta12</title>
   <description>
           <![CDATA[
 <p>This is the beta feed ! Aerial is properly signed and notarized 🎉</p>
 <ul>
-<li>Add workaround fix for multi monitor and Catalina beta5.</li>
-</ul>
+<li>Fix Night Shift for Catalina 🎉</li>
+<li>Fix textfields getting ignored on close in High Sierra and earlier</li>
+<li>Add Advanced Mode for manual monitor positioning in the new Spanned Mode</li>
 <p>macOS 10.15 Catalina users, we suggest you first check this issue : https://github.com/JohnCoates/Aerial/issues/801</p>
           ]]>
     </description>
-<pubDate>ven., 9 aou. 2019 16:00:00 +0100</pubDate>
+<pubDate>mer., 11 sep. 2019 17:16:00 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.5.1beta11/Aerial.saver.zip" sparkle:version="1.5.1beta11" sparkle:shortVersionString="1.5.1beta11"  sparkle:edSignature="Yp8ie3AfpY0Jd6SwkSccQjH+Un5Apl0s9MPZKlvgh3fMv6OqXAHFSQv4nPPbbKsC07QCpe3tju6Bq8vn4CuNDw==" length="5969506" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.5.1beta12/Aerial.saver.zip" sparkle:version="1.5.1beta12" sparkle:shortVersionString="1.5.1beta12" sparkle:edSignature="euOwpoUInSy51J0+XTLmdltpPfTxg5iQmJZ5IApiO+/iCzTewD07vCuJ5e+hf2ODV9Dagfr8zHPPKbIg4VNmBQ==" length="5987405" type="application/octet-stream"/>
 </item> 
 
 <item>
