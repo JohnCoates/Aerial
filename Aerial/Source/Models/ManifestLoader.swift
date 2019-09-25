@@ -285,7 +285,7 @@ class ManifestLoader {
         debugLog("isManifestCached 10 \(isManifestCached(manifest: .tvOS10))")
         debugLog("isManifestCached 11 \(isManifestCached(manifest: .tvOS11))")
         debugLog("isManifestCached 12 \(isManifestCached(manifest: .tvOS12))")
-        debugLog("isManifestCached 12 \(isManifestCached(manifest: .tvOS13))")
+        debugLog("isManifestCached 13 \(isManifestCached(manifest: .tvOS13))")
 
         checkIfShouldRedownloadFiles()
 
