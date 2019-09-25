@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 
 enum Manifests: String {
-    case tvOS10 = "tvos10.json", tvOS11 = "tvos11.json", tvOS12 = "entries.json", customVideos = "customvideos.json"
+    case tvOS10 = "tvos10.json", tvOS11 = "tvos11.json", tvOS12 = "tvos12.json", tvOS13 = "tvos13.json", customVideos = "customvideos.json"
 }
 
 private let spaceVideos = [
@@ -36,6 +36,25 @@ private let spaceVideos = [
     "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182",             // 25/01 Antartica Aurora
     "737E9E24-49BE-4104-9B72-F352DE1AD2BF",             // North America Aurora
     "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4",             // Sahara and Italy
+    "64D11DAB-3B57-4F14-AD2F-E59A9282FA44",             // Atlantic Ocean to Spain and France
+    "81337355-E156-4242-AAF4-711768D30A54",             // Australia
+    "1088217C-1410-4CF7-BDE9-8F573A4DBCD9",             // Caribbean
+    "3C4678E4-4D3D-4A40-8817-77752AEA62EB",             // Nile Delta
+    "87060EC2-D006-4102-98CC-3005C68BB343",             // South Africa to North Asia
+
+]
+
+private let seaVideos = [
+    "83C65C90-270C-4490-9C69-F51FE03D7F06", // Seals
+    "BA4ECA11-592F-4727-9221-D2A32A16EB28", // Palau Jellies
+    "F07CC61B-30FC-4614-BDAD-3240B61F6793", // Palau Coral
+    "6143116D-03BB-485E-864E-A8CF58ACF6F1", // Kelp
+    "2B30E324-E4FF-4CC1-BA45-A958C2D2B2EC", // Barracuda
+    "E580E5A5-0888-4BE8-A4CA-F74A18A643C3", // Palau Jellies
+    "EC3DC957-D4C2-4732-AACE-7D0C0F390EC8", // Palau Jellies
+    "581A4F1A-2B6D-468C-A1BE-6F473F06D10B", // Sea Stars
+    "687D03A2-18A5-4181-8E85-38F3A13409B9", // Bumpheads
+    "537A4DAB-83B0-4B66-BCD1-05E5DBB4A268", // Jacks
 ]
 
 private let timeInformation = [
@@ -189,7 +208,14 @@ final class AerialVideo: CustomStringConvertible, Equatable {
         self.id = id
 
         // We override names for known space videos
-        if spaceVideos.contains(id) {
+        if seaVideos.contains(id) {
+            self.name = "Sea"
+            if secondaryName != "" {
+                self.secondaryName = secondaryName
+            } else {
+                self.secondaryName = name
+            }
+        } else if spaceVideos.contains(id) {
             self.name = "Space"
             if secondaryName != "" {
                 self.secondaryName = secondaryName

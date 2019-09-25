@@ -184,6 +184,53 @@ extension DownloadOperation: URLSessionTaskDelegate {
             process.launch()
 
             process.waitUntilExit()
+
+            let fileManager = FileManager.default
+            let src = VideoCache.appSupportDirectory!.appending("/entries.json")
+            let dest = VideoCache.appSupportDirectory!.appending("/tvos12.json")
+
+            do {
+                try fileManager.moveItem(atPath: src, toPath: dest)
+            } catch let error as NSError {
+                debugLog("Error renaming tvos12.json: \(error)")
+            }
+
+            let bsrc = VideoCache.appSupportDirectory!.appending("/TVIdleScreenStrings.bundle")
+            let bdest = VideoCache.appSupportDirectory!.appending("/TVIdleScreenStrings12.bundle")
+
+            do {
+                try fileManager.moveItem(atPath: bsrc, toPath: bdest)
+            } catch let error as NSError {
+                debugLog("Error renaming TVIdleScreenStrings12.bundle: \(error)")
+            }
+
+        } else if task.originalRequest!.url!.absoluteString.contains("resources-13.tar") {
+            debugLog("untaring resources-13.tar")
+
+            // Extract json
+            let process: Process = Process()
+            let cacheDirectory = VideoCache.appSupportDirectory!
+
+            var cacheResourcesString = cacheDirectory
+            cacheResourcesString.append(contentsOf: "/resources-13.tar")
+
+            process.currentDirectoryPath = cacheDirectory
+            process.launchPath = "/usr/bin/tar"
+            process.arguments = ["-xvf", cacheResourcesString]
+
+            process.launch()
+
+            process.waitUntilExit()
+
+            let fileManager = FileManager.default
+            let src = VideoCache.appSupportDirectory!.appending("/entries.json")
+            let dest = VideoCache.appSupportDirectory!.appending("/tvos13.json")
+
+            do {
+                try fileManager.moveItem(atPath: src, toPath: dest)
+            } catch let error as NSError {
+                debugLog("Error renaming tvos13.json: \(error)")
+            }
         }
 
         debugLog("Finished downloading \(task.originalRequest!.url!.absoluteString)")
