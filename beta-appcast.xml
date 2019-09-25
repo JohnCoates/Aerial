@@ -3,20 +3,18 @@
 <title>Aerial</title>
 
 <item>
-<title>1.5.1beta12</title>
+<title>1.5.1beta13</title>
   <description>
           <![CDATA[
 <p>This is the beta feed ! Aerial is properly signed and notarized 🎉</p>
 <ul>
-<li>Fix Night Shift for Catalina 🎉</li>
-<li>Fix textfields getting ignored on close in High Sierra and earlier</li>
-<li>Add Advanced Mode for manual monitor positioning in the new Spanned Mode</li>
+<li>Includes the new tvOS 13 videos, including sea and new space 🎉</li>
 <p>macOS 10.15 Catalina users, we suggest you first check this issue : https://github.com/JohnCoates/Aerial/issues/801</p>
           ]]>
     </description>
-<pubDate>mer., 11 sep. 2019 17:16:00 +0100</pubDate>
+<pubDate>mer., 25 sep. 2019 20:16:00 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.5.1beta12/Aerial.saver.zip" sparkle:version="1.5.1beta12" sparkle:shortVersionString="1.5.1beta12" sparkle:edSignature="euOwpoUInSy51J0+XTLmdltpPfTxg5iQmJZ5IApiO+/iCzTewD07vCuJ5e+hf2ODV9Dagfr8zHPPKbIg4VNmBQ==" length="5987405" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.5.1beta13/Aerial.saver.zip" sparkle:version="1.5.1beta13" sparkle:shortVersionString="1.5.1beta13" sparkle:edSignature="4/bh8rb5Y24w+gnLg1eFum2Je2GxhAKCGr7KEtv8wYI6ffpBK8c6UaUdEmPbZYhGErPczMH1GrBaE8OFUoPpDw==" length="5991026" type="application/octet-stream"/>
 </item> 
 
 <item>
