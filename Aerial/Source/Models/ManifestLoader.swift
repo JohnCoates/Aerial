@@ -27,6 +27,7 @@ class ManifestLoader {
     var manifestTvOS10: Data?
     var manifestTvOS11: Data?
     var manifestTvOS12: Data?
+    var manifestTvOS13: Data?
 
     // Playlist management
     var playlistIsRestricted = false
@@ -284,6 +285,7 @@ class ManifestLoader {
         debugLog("isManifestCached 10 \(isManifestCached(manifest: .tvOS10))")
         debugLog("isManifestCached 11 \(isManifestCached(manifest: .tvOS11))")
         debugLog("isManifestCached 12 \(isManifestCached(manifest: .tvOS12))")
+        debugLog("isManifestCached 12 \(isManifestCached(manifest: .tvOS13))")
 
         checkIfShouldRedownloadFiles()
 
@@ -308,7 +310,11 @@ class ManifestLoader {
 
                 var urls: [URL] = []
 
-                // For tvOS12, json is now in a tar file
+                // For tvOS12-13, json is now in a tar file
+                if !isManifestCached(manifest: .tvOS13) {
+                    urls.append(URL(string: "https://sylvan.apple.com/Aerials/resources-13.tar")!)
+                }
+
                 if !isManifestCached(manifest: .tvOS12) {
                     urls.append(URL(string: "https://sylvan.apple.com/Aerials/resources.tar")!)
                 }
@@ -354,6 +360,10 @@ class ManifestLoader {
         var urls: [URL] = []
 
         // For tvOS12, json is now in a tar file
+        if !isManifestCached(manifest: .tvOS13) {
+            urls.append(URL(string: "https://sylvan.apple.com/Aerials/resources-13.tar")!)
+        }
+
         if !isManifestCached(manifest: .tvOS12) {
             urls.append(URL(string: "https://sylvan.apple.com/Aerials/resources.tar")!)
         }
@@ -502,6 +512,7 @@ class ManifestLoader {
         }
     }
 
+    // tvOS < 12 sta
     func moveOldManifests() {
         debugLog("move")
         let cacheDirectory = VideoCache.appSupportDirectory!
@@ -513,9 +524,9 @@ class ManifestLoader {
         let today = dateFormatter.string(from: current)
 
         cacheResourcesString.append(contentsOf: "/backups/"+today)
-        let previous = URL(fileURLWithPath: cacheDirectory.appending("/entries.json"))
-        if FileManager.default.fileExists(atPath: cacheDirectory.appending("/entries.json")) {
-            let new = URL(fileURLWithPath: cacheResourcesString.appending("/entries.json"))
+        let previous = URL(fileURLWithPath: cacheDirectory.appending("/tvos12.json"))
+        if FileManager.default.fileExists(atPath: cacheDirectory.appending("/tvos12.json")) {
+            let new = URL(fileURLWithPath: cacheResourcesString.appending("/tvos12.json"))
 
             let cacheUrl = URL(fileURLWithPath: cacheResourcesString)
             if #available(OSX 10.11, *) {
@@ -525,7 +536,7 @@ class ManifestLoader {
                         debugLog("creating dir \(cacheResourcesString)")
 
                         try FileManager.default.moveItem(at: previous, to: new)
-                        debugLog("moving entries.json")
+                        debugLog("moving tvos12.json")
                     } catch {
                         errorLog("\(error.localizedDescription)")
                     }
@@ -538,7 +549,7 @@ class ManifestLoader {
 
     // Check if the Manifests have been loaded in this class already
     func areManifestsFilesLoaded() -> Bool {
-        if manifestTvOS12 != nil && manifestTvOS11 != nil && manifestTvOS10 != nil {
+        if manifestTvOS13 != nil && manifestTvOS12 != nil && manifestTvOS11 != nil && manifestTvOS10 != nil {
             debugLog("Manifests files were loaded in class")
             return true
         } else {
@@ -549,7 +560,7 @@ class ManifestLoader {
 
     // Check if the Manifests are saved in our cache directory
     func areManifestsCached() -> Bool {
-        return isManifestCached(manifest: .tvOS10) && isManifestCached(manifest: .tvOS11) && isManifestCached(manifest: .tvOS12)
+        return isManifestCached(manifest: .tvOS10) && isManifestCached(manifest: .tvOS11) && isManifestCached(manifest: .tvOS12) && isManifestCached(manifest: .tvOS13)
     }
 
     // Check if a Manifest is saved in our cache directory
@@ -573,14 +584,24 @@ class ManifestLoader {
     // Load the JSON Data cached on disk
     func loadCachedManifests() {
         if let cacheDirectory = VideoCache.appSupportDirectory {
-            // tvOS12
+            // tvOS13
             var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
-            cacheFileUrl.appendPathComponent("entries.json")
+            cacheFileUrl.appendPathComponent("tvos13.json")
+            do {
+                let ndata = try Data(contentsOf: cacheFileUrl)
+                manifestTvOS13 = ndata
+            } catch {
+                errorLog("Can't load tvos13.json from cached directory (tvOS12)")
+            }
+
+            // tvOS12
+            cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
+            cacheFileUrl.appendPathComponent("tvos12.json")
             do {
                 let ndata = try Data(contentsOf: cacheFileUrl)
                 manifestTvOS12 = ndata
             } catch {
-                errorLog("Can't load entries.json from cached directory (tvOS12)")
+                errorLog("Can't load tvos12.json from cached directory (tvOS12)")
             }
 
             // tvOS11
@@ -603,7 +624,7 @@ class ManifestLoader {
                 errorLog("Can't load tvos10.json from cached directory")
             }
 
-            if manifestTvOS10 != nil || manifestTvOS11 != nil || manifestTvOS12 != nil {
+            if manifestTvOS10 != nil || manifestTvOS11 != nil || manifestTvOS12 != nil || manifestTvOS13 != nil {
                 loadManifestsFromLoadedFiles()
             } else {
                 // No internet, no anything, nothing to do
@@ -616,6 +637,13 @@ class ManifestLoader {
     func loadManifestsFromLoadedFiles() {
         // Reset our array
         processedVideos = []
+
+        if manifestTvOS12 != nil {
+            // We start with the more recent one, it has more information (poi, etc)
+            readJSONFromData(manifestTvOS13!, manifest: .tvOS13)
+        } else {
+            warnLog("tvOS13 manifest is absent")
+        }
 
         if manifestTvOS12 != nil {
             // We start with the more recent one, it has more information (poi, etc)

@@ -336,7 +336,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         // To workaround our High Sierra issues with textfields, we have separate panels
         // that replicate the features and are editable. They are hidden unless needed.
-        if #available(OSX 10.16, *) {
+        if #available(OSX 10.14, *) {
             editMarginButton.isHidden = true
             editExtraMessageButton.isHidden = true
             enterCoordinatesButton.isHidden = true
