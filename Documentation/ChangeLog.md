@@ -1,14 +1,36 @@
 #  Aerial change log
 
+## [1.6.0](https://github.com/JohnCoates/Aerial/releases/tag/v1.6.0) - September 26, 2019
+
+- Support for the 15 new videos included in tvOS 13, including the ten new underwater seascape videos and five new ISS space videos. 
+
+![Capture d’écran 2019-09-26 à 15 29 20](https://user-images.githubusercontent.com/37544189/65692345-a9224600-e072-11e9-8c60-b0e0e546ad31.jpg)
+
+- The HDR versions of videos can now be played by Aerial. This requires macOS 10.15 Catalina, please note that you will need to redownload the HDR versions of those videos. 
+
+![Capture d’écran 2019-09-26 à 15 26 34](https://user-images.githubusercontent.com/37544189/65692344-a889af80-e072-11e9-8eac-361ba1f5d980.jpg)
+
+- Improved advanced multi monitor support. Advanced users can now finely specify the distance between each of their screens in the new "Spanned" mode included in Aerial 1.5.0, in order to accomodate more complex configurations.
+
+![Capture d’écran 2019-09-26 à 15 24 08](https://user-images.githubusercontent.com/37544189/65692342-a889af80-e072-11e9-81ad-de70c7b2f0a1.jpg)
+
+- Support for macOS 10.15 Catalina. macOS Catalina includes new restrictions on third party screen savers, which impact some of the functionnalities. We highly suggest that current and would be Catalina users check this issue for more information on those restrictions : https://github.com/JohnCoates/Aerial/issues/801
+
+![Capture d’écran 2019-09-26 à 15 23 45](https://user-images.githubusercontent.com/37544189/65692340-a889af80-e072-11e9-8109-cdcd8f55fe86.jpg)
+
+Aerial is also now properly signed and notarized to comply with new restrictions introduced in macOS 10.15 Catalina. 
+
+This version also includes many bugfixes, including bugs regarding multi monitor setups and previous versions of macOS.
+
 ## [1.5.0](https://github.com/JohnCoates/Aerial/releases/tag/v1.5.0) - May 31, 2019
 
 - Completely rewritten multi monitor support. You can now enable and disable individual displays in the new Display tab:
 
-![Capture d’écran 2019-05-29 à 14 44 01](https://user-images.githubusercontent.com/37544189/58558340-d116af80-8220-11e9-9081-696d805c1e29.jpg)
+![Capture d’écran 2019-05-29 à 14 44 01](https://user-images.githubusercontent.com/37544189/58558340-d116af80-8220-11e9-9081-696d805c1e29.jpg)
 
 - New "Spanned" viewing mode. Selecting this mode will span an Aerial video on all your (selected) screens. You can even adjust margins:
 
-![Capture d’écran 2019-05-29 à 14 43 52](https://user-images.githubusercontent.com/37544189/58558342-d116af80-8220-11e9-8bb0-8d26f1e1b6ed.jpg)
+![Capture d’écran 2019-05-29 à 14 43 52](https://user-images.githubusercontent.com/37544189/58558342-d116af80-8220-11e9-8bb0-8d26f1e1b6ed.jpg)
 
 - Add your own videos to Aerial using the new Custom Videos features. You can add your own videos in the new video manager (found in the menu below the video list):
 
