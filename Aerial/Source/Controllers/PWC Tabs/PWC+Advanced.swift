@@ -127,13 +127,6 @@ extension PreferencesWindowController {
 
     }
 
-    @IBAction func checkForUpdatesButton(_ sender: Any) {
-        debugLog("check for updates")
-        sparkleUpdater!.checkForUpdates(self)
-
-        lastCheckedSparkle.stringValue = "Last checked today"
-    }
-
     @IBAction func trashOldVideosClick(_ sender: Any) {
         ManifestLoader.instance.trashOldVideos()
 

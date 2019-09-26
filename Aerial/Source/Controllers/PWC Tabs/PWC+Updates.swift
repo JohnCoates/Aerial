@@ -38,6 +38,7 @@ extension PreferencesWindowController {
             betaCheckFrequencyPopup.isEnabled = true
         }
     }
+
     // MARK: - Update panel
     @IBAction func newVideosModeChange(_ sender: NSPopUpButton) {
         debugLog("UI newVideosMode: \(sender.indexOfSelectedItem)")
@@ -53,6 +54,7 @@ extension PreferencesWindowController {
         popoverUpdate.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
     }
 
+    // Sparkle updates
     @IBAction func automaticallyCheckForUpdatesChange(_ button: NSButton) {
         let onState = button.state == .on
         sparkleUpdater!.automaticallyChecksForUpdates = onState
@@ -80,6 +82,14 @@ extension PreferencesWindowController {
         }
     }
 
+    @IBAction func checkForUpdatesButton(_ sender: Any) {
+        debugLog("check for updates")
+        sparkleUpdater!.checkForUpdates(self)
+
+        lastCheckedSparkle.stringValue = "Last checked today"
+    }
+
+    // Json updates
     @IBAction func checkNowButtonClick(_ sender: NSButton) {
         checkNowButton.isEnabled = false
         ManifestLoader.instance.addCallback(reloadJSONCallback)
@@ -89,4 +99,5 @@ extension PreferencesWindowController {
     func reloadJSONCallback(manifestVideos: [AerialVideo]) {
         checkNowButton.isEnabled = true
         lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
-    }}
+    }
+}

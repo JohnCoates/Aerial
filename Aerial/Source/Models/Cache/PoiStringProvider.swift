@@ -45,14 +45,14 @@ final class PoiStringProvider {
         var bundlePath = VideoCache.appSupportDirectory!
         if preferences.ciOverrideLanguage == "" {
             // We load the bundle and let system grab the closest available preferred language
-            bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle")
+            bundlePath.append(contentsOf: "/TVIdleScreenStrings13.bundle")
         } else {
             // Or we load the overriden one
-            bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle/" + preferences.ciOverrideLanguage! + ".lproj/")
+            bundlePath.append(contentsOf: "/TVIdleScreenStrings13.bundle/" + preferences.ciOverrideLanguage! + ".lproj/")
         }
 
         if let sb = Bundle.init(path: bundlePath) {
-            let dictPath = VideoCache.appSupportDirectory!.appending("/TVIdleScreenStrings.bundle/en.lproj/Localizable.nocache.strings")
+            let dictPath = VideoCache.appSupportDirectory!.appending("/TVIdleScreenStrings13.bundle/en.lproj/Localizable.nocache.strings")
 
             // We could probably only work with that...
             if let sd = NSDictionary(contentsOfFile: dictPath) as? [String: String] {
@@ -62,7 +62,7 @@ final class PoiStringProvider {
             self.stringBundle = sb
             self.loadedDescriptions = true
         } else {
-            errorLog("TVIdleScreenStrings.bundle is missing, please remove entries.json in Cache folder to fix the issue")
+            errorLog("TVIdleScreenStrings13.bundle is missing, please remove entries.json in Cache folder to fix the issue")
         }
     }
 

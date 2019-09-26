@@ -311,7 +311,7 @@ class ManifestLoader {
                 var urls: [URL] = []
 
                 // For tvOS12-13, json is now in a tar file
-                if !isManifestCached(manifest: .tvOS13) {
+                if !isManifestCached(manifest: .tvOS13) || !isManifestCached(manifest: .tvOS13Strings) {
                     urls.append(URL(string: "https://sylvan.apple.com/Aerials/resources-13.tar")!)
                 }
 
@@ -512,31 +512,39 @@ class ManifestLoader {
         }
     }
 
-    // tvOS < 12 sta
+    // We only backup the current tvos and TVStringsBundle (tvOS13)
+    // Previous versions don't change
     func moveOldManifests() {
         debugLog("move")
         let cacheDirectory = VideoCache.appSupportDirectory!
         var cacheResourcesString = cacheDirectory
 
+        // Generate the backup path
         let dateFormatter = DateFormatter()
         let current = Date()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let today = dateFormatter.string(from: current)
-
         cacheResourcesString.append(contentsOf: "/backups/"+today)
-        let previous = URL(fileURLWithPath: cacheDirectory.appending("/tvos12.json"))
-        if FileManager.default.fileExists(atPath: cacheDirectory.appending("/tvos12.json")) {
-            let new = URL(fileURLWithPath: cacheResourcesString.appending("/tvos12.json"))
+
+        // The previous files we want to move
+        let previous = URL(fileURLWithPath: cacheDirectory.appending("/tvos13.json"))
+        let previousBnd = URL(fileURLWithPath: cacheDirectory.appending("/TVIdleScreenStrings13.bundle"))
+
+        // swiftlint:disable:next line_length
+        if FileManager.default.fileExists(atPath: cacheDirectory.appending("/tvos13.json")) || FileManager.default.fileExists(atPath: cacheDirectory.appending("/TVIdleScreenStrings13.bundle")) {
+            let new = URL(fileURLWithPath: cacheResourcesString.appending("/tvos13.json"))
+            let newBnd = URL(fileURLWithPath: cacheResourcesString.appending("/TVIdleScreenStrings13.bundle"))
 
             let cacheUrl = URL(fileURLWithPath: cacheResourcesString)
             if #available(OSX 10.11, *) {
                 if !cacheUrl.hasDirectoryPath {
                     do {
-                        try FileManager.default.createDirectory(atPath: cacheResourcesString, withIntermediateDirectories: true, attributes: nil)
                         debugLog("creating dir \(cacheResourcesString)")
+                        try FileManager.default.createDirectory(atPath: cacheResourcesString, withIntermediateDirectories: true, attributes: nil)
 
+                        debugLog("moving tvos13.json and TVIdleScreenStrings13.bundle")
                         try FileManager.default.moveItem(at: previous, to: new)
-                        debugLog("moving tvos12.json")
+                        try FileManager.default.moveItem(at: previousBnd, to: newBnd)
                     } catch {
                         errorLog("\(error.localizedDescription)")
                     }
@@ -560,7 +568,7 @@ class ManifestLoader {
 
     // Check if the Manifests are saved in our cache directory
     func areManifestsCached() -> Bool {
-        return isManifestCached(manifest: .tvOS10) && isManifestCached(manifest: .tvOS11) && isManifestCached(manifest: .tvOS12) && isManifestCached(manifest: .tvOS13)
+        return isManifestCached(manifest: .tvOS10) && isManifestCached(manifest: .tvOS11) && isManifestCached(manifest: .tvOS12) && isManifestCached(manifest: .tvOS13) && isManifestCached(manifest: .tvOS13Strings)
     }
 
     // Check if a Manifest is saved in our cache directory
@@ -591,7 +599,7 @@ class ManifestLoader {
                 let ndata = try Data(contentsOf: cacheFileUrl)
                 manifestTvOS13 = ndata
             } catch {
-                errorLog("Can't load tvos13.json from cached directory (tvOS12)")
+                errorLog("Can't load tvos13.json from cached directory")
             }
 
             // tvOS12
@@ -601,7 +609,7 @@ class ManifestLoader {
                 let ndata = try Data(contentsOf: cacheFileUrl)
                 manifestTvOS12 = ndata
             } catch {
-                errorLog("Can't load tvos12.json from cached directory (tvOS12)")
+                errorLog("Can't load tvos12.json from cached directory")
             }
 
             // tvOS11
@@ -638,7 +646,7 @@ class ManifestLoader {
         // Reset our array
         processedVideos = []
 
-        if manifestTvOS12 != nil {
+        if manifestTvOS13 != nil {
             // We start with the more recent one, it has more information (poi, etc)
             readJSONFromData(manifestTvOS13!, manifest: .tvOS13)
         } else {
