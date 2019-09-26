@@ -3,6 +3,27 @@
 <title>Aerial</title>
 
 <item>
+<title>1.6.0a</title>
+  <description>
+          <![CDATA[
+<ul><li>This version includes support for the 15 new videos introduced in tvOS 13, including the 10 Sea videos and 5 new Space videos 🎉</li>
+<li>Adds HDR support for macOS Catalina 🎉</li>
+<li>Starting with this release, Aerial is properly signed and notarized 🎉</li>
+<li>Cache mechanism was changed to accommodate changes in macOS Catalina. We recommend you double check your cache settings after upgrading.</li>
+<li>Add Dutch translation by @sebastiaanspeck !</li>
+<li>Add Traditional Chinese and update Simplified Chinese translations by @LinkeyLeo !</li>
+<li>Add advanced mode for finely tuning the Spanned viewing mode in multi monitor configurations</li>
+<li>This version includes many fixes for various issues including with multi monitor setups and better support for older versions of macOS.</li>
+
+<p>If you are using or planning to upgrade to macOS Catalina, we very much suggest you check this issue about what to expect : https://github.com/JohnCoates/Aerial/issues/801</p>
+          ]]>
+    </description>
+<pubDate>jeu., 26 sept. 2019 19:23:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.6.0a/Aerial.saver.zip" sparkle:version="1.6.0a" sparkle:shortVersionString="1.6.0a" sparkle:edSignature="SkkVk6u5MEBamEhYVbJLCQKT8SUhOhEbiMJmKxfQSzZhaX53ckQfuO2eriOpwH73L9qmPmNmecaJCx16E8fcDw==" length="5992428" type="application/octet-stream"/>
+</item>  
+  
+<item>
 <title>1.5.1beta13</title>
   <description>
           <![CDATA[
