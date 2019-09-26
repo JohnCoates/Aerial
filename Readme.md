@@ -34,6 +34,8 @@ Aerial now includes an auto-update mechanism using the [Sparkle open-source proj
 3. Unzip the downloaded file (if you use Safari, it should already be done for you).
 4. Double-click `Aerial.saver`; it will open in `System Preferences` > `Desktop & Screen Saver` and ask you if you want to install for all users or for your user only. Be aware that installing for all users will require a password at install **and each subsequent update, including auto-updates.** By default, Aerial will still share its video cache if you install multiple times on the same system for each user.
 
+After installation, **if you are upgrading from a previous version**, we suggest you check your cache path settings as 1.6.0 includes some significant changes to prepare for macOS Catalina. 
+
 Need more information on install, setup, or uninstall ? Or want to install via homebrew ? Check our extended [instructions here](Documentation/Installation.md). Curious about auto-updates ? [Have a look here](Documentation/AutoUpdates.md).
 
 ## What's new in Aerial 1.6.0 (September 26 2019)?
