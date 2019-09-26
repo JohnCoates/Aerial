@@ -72,6 +72,10 @@ extension PreferencesWindowController {
         NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: VideoCache.cacheDirectory!)
     }
 
+    @IBAction func showAppSupportInFinder(_ sender: Any) {
+        NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: VideoCache.appSupportDirectory!)
+    }
+
     @IBAction func userSetCacheLocation(_ button: NSButton?) {
         if #available(OSX 10.15, *) {
             // On Catalina, we can't use NSOpenPanel right now

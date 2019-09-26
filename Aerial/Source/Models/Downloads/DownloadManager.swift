@@ -231,6 +231,15 @@ extension DownloadOperation: URLSessionTaskDelegate {
             } catch let error as NSError {
                 debugLog("Error renaming tvos13.json: \(error)")
             }
+
+            let bsrc = VideoCache.appSupportDirectory!.appending("/TVIdleScreenStrings.bundle")
+            let bdest = VideoCache.appSupportDirectory!.appending("/TVIdleScreenStrings13.bundle")
+
+            do {
+                try fileManager.moveItem(atPath: bsrc, toPath: bdest)
+            } catch let error as NSError {
+                debugLog("Error renaming TVIdleScreenStrings13.bundle: \(error)")
+            }
         }
 
         debugLog("Finished downloading \(task.originalRequest!.url!.absoluteString)")
