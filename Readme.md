@@ -30,21 +30,31 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 Aerial now includes an auto-update mechanism using the [Sparkle open-source project](https://github.com/sparkle-project/Sparkle). You will need to download it manually the first time :
 
 1. Quit **System Preferences**.
-2. [Download the latest release of `Aerial.saver.zip`](https://github.com/JohnCoates/Aerial/releases/latest). Alternatively, you can try the latest beta version [following this link](https://github.com/JohnCoates/Aerial/releases). **(macOS Catalina users, you need the beta version, more information here : https://github.com/JohnCoates/Aerial/issues/801)**
+2. [Download the latest release of `Aerial.saver.zip`](https://github.com/JohnCoates/Aerial/releases/latest). 
 3. Unzip the downloaded file (if you use Safari, it should already be done for you).
 4. Double-click `Aerial.saver`; it will open in `System Preferences` > `Desktop & Screen Saver` and ask you if you want to install for all users or for your user only. Be aware that installing for all users will require a password at install **and each subsequent update, including auto-updates.** By default, Aerial will still share its video cache if you install multiple times on the same system for each user.
 
 Need more information on install, setup, or uninstall ? Or want to install via homebrew ? Check our extended [instructions here](Documentation/Installation.md). Curious about auto-updates ? [Have a look here](Documentation/AutoUpdates.md).
 
-## What's new in Aerial 1.5.0 (May 31 2019)?
+## What's new in Aerial 1.6.0 (September 26 2019)?
 
-- Completely rewritten multi monitor support. You can now enable and disable individual displays in the new Display tab. There is also a new "Spanned" viewing mode. Selecting this mode will span an Aerial video on all your (selected) screens. You can even adjust the margins between your screens:
+- Support for the 15 new videos included in tvOS 13, including the ten new underwater seascape videos and five new ISS space videos. 
 
-![Capture d’écran 2019-05-29 à 14 43 52](https://user-images.githubusercontent.com/37544189/58558342-d116af80-8220-11e9-8bb0-8d26f1e1b6ed.jpg)
+![Capture d’écran 2019-09-26 à 15 29 20](https://user-images.githubusercontent.com/37544189/65692345-a9224600-e072-11e9-8c60-b0e0e546ad31.jpg)
 
-- You can now add your own videos to Aerial using the new [Custom Videos feature](Documentation/CustomVideos.md), and play them alongside Aerial videos:
+- The HDR versions of videos can now be played by Aerial. This requires macOS 10.15 Catalina, please note that you will need to redownload the HDR versions of those videos. 
 
-![Capture d’écran 2019-05-30 à 18 01 36](https://user-images.githubusercontent.com/37544189/58646171-24fac480-8305-11e9-98fd-c9ec7ef3a64c.jpg)
+![Capture d’écran 2019-09-26 à 15 26 34](https://user-images.githubusercontent.com/37544189/65692344-a889af80-e072-11e9-8eac-361ba1f5d980.jpg)
+
+- Improved advanced multi monitor support. Advanced users can now finely specify the distance between each of their screens in the new "Spanned" mode included in Aerial 1.5.0, in order to accomodate more complex configurations.
+
+![Capture d’écran 2019-09-26 à 15 24 08](https://user-images.githubusercontent.com/37544189/65692342-a889af80-e072-11e9-81ad-de70c7b2f0a1.jpg)
+
+- Support for macOS 10.15 Catalina. macOS Catalina includes new restrictions on third party screen savers, which impact some of the functionnalities. We highly suggest that current and would be Catalina users check this issue for more information on those restrictions : https://github.com/JohnCoates/Aerial/issues/801
+
+![Capture d’écran 2019-09-26 à 15 23 45](https://user-images.githubusercontent.com/37544189/65692340-a889af80-e072-11e9-8109-cdcd8f55fe86.jpg)
+
+Aerial is also now properly signed and notarized to comply with new restrictions introduced in macOS 10.15 Catalina. 
 
 You can find more about [version changes here](Documentation/ChangeLog.md).
 
