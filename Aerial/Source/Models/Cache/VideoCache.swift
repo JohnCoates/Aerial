@@ -105,10 +105,10 @@ final class VideoCache {
                 }
             }
 
-            if !userCachePaths.isEmpty {
+            if !userCachePaths.isEmpty && cacheDirectory == nil {
                 let userCacheDirectory = userCachePaths[0] as NSString
 
-                if cacheDirectory == nil && aerialFolderExists(at: userCacheDirectory) {
+                if aerialFolderExists(at: userCacheDirectory) {
                     debugLog("Using existing user cache ~/Library/Caches/Aerial")
                     cacheDirectory = userCacheDirectory.appendingPathComponent("Aerial")
                 } else {
