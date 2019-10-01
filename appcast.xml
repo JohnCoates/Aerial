@@ -3,6 +3,20 @@
 <title>Aerial</title>
 
 <item>
+<title>1.6.1</title>
+  <description>
+          <![CDATA[
+<ul><li>Fixes the hang/crash happening when playing the next video on some systems with multiple monitor, since 1.5.0. Many thanks to @markusem !</li></ul>
+
+<p>If you are using or planning to upgrade to macOS Catalina, we very much suggest you check this issue about what to expect : https://github.com/JohnCoates/Aerial/issues/801</p>
+          ]]>
+    </description>
+<pubDate>mar., 1 oct. 2019 18:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.6.1/Aerial.saver.zip" sparkle:version="1.6.1" sparkle:shortVersionString="1.6.1" sparkle:edSignature="ScPasldYS9yGIUK48bUfEzxFLXI2pmAllAhVR1TRyJeQNeWV6xVknl4CWVVyyPqSW+G1EXmb8GOy5Goaj/qOBg==" length="5992108" type="application/octet-stream"/>
+</item>  
+
+<item>
 <title>1.6.0a</title>
   <description>
           <![CDATA[
