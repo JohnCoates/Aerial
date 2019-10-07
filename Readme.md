@@ -25,7 +25,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 ## Installation
 
-**Warning :** Are you using or planning to install 10.15 beta ? If so check [this issue](https://github.com/JohnCoates/Aerial/issues/801) for more information about the current status of Aerial on macOS 10.15 and progress.
+**Warning :** If you have upgraded to macOS Catalina, you will notice that there are some new restrictions applied to screensavers. You can check [this issue](https://github.com/JohnCoates/Aerial/issues/801) for more information about the current status of Aerial on macOS 10.15.  
 
 **Are you using Little Snitch ?** You may need to configure your firewall to allow Aerial to connect to the internet. Also Little Snitch may include a rule that forbids connexions to `raw.githubusercontent.com`. This will block Aerial's automatic updates and can cause the screensaver to misbehave. We highly recommend you either remove that rule or disable Aerial's automatic updates. You can find more information in our [FAQ](https://github.com/JohnCoates/Aerial/blob/master/Documentation/Troubleshooting.md).
 
