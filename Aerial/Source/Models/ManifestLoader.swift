@@ -404,12 +404,12 @@ class ManifestLoader {
                 // customvideos.json
                 var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
                 cacheFileUrl.appendPathComponent("customvideos.json")
-                if FileManager.default.fileExists(atPath: cacheFileUrl.absoluteString) {
+                if FileManager.default.fileExists(atPath: cacheFileUrl.path) {
                     debugLog("loading custom file : \(cacheFileUrl)")
                     let ndata = try Data(contentsOf: cacheFileUrl)
                     customVideoFolders = try CustomVideoFolders(data: ndata)
                 } else {
-                    debugLog("No customvideos.json at : \(cacheFileUrl)")
+                    debugLog("No customvideos.json at : \(cacheFileUrl.path)")
                 }
             }
         } catch {
