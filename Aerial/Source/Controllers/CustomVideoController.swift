@@ -10,8 +10,13 @@ import Foundation
 import AppKit
 import AVKit
 
-class CustomVideoController: NSWindowController, NSWindowDelegate {
+class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDestination {
     @IBOutlet var mainPanel: NSWindow!
+
+    // This is the panel workaround for Catalina
+    @IBOutlet var addFolderCatalinaPanel: NSPanel!
+    @IBOutlet var addFolderTextField: NSTextField!
+
     @IBOutlet var folderOutlineView: NSOutlineView!
     @IBOutlet var topPathControl: NSPathControl!
 
@@ -45,6 +50,17 @@ class CustomVideoController: NSWindowController, NSWindowDelegate {
     var sw: NSWindow?
     var controller: PreferencesWindowController?
 
+    /*
+    func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
+        debugLog("drag entered")
+        return .copy
+    }
+
+    func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
+        print("bla")
+        return true
+    }*/
+
     // MARK: - Lifecycle
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -62,6 +78,13 @@ class CustomVideoController: NSWindowController, NSWindowDelegate {
             debugLog("cvcawake")
             folderOutlineView.dataSource = self
             folderOutlineView.delegate = self
+
+            if #available(OSX 10.13, *) {
+                folderOutlineView.registerForDraggedTypes([.fileURL, .URL])
+            } else {
+                // Fallback on earlier versions
+            }
+
             poiTableView.dataSource = self
             poiTableView.delegate = self
 
@@ -117,20 +140,35 @@ class CustomVideoController: NSWindowController, NSWindowDelegate {
 
     // MARK: - Add a new folder of videos to parse
     @IBAction func addFolderButton(_ sender: NSButton) {
-        let addFolderPanel = NSOpenPanel()
-        addFolderPanel.allowsMultipleSelection = false
-        addFolderPanel.canChooseDirectories = true
-        addFolderPanel.canCreateDirectories = false
-        addFolderPanel.canChooseFiles = false
-        addFolderPanel.title = "Select a folder containing videos"
+        if #available(OSX 10.15, *) {
+            // On Catalina, we can't use NSOpenPanel right now
+            addFolderTextField.stringValue = ""
+            addFolderCatalinaPanel.makeKeyAndOrderFront(self)
+        } else {
+            let addFolderPanel = NSOpenPanel()
+            addFolderPanel.allowsMultipleSelection = false
+            addFolderPanel.canChooseDirectories = true
+            addFolderPanel.canCreateDirectories = false
+            addFolderPanel.canChooseFiles = false
+            addFolderPanel.title = "Select a folder containing videos"
 
-        addFolderPanel.begin { (response) in
-            if response.rawValue == NSFileHandlingPanelOKButton {
-                self.processPathForVideos(url: addFolderPanel.url!)
+            addFolderPanel.begin { (response) in
+                if response.rawValue == NSFileHandlingPanelOKButton {
+                    self.processPathForVideos(url: addFolderPanel.url!)
+                }
+                addFolderPanel.close()
             }
-            addFolderPanel.close()
+        }
+    }
+
+    @IBAction func addFolderCatalinaConfirm(_ sender: Any) {
+        let strFolder = addFolderTextField.stringValue
+
+        if FileManager.default.fileExists(atPath: strFolder as String) {
+            self.processPathForVideos(url: URL(fileURLWithPath: strFolder, isDirectory: true))
         }
 
+        addFolderCatalinaPanel.close()
     }
 
     func processPathForVideos(url: URL) {
@@ -393,6 +431,56 @@ extension CustomVideoController: NSOutlineViewDelegate {
         let size = track.naturalSize.applying(track.preferredTransform)
         return CGSize(width: abs(size.width), height: abs(size.height))
     }
+/*
+    func outlineView(_ outlineView: NSOutlineView, pasteboardWriterForItem item: Any) -> NSPasteboardWriting? {
+        let pp = NSPasteboardItem()
+
+        debugLog("Received pp")
+        debugLog("\(pp)")
+/*        // working as expected here
+        if let fi = item as? FileItem {
+            pp.setString( fi.Path, forType: "public.text" )
+
+            print( "pb write \(fi.Name)")
+
+        } else {
+            print( "pb write, not a file item \(item)")
+        }
+*/
+        return pp
+    }
+*/
+
+    // swiftlint:disable:next line_length
+    func outlineView(_ outlineView: NSOutlineView, validateDrop info: NSDraggingInfo, proposedItem item: Any?, proposedChildIndex index: Int) -> NSDragOperation {
+        //print("info \(info.draggingPasteboard)")
+        //print( "validate: \(String(describing: item))")
+        return NSDragOperation.copy
+        //
+    }
+
+    func outlineView(_ outlineView: NSOutlineView, acceptDrop info: NSDraggingInfo, item: Any?, childIndex index: Int) -> Bool {
+
+        if let items = info.draggingPasteboard.pasteboardItems {
+            for item in items {
+                if #available(OSX 10.13, *) {
+                    if let str = item.string(forType: .fileURL) {
+                        let surl = URL(fileURLWithPath: str).standardized
+                        debugLog("received drop \(surl)")
+                        if let isDir = surl.isDirectory {
+                            if isDir {
+                                debugLog("processing dir")
+                                self.processPathForVideos(url: surl)
+                            }
+                        }
+                    }
+                } else {
+                    // Fallback on earlier versions
+                }
+            }
+        }
+        return true
+    }
 }
 
 // MARK: - Extension for poi table view
@@ -451,5 +539,16 @@ extension Dictionary {
         if let entry = removeValue(forKey: fromKey) {
             self[toKey] = entry
         }
+    }
+}
+
+extension URL {
+    var isDirectory: Bool? {
+        do {
+            let values = try self.resourceValues(
+                forKeys: Set([URLResourceKey.isDirectoryKey])
+            )
+            return values.isDirectory
+        } catch { return nil }
     }
 }
