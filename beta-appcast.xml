@@ -3,6 +3,20 @@
 <title>Aerial</title>
 
 <item>
+<title>1.6.2</title>
+  <description>
+          <![CDATA[
+<ul><li>Fix a hang in Catalina when you can't/have a hard time resuming from screensaver.</li>
+<li>Fix Custom Videos in Catalina. You can also drop a folder there to automatically add it.</li></ul>
+<p>If you are using or planning to upgrade to macOS Catalina, we very much suggest you check this issue about what to expect : https://github.com/JohnCoates/Aerial/issues/801</p>
+          ]]>
+    </description>
+<pubDate>mar., 8 oct. 2019 17:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.6.2/Aerial.saver.zip" sparkle:version="1.6.2" sparkle:shortVersionString="1.6.2" sparkle:edSignature="av6bEU3Mi3ee06pKh+zR1fWwbLEAUzVMMuuyN2PNQ4j8aWE52pyjN7o9+j+jQJWoAvipj/dU4nsawDcd6bsZDA==" length="5998259" type="application/octet-stream"/>
+</item>  
+
+<item>
 <title>1.6.1</title>
   <description>
           <![CDATA[
