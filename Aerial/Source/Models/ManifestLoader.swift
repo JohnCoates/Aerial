@@ -455,10 +455,10 @@ class ManifestLoader {
                                                 type: "video",
                                                 timeOfDay: asset.time,
                                                 url1080pH264: url1080p,
-                                                url1080pHEVC: "",
-                                                url1080pHDR: "",
+                                                url1080pHEVC: url1080p,
+                                                url1080pHDR: url1080p,
                                                 url4KHEVC: url4K,
-                                                url4KHDR: "",
+                                                url4KHDR: url4K,
                                                 manifest: .customVideos,
                                                 poi: [:],
                                                 communityPoi: asset.pointsOfInterest)
@@ -765,7 +765,7 @@ class ManifestLoader {
                 }
             }
         } catch {
-            errorLog("Error retrieving content listing")
+            errorLog("Error retrieving content listing (new)")
             return
         }
     }
@@ -850,7 +850,7 @@ class ManifestLoader {
                 }
             }
         } catch {
-            errorLog("Error retrieving content listing")
+            errorLog("Error retrieving content listing (old)")
             return
         }
     }
