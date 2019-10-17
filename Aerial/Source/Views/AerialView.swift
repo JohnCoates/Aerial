@@ -404,6 +404,12 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             }
         } else {
             playerLayer.frame = layer.bounds
+
+            let index = AerialView.instanciatedViews.firstIndex(of: self) ?? 0
+
+            if index % 2 == 1 {
+                playerLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(scaleX: -1, y: 1))
+            }
         }
         layer.addSublayer(playerLayer)
 
