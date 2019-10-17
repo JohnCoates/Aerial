@@ -95,7 +95,7 @@ final class Preferences {
     }
 
     enum NewViewingMode: Int {
-        case independent, mirrored, spanned
+        case independent, cloned, spanned, mirrored
     }
 
     enum BetaCheckFrequency: Int {

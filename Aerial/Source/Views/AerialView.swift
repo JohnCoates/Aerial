@@ -77,8 +77,17 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     // Mirrored viewing mode and Spanned viewing mode share the same player for sync & ressource saving
     static var sharingPlayers: Bool {
         let preferences = Preferences.sharedInstance
-        return (preferences.newViewingMode == Preferences.NewViewingMode.mirrored.rawValue) ||
-            (preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue)
+
+        switch preferences.newViewingMode {
+        case
+            Preferences.NewViewingMode.cloned.rawValue,
+            Preferences.NewViewingMode.mirrored.rawValue,
+            Preferences.NewViewingMode.spanned.rawValue:
+
+            return true
+        default:
+            return false
+        }
     }
 
     static var sharedViews: [AerialView] = []
@@ -406,8 +415,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             playerLayer.frame = layer.bounds
 
             let index = AerialView.instanciatedViews.firstIndex(of: self) ?? 0
-
-            if index % 2 == 1 {
+            if index % 2 == 1 && preferences.newViewingMode == Preferences.NewViewingMode.mirrored.rawValue {
                 playerLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(scaleX: -1, y: 1))
             }
         }
