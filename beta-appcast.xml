@@ -2,6 +2,22 @@
 <channel>
 <title>Aerial</title>
 
+  
+<item>
+<title>1.6.3</title>
+  <description>
+          <![CDATA[
+<ul>
+<li>Fix a bad crash with custom videos and HDR.</li>
+</ul>
+<p>If you are using or planning to upgrade to macOS Catalina, we very much suggest you check this issue about what to expect : https://github.com/JohnCoates/Aerial/issues/801</p>
+          ]]>
+  </description>
+<pubDate>jeu., 24 oct. 2019 14:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.6.3/Aerial.saver.zip" sparkle:version="1.6.3" sparkle:shortVersionString="1.6.3" sparkle:edSignature="z1UdHeGDFvMVXWlpu2y52UETr+i1CgcpA3VFsdZCaKfEGNeChv2IfcWIgrmPkLqGvhbchFMcnZlt1Akw1XucDQ==" length="5997634" type="application/octet-stream"/>
+</item>  
+
 <item>
 <title>1.6.2</title>
   <description>
