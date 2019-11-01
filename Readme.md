@@ -29,7 +29,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 **Are you using Little Snitch ?** You may need to configure your firewall to allow Aerial to connect to the internet. Also Little Snitch may include a rule that forbids connexions to `raw.githubusercontent.com`. This will block Aerial's automatic updates and can cause the screensaver to misbehave. We highly recommend you either remove that rule or disable Aerial's automatic updates. You can find more information in our [FAQ](https://github.com/JohnCoates/Aerial/blob/master/Documentation/Troubleshooting.md).
 
-Aerial now includes an auto-update mechanism using the [Sparkle open-source project](https://github.com/sparkle-project/Sparkle). You will need to download it manually the first time :
+Aerial now includes an auto-update mechanism using the [Sparkle open-source project](https://github.com/sparkle-project/Sparkle). **This mechanism is, for the time being, broken for macOS Catalina**. You will need to download it manually the first time (**and subsequent times in Catalina**) :
 
 1. Quit **System Preferences**.
 2. [Download the latest release of `Aerial.saver.zip`](https://github.com/JohnCoates/Aerial/releases/latest). 
