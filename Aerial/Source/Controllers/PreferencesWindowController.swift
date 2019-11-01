@@ -501,6 +501,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
             self.outlineView.reloadData()
             self.outlineView.expandItem(nil, expandChildren: true)
         }
+
+        // We update the info in the advanced tab
         let (description, total) = ManifestLoader.instance.getOldFilesEstimation()
         videoVersionsLabel.stringValue = description
         if total > 0 {

@@ -902,7 +902,7 @@ class ManifestLoader {
             warnLog("We have no videos in the manifest")
             return ("Can't estimate duplicates", 0)
         }
-        guard let cacheDirectory = VideoCache.cacheDirectory else {
+        guard let cacheDirectory = VideoCache.appSupportDirectory else {
             warnLog("No cache directory")
             return ("Can't estimate duplicates", 0)
         }
@@ -915,7 +915,7 @@ class ManifestLoader {
             let directoryContent = try fileManager.contentsOfDirectory(at: cacheDirectoryUrl, includingPropertiesForKeys: nil)
             let videoFileURLs = directoryContent.filter { $0.pathExtension == "mov" }
 
-            // We check the 3 fields
+            // We check the 5 fields
             for fileURL in videoFileURLs {
                 var found = false
                 for video in loadedManifest {
@@ -931,8 +931,20 @@ class ManifestLoader {
                             break
                         }
                     }
+                    if video.url1080pHDR != "" {
+                        if fileURL.lastPathComponent == URL(string: video.url1080pHDR)?.lastPathComponent {
+                            found = true
+                            break
+                        }
+                    }
                     if video.url4KHEVC != "" {
                         if fileURL.lastPathComponent == URL(string: video.url4KHEVC)?.lastPathComponent {
+                            found = true
+                            break
+                        }
+                    }
+                    if video.url4KHDR != "" {
+                        if fileURL.lastPathComponent == URL(string: video.url4KHDR)?.lastPathComponent {
                             found = true
                             break
                         }
@@ -992,7 +1004,7 @@ class ManifestLoader {
             let directoryContent = try fileManager.contentsOfDirectory(at: cacheDirectoryUrl, includingPropertiesForKeys: nil)
             let videoFileURLs = directoryContent.filter { $0.pathExtension == "mov" }
 
-            // We check the 3 fields
+            // We check the 5 fields
             for fileURL in videoFileURLs {
                 var found = false
                 for video in loadedManifest {
@@ -1008,8 +1020,20 @@ class ManifestLoader {
                             break
                         }
                     }
+                    if video.url1080pHDR != "" {
+                        if fileURL.lastPathComponent == URL(string: video.url1080pHDR)?.lastPathComponent {
+                            found = true
+                            break
+                        }
+                    }
                     if video.url4KHEVC != "" {
                         if fileURL.lastPathComponent == URL(string: video.url4KHEVC)?.lastPathComponent {
+                            found = true
+                            break
+                        }
+                    }
+                    if video.url4KHDR != "" {
+                        if fileURL.lastPathComponent == URL(string: video.url4KHDR)?.lastPathComponent {
                             found = true
                             break
                         }
@@ -1034,7 +1058,7 @@ class ManifestLoader {
     // swiftlint:disable:next cyclomatic_complexity
     func trashOldVideos() {
         debugLog("trash old videos")
-        let cacheDirectory = VideoCache.cacheDirectory!
+        let cacheDirectory = VideoCache.appSupportDirectory!
         var cacheResourcesString = cacheDirectory
 
         let dateFormatter = DateFormatter()
@@ -1067,7 +1091,7 @@ class ManifestLoader {
             let directoryContent = try fileManager.contentsOfDirectory(at: cacheDirectoryUrl, includingPropertiesForKeys: nil)
             let videoFileURLs = directoryContent.filter { $0.pathExtension == "mov" }
 
-            // We check the 3 fields
+            // We check the 5 fields
             for fileURL in videoFileURLs {
                 var found = false
                 for video in loadedManifest {
@@ -1083,8 +1107,20 @@ class ManifestLoader {
                             break
                         }
                     }
+                    if video.url1080pHDR != "" {
+                        if fileURL.lastPathComponent == URL(string: video.url1080pHDR)?.lastPathComponent {
+                            found = true
+                            break
+                        }
+                    }
                     if video.url4KHEVC != "" {
                         if fileURL.lastPathComponent == URL(string: video.url4KHEVC)?.lastPathComponent {
+                            found = true
+                            break
+                        }
+                    }
+                    if video.url4KHDR != "" {
+                        if fileURL.lastPathComponent == URL(string: video.url4KHDR)?.lastPathComponent {
                             found = true
                             break
                         }
