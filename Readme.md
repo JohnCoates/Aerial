@@ -40,7 +40,7 @@ After installation, **if you are upgrading from a previous version**, we suggest
 
 Need more information on install, setup, or uninstall ? Or want to install via homebrew ? Check our extended [instructions here](Documentation/Installation.md). Curious about auto-updates ? [Have a look here](Documentation/AutoUpdates.md).
 
-## What's new in Aerial 1.6.0 (September 26 2019)?
+## What's new in Aerial 1.6.4 (November 1, 2019)?
 
 - Support for the 15 new videos included in tvOS 13, including the ten new underwater seascape videos and five new ISS space videos. 
 
