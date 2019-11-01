@@ -34,6 +34,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var popoverHEVCLabel: NSTextField!
     @IBOutlet var secondProjectPageLink: NSButton!
 
+    @IBOutlet var popoverHDR: NSPopover!
+
     @IBOutlet var popoverTime: NSPopover!
     @IBOutlet var linkTimeWikipediaButton: NSButton!
 
@@ -252,7 +254,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         return formatter
     }()
 
-    // MARK: - Init
     required init?(coder decoder: NSCoder) {
         self.fontManager = NSFontManager.shared
         debugLog("pwc init1")
@@ -500,6 +501,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
             self.outlineView.reloadData()
             self.outlineView.expandItem(nil, expandChildren: true)
         }
+
+        // We update the info in the advanced tab
         let (description, total) = ManifestLoader.instance.getOldFilesEstimation()
         videoVersionsLabel.stringValue = description
         if total > 0 {

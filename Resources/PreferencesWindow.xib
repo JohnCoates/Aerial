@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.AVKitIBPlugin" version="15504"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15504"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -111,6 +111,7 @@
                 <outlet property="popover" destination="vZt-x4-E4Y" id="Zd6-gn-9G8"/>
                 <outlet property="popoverH264Indicator" destination="Eiy-rf-14s" id="ZGO-KJ-0wF"/>
                 <outlet property="popoverH264Label" destination="Ynp-31-Ohm" id="CbV-4g-iai"/>
+                <outlet property="popoverHDR" destination="A29-dm-TEK" id="GmG-fb-JsU"/>
                 <outlet property="popoverHEVCIndicator" destination="Kzc-o6-MCY" id="TxU-h9-Jx0"/>
                 <outlet property="popoverHEVCLabel" destination="RGL-6I-5Hp" id="Fgt-8f-0Vb"/>
                 <outlet property="popoverPower" destination="7lP-6F-c7D" id="Ozn-hU-sAe"/>
@@ -175,7 +176,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Videos" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" id="zsM-Ha-kCO">
+                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -514,15 +515,15 @@ is disabled
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <action selector="helpPowerButtonClick:" target="-2" id="IoR-ba-SVJ"/>
+                                                        <action selector="helpPowerButtonClick:" target="-2" id="oku-o3-QZw"/>
                                                     </connections>
                                                 </button>
-                                                <button toolTip="Option menu" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ly-5z-7Yd">
+                                                <button toolTip="Video Sets" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ly-5z-7Yd">
                                                     <rect key="frame" x="52" y="10" width="32" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSBookmarksTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kGs-X6-tPb">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="controlContent"/>
+                                                        <font key="font" metaFont="system" size="12"/>
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="videoSetsButtonClick:" target="-2" id="aDh-Hf-5AD"/>
@@ -544,21 +545,32 @@ is disabled
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSActionTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nxM-5Y-pQM">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="controlContent"/>
+                                                        <font key="font" metaFont="system" size="12"/>
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="outlineViewSettingsClick:" target="-2" id="foF-Fr-895"/>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jod-Zd-q4b">
-                                                    <rect key="frame" x="307" y="118" width="307" height="18"/>
+                                                    <rect key="frame" x="307" y="118" width="227" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Use HDR if available (requires macOS Catalina)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="zwG-lv-nkj">
+                                                    <buttonCell key="cell" type="check" title="Download HDR versions of videos" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="zwG-lv-nkj">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="useHDRChange:" target="-2" id="dDv-tU-zM3"/>
+                                                    </connections>
+                                                </button>
+                                                <button toolTip="Click for more information on HDR (High Dynamic Range)" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pUM-TN-b6p">
+                                                    <rect key="frame" x="576" y="114" width="21" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NyN-ty-9y3">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="helpHDRButtonClick:" target="-2" id="E0B-ag-g29"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1773,7 +1785,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Updates" identifier="" id="7Rb-Ma-4dK">
-                                        <view key="view" ambiguous="YES" id="2qs-gJ-aIh">
+                                        <view key="view" id="2qs-gJ-aIh">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -2289,7 +2301,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" ambiguous="YES" id="rFk-xj-xKP">
                             <rect key="frame" x="1" y="1" width="659" height="337"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" viewBased="YES" id="btT-0Y-wSk">
                                     <rect key="frame" x="0.0" y="0.0" width="659" height="337"/>
@@ -2804,7 +2816,7 @@ Unless you want to manually manage your updates, we highly recommand you leave t
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="1218.5" y="559"/>
+            <point key="canvasLocation" x="1611" y="584"/>
         </customView>
         <window title="Video downloads in progress" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="qE0-Sq-kqZ" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>
@@ -2982,6 +2994,50 @@ After changing the folder, please close System Preferences for this to be taken 
             </view>
             <point key="canvasLocation" x="947" y="1375"/>
         </window>
+        <viewController id="VKe-Nh-9kL" userLabel="Popover View Controller">
+            <connections>
+                <outlet property="view" destination="M2z-5I-be7" id="TMu-uv-Vic"/>
+            </connections>
+        </viewController>
+        <popover behavior="t" id="A29-dm-TEK">
+            <connections>
+                <outlet property="contentViewController" destination="VKe-Nh-9kL" id="dgd-iI-USS"/>
+            </connections>
+        </popover>
+        <customView id="M2z-5I-be7">
+            <rect key="frame" x="0.0" y="0.0" width="428" height="245"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PbK-lK-el9">
+                    <rect key="frame" x="53" y="20" width="334" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="bevel" title="More information about Dolby Vision on Wikipedia" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" inset="2" id="pDb-QQ-qL8">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="message" size="11"/>
+                        <connections>
+                            <action selector="linkToWikipediaDolbyVisionClick:" target="-2" id="fdV-mE-dxT"/>
+                        </connections>
+                    </buttonCell>
+                </button>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3fd-p3-gWo">
+                    <rect key="frame" x="18" y="44" width="392" height="182"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" selectable="YES" id="YN8-HP-dRv">
+                        <font key="font" metaFont="message" size="11"/>
+                        <mutableString key="title">If you enable HDR, Aerial will download new versions of the videos. This option is only available starting with macOS Catalina.
+
+These videos are using Dolby Vision to represent a Higher Dynamic Range of colors and lighting. 
+
+In practice, this means you will see wilder colors which may or may not look pleasing or realistic to you. 
+
+Please note that all 4K videos are encoded in 10 bit per color component, whether you are using HDR or not. Those files will be played appropriately whether your screen is 10 bit (iMac) or 8 bit (Macbook Pro).</mutableString>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="608" y="1168.5"/>
+        </customView>
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
