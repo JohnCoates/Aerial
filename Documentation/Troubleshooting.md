@@ -7,6 +7,10 @@
 - "This app is damaged and can't be opened, you should move it to the trash" when double-clicking the `Aerial.saver` file: Please see the [installation notes](Installation.md), this is a GateKeeper issue.
 - Chrome complains that "This download is uncommon and potentilally malicious" on very fresh releases. Google seems to flag very recent files as "uncommon" and may block the download (more info on [Google's site here](https://support.google.com/chrome/answer/6261569). After a few hours/days, this warning will disappear. More info in this [issue](https://github.com/JohnCoates/Aerial/issues/759#issuecomment-489616050).
 - Can't use Aerial as a login screen saver: As far as we know, using 3rd party screen savers before login is no longer possible on modern versions of macOS (probably and rightly so for security reasons). More about this [here](https://github.com/JohnCoates/Aerial/issues/571).
+- Videos are stuttering: There are thread general causes of stuttering
+  + Streaming: We heavily recommend you cache your videos instead of streaming. Streaming performance may cause stuttering or hanging as this is not something that's officially supported by the servers. 
+  + HDR playback: Playback of HDR videos may cause random stuttering on some Macs, this issue has been reported on Macs with AMD graphics, and 2015 and earlier Macs with Intel graphics.
+  + Background tasks: MacOS may start some background tasks while the screensaver is running (usually after a set amount of time, like 5 minutes). `mediaanalysisd` is known to cause issues on some machines with integrated graphics. You can find more information on how to disable it here : https://github.com/JohnCoates/Aerial/issues/882#issuecomment-552104067
 
 ## About custom videos
 
