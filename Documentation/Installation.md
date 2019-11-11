@@ -53,7 +53,7 @@ There are three ways to uninstall Aerial from your Mac.
 - If you installed Aerial using Brew Cask, then enter the following command in a Terminal window to uninstall:
 
 ```sh
-brew cask uninstall aerial.
+brew cask uninstall aerial
 ```
 
 You may also want to delete the folder `/Library/Caches/Aerial` (default Aerial cache folder on most systems, even if you installed for your user account only) or `/Users/YOURUSERNAME/Library/Caches/Aerial`. This is where Aerial stores the cached copies of the Aerial videos. The last thing, you may want to delete the preferences `plist`. The file is `/Users/YOURUSERNAME/Library/Preferences/ByHost/com.JohnCoates.Aerial.{UUID}.plist`.
