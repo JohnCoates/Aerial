@@ -4,7 +4,7 @@
 
 # Aerial - Apple TV Aerial Views Screen Saver
 
-Aerial is a Mac screensaver based on the new Apple TV screensaver that displays the Aerial movies Apple shot over New York, San Francisco, Hawaii, China, etc. Starting with version 1.4, this also includes the new ISS videos available in tvOS 12!
+Aerial is a Mac screensaver based on the new Apple TV screensaver that displays the Aerial movies Apple shot over New York, San Francisco, Hawaii, China, etc. Starting with version 1.6, this also includes the new undersea videos available in tvOS 13!
 
 Aerial is completely open source, so feel free to contribute to its development.
 
@@ -19,7 +19,7 @@ Aerial is completely open source, so feel free to contribute to its development.
 
 Aerial was started in 2015 by John Coates ([Twitter](https://twitter.com/JohnCoatesDev), [Email](mailto:john@johncoates.me))
 
-Starting with version 1.4, Aerial is also maintained by [Guillaume Louel](https://github.com/glouel) ([Twitter](https://twitter.com/C_Wiz), [PayPal](https://paypal.me/glouel?locale.x=fr_FR)).
+Starting with version 1.4, Aerial is maintained by [Guillaume Louel](https://github.com/glouel) ([Twitter](https://twitter.com/C_Wiz), [PayPal](https://paypal.me/glouel?locale.x=fr_FR)).
 
 You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/graphs/contributors).
 
