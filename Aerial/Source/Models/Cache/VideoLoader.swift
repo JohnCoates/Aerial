@@ -101,26 +101,18 @@ final class VideoLoader: NSObject, NSURLConnectionDataDelegate {
                 errorLog("Data request missing for \(self.loadingRequest)")
                 return
             }
-            //debugLog("drl \(dataRequest.requestedLength) dro \(dataRequest.requestedOffset)")
-            //debugLog("\(dataRequest)")
 
-            /*if (data.count > 100000) {
-                debugLog("NOTGOOD")
-                dataLog(data)
-            }*/
             let requestedRange = self.requestedRange
             let loadedRange = self.loadedRange
             let loadedLocation = loadedRange.location + loadedRange.length
 
             let dataRange = NSRange(location: loadedRange.location + loadedRange.length,
                                     length: data.count)
-            //debugLog("\(dataRange)")
 
             self.delegate?.videoLoader(self, receivedData: data, forRange: dataRange)
 
             // check if we've already been sending content, or we're at right byte offset
             if loadedLocation >= requestedRange.location {
-                //debugLog("case1")
                 let requestedEndOffset = Int(dataRequest.requestedOffset + Int64(dataRequest.requestedLength))
 
                 let pendingDataEndOffset = loadedLocation + data.count

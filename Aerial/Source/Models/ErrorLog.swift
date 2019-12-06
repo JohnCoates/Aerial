@@ -125,6 +125,8 @@ func errorLog(_ message: String) {
     Log(level: .error, message: message)
 }
 
+/*
+
 func dataLog(_ data: Data) {
     let cacheDirectory = VideoCache.appSupportDirectory!
     var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
@@ -148,3 +150,4 @@ func dataLog(_ data: Data) {
     }
 
 }
+*/

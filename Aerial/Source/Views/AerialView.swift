@@ -120,7 +120,14 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     // MARK: - Init / Setup
     // This is the one used by System Preferences
     override init?(frame: NSRect, isPreview: Bool) {
-        super.init(frame: frame, isPreview: isPreview)
+        // legacyScreenSaver always return true for isPreview on Catalina
+        // We need to detect and override ourselves
+        if frame.width < 400 && frame.height < 300 {
+            super.init(frame: frame, isPreview: true)
+        } else {
+            super.init(frame: frame, isPreview: false)
+        }
+
         debugLog("avInit .saver \(frame) \(isPreview)")
         self.animationTimeInterval = 1.0 / 30.0
         setup()
@@ -160,15 +167,13 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     func setup() {
         if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
             debugLog("\(self.description) AerialView setup init (V\(version))")
-        } else {
-            debugLog("\(self.description) AerialView setup init")
         }
 
         let preferences = Preferences.sharedInstance
         let timeManagement = TimeManagement.sharedInstance
         let batteryManagement = BatteryManagement()
 
-        // Initialize Sparkle updater
+        // Run Sparkle updater if enabled
         if !isPreview && preferences.updateWhileSaverMode {
             let au = AutoUpdates()
             au.doForcedUpdate()
@@ -189,34 +194,22 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         // We may need to set timers to progressively dim the screen
         checkIfShouldSetBrightness()
 
-        if AerialView.singlePlayerAlreadySetup {
-            debugLog("singlePlayerAlreadySetup, checking if was stopped to purge")
-            // On previews, it's possible that our shared player was stopped and is not reusable
-            if AerialView.instanciatedViews[AerialView.sharedPlayerIndex!].wasStopped {
-                debugLog("Purging previous singlePlayer")
-                AerialView.singlePlayerAlreadySetup = false
-                AerialView.sharedPlayerIndex = nil
-
-                AerialView.instanciatedViews = [AerialView]()   // Clear the list of instanciated stuff
-                AerialView.sharedViews = [AerialView]()         // And the list of sharedViews
-            }
-        }
-
-        let displayDetection = DisplayDetection.sharedInstance
+        // Shared views can get stuck, we may need to clean them up here
+        cleanupSharedViews()
 
         // We look for the screen in our detected list.
         // In case of preview or unknown screen result will be nil
+        let displayDetection = DisplayDetection.sharedInstance
         let thisScreen = displayDetection.findScreenWith(frame: self.frame)
 
         var localPlayer: AVPlayer?
         debugLog("\(self.description) isPreview : \(isPreview)")
         debugLog("Using : \(String(describing: thisScreen))")
 
+        // Is the current screen disabled by user ?
         if !isPreview {
-            // User may have disabled the screen in settings
             // If it's an unknown screen, we leave it enabled
             if let screen = thisScreen {
-                // Is the screen active according to user settings or not ?
                 if !displayDetection.isScreenActive(id: screen.id) {
                     // Then we disable and exit
                     debugLog("This display is not active, disabling")
@@ -233,7 +226,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             AerialView.sharedViews.append(self)
         }
 
-        // We track all views here to clean the sharing code
+        // We track all instanciated views here, independand of their shared status
         AerialView.instanciatedViews.append(self)
 
         // Setup the AVPlayer
@@ -250,7 +243,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
         self.player = player
 
-        if self.isPreview {
+        if isPreview {
             AerialView.previewPlayer = player
         } else if !AerialView.sharingPlayers {
             // add to player list
@@ -288,113 +281,20 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         }
     }
 
-    func setupPlayerLayer(withPlayer player: AVPlayer) {
-        debugLog("\(self.description) setupPlayerLayer")
-        let displayDetection = DisplayDetection.sharedInstance
-        let preferences = Preferences.sharedInstance
+    // On previews, it's possible that our shared player was stopped and is not reusable
+    func cleanupSharedViews() {
+        if AerialView.singlePlayerAlreadySetup {
+            if AerialView.instanciatedViews[AerialView.sharedPlayerIndex!].wasStopped {
+                AerialView.singlePlayerAlreadySetup = false
+                AerialView.sharedPlayerIndex = nil
 
-        self.layer = CALayer()
-        guard let layer = self.layer else {
-            errorLog("\(self.description) Couldn't create CALayer")
-            return
-        }
-        self.wantsLayer = true
-        layer.backgroundColor = NSColor.black.cgColor
-        layer.needsDisplayOnBoundsChange = true
-        layer.frame = self.bounds
-        debugLog("\(self.description) setting up player layer with bounds/frame: \(layer.bounds) / \(layer.frame)")
-
-        playerLayer = AVPlayerLayer(player: player)
-
-        if #available(OSX 10.10, *) {
-            if preferences.aspectMode == Preferences.AspectMode.fill.rawValue {
-                playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-            } else {
-                playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
+                AerialView.instanciatedViews = [AerialView]()   // Clear the list of instanciated stuff
+                AerialView.sharedViews = [AerialView]()         // And the list of sharedViews
             }
         }
-        playerLayer.autoresizingMask = [CAAutoresizingMask.layerWidthSizable, CAAutoresizingMask.layerHeightSizable]
-
-        // In case of span mode we need to compute the size of our layer
-        if preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue && !isPreview {
-            let zRect = displayDetection.getZeroedActiveSpannedRect()
-            let screen = displayDetection.findScreenWith(frame: self.frame)
-            if let scr = screen {
-                let tRect = CGRect(x: zRect.origin.x - scr.zeroedOrigin.x,
-                                   y: zRect.origin.y - scr.zeroedOrigin.y,
-                                   width: zRect.width,
-                                   height: zRect.height)
-                debugLog("tRect : \(tRect)")
-                playerLayer.frame = tRect
-                //playerLayer.bounds = layer.bounds
-            } else {
-                errorLog("This is an unknown screen in span mode, this is not good")
-                playerLayer.frame = layer.bounds
-            }
-        } else {
-            playerLayer.frame = layer.bounds
-
-            let index = AerialView.instanciatedViews.firstIndex(of: self) ?? 0
-            if index % 2 == 1 && preferences.newViewingMode == Preferences.NewViewingMode.mirrored.rawValue {
-                playerLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(scaleX: -1, y: 1))
-            }
-        }
-        layer.addSublayer(playerLayer)
-
-        textLayer = CATextLayer()
-        textLayer.frame = layer.bounds
-        textLayer.opacity = 0
-        // Add a bit of shadow to give an outline and better readability
-        textLayer.shadowRadius = 10
-        textLayer.shadowOpacity = 1.0
-        textLayer.shadowColor = CGColor.black
-        layer.addSublayer(textLayer)
-
-        // Clock Layer
-        clockLayer = CATextLayer()
-        clockLayer.opacity = 0
-        // Add a bit of shadow to give an outline and better readability
-        clockLayer.shadowRadius = 10
-        clockLayer.shadowOpacity = 1.0
-        clockLayer.shadowColor = CGColor.black
-        layer.addSublayer(clockLayer)
-
-        // Message Layer
-        messageLayer = CATextLayer()
-        messageLayer.opacity = 0
-        // Add a bit of shadow to give an outline and better readability
-        messageLayer.shadowRadius = 10
-        messageLayer.shadowOpacity = 1.0
-        messageLayer.shadowColor = CGColor.black
-        layer.addSublayer(messageLayer)
-
-        //if #available(OSX 10.14, *) {
-        //} else {
-        // This bug is back in 10.14.5 beta, so enabling the workaround all the time now.
-        debugLog("Using dot workaround for video driver corruption")
-        // Tentative fix for high sierra issues
-        let highSierraLayer = CATextLayer()
-        highSierraLayer.frame = self.bounds
-        highSierraLayer.opacity = 0.5
-        highSierraLayer.font = NSFont(name: "Helvetica Neue Medium", size: 4)
-        highSierraLayer.fontSize = 4
-        highSierraLayer.string = "."
-
-        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: highSierraLayer.font as Any]
-
-        // Calculate bounding box
-        let attrString = NSAttributedString(string: highSierraLayer.string as! String, attributes: attributes)
-        let rect = attrString.boundingRect(with: layer.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
-
-        highSierraLayer.frame = rect
-        highSierraLayer.position = CGPoint(x: 2, y: 2)
-        highSierraLayer.anchorPoint = CGPoint(x: 0, y: 0)
-        layer.addSublayer(highSierraLayer)
     }
 
     // MARK: - Lifecycle stuff
-/*    override func draw(_ rect: NSRect) {
-    }*/
     override func startAnimation() {
         super.startAnimation()
         debugLog("\(self.description) startAnimation")
@@ -405,10 +305,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                 playerLayer.opacity = 1
                 player?.play()
             }
-
-            /*if player?.rate == 0 {
-             
-            }*/
         }
     }
 
@@ -426,32 +322,9 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             if !isPreview && brightnessToRestore != nil {
                 let timeManagement = TimeManagement.sharedInstance
                 timeManagement.setBrightness(level: brightnessToRestore!)
-                debugLog("Restoring brightness to : \(String(describing: brightnessToRestore))")
                 brightnessToRestore = nil
             }
         }
-    }
-
-    // MARK: - AVPlayerItem Notifications
-
-    @objc func playerItemFailedtoPlayToEnd(_ aNotification: Notification) {
-        warnLog("\(self.description) AVPlayerItemFailedToPlayToEndTimeNotification \(aNotification)")
-        playNextVideo()
-    }
-
-    @objc func playerItemNewErrorLogEntryNotification(_ aNotification: Notification) {
-        warnLog("\(self.description) AVPlayerItemNewErrorLogEntryNotification \(aNotification)")
-    }
-
-    @objc func playerItemPlaybackStalledNotification(_ aNotification: Notification) {
-        warnLog("\(self.description) AVPlayerItemPlaybackStalledNotification \(aNotification)")
-    }
-
-    @objc func playerItemDidReachEnd(_ aNotification: Notification) {
-        debugLog("\(self.description) played did reach end")
-        debugLog("\(self.description) notification: \(aNotification)")
-        playNextVideo()
-        debugLog("\(self.description) playing next video for player \(String(describing: player))")
     }
 
     // Wait for the player to be ready
@@ -474,15 +347,12 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                 self.addPlayerFades(player: self.player!, playerLayer: self.playerLayer, video: self.currentVideo!)
             }
 
-            // Descriptions on main only for now
             self.addDescriptions(player: self.player!, video: self.currentVideo!)
         }
     }
 
     // MARK: - playNextVideo()
     func playNextVideo() {
-        //let timeManagement = TimeManagement.sharedInstance
-
         let notificationCenter = NotificationCenter.default
         // Clear everything
         if timeObserver != nil {
@@ -617,7 +487,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     }
 
     override var acceptsFirstResponder: Bool {
-        // swiftlint:disable:next implicit_getter
         get {
             return true
         }
@@ -1177,7 +1046,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         }
 
         let controller = PreferencesWindowController(windowNibName: "PreferencesWindow")
-
         preferencesController = controller
         return controller.window
     }

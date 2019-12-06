@@ -16,16 +16,15 @@ extension AerialView {
         let timeManagement = TimeManagement.sharedInstance
         let batteryManagement = BatteryManagement()
 
-        if preferences.dimBrightness {
-            if !isPreview && brightnessToRestore == nil {
-                let (should, to) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
-                if !preferences.dimOnlyAtNight || (preferences.dimOnlyAtNight && should && to == "night") {
-                    if !preferences.dimOnlyOnBattery || (preferences.dimOnlyOnBattery && batteryManagement.isOnBattery()) {
-                        brightnessToRestore = timeManagement.getBrightness()
-                        debugLog("Brightness before Aerial was launched : \(String(describing: brightnessToRestore))")
-                        timeManagement.setBrightness(level: min(Float(preferences.startDim!), brightnessToRestore!))
-                        setDimTimers()
-                    }
+        if preferences.dimBrightness && !isPreview && brightnessToRestore == nil {
+            let (should, to) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
+
+            if !preferences.dimOnlyAtNight || (preferences.dimOnlyAtNight && should && to == "night") {
+                if !preferences.dimOnlyOnBattery || (preferences.dimOnlyOnBattery && batteryManagement.isOnBattery()) {
+                    brightnessToRestore = timeManagement.getBrightness()
+                    debugLog("Brightness before Aerial was launched : \(String(describing: brightnessToRestore))")
+                    timeManagement.setBrightness(level: min(Float(preferences.startDim!), brightnessToRestore!))
+                    setDimTimers()
                 }
             }
         }

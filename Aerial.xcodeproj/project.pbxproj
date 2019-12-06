@@ -43,6 +43,10 @@
 		035A92A9225F8C480095AB85 /* he.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92A5225F8C480095AB85 /* he.json */; };
 		035A92AC226754760095AB85 /* ar.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92AB226754760095AB85 /* ar.json */; };
 		035A92AD226754760095AB85 /* ar.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92AB226754760095AB85 /* ar.json */; };
+		035D524F239AA31A00DC29DC /* AerialView+Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035D524E239AA31A00DC29DC /* AerialView+Player.swift */; };
+		035D5250239AA31A00DC29DC /* AerialView+Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035D524E239AA31A00DC29DC /* AerialView+Player.swift */; };
+		035D5252239AA5BC00DC29DC /* AerialView+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035D5251239AA5BC00DC29DC /* AerialView+Text.swift */; };
+		035D5253239AA5BC00DC29DC /* AerialView+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035D5251239AA5BC00DC29DC /* AerialView+Text.swift */; };
 		03608A1022A54887008F08A2 /* PWC+Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03608A0F22A54887008F08A2 /* PWC+Videos.swift */; };
 		03608A1222A5499C008F08A2 /* PWC+Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03608A0F22A54887008F08A2 /* PWC+Videos.swift */; };
 		03608A1422A559F6008F08A2 /* PWC+Displays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03608A1322A559F6008F08A2 /* PWC+Displays.swift */; };
@@ -182,6 +186,8 @@
 		035A92A4225F8C480095AB85 /* de.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = de.json; sourceTree = "<group>"; };
 		035A92A5225F8C480095AB85 /* he.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = he.json; sourceTree = "<group>"; };
 		035A92AB226754760095AB85 /* ar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ar.json; sourceTree = "<group>"; };
+		035D524E239AA31A00DC29DC /* AerialView+Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AerialView+Player.swift"; sourceTree = "<group>"; };
+		035D5251239AA5BC00DC29DC /* AerialView+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AerialView+Text.swift"; sourceTree = "<group>"; };
 		03608A0F22A54887008F08A2 /* PWC+Videos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PWC+Videos.swift"; sourceTree = "<group>"; };
 		03608A1322A559F6008F08A2 /* PWC+Displays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PWC+Displays.swift"; sourceTree = "<group>"; };
 		03608A1522A55A8C008F08A2 /* PWC+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PWC+Text.swift"; sourceTree = "<group>"; };
@@ -321,6 +327,7 @@
 				03608A1F22A55BC2008F08A2 /* PWC+Cache.swift */,
 				03608A2222A55BF1008F08A2 /* PWC+Updates.swift */,
 				03608A2522A55C03008F08A2 /* PWC+Advanced.swift */,
+				03608A2822A56094008F08A2 /* PWC+LogPanel.swift */,
 			);
 			path = "PWC Tabs";
 			sourceTree = "<group>";
@@ -459,7 +466,6 @@
 			children = (
 				03608A1122A54921008F08A2 /* PWC Tabs */,
 				FAC36F3E1BE1756D007F2A20 /* PreferencesWindowController.swift */,
-				03608A2822A56094008F08A2 /* PWC+LogPanel.swift */,
 				0313F9E722942B4500B074BB /* CustomVideoController.swift */,
 				FA6F81DB1D939455007975FE /* Preferences.swift */,
 			);
@@ -505,6 +511,8 @@
 			children = (
 				FAC36F431BE1756D007F2A20 /* AerialView.swift */,
 				032D1163239A7F0C007E7756 /* AerialView+Brightness.swift */,
+				035D524E239AA31A00DC29DC /* AerialView+Player.swift */,
+				035D5251239AA5BC00DC29DC /* AerialView+Text.swift */,
 				FAC36F441BE1756D007F2A20 /* CheckCellView.swift */,
 				AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */,
 				03D1E78622842FB300D10CF7 /* DisplayView.swift */,
@@ -904,6 +912,7 @@
 				FAC36F681BE1778C007F2A20 /* ManifestLoader.swift in Sources */,
 				03608A1722A55B44008F08A2 /* PWC+Displays.swift in Sources */,
 				FAC36F581BE1756D007F2A20 /* PreferencesWindowController.swift in Sources */,
+				035D5250239AA31A00DC29DC /* AerialView+Player.swift in Sources */,
 				0395834A217F442A008E8F9C /* Solar.swift in Sources */,
 				FAB22A7F1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */,
 				FAC36F601BE175CF007F2A20 /* AppDelegate.swift in Sources */,
@@ -911,6 +920,7 @@
 				032D1165239A7F17007E7756 /* AerialView+Brightness.swift in Sources */,
 				FA36BD401BE57F8E00D5E03B /* VideoDownload.swift in Sources */,
 				0313F9F022955F3B00B074BB /* CustomVideoFolders.swift in Sources */,
+				035D5253239AA5BC00DC29DC /* AerialView+Text.swift in Sources */,
 				03608A1B22A55B9A008F08A2 /* PWC+Time.swift in Sources */,
 				FA6F81DD1D939455007975FE /* Preferences.swift in Sources */,
 				FAF450221BE2B45D00C1F98A /* VideoLoader.swift in Sources */,
@@ -943,6 +953,7 @@
 				FAC36F5B1BE1756D007F2A20 /* AerialView.swift in Sources */,
 				0393857A2175D4B80040B850 /* AVPlayerViewExtension.swift in Sources */,
 				03E8730F216501ED002B469B /* AsynchronousOperation.swift in Sources */,
+				035D5252239AA5BC00DC29DC /* AerialView+Text.swift in Sources */,
 				03510C6F21834F38008F74F2 /* IOBridge.m in Sources */,
 				0313F9EF22955F3B00B074BB /* CustomVideoFolders.swift in Sources */,
 				03608A1422A559F6008F08A2 /* PWC+Displays.swift in Sources */,
@@ -963,6 +974,7 @@
 				03608A2022A55BC2008F08A2 /* PWC+Cache.swift in Sources */,
 				03A2CB9C216BA9AF0061E8E8 /* VideoManager.swift in Sources */,
 				03608A1D22A55BA7008F08A2 /* PWC+Brightness.swift in Sources */,
+				035D524F239AA31A00DC29DC /* AerialView+Player.swift in Sources */,
 				03AD45FF22981B0C00261325 /* CustomVideoFolders+helpers.swift in Sources */,
 				FAF450211BE2B45D00C1F98A /* VideoLoader.swift in Sources */,
 				03E8731321675FE0002B469B /* TimeManagement.swift in Sources */,
