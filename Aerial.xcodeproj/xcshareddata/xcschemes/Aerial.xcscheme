@@ -29,8 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Release"
@@ -38,8 +36,8 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      ignoresPersistentStateOnLaunch = "NO"
-      debugDocumentVersioning = "YES"
+      ignoresPersistentStateOnLaunch = "YES"
+      debugDocumentVersioning = "NO"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
       <MacroExpansion>
@@ -51,8 +49,6 @@
             ReferencedContainer = "container:Aerial.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
