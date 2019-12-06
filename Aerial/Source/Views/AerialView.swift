@@ -567,4 +567,4 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         preferencesController = controller
         return controller.window
     }
-} 
+}
