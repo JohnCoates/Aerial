@@ -10,7 +10,6 @@ import Foundation
 import ScreenSaver
 import AVFoundation
 import AVKit
-import Sparkle
 
 @objc(AerialView)
 // swiftlint:disable:next type_body_length
@@ -113,7 +112,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     // This is the one used by System Preferences
     override init?(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)
-        debugLog("avInit .saver \(frame)")
+        debugLog("avInit .saver \(frame) \(isPreview)")
         self.animationTimeInterval = 1.0 / 30.0
         setup()
     }
@@ -148,39 +147,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         AerialView.players.remove(at: index)
     }
 
-    func setDimTimers() {
-        if #available(OSX 10.12, *) {
-            let preferences = Preferences.sharedInstance
-            let timeManagement = TimeManagement.sharedInstance
-            let startValue = min(preferences.startDim!, Double(brightnessToRestore!))
-
-            if preferences.dimBrightness && startValue > preferences.endDim! {
-                debugLog("setting brightness timers from \(String(describing: startValue)) to \(String(describing: preferences.endDim))")
-                var interval: Int
-                if preferences.overrideDimInMinutes {
-                    interval = preferences.dimInMinutes! * 6 // * 60 / 10, we make 10 intermediate steps
-                } else {
-                    interval = timeManagement.getCurrentSleepTime() * 6
-                    if interval == 0 {
-                        interval = 180 // Fallback to 30 mins if no sleep
-                    }
-                }
-                debugLog("Step size: \(interval) seconds")
-
-                for idx in 1...10 {
-                    _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(interval * idx), repeats: false) { (_) in
-                        let val = startValue - ((startValue - preferences.endDim!) / 10 * Double(idx))
-                        debugLog("Firing event \(idx) brightness to \(val)")
-                        timeManagement.setBrightness(level: Float(val))
-                    }
-                }
-            }
-        } else {
-            // Fallback on earlier versions
-            warnLog("Brightness control not available < macOS 10.12")
-        }
-    }
-
     // swiftlint:disable:next cyclomatic_complexity
     func setup() {
         if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
@@ -191,43 +157,19 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
         let preferences = Preferences.sharedInstance
         let timeManagement = TimeManagement.sharedInstance
+        let batteryManagement = BatteryManagement()
 
         // Initialize Sparkle updater
         if !isPreview && preferences.updateWhileSaverMode {
-            if #available(OSX 10.15, *) {
-                debugLog("Ignoring updateWhileSaverMode in Catalina")
-            } else {
-                let suup = SUUpdater.init(for: Bundle(for: AerialView.self))
-
-                // Make sure we can create SUUpdater
-                if let suu = suup {
-                    if preferences.allowBetas {
-                        suu.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/beta-appcast.xml")
-                    }
-
-                    // We manually ensure the correct amount of time passed since last check
-                    var distance = -86400       // 1 day
-                    if preferences.betaCheckFrequency == 0 {
-                        distance = -3600        // 1 hour
-                    } else if preferences.betaCheckFrequency == 1 {
-                        distance = -43200       // 12 hours
-                    }
-
-                    // If we never went into System Preferences, we may not have a lastUpdateCheckDate
-                    if suu.lastUpdateCheckDate != nil {
-                        if suu.lastUpdateCheckDate.timeIntervalSinceNow.distance(to: Double(distance)) > 0 {
-                            // Then force check/install udpates
-                            suu.resetUpdateCycle()
-                            suu.installUpdatesIfAvailable()
-                        }
-                    }
-                }
-            }
+            let au = AutoUpdates()
+            au.doForcedUpdate()
         }
 
-        if preferences.overrideOnBattery && timeManagement.isOnBattery() && !isPreview {
+        // Check early if we need to enable power saver mode,
+        // black screen with minimal brightness
+        if preferences.overrideOnBattery && batteryManagement.isOnBattery() && !isPreview {
             if preferences.alternateVideoFormat == Preferences.AlternateVideoFormat.powerSaving.rawValue ||
-                (preferences.powerSavingOnLowBattery && timeManagement.isBatteryLow()) {
+                (preferences.powerSavingOnLowBattery && batteryManagement.isBatteryLow()) {
                 debugLog("Engaging power saving mode")
                 isDisabled = true
                 timeManagement.setBrightness(level: 0.0)
@@ -235,21 +177,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             }
         }
 
-        // Ugly, we make sure we should dim, we're not a preview, we haven't dimmed yet (multi monitor)
-        // and ensure we properly apply the night/battery restrictions !
-        if preferences.dimBrightness {
-            if !isPreview && brightnessToRestore == nil {
-                let (should, to) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
-                if !preferences.dimOnlyAtNight || (preferences.dimOnlyAtNight && should && to == "night") {
-                    if !preferences.dimOnlyOnBattery || (preferences.dimOnlyOnBattery && timeManagement.isOnBattery()) {
-                        brightnessToRestore = timeManagement.getBrightness()
-                        debugLog("Brightness before Aerial was launched : \(String(describing: brightnessToRestore))")
-                        timeManagement.setBrightness(level: min(Float(preferences.startDim!), brightnessToRestore!))
-                        setDimTimers()
-                    }
-                }
-            }
-        }
+        // We may need to set timers to progressively dim the screen
+        checkIfShouldSetBrightness()
 
         if AerialView.singlePlayerAlreadySetup {
             debugLog("singlePlayerAlreadySetup, checking if was stopped to purge")
@@ -265,14 +194,18 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         }
 
         let displayDetection = DisplayDetection.sharedInstance
-        // We look for the screen in our detected list. In case of preview or unknown screen
-        // result will be nil
+
+        // We look for the screen in our detected list.
+        // In case of preview or unknown screen result will be nil
         let thisScreen = displayDetection.findScreenWith(frame: self.frame)
+
         var localPlayer: AVPlayer?
         debugLog("\(self.description) isPreview : \(isPreview)")
         debugLog("Using : \(String(describing: thisScreen))")
 
         if !isPreview {
+            // User may have disabled the screen in settings
+            // If it's an unknown screen, we leave it enabled
             if let screen = thisScreen {
                 // Is the screen active according to user settings or not ?
                 if !displayDetection.isScreenActive(id: screen.id) {
@@ -281,16 +214,12 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                     isDisabled = true
                     return
                 }
-            } else {
-                // If we don't know this screen, we disable
-                //debugLog("This is an unknown display, disabling")
-                //isDisabled = false
-                //return
             }
         } else {
             AerialView.previewView = self
         }
 
+        // Track which views are sharing the sharedPlayer
         if AerialView.sharingPlayers {
             AerialView.sharedViews.append(self)
         }
@@ -298,14 +227,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         // We track all views here to clean the sharing code
         AerialView.instanciatedViews.append(self)
 
-        if localPlayer == nil {
-            debugLog("\(self.description) no local player")
-
-            if AerialView.sharingPlayers {
-                localPlayer = AerialView.sharedPlayer
-            } else {
-                localPlayer = AVPlayer()
-            }
+        // Setup the AVPlayer
+        if AerialView.sharingPlayers {
+            localPlayer = AerialView.sharedPlayer
+        } else {
+            localPlayer = AVPlayer()
         }
 
         guard let player = localPlayer else {
@@ -331,7 +257,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             return
         }
 
-        // We're NOT sharing the preview !!!!!
+        // We're never sharing the preview !
         if !isPreview {
             AerialView.singlePlayerAlreadySetup = true
             AerialView.sharedPlayerIndex = AerialView.instanciatedViews.count-1
@@ -521,11 +447,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                                         context: UnsafeMutableRawPointer?) {
         debugLog("\(self.description) observeValue \(String(describing: keyPath))")
 
-        /*if keyPath == "rate" {
-            if self.player!.rate > 0 {
-                debugLog("video started playing")
-            }
-        } else */
         if self.playerLayer.isReadyForDisplay {
             self.player!.play()
             hasStartedPlaying = true
@@ -540,7 +461,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             }
 
             // Descriptions on main only for now
-
             self.addDescriptions(player: self.player!, video: self.currentVideo!)
         }
     }
@@ -615,12 +535,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             player.replaceCurrentItem(with: localitem)
             debugLog("\(self.description) playing video (OFFLINE MODE) : \(localurl)")
         }
-/*
-        // The first time we start from start animation !
-        if hasStartedPlaying && player.rate == 0 {
-            player.play()
-        }
-  */
+
         guard let currentItem = player.currentItem else {
             errorLog("\(self.description) No current item!")
             return

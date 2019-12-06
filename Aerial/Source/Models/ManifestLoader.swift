@@ -568,6 +568,7 @@ class ManifestLoader {
 
     // Check if the Manifests are saved in our cache directory
     func areManifestsCached() -> Bool {
+        // swiftlint:disable:next line_length
         return isManifestCached(manifest: .tvOS10) && isManifestCached(manifest: .tvOS11) && isManifestCached(manifest: .tvOS12) && isManifestCached(manifest: .tvOS13) && isManifestCached(manifest: .tvOS13Strings)
     }
 

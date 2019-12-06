@@ -133,9 +133,10 @@ final class AerialVideo: CustomStringConvertible, Equatable {
     // MARK: - Public getter
     var url: URL {
         let preferences = Preferences.sharedInstance
-        let timeManagement = TimeManagement.sharedInstance
+        let batteryManagement = BatteryManagement()
+
         // We may override on battery
-        if preferences.overrideOnBattery && timeManagement.isOnBattery() {
+        if preferences.overrideOnBattery && batteryManagement.isOnBattery() {
             return getClosestAvailable(wanted: preferences.alternateVideoFormat!-1) // Slightly dirty
         }
 
