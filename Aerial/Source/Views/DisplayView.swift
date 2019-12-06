@@ -123,6 +123,7 @@ class DisplayView: NSView {
         }
 
         var idx = 0
+        var shouldFlip = true
         // Now we draw each individual screen
         for screen in displayDetection.screens {
             let sRect = NSRect(x: minX + (screen.zeroedOrigin.x/scaleFactor),
@@ -145,9 +146,11 @@ class DisplayView: NSView {
                     if let imagePath = bundle.path(forResource: "screen"+String(idx), ofType: "jpg") {
                         var image = NSImage(contentsOfFile: imagePath)
 
-                        if preferences.newViewingMode == Preferences.NewViewingMode.mirrored.rawValue && screen.id % 2 == 1 {
+                        if preferences.newViewingMode == Preferences.NewViewingMode.mirrored.rawValue && shouldFlip {
                             image = image?.flipped(flipHorizontally: true, flipVertically: false)
                         }
+
+                        shouldFlip = !shouldFlip
 
                         image!.draw(in: sInRect, from: calcScreenshotRect(src: sInRect), operation: NSCompositingOperation.copy, fraction: 1.0)
                     } else {

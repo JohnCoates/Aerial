@@ -162,7 +162,7 @@ final class DisplayDetection: NSObject {
             var offsetleft: CGFloat = 0
             var offsettop: CGFloat = 0
 
-            if let display = findDisplayAdvancedMargins(x: screen.bottomLeftFrame.origin.x, y: screen.bottomLeftFrame.origin.y) {
+            if let display = findDisplayAdvancedMargins(posx: screen.bottomLeftFrame.origin.x, posy: screen.bottomLeftFrame.origin.y) {
                 offsetleft = display.offsetleft
                 offsettop = display.offsettop
             }
@@ -423,9 +423,9 @@ final class DisplayDetection: NSObject {
         return ""
     }
 
-    func findDisplayAdvancedMargins(x: CGFloat, y: CGFloat) -> DisplayAdvancedMargin? {
+    func findDisplayAdvancedMargins(posx: CGFloat, posy: CGFloat) -> DisplayAdvancedMargin? {
         for display in advancedMargins.displays {
-            if x == display.zleft && y == display.ztop {
+            if posx == display.zleft && posy == display.ztop {
                 return display
             }
         }
