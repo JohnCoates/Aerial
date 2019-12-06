@@ -4,7 +4,7 @@
 
 # Aerial - Apple TV Aerial Views Screen Saver
 
-Aerial is a Mac screensaver based on the new Apple TV screensaver that displays the Aerial movies Apple shot over New York, San Francisco, Hawaii, China, etc. Starting with version 1.4, this also includes the new ISS videos available in tvOS 12!
+Aerial is a Mac screensaver based on the new Apple TV screensaver that displays the Aerial movies Apple shot over New York, San Francisco, Hawaii, China, etc. Starting with version 1.6, this also includes the new undersea videos available in tvOS 13!
 
 Aerial is completely open source, so feel free to contribute to its development.
 
@@ -19,7 +19,7 @@ Aerial is completely open source, so feel free to contribute to its development.
 
 Aerial was started in 2015 by John Coates ([Twitter](https://twitter.com/JohnCoatesDev), [Email](mailto:john@johncoates.me))
 
-Starting with version 1.4, Aerial is also maintained by [Guillaume Louel](https://github.com/glouel) ([Twitter](https://twitter.com/C_Wiz), [PayPal](https://paypal.me/glouel?locale.x=fr_FR)).
+Starting with version 1.4, Aerial is maintained by [Guillaume Louel](https://github.com/glouel) ([Twitter](https://twitter.com/C_Wiz), [PayPal](https://paypal.me/glouel?locale.x=fr_FR)).
 
 You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/graphs/contributors).
 
@@ -29,7 +29,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 **Are you using Little Snitch ?** You may need to configure your firewall to allow Aerial to connect to the internet. Also Little Snitch may include a rule that forbids connexions to `raw.githubusercontent.com`. This will block Aerial's automatic updates and can cause the screensaver to misbehave. We highly recommend you either remove that rule or disable Aerial's automatic updates. You can find more information in our [FAQ](https://github.com/JohnCoates/Aerial/blob/master/Documentation/Troubleshooting.md).
 
-Aerial now includes an auto-update mechanism using the [Sparkle open-source project](https://github.com/sparkle-project/Sparkle). You will need to download it manually the first time :
+Aerial now includes an auto-update mechanism using the [Sparkle open-source project](https://github.com/sparkle-project/Sparkle). **This mechanism is, for the time being, broken for macOS Catalina**. You will need to download it manually the first time (**and subsequent times in Catalina**) :
 
 1. Quit **System Preferences**.
 2. [Download the latest release of `Aerial.saver.zip`](https://github.com/JohnCoates/Aerial/releases/latest). 
@@ -40,7 +40,7 @@ After installation, **if you are upgrading from a previous version**, we suggest
 
 Need more information on install, setup, or uninstall ? Or want to install via homebrew ? Check our extended [instructions here](Documentation/Installation.md). Curious about auto-updates ? [Have a look here](Documentation/AutoUpdates.md).
 
-## What's new in Aerial 1.6.0 (September 26 2019)?
+## What's new in Aerial 1.6.4 (November 1, 2019)?
 
 - Support for the 15 new videos included in tvOS 13, including the ten new underwater seascape videos and five new ISS space videos. 
 

@@ -187,6 +187,10 @@ extension PreferencesWindowController {
         popoverPower.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
     }
 
+    @IBAction func helpHDRButtonClick(_ button: NSButton) {
+        popoverHDR.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
+    }
+
     @IBAction func fadeInOutModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI fadeInOutMode: \(sender.indexOfSelectedItem)")
         preferences.fadeMode = sender.indexOfSelectedItem
@@ -239,6 +243,13 @@ extension PreferencesWindowController {
             let videoManager = VideoManager.sharedInstance
             videoManager.updateAllCheckCellView()
         }
+    }
+
+    // MARK: Wikipedia popup link
+    @IBAction func linkToWikipediaDolbyVisionClick(_ sender: Any) {
+        let workspace = NSWorkspace.shared
+        let url = URL(string: "https://en.wikipedia.org/wiki/Dolby_Laboratories#Video_processing")!
+        workspace.open(url)
     }
 
     // MARK: Video playback

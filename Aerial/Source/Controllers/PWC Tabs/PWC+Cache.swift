@@ -30,8 +30,8 @@ extension PreferencesWindowController {
     }
 
     func updateCacheSize() {
-        // get your directory url
-        let documentsDirectoryURL = URL(fileURLWithPath: VideoCache.cacheDirectory!)
+        // get your directory url, we now use App support
+        let documentsDirectoryURL = URL(fileURLWithPath: VideoCache.appSupportDirectory!)
 
         // FileManager.default.urls(for: VideoCache.cacheDirectory, in: .userDomainMask).first!
 

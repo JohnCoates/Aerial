@@ -55,7 +55,7 @@ func Log(level: ErrorLevel, message: String) {
         if #available(OSX 10.12, *) {
             // This is faster when available
             let log = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "Screensaver")
-            os_log("AerialError: %@", log: log, type: .error, message)
+            os_log("AerialError: %{public}@", log: log, type: .error, message)
         } else {
             NSLog("AerialError: \(message)")
         }
