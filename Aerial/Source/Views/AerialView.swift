@@ -112,14 +112,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     // MARK: - Init / Setup
     // This is the one used by System Preferences
     override init?(frame: NSRect, isPreview: Bool) {
-        // This is a workaround for Catalina beta5 and down which always return isPreview while it shouldn't
-        if frame.width < 400 && frame.height < 300 {
-            super.init(frame: frame, isPreview: true)
-        } else {
-            super.init(frame: frame, isPreview: false)
-        }
-
-        debugLog("avInit1 \(frame)")
+        super.init(frame: frame, isPreview: isPreview)
+        debugLog("avInit .saver \(frame)")
         self.animationTimeInterval = 1.0 / 30.0
         setup()
     }
@@ -127,7 +121,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     // This is the one used by App
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        debugLog("avInit2")
+        debugLog("avInit .app")
         setup()
     }
 
@@ -658,7 +652,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                                        object: currentItem)
         player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
     }
-
+/*
     override func keyDown(with event: NSEvent) {
         debugLog("keyDown")
         let preferences = Preferences.sharedInstance
@@ -699,6 +693,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             return true
         }
     }
+     */
 
     // MARK: - Extra Animations
     private func fastFadeOut(andPlayNext: Bool) {
