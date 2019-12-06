@@ -523,6 +523,7 @@ is disabled
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSBookmarksTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kGs-X6-tPb">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+
                                                         <font key="font" metaFont="system" size="12"/>
                                                     </buttonCell>
                                                     <connections>
@@ -577,7 +578,7 @@ is disabled
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Displays" identifier="" id="P6g-Pf-AmY">
-                                        <view key="view" id="65A-Ae-cVB">
+                                        <view key="view" ambiguous="YES" id="65A-Ae-cVB">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -660,8 +661,13 @@ is disabled
                                                         <menu key="menu" id="3Bi-za-9u6">
                                                             <items>
                                                                 <menuItem title="Independent" state="on" id="MKb-uC-u8v"/>
-                                                                <menuItem title="Mirrored" id="mW5-ZK-gX1"/>
+                                                                <menuItem title="Cloned" id="mW5-ZK-gX1" userLabel="Cloned">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                </menuItem>
                                                                 <menuItem title="Spanned" id="1hP-Py-Qcq">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                </menuItem>
+                                                                <menuItem title="Mirrored" id="3ls-5j-yRy" userLabel="Mirrored">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                                 </menuItem>
                                                             </items>
