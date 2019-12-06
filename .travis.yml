@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode10.2
+osx_image: xcode11.2
 before_install:
   - pod repo update
 after_success:
