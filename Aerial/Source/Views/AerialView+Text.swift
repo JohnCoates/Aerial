@@ -245,7 +245,8 @@ extension AerialView {
             setupAndRepositionExtra(view: view, position: corner, duration: duration, isInitial: isInitial, totalDuration: totalDuration)
         } else {
             repositionTextLayer(view: view, position: preferences.descriptionCorner!)   // Or set position from pref
-            setupAndRepositionExtra(view: view, position: preferences.descriptionCorner!, duration: duration, isInitial: isInitial, totalDuration: totalDuration)
+            setupAndRepositionExtra(view: view, position: preferences.descriptionCorner!,
+                                    duration: duration, isInitial: isInitial, totalDuration: totalDuration)
         }
     }
 
