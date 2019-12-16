@@ -3,7 +3,7 @@
 //  Aerial
 //
 //  Created by Guillaume Louel on 06/12/2019.
-//  Copyright © 2019 John Coates. All rights reserved.
+//  Copyright © 2019 Guillaume Louel. All rights reserved.
 //
 
 import Foundation
@@ -11,32 +11,30 @@ import AVKit
 
 extension AerialView {
 
-    func setupTextLayers(layer: CALayer) {
-        // Main description layer
-        textLayer = CATextLayer()
-        textLayer.frame = layer.bounds  // Same size as the screen
-        textLayer.opacity = 0
-        textLayer.shadowRadius = 10
-        textLayer.shadowOpacity = 1.0
-        textLayer.shadowColor = CGColor.black
-        layer.addSublayer(textLayer)
-
-        // Clock Layer
-        clockLayer = CATextLayer()
-        clockLayer.opacity = 0
-        clockLayer.shadowRadius = 10
-        clockLayer.shadowOpacity = 1.0
-        clockLayer.shadowColor = CGColor.black
-        layer.addSublayer(clockLayer)
-
-        // Message Layer
-        messageLayer = CATextLayer()
-        messageLayer.opacity = 0
-        messageLayer.shadowRadius = 10
-        messageLayer.shadowOpacity = 1.0
-        messageLayer.shadowColor = CGColor.black
-        layer.addSublayer(messageLayer)
-    }
+//    func setupTextLayers(layer: CALayer) {
+//        let offsets = LayerOffsets()
+//
+//        // Main description layer
+//        textLayer = DescriptionLayer(withLayer: layer, isPreview: isPreview, offsets: offsets)
+//        layer.addSublayer(textLayer)
+//
+//        // Clock Layer
+///*
+//        clockLayer = CATextLayer()
+//        clockLayer.opacity = 0
+//        clockLayer.shadowRadius = 10
+//        clockLayer.shadowOpacity = 1.0
+//        clockLayer.shadowColor = CGColor.black
+//        layer.addSublayer(clockLayer)
+//*/
+//        // Message Layer
+//        messageLayer = CATextLayer()
+//        messageLayer.opacity = 0
+//        messageLayer.shadowRadius = 10
+//        messageLayer.shadowOpacity = 1.0
+//        messageLayer.shadowColor = CGColor.black
+//        layer.addSublayer(messageLayer)
+//    }
 
     func setupGlitchWorkaroundLayer(layer: CALayer) {
         debugLog("Using dot workaround for video driver corruption")
@@ -60,105 +58,57 @@ extension AerialView {
         layer.addSublayer(workaroundLayer)
     }
 
-    // swiftlint:disable:next cyclomatic_complexity
+/*
     func addDescriptions(view: AerialView, player: AVPlayer, video: AerialVideo) {
         let poiStringProvider = PoiStringProvider.sharedInstance
         let preferences = Preferences.sharedInstance
 
         if preferences.showDescriptions {
-            // Preventively, make sure we have poi as tvOS11/10 videos won't have them
-            if (!video.poi.isEmpty && poiStringProvider.loadedDescriptions) ||
-                (!video.communityPoi.isEmpty && !poiStringProvider.getPoiKeys(video: video).isEmpty) {
-                // Collect all the timestamps from the JSON
-                var times = [NSValue]()
-                let keys = poiStringProvider.getPoiKeys(video: video)
-
-                for pkv in keys {
-                    let timeStamp = Double(pkv.key)!
-                    times.append(NSValue(time: CMTime(seconds: timeStamp, preferredTimescale: 1)))
-                }
-                // The JSON isn't sorted so we fix that
-                times.sort(by: { ($0 as! CMTime).seconds < ($1 as! CMTime).seconds })
+            // We need to make sure we actually have descriptions to show.
+            // Custom videos, and earlier tvOS videos may not
+            if poiStringProvider.hasPoiKeys(video: video) {
+                // Grab a sorted array of timestamps and the keys
+                let (keys, times) = getKeysAndTimestamps(video: video)
 
                 // Animate the very first one on it's own
                 let str = poiStringProvider.getString(key: keys["0"]!, video: video)
 
-                var fadeAnimation: CAKeyframeAnimation
+                let duration = calculateAnimationDuration(times: times, current: times[0], video: video)
+                let fadeAnimation = createFadeInOutAnimation(duration: duration)
 
-                if preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue {
-                    fadeAnimation = createFadeInOutAnimation(duration: 11)
-                } else {
-                    // Always show mode, if there's more than one point, use that, if not either use known video duration or some hardcoded duration
-                    if times.count > 1 {
-                        let duration = (times[1] as! CMTime).seconds - 1
-                        fadeAnimation = createFadeInOutAnimation(duration: duration)
-                    } else if video.duration > 0 {
-                        fadeAnimation = createFadeInOutAnimation(duration: video.duration - 1)
-                    } else {
-                        // We should have the duration, if we don't, hardcode the longest known duration
-                        fadeAnimation = createFadeInOutAnimation(duration: 807)
-                    }
+                textLayer.update(string: str)
+                textLayer.add(fadeAnimation, forKey: "textfade")
+
+                // AVPlayer requires NSValues of CMTime
+                var timevals = [NSValue]()
+                for time in times {
+                    timevals.append(NSValue(time: time))
                 }
-
-                view.textLayer.add(fadeAnimation, forKey: "textfade")
-                if video.duration > 0 {
-                    setupTextLayer(view: view, string: str, duration: fadeAnimation.duration, isInitial: true, totalDuration: video.duration - 1)
-                } else {
-                    setupTextLayer(view: view, string: str, duration: fadeAnimation.duration, isInitial: true, totalDuration: 807)
-                }
-
-                let mainQueue = DispatchQueue.main
 
                 // We then callback for each timestamp
-                timeObserver = player.addBoundaryTimeObserver(forTimes: times, queue: mainQueue) {
-                    var isLastTimeStamp = true
-                    var intervalUntilNextTimeStamp = 0.0
-
+                timeObserver = player.addBoundaryTimeObserver(forTimes: timevals, queue: DispatchQueue.main) {
                     // find closest timestamp to when we're waking up
                     var closest = 1000.0
-                    var closestTime = 0.0
-                    var closestTimeValue: NSValue = NSValue(time: CMTime.zero)
+                    var closestTime = CMTime.zero
 
                     for time in times {
-                        let ts = (time as! CMTime).seconds
+                        let ts = time.seconds
                         let distance = abs(ts - player.currentTime().seconds)
                         if distance < closest {
                             closest = distance
-                            closestTime = ts
-                            closestTimeValue = time
+                            closestTime = time
                         }
                     }
 
-                    // We also need the next timeStamp
-                    let index = times.firstIndex(of: closestTimeValue)
-                    if index! < times.count - 1 {
-                        isLastTimeStamp = false
-                        intervalUntilNextTimeStamp = (times[index!+1] as! CMTime).seconds - closestTime - 1
-                    } else if video.duration > 0 {
-                        isLastTimeStamp = true
-                        // If we have a duration for the video, we may not !
-                        intervalUntilNextTimeStamp = video.duration - closestTime - 1
-                    }
-
-                    // Animate text
-                    var fadeAnimation: CAKeyframeAnimation
-
-                    if preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue {
-                        fadeAnimation = self.createFadeInOutAnimation(duration: 11)
-                    } else {
-                        if isLastTimeStamp, video.duration == 0 {
-                            // We have no idea when the video ends, so 2 minutes it is
-                            fadeAnimation = self.createFadeInOutAnimation(duration: 120)
-                        } else {
-                            fadeAnimation = self.createFadeInOutAnimation(duration: intervalUntilNextTimeStamp)
-                        }
-                    }
                     // Get the string for the current timestamp
-                    let key = String(format: "%.0f", closestTime)
+                    let key = String(format: "%.0f", closestTime.seconds)
                     let str = poiStringProvider.getString(key: keys[key]!, video: video)
-                    self.setupTextLayer(view: view, string: str, duration: fadeAnimation.duration, isInitial: false, totalDuration: video.duration-1)
 
-                    view.textLayer.add(fadeAnimation, forKey: "textfade")
+                    let duration = self.calculateAnimationDuration(times: times, current: closestTime, video: video)
+                    let fadeAnimation = self.createFadeInOutAnimation(duration: duration)
+
+                    self.textLayer.update(string: str)
+                    self.textLayer.add(fadeAnimation, forKey: "textfade")
                 }
             } else {
                 // We don't have any extended description, using Secondary name (location) or video name (City)
@@ -168,87 +118,15 @@ extension AerialView {
                 } else {
                     str = video.name
                 }
-                var fadeAnimation: CAKeyframeAnimation
 
-                if preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue {
-                    fadeAnimation = createFadeInOutAnimation(duration: 11)
-                } else {
-                    // Always show mode, use known video duration or some hardcoded duration
-                    if video.duration > 0 {
-                        fadeAnimation = createFadeInOutAnimation(duration: video.duration - 1)
-                    } else {
-                        // We should have the duration, if we don't, hardcode the longest known duration
-                        fadeAnimation = createFadeInOutAnimation(duration: 807)
-                    }
-                }
-                view.textLayer.add(fadeAnimation, forKey: "textfade")
-                setupTextLayer(view: view, string: str, duration: fadeAnimation.duration, isInitial: true, totalDuration: video.duration)
+                let duration = self.calculateAnimationDuration(times: [], current: CMTime.zero, video: video)
+                let fadeAnimation = self.createFadeInOutAnimation(duration: duration)
+
+                textLayer.update(string: str)
+                textLayer.add(fadeAnimation, forKey: "textfade")
             }
         }
-    }
-
-    func setupTextLayer(view: AerialView, string: String, duration: CFTimeInterval, isInitial: Bool, totalDuration: Double) {
-        // Setup string
-        view.textLayer.string = string
-        view.textLayer.isWrapped = true
-        let preferences = Preferences.sharedInstance
-
-        // We override font size on previews
-        var fontSize = CGFloat(preferences.fontSize!)
-        if layer!.bounds.height < 200 {
-            fontSize = 12
-        }
-
-        // We get the horizontal margin
-        var mx = CGFloat(preferences.marginX!)
-
-        if !preferences.overrideMargins {
-            mx = 50
-        }
-        if isPreview {
-            mx = 10
-        }
-        let boundingRect = CGSize(width: layer!.visibleRect.size.width-2*mx, height: layer!.visibleRect.size.height)
-
-        // Get font with a fallback in case
-        var font = NSFont(name: "Helvetica Neue Medium", size: 28)
-        if let tryFont = NSFont(name: preferences.fontName!, size: fontSize) {
-            font = tryFont
-        }
-
-        // Make sure we change the layer font/size
-        view.textLayer.font = font
-        view.textLayer.fontSize = fontSize
-
-        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font as Any]
-
-        // Calculate bounding box
-        let str = NSAttributedString(string: string, attributes: attributes)
-
-        var rect = str.boundingRect(with: boundingRect, options: [.truncatesLastVisibleLine, .usesLineFragmentOrigin])
-        // Last line won't appear if we don't adjust
-        rect = CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width, height: rect.height + 10)
-
-        // Rebind frame
-        view.textLayer.frame = rect
-
-        // At the position the user wants
-        if preferences.descriptionCorner == Preferences.DescriptionCorner.random.rawValue {
-            // Randomish, we still want something different
-            var corner = Int.random(in: 0...3)
-            while corner == lastCorner {
-                corner = Int.random(in: 0...3)
-            }
-            lastCorner = corner
-
-            repositionTextLayer(view: view, position: corner)
-            setupAndRepositionExtra(view: view, position: corner, duration: duration, isInitial: isInitial, totalDuration: totalDuration)
-        } else {
-            repositionTextLayer(view: view, position: preferences.descriptionCorner!)   // Or set position from pref
-            setupAndRepositionExtra(view: view, position: preferences.descriptionCorner!,
-                                    duration: duration, isInitial: isInitial, totalDuration: totalDuration)
-        }
-    }
+    }*/
 
     func repositionTextLayer(view: AerialView, position: Int) {
         let preferences = Preferences.sharedInstance
@@ -281,8 +159,7 @@ extension AerialView {
             view.textLayer.alignmentMode = .right
         }
     }
-
-    // swiftlint:disable:next cyclomatic_complexity
+/*
     func setupAndRepositionExtra(view: AerialView, position: Int, duration: CFTimeInterval, isInitial: Bool, totalDuration: Double) {
         let preferences = Preferences.sharedInstance
         if preferences.showClock {
@@ -392,7 +269,7 @@ extension AerialView {
                 repositionClockAndMessageLayer(view: view, position: 3-position, alone: true)
             }
         }
-    }
+    }*/ 
 
     func reRectClock(view: AerialView) {
         let preferences = Preferences.sharedInstance

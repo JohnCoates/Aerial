@@ -80,6 +80,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var displayMarginAdvancedMode: NSButton!
 
     @IBOutlet var displayMarginAdvancedEdit: NSButton!
+
+    // Info tab (replaces text)
+    @IBOutlet var infoTableView: NSTableView!
+    @IBOutlet var infoContainerView: NSView!
+    @IBOutlet var infoLocationView: NSView!
+
     // Text tab
     @IBOutlet var showDescriptionsCheckbox: NSButton!
     @IBOutlet var descriptionModePopup: NSPopUpButton!
@@ -238,6 +244,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     var locationManager: CLLocationManager?
     var sparkleUpdater: SUUpdater?
 
+    var infoSource: InfoTableSource?
+
     @IBOutlet var displayView: DisplayView!
     public var appMode: Bool = false
 
@@ -326,6 +334,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         setupVideosTab()
         setupDisplaysTab()
+        setupInfoTab()  // Replaces Text tab
         setupTextTab()
         setupTimeTab()
         setupBrightnessTab()

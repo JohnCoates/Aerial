@@ -3,7 +3,7 @@
 //  Aerial
 //
 //  Created by Guillaume Louel on 06/12/2019.
-//  Copyright © 2019 John Coates. All rights reserved.
+//  Copyright © 2019 Guillaume Louel. All rights reserved.
 //
 
 import Foundation
@@ -63,7 +63,8 @@ extension AerialView {
         layer.addSublayer(playerLayer)
 
         // The layers for descriptions, clock, message
-        setupTextLayers(layer: layer)
+        layerManager.setupExtraLayers(layer: layer)
+        //setupTextLayers(layer: layer)
 
         // An extra layer to try and contravent a macOS graphics driver bug
         // This is useful on High Sierra+ on Intel Macs

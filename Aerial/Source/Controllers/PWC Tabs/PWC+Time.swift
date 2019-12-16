@@ -108,7 +108,6 @@ extension PreferencesWindowController {
     @IBAction func timeModeChange(_ sender: NSButton?) {
         debugLog("UI timeModeChange")
         if sender == timeLightDarkModeRadio {
-            print("dis")
             overrideNightOnDarkMode.isEnabled = false
         } else {
             if #available(OSX 10.14, *) {

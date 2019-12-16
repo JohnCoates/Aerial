@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.AVKitIBPlugin" version="15505"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -81,6 +81,9 @@
                 <outlet property="iconTime1" destination="lQX-Ux-Sz8" id="JNc-dR-kDA"/>
                 <outlet property="iconTime2" destination="VuJ-HC-hN5" id="AbN-SY-Tux"/>
                 <outlet property="iconTime3" destination="W77-TL-rnp" id="ncL-NO-Mb0"/>
+                <outlet property="infoContainerView" destination="5C2-9s-W8E" id="Gi8-fM-FD2"/>
+                <outlet property="infoLocationView" destination="dqU-EX-unM" id="Qce-oD-NrW"/>
+                <outlet property="infoTableView" destination="ipD-s9-BUc" id="crX-VX-JYF"/>
                 <outlet property="lastCheckedSparkle" destination="eIe-xw-mO4" id="sLF-im-fXK"/>
                 <outlet property="lastCheckedVideosLabel" destination="N4V-cr-IpU" id="e9x-ZB-zu3"/>
                 <outlet property="latitudeFormatter" destination="XKU-5s-ymT" id="ER9-CV-byp"/>
@@ -176,7 +179,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Videos" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
+                                        <view key="view" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -200,12 +203,12 @@
                                                                 <tableColumns>
                                                                     <tableColumn width="274" minWidth="12" maxWidth="1000" id="Grd-eN-eTf">
                                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                                            <font key="font" metaFont="message" size="11"/>
+                                                                            <font key="font" metaFont="controlContent" size="11"/>
                                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                         </tableHeaderCell>
                                                                         <textFieldCell key="dataCell" controlSize="small" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="0wF-mr-lO5">
-                                                                            <font key="font" metaFont="message" size="11"/>
+                                                                            <font key="font" metaFont="controlContent" size="11"/>
                                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                         </textFieldCell>
@@ -219,7 +222,7 @@
                                                                                         <rect key="frame" x="0.0" y="-2" width="233" height="14"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="HEADER CELL" id="0xW-C7-M1h">
-                                                                                            <font key="font" metaFont="message" size="11"/>
+                                                                                            <font key="font" metaFont="controlContent" size="11"/>
                                                                                             <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -242,7 +245,7 @@
                                                                                         <rect key="frame" x="25" y="0.0" width="249" height="14"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="hJP-hV-AM5">
-                                                                                            <font key="font" metaFont="message" size="11"/>
+                                                                                            <font key="font" metaFont="controlContent" size="11"/>
                                                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -261,13 +264,13 @@
                                                                                         <rect key="frame" x="2" y="0.0" width="22" height="18"/>
                                                                                         <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="9L7-4L-A4w">
                                                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                                            <font key="font" metaFont="message" size="11"/>
+                                                                                            <font key="font" metaFont="controlContent" size="11"/>
                                                                                         </buttonCell>
                                                                                     </button>
                                                                                     <textField verticalHuggingPriority="750" allowsExpansionToolTips="YES" preferredMaxLayoutWidth="165" translatesAutoresizingMaskIntoConstraints="NO" id="5qU-xC-8TY">
                                                                                         <rect key="frame" x="25" y="2" width="84" height="14"/>
                                                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="hxB-gg-rAu">
-                                                                                            <font key="font" metaFont="message" size="11"/>
+                                                                                            <font key="font" metaFont="controlContent" size="11"/>
                                                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -276,7 +279,7 @@
                                                                                         <rect key="frame" x="241" y="1" width="26" height="17"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" borderStyle="border" alignment="center" title="4K" drawsBackground="YES" id="8vf-Ke-XDl" customClass="VerticallyAlignedTextFieldCell" customModule="Aerial" customModuleProvider="target">
-                                                                                            <font key="font" metaFont="message" size="11"/>
+                                                                                            <font key="font" metaFont="controlContent" size="11"/>
                                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -286,7 +289,7 @@
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                                                         <buttonCell key="cell" type="round" title="+" bezelStyle="circular" imagePosition="overlaps" alignment="center" controlSize="small" borderStyle="border" baseWritingDirection="rightToLeft" userInterfaceLayoutDirection="rightToLeft" imageScaling="axesIndependently" inset="2" id="g2R-vU-3dF">
                                                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                            <font key="font" metaFont="message" size="11"/>
+                                                                                            <font key="font" metaFont="controlContent" size="11"/>
                                                                                         </buttonCell>
                                                                                         <connections>
                                                                                             <action selector="addClick:" target="X6H-3G-WWn" id="mUe-e1-8i1"/>
@@ -392,7 +395,7 @@ is disabled
                                                     <rect key="frame" x="153" y="21" width="108" height="14"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Available in 4K/HDR" id="HJw-4S-2ev">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -401,7 +404,7 @@ is disabled
                                                     <rect key="frame" x="264" y="19" width="26" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" borderStyle="border" alignment="center" title="4K" drawsBackground="YES" id="eOu-8R-igj" customClass="VerticallyAlignedTextFieldCell" customModule="Aerial" customModuleProvider="target">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -411,14 +414,14 @@ is disabled
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                     <buttonCell key="cell" type="round" title="+" bezelStyle="circular" imagePosition="overlaps" alignment="center" controlSize="small" enabled="NO" borderStyle="border" baseWritingDirection="rightToLeft" userInterfaceLayoutDirection="rightToLeft" imageScaling="axesIndependently" inset="2" id="FYn-z5-tcl">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                     </buttonCell>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uRh-Iz-deI">
                                                     <rect key="frame" x="173" y="3" width="88" height="14"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Download video" id="V9x-vb-dly">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -523,8 +526,7 @@ is disabled
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSBookmarksTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kGs-X6-tPb">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-
-                                                        <font key="font" metaFont="system" size="12"/>
+                                                        <font key="font" metaFont="cellTitle"/>
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="videoSetsButtonClick:" target="-2" id="aDh-Hf-5AD"/>
@@ -546,7 +548,7 @@ is disabled
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSActionTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nxM-5Y-pQM">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="system" size="12"/>
+                                                        <font key="font" metaFont="cellTitle"/>
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="outlineViewSettingsClick:" target="-2" id="foF-Fr-895"/>
@@ -578,7 +580,7 @@ is disabled
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Displays" identifier="" id="P6g-Pf-AmY">
-                                        <view key="view" ambiguous="YES" id="65A-Ae-cVB">
+                                        <view key="view" id="65A-Ae-cVB">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -590,7 +592,7 @@ is disabled
                                                             <rect key="frame" x="190" y="191" width="200" height="14"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Click on a Display to enable/disable it" id="S5I-D9-vrV">
-                                                                <font key="font" metaFont="message" size="11"/>
+                                                                <font key="font" metaFont="controlContent" size="11"/>
                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -806,6 +808,85 @@ is disabled
                                                         </subviews>
                                                     </view>
                                                 </box>
+                                            </subviews>
+                                        </view>
+                                    </tabViewItem>
+                                    <tabViewItem label="Info" identifier="" id="AhX-J1-tBm">
+                                        <view key="view" ambiguous="YES" id="d3H-vC-Yjc">
+                                            <rect key="frame" x="10" y="33" width="614" height="381"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmM-bM-eEg">
+                                                    <rect key="frame" x="5" y="29" width="180" height="349"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="CFu-ab-5NJ">
+                                                        <rect key="frame" x="1" y="1" width="178" height="347"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="ipD-s9-BUc">
+                                                                <rect key="frame" x="0.0" y="0.0" width="178" height="347"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                <size key="intercellSpacing" width="3" height="2"/>
+                                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                                                <tableColumns>
+                                                                    <tableColumn width="116" minWidth="40" maxWidth="1000" id="CJK-Td-0R2">
+                                                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                                            <font key="font" metaFont="message" size="11"/>
+                                                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                                        </tableHeaderCell>
+                                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="lS3-bk-QWC">
+                                                                            <font key="font" metaFont="system"/>
+                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                        <prototypeCellViews>
+                                                                            <tableCellView identifier="InfoSourceCellID" id="V0P-QH-D8O">
+                                                                                <rect key="frame" x="1" y="1" width="116" height="17"/>
+                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                <subviews>
+                                                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XsY-Zd-0ut">
+                                                                                        <rect key="frame" x="3" y="0.0" width="17" height="17"/>
+                                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="g3t-tp-R0I"/>
+                                                                                    </imageView>
+                                                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kr8-Iy-w8E">
+                                                                                        <rect key="frame" x="25" y="0.0" width="91" height="17"/>
+                                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="1sN-Z5-c4U">
+                                                                                            <font key="font" metaFont="system"/>
+                                                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                        </textFieldCell>
+                                                                                    </textField>
+                                                                                </subviews>
+                                                                                <connections>
+                                                                                    <outlet property="imageView" destination="XsY-Zd-0ut" id="i2i-eN-7w6"/>
+                                                                                    <outlet property="textField" destination="Kr8-Iy-w8E" id="jiq-TJ-lga"/>
+                                                                                </connections>
+                                                                            </tableCellView>
+                                                                        </prototypeCellViews>
+                                                                    </tableColumn>
+                                                                </tableColumns>
+                                                            </tableView>
+                                                        </subviews>
+                                                        <nil key="backgroundColor"/>
+                                                    </clipView>
+                                                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="3Xo-KN-HPg">
+                                                        <rect key="frame" x="1" y="332" width="169" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                    </scroller>
+                                                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="tQz-ug-IDC">
+                                                        <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                    </scroller>
+                                                </scrollView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5C2-9s-W8E">
+                                                    <rect key="frame" x="193" y="4" width="417" height="374"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                </customView>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
@@ -2210,7 +2291,7 @@ Gw
                 <outlet property="delegate" destination="-3" id="f08-98-Mu8"/>
             </connections>
         </popover>
-        <customView id="Obi-Pb-ghI">
+        <customView id="Obi-Pb-ghI" userLabel="Popover HW Acceleration">
             <rect key="frame" x="0.0" y="0.0" width="391" height="342"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -2307,7 +2388,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" ambiguous="YES" id="rFk-xj-xKP">
                             <rect key="frame" x="1" y="1" width="659" height="337"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" viewBased="YES" id="btT-0Y-wSk">
                                     <rect key="frame" x="0.0" y="0.0" width="659" height="337"/>
@@ -2492,7 +2573,7 @@ You can either enter those manually or try to use Location Services on your Mac 
                 <outlet property="delegate" destination="-3" id="puI-he-bFP"/>
             </connections>
         </popover>
-        <customView id="JSw-bV-YtV">
+        <customView id="JSw-bV-YtV" userLabel="Popover Power Saving">
             <rect key="frame" x="0.0" y="0.0" width="305" height="124"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -2801,7 +2882,7 @@ Gw
             </view>
             <point key="canvasLocation" x="-304.5" y="933"/>
         </window>
-        <customView id="oKA-6w-IA7">
+        <customView id="oKA-6w-IA7" userLabel="Popover auto updates">
             <rect key="frame" x="0.0" y="0.0" width="325" height="236"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -3010,7 +3091,7 @@ After changing the folder, please close System Preferences for this to be taken 
                 <outlet property="contentViewController" destination="VKe-Nh-9kL" id="dgd-iI-USS"/>
             </connections>
         </popover>
-        <customView id="M2z-5I-be7">
+        <customView id="M2z-5I-be7" userLabel="Popover HDR">
             <rect key="frame" x="0.0" y="0.0" width="428" height="245"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -3030,19 +3111,35 @@ After changing the folder, please close System Preferences for this to be taken 
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" selectable="YES" id="YN8-HP-dRv">
                         <font key="font" metaFont="message" size="11"/>
-                        <mutableString key="title">If you enable HDR, Aerial will download new versions of the videos. This option is only available starting with macOS Catalina.
+                        <string key="title">If you enable HDR, Aerial will download new versions of the videos. This option is only available starting with macOS Catalina.
 
 These videos are using Dolby Vision to represent a Higher Dynamic Range of colors and lighting. 
 
 In practice, this means you will see wilder colors which may or may not look pleasing or realistic to you. 
 
-Please note that all 4K videos are encoded in 10 bit per color component, whether you are using HDR or not. Those files will be played appropriately whether your screen is 10 bit (iMac) or 8 bit (Macbook Pro).</mutableString>
+Please note that all 4K videos are encoded in 10 bit per color component, whether you are using HDR or not. Those files will be played appropriately whether your screen is 10 bit (iMac) or 8 bit (Macbook Pro).</string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="608" y="1168.5"/>
+            <point key="canvasLocation" x="884" y="1188"/>
+        </customView>
+        <customView id="dqU-EX-unM" userLabel="Location Custom View">
+            <rect key="frame" x="0.0" y="0.0" width="406" height="63"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yO3-V9-EE1">
+                    <rect key="frame" x="-2" y="47" width="278" height="16"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Display location information about the video. " id="Wdl-qn-U82">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="-174" y="298"/>
         </customView>
     </objects>
     <resources>
