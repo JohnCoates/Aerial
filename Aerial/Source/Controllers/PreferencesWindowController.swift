@@ -83,9 +83,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     // Info tab (replaces text)
     @IBOutlet var infoTableView: NSTableView!
-    @IBOutlet var infoContainerView: NSView!
-    @IBOutlet var infoLocationView: NSView!
+    @IBOutlet var infoContainerView: InfoContainerView!
 
+    @IBOutlet var infoLocationView: NSView!
+    @IBOutlet var infoMessageView: NSView!
+    @IBOutlet var infoClockView: NSView!
+    @IBOutlet var infoCommonView: InfoCommonView!
     // Text tab
     @IBOutlet var showDescriptionsCheckbox: NSButton!
     @IBOutlet var descriptionModePopup: NSPopUpButton!
@@ -244,6 +247,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     var locationManager: CLLocationManager?
     var sparkleUpdater: SUUpdater?
 
+    // Info tab
     var infoSource: InfoTableSource?
 
     @IBOutlet var displayView: DisplayView!

@@ -81,8 +81,11 @@
                 <outlet property="iconTime1" destination="lQX-Ux-Sz8" id="JNc-dR-kDA"/>
                 <outlet property="iconTime2" destination="VuJ-HC-hN5" id="AbN-SY-Tux"/>
                 <outlet property="iconTime3" destination="W77-TL-rnp" id="ncL-NO-Mb0"/>
+                <outlet property="infoClockView" destination="OIP-FX-Me7" id="3Os-NR-P3F"/>
+                <outlet property="infoCommonView" destination="ls3-ia-gMN" id="S09-dO-Ufy"/>
                 <outlet property="infoContainerView" destination="5C2-9s-W8E" id="Gi8-fM-FD2"/>
-                <outlet property="infoLocationView" destination="dqU-EX-unM" id="Qce-oD-NrW"/>
+                <outlet property="infoLocationView" destination="dqU-EX-unM" id="Iyf-V2-pht"/>
+                <outlet property="infoMessageView" destination="0sz-lf-zly" id="FGn-Se-VXg"/>
                 <outlet property="infoTableView" destination="ipD-s9-BUc" id="crX-VX-JYF"/>
                 <outlet property="lastCheckedSparkle" destination="eIe-xw-mO4" id="sLF-im-fXK"/>
                 <outlet property="lastCheckedVideosLabel" destination="N4V-cr-IpU" id="e9x-ZB-zu3"/>
@@ -580,7 +583,7 @@ is disabled
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Displays" identifier="" id="P6g-Pf-AmY">
-                                        <view key="view" id="65A-Ae-cVB">
+                                        <view key="view" ambiguous="YES" id="65A-Ae-cVB">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -812,7 +815,7 @@ is disabled
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Info" identifier="" id="AhX-J1-tBm">
-                                        <view key="view" ambiguous="YES" id="d3H-vC-Yjc">
+                                        <view key="view" id="d3H-vC-Yjc">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -847,13 +850,13 @@ is disabled
                                                                                 <rect key="frame" x="1" y="1" width="116" height="17"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
-                                                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XsY-Zd-0ut">
-                                                                                        <rect key="frame" x="3" y="0.0" width="17" height="17"/>
-                                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="g3t-tp-R0I"/>
+                                                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="XsY-Zd-0ut">
+                                                                                        <rect key="frame" x="5" y="0.0" width="17" height="17"/>
+                                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSListViewTemplate" id="g3t-tp-R0I"/>
                                                                                     </imageView>
                                                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kr8-Iy-w8E">
-                                                                                        <rect key="frame" x="25" y="0.0" width="91" height="17"/>
+                                                                                        <rect key="frame" x="28" y="-5" width="91" height="17"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="1sN-Z5-c4U">
                                                                                             <font key="font" metaFont="system"/>
@@ -883,7 +886,7 @@ is disabled
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
-                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5C2-9s-W8E">
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5C2-9s-W8E" customClass="InfoContainerView" customModule="Aerial" customModuleProvider="target">
                                                     <rect key="frame" x="193" y="4" width="417" height="374"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 </customView>
@@ -1817,7 +1820,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                         <action selector="resetCacheLocation:" target="-2" id="gDm-cB-GPb"/>
                                                     </connections>
                                                 </button>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BZZ-nK-Vt5">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="423" translatesAutoresizingMaskIntoConstraints="NO" id="BZZ-nK-Vt5">
                                                     <rect key="frame" x="22" y="214" width="427" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" id="1wm-7R-GAX">
@@ -1847,7 +1850,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                         <action selector="showAppSupportInFinder:" target="-2" id="j15-Wg-n2Q"/>
                                                     </connections>
                                                 </button>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VEF-JU-Icb">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="573" translatesAutoresizingMaskIntoConstraints="NO" id="VEF-JU-Icb">
                                                     <rect key="frame" x="22" y="147" width="577" height="59"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" id="f6c-LL-Qin">
@@ -2388,7 +2391,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" ambiguous="YES" id="rFk-xj-xKP">
                             <rect key="frame" x="1" y="1" width="659" height="337"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" viewBased="YES" id="btT-0Y-wSk">
                                     <rect key="frame" x="0.0" y="0.0" width="659" height="337"/>
@@ -3037,7 +3040,7 @@ After changing the folder, please close System Preferences for this to be taken 
                 <rect key="frame" x="0.0" y="0.0" width="590" height="412"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3D8-tP-bzQ">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="550" translatesAutoresizingMaskIntoConstraints="NO" id="3D8-tP-bzQ">
                         <rect key="frame" x="18" y="353" width="554" height="39"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" title="Edit the vertical/horizontal offset that should be applied to each screen, relative to it's initial position. " id="h8l-hA-Ip8">
@@ -3106,7 +3109,7 @@ After changing the folder, please close System Preferences for this to be taken 
                         </connections>
                     </buttonCell>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3fd-p3-gWo">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="388" translatesAutoresizingMaskIntoConstraints="NO" id="3fd-p3-gWo">
                     <rect key="frame" x="18" y="44" width="392" height="182"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" selectable="YES" id="YN8-HP-dRv">
@@ -3125,13 +3128,13 @@ Please note that all 4K videos are encoded in 10 bit per color component, whethe
             </subviews>
             <point key="canvasLocation" x="884" y="1188"/>
         </customView>
-        <customView id="dqU-EX-unM" userLabel="Location Custom View">
-            <rect key="frame" x="0.0" y="0.0" width="406" height="63"/>
+        <customView id="dqU-EX-unM" userLabel="Location Info View">
+            <rect key="frame" x="0.0" y="0.0" width="406" height="16"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yO3-V9-EE1">
-                    <rect key="frame" x="-2" y="47" width="278" height="16"/>
-                    <autoresizingMask key="autoresizingMask"/>
+                    <rect key="frame" x="18" y="0.0" width="278" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Display location information about the video. " id="Wdl-qn-U82">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -3139,7 +3142,103 @@ Please note that all 4K videos are encoded in 10 bit per color component, whethe
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="-174" y="298"/>
+            <point key="canvasLocation" x="-174" y="170"/>
+        </customView>
+        <customView id="0sz-lf-zly" userLabel="Message Info View">
+            <rect key="frame" x="0.0" y="0.0" width="406" height="16"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4gY-se-Z6c">
+                    <rect key="frame" x="18" y="0.0" width="318" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Display a custom message (your name, e-mail, etc)." id="qh4-Vu-zi6">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="-174" y="236"/>
+        </customView>
+        <customView id="OIP-FX-Me7" userLabel="Clock Info View">
+            <rect key="frame" x="0.0" y="0.0" width="406" height="16"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MCg-ht-Z5n">
+                    <rect key="frame" x="18" y="0.0" width="153" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Display the current time." id="MDs-r8-mQB">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="-174" y="296"/>
+        </customView>
+        <customView id="ls3-ia-gMN" userLabel="Common Info View" customClass="InfoCommonView" customModule="Aerial" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="406" height="248"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17F-wn-zgn">
+                    <rect key="frame" x="18" y="232" width="63" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Enable" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="o2U-qp-q9V">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="enabledClick:" target="ls3-ia-gMN" id="dr2-H2-xQF"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5qI-fQ-ZXP">
+                    <rect key="frame" x="18" y="201" width="35" height="16"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Font:" id="UPf-pA-ED0">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button toolTip="Change font" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kbQ-bC-jsB">
+                    <rect key="frame" x="352" y="198" width="22" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSActionTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cau-Fw-vJI">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="changeFontClick:" target="ls3-ia-gMN" id="1cO-Jw-Ffb"/>
+                    </connections>
+                </button>
+                <button toolTip="Reset font to default" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5UI-r0-Si3">
+                    <rect key="frame" x="384" y="198" width="22" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRefreshTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c3U-Vk-nsF">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="resetFontClick:" target="ls3-ia-gMN" id="hr5-GN-kQA"/>
+                    </connections>
+                </button>
+                <textField toolTip="This is the font that will be used to display locationn descriptions" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UWe-lf-lZP">
+                    <rect key="frame" x="59" y="198" width="285" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" borderStyle="bezel" title="Label" bezelStyle="round" id="n1X-DU-JHc">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <connections>
+                <outlet property="enabledButton" destination="17F-wn-zgn" id="CEK-zG-Ndg"/>
+                <outlet property="fontChange" destination="kbQ-bC-jsB" id="YHP-ZU-BYd"/>
+                <outlet property="fontLabel" destination="UWe-lf-lZP" id="D5t-D2-gul"/>
+                <outlet property="fontReset" destination="5UI-r0-Si3" id="yz2-pg-kTD"/>
+            </connections>
+            <point key="canvasLocation" x="-174" y="477"/>
         </customView>
     </objects>
     <resources>
@@ -3149,6 +3248,7 @@ Please note that all 4K videos are encoded in 10 bit per color component, whethe
         <image name="NSGoLeftTemplate" width="9" height="12"/>
         <image name="NSHomeTemplate" width="14" height="14"/>
         <image name="NSInfo" width="32" height="32"/>
+        <image name="NSListViewTemplate" width="14" height="10"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="NSRightFacingTriangleTemplate" width="9" height="12"/>
         <image name="NSStatusAvailable" width="16" height="16"/>

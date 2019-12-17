@@ -1,15 +1,16 @@
 //
-//  DescriptionLayer.swift
+//  LocationLayer.swift
 //  Aerial
 //
 //  Created by Guillaume Louel on 11/12/2019.
-//  Copyright © 2019 John Coates. All rights reserved.
+//  Copyright © 2019 Guillaume Louel. All rights reserved.
 //
 
 import Foundation
 import AVKit
 
-class DescriptionLayer: AnimationLayer {
+class LocationLayer: AnimationLayer {
+    var config: PrefsInfo.Location?
     var timeObserver: Any?
 
     override init(layer: Any) {
@@ -20,9 +21,19 @@ class DescriptionLayer: AnimationLayer {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // Our init
+    // Our inits
     override init(withLayer: CALayer, isPreview: Bool, offsets: LayerOffsets, manager: LayerManager) {
         super.init(withLayer: withLayer, isPreview: isPreview, offsets: offsets, manager: manager)
+    }
+
+    convenience init(withLayer: CALayer, isPreview: Bool, offsets: LayerOffsets, manager: LayerManager, config: PrefsInfo.Location) {
+        self.init(withLayer: withLayer, isPreview: isPreview, offsets: offsets, manager: manager)
+        self.config = config
+
+        // Set our layer's font & corner now
+        (self.font, self.fontSize) = getFont(name: config.fontName,
+                                             size: config.fontSize)
+        self.corner = config.corner
     }
 
     // We need to clear our callbacks on the player
@@ -101,40 +112,6 @@ class DescriptionLayer: AnimationLayer {
                 add(fadeAnimation, forKey: "textfade")
             }
         }
-    }
-
-    // to be removed after corner refactoring below
-    override func update(string: String) {
-        // Setup string
-        self.string = string
-        self.isWrapped = true
-
-        (self.font, self.fontSize) = getFont()
-
-        // This is the rect resized to our string
-        frame = calculateRect(string: string, font: self.font as! NSFont)
-        move(corner: getDescriptionCorner(), fullRedraw: false)
-    }
-
-    // TODO, refactor that
-    func getDescriptionCorner() -> Preferences.DescriptionCorner {
-        let preferences = Preferences.sharedInstance
-        var pos: Preferences.DescriptionCorner
-
-        // We may have a random value...
-        if preferences.descriptionCorner == Preferences.DescriptionCorner.random.rawValue {
-            var corner = Int.random(in: 0...3)
-
-            while corner == lastCorner {
-                corner = Int.random(in: 0...3)
-            }
-
-            pos = Preferences.DescriptionCorner(rawValue: corner)!
-        } else {
-            pos = Preferences.DescriptionCorner(rawValue: preferences.descriptionCorner!)!
-        }
-
-        return pos
     }
 
     // MARK: - Time helpers

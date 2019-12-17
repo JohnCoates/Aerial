@@ -3,13 +3,14 @@
 //  Aerial
 //
 //  Created by Guillaume Louel on 12/12/2019.
-//  Copyright © 2019 John Coates. All rights reserved.
+//  Copyright © 2019 Guillaume Louel. All rights reserved.
 //
 
 import Foundation
 import AVKit
 
 class MessageLayer: AnimationLayer {
+    var config: PrefsInfo.Message?
     var wasSetup = false
 
     override init(layer: Any) {
@@ -20,7 +21,7 @@ class MessageLayer: AnimationLayer {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // Our init
+    // Our inits
     override init(withLayer: CALayer, isPreview: Bool, offsets: LayerOffsets, manager: LayerManager) {
         super.init(withLayer: withLayer, isPreview: isPreview, offsets: offsets, manager: manager)
 
@@ -28,14 +29,23 @@ class MessageLayer: AnimationLayer {
         self.opacity = 1
     }
 
-    override func setupForVideo(video: AerialVideo, player: AVPlayer) {
-        let preferences = Preferences.sharedInstance
+    convenience init(withLayer: CALayer, isPreview: Bool, offsets: LayerOffsets, manager: LayerManager, config: PrefsInfo.Message) {
+        self.init(withLayer: withLayer, isPreview: isPreview, offsets: offsets, manager: manager)
+        self.config = config
 
+        // Set our layer's font & corner now
+        (self.font, self.fontSize) = getFont(name: config.fontName,
+                                             size: config.fontSize)
+        self.corner = config.corner
+    }
+
+    override func setupForVideo(video: AerialVideo, player: AVPlayer) {
         // Only run this once, if enabled
-        if !wasSetup && preferences.showMessage && preferences.showMessageString != "" {
+        if !wasSetup && config!.message != "" {
             wasSetup = true
 
-            update(string: preferences.showMessageString!)
+            update(string: config!.message)
+
             let fadeAnimation = self.createFadeInAnimation()
             add(fadeAnimation, forKey: "textfade")
         }

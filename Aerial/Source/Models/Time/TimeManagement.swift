@@ -445,7 +445,7 @@ extension TimeManagement: CLLocationManagerDelegate {
     }*/
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let currentLocation = locations[locations.count - 1]
+        _ = locations[locations.count - 1]
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

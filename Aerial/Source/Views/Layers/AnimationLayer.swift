@@ -3,7 +3,7 @@
 //  Aerial
 //
 //  Created by Guillaume Louel on 11/12/2019.
-//  Copyright © 2019 John Coates. All rights reserved.
+//  Copyright © 2019 Guillaume Louel. All rights reserved.
 //
 
 import Foundation
@@ -15,8 +15,9 @@ class AnimationLayer: CATextLayer {
     var isPreview: Bool
     var baseLayer: CALayer
     var offsets: LayerOffsets
+    var corner: InfoCorner = .bottomLeft
 
-    var currentCorner: Preferences.DescriptionCorner?
+    var currentCorner: InfoCorner?
     var currentHeight: CGFloat?
     var currentPosition: CGPoint?
 
@@ -26,6 +27,7 @@ class AnimationLayer: CATextLayer {
         isPreview = (layer as! AnimationLayer).isPreview
         baseLayer = (layer as! AnimationLayer).baseLayer
         offsets = (layer as! AnimationLayer).offsets
+        corner = (layer as! AnimationLayer).corner
         super.init(layer: layer)
     }
 
@@ -64,18 +66,32 @@ class AnimationLayer: CATextLayer {
         self.string = string
         self.isWrapped = true
 
-        (self.font, self.fontSize) = getFont()
-
         // This is the rect resized to our string
-        frame = calculateRect(string: string, font: self.font as! NSFont)
-        move(corner: .bottomLeft, fullRedraw: false)
+        frame = calculateRect(string: string, font: font as! NSFont)
+        move(toCorner: getCorner(), fullRedraw: false)
+    }
+
+    // Handle the random corner
+    func getCorner() -> InfoCorner {
+        if corner != .random {
+            return corner
+        }
+
+        // Find a new corner, different from the previous one
+        var newCorner = Int.random(in: 0...5)
+
+        while newCorner == lastCorner || !layerManager.isCornerAcceptable(corner: newCorner) {
+            newCorner = Int.random(in: 0...5)
+        }
+
+        return InfoCorner(rawValue: newCorner)!
     }
 
     // Move to a corner, this may need to force the redraw of a whole corner
-    func move(corner: Preferences.DescriptionCorner, fullRedraw: Bool) {
+    func move(toCorner: InfoCorner, fullRedraw: Bool) {
         if let currCorner = currentCorner, !fullRedraw {
             // Are we on the same corner ?
-            if currCorner == corner {
+            if currCorner == toCorner {
                 // And same height ?
                 if currentHeight! == frame.height {
                     // position is reset, so we need to set it again
@@ -83,39 +99,49 @@ class AnimationLayer: CATextLayer {
                     return
                 } else {
                     // It's a whole corner redraw, then
-                    layerManager.redrawCorner(corner: corner)
+                    layerManager.redrawCorner(corner: toCorner)
                     return
                 }
             } else {
                 // So we changed corner... we redraw our previous corner
                 // and redraw the new one too !
                 let prevCorner = currCorner
-                currentCorner = corner
+                currentCorner = toCorner
                 layerManager.redrawCorner(corner: prevCorner)
-                layerManager.redrawCorner(corner: corner)
+                layerManager.redrawCorner(corner: toCorner)
                 return
             }
         }
 
         let mx = getHorizontalMargin()
-        let my = getVerticalMargin(corner: corner)
+        let my = getVerticalMargin(forCorner: toCorner)
 
         var newPos: CGPoint
 
-        switch corner {
+        switch toCorner {
         case .topLeft:
             anchorPoint = CGPoint(x: 0, y: 1)
             newPos = CGPoint(x: mx, y: baseLayer.bounds.height - my)
             alignmentMode = .left
-        case .bottomLeft:
-            anchorPoint = CGPoint(x: 0, y: 0)
-            newPos = CGPoint(x: mx, y: my)
-            alignmentMode = .left
+        case .topCenter:
+            anchorPoint = CGPoint(x: 0.5, y: 1)
+            newPos = CGPoint(x: baseLayer.bounds.width/2,
+                             y: baseLayer.bounds.height-my)
+            alignmentMode = .center
         case .topRight:
             anchorPoint = CGPoint(x: 1, y: 1)
             newPos = CGPoint(x: baseLayer.bounds.width-mx,
                              y: baseLayer.bounds.height-my)
             alignmentMode = .right
+
+        case .bottomLeft:
+            anchorPoint = CGPoint(x: 0, y: 0)
+            newPos = CGPoint(x: mx, y: my)
+            alignmentMode = .left
+        case .bottomCenter:
+            anchorPoint = CGPoint(x: 0.5, y: 0)
+            newPos = CGPoint(x: baseLayer.bounds.width/2, y: my)
+            alignmentMode = .center
         default:    // bottomRight
             anchorPoint = CGPoint(x: 1, y: 0)
             newPos = CGPoint(x: baseLayer.bounds.width-mx, y: my)
@@ -124,20 +150,22 @@ class AnimationLayer: CATextLayer {
 
         moveTo(point: newPos)
 
-        // Make sure we update our offsets for the next layer
-        offsets.corner[corner]! += offsets.corner[corner] == 0
+        let offset = offsets.corner[toCorner] == 0
             ? my + frame.height
             : frame.height
 
+        // Make sure we update our offsets for the next layer
+        offsets.corner[toCorner]! += offset
+
         // We need to save for next time !
-        currentCorner = corner
+        currentCorner = toCorner
         currentHeight = frame.height
         currentPosition = newPos
     }
 
     // MARK: Animations
     // Move in 1 second to a position
-    // Those are masked by the fade in/outs
+    // Those are masked by the transition between fades
     func moveTo(point: CGPoint) {
         CATransaction.begin()
         CATransaction.setValue(1, forKey: kCATransactionAnimationDuration)
@@ -193,14 +221,12 @@ class AnimationLayer: CATextLayer {
     }
 
     // Get the font and font size
-    func getFont() -> (NSFont, CGFloat) {
-        let preferences = Preferences.sharedInstance
-
-        let fontSize = isPreview ? 12 : CGFloat(preferences.fontSize!)
+    func getFont(name: String, size: Double) -> (NSFont, CGFloat) {
+        let fontSize = isPreview ? 12 : CGFloat(size)
 
         // Get font with a fallback in case
         var font = NSFont(name: "Helvetica Neue Medium", size: 28)
-        if let tryFont = NSFont(name: preferences.fontName!, size: fontSize) {
+        if let tryFont = NSFont(name: name, size: fontSize) {
             font = tryFont
         }
 
@@ -226,16 +252,16 @@ class AnimationLayer: CATextLayer {
     }
 
     // Get the horizontal margin to the border of the screen
-    func getVerticalMargin(corner: Preferences.DescriptionCorner) -> CGFloat {
+    func getVerticalMargin(forCorner: InfoCorner) -> CGFloat {
         // If we already have an offset, use that !
-        if offsets.corner[corner] != 0 {
-            return offsets.corner[corner]!
+        if offsets.corner[forCorner] != 0 {
+            return offsets.corner[forCorner]!
         }
 
         // We override for previews
         if isPreview {
-            offsets.corner[corner] = 10
-            return offsets.corner[corner]!
+            offsets.corner[forCorner] = 10
+            return offsets.corner[forCorner]!
         }
 
         let preferences = Preferences.sharedInstance
@@ -246,7 +272,7 @@ class AnimationLayer: CATextLayer {
             my = CGFloat(preferences.marginY!)
         }
 
-        offsets.corner[corner] = my
+        offsets.corner[forCorner] = my
         return my
     }
 }

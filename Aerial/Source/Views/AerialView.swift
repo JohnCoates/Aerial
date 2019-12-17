@@ -17,8 +17,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     var layerManager: LayerManager
 
     var playerLayer: AVPlayerLayer!
-    var textLayer: DescriptionLayer!
-    var clockLayer: DescriptionLayer!
+    var textLayer: LocationLayer!
+    var clockLayer: LocationLayer!
     var messageLayer: CATextLayer!
     var lastCorner = -1
     var clockTimer: Timer?

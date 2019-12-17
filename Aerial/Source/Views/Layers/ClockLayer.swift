@@ -3,13 +3,14 @@
 //  Aerial
 //
 //  Created by Guillaume Louel on 12/12/2019.
-//  Copyright © 2019 John Coates. All rights reserved.
+//  Copyright © 2019 Guillaume Louel. All rights reserved.
 //
 
 import Foundation
 import AVKit
 
 class ClockLayer: AnimationLayer {
+    var config: PrefsInfo.Clock?
     var wasSetup = false
     var clockTimer: Timer?
 
@@ -21,7 +22,7 @@ class ClockLayer: AnimationLayer {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // Our init
+    // Our inits
     override init(withLayer: CALayer, isPreview: Bool, offsets: LayerOffsets, manager: LayerManager) {
         super.init(withLayer: withLayer, isPreview: isPreview, offsets: offsets, manager: manager)
 
@@ -29,12 +30,20 @@ class ClockLayer: AnimationLayer {
         self.opacity = 1
     }
 
+    convenience init(withLayer: CALayer, isPreview: Bool, offsets: LayerOffsets, manager: LayerManager, config: PrefsInfo.Clock) {
+        self.init(withLayer: withLayer, isPreview: isPreview, offsets: offsets, manager: manager)
+        self.config = config
+
+        // Set our layer's font & corner now
+        (self.font, self.fontSize) = getFont(name: config.fontName,
+                                             size: config.fontSize)
+        self.corner = config.corner
+    }
+
     // Called at each new video, we only setup once though !
     override func setupForVideo(video: AerialVideo, player: AVPlayer) {
-        let preferences = Preferences.sharedInstance
-
-        // Only run this once, if enabled
-        if !wasSetup && preferences.showClock {
+        // Only run this once
+        if !wasSetup {
             wasSetup = true
 
             if #available(OSX 10.12, *) {
@@ -50,14 +59,11 @@ class ClockLayer: AnimationLayer {
     }
 
     func getTimeString() -> String {
-        let preferences = Preferences.sharedInstance
-
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: preferences.withSeconds
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: config!.showSeconds
             ? "j:mm:ss"
             : "j:mm", options: 0, locale: Locale.current)
 
         return dateFormatter.string(from: Date())
     }
-
 }
