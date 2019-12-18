@@ -22,9 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     override init() {
         preferencesWindowController = PreferencesWindowController()
-        print("pwc : \(preferencesWindowController)")
         super.init()
-
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {

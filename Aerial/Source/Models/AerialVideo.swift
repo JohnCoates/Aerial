@@ -314,7 +314,7 @@ final class AerialVideo: CustomStringConvertible, Equatable {
                 let asset = AVAsset(url: URL(fileURLWithPath: videoCache1080pH264Path))
                 self.duration = CMTimeGetSeconds(asset.duration)
             } else {
-                debugLog("Could not determine duration, video is not cached in any format")
+                //debugLog("Could not determine duration, video is not cached in any format")
                 self.duration = 0
             }
 

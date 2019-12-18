@@ -14,9 +14,11 @@ import AVKit
 @objc(AerialView)
 // swiftlint:disable:next type_body_length
 final class AerialView: ScreenSaverView, CAAnimationDelegate {
+    var layerManager: LayerManager
+
     var playerLayer: AVPlayerLayer!
-    var textLayer: CATextLayer!
-    var clockLayer: CATextLayer!
+    var textLayer: LocationLayer!
+    var clockLayer: LocationLayer!
     var messageLayer: CATextLayer!
     var lastCorner = -1
     var clockTimer: Timer?
@@ -33,7 +35,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     var hasStartedPlaying = false
     var wasStopped = false
     var isDisabled = false
-    var timeObserver: Any?
 
     var isQuickFading = false
 
@@ -122,21 +123,29 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     override init?(frame: NSRect, isPreview: Bool) {
         // legacyScreenSaver always return true for isPreview on Catalina
         // We need to detect and override ourselves
+        var preview = false
         if frame.width < 400 && frame.height < 300 {
-            super.init(frame: frame, isPreview: true)
-        } else {
-            super.init(frame: frame, isPreview: false)
+            preview = true
         }
 
-        debugLog("avInit .saver \(frame) \(isPreview)")
+        // This is where we manage our location info layers, clock, etc
+        self.layerManager = LayerManager(isPreview: preview)
+
+        super.init(frame: frame, isPreview: preview)
+        debugLog("avInit .saver \(frame) p: \(isPreview) o: \(preview)")
+
         self.animationTimeInterval = 1.0 / 30.0
+
         setup()
     }
 
     // This is the one used by App
     required init?(coder: NSCoder) {
+        self.layerManager = LayerManager(isPreview: false)
+
         super.init(coder: coder)
         debugLog("avInit .app")
+
         setup()
     }
 
@@ -275,9 +284,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         if !isDisabled {
             self.layer!.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
             self.playerLayer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
-            self.textLayer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
-            self.clockLayer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
-            self.messageLayer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
+            // And our additional layers
+            layerManager.setContentScale(scale: (self.window?.backingScaleFactor) ?? 1.0)
         }
     }
 
@@ -343,11 +351,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             if AerialView.sharingPlayers {
                 for view in AerialView.sharedViews {
                     self.addPlayerFades(view: view, player: self.player!, video: self.currentVideo!)
-                    self.addDescriptions(view: view, player: self.player!, video: self.currentVideo!)
+                    view.layerManager.setupLayersForVideo(video: self.currentVideo!, player: self.player!)
                 }
             } else {
                 self.addPlayerFades(view: self, player: self.player!, video: self.currentVideo!)
-                self.addDescriptions(view: self, player: self.player!, video: self.currentVideo!)
+                self.layerManager.setupLayersForVideo(video: self.currentVideo!, player: self.player!)
             }
         }
     }
@@ -356,14 +364,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     func playNextVideo() {
         let notificationCenter = NotificationCenter.default
         // Clear everything
-        if timeObserver != nil {
-            self.player!.removeTimeObserver(timeObserver!)
-            timeObserver = nil
-        }
-        self.textLayer.removeAllAnimations()
+        layerManager.clearLayerAnimations(player: self.player!)
+/*        self.textLayer.removeAllAnimations()
         self.clockLayer.removeAllAnimations()
         self.messageLayer.removeAllAnimations()
-
+*/
         // remove old entries
         notificationCenter.removeObserver(self)
 
@@ -525,21 +530,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             debugLog("stop")
             playerLayer.removeAllAnimations()   // Make sure we get rid of our anim
         }
-    }
-
-    // Create a Fade In/Out animation
-    func createFadeInOutAnimation(duration: Double) -> CAKeyframeAnimation {
-        let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
-        fadeAnimation.values = [0, 0, 1, 1, 0] as [NSNumber]
-        fadeAnimation.keyTimes = [
-            0,
-            Double(1 / duration ),
-            Double((1 + AerialView.textFadeDuration) / duration),
-            Double(1 - AerialView.textFadeDuration / duration),
-            1,
-        ] as [NSNumber]
-        fadeAnimation.duration = duration
-        return fadeAnimation
     }
 
     // Create a move animation

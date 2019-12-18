@@ -198,8 +198,6 @@ extension PreferencesWindowController {
     }
 
     func updateDownloads(done: Int, total: Int, progress: Double) {
-        print("VMQueue: done : \(done) \(total) \(progress)")
-
         if total == 0 {
             downloadProgressIndicator.isHidden = true
             downloadStopButton.isHidden = true

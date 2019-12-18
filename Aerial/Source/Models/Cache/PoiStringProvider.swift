@@ -108,22 +108,19 @@ final class PoiStringProvider {
         return found
     }
 
-    //
+    // 
     func getPoiKeys(video: AerialVideo) -> [String: String] {
-        /*let preferences = Preferences.sharedInstance
-        let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
-        if #available(OSX 10.12, *) {
-            debugLog("locale.languageCode \(locale.languageCode)")
-            if preferences.localizeDescriptions && locale.languageCode != communityLanguage && preferences.ciOverrideLanguage == "" {
-                return video.poi
-            }
-        }*/
-
         if !video.communityPoi.isEmpty {
             return video.communityPoi
         } else {
             return video.poi
         }
+    }
+
+    // Do we have any keys, anywhere, for said video ?
+    func hasPoiKeys(video: AerialVideo) -> Bool {
+        return (!video.poi.isEmpty && loadedDescriptions) ||
+        (!video.communityPoi.isEmpty && !getPoiKeys(video: video).isEmpty)
     }
 
     // MARK: - Community data

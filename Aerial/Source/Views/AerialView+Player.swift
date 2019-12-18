@@ -3,7 +3,7 @@
 //  Aerial
 //
 //  Created by Guillaume Louel on 06/12/2019.
-//  Copyright © 2019 John Coates. All rights reserved.
+//  Copyright © 2019 Guillaume Louel. All rights reserved.
 //
 
 import Foundation
@@ -63,7 +63,7 @@ extension AerialView {
         layer.addSublayer(playerLayer)
 
         // The layers for descriptions, clock, message
-        setupTextLayers(layer: layer)
+        layerManager.setupExtraLayers(layer: layer, frame: self.frame)
 
         // An extra layer to try and contravent a macOS graphics driver bug
         // This is useful on High Sierra+ on Intel Macs
@@ -106,5 +106,28 @@ extension AerialView {
         } else {
             view.playerLayer.opacity = 1.0
         }
+    }
+
+    // This works pre Catalina as of right now
+    func setupGlitchWorkaroundLayer(layer: CALayer) {
+        debugLog("Using dot workaround for video driver corruption")
+
+        let workaroundLayer = CATextLayer()
+        workaroundLayer.frame = self.bounds
+        workaroundLayer.opacity = 1.0
+        workaroundLayer.font = NSFont(name: "Helvetica Neue Medium", size: 4)
+        workaroundLayer.fontSize = 4
+        workaroundLayer.string = "."
+
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: workaroundLayer.font as Any]
+
+        // Calculate bounding box
+        let attrString = NSAttributedString(string: workaroundLayer.string as! String, attributes: attributes)
+        let rect = attrString.boundingRect(with: layer.visibleRect.size, options: NSString.DrawingOptions.usesLineFragmentOrigin)
+
+        workaroundLayer.frame = rect
+        workaroundLayer.position = CGPoint(x: 2, y: 2)
+        workaroundLayer.anchorPoint = CGPoint(x: 0, y: 0)
+        layer.addSublayer(workaroundLayer)
     }
 }

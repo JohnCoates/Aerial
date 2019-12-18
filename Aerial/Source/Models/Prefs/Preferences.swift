@@ -248,6 +248,19 @@ final class Preferences {
         userDefaults.register(defaults: defaults)
     }
 
+    // MARK: - Info configs
+
+    /*
+    var locationConfig: LocationConfig? {
+        get {
+            userDefaults.get(object: LocationConfig.self, forKey: "LocationConfig") { locationConfig in return locationConfig }
+            return nil
+        }
+        set {
+            userDefaults.set(object: newValue, forKey: "LocationConfig")
+        }
+    }*/
+
     // MARK: - Variables
     var advancedMargins: String? {
         get {

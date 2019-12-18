@@ -282,7 +282,6 @@ final class TimeManagement: NSObject {
             if line.contains("sunrise") {
                 let tmp = line.split(separator: "\"")
                 if tmp.count > 1 {
-                    print(String(tmp[1]))
                     let dateFormatter = DateFormatter()
                     // Catalina fix, this seems to be the correct way to parse the date
                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
@@ -429,7 +428,6 @@ final class TimeManagement: NSObject {
         }*/
 
         if #available(OSX 10.14, *) {
-            print("reqloc")
             locationManager.requestLocation()
         } else {
             // Fallback on earlier versions
@@ -447,8 +445,7 @@ extension TimeManagement: CLLocationManagerDelegate {
     }*/
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let currentLocation = locations[locations.count - 1]
-        print("\(currentLocation)")
+        _ = locations[locations.count - 1]
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
