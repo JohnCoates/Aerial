@@ -63,8 +63,7 @@ extension AerialView {
         layer.addSublayer(playerLayer)
 
         // The layers for descriptions, clock, message
-        layerManager.setupExtraLayers(layer: layer)
-        //setupTextLayers(layer: layer)
+        layerManager.setupExtraLayers(layer: layer, frame: self.frame)
 
         // An extra layer to try and contravent a macOS graphics driver bug
         // This is useful on High Sierra+ on Intel Macs
@@ -115,7 +114,7 @@ extension AerialView {
 
         let workaroundLayer = CATextLayer()
         workaroundLayer.frame = self.bounds
-        workaroundLayer.opacity = 0.5
+        workaroundLayer.opacity = 1.0
         workaroundLayer.font = NSFont(name: "Helvetica Neue Medium", size: 4)
         workaroundLayer.fontSize = 4
         workaroundLayer.string = "."

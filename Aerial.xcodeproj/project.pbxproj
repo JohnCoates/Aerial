@@ -99,6 +99,10 @@
 		0395835621807D1F008E8F9C /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 0395835221807D1F008E8F9C /* thumbnail.png */; };
 		03A2CB9C216BA9AF0061E8E8 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A2CB9B216BA9AF0061E8E8 /* VideoManager.swift */; };
 		03A2CB9D216BB1490061E8E8 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A2CB9B216BA9AF0061E8E8 /* VideoManager.swift */; };
+		03A596D323AA750F0097EA66 /* InfoMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A596D223AA750F0097EA66 /* InfoMessageView.swift */; };
+		03A596D523AA752F0097EA66 /* InfoClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A596D423AA752F0097EA66 /* InfoClockView.swift */; };
+		03A596D623AA752F0097EA66 /* InfoClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A596D423AA752F0097EA66 /* InfoClockView.swift */; };
+		03A596D723AA75490097EA66 /* InfoMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A596D223AA750F0097EA66 /* InfoMessageView.swift */; };
 		03AD45FF22981B0C00261325 /* CustomVideoFolders+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AD45FE22981B0C00261325 /* CustomVideoFolders+helpers.swift */; };
 		03AD460022981B1C00261325 /* CustomVideoFolders+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AD45FE22981B0C00261325 /* CustomVideoFolders+helpers.swift */; };
 		03BF51BA23A24B40008AD373 /* AnimationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306336D23A15FA900046A59 /* AnimationLayer.swift */; };
@@ -234,6 +238,8 @@
 		0395835121807D1F008E8F9C /* thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail@2x.png"; sourceTree = "<group>"; };
 		0395835221807D1F008E8F9C /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail.png; sourceTree = "<group>"; };
 		03A2CB9B216BA9AF0061E8E8 /* VideoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
+		03A596D223AA750F0097EA66 /* InfoMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMessageView.swift; sourceTree = "<group>"; };
+		03A596D423AA752F0097EA66 /* InfoClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoClockView.swift; sourceTree = "<group>"; };
 		03AD45FE22981B0C00261325 /* CustomVideoFolders+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomVideoFolders+helpers.swift"; sourceTree = "<group>"; };
 		03BF51BB23A2643C008AD373 /* LayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerManager.swift; sourceTree = "<group>"; };
 		03BF51BE23A274CA008AD373 /* MessageLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageLayer.swift; sourceTree = "<group>"; };
@@ -367,6 +373,8 @@
 				034F29B623A7A93D004B34D5 /* InfoTableSource.swift */,
 				038C584623A9304800224630 /* InfoContainerView.swift */,
 				038C584923A9394000224630 /* InfoCommonView.swift */,
+				03A596D223AA750F0097EA66 /* InfoMessageView.swift */,
+				03A596D423AA752F0097EA66 /* InfoClockView.swift */,
 			);
 			path = PrefPanel;
 			sourceTree = "<group>";
@@ -965,6 +973,7 @@
 				03608A2722A55C03008F08A2 /* PWC+Advanced.swift in Sources */,
 				03E87314216760B7002B469B /* TimeManagement.swift in Sources */,
 				038C584B23A9394000224630 /* InfoCommonView.swift in Sources */,
+				03A596D723AA75490097EA66 /* InfoMessageView.swift in Sources */,
 				03D1E78B22844AFD00D10CF7 /* DisplayDetection.swift in Sources */,
 				03E8731021662AEB002B469B /* DownloadManager.swift in Sources */,
 				03E8731121662AEB002B469B /* AsynchronousOperation.swift in Sources */,
@@ -1004,6 +1013,7 @@
 				03608A1222A5499C008F08A2 /* PWC+Videos.swift in Sources */,
 				038C584823A9308C00224630 /* InfoContainerView.swift in Sources */,
 				03BF51BA23A24B40008AD373 /* AnimationLayer.swift in Sources */,
+				03A596D623AA752F0097EA66 /* InfoClockView.swift in Sources */,
 				FAF450251BE2D2FD00C1F98A /* VideoCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1052,6 +1062,7 @@
 				AA7E2E5E1FC62E8B00E5F320 /* AerialPlayerItem.swift in Sources */,
 				03608A2C22A56465008F08A2 /* HardwareDetection.swift in Sources */,
 				03608A1022A54887008F08A2 /* PWC+Videos.swift in Sources */,
+				03A596D323AA750F0097EA66 /* InfoMessageView.swift in Sources */,
 				03608A2022A55BC2008F08A2 /* PWC+Cache.swift in Sources */,
 				03A2CB9C216BA9AF0061E8E8 /* VideoManager.swift in Sources */,
 				03608A1D22A55BA7008F08A2 /* PWC+Brightness.swift in Sources */,
@@ -1070,6 +1081,7 @@
 				FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */,
 				03E8730C2165013C002B469B /* DownloadManager.swift in Sources */,
 				03608A2622A55C03008F08A2 /* PWC+Advanced.swift in Sources */,
+				03A596D523AA752F0097EA66 /* InfoClockView.swift in Sources */,
 				0313F9E822942B4500B074BB /* CustomVideoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1299,7 +1311,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.6.5beta1;
+				CURRENT_PROJECT_VERSION = 1.6.5beta2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1307,7 +1319,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MARKETING_VERSION = 1.6.5beta1;
+				MARKETING_VERSION = 1.6.5beta2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1328,7 +1340,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.6.5beta1;
+				CURRENT_PROJECT_VERSION = 1.6.5beta2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1336,7 +1348,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MARKETING_VERSION = 1.6.5beta1;
+				MARKETING_VERSION = 1.6.5beta2;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

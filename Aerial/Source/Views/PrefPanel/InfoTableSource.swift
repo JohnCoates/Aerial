@@ -12,10 +12,6 @@ class InfoTableSource: NSTableView, NSTableViewDataSource, NSTableViewDelegate {
     private var dragDropType = NSPasteboard.PasteboardType(rawValue: "private.table-row")
     var controller: PreferencesWindowController?
 
-    fileprivate enum CellIdentifiers {
-        static let InfoSourceCellID = "InfoSourceCellID"
-    }
-
     func setController(_ controller: PreferencesWindowController) {
         self.controller = controller
     }
@@ -34,11 +30,36 @@ class InfoTableSource: NSTableView, NSTableViewDataSource, NSTableViewDelegate {
 
     // This is where we fill each cell
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let cid = NSUserInterfaceItemIdentifier(rawValue: "InfoSourceCellID")
+        if tableColumn == tableView.tableColumns[0] {
+            let cid = NSUserInterfaceItemIdentifier(rawValue: "InfoSourceCellID")
 
-        if let cell = tableView.makeView(withIdentifier: cid, owner: self) as? NSTableCellView {
-            cell.textField?.stringValue = PrefsInfo.layers[row].rawValue
-            return cell
+            if let cell = tableView.makeView(withIdentifier: cid, owner: self) as? NSTableCellView {
+                cell.textField?.stringValue = PrefsInfo.layers[row].rawValue.capitalizeFirstLetter()
+
+                var isEnabled: Bool
+
+                switch PrefsInfo.layers[row] {
+                case .location:
+                    isEnabled = PrefsInfo.location.isEnabled
+                case .message:
+                    isEnabled = PrefsInfo.message.isEnabled
+                case .clock:
+                    isEnabled = PrefsInfo.clock.isEnabled
+                }
+
+                cell.imageView?.image = NSImage(named: isEnabled
+                    ? NSImage.statusAvailableName
+                    : NSImage.statusUnavailableName)
+
+                return cell
+            }
+        } else {
+            let cid = NSUserInterfaceItemIdentifier(rawValue: "InfoSourceGripID")
+
+            if let cell = tableView.makeView(withIdentifier: cid, owner: self) as? NSTableCellView {
+                cell.imageView?.image = NSImage(named: NSImage.listViewTemplateName)
+                return cell
+            }
         }
 
         return nil
@@ -57,7 +78,6 @@ class InfoTableSource: NSTableView, NSTableViewDataSource, NSTableViewDelegate {
 
     // MARK: - Drag 'n Drop
     func tableView(_ tableView: NSTableView, pasteboardWriterForRow row: Int) -> NSPasteboardWriting? {
-
         let item = NSPasteboardItem()
         item.setString(String(row), forType: self.dragDropType)
         return item
@@ -113,5 +133,19 @@ extension Array {
         if oldIndex == newIndex { return }
         if abs(newIndex - oldIndex) == 1 { return self.swapAt(oldIndex, newIndex) }
         self.insert(self.remove(at: oldIndex), at: newIndex)
+    }
+}
+
+extension String {
+     func capitalizeFirstLetter() -> String {
+          return self.prefix(1).capitalized + dropFirst()
+     }
+}
+
+extension NSTableView {
+    func reloadDataKeepingSelection() {
+        let selectedRowIndexes = self.selectedRowIndexes
+        self.reloadData()
+        self.selectRowIndexes(selectedRowIndexes, byExtendingSelection: true)
     }
 }

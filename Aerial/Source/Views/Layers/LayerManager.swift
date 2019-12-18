@@ -13,37 +13,64 @@ class LayerManager {
     var additionalLayers = [AnimationLayer]()
     let offsets = LayerOffsets()
     var isPreview: Bool
+    var frame: CGRect?
 
     init(isPreview: Bool) {
         self.isPreview = isPreview
     }
 
     // Initial setup of all layers, at Aerial startup
-    func setupExtraLayers(layer: CALayer) {
+    func setupExtraLayers(layer: CALayer, frame: CGRect) {
+        self.frame = frame
 
         // The list of known layers is in an ordered array
         for layerType in PrefsInfo.layers {
             switch layerType {
             case .location:
-                if PrefsInfo.location.isEnabled {
+                debugLog("loc : \(shouldEnableScreen(PrefsInfo.clock.displays))")
+                if PrefsInfo.location.isEnabled && shouldEnableScreen(PrefsInfo.location.displays) {
                     let newLayer = LocationLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.location)
                     additionalLayers.append(newLayer)
                     layer.addSublayer(newLayer)
                 }
             case .message:
-                if PrefsInfo.message.isEnabled {
+                debugLog("msg : \(shouldEnableScreen(PrefsInfo.clock.displays))")
+                if PrefsInfo.message.isEnabled && shouldEnableScreen(PrefsInfo.message.displays) {
                     let newLayer = MessageLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.message)
                     additionalLayers.append(newLayer)
                     layer.addSublayer(newLayer)
                 }
             case .clock:
-                if PrefsInfo.clock.isEnabled {
+                debugLog("clock : \(shouldEnableScreen(PrefsInfo.clock.displays))")
+                if PrefsInfo.clock.isEnabled && shouldEnableScreen(PrefsInfo.clock.displays) {
                     let newLayer = ClockLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.clock)
                     additionalLayers.append(newLayer)
                     layer.addSublayer(newLayer)
                 }
             }
         }
+    }
+
+    func shouldEnableScreen(_ displayMode: InfoDisplays) -> Bool {
+        let displayDetection = DisplayDetection.sharedInstance
+        let thisScreen = displayDetection.findScreenWith(frame: frame!)
+
+        if let screen = thisScreen, !isPreview {
+            switch displayMode {
+            case .allDisplays:
+                debugLog("allDisplays")
+                return true
+            case .mainOnly:
+                debugLog("mainOnly")
+                return screen.isMain
+            case .secondaryOnly:
+                debugLog("secOnly")
+                return !screen.isMain
+            }
+        }
+
+        // If it's an unknown screen, we leave it enabled
+        return true
     }
 
     // Called before starting a new video
@@ -56,6 +83,7 @@ class LayerManager {
 
     // Called at each new video
     func setupLayersForVideo(video: AerialVideo, player: AVPlayer) {
+        debugLog("setup for video \(video)")
         for layer in additionalLayers {
             layer.setupForVideo(video: video, player: player)
         }

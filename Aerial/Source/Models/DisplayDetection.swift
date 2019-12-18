@@ -328,6 +328,19 @@ final class DisplayDetection: NSObject {
     }
 
     // MARK: - Public utility fuctions
+    /*
+    func isScreenPrimary(id: CGDirectDisplayID) -> Bool {
+        let screen = findScreenWith(id: id)
+
+        if let scr = screen {
+            if scr.isMain {
+                return true
+            }
+        }
+
+        return false
+    }*/
+
     func isScreenActive(id: CGDirectDisplayID) -> Bool {
         let preferences = Preferences.sharedInstance
         let screen = findScreenWith(id: id)

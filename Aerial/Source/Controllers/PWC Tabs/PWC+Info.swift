@@ -17,35 +17,34 @@ extension PreferencesWindowController {
         infoTableView.dataSource = infoSource
         infoTableView.delegate = infoSource
         infoTableView.registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: "private.table-row")])
-
     }
 
-    // We dynamically change the content here based on what's selected
+    // We dynamically change the content here, based on what's selected
     func drawInfoPanel(forType: InfoType) {
         print("should redraw : \(forType.rawValue)")
         resetInfoPanel()
 
-        // Add the top description label
-        switch forType {
-        case .location:
-            infoContainerView.addSubview(infoLocationView)
-        case .message:
-            infoContainerView.addSubview(infoMessageView)
-        case .clock:
-            infoContainerView.addSubview(infoClockView)
-        }
-
         // Add the common block of features (enabled, font, position, screen)
         infoContainerView.addSubview(infoCommonView)
-        infoCommonView.frame.origin.y = 30
-        infoCommonView.setType(forType)
+        infoCommonView.setType(forType, controller: self)
 
-        // 
+        // Then the per-type blocks if any
+        switch forType {
+        case .message:
+            infoContainerView.addSubview(infoMessageView)
+            infoMessageView.frame.origin.y = infoCommonView.frame.height
+            infoMessageView.setStates()
+        case .clock:
+            infoContainerView.addSubview(infoClockView)
+            infoClockView.frame.origin.y = infoCommonView.frame.height
+            infoClockView.setStates()
+        default:
+            ()
+        }
     }
 
+    // Clear the panel
     func resetInfoPanel() {
-        print("should reset")
         infoContainerView.subviews.forEach({ $0.removeFromSuperview() })
-        //infoContainerView
     }
 }

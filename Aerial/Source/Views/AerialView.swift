@@ -351,15 +351,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             if AerialView.sharingPlayers {
                 for view in AerialView.sharedViews {
                     self.addPlayerFades(view: view, player: self.player!, video: self.currentVideo!)
-                    layerManager.setupLayersForVideo(video: self.currentVideo!, player: self.player!)
-
-                    // self.addDescriptions(view: view, player: self.player!, video: self.currentVideo!)
+                    view.layerManager.setupLayersForVideo(video: self.currentVideo!, player: self.player!)
                 }
             } else {
                 self.addPlayerFades(view: self, player: self.player!, video: self.currentVideo!)
-                layerManager.setupLayersForVideo(video: self.currentVideo!, player: self.player!)
-
-                // self.addDescriptions(view: self, player: self.player!, video: self.currentVideo!)
+                self.layerManager.setupLayersForVideo(video: self.currentVideo!, player: self.player!)
             }
         }
     }

@@ -23,7 +23,7 @@ extension PreferencesWindowController {
         extraMessageFontLabel.stringValue = preferences.extraFontName! + ", \(preferences.extraFontSize!) pt"
 
         // Extra message
-        extraMessageTextField.stringValue = preferences.showMessageString!
+        // extraMessageTextField.stringValue = preferences.showMessageString!
         secondaryExtraMessageTextField.stringValue = preferences.showMessageString!
 
         // Grab preferred language as proper string
@@ -48,8 +48,8 @@ extension PreferencesWindowController {
         }
         if preferences.showMessage {
             showExtraMessage.state = .on
-            editExtraMessageButton.isEnabled = true
-            extraMessageTextField.isEnabled = true
+            //editExtraMessageButton.isEnabled = true
+            //extraMessageTextField.isEnabled = true
         }
         if preferences.showDescriptions {
             showDescriptionsCheckbox.state = .on
@@ -187,8 +187,8 @@ extension PreferencesWindowController {
         }
         showExtraMessage.isEnabled = to
         if (to && showExtraMessage.state == .on) || !to {
-            extraMessageTextField.isEnabled = to
-            editExtraMessageButton.isEnabled = to
+            //extraMessageTextField.isEnabled = to
+            //editExtraMessageButton.isEnabled = to
         }
         extraFontPickerButton.isEnabled = to
         extraFontResetButton.isEnabled = to

@@ -63,7 +63,7 @@ struct PrefsInfo {
     // Custom string message
     @Storage(key: "LayerMessage", defaultValue: Message(isEnabled: true,
                                                          fontName: "Helvetica Neue Medium",
-                                                         fontSize: 40,
+                                                         fontSize: 20,
                                                          corner: .topCenter,
                                                          displays: .allDisplays,
                                                          message: "Hello there !"))

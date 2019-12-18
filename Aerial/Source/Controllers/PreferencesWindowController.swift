@@ -85,10 +85,11 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var infoTableView: NSTableView!
     @IBOutlet var infoContainerView: InfoContainerView!
 
-    @IBOutlet var infoLocationView: NSView!
-    @IBOutlet var infoMessageView: NSView!
-    @IBOutlet var infoClockView: NSView!
     @IBOutlet var infoCommonView: InfoCommonView!
+
+    @IBOutlet var infoClockView: InfoClockView!
+    @IBOutlet var infoMessageView: InfoMessageView!
+
     // Text tab
     @IBOutlet var showDescriptionsCheckbox: NSButton!
     @IBOutlet var descriptionModePopup: NSPopUpButton!
@@ -352,7 +353,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         // that replicate the features and are editable. They are hidden unless needed.
         if #available(OSX 10.14, *) {
             editMarginButton.isHidden = true
-            editExtraMessageButton.isHidden = true
+            //editExtraMessageButton.isHidden = true
             enterCoordinatesButton.isHidden = true
         } else {
             marginHorizontalTextfield.isEnabled = false
