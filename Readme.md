@@ -52,7 +52,7 @@ Need more information on install, setup, or uninstall ? Or want to install via h
 
 ![Capture d’écran 2019-09-26 à 15 24 08](https://user-images.githubusercontent.com/37544189/65692342-a889af80-e072-11e9-81ad-de70c7b2f0a1.jpg)
 
-- Support for macOS 10.15 Catalina. macOS Catalina includes new restrictions on third party screen savers, which impact some of the functionnalities. We highly suggest that current and would be Catalina users check this issue for more information on those restrictions : https://github.com/JohnCoates/Aerial/issues/801
+- Support for macOS 10.15 Catalina. macOS Catalina includes new restrictions on third party screen savers, which impact some of the functionalities. We highly suggest that current and would be Catalina users check this issue for more information on those restrictions : https://github.com/JohnCoates/Aerial/issues/801
 
 ![Capture d’écran 2019-09-26 à 15 23 45](https://user-images.githubusercontent.com/37544189/65692340-a889af80-e072-11e9-8109-cdcd8f55fe86.jpg)
 
