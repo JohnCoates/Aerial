@@ -148,6 +148,12 @@
 		42813D561DB8096CC34CB535 /* Pods_Aerial_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7FC91C9058F0A22FBCC762 /* Pods_Aerial_Tests.framework */; };
 		70CA722D8D5D59C803F3B81B /* Pods_Aerial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C010F2542FCE112D8A6E5CA /* Pods_Aerial.framework */; };
 		AA7E2E5E1FC62E8B00E5F320 /* AerialPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */; };
+		F00864B423AAE7F0003210EF /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00864B323AAE7F0003210EF /* DarkMode.swift */; };
+		F00864B523AAE7F0003210EF /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00864B323AAE7F0003210EF /* DarkMode.swift */; };
+		F00864B723AAE8E9003210EF /* NightShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00864B623AAE8E9003210EF /* NightShift.swift */; };
+		F00864B823AAE8E9003210EF /* NightShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00864B623AAE8E9003210EF /* NightShift.swift */; };
+		F008DAFD23AADCFB00739DE1 /* Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = F008DAFC23AADCFB00739DE1 /* Brightness.swift */; };
+		F008DAFE23AADCFB00739DE1 /* Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = F008DAFC23AADCFB00739DE1 /* Brightness.swift */; };
 		FA143CE61BDA3EEF0041A82B /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA143CE51BDA3EEF0041A82B /* AVKit.framework */; };
 		FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */; };
 		FA36BD401BE57F8E00D5E03B /* VideoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */; };
@@ -274,6 +280,9 @@
 		AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialPlayerItem.swift; sourceTree = "<group>"; };
 		C2789CB51C64430F9CDEABF1 /* Pods-Aerial Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aerial Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aerial Tests/Pods-Aerial Tests.release.xcconfig"; sourceTree = "<group>"; };
 		E783122BE370B662D207D98F /* Pods-AerialApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AerialApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-AerialApp/Pods-AerialApp.release.xcconfig"; sourceTree = "<group>"; };
+		F00864B323AAE7F0003210EF /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
+		F00864B623AAE8E9003210EF /* NightShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightShift.swift; sourceTree = "<group>"; };
+		F008DAFC23AADCFB00739DE1 /* Brightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brightness.swift; sourceTree = "<group>"; };
 		FA0922E026F9FAC43AF7A569 /* Pods_AerialApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AerialApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA143CD61BDA3E880041A82B /* AerialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA143CE51BDA3EEF0041A82B /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
@@ -450,6 +459,19 @@
 			path = Downloads;
 			sourceTree = "<group>";
 		};
+		F008DAFB23AADC8E00739DE1 /* Hardware */ = {
+			isa = PBXGroup;
+			children = (
+				03D1E7892284471A00D10CF7 /* DisplayDetection.swift */,
+				03608A2B22A56465008F08A2 /* HardwareDetection.swift */,
+				032D1160239A7D82007E7756 /* BatteryManagement.swift */,
+				F008DAFC23AADCFB00739DE1 /* Brightness.swift */,
+				F00864B323AAE7F0003210EF /* DarkMode.swift */,
+				F00864B623AAE8E9003210EF /* NightShift.swift */,
+			);
+			path = Hardware;
+			sourceTree = "<group>";
+		};
 		F1B1238D786BBB1C50CB8803 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,6 +569,7 @@
 		FAC36F3F1BE1756D007F2A20 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F008DAFB23AADC8E00739DE1 /* Hardware */,
 				034F29BA23A7D516004B34D5 /* Prefs */,
 				03958347217F43FF008E8F9C /* Time */,
 				03E8730D216501B3002B469B /* Downloads */,
@@ -555,13 +578,10 @@
 				FAC36F401BE1756D007F2A20 /* AerialVideo.swift */,
 				FAC36F661BE1778C007F2A20 /* ManifestLoader.swift */,
 				03893CB2217749F0008E7125 /* ErrorLog.swift */,
-				03D1E7892284471A00D10CF7 /* DisplayDetection.swift */,
-				03608A2B22A56465008F08A2 /* HardwareDetection.swift */,
 				0313F9EB2294468600B074BB /* SeededGenerator.swift */,
 				0313F9EE22955F3B00B074BB /* CustomVideoFolders.swift */,
 				03AD45FE22981B0C00261325 /* CustomVideoFolders+helpers.swift */,
 				03CB892E239A758B005D1F64 /* AutoUpdates.swift */,
-				032D1160239A7D82007E7756 /* BatteryManagement.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -961,6 +981,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F00864B523AAE7F0003210EF /* DarkMode.swift in Sources */,
 				032D1162239A7E03007E7756 /* BatteryManagement.swift in Sources */,
 				03893CB4217753AC008E7125 /* ErrorLog.swift in Sources */,
 				03608A1822A55B47008F08A2 /* PWC+Text.swift in Sources */,
@@ -978,6 +999,7 @@
 				03E8731021662AEB002B469B /* DownloadManager.swift in Sources */,
 				03E8731121662AEB002B469B /* AsynchronousOperation.swift in Sources */,
 				03510C7121834FC7008F74F2 /* IOBridge.m in Sources */,
+				F00864B823AAE8E9003210EF /* NightShift.swift in Sources */,
 				03608A2422A55BF1008F08A2 /* PWC+Updates.swift in Sources */,
 				03D1E7882284367200D10CF7 /* DisplayView.swift in Sources */,
 				03608A2122A55BC2008F08A2 /* PWC+Cache.swift in Sources */,
@@ -1013,6 +1035,7 @@
 				03608A1222A5499C008F08A2 /* PWC+Videos.swift in Sources */,
 				038C584823A9308C00224630 /* InfoContainerView.swift in Sources */,
 				03BF51BA23A24B40008AD373 /* AnimationLayer.swift in Sources */,
+				F008DAFE23AADCFB00739DE1 /* Brightness.swift in Sources */,
 				03A596D623AA752F0097EA66 /* InfoClockView.swift in Sources */,
 				FAF450251BE2D2FD00C1F98A /* VideoCache.swift in Sources */,
 			);
@@ -1033,6 +1056,7 @@
 				03CB892F239A758B005D1F64 /* AutoUpdates.swift in Sources */,
 				03D1E78A2284471A00D10CF7 /* DisplayDetection.swift in Sources */,
 				0306336B23A142FA00046A59 /* LayerOffsets.swift in Sources */,
+				F00864B723AAE8E9003210EF /* NightShift.swift in Sources */,
 				03608A1A22A55B9A008F08A2 /* PWC+Time.swift in Sources */,
 				FAC36F5D1BE1756D007F2A20 /* CheckCellView.swift in Sources */,
 				FAC36F5B1BE1756D007F2A20 /* AerialView.swift in Sources */,
@@ -1041,6 +1065,7 @@
 				03BF51BC23A2643C008AD373 /* LayerManager.swift in Sources */,
 				034F29B423A7A79B004B34D5 /* PWC+Info.swift in Sources */,
 				03510C6F21834F38008F74F2 /* IOBridge.m in Sources */,
+				F00864B423AAE7F0003210EF /* DarkMode.swift in Sources */,
 				0313F9EF22955F3B00B074BB /* CustomVideoFolders.swift in Sources */,
 				03608A1422A559F6008F08A2 /* PWC+Displays.swift in Sources */,
 				03BF51BF23A274CA008AD373 /* MessageLayer.swift in Sources */,
@@ -1077,6 +1102,7 @@
 				03608A2922A56094008F08A2 /* PWC+LogPanel.swift in Sources */,
 				034F29B723A7A93D004B34D5 /* InfoTableSource.swift in Sources */,
 				03958349217F4416008E8F9C /* Solar.swift in Sources */,
+				F008DAFD23AADCFB00739DE1 /* Brightness.swift in Sources */,
 				03233B68217272640077D3F9 /* PoiStringProvider.swift in Sources */,
 				FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */,
 				03E8730C2165013C002B469B /* DownloadManager.swift in Sources */,

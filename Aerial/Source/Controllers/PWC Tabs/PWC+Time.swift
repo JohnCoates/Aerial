@@ -36,14 +36,14 @@ extension PreferencesWindowController {
         }
 
         // Light/Dark mode only available on Mojave+
-        let (isLDMCapable, reason: LDMReason) = timeManagement.isLightDarkModeAvailable()
+        let (isLDMCapable, reason: LDMReason) = DarkMode.isAvailable()
         if !isLDMCapable {
             timeLightDarkModeRadio.isEnabled = false
         }
         lightDarkModeLabel.stringValue = LDMReason
 
         // Night Shift requires 10.12.4+ and a compatible Mac
-        let (isNSCapable, reason: NSReason) = timeManagement.isNightShiftAvailable()
+        let (isNSCapable, reason: NSReason) = NightShift.isAvailable()
         if !isNSCapable {
             timeNightShiftRadio.isEnabled = false
         }
