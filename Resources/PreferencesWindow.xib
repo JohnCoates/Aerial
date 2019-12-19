@@ -82,6 +82,7 @@
                 <outlet property="infoClockView" destination="Yds-eJ-nUH" id="7Ae-Hn-y6J"/>
                 <outlet property="infoCommonView" destination="ls3-ia-gMN" id="S09-dO-Ufy"/>
                 <outlet property="infoContainerView" destination="5C2-9s-W8E" id="Gi8-fM-FD2"/>
+                <outlet property="infoLocationView" destination="chh-UT-kvb" id="eE3-lO-GGR"/>
                 <outlet property="infoMessageView" destination="ACD-cz-kul" id="yJZ-Vb-ESJ"/>
                 <outlet property="infoTableView" destination="ipD-s9-BUc" id="crX-VX-JYF"/>
                 <outlet property="lastCheckedSparkle" destination="eIe-xw-mO4" id="sLF-im-fXK"/>
@@ -179,7 +180,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Videos" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" id="zsM-Ha-kCO">
+                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -821,7 +822,7 @@ is disabled
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="CFu-ab-5NJ">
                                                         <rect key="frame" x="1" y="1" width="178" height="372"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" viewBased="YES" id="ipD-s9-BUc">
                                                                 <rect key="frame" x="0.0" y="0.0" width="178" height="372"/>
@@ -930,7 +931,7 @@ is disabled
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Text" identifier="" id="bPY-uP-DGa">
-                                        <view key="view" hidden="YES" ambiguous="YES" id="M1m-ud-C95">
+                                        <view key="view" id="M1m-ud-C95">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1113,23 +1114,6 @@ should appear</string>
                                                     </popUpButtonCell>
                                                     <connections>
                                                         <action selector="fadeInOutTextModePopupChange:" target="-2" id="oYq-Zs-e8C"/>
-                                                    </connections>
-                                                </popUpButton>
-                                                <popUpButton toolTip="How long should each text appear" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qmX-6m-Whj">
-                                                    <rect key="frame" x="89" y="316" width="107" height="25"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <popUpButtonCell key="cell" type="push" title="10 Seconds" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wjq-nI-072" id="S3w-hi-xoE">
-                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                        <menu key="menu" id="rE1-IA-Gwp">
-                                                            <items>
-                                                                <menuItem title="10 Seconds" state="on" id="wjq-nI-072" userLabel="10 Seconds"/>
-                                                                <menuItem title="Always" id="aCg-qD-wSL"/>
-                                                            </items>
-                                                        </menu>
-                                                    </popUpButtonCell>
-                                                    <connections>
-                                                        <action selector="descriptionModePopupChange:" target="-2" id="Eas-vP-eBK"/>
                                                     </connections>
                                                 </popUpButton>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UWx-zh-UlZ">
@@ -2841,7 +2825,7 @@ You can enable it when on battery, or only when your battery reaches 20%.</strin
             <connections>
                 <outlet property="secondsCheckbox" destination="h3J-Gc-SIR" id="9uw-TM-S9f"/>
             </connections>
-            <point key="canvasLocation" x="-174" y="722"/>
+            <point key="canvasLocation" x="-174" y="821"/>
         </customView>
         <window title="Add a new video set" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="chX-6d-c0t" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
@@ -3401,7 +3385,43 @@ Please note that all 4K videos are encoded in 10 bit per color component, whethe
                 <outlet property="messageExtraButton" destination="k2i-SA-fme" id="MdS-e6-TQB"/>
                 <outlet property="messageTextField" destination="dch-FL-HdX" id="B0n-1s-tam"/>
             </connections>
-            <point key="canvasLocation" x="-174" y="646"/>
+            <point key="canvasLocation" x="-174" y="728"/>
+        </customView>
+        <customView id="chh-UT-kvb" userLabel="Location Extra View" customClass="InfoLocationView" customModule="Aerial" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="406" height="36"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vcu-ET-4e8">
+                    <rect key="frame" x="18" y="10" width="62" height="16"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Show for:" id="QdE-Ge-P6P">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton toolTip="How long should each text appear" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qmX-6m-Whj">
+                    <rect key="frame" x="81" y="4" width="107" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Always" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wjq-nI-072" id="S3w-hi-xoE">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <menu key="menu" id="rE1-IA-Gwp">
+                            <items>
+                                <menuItem title="Always" state="on" id="wjq-nI-072" userLabel="10 Seconds"/>
+                                <menuItem title="10 seconds" id="aCg-qD-wSL"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="showTimeChange:" target="chh-UT-kvb" id="isu-pw-d11"/>
+                    </connections>
+                </popUpButton>
+            </subviews>
+            <connections>
+                <outlet property="showTimePopup" destination="qmX-6m-Whj" id="nLF-kP-t3e"/>
+            </connections>
+            <point key="canvasLocation" x="-174" y="645"/>
         </customView>
     </objects>
     <resources>

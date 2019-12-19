@@ -87,6 +87,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var infoCommonView: InfoCommonView!
 
+    @IBOutlet var infoLocationView: InfoLocationView!
     @IBOutlet var infoClockView: InfoClockView!
     @IBOutlet var infoMessageView: InfoMessageView!
 

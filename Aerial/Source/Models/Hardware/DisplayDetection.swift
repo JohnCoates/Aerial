@@ -90,9 +90,6 @@ final class DisplayDetection: NSObject {
                 debugLog("1cm = \(cmInPoints) points")
                 mainID = currentDisplay
             }
-
-            // swiftlint:disable:next line_length
-            //debugLog("pass1: id \(currentDisplay), width: \(CGDisplayPixelsWide(currentDisplay)), height: \(CGDisplayPixelsHigh(currentDisplay)),isMain isMain \(isMain)")
         }
 
         // Second pass on NSScreen to grab the retina factor
@@ -328,18 +325,6 @@ final class DisplayDetection: NSObject {
     }
 
     // MARK: - Public utility fuctions
-    /*
-    func isScreenPrimary(id: CGDirectDisplayID) -> Bool {
-        let screen = findScreenWith(id: id)
-
-        if let scr = screen {
-            if scr.isMain {
-                return true
-            }
-        }
-
-        return false
-    }*/
 
     func isScreenActive(id: CGDirectDisplayID) -> Bool {
         let preferences = Preferences.sharedInstance
@@ -445,6 +430,7 @@ final class DisplayDetection: NSObject {
 
         return nil
     }
+
     var advancedMargins: AdvancedMargin {
         get {
             let preferences = Preferences.sharedInstance

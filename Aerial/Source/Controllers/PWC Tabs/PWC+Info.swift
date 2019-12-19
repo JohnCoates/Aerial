@@ -30,6 +30,10 @@ extension PreferencesWindowController {
 
         // Then the per-type blocks if any
         switch forType {
+        case .location:
+            infoContainerView.addSubview(infoLocationView)
+            infoLocationView.frame.origin.y = infoCommonView.frame.height
+            infoLocationView.setStates()
         case .message:
             infoContainerView.addSubview(infoMessageView)
             infoMessageView.frame.origin.y = infoCommonView.frame.height
@@ -38,8 +42,6 @@ extension PreferencesWindowController {
             infoContainerView.addSubview(infoClockView)
             infoClockView.frame.origin.y = infoCommonView.frame.height
             infoClockView.setStates()
-        default:
-            ()
         }
     }
 

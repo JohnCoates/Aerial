@@ -23,4 +23,5 @@ class InfoMessageView: NSView {
     @IBAction func messageExtraClick(_ sender: Any) {
         // TODO
     }
+
 }

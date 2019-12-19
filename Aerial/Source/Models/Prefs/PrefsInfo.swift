@@ -21,6 +21,10 @@ enum InfoType: String, Codable {
     case location, message, clock
 }
 
+enum InfoTime: Int, Codable {
+    case always, tenSeconds
+}
+
 struct PrefsInfo {
 
     struct Location: Codable {
@@ -29,6 +33,7 @@ struct PrefsInfo {
         var fontSize: Double
         var corner: InfoCorner
         var displays: InfoDisplays
+        var time: InfoTime
     }
 
     struct Message: Codable {
@@ -57,7 +62,8 @@ struct PrefsInfo {
                                                            fontName: "Helvetica Neue Medium",
                                                            fontSize: 28,
                                                            corner: .random,
-                                                           displays: .allDisplays))
+                                                           displays: .allDisplays,
+                                                           time: .tenSeconds))
     static var location: Location
 
     // Custom string message

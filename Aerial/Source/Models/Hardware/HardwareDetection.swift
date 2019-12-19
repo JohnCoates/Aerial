@@ -66,8 +66,8 @@ final class HardwareDetection: NSObject {
             // MacMini 8+
             return getHEVCMain10Support(macModel: macModel, macSubmodel: "Macmini", partial: 8.0, full: 8.0)
         } else if macModel.starts(with: "MacPro") {
-            // Right now no support on these
-            return .notsupported
+            // Tentative, I *think* 7+ (2019 MacPro) should always support independant of GPU ?
+            return getHEVCMain10Support(macModel: macModel, macSubmodel: "MacPro", partial: 7.0, full: 7.0)
         }
         // Older stuff (power/etc) should not even run this so list should be complete
         // Hackintosh/new SKUs will fail this test, this is indicative in any case so that's fine
