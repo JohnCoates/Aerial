@@ -26,6 +26,9 @@ extension AerialView {
         layer.frame = self.bounds
         debugLog("\(self.description) setting up player layer with bounds/frame: \(layer.bounds) / \(layer.frame)")
 
+        // Trying something new for Catalina
+        setupGlitchWorkaroundLayer(layer: layer)
+
         playerLayer = AVPlayerLayer(player: player)
 
         if #available(OSX 10.10, *) {
