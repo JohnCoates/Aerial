@@ -21,9 +21,10 @@ extension AerialView {
 
             if !preferences.dimOnlyAtNight || (preferences.dimOnlyAtNight && should && to == "night") {
                 if !preferences.dimOnlyOnBattery || (preferences.dimOnlyOnBattery && batteryManagement.isOnBattery()) {
-                    brightnessToRestore = timeManagement.getBrightness()
+                    brightnessToRestore = Brightness.get()
+                    // brightnessToRestore = timeManagement.getBrightness()
                     debugLog("Brightness before Aerial was launched : \(String(describing: brightnessToRestore))")
-                    timeManagement.setBrightness(level: min(Float(preferences.startDim!), brightnessToRestore!))
+                    Brightness.set(level: min(Float(preferences.startDim!), brightnessToRestore!))
                     setDimTimers()
                 }
             }
@@ -55,7 +56,7 @@ extension AerialView {
                     _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(interval * idx), repeats: false) { (_) in
                         let val = startValue - ((startValue - preferences.endDim!) / 10 * Double(idx))
                         debugLog("Firing event \(idx) brightness to \(val)")
-                        timeManagement.setBrightness(level: Float(val))
+                        Brightness.set(level: Float(val))
                     }
                 }
             }

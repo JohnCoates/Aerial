@@ -639,9 +639,8 @@ extension PreferencesWindowController {
             let bundle = Bundle(for: PreferencesWindowController.self)
 
             // Use -dark icons in macOS 10.14+ Dark Mode
-            let timeManagement = TimeManagement.sharedInstance
             var postfix = ""
-            if timeManagement.isDarkModeEnabled() {
+            if DarkMode.isEnabled() {
                 postfix = "-dark"
             }
 
@@ -746,6 +745,7 @@ extension PreferencesWindowController {
             fatalError("unhandled item in heightOfRowByItem for \(item)")
         }
     }
+
     func outlineView(_ outlineView: NSOutlineView, sizeToFitWidthOfColumn column: Int) -> CGFloat {
         return 0
     }

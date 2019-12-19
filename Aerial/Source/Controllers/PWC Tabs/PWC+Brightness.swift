@@ -85,19 +85,19 @@ extension PreferencesWindowController {
             return
         }
 
-        let timeManagement = TimeManagement.sharedInstance
+        //let timeManagement = TimeManagement.sharedInstance
         if event.type == .leftMouseUp {
             if let brightness = savedBrightness {
-                timeManagement.setBrightness(level: brightness)
+                Brightness.set(level: brightness)
                 savedBrightness = nil
             }
             preferences.startDim = sender.doubleValue
             debugLog("UI startDim: \(sender.doubleValue)")
         } else {
             if savedBrightness == nil {
-                savedBrightness = timeManagement.getBrightness()
+                savedBrightness = Brightness.get()
             }
-            timeManagement.setBrightness(level: sender.floatValue)
+            Brightness.set(level: sender.floatValue)
         }
     }
 
@@ -108,19 +108,19 @@ extension PreferencesWindowController {
             //warnLog("Unexepected event type \(event.type)")
         }
 
-        let timeManagement = TimeManagement.sharedInstance
+        //let timeManagement = TimeManagement.sharedInstance
         if event.type == .leftMouseUp {
             if let brightness = savedBrightness {
-                timeManagement.setBrightness(level: brightness)
+                Brightness.set(level: brightness)
                 savedBrightness = nil
             }
             preferences.endDim = sender.doubleValue
             debugLog("UI endDim: \(sender.doubleValue)")
         } else {
             if savedBrightness == nil {
-                savedBrightness = timeManagement.getBrightness()
+                savedBrightness = Brightness.get()
             }
-            timeManagement.setBrightness(level: sender.floatValue)
+            Brightness.set(level: sender.floatValue)
         }
     }
 
