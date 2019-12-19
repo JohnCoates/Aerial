@@ -179,7 +179,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         }
 
         let preferences = Preferences.sharedInstance
-        let timeManagement = TimeManagement.sharedInstance
         let batteryManagement = BatteryManagement()
 
         // Run Sparkle updater if enabled
@@ -195,7 +194,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                 (preferences.powerSavingOnLowBattery && batteryManagement.isBatteryLow()) {
                 debugLog("Engaging power saving mode")
                 isDisabled = true
-                timeManagement.setBrightness(level: 0.0)
+                Brightness.set(level: 0.0)
                 return
             }
         }
@@ -328,8 +327,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
         if preferences.dimBrightness {
             if !isPreview && brightnessToRestore != nil {
-                let timeManagement = TimeManagement.sharedInstance
-                timeManagement.setBrightness(level: brightnessToRestore!)
+                Brightness.set(level: brightnessToRestore!)
                 brightnessToRestore = nil
             }
         }

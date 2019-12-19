@@ -11,15 +11,9 @@ import Cocoa
 import CoreLocation
 import IOKit.ps
 
-// swiftlint:disable:next type_body_length
 final class TimeManagement: NSObject {
     static let sharedInstance = TimeManagement()
 
-    // Night shift
-    var isNightShiftDataCached = false
-    var nightShiftAvailable = false
-    var nightShiftSunrise = Date()
-    var nightShiftSunset = Date()
     var solar: Solar?
 
     // MARK: - Lifecycle
@@ -30,38 +24,21 @@ final class TimeManagement: NSObject {
     }
 
     // MARK: - What should we play ?
-    // swiftlint:disable:next cyclomatic_complexity
     func shouldRestrictPlaybackToDayNightVideo() -> (Bool, String) {
         let preferences = Preferences.sharedInstance
         // We can override everything on dark mode if we need to
-        if preferences.darkModeNightOverride && isDarkModeEnabled() {
+        if preferences.darkModeNightOverride && DarkMode.isEnabled() {
             return (true, "night")
         }
 
         // If not we check the modes
         if preferences.timeMode == Preferences.TimeMode.lightDarkMode.rawValue {
-            if isDarkModeEnabled() {
-                return (true, "night")
-            } else {
-                return (true, "day")
-            }
+            return (true, DarkMode.isEnabled() ? "night" : "day")
         } else if preferences.timeMode == Preferences.TimeMode.coordinates.rawValue {
             _ = calculateFromCoordinates()
 
-            if let _ = solar {
-                var zenith: Solar.Zenith
-                switch preferences.solarMode {
-                case Preferences.SolarMode.strict.rawValue:
-                    zenith = .strict
-                case Preferences.SolarMode.official.rawValue:
-                    zenith = .official
-                case Preferences.SolarMode.civil.rawValue:
-                    zenith = .civil
-                case Preferences.SolarMode.nautical.rawValue:
-                    zenith = .nautical
-                default:
-                    zenith = .astronimical
-                }
+            if solar != nil {
+                let zenith = getZenith(Preferences.SolarMode(rawValue: preferences.solarMode!)!)
 
                 if (solar?.isDaytime(zenith: zenith))! {
                     return (true, "day")
@@ -73,7 +50,7 @@ final class TimeManagement: NSObject {
                 return (false, "")
             }
         } else if preferences.timeMode == Preferences.TimeMode.nightShift.rawValue {
-            let (isNSCapable, sunrise, sunset, _) = getNightShiftInformation()
+            let (isNSCapable, sunrise, sunset, _) = NightShift.getInformation()
             if !isNSCapable {
                 errorLog("Trying to use Night Shift on a non capable Mac")
                 return (false, "")
@@ -99,6 +76,22 @@ final class TimeManagement: NSObject {
 
         // default is show anything
         return (false, "")
+    }
+
+    // Get the correct Zenith value for our pref
+    private func getZenith(_ mode: Preferences.SolarMode) -> Solar.Zenith {
+        switch mode {
+        case .strict:
+            return .strict
+        case .official:
+            return .official
+        case .civil:
+            return .civil
+        case .nautical:
+            return .nautical
+        default:
+            return .astronimical
+        }
     }
 
     // Check if we are at day or night based on provided sunrise and sunset dates
@@ -149,7 +142,6 @@ final class TimeManagement: NSObject {
     }
 
     // MARK: Calculate using Solar
-    // swiftlint:disable:next cyclomatic_complexity
     func calculateFromCoordinates() -> (Bool, String) {
         let preferences = Preferences.sharedInstance
 
@@ -160,40 +152,14 @@ final class TimeManagement: NSObject {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
 
-                var sunriseString, sunsetString: String
+                let (sunrise, sunset) = getSunriseSunsetForMode(Preferences.SolarMode(rawValue: preferences.solarMode!)!)
 
-                switch preferences.solarMode {
-                case Preferences.SolarMode.official.rawValue:
-                    guard let sunrise = solar?.sunrise, let sunset = solar?.sunset else {
-                       return (false, "Can't process your coordinates, please verify")
-                    }
-                    sunriseString = dateFormatter.string(from: sunrise)
-                    sunsetString = dateFormatter.string(from: sunset)
-                case Preferences.SolarMode.strict.rawValue:
-                    guard let sunrise = solar?.strictSunrise, let sunset = solar?.strictSunset else {
-                        return (false, "Can't process your coordinates, please verify")
-                    }
-                    sunriseString = dateFormatter.string(from: sunrise)
-                    sunsetString = dateFormatter.string(from: sunset)
-                case Preferences.SolarMode.civil.rawValue:
-                    guard let sunrise = solar?.civilSunrise, let sunset = solar?.civilSunset else {
-                        return (false, "Can't process your coordinates, please verify")
-                    }
-                    sunriseString = dateFormatter.string(from: sunrise)
-                    sunsetString = dateFormatter.string(from: sunset)
-                case Preferences.SolarMode.nautical.rawValue:
-                    guard let sunrise = solar?.nauticalSunrise, let sunset = solar?.nauticalSunset else {
-                        return (false, "Can't process your coordinates, please verify")
-                    }
-                    sunriseString = dateFormatter.string(from: sunrise)
-                    sunsetString = dateFormatter.string(from: sunset)
-                default:
-                    guard let sunrise = solar?.astronomicalSunrise, let sunset = solar?.astronomicalSunset else {
-                        return (false, "Can't process your coordinates, please verify")
-                    }
-                    sunriseString = dateFormatter.string(from: sunrise)
-                    sunsetString = dateFormatter.string(from: sunset)
+                if sunrise == nil || sunset == nil {
+                   return (false, "Can't process your coordinates, please verify")
                 }
+
+                let sunriseString = dateFormatter.string(from: sunrise!)
+                let sunsetString = dateFormatter.string(from: sunset!)
 
                 if preferences.solarMode == Preferences.SolarMode.official.rawValue ||
                     preferences.solarMode == Preferences.SolarMode.strict.rawValue {
@@ -207,132 +173,24 @@ final class TimeManagement: NSObject {
         return (false, "Can't process your coordinates, please verify")
     }
 
-    // MARK: Dark Mode
-    func isLightDarkModeAvailable() -> (Bool, reason: String) {
-        if #available(OSX 10.14, *) {
-            if isDarkModeEnabled() {
-                return (true, "Your Mac is currently in Dark Mode")
-            } else {
-                return (true, "Your Mac is currently in Light Mode")
-            }
-        } else {
-            // Fallback on earlier versions
-            return (false, "macOS 10.14 Mojave or above is required")
-        }
-    }
-
-    func isDarkModeEnabled() -> Bool {
-        if #available(OSX 10.14, *) {
-            let modeString = UserDefaults.standard.string(forKey: "AppleInterfaceStyle")
-            return (modeString == "Dark")
-        } else {
-            return false
-        }
-    }
-
-    // MARK: Night Shift
-    func isNightShiftAvailable() -> (Bool, reason: String) {
-        if #available(OSX 10.12.4, *) {
-            let (isAvailable, sunriseDate, sunsetDate, errorMessage) = getNightShiftInformation()
-
-            if isAvailable {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
-                let sunriseString = dateFormatter.string(from: sunriseDate!)
-                let sunsetString = dateFormatter.string(from: sunsetDate!)
-
-                return (true, "Today’s sunrise: " + sunriseString + "  Today’s sunset: " + sunsetString)
-
-            } else {
-                isNightShiftDataCached = true
-                return (false, errorMessage!)
-            }
-        } else {
-            return (false, "macOS 10.12.4 or above is required")
-        }
-    }
-
-    // siftlint:disable:next large_tuple
-    // swiftlint:disable:next cyclomatic_complexity large_tuple
-    func getNightShiftInformation() -> (Bool, sunrise: Date?, sunset: Date?, error: String?) {
-        if isNightShiftDataCached {
-            return (nightShiftAvailable, nightShiftSunrise, nightShiftSunset, nil)
-        }
-
-        // On Catalina, corebrightnessdiag was moved to /usr/libexec/ !
-        var cbdpath = "/usr/bin/corebrightnessdiag"
-        if #available(OSX 10.15, *) {
-            cbdpath = "/usr/libexec/corebrightnessdiag"
-        }
-
-        let (nsInfo, ts) = shell(launchPath: cbdpath, arguments: ["nightshift-internal"])
-
-        if ts != 0 {
-            // Task didn't return correctly ? Abort
-            return (false, nil, nil, "Your Mac does not support Night Shift")
-        }
-        let lines = nsInfo?.split(separator: "\n")
-        if lines!.count < 5 {
-            // We get a couple of lines of output on unsupported Macs
-            return (false, nil, nil, "Your Mac does not support Night Shift")
-        }
-        var sunrise: Date?, sunset: Date?
-
-        for line in lines ?? [""] {
-            if line.contains("sunrise") {
-                let tmp = line.split(separator: "\"")
-                if tmp.count > 1 {
-                    let dateFormatter = DateFormatter()
-                    // Catalina fix, this seems to be the correct way to parse the date
-                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
-
-                    if let dateObj = dateFormatter.date(from: String(tmp[1])) {
-                        sunrise = dateObj
-                    }
-                }
-            } else if line.contains("sunset") {
-                let tmp = line.split(separator: "\"")
-                if tmp.count > 1 {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
-
-                    if let dateObj = dateFormatter.date(from: String(tmp[1])) {
-                        sunset = dateObj
-                    }
-                }
+    // Helper to get the correct sunrise/sunset
+    func getSunriseSunsetForMode(_ mode: Preferences.SolarMode) -> (Date?, Date?) {
+        if let sol = solar {
+            switch mode {
+            case .official:
+                return (sol.sunrise, sol.sunset)
+            case .strict:
+                return (sol.strictSunrise, sol.strictSunset)
+            case .civil:
+                return (sol.civilSunrise, sol.civilSunset)
+            case .nautical:
+                return (sol.nauticalSunrise, sol.nauticalSunset)
+            default:
+                return (sol.astronomicalSunrise, sol.astronomicalSunset)
             }
         }
 
-        if sunset != nil && sunrise != nil {
-            nightShiftSunrise = sunrise!
-            nightShiftSunset = sunset!
-            nightShiftAvailable = true
-            isNightShiftDataCached = true
-
-            return (true, sunrise, sunset, nil)
-        }
-
-        // /usr/bin/corebrightnessdiag nightshift-internal | grep nextSunset | cut -d \" -f2
-        warnLog("Location services may be disabled, Night Shift can't detect Sunrise and Sunset times without them")
-        return (false, nil, nil, "Location services may be disabled")
-    }
-
-    private func shell(launchPath: String, arguments: [String] = []) -> (String?, Int32) {
-        let task = Process()
-        task.launchPath = launchPath
-        task.arguments = arguments
-
-        let pipe = Pipe()
-        task.standardOutput = pipe
-        task.standardError = pipe
-
-        task.launch()
-
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        let output = String(data: data, encoding: .utf8)
-        task.waitUntilExit()
-
-        return (output, task.terminationStatus)
+        return (nil, nil)
     }
 
     // MARK: - Brightness stuff (early, may get moved/will change)
@@ -381,21 +239,6 @@ final class TimeManagement: NSObject {
         return 0
     }
 
-    func getBrightness() -> Float {
-        let service = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IODisplayConnect"))
-        let pointer = UnsafeMutablePointer<Float>.allocate(capacity: 1)
-        IODisplayGetFloatParameter(service, 0, kIODisplayBrightnessKey as CFString, pointer)
-        let brightness = pointer.pointee
-        IOObjectRelease(service)
-        return brightness
-    }
-
-    func setBrightness(level: Float) {
-        let service = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("IODisplayConnect"))
-        IODisplaySetFloatParameter(service, 0, kIODisplayBrightnessKey as CFString, level)
-        IOObjectRelease(service)
-    }
-
     // MARK: - Location detection
     func startLocationDetection() {
         let locationManager = CLLocationManager()
@@ -408,25 +251,6 @@ final class TimeManagement: NSObject {
             errorLog("Location services are disabled, please check your macOS settings!")
         }
 
-        /*let status = CLLocationManager.authorizationStatus()
-        if status == .restricted || status == .denied {
-            
-            print("Location Denied")
-            
-            return
-        }
-        else if status == .notDetermined {
-            
-            print("Show ask for location")
-            
-            return
-        }
-        else if status == .authorized {
-            print("This should work?")
-            
-            return
-        }*/
-
         if #available(OSX 10.14, *) {
             locationManager.requestLocation()
         } else {
@@ -438,12 +262,6 @@ final class TimeManagement: NSObject {
 
 // MARK: - Core Location Delegates
 extension TimeManagement: CLLocationManagerDelegate {
-/*    func locationManager(_ manager: CLLocationManager, didUpdateTo newLocation: CLLocation, from oldLocation: CLLocation) {
-        
-        print("\(newLocation) \(oldLocation)")
-        
-    }*/
-
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         _ = locations[locations.count - 1]
     }

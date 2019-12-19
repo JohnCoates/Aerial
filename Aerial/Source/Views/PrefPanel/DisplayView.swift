@@ -67,7 +67,7 @@ class DisplayView: NSView {
         let screenBorderColor = NSColor.black
 
         let timeManagement = TimeManagement.sharedInstance
-        if timeManagement.isDarkModeEnabled() {
+        if DarkMode.isEnabled() {
             backgroundColor = NSColor.init(white: 0.2, alpha: 1.0)
             borderColor = NSColor.init(white: 0.6, alpha: 1.0)
         }
