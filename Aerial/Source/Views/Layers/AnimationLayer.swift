@@ -52,11 +52,11 @@ class AnimationLayer: CATextLayer {
         self.shadowColor = CGColor.black
     }
 
-    // Called before starting a new video
+    // Called before starting a new video, usually overridden
     func clear(player: AVPlayer) {
     }
 
-    // Called at each new video
+    // Called at each new video, usually overridden
     func setupForVideo(video: AerialVideo, player: AVPlayer) {
     }
 

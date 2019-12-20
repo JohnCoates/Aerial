@@ -54,6 +54,7 @@ struct PrefsInfo {
         var showSeconds: Bool
     }
 
+    // Our array of Info layers. User can reorder the array, and we may periodically add new Info
     @Storage(key: "layers", defaultValue: [.location, .message, .clock])
     static var layers: [InfoType]
 
@@ -63,16 +64,16 @@ struct PrefsInfo {
                                                            fontSize: 28,
                                                            corner: .random,
                                                            displays: .allDisplays,
-                                                           time: .tenSeconds))
+                                                           time: .always))
     static var location: Location
 
     // Custom string message
-    @Storage(key: "LayerMessage", defaultValue: Message(isEnabled: true,
+    @Storage(key: "LayerMessage", defaultValue: Message(isEnabled: false,
                                                          fontName: "Helvetica Neue Medium",
                                                          fontSize: 20,
                                                          corner: .topCenter,
                                                          displays: .allDisplays,
-                                                         message: "Hello there !"))
+                                                         message: "Hello there!"))
     static var message: Message
 
     // Clock

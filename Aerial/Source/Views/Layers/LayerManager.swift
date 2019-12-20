@@ -25,33 +25,32 @@ class LayerManager {
 
         // The list of known layers is in an ordered array
         for layerType in PrefsInfo.layers {
+            var newLayer: AnimationLayer?
+
             switch layerType {
             case .location:
-                debugLog("loc : \(shouldEnableScreen(PrefsInfo.clock.displays))")
-                if PrefsInfo.location.isEnabled && shouldEnableScreen(PrefsInfo.location.displays) {
-                    let newLayer = LocationLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.location)
-                    additionalLayers.append(newLayer)
-                    layer.addSublayer(newLayer)
+                if PrefsInfo.location.isEnabled && shouldEnableOnScreen(PrefsInfo.location.displays) {
+                    newLayer = LocationLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.location)
                 }
             case .message:
-                debugLog("msg : \(shouldEnableScreen(PrefsInfo.clock.displays))")
-                if PrefsInfo.message.isEnabled && shouldEnableScreen(PrefsInfo.message.displays) {
-                    let newLayer = MessageLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.message)
-                    additionalLayers.append(newLayer)
-                    layer.addSublayer(newLayer)
+                if PrefsInfo.message.isEnabled && shouldEnableOnScreen(PrefsInfo.message.displays) {
+                    newLayer = MessageLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.message)
                 }
             case .clock:
-                debugLog("clock : \(shouldEnableScreen(PrefsInfo.clock.displays))")
-                if PrefsInfo.clock.isEnabled && shouldEnableScreen(PrefsInfo.clock.displays) {
-                    let newLayer = ClockLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.clock)
-                    additionalLayers.append(newLayer)
-                    layer.addSublayer(newLayer)
+                if PrefsInfo.clock.isEnabled && shouldEnableOnScreen(PrefsInfo.clock.displays) {
+                    newLayer = ClockLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.clock)
                 }
+            }
+
+            if let nLayer = newLayer {
+                additionalLayers.append(nLayer)
+                layer.addSublayer(nLayer)
             }
         }
     }
 
-    func shouldEnableScreen(_ displayMode: InfoDisplays) -> Bool {
+    // Each layer may not be displayed on each screen
+    func shouldEnableOnScreen(_ displayMode: InfoDisplays) -> Bool {
         let displayDetection = DisplayDetection.sharedInstance
         let thisScreen = displayDetection.findScreenWith(frame: frame!)
 
@@ -83,7 +82,6 @@ class LayerManager {
 
     // Called at each new video
     func setupLayersForVideo(video: AerialVideo, player: AVPlayer) {
-        debugLog("setup for video \(video)")
         for layer in additionalLayers {
             layer.setupForVideo(video: video, player: player)
         }
@@ -115,9 +113,8 @@ class LayerManager {
     }
 
     // Do we allow a random description in a corner or not ?
-    // We want to avoid the case where there's a layer on a bottom/top center already,
-    // in that case, we don't allow left/right of those to avoid visual overlaps as our offsets
-    // are corner based for simplicity
+    // This is a best effort to try and avoid overlaps,
+    // but it's not 100% depending on font choices
     func isCornerAcceptable(corner: Int) -> Bool {
         // Not the prettiest helper, this is a bit of a hack
 
