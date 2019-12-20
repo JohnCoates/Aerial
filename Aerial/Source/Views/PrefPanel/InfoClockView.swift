@@ -19,6 +19,6 @@ class InfoClockView: NSView {
     @IBAction func secondsClick(_ sender: NSButton) {
         let onState = sender.state == .on
         PrefsInfo.clock.showSeconds = onState
-
     }
+
 }

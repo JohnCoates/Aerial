@@ -18,20 +18,11 @@ extension PreferencesWindowController {
         if preferences.logToDisk {
             logToDiskCheckbox.state = .on
         }
-        if preferences.logMilliseconds {
-            logMillisecondsButton.state = .on
-        }
         if preferences.synchronizedMode {
             synchronizedModeCheckbox.state = .on
         }
     }
     // MARK: - Advanced panel
-
-    @IBAction func logMillisecondsClick(_ button: NSButton) {
-        let onState = button.state == .on
-        preferences.logMilliseconds = onState
-        debugLog("UI logMilliseconds: \(onState)")
-    }
 
     @IBAction func logButtonClick(_ sender: NSButton) {
         logTableView.reloadData()

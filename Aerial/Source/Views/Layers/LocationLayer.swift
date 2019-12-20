@@ -136,10 +136,8 @@ class LocationLayer: AnimationLayer {
      }
 
      func calculateAnimationDuration(times: [CMTime], current: CMTime, video: AerialVideo) -> Double {
-         let preferences = Preferences.sharedInstance
-
          // We may only show for 10s
-         if preferences.showDescriptionsMode == Preferences.DescriptionMode.fade10seconds.rawValue {
+         if PrefsInfo.location.time == .tenSeconds {
              return 10
          } else {
              if let idx = times.firstIndex(of: current) {

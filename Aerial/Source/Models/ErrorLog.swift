@@ -51,6 +51,8 @@ var errorMessages = [LogMessage]()
 // swiftlint:disable:next identifier_name
 func Log(level: ErrorLevel, message: String) {
     errorMessages.append(LogMessage(level: level, message: message))
+
+    // We report errors to Console.app
     if level == .error {
         if #available(OSX 10.12, *) {
             // This is faster when available
@@ -61,40 +63,47 @@ func Log(level: ErrorLevel, message: String) {
         }
     }
 
+    // We may have set callbacks
     let preferences = Preferences.sharedInstance
     if level == .warning || level == .error || (level == .debug && preferences.debugMode) {
         Logger.sharedInstance.callBack(level: level)
     }
 
+    // Log to disk
     if preferences.logToDisk {
-        DispatchQueue.main.async {
-            let dateFormatter = DateFormatter()
-            if preferences.logMilliseconds {
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
-            } else {
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            }
-            let string = dateFormatter.string(from: Date()) + " : " + message + "\n"
+        logToDisk(message)
+    }
+}
 
-            if let cacheDirectory = VideoCache.appSupportDirectory {
-                var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
-                cacheFileUrl.appendPathComponent("AerialLog.txt")
-                let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)!
-                if FileManager.default.fileExists(atPath: cacheFileUrl.path) {
-                    do {
-                        let fileHandle = try FileHandle(forWritingTo: cacheFileUrl)
-                        fileHandle.seekToEndOfFile()
-                        fileHandle.write(data)
-                        fileHandle.closeFile()
-                    } catch {
-                        NSLog("AerialError: Can't open handle for AerialLog.txt")
-                    }
-                } else {
-                    do {
-                        try data.write(to: cacheFileUrl, options: .atomic)  // Create the file
-                    } catch {
-                        NSLog("AerialError: Can't write to file AerialLog.txt")
-                    }
+func logToDisk(_ message: String) {
+    DispatchQueue.main.async {
+        // Prefix message with date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
+        let string = dateFormatter.string(from: Date()) + " : " + message + "\n"
+
+        if let cacheDirectory = VideoCache.appSupportDirectory {
+            var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
+            cacheFileUrl.appendPathComponent("AerialLog.txt")
+
+            let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)!
+
+            if FileManager.default.fileExists(atPath: cacheFileUrl.path) {
+                // Append to log
+                do {
+                    let fileHandle = try FileHandle(forWritingTo: cacheFileUrl)
+                    fileHandle.seekToEndOfFile()
+                    fileHandle.write(data)
+                    fileHandle.closeFile()
+                } catch {
+                    NSLog("AerialError: Can't open handle for AerialLog.txt")
+                }
+            } else {
+                // Create new log
+                do {
+                    try data.write(to: cacheFileUrl, options: .atomic)
+                } catch {
+                    NSLog("AerialError: Can't write to file AerialLog.txt")
                 }
             }
         }
@@ -124,30 +133,3 @@ func warnLog(_ message: String) {
 func errorLog(_ message: String) {
     Log(level: .error, message: message)
 }
-
-/*
-
-func dataLog(_ data: Data) {
-    let cacheDirectory = VideoCache.appSupportDirectory!
-    var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
-    cacheFileUrl.appendPathComponent("AerialData.txt")
-
-    if FileManager.default.fileExists(atPath: cacheFileUrl.path) {
-        do {
-            let fileHandle = try FileHandle(forWritingTo: cacheFileUrl)
-            fileHandle.seekToEndOfFile()
-            fileHandle.write(data)
-            fileHandle.closeFile()
-        } catch {
-            print("Can't open handle")
-        }
-    } else {
-        do {
-            try data.write(to: cacheFileUrl, options: .atomic)
-        } catch {
-            print("Can't write to file")
-        }
-    }
-
-}
-*/

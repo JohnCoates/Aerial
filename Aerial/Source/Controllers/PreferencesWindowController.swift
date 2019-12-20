@@ -87,22 +87,16 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var infoCommonView: InfoCommonView!
 
+    @IBOutlet var infoLocationView: InfoLocationView!
     @IBOutlet var infoClockView: InfoClockView!
     @IBOutlet var infoMessageView: InfoMessageView!
 
     // Text tab
-    @IBOutlet var showDescriptionsCheckbox: NSButton!
-    @IBOutlet var descriptionModePopup: NSPopUpButton!
     @IBOutlet weak var fadeInOutTextModePopup: NSPopUpButton!
-    @IBOutlet var localizeForTvOS12Checkbox: NSButton!
     @IBOutlet var currentLocaleLabel: NSTextField!
-    @IBOutlet weak var useCommunityCheckbox: NSButton!
     @IBOutlet var ciOverrideLanguagePopup: NSPopUpButton!
 
-    @IBOutlet var currentFontLabel: NSTextField!
-    @IBOutlet var fontPickerButton: NSButton!
-    @IBOutlet var fontResetButton: NSButton!
-
+    // Todo remap those
     @IBOutlet var changeCornerMargins: NSButton!
     @IBOutlet var marginHorizontalTextfield: NSTextField!
     @IBOutlet var marginVerticalTextfield: NSTextField!
@@ -111,24 +105,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var editMarginButton: NSButton!
     @IBOutlet var editMarginsPanel: NSPanel!
     @IBOutlet var editExtraMessagePanel: NSPanel!
-
-    @IBOutlet var cornerContainer: NSTextField!
-    @IBOutlet var cornerTopLeft: NSButton!
-    @IBOutlet var cornerTopRight: NSButton!
-    @IBOutlet var cornerBottomLeft: NSButton!
-    @IBOutlet var cornerBottomRight: NSButton!
-    @IBOutlet var cornerRandom: NSButton!
-
-    @IBOutlet weak var extraCornerPopup: NSPopUpButton!
-    @IBOutlet var showClockCheckbox: NSButton!
-    @IBOutlet weak var withSecondsCheckbox: NSButton!
-    @IBOutlet var showExtraMessage: NSButton!
-    @IBOutlet var extraMessageTextField: NSTextField!
-    @IBOutlet var editExtraMessageButton: NSButton!
-    @IBOutlet var secondaryExtraMessageTextField: NSTextField!
-    @IBOutlet var extraMessageFontLabel: NSTextField!
-    @IBOutlet var extraFontPickerButton: NSButton!
-    @IBOutlet var extraFontResetButton: NSButton!
 
     // Time Tab
     @IBOutlet var iconTime1: NSImageCell!
@@ -201,7 +177,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet weak var debugModeCheckbox: NSButton!
     @IBOutlet weak var showLogBottomClick: NSButton!
     @IBOutlet weak var logToDiskCheckbox: NSButton!
-    @IBOutlet var logMillisecondsButton: NSButton!
 
     @IBOutlet var videoVersionsLabel: NSTextField!
     @IBOutlet var moveOldVideosButton: NSButton!
@@ -340,7 +315,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         setupVideosTab()
         setupDisplaysTab()
         setupInfoTab()  // Replaces Text tab
-        setupTextTab()
+        setupTextTab()  // TODO : remove
         setupTimeTab()
         setupBrightnessTab()
         setupCacheTab()
@@ -352,13 +327,13 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         // To workaround our High Sierra issues with textfields, we have separate panels
         // that replicate the features and are editable. They are hidden unless needed.
         if #available(OSX 10.14, *) {
-            editMarginButton.isHidden = true
+            //editMarginButton.isHidden = true
             //editExtraMessageButton.isHidden = true
             enterCoordinatesButton.isHidden = true
         } else {
-            marginHorizontalTextfield.isEnabled = false
-            marginVerticalTextfield.isEnabled = false
-            extraMessageTextField.isEnabled = false
+            //marginHorizontalTextfield.isEnabled = false
+            //marginVerticalTextfield.isEnabled = false
+            // extraMessageTextField.isEnabled = false
             latitudeTextField.isEnabled = false
             longitudeTextField.isEnabled = false
         }
@@ -386,8 +361,11 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         if !downloadProgressIndicator.isHidden {
             quitConfirmationPanel.makeKeyAndOrderFront(self)
         } else {
-            // This seems needed for screensavers as our lifecycle is different from a regular app
+            // This seems needed for screensavers as our lifecycle is different
+            // from a regular app and we may be kept in memory by System Preferences
+            // and our settings won't get saved as they should be
             preferences.synchronize()
+
             logPanel.close()
             if appMode {
                 NSApplication.shared.terminate(nil)

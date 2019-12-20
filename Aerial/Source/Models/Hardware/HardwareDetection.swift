@@ -6,6 +6,13 @@
 //  Copyright © 2019 John Coates. All rights reserved.
 //
 
+// When available, macOS will use the fixed functions units in Intel CPUs (QuickSync) for hardware
+// decoding of H.264 and H.265, independent of if there's a GPU present.
+// This is an issue as H.265 decoding is only partially supported on some Intel CPUs, up to Kaby Lake
+// generation where they support Main profile decoding, but not Main10 (which is used by Apple's videos).
+//
+// Mode info can be found here : https://github.com/JohnCoates/Aerial/blob/master/Documentation/HardwareDecoding.md
+
 import Foundation
 
 enum HEVCMain10Support: Int {
@@ -15,7 +22,8 @@ enum HEVCMain10Support: Int {
 final class HardwareDetection: NSObject {
     static let sharedInstance = HardwareDetection()
 
-    // MARK: - Mac Model detection and HEVC Main10 detection
+    // MARK: - Mac Model detection
+
     private func getMacModel() -> String {
         var size = 0
         sysctlbyname("hw.model", nil, &size, nil, 0)
@@ -32,23 +40,15 @@ final class HardwareDetection: NSObject {
         return formatter.number(from: str)?.doubleValue ?? 0.0
     }
 
-    private func getHEVCMain10Support(macModel: String, macSubmodel: String, partial: Double, full: Double) -> HEVCMain10Support {
-        let ver = extractMacVersion(macModel: macModel, macSubmodel: macSubmodel)
-
-        if ver > full {
-            return .supported
-        } else if ver > partial {
-            return .partial
-        } else {
-            return .notsupported
-        }
-    }
+    // MARK: - HEVC Main10 detection
 
     func isHEVCMain10HWDecodingAvailable() -> HEVCMain10Support {
         let macModel = getMacModel()
 
-        // iMacPro - always
+        // This is a manually compiled list based on CPU generations of each mac model line
+
         if macModel.starts(with: "iMacPro") {
+            // iMacPro - always
             return .supported
         } else if macModel.starts(with: "iMac") {
             // iMacs, as far as we know, partial 17+, full 18+
@@ -66,11 +66,26 @@ final class HardwareDetection: NSObject {
             // MacMini 8+
             return getHEVCMain10Support(macModel: macModel, macSubmodel: "Macmini", partial: 8.0, full: 8.0)
         } else if macModel.starts(with: "MacPro") {
-            // Right now no support on these
-            return .notsupported
+            // Tentative, I *think* 7+ (2019 MacPro) should always support independant of GPU, akin to iMac Pro ?
+            return getHEVCMain10Support(macModel: macModel, macSubmodel: "MacPro", partial: 7.0, full: 7.0)
         }
-        // Older stuff (power/etc) should not even run this so list should be complete
+
+        // Older stuff (power/etc) should not even run, so list should be complete
         // Hackintosh/new SKUs will fail this test, this is indicative in any case so that's fine
         return .unsure
     }
+
+    // Helper
+    private func getHEVCMain10Support(macModel: String, macSubmodel: String, partial: Double, full: Double) -> HEVCMain10Support {
+        let ver = extractMacVersion(macModel: macModel, macSubmodel: macSubmodel)
+
+        if ver > full {
+            return .supported
+        } else if ver > partial {
+            return .partial
+        } else {
+            return .notsupported
+        }
+    }
+
 }

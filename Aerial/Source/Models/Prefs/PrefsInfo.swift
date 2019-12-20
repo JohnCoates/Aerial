@@ -21,6 +21,10 @@ enum InfoType: String, Codable {
     case location, message, clock
 }
 
+enum InfoTime: Int, Codable {
+    case always, tenSeconds
+}
+
 struct PrefsInfo {
 
     struct Location: Codable {
@@ -29,6 +33,7 @@ struct PrefsInfo {
         var fontSize: Double
         var corner: InfoCorner
         var displays: InfoDisplays
+        var time: InfoTime
     }
 
     struct Message: Codable {
@@ -49,6 +54,7 @@ struct PrefsInfo {
         var showSeconds: Bool
     }
 
+    // Our array of Info layers. User can reorder the array, and we may periodically add new Info
     @Storage(key: "layers", defaultValue: [.location, .message, .clock])
     static var layers: [InfoType]
 
@@ -57,16 +63,17 @@ struct PrefsInfo {
                                                            fontName: "Helvetica Neue Medium",
                                                            fontSize: 28,
                                                            corner: .random,
-                                                           displays: .allDisplays))
+                                                           displays: .allDisplays,
+                                                           time: .always))
     static var location: Location
 
     // Custom string message
-    @Storage(key: "LayerMessage", defaultValue: Message(isEnabled: true,
+    @Storage(key: "LayerMessage", defaultValue: Message(isEnabled: false,
                                                          fontName: "Helvetica Neue Medium",
                                                          fontSize: 20,
                                                          corner: .topCenter,
                                                          displays: .allDisplays,
-                                                         message: "Hello there !"))
+                                                         message: "Hello there!"))
     static var message: Message
 
     // Clock

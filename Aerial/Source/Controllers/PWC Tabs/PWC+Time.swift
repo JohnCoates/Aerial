@@ -13,6 +13,10 @@ extension PreferencesWindowController {
     // swiftlint:disable:next cyclomatic_complexity
     func setupTimeTab() {
         let timeManagement = TimeManagement.sharedInstance
+        latitudeFormatter.maximumSignificantDigits = 10
+        longitudeFormatter.maximumSignificantDigits = 10
+        extraLatitudeFormatter.maximumSignificantDigits = 10
+        extraLongitudeFormatter.maximumSignificantDigits = 10
 
         // Some better icons are 10.12.2+ only
         if #available(OSX 10.12.2, *) {
