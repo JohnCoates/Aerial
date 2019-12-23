@@ -11,41 +11,6 @@ import Cocoa
 
 extension PreferencesWindowController {
 
-    func setupTextTab() {
-        // Grab preferred language as proper string
-        currentLocaleLabel.stringValue = getPreferredLanguage()
-
-        let poisp = PoiStringProvider.sharedInstance
-        ciOverrideLanguagePopup.selectItem(at: poisp.getLanguagePosition())
-
-        /*
-        if preferences.overrideMargins {
-            changeCornerMargins.state = .on
-            marginHorizontalTextfield.isEnabled = true
-            marginVerticalTextfield.isEnabled = true
-            editMarginButton.isEnabled = true
-        }
-
-        marginHorizontalTextfield.stringValue = String(preferences.marginX!)
-        marginVerticalTextfield.stringValue = String(preferences.marginY!)
-        secondaryMarginHorizontalTextfield.stringValue = String(preferences.marginX!)
-        secondaryMarginVerticalTextfield.stringValue = String(preferences.marginY!)
-        */
-        fadeInOutTextModePopup.selectItem(at: preferences.fadeModeText!)
-    }
-
-    func getPreferredLanguage() -> String {
-        let printOutputLocale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
-        if let deviceLanguageName: String = printOutputLocale.displayName(forKey: .identifier, value: Locale.preferredLanguages[0]) {
-            if #available(OSX 10.12, *) {
-                return "Preferred language: \(deviceLanguageName) [\(printOutputLocale.languageCode)]"
-            } else {
-                return "Preferred language: \(deviceLanguageName)"
-            }
-        } else {
-            return ""
-        }
-    }
 /*
     // We have secondary panels for entering margins and extra message as a workaround
     // for < Mojave where a swift screensaver can't get focus which makes textfields
@@ -140,114 +105,9 @@ extension PreferencesWindowController {
         extraFontResetButton.isEnabled = to
         extraMessageFontLabel.isEnabled = to
         extraCornerPopup.isEnabled = to
-    }
+    }*/
+/*
 
-    @IBAction func communityLanguagePopupChange(_ sender: NSPopUpButton) {
-        debugLog("UI communityLanguagePopupChange: \(sender.indexOfSelectedItem)")
-        let poisp = PoiStringProvider.sharedInstance
-        preferences.ciOverrideLanguage = poisp.getLanguageStringFromPosition(pos: sender.indexOfSelectedItem)
-    }
-
-    @IBAction func descriptionModePopupChange(_ sender: NSPopUpButton) {
-        debugLog("UI descriptionMode: \(sender.indexOfSelectedItem)")
-        preferences.showDescriptionsMode = sender.indexOfSelectedItem
-        preferences.synchronize()
-    }
-
-    @IBAction func fontPickerClick(_ sender: NSButton?) {
-        // Make a panel
-        let fp = self.fontManager.fontPanel(true)
-
-        // Set current font
-        if let font = NSFont(name: preferences.fontName!, size: CGFloat(preferences.fontSize!)) {
-            fp?.setPanelFont(font, isMultiple: false)
-
-        } else {
-            fp?.setPanelFont(NSFont(name: "Helvetica Neue Medium", size: 28)!, isMultiple: false)
-        }
-
-        // push the panel but mark which one we are editing
-        fontEditing = 0
-        fp?.makeKeyAndOrderFront(sender)
-    }
-
-    @IBAction func fontResetClick(_ sender: NSButton?) {
-        preferences.fontName = "Helvetica Neue Medium"
-        preferences.fontSize = 28
-
-        // Update our label
-        currentFontLabel.stringValue = preferences.fontName! + ", \(preferences.fontSize!) pt"
-    }
-
-    @IBAction func extraFontPickerClick(_ sender: NSButton?) {
-        // Make a panel
-        let fp = self.fontManager.fontPanel(true)
-
-        // Set current font
-        if let font = NSFont(name: preferences.extraFontName!, size: CGFloat(preferences.extraFontSize!)) {
-            fp?.setPanelFont(font, isMultiple: false)
-
-        } else {
-            fp?.setPanelFont(NSFont(name: "Helvetica Neue Medium", size: 28)!, isMultiple: false)
-        }
-
-        // push the panel but mark which one we are editing
-        fontEditing = 1
-        fp?.makeKeyAndOrderFront(sender)
-    }
-
-    @IBAction func extraFontResetClick(_ sender: NSButton?) {
-        preferences.extraFontName = "Helvetica Neue Medium"
-        preferences.extraFontSize = 28
-
-        // Update our label
-        extraMessageFontLabel.stringValue = preferences.extraFontName! + ", \(preferences.extraFontSize!) pt"
-    }
-
-    @IBAction func descriptionCornerChange(_ sender: NSButton?) {
-        switch sender {
-        case cornerTopLeft:
-            preferences.descriptionCorner = Preferences.DescriptionCorner.topLeft.rawValue
-        case cornerTopRight:
-            preferences.descriptionCorner = Preferences.DescriptionCorner.topRight.rawValue
-        case cornerBottomLeft:
-            preferences.descriptionCorner = Preferences.DescriptionCorner.bottomLeft.rawValue
-        case cornerBottomRight:
-            preferences.descriptionCorner = Preferences.DescriptionCorner.bottomRight.rawValue
-        case cornerRandom:
-            preferences.descriptionCorner = Preferences.DescriptionCorner.random.rawValue
-        default:
-            ()
-        }
-    }
-
-    @IBAction func showClockClick(_ sender: NSButton) {
-        let onState = sender.state == .on
-        preferences.showClock = onState
-        withSecondsCheckbox.isEnabled = onState
-        debugLog("UI showClock: \(onState)")
-    }
-
-    @IBAction func withSecondsClick(_ sender: NSButton) {
-        let onState = sender.state == .on
-        preferences.withSeconds = onState
-        debugLog("UI withSeconds: \(onState)")
-    }
-
-    @IBAction func showExtraMessageClick(_ sender: NSButton) {
-        let onState = sender.state == .on
-        // We also need to enable/disable our message field
-        extraMessageTextField.isEnabled = onState
-        editExtraMessageButton.isEnabled = onState
-        preferences.showMessage = onState
-        debugLog("UI showExtraMessage: \(onState)")
-    }
-
-    @IBAction func fadeInOutTextModePopupChange(_ sender: NSPopUpButton) {
-        debugLog("UI fadeInOutTextMode: \(sender.indexOfSelectedItem)")
-        preferences.fadeModeText = sender.indexOfSelectedItem
-        preferences.synchronize()
-    }
 
     @IBAction func extraCornerPopupChange(_ sender: NSPopUpButton) {
         debugLog("UI extraCorner: \(sender.indexOfSelectedItem)")
@@ -255,33 +115,7 @@ extension PreferencesWindowController {
         preferences.synchronize()
     }
 
-    @IBAction func changeMarginsToCornerClick(_ sender: NSButton) {
-        let onState = sender.state == .on
-        debugLog("UI changeMarginsToCorner: \(onState)")
-
-        marginHorizontalTextfield.isEnabled = onState
-        marginVerticalTextfield.isEnabled = onState
-        preferences.overrideMargins = onState
-        editExtraMessageButton.isEnabled = onState
-    }
-
-    @IBAction func marginXChange(_ sender: NSTextField) {
-        preferences.marginX = Int(sender.stringValue)
-        if sender == secondaryMarginHorizontalTextfield {
-            marginHorizontalTextfield.stringValue = sender.stringValue
-        }
-
-        debugLog("UI marginXChange: \(sender.stringValue)")
-    }
-
-    @IBAction func marginYChange(_ sender: NSTextField) {
-        preferences.marginY = Int(sender.stringValue)
-        if sender == secondaryMarginVerticalTextfield {
-            marginVerticalTextfield.stringValue = sender.stringValue
-        }
-
-        debugLog("UI marginYChange: \(sender.stringValue)")
-    }*/
+*/
 }
 
 // MARK: - Font Panel Delegates

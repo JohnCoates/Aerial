@@ -26,9 +26,6 @@ extension AerialView {
         layer.frame = self.bounds
         debugLog("\(self.description) setting up player layer with bounds/frame: \(layer.bounds) / \(layer.frame)")
 
-        // Trying something new for Catalina
-        setupGlitchWorkaroundLayer(layer: layer)
-
         playerLayer = AVPlayerLayer(player: player)
 
         if #available(OSX 10.10, *) {
@@ -66,11 +63,11 @@ extension AerialView {
         layer.addSublayer(playerLayer)
 
         // The layers for descriptions, clock, message
-        layerManager.setupExtraLayers(layer: layer, frame: self.frame)
+        //layerManager.setupExtraLayers(layer: layer, frame: self.frame)
 
         // An extra layer to try and contravent a macOS graphics driver bug
         // This is useful on High Sierra+ on Intel Macs
-        setupGlitchWorkaroundLayer(layer: layer)
+        //setupGlitchWorkaroundLayer(layer: layer)
    }
 
     // MARK: - AVPlayerItem Notifications

@@ -37,8 +37,7 @@ struct NightShift {
         }
     }
 
-    // siftlint:disable:next large_tuple
-    // swiftlint:disable:next cyclomatic_complexity large_tuple
+    // swiftlint:disable:next large_tuple
     static func getInformation() -> (Bool, sunrise: Date?, sunset: Date?, error: String?) {
         if isNightShiftDataCached {
             return (nightShiftAvailable, nightShiftSunrise, nightShiftSunset, nil)
@@ -65,25 +64,12 @@ struct NightShift {
 
         for line in lines ?? [""] {
             if line.contains("sunrise") {
-                let tmp = line.split(separator: "\"")
-                if tmp.count > 1 {
-                    let dateFormatter = DateFormatter()
-                    // Catalina fix, this seems to be the correct way to parse the date
-                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
-
-                    if let dateObj = dateFormatter.date(from: String(tmp[1])) {
-                        sunrise = dateObj
-                    }
+                if let gdate = getDateFromLine(String(line)) {
+                    sunrise = gdate
                 }
             } else if line.contains("sunset") {
-                let tmp = line.split(separator: "\"")
-                if tmp.count > 1 {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
-
-                    if let dateObj = dateFormatter.date(from: String(tmp[1])) {
-                        sunset = dateObj
-                    }
+                if let gdate = getDateFromLine(String(line)) {
+                    sunset = gdate
                 }
             }
         }
@@ -102,6 +88,23 @@ struct NightShift {
         return (false, nil, nil, "Location services may be disabled")
     }
 
+    // Helpers
+    private static func getDateFromLine(_ line: String) -> Date? {
+        let tmp = line.split(separator: "\"")
+
+        if tmp.count > 1 {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
+
+            if let dateObj = dateFormatter.date(from: String(tmp[1])) {
+                return dateObj
+            }
+        }
+
+        return nil
+    }
+
+    // Launch a process through shell and capture/return output
     private static func shell(launchPath: String, arguments: [String] = []) -> (String?, Int32) {
         let task = Process()
         task.launchPath = launchPath

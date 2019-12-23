@@ -21,6 +21,27 @@ extension PreferencesWindowController {
         if preferences.synchronizedMode {
             synchronizedModeCheckbox.state = .on
         }
+
+        // Grab preferred language as proper string
+        currentLocaleLabel.stringValue = getPreferredLanguage()
+
+        let poisp = PoiStringProvider.sharedInstance
+        languagePopup.selectItem(at: poisp.getLanguagePosition())
+
+        // Margins override
+        if preferences.overrideMargins {
+            changeCornerMargins.state = .on
+            marginHorizontalTextfield.isEnabled = true
+            marginVerticalTextfield.isEnabled = true
+            editMarginButton.isEnabled = true
+        }
+
+        marginHorizontalTextfield.stringValue = String(preferences.marginX!)
+        marginVerticalTextfield.stringValue = String(preferences.marginY!)
+        secondaryMarginHorizontalTextfield.stringValue = String(preferences.marginX!)
+        secondaryMarginVerticalTextfield.stringValue = String(preferences.marginY!)
+
+        fadeInOutTextModePopup.selectItem(at: preferences.fadeModeText!)
     }
     // MARK: - Advanced panel
 
@@ -131,5 +152,62 @@ extension PreferencesWindowController {
             trashOldVideosButton.isEnabled = false
         }
 
+    }
+
+    // MARK: - Language picker
+
+    @IBAction func languagePopupChange(_ sender: NSPopUpButton) {
+        debugLog("UI languageChange: \(sender.indexOfSelectedItem)")
+        let poisp = PoiStringProvider.sharedInstance
+        preferences.ciOverrideLanguage = poisp.getLanguageStringFromPosition(pos: sender.indexOfSelectedItem)
+    }
+
+    func getPreferredLanguage() -> String {
+        let printOutputLocale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
+        if let deviceLanguageName: String = printOutputLocale.displayName(forKey: .identifier, value: Locale.preferredLanguages[0]) {
+            if #available(OSX 10.12, *) {
+                return "Preferred language: \(deviceLanguageName) [\(printOutputLocale.languageCode)]"
+            } else {
+                return "Preferred language: \(deviceLanguageName)"
+            }
+        } else {
+            return ""
+        }
+    }
+
+    // MARK: - Fades 
+    @IBAction func fadeInOutTextModePopupChange(_ sender: NSPopUpButton) {
+        debugLog("UI fadeInOutTextMode: \(sender.indexOfSelectedItem)")
+        preferences.fadeModeText = sender.indexOfSelectedItem
+        preferences.synchronize()
+    }
+
+    
+    // MARK: - Margins
+    @IBAction func changeMarginsToCornerClick(_ sender: NSButton) {
+        let onState = sender.state == .on
+        debugLog("UI changeMarginsToCorner: \(onState)")
+
+        marginHorizontalTextfield.isEnabled = onState
+        marginVerticalTextfield.isEnabled = onState
+        preferences.overrideMargins = onState
+    }
+
+    @IBAction func marginXChange(_ sender: NSTextField) {
+        preferences.marginX = Int(sender.stringValue)
+        if sender == secondaryMarginHorizontalTextfield {
+            marginHorizontalTextfield.stringValue = sender.stringValue
+        }
+
+        debugLog("UI marginXChange: \(sender.stringValue)")
+    }
+
+    @IBAction func marginYChange(_ sender: NSTextField) {
+        preferences.marginY = Int(sender.stringValue)
+        if sender == secondaryMarginVerticalTextfield {
+            marginVerticalTextfield.stringValue = sender.stringValue
+        }
+
+        debugLog("UI marginYChange: \(sender.stringValue)")
     }
 }

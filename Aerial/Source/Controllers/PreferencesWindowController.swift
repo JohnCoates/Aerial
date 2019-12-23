@@ -93,8 +93,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     // Text tab
     @IBOutlet weak var fadeInOutTextModePopup: NSPopUpButton!
-    @IBOutlet var currentLocaleLabel: NSTextField!
-    @IBOutlet var ciOverrideLanguagePopup: NSPopUpButton!
 
     // Todo remap those
     @IBOutlet var changeCornerMargins: NSButton!
@@ -181,6 +179,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var videoVersionsLabel: NSTextField!
     @IBOutlet var moveOldVideosButton: NSButton!
     @IBOutlet var trashOldVideosButton: NSButton!
+    @IBOutlet var languagePopup: NSPopUpButton!
+    @IBOutlet var currentLocaleLabel: NSTextField!
 
     // Video sets panel
     @IBOutlet var addVideoSetPanel: NSPanel!
@@ -314,8 +314,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         setupVideosTab()
         setupDisplaysTab()
-        setupInfoTab()  // Replaces Text tab
-        setupTextTab()  // TODO : remove
+        setupInfoTab()
         setupTimeTab()
         setupBrightnessTab()
         setupCacheTab()
