@@ -73,11 +73,7 @@ final class CheckCellView: NSTableCellView {
             queuedImage.isHidden = true
         }
 
-        if video!.url4KHEVC == "" {
-            formatLabel.isHidden = true        // Hide the 4K indicator
-        } else {
-            formatLabel.isHidden = false
-        }
+        formatLabel.isHidden = !(video!.has4KVersion())
     }
 
     func updateProgressIndicator(progress: Double) {

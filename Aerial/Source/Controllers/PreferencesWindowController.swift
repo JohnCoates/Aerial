@@ -34,8 +34,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var popoverHEVCLabel: NSTextField!
     @IBOutlet var secondProjectPageLink: NSButton!
 
-    @IBOutlet var popoverHDR: NSPopover!
-
     @IBOutlet var popoverTime: NSPopover!
     @IBOutlet var linkTimeWikipediaButton: NSButton!
 
@@ -58,11 +56,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var fadeInOutModePopup: NSPopUpButton!
     @IBOutlet var popupVideoFormat: NSPopUpButton!
-    @IBOutlet var useHDRCheckbox: NSButton!
 
-    @IBOutlet var overrideOnBatteryCheckbox: NSButton!
-    @IBOutlet var alternatePopupVideoFormat: NSPopUpButton!
-    @IBOutlet var powerSavingOnLowBatteryCheckbox: NSButton!
+    @IBOutlet var menu1080pHDR: NSMenuItem!
+    @IBOutlet var menu4KHDR: NSMenuItem!
+
+    @IBOutlet var onBatteryPopup: NSPopUpButton!
+
     @IBOutlet var rightArrowKeyPlaysNextCheckbox: NSButton!
     @IBOutlet var synchronizedModeCheckbox: NSButton!
     @IBOutlet var projectPageLink: NSButton!
@@ -93,8 +92,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     // Text tab
     @IBOutlet weak var fadeInOutTextModePopup: NSPopUpButton!
-    @IBOutlet var currentLocaleLabel: NSTextField!
-    @IBOutlet var ciOverrideLanguagePopup: NSPopUpButton!
 
     // Todo remap those
     @IBOutlet var changeCornerMargins: NSButton!
@@ -181,6 +178,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var videoVersionsLabel: NSTextField!
     @IBOutlet var moveOldVideosButton: NSButton!
     @IBOutlet var trashOldVideosButton: NSButton!
+    @IBOutlet var languagePopup: NSPopUpButton!
+    @IBOutlet var currentLocaleLabel: NSTextField!
 
     // Video sets panel
     @IBOutlet var addVideoSetPanel: NSPanel!
@@ -314,8 +313,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
         setupVideosTab()
         setupDisplaysTab()
-        setupInfoTab()  // Replaces Text tab
-        setupTextTab()  // TODO : remove
+        setupInfoTab()
         setupTimeTab()
         setupBrightnessTab()
         setupCacheTab()

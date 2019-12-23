@@ -9,5 +9,7 @@
 import Cocoa
 
 class InfoContainerView: NSView {
+    // We need to override the coordinate mode (bottom left origin to top left origin)
+    // so we can later add our child views from top to bottom
     override var isFlipped: Bool { return true }
 }

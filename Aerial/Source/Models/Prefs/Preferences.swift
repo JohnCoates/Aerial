@@ -19,7 +19,7 @@ final class Preferences {
         case multiMonitorMode = "multiMonitorMode"
         case cacheAerials = "cacheAerials"
         case customCacheDirectory = "cacheDirectory"
-        case videoFormat = "videoFormat"
+        //case videoFormat = "videoFormat"
         case showDescriptions = "showDescriptions"
         case showDescriptionsMode = "showDescriptionsMode"
         case neverStreamVideos = "neverStreamVideos"
@@ -30,15 +30,15 @@ final class Preferences {
         case fadeMode = "fadeMode"
         case fadeModeText = "fadeModeText"
         case descriptionCorner = "descriptionCorner"
-        case fontName = "fontName"
-        case fontSize = "fontSize"
-        case showClock = "showClock"
-        case withSeconds = "withSeconds"
-        case showMessage = "showMessage"
-        case showMessageString = "showMessageString"
-        case extraFontName = "extraFontName"
-        case extraFontSize = "extraFontSize"
-        case extraCorner = "extraCorner"
+        //case fontName = "fontName"
+        //case fontSize = "fontSize"
+        //case showClock = "showClock"
+        //case withSeconds = "withSeconds"
+        //case showMessage = "showMessage"
+        //case showMessageString = "showMessageString"
+//        case extraFontName = "extraFontName"
+//        case extraFontSize = "extraFontSize"
+//        case extraCorner = "extraCorner"
         case debugMode = "debugMode"
         case logToDisk = "logToDisk"
         case versionCheck = "versionCheck"
@@ -59,9 +59,9 @@ final class Preferences {
         case marginX = "marginX"
         case marginY = "marginY"
 
-        case alternateVideoFormat = "alternateVideoFormat"
-        case overrideOnBattery = "overrideOnBattery"
-        case powerSavingOnLowBattery = "powerSavingOnLowBattery"
+//        case alternateVideoFormat = "alternateVideoFormat"
+//        case overrideOnBattery = "overrideOnBattery"
+//        case powerSavingOnLowBattery = "powerSavingOnLowBattery"
 
         case darkModeNightOverride = "darkModeNightOverride"
         case newVideosMode = "newVideosMode"
@@ -135,13 +135,13 @@ final class Preferences {
         case disabled, nightShift, manual, lightDarkMode, coordinates
     }
 
-    enum VideoFormat: Int {
+    /*enum VideoFormat: Int {
         case v1080pH264, v1080pHEVC, v4KHEVC
     }
 
     enum AlternateVideoFormat: Int {
         case powerSaving, v1080pH264, v1080pHEVC, v4KHEVC
-    }
+    }*/
 
     enum DescriptionMode: Int {
         case fade10seconds, always
@@ -170,7 +170,7 @@ final class Preferences {
         var defaultValues = [Identifiers: Any]()
         defaultValues[.differentAerialsOnEachDisplay] = false
         defaultValues[.cacheAerials] = true
-        defaultValues[.videoFormat] = VideoFormat.v1080pH264
+        //defaultValues[.videoFormat] = VideoFormat.v1080pH264
         defaultValues[.showDescriptions] = true
         defaultValues[.showDescriptionsMode] = DescriptionMode.fade10seconds
         defaultValues[.neverStreamVideos] = false
@@ -182,15 +182,15 @@ final class Preferences {
         defaultValues[.fadeMode] = FadeMode.t1
         defaultValues[.fadeModeText] = FadeMode.t1
         defaultValues[.descriptionCorner] = DescriptionCorner.bottomLeft
-        defaultValues[.fontName] = "Helvetica Neue Medium"
-        defaultValues[.fontSize] = 28
-        defaultValues[.showClock] = false
-        defaultValues[.withSeconds] = false
-        defaultValues[.showMessage] = false
-        defaultValues[.showMessageString] = ""
-        defaultValues[.extraFontName] = "Monaco"
-        defaultValues[.extraFontSize] = 28
-        defaultValues[.extraCorner] = ExtraCorner.same
+//        defaultValues[.fontName] = "Helvetica Neue Medium"
+//        defaultValues[.fontSize] = 28
+        //defaultValues[.showClock] = false
+        //defaultValues[.withSeconds] = false
+        //defaultValues[.showMessage] = false
+        //defaultValues[.showMessageString] = ""
+        //defaultValues[.extraFontName] = "Monaco"
+        //defaultValues[.extraFontSize] = 28
+        //defaultValues[.extraCorner] = ExtraCorner.same
         defaultValues[.debugMode] = true
         defaultValues[.logToDisk] = true
         defaultValues[.versionCheck] = VersionCheck.weekly
@@ -208,9 +208,9 @@ final class Preferences {
         defaultValues[.overrideMargins] = false
         defaultValues[.marginX] = 50
         defaultValues[.marginY] = 50
-        defaultValues[.overrideOnBattery] = false
-        defaultValues[.powerSavingOnLowBattery] = false
-        defaultValues[.alternateVideoFormat] = AlternateVideoFormat.powerSaving
+//        defaultValues[.overrideOnBattery] = false
+//        defaultValues[.powerSavingOnLowBattery] = false
+//        defaultValues[.alternateVideoFormat] = AlternateVideoFormat.powerSaving
         defaultValues[.darkModeNightOverride] = false
         defaultValues[.newVideosMode] = NewVideosMode.weekly
         defaultValues[.ciOverrideLanguage] = ""
@@ -370,14 +370,14 @@ final class Preferences {
         }
     }
 
-    var alternateVideoFormat: Int? {
-        get {
-            return optionalValue(forIdentifier: .alternateVideoFormat)
-        }
-        set {
-            setValue(forIdentifier: .alternateVideoFormat, value: newValue)
-        }
-    }
+//    var alternateVideoFormat: Int? {
+//        get {
+//            return optionalValue(forIdentifier: .alternateVideoFormat)
+//        }
+//        set {
+//            setValue(forIdentifier: .alternateVideoFormat, value: newValue)
+//        }
+//    }
 
     var useHDR: Bool {
         get {
@@ -451,23 +451,23 @@ final class Preferences {
         }
     }
 
-    var overrideOnBattery: Bool {
-        get {
-            return value(forIdentifier: .overrideOnBattery)
-        }
-        set {
-            setValue(forIdentifier: .overrideOnBattery, value: newValue)
-        }
-    }
-
-    var powerSavingOnLowBattery: Bool {
-        get {
-            return value(forIdentifier: .powerSavingOnLowBattery)
-        }
-        set {
-            setValue(forIdentifier: .powerSavingOnLowBattery, value: newValue)
-        }
-    }
+//    var overrideOnBattery: Bool {
+//        get {
+//            return value(forIdentifier: .overrideOnBattery)
+//        }
+//        set {
+//            setValue(forIdentifier: .overrideOnBattery, value: newValue)
+//        }
+//    }
+//
+//    var powerSavingOnLowBattery: Bool {
+//        get {
+//            return value(forIdentifier: .powerSavingOnLowBattery)
+//        }
+//        set {
+//            setValue(forIdentifier: .powerSavingOnLowBattery, value: newValue)
+//        }
+//    }
 
     var dimBrightness: Bool {
         get {
@@ -568,32 +568,32 @@ final class Preferences {
         }
     }
 
-    var showClock: Bool {
-        get {
-            return value(forIdentifier: .showClock)
-        }
-        set {
-            setValue(forIdentifier: .showClock, value: newValue)
-        }
-    }
-
-    var withSeconds: Bool {
-        get {
-            return value(forIdentifier: .withSeconds)
-        }
-        set {
-            setValue(forIdentifier: .withSeconds, value: newValue)
-        }
-    }
-
-    var showMessage: Bool {
-        get {
-            return value(forIdentifier: .showMessage)
-        }
-        set {
-            setValue(forIdentifier: .showMessage, value: newValue)
-        }
-    }
+//    var showClock: Bool {
+//        get {
+//            return value(forIdentifier: .showClock)
+//        }
+//        set {
+//            setValue(forIdentifier: .showClock, value: newValue)
+//        }
+//    }
+//
+//    var withSeconds: Bool {
+//        get {
+//            return value(forIdentifier: .withSeconds)
+//        }
+//        set {
+//            setValue(forIdentifier: .withSeconds, value: newValue)
+//        }
+//    }
+//
+//    var showMessage: Bool {
+//        get {
+//            return value(forIdentifier: .showMessage)
+//        }
+//        set {
+//            setValue(forIdentifier: .showMessage, value: newValue)
+//        }
+//    }
 
     var ciOverrideLanguage: String? {
         get {
@@ -622,15 +622,15 @@ final class Preferences {
         }
     }
 
-    var showMessageString: String? {
-        get {
-            return optionalValue(forIdentifier: .showMessageString)
-        }
-        set {
-            setValue(forIdentifier: .showMessageString, value: newValue)
-        }
-    }
-
+//    var showMessageString: String? {
+//        get {
+//            return optionalValue(forIdentifier: .showMessageString)
+//        }
+//        set {
+//            setValue(forIdentifier: .showMessageString, value: newValue)
+//        }
+//    }
+//
     var differentAerialsOnEachDisplay: Bool {
         get {
             return value(forIdentifier: .differentAerialsOnEachDisplay)
@@ -667,14 +667,14 @@ final class Preferences {
         }
     }
 
-    var fontName: String? {
-        get {
-            return optionalValue(forIdentifier: .fontName)
-        }
-        set {
-            setValue(forIdentifier: .fontName, value: newValue)
-        }
-    }
+//    var fontName: String? {
+//        get {
+//            return optionalValue(forIdentifier: .fontName)
+//        }
+//        set {
+//            setValue(forIdentifier: .fontName, value: newValue)
+//        }
+//    }
 
     var startDim: Double? {
         get {
@@ -694,34 +694,34 @@ final class Preferences {
         }
     }
 
-    var fontSize: Double? {
-        get {
-            return optionalValue(forIdentifier: .fontSize)
-        }
-        set {
-            setValue(forIdentifier: .fontSize, value: newValue)
-        }
-
-    }
-
-    var extraFontName: String? {
-        get {
-            return optionalValue(forIdentifier: .extraFontName)
-        }
-        set {
-            setValue(forIdentifier: .extraFontName, value: newValue)
-        }
-    }
-
-    var extraFontSize: Double? {
-        get {
-            return optionalValue(forIdentifier: .extraFontSize)
-        }
-        set {
-            setValue(forIdentifier: .extraFontSize, value: newValue)
-        }
-
-    }
+//    var fontSize: Double? {
+//        get {
+//            return optionalValue(forIdentifier: .fontSize)
+//        }
+//        set {
+//            setValue(forIdentifier: .fontSize, value: newValue)
+//        }
+//
+//    }
+//
+//    var extraFontName: String? {
+//        get {
+//            return optionalValue(forIdentifier: .extraFontName)
+//        }
+//        set {
+//            setValue(forIdentifier: .extraFontName, value: newValue)
+//        }
+//    }
+//
+//    var extraFontSize: Double? {
+//        get {
+//            return optionalValue(forIdentifier: .extraFontSize)
+//        }
+//        set {
+//            setValue(forIdentifier: .extraFontSize, value: newValue)
+//        }
+//
+//    }
     var manualSunrise: String? {
         get {
             return optionalValue(forIdentifier: .manualSunrise)
@@ -767,14 +767,14 @@ final class Preferences {
         }
     }
 
-    var extraCorner: Int? {
-        get {
-            return optionalValue(forIdentifier: .extraCorner)
-        }
-        set {
-            setValue(forIdentifier: .extraCorner, value: newValue)
-        }
-    }
+//    var extraCorner: Int? {
+//        get {
+//            return optionalValue(forIdentifier: .extraCorner)
+//        }
+//        set {
+//            setValue(forIdentifier: .extraCorner, value: newValue)
+//        }
+//    }
 
     var fadeMode: Int? {
         get {
@@ -803,14 +803,14 @@ final class Preferences {
         }
     }
 
-    var videoFormat: Int? {
-        get {
-            return optionalValue(forIdentifier: .videoFormat)
-        }
-        set {
-            setValue(forIdentifier: .videoFormat, value: newValue)
-        }
-    }
+//    var videoFormat: Int? {
+//        get {
+//            return optionalValue(forIdentifier: .videoFormat)
+//        }
+//        set {
+//            setValue(forIdentifier: .videoFormat, value: newValue)
+//        }
+//    }
 
     var showDescriptionsMode: Int? {
         get {

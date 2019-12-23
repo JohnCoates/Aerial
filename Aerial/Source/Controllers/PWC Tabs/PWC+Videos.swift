@@ -96,39 +96,26 @@ extension PreferencesWindowController {
                                                name: .AVPlayerItemDidPlayToEndTime,
                                                object: player.currentItem)
 
-        if preferences.overrideOnBattery {
-            overrideOnBatteryCheckbox.state = .on
-            changeBatteryOverrideState(to: true)
-        } else {
-            changeBatteryOverrideState(to: false)
-        }
-        if preferences.powerSavingOnLowBattery {
-            powerSavingOnLowBatteryCheckbox.state = .on
-        }
+        onBatteryPopup.selectItem(at: PrefsVideos.onBatteryMode.rawValue)
+
         if !preferences.allowSkips {
             rightArrowKeyPlaysNextCheckbox.state = .off
         }
 
         if #available(OSX 10.13, *) {
-            popupVideoFormat.selectItem(at: preferences.videoFormat!)
+            popupVideoFormat.selectItem(at: PrefsVideos.videoFormat.rawValue)
         } else {
-            preferences.videoFormat = Preferences.VideoFormat.v1080pH264.rawValue
-            popupVideoFormat.selectItem(at: preferences.videoFormat!)
+            PrefsVideos.videoFormat = VideoFormat.v1080pH264
+            popupVideoFormat.selectItem(at: PrefsVideos.videoFormat.rawValue)
             popupVideoFormat.isEnabled = false
         }
-
-        alternatePopupVideoFormat.selectItem(at: preferences.alternateVideoFormat!)
 
         fadeInOutModePopup.selectItem(at: preferences.fadeMode!)
 
         // We need catalina for HDR !
-        if #available(OSX 10.15, *) {
-            if !preferences.useHDR {
-                useHDRCheckbox.state = .off
-            }
-        } else {
-            useHDRCheckbox.state = .off
-            useHDRCheckbox.isEnabled = false
+        if #available(OSX 10.15, *) {} else {
+            menu1080pHDR.isHidden = true
+            menu4KHDR.isHidden = true
         }
     }
 
@@ -138,45 +125,16 @@ extension PreferencesWindowController {
         debugLog("UI allowSkips \(onState)")
     }
 
-    @IBAction func overrideOnBatteryClick(_ sender: NSButton) {
-        let onState = sender.state == .on
-        preferences.overrideOnBattery = onState
-        changeBatteryOverrideState(to: onState)
-        debugLog("UI overrideOnBattery \(onState)")
-    }
-
-    @IBAction func powerSavingOnLowClick(_ sender: NSButton) {
-        let onState = sender.state == .on
-        preferences.powerSavingOnLowBattery = onState
-        debugLog("UI powerSavingOnLow \(onState)")
-    }
-
-    @IBAction func alternateVideoFormatChange(_ sender: NSPopUpButton) {
-        debugLog("UI alternatePopupVideoFormat: \(sender.indexOfSelectedItem)")
-        preferences.alternateVideoFormat = sender.indexOfSelectedItem
-        changeBatteryOverrideState(to: true)
-    }
-
-    func changeBatteryOverrideState(to: Bool) {
-        alternatePopupVideoFormat.isEnabled = to
-        if !to || (to && preferences.alternateVideoFormat != Preferences.AlternateVideoFormat.powerSaving.rawValue) {
-            powerSavingOnLowBatteryCheckbox.isEnabled = to
-        } else {
-            powerSavingOnLowBatteryCheckbox.isEnabled = false
-        }
-    }
-
     @IBAction func popupVideoFormatChange(_ sender: NSPopUpButton) {
         debugLog("UI popupVideoFormat: \(sender.indexOfSelectedItem)")
-        preferences.videoFormat = sender.indexOfSelectedItem
+        PrefsVideos.videoFormat = VideoFormat(rawValue: sender.indexOfSelectedItem)!
         preferences.synchronize()
         outlineView.reloadData()
     }
 
-    @IBAction func useHDRChange(_ sender: NSButton) {
-        let onState = sender.state == .on
-        preferences.useHDR = onState
-        debugLog("UI useHDR \(onState)")
+    @IBAction func onBatteryModeChange(_ sender: NSPopUpButton) {
+        debugLog("UI onBatteryModeChange \(sender.indexOfSelectedItem)")
+        PrefsVideos.onBatteryMode = OnBatteryMode(rawValue: sender.indexOfSelectedItem)!
     }
 
     @IBAction func helpButtonClick(_ button: NSButton!) {
@@ -185,10 +143,6 @@ extension PreferencesWindowController {
 
     @IBAction func helpPowerButtonClick(_ button: NSButton!) {
         popoverPower.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
-    }
-
-    @IBAction func helpHDRButtonClick(_ button: NSButton) {
-        popoverHDR.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
     }
 
     @IBAction func fadeInOutModePopupChange(_ sender: NSPopUpButton) {
@@ -318,15 +272,9 @@ extension PreferencesWindowController {
         }
 
         for video in videos {
-            if video.url4KHEVC != "" {
-                preferences.setVideo(videoID: video.id,
-                                     inRotation: true,
-                                     synchronize: false)
-            } else {
-                preferences.setVideo(videoID: video.id,
-                                     inRotation: false,
-                                     synchronize: false)
-            }
+            preferences.setVideo(videoID: video.id,
+                                 inRotation: video.has4KVersion(),
+                                 synchronize: false)
         }
         preferences.synchronize()
 

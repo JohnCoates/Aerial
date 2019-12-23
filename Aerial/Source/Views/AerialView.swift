@@ -15,21 +15,16 @@ import AVKit
 // swiftlint:disable:next type_body_length
 final class AerialView: ScreenSaverView, CAAnimationDelegate {
     var layerManager: LayerManager
-
     var playerLayer: AVPlayerLayer!
-    var textLayer: LocationLayer!
-    var clockLayer: LocationLayer!
-    var messageLayer: CATextLayer!
-    var lastCorner = -1
-    var clockTimer: Timer?
 
-    var preferencesController: PreferencesWindowController?
     static var players: [AVPlayer] = [AVPlayer]()
     static var previewPlayer: AVPlayer?
     static var previewView: AerialView?
 
     var player: AVPlayer?
     var currentVideo: AerialVideo?
+
+    var preferencesController: PreferencesWindowController?
 
     var observerWasSet = false
     var hasStartedPlaying = false
@@ -39,7 +34,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     var isQuickFading = false
 
     var brightnessToRestore: Float?
-    var isCatalinaPreview = false
 
     static var shouldFade: Bool {
         let preferences = Preferences.sharedInstance
@@ -139,7 +133,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         setup()
     }
 
-    // This is the one used by App
+    // This is the one used by our App target used for debugging
     required init?(coder: NSCoder) {
         self.layerManager = LayerManager(isPreview: false)
 
@@ -189,14 +183,12 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
         // Check early if we need to enable power saver mode,
         // black screen with minimal brightness
-        if preferences.overrideOnBattery && batteryManagement.isOnBattery() && !isPreview {
-            if preferences.alternateVideoFormat == Preferences.AlternateVideoFormat.powerSaving.rawValue ||
-                (preferences.powerSavingOnLowBattery && batteryManagement.isBatteryLow()) {
-                debugLog("Engaging power saving mode")
-                isDisabled = true
-                Brightness.set(level: 0.0)
-                return
-            }
+        // swiftlint:disable:next line_length
+        if (PrefsVideos.onBatteryMode == .alwaysDisabled && batteryManagement.isOnBattery() && !isPreview) || (PrefsVideos.onBatteryMode == .disableOnLow && batteryManagement.isBatteryLow()) {
+            debugLog("Engaging power saving mode")
+            isDisabled = true
+            Brightness.set(level: 0.0)
+            return
         }
 
         // We may need to set timers to progressively dim the screen
@@ -363,10 +355,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         let notificationCenter = NotificationCenter.default
         // Clear everything
         layerManager.clearLayerAnimations(player: self.player!)
-/*        self.textLayer.removeAllAnimations()
-        self.clockLayer.removeAllAnimations()
-        self.messageLayer.removeAllAnimations()
-*/
+
         // remove old entries
         notificationCenter.removeObserver(self)
 
