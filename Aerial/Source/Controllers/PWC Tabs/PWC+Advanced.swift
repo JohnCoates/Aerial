@@ -182,7 +182,6 @@ extension PreferencesWindowController {
         preferences.synchronize()
     }
 
-    
     // MARK: - Margins
     @IBAction func changeMarginsToCornerClick(_ sender: NSButton) {
         let onState = sender.state == .on

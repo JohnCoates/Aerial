@@ -34,8 +34,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var popoverHEVCLabel: NSTextField!
     @IBOutlet var secondProjectPageLink: NSButton!
 
-    @IBOutlet var popoverHDR: NSPopover!
-
     @IBOutlet var popoverTime: NSPopover!
     @IBOutlet var linkTimeWikipediaButton: NSButton!
 
@@ -58,11 +56,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var fadeInOutModePopup: NSPopUpButton!
     @IBOutlet var popupVideoFormat: NSPopUpButton!
-    @IBOutlet var useHDRCheckbox: NSButton!
 
-    @IBOutlet var overrideOnBatteryCheckbox: NSButton!
-    @IBOutlet var alternatePopupVideoFormat: NSPopUpButton!
-    @IBOutlet var powerSavingOnLowBatteryCheckbox: NSButton!
+    @IBOutlet var menu1080pHDR: NSMenuItem!
+    @IBOutlet var menu4KHDR: NSMenuItem!
+
+    @IBOutlet var onBatteryPopup: NSPopUpButton!
+
     @IBOutlet var rightArrowKeyPlaysNextCheckbox: NSButton!
     @IBOutlet var synchronizedModeCheckbox: NSButton!
     @IBOutlet var projectPageLink: NSButton!
