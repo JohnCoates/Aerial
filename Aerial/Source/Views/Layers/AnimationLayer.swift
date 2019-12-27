@@ -134,6 +134,12 @@ class AnimationLayer: CATextLayer {
                              y: baseLayer.bounds.height-my)
             alignmentMode = .right
 
+        case .screenCenter:
+            anchorPoint = CGPoint(x: 0.5, y: 0)
+            newPos = CGPoint(x: baseLayer.bounds.width/2,
+                             y: baseLayer.bounds.height/2 - my + 20)
+            alignmentMode = .center
+
         case .bottomLeft:
             anchorPoint = CGPoint(x: 0, y: 0)
             newPos = CGPoint(x: mx, y: my)
