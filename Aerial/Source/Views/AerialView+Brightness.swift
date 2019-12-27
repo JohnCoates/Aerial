@@ -14,13 +14,12 @@ extension AerialView {
     func checkIfShouldSetBrightness() {
         let preferences = Preferences.sharedInstance
         let timeManagement = TimeManagement.sharedInstance
-        let batteryManagement = BatteryManagement()
 
         if preferences.dimBrightness && !isPreview && brightnessToRestore == nil {
             let (should, to) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
 
             if !preferences.dimOnlyAtNight || (preferences.dimOnlyAtNight && should && to == "night") {
-                if !preferences.dimOnlyOnBattery || (preferences.dimOnlyOnBattery && batteryManagement.isOnBattery()) {
+                if !preferences.dimOnlyOnBattery || (preferences.dimOnlyOnBattery && Battery.isUnplugged()) {
                     brightnessToRestore = Brightness.get()
                     // brightnessToRestore = timeManagement.getBrightness()
                     debugLog("Brightness before Aerial was launched : \(String(describing: brightnessToRestore))")

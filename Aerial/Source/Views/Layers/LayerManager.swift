@@ -59,6 +59,8 @@ class LayerManager {
             return PrefsInfo.message.corner
         case .clock:
             return PrefsInfo.clock.corner
+        case .battery:
+            return PrefsInfo.battery.corner
         }
     }
 
@@ -77,6 +79,10 @@ class LayerManager {
         case .clock:
             if PrefsInfo.clock.isEnabled && shouldEnableOnScreen(PrefsInfo.clock.displays) {
                 newLayer = ClockLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.clock)
+            }
+        case .battery:
+            if PrefsInfo.battery.isEnabled && shouldEnableOnScreen(PrefsInfo.clock.displays) {
+                newLayer = BatteryLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.battery)
             }
         }
 

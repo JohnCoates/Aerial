@@ -89,6 +89,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var infoLocationView: InfoLocationView!
     @IBOutlet var infoClockView: InfoClockView!
     @IBOutlet var infoMessageView: InfoMessageView!
+    @IBOutlet var infoBatteryView: InfoBatteryView!
 
     // Text tab
     @IBOutlet weak var fadeInOutTextModePopup: NSPopUpButton!

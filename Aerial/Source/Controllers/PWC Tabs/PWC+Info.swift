@@ -11,6 +11,12 @@ import Cocoa
 extension PreferencesWindowController {
 
     func setupInfoTab() {
+        // This may be a temp workaround, will depend on where it goes
+        // We periodically add new types so we must add them
+        if !PrefsInfo.layers.contains(.battery) {
+            PrefsInfo.layers.append(.battery)
+        }
+
         print("info source")
         infoSource = InfoTableSource()
         infoSource?.setController(self)
@@ -42,6 +48,11 @@ extension PreferencesWindowController {
             infoContainerView.addSubview(infoClockView)
             infoClockView.frame.origin.y = infoCommonView.frame.height
             infoClockView.setStates()
+        case .battery:
+            infoContainerView.addSubview(infoBatteryView)
+            infoBatteryView.frame.origin.y = infoCommonView.frame.height
+            infoBatteryView.setStates()
+
         }
     }
 

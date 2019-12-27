@@ -65,6 +65,7 @@
                 <outlet property="iconTime1" destination="lQX-Ux-Sz8" id="JNc-dR-kDA"/>
                 <outlet property="iconTime2" destination="VuJ-HC-hN5" id="AbN-SY-Tux"/>
                 <outlet property="iconTime3" destination="W77-TL-rnp" id="ncL-NO-Mb0"/>
+                <outlet property="infoBatteryView" destination="zp2-u5-WW1" id="a1k-Fu-gEa"/>
                 <outlet property="infoClockView" destination="Yds-eJ-nUH" id="7Ae-Hn-y6J"/>
                 <outlet property="infoCommonView" destination="ls3-ia-gMN" id="S09-dO-Ufy"/>
                 <outlet property="infoContainerView" destination="5C2-9s-W8E" id="Gi8-fM-FD2"/>
@@ -3099,6 +3100,46 @@ After changing the folder, please close System Preferences for this to be taken 
                 <outlet property="showTimePopup" destination="qmX-6m-Whj" id="nLF-kP-t3e"/>
             </connections>
             <point key="canvasLocation" x="-174" y="645"/>
+        </customView>
+        <customView id="zp2-u5-WW1" userLabel="Battery Extra View" customClass="InfoBatteryView" customModule="Aerial" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="406" height="36"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jdr-GR-4Cj">
+                    <rect key="frame" x="18" y="10" width="41" height="16"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Show:" id="IgW-XP-t2u">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton toolTip="How long should each text appear" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CMG-LG-sE8">
+                    <rect key="frame" x="81" y="4" width="132" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Percent" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="9nb-hm-4xw" id="sQ3-t3-8GA">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <menu key="menu" id="KBj-xd-4LI">
+                            <items>
+                                <menuItem title="Percent" state="on" id="9nb-hm-4xw"/>
+                                <menuItem title="Icons + Percent" id="Fop-cy-x6M"/>
+                                <menuItem title="Icons only" id="oSu-Lr-E4n">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="showTimeChange:" target="zp2-u5-WW1" id="MDT-hd-hti"/>
+                    </connections>
+                </popUpButton>
+            </subviews>
+            <connections>
+                <outlet property="modePopup" destination="CMG-LG-sE8" id="DcR-b7-ln4"/>
+                <outlet property="showTimePopup" destination="CMG-LG-sE8" id="K5F-uc-IZT"/>
+            </connections>
+            <point key="canvasLocation" x="-174" y="911"/>
         </customView>
     </objects>
     <resources>
