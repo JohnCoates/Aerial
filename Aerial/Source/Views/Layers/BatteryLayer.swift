@@ -71,7 +71,7 @@ class BatteryLayer: AnimationLayer {
             if bstring == "" {
                 bstring += ", "
             }
-            
+
             bstring += "\(percent)%"
         }
 

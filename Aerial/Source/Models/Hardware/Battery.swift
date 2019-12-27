@@ -28,7 +28,7 @@ struct Battery {
         return getRemainingPercent() < 20
     }
 
-    static func getRemainingPercent() -> Double {
+    static func getRemainingPercent() -> Int {
         // Take a snapshot of all the power source info
         guard let snapshot = IOPSCopyPowerSourcesInfo()?.takeRetainedValue()
             else { return 0 }
@@ -49,7 +49,7 @@ struct Battery {
                 if let capacity = info[kIOPSCurrentCapacityKey] as? Int,
                     let max = info[kIOPSMaxCapacityKey] as? Int {
 
-                    return Double(capacity)/Double(max)*100
+                    return capacity/max*100
                 }
             }
         }
