@@ -45,6 +45,8 @@ class InfoTableSource: NSTableView, NSTableViewDataSource, NSTableViewDelegate {
                     isEnabled = PrefsInfo.message.isEnabled
                 case .clock:
                     isEnabled = PrefsInfo.clock.isEnabled
+                case .battery:
+                    isEnabled = PrefsInfo.battery.isEnabled
                 }
 
                 cell.imageView?.image = NSImage(named: isEnabled

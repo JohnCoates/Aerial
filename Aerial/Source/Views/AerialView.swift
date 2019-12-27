@@ -173,7 +173,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         }
 
         let preferences = Preferences.sharedInstance
-        let batteryManagement = BatteryManagement()
 
         // Run Sparkle updater if enabled
         if !isPreview && preferences.updateWhileSaverMode {
@@ -184,7 +183,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         // Check early if we need to enable power saver mode,
         // black screen with minimal brightness
         // swiftlint:disable:next line_length
-        if (PrefsVideos.onBatteryMode == .alwaysDisabled && batteryManagement.isOnBattery() && !isPreview) || (PrefsVideos.onBatteryMode == .disableOnLow && batteryManagement.isBatteryLow()) {
+        if (PrefsVideos.onBatteryMode == .alwaysDisabled && Battery.isUnplugged() && !isPreview) || (PrefsVideos.onBatteryMode == .disableOnLow && Battery.isLow()) {
             debugLog("Engaging power saving mode")
             isDisabled = true
             Brightness.set(level: 0.0)

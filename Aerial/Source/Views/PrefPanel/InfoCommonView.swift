@@ -61,6 +61,13 @@ class InfoCommonView: NSView {
             posRandom.isHidden = true
             displaysPopup.selectItem(at: PrefsInfo.clock.displays.rawValue)
             fontLabel.stringValue = PrefsInfo.clock.fontName + ", \(PrefsInfo.clock.fontSize) pt"
+        case .battery:
+            descriptionLabel.stringValue = "Show current battery status."
+            enabledButton.state = PrefsInfo.battery.isEnabled ? .on : .off
+            setPosition(PrefsInfo.battery.corner)
+            posRandom.isHidden = true
+            displaysPopup.selectItem(at: PrefsInfo.battery.displays.rawValue)
+            fontLabel.stringValue = PrefsInfo.battery.fontName + ", \(PrefsInfo.battery.fontSize) pt"
         }
     }
 
@@ -121,6 +128,8 @@ class InfoCommonView: NSView {
             PrefsInfo.message.corner = pos
         case .clock:
             PrefsInfo.clock.corner = pos
+        case .battery:
+            PrefsInfo.battery.corner = pos
         }
     }
 
@@ -134,6 +143,8 @@ class InfoCommonView: NSView {
             PrefsInfo.message.displays = InfoDisplays(rawValue: sender.indexOfSelectedItem)!
         case .clock:
             PrefsInfo.clock.displays = InfoDisplays(rawValue: sender.indexOfSelectedItem)!
+        case .battery:
+            PrefsInfo.battery.displays = InfoDisplays(rawValue: sender.indexOfSelectedItem)!
         }
     }
 
@@ -150,6 +161,8 @@ class InfoCommonView: NSView {
             PrefsInfo.message.isEnabled = onState
         case .clock:
             PrefsInfo.clock.isEnabled = onState
+        case .battery:
+            PrefsInfo.battery.isEnabled = onState
         }
 
         // We need to update the side column!
@@ -174,6 +187,9 @@ class InfoCommonView: NSView {
             case .clock:
                 fp.setPanelFont(makeFont(name: PrefsInfo.clock.fontName,
                                          size: PrefsInfo.clock.fontSize), isMultiple: false)
+            case .battery:
+                fp.setPanelFont(makeFont(name: PrefsInfo.battery.fontName,
+                                         size: PrefsInfo.battery.fontSize), isMultiple: false)
             }
 
             // Push the panel
@@ -204,6 +220,10 @@ class InfoCommonView: NSView {
             PrefsInfo.clock.fontName = "Helvetica Neue Medium"
             PrefsInfo.clock.fontSize = 50
             fontLabel.stringValue = PrefsInfo.clock.fontName + ", \(PrefsInfo.clock.fontSize) pt"
+        case .battery:
+            PrefsInfo.battery.fontName = "Helvetica Neue Medium"
+            PrefsInfo.battery.fontSize = 20
+            fontLabel.stringValue = PrefsInfo.battery.fontName + ", \(PrefsInfo.battery.fontSize) pt"
         }
     }
 }
@@ -222,13 +242,17 @@ extension InfoCommonView: NSFontChanging {
         switch forType {
         case .location:
             oldFont = makeFont(name: PrefsInfo.location.fontName,
-                                     size: PrefsInfo.location.fontSize)
+                               size: PrefsInfo.location.fontSize)
         case .message:
             oldFont = makeFont(name: PrefsInfo.message.fontName,
-                                     size: PrefsInfo.message.fontSize)
+                               size: PrefsInfo.message.fontSize)
         case .clock:
             oldFont = makeFont(name: PrefsInfo.clock.fontName,
-                                     size: PrefsInfo.clock.fontSize)
+                               size: PrefsInfo.clock.fontSize)
+        case .battery:
+            oldFont = makeFont(name: PrefsInfo.battery.fontName,
+                               size: PrefsInfo.battery.fontSize)
+
         }
 
         if let newFont = sender?.convert(oldFont) {
@@ -242,6 +266,9 @@ extension InfoCommonView: NSFontChanging {
             case .clock:
                 PrefsInfo.clock.fontName = newFont.fontName
                 PrefsInfo.clock.fontSize = Double(newFont.pointSize)
+            case .battery:
+                PrefsInfo.battery.fontName = newFont.fontName
+                PrefsInfo.battery.fontSize = Double(newFont.pointSize)
             }
             fontLabel.stringValue = newFont.fontName + ", \(Double(newFont.pointSize)) pt"
         } else {

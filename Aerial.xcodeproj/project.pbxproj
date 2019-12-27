@@ -23,8 +23,8 @@
 		0313F9F022955F3B00B074BB /* CustomVideoFolders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313F9EE22955F3B00B074BB /* CustomVideoFolders.swift */; };
 		03233B68217272640077D3F9 /* PoiStringProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03233B67217272640077D3F9 /* PoiStringProvider.swift */; };
 		03233B692172762C0077D3F9 /* PoiStringProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03233B67217272640077D3F9 /* PoiStringProvider.swift */; };
-		032D1161239A7D82007E7756 /* BatteryManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032D1160239A7D82007E7756 /* BatteryManagement.swift */; };
-		032D1162239A7E03007E7756 /* BatteryManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032D1160239A7D82007E7756 /* BatteryManagement.swift */; };
+		032D1161239A7D82007E7756 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032D1160239A7D82007E7756 /* Battery.swift */; };
+		032D1162239A7E03007E7756 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032D1160239A7D82007E7756 /* Battery.swift */; };
 		032D1164239A7F0C007E7756 /* AerialView+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032D1163239A7F0C007E7756 /* AerialView+Brightness.swift */; };
 		032D1165239A7F17007E7756 /* AerialView+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032D1163239A7F0C007E7756 /* AerialView+Brightness.swift */; };
 		033192E1217B78240073B580 /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = 033192E0217B78240073B580 /* en.json */; };
@@ -90,6 +90,10 @@
 		038D2EBD23AB91C300CD91F7 /* InfoLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A596D823AB8F000097EA66 /* InfoLocationView.swift */; };
 		038D2EDE23B0FB0D00CD91F7 /* PrefsVideos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D2EDD23B0FB0D00CD91F7 /* PrefsVideos.swift */; };
 		038D2EDF23B0FB0D00CD91F7 /* PrefsVideos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D2EDD23B0FB0D00CD91F7 /* PrefsVideos.swift */; };
+		038D2EE123B6523800CD91F7 /* BatteryLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D2EE023B6523800CD91F7 /* BatteryLayer.swift */; };
+		038D2EE223B6523800CD91F7 /* BatteryLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D2EE023B6523800CD91F7 /* BatteryLayer.swift */; };
+		038D2EE423B6565900CD91F7 /* InfoBatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D2EE323B6565900CD91F7 /* InfoBatteryView.swift */; };
+		038D2EE523B6565900CD91F7 /* InfoBatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D2EE323B6565900CD91F7 /* InfoBatteryView.swift */; };
 		038EBE9422D0AA3D00C7AD02 /* nl.json in Resources */ = {isa = PBXBuildFile; fileRef = 038EBE9322D0AA3D00C7AD02 /* nl.json */; };
 		038EBE9522D0AA3D00C7AD02 /* nl.json in Resources */ = {isa = PBXBuildFile; fileRef = 038EBE9322D0AA3D00C7AD02 /* nl.json */; };
 		0393857A2175D4B80040B850 /* AVPlayerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039385792175D4B80040B850 /* AVPlayerViewExtension.swift */; };
@@ -211,7 +215,7 @@
 		0313F9EB2294468600B074BB /* SeededGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeededGenerator.swift; sourceTree = "<group>"; };
 		0313F9EE22955F3B00B074BB /* CustomVideoFolders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVideoFolders.swift; sourceTree = "<group>"; };
 		03233B67217272640077D3F9 /* PoiStringProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoiStringProvider.swift; sourceTree = "<group>"; };
-		032D1160239A7D82007E7756 /* BatteryManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryManagement.swift; sourceTree = "<group>"; };
+		032D1160239A7D82007E7756 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 		032D1163239A7F0C007E7756 /* AerialView+Brightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AerialView+Brightness.swift"; sourceTree = "<group>"; };
 		033192E0217B78240073B580 /* en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = en.json; sourceTree = "<group>"; };
 		033D62AA216CADCD00F3AF83 /* icon-day-dark.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icon-day-dark.pdf"; sourceTree = "<group>"; };
@@ -243,6 +247,8 @@
 		038C584623A9304800224630 /* InfoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoContainerView.swift; sourceTree = "<group>"; };
 		038C584923A9394000224630 /* InfoCommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCommonView.swift; sourceTree = "<group>"; };
 		038D2EDD23B0FB0D00CD91F7 /* PrefsVideos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsVideos.swift; sourceTree = "<group>"; };
+		038D2EE023B6523800CD91F7 /* BatteryLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryLayer.swift; sourceTree = "<group>"; };
+		038D2EE323B6565900CD91F7 /* InfoBatteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBatteryView.swift; sourceTree = "<group>"; };
 		038EBE9322D0AA3D00C7AD02 /* nl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nl.json; sourceTree = "<group>"; };
 		039385792175D4B80040B850 /* AVPlayerViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerViewExtension.swift; sourceTree = "<group>"; };
 		03958348217F4416008E8F9C /* Solar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solar.swift; sourceTree = "<group>"; };
@@ -358,6 +364,7 @@
 				0306336723A1012200046A59 /* LocationLayer.swift */,
 				03BF51BE23A274CA008AD373 /* MessageLayer.swift */,
 				03BF51C123A2978B008AD373 /* ClockLayer.swift */,
+				038D2EE023B6523800CD91F7 /* BatteryLayer.swift */,
 			);
 			path = Layers;
 			sourceTree = "<group>";
@@ -391,6 +398,7 @@
 				03A596D823AB8F000097EA66 /* InfoLocationView.swift */,
 				03A596D223AA750F0097EA66 /* InfoMessageView.swift */,
 				03A596D423AA752F0097EA66 /* InfoClockView.swift */,
+				038D2EE323B6565900CD91F7 /* InfoBatteryView.swift */,
 			);
 			path = PrefPanel;
 			sourceTree = "<group>";
@@ -472,7 +480,7 @@
 			children = (
 				03D1E7892284471A00D10CF7 /* DisplayDetection.swift */,
 				03608A2B22A56465008F08A2 /* HardwareDetection.swift */,
-				032D1160239A7D82007E7756 /* BatteryManagement.swift */,
+				032D1160239A7D82007E7756 /* Battery.swift */,
 				F008DAFC23AADCFB00739DE1 /* Brightness.swift */,
 				F00864B323AAE7F0003210EF /* DarkMode.swift */,
 				F00864B623AAE8E9003210EF /* NightShift.swift */,
@@ -990,7 +998,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F00864B523AAE7F0003210EF /* DarkMode.swift in Sources */,
-				032D1162239A7E03007E7756 /* BatteryManagement.swift in Sources */,
+				032D1162239A7E03007E7756 /* Battery.swift in Sources */,
 				03893CB4217753AC008E7125 /* ErrorLog.swift in Sources */,
 				03608A1822A55B47008F08A2 /* PWC+Text.swift in Sources */,
 				03233B692172762C0077D3F9 /* PoiStringProvider.swift in Sources */,
@@ -1012,6 +1020,7 @@
 				03D1E7882284367200D10CF7 /* DisplayView.swift in Sources */,
 				038D2EDF23B0FB0D00CD91F7 /* PrefsVideos.swift in Sources */,
 				03608A2122A55BC2008F08A2 /* PWC+Cache.swift in Sources */,
+				038D2EE523B6565900CD91F7 /* InfoBatteryView.swift in Sources */,
 				030D9B7C21551A8D00961E95 /* AerialPlayerItem.swift in Sources */,
 				03608A2D22A56465008F08A2 /* HardwareDetection.swift in Sources */,
 				FAC36F5E1BE1756D007F2A20 /* CheckCellView.swift in Sources */,
@@ -1022,6 +1031,7 @@
 				FAC36F581BE1756D007F2A20 /* PreferencesWindowController.swift in Sources */,
 				034F29C023A7E58C004B34D5 /* PrefsInfo.swift in Sources */,
 				034F29B923A7B0FC004B34D5 /* PWC+Info.swift in Sources */,
+				038D2EE223B6523800CD91F7 /* BatteryLayer.swift in Sources */,
 				03BF51C023A275D9008AD373 /* MessageLayer.swift in Sources */,
 				035D5250239AA31A00DC29DC /* AerialView+Player.swift in Sources */,
 				0395834A217F442A008E8F9C /* Solar.swift in Sources */,
@@ -1092,7 +1102,8 @@
 				03BF51C223A2978B008AD373 /* ClockLayer.swift in Sources */,
 				FAC36F591BE1756D007F2A20 /* AerialVideo.swift in Sources */,
 				03893CB3217749F0008E7125 /* ErrorLog.swift in Sources */,
-				032D1161239A7D82007E7756 /* BatteryManagement.swift in Sources */,
+				032D1161239A7D82007E7756 /* Battery.swift in Sources */,
+				038D2EE423B6565900CD91F7 /* InfoBatteryView.swift in Sources */,
 				03608A2322A55BF1008F08A2 /* PWC+Updates.swift in Sources */,
 				AA7E2E5E1FC62E8B00E5F320 /* AerialPlayerItem.swift in Sources */,
 				03608A2C22A56465008F08A2 /* HardwareDetection.swift in Sources */,
@@ -1116,6 +1127,7 @@
 				03958349217F4416008E8F9C /* Solar.swift in Sources */,
 				F008DAFD23AADCFB00739DE1 /* Brightness.swift in Sources */,
 				03233B68217272640077D3F9 /* PoiStringProvider.swift in Sources */,
+				038D2EE123B6523800CD91F7 /* BatteryLayer.swift in Sources */,
 				FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */,
 				03E8730C2165013C002B469B /* DownloadManager.swift in Sources */,
 				03608A2622A55C03008F08A2 /* PWC+Advanced.swift in Sources */,

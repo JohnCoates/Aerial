@@ -18,11 +18,15 @@ enum InfoDisplays: Int, Codable {
 }
 
 enum InfoType: String, Codable {
-    case location, message, clock
+    case location, message, clock, battery
 }
 
 enum InfoTime: Int, Codable {
     case always, tenSeconds
+}
+
+enum InfoIconText: Int, Codable {
+    case textOnly, iconAndText, iconOnly
 }
 
 struct PrefsInfo {
@@ -54,8 +58,17 @@ struct PrefsInfo {
         var showSeconds: Bool
     }
 
-    // Our array of Info layers. User can reorder the array, and we may periodically add new Info
-    @Storage(key: "layers", defaultValue: [.location, .message, .clock])
+    struct Battery: Codable {
+        var isEnabled: Bool
+        var fontName: String
+        var fontSize: Double
+        var corner: InfoCorner
+        var displays: InfoDisplays
+        var mode: InfoIconText
+    }
+
+    // Our array of Info layers. User can reorder the array, and we may periodically add new Info types
+    @Storage(key: "layers", defaultValue: [ .message, .clock, .location, .battery])
     static var layers: [InfoType]
 
     // Location information
@@ -84,6 +97,16 @@ struct PrefsInfo {
                                                      displays: .allDisplays,
                                                      showSeconds: true))
     static var clock: Clock
+
+    // Battery
+    @Storage(key: "LayerBattery", defaultValue: Battery(isEnabled: true,
+                                                     fontName: "Helvetica Neue Medium",
+                                                     fontSize: 20,
+                                                     corner: .topRight,
+                                                     displays: .allDisplays,
+                                                     mode: .textOnly))
+    static var battery: Battery
+
 }
 
 @propertyWrapper struct Storage<T: Codable> {
