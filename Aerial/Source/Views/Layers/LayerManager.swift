@@ -23,30 +23,68 @@ class LayerManager {
     func setupExtraLayers(layer: CALayer, frame: CGRect) {
         self.frame = frame
 
+        var topRow = [InfoType]()
+        var bottomRow = [InfoType]()
+
         // The list of known layers is in an ordered array
+        // we need to split the bottom row though, as drawing them "in order" would look
+        // reversed to users as we draw from the corner out
         for layerType in PrefsInfo.layers {
-            var newLayer: AnimationLayer?
+            let pos = getPositionForLayerType(layerType)
 
-            switch layerType {
-            case .location:
-                if PrefsInfo.location.isEnabled && shouldEnableOnScreen(PrefsInfo.location.displays) {
-                    newLayer = LocationLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.location)
-                }
-            case .message:
-                if PrefsInfo.message.isEnabled && shouldEnableOnScreen(PrefsInfo.message.displays) {
-                    newLayer = MessageLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.message)
-                }
-            case .clock:
-                if PrefsInfo.clock.isEnabled && shouldEnableOnScreen(PrefsInfo.clock.displays) {
-                    newLayer = ClockLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.clock)
-                }
-            }
-
-            if let nLayer = newLayer {
-                additionalLayers.append(nLayer)
-                layer.addSublayer(nLayer)
+            if pos == .topCenter || pos == .topLeft || pos == .topRight || pos == .screenCenter {
+                topRow.append(layerType)
+            } else {
+                bottomRow.append(layerType)
             }
         }
+
+        // Then add top row
+        for layerType in topRow {
+            addLayerForType(layerType, layer: layer)
+        }
+
+        // And reversed bottomRow
+        for layerType in bottomRow.reversed() {
+            addLayerForType(layerType, layer: layer)
+        }
+
+    }
+
+    private func getPositionForLayerType(_ layerType: InfoType) -> InfoCorner {
+        switch layerType {
+        case .location:
+            return PrefsInfo.location.corner
+        case .message:
+            return PrefsInfo.message.corner
+        case .clock:
+            return PrefsInfo.clock.corner
+        }
+    }
+
+    private func addLayerForType(_ layerType: InfoType, layer: CALayer) {
+        var newLayer: AnimationLayer?
+
+        switch layerType {
+        case .location:
+            if PrefsInfo.location.isEnabled && shouldEnableOnScreen(PrefsInfo.location.displays) {
+                newLayer = LocationLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.location)
+            }
+        case .message:
+            if PrefsInfo.message.isEnabled && shouldEnableOnScreen(PrefsInfo.message.displays) {
+                newLayer = MessageLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.message)
+            }
+        case .clock:
+            if PrefsInfo.clock.isEnabled && shouldEnableOnScreen(PrefsInfo.clock.displays) {
+                newLayer = ClockLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.clock)
+            }
+        }
+
+        if let nLayer = newLayer {
+            additionalLayers.append(nLayer)
+            layer.addSublayer(nLayer)
+        }
+
     }
 
     // Each layer may not be displayed on each screen
