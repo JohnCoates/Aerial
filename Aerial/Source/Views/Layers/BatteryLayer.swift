@@ -46,7 +46,7 @@ class BatteryLayer: AnimationLayer {
             wasSetup = true
 
             if #available(OSX 10.12, *) {
-                batteryTimer = Timer.scheduledTimer(withTimeInterval: 6.0, repeats: true, block: { (_) in
+                batteryTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true, block: { (_) in
                     self.update(string: self.getBatteryString())
                 })
             }
