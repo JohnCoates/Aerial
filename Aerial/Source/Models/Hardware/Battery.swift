@@ -49,7 +49,7 @@ struct Battery {
                 if let capacity = info[kIOPSCurrentCapacityKey] as? Int,
                     let max = info[kIOPSMaxCapacityKey] as? Int {
 
-                    return capacity/max*100
+                    return Int(Double(capacity)/Double(max)*100)
                 }
             }
         }

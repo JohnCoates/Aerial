@@ -68,7 +68,7 @@ class BatteryLayer: AnimationLayer {
         let percent = Battery.getRemainingPercent()
 
         if percent > 0 {
-            if bstring == "" {
+            if bstring != "" {
                 bstring += ", "
             }
 
