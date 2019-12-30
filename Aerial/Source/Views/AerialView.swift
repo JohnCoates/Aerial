@@ -35,6 +35,9 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     var brightnessToRestore: Float?
 
+    // We use this for tentative Catalina bug workaround
+    var originalWidth, originalHeight: CGFloat
+
     static var shouldFade: Bool {
         let preferences = Preferences.sharedInstance
         return (preferences.fadeMode != Preferences.FadeMode.disabled.rawValue)
@@ -113,11 +116,14 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     }
 
     // MARK: - Init / Setup
-    // This is the one used by System Preferences
+    // This is the one used by System Preferences/ScreenSaverEngine
     override init?(frame: NSRect, isPreview: Bool) {
         // legacyScreenSaver always return true for isPreview on Catalina
         // We need to detect and override ourselves
         var preview = false
+        self.originalWidth = frame.width
+        self.originalHeight = frame.height
+
         if frame.width < 400 && frame.height < 300 {
             preview = true
         }
@@ -137,9 +143,15 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     required init?(coder: NSCoder) {
         self.layerManager = LayerManager(isPreview: false)
 
-        super.init(coder: coder)
-        debugLog("avInit .app")
+        // ...
+        self.originalWidth = 0
+        self.originalHeight = 0
 
+        super.init(coder: coder)
+        self.originalWidth = frame.width
+        self.originalHeight = frame.height
+
+        debugLog("avInit .app")
         setup()
     }
 
@@ -169,7 +181,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     // swiftlint:disable:next cyclomatic_complexity
     func setup() {
         if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
-            debugLog("\(self.description) AerialView setup init (V\(version))")
+            debugLog("\(self.description) AerialView setup init (V\(version)) preview: \(self.isPreview)")
         }
 
         let preferences = Preferences.sharedInstance
@@ -202,7 +214,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         let thisScreen = displayDetection.findScreenWith(frame: self.frame)
 
         var localPlayer: AVPlayer?
-        debugLog("\(self.description) isPreview : \(isPreview)")
         debugLog("Using : \(String(describing: thisScreen))")
 
         // Is the current screen disabled by user ?
@@ -270,10 +281,18 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     }
 
     override func viewDidChangeBackingProperties() {
-        debugLog("\(self.description) backing change \((self.window?.backingScaleFactor) ?? 1.0) isDisabled: \(isDisabled)")
+        debugLog("\(self.description) backing change \((self.window?.backingScaleFactor) ?? 1.0) isDisabled: \(isDisabled) frame: \(self.frame) preview: \(self.isPreview)")
+
+        // Tentative workaround for a Catalina bug
+        if self.frame.width < 300 && !isPreview {
+            debugLog("*** Frame size bug, trying to override to \(originalWidth)x\(originalHeight)!")
+            self.frame = CGRect(x: 0, y: 0, width: originalWidth, height: originalHeight)
+        }
+
         if !isDisabled {
             self.layer!.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
             self.playerLayer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
+
             // And our additional layers
             layerManager.setContentScale(scale: (self.window?.backingScaleFactor) ?? 1.0)
         }
@@ -295,11 +314,12 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     // MARK: - Lifecycle stuff
     override func startAnimation() {
         super.startAnimation()
-        debugLog("\(self.description) startAnimation")
+        debugLog("\(self.description) startAnimation frame \(self.frame) bounds \(self.bounds)")
 
         if !isDisabled {
             // Previews may be restarted, but our layer will get hidden (somehow) so show it back
             if isPreview && player?.currentTime() != CMTime.zero {
+                debugLog("restarting playback")
                 playerLayer.opacity = 1
                 player?.play()
             }
@@ -329,11 +349,12 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     internal override func observeValue(forKeyPath keyPath: String?,
                                         of object: Any?, change: [NSKeyValueChangeKey: Any]?,
                                         context: UnsafeMutableRawPointer?) {
-        debugLog("\(self.description) observeValue \(String(describing: keyPath))")
+        debugLog("\(self.description) observeValue \(String(describing: keyPath)) \(self.playerLayer.isReadyForDisplay) \(self.frame)")
 
         if self.playerLayer.isReadyForDisplay {
             self.player!.play()
             hasStartedPlaying = true
+            debugLog("start playback: \(self.frame) \(self.bounds)")
 
             // If we share a player, we need to add the fades and the text to all the
             // instanciated views using it (eg: in mirrored mode)

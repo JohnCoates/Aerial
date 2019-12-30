@@ -41,7 +41,10 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
 
     @IBOutlet var durationLabel: NSTextField!
     @IBOutlet var resolutionLabel: NSTextField!
+    @IBOutlet var cvcMenu: NSMenu!
 
+    @IBOutlet var menuRemoveFolderAndVideos: NSMenuItem!
+    @IBOutlet var menuRemoveVideo: NSMenuItem!
     var currentFolder: Folder?
     var currentAsset: Asset?
     var currentAssetDuration: Int?
@@ -49,17 +52,6 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
     var hasAwokenAlready = false
     var sw: NSWindow?
     var controller: PreferencesWindowController?
-
-    /*
-    func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-        debugLog("drag entered")
-        return .copy
-    }
-
-    func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        print("bla")
-        return true
-    }*/
 
     // MARK: - Lifecycle
     required init?(coder: NSCoder) {
@@ -76,8 +68,12 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
     override func awakeFromNib() {
         if !hasAwokenAlready {
             debugLog("cvcawake")
+            //self.menu = cvcMenu
+
             folderOutlineView.dataSource = self
             folderOutlineView.delegate = self
+            folderOutlineView.menu = cvcMenu
+            cvcMenu.delegate = self
 
             if #available(OSX 10.13, *) {
                 folderOutlineView.registerForDraggedTypes([.fileURL, .URL])
@@ -295,6 +291,35 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
         }
     }
 
+    // MARK: - Context menu
+    @IBAction func menuRemoveFolderAndVideoClick(_ sender: NSMenuItem) {
+        print("mrfavc")
+        if let folder = sender.representedObject as? Folder {
+            let manifestInstance = ManifestLoader.instance
+
+            if let cvf = manifestInstance.customVideoFolders {
+                cvf.folders.remove(at: cvf.getFolderIndex(withUrl: folder.url))
+            }
+        }
+        folderOutlineView.reloadData()
+    }
+
+    @IBAction func menuRemoveVideoClick(_ sender: NSMenuItem) {
+        print("mrvc")
+        if let asset = sender.representedObject as? Asset {
+            let manifestInstance = ManifestLoader.instance
+
+            if let cvf = manifestInstance.customVideoFolders {
+                for fld in cvf.folders {
+                    let index = fld.getAssetIndex(withUrl: asset.url)
+                    if index > -1 {
+                        fld.assets.remove(at: index)
+                    }
+                }
+            }
+        }
+        folderOutlineView.reloadData()
+    }
 }
 
 // MARK: - Data source for side bar
@@ -406,8 +431,6 @@ extension CustomVideoController: NSOutlineViewDelegate {
                 timeTextStepper.maxValue = Double(currentAssetDuration!)
                 timeTextFormatter.minimum = 0
                 timeTextFormatter.maximum = NSNumber(value: currentAssetDuration!)
-                //timeTableFormatter.minimum = 0
-                //timeTableFormatter.maximum = NSNumber(value: currentAssetDuration!)
 
                 durationLabel.stringValue = String(currentAssetDuration!) + " seconds"
                 resolutionLabel.stringValue = crString
@@ -431,32 +454,10 @@ extension CustomVideoController: NSOutlineViewDelegate {
         let size = track.naturalSize.applying(track.preferredTransform)
         return CGSize(width: abs(size.width), height: abs(size.height))
     }
-/*
-    func outlineView(_ outlineView: NSOutlineView, pasteboardWriterForItem item: Any) -> NSPasteboardWriting? {
-        let pp = NSPasteboardItem()
-
-        debugLog("Received pp")
-        debugLog("\(pp)")
-/*        // working as expected here
-        if let fi = item as? FileItem {
-            pp.setString( fi.Path, forType: "public.text" )
-
-            print( "pb write \(fi.Name)")
-
-        } else {
-            print( "pb write, not a file item \(item)")
-        }
-*/
-        return pp
-    }
-*/
 
     // swiftlint:disable:next line_length
     func outlineView(_ outlineView: NSOutlineView, validateDrop info: NSDraggingInfo, proposedItem item: Any?, proposedChildIndex index: Int) -> NSDragOperation {
-        //print("info \(info.draggingPasteboard)")
-        //print( "validate: \(String(describing: item))")
         return NSDragOperation.copy
-        //
     }
 
     func outlineView(_ outlineView: NSOutlineView, acceptDrop info: NSDraggingInfo, item: Any?, childIndex index: Int) -> Bool {
@@ -550,5 +551,27 @@ extension URL {
             )
             return values.isDirectory
         } catch { return nil }
+    }
+}
+
+extension CustomVideoController: NSMenuDelegate {
+    func menuNeedsUpdate(_ menu: NSMenu) {
+        print("mnu")
+        let row = folderOutlineView.clickedRow
+        guard row != -1 else { return }
+        let rowItem = folderOutlineView.item(atRow: row)
+
+        if let folder = rowItem as? Folder {
+            menuRemoveVideo.isHidden = true
+            menuRemoveFolderAndVideos.isHidden = false
+        } else if let asset = rowItem as? Asset {
+            menuRemoveVideo.isHidden = false
+            menuRemoveFolderAndVideos.isHidden = true
+        }
+
+        // Mark the clicked item here
+        for item in menu.items {
+            item.representedObject = rowItem
+        }
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.AVKitIBPlugin" version="15504"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15504"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,6 +13,7 @@
                 <outlet property="addFolderTextField" destination="npi-Wy-4IZ" id="cCp-RQ-4Hz"/>
                 <outlet property="addPoi" destination="KBT-QW-v1Y" id="mgo-Tc-dzf"/>
                 <outlet property="addPoiPopover" destination="6xN-bb-mFa" id="ZoY-sG-uBj"/>
+                <outlet property="cvcMenu" destination="bRP-nE-M4C" id="Pb2-QB-adU"/>
                 <outlet property="descriptionTextField" destination="3KO-Vs-fx0" id="8Hk-eS-HvF"/>
                 <outlet property="durationLabel" destination="2Y8-Ra-MML" id="Yli-Hc-JAX"/>
                 <outlet property="editPlayerView" destination="PnC-8m-1v6" id="qS2-DG-dnh"/>
@@ -21,6 +22,8 @@
                 <outlet property="folderShortNameTextField" destination="MFU-Dj-anp" id="uCp-AT-vUi"/>
                 <outlet property="folderView" destination="k3L-uV-wCN" id="mco-c5-WPA"/>
                 <outlet property="mainPanel" destination="QvC-M9-y7g" id="of1-JA-evN"/>
+                <outlet property="menuRemoveFolderAndVideos" destination="hea-rl-zIh" id="cgK-fx-fhH"/>
+                <outlet property="menuRemoveVideo" destination="ytF-SB-6AJ" id="AHB-c4-ulp"/>
                 <outlet property="onboardingLabel" destination="zeW-AH-yaN" id="YQc-15-2jO"/>
                 <outlet property="poiTableView" destination="n5i-pm-jIu" id="Uns-u2-Hf9"/>
                 <outlet property="removePoi" destination="EBI-tO-TJo" id="w10-SS-DnA"/>
@@ -68,7 +71,7 @@
                                                     <tableColumns>
                                                         <tableColumn identifier="folderColumn" width="208" minWidth="40" maxWidth="1000" id="OM8-ZD-XmW">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                                <font key="font" metaFont="controlContent" size="11"/>
+                                                                <font key="font" metaFont="label" size="11"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                             </tableHeaderCell>
@@ -156,7 +159,7 @@
                                                 <rect key="frame" x="119" y="533" width="278" height="14"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="This folder's videos will be grouped under this name" id="hzy-ab-uSN">
-                                                    <font key="font" metaFont="controlContent" size="11"/>
+                                                    <font key="font" metaFont="label" size="11"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
@@ -171,7 +174,7 @@
                                                 <rect key="frame" x="11" y="7" width="915" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <pathCell key="cell" controlSize="small" selectable="YES" alignment="left" id="erg-pd-yEU">
-                                                    <font key="font" metaFont="controlContent" size="11"/>
+                                                    <font key="font" metaFont="label" size="11"/>
                                                     <url key="url" string="file://localhost/Applications/"/>
                                                 </pathCell>
                                             </pathControl>
@@ -218,7 +221,7 @@
                                                             <tableColumns>
                                                                 <tableColumn identifier="timeColumn" width="98" minWidth="40" maxWidth="1000" id="iH3-Dm-5Ct">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Time in seconds">
-                                                                        <font key="font" metaFont="controlContent" size="11"/>
+                                                                        <font key="font" metaFont="label" size="11"/>
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                     </tableHeaderCell>
@@ -254,7 +257,7 @@
                                                                 </tableColumn>
                                                                 <tableColumn identifier="descriptionColumn" width="794" minWidth="40" maxWidth="1000" id="mnB-px-Eew">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Description">
-                                                                        <font key="font" metaFont="controlContent" size="11"/>
+                                                                        <font key="font" metaFont="label" size="11"/>
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                     </tableHeaderCell>
@@ -508,7 +511,7 @@
                     <rect key="frame" x="32" y="170" width="312" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Leave at least a 10 second gap between points of interests" id="fPg-id-tSS">
-                        <font key="font" metaFont="controlContent" size="11"/>
+                        <font key="font" metaFont="label" size="11"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -551,8 +554,17 @@ DQ
         <userDefaultsController representsSharedInstance="YES" id="FbY-zM-wGg"/>
         <menu id="bRP-nE-M4C">
             <items>
+                <menuItem title="Remove Folder and Videos" id="hea-rl-zIh">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="menuRemoveFolderAndVideoClick:" target="-2" id="j9S-N5-FPG"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Remove Video" id="ytF-SB-6AJ">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="menuRemoveVideoClick:" target="-2" id="x2U-TG-Ecc"/>
+                    </connections>
                 </menuItem>
             </items>
             <point key="canvasLocation" x="-192" y="570"/>
