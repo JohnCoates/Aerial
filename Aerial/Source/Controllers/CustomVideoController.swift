@@ -293,7 +293,6 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
 
     // MARK: - Context menu
     @IBAction func menuRemoveFolderAndVideoClick(_ sender: NSMenuItem) {
-        print("mrfavc")
         if let folder = sender.representedObject as? Folder {
             let manifestInstance = ManifestLoader.instance
 
@@ -305,7 +304,6 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
     }
 
     @IBAction func menuRemoveVideoClick(_ sender: NSMenuItem) {
-        print("mrvc")
         if let asset = sender.representedObject as? Asset {
             let manifestInstance = ManifestLoader.instance
 
@@ -556,15 +554,14 @@ extension URL {
 
 extension CustomVideoController: NSMenuDelegate {
     func menuNeedsUpdate(_ menu: NSMenu) {
-        print("mnu")
         let row = folderOutlineView.clickedRow
         guard row != -1 else { return }
         let rowItem = folderOutlineView.item(atRow: row)
 
-        if let folder = rowItem as? Folder {
+        if (rowItem as? Folder) != nil {
             menuRemoveVideo.isHidden = true
             menuRemoveFolderAndVideos.isHidden = false
-        } else if let asset = rowItem as? Asset {
+        } else if (rowItem as? Asset) != nil {
             menuRemoveVideo.isHidden = false
             menuRemoveFolderAndVideos.isHidden = true
         }

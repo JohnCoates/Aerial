@@ -281,6 +281,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     }
 
     override func viewDidChangeBackingProperties() {
+        //swiftlint:disable:next line_length
         debugLog("\(self.description) backing change \((self.window?.backingScaleFactor) ?? 1.0) isDisabled: \(isDisabled) frame: \(self.frame) preview: \(self.isPreview)")
 
         // Tentative workaround for a Catalina bug
