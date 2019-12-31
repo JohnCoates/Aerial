@@ -9,6 +9,14 @@
 import Foundation
 import ScreenSaver
 
+protocol CommonInfo {
+    var isEnabled: Bool { get set }
+    var fontName: String { get set }
+    var fontSize: Double { get set }
+    var corner: InfoCorner { get set }
+    var displays: InfoDisplays { get set }
+}
+
 enum InfoCorner: Int, Codable {
     case topLeft, topCenter, topRight, bottomLeft, bottomCenter, bottomRight, screenCenter, random
 }
@@ -31,7 +39,7 @@ enum InfoIconText: Int, Codable {
 
 struct PrefsInfo {
 
-    struct Location: Codable {
+    struct Location: CommonInfo, Codable {
         var isEnabled: Bool
         var fontName: String
         var fontSize: Double
@@ -40,7 +48,7 @@ struct PrefsInfo {
         var time: InfoTime
     }
 
-    struct Message: Codable {
+    struct Message: CommonInfo, Codable {
         var isEnabled: Bool
         var fontName: String
         var fontSize: Double
@@ -49,7 +57,7 @@ struct PrefsInfo {
         var message: String
     }
 
-    struct Clock: Codable {
+    struct Clock: CommonInfo, Codable {
         var isEnabled: Bool
         var fontName: String
         var fontSize: Double
@@ -58,7 +66,7 @@ struct PrefsInfo {
         var showSeconds: Bool
     }
 
-    struct Battery: Codable {
+    struct Battery: CommonInfo, Codable {
         var isEnabled: Bool
         var fontName: String
         var fontSize: Double
@@ -107,8 +115,22 @@ struct PrefsInfo {
                                                      mode: .textOnly))
     static var battery: Battery
 
+    // Helper to quickly access a type
+    static func ofType(_ type: InfoType) -> CommonInfo {
+        switch type {
+        case .location:
+            return location
+        case .message:
+            return message
+        case .clock:
+            return clock
+        case .battery:
+            return battery
+        }
+    }
 }
 
+// This retrieves/store any type of property in our plist
 @propertyWrapper struct Storage<T: Codable> {
     private let key: String
     private let defaultValue: T

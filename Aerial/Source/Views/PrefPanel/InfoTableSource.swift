@@ -36,18 +36,7 @@ class InfoTableSource: NSTableView, NSTableViewDataSource, NSTableViewDelegate {
             if let cell = tableView.makeView(withIdentifier: cid, owner: self) as? NSTableCellView {
                 cell.textField?.stringValue = PrefsInfo.layers[row].rawValue.capitalizeFirstLetter()
 
-                var isEnabled: Bool
-
-                switch PrefsInfo.layers[row] {
-                case .location:
-                    isEnabled = PrefsInfo.location.isEnabled
-                case .message:
-                    isEnabled = PrefsInfo.message.isEnabled
-                case .clock:
-                    isEnabled = PrefsInfo.clock.isEnabled
-                case .battery:
-                    isEnabled = PrefsInfo.battery.isEnabled
-                }
+                let isEnabled = PrefsInfo.ofType(PrefsInfo.layers[row]).isEnabled
 
                 cell.imageView?.image = NSImage(named: isEnabled
                     ? NSImage.statusAvailableName

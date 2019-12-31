@@ -30,7 +30,7 @@ class LayerManager {
         // we need to split the bottom row though, as drawing them "in order" would look
         // reversed to users as we draw from the corner out
         for layerType in PrefsInfo.layers {
-            let pos = getPositionForLayerType(layerType)
+            let pos = PrefsInfo.ofType(layerType).corner
 
             if pos == .topCenter || pos == .topLeft || pos == .topRight || pos == .screenCenter {
                 topRow.append(layerType)
@@ -51,37 +51,18 @@ class LayerManager {
 
     }
 
-    private func getPositionForLayerType(_ layerType: InfoType) -> InfoCorner {
-        switch layerType {
-        case .location:
-            return PrefsInfo.location.corner
-        case .message:
-            return PrefsInfo.message.corner
-        case .clock:
-            return PrefsInfo.clock.corner
-        case .battery:
-            return PrefsInfo.battery.corner
-        }
-    }
-
     private func addLayerForType(_ layerType: InfoType, layer: CALayer) {
         var newLayer: AnimationLayer?
 
-        switch layerType {
-        case .location:
-            if PrefsInfo.location.isEnabled && shouldEnableOnScreen(PrefsInfo.location.displays) {
+        if PrefsInfo.ofType(layerType).isEnabled && shouldEnableOnScreen(PrefsInfo.ofType(layerType).displays) {
+            switch layerType {
+            case .location:
                 newLayer = LocationLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.location)
-            }
-        case .message:
-            if PrefsInfo.message.isEnabled && shouldEnableOnScreen(PrefsInfo.message.displays) {
+            case .message:
                 newLayer = MessageLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.message)
-            }
-        case .clock:
-            if PrefsInfo.clock.isEnabled && shouldEnableOnScreen(PrefsInfo.clock.displays) {
+            case .clock:
                 newLayer = ClockLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.clock)
-            }
-        case .battery:
-            if PrefsInfo.battery.isEnabled && shouldEnableOnScreen(PrefsInfo.clock.displays) {
+            case .battery:
                 newLayer = BatteryLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.battery)
             }
         }
@@ -112,7 +93,7 @@ class LayerManager {
             }
         }
 
-        // If it's an unknown screen, we leave it enabled
+        // If it's an unknown screen or a preview, we leave it enabled
         return true
     }
 
