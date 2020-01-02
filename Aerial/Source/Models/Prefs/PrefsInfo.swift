@@ -115,7 +115,7 @@ struct PrefsInfo {
                                                      mode: .textOnly))
     static var battery: Battery
 
-    // Helper to quickly access a type
+    // Helper to quickly access a given struct (read-only as we return a copy of the struct)
     static func ofType(_ type: InfoType) -> CommonInfo {
         switch type {
         case .location:
@@ -126,6 +126,72 @@ struct PrefsInfo {
             return clock
         case .battery:
             return battery
+        }
+    }
+
+    // Helpers to store the value for the common properties of all info layers
+    static func setEnabled(_ type: InfoType, value: Bool) {
+        switch type {
+        case .location:
+            location.isEnabled = value
+        case .message:
+            message.isEnabled = value
+        case .clock:
+            clock.isEnabled = value
+        case .battery:
+            battery.isEnabled = value
+        }
+    }
+
+    static func setFontName(_ type: InfoType, name: String) {
+        switch type {
+        case .location:
+            location.fontName = name
+        case .message:
+            message.fontName = name
+        case .clock:
+            clock.fontName = name
+        case .battery:
+            battery.fontName = name
+        }
+    }
+
+    static func setFontSize(_ type: InfoType, size: Double) {
+        switch type {
+        case .location:
+            location.fontSize = size
+        case .message:
+            message.fontSize = size
+        case .clock:
+            clock.fontSize = size
+        case .battery:
+            battery.fontSize = size
+        }
+    }
+
+    static func setCorner(_ type: InfoType, corner: InfoCorner) {
+        switch type {
+        case .location:
+            location.corner = corner
+        case .message:
+            message.corner = corner
+        case .clock:
+            clock.corner = corner
+        case .battery:
+            battery.corner = corner
+        }
+
+    }
+    static func setDisplayMode(_ type: InfoType, mode: InfoDisplays) {
+        switch type {
+        case .location:
+            location.displays = mode
+        case .message:
+            message.displays = mode
+        case .clock:
+            clock.displays = mode
+        case .battery:
+            battery.displays = mode
         }
     }
 }

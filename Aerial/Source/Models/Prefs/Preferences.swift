@@ -225,7 +225,6 @@ final class Preferences {
         userDefaults.register(defaults: defaults)
     }
 
-
     // MARK: - Variables
     var advancedMargins: String? {
         get {
