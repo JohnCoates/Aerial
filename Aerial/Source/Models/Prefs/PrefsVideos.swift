@@ -17,10 +17,33 @@ enum OnBatteryMode: Int, Codable {
 }
 
 struct PrefsVideos {
-    @Storage(key: "videoFormat", defaultValue: .v1080pH264)
-    static var videoFormat: VideoFormat
-
     // What do we do on battery ?
-    @Storage(key: "onBatteryMode", defaultValue: .keepEnabled)
-    static var onBatteryMode: OnBatteryMode
+    @SimpleStorage(key: "intOnBatteryMode", defaultValue: OnBatteryMode.keepEnabled.rawValue)
+    static var intOnBatteryMode: Int
+
+    // We wrap in a separate value, as we can't store an enum as a Codable in
+    // macOS < 10.15
+    static var onBatteryMode: OnBatteryMode {
+        get {
+            return OnBatteryMode(rawValue: intOnBatteryMode)!
+        }
+        set(value) {
+            intOnBatteryMode = value.rawValue
+        }
+    }
+
+    // Internal storage for video format
+    @SimpleStorage(key: "intVideoFormat", defaultValue: VideoFormat.v1080pH264.rawValue)
+    static var intVideoFormat: Int
+
+    // We wrap in a separate value, as we can't store an enum as a Codable in
+    // macOS < 10.15
+    static var videoFormat: VideoFormat {
+        get {
+            return VideoFormat(rawValue: intVideoFormat)!
+        }
+        set(value) {
+            intVideoFormat = value.rawValue
+        }
+    }
 }

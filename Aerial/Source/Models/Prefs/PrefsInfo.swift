@@ -200,6 +200,7 @@ struct PrefsInfo {
 @propertyWrapper struct Storage<T: Codable> {
     private let key: String
     private let defaultValue: T
+    private let module = "com.JohnCoates.Aerial"
 
     init(key: String, defaultValue: T) {
         self.key = key
@@ -208,7 +209,6 @@ struct PrefsInfo {
 
     var wrappedValue: T {
         get {
-            let module = "com.JohnCoates.Aerial"
             if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
                 // Read value from UserDefaults
                 guard let data = userDefaults.object(forKey: key) as? Data else {
@@ -227,12 +227,39 @@ struct PrefsInfo {
             // Convert newValue to data
             let data = try? JSONEncoder().encode(newValue)
 
-            let module = "com.JohnCoates.Aerial"
+            //let module = "com.JohnCoates.Aerial"
             if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
                 // Set value to UserDefaults
                 userDefaults.set(data, forKey: key)
             } else {
                 errorLog("UserDefaults set failed for \(key)")
+            }
+        }
+    }
+}
+
+@propertyWrapper
+struct SimpleStorage<T> {
+    private let key: String
+    private let defaultValue: T
+    private let module = "com.JohnCoates.Aerial"
+
+    init(key: String, defaultValue: T) {
+        self.key = key
+        self.defaultValue = defaultValue
+    }
+
+    var wrappedValue: T {
+        get {
+            if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
+                return userDefaults.object(forKey: key) as? T ?? defaultValue
+            }
+
+            return defaultValue
+        }
+        set {
+            if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
+                userDefaults.set(newValue, forKey: key)
             }
         }
     }
