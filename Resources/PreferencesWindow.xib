@@ -164,7 +164,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Videos" identifier="1" id="dfl-QA-fvD">
-                                        <view key="view" ambiguous="YES" id="zsM-Ha-kCO">
+                                        <view key="view" id="zsM-Ha-kCO">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -470,7 +470,7 @@ is disabled
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r6a-he-iOc">
-                                                    <rect key="frame" x="307" y="26" width="204" height="18"/>
+                                                    <rect key="frame" x="305" y="78" width="204" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Allow Right arrow key to skip" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="P4b-25-o9o">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -529,6 +529,15 @@ is disabled
                                                         <action selector="onBatteryModeChange:" target="-2" id="ysQ-wF-Phg"/>
                                                     </connections>
                                                 </popUpButton>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xvq-yw-qYN">
+                                                    <rect key="frame" x="324" y="61" width="182" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Skipping is unavailable in Catalina" id="P0Z-V8-4RW">
+                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
@@ -765,7 +774,7 @@ is disabled
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Info" identifier="" id="AhX-J1-tBm">
-                                        <view key="view" id="d3H-vC-Yjc">
+                                        <view key="view" ambiguous="YES" id="d3H-vC-Yjc">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1817,9 +1826,9 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I9x-Rq-bfY">
-                                                    <rect key="frame" x="8" y="208" width="127" height="16"/>
+                                                    <rect key="frame" x="8" y="208" width="152" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Appearance tweaks:" id="zBh-ML-bkJ">
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Info appearance tweaks:" id="zBh-ML-bkJ">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1998,7 +2007,7 @@ Gw
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" selectable="YES" refusesFirstResponder="YES" id="0Xf-rT-d9M">
                         <font key="font" metaFont="message" size="11"/>
-                        <mutableString key="title">The most appropriate format depends on your Mac. Video playback on macOS can be accelerated by your GPU.
+                        <string key="title">The most appropriate format depends on your Mac. Video playback on macOS can be accelerated by your GPU.
 
 - Macs older than late 2015 should prefer 1080p H264 as they may lack HEVC hardware decoding support.
 
@@ -2006,7 +2015,7 @@ Gw
 
 - Macs 2017 and up should either use 1080p HEVC or 4K HEVC.
 
-HDR videos are encoded using Dolby Vision to represent a Higher Dynamic range of colors and lighting. These videos have wilder colors that may look unrealistic to some. HDR is only available starting with macOS Catalina.</mutableString>
+HDR videos are encoded using Dolby Vision to represent a Higher Dynamic range of colors and lighting. These videos have wilder colors that may look unrealistic to some. HDR is only available starting with macOS Catalina.</string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -3123,8 +3132,8 @@ After changing the folder, please close System Preferences for this to be taken 
                         <menu key="menu" id="KBj-xd-4LI">
                             <items>
                                 <menuItem title="Percent" state="on" id="9nb-hm-4xw"/>
-                                <menuItem title="Icons + Percent" id="Fop-cy-x6M"/>
-                                <menuItem title="Icons only" id="oSu-Lr-E4n">
+                                <menuItem title="Icons + Percent" hidden="YES" id="Fop-cy-x6M"/>
+                                <menuItem title="Icons only" hidden="YES" id="oSu-Lr-E4n">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                 </menuItem>
                             </items>

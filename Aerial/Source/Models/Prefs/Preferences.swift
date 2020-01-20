@@ -19,7 +19,6 @@ final class Preferences {
         case multiMonitorMode = "multiMonitorMode"
         case cacheAerials = "cacheAerials"
         case customCacheDirectory = "cacheDirectory"
-        //case videoFormat = "videoFormat"
         case showDescriptions = "showDescriptions"
         case showDescriptionsMode = "showDescriptionsMode"
         case neverStreamVideos = "neverStreamVideos"
@@ -30,15 +29,7 @@ final class Preferences {
         case fadeMode = "fadeMode"
         case fadeModeText = "fadeModeText"
         case descriptionCorner = "descriptionCorner"
-        //case fontName = "fontName"
-        //case fontSize = "fontSize"
-        //case showClock = "showClock"
-        //case withSeconds = "withSeconds"
-        //case showMessage = "showMessage"
-        //case showMessageString = "showMessageString"
-//        case extraFontName = "extraFontName"
-//        case extraFontSize = "extraFontSize"
-//        case extraCorner = "extraCorner"
+
         case debugMode = "debugMode"
         case logToDisk = "logToDisk"
         case versionCheck = "versionCheck"
@@ -58,10 +49,6 @@ final class Preferences {
         case overrideMargins = "overrideMargins"
         case marginX = "marginX"
         case marginY = "marginY"
-
-//        case alternateVideoFormat = "alternateVideoFormat"
-//        case overrideOnBattery = "overrideOnBattery"
-//        case powerSavingOnLowBattery = "powerSavingOnLowBattery"
 
         case darkModeNightOverride = "darkModeNightOverride"
         case newVideosMode = "newVideosMode"
@@ -170,7 +157,6 @@ final class Preferences {
         var defaultValues = [Identifiers: Any]()
         defaultValues[.differentAerialsOnEachDisplay] = false
         defaultValues[.cacheAerials] = true
-        //defaultValues[.videoFormat] = VideoFormat.v1080pH264
         defaultValues[.showDescriptions] = true
         defaultValues[.showDescriptionsMode] = DescriptionMode.fade10seconds
         defaultValues[.neverStreamVideos] = false
@@ -182,15 +168,6 @@ final class Preferences {
         defaultValues[.fadeMode] = FadeMode.t1
         defaultValues[.fadeModeText] = FadeMode.t1
         defaultValues[.descriptionCorner] = DescriptionCorner.bottomLeft
-//        defaultValues[.fontName] = "Helvetica Neue Medium"
-//        defaultValues[.fontSize] = 28
-        //defaultValues[.showClock] = false
-        //defaultValues[.withSeconds] = false
-        //defaultValues[.showMessage] = false
-        //defaultValues[.showMessageString] = ""
-        //defaultValues[.extraFontName] = "Monaco"
-        //defaultValues[.extraFontSize] = 28
-        //defaultValues[.extraCorner] = ExtraCorner.same
         defaultValues[.debugMode] = true
         defaultValues[.logToDisk] = true
         defaultValues[.versionCheck] = VersionCheck.weekly
@@ -247,19 +224,6 @@ final class Preferences {
 
         userDefaults.register(defaults: defaults)
     }
-
-    // MARK: - Info configs
-
-    /*
-    var locationConfig: LocationConfig? {
-        get {
-            userDefaults.get(object: LocationConfig.self, forKey: "LocationConfig") { locationConfig in return locationConfig }
-            return nil
-        }
-        set {
-            userDefaults.set(object: newValue, forKey: "LocationConfig")
-        }
-    }*/
 
     // MARK: - Variables
     var advancedMargins: String? {

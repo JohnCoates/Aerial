@@ -9,6 +9,14 @@
 import Foundation
 import ScreenSaver
 
+protocol CommonInfo {
+    var isEnabled: Bool { get set }
+    var fontName: String { get set }
+    var fontSize: Double { get set }
+    var corner: InfoCorner { get set }
+    var displays: InfoDisplays { get set }
+}
+
 enum InfoCorner: Int, Codable {
     case topLeft, topCenter, topRight, bottomLeft, bottomCenter, bottomRight, screenCenter, random
 }
@@ -31,7 +39,7 @@ enum InfoIconText: Int, Codable {
 
 struct PrefsInfo {
 
-    struct Location: Codable {
+    struct Location: CommonInfo, Codable {
         var isEnabled: Bool
         var fontName: String
         var fontSize: Double
@@ -40,7 +48,7 @@ struct PrefsInfo {
         var time: InfoTime
     }
 
-    struct Message: Codable {
+    struct Message: CommonInfo, Codable {
         var isEnabled: Bool
         var fontName: String
         var fontSize: Double
@@ -49,7 +57,7 @@ struct PrefsInfo {
         var message: String
     }
 
-    struct Clock: Codable {
+    struct Clock: CommonInfo, Codable {
         var isEnabled: Bool
         var fontName: String
         var fontSize: Double
@@ -58,7 +66,7 @@ struct PrefsInfo {
         var showSeconds: Bool
     }
 
-    struct Battery: Codable {
+    struct Battery: CommonInfo, Codable {
         var isEnabled: Bool
         var fontName: String
         var fontSize: Double
@@ -107,11 +115,92 @@ struct PrefsInfo {
                                                      mode: .textOnly))
     static var battery: Battery
 
+    // Helper to quickly access a given struct (read-only as we return a copy of the struct)
+    static func ofType(_ type: InfoType) -> CommonInfo {
+        switch type {
+        case .location:
+            return location
+        case .message:
+            return message
+        case .clock:
+            return clock
+        case .battery:
+            return battery
+        }
+    }
+
+    // Helpers to store the value for the common properties of all info layers
+    static func setEnabled(_ type: InfoType, value: Bool) {
+        switch type {
+        case .location:
+            location.isEnabled = value
+        case .message:
+            message.isEnabled = value
+        case .clock:
+            clock.isEnabled = value
+        case .battery:
+            battery.isEnabled = value
+        }
+    }
+
+    static func setFontName(_ type: InfoType, name: String) {
+        switch type {
+        case .location:
+            location.fontName = name
+        case .message:
+            message.fontName = name
+        case .clock:
+            clock.fontName = name
+        case .battery:
+            battery.fontName = name
+        }
+    }
+
+    static func setFontSize(_ type: InfoType, size: Double) {
+        switch type {
+        case .location:
+            location.fontSize = size
+        case .message:
+            message.fontSize = size
+        case .clock:
+            clock.fontSize = size
+        case .battery:
+            battery.fontSize = size
+        }
+    }
+
+    static func setCorner(_ type: InfoType, corner: InfoCorner) {
+        switch type {
+        case .location:
+            location.corner = corner
+        case .message:
+            message.corner = corner
+        case .clock:
+            clock.corner = corner
+        case .battery:
+            battery.corner = corner
+        }
+
+    }
+    static func setDisplayMode(_ type: InfoType, mode: InfoDisplays) {
+        switch type {
+        case .location:
+            location.displays = mode
+        case .message:
+            message.displays = mode
+        case .clock:
+            clock.displays = mode
+        case .battery:
+            battery.displays = mode
+        }
+    }
 }
 
+// This retrieves/store any type of property in our plist
 @propertyWrapper struct Storage<T: Codable> {
     private let key: String
     private let defaultValue: T
+    private let module = "com.JohnCoates.Aerial"
 
     init(key: String, defaultValue: T) {
         self.key = key
@@ -120,7 +209,6 @@ struct PrefsInfo {
 
     var wrappedValue: T {
         get {
-            let module = "com.JohnCoates.Aerial"
             if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
                 // Read value from UserDefaults
                 guard let data = userDefaults.object(forKey: key) as? Data else {
@@ -139,12 +227,39 @@ struct PrefsInfo {
             // Convert newValue to data
             let data = try? JSONEncoder().encode(newValue)
 
-            let module = "com.JohnCoates.Aerial"
+            //let module = "com.JohnCoates.Aerial"
             if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
                 // Set value to UserDefaults
                 userDefaults.set(data, forKey: key)
             } else {
                 errorLog("UserDefaults set failed for \(key)")
+            }
+        }
+    }
+}
+
+@propertyWrapper
+struct SimpleStorage<T> {
+    private let key: String
+    private let defaultValue: T
+    private let module = "com.JohnCoates.Aerial"
+
+    init(key: String, defaultValue: T) {
+        self.key = key
+        self.defaultValue = defaultValue
+    }
+
+    var wrappedValue: T {
+        get {
+            if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
+                return userDefaults.object(forKey: key) as? T ?? defaultValue
+            }
+
+            return defaultValue
+        }
+        set {
+            if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
+                userDefaults.set(newValue, forKey: key)
             }
         }
     }

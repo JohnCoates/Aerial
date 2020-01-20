@@ -45,4 +45,15 @@ extension Folder {
         }
         return false
     }
+
+    func getAssetIndex(withUrl: String) -> Int {
+        var index = 0
+        for asset in assets {
+            if asset.url == withUrl {
+                return index
+            }
+            index += 1
+        }
+        return -1
+    }
 }

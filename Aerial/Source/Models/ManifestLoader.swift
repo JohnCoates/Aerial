@@ -922,12 +922,10 @@ class ManifestLoader {
             for fileURL in videoFileURLs {
                 var found = false
                 for video in loadedManifest {
-                    for format in VideoFormat.allCases {
-                        if video.urls[format] != "" {
-                            if fileURL.lastPathComponent == URL(string: video.urls[format]!)?.lastPathComponent {
-                                found = true
-                                break
-                            }
+                    for format in VideoFormat.allCases where video.urls[format] != "" {
+                        if fileURL.lastPathComponent == URL(string: video.urls[format]!)?.lastPathComponent {
+                            found = true
+                            break
                         }
                     }
                 }
@@ -988,12 +986,10 @@ class ManifestLoader {
             for fileURL in videoFileURLs {
                 var found = false
                 for video in loadedManifest {
-                    for format in VideoFormat.allCases {
-                        if video.urls[format] != "" {
-                            if fileURL.lastPathComponent == URL(string: video.urls[format]!)?.lastPathComponent {
-                                found = true
-                                break
-                            }
+                    for format in VideoFormat.allCases where video.urls[format] != "" {
+                        if fileURL.lastPathComponent == URL(string: video.urls[format]!)?.lastPathComponent {
+                            found = true
+                            break
                         }
                     }
                 }
@@ -1052,12 +1048,10 @@ class ManifestLoader {
             for fileURL in videoFileURLs {
                 var found = false
                 for video in loadedManifest {
-                    for format in VideoFormat.allCases {
-                        if video.urls[format] != "" {
-                            if fileURL.lastPathComponent == URL(string: video.urls[format]!)?.lastPathComponent {
-                                found = true
-                                break
-                            }
+                    for format in VideoFormat.allCases where video.urls[format] != "" {
+                        if fileURL.lastPathComponent == URL(string: video.urls[format]!)?.lastPathComponent {
+                            found = true
+                            break
                         }
                     }
                 }

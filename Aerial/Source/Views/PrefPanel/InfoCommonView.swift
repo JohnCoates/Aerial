@@ -39,35 +39,24 @@ class InfoCommonView: NSView {
         self.forType = forType
 
         // Update our states
+        enabledButton.state = PrefsInfo.ofType(forType).isEnabled ? .on : .off
+        setPosition(PrefsInfo.ofType(forType).corner)
+        displaysPopup.selectItem(at: PrefsInfo.ofType(forType).displays.rawValue)
+        fontLabel.stringValue = PrefsInfo.ofType(forType).fontName + ", \(PrefsInfo.ofType(forType).fontSize) pt"
+
         switch forType {
         case .location:
             descriptionLabel.stringValue = "Localized information about the video location."
-            enabledButton.state = PrefsInfo.location.isEnabled ? .on : .off
-            setPosition(PrefsInfo.location.corner)
             posRandom.isHidden = false
-            displaysPopup.selectItem(at: PrefsInfo.location.displays.rawValue)
-            fontLabel.stringValue = PrefsInfo.location.fontName + ", \(PrefsInfo.location.fontSize) pt"
         case .message:
             descriptionLabel.stringValue = "Add a custom message (e-mail, name...)."
-            enabledButton.state = PrefsInfo.message.isEnabled ? .on : .off
-            setPosition(PrefsInfo.message.corner)
             posRandom.isHidden = true
-            displaysPopup.selectItem(at: PrefsInfo.message.displays.rawValue)
-            fontLabel.stringValue = PrefsInfo.message.fontName + ", \(PrefsInfo.message.fontSize) pt"
         case .clock:
             descriptionLabel.stringValue = "Add a clock."
-            enabledButton.state = PrefsInfo.clock.isEnabled ? .on : .off
-            setPosition(PrefsInfo.clock.corner)
             posRandom.isHidden = true
-            displaysPopup.selectItem(at: PrefsInfo.clock.displays.rawValue)
-            fontLabel.stringValue = PrefsInfo.clock.fontName + ", \(PrefsInfo.clock.fontSize) pt"
         case .battery:
             descriptionLabel.stringValue = "Show current battery status."
-            enabledButton.state = PrefsInfo.battery.isEnabled ? .on : .off
-            setPosition(PrefsInfo.battery.corner)
             posRandom.isHidden = true
-            displaysPopup.selectItem(at: PrefsInfo.battery.displays.rawValue)
-            fontLabel.stringValue = PrefsInfo.battery.fontName + ", \(PrefsInfo.battery.fontSize) pt"
         }
     }
 
@@ -94,7 +83,6 @@ class InfoCommonView: NSView {
         }
     }
 
-    // swiftlint:disable:next cyclomatic_complexity
     @IBAction func changePosition(_ sender: NSButton) {
         var pos: InfoCorner
 
@@ -121,49 +109,19 @@ class InfoCommonView: NSView {
         }
 
         // Then set pref
-        switch forType {
-        case .location:
-            PrefsInfo.location.corner = pos
-        case .message:
-            PrefsInfo.message.corner = pos
-        case .clock:
-            PrefsInfo.clock.corner = pos
-        case .battery:
-            PrefsInfo.battery.corner = pos
-        }
+        PrefsInfo.setCorner(forType, corner: pos)
     }
 
     // MARK: - Displays it should appear on
 
     @IBAction func changeDisplays(_ sender: NSPopUpButton) {
-        switch forType {
-        case .location:
-            PrefsInfo.location.displays = InfoDisplays(rawValue: sender.indexOfSelectedItem)!
-        case .message:
-            PrefsInfo.message.displays = InfoDisplays(rawValue: sender.indexOfSelectedItem)!
-        case .clock:
-            PrefsInfo.clock.displays = InfoDisplays(rawValue: sender.indexOfSelectedItem)!
-        case .battery:
-            PrefsInfo.battery.displays = InfoDisplays(rawValue: sender.indexOfSelectedItem)!
-        }
+        PrefsInfo.setDisplayMode(forType, mode: InfoDisplays(rawValue: sender.indexOfSelectedItem)!)
     }
 
     // MARK: - enabled
 
     @IBAction func enabledClick(_ sender: NSButton) {
-        let onState = sender.state == .on
-        // debugLog("enabledClick: \(onState) for \(forType)")
-
-        switch forType {
-        case .location:
-            PrefsInfo.location.isEnabled = onState
-        case .message:
-            PrefsInfo.message.isEnabled = onState
-        case .clock:
-            PrefsInfo.clock.isEnabled = onState
-        case .battery:
-            PrefsInfo.battery.isEnabled = onState
-        }
+        PrefsInfo.setEnabled(forType, value: sender.state == .on)
 
         // We need to update the side column!
         controller!.infoTableView.reloadDataKeepingSelection()
@@ -177,20 +135,8 @@ class InfoCommonView: NSView {
 
         // Make a panel
         if let fp = NSFontManager.shared.fontPanel(true) {
-            switch forType {
-            case .location:
-                fp.setPanelFont(makeFont(name: PrefsInfo.location.fontName,
-                                         size: PrefsInfo.location.fontSize), isMultiple: false)
-            case .message:
-                fp.setPanelFont(makeFont(name: PrefsInfo.message.fontName,
-                                         size: PrefsInfo.message.fontSize), isMultiple: false)
-            case .clock:
-                fp.setPanelFont(makeFont(name: PrefsInfo.clock.fontName,
-                                         size: PrefsInfo.clock.fontSize), isMultiple: false)
-            case .battery:
-                fp.setPanelFont(makeFont(name: PrefsInfo.battery.fontName,
-                                         size: PrefsInfo.battery.fontSize), isMultiple: false)
-            }
+            fp.setPanelFont(makeFont(name: PrefsInfo.ofType(forType).fontName,
+                                     size: PrefsInfo.ofType(forType).fontSize), isMultiple: false)
 
             // Push the panel
             fp.makeKeyAndOrderFront(sender)
@@ -207,24 +153,22 @@ class InfoCommonView: NSView {
     }
 
     @IBAction func resetFontClick(_ sender: Any) {
+        // We use a default font for all types
+        PrefsInfo.setFontName(forType, name: "Helvetica Neue Medium")
+
+        // Default Size varies though per type
         switch forType {
         case .location:
-            PrefsInfo.location.fontName = "Helvetica Neue Medium"
             PrefsInfo.location.fontSize = 28
-            fontLabel.stringValue = PrefsInfo.location.fontName + ", \(PrefsInfo.location.fontSize) pt"
         case .message:
-            PrefsInfo.message.fontName = "Helvetica Neue Medium"
             PrefsInfo.message.fontSize = 20
-            fontLabel.stringValue = PrefsInfo.message.fontName + ", \(PrefsInfo.message.fontSize) pt"
         case .clock:
-            PrefsInfo.clock.fontName = "Helvetica Neue Medium"
             PrefsInfo.clock.fontSize = 50
-            fontLabel.stringValue = PrefsInfo.clock.fontName + ", \(PrefsInfo.clock.fontSize) pt"
         case .battery:
-            PrefsInfo.battery.fontName = "Helvetica Neue Medium"
             PrefsInfo.battery.fontSize = 20
-            fontLabel.stringValue = PrefsInfo.battery.fontName + ", \(PrefsInfo.battery.fontSize) pt"
         }
+
+        fontLabel.stringValue = PrefsInfo.ofType(forType).fontName + ", \(PrefsInfo.ofType(forType).fontSize) pt"
     }
 }
 
@@ -237,39 +181,13 @@ extension InfoCommonView: NSFontChanging {
 
     func changeFont(_ sender: NSFontManager?) {
         // Set current font
-        let oldFont: NSFont
-
-        switch forType {
-        case .location:
-            oldFont = makeFont(name: PrefsInfo.location.fontName,
-                               size: PrefsInfo.location.fontSize)
-        case .message:
-            oldFont = makeFont(name: PrefsInfo.message.fontName,
-                               size: PrefsInfo.message.fontSize)
-        case .clock:
-            oldFont = makeFont(name: PrefsInfo.clock.fontName,
-                               size: PrefsInfo.clock.fontSize)
-        case .battery:
-            oldFont = makeFont(name: PrefsInfo.battery.fontName,
-                               size: PrefsInfo.battery.fontSize)
-
-        }
+        let oldFont = makeFont(name: PrefsInfo.ofType(forType).fontName,
+                           size: PrefsInfo.ofType(forType).fontSize)
 
         if let newFont = sender?.convert(oldFont) {
-            switch forType {
-            case .location:
-                PrefsInfo.location.fontName = newFont.fontName
-                PrefsInfo.location.fontSize = Double(newFont.pointSize)
-            case .message:
-                PrefsInfo.message.fontName = newFont.fontName
-                PrefsInfo.message.fontSize = Double(newFont.pointSize)
-            case .clock:
-                PrefsInfo.clock.fontName = newFont.fontName
-                PrefsInfo.clock.fontSize = Double(newFont.pointSize)
-            case .battery:
-                PrefsInfo.battery.fontName = newFont.fontName
-                PrefsInfo.battery.fontSize = Double(newFont.pointSize)
-            }
+            PrefsInfo.setFontName(forType, name: newFont.fontName)
+            PrefsInfo.setFontSize(forType, size: Double(newFont.pointSize))
+
             fontLabel.stringValue = newFont.fontName + ", \(Double(newFont.pointSize)) pt"
         } else {
             errorLog("New font failure")
