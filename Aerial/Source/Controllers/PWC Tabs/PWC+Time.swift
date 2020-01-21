@@ -28,11 +28,11 @@ extension PreferencesWindowController {
 
         // Dark Mode is Mojave+
         if #available(OSX 10.14, *) {
-            if preferences.darkModeNightOverride {
+            if PrefsTime.darkModeNightOverride {
                 overrideNightOnDarkMode.state = .on
             }
             // We disable the checkbox if we are on nightShift mode
-            if preferences.timeMode == Preferences.TimeMode.lightDarkMode.rawValue {
+            if PrefsTime.timeMode == .lightDarkMode {
                 overrideNightOnDarkMode.isEnabled = false
             }
         } else {
@@ -56,28 +56,28 @@ extension PreferencesWindowController {
         let (_, reason) = timeManagement.calculateFromCoordinates()
         calculateCoordinatesLabel.stringValue = reason
 
-        if let dateSunrise = timeFormatter.date(from: preferences.manualSunrise!) {
+        if let dateSunrise = timeFormatter.date(from: PrefsTime.manualSunrise) {
             sunriseTime.dateValue = dateSunrise
         }
-        if let dateSunset = timeFormatter.date(from: preferences.manualSunset!) {
+        if let dateSunset = timeFormatter.date(from: PrefsTime.manualSunset) {
             sunsetTime.dateValue = dateSunset
         }
-        latitudeTextField.stringValue = preferences.latitude!
-        longitudeTextField.stringValue = preferences.longitude!
-        extraLatitudeTextField.stringValue = preferences.latitude!
-        extraLongitudeTextField.stringValue = preferences.longitude!
+        latitudeTextField.stringValue = PrefsTime.latitude
+        longitudeTextField.stringValue = PrefsTime.longitude
+        extraLatitudeTextField.stringValue = PrefsTime.latitude
+        extraLongitudeTextField.stringValue = PrefsTime.longitude
 
         // Handle the time radios
-        switch preferences.timeMode {
-        case Preferences.TimeMode.nightShift.rawValue:
+        switch PrefsTime.timeMode {
+        case .nightShift:
             timeNightShiftRadio.state = .on
-        case Preferences.TimeMode.manual.rawValue:
+        case .manual:
             timeManualRadio.state = .on
-        case Preferences.TimeMode.lightDarkMode.rawValue:
+        case .lightDarkMode:
             timeLightDarkModeRadio.state = .on
-        case Preferences.TimeMode.coordinates.rawValue:
+        case .coordinates:
             timeCalculateRadio.state = .on
-        default:
+        case .disabled:
             timeDisabledRadio.state = .on
         }
 
@@ -88,12 +88,12 @@ extension PreferencesWindowController {
             sleepAfterLabel.stringValue = "Unable to determine your Mac sleep settings"
         }
 
-        solarModePopup.selectItem(at: preferences.solarMode!)
+        solarModePopup.selectItem(at: PrefsTime.solarMode.rawValue)
     }
 
     @IBAction func overrideNightOnDarkModeClick(_ button: NSButton) {
         let onState = button.state == .on
-        preferences.darkModeNightOverride = onState
+        PrefsTime.darkModeNightOverride = onState
         debugLog("UI overrideNightDarkMode: \(onState)")
     }
 
@@ -121,15 +121,15 @@ extension PreferencesWindowController {
 
         switch sender {
         case timeDisabledRadio:
-            preferences.timeMode = Preferences.TimeMode.disabled.rawValue
+            PrefsTime.timeMode = .disabled
         case timeNightShiftRadio:
-            preferences.timeMode = Preferences.TimeMode.nightShift.rawValue
+            PrefsTime.timeMode = .nightShift
         case timeManualRadio:
-            preferences.timeMode = Preferences.TimeMode.manual.rawValue
+            PrefsTime.timeMode = .manual
         case timeLightDarkModeRadio:
-            preferences.timeMode = Preferences.TimeMode.lightDarkMode.rawValue
+            PrefsTime.timeMode = .lightDarkMode
         case timeCalculateRadio:
-            preferences.timeMode = Preferences.TimeMode.coordinates.rawValue
+            PrefsTime.timeMode = .coordinates
         default:
             ()
         }
@@ -137,16 +137,16 @@ extension PreferencesWindowController {
 
     @IBAction func sunriseChange(_ sender: NSDatePicker?) {
         guard let date = sender?.dateValue else { return }
-        preferences.manualSunrise = timeFormatter.string(from: date)
+        PrefsTime.manualSunrise = timeFormatter.string(from: date)
     }
 
     @IBAction func sunsetChange(_ sender: NSDatePicker?) {
         guard let date = sender?.dateValue else { return }
-        preferences.manualSunset = timeFormatter.string(from: date)
+        PrefsTime.manualSunset = timeFormatter.string(from: date)
     }
 
     @IBAction func latitudeChange(_ sender: NSTextField) {
-        preferences.latitude = sender.stringValue
+        PrefsTime.latitude = sender.stringValue
         if sender == extraLatitudeTextField {
             latitudeTextField.stringValue = sender.stringValue
         }
@@ -155,7 +155,7 @@ extension PreferencesWindowController {
 
     @IBAction func longitudeChange(_ sender: NSTextField) {
         debugLog("longitudechange")
-        preferences.longitude = sender.stringValue
+        PrefsTime.longitude = sender.stringValue
         if sender == extraLongitudeTextField {
             longitudeTextField.stringValue = sender.stringValue
         }
@@ -169,7 +169,7 @@ extension PreferencesWindowController {
     }
 
     @IBAction func solarModePopupChange(_ sender: NSPopUpButton) {
-        preferences.solarMode = sender.indexOfSelectedItem
+        PrefsTime.solarMode = SolarMode(rawValue: sender.indexOfSelectedItem)!
         debugLog("UI solarModePopupChange: \(sender.indexOfSelectedItem)")
         updateLatitudeLongitude()
     }
@@ -208,8 +208,8 @@ extension PreferencesWindowController {
         latitudeTextField.stringValue = String(format: "%.3f", coordinates.latitude)
         longitudeTextField.stringValue = String(format: "%.3f", coordinates.longitude)
 
-        preferences.latitude = String(format: "%.3f", coordinates.latitude)
-        preferences.longitude = String(format: "%.3f", coordinates.longitude)
+        PrefsTime.latitude = String(format: "%.3f", coordinates.latitude)
+        PrefsTime.longitude = String(format: "%.3f", coordinates.longitude)
         updateLatitudeLongitude()
     }
 }

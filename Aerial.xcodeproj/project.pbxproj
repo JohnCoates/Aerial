@@ -59,9 +59,7 @@
 		03608A1022A54887008F08A2 /* PWC+Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03608A0F22A54887008F08A2 /* PWC+Videos.swift */; };
 		03608A1222A5499C008F08A2 /* PWC+Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03608A0F22A54887008F08A2 /* PWC+Videos.swift */; };
 		03608A1422A559F6008F08A2 /* PWC+Displays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03608A1322A559F6008F08A2 /* PWC+Displays.swift */; };
-		03608A1622A55A8C008F08A2 /* PWC+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03608A1522A55A8C008F08A2 /* PWC+Text.swift */; };
 		03608A1722A55B44008F08A2 /* PWC+Displays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03608A1322A559F6008F08A2 /* PWC+Displays.swift */; };
-		03608A1822A55B47008F08A2 /* PWC+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03608A1522A55A8C008F08A2 /* PWC+Text.swift */; };
 		03608A1A22A55B9A008F08A2 /* PWC+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03608A1922A55B9A008F08A2 /* PWC+Time.swift */; };
 		03608A1B22A55B9A008F08A2 /* PWC+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03608A1922A55B9A008F08A2 /* PWC+Time.swift */; };
 		03608A1D22A55BA7008F08A2 /* PWC+Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03608A1C22A55BA7008F08A2 /* PWC+Brightness.swift */; };
@@ -76,6 +74,10 @@
 		03608A2A22A56094008F08A2 /* PWC+LogPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03608A2822A56094008F08A2 /* PWC+LogPanel.swift */; };
 		03608A2C22A56465008F08A2 /* HardwareDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03608A2B22A56465008F08A2 /* HardwareDetection.swift */; };
 		03608A2D22A56465008F08A2 /* HardwareDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03608A2B22A56465008F08A2 /* HardwareDetection.swift */; };
+		0361B9A823D732A300B6252D /* PrefsDisplays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361B9A723D732A300B6252D /* PrefsDisplays.swift */; };
+		0361B9A923D732A300B6252D /* PrefsDisplays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361B9A723D732A300B6252D /* PrefsDisplays.swift */; };
+		0361B9AB23D73D4500B6252D /* PrefsTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361B9AA23D73D4500B6252D /* PrefsTime.swift */; };
+		0361B9AC23D73D4500B6252D /* PrefsTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361B9AA23D73D4500B6252D /* PrefsTime.swift */; };
 		0369985D2196103300E359D3 /* missingvideos.json in Resources */ = {isa = PBXBuildFile; fileRef = 0369985C2196103300E359D3 /* missingvideos.json */; };
 		0369985E2196129C00E359D3 /* missingvideos.json in Resources */ = {isa = PBXBuildFile; fileRef = 0369985C2196103300E359D3 /* missingvideos.json */; };
 		036A34B5227309FB00A49135 /* zh_CN.json in Resources */ = {isa = PBXBuildFile; fileRef = 036A34B4227309FB00A49135 /* zh_CN.json */; };
@@ -233,7 +235,6 @@
 		035D524E239AA31A00DC29DC /* AerialView+Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AerialView+Player.swift"; sourceTree = "<group>"; };
 		03608A0F22A54887008F08A2 /* PWC+Videos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PWC+Videos.swift"; sourceTree = "<group>"; };
 		03608A1322A559F6008F08A2 /* PWC+Displays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PWC+Displays.swift"; sourceTree = "<group>"; };
-		03608A1522A55A8C008F08A2 /* PWC+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PWC+Text.swift"; sourceTree = "<group>"; };
 		03608A1922A55B9A008F08A2 /* PWC+Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PWC+Time.swift"; sourceTree = "<group>"; };
 		03608A1C22A55BA7008F08A2 /* PWC+Brightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PWC+Brightness.swift"; sourceTree = "<group>"; };
 		03608A1F22A55BC2008F08A2 /* PWC+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PWC+Cache.swift"; sourceTree = "<group>"; };
@@ -241,6 +242,8 @@
 		03608A2522A55C03008F08A2 /* PWC+Advanced.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PWC+Advanced.swift"; sourceTree = "<group>"; };
 		03608A2822A56094008F08A2 /* PWC+LogPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PWC+LogPanel.swift"; sourceTree = "<group>"; };
 		03608A2B22A56465008F08A2 /* HardwareDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareDetection.swift; sourceTree = "<group>"; };
+		0361B9A723D732A300B6252D /* PrefsDisplays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsDisplays.swift; sourceTree = "<group>"; };
+		0361B9AA23D73D4500B6252D /* PrefsTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsTime.swift; sourceTree = "<group>"; };
 		0369985C2196103300E359D3 /* missingvideos.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = missingvideos.json; sourceTree = "<group>"; };
 		036A34B4227309FB00A49135 /* zh_CN.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zh_CN.json; sourceTree = "<group>"; };
 		03893CB2217749F0008E7125 /* ErrorLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLog.swift; sourceTree = "<group>"; };
@@ -409,6 +412,8 @@
 				FA6F81DB1D939455007975FE /* Preferences.swift */,
 				034F29BE23A7E28E004B34D5 /* PrefsInfo.swift */,
 				038D2EDD23B0FB0D00CD91F7 /* PrefsVideos.swift */,
+				0361B9A723D732A300B6252D /* PrefsDisplays.swift */,
+				0361B9AA23D73D4500B6252D /* PrefsTime.swift */,
 			);
 			path = Prefs;
 			sourceTree = "<group>";
@@ -418,7 +423,6 @@
 			children = (
 				03608A0F22A54887008F08A2 /* PWC+Videos.swift */,
 				03608A1322A559F6008F08A2 /* PWC+Displays.swift */,
-				03608A1522A55A8C008F08A2 /* PWC+Text.swift */,
 				034F29B323A7A79B004B34D5 /* PWC+Info.swift */,
 				03608A1922A55B9A008F08A2 /* PWC+Time.swift */,
 				03608A1C22A55BA7008F08A2 /* PWC+Brightness.swift */,
@@ -998,9 +1002,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F00864B523AAE7F0003210EF /* DarkMode.swift in Sources */,
+				0361B9AC23D73D4500B6252D /* PrefsTime.swift in Sources */,
 				032D1162239A7E03007E7756 /* Battery.swift in Sources */,
 				03893CB4217753AC008E7125 /* ErrorLog.swift in Sources */,
-				03608A1822A55B47008F08A2 /* PWC+Text.swift in Sources */,
 				03233B692172762C0077D3F9 /* PoiStringProvider.swift in Sources */,
 				03BF51C323A29E1D008AD373 /* ClockLayer.swift in Sources */,
 				0306336C23A143D900046A59 /* LayerOffsets.swift in Sources */,
@@ -1038,6 +1042,7 @@
 				FAB22A7F1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */,
 				FAC36F601BE175CF007F2A20 /* AppDelegate.swift in Sources */,
 				03AD460022981B1C00261325 /* CustomVideoFolders+helpers.swift in Sources */,
+				0361B9A923D732A300B6252D /* PrefsDisplays.swift in Sources */,
 				032D1165239A7F17007E7756 /* AerialView+Brightness.swift in Sources */,
 				FA36BD401BE57F8E00D5E03B /* VideoDownload.swift in Sources */,
 				0313F9F022955F3B00B074BB /* CustomVideoFolders.swift in Sources */,
@@ -1093,7 +1098,7 @@
 				032D1164239A7F0C007E7756 /* AerialView+Brightness.swift in Sources */,
 				FA6F81DC1D939455007975FE /* Preferences.swift in Sources */,
 				FAF450241BE2D2FD00C1F98A /* VideoCache.swift in Sources */,
-				03608A1622A55A8C008F08A2 /* PWC+Text.swift in Sources */,
+				0361B9A823D732A300B6252D /* PrefsDisplays.swift in Sources */,
 				0306336E23A15FA900046A59 /* AnimationLayer.swift in Sources */,
 				FAC36F571BE1756D007F2A20 /* PreferencesWindowController.swift in Sources */,
 				0313F9EC2294468600B074BB /* SeededGenerator.swift in Sources */,
@@ -1126,6 +1131,7 @@
 				034F29B723A7A93D004B34D5 /* InfoTableSource.swift in Sources */,
 				03958349217F4416008E8F9C /* Solar.swift in Sources */,
 				F008DAFD23AADCFB00739DE1 /* Brightness.swift in Sources */,
+				0361B9AB23D73D4500B6252D /* PrefsTime.swift in Sources */,
 				03233B68217272640077D3F9 /* PoiStringProvider.swift in Sources */,
 				038D2EE123B6523800CD91F7 /* BatteryLayer.swift in Sources */,
 				FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */,

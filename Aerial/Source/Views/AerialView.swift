@@ -39,18 +39,16 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     var originalWidth, originalHeight: CGFloat
 
     static var shouldFade: Bool {
-        let preferences = Preferences.sharedInstance
-        return (preferences.fadeMode != Preferences.FadeMode.disabled.rawValue)
+        return (PrefsVideos.fadeMode != .disabled)
     }
 
     static var fadeDuration: Double {
-        let preferences = Preferences.sharedInstance
-        switch preferences.fadeMode {
-        case Preferences.FadeMode.t0_5.rawValue:
+        switch PrefsVideos.fadeMode {
+        case .t0_5:
             return 0.5
-        case Preferences.FadeMode.t1.rawValue:
+        case .t1:
             return 1
-        case Preferences.FadeMode.t2.rawValue:
+        case .t2:
             return 2
         default:
             return 0.10
@@ -60,27 +58,21 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     static var textFadeDuration: Double {
         let preferences = Preferences.sharedInstance
         switch preferences.fadeModeText {
-        case Preferences.FadeMode.t0_5.rawValue:
+        case FadeMode.t0_5.rawValue:
             return 0.5
-        case Preferences.FadeMode.t1.rawValue:
+        case FadeMode.t1.rawValue:
             return 1
-        case Preferences.FadeMode.t2.rawValue:
+        case FadeMode.t2.rawValue:
             return 2
         default:
             return 0.10
         }
     }
 
-    // Mirrored viewing mode and Spanned viewing mode share the same player for sync & ressource saving
+    // Mirrored/cloned viewing mode and Spanned viewing mode share the same player for sync & ressource saving
     static var sharingPlayers: Bool {
-        let preferences = Preferences.sharedInstance
-
-        switch preferences.newViewingMode {
-        case
-            Preferences.NewViewingMode.cloned.rawValue,
-            Preferences.NewViewingMode.mirrored.rawValue,
-            Preferences.NewViewingMode.spanned.rawValue:
-
+        switch PrefsDisplays.viewingMode {
+        case .cloned, .mirrored, .spanned:
             return true
         default:
             return false

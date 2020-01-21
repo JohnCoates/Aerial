@@ -13,7 +13,6 @@ import AVKit
 extension AerialView {
     func setupPlayerLayer(withPlayer player: AVPlayer) {
         let displayDetection = DisplayDetection.sharedInstance
-        let preferences = Preferences.sharedInstance
 
         self.layer = CALayer()
         guard let layer = self.layer else {
@@ -28,8 +27,9 @@ extension AerialView {
 
         playerLayer = AVPlayerLayer(player: player)
 
+        // Fill/fit is only available in 10.10+
         if #available(OSX 10.10, *) {
-            if preferences.aspectMode == Preferences.AspectMode.fill.rawValue {
+            if PrefsDisplays.aspectMode == .fill {
                 playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
             } else {
                 playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
@@ -38,7 +38,7 @@ extension AerialView {
         playerLayer.autoresizingMask = [CAAutoresizingMask.layerWidthSizable, CAAutoresizingMask.layerHeightSizable]
 
         // In case of span mode we need to compute the size of our layer
-        if preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue && !isPreview {
+        if PrefsDisplays.viewingMode == .spanned && !isPreview {
             let zRect = displayDetection.getZeroedActiveSpannedRect()
             let screen = displayDetection.findScreenWith(frame: self.frame)
             if let scr = screen {
@@ -56,7 +56,7 @@ extension AerialView {
 
             // "true" mirrored mode
             let index = AerialView.instanciatedViews.firstIndex(of: self) ?? 0
-            if index % 2 == 1 && preferences.newViewingMode == Preferences.NewViewingMode.mirrored.rawValue {
+            if index % 2 == 1 && PrefsDisplays.viewingMode == .mirrored {
                 playerLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(scaleX: -1, y: 1))
             }
         }

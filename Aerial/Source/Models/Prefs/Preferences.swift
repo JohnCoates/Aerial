@@ -23,10 +23,10 @@ final class Preferences {
         case showDescriptionsMode = "showDescriptionsMode"
         case neverStreamVideos = "neverStreamVideos"
         case neverStreamPreviews = "neverStreamPreviews"
-        case timeMode = "timeMode"
-        case manualSunrise = "manualSunrise"
-        case manualSunset = "manualSunset"
-        case fadeMode = "fadeMode"
+//        case timeMode = "timeMode"
+//        case manualSunrise = "manualSunrise"
+//        case manualSunset = "manualSunset"
+//        case fadeMode = "fadeMode"
         case fadeModeText = "fadeModeText"
         case descriptionCorner = "descriptionCorner"
 
@@ -34,8 +34,8 @@ final class Preferences {
         case logToDisk = "logToDisk"
         case versionCheck = "versionCheck"
         case alsoVersionCheckBeta = "alsoVersionCheckBeta"
-        case latitude = "latitude"
-        case longitude = "longitude"
+//        case latitude = "latitude"
+//        case longitude = "longitude"
 
         case dimBrightness = "dimBrightness"
         case startDim = "startDim"
@@ -44,45 +44,34 @@ final class Preferences {
         case dimOnlyOnBattery = "dimOnlyOnBattery"
         case dimInMinutes = "dimInMinutes"
         case overrideDimInMinutes = "overrideDimInMinutes"
-        case solarMode = "solarMode"
+//        case solarMode = "solarMode"
 
         case overrideMargins = "overrideMargins"
         case marginX = "marginX"
         case marginY = "marginY"
 
-        case darkModeNightOverride = "darkModeNightOverride"
+//        case darkModeNightOverride = "darkModeNightOverride"
         case newVideosMode = "newVideosMode"
         case lastVideoCheck = "lastVideoCheck"
         case ciOverrideLanguage = "ciOverrideLanguage"
         case videoSets = "videoSets"
-        case allowSkips = "allowSkips"
+//        case allowSkips = "allowSkips"
         case updateWhileSaverMode = "updateWhileSaverMode"
         case allowBetas = "allowBetas"
         case betaCheckFrequency = "betaCheckFrequency"
-        case newDisplayMode = "newDisplayMode"
-        case newViewingMode = "newViewingMode"
+
+//        case newDisplayMode = "newDisplayMode"
+//        case newViewingMode = "newViewingMode"
         case newDisplayDict = "newDisplayDict"
         case logMilliseconds = "logMilliseconds"
-        case horizontalMargin = "horizontalMargin"
-        case verticalMargin = "verticalMargin"
-        case displayMarginsAdvanced = "displayMarginsAdvanced"
-        case advancedMargins = "advancedMargins"
+//        case horizontalMargin = "horizontalMargin"
+//        case verticalMargin = "verticalMargin"
+//        case displayMarginsAdvanced = "displayMarginsAdvanced"
+//        case advancedMargins = "advancedMargins"
 
         case synchronizedMode = "synchronizedMode"
-        case aspectMode = "aspectMode"
-        case useHDR = "useHDR"
-    }
-
-    enum AspectMode: Int {
-        case fill, fit
-    }
-
-    enum NewDisplayMode: Int {
-        case allDisplays, mainOnly, secondaryOnly, selection
-    }
-
-    enum NewViewingMode: Int {
-        case independent, cloned, spanned, mirrored
+//        case aspectMode = "aspectMode"
+//        case useHDR = "useHDR"
     }
 
     enum BetaCheckFrequency: Int {
@@ -93,9 +82,9 @@ final class Preferences {
         case weekly, monthly, never
     }
 
-    enum SolarMode: Int {
-        case strict, official, civil, nautical, astronomical
-    }
+//    enum SolarMode: Int {
+//        case strict, official, civil, nautical, astronomical
+//    }
 
     enum VersionCheck: Int {
         case never, daily, weekly, monthly
@@ -109,17 +98,8 @@ final class Preferences {
         case topLeft, topRight, bottomLeft, bottomRight, random
     }
 
-    enum FadeMode: Int {
-        // swiftlint:disable:next identifier_name
-        case disabled, t0_5, t1, t2
-    }
-
     enum MultiMonitorMode: Int {
         case mainOnly, mirrored, independant, secondaryOnly
-    }
-
-    enum TimeMode: Int {
-        case disabled, nightShift, manual, lightDarkMode, coordinates
     }
 
     /*enum VideoFormat: Int {
@@ -161,19 +141,19 @@ final class Preferences {
         defaultValues[.showDescriptionsMode] = DescriptionMode.fade10seconds
         defaultValues[.neverStreamVideos] = false
         defaultValues[.neverStreamPreviews] = false
-        defaultValues[.timeMode] = TimeMode.disabled
-        defaultValues[.manualSunrise] = "09:00"
-        defaultValues[.manualSunset] = "19:00"
+//        defaultValues[.timeMode] = TimeMode.disabled
+//        defaultValues[.manualSunrise] = "09:00"
+//        defaultValues[.manualSunset] = "19:00"
         defaultValues[.multiMonitorMode] = MultiMonitorMode.mainOnly
-        defaultValues[.fadeMode] = FadeMode.t1
+//        defaultValues[.fadeMode] = FadeMode.t1
         defaultValues[.fadeModeText] = FadeMode.t1
         defaultValues[.descriptionCorner] = DescriptionCorner.bottomLeft
         defaultValues[.debugMode] = true
         defaultValues[.logToDisk] = true
         defaultValues[.versionCheck] = VersionCheck.weekly
         defaultValues[.alsoVersionCheckBeta] = false
-        defaultValues[.latitude] = ""
-        defaultValues[.longitude] = ""
+//        defaultValues[.latitude] = ""
+//        defaultValues[.longitude] = ""
         defaultValues[.dimBrightness] = false
         defaultValues[.startDim] = 0.5
         defaultValues[.endDim] = 0.0
@@ -181,33 +161,33 @@ final class Preferences {
         defaultValues[.dimOnlyOnBattery] = false
         defaultValues[.dimInMinutes] = 30
         defaultValues[.overrideDimInMinutes] = false
-        defaultValues[.solarMode] = SolarMode.official
+//        defaultValues[.solarMode] = SolarMode.official
         defaultValues[.overrideMargins] = false
         defaultValues[.marginX] = 50
         defaultValues[.marginY] = 50
 //        defaultValues[.overrideOnBattery] = false
 //        defaultValues[.powerSavingOnLowBattery] = false
 //        defaultValues[.alternateVideoFormat] = AlternateVideoFormat.powerSaving
-        defaultValues[.darkModeNightOverride] = false
+//        defaultValues[.darkModeNightOverride] = false
         defaultValues[.newVideosMode] = NewVideosMode.weekly
         defaultValues[.ciOverrideLanguage] = ""
         defaultValues[.videoSets] = [String: [String]]()
-        defaultValues[.allowSkips] = true
+//        defaultValues[.allowSkips] = true
         defaultValues[.updateWhileSaverMode] = true
         defaultValues[.allowBetas] = false
         defaultValues[.betaCheckFrequency] = BetaCheckFrequency.daily
-        defaultValues[.newDisplayMode] = NewDisplayMode.allDisplays
-        defaultValues[.newViewingMode] = NewViewingMode.independent
+//        defaultValues[.newDisplayMode] = NewDisplayMode.allDisplays
+//        defaultValues[.newViewingMode] = NewViewingMode.independent
         defaultValues[.newDisplayDict] = [String: Bool]()
         defaultValues[.logMilliseconds] = false
-        defaultValues[.horizontalMargin] = 0
-        defaultValues[.verticalMargin] = 0
-        defaultValues[.displayMarginsAdvanced] = false
+//        defaultValues[.horizontalMargin] = 0
+//        defaultValues[.verticalMargin] = 0
+//        defaultValues[.displayMarginsAdvanced] = false
 
         defaultValues[.synchronizedMode] = false
-        defaultValues[.aspectMode] = AspectMode.fill
-        defaultValues[.useHDR] = false
-        defaultValues[.advancedMargins] = ""
+//        defaultValues[.aspectMode] = AspectMode.fill
+//        defaultValues[.useHDR] = false
+//        defaultValues[.advancedMargins] = ""
 
         // Set today's date as default
         let dateFormatter = DateFormatter()
@@ -226,14 +206,14 @@ final class Preferences {
     }
 
     // MARK: - Variables
-    var advancedMargins: String? {
-        get {
-            return optionalValue(forIdentifier: .advancedMargins)
-        }
-        set {
-            setValue(forIdentifier: .advancedMargins, value: newValue)
-        }
-    }
+//    var advancedMargins: String? {
+//        get {
+//            return optionalValue(forIdentifier: .advancedMargins)
+//        }
+//        set {
+//            setValue(forIdentifier: .advancedMargins, value: newValue)
+//        }
+//    }
 
     var videoSets: [String: [String]] {
         get {
@@ -253,59 +233,59 @@ final class Preferences {
         }
     }
 
-    var displayMarginsAdvanced: Bool {
-        get {
-            return value(forIdentifier: .displayMarginsAdvanced)
-        }
-        set {
-            setValue(forIdentifier: .displayMarginsAdvanced, value: newValue)
-        }
-    }
+//    var displayMarginsAdvanced: Bool {
+//        get {
+//            return value(forIdentifier: .displayMarginsAdvanced)
+//        }
+//        set {
+//            setValue(forIdentifier: .displayMarginsAdvanced, value: newValue)
+//        }
+//    }
+//
+//    var horizontalMargin: Double? {
+//        get {
+//            return optionalValue(forIdentifier: .horizontalMargin)
+//        }
+//        set {
+//            setValue(forIdentifier: .horizontalMargin, value: newValue)
+//        }
+//    }
+//
+//    var verticalMargin: Double? {
+//        get {
+//            return optionalValue(forIdentifier: .verticalMargin)
+//        }
+//        set {
+//            setValue(forIdentifier: .verticalMargin, value: newValue)
+//        }
+//    }
 
-    var horizontalMargin: Double? {
-        get {
-            return optionalValue(forIdentifier: .horizontalMargin)
-        }
-        set {
-            setValue(forIdentifier: .horizontalMargin, value: newValue)
-        }
-    }
+//    var aspectMode: Int? {
+//        get {
+//            return optionalValue(forIdentifier: .aspectMode)
+//        }
+//        set {
+//            setValue(forIdentifier: .aspectMode, value: newValue)
+//        }
+//    }
 
-    var verticalMargin: Double? {
-        get {
-            return optionalValue(forIdentifier: .verticalMargin)
-        }
-        set {
-            setValue(forIdentifier: .verticalMargin, value: newValue)
-        }
-    }
+//    var newDisplayMode: Int? {
+//        get {
+//            return optionalValue(forIdentifier: .newDisplayMode)
+//        }
+//        set {
+//            setValue(forIdentifier: .newDisplayMode, value: newValue)
+//        }
+//    }
 
-    var aspectMode: Int? {
-        get {
-            return optionalValue(forIdentifier: .aspectMode)
-        }
-        set {
-            setValue(forIdentifier: .aspectMode, value: newValue)
-        }
-    }
-
-    var newDisplayMode: Int? {
-        get {
-            return optionalValue(forIdentifier: .newDisplayMode)
-        }
-        set {
-            setValue(forIdentifier: .newDisplayMode, value: newValue)
-        }
-    }
-
-    var newViewingMode: Int? {
-        get {
-            return optionalValue(forIdentifier: .newViewingMode)
-        }
-        set {
-            setValue(forIdentifier: .newViewingMode, value: newValue)
-        }
-    }
+//    var newViewingMode: Int? {
+//        get {
+//            return optionalValue(forIdentifier: .newViewingMode)
+//        }
+//        set {
+//            setValue(forIdentifier: .newViewingMode, value: newValue)
+//        }
+//    }
 
     var lastVideoCheck: String? {
         get {
@@ -343,14 +323,14 @@ final class Preferences {
 //        }
 //    }
 
-    var useHDR: Bool {
-        get {
-            return value(forIdentifier: .useHDR)
-        }
-        set {
-            setValue(forIdentifier: .useHDR, value: newValue)
-        }
-    }
+//    var useHDR: Bool {
+//        get {
+//            return value(forIdentifier: .useHDR)
+//        }
+//        set {
+//            setValue(forIdentifier: .useHDR, value: newValue)
+//        }
+//    }
 
     var synchronizedMode: Bool {
         get {
@@ -388,14 +368,14 @@ final class Preferences {
         }
     }
 
-    var allowSkips: Bool {
-        get {
-            return value(forIdentifier: .allowSkips)
-        }
-        set {
-            setValue(forIdentifier: .allowSkips, value: newValue)
-        }
-    }
+//    var allowSkips: Bool {
+//        get {
+//            return value(forIdentifier: .allowSkips)
+//        }
+//        set {
+//            setValue(forIdentifier: .allowSkips, value: newValue)
+//        }
+//    }
 
     var overrideDimInMinutes: Bool {
         get {
@@ -406,14 +386,14 @@ final class Preferences {
         }
     }
 
-    var darkModeNightOverride: Bool {
-        get {
-            return value(forIdentifier: .darkModeNightOverride)
-        }
-        set {
-            setValue(forIdentifier: .darkModeNightOverride, value: newValue)
-        }
-    }
+//    var darkModeNightOverride: Bool {
+//        get {
+//            return value(forIdentifier: .darkModeNightOverride)
+//        }
+//        set {
+//            setValue(forIdentifier: .darkModeNightOverride, value: newValue)
+//        }
+//    }
 
 //    var overrideOnBattery: Bool {
 //        get {
@@ -496,14 +476,14 @@ final class Preferences {
         }
     }
 
-    var solarMode: Int? {
-        get {
-            return optionalValue(forIdentifier: .solarMode)
-        }
-        set {
-            setValue(forIdentifier: .solarMode, value: newValue)
-        }
-    }
+//    var solarMode: Int? {
+//        get {
+//            return optionalValue(forIdentifier: .solarMode)
+//        }
+//        set {
+//            setValue(forIdentifier: .solarMode, value: newValue)
+//        }
+//    }
 
     var debugMode: Bool {
         get {
@@ -568,23 +548,23 @@ final class Preferences {
         }
     }
 
-    var latitude: String? {
-        get {
-            return optionalValue(forIdentifier: .latitude)
-        }
-        set {
-            setValue(forIdentifier: .latitude, value: newValue)
-        }
-    }
-
-    var longitude: String? {
-        get {
-            return optionalValue(forIdentifier: .longitude)
-        }
-        set {
-            setValue(forIdentifier: .longitude, value: newValue)
-        }
-    }
+//    var latitude: String? {
+//        get {
+//            return optionalValue(forIdentifier: .latitude)
+//        }
+//        set {
+//            setValue(forIdentifier: .latitude, value: newValue)
+//        }
+//    }
+//
+//    var longitude: String? {
+//        get {
+//            return optionalValue(forIdentifier: .longitude)
+//        }
+//        set {
+//            setValue(forIdentifier: .longitude, value: newValue)
+//        }
+//    }
 
 //    var showMessageString: String? {
 //        get {
@@ -686,23 +666,23 @@ final class Preferences {
 //        }
 //
 //    }
-    var manualSunrise: String? {
-        get {
-            return optionalValue(forIdentifier: .manualSunrise)
-        }
-        set {
-            setValue(forIdentifier: .manualSunrise, value: newValue)
-        }
-    }
-
-    var manualSunset: String? {
-        get {
-            return optionalValue(forIdentifier: .manualSunset)
-        }
-        set {
-            setValue(forIdentifier: .manualSunset, value: newValue)
-        }
-    }
+//    var manualSunrise: String? {
+//        get {
+//            return optionalValue(forIdentifier: .manualSunrise)
+//        }
+//        set {
+//            setValue(forIdentifier: .manualSunrise, value: newValue)
+//        }
+//    }
+//
+//    var manualSunset: String? {
+//        get {
+//            return optionalValue(forIdentifier: .manualSunset)
+//        }
+//        set {
+//            setValue(forIdentifier: .manualSunset, value: newValue)
+//        }
+//    }
 
     var customCacheDirectory: String? {
         get {
@@ -740,14 +720,14 @@ final class Preferences {
 //        }
 //    }
 
-    var fadeMode: Int? {
-        get {
-            return optionalValue(forIdentifier: .fadeMode)
-        }
-        set {
-            setValue(forIdentifier: .fadeMode, value: newValue)
-        }
-    }
+//    var fadeMode: Int? {
+//        get {
+//            return optionalValue(forIdentifier: .fadeMode)
+//        }
+//        set {
+//            setValue(forIdentifier: .fadeMode, value: newValue)
+//        }
+//    }
 
     var fadeModeText: Int? {
         get {
@@ -758,14 +738,14 @@ final class Preferences {
         }
     }
 
-    var timeMode: Int? {
-        get {
-            return optionalValue(forIdentifier: .timeMode)
-        }
-        set {
-            setValue(forIdentifier: .timeMode, value: newValue)
-        }
-    }
+//    var timeMode: Int? {
+//        get {
+//            return optionalValue(forIdentifier: .timeMode)
+//        }
+//        set {
+//            setValue(forIdentifier: .timeMode, value: newValue)
+//        }
+//    }
 
 //    var videoFormat: Int? {
 //        get {

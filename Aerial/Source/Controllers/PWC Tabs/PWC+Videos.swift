@@ -98,10 +98,11 @@ extension PreferencesWindowController {
 
         onBatteryPopup.selectItem(at: PrefsVideos.onBatteryMode.rawValue)
 
-        if !preferences.allowSkips {
+        if !PrefsVideos.allowSkips {
             rightArrowKeyPlaysNextCheckbox.state = .off
         }
 
+        // HEVC is available only in macOS 10.13+
         if #available(OSX 10.13, *) {
             popupVideoFormat.selectItem(at: PrefsVideos.videoFormat.rawValue)
         } else {
@@ -110,10 +111,12 @@ extension PreferencesWindowController {
             popupVideoFormat.isEnabled = false
         }
 
-        fadeInOutModePopup.selectItem(at: preferences.fadeMode!)
+        fadeInOutModePopup.selectItem(at: PrefsVideos.fadeMode.rawValue)
 
-        // We need catalina for HDR !
-        if #available(OSX 10.15, *) {} else {
+        // We need catalina for HDR ! And we can't use right arrow to skip in Catalina
+        if #available(OSX 10.15, *) {
+            rightArrowKeyPlaysNextCheckbox.isEnabled = false
+        } else {
             menu1080pHDR.isHidden = true
             menu4KHDR.isHidden = true
         }
@@ -121,7 +124,7 @@ extension PreferencesWindowController {
 
     @IBAction func rightArrowKeyPlaysNextClick(_ sender: NSButton) {
         let onState = sender.state == .on
-        preferences.allowSkips = onState
+        PrefsVideos.allowSkips = onState
         debugLog("UI allowSkips \(onState)")
     }
 
@@ -147,8 +150,7 @@ extension PreferencesWindowController {
 
     @IBAction func fadeInOutModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI fadeInOutMode: \(sender.indexOfSelectedItem)")
-        preferences.fadeMode = sender.indexOfSelectedItem
-        preferences.synchronize()
+        PrefsVideos.fadeMode = FadeMode(rawValue: sender.indexOfSelectedItem)!
     }
 
     func updateDownloads(done: Int, total: Int, progress: Double) {

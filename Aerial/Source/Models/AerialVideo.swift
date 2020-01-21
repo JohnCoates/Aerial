@@ -232,7 +232,7 @@ final class AerialVideo: CustomStringConvertible, Equatable {
                     if fileManager.fileExists(atPath: path) {
                         let asset = AVAsset(url: URL(fileURLWithPath: path))
                         self.duration = CMTimeGetSeconds(asset.duration)
-                        print("duration found \(self.duration)")
+                        //print("duration found \(self.duration)")
                         return
                     }
                 }

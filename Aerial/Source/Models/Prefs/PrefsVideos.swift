@@ -16,6 +16,11 @@ enum OnBatteryMode: Int, Codable {
     case keepEnabled, alwaysDisabled, disableOnLow
 }
 
+enum FadeMode: Int {
+    // swiftlint:disable:next identifier_name
+    case disabled, t0_5, t1, t2
+}
+
 struct PrefsVideos {
     // What do we do on battery ?
     @SimpleStorage(key: "intOnBatteryMode", defaultValue: OnBatteryMode.keepEnabled.rawValue)
@@ -46,4 +51,23 @@ struct PrefsVideos {
             intVideoFormat = value.rawValue
         }
     }
+
+    // Video fade in/out mode
+    @SimpleStorage(key: "fadeMode", defaultValue: FadeMode.t1.rawValue)
+    static var intFadeMode: Int
+
+    // We wrap in a separate value, as we can't store an enum as a Codable in
+    // macOS < 10.15
+    static var fadeMode: FadeMode {
+        get {
+            return FadeMode(rawValue: intFadeMode)!
+        }
+        set(value) {
+            intFadeMode = value.rawValue
+        }
+    }
+
+    // Allow video skips with right arrow key (on supporting OSes)
+    @SimpleStorage(key: "allowSkips", defaultValue: true)
+    static var allowSkips: Bool
 }

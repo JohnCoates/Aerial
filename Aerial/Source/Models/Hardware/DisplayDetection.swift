@@ -114,8 +114,7 @@ final class DisplayDetection: NSObject {
 
         // Before we finish, we calculate the origin of each screen from a 0,0 perspective
         // This calculation is pretty different in advanced mode so it got split up
-        let preferences = Preferences.sharedInstance
-        if preferences.displayMarginsAdvanced && !advancedMargins.displays.isEmpty {
+        if PrefsDisplays.displayMarginsAdvanced && !advancedMargins.displays.isEmpty {
             calculateAdvancedZeroedOrigins()
         } else {
             calculateZeroedOrigins()
@@ -211,13 +210,11 @@ final class DisplayDetection: NSObject {
     }
 
     func leftMargin() -> CGFloat {
-        let preferences = Preferences.sharedInstance
-        return cmInPoints * CGFloat(preferences.horizontalMargin!)
+        return cmInPoints * CGFloat(PrefsDisplays.horizontalMargin)
     }
 
     func belowMargin() -> CGFloat {
-        let preferences = Preferences.sharedInstance
-        return cmInPoints * CGFloat(preferences.verticalMargin!)
+        return cmInPoints * CGFloat(PrefsDisplays.verticalMargin)
     }
 
     func findScreenWith(frame: CGRect) -> Screen? {
@@ -238,8 +235,7 @@ final class DisplayDetection: NSObject {
 
     // Calculate the size of the global screen (the composite of all the displays attached)
     func getGlobalScreenRect() -> CGRect {
-        let preferences = Preferences.sharedInstance
-        if preferences.displayMarginsAdvanced && !advancedMargins.displays.isEmpty, let adv = advancedScreenRect {
+        if PrefsDisplays.displayMarginsAdvanced && !advancedMargins.displays.isEmpty, let adv = advancedScreenRect {
             // Now this is awkward... we precalculated this at detectdisplays->advancedZeroedOrigins
             return adv
         } else {
@@ -285,8 +281,7 @@ final class DisplayDetection: NSObject {
     }
 
     func getZeroedActiveSpannedRect() -> CGRect {
-        let preferences = Preferences.sharedInstance
-        if preferences.displayMarginsAdvanced && !advancedMargins.displays.isEmpty, let advz = advancedZeroedScreenRect {
+        if PrefsDisplays.displayMarginsAdvanced && !advancedMargins.displays.isEmpty, let advz = advancedZeroedScreenRect {
             // Now this is awkward... we precalculated this at detectdisplays->advancedZeroedOrigins
             return advz
         } else {
@@ -327,34 +322,31 @@ final class DisplayDetection: NSObject {
     // MARK: - Public utility fuctions
 
     func isScreenActive(id: CGDirectDisplayID) -> Bool {
-        let preferences = Preferences.sharedInstance
         let screen = findScreenWith(id: id)
 
-        switch preferences.newDisplayMode {
-        case Preferences.NewDisplayMode.allDisplays.rawValue:
+        switch PrefsDisplays.displayMode {
+        case .allDisplays:
             // This one is easy
             return true
-        case Preferences.NewDisplayMode.mainOnly.rawValue:
+        case .mainOnly:
             if let scr = screen {
                 if scr.isMain {
                     return true
                 }
             }
             return false
-        case Preferences.NewDisplayMode.secondaryOnly.rawValue:
+        case .secondaryOnly:
             if let scr = screen {
                 if scr.isMain {
                     return false
                 }
             }
             return true
-        case Preferences.NewDisplayMode.selection.rawValue:
+        case .selection:
             if isScreenSelected(id: id) {
                 return true
             }
             return false
-        default:
-            return true // Will never get called
         }
     }
 
@@ -379,7 +371,6 @@ final class DisplayDetection: NSObject {
     }
 
     func getMarginsJSON() -> String {
-        let preferences = Preferences.sharedInstance
         var adv: AdvancedMargin
 
         if !advancedMargins.displays.isEmpty {
@@ -395,8 +386,8 @@ final class DisplayDetection: NSObject {
 
                 let (leftScreens, belowScreens) = detectBorders(forScreen: screen)
 
-                let offsetleft = leftScreens * CGFloat(preferences.horizontalMargin!)
-                let offsettop = belowScreens * CGFloat(preferences.verticalMargin!)
+                let offsetleft = leftScreens * CGFloat(PrefsDisplays.horizontalMargin)
+                let offsettop = belowScreens * CGFloat(PrefsDisplays.verticalMargin)
 
                 marginArray.append(DisplayAdvancedMargin(zleft: zleft, ztop: ztop, offsetleft: offsetleft, offsettop: offsettop))
             }
@@ -404,7 +395,6 @@ final class DisplayDetection: NSObject {
             adv = AdvancedMargin(displays: marginArray)
         }
 
-        print(adv)
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
 
@@ -433,8 +423,7 @@ final class DisplayDetection: NSObject {
 
     var advancedMargins: AdvancedMargin {
         get {
-            let preferences = Preferences.sharedInstance
-            let jsonString = preferences.advancedMargins!
+            let jsonString = PrefsDisplays.advancedMargins
 
             if let jsonData = jsonString.data(using: .utf8) {
                 let decoder = JSONDecoder()
@@ -449,15 +438,13 @@ final class DisplayDetection: NSObject {
             return AdvancedMargin(displays: [DisplayAdvancedMargin]())
         }
         set {
-            let preferences = Preferences.sharedInstance
-
             let encoder = JSONEncoder()
             encoder.outputFormatting = .prettyPrinted
 
             do {
                 let jsonData = try encoder.encode(newValue)
                 if let jsonString = String(data: jsonData, encoding: .utf8) {
-                    preferences.advancedMargins = jsonString
+                    PrefsDisplays.advancedMargins = jsonString
                 }
             } catch {
                 print("error encoding")

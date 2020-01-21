@@ -17,7 +17,6 @@ extension PreferencesWindowController {
             PrefsInfo.layers.append(.battery)
         }
 
-        print("info source")
         infoSource = InfoTableSource()
         infoSource?.setController(self)
         infoTableView.dataSource = infoSource
@@ -27,7 +26,6 @@ extension PreferencesWindowController {
 
     // We dynamically change the content here, based on what's selected
     func drawInfoPanel(forType: InfoType) {
-        print("should redraw : \(forType.rawValue)")
         resetInfoPanel()
 
         // Add the common block of features (enabled, font, position, screen)
