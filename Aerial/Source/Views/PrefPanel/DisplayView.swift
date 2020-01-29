@@ -57,7 +57,6 @@ class DisplayView: NSView {
     //swiftlint:disable:next cyclomatic_complexity
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        let preferences = Preferences.sharedInstance
 
         // We need to handle dark mode
         var backgroundColor = NSColor.init(white: 0.9, alpha: 1.0)
@@ -66,7 +65,6 @@ class DisplayView: NSView {
         //let screenColor = NSColor.init(red: 0.38, green: 0.60, blue: 0.85, alpha: 1.0)
         let screenBorderColor = NSColor.black
 
-        let timeManagement = TimeManagement.sharedInstance
         if DarkMode.isEnabled() {
             backgroundColor = NSColor.init(white: 0.2, alpha: 1.0)
             borderColor = NSColor.init(white: 0.6, alpha: 1.0)
@@ -105,7 +103,7 @@ class DisplayView: NSView {
         }
 
         // In spanned mode, we start by a faint full view of the span
-        if preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue {
+        if PrefsDisplays.viewingMode == .spanned {
             let activeRect = displayDetection.getZeroedActiveSpannedRect()
             debugLog("spanned active rect \(activeRect)")
             let activeSRect = NSRect(x: minX + (activeRect.origin.x/scaleFactor),
@@ -137,16 +135,13 @@ class DisplayView: NSView {
 
             let sInRect = sRect.insetBy(dx: 1, dy: 1)
 
-            func rawValue(for mode: Preferences.NewViewingMode) -> Int { return mode.rawValue }
-            let viewMode = preferences.newViewingMode
-
-            if viewMode == rawValue(for: .independent) || viewMode == rawValue(for: .cloned) || viewMode == rawValue(for: .mirrored) {
+            if PrefsDisplays.viewingMode != .spanned {
                 if displayDetection.isScreenActive(id: screen.id) {
                     let bundle = Bundle(for: PreferencesWindowController.self)
                     if let imagePath = bundle.path(forResource: "screen"+String(idx), ofType: "jpg") {
                         var image = NSImage(contentsOfFile: imagePath)
 
-                        if preferences.newViewingMode == Preferences.NewViewingMode.mirrored.rawValue && shouldFlip {
+                        if PrefsDisplays.viewingMode == .mirrored && shouldFlip {
                             image = image?.flipped(flipHorizontally: true, flipVertically: false)
                         }
 
@@ -158,7 +153,7 @@ class DisplayView: NSView {
                     }
 
                     // Show difference images in independant mode to simulate
-                    if preferences.newViewingMode == Preferences.NewViewingMode.independent.rawValue {
+                    if PrefsDisplays.viewingMode == .independent {
                         if idx < 2 {
                             idx += 1
                         } else {
@@ -244,13 +239,12 @@ class DisplayView: NSView {
     // MARK: - Clicking
     override func mouseDown(with event: NSEvent) {
         let displayDetection = DisplayDetection.sharedInstance
-        let preferences = Preferences.sharedInstance
 
         // Grab relative location of the click in view
         let point = convert(event.locationInWindow, from: nil)
 
         // If in selection mode, toggle the screen & redraw
-        if preferences.newDisplayMode == Preferences.NewDisplayMode.selection.rawValue {
+        if PrefsDisplays.displayMode == .selection {
             for displayPreview in displayPreviews {
                 if displayPreview.previewRect.contains(point) {
                     if displayDetection.isScreenActive(id: displayPreview.screen.id) {

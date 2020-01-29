@@ -11,15 +11,15 @@ import Cocoa
 
 extension PreferencesWindowController {
     func setupDisplaysTab() {
-        horizontalDisplayMarginTextfield.doubleValue = preferences.horizontalMargin!
-        verticalDisplayMarginTextfield.doubleValue = preferences.verticalMargin!
+        horizontalDisplayMarginTextfield.doubleValue = PrefsDisplays.horizontalMargin
+        verticalDisplayMarginTextfield.doubleValue = PrefsDisplays.verticalMargin
 
-        if preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue {
+        if PrefsDisplays.viewingMode == .spanned {
             displayMarginBox.isHidden = false
         } else {
             displayMarginBox.isHidden = true
         }
-        if preferences.displayMarginsAdvanced {
+        if PrefsDisplays.displayMarginsAdvanced {
             displayMarginAdvancedMode.state = .on
             displayMarginAdvancedEdit.isEnabled = true
         } else {
@@ -28,19 +28,19 @@ extension PreferencesWindowController {
         }
 
         // Displays Tab
-        newDisplayModePopup.selectItem(at: preferences.newDisplayMode!)
-        newViewingModePopup.selectItem(at: preferences.newViewingMode!)
-        aspectModePopup.selectItem(at: preferences.aspectMode!)
+        newDisplayModePopup.selectItem(at: PrefsDisplays.displayMode.rawValue)
+        newViewingModePopup.selectItem(at: PrefsDisplays.viewingMode.rawValue)
+        aspectModePopup.selectItem(at: PrefsDisplays.aspectMode.rawValue)
 
-        if preferences.newDisplayMode == Preferences.NewDisplayMode.selection.rawValue {
+        if PrefsDisplays.displayMode == .selection {
             displayInstructionLabel.isHidden = false
         }
     }
 
     @IBAction func newDisplayModeClick(_ sender: NSPopUpButton) {
         debugLog("UI newDisplayModeClick: \(sender.indexOfSelectedItem)")
-        preferences.newDisplayMode = sender.indexOfSelectedItem
-        if preferences.newDisplayMode == Preferences.NewDisplayMode.selection.rawValue {
+        PrefsDisplays.displayMode = DisplayMode(rawValue: sender.indexOfSelectedItem)!
+        if PrefsDisplays.displayMode == .selection {
             displayInstructionLabel.isHidden = false
         } else {
             displayInstructionLabel.isHidden = true
@@ -50,12 +50,12 @@ extension PreferencesWindowController {
 
     @IBAction func newViewingModeClick(_ sender: NSPopUpButton) {
         debugLog("UI newViewingModeClick: \(sender.indexOfSelectedItem)")
-        preferences.newViewingMode = sender.indexOfSelectedItem
+        PrefsDisplays.viewingMode = ViewingMode(rawValue: sender.indexOfSelectedItem)!
         let displayDetection = DisplayDetection.sharedInstance
         displayDetection.detectDisplays()   // Force redetection to update our margin calculations in spanned mode
         displayView.needsDisplay = true
 
-        if preferences.newViewingMode == Preferences.NewViewingMode.spanned.rawValue {
+        if PrefsDisplays.viewingMode == .spanned {
             displayMarginBox.isHidden = false
         } else {
             displayMarginBox.isHidden = true
@@ -64,12 +64,12 @@ extension PreferencesWindowController {
 
     @IBAction func aspectModePopupClick(_ sender: NSPopUpButton) {
         debugLog("UI aspectModeClick: \(sender.indexOfSelectedItem)")
-        preferences.aspectMode = sender.indexOfSelectedItem
+        PrefsDisplays.aspectMode = AspectMode(rawValue: sender.indexOfSelectedItem)!
     }
 
     @IBAction func horizontalDisplayMarginChange(_ sender: NSTextField) {
         debugLog("UI horizontalDisplayMarginChange \(sender.stringValue)")
-        preferences.horizontalMargin = sender.doubleValue
+        PrefsDisplays.horizontalMargin = sender.doubleValue
 
         let displayDetection = DisplayDetection.sharedInstance
         displayDetection.detectDisplays()   // Force redetection to update our margin calculations in spanned mode
@@ -78,7 +78,7 @@ extension PreferencesWindowController {
 
     @IBAction func verticalDisplayMarginChange(_ sender: NSTextField) {
         debugLog("UI verticalDisplayMarginChange \(sender.stringValue)")
-        preferences.verticalMargin = sender.doubleValue
+        PrefsDisplays.verticalMargin = sender.doubleValue
 
         let displayDetection = DisplayDetection.sharedInstance
         displayDetection.detectDisplays()   // Force redetection to update our margin calculations in spanned mode
@@ -90,8 +90,8 @@ extension PreferencesWindowController {
         let onState = sender.state == .on
 
         debugLog("UI displayMarginAdvancedModeClick: \(onState)")
-        preferences.displayMarginsAdvanced = onState
-        if preferences.displayMarginsAdvanced {
+        PrefsDisplays.displayMarginsAdvanced = onState
+        if PrefsDisplays.displayMarginsAdvanced {
             displayMarginAdvancedEdit.isEnabled = true
         } else {
             displayMarginAdvancedEdit.isEnabled = false
@@ -114,18 +114,17 @@ extension PreferencesWindowController {
 
     @IBAction func displayMarginAdvancedApplyClick(_ sender: Any) {
         // We save the JSON as String
-        let preferences = Preferences.sharedInstance
-        preferences.advancedMargins = displayMarginAdvancedTextfield.stringValue
+        PrefsDisplays.advancedMargins = displayMarginAdvancedTextfield.stringValue
         // And redetect
         let displayDetection = DisplayDetection.sharedInstance
         displayDetection.detectDisplays()   // Force redetection to update our margin calculations in spanned mode
 
         displayView.needsDisplay = true
     }
+
     @IBAction func displayMarginAdvancedCloseClick(_ sender: Any) {
         // We save the JSON as String
-        let preferences = Preferences.sharedInstance
-        preferences.advancedMargins = displayMarginAdvancedTextfield.stringValue
+        PrefsDisplays.advancedMargins = displayMarginAdvancedTextfield.stringValue
         // And redetect
         let displayDetection = DisplayDetection.sharedInstance
         displayDetection.detectDisplays()   // Force redetection to update our margin calculations in spanned mode

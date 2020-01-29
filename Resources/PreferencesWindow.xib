@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.AVKitIBPlugin" version="15702"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -774,7 +774,7 @@ is disabled
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Info" identifier="" id="AhX-J1-tBm">
-                                        <view key="view" ambiguous="YES" id="d3H-vC-Yjc">
+                                        <view key="view" id="d3H-vC-Yjc">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1162,7 +1162,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Brightness" identifier="" id="qTo-kf-FbK">
-                                        <view key="view" id="dIK-5r-Sr4">
+                                        <view key="view" ambiguous="YES" id="dIK-5r-Sr4">
                                             <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -2644,7 +2644,7 @@ Unless you want to manually manage your updates, we highly recommand you leave t
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="1611" y="584"/>
+            <point key="canvasLocation" x="1807" y="484"/>
         </customView>
         <window title="Video downloads in progress" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="qE0-Sq-kqZ" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" utility="YES"/>

@@ -25,20 +25,19 @@ final class TimeManagement: NSObject {
 
     // MARK: - What should we play ?
     func shouldRestrictPlaybackToDayNightVideo() -> (Bool, String) {
-        let preferences = Preferences.sharedInstance
-        // We can override everything on dark mode if we need to
-        if preferences.darkModeNightOverride && DarkMode.isEnabled() {
+        // We override everything on dark mode if we need to
+        if PrefsTime.darkModeNightOverride && DarkMode.isEnabled() {
             return (true, "night")
         }
 
         // If not we check the modes
-        if preferences.timeMode == Preferences.TimeMode.lightDarkMode.rawValue {
+        if PrefsTime.timeMode == .lightDarkMode {
             return (true, DarkMode.isEnabled() ? "night" : "day")
-        } else if preferences.timeMode == Preferences.TimeMode.coordinates.rawValue {
+        } else if PrefsTime.timeMode == .coordinates {
             _ = calculateFromCoordinates()
 
             if solar != nil {
-                let zenith = getZenith(Preferences.SolarMode(rawValue: preferences.solarMode!)!)
+                let zenith = getZenith(PrefsTime.solarMode)
 
                 if (solar?.isDaytime(zenith: zenith))! {
                     return (true, "day")
@@ -49,7 +48,7 @@ final class TimeManagement: NSObject {
                 errorLog("You need to input latitude and longitude for calculations to work")
                 return (false, "")
             }
-        } else if preferences.timeMode == Preferences.TimeMode.nightShift.rawValue {
+        } else if PrefsTime.timeMode == .nightShift {
             let (isNSCapable, sunrise, sunset, _) = NightShift.getInformation()
             if !isNSCapable {
                 errorLog("Trying to use Night Shift on a non capable Mac")
@@ -57,16 +56,16 @@ final class TimeManagement: NSObject {
             }
 
             return (true, dayNightCheck(sunrise: sunrise!, sunset: sunset!))
-        } else if preferences.timeMode == Preferences.TimeMode.manual.rawValue {
+        } else if PrefsTime.timeMode == .manual {
             // We get the manual values from our preferences, as string, and convert them to dates
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "HH:mm"
 
-            guard let dateSunrise = dateFormatter.date(from: preferences.manualSunrise!) else {
+            guard let dateSunrise = dateFormatter.date(from: PrefsTime.manualSunrise) else {
                 errorLog("Invalid sunrise time in preferences")
                 return(false, "")
             }
-            guard let dateSunset = dateFormatter.date(from: preferences.manualSunset!) else {
+            guard let dateSunset = dateFormatter.date(from: PrefsTime.manualSunset) else {
                 errorLog("Invalid sunset time in preferences")
                 return(false, "")
             }
@@ -79,7 +78,7 @@ final class TimeManagement: NSObject {
     }
 
     // Get the correct Zenith value for our pref
-    private func getZenith(_ mode: Preferences.SolarMode) -> Solar.Zenith {
+    private func getZenith(_ mode: SolarMode) -> Solar.Zenith {
         switch mode {
         case .strict:
             return .strict
@@ -143,16 +142,16 @@ final class TimeManagement: NSObject {
 
     // MARK: Calculate using Solar
     func calculateFromCoordinates() -> (Bool, String) {
-        let preferences = Preferences.sharedInstance
+        if PrefsTime.latitude != "" && PrefsTime.longitude != "" {
+            solar = Solar.init(coordinate: CLLocationCoordinate2D(
+                latitude: Double(PrefsTime.latitude) ?? 0,
+                longitude: Double(PrefsTime.longitude) ?? 0))
 
-        if preferences.latitude != "" && preferences.longitude != "" {
-            solar = Solar.init(coordinate: CLLocationCoordinate2D(latitude: Double(preferences.latitude!) ?? 0,
-                                                                  longitude: Double(preferences.longitude!) ?? 0))
             if solar != nil {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
 
-                let (sunrise, sunset) = getSunriseSunsetForMode(Preferences.SolarMode(rawValue: preferences.solarMode!)!)
+                let (sunrise, sunset) = getSunriseSunsetForMode(PrefsTime.solarMode)
 
                 if sunrise == nil || sunset == nil {
                    return (false, "Can't process your coordinates, please verify")
@@ -161,8 +160,7 @@ final class TimeManagement: NSObject {
                 let sunriseString = dateFormatter.string(from: sunrise!)
                 let sunsetString = dateFormatter.string(from: sunset!)
 
-                if preferences.solarMode == Preferences.SolarMode.official.rawValue ||
-                    preferences.solarMode == Preferences.SolarMode.strict.rawValue {
+                if PrefsTime.solarMode == .official || PrefsTime.solarMode == .strict {
                     return(true, "Today’s sunrise: " + sunriseString + "  Today’s sunset: " + sunsetString)
                 } else {
                     return(true, "Today’s dawn: " + sunriseString + "  Today’s dusk: " + sunsetString)
@@ -174,7 +172,7 @@ final class TimeManagement: NSObject {
     }
 
     // Helper to get the correct sunrise/sunset
-    func getSunriseSunsetForMode(_ mode: Preferences.SolarMode) -> (Date?, Date?) {
+    func getSunriseSunsetForMode(_ mode: SolarMode) -> (Date?, Date?) {
         if let sol = solar {
             switch mode {
             case .official:
