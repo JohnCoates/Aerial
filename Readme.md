@@ -41,25 +41,17 @@ After installation, **if you are upgrading from a previous version**, we suggest
 
 Need more information on install, setup, or uninstall ? Or want to install via homebrew ? Check our extended [instructions here](Documentation/Installation.md). Curious about auto-updates ? [Have a look here](Documentation/AutoUpdates.md).
 
-## What's new in Aerial 1.6.4 (November 1, 2019)?
+## What's new in Aerial 1.7.0 (January 29, 2020)?
 
-- Support for the 15 new videos included in tvOS 13, including the ten new underwater seascape videos and five new ISS space videos. 
+- Add support for the 11 new sea videos that were just released, including dolphins, sharks and Tahiti waves.
 
-![Capture d’écran 2019-09-26 à 15 29 20](https://user-images.githubusercontent.com/37544189/65692345-a9224600-e072-11e9-8c60-b0e0e546ad31.jpg)
+![Capture d’écran 2020-01-29 à 20 52 20](https://user-images.githubusercontent.com/37544189/73392419-158bab00-42da-11ea-92f8-d6c79e4ea7c1.jpg)
 
-- The HDR versions of videos can now be played by Aerial. This requires macOS 10.15 Catalina, please note that you will need to redownload the HDR versions of those videos. 
+- Complete rewrite of the text/animation system, you can now select which information appears on which display, and configure more precisely the position of items on screen, or the font used. 
 
-![Capture d’écran 2019-09-26 à 15 26 34](https://user-images.githubusercontent.com/37544189/65692344-a889af80-e072-11e9-8eac-361ba1f5d980.jpg)
+![Capture d’écran 2020-01-29 à 21 00 08](https://user-images.githubusercontent.com/37544189/73392613-731ff780-42da-11ea-8421-8149f24be6e1.jpg)
 
-- Improved advanced multi monitor support. Advanced users can now finely specify the distance between each of their screens in the new "Spanned" mode included in Aerial 1.5.0, in order to accomodate more complex configurations.
-
-![Capture d’écran 2019-09-26 à 15 24 08](https://user-images.githubusercontent.com/37544189/65692342-a889af80-e072-11e9-81ad-de70c7b2f0a1.jpg)
-
-- Support for macOS 10.15 Catalina. macOS Catalina includes new restrictions on third party screen savers, which impact some of the functionalities. We highly suggest that current and would be Catalina users check this issue for more information on those restrictions : https://github.com/JohnCoates/Aerial/issues/801
-
-![Capture d’écran 2019-09-26 à 15 23 45](https://user-images.githubusercontent.com/37544189/65692340-a889af80-e072-11e9-8109-cdcd8f55fe86.jpg)
-
-Aerial is also now properly signed and notarized to comply with new restrictions introduced in macOS 10.15 Catalina. 
+This version also fixes many issues with macOS Catalina.
 
 You can find more about [version changes here](Documentation/ChangeLog.md).
 
