@@ -3,6 +3,30 @@
 <title>Aerial</title>
 
   
+<title>1.7.0</title>
+  <description>
+          <![CDATA[
+          <b>Note : This is a large rewrite, a few settings will be reset to default, including video format preference (4K, HDR), my apologies for this but those were needed to introduce some new features</b>
+
+New features :
+
+<ul><li>New text rendering ! Aerial can now display information (such as location information, time, etc) on mulitple screens with new animations and better transitions. The settings for these are found in the new "Info" tab.</li>
+<li>Support for the 11 new Sea videos that were just released. If you do not see the videos after the update, please go to the "Updates" tab and press "Check Now" in the New videos section.</li>
+<li>New "Battery" Info can tell you your battery status (charging, %, etc)</li>
+<li>Infos can now be shown in more positions on screen (top center, bottom center, and screen center)</li>
+
+Important fixes :
+
+<ul>
+<li>Fix the mini video issue on some systems using macOS Catalina, more info about this here.</li>
+</ul>
+          ]]>
+  </description>
+<pubDate>mer., 29 jan. 2020 21:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.7.0/Aerial.saver.zip" sparkle:version="1.7.0" sparkle:shortVersionString="1.7.0" sparkle:edSignature="hQN896uLYAxbqv4hRshK+bBOBrtjsH06kc1cJQwc8M7tvQrbmTkGxgoeAn1Kze4MPEk6pC8yf8H2sfJQplZ8Bw==" length="5982268" type="application/octet-stream"/>
+</item>  
+  
 <item>
 <title>1.6.3</title>
   <description>
