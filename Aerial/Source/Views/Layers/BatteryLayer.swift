@@ -62,7 +62,12 @@ class BatteryLayer: AnimationLayer {
         var bstring = ""
 
         if !Battery.isUnplugged() {
-            bstring += "Plugged-in"
+            let percent = Battery.getRemainingPercent()
+            if percent == 100 || percent == 0 {
+                bstring += "Charged"
+            } else {
+                bstring += "Charging"
+            }
         }
 
         let percent = Battery.getRemainingPercent()
