@@ -22,7 +22,7 @@ Aerial was started in 2015 by John Coates ([Twitter](https://twitter.com/JohnCoa
 Starting with version 1.4, Aerial is maintained by [Guillaume Louel](https://github.com/glouel) ([Twitter](https://twitter.com/C_Wiz), [![Support via PayPal][paypal-button]][paypal-glouel]).
 
 [paypal-button]: https://img.shields.io/badge/Donate-PayPal-green.svg
-[paypal-nicoduj]: https://www.paypal.me/glouel/
+[paypal-glouel]: https://www.paypal.me/glouel/
 
 You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/graphs/contributors).
 
