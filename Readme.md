@@ -45,7 +45,7 @@ Need more information on install, setup, or uninstall ? Or want to install via h
 
 - Add support for the 11 new sea videos that were just released, including dolphins, sharks and Tahiti waves.
 
-![Capture d’écran 2020-01-29 à 20 52 20](https://user-images.githubusercontent.com/37544189/73392419-158bab00-42da-11ea-92f8-d6c79e4ea7c1.jpg)
+![Capture d’écran 2020-01-29 à 20 52 20](https://user-images.githubusercontent.com/37544189/73392796-ca25cc80-42da-11ea-913a-c4dc1f310710.jpg)
 
 - Complete rewrite of the text/animation system, you can now select which information appears on which display, and configure more precisely the position of items on screen, or the font used. 
 
