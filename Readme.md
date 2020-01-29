@@ -19,7 +19,10 @@ Aerial is completely open source, so feel free to contribute to its development.
 
 Aerial was started in 2015 by John Coates ([Twitter](https://twitter.com/JohnCoatesDev), [Email](mailto:john@johncoates.me))
 
-Starting with version 1.4, Aerial is maintained by [Guillaume Louel](https://github.com/glouel) ([Twitter](https://twitter.com/C_Wiz), [![Support via PayPal][paypal-button]][paypal-glouel] [PayPal](https://paypal.me/glouel?locale.x=fr_FR)).
+Starting with version 1.4, Aerial is maintained by [Guillaume Louel](https://github.com/glouel) ([Twitter](https://twitter.com/C_Wiz), [![Support via PayPal][paypal-button]][paypal-glouel]).
+
+[paypal-button]: https://img.shields.io/badge/Donate-PayPal-green.svg
+[paypal-nicoduj]: https://www.paypal.me/glouel/
 
 You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/graphs/contributors).
 
