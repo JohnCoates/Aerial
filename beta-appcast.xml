@@ -6,7 +6,9 @@
 <title>1.7.0</title>
   <description>
           <![CDATA[
-          <b>Note : This is a large rewrite, a few settings will be reset to default, including video format preference (4K, HDR), my apologies for this but those were needed to introduce some new features</b>
+                    <b>Note : - Catalina users, the auto-update process WILL still fail for the moment, please install this build manually. My apologies for the issue.</b>
+
+This is a large rewrite, a few settings will be reset to default, including video format preference (4K, HDR), my apologies for this but those were needed to introduce some new features.
 
 New features :
 
