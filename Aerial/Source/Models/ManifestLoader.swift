@@ -149,6 +149,7 @@ class ManifestLoader {
 
     // MARK: - Playlist generation
     func generatePlaylist(isRestricted: Bool, restrictedTo: String) {
+        print("genplaylist")
         // Start fresh
         playlist = [AerialVideo]()
         playlistIsRestricted = isRestricted
@@ -206,22 +207,27 @@ class ManifestLoader {
         }
     }
 
-    func randomVideo(excluding: [AerialVideo]) -> AerialVideo? {
+    func randomVideo(excluding: [AerialVideo]) -> (AerialVideo?, Bool) {
+        var shouldLoop = false
         let timeManagement = TimeManagement.sharedInstance
         let (shouldRestrictByDayNight, restrictTo) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
 
         // We may need to regenerate a playlist!
         if playlist.isEmpty || restrictTo != playlistRestrictedTo || shouldRestrictByDayNight != playlistIsRestricted {
             generatePlaylist(isRestricted: shouldRestrictByDayNight, restrictedTo: restrictTo)
+            if playlist.count == 1 {
+                debugLog("playlist only has one element, looping!")
+                shouldLoop = true
+            }
         }
 
         // If not pluck one from current playlist and return that
         if !playlist.isEmpty {
             lastPluckedFromPlaylist = playlist.removeFirst()
-            return lastPluckedFromPlaylist
+            return (lastPluckedFromPlaylist, shouldLoop)
         } else {
             // If we don't have any playlist, something's got awfully wrong so deal with that!
-            return findBestEffortVideo()
+            return (findBestEffortVideo(), shouldLoop)
         }
     }
 
