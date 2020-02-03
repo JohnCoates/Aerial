@@ -1,8 +1,24 @@
 <?xml version="1.0" standalone="yes"?><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
 <channel>
 <title>Aerial</title>
+<item>
+<title>1.7.1beta1</title>
+  <description>
+          <![CDATA[
+<b>Automatic updates are still broken for the time being in Catalina. If you try to update, it will look like it install correctly but the update process silently fails because of new sandboxing restrictions. You will need to update manually for the time being until a solution is found, my apologies.</b>
 
-  <item>
+<ul>
+<li>Brings back "Allow right arrow to skip" for macOS versions prior to Catalina. That feature still won't work on Catalina.</li>
+<li>Add seamless looping if you only have one video in your playlist</li>
+</ul>
+          ]]>
+  </description>
+<pubDate>lun., 03 jan. 2020 16:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.7.1beta1/Aerial.saver.zip" sparkle:version="1.7.1beta1" sparkle:shortVersionString="1.7.1beta1" sparkle:edSignature="2LEavx+JYtLJzZeHnoMM96XB0gtQL0uLdzq+3LtW3wyWpA5O5REig7JZy7WSatn1X3oWIL0eF4MjOSLnw1+DCw==" length="5987274" type="application/octet-stream"/>
+</item>  
+  
+<item>
 <title>1.7.0</title>
   <description>
           <![CDATA[
