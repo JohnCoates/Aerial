@@ -38,6 +38,9 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     // We use this for tentative Catalina bug workaround
     var originalWidth, originalHeight: CGFloat
 
+    // Tentative improvement when only one video in playlist
+    var shouldLoop = false
+
     static var shouldFade: Bool {
         return (PrefsVideos.fadeMode != .disabled)
     }
@@ -365,6 +368,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     // MARK: - playNextVideo()
     func playNextVideo() {
+        print("playnext")
         let notificationCenter = NotificationCenter.default
         // Clear everything
         layerManager.clearLayerAnimations(player: self.player!)
@@ -406,7 +410,10 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             (player.currentItem as? AerialPlayerItem)?.video
         }
 
-        let randomVideo = ManifestLoader.instance.randomVideo(excluding: currentVideos)
+        let (randomVideo, pshouldLoop) = ManifestLoader.instance.randomVideo(excluding: currentVideos)
+
+        // If we only have one video in the playlist, we can rewind it for seamless transitions
+        self.shouldLoop = pshouldLoop
 
         guard let video = randomVideo else {
             errorLog("\(self.description) Error grabbing random video!")

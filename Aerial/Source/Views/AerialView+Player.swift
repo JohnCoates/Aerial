@@ -88,8 +88,17 @@ extension AerialView {
     @objc func playerItemDidReachEnd(_ aNotification: Notification) {
         debugLog("\(self.description) played did reach end")
         debugLog("\(self.description) notification: \(aNotification)")
-        playNextVideo()
-        debugLog("\(self.description) playing next video for player \(String(describing: player))")
+
+        if shouldLoop {
+            debugLog("Rewinding video!")
+            if let playerItem = aNotification.object as? AVPlayerItem {
+                playerItem.seek(to: CMTime.zero, completionHandler: nil)
+            }
+        } else {
+            playNextVideo()
+            debugLog("\(self.description) playing next video for player \(String(describing: player))")
+        }
+
     }
 
     // Video fade-in/out
