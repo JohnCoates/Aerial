@@ -457,12 +457,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                                        object: currentItem)
         player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
     }
-/*
+
     override func keyDown(with event: NSEvent) {
         debugLog("keyDown")
-        let preferences = Preferences.sharedInstance
 
-        if preferences.allowSkips {
+        if PrefsVideos.allowSkips {
             if event.keyCode == 124 {
                 if !isQuickFading {
                     // If we share, just call this on our main view
@@ -497,7 +496,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             return true
         }
     }
-     */
 
     // MARK: - Extra Animations
     private func fastFadeOut(andPlayNext: Bool) {
