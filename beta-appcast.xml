@@ -2,6 +2,20 @@
 <channel>
 <title>Aerial</title>
 <item>
+<title>1.7.1beta3xpc</title>
+  <description>
+          <![CDATA[
+<b>This is a TEST to try the new XPC update system in Sparkle 2.x, this may or may not work</b>
+          ]]>
+  </description>
+<pubDate>mar., 04 jan. 2020 16:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/glouel/Aerial/releases/download/v1.7.1beta3xpc/Aerial.saver.zip" sparkle:version="1.7.1beta3xpc" 
+sparkle:dsaSignature="MCwCFA0eIuLtZLjmBKSg25UmrZBupSH6AhR4uJuc4XPlaBTSCKj5niN83mEurA=="
+length="5878516" type="application/octet-stream"/>
+</item>  
+
+<item>
 <title>1.7.1beta1</title>
   <description>
           <![CDATA[
