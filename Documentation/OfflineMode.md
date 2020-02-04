@@ -4,7 +4,7 @@ If you want to use Aerial on a Mac behind a firewall or with no network access, 
 
 If that's not an option, you can manually recreate a cache folder by downloading files manually. This is how to download ALL videos. We recommend you start with the first one, consider the others optional : 
 
-- Download and untar `https://sylvan.apple.com/Aerials/resources13.tar` (tvOS13 resources), rename the bundle to `TVIdleScreenStrings13.bundle` and the JSON to `tvos13.json`
+- Download and untar `https://sylvan.apple.com/Aerials/resources-13.tar` (tvOS13 resources), rename the bundle to `TVIdleScreenStrings13.bundle` and the JSON to `tvos13.json`
 - Optionnally, also download and untar `https://sylvan.apple.com/Aerials/resources.tar` (tvOS12 resources), rename the bundle to `TVIdleScreenStrings12.bundle` and the JSON to `tvos12.json`.
 - Optionnally, also download and rename `https://sylvan.apple.com/Aerials/2x/entries.json` to `tvos11.json` (tvOS11 resources, also in 4K)
 - Optionnally, also download and rename `http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json` to `tvos10.json` (The original Aerials, in 1080p H.264 only)
