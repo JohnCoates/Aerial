@@ -1,5 +1,23 @@
 #  Aerial change log
 
+## 1.7.1 - February 11, 2020
+
+- Brings back "Allow right arrow to skip" for macOS versions prior to Catalina. That feature still won't work on Catalina.
+- Add seamless looping if you only have one video in your playlist.
+- Fix "new style" settings that weren't saved immediately, causing a discrepancy if you didn't close the preferences panel before launching the screen saver (with a hot corner).
+
+## 1.7.0 - January 29, 2020
+
+- Add support for the 11 new sea videos that were just released, including dolphins, sharks and Tahiti waves.
+
+![Capture d’écran 2020-01-29 à 20 52 20](https://user-images.githubusercontent.com/37544189/73392796-ca25cc80-42da-11ea-913a-c4dc1f310710.jpg)
+
+- Complete rewrite of the text/animation system, you can now select which information appears on which display, and configure more precisely the position of items on screen, or the font used. 
+
+![Capture d’écran 2020-01-29 à 21 00 08](https://user-images.githubusercontent.com/37544189/73392613-731ff780-42da-11ea-8421-8149f24be6e1.jpg)
+
+This version also fixes many issues with macOS Catalina.
+
 ## [1.6.0](https://github.com/JohnCoates/Aerial/releases/tag/v1.6.0) - September 26, 2019
 
 - Support for the 15 new videos included in tvOS 13, including the ten new underwater seascape videos and five new ISS space videos. 
