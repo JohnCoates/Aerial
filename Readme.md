@@ -28,16 +28,14 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 ## Installation
 
-**Warning :** If you have upgraded to macOS Catalina, you will notice that there are some new restrictions applied to screensavers. You can check [this issue](https://github.com/JohnCoates/Aerial/issues/801) for more information about the current status of Aerial on macOS 10.15.  
+**Warning :** There are still a few issues with macOS Catalina because of new restrictions applied to screensavers. The main one is that auto-updates are broken for the forseeable future. You will need to download updates manually for the time being (or consider [homebrew](Documentation/Installation.md)). You can find all the currently known issues with Catalina [here](Documentation/Troubleshooting.md).
 
-Aerial now includes an auto-update mechanism using the [Sparkle open-source project](https://github.com/sparkle-project/Sparkle). **This mechanism is, for the time being, broken for macOS Catalina**. You will need to download it manually the first time (**and subsequent times in Catalina**) :
+Installation instructions :
 
 1. Quit **System Preferences**.
 2. [Download the latest release of `Aerial.saver.zip`](https://github.com/JohnCoates/Aerial/releases/latest). Alternatively, you can find the [latest beta here](https://github.com/JohnCoates/Aerial/releases). 
 3. Unzip the downloaded file (if you use Safari, it should already be done for you).
 4. Double-click `Aerial.saver`; it will open in `System Preferences` > `Desktop & Screen Saver` and ask you if you want to install for all users or for your user only. Be aware that installing for all users will require a password at install **and each subsequent update, including auto-updates.** By default, Aerial will still share its video cache if you install multiple times on the same system for each user.
-
-After installation, **if you are upgrading from a previous version**, we suggest you check your cache path settings as 1.6.0 includes some significant changes to prepare for macOS Catalina. 
 
 Need more information on install, setup, or uninstall ? Or want to install via homebrew ? Check our extended [instructions here](Documentation/Installation.md). Curious about auto-updates ? [Have a look here](Documentation/AutoUpdates.md).
 
