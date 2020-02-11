@@ -1,12 +1,12 @@
 #  Aerial change log
 
-## 1.7.1 - February 11, 2020
+## [1.7.1](https://github.com/JohnCoates/Aerial/releases/tag/v1.7.1) - February 11, 2020
 
 - Brings back "Allow right arrow to skip" for macOS versions prior to Catalina. That feature still won't work on Catalina.
 - Add seamless looping if you only have one video in your playlist.
 - Fix "new style" settings that weren't saved immediately, causing a discrepancy if you didn't close the preferences panel before launching the screen saver (with a hot corner).
 
-## 1.7.0 - January 29, 2020
+## [1.7.0](https://github.com/JohnCoates/Aerial/releases/tag/v1.7.0) - January 29, 2020
 
 - Add support for the 11 new sea videos that were just released, including dolphins, sharks and Tahiti waves.
 
