@@ -231,6 +231,8 @@ struct PrefsInfo {
             if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
                 // Set value to UserDefaults
                 userDefaults.set(data, forKey: key)
+
+                userDefaults.synchronize()
             } else {
                 errorLog("UserDefaults set failed for \(key)")
             }
@@ -260,6 +262,8 @@ struct SimpleStorage<T> {
         set {
             if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
                 userDefaults.set(newValue, forKey: key)
+
+                userDefaults.synchronize()
             }
         }
     }
