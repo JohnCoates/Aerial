@@ -3029,8 +3029,9 @@ After changing the folder, please close System Preferences for this to be taken 
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="groove" image="screen0" id="wB2-iW-iua"/>
                 </imageView>
-                <button toolTip="Bottom left corner" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EqM-n4-opf">
-                    <rect key="frame" x="122" y="155" width="22" height="18"/>
+
+                <button toolTip="Top left corner" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EqM-n4-opf">
+                    <rect key="frame" x="122" y="165" width="22" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="cUG-A6-9om">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3062,8 +3063,9 @@ After changing the folder, please close System Preferences for this to be taken 
                         <action selector="changePosition:" target="ls3-ia-gMN" id="OZs-BQ-Owq"/>
                     </connections>
                 </button>
-                <button toolTip="Top left corner" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRt-Pt-u4B">
-                    <rect key="frame" x="193" y="120" width="22" height="18"/>
+
+                <button toolTip="Centre" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRt-Pt-u4B">
+                    <rect key="frame" x="193" y="130" width="22" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="apK-I5-qUa">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3084,8 +3086,8 @@ After changing the folder, please close System Preferences for this to be taken 
                         <action selector="changePosition:" target="ls3-ia-gMN" id="JTt-5y-iiv"/>
                     </connections>
                 </button>
-                <button toolTip="Top left corner" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TYL-NO-mBq">
-                    <rect key="frame" x="193" y="155" width="22" height="18"/>
+                <button toolTip="Top middle edge" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TYL-NO-mBq">
+                    <rect key="frame" x="193" y="165" width="22" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="3Pa-Qv-e2x">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3095,8 +3097,8 @@ After changing the folder, please close System Preferences for this to be taken 
                         <action selector="changePosition:" target="ls3-ia-gMN" id="ghv-GE-4Tn"/>
                     </connections>
                 </button>
-                <button toolTip="Bottom left corner" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MG8-J5-mQV">
-                    <rect key="frame" x="193" y="85" width="22" height="18"/>
+                <button toolTip="Bottom middle edge" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MG8-J5-mQV">
+                    <rect key="frame" x="193" y="95" width="22" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="7dh-x8-ZE3">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>

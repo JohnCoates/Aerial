@@ -1,5 +1,15 @@
 # Troubleshooting
 
+## macOS Catalina specific issues
+
+- The sandboxing restrictions make it impossible, as far as we understand, for a screensaver file to auto-update itself, as Aerial did in the past through Sparkle. Technically speaking, you will still be prompted to install new updates, and the updates will look like they install, except the installation will silently fail. You can in the meantime either :
+  - Update manually
+  - Consider using homebrew
+Another solution would be to have a separate updater app, which is something that will hopefully be provided soon. You can follow the progress on this in this issue : https://github.com/JohnCoates/Aerial/issues/909
+- Custom videos location : In Catalina, while it's possible to add videos that are stored in your user's Documents or Downloads folder, these files will not playback when Aerial is running as a screensaver. This is a sandboxing restriction, we recommend that you place your videos in a "less protected" folder such as `/Users/Shared/`.
+- Settings aren't saved : Some users (using MDM management software) seem to have run into an issue where macOS Catalina didn't create the folder where Aerial saves its preferences. You may need to create this folder manually : `~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/ByHost/`
+- Some current (or wanted/upcoming) features that require specific privileges are no longer working/impossible because of restrictions, this includes `Right arrow key to skip`.
+
 ## Very common issues/macOS bugs
 
 - "You cannot use the Aerial screen saver with this version of macOS." error: Select Aerial, close `System Preferences` with Aerial still selected, re-open System Preferences and Aerial should now work. This is a known bug with Swift screen savers in macOS/OS X reported (a long time ago...) to Apple as [rdar://25569037](http://www.openradar.me/25569037).

@@ -2,7 +2,24 @@
 <channel>
 <title>Aerial</title>
 
-  <item>
+<item>
+<title>1.7.1</title>
+  <description>
+          <![CDATA[
+<b>Automatic updates are broken for the time being in Catalina. If you try to auto-update, it will look like it install correctly but the update process will silently fail because of new sandboxing restrictions. You will need to update manually for the time being, my apologies.</b>
+
+<ul><li>Brings back "Allow right arrow to skip" for macOS versions prior to Catalina. That feature still won't work on Catalina.</li>
+<li>Add seamless looping if you only have one video in your playlist.</li>
+<li>Fix "new style" settings that weren't saved immediately, causing a discrepancy if you didn't close the preferences panel before launching the screen saver (with a hot corner).</li></ul>
+          ]]>
+  </description>
+<pubDate>mar., 11 jan. 2020 16:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/glouel/Aerial/releases/download/v1.7.1/Aerial.saver.zip" sparkle:version="1.7.1" 
+sparkle:edSignature="PEHtV0rb00reYVBETDHAj3MgE2ZxeCJA8xwnVAjWtjlmMkVmvgMCNouCYZwamqZ3Kmv26kZLwbl7UkjpeSAdDA==" length="5968662" type="application/octet-stream"/>
+</item>    
+  
+<item>
 <title>1.7.0</title>
   <description>
           <![CDATA[
