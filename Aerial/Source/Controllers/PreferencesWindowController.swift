@@ -91,6 +91,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var infoMessageView: InfoMessageView!
     @IBOutlet var infoBatteryView: InfoBatteryView!
 
+    @IBOutlet var infoCountdownView: InfoCountdownView!
     // Text tab
     @IBOutlet weak var fadeInOutTextModePopup: NSPopUpButton!
 
@@ -176,6 +177,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet weak var showLogBottomClick: NSButton!
     @IBOutlet weak var logToDiskCheckbox: NSButton!
 
+    @IBOutlet var shadowRadiusTextField: NSTextField!
+    @IBOutlet var shadowRadiusFormatter: NumberFormatter!
     @IBOutlet var videoVersionsLabel: NSTextField!
     @IBOutlet var moveOldVideosButton: NSButton!
     @IBOutlet var trashOldVideosButton: NSButton!

@@ -42,8 +42,14 @@ extension PreferencesWindowController {
         secondaryMarginVerticalTextfield.stringValue = String(preferences.marginY!)
 
         fadeInOutTextModePopup.selectItem(at: preferences.fadeModeText!)
+
+        shadowRadiusFormatter.allowsFloats = false
+        shadowRadiusTextField.stringValue = String(PrefsInfo.shadowRadius)
     }
     // MARK: - Advanced panel
+    @IBAction func shadowRadiusChange(_ sender: NSTextField) {
+        PrefsInfo.shadowRadius = Int(sender.intValue)
+    }
 
     @IBAction func logButtonClick(_ sender: NSButton) {
         logTableView.reloadData()

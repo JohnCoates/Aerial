@@ -83,6 +83,12 @@
 		036A34B5227309FB00A49135 /* zh_CN.json in Resources */ = {isa = PBXBuildFile; fileRef = 036A34B4227309FB00A49135 /* zh_CN.json */; };
 		036A34B622730A0700A49135 /* zh_CN.json in Resources */ = {isa = PBXBuildFile; fileRef = 036A34B4227309FB00A49135 /* zh_CN.json */; };
 		036A34B722730A0700A49135 /* zh_CN.json in Resources */ = {isa = PBXBuildFile; fileRef = 036A34B4227309FB00A49135 /* zh_CN.json */; };
+		036A57D523F30DD00009DC02 /* UpdatesLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57D423F30DD00009DC02 /* UpdatesLayer.swift */; };
+		036A57D623F30F490009DC02 /* UpdatesLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57D423F30DD00009DC02 /* UpdatesLayer.swift */; };
+		036A57D823F470940009DC02 /* InfoCountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57D723F470940009DC02 /* InfoCountdownView.swift */; };
+		036A57D923F4747D0009DC02 /* InfoCountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57D723F470940009DC02 /* InfoCountdownView.swift */; };
+		036A57DB23F5820A0009DC02 /* CountdownLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57DA23F5820A0009DC02 /* CountdownLayer.swift */; };
+		036A57DC23F5828E0009DC02 /* CountdownLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57DA23F5820A0009DC02 /* CountdownLayer.swift */; };
 		03893CB3217749F0008E7125 /* ErrorLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03893CB2217749F0008E7125 /* ErrorLog.swift */; };
 		03893CB4217753AC008E7125 /* ErrorLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03893CB2217749F0008E7125 /* ErrorLog.swift */; };
 		038C584723A9304800224630 /* InfoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038C584623A9304800224630 /* InfoContainerView.swift */; };
@@ -246,6 +252,9 @@
 		0361B9AA23D73D4500B6252D /* PrefsTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsTime.swift; sourceTree = "<group>"; };
 		0369985C2196103300E359D3 /* missingvideos.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = missingvideos.json; sourceTree = "<group>"; };
 		036A34B4227309FB00A49135 /* zh_CN.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zh_CN.json; sourceTree = "<group>"; };
+		036A57D423F30DD00009DC02 /* UpdatesLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesLayer.swift; sourceTree = "<group>"; };
+		036A57D723F470940009DC02 /* InfoCountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCountdownView.swift; sourceTree = "<group>"; };
+		036A57DA23F5820A0009DC02 /* CountdownLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownLayer.swift; sourceTree = "<group>"; };
 		03893CB2217749F0008E7125 /* ErrorLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLog.swift; sourceTree = "<group>"; };
 		038C584623A9304800224630 /* InfoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoContainerView.swift; sourceTree = "<group>"; };
 		038C584923A9394000224630 /* InfoCommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCommonView.swift; sourceTree = "<group>"; };
@@ -368,6 +377,8 @@
 				03BF51BE23A274CA008AD373 /* MessageLayer.swift */,
 				03BF51C123A2978B008AD373 /* ClockLayer.swift */,
 				038D2EE023B6523800CD91F7 /* BatteryLayer.swift */,
+				036A57D423F30DD00009DC02 /* UpdatesLayer.swift */,
+				036A57DA23F5820A0009DC02 /* CountdownLayer.swift */,
 			);
 			path = Layers;
 			sourceTree = "<group>";
@@ -402,6 +413,7 @@
 				03A596D223AA750F0097EA66 /* InfoMessageView.swift */,
 				03A596D423AA752F0097EA66 /* InfoClockView.swift */,
 				038D2EE323B6565900CD91F7 /* InfoBatteryView.swift */,
+				036A57D723F470940009DC02 /* InfoCountdownView.swift */,
 			);
 			path = PrefPanel;
 			sourceTree = "<group>";
@@ -1045,6 +1057,7 @@
 				038D2EE523B6565900CD91F7 /* InfoBatteryView.swift in Sources */,
 				030D9B7C21551A8D00961E95 /* AerialPlayerItem.swift in Sources */,
 				03608A2D22A56465008F08A2 /* HardwareDetection.swift in Sources */,
+				036A57D923F4747D0009DC02 /* InfoCountdownView.swift in Sources */,
 				FAC36F5E1BE1756D007F2A20 /* CheckCellView.swift in Sources */,
 				FAC36F5C1BE1756D007F2A20 /* AerialView.swift in Sources */,
 				FAC36F681BE1778C007F2A20 /* ManifestLoader.swift in Sources */,
@@ -1068,6 +1081,7 @@
 				03608A1B22A55B9A008F08A2 /* PWC+Time.swift in Sources */,
 				FA6F81DD1D939455007975FE /* Preferences.swift in Sources */,
 				FAF450221BE2B45D00C1F98A /* VideoLoader.swift in Sources */,
+				036A57DC23F5828E0009DC02 /* CountdownLayer.swift in Sources */,
 				0313F9EA2294338300B074BB /* CustomVideoController.swift in Sources */,
 				FAC36F5A1BE1756D007F2A20 /* AerialVideo.swift in Sources */,
 				038D2EBD23AB91C300CD91F7 /* InfoLocationView.swift in Sources */,
@@ -1079,6 +1093,7 @@
 				038C584823A9308C00224630 /* InfoContainerView.swift in Sources */,
 				03BF51BA23A24B40008AD373 /* AnimationLayer.swift in Sources */,
 				F008DAFE23AADCFB00739DE1 /* Brightness.swift in Sources */,
+				036A57D623F30F490009DC02 /* UpdatesLayer.swift in Sources */,
 				03A596D623AA752F0097EA66 /* InfoClockView.swift in Sources */,
 				FAF450251BE2D2FD00C1F98A /* VideoCache.swift in Sources */,
 			);
@@ -1140,6 +1155,8 @@
 				03AD45FF22981B0C00261325 /* CustomVideoFolders+helpers.swift in Sources */,
 				FAF450211BE2B45D00C1F98A /* VideoLoader.swift in Sources */,
 				03E8731321675FE0002B469B /* TimeManagement.swift in Sources */,
+				036A57D523F30DD00009DC02 /* UpdatesLayer.swift in Sources */,
+				036A57DB23F5820A0009DC02 /* CountdownLayer.swift in Sources */,
 				03D1E78722842FB300D10CF7 /* DisplayView.swift in Sources */,
 				03A596D923AB8F000097EA66 /* InfoLocationView.swift in Sources */,
 				FAB22A7E1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */,
@@ -1155,6 +1172,7 @@
 				FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */,
 				03E8730C2165013C002B469B /* DownloadManager.swift in Sources */,
 				03608A2622A55C03008F08A2 /* PWC+Advanced.swift in Sources */,
+				036A57D823F470940009DC02 /* InfoCountdownView.swift in Sources */,
 				03A596D523AA752F0097EA66 /* InfoClockView.swift in Sources */,
 				0313F9E822942B4500B074BB /* CustomVideoController.swift in Sources */,
 			);
@@ -1385,7 +1403,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.7.1;
+				CURRENT_PROJECT_VERSION = 1.7.2beta1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1393,7 +1411,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MARKETING_VERSION = 1.7.1;
+				MARKETING_VERSION = 1.7.2beta1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1414,7 +1432,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.7.1;
+				CURRENT_PROJECT_VERSION = 1.7.2beta1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1422,7 +1440,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MARKETING_VERSION = 1.7.1;
+				MARKETING_VERSION = 1.7.2beta1;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

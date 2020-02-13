@@ -17,6 +17,7 @@ protocol CommonInfo {
     var displays: InfoDisplays { get set }
 }
 
+// Helper Enums for the common infos
 enum InfoCorner: Int, Codable {
     case topLeft, topCenter, topRight, bottomLeft, bottomCenter, bottomRight, screenCenter, random
 }
@@ -25,16 +26,21 @@ enum InfoDisplays: Int, Codable {
     case allDisplays, mainOnly, secondaryOnly
 }
 
-enum InfoType: String, Codable {
-    case location, message, clock, battery
-}
-
 enum InfoTime: Int, Codable {
     case always, tenSeconds
 }
 
 enum InfoIconText: Int, Codable {
     case textOnly, iconAndText, iconOnly
+}
+
+enum InfoCountdownMode: Int, Codable {
+    case preciseDate, timeOfDay
+}
+
+// The various info types available
+enum InfoType: String, Codable {
+    case location, message, clock, battery, updates, countdown
 }
 
 struct PrefsInfo {
@@ -75,8 +81,29 @@ struct PrefsInfo {
         var mode: InfoIconText
     }
 
+    struct Updates: CommonInfo, Codable {
+        var isEnabled: Bool
+        var fontName: String
+        var fontSize: Double
+        var corner: InfoCorner
+        var displays: InfoDisplays
+    }
+
+    struct Countdown: CommonInfo, Codable {
+        var isEnabled: Bool
+        var fontName: String
+        var fontSize: Double
+        var corner: InfoCorner
+        var displays: InfoDisplays
+        var mode: InfoCountdownMode
+        var targetDate: Date
+        var enforceInterval: Bool
+        var triggerDate: Date
+        var showSeconds: Bool
+    }
+
     // Our array of Info layers. User can reorder the array, and we may periodically add new Info types
-    @Storage(key: "layers", defaultValue: [ .message, .clock, .location, .battery])
+    @Storage(key: "layers", defaultValue: [ .message, .clock, .location, .battery, .updates, .countdown])
     static var layers: [InfoType]
 
     // Location information
@@ -115,6 +142,31 @@ struct PrefsInfo {
                                                      mode: .textOnly))
     static var battery: Battery
 
+    // Updates
+    @Storage(key: "LayerUpdates", defaultValue: Updates(isEnabled: true,
+                                                     fontName: "Helvetica Neue Medium",
+                                                     fontSize: 20,
+                                                     corner: .topRight,
+                                                     displays: .allDisplays))
+    static var updates: Updates
+
+    // Countdown
+    @Storage(key: "LayerCountdown", defaultValue: Countdown(isEnabled: false,
+                                                     fontName: "Helvetica Neue Medium",
+                                                     fontSize: 100,
+                                                     corner: .screenCenter,
+                                                     displays: .allDisplays,
+                                                     mode: .timeOfDay,
+                                                     targetDate: Date(),
+                                                     enforceInterval: false,
+                                                     triggerDate: Date(),
+                                                     showSeconds: true))
+    static var countdown: Countdown
+
+    // Shadow radius (common)
+    @SimpleStorage(key: "shadowRadius", defaultValue: 20)
+    static var shadowRadius: Int
+
     // Helper to quickly access a given struct (read-only as we return a copy of the struct)
     static func ofType(_ type: InfoType) -> CommonInfo {
         switch type {
@@ -126,6 +178,10 @@ struct PrefsInfo {
             return clock
         case .battery:
             return battery
+        case .updates:
+            return updates
+        case .countdown:
+            return countdown
         }
     }
 
@@ -140,6 +196,10 @@ struct PrefsInfo {
             clock.isEnabled = value
         case .battery:
             battery.isEnabled = value
+        case .updates:
+            updates.isEnabled = value
+        case .countdown:
+            countdown.isEnabled = value
         }
     }
 
@@ -153,6 +213,10 @@ struct PrefsInfo {
             clock.fontName = name
         case .battery:
             battery.fontName = name
+        case .updates:
+            updates.fontName = name
+        case .countdown:
+            countdown.fontName = name
         }
     }
 
@@ -166,6 +230,10 @@ struct PrefsInfo {
             clock.fontSize = size
         case .battery:
             battery.fontSize = size
+        case .updates:
+            updates.fontSize = size
+        case .countdown:
+            countdown.fontSize = size
         }
     }
 
@@ -179,6 +247,10 @@ struct PrefsInfo {
             clock.corner = corner
         case .battery:
             battery.corner = corner
+        case .updates:
+            updates.corner = corner
+        case .countdown:
+            countdown.corner = corner
         }
 
     }
@@ -192,6 +264,10 @@ struct PrefsInfo {
             clock.displays = mode
         case .battery:
             battery.displays = mode
+        case .updates:
+            updates.displays = mode
+        case .countdown:
+            countdown.displays = mode
         }
     }
 }
@@ -232,6 +308,9 @@ struct PrefsInfo {
                 // Set value to UserDefaults
                 userDefaults.set(data, forKey: key)
 
+                // We force the sync so the settings are automatically saved
+                // This is needed as the System Preferences instance of Aerial
+                // is a separate instance from the screensaver ones
                 userDefaults.synchronize()
             } else {
                 errorLog("UserDefaults set failed for \(key)")
@@ -240,8 +319,8 @@ struct PrefsInfo {
     }
 }
 
-@propertyWrapper
-struct SimpleStorage<T> {
+// This retrieves store "simple" types that are natively storable on plists
+@propertyWrapper struct SimpleStorage<T> {
     private let key: String
     private let defaultValue: T
     private let module = "com.JohnCoates.Aerial"

@@ -9,7 +9,13 @@
 import Foundation
 import Sparkle
 
-struct AutoUpdates {
+class AutoUpdates: NSObject, SUUpdaterDelegate {
+    static let sharedInstance = AutoUpdates()
+
+    var didProbeForUpdate = false
+    private var updateAvailable = false
+    private var updateVersion: String = ""
+
     // This is what we use to look for updates while the screensaver is running
     // This code is not active in Catalina+
     func doForcedUpdate() {
@@ -26,17 +32,18 @@ struct AutoUpdates {
 
             // Make sure we can create SUUpdater
             if let suu = suup {
+                // We manually ensure the correct amount of time passed since last check
+                var distance = -86400       // 1 day
+
                 // We may need to change the feed for betas
                 if preferences.allowBetas {
                     suu.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/beta-appcast.xml")
-                }
 
-                // We manually ensure the correct amount of time passed since last check
-                var distance = -86400       // 1 day
-                if preferences.betaCheckFrequency == 0 {
-                    distance = -3600        // 1 hour
-                } else if preferences.betaCheckFrequency == 1 {
-                    distance = -43200       // 12 hours
+                    if preferences.betaCheckFrequency == 0 {
+                        distance = -3600        // 1 hour
+                    } else if preferences.betaCheckFrequency == 1 {
+                        distance = -43200       // 12 hours
+                    }
                 }
 
                 // If we never went into System Preferences, we may not have a lastUpdateCheckDate
@@ -52,4 +59,54 @@ struct AutoUpdates {
         }
     }
 
+    // Probing update check
+    func doProbingCheck() {
+        let preferences = Preferences.sharedInstance
+
+        debugLog("Probing availability of an update")
+
+        let suup = SUUpdater.init(for: Bundle(for: AerialView.self))
+
+        // Make sure we can create SUUpdater
+        if let suu = suup {
+            suu.delegate = self
+
+            // We may need to change the feed for betas
+            if preferences.allowBetas {
+                suu.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/beta-appcast.xml")
+            }
+
+            // Then force check/install udpates
+            debugLog("Checking for update (probe mode)")
+            suu.checkForUpdateInformation()
+        }
+    }
+
+    func getUpdateString() -> String {
+        if updateAvailable {
+            return "A new version of Aerial (\(updateVersion)) is available"
+        } else {
+            return ""
+        }
+    }
+
+    func isAnUpdateAvailable() -> Bool {
+        return updateAvailable
+    }
+
+    func updaterDidNotFindUpdate(_ updater: SUUpdater) {
+        debugLog("//////// No update is available !")
+        didProbeForUpdate = true
+    }
+
+    func updater(_ updater: SUUpdater, didFindValidUpdate item: SUAppcastItem) {
+        debugLog("//////// An update is available !")
+        didProbeForUpdate = true
+        updateAvailable = true
+
+        // Grab the new version number
+        if let versionString = item.displayVersionString {
+            self.updateVersion = versionString
+        }
+    }
 }
