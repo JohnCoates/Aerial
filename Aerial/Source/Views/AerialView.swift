@@ -181,11 +181,16 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
         let preferences = Preferences.sharedInstance
 
+        let au = AutoUpdates.sharedInstance
         // Run Sparkle updater if enabled
-        if !isPreview && preferences.updateWhileSaverMode {
-            let au = AutoUpdates()
-            au.doForcedUpdate()
+        if !isPreview {
+            if preferences.updateWhileSaverMode {
+                au.doForcedUpdate()
+            }
         }
+
+        // Run the probing check
+        au.doProbingCheck()
 
         // Check early if we need to enable power saver mode,
         // black screen with minimal brightness
@@ -499,6 +504,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     }
 
     override var acceptsFirstResponder: Bool {
+        // swiftlint:disable:next implicit_getter
         get {
             return true
         }

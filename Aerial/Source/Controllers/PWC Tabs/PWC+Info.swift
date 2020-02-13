@@ -17,6 +17,14 @@ extension PreferencesWindowController {
             PrefsInfo.layers.append(.battery)
         }
 
+        if !PrefsInfo.layers.contains(.updates) {
+            PrefsInfo.layers.append(.updates)
+        }
+
+        if !PrefsInfo.layers.contains(.countdown) {
+            PrefsInfo.layers.append(.countdown)
+        }
+
         infoSource = InfoTableSource()
         infoSource?.setController(self)
         infoTableView.dataSource = infoSource
@@ -50,7 +58,12 @@ extension PreferencesWindowController {
             infoContainerView.addSubview(infoBatteryView)
             infoBatteryView.frame.origin.y = infoCommonView.frame.height
             infoBatteryView.setStates()
-
+        case .updates:
+            break
+        case .countdown:
+            infoContainerView.addSubview(infoCountdownView)
+            infoCountdownView.frame.origin.y = infoCommonView.frame.height
+            infoCountdownView.setStates()
         }
     }
 

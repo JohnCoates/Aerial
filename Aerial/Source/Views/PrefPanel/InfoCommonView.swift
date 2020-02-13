@@ -57,6 +57,12 @@ class InfoCommonView: NSView {
         case .battery:
             descriptionLabel.stringValue = "Show current battery status."
             posRandom.isHidden = true
+        case .updates:
+            descriptionLabel.stringValue = "Display a message if a new version is available"
+            posRandom.isHidden = true
+        case .countdown:
+            descriptionLabel.stringValue = "Display a countdown to a time/date"
+            posRandom.isHidden = true
         }
     }
 
@@ -166,6 +172,10 @@ class InfoCommonView: NSView {
             PrefsInfo.clock.fontSize = 50
         case .battery:
             PrefsInfo.battery.fontSize = 20
+        case .updates:
+            PrefsInfo.updates.fontSize = 20
+        case .countdown:
+            PrefsInfo.countdown.fontSize = 100
         }
 
         fontLabel.stringValue = PrefsInfo.ofType(forType).fontName + ", \(PrefsInfo.ofType(forType).fontSize) pt"
