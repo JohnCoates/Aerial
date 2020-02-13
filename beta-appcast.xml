@@ -2,6 +2,22 @@
 <channel>
 <title>Aerial</title>
 <item>
+<title>1.7.2beta1</title>
+  <description>
+          <![CDATA[
+<b>Automatic updates are broken for the time being in Catalina. If you try to auto-update, it will look like it install correctly but the update process will silently fail because of new sandboxing restrictions. You will need to update manually for the time being, my apologies.</b>
+
+<ul><li>Add a new update check that shows a message at the top of the screen, when the screensaver is running, to let you know that a new version is available. This is still a work in progress and will be improved in the next beta. More info <a href=https://github.com/JohnCoates/Aerial/issues/909>here</a></li>
+<li>Add an option to change the shadow radius of the texts.</li>
+<li>Add a new Countdown info type.</li></ul>
+          ]]>
+  </description>
+<pubDate>jeu., 13 jan. 2020 16:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/glouel/Aerial/releases/download/v1.7.2beta1/Aerial.saver.zip" sparkle:version="1.7.2beta1" 
+sparkle:edSignature="JfJ/8/eUs+cPHKCXjlWIU4MU/LlclYJB5nnh0ZwwuhhzWFqu26gOViyQc/0pMRSCi1S2RbUeX4pvwiIIbt38Bw==" length="5996604" type="application/octet-stream"/>
+</item>  
+<item>
 <title>1.7.1</title>
   <description>
           <![CDATA[
