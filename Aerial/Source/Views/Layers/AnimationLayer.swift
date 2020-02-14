@@ -222,8 +222,8 @@ class AnimationLayer: CATextLayer {
         // Calculate bounding box
         let rect = str.boundingRect(with: boundingRect, options: [.truncatesLastVisibleLine, .usesLineFragmentOrigin])
 
-        // Last line won't appear if we don't adjust
-        return CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width, height: rect.height + 10)
+        // Last line won't appear if we don't adjust a bit (why!?)
+        return CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width+10, height: rect.height + 10)
     }
 
     // Get the font and font size
@@ -246,12 +246,11 @@ class AnimationLayer: CATextLayer {
             return 10
         }
 
-        let preferences = Preferences.sharedInstance
         var mx: CGFloat = 50
 
         // We may override margins
-        if preferences.overrideMargins {
-            mx = CGFloat(preferences.marginX!)
+        if PrefsInfo.overrideMargins {
+            mx = CGFloat(PrefsInfo.marginX)
         }
 
         return mx
@@ -270,12 +269,11 @@ class AnimationLayer: CATextLayer {
             return offsets.corner[forCorner]!
         }
 
-        let preferences = Preferences.sharedInstance
         var my: CGFloat = 50
 
         // We may override margins
-        if preferences.overrideMargins {
-            my = CGFloat(preferences.marginY!)
+        if PrefsInfo.overrideMargins {
+            my = CGFloat(PrefsInfo.marginY)
         }
 
         offsets.corner[forCorner] = my

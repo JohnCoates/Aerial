@@ -28,28 +28,11 @@ extension PreferencesWindowController {
         let poisp = PoiStringProvider.sharedInstance
         languagePopup.selectItem(at: poisp.getLanguagePosition())
 
-        // Margins override
-        if preferences.overrideMargins {
-            changeCornerMargins.state = .on
-            marginHorizontalTextfield.isEnabled = true
-            marginVerticalTextfield.isEnabled = true
-            editMarginButton.isEnabled = true
-        }
+//        secondaryMarginHorizontalTextfield.stringValue = String(preferences.marginX!)
+//        secondaryMarginVerticalTextfield.stringValue = String(preferences.marginY!)
 
-        marginHorizontalTextfield.stringValue = String(preferences.marginX!)
-        marginVerticalTextfield.stringValue = String(preferences.marginY!)
-        secondaryMarginHorizontalTextfield.stringValue = String(preferences.marginX!)
-        secondaryMarginVerticalTextfield.stringValue = String(preferences.marginY!)
-
-        fadeInOutTextModePopup.selectItem(at: preferences.fadeModeText!)
-
-        shadowRadiusFormatter.allowsFloats = false
-        shadowRadiusTextField.stringValue = String(PrefsInfo.shadowRadius)
     }
     // MARK: - Advanced panel
-    @IBAction func shadowRadiusChange(_ sender: NSTextField) {
-        PrefsInfo.shadowRadius = Int(sender.intValue)
-    }
 
     @IBAction func logButtonClick(_ sender: NSButton) {
         logTableView.reloadData()
@@ -181,38 +164,4 @@ extension PreferencesWindowController {
         }
     }
 
-    // MARK: - Fades 
-    @IBAction func fadeInOutTextModePopupChange(_ sender: NSPopUpButton) {
-        debugLog("UI fadeInOutTextMode: \(sender.indexOfSelectedItem)")
-        preferences.fadeModeText = sender.indexOfSelectedItem
-        preferences.synchronize()
-    }
-
-    // MARK: - Margins
-    @IBAction func changeMarginsToCornerClick(_ sender: NSButton) {
-        let onState = sender.state == .on
-        debugLog("UI changeMarginsToCorner: \(onState)")
-
-        marginHorizontalTextfield.isEnabled = onState
-        marginVerticalTextfield.isEnabled = onState
-        preferences.overrideMargins = onState
-    }
-
-    @IBAction func marginXChange(_ sender: NSTextField) {
-        preferences.marginX = Int(sender.stringValue)
-        if sender == secondaryMarginHorizontalTextfield {
-            marginHorizontalTextfield.stringValue = sender.stringValue
-        }
-
-        debugLog("UI marginXChange: \(sender.stringValue)")
-    }
-
-    @IBAction func marginYChange(_ sender: NSTextField) {
-        preferences.marginY = Int(sender.stringValue)
-        if sender == secondaryMarginVerticalTextfield {
-            marginVerticalTextfield.stringValue = sender.stringValue
-        }
-
-        debugLog("UI marginYChange: \(sender.stringValue)")
-    }
 }

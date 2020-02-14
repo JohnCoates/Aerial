@@ -82,7 +82,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     // Info tab (replaces text)
     @IBOutlet var infoTableView: NSTableView!
+    @IBOutlet var infoSettingsTableView: NSTableView!
     @IBOutlet var infoContainerView: InfoContainerView!
+
+    @IBOutlet var infoBox: NSBox!
+
+    @IBOutlet var infoSettingsView: InfoSettingsView!
 
     @IBOutlet var infoCommonView: InfoCommonView!
 
@@ -92,16 +97,11 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var infoBatteryView: InfoBatteryView!
 
     @IBOutlet var infoCountdownView: InfoCountdownView!
-    // Text tab
-    @IBOutlet weak var fadeInOutTextModePopup: NSPopUpButton!
 
     // Todo remap those
-    @IBOutlet var changeCornerMargins: NSButton!
-    @IBOutlet var marginHorizontalTextfield: NSTextField!
-    @IBOutlet var marginVerticalTextfield: NSTextField!
+
     @IBOutlet var secondaryMarginHorizontalTextfield: NSTextField!
     @IBOutlet var secondaryMarginVerticalTextfield: NSTextField!
-    @IBOutlet var editMarginButton: NSButton!
     @IBOutlet var editMarginsPanel: NSPanel!
     @IBOutlet var editExtraMessagePanel: NSPanel!
 
@@ -177,8 +177,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet weak var showLogBottomClick: NSButton!
     @IBOutlet weak var logToDiskCheckbox: NSButton!
 
-    @IBOutlet var shadowRadiusTextField: NSTextField!
-    @IBOutlet var shadowRadiusFormatter: NumberFormatter!
     @IBOutlet var videoVersionsLabel: NSTextField!
     @IBOutlet var moveOldVideosButton: NSButton!
     @IBOutlet var trashOldVideosButton: NSButton!
@@ -228,6 +226,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     // Info tab
     var infoSource: InfoTableSource?
+    var infoSettingsSource: InfoSettingsTableSource?
 
     @IBOutlet var displayView: DisplayView!
     public var appMode: Bool = false

@@ -12,8 +12,6 @@ class InfoCommonView: NSView {
     var forType: InfoType = .location
     var controller: PreferencesWindowController?
 
-    @IBOutlet var descriptionLabel: NSTextField!
-
     @IBOutlet var enabledButton: NSButton!
     @IBOutlet var fontLabel: NSTextField!
 
@@ -46,22 +44,22 @@ class InfoCommonView: NSView {
 
         switch forType {
         case .location:
-            descriptionLabel.stringValue = "Localized information about the video location."
+            controller.infoBox.title = "Video location information"
             posRandom.isHidden = false
         case .message:
-            descriptionLabel.stringValue = "Add a custom message (e-mail, name...)."
+            controller.infoBox.title = "Custom message"
             posRandom.isHidden = true
         case .clock:
-            descriptionLabel.stringValue = "Add a clock."
+            controller.infoBox.title = "Clock"
             posRandom.isHidden = true
         case .battery:
-            descriptionLabel.stringValue = "Show current battery status."
+            controller.infoBox.title = "Battery status"
             posRandom.isHidden = true
         case .updates:
-            descriptionLabel.stringValue = "Display a message if a new version is available"
+            controller.infoBox.title = "Updates notifications"
             posRandom.isHidden = true
         case .countdown:
-            descriptionLabel.stringValue = "Display a countdown to a time/date"
+            controller.infoBox.title = "Countdown to a time/date"
             posRandom.isHidden = true
         }
     }

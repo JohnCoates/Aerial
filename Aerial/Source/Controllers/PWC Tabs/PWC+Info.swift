@@ -30,6 +30,20 @@ extension PreferencesWindowController {
         infoTableView.dataSource = infoSource
         infoTableView.delegate = infoSource
         infoTableView.registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: "private.table-row")])
+
+        infoSettingsSource = InfoSettingsTableSource()
+        infoSettingsSource?.setController(self)
+        infoSettingsTableView.dataSource = infoSettingsSource
+        infoSettingsTableView.delegate = infoSettingsSource
+    }
+
+    func drawInfoSettingsPanel() {
+        resetInfoPanel()
+
+        // Add the common block of features (enabled, font, position, screen)
+        infoContainerView.addSubview(infoSettingsView)
+        infoBox.title = "Advanced text settings"
+        infoSettingsView.setStates()
     }
 
     // We dynamically change the content here, based on what's selected

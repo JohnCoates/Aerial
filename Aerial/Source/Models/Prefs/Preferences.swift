@@ -27,7 +27,7 @@ final class Preferences {
 //        case manualSunrise = "manualSunrise"
 //        case manualSunset = "manualSunset"
 //        case fadeMode = "fadeMode"
-        case fadeModeText = "fadeModeText"
+//        case fadeModeText = "fadeModeText"
         case descriptionCorner = "descriptionCorner"
 
         case debugMode = "debugMode"
@@ -46,9 +46,9 @@ final class Preferences {
         case overrideDimInMinutes = "overrideDimInMinutes"
 //        case solarMode = "solarMode"
 
-        case overrideMargins = "overrideMargins"
-        case marginX = "marginX"
-        case marginY = "marginY"
+//        case overrideMargins = "overrideMargins"
+//        case marginX = "marginX"
+//        case marginY = "marginY"
 
 //        case darkModeNightOverride = "darkModeNightOverride"
         case newVideosMode = "newVideosMode"
@@ -146,7 +146,7 @@ final class Preferences {
 //        defaultValues[.manualSunset] = "19:00"
         defaultValues[.multiMonitorMode] = MultiMonitorMode.mainOnly
 //        defaultValues[.fadeMode] = FadeMode.t1
-        defaultValues[.fadeModeText] = FadeMode.t1
+//        defaultValues[.fadeModeText] = FadeMode.t1
         defaultValues[.descriptionCorner] = DescriptionCorner.bottomLeft
         defaultValues[.debugMode] = true
         defaultValues[.logToDisk] = true
@@ -162,9 +162,9 @@ final class Preferences {
         defaultValues[.dimInMinutes] = 30
         defaultValues[.overrideDimInMinutes] = false
 //        defaultValues[.solarMode] = SolarMode.official
-        defaultValues[.overrideMargins] = false
-        defaultValues[.marginX] = 50
-        defaultValues[.marginY] = 50
+//        defaultValues[.overrideMargins] = false
+//        defaultValues[.marginX] = 50
+//        defaultValues[.marginY] = 50
 //        defaultValues[.overrideOnBattery] = false
 //        defaultValues[.powerSavingOnLowBattery] = false
 //        defaultValues[.alternateVideoFormat] = AlternateVideoFormat.powerSaving
@@ -440,14 +440,14 @@ final class Preferences {
         }
     }
 
-    var overrideMargins: Bool {
-        get {
-            return value(forIdentifier: .overrideMargins)
-        }
-        set {
-            setValue(forIdentifier: .overrideMargins, value: newValue)
-        }
-    }
+//    var overrideMargins: Bool {
+//        get {
+//            return value(forIdentifier: .overrideMargins)
+//        }
+//        set {
+//            setValue(forIdentifier: .overrideMargins, value: newValue)
+//        }
+//    }
 
     var dimInMinutes: Int? {
         get {
@@ -458,23 +458,23 @@ final class Preferences {
         }
     }
 
-    var marginX: Int? {
-        get {
-            return optionalValue(forIdentifier: .marginX)
-        }
-        set {
-            setValue(forIdentifier: .marginX, value: newValue)
-        }
-    }
-
-    var marginY: Int? {
-        get {
-            return optionalValue(forIdentifier: .marginY)
-        }
-        set {
-            setValue(forIdentifier: .marginY, value: newValue)
-        }
-    }
+//    var marginX: Int? {
+//        get {
+//            return optionalValue(forIdentifier: .marginX)
+//        }
+//        set {
+//            setValue(forIdentifier: .marginX, value: newValue)
+//        }
+//    }
+//
+//    var marginY: Int? {
+//        get {
+//            return optionalValue(forIdentifier: .marginY)
+//        }
+//        set {
+//            setValue(forIdentifier: .marginY, value: newValue)
+//        }
+//    }
 
 //    var solarMode: Int? {
 //        get {
@@ -728,15 +728,15 @@ final class Preferences {
 //            setValue(forIdentifier: .fadeMode, value: newValue)
 //        }
 //    }
-
-    var fadeModeText: Int? {
-        get {
-            return optionalValue(forIdentifier: .fadeModeText)
-        }
-        set {
-            setValue(forIdentifier: .fadeModeText, value: newValue)
-        }
-    }
+//
+//    var fadeModeText: Int? {
+//        get {
+//            return optionalValue(forIdentifier: .fadeModeText)
+//        }
+//        set {
+//            setValue(forIdentifier: .fadeModeText, value: newValue)
+//        }
+//    }
 
 //    var timeMode: Int? {
 //        get {

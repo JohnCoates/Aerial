@@ -149,7 +149,6 @@ class ManifestLoader {
 
     // MARK: - Playlist generation
     func generatePlaylist(isRestricted: Bool, restrictedTo: String) {
-        print("genplaylist")
         // Start fresh
         playlist = [AerialVideo]()
         playlistIsRestricted = isRestricted
