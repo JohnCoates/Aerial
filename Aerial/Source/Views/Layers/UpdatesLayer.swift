@@ -41,7 +41,6 @@ class UpdatesLayer: AnimationLayer {
     }
 
     override func setupForVideo(video: AerialVideo, player: AVPlayer) {
-        print("sfv")
         if !wasSetup {
             setupUpdateLayer()
         }

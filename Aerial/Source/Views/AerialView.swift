@@ -59,13 +59,12 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     }
 
     static var textFadeDuration: Double {
-        let preferences = Preferences.sharedInstance
-        switch preferences.fadeModeText {
-        case FadeMode.t0_5.rawValue:
+        switch PrefsInfo.fadeModeText {
+        case .t0_5:
             return 0.5
-        case FadeMode.t1.rawValue:
+        case .t1:
             return 1
-        case FadeMode.t2.rawValue:
+        case .t2:
             return 2
         default:
             return 0.10
@@ -373,7 +372,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     // MARK: - playNextVideo()
     func playNextVideo() {
-        print("playnext")
         let notificationCenter = NotificationCenter.default
         // Clear everything
         layerManager.clearLayerAnimations(player: self.player!)

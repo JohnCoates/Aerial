@@ -163,10 +163,37 @@ struct PrefsInfo {
                                                      showSeconds: true))
     static var countdown: Countdown
 
+    // MARK: - Advanced text settings
+
+    // Text fade in/out mode
+    @SimpleStorage(key: "fadeModeText", defaultValue: FadeMode.t1.rawValue)
+    static var intFadeModeText: Int
+
+    // We wrap in a separate value, as we can't store an enum as a Codable in
+    // macOS < 10.15
+    static var fadeModeText: FadeMode {
+        get {
+            return FadeMode(rawValue: intFadeModeText)!
+        }
+        set(value) {
+            intFadeModeText = value.rawValue
+        }
+    }
+
+    // Override margins
+    @SimpleStorage(key: "overrideMargins", defaultValue: false)
+    static var overrideMargins: Bool
+
+    @SimpleStorage(key: "marginX", defaultValue: 50)
+    static var marginX: Int
+    @SimpleStorage(key: "marginY", defaultValue: 50)
+    static var marginY: Int
+
     // Shadow radius (common)
     @SimpleStorage(key: "shadowRadius", defaultValue: 20)
     static var shadowRadius: Int
 
+    // MARK: - Helpers
     // Helper to quickly access a given struct (read-only as we return a copy of the struct)
     static func ofType(_ type: InfoType) -> CommonInfo {
         switch type {

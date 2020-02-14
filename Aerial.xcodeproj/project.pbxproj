@@ -48,6 +48,10 @@
 		03510C7121834FC7008F74F2 /* IOBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 03510C6E21834F38008F74F2 /* IOBridge.m */; };
 		03510C732185EF76008F74F2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03510C722185EF76008F74F2 /* CoreLocation.framework */; };
 		03510C772185EF8F008F74F2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03510C722185EF76008F74F2 /* CoreLocation.framework */; };
+		0354D0E923F6C31800D86F9E /* InfoSettingsTableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D0E823F6C31800D86F9E /* InfoSettingsTableSource.swift */; };
+		0354D0EA23F6C3EE00D86F9E /* InfoSettingsTableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D0E823F6C31800D86F9E /* InfoSettingsTableSource.swift */; };
+		0354D0EC23F6CB7B00D86F9E /* InfoSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D0EB23F6CB7B00D86F9E /* InfoSettingsView.swift */; };
+		0354D0ED23F6CB7B00D86F9E /* InfoSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D0EB23F6CB7B00D86F9E /* InfoSettingsView.swift */; };
 		035A92A6225F8C480095AB85 /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92A4225F8C480095AB85 /* de.json */; };
 		035A92A7225F8C480095AB85 /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92A4225F8C480095AB85 /* de.json */; };
 		035A92A8225F8C480095AB85 /* he.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92A5225F8C480095AB85 /* he.json */; };
@@ -235,6 +239,8 @@
 		03510C6D21834F38008F74F2 /* Aerial-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aerial-Bridging-Header.h"; sourceTree = "<group>"; };
 		03510C6E21834F38008F74F2 /* IOBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOBridge.m; sourceTree = "<group>"; };
 		03510C722185EF76008F74F2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0354D0E823F6C31800D86F9E /* InfoSettingsTableSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSettingsTableSource.swift; sourceTree = "<group>"; };
+		0354D0EB23F6CB7B00D86F9E /* InfoSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSettingsView.swift; sourceTree = "<group>"; };
 		035A92A4225F8C480095AB85 /* de.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = de.json; sourceTree = "<group>"; };
 		035A92A5225F8C480095AB85 /* he.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = he.json; sourceTree = "<group>"; };
 		035A92AB226754760095AB85 /* ar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ar.json; sourceTree = "<group>"; };
@@ -407,6 +413,7 @@
 				FAC36F441BE1756D007F2A20 /* CheckCellView.swift */,
 				03D1E78622842FB300D10CF7 /* DisplayView.swift */,
 				034F29B623A7A93D004B34D5 /* InfoTableSource.swift */,
+				0354D0E823F6C31800D86F9E /* InfoSettingsTableSource.swift */,
 				038C584623A9304800224630 /* InfoContainerView.swift */,
 				038C584923A9394000224630 /* InfoCommonView.swift */,
 				03A596D823AB8F000097EA66 /* InfoLocationView.swift */,
@@ -414,6 +421,7 @@
 				03A596D423AA752F0097EA66 /* InfoClockView.swift */,
 				038D2EE323B6565900CD91F7 /* InfoBatteryView.swift */,
 				036A57D723F470940009DC02 /* InfoCountdownView.swift */,
+				0354D0EB23F6CB7B00D86F9E /* InfoSettingsView.swift */,
 			);
 			path = PrefPanel;
 			sourceTree = "<group>";
@@ -1041,6 +1049,7 @@
 				03A2CB9D216BB1490061E8E8 /* VideoManager.swift in Sources */,
 				03608A2A22A56094008F08A2 /* PWC+LogPanel.swift in Sources */,
 				03E289D5239A79C400C06EC5 /* AutoUpdates.swift in Sources */,
+				0354D0ED23F6CB7B00D86F9E /* InfoSettingsView.swift in Sources */,
 				03608A2722A55C03008F08A2 /* PWC+Advanced.swift in Sources */,
 				03E87314216760B7002B469B /* TimeManagement.swift in Sources */,
 				038C584B23A9394000224630 /* InfoCommonView.swift in Sources */,
@@ -1069,6 +1078,7 @@
 				038D2EE223B6523800CD91F7 /* BatteryLayer.swift in Sources */,
 				03BF51C023A275D9008AD373 /* MessageLayer.swift in Sources */,
 				035D5250239AA31A00DC29DC /* AerialView+Player.swift in Sources */,
+				0354D0EA23F6C3EE00D86F9E /* InfoSettingsTableSource.swift in Sources */,
 				0395834A217F442A008E8F9C /* Solar.swift in Sources */,
 				FAB22A7F1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */,
 				FAC36F601BE175CF007F2A20 /* AppDelegate.swift in Sources */,
@@ -1140,6 +1150,7 @@
 				03BF51C223A2978B008AD373 /* ClockLayer.swift in Sources */,
 				FAC36F591BE1756D007F2A20 /* AerialVideo.swift in Sources */,
 				03893CB3217749F0008E7125 /* ErrorLog.swift in Sources */,
+				0354D0EC23F6CB7B00D86F9E /* InfoSettingsView.swift in Sources */,
 				032D1161239A7D82007E7756 /* Battery.swift in Sources */,
 				038D2EE423B6565900CD91F7 /* InfoBatteryView.swift in Sources */,
 				03608A2322A55BF1008F08A2 /* PWC+Updates.swift in Sources */,
@@ -1170,6 +1181,7 @@
 				03233B68217272640077D3F9 /* PoiStringProvider.swift in Sources */,
 				038D2EE123B6523800CD91F7 /* BatteryLayer.swift in Sources */,
 				FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */,
+				0354D0E923F6C31800D86F9E /* InfoSettingsTableSource.swift in Sources */,
 				03E8730C2165013C002B469B /* DownloadManager.swift in Sources */,
 				03608A2622A55C03008F08A2 /* PWC+Advanced.swift in Sources */,
 				036A57D823F470940009DC02 /* InfoCountdownView.swift in Sources */,
