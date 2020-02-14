@@ -1,6 +1,23 @@
 <?xml version="1.0" standalone="yes"?><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
 <channel>
 <title>Aerial</title>
+
+<item>
+<title>1.7.2beta2</title>
+  <description>
+          <![CDATA[
+<b>Automatic updates are broken for the time being in Catalina. If you try to auto-update, it will look like it install correctly but the update process will silently fail because of new sandboxing restrictions. You will need to update manually for the time being, my apologies.</b>
+
+<ul><li>Fix text clipping issues with some fonts</li>
+<li>More UI cleanup, add a new Text settings option in Info tab</li></ul>
+          ]]>
+  </description>
+<pubDate>ven., 14 jan. 2020 19:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.7.2beta2/Aerial.saver.zip" sparkle:version="1.7.2beta2" 
+sparkle:edSignature="y0CqlWKJTJx2TEmJb6pobnVJvQUw+lUpQBNGePn+8M3/dFJXiwoYRWfZ6O55O1QO0gLASb6GM9ahwp+SdoQ/Bg==" length="5999716" type="application/octet-stream"/>
+</item> 
+
 <item>
 <title>1.7.2beta1</title>
   <description>
