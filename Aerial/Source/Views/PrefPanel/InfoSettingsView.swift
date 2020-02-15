@@ -14,10 +14,15 @@ class InfoSettingsView: NSView {
     @IBOutlet var changeCornerMargins: NSButton!
     @IBOutlet var marginHorizontalTextfield: NSTextField!
     @IBOutlet var marginVerticalTextfield: NSTextField!
-    @IBOutlet var editMarginButton: NSButton!
 
     @IBOutlet var shadowRadiusTextField: NSTextField!
     @IBOutlet var shadowRadiusFormatter: NumberFormatter!
+
+    @IBOutlet var editMarginsPanel: NSPanel!
+
+    @IBOutlet var editMarginButton: NSButton!
+    @IBOutlet var secondaryMarginHorizontalTextfield: NSTextField!
+    @IBOutlet var secondaryMarginVerticalTextfield: NSTextField!
 
     func setStates() {
         //messageTextField.stringValue = PrefsInfo.message.message
@@ -31,11 +36,21 @@ class InfoSettingsView: NSView {
 
         marginHorizontalTextfield.stringValue = String(PrefsInfo.marginX)
         marginVerticalTextfield.stringValue = String(PrefsInfo.marginY)
+        secondaryMarginHorizontalTextfield.stringValue = String(PrefsInfo.marginX)
+        secondaryMarginVerticalTextfield.stringValue = String(PrefsInfo.marginY)
 
         fadeInOutTextModePopup.selectItem(at: PrefsInfo.fadeModeText.rawValue)
 
         shadowRadiusFormatter.allowsFloats = false
         shadowRadiusTextField.stringValue = String(PrefsInfo.shadowRadius)
+
+        // Workaround for textfield bug in High sierra and earlier
+        if #available(OSX 10.14, *) {
+            editMarginButton.isHidden = true
+        } else {
+            marginHorizontalTextfield.isEnabled = false
+            marginVerticalTextfield.isEnabled = false
+        }
     }
 
     // MARK: - Shadows
@@ -46,8 +61,7 @@ class InfoSettingsView: NSView {
     // MARK: - Fades
     @IBAction func fadeInOutTextModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI fadeInOutTextMode: \(sender.indexOfSelectedItem)")
-//        preferences.fadeModeText = sender.indexOfSelectedItem
-//        preferences.synchronize()
+
         PrefsInfo.fadeModeText = FadeMode(rawValue: sender.indexOfSelectedItem)!
 
     }
@@ -60,24 +74,44 @@ class InfoSettingsView: NSView {
         marginHorizontalTextfield.isEnabled = onState
         marginVerticalTextfield.isEnabled = onState
         PrefsInfo.overrideMargins = onState
-//        preferences.overrideMargins = onState
     }
 
     @IBAction func marginXChange(_ sender: NSTextField) {
         PrefsInfo.marginX = Int(sender.stringValue) ?? 50
-//        if sender == secondaryMarginHorizontalTextfield {
-//            marginHorizontalTextfield.stringValue = sender.stringValue
-//        }
+        if sender == secondaryMarginHorizontalTextfield {
+            marginHorizontalTextfield.stringValue = sender.stringValue
+        }
 
         debugLog("UI marginXChange: \(sender.stringValue)")
     }
 
     @IBAction func marginYChange(_ sender: NSTextField) {
         PrefsInfo.marginY = Int(sender.stringValue) ?? 50
-//        if sender == secondaryMarginVerticalTextfield {
-//            marginVerticalTextfield.stringValue = sender.stringValue
-//        }
+        if sender == secondaryMarginVerticalTextfield {
+            marginVerticalTextfield.stringValue = sender.stringValue
+        }
 
         debugLog("UI marginYChange: \(sender.stringValue)")
     }
+
+    // MARK: - High Sierra Workaround for TextFields
+    @IBAction func openExtraMarginPanelClick(_ sender: Any) {
+        if editMarginsPanel.isVisible {
+            editMarginsPanel.close()
+        } else {
+            editMarginsPanel.makeKeyAndOrderFront(sender)
+        }
+    }
+
+    @IBAction func closeExtraMarginPanelClick(_ sender: Any) {
+        // On close we apply what's in the textfields
+        marginHorizontalTextfield.stringValue = secondaryMarginHorizontalTextfield.stringValue
+        PrefsInfo.marginX = Int(secondaryMarginHorizontalTextfield.stringValue) ?? 50
+
+        marginVerticalTextfield.stringValue = secondaryMarginVerticalTextfield.stringValue
+        PrefsInfo.marginY = Int(secondaryMarginVerticalTextfield.stringValue) ?? 50
+
+        editMarginsPanel.close()
+    }
+
 }

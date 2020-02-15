@@ -48,7 +48,10 @@ class AnimationLayer: CATextLayer {
         // Starts hidden, with a bit of shadow for text separation
         self.opacity = 0
         self.shadowRadius = CGFloat(PrefsInfo.shadowRadius)
-        self.shadowOpacity = 1.0
+        self.shadowOpacity = PrefsInfo.shadowOpacity
+        self.shadowOffset = CGSize(width: PrefsInfo.shadowOffsetX,
+                                   height: PrefsInfo.shadowOffsetY)
+
         self.shadowColor = CGColor.black
     }
 

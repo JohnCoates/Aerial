@@ -189,9 +189,16 @@ struct PrefsInfo {
     @SimpleStorage(key: "marginY", defaultValue: 50)
     static var marginY: Int
 
-    // Shadow radius (common)
+    // MARK: - Shadows
+    // Shadow radius
     @SimpleStorage(key: "shadowRadius", defaultValue: 20)
     static var shadowRadius: Int
+    @SimpleStorage(key: "shadowOpacity", defaultValue: 1.0)
+    static var shadowOpacity: Float
+    @SimpleStorage(key: "shadowOffsetX", defaultValue: 0.0)
+    static var shadowOffsetX: CGFloat
+    @SimpleStorage(key: "shadowOffsetY", defaultValue: -3.0)
+    static var shadowOffsetY: CGFloat
 
     // MARK: - Helpers
     // Helper to quickly access a given struct (read-only as we return a copy of the struct)

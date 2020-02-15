@@ -25,13 +25,10 @@
                 <outlet property="cacheSizeTextField" destination="L70-Vj-qPk" id="EIq-de-VmH"/>
                 <outlet property="calculateCoordinatesLabel" destination="YXF-Ei-ZTD" id="LEn-QN-uyy"/>
                 <outlet property="changeCacheFolderPanel" destination="sJe-1s-Rt2" id="z3v-IY-O6t"/>
-                <outlet property="changeCornerMargins" destination="27A-Xh-PNr" id="hrh-X2-BXb"/>
                 <outlet property="checkNowButton" destination="EeC-Lg-0GW" id="3zr-3y-AW9"/>
-                <outlet property="ciOverrideLanguagePopup" destination="Thy-6K-bQe" id="eGe-Iv-gxJ"/>
                 <outlet property="closeButton" destination="cvY-s8-rnf" id="rfu-11-yJe"/>
                 <outlet property="currentLocaleLabel" destination="AA1-DI-Dei" id="r76-vh-c2m"/>
                 <outlet property="debugModeCheckbox" destination="Veo-4u-pxN" id="GaX-67-URX"/>
-                <outlet property="descriptionModePopup" destination="qmX-6m-Whj" id="Ypl-kR-cJd"/>
                 <outlet property="dimBrightness" destination="UKx-5p-svW" id="11y-bf-4b2"/>
                 <outlet property="dimFadeInMinutes" destination="sR4-FH-JoA" id="vBx-hA-Fxj"/>
                 <outlet property="dimFadeInMinutesStepper" destination="CGv-Gv-pv7" id="Ime-5v-4I8"/>
@@ -49,8 +46,6 @@
                 <outlet property="downloadNowButton" destination="118-Gb-ppx" id="Q6V-xn-WpX"/>
                 <outlet property="downloadProgressIndicator" destination="0Nj-rn-Gmk" id="ftV-Yg-pCi"/>
                 <outlet property="downloadStopButton" destination="7SM-Cq-nPU" id="T8h-Uj-bJb"/>
-                <outlet property="editExtraMessagePanel" destination="zvC-bD-bNg" id="TfB-wh-rqF"/>
-                <outlet property="editMarginsPanel" destination="2H5-sQ-PBc" id="ZJa-dT-3rT"/>
                 <outlet property="enterCoordinatesButton" destination="a7p-Yo-yfa" id="FNc-JX-RGQ"/>
                 <outlet property="enterCoordinatesPanel" destination="Zyn-sQ-RW9" id="bna-hY-xq0"/>
                 <outlet property="extraLatitudeFormatter" destination="fWF-TA-91K" id="oLn-m8-ajE"/>
@@ -58,7 +53,6 @@
                 <outlet property="extraLongitudeFormatter" destination="cp3-Zq-4ee" id="8Wx-uF-hBP"/>
                 <outlet property="extraLongitudeTextField" destination="z8d-RU-nnD" id="XhM-dM-rMh"/>
                 <outlet property="fadeInOutModePopup" destination="405-v4-6d2" id="eli-xQ-IOg"/>
-                <outlet property="fadeInOutTextModePopup" destination="vwV-g6-SF4" id="qkT-13-zQb"/>
                 <outlet property="findCoordinatesButton" destination="yRV-Mo-Vvs" id="5yB-g8-gh5"/>
                 <outlet property="horizontalDisplayMarginTextfield" destination="KfI-Os-ESe" id="px5-9Z-D3T"/>
                 <outlet property="iconTime1" destination="lQX-Ux-Sz8" id="JNc-dR-kDA"/>
@@ -76,7 +70,6 @@
                 <outlet property="infoSettingsView" destination="gct-tE-NYN" id="qCj-bL-0Ww"/>
                 <outlet property="infoTableView" destination="ipD-s9-BUc" id="crX-VX-JYF"/>
                 <outlet property="languagePopup" destination="Thy-6K-bQe" id="qZs-E7-lYi"/>
-                <outlet property="languagePopupChange" destination="Thy-6K-bQe" id="TwQ-3y-kWl"/>
                 <outlet property="lastCheckedSparkle" destination="eIe-xw-mO4" id="sLF-im-fXK"/>
                 <outlet property="lastCheckedVideosLabel" destination="N4V-cr-IpU" id="e9x-ZB-zu3"/>
                 <outlet property="latitudeFormatter" destination="XKU-5s-ymT" id="ER9-CV-byp"/>
@@ -88,8 +81,6 @@
                 <outlet property="logToDiskCheckbox" destination="roX-7H-4ec" id="Tcj-tM-SPp"/>
                 <outlet property="longitudeFormatter" destination="U1j-Ay-XxM" id="iDt-FI-Bvi"/>
                 <outlet property="longitudeTextField" destination="C6M-uu-0iJ" id="XQE-M8-Xoe"/>
-                <outlet property="marginHorizontalTextfield" destination="6J6-cM-mmx" id="5fe-LV-DQd"/>
-                <outlet property="marginVerticalTextfield" destination="fKm-i3-ccm" id="r7k-f5-1s3"/>
                 <outlet property="menu1080pHDR" destination="GmX-4Y-vRg" id="1Xf-TL-411"/>
                 <outlet property="menu4KHDR" destination="1pY-pz-5Sg" id="1zC-qT-d1S"/>
                 <outlet property="moveOldVideosButton" destination="DS7-dE-PeA" id="lj3-hD-4gY"/>
@@ -123,9 +114,6 @@
                 <outlet property="rightClickMoveToTrashMenuItem" destination="1jO-pe-cMC" id="xkg-E9-Mnc"/>
                 <outlet property="rightClickOpenQuickTimeMenuItem" destination="1t6-YL-1aJ" id="HTB-4K-Bn2"/>
                 <outlet property="secondProjectPageLink" destination="1gS-Uu-hUv" id="UdX-F9-u8p"/>
-                <outlet property="secondaryExtraMessageTextField" destination="Gfy-gr-PdM" id="Lpb-Jo-NEn"/>
-                <outlet property="secondaryMarginHorizontalTextfield" destination="BX9-RZ-ZYU" id="RvT-Qq-uBa"/>
-                <outlet property="secondaryMarginVerticalTextfield" destination="b2N-kl-WaI" id="ro5-xU-sae"/>
                 <outlet property="showLogBottomClick" destination="Qtq-PW-JOS" id="F8N-hw-bBa"/>
                 <outlet property="sleepAfterLabel" destination="Y3W-x9-oeE" id="jfr-s6-7dp"/>
                 <outlet property="solarModePopup" destination="7nt-0g-1hP" id="Ej9-u5-ZaL"/>
@@ -144,7 +132,6 @@
                 <outlet property="videoSetsButton" destination="3ly-5z-7Yd" id="5vu-na-onN"/>
                 <outlet property="videoVersionsLabel" destination="jfq-Ye-7dR" id="PEo-cF-0Qd"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="B44-2j-OKw"/>
-                <outlet property="withSecondsCheckbox" destination="h3J-Gc-SIR" id="01D-sf-fVd"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -153,16 +140,16 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="631" height="466"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-            <view key="contentView" identifier="windowView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="631" height="466"/>
+            <view key="contentView" identifier="windowView" misplaced="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="631" height="465"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <view identifier="preferencesView" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGe-MQ-1z1">
-                        <rect key="frame" x="0.0" y="41" width="625" height="425"/>
+                        <rect key="frame" x="0.0" y="41" width="625" height="424"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B9U-tn-dsp">
-                                <rect key="frame" x="-1" y="-5" width="634" height="427"/>
+                                <rect key="frame" x="-1" y="-5" width="634" height="426"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
@@ -777,11 +764,11 @@ is disabled
                                     </tabViewItem>
                                     <tabViewItem label="Info" identifier="" id="AhX-J1-tBm">
                                         <view key="view" id="d3H-vC-Yjc">
-                                            <rect key="frame" x="10" y="33" width="614" height="381"/>
+                                            <rect key="frame" x="10" y="33" width="614" height="380"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmM-bM-eEg">
-                                                    <rect key="frame" x="5" y="36" width="180" height="342"/>
+                                                    <rect key="frame" x="5" y="35" width="180" height="342"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <clipView key="contentView" drawsBackground="NO" id="CFu-ab-5NJ">
                                                         <rect key="frame" x="1" y="1" width="178" height="340"/>
@@ -885,7 +872,7 @@ is disabled
                                                     </scroller>
                                                 </scrollView>
                                                 <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwI-40-mcA">
-                                                    <rect key="frame" x="5" y="4" width="180" height="33"/>
+                                                    <rect key="frame" x="5" y="3" width="180" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <clipView key="contentView" id="CwF-Wv-AKG">
                                                         <rect key="frame" x="1" y="1" width="178" height="31"/>
@@ -946,7 +933,7 @@ is disabled
                                                     </scroller>
                                                 </scrollView>
                                                 <box fixedFrame="YES" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="RPa-oQ-1hC">
-                                                    <rect key="frame" x="190" y="0.0" width="423" height="378"/>
+                                                    <rect key="frame" x="190" y="-1" width="423" height="378"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView" id="Lpk-78-JGP" customClass="InfoContainerView" customModule="Aerial" customModuleProvider="target">
                                                         <rect key="frame" x="3" y="3" width="417" height="360"/>
@@ -1375,11 +1362,11 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                     </tabViewItem>
                                     <tabViewItem label="Cache" identifier="2" id="kp1-xv-zNG">
                                         <view key="view" id="93q-v8-yxM">
-                                            <rect key="frame" x="10" y="33" width="614" height="381"/>
+                                            <rect key="frame" x="10" y="33" width="614" height="380"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button toolTip="If disabled, videos will always be streamed and never persisted to disk" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7HM-tD-v0b">
-                                                    <rect key="frame" x="8" y="348" width="205" height="18"/>
+                                                    <rect key="frame" x="8" y="347" width="205" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Cache Aerials as they play" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="0lV-AO-Vfb">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1390,7 +1377,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </button>
                                                 <button toolTip="Enable if you never want to stream non cached videos that are on your playlist" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TFE-JE-tOy">
-                                                    <rect key="frame" x="219" y="348" width="177" height="18"/>
+                                                    <rect key="frame" x="219" y="347" width="177" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Never stream videos" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fmX-YC-9t8">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1401,7 +1388,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZO8-hg-MHd">
-                                                    <rect key="frame" x="11" y="100" width="185" height="32"/>
+                                                    <rect key="frame" x="11" y="99" width="185" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Change Cache Location" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wqv-ni-QwP">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1412,7 +1399,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </button>
                                                 <pathControl verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XAJ-Se-rwG">
-                                                    <rect key="frame" x="14" y="144" width="587" height="22"/>
+                                                    <rect key="frame" x="14" y="143" width="587" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <pathCell key="cell" selectable="YES" editable="YES" alignment="left" placeholderString="Failed to load cache location" id="gVD-I9-Ldu">
                                                         <font key="font" metaFont="system"/>
@@ -1420,7 +1407,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </pathCell>
                                                 </pathControl>
                                                 <button toolTip="Enable if you don't want to stream preview. You won't be able to preview non cached videos" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cN4-52-cnH">
-                                                    <rect key="frame" x="408" y="348" width="191" height="18"/>
+                                                    <rect key="frame" x="408" y="347" width="191" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Never stream previews" bezelStyle="regularSquare" imagePosition="left" inset="2" id="ZU1-72-d58">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1431,7 +1418,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="918-ug-3EV">
-                                                    <rect key="frame" x="418" y="100" width="185" height="32"/>
+                                                    <rect key="frame" x="418" y="99" width="185" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Show in Finder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MMG-EW-6UN">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1442,15 +1429,15 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </button>
                                                 <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="yTU-fU-3PQ">
-                                                    <rect key="frame" x="10" y="309" width="595" height="5"/>
+                                                    <rect key="frame" x="10" y="308" width="595" height="5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 </box>
                                                 <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Q9n-mn-wEk">
-                                                    <rect key="frame" x="10" y="82" width="595" height="5"/>
+                                                    <rect key="frame" x="10" y="81" width="595" height="5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 </box>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L70-Vj-qPk">
-                                                    <rect key="frame" x="8" y="322" width="312" height="17"/>
+                                                    <rect key="frame" x="8" y="321" width="312" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Cache all videos (around 20 GB required in 4K):" id="G1X-uz-p5V">
                                                         <font key="font" metaFont="system"/>
@@ -1459,7 +1446,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s26-kk-0xc">
-                                                    <rect key="frame" x="218" y="100" width="185" height="32"/>
+                                                    <rect key="frame" x="218" y="99" width="185" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Reset to Default" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aQN-yr-MJE">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1480,7 +1467,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="moU-Bx-4Wo">
-                                                    <rect key="frame" x="8" y="286" width="143" height="17"/>
+                                                    <rect key="frame" x="8" y="285" width="143" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Cache locations:" id="TL8-4s-qsK">
                                                         <font key="font" metaFont="system"/>
@@ -1489,7 +1476,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GUe-gj-YHr">
-                                                    <rect key="frame" x="452" y="244" width="151" height="32"/>
+                                                    <rect key="frame" x="452" y="243" width="151" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Show in Finder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9MY-gg-aod">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1510,7 +1497,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <button toolTip="Download all missing videos for your currently selected format" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="118-Gb-ppx">
-                                                    <rect key="frame" x="452" y="313" width="151" height="32"/>
+                                                    <rect key="frame" x="452" y="312" width="151" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Download Now" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OL6-Qf-3eQ">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1521,7 +1508,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DS7-dE-PeA">
-                                                    <rect key="frame" x="218" y="3" width="185" height="32"/>
+                                                    <rect key="frame" x="218" y="2" width="185" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Move old videos" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rs1-GF-usp">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1532,7 +1519,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kxy-3m-oZ7">
-                                                    <rect key="frame" x="8" y="59" width="160" height="17"/>
+                                                    <rect key="frame" x="8" y="58" width="160" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Video versions:" id="K3g-rm-43U">
                                                         <font key="font" metaFont="system"/>
@@ -1541,7 +1528,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="55F-Qw-lIh">
-                                                    <rect key="frame" x="418" y="3" width="189" height="32"/>
+                                                    <rect key="frame" x="418" y="2" width="189" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Trash old videos" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2Xr-CA-2Gk">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1934,7 +1921,7 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ndV-E9-x71">
-                        <rect key="frame" x="464" y="10" width="67" height="27"/>
+                        <rect key="frame" x="464" y="9" width="67" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" title="1.0.0beta1" bezelStyle="rounded" alignment="right" imageScaling="proportionallyDown" inset="2" id="O5H-2o-0dP">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2303,7 +2290,7 @@ You can still decide to disable Aerial when running on battery, or if your batte
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
-                            <action selector="marginXChange:" target="-2" id="5mp-rA-YAu"/>
+                            <action selector="marginXChange:" target="gct-tE-NYN" id="Ee6-bV-TyX"/>
                         </connections>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b2N-kl-WaI">
@@ -2318,7 +2305,7 @@ You can still decide to disable Aerial when running on battery, or if your batte
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
-                            <action selector="marginYChange:" target="-2" id="9Wc-8g-xkx"/>
+                            <action selector="marginYChange:" target="gct-tE-NYN" id="hMR-eq-kyr"/>
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SXt-wn-wad">
@@ -2347,7 +2334,7 @@ You can still decide to disable Aerial when running on battery, or if your batte
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="closeExtraMarginPanelClick:" target="-2" id="eTL-xf-69F"/>
+                            <action selector="closeExtraMarginPanelClick:" target="gct-tE-NYN" id="ntt-9M-k06"/>
                         </connections>
                     </button>
                 </subviews>
@@ -2372,7 +2359,7 @@ You can still decide to disable Aerial when running on battery, or if your batte
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
-                            <action selector="extraTextFieldChange:" target="-2" id="DhM-t1-KyW"/>
+                            <action selector="messageChange:" target="ACD-cz-kul" id="6vi-Sp-a0g"/>
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="305" translatesAutoresizingMaskIntoConstraints="NO" id="akj-mF-AgG">
@@ -2392,12 +2379,12 @@ You can still decide to disable Aerial when running on battery, or if your batte
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="closeExtraMessagePanelClick:" target="-2" id="ft2-zE-dtU"/>
+                            <action selector="closeExtraMessagePanelClick:" target="ACD-cz-kul" id="Uzx-XG-low"/>
                         </connections>
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-213" y="505"/>
+            <point key="canvasLocation" x="-706" y="813"/>
         </window>
         <window title="Enter coordinates manually" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Zyn-sQ-RW9" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
@@ -3076,9 +3063,7 @@ After changing the folder, please close System Preferences for this to be taken 
             <connections>
                 <outlet property="displaysPopup" destination="Z8K-NW-yF5" id="DE8-L9-kpb"/>
                 <outlet property="enabledButton" destination="17F-wn-zgn" id="CEK-zG-Ndg"/>
-                <outlet property="fontChange" destination="kbQ-bC-jsB" id="YHP-ZU-BYd"/>
                 <outlet property="fontLabel" destination="UWe-lf-lZP" id="D5t-D2-gul"/>
-                <outlet property="fontReset" destination="5UI-r0-Si3" id="yz2-pg-kTD"/>
                 <outlet property="posBottomCenter" destination="MG8-J5-mQV" id="797-es-qa4"/>
                 <outlet property="posBottomLeft" destination="86Y-jb-eVQ" id="aZ9-W3-vcl"/>
                 <outlet property="posBottomRight" destination="ULp-AD-c6s" id="X24-xx-c9u"/>
@@ -3109,18 +3094,20 @@ After changing the folder, please close System Preferences for this to be taken 
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k2i-SA-fme">
                     <rect key="frame" x="371.5" y="4" width="27" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundTextured" title="..." bezelStyle="texturedRounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="19h-Pw-qR4">
+                    <buttonCell key="cell" type="roundTextured" title="..." bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="19h-Pw-qR4">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="messageExtraClick:" target="ACD-cz-kul" id="fKm-f9-AF9"/>
+                        <action selector="openExtraMessagePanelClick:" target="ACD-cz-kul" id="edn-We-sw8"/>
                     </connections>
                 </button>
             </subviews>
             <connections>
+                <outlet property="editExtraMessagePanel" destination="zvC-bD-bNg" id="LYQ-IQ-xAP"/>
                 <outlet property="messageExtraButton" destination="k2i-SA-fme" id="MdS-e6-TQB"/>
                 <outlet property="messageTextField" destination="dch-FL-HdX" id="B0n-1s-tam"/>
+                <outlet property="secondaryExtraMessageTextField" destination="Gfy-gr-PdM" id="ExU-MM-zCw"/>
             </connections>
             <point key="canvasLocation" x="-633" y="1016"/>
         </customView>
@@ -3180,9 +3167,6 @@ After changing the folder, please close System Preferences for this to be taken 
                             </items>
                         </menu>
                     </popUpButtonCell>
-                    <connections>
-                        <action selector="showTimeChange:" target="zp2-u5-WW1" id="MDT-hd-hti"/>
-                    </connections>
                 </popUpButton>
                 <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jdr-GR-4Cj">
                     <rect key="frame" x="69" y="8" width="41" height="16"/>
@@ -3196,7 +3180,6 @@ After changing the folder, please close System Preferences for this to be taken 
             </subviews>
             <connections>
                 <outlet property="modePopup" destination="CMG-LG-sE8" id="DcR-b7-ln4"/>
-                <outlet property="showTimePopup" destination="CMG-LG-sE8" id="K5F-uc-IZT"/>
             </connections>
             <point key="canvasLocation" x="-174" y="972"/>
         </customView>
@@ -3325,16 +3308,19 @@ After changing the folder, please close System Preferences for this to be taken 
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="openExtraMarginPanelClick:" target="-2" id="VnG-61-nL9"/>
+                        <action selector="openExtraMarginPanelClick:" target="gct-tE-NYN" id="mKx-Ah-cra"/>
                     </connections>
                 </button>
             </subviews>
             <connections>
                 <outlet property="changeCornerMargins" destination="27A-Xh-PNr" id="Rfo-pd-gqX"/>
                 <outlet property="editMarginButton" destination="13a-Fz-Dhg" id="npf-sR-Qae"/>
+                <outlet property="editMarginsPanel" destination="2H5-sQ-PBc" id="QaI-Mj-jT7"/>
                 <outlet property="fadeInOutTextModePopup" destination="vwV-g6-SF4" id="wOH-Mr-QMz"/>
                 <outlet property="marginHorizontalTextfield" destination="6J6-cM-mmx" id="QLb-Vm-QAH"/>
                 <outlet property="marginVerticalTextfield" destination="fKm-i3-ccm" id="7su-9G-wYL"/>
+                <outlet property="secondaryMarginHorizontalTextfield" destination="BX9-RZ-ZYU" id="mLn-2q-xSv"/>
+                <outlet property="secondaryMarginVerticalTextfield" destination="b2N-kl-WaI" id="aps-Yb-uB6"/>
                 <outlet property="shadowRadiusFormatter" destination="ccp-TA-10L" id="dcd-7K-DoQ"/>
                 <outlet property="shadowRadiusTextField" destination="s2H-v7-uoH" id="zKp-BR-cZk"/>
             </connections>

@@ -98,13 +98,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var infoCountdownView: InfoCountdownView!
 
-    // Todo remap those
-
-    @IBOutlet var secondaryMarginHorizontalTextfield: NSTextField!
-    @IBOutlet var secondaryMarginVerticalTextfield: NSTextField!
-    @IBOutlet var editMarginsPanel: NSPanel!
-    @IBOutlet var editExtraMessagePanel: NSPanel!
-
     // Time Tab
     @IBOutlet var iconTime1: NSImageCell!
     @IBOutlet var iconTime2: NSImageCell!
