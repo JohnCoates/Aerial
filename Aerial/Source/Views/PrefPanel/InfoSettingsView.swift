@@ -15,9 +15,17 @@ class InfoSettingsView: NSView {
     @IBOutlet var marginHorizontalTextfield: NSTextField!
     @IBOutlet var marginVerticalTextfield: NSTextField!
 
+    // Shadows
     @IBOutlet var shadowRadiusTextField: NSTextField!
     @IBOutlet var shadowRadiusFormatter: NumberFormatter!
+    @IBOutlet var shadowOpacitySlider: NSSlider!
+    @IBOutlet var shadowOffsetXTextfield: NSTextField!
+    @IBOutlet var shadowOffsetYTextfield: NSTextField!
 
+    @IBOutlet var shadowOffsetXFormatter: NumberFormatter!
+    @IBOutlet var shadowOffsetYFormatter: NumberFormatter!
+
+    // High Sierra workarounds
     @IBOutlet var editMarginsPanel: NSPanel!
 
     @IBOutlet var editMarginButton: NSButton!
@@ -44,6 +52,13 @@ class InfoSettingsView: NSView {
         shadowRadiusFormatter.allowsFloats = false
         shadowRadiusTextField.stringValue = String(PrefsInfo.shadowRadius)
 
+//        shadowOffsetXFormatter.allowsFloats = true
+//        shadowOffsetYFormatter.allowsFloats = true
+
+        shadowOpacitySlider.doubleValue = Double(PrefsInfo.shadowOpacity * 100)
+        shadowOffsetXTextfield.doubleValue = Double(PrefsInfo.shadowOffsetX)
+        shadowOffsetYTextfield.doubleValue = Double(PrefsInfo.shadowOffsetY)
+
         // Workaround for textfield bug in High sierra and earlier
         if #available(OSX 10.14, *) {
             editMarginButton.isHidden = true
@@ -58,6 +73,17 @@ class InfoSettingsView: NSView {
         PrefsInfo.shadowRadius = Int(sender.intValue)
     }
 
+    @IBAction func shadowOpacityChange(_ sender: NSSlider) {
+        PrefsInfo.shadowOpacity = Float(sender.intValue)/100
+    }
+
+    @IBAction func shadowOffsetXChange(_ sender: NSTextField) {
+        PrefsInfo.shadowOffsetX = CGFloat(sender.doubleValue)
+    }
+
+    @IBAction func shadowOffsetYChange(_ sender: NSTextField) {
+        PrefsInfo.shadowOffsetY = CGFloat(sender.doubleValue)
+    }
     // MARK: - Fades
     @IBAction func fadeInOutTextModePopupChange(_ sender: NSPopUpButton) {
         debugLog("UI fadeInOutTextMode: \(sender.indexOfSelectedItem)")

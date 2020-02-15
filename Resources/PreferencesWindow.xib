@@ -141,15 +141,15 @@
             <rect key="contentRect" x="0.0" y="0.0" width="631" height="466"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" identifier="windowView" misplaced="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="631" height="465"/>
+                <rect key="frame" x="0.0" y="0.0" width="631" height="466"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <view identifier="preferencesView" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGe-MQ-1z1">
-                        <rect key="frame" x="0.0" y="41" width="625" height="424"/>
+                        <rect key="frame" x="0.0" y="41" width="625" height="425"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B9U-tn-dsp">
-                                <rect key="frame" x="-1" y="-5" width="634" height="426"/>
+                                <rect key="frame" x="-1" y="-5" width="634" height="427"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
@@ -1921,7 +1921,7 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ndV-E9-x71">
-                        <rect key="frame" x="464" y="9" width="67" height="27"/>
+                        <rect key="frame" x="464" y="10" width="67" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" title="1.0.0beta1" bezelStyle="rounded" alignment="right" imageScaling="proportionallyDown" inset="2" id="O5H-2o-0dP">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2339,7 +2339,7 @@ You can still decide to disable Aerial when running on battery, or if your batte
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-112" y="259"/>
+            <point key="canvasLocation" x="-187" y="84"/>
         </window>
         <window title="Edit extra message" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="zvC-bD-bNg" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
@@ -2351,7 +2351,7 @@ You can still decide to disable Aerial when running on battery, or if your batte
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gfy-gr-PdM">
-                        <rect key="frame" x="20" y="63" width="338" height="22"/>
+                        <rect key="frame" x="20" y="63" width="346" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Type your message here" drawsBackground="YES" id="icO-ZD-k4q">
                             <font key="font" metaFont="system"/>
@@ -3184,11 +3184,11 @@ After changing the folder, please close System Preferences for this to be taken 
             <point key="canvasLocation" x="-174" y="972"/>
         </customView>
         <customView id="gct-tE-NYN" userLabel="Settings Extra View" customClass="InfoSettingsView" customModule="Aerial" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="406" height="248"/>
+            <rect key="frame" x="0.0" y="0.0" width="406" height="323"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <popUpButton identifier="Duration of the fades for the text" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vwV-g6-SF4">
-                    <rect key="frame" x="114" y="216" width="114" height="25"/>
+                    <rect key="frame" x="114" y="291" width="114" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="1 second" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="A8B-Cb-jvo" id="YEr-La-tPj">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -3209,7 +3209,7 @@ After changing the folder, please close System Preferences for this to be taken 
                     </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UWx-zh-UlZ">
-                    <rect key="frame" x="18" y="221" width="92" height="17"/>
+                    <rect key="frame" x="18" y="296" width="92" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Fade in/out:" id="Hkv-Ca-c6A">
                         <font key="font" usesAppearanceFont="YES"/>
@@ -3218,7 +3218,7 @@ After changing the folder, please close System Preferences for this to be taken 
                     </textFieldCell>
                 </textField>
                 <button toolTip="Change the distance between the corner of the screen and where the descriptions should appear" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="27A-Xh-PNr">
-                    <rect key="frame" x="114" y="186" width="196" height="18"/>
+                    <rect key="frame" x="114" y="259" width="196" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Change margins to corner" bezelStyle="regularSquare" imagePosition="left" inset="2" id="bDD-xU-2D1">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -3229,7 +3229,7 @@ After changing the folder, please close System Preferences for this to be taken 
                     </connections>
                 </button>
                 <textField toolTip="Horizontal margin" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6J6-cM-mmx">
-                    <rect key="frame" x="116" y="154" width="57" height="22"/>
+                    <rect key="frame" x="116" y="227" width="57" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="U6p-2H-ZOv">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="lgf-oe-NYF">
@@ -3244,7 +3244,7 @@ After changing the folder, please close System Preferences for this to be taken 
                     </connections>
                 </textField>
                 <textField toolTip="Vertical margin" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fKm-i3-ccm">
-                    <rect key="frame" x="116" y="118" width="57" height="22"/>
+                    <rect key="frame" x="116" y="191" width="57" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="C9I-b7-Kot">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="H9U-mk-rPj">
@@ -3259,7 +3259,7 @@ After changing the folder, please close System Preferences for this to be taken 
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9rH-pc-olh">
-                    <rect key="frame" x="30" y="156" width="80" height="17"/>
+                    <rect key="frame" x="30" y="229" width="80" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Horizontal:" id="MPX-8W-oDl">
                         <font key="font" metaFont="system"/>
@@ -3268,7 +3268,7 @@ After changing the folder, please close System Preferences for this to be taken 
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ewg-1S-vcI">
-                    <rect key="frame" x="47" y="120" width="63" height="17"/>
+                    <rect key="frame" x="47" y="193" width="63" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Vertical:" id="eEF-Qh-Uqp">
                         <font key="font" metaFont="system"/>
@@ -3276,17 +3276,48 @@ After changing the folder, please close System Preferences for this to be taken 
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3z0-eK-UTa">
-                    <rect key="frame" x="2" y="86" width="108" height="16"/>
+                <textField toolTip="Vertical margin" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F5N-5S-n5K">
+                    <rect key="frame" x="118" y="17" width="57" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Shadow radius:" id="H7D-f6-rp3">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="rMN-97-s6f">
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="w3k-KS-KCo"/>
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <action selector="shadowOffsetYChange:" target="gct-tE-NYN" id="T6B-Hj-ZnJ"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V5C-Va-DLq">
+                    <rect key="frame" x="-2" y="54" width="114" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Offset X:" id="BEm-vQ-RUY">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vOX-cg-J9D">
+                    <rect key="frame" x="4" y="18" width="108" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Offset Y:" id="bqc-6O-sgm">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3z0-eK-UTa">
+                    <rect key="frame" x="4" y="124" width="108" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Radius:" id="H7D-f6-rp3">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s2H-v7-uoH">
-                    <rect key="frame" x="116" y="83" width="57" height="21"/>
+                    <rect key="frame" x="118" y="121" width="57" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="dXO-77-rM4">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="ccp-TA-10L">
@@ -3301,7 +3332,7 @@ After changing the folder, please close System Preferences for this to be taken 
                     </connections>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="13a-Fz-Dhg">
-                    <rect key="frame" x="189.5" y="117" width="27" height="23"/>
+                    <rect key="frame" x="189.5" y="190" width="27" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundTextured" title="..." bezelStyle="texturedRounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TCm-4i-Jfu">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -3311,6 +3342,53 @@ After changing the folder, please close System Preferences for this to be taken 
                         <action selector="openExtraMarginPanelClick:" target="gct-tE-NYN" id="mKx-Ah-cra"/>
                     </connections>
                 </button>
+                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="alB-9t-xS8">
+                    <rect key="frame" x="116" y="84" width="144" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="100" tickMarkPosition="above" numberOfTickMarks="5" sliderType="linear" id="Sxh-DY-pUX"/>
+                    <connections>
+                        <action selector="shadowOpacityChange:" target="gct-tE-NYN" id="fyl-AN-gms"/>
+                    </connections>
+                </slider>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jTb-Re-JJ0">
+                    <rect key="frame" x="4" y="89" width="108" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Opacity:" id="Tff-sm-RYe">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n0w-Ic-ZHf">
+                    <rect key="frame" x="14" y="156" width="221" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Adjust shadow appareances:" id="l5A-UB-I1o">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="loq-60-uYl">
+                    <rect key="frame" x="12" y="180" width="382" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </box>
+                <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="wsY-E8-XKU">
+                    <rect key="frame" x="12" y="283" width="382" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </box>
+                <textField toolTip="Horizontal margin" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1YB-gs-ec8">
+                    <rect key="frame" x="118" y="52" width="57" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="aBW-Ug-f1q">
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="GsG-oS-q37"/>
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <action selector="shadowOffsetXChange:" target="gct-tE-NYN" id="X0w-Cp-boR"/>
+                    </connections>
+                </textField>
             </subviews>
             <connections>
                 <outlet property="changeCornerMargins" destination="27A-Xh-PNr" id="Rfo-pd-gqX"/>
@@ -3321,10 +3399,15 @@ After changing the folder, please close System Preferences for this to be taken 
                 <outlet property="marginVerticalTextfield" destination="fKm-i3-ccm" id="7su-9G-wYL"/>
                 <outlet property="secondaryMarginHorizontalTextfield" destination="BX9-RZ-ZYU" id="mLn-2q-xSv"/>
                 <outlet property="secondaryMarginVerticalTextfield" destination="b2N-kl-WaI" id="aps-Yb-uB6"/>
+                <outlet property="shadowOffsetXFormatter" destination="GsG-oS-q37" id="YWy-a8-Gjb"/>
+                <outlet property="shadowOffsetXTextfield" destination="1YB-gs-ec8" id="NOF-HU-HvT"/>
+                <outlet property="shadowOffsetYFormatter" destination="w3k-KS-KCo" id="f2a-qL-70w"/>
+                <outlet property="shadowOffsetYTextfield" destination="F5N-5S-n5K" id="UwV-pr-GjZ"/>
+                <outlet property="shadowOpacitySlider" destination="alB-9t-xS8" id="3yl-n5-hwY"/>
                 <outlet property="shadowRadiusFormatter" destination="ccp-TA-10L" id="dcd-7K-DoQ"/>
                 <outlet property="shadowRadiusTextField" destination="s2H-v7-uoH" id="zKp-BR-cZk"/>
             </connections>
-            <point key="canvasLocation" x="-639" y="444"/>
+            <point key="canvasLocation" x="-639" y="481.5"/>
         </customView>
     </objects>
     <resources>
