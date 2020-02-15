@@ -3,6 +3,22 @@
 <title>Aerial</title>
 
 <item>
+<title>1.7.2beta3</title>
+  <description>
+          <![CDATA[
+<b>Automatic updates are broken for the time being in Catalina. If you try to auto-update, it will look like it install correctly but the update process will silently fail because of new sandboxing restrictions. You will need to update manually for the time being, my apologies.</b>
+
+<ul><li>More shadow options</li>
+<li>Fix High Sierra workarounds in new UI</li></ul>
+          ]]>
+  </description>
+<pubDate>sam., 15 jan. 2020 19:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.7.2beta3/Aerial.saver.zip" sparkle:version="1.7.2beta3" 
+sparkle:edSignature="RgtPcIcPMxur1jqgCDxsEmBddCQZq3vQHZMONrgw5WSTAt0cGz2EPjLghTsgFhIdgEDX5ZYDkGEFHrmH+BqyDA==" length="6006059" type="application/octet-stream"/>
+</item>  
+
+<item>
 <title>1.7.2beta2</title>
   <description>
           <![CDATA[
