@@ -84,6 +84,8 @@ class InfoCommonView: NSView {
             posScreenCenter.state = .on
         case .random:
             posRandom.state = .on
+        case .absTopRight:
+            posTopRight.state = .on
         }
     }
 

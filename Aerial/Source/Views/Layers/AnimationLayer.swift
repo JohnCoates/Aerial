@@ -151,6 +151,11 @@ class AnimationLayer: CATextLayer {
             anchorPoint = CGPoint(x: 0.5, y: 0)
             newPos = CGPoint(x: baseLayer.bounds.width/2, y: my)
             alignmentMode = .center
+        case .absTopRight:
+            anchorPoint = CGPoint(x: 1, y: 1)
+            newPos = CGPoint(x: baseLayer.bounds.width-mx,
+                             y: baseLayer.bounds.height-10)
+            alignmentMode = .right
         default:    // bottomRight
             anchorPoint = CGPoint(x: 1, y: 0)
             newPos = CGPoint(x: baseLayer.bounds.width-mx, y: my)

@@ -19,7 +19,7 @@ protocol CommonInfo {
 
 // Helper Enums for the common infos
 enum InfoCorner: Int, Codable {
-    case topLeft, topCenter, topRight, bottomLeft, bottomCenter, bottomRight, screenCenter, random
+    case topLeft, topCenter, topRight, bottomLeft, bottomCenter, bottomRight, screenCenter, random, absTopRight
 }
 
 enum InfoDisplays: Int, Codable {
@@ -134,7 +134,7 @@ struct PrefsInfo {
     static var clock: Clock
 
     // Battery
-    @Storage(key: "LayerBattery", defaultValue: Battery(isEnabled: true,
+    @Storage(key: "LayerBattery", defaultValue: Battery(isEnabled: false,
                                                      fontName: "Helvetica Neue Medium",
                                                      fontSize: 20,
                                                      corner: .topRight,
@@ -191,7 +191,7 @@ struct PrefsInfo {
 
     // MARK: - Shadows
     // Shadow radius
-    @SimpleStorage(key: "shadowRadius", defaultValue: 20)
+    @SimpleStorage(key: "shadowRadius", defaultValue: 2)
     static var shadowRadius: Int
     @SimpleStorage(key: "shadowOpacity", defaultValue: 1.0)
     static var shadowOpacity: Float
