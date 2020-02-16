@@ -161,6 +161,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var automaticallyCheckForUpdatesCheckbox: NSButton!
     @IBOutlet var allowScreenSaverModeUpdateCheckbox: NSButton!
+    @IBOutlet var sparkleScreenSaverMode: NSPopUpButton!
     @IBOutlet var allowBetasCheckbox: NSButton!
     @IBOutlet var betaCheckFrequencyPopup: NSPopUpButton!
     @IBOutlet var lastCheckedSparkle: NSTextField!

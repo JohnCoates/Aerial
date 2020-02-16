@@ -16,6 +16,9 @@ disabled_rules:
   - operator_whitespace
   - redundant_string_enum_value
 
+excluded:
+  - Extern
+  
 opt_in_rules:
   # Prefer checking `isEmpty` over `count > 0`
   - empty_count

@@ -37,6 +37,8 @@ extension PreferencesWindowController {
             allowBetasCheckbox.state = .on
             betaCheckFrequencyPopup.isEnabled = true
         }
+
+        sparkleScreenSaverMode.selectItem(at: PrefsUpdates.sparkleUpdateMode.rawValue)
     }
 
     // MARK: - Update panel
@@ -65,6 +67,10 @@ extension PreferencesWindowController {
         let onState = button.state == .on
         preferences.updateWhileSaverMode = onState
         debugLog("UI allowScreenSaverModeUpdatesChange: \(onState)")
+    }
+
+    @IBAction func sparkleScreenSaverModeChange(_ sender: NSPopUpButton) {
+        PrefsUpdates.sparkleUpdateMode = UpdateMode(rawValue: sender.indexOfSelectedItem) ?? .notify
     }
 
     @IBAction func allowBetasChange(_ button: NSButton) {

@@ -1,0 +1,3 @@
+[submodule "Extern/Sparkle"]
+	path = Extern/Sparkle
+	url = https://github.com/sparkle-project/Sparkle.git
