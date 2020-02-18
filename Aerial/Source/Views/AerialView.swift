@@ -184,21 +184,26 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         // Run Sparkle updater if enabled
         if !isPreview {
             if preferences.updateWhileSaverMode {
-                au.doForcedUpdate()
+                if PrefsUpdates.sparkleUpdateMode == .notify {
+                    // Run the probing check
+                    au.doProbingCheck()
+                } else {
+                    // Run the forced update
+                    au.doForcedUpdate()
+                }
             }
         }
 
-        // Run the probing check
-        au.doProbingCheck()
-
         // Check early if we need to enable power saver mode,
         // black screen with minimal brightness
-        // swiftlint:disable:next line_length
-        if (PrefsVideos.onBatteryMode == .alwaysDisabled && Battery.isUnplugged() && !isPreview) || (PrefsVideos.onBatteryMode == .disableOnLow && Battery.isLow()) {
-            debugLog("Engaging power saving mode")
-            isDisabled = true
-            Brightness.set(level: 0.0)
-            return
+        if !isPreview {
+            if (PrefsVideos.onBatteryMode == .alwaysDisabled && Battery.isUnplugged())
+                || (PrefsVideos.onBatteryMode == .disableOnLow && Battery.isLow()) {
+                debugLog("Engaging power saving mode")
+                isDisabled = true
+                Brightness.set(level: 0.0)
+                return
+            }
         }
 
         // We may need to set timers to progressively dim the screen

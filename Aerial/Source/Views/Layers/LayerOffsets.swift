@@ -19,5 +19,6 @@ class LayerOffsets {
         corner[.bottomCenter] = 0
         corner[.bottomRight] = 0
         corner[.screenCenter] = 0
+        corner[.absTopRight] = 0
     }
 }

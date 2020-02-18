@@ -17,12 +17,13 @@ extension PreferencesWindowController {
             PrefsInfo.layers.append(.battery)
         }
 
-        if !PrefsInfo.layers.contains(.updates) {
-            PrefsInfo.layers.append(.updates)
-        }
-
         if !PrefsInfo.layers.contains(.countdown) {
             PrefsInfo.layers.append(.countdown)
+        }
+
+        // Annnd for backward compatibility with 1.7.2 betas, remove the updates that was once here ;)
+        if PrefsInfo.layers.contains(.updates) {
+            PrefsInfo.layers.remove(at: PrefsInfo.layers.firstIndex(of: .updates)!)
         }
 
         infoSource = InfoTableSource()

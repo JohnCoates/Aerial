@@ -48,7 +48,10 @@ class AnimationLayer: CATextLayer {
         // Starts hidden, with a bit of shadow for text separation
         self.opacity = 0
         self.shadowRadius = CGFloat(PrefsInfo.shadowRadius)
-        self.shadowOpacity = 1.0
+        self.shadowOpacity = PrefsInfo.shadowOpacity
+        self.shadowOffset = CGSize(width: PrefsInfo.shadowOffsetX,
+                                   height: PrefsInfo.shadowOffsetY)
+
         self.shadowColor = CGColor.black
     }
 
@@ -88,6 +91,7 @@ class AnimationLayer: CATextLayer {
     }
 
     // Move to a corner, this may need to force the redraw of a whole corner
+    // swiftlint:disable:next cyclomatic_complexity
     func move(toCorner: InfoCorner, fullRedraw: Bool) {
         if let currCorner = currentCorner, !fullRedraw {
             // Are we on the same corner ?
@@ -133,13 +137,11 @@ class AnimationLayer: CATextLayer {
             newPos = CGPoint(x: baseLayer.bounds.width-mx,
                              y: baseLayer.bounds.height-my)
             alignmentMode = .right
-
         case .screenCenter:
             anchorPoint = CGPoint(x: 0.5, y: 0)
             newPos = CGPoint(x: baseLayer.bounds.width/2,
                              y: baseLayer.bounds.height/2 - my + 20)
             alignmentMode = .center
-
         case .bottomLeft:
             anchorPoint = CGPoint(x: 0, y: 0)
             newPos = CGPoint(x: mx, y: my)
@@ -148,6 +150,11 @@ class AnimationLayer: CATextLayer {
             anchorPoint = CGPoint(x: 0.5, y: 0)
             newPos = CGPoint(x: baseLayer.bounds.width/2, y: my)
             alignmentMode = .center
+        case .absTopRight:
+            anchorPoint = CGPoint(x: 1, y: 1)
+            newPos = CGPoint(x: baseLayer.bounds.width-mx,
+                             y: baseLayer.bounds.height-10)
+            alignmentMode = .right
         default:    // bottomRight
             anchorPoint = CGPoint(x: 1, y: 0)
             newPos = CGPoint(x: baseLayer.bounds.width-mx, y: my)

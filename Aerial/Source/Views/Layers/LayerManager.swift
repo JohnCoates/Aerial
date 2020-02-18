@@ -44,6 +44,16 @@ class LayerManager {
             addLayerForType(layerType, layer: layer)
         }
 
+        // Then we may need to add our special update layer
+        // It doesn't show in the main UI, it's linked to
+        // options in the Updates tab
+        let preferences = Preferences.sharedInstance
+
+        if preferences.updateWhileSaverMode && PrefsUpdates.sparkleUpdateMode == .notify {
+            print(">>> add update layer")
+            addLayerForType(.updates, layer: layer)
+        }
+
         // And reversed bottomRow
         for layerType in bottomRow.reversed() {
             addLayerForType(layerType, layer: layer)

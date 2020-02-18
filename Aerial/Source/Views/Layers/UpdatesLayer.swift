@@ -37,7 +37,7 @@ class UpdatesLayer: AnimationLayer {
         // Set our layer's font & corner now
         (self.font, self.fontSize) = getFont(name: config.fontName,
                                              size: config.fontSize)
-        self.corner = config.corner
+        self.corner = .absTopRight
     }
 
     override func setupForVideo(video: AerialVideo, player: AVPlayer) {
@@ -65,6 +65,5 @@ class UpdatesLayer: AnimationLayer {
                 })
             }
         }
-
     }
 }

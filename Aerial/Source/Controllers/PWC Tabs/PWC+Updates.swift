@@ -27,7 +27,7 @@ extension PreferencesWindowController {
             lastCheckedSparkle.stringValue = "Never checked for update"
         }
 
-        if sparkleUpdater!.automaticallyChecksForUpdates {
+        if PrefsUpdates.checkForUpdates {
             automaticallyCheckForUpdatesCheckbox.state = .on
         }
         if preferences.updateWhileSaverMode {
@@ -36,6 +36,13 @@ extension PreferencesWindowController {
         if preferences.allowBetas {
             allowBetasCheckbox.state = .on
             betaCheckFrequencyPopup.isEnabled = true
+        }
+
+        sparkleScreenSaverMode.selectItem(at: PrefsUpdates.sparkleUpdateMode.rawValue)
+
+        // We disable silent installs in Catalina
+        if #available(OSX 10.15, *) {
+            silentInstallMenuItem.isEnabled = false
         }
     }
 
@@ -57,7 +64,8 @@ extension PreferencesWindowController {
     // Sparkle updates
     @IBAction func automaticallyCheckForUpdatesChange(_ button: NSButton) {
         let onState = button.state == .on
-        sparkleUpdater!.automaticallyChecksForUpdates = onState
+        PrefsUpdates.checkForUpdates = onState
+        //sparkleUpdater!.automaticallyChecksForUpdates = onState
         debugLog("UI automaticallyCheckForUpdatesChange: \(onState)")
     }
 
@@ -65,6 +73,10 @@ extension PreferencesWindowController {
         let onState = button.state == .on
         preferences.updateWhileSaverMode = onState
         debugLog("UI allowScreenSaverModeUpdatesChange: \(onState)")
+    }
+
+    @IBAction func sparkleScreenSaverModeChange(_ sender: NSPopUpButton) {
+        PrefsUpdates.sparkleUpdateMode = UpdateMode(rawValue: sender.indexOfSelectedItem) ?? .notify
     }
 
     @IBAction func allowBetasChange(_ button: NSButton) {
@@ -82,11 +94,54 @@ extension PreferencesWindowController {
         }
     }
 
-    @IBAction func checkForUpdatesButton(_ sender: Any) {
-        debugLog("check for updates")
-        sparkleUpdater!.checkForUpdates(self)
+    @IBAction func checkForUpdatesButton(_ sender: NSButton) {
+        if #available(OSX 10.15, *) {
+            debugLog("check for updates (using Catalina probe)")
 
-        lastCheckedSparkle.stringValue = "Last checked today"
+            let autoUpdates = AutoUpdates.sharedInstance
+
+            if !autoUpdates.didProbeForUpdate {
+                // Let's probe
+                autoUpdates.doProbingCheck()
+
+                _ = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (_) in
+                    self.checkForProbeResults(silent: false)
+                })
+            } else {
+                // If we already probed, show the results !
+                checkForProbeResults(silent: false)
+            }
+
+        } else {
+            debugLog("check for updates (using Sparkle's auto)")
+            sparkleUpdater!.checkForUpdates(self)
+
+            lastCheckedSparkle.stringValue = "Last checked today"
+        }
+    }
+
+    func checkForProbeResults(silent: Bool) {
+        let autoUpdates = AutoUpdates.sharedInstance
+
+        if !autoUpdates.didProbeForUpdate {
+            // Try again in 2s
+            if #available(OSX 10.12, *) {
+                _ = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (_) in
+                    self.checkForProbeResults(silent: silent)
+                })
+            } else {
+                // We should only come here in Catalina anyway
+                errorLog("checkForProbeResults called in macOS < 10.12")
+            }
+        } else {
+            if autoUpdates.isAnUpdateAvailable() {
+                updateReleaseController.show(sender: self.versionButton, controller: self)
+            } else {
+                if !silent {
+                    updateReleaseController.showNoUpdate()
+                }
+            }
+        }
     }
 
     // Json updates

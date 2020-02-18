@@ -38,15 +38,33 @@ final class PoiStringProvider {
     }
 
     // MARK: - Bundle management
+    private func getBundleLanguages() -> [String] {
+        // Might want to improve that...
+        // This is a static list of what's supposed to be in the bundle
+        // swiftlint:disable:next line_length
+        return ["de", "he", "en_AU", "ar", "el", "ja", "en", "uk", "es_419", "zh_CN", "es", "pt_BR", "da", "it", "sk", "pt_PT", "ms", "sv", "cs", "ko", "no", "hu", "zh_HK", "tr", "pl", "zh_TW", "en_GB", "vi", "ru", "fr_CA", "fr", "fi", "id", "nl", "th", "pt", "ro", "hr", "hi", "ca"]
+    }
+
     private func loadBundle() {
         // Idle string bundle
         let preferences = Preferences.sharedInstance
-
         var bundlePath = VideoCache.appSupportDirectory!
         if preferences.ciOverrideLanguage == "" {
-            // We load the bundle and let system grab the closest available preferred language
-            bundlePath.append(contentsOf: "/TVIdleScreenStrings13.bundle")
+            debugLog("Preferred languages : \(Locale.preferredLanguages)")
+
+            let bestMatchedLanguage = Bundle.preferredLocalizations(from: getBundleLanguages(), forPreferences: Locale.preferredLanguages).first
+            if let match = bestMatchedLanguage {
+                debugLog("Best matched language : \(match)")
+                bundlePath.append(contentsOf: "/TVIdleScreenStrings13.bundle/" + match + ".lproj/")
+            } else {
+                debugLog("No match, reverting to english")
+                // We load the bundle and let system grab the closest available preferred language
+                // This no longer works in Catalina and defaults back to english
+                // as legacyScreenSaver.appex, our new "mainbundle" is english only
+                bundlePath.append(contentsOf: "/TVIdleScreenStrings13.bundle")
+            }
         } else {
+            debugLog("Language overriden to \(preferences.ciOverrideLanguage)")
             // Or we load the overriden one
             bundlePath.append(contentsOf: "/TVIdleScreenStrings13.bundle/" + preferences.ciOverrideLanguage! + ".lproj/")
         }

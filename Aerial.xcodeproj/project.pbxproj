@@ -35,6 +35,16 @@
 		033D62AF216CAE2C00F3AF83 /* icon-night-dark.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 033D62AE216CAE2C00F3AF83 /* icon-night-dark.pdf */; };
 		033D62B0216CAE2C00F3AF83 /* icon-night-dark.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 033D62AE216CAE2C00F3AF83 /* icon-night-dark.pdf */; };
 		033D62B1216CAE2C00F3AF83 /* icon-night-dark.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 033D62AE216CAE2C00F3AF83 /* icon-night-dark.pdf */; };
+		034116CC23F9AD0100CD7674 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034116B523F9ACE300CD7674 /* Sparkle.framework */; };
+		034116CD23F9AD0100CD7674 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 034116B523F9ACE300CD7674 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		034116CF23F9AD0600CD7674 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034116B523F9ACE300CD7674 /* Sparkle.framework */; };
+		034116D023F9AD0600CD7674 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 034116B523F9ACE300CD7674 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		034116D323F9BD3100CD7674 /* PrefsUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034116D223F9BD3100CD7674 /* PrefsUpdates.swift */; };
+		034116D423F9BD3100CD7674 /* PrefsUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034116D223F9BD3100CD7674 /* PrefsUpdates.swift */; };
+		034116D923FADE3600CD7674 /* UpdateReleaseWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 034116D823FADE3600CD7674 /* UpdateReleaseWindow.xib */; };
+		034116DA23FADE3600CD7674 /* UpdateReleaseWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 034116D823FADE3600CD7674 /* UpdateReleaseWindow.xib */; };
+		034116DC23FADEDA00CD7674 /* UpdateReleaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034116DB23FADEDA00CD7674 /* UpdateReleaseController.swift */; };
+		034116DD23FADEDA00CD7674 /* UpdateReleaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034116DB23FADEDA00CD7674 /* UpdateReleaseController.swift */; };
 		034F29B423A7A79B004B34D5 /* PWC+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F29B323A7A79B004B34D5 /* PWC+Info.swift */; };
 		034F29B723A7A93D004B34D5 /* InfoTableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F29B623A7A93D004B34D5 /* InfoTableSource.swift */; };
 		034F29B823A7A9B3004B34D5 /* InfoTableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F29B623A7A93D004B34D5 /* InfoTableSource.swift */; };
@@ -164,9 +174,6 @@
 		03E8731121662AEB002B469B /* AsynchronousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8730E216501ED002B469B /* AsynchronousOperation.swift */; };
 		03E8731321675FE0002B469B /* TimeManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8731221675FE0002B469B /* TimeManagement.swift */; };
 		03E87314216760B7002B469B /* TimeManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8731221675FE0002B469B /* TimeManagement.swift */; };
-		1CE1414C7F559B453E61831F /* Pods_AerialApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0922E026F9FAC43AF7A569 /* Pods_AerialApp.framework */; };
-		42813D561DB8096CC34CB535 /* Pods_Aerial_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E7FC91C9058F0A22FBCC762 /* Pods_Aerial_Tests.framework */; };
-		70CA722D8D5D59C803F3B81B /* Pods_Aerial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C010F2542FCE112D8A6E5CA /* Pods_Aerial.framework */; };
 		AA7E2E5E1FC62E8B00E5F320 /* AerialPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */; };
 		F00864B423AAE7F0003210EF /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00864B323AAE7F0003210EF /* DarkMode.swift */; };
 		F00864B523AAE7F0003210EF /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00864B323AAE7F0003210EF /* DarkMode.swift */; };
@@ -208,6 +215,90 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		034116B423F9ACE300CD7674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 034116A223F9ACE300CD7674 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = Sparkle;
+		};
+		034116B623F9ACE300CD7674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 034116A223F9ACE300CD7674 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 61B5F90209C4CEE200B25A18;
+			remoteInfo = "Sparkle Test App";
+		};
+		034116B823F9ACE300CD7674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 034116A223F9ACE300CD7674 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 612279D90DB5470200AB99EA;
+			remoteInfo = "Sparkle Unit Tests";
+		};
+		034116BA23F9ACE300CD7674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 034116A223F9ACE300CD7674 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5D06E8D00FD68C7C005AE3F6;
+			remoteInfo = BinaryDelta;
+		};
+		034116BC23F9ACE300CD7674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 034116A223F9ACE300CD7674 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 55C14BB7136EEF1500649790;
+			remoteInfo = Autoupdate;
+		};
+		034116BE23F9ACE300CD7674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 034116A223F9ACE300CD7674 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 726B2B5D1C645FC900388755;
+			remoteInfo = "UI Tests";
+		};
+		034116C023F9ACE300CD7674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 034116A223F9ACE300CD7674 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 722954B41D04ADAF00ECF9CA;
+			remoteInfo = fileop;
+		};
+		034116C223F9ACE300CD7674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 034116A223F9ACE300CD7674 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5AE13FB31E0D9E07000D2C2C;
+			remoteInfo = generate_appcast;
+		};
+		034116C423F9ACE300CD7674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 034116A223F9ACE300CD7674 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5AB8F19F214DA72000A1187F;
+			remoteInfo = generate_keys;
+		};
+		034116C623F9ACE300CD7674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 034116A223F9ACE300CD7674 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5A5ADED7214EDE4900DF0099;
+			remoteInfo = sign_update;
+		};
+		034116C823F9ACE300CD7674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 034116A223F9ACE300CD7674 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EA4311EA229D651300A5503D;
+			remoteInfo = bsdiff;
+		};
+		034116CA23F9ACE300CD7674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 034116A223F9ACE300CD7674 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EA4311A0229D5FBC00A5503D;
+			remoteInfo = ed25519;
+		};
 		FA7199731D94EC5A00FBC99B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FACAF19C1BD9FC6000E539DC /* Project object */;
@@ -216,6 +307,31 @@
 			remoteInfo = "Aerial App";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		034116CE23F9AD0100CD7674 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				034116CD23F9AD0100CD7674 /* Sparkle.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		034116D123F9AD0600CD7674 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				034116D023F9AD0600CD7674 /* Sparkle.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0306336723A1012200046A59 /* LocationLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLayer.swift; sourceTree = "<group>"; };
@@ -232,6 +348,10 @@
 		033192E0217B78240073B580 /* en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = en.json; sourceTree = "<group>"; };
 		033D62AA216CADCD00F3AF83 /* icon-day-dark.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icon-day-dark.pdf"; sourceTree = "<group>"; };
 		033D62AE216CAE2C00F3AF83 /* icon-night-dark.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icon-night-dark.pdf"; sourceTree = "<group>"; };
+		034116A223F9ACE300CD7674 /* Sparkle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sparkle.xcodeproj; path = Extern/Sparkle/Sparkle.xcodeproj; sourceTree = "<group>"; };
+		034116D223F9BD3100CD7674 /* PrefsUpdates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsUpdates.swift; sourceTree = "<group>"; };
+		034116D823FADE3600CD7674 /* UpdateReleaseWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateReleaseWindow.xib; sourceTree = "<group>"; };
+		034116DB23FADEDA00CD7674 /* UpdateReleaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateReleaseController.swift; sourceTree = "<group>"; };
 		034F29B323A7A79B004B34D5 /* PWC+Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PWC+Info.swift"; sourceTree = "<group>"; };
 		034F29B623A7A93D004B34D5 /* InfoTableSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableSource.swift; sourceTree = "<group>"; };
 		034F29BE23A7E28E004B34D5 /* PrefsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsInfo.swift; sourceTree = "<group>"; };
@@ -301,19 +421,10 @@
 		03E8730B2165013C002B469B /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		03E8730E216501ED002B469B /* AsynchronousOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousOperation.swift; sourceTree = "<group>"; };
 		03E8731221675FE0002B469B /* TimeManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManagement.swift; sourceTree = "<group>"; };
-		0C8FC8BFBDB12119C417B384 /* Pods-AerialApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AerialApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AerialApp/Pods-AerialApp.debug.xcconfig"; sourceTree = "<group>"; };
-		16D0EAF0612223CDB1E938A3 /* Pods-Aerial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aerial.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aerial/Pods-Aerial.debug.xcconfig"; sourceTree = "<group>"; };
-		431164E9C62B702ED573DE22 /* Pods-Aerial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aerial.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aerial/Pods-Aerial.release.xcconfig"; sourceTree = "<group>"; };
-		6F861C9769B40A0B8FBDC0E6 /* Pods-Aerial Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aerial Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aerial Tests/Pods-Aerial Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		7E7FC91C9058F0A22FBCC762 /* Pods_Aerial_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aerial_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C010F2542FCE112D8A6E5CA /* Pods_Aerial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aerial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialPlayerItem.swift; sourceTree = "<group>"; };
-		C2789CB51C64430F9CDEABF1 /* Pods-Aerial Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aerial Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aerial Tests/Pods-Aerial Tests.release.xcconfig"; sourceTree = "<group>"; };
-		E783122BE370B662D207D98F /* Pods-AerialApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AerialApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-AerialApp/Pods-AerialApp.release.xcconfig"; sourceTree = "<group>"; };
 		F00864B323AAE7F0003210EF /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
 		F00864B623AAE8E9003210EF /* NightShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightShift.swift; sourceTree = "<group>"; };
 		F008DAFC23AADCFB00739DE1 /* Brightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brightness.swift; sourceTree = "<group>"; };
-		FA0922E026F9FAC43AF7A569 /* Pods_AerialApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AerialApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA143CD61BDA3E880041A82B /* AerialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA143CE51BDA3EEF0041A82B /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = VideoDownload.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -348,7 +459,7 @@
 				03510C772185EF8F008F74F2 /* CoreLocation.framework in Frameworks */,
 				03510C6B21834EB2008F74F2 /* IOKit.framework in Frameworks */,
 				FA143CE61BDA3EEF0041A82B /* AVKit.framework in Frameworks */,
-				1CE1414C7F559B453E61831F /* Pods_AerialApp.framework in Frameworks */,
+				034116CF23F9AD0600CD7674 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +467,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42813D561DB8096CC34CB535 /* Pods_Aerial_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,8 +475,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				03510C732185EF76008F74F2 /* CoreLocation.framework in Frameworks */,
+				034116CC23F9AD0100CD7674 /* Sparkle.framework in Frameworks */,
 				03510C6C21834EFF008F74F2 /* IOKit.framework in Frameworks */,
-				70CA722D8D5D59C803F3B81B /* Pods_Aerial.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +517,25 @@
 			path = Community;
 			sourceTree = "<group>";
 		};
+		034116A323F9ACE300CD7674 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				034116B523F9ACE300CD7674 /* Sparkle.framework */,
+				034116B723F9ACE300CD7674 /* Sparkle Test App.app */,
+				034116B923F9ACE300CD7674 /* Sparkle Unit Tests.xctest */,
+				034116BB23F9ACE300CD7674 /* BinaryDelta */,
+				034116BD23F9ACE300CD7674 /* Autoupdate.app */,
+				034116BF23F9ACE300CD7674 /* UI Tests.xctest */,
+				034116C123F9ACE300CD7674 /* fileop */,
+				034116C323F9ACE300CD7674 /* generate_appcast */,
+				034116C523F9ACE300CD7674 /* generate_keys */,
+				034116C723F9ACE300CD7674 /* sign_update */,
+				034116C923F9ACE300CD7674 /* libbsdiff.a */,
+				034116CB23F9ACE300CD7674 /* libed25519.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		034F29B523A7A8E1004B34D5 /* PrefPanel */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +563,7 @@
 				038D2EDD23B0FB0D00CD91F7 /* PrefsVideos.swift */,
 				0361B9A723D732A300B6252D /* PrefsDisplays.swift */,
 				0361B9AA23D73D4500B6252D /* PrefsTime.swift */,
+				034116D223F9BD3100CD7674 /* PrefsUpdates.swift */,
 			);
 			path = Prefs;
 			sourceTree = "<group>";
@@ -512,28 +642,13 @@
 			path = Hardware;
 			sourceTree = "<group>";
 		};
-		F1B1238D786BBB1C50CB8803 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				16D0EAF0612223CDB1E938A3 /* Pods-Aerial.debug.xcconfig */,
-				431164E9C62B702ED573DE22 /* Pods-Aerial.release.xcconfig */,
-				6F861C9769B40A0B8FBDC0E6 /* Pods-Aerial Tests.debug.xcconfig */,
-				C2789CB51C64430F9CDEABF1 /* Pods-Aerial Tests.release.xcconfig */,
-				0C8FC8BFBDB12119C417B384 /* Pods-AerialApp.debug.xcconfig */,
-				E783122BE370B662D207D98F /* Pods-AerialApp.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		FA2D7AA01BDD849E009EA54C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				034116A223F9ACE300CD7674 /* Sparkle.xcodeproj */,
 				03510C722185EF76008F74F2 /* CoreLocation.framework */,
 				03510C6A21834EB2008F74F2 /* IOKit.framework */,
 				FA143CE51BDA3EEF0041A82B /* AVKit.framework */,
-				8C010F2542FCE112D8A6E5CA /* Pods_Aerial.framework */,
-				7E7FC91C9058F0A22FBCC762 /* Pods_Aerial_Tests.framework */,
-				FA0922E026F9FAC43AF7A569 /* Pods_AerialApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -581,6 +696,7 @@
 				0395835121807D1F008E8F9C /* thumbnail@2x.png */,
 				FAC36F3A1BE1756D007F2A20 /* PreferencesWindow.xib */,
 				0313F9E522942AA500B074BB /* CustomVideos.xib */,
+				034116D823FADE3600CD7674 /* UpdateReleaseWindow.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -602,6 +718,7 @@
 				03608A1122A54921008F08A2 /* PWC Tabs */,
 				FAC36F3E1BE1756D007F2A20 /* PreferencesWindowController.swift */,
 				0313F9E722942B4500B074BB /* CustomVideoController.swift */,
+				034116DB23FADEDA00CD7674 /* UpdateReleaseController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -671,7 +788,6 @@
 				FA71996F1D94EC5A00FBC99B /* Tests */,
 				FA2D7AA01BDD849E009EA54C /* Frameworks */,
 				FACAF1A61BD9FC6000E539DC /* Products */,
-				F1B1238D786BBB1C50CB8803 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -703,12 +819,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA143CE01BDA3E880041A82B /* Build configuration list for PBXNativeTarget "AerialApp" */;
 			buildPhases = (
-				B326E4EB5930FD08EEA5D212 /* [CP] Check Pods Manifest.lock */,
 				FA74B8481D94DCE0004FE056 /* Run Script - Swiftlint */,
 				FA143CD21BDA3E880041A82B /* Sources */,
 				FA143CD31BDA3E880041A82B /* Frameworks */,
 				FA143CD41BDA3E880041A82B /* Resources */,
-				6F6791269A5D5F62796AE75A /* [CP] Embed Pods Frameworks */,
+				034116D123F9AD0600CD7674 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -723,7 +838,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA7199751D94EC5A00FBC99B /* Build configuration list for PBXNativeTarget "Aerial Tests" */;
 			buildPhases = (
-				3B10443BE2EC7A75E1F031DF /* [CP] Check Pods Manifest.lock */,
 				FA71996A1D94EC5A00FBC99B /* Sources */,
 				FA71996B1D94EC5A00FBC99B /* Frameworks */,
 				FA71996C1D94EC5A00FBC99B /* Resources */,
@@ -742,13 +856,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FACAF1AF1BD9FC6000E539DC /* Build configuration list for PBXNativeTarget "Aerial" */;
 			buildPhases = (
-				910394578D35CCEBAEE0D456 /* [CP] Check Pods Manifest.lock */,
 				7E9B50FB2187D302002895ED /* Run Script - Swiftlint */,
 				FACAF1A01BD9FC6000E539DC /* Sources */,
 				FACAF1A11BD9FC6000E539DC /* Frameworks */,
 				FACAF1A21BD9FC6000E539DC /* Headers */,
 				FACAF1A31BD9FC6000E539DC /* Resources */,
-				030E8CFC21C2CC13008272B9 /* [CP] Embed Pods Frameworks */,
+				034116CE23F9AD0100CD7674 /* Embed Frameworks */,
 				038EF1B623E86DCA00E9D379 /* ShellScript */,
 			);
 			buildRules = (
@@ -801,6 +914,12 @@
 			mainGroup = FACAF19B1BD9FC6000E539DC;
 			productRefGroup = FACAF1A61BD9FC6000E539DC /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 034116A323F9ACE300CD7674 /* Products */;
+					ProjectRef = 034116A223F9ACE300CD7674 /* Sparkle.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				FACAF1A41BD9FC6000E539DC /* Aerial */,
@@ -809,6 +928,93 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		034116B523F9ACE300CD7674 /* Sparkle.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Sparkle.framework;
+			remoteRef = 034116B423F9ACE300CD7674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		034116B723F9ACE300CD7674 /* Sparkle Test App.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Sparkle Test App.app";
+			remoteRef = 034116B623F9ACE300CD7674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		034116B923F9ACE300CD7674 /* Sparkle Unit Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Sparkle Unit Tests.xctest";
+			remoteRef = 034116B823F9ACE300CD7674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		034116BB23F9ACE300CD7674 /* BinaryDelta */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = BinaryDelta;
+			remoteRef = 034116BA23F9ACE300CD7674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		034116BD23F9ACE300CD7674 /* Autoupdate.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Autoupdate.app;
+			remoteRef = 034116BC23F9ACE300CD7674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		034116BF23F9ACE300CD7674 /* UI Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "UI Tests.xctest";
+			remoteRef = 034116BE23F9ACE300CD7674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		034116C123F9ACE300CD7674 /* fileop */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = fileop;
+			remoteRef = 034116C023F9ACE300CD7674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		034116C323F9ACE300CD7674 /* generate_appcast */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = generate_appcast;
+			remoteRef = 034116C223F9ACE300CD7674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		034116C523F9ACE300CD7674 /* generate_keys */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = generate_keys;
+			remoteRef = 034116C423F9ACE300CD7674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		034116C723F9ACE300CD7674 /* sign_update */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = sign_update;
+			remoteRef = 034116C623F9ACE300CD7674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		034116C923F9ACE300CD7674 /* libbsdiff.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libbsdiff.a;
+			remoteRef = 034116C823F9ACE300CD7674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		034116CB23F9ACE300CD7674 /* libed25519.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libed25519.a;
+			remoteRef = 034116CA23F9ACE300CD7674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FA143CD41BDA3E880041A82B /* Resources */ = {
@@ -839,6 +1045,7 @@
 				035A92A9225F8C480095AB85 /* he.json in Resources */,
 				035A92A7225F8C480095AB85 /* de.json in Resources */,
 				0395835421807D1F008E8F9C /* thumbnail@2x.png in Resources */,
+				034116DA23FADE3600CD7674 /* UpdateReleaseWindow.xib in Resources */,
 				03D1E79822848F7F00D10CF7 /* screen0.jpg in Resources */,
 				03D37FDC22145487005A146F /* fr.json in Resources */,
 			);
@@ -880,6 +1087,7 @@
 				038EBE9422D0AA3D00C7AD02 /* nl.json in Resources */,
 				033D62AF216CAE2C00F3AF83 /* icon-night-dark.pdf in Resources */,
 				0369985D2196103300E359D3 /* missingvideos.json in Resources */,
+				034116D923FADE3600CD7674 /* UpdateReleaseWindow.xib in Resources */,
 				03E4B20D22DC7F8800C22EBE /* zh_TW.json in Resources */,
 				FAC36F4F1BE1756D007F2A20 /* icon-night.pdf in Resources */,
 				0313F9E622942AA500B074BB /* CustomVideos.xib in Resources */,
@@ -890,29 +1098,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		030E8CFC21C2CC13008272B9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Aerial/Pods-Aerial-frameworks.sh",
-				"${PODS_ROOT}/Sparkle/Sparkle.framework",
-				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
-				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${SRCROOT}/Pods/Target Support Files/Pods-Aerial/Pods-Aerial-frameworks.sh\"\n";
-		};
 		038EF1B623E86DCA00E9D379 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -930,44 +1115,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nLOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\n\n# By default, use the configured code signing identity for the project/target\nIDENTITY=\"${CODE_SIGN_IDENTITY}\"\nif [ \"$IDENTITY\" == \"\" ]\nthen\n  # If a code signing identity is not specified, use ad hoc signing\n  IDENTITY=\"-\"\nfi\ncodesign --verbose --force --deep -o runtime --sign \"$IDENTITY\" \"$LOCATION/Sparkle.framework/Versions/A/Resources/AutoUpdate.app\"\ncodesign --verbose --force -o runtime --sign \"$IDENTITY\" \"$LOCATION/Sparkle.framework/Versions/A\"\n";
 		};
-		3B10443BE2EC7A75E1F031DF /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Aerial Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6F6791269A5D5F62796AE75A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AerialApp/Pods-AerialApp-frameworks.sh",
-				"${PODS_ROOT}/Sparkle/Sparkle.framework",
-				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
-				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AerialApp/Pods-AerialApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7E9B50FB2187D302002895ED /* Run Script - Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -981,42 +1128,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#if which swiftlint >/dev/null; then\n#    if [ -z \"$CI\" ]; then\n#        make --directory=${SRCROOT} xcode-lint\n#    fi\n#else\n#    echo \"warning: SwiftLint not installed, install using `brew install swiftlint`\"\n#fi\nif which swiftlint >/dev/null; then\n    swiftlint autocorrect\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		910394578D35CCEBAEE0D456 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Aerial-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B326E4EB5930FD08EEA5D212 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AerialApp-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 		FA74B8481D94DCE0004FE056 /* Run Script - Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1065,6 +1176,7 @@
 				03608A2122A55BC2008F08A2 /* PWC+Cache.swift in Sources */,
 				038D2EE523B6565900CD91F7 /* InfoBatteryView.swift in Sources */,
 				030D9B7C21551A8D00961E95 /* AerialPlayerItem.swift in Sources */,
+				034116DD23FADEDA00CD7674 /* UpdateReleaseController.swift in Sources */,
 				03608A2D22A56465008F08A2 /* HardwareDetection.swift in Sources */,
 				036A57D923F4747D0009DC02 /* InfoCountdownView.swift in Sources */,
 				FAC36F5E1BE1756D007F2A20 /* CheckCellView.swift in Sources */,
@@ -1090,6 +1202,7 @@
 				03BF51BD23A26522008AD373 /* LayerManager.swift in Sources */,
 				03608A1B22A55B9A008F08A2 /* PWC+Time.swift in Sources */,
 				FA6F81DD1D939455007975FE /* Preferences.swift in Sources */,
+				034116D423F9BD3100CD7674 /* PrefsUpdates.swift in Sources */,
 				FAF450221BE2B45D00C1F98A /* VideoLoader.swift in Sources */,
 				036A57DC23F5828E0009DC02 /* CountdownLayer.swift in Sources */,
 				0313F9EA2294338300B074BB /* CustomVideoController.swift in Sources */,
@@ -1127,6 +1240,7 @@
 				F00864B723AAE8E9003210EF /* NightShift.swift in Sources */,
 				03608A1A22A55B9A008F08A2 /* PWC+Time.swift in Sources */,
 				FAC36F5D1BE1756D007F2A20 /* CheckCellView.swift in Sources */,
+				034116D323F9BD3100CD7674 /* PrefsUpdates.swift in Sources */,
 				FAC36F5B1BE1756D007F2A20 /* AerialView.swift in Sources */,
 				0393857A2175D4B80040B850 /* AVPlayerViewExtension.swift in Sources */,
 				03E8730F216501ED002B469B /* AsynchronousOperation.swift in Sources */,
@@ -1156,6 +1270,7 @@
 				03608A2322A55BF1008F08A2 /* PWC+Updates.swift in Sources */,
 				AA7E2E5E1FC62E8B00E5F320 /* AerialPlayerItem.swift in Sources */,
 				03608A2C22A56465008F08A2 /* HardwareDetection.swift in Sources */,
+				034116DC23FADEDA00CD7674 /* UpdateReleaseController.swift in Sources */,
 				03608A1022A54887008F08A2 /* PWC+Videos.swift in Sources */,
 				03A596D323AA750F0097EA66 /* InfoMessageView.swift in Sources */,
 				03608A2022A55BC2008F08A2 /* PWC+Cache.swift in Sources */,
@@ -1214,18 +1329,18 @@
 /* Begin XCBuildConfiguration section */
 		FA143CE11BDA3E880041A82B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C8FC8BFBDB12119C417B384 /* Pods-AerialApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.8.0;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Aerial/App/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MARKETING_VERSION = 1.6.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 1.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1237,18 +1352,18 @@
 		};
 		FA143CE21BDA3E880041A82B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E783122BE370B662D207D98F /* Pods-AerialApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.8.0;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Aerial/App/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MARKETING_VERSION = 1.6.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 1.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1260,7 +1375,6 @@
 		};
 		FA7199761D94EC5A00FBC99B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F861C9769B40A0B8FBDC0E6 /* Pods-Aerial Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1282,7 +1396,6 @@
 		};
 		FA7199771D94EC5A00FBC99B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C2789CB51C64430F9CDEABF1 /* Pods-Aerial Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1346,7 +1459,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
@@ -1396,7 +1509,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				SDKROOT = macosx;
@@ -1407,7 +1520,6 @@
 		};
 		FACAF1B01BD9FC6000E539DC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 16D0EAF0612223CDB1E938A3 /* Pods-Aerial.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
@@ -1415,15 +1527,15 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.7.2beta1;
+				CURRENT_PROJECT_VERSION = 1.8.0;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MARKETING_VERSION = 1.7.2beta1;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 1.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1436,7 +1548,6 @@
 		};
 		FACAF1B11BD9FC6000E539DC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 431164E9C62B702ED573DE22 /* Pods-Aerial.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
@@ -1444,15 +1555,15 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.7.2beta1;
+				CURRENT_PROJECT_VERSION = 1.8.0;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MARKETING_VERSION = 1.7.2beta1;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 1.8.0;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
