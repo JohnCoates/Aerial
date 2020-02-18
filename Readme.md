@@ -28,7 +28,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 ## Installation
 
-**Warning :** There are still a few issues with macOS Catalina because of new restrictions applied to screensavers. The main one is that auto-updates are broken for the forseeable future. You will need to download updates manually for the time being (or consider [homebrew](Documentation/Installation.md)). You can find all the currently known issues with Catalina [here](Documentation/Troubleshooting.md).
+**Please note :** Starting with Catalina, Aerial will only notify you of new versions, but won't be able to automatically update itself. This is a limitation of macOS Catalina.
 
 Installation instructions :
 
@@ -39,23 +39,32 @@ Installation instructions :
 
 Need more information on install, setup, or uninstall ? Or want to install via homebrew ? Check our extended [instructions here](Documentation/Installation.md). Curious about auto-updates ? [Have a look here](Documentation/AutoUpdates.md).
 
-## What's new in Aerial 1.7.0 (January 29, 2020)?
+## What's new in Aerial 1.8.0 (February 18, 2020)?
 
-- Add support for the 11 new sea videos that were just released, including dolphins, sharks and Tahiti waves.
+- New update system for macOS Catalina. Starting with version 1.8.0, Aerial will now by default notify you with a message while the screen saver runs, when a new version of Aerial is available :
 
-![Capture d’écran 2020-01-29 à 20 52 20](https://user-images.githubusercontent.com/37544189/73392796-ca25cc80-42da-11ea-913a-c4dc1f310710.jpg)
+![Capture d’écran 2020-02-18 à 17 57 39](https://user-images.githubusercontent.com/37544189/74758954-5858f700-5278-11ea-8e17-d034fdf57f33.jpg)
 
-- Complete rewrite of the text/animation system, you can now select which information appears on which display, and configure more precisely the position of items on screen, or the font used. 
+You will also be notified when a new version is available in Aerial's settings, with that new mechanism that will redirect you to the new release page where you can download the new version :
+![Capture d’écran 2020-02-18 à 17 59 28](https://user-images.githubusercontent.com/37544189/74759068-7f172d80-5278-11ea-99bf-08621550087b.jpg)
 
-![Capture d’écran 2020-01-29 à 21 00 08](https://user-images.githubusercontent.com/37544189/73392613-731ff780-42da-11ea-8421-8149f24be6e1.jpg)
+The update check process still uses Sparkle, but Aerial is not able to auto update in macOS Catalina due to the new sandboxing restrictions. I apologize for the inconvenience.
 
-This version also fixes many issues with macOS Catalina.
+- Add new shadow controls :
+
+![Capture d’écran 2020-02-18 à 18 06 26](https://user-images.githubusercontent.com/37544189/74759836-b3d7b480-5279-11ea-84cf-3ddbc810cbce.jpg)
+
+- Add a new Countdown information option, to either countdown to a given date, or a given time of day :
+
+![Capture d’écran 2020-02-18 à 18 07 49](https://user-images.githubusercontent.com/37544189/74759838-b4704b00-5279-11ea-8446-9cad67da60ea.jpg)
+
+This version also fixes many issues with macOS Catalina, namely localization that always defaulted to English, due to the restrictions applied by `legacyScreenSaver.appex`'s sandboxing. Starting with 1.8.0, Aerial requires at least macOS 10.12.
 
 You can find more about [version changes here](Documentation/ChangeLog.md).
 
 ## Compatibility
 
-Aerial is written in Swift, which requires OS X Mavericks (10.9) or above.  
+Aerial is written in Swift, which requires OS X Sierra (10.12) or above. Aerial 1.7.1 is the last version that supports macOS 10.9. 
 
 ## Community
 
