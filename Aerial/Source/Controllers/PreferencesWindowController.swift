@@ -167,6 +167,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var betaCheckFrequencyPopup: NSPopUpButton!
     @IBOutlet var lastCheckedSparkle: NSTextField!
 
+    @IBOutlet var silentInstallMenuItem: NSMenuItem!
     // Advanced Tab
     @IBOutlet weak var debugModeCheckbox: NSButton!
     @IBOutlet weak var showLogBottomClick: NSButton!

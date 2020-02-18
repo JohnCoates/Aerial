@@ -115,6 +115,7 @@
                 <outlet property="rightClickOpenQuickTimeMenuItem" destination="1t6-YL-1aJ" id="HTB-4K-Bn2"/>
                 <outlet property="secondProjectPageLink" destination="1gS-Uu-hUv" id="UdX-F9-u8p"/>
                 <outlet property="showLogBottomClick" destination="Qtq-PW-JOS" id="F8N-hw-bBa"/>
+                <outlet property="silentInstallMenuItem" destination="ayc-7f-5pU" id="gCR-yQ-K6s"/>
                 <outlet property="sleepAfterLabel" destination="Y3W-x9-oeE" id="jfr-s6-7dp"/>
                 <outlet property="solarModePopup" destination="7nt-0g-1hP" id="Ej9-u5-ZaL"/>
                 <outlet property="sparkleScreenSaverMode" destination="vjv-w2-IDf" id="szL-4B-X7S"/>
@@ -1700,10 +1701,10 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vjv-w2-IDf">
                                                     <rect key="frame" x="220" y="81" width="223" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <popUpButtonCell key="cell" type="push" title="Notify me of new versions" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="6Ss-1b-Lqf" id="eOs-8W-qJs">
+                                                    <popUpButtonCell key="cell" type="push" title="Notify me of new versions" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" selectedItem="6Ss-1b-Lqf" id="eOs-8W-qJs">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
-                                                        <menu key="menu" id="Adb-PB-Rd8">
+                                                        <menu key="menu" autoenablesItems="NO" id="Adb-PB-Rd8">
                                                             <items>
                                                                 <menuItem title="Notify me of new versions" state="on" id="6Ss-1b-Lqf"/>
                                                                 <menuItem title="Silently install new versions" id="ayc-7f-5pU"/>

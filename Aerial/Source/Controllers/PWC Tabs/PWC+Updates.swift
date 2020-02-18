@@ -39,6 +39,11 @@ extension PreferencesWindowController {
         }
 
         sparkleScreenSaverMode.selectItem(at: PrefsUpdates.sparkleUpdateMode.rawValue)
+
+        // We disable silent installs in Catalina
+        if #available(OSX 10.15, *) {
+            silentInstallMenuItem.isEnabled = false
+        }
     }
 
     // MARK: - Update panel
