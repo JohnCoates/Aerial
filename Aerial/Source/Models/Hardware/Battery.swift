@@ -25,7 +25,14 @@ struct Battery {
     }
 
     static func isLow() -> Bool {
-        return getRemainingPercent() < 20
+        let batteryLevel = getRemainingPercent()
+
+        // If we have no battery, we'll get 0, so in that case we're NOT low
+        if batteryLevel == 0 {
+            return false
+        }
+
+        return batteryLevel < 20
     }
 
     static func getRemainingPercent() -> Int {

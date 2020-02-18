@@ -87,6 +87,7 @@ struct PrefsInfo {
         var fontSize: Double
         var corner: InfoCorner
         var displays: InfoDisplays
+        var betaReset: Bool // This is useless, just to reload default settings for users of 1.7.2 early betas
     }
 
     struct Countdown: CommonInfo, Codable {
@@ -147,7 +148,8 @@ struct PrefsInfo {
                                                      fontName: "Helvetica Neue Medium",
                                                      fontSize: 20,
                                                      corner: .topRight,
-                                                     displays: .allDisplays))
+                                                     displays: .allDisplays,
+                                                     betaReset: true))
     static var updates: Updates
 
     // Countdown

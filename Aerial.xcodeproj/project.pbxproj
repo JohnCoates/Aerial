@@ -41,6 +41,10 @@
 		034116D023F9AD0600CD7674 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 034116B523F9ACE300CD7674 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		034116D323F9BD3100CD7674 /* PrefsUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034116D223F9BD3100CD7674 /* PrefsUpdates.swift */; };
 		034116D423F9BD3100CD7674 /* PrefsUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034116D223F9BD3100CD7674 /* PrefsUpdates.swift */; };
+		034116D923FADE3600CD7674 /* UpdateReleaseWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 034116D823FADE3600CD7674 /* UpdateReleaseWindow.xib */; };
+		034116DA23FADE3600CD7674 /* UpdateReleaseWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 034116D823FADE3600CD7674 /* UpdateReleaseWindow.xib */; };
+		034116DC23FADEDA00CD7674 /* UpdateReleaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034116DB23FADEDA00CD7674 /* UpdateReleaseController.swift */; };
+		034116DD23FADEDA00CD7674 /* UpdateReleaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034116DB23FADEDA00CD7674 /* UpdateReleaseController.swift */; };
 		034F29B423A7A79B004B34D5 /* PWC+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F29B323A7A79B004B34D5 /* PWC+Info.swift */; };
 		034F29B723A7A93D004B34D5 /* InfoTableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F29B623A7A93D004B34D5 /* InfoTableSource.swift */; };
 		034F29B823A7A9B3004B34D5 /* InfoTableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F29B623A7A93D004B34D5 /* InfoTableSource.swift */; };
@@ -346,6 +350,8 @@
 		033D62AE216CAE2C00F3AF83 /* icon-night-dark.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "icon-night-dark.pdf"; sourceTree = "<group>"; };
 		034116A223F9ACE300CD7674 /* Sparkle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sparkle.xcodeproj; path = Extern/Sparkle/Sparkle.xcodeproj; sourceTree = "<group>"; };
 		034116D223F9BD3100CD7674 /* PrefsUpdates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsUpdates.swift; sourceTree = "<group>"; };
+		034116D823FADE3600CD7674 /* UpdateReleaseWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateReleaseWindow.xib; sourceTree = "<group>"; };
+		034116DB23FADEDA00CD7674 /* UpdateReleaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateReleaseController.swift; sourceTree = "<group>"; };
 		034F29B323A7A79B004B34D5 /* PWC+Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PWC+Info.swift"; sourceTree = "<group>"; };
 		034F29B623A7A93D004B34D5 /* InfoTableSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableSource.swift; sourceTree = "<group>"; };
 		034F29BE23A7E28E004B34D5 /* PrefsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsInfo.swift; sourceTree = "<group>"; };
@@ -690,6 +696,7 @@
 				0395835121807D1F008E8F9C /* thumbnail@2x.png */,
 				FAC36F3A1BE1756D007F2A20 /* PreferencesWindow.xib */,
 				0313F9E522942AA500B074BB /* CustomVideos.xib */,
+				034116D823FADE3600CD7674 /* UpdateReleaseWindow.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -711,6 +718,7 @@
 				03608A1122A54921008F08A2 /* PWC Tabs */,
 				FAC36F3E1BE1756D007F2A20 /* PreferencesWindowController.swift */,
 				0313F9E722942B4500B074BB /* CustomVideoController.swift */,
+				034116DB23FADEDA00CD7674 /* UpdateReleaseController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1037,6 +1045,7 @@
 				035A92A9225F8C480095AB85 /* he.json in Resources */,
 				035A92A7225F8C480095AB85 /* de.json in Resources */,
 				0395835421807D1F008E8F9C /* thumbnail@2x.png in Resources */,
+				034116DA23FADE3600CD7674 /* UpdateReleaseWindow.xib in Resources */,
 				03D1E79822848F7F00D10CF7 /* screen0.jpg in Resources */,
 				03D37FDC22145487005A146F /* fr.json in Resources */,
 			);
@@ -1078,6 +1087,7 @@
 				038EBE9422D0AA3D00C7AD02 /* nl.json in Resources */,
 				033D62AF216CAE2C00F3AF83 /* icon-night-dark.pdf in Resources */,
 				0369985D2196103300E359D3 /* missingvideos.json in Resources */,
+				034116D923FADE3600CD7674 /* UpdateReleaseWindow.xib in Resources */,
 				03E4B20D22DC7F8800C22EBE /* zh_TW.json in Resources */,
 				FAC36F4F1BE1756D007F2A20 /* icon-night.pdf in Resources */,
 				0313F9E622942AA500B074BB /* CustomVideos.xib in Resources */,
@@ -1166,6 +1176,7 @@
 				03608A2122A55BC2008F08A2 /* PWC+Cache.swift in Sources */,
 				038D2EE523B6565900CD91F7 /* InfoBatteryView.swift in Sources */,
 				030D9B7C21551A8D00961E95 /* AerialPlayerItem.swift in Sources */,
+				034116DD23FADEDA00CD7674 /* UpdateReleaseController.swift in Sources */,
 				03608A2D22A56465008F08A2 /* HardwareDetection.swift in Sources */,
 				036A57D923F4747D0009DC02 /* InfoCountdownView.swift in Sources */,
 				FAC36F5E1BE1756D007F2A20 /* CheckCellView.swift in Sources */,
@@ -1259,6 +1270,7 @@
 				03608A2322A55BF1008F08A2 /* PWC+Updates.swift in Sources */,
 				AA7E2E5E1FC62E8B00E5F320 /* AerialPlayerItem.swift in Sources */,
 				03608A2C22A56465008F08A2 /* HardwareDetection.swift in Sources */,
+				034116DC23FADEDA00CD7674 /* UpdateReleaseController.swift in Sources */,
 				03608A1022A54887008F08A2 /* PWC+Videos.swift in Sources */,
 				03A596D323AA750F0097EA66 /* InfoMessageView.swift in Sources */,
 				03608A2022A55BC2008F08A2 /* PWC+Cache.swift in Sources */,
@@ -1322,12 +1334,13 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.7.2beta0;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Aerial/App/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MARKETING_VERSION = 1.6.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 1.7.2beta0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1344,12 +1357,13 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.7.2beta0;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Aerial/App/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MARKETING_VERSION = 1.6.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 1.7.2beta0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1513,15 +1527,15 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.7.2beta4;
+				CURRENT_PROJECT_VERSION = 1.7.2beta0;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MARKETING_VERSION = 1.7.2beta4;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 1.7.2beta0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1541,15 +1555,15 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.7.2beta4;
+				CURRENT_PROJECT_VERSION = 1.7.2beta0;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MARKETING_VERSION = 1.7.2beta4;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 1.7.2beta0;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

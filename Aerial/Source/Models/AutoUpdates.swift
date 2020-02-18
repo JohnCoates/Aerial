@@ -15,6 +15,7 @@ class AutoUpdates: NSObject, SUUpdaterDelegate {
     var didProbeForUpdate = false
     private var updateAvailable = false
     private var updateVersion: String = ""
+    private var updateDescription: String = ""
 
     // This is what we use to look for updates while the screensaver is running
     // This code is not active in Catalina+
@@ -59,6 +60,37 @@ class AutoUpdates: NSObject, SUUpdaterDelegate {
         }
     }
 
+    func shouldCheckForUpdates(_ updater: SUUpdater) -> Bool {
+        let preferences = Preferences.sharedInstance
+
+        // We manually ensure the correct amount of time passed since last check
+        var distance = -86400       // 1 day
+
+        // On betas, we may have a shorter time check
+        if preferences.allowBetas {
+            if preferences.betaCheckFrequency == 0 {
+                distance = -3600        // 1 hour
+            } else if preferences.betaCheckFrequency == 1 {
+                distance = -43200       // 12 hours
+            }
+        }
+
+        // If we never went into System Preferences, we may not have a lastUpdateCheckDate
+        if updater.lastUpdateCheckDate != nil {
+            print("/*/*/*/*/*/*/*/*/*")
+            print(updater.lastUpdateCheckDate.timeIntervalSinceNow.distance(to: Double(distance)))
+
+            if updater.lastUpdateCheckDate.timeIntervalSinceNow.distance(to: Double(distance)) > 0 {
+                // Then force check/install udpates
+                debugLog("Update check time elapsed")
+
+                return true
+            }
+        }
+
+        return false
+    }
+
     // Probing update check
     func doProbingCheck() {
         let preferences = Preferences.sharedInstance
@@ -76,9 +108,11 @@ class AutoUpdates: NSObject, SUUpdaterDelegate {
                 suu.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/beta-appcast.xml")
             }
 
-            // Then force check/install udpates
+            // Then we probe !
             debugLog("Checking for update (probe mode)")
             suu.checkForUpdateInformation()
+
+            // Note: The result is asynchronously available later
         }
     }
 
@@ -88,10 +122,6 @@ class AutoUpdates: NSObject, SUUpdaterDelegate {
         } else {
             return ""
         }
-    }
-
-    func isAnUpdateAvailable() -> Bool {
-        return updateAvailable
     }
 
     func updaterDidNotFindUpdate(_ updater: SUUpdater) {
@@ -108,5 +138,20 @@ class AutoUpdates: NSObject, SUUpdaterDelegate {
         if let versionString = item.displayVersionString {
             self.updateVersion = versionString
         }
+
+        // And the description
+        self.updateDescription = item.itemDescription
+    }
+
+    func isAnUpdateAvailable() -> Bool {
+        return updateAvailable
+    }
+
+    func getVersion() -> String {
+        return updateVersion
+    }
+
+    func getReleaseNotes() -> String {
+        return updateDescription
     }
 }

@@ -156,22 +156,22 @@
                                 <tabViewItems>
                                     <tabViewItem label="Videos" identifier="1" id="dfl-QA-fvD">
                                         <view key="view" id="zsM-Ha-kCO">
-                                            <rect key="frame" x="10" y="33" width="614" height="381"/>
+                                            <rect key="frame" x="10" y="33" width="614" height="380"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <avPlayerView fixedFrame="YES" controlsStyle="none" translatesAutoresizingMaskIntoConstraints="NO" id="Rc1-hl-hSC">
-                                                    <rect key="frame" x="307" y="218" width="294" height="160"/>
+                                                    <rect key="frame" x="307" y="217" width="294" height="160"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 </avPlayerView>
                                                 <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNc-EK-7cY">
-                                                    <rect key="frame" x="12" y="39" width="278" height="339"/>
+                                                    <rect key="frame" x="12" y="39" width="278" height="338"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                                     <clipView key="contentView" drawsBackground="NO" id="4QR-cO-33N">
-                                                        <rect key="frame" x="1" y="1" width="276" height="337"/>
+                                                        <rect key="frame" x="1" y="1" width="276" height="336"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="22" rowSizeStyle="small" viewBased="YES" indentationPerLevel="2" outlineTableColumn="Grd-eN-eTf" id="gP6-w2-1UT">
-                                                                <rect key="frame" x="0.0" y="0.0" width="276" height="337"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="276" height="336"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <size key="intercellSpacing" width="2" height="0.0"/>
                                                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -183,7 +183,7 @@
                                                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                         </tableHeaderCell>
                                                                         <textFieldCell key="dataCell" controlSize="small" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="0wF-mr-lO5">
-                                                                            <font key="font" metaFont="label" size="11"/>
+                                                                            <font key="font" metaFont="message" size="11"/>
                                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                         </textFieldCell>
@@ -197,7 +197,7 @@
                                                                                         <rect key="frame" x="0.0" y="-2" width="233" height="14"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="HEADER CELL" id="0xW-C7-M1h">
-                                                                                            <font key="font" metaFont="label" size="11"/>
+                                                                                            <font key="font" metaFont="message" size="11"/>
                                                                                             <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -220,7 +220,7 @@
                                                                                         <rect key="frame" x="25" y="0.0" width="249" height="14"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="hJP-hV-AM5">
-                                                                                            <font key="font" metaFont="label" size="11"/>
+                                                                                            <font key="font" metaFont="message" size="11"/>
                                                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -239,13 +239,13 @@
                                                                                         <rect key="frame" x="2" y="0.0" width="22" height="18"/>
                                                                                         <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="9L7-4L-A4w">
                                                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                                            <font key="font" metaFont="label" size="11"/>
+                                                                                            <font key="font" metaFont="message" size="11"/>
                                                                                         </buttonCell>
                                                                                     </button>
                                                                                     <textField verticalHuggingPriority="750" allowsExpansionToolTips="YES" preferredMaxLayoutWidth="165" translatesAutoresizingMaskIntoConstraints="NO" id="5qU-xC-8TY">
                                                                                         <rect key="frame" x="25" y="2" width="84" height="14"/>
                                                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="hxB-gg-rAu">
-                                                                                            <font key="font" metaFont="label" size="11"/>
+                                                                                            <font key="font" metaFont="message" size="11"/>
                                                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -254,7 +254,7 @@
                                                                                         <rect key="frame" x="241" y="1" width="26" height="17"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" borderStyle="border" alignment="center" title="4K" drawsBackground="YES" id="8vf-Ke-XDl" customClass="VerticallyAlignedTextFieldCell" customModule="Aerial" customModuleProvider="target">
-                                                                                            <font key="font" metaFont="label" size="11"/>
+                                                                                            <font key="font" metaFont="message" size="11"/>
                                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
@@ -264,7 +264,7 @@
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                                                         <buttonCell key="cell" type="round" title="+" bezelStyle="circular" imagePosition="overlaps" alignment="center" controlSize="small" borderStyle="border" baseWritingDirection="rightToLeft" userInterfaceLayoutDirection="rightToLeft" imageScaling="axesIndependently" inset="2" id="g2R-vU-3dF">
                                                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                            <font key="font" metaFont="label" size="11"/>
+                                                                                            <font key="font" metaFont="message" size="11"/>
                                                                                         </buttonCell>
                                                                                         <connections>
                                                                                             <action selector="addClick:" target="X6H-3G-WWn" id="mUe-e1-8i1"/>
@@ -317,7 +317,7 @@
                                                     </scroller>
                                                 </scrollView>
                                                 <popUpButton toolTip="Pick your preferred video format, see help for more information" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUc-qc-3p7">
-                                                    <rect key="frame" x="427" y="142" width="144" height="25"/>
+                                                    <rect key="frame" x="427" y="141" width="144" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <popUpButtonCell key="cell" type="push" title="1080p H264" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="xf3-qe-aEd" id="kDC-Tc-OTg">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -341,7 +341,7 @@
                                                     </connections>
                                                 </popUpButton>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="79" translatesAutoresizingMaskIntoConstraints="NO" id="zff-sA-hBB">
-                                                    <rect key="frame" x="326" y="147" width="97" height="17"/>
+                                                    <rect key="frame" x="326" y="146" width="97" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Video format:" id="F2h-co-bje">
                                                         <font key="font" metaFont="system"/>
@@ -361,7 +361,7 @@
                                                     </connections>
                                                 </button>
                                                 <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQD-aR-CSY">
-                                                    <rect key="frame" x="375" y="281" width="158" height="39"/>
+                                                    <rect key="frame" x="375" y="280" width="158" height="39"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="tek-Xr-piE">
                                                         <font key="font" usesAppearanceFont="YES"/>
@@ -376,7 +376,7 @@ is disabled
                                                     <rect key="frame" x="153" y="21" width="108" height="14"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Available in 4K/HDR" id="HJw-4S-2ev">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -385,7 +385,7 @@ is disabled
                                                     <rect key="frame" x="264" y="19" width="26" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" borderStyle="border" alignment="center" title="4K" drawsBackground="YES" id="eOu-8R-igj" customClass="VerticallyAlignedTextFieldCell" customModule="Aerial" customModuleProvider="target">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -395,20 +395,20 @@ is disabled
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                     <buttonCell key="cell" type="round" title="+" bezelStyle="circular" imagePosition="overlaps" alignment="center" controlSize="small" enabled="NO" borderStyle="border" baseWritingDirection="rightToLeft" userInterfaceLayoutDirection="rightToLeft" imageScaling="axesIndependently" inset="2" id="FYn-z5-tcl">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                     </buttonCell>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uRh-Iz-deI">
                                                     <rect key="frame" x="173" y="3" width="88" height="14"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Download video" id="V9x-vb-dly">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
                                                 <button toolTip="Click for more information on Video Formats" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m7D-Ed-ZCH">
-                                                    <rect key="frame" x="575" y="141" width="25" height="25"/>
+                                                    <rect key="frame" x="575" y="140" width="25" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6wW-GF-py9">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -419,7 +419,7 @@ is disabled
                                                     </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j0k-lf-UM7">
-                                                    <rect key="frame" x="342" y="181" width="81" height="17"/>
+                                                    <rect key="frame" x="342" y="180" width="81" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Fade in/out:" id="gXx-65-S5a">
                                                         <font key="font" usesAppearanceFont="YES"/>
@@ -428,7 +428,7 @@ is disabled
                                                     </textFieldCell>
                                                 </textField>
                                                 <popUpButton toolTip="The duration of the fades at the beginning and the end of each video" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="405-v4-6d2">
-                                                    <rect key="frame" x="427" y="176" width="144" height="25"/>
+                                                    <rect key="frame" x="427" y="175" width="144" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <popUpButtonCell key="cell" type="push" title="1 second" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="4aA-BM-bD5" id="WDB-Zy-UB4">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -453,14 +453,14 @@ is disabled
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSBookmarksTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kGs-X6-tPb">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="label" size="12"/>
+                                                        <font key="font" metaFont="controlContent"/>
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="videoSetsButtonClick:" target="-2" id="aDh-Hf-5AD"/>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r6a-he-iOc">
-                                                    <rect key="frame" x="427" y="81" width="176" height="18"/>
+                                                    <rect key="frame" x="427" y="80" width="176" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Right arrow key to skip" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="P4b-25-o9o">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -475,14 +475,14 @@ is disabled
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSActionTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nxM-5Y-pQM">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="label" size="12"/>
+                                                        <font key="font" metaFont="controlContent"/>
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="outlineViewSettingsClick:" target="-2" id="foF-Fr-895"/>
                                                     </connections>
                                                 </button>
                                                 <button toolTip="Click for more information on Power Saving" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1SL-9J-jhX">
-                                                    <rect key="frame" x="575" y="107" width="25" height="25"/>
+                                                    <rect key="frame" x="575" y="106" width="25" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TCe-vE-1An">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -493,7 +493,7 @@ is disabled
                                                     </connections>
                                                 </button>
                                                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pNV-nX-6bO">
-                                                    <rect key="frame" x="427" y="108" width="144" height="25"/>
+                                                    <rect key="frame" x="427" y="107" width="144" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <popUpButtonCell key="cell" type="push" title="Keep enabled" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="nKn-7H-MTI" id="LPb-JC-YE1">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -514,7 +514,7 @@ is disabled
                                                     <rect key="frame" x="427" y="60" width="182" height="14"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Skipping is unavailable in Catalina" id="P0Z-V8-4RW">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -544,7 +544,7 @@ is disabled
                                                             <rect key="frame" x="190" y="191" width="200" height="14"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Click on a Display to enable/disable it" id="S5I-D9-vrV">
-                                                                <font key="font" metaFont="label" size="11"/>
+                                                                <font key="font" metaFont="message" size="11"/>
                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -764,7 +764,7 @@ is disabled
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <clipView key="contentView" drawsBackground="NO" id="CFu-ab-5NJ">
                                                         <rect key="frame" x="1" y="1" width="178" height="340"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="ipD-s9-BUc">
                                                                 <rect key="frame" x="0.0" y="0.0" width="178" height="340"/>
@@ -868,10 +868,10 @@ is disabled
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <clipView key="contentView" id="CwF-Wv-AKG">
                                                         <rect key="frame" x="1" y="1" width="178" height="31"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="IZ0-f0-zFs">
-                                                                <rect key="frame" x="0.0" y="0.0" width="178" height="32"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="178" height="31"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <size key="intercellSpacing" width="3" height="2"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -937,11 +937,11 @@ is disabled
                                     </tabViewItem>
                                     <tabViewItem label="Time" identifier="" id="PtY-yV-jgj">
                                         <view key="view" id="ziy-Hg-uzO">
-                                            <rect key="frame" x="10" y="33" width="614" height="380"/>
+                                            <rect key="frame" x="10" y="33" width="614" height="381"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eFJ-La-jfN">
-                                                    <rect key="frame" x="73" y="180" width="308" height="18"/>
+                                                    <rect key="frame" x="73" y="181" width="308" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="radio" title="Manually specify sunrise and sunset time" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="P4i-a5-XX1">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -952,7 +952,7 @@ is disabled
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R1G-07-UP0">
-                                                    <rect key="frame" x="73" y="117" width="526" height="18"/>
+                                                    <rect key="frame" x="73" y="118" width="526" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="radio" title="Change videos based on Light Mode/Dark Mode (macOS 10.14 Mojave required)" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="0B2-IG-Zfx">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -963,7 +963,7 @@ is disabled
                                                     </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XCd-bx-3ks">
-                                                    <rect key="frame" x="17" y="355" width="364" height="17"/>
+                                                    <rect key="frame" x="17" y="356" width="364" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Aerial can display day and night videos based on time:" id="uRD-p7-tY9">
                                                         <font key="font" metaFont="system"/>
@@ -972,7 +972,7 @@ is disabled
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pLZ-Bs-k9D">
-                                                    <rect key="frame" x="73" y="59" width="284" height="18"/>
+                                                    <rect key="frame" x="73" y="60" width="284" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="radio" title="Do not adapt videos based on time" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="fSZ-Ry-Ode">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -983,7 +983,7 @@ is disabled
                                                     </connections>
                                                 </button>
                                                 <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tJX-T8-xe2">
-                                                    <rect key="frame" x="170" y="151" width="100" height="27"/>
+                                                    <rect key="frame" x="170" y="152" width="100" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="QXP-vi-6qq">
                                                         <font key="font" metaFont="system"/>
@@ -999,7 +999,7 @@ is disabled
                                                     </connections>
                                                 </datePicker>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RXm-cN-Rbz">
-                                                    <rect key="frame" x="104" y="154" width="50" height="17"/>
+                                                    <rect key="frame" x="104" y="155" width="50" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Sunrise" id="fi8-yL-a0N">
                                                         <font key="font" metaFont="system"/>
@@ -1008,7 +1008,7 @@ is disabled
                                                     </textFieldCell>
                                                 </textField>
                                                 <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dvf-XO-Pzj">
-                                                    <rect key="frame" x="388" y="151" width="100" height="27"/>
+                                                    <rect key="frame" x="388" y="152" width="100" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="hJS-l0-O4U">
                                                         <font key="font" metaFont="system"/>
@@ -1024,7 +1024,7 @@ is disabled
                                                     </connections>
                                                 </datePicker>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="psQ-Mp-M8A">
-                                                    <rect key="frame" x="322" y="154" width="46" height="17"/>
+                                                    <rect key="frame" x="322" y="155" width="46" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Sunset" id="1A5-Lg-6ua">
                                                         <font key="font" metaFont="system"/>
@@ -1033,22 +1033,22 @@ is disabled
                                                     </textFieldCell>
                                                 </textField>
                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oa2-vB-ahM">
-                                                    <rect key="frame" x="10" y="102" width="48" height="48"/>
+                                                    <rect key="frame" x="10" y="103" width="48" height="48"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="sw7-6m-srE"/>
                                                 </imageView>
                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f7y-Zd-Va2">
-                                                    <rect key="frame" x="10" y="44" width="48" height="48"/>
+                                                    <rect key="frame" x="10" y="45" width="48" height="48"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStopProgressTemplate" id="aZb-0N-cfu"/>
                                                 </imageView>
                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JoA-51-qYD">
-                                                    <rect key="frame" x="10" y="165" width="48" height="48"/>
+                                                    <rect key="frame" x="10" y="166" width="48" height="48"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSRightFacingTriangleTemplate" id="VuJ-HC-hN5"/>
                                                 </imageView>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XQ7-f2-0uN">
-                                                    <rect key="frame" x="104" y="91" width="495" height="17"/>
+                                                    <rect key="frame" x="104" y="92" width="495" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Next Sunrise" id="A8X-oe-Zgd">
                                                         <font key="font" metaFont="system"/>
@@ -1057,7 +1057,7 @@ is disabled
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DLM-V1-CqG">
-                                                    <rect key="frame" x="74" y="316" width="114" height="18"/>
+                                                    <rect key="frame" x="74" y="317" width="114" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="radio" title="Calculate from:" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="9tD-re-W0O">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1068,7 +1068,7 @@ is disabled
                                                     </connections>
                                                 </button>
                                                 <textField toolTip="Latitude in degrees" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5o-Ad-4FR">
-                                                    <rect key="frame" x="194" y="314" width="85" height="22"/>
+                                                    <rect key="frame" x="194" y="315" width="85" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Latitude" drawsBackground="YES" id="Y5c-TF-kD6">
                                                         <numberFormatter key="formatter" formatterBehavior="default10_4" localizesFormat="NO" numberStyle="decimal" lenient="YES" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="XKU-5s-ymT"/>
@@ -1081,7 +1081,7 @@ is disabled
                                                     </connections>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YXF-Ei-ZTD">
-                                                    <rect key="frame" x="107" y="288" width="374" height="17"/>
+                                                    <rect key="frame" x="107" y="289" width="374" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Input coordinates to calculate sunrise and sunset information" id="gFP-Hw-UqW">
                                                         <font key="font" metaFont="system"/>
@@ -1090,12 +1090,12 @@ is disabled
                                                     </textFieldCell>
                                                 </textField>
                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UE2-VH-q5J">
-                                                    <rect key="frame" x="10" y="301" width="48" height="48"/>
+                                                    <rect key="frame" x="10" y="302" width="48" height="48"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSBookmarksTemplate" id="W77-TL-rnp"/>
                                                 </imageView>
                                                 <popUpButton toolTip="Pick your favorite dawn/dusk sunrise/sunset calculation method, see help for more" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7nt-0g-1hP">
-                                                    <rect key="frame" x="416" y="312" width="155" height="25"/>
+                                                    <rect key="frame" x="416" y="313" width="155" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <popUpButtonCell key="cell" type="push" title="Strict (0°)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="kH5-rV-H5C" id="4pa-RC-tZL">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1119,7 +1119,7 @@ is disabled
                                                     </connections>
                                                 </popUpButton>
                                                 <textField toolTip="Longitude in degrees" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C6M-uu-0iJ">
-                                                    <rect key="frame" x="287" y="314" width="85" height="22"/>
+                                                    <rect key="frame" x="287" y="315" width="85" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Longitude" drawsBackground="YES" id="u7r-RB-uaK">
                                                         <numberFormatter key="formatter" formatterBehavior="default10_4" localizesFormat="NO" numberStyle="decimal" lenient="YES" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="U1j-Ay-XxM"/>
@@ -1132,7 +1132,7 @@ is disabled
                                                     </connections>
                                                 </textField>
                                                 <button toolTip="Use macOS Location Service to find your location" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yRV-Mo-Vvs">
-                                                    <rect key="frame" x="374" y="308" width="42" height="32"/>
+                                                    <rect key="frame" x="374" y="309" width="42" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" image="NSBookmarksTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NqG-lj-YqP">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1143,7 +1143,7 @@ is disabled
                                                     </connections>
                                                 </button>
                                                 <button toolTip="Sunset/sunrise detection requires macOS 10.12.4, a compatible Mac, and location services enabled" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Su5-5y-7hV">
-                                                    <rect key="frame" x="73" y="238" width="532" height="34"/>
+                                                    <rect key="frame" x="73" y="239" width="532" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="nQ1-wT-jXy">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1156,7 +1156,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Epa-Ok-cwG">
-                                                    <rect key="frame" x="104" y="213" width="495" height="17"/>
+                                                    <rect key="frame" x="104" y="214" width="495" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Next Sunrise" id="T7m-d1-Fpa">
                                                         <font key="font" metaFont="system"/>
@@ -1165,7 +1165,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BzN-ya-avF">
-                                                    <rect key="frame" x="10" y="239" width="48" height="48"/>
+                                                    <rect key="frame" x="10" y="240" width="48" height="48"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSHomeTemplate" id="lQX-Ux-Sz8"/>
                                                 </imageView>
@@ -1181,7 +1181,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a7p-Yo-yfa">
-                                                    <rect key="frame" x="403" y="337" width="207" height="32"/>
+                                                    <rect key="frame" x="403" y="338" width="207" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Enter Coordinates Manually" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="v4a-B8-yIM">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1192,7 +1192,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </button>
                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lB2-Zw-39c">
-                                                    <rect key="frame" x="578" y="311" width="25" height="25"/>
+                                                    <rect key="frame" x="578" y="312" width="25" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qs5-ah-yYM">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1613,24 +1613,15 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="aJg-h1-d37">
-                                                    <rect key="frame" x="9" y="220" width="595" height="5"/>
+                                                    <rect key="frame" x="9" y="229" width="595" height="5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 </box>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S52-Ag-MIg">
-                                                    <rect key="frame" x="13" y="189" width="122" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Automatic updates:" id="Adq-wu-Hdg">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="572" translatesAutoresizingMaskIntoConstraints="NO" id="AkS-9a-6a1">
-                                                    <rect key="frame" x="23" y="138" width="576" height="43"/>
+                                                    <rect key="frame" x="23" y="138" width="576" height="55"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <textFieldCell key="cell" id="Rjc-p5-Ofw">
                                                         <font key="font" metaFont="system"/>
-                                                        <string key="title">Aerial uses Sparkle for automatic updates, should you wish to. We recommend that you keep in sync both checking for new videos and automatic updates.</string>
+                                                        <string key="title">Aerial uses Sparkle to provide automatic updates, should you wish to. In macOS Catalina, Aerial uses Sparkle to check for updates and notify you of new releases. However because of security restrictions Aerial can no longer update itself.</string>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -1734,6 +1725,15 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                         <action selector="popoverUpdateClick:" target="-2" id="gCm-6k-BWz"/>
                                                     </connections>
                                                 </button>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S52-Ag-MIg">
+                                                    <rect key="frame" x="11" y="201" width="122" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Aerial updates:" id="Adq-wu-Hdg">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
@@ -2699,13 +2699,13 @@ Gw
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" selectable="YES" id="Zfb-df-GY5">
                         <font key="font" metaFont="message" size="11"/>
-                        <mutableString key="title">Automatic Updates
+                        <string key="title">Automatic Updates
 
 In macOS Catalina, screen savers are no longer able to update themselves. 
 
 By default, Aerial will now notify you when a new version is available, but won't auto update. You can then launch this control panel, use the Check Now button to get a link to the latest release. 
 
-On macOS version prior to Catalina, you can also choose to silently update Aerial. As a side effect, when a new update is available, it will wake up from the screen saver to install the new version (your Mac will eventually go to sleep afterwards).</mutableString>
+On macOS version prior to Catalina, you can also choose to silently update Aerial. As a side effect, when a new update is available, it will wake up from the screen saver to install the new version (your Mac will eventually go to sleep afterwards).</string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>

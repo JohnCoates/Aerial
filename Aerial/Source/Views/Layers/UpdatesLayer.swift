@@ -65,6 +65,5 @@ class UpdatesLayer: AnimationLayer {
                 })
             }
         }
-
     }
 }

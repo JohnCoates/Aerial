@@ -18,6 +18,7 @@ import Sparkle
 final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSource, NSOutlineViewDelegate {
 
     lazy var customVideosController: CustomVideoController = CustomVideoController()
+    lazy var updateReleaseController: UpdateReleaseController = UpdateReleaseController()
 
     // Main UI
     @IBOutlet weak var prefTabView: NSTabView!
@@ -273,11 +274,36 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
             name: Notification.Name.SUUpdaterWillRestart,
             object: nil)
 
-        // Starting the Sparkle update system
-        sparkleUpdater = SUUpdater.init(for: Bundle(for: PreferencesWindowController.self))
-        // We override the feeds for betas
-        if preferences.allowBetas {
-            sparkleUpdater?.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/beta-appcast.xml")
+        if PrefsUpdates.checkForUpdates {
+            // Starting the Sparkle update system
+            sparkleUpdater = SUUpdater.init(for: Bundle(for: PreferencesWindowController.self))
+
+            // We override the feeds for betas
+            if preferences.allowBetas {
+                sparkleUpdater?.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/beta-appcast.xml")
+            }
+
+            // On macOS 10.15, we simply disable the auto update check
+            if #available(OSX 10.15, *) {
+                sparkleUpdater!.automaticallyChecksForUpdates = false
+
+                // And we start our own probe thing
+                let autoUpdates = AutoUpdates.sharedInstance
+
+                // We make sure the required delay has elapsed
+                if autoUpdates.shouldCheckForUpdates(sparkleUpdater!) {
+                    autoUpdates.doProbingCheck()
+
+                    _ = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (_) in
+                        self.checkForProbeResults(silent: true)
+                    })
+                }
+
+            } else {
+                sparkleUpdater!.automaticallyChecksForUpdates = true
+            }
+        } else {
+            sparkleUpdater!.automaticallyChecksForUpdates = false
         }
 
         // Setup the updates for the Logs
@@ -335,6 +361,14 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
                             owner: customVideosController,
                             topLevelObjects: &topLevelObjects) {
             errorLog("Could not load nib for CustomVideos, please report")
+        }
+
+        // And our new, hopefully temporary, updater
+        topLevelObjects = NSArray()
+        if !bundle.loadNibNamed(NSNib.Name("UpdateReleaseWindow"),
+                            owner: updateReleaseController,
+                            topLevelObjects: &topLevelObjects) {
+            errorLog("Could not load nib for UpdateReleaseWindow, please report")
         }
     }
 
