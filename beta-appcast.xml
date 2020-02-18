@@ -1,7 +1,30 @@
 <?xml version="1.0" standalone="yes"?><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
 <channel>
 <title>Aerial</title>
+<item>
+<title>1.8.0</title>
+  <description>
+          <![CDATA[
+<p>New features:</p>
+<ul><li><b>New update system for macOS Catalina, you will now be notified and be able to download new versions. Aerial will still not be able to self update in Catalina, this is a sandboxing limitation that can't be worked around for the time being</b></li>
+<li>Add shadow controls</li>
+<li>Add translations for the new tvOS 13 videos in French</li>
+<li>Add a new Countdown information option</li></ul>
+<p>Bug fixes:</p>
+<ul><li>Fix the high sierra textfields workaround in new UI</li>
+<li>Fix battery detection in macs with no battery (oops)</li>
+<li>Fix localization that no longer worked in Catalina (come on...)</li></ul>
 
+<p>Misc:</p>
+<ul><li>Moved Sparkle from Cocoapods to a git submodule, updated Sparkle to 1.23</li>
+<li>Minimum macOS version is now 10.12</li></ul>
+          ]]>
+  </description>
+<pubDate>mar., 18 jan. 2020 18:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.0/Aerial.saver.zip" sparkle:version="1.8.0" 
+sparkle:edSignature="orTQ4SHPZDCcp+BLoffuL/1g+6fOpQPotDi7o3bAmQQ7mgpneRMyeOPbDNmM8eCs2VligzOlYlQOHdxju4kTBQ==" length="5963341" type="application/octet-stream"/>
+</item>    
 <item>
 <title>1.7.2beta3</title>
   <description>
