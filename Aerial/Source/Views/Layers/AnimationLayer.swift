@@ -81,13 +81,27 @@ class AnimationLayer: CATextLayer {
         }
 
         // Find a new corner, different from the previous one
-        var newCorner = Int.random(in: 0...5)
+        var newCorner = getRandomCorner()
 
         while newCorner == lastCorner || !layerManager.isCornerAcceptable(corner: newCorner) {
-            newCorner = Int.random(in: 0...5)
+            newCorner = getRandomCorner()
         }
 
         return InfoCorner(rawValue: newCorner)!
+    }
+
+    // Return a strict corner, not a center pos
+    func getRandomCorner() -> Int {
+        let rnd = Int.random(in: 0...3)
+        if rnd == 0 {
+            return 0
+        } else if rnd == 1 {
+            return 2
+        } else if rnd == 2 {
+            return 3
+        } else {
+            return 5
+        }
     }
 
     // Move to a corner, this may need to force the redraw of a whole corner
