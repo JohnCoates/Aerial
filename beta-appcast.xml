@@ -1,6 +1,20 @@
 <?xml version="1.0" standalone="yes"?><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
 <channel>
 <title>Aerial</title>
+
+<item>
+<title>1.8.1beta1</title>
+  <description>
+          <![CDATA[
+<p>Changed "Random" to "Random corner" for location info randomness. Bottom/top center positions are now ignored here, but they can be used manually.</p>
+          ]]>
+  </description>
+<pubDate>lun., 24 fev. 2020 19:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.1beta1/Aerial.saver.zip" sparkle:version="1.8.1beta1" 
+sparkle:edSignature="If2iGKSh/Cq23fhLuauufPpwLGZTrgjf4rtqpIuUkm7h1gKA7DeR1R2yW5OfnE9MJWvQYFKZyA7GYFcyhcizAQ==" length="5960620" type="application/octet-stream"/>
+</item>    
+  
 <item>
 <title>1.8.0</title>
   <description>
