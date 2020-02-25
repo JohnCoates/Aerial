@@ -30,7 +30,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 **Please note :** Starting with Catalina, Aerial will only notify you of new versions, but won't be able to automatically update itself. This is a limitation of macOS Catalina.
 
-Installation instructions :
+Installation instructions (latest versions require macOS 10.12 or above) :
 
 1. Quit **System Preferences**.
 2. [Download the latest release of `Aerial.saver.zip`](https://github.com/JohnCoates/Aerial/releases/latest). Alternatively, you can find the [latest beta here](https://github.com/JohnCoates/Aerial/releases). 
