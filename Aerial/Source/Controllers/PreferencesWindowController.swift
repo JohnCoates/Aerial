@@ -304,6 +304,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
                 sparkleUpdater!.automaticallyChecksForUpdates = true
             }
         } else {
+            sparkleUpdater = SUUpdater.init(for: Bundle(for: PreferencesWindowController.self))
             sparkleUpdater!.automaticallyChecksForUpdates = false
         }
 
