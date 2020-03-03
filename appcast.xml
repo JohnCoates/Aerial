@@ -3,6 +3,22 @@
 <title>Aerial</title>
 
 <item>
+<title>1.8.1</title>
+  <description>
+          <![CDATA[
+<p>New features:</p>
+<ul><li>Changed "Random" to "Random corner" for location info randomness. Bottom/top center positions are now ignored here, but they can be used manually.</li>
+<li>Fix a preference panel crash if you disabled auto updates.</li>
+</ul>
+          ]]>
+  </description>
+<pubDate>mar., 3 mar. 2020 18:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.1/Aerial.saver.zip" sparkle:version="1.8.1" 
+sparkle:edSignature="9VAYxF1ZzzPAV4u7A4GnBPZBqqPfn75/PWfepc4QvwSjRUCm+ckj/o/MdKx7jTw1lmuBpaJ9ILSy75eHtJNqAA==" length="5960639" type="application/octet-stream"/>
+</item>
+
+<item>
 <title>1.8.0</title>
   <description>
           <![CDATA[
