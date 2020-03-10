@@ -301,7 +301,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             // And our additional layers
             layerManager.setContentScale(scale: (self.window?.backingScaleFactor) ?? 1.0)
         }
-
+/*
         // TMP TEST
         if self.window?.backingScaleFactor == 1.0 {
             debugLog("*** Forcing retina 2.0")
@@ -311,7 +311,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             // And our additional layers
             layerManager.setContentScale(scale: 2.0)
         }
-
+*/
     }
 
     // On previews, it's possible that our shared player was stopped and is not reusable
