@@ -301,6 +301,17 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             // And our additional layers
             layerManager.setContentScale(scale: (self.window?.backingScaleFactor) ?? 1.0)
         }
+
+        // TMP TEST
+        if self.window?.backingScaleFactor == 1.0 {
+            debugLog("*** Forcing retina 2.0")
+            self.layer!.contentsScale = 2.0
+            self.playerLayer.contentsScale = 2.0
+
+            // And our additional layers
+            layerManager.setContentScale(scale: 2.0)
+        }
+
     }
 
     // On previews, it's possible that our shared player was stopped and is not reusable
@@ -377,9 +388,13 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     // MARK: - playNextVideo()
     func playNextVideo() {
+        print("-/-/-/ PNV")
         let notificationCenter = NotificationCenter.default
         // Clear everything
         layerManager.clearLayerAnimations(player: self.player!)
+        for view in AerialView.sharedViews {
+            view.layerManager.clearLayerAnimations(player: self.player!)
+        }
 
         // remove old entries
         notificationCenter.removeObserver(self)
@@ -483,10 +498,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                     if AerialView.sharingPlayers {
                         // The first view with the player gets the fade and the play next instruction,
                         // it controls the others
-                        AerialView.sharedViews.first!.fastFadeOut(andPlayNext: true)
                         for view in AerialView.sharedViews where AerialView.sharedViews.first != view {
                             view.fastFadeOut(andPlayNext: false)
                         }
+                        AerialView.sharedViews.first!.fastFadeOut(andPlayNext: true)
+
                     } else {
                         // If we do independant playback we have to skip all views
                         for view in AerialView.instanciatedViews {
