@@ -73,6 +73,8 @@ Aerial is written in Swift, which requires OS X Sierra (10.12) or above. Aerial 
 - **Can you translate videos names and their descriptions?**. Awesome! [Read here for details](Resources/Community/Readme.md) on how to help us.
 - **Have a feature request?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Tell us why it would be useful, and why you and others would want it.
 - **Curious about the videos and on a slow connection?** Check [this guide](https://paper.dropbox.com/doc/Aerial-macOS-screen-saver-list-with-version-1.4.6-HvOeL0gNhLpqpIFgmLHaS) by [Hidehiro Nagaoka](https://github.com/hidehiro98).
+- **Just want to see the videos?** [A complete list of available wallpapers  is available online](https://aerial-screensavers.netlify.com). From [TawfiqH](https://github.com/Tawfiqh/aerialWallpapers).
+
 
 ## Multilanguage support
 
