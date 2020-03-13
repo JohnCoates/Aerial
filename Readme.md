@@ -6,6 +6,9 @@
 
 Aerial is a Mac screensaver based on the new Apple TV screensaver that displays the Aerial movies Apple shot over New York, San Francisco, Hawaii, China, etc. Starting with version 1.6, this also includes the new undersea videos available in tvOS 13!
 
+[Complete list of available wallpapers.](https://aerial-screensavers.netlify.com)
+
+
 Aerial is completely open source, so feel free to contribute to its development.
 
 ![Github All Releases](https://img.shields.io/github/downloads/johncoates/aerial/total.svg?maxAge=86400)
