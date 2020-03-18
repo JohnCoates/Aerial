@@ -1,350 +1,740 @@
 {
+    "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8": {
+        "name": "Sobrevolando el oasis de Liwa en los Emiratos Árabes Unidos",
+        "pointsOfInterest": {
+            "0": "Sobrevolando el oasis de Liwa en los Emiratos Árabes Unidos"
+        }
+    },
     "009BA758-7060-4479-8EE8-FB9B40C8FB97": {
-        "name": "Korea y Japon de noche"
-    },
-    "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
-        "name": "De Ciudad de México a Nueva York"
-    },
-    "7719B48A-2005-4011-9280-2F64EEC6FD91": {
-        "name": "Del Norte de California a Baja"
-    },
-    "B876B645-3955-420E-99DF-60139E451CF3": {
-        "name": "Parque Nacional de Wulingyuan 1"
-    },
-    "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C": {
-        "name": "Las terrazas de arroz de Longsheng"
-    },
-    "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
-        "name": "Parque Nacional de Wulingyuan 2"
-    },
-    "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
-        "name": "La Gran Muralla 1"
-    },
-    "22162A9B-DB90-4517-867C-C676BC3E8E95": {
-        "name": "La Gran Muralla 2"
-    },
-    "044AD56C-A107-41B2-90CC-E60CCACFBCF5": {
-        "name": "La Gran Muralla 3"
-    },
-    "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
-        "name": "Carretera Sheikh Zayed"
-    },
-    "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
-        "name": "Marina 1"
+        "name": "Dirigiéndose al sudeste por encima de Siberia y Mongolia",
+        "pointsOfInterest": {
+            "0": "Dirigiéndose al sudeste por encima de Siberia y Mongolia",
+            "110": "Vista aérea de China en dirección a la península de Corea",
+            "150": "La península de Corea con Japón a lo lejos",
+            "180": "Vista aérea de Corea del Sur, en dirección a Japón",
+            "195": "Vista aérea de Japón en dirección al océano Pacífico",
+            "22": "En dirección a Mongolia Interior",
+            "260": "Vista aérea del océano Pacífico al sudeste de Japón",
+            "32": "Vista aérea de Mongolia, en dirección a China",
+            "60": "Vista aérea del norte de China en dirección a la península de Corea"
+        }
     },
     "00BA71CD-2C54-415A-A68A-8358E677D750": {
-        "name": "Downtown"
-    },
-    "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
-        "name": "Marina 2"
-    },
-    "9680B8EB-CE2A-4395-AF41-402801F4D6A6": {
-        "name": "Acercándose a Burj Khalifa"
-    },
-    "2F11E857-4F77-4476-8033-4A1E4610AFCC": {
-        "name": "Carretera Sheikh Zayed",
+        "name": "Llegando al centro de Dubái (Emiratos Árabes Unidos)",
         "pointsOfInterest": {
-            "0": "Viajando a lo largo de la carretera Sheikh Zayed Road en Dubai, Emiratos Árabes Unidos"
+            "0": "Llegando al centro de Dubái (Emiratos Árabes Unidos)",
+            "210": "Dirigiéndose al centro de Dubái en los Emiratos Árabes Unidos"
         }
-    },
-    "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
-        "name": "Península de Nuussuaq"
-    },
-    "2F52E34C-39D4-4AB1-9025-8F7141FAA720": {
-        "name": "Fiordo de Ilulissat"
-    },
-    "EE01F02D-1413-436C-AB05-410F224A5B7B": {
-        "name": "Fiordo de Ilulissat"
-    },
-    "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943": {
-        "name": "Valle Waimanu"
-    },
-    "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7": {
-        "name": "Laupāhoehoe Nui"
-    },
-    "b2-2": {
-        "name": "Valle Honopū"
-    },
-    "258A6797-CC13-4C3A-AB35-4F25CA3BF474": {
-        "name": "Pu‘u O ‘Umi"
-    },
-    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": {
-        "name": "La costa de Kohala"
-    },
-    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": {
-        "name": "Pu‘u O ‘Umi"
-    },
-    "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {
-        "name": "Puerto Victoria 1"
-    },
-    "C8559883-6F3E-4AF2-8960-903710CD47B7": {
-        "name": "Cumbre Victoria"
     },
     "024891DE-B7F6-4187-BFE0-E6D237702EF0": {
-        "name": "Wan Chai"
-    },
-    "64EA30BD-C4B5-4CDD-86D7-DFE47E9CB9AA": {
-        "name": "Puerto Victoria 2"
-    },
-    "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
-        "name": "Puerto Victoria"
-    },
-    "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8": {
-        "name": "El oasis de Liwa 1"
-    },
-    "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
-        "name": "El oasis de Liwa 2"
-    },
-    "58754319-8709-4AB0-8674-B34F04E7FFE2": {
-        "name": "Río Támesis",
+        "name": "Vista aérea de Wan Chai en dirección al distrito central de Hong Kong",
         "pointsOfInterest": {
-            "0": "Acercándose al Puente de la Torre sobre el río Támesis en Londres",
-            "40": "Pasando a la derecha el Gherkin, en la ciudad de Londres",
-            "70": "Pasando sobre el Puente de la Torre en  el río Támesis, con el Ayuntamiento detrás y la Torre de Londres a la derecha",
-            "85": "Acercándose al HMS Belfast el el río Támesis, pasando el Walkie-Talkie a la derecha",
-            "115": "Viajando hacia el oeste por el río Támesis, con The Shard a la izquierda y Catedral de San Pablo a la derecha",
-            "135": "Pasando sobre la Catedral de Southwark, con la Catedral de San Pablo a la derecha",
-            "175": "Pasando Shakespeare’s Globe en Southwark (en primer plano a la derecha)",
-            "230": "Pasando la estación de Waterloo a la izquierda, con el Palacio de Westminster (Parlamento del Reino Unido) detrás al otro lado del Támesis",
-            "260": "Pasando el BFI IMAX en primer plano a la izquierda, con el London Eye detrás",
-            "280": "Dirigiéndose hacia Westminster sobre el río Támesis",
-            "300": "Acercándose a la estación de Charing Cross, en primer plano a la derecha",
-            "312": "Acercándose a Horse Guards Parade y Saint James's Park en la parte central izquierda.",
-            "324": "Pasando Saint Martin-in-the-Fields a la derecha, con el Arco del Almirantazgo, la Columna de Nelson y Trafalgar Square a su izquierda"
+            "0": "Vista aérea de Wan Chai en dirección al distrito central de Hong Kong",
+            "150": "Vista aérea del distrito central de Hong Kong",
+            "270": "Vista aérea de la isla de Hong Kong"
         }
     },
-    "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
-        "name": "Palacio de Buckingham",
+    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": {
+        "name": "Aurora austral sobre la Antártida",
         "pointsOfInterest": {
-            "0": "Pasando el Arco de Wellington en Londres a la izquierda",
-            "12": "Sobrevolando los jardines del Palacio de Buckingham, con Green Park a la izquierda",
-            "24": "Volando sobre el Palacio de Buckingham en Londres",
-            "40": "Volando sobre el Victoria Memorial, pasando Wellington Barracks a la derecha",
-            "55": "Siguiendo Birdcage Walk a lo largo de St. James's Park",
-            "90": "Pasando por encima de la Oficina de Asuntos Exteriores y de la Commonwealth en Whitehall, con Horse Guards Parade a la izquierda y el Her Majesty’s Treasury a la derecha",
-            "102": "Pasando el Cenotafio, con el Ministerio de Defensa a la izquierda y el Big Ben y el Palacio de Westminster (Parlamento del Reino Unido) a la derecha",
-            "125": "Cruzando el río Támesis, volando sobre el London Eye",
-            "160": "Pasando por la estación de Waterloo en el sur de Londres, con BFI IMAX a la izquierda",
-            "270": "Pasando la Catedral de Southwark a la izquierda",
-            "285": "Pasando The Shard a la derecha",
-            "305": "Pasando el crucero HMS Belfast en el río Támesis",
-            "330": "Cruzando el río Támesis en el Puente de la Torre, con el Ayuntamiento a la derecha y la Torre de Londres a la izquierda"
+            "0": "Aurora austral sobre la Antártida"
         }
     },
-    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
-        "name": "El río Támesis al atardecer",
+    "044AD56C-A107-41B2-90CC-E60CCACFBCF5": {
+        "name": "La sección Mutianyu de la Gran Muralla China en el distrito de Huairóu, China",
         "pointsOfInterest": {
-            "0": "Subiendo por el río Támesis hacia el Puente de la Torre, con la Torre de Londres a la derecha",
-            "25": "Cruzando el río Támesis y pasando por el ayuntamiento",
-            "35": "Pasando el crucero HMS Belfast en el río Támesis",
-            "60": "Acercándose a The Shard",
-            "92": "Volando hacia el oeste sobre Southwark hacia Lambeth en el sur de Londres",
-            "200": "Pasando el palacio de Lambeth a la izquierda y la estación de Waterloo a la derecha",
-            "245": "Cruzando el río Támesis hacia el Palacio de Westminster (Parlamento del Reino Unido)",
-            "265": "Pasando el Palacio de Westminster (Parlamento del Reino Unido), con la Abadía de Westminster detrás"
+            "0": "La sección Mutianyu de la Gran Muralla China en el distrito de Huairóu, China"
         }
     },
-    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
-        "name": "El río Támesis al anochecer",
+    "1088217C-1410-4CF7-BDE9-8F573A4DBCD9": {
+        "name": "Vista aérea del océano Pacífico de camino a América Central",
         "pointsOfInterest": {
-            "0": "Subiendo por el río Támesis hacia el Puente de la Torre, con la Torre de Londres a la derecha",
-            "28": "Viajando hacia el oeste por el río Támesis, pasando el Ayuntamiento a la izquierda",
-            "40": "Pasando el crucero HMS Belfast en el río Támesis, con The Shard a la izquierda y el Walkie-Talkie a la derecha",
-            "75": "Pasando la catedral de Southwark a la izquierda",
-            "110": "Pasando la Catedral de San Pablo a la derecha",
-            "130": "Pasando Shakespeare’s Globe a la izquierda en primer plano",
-            "210": "Continuando por el río Támesis hacia Westminster",
-            "300": "Pasando el London Eye en el río Támesis",
-            "315": "Acercándose al Big Ben y al Parlamento del Reino Unido, con la Abadía de Westminster a la derecha"
+            "0": "Vista aérea del océano Pacífico de camino a América Central",
+            "100": "Cruzando América Central hacia el mar Caribe",
+            "150": "Vista aérea del mar Caribe en dirección a Cuba",
+            "240": "Vista aérea de Cuba, con Florida y las Bahamas más allá",
+            "300": "Vista aérea de Florida y las Bahamas en dirección al mar de los Sargazos",
+            "350": "Vista aérea del mar de los Sargazos adentrándose en el océano Atlántico",
+            "70": "La costa del sudoeste de América Central, en dirección al mar Caribe"
         }
     },
-    "CE279831-1CA7-4A83-A97B-FF1E20234396": {
-        "name": "Aeropuerto Internacional de Los Angeles",
+    "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
+        "name": "Vista aérea del océano Pacífico de camino a la costa de California",
         "pointsOfInterest": {
-            "0": "Hacia el oeste sobre el aeropuerto internacional de Los Ángeles",
-            "80": "Pasando sobre Theme Building",
-            "210": "Pasando sobre la terminal internacional Tom Bradley"
+            "0": "Vista aérea del océano Pacífico de camino a la costa de California",
+            "110": "Vista aérea de Las Vegas en dirección a Salt Lake City, en Estados Unidos",
+            "120": "Vista aérea del oeste de Estados Unidos llegando a Salt Lake City",
+            "155": "Pasando entre Salt Lake City y Denver, en Estados Unidos",
+            "170": "Vista aérea de las Montañas Rocosas en Estados Unidos",
+            "70": "Vista aérea de la costa de California, en dirección al interior",
+            "85": "Sobrevolando Los Ángeles, en la costa oeste de Estados Unidos",
+            "95": "Vista aérea de Los Angeles llegando a Las Vegas, en Estados Unidos"
         }
     },
-    "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
-        "name": "Harbor Freeway",
+    "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7": {
+        "name": "Sobrevolando Laupāhoehoe Nui en la Reserva Forestal de Kohala, en la isla de Hawái",
         "pointsOfInterest": {
-            "0": "Siguiendo la Harbor Freeway (Interestatal 110) hacia el Norte a traves del sur de Los Ángeles",
-            "50": "Cruzando the Century Freeway (Interestatal 105)",
-            "65": "Pasando por encima de la estación Harbor Freeway en la Línea Verde del Metro, que transcurre paralela a Century Freeway",
-            "170": "Cruzando Imperial Highway"
+            "0": "Sobrevolando Laupāhoehoe Nui en la Reserva Forestal de Kohala, en la isla de Hawái"
         }
     },
-    "92E48DE9-13A1-4172-B560-29B4668A87EE": {
-        "name": "Playa de Santa Monica"
-    },
-    "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
-        "name": "Observatorio Griffith"
-    },
-    "EC67726A-8212-4C5E-83CF-8412932740D2": {
-        "name": "Hollywood Hills",
+    "149E7795-DBDA-4F5D-B39A-14712F841118": {
+        "name": "Olas rompiendo en la costa de Tahití",
         "pointsOfInterest": {
-            "0": "Viajando hacia el norte a lo largo de Beachwood Drive a través de Hollywood Hills en Los Ángeles",
-            "60": "Siguiendo hacia el norte a traves de Beachwood Canyon",
-            "250": "Pasando el centro de comunicaciones del Monte Lee, dirigiéndose hacia Burbank, California"
+            "0": "Olas rompiendo en la costa de Tahití"
         }
     },
-    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
-        "name": "El Downtown de Los Ángeles",
+    "22162A9B-DB90-4517-867C-C676BC3E8E95": {
+        "name": "La sección Mutianyu de la Gran Muralla China en el distrito de Huairóu, China",
         "pointsOfInterest": {
-            "0": "Acercándose al Downtown de Los ángeles, con el edificio MTA (en amarillo) y Union Station (en rosa) en la parte central izquierda",
-            "35": "Pasando la Catedral de Nuestra Señora de los Ángeles (en el centro)",
-            "55": "Pasando el Centro de Música de Los Ángeles (en el centro)",
-            "65": "Cruzando  Hollywood Freeway, viajando hacia el sur a través del Downtown y a lo largo de la Harbor Freeway",
-            "105": "Pasando el Walt Disney Concert Hall (en el centro)",
-            "120": "Pasando el ayuntamiento (en azul pálido, a la izquierda)",
-            "180": "Pasando la Library Tower (en el centro)",
-            "200": "Pasando el hotel Westin Bonaventure (en el centro)",
-            "230": "La biblioteca central de Los Ángeles, iluminada, aparece detrás del hotel Westin Bonaventure.",
-            "275": "Pasando el Wilshire Grand Center (en construcción)",
-            "365": "Pasando L.A. Live",
-            "395": "Pasando el hotel Ritz-Carlton Hotel y el Staples Center",
-            "425": "Pasando el centro de convenciones de Los Ángeles",
-            "495": "Acercándose a la Santa Monica Freeway"
+            "0": "La sección Mutianyu de la Gran Muralla China en el distrito de Huairóu, China"
         }
     },
-    "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
-        "name": "Central Park"
-    },
-    "b1-3": {
-        "name": "Bajo Manhattan"
-    },
-    "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8": {
-        "name": "Upper East Side"
-    },
-    "44166C39-8566-4ECA-BD16-43159429B52F": {
-        "name": "Séptima Avenida"
-    },
-    "640DFB00-FBB9-45DA-9444-9F663859F4BC": {
-        "name": "Bajo Manhattan"
-    },
-    "b8-2": {
-        "name": "Marin Headlands"
-    },
-    "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
-        "name": "Marin Headlands en la niebla",
+    "258A6797-CC13-4C3A-AB35-4F25CA3BF474": {
+        "name": "Por encima de la Reserva del Paraje Natural de Pu‘u O ‘Umi, en la isla de Hawái",
         "pointsOfInterest": {
-            "0": "Pasando por Marin Headlands a lo largo de la autopista 101 hacia el puente Golden Gate",
-            "20": "Horseshoe Cove apareciendo a la izquierda",
-            "105": "Pasando Battery Spencer a la izquierda",
-            "155": "Cruzando el puente Golden Gate hacia San Francisco"
+            "0": "Por encima de la Reserva del Paraje Natural de Pu‘u O ‘Umi, en la isla de Hawái"
         }
     },
-    "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
-        "name": "Bahía de San Francisco y el Golden Gate"
-    },
-    "b8-3": {
-        "name": "Alamo Square",
+    "27A37B0F-738D-4644-A7A4-E33E7A6C1175": {
+        "name": "Delfines comunes en la costa de California, Estados Unidos",
         "pointsOfInterest": {
-            "0": "Painted Ladies frente a Alamo Square en San Francisco",
-            "35": "Catedral de Santa María a la izquierda en segundo plano, con el downtown de San Francisco al fondo",
-            "70": "La cúpula del Ayuntamiento apareciendo en segundo plano a la derecha",
-            "210": "La cúpula del Ayuntamiento en segundo plano a la derecha"
-        }
-    },
-    "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
-        "name": "Embarcadero, Market Street",
-        "pointsOfInterest": {
-            "0": "Hacia el suroeste sobre la Bahía de San Francisco y la terminal de ferries del puerto de San Francisco",
-            "150": "Acercándose a la terminal de ferries del puerto de San Francisco y Embarcadero",
-            "210": "Hacia el suroeste por Market Street en el downtown de San Francisco"
-        }
-    },
-    "b4-3": {
-        "name": "De Presidio al Golden Gate",
-        "pointsOfInterest": {
-            "0": "Avanzando por el Presidio de San Francisco hacia el puente Golden Gate\"",
-            "190": "Cruzando el puente Golden Gate hacia las Marin Headlands"
-        }
-    },
-    "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
-        "name": "El Golden Gate desde San Francisco"
-    },
-    "b6-4": {
-        "name": "Downtown y la Torre Coit",
-        "pointsOfInterest": {
-            "0": "El Downtown de San Francisco con la Pirámide Transamerica en el centro",
-            "100": "El Downtown de San Francisco con la Torre Coit apareciendo"
+            "0": "Delfines comunes en la costa de California, Estados Unidos"
         }
     },
     "29BDF297-EB43-403A-8719-A78DA11A2948": {
-        "name": "Fisherman’s Wharf",
+        "name": "Vista aérea de Fisherman’s Wharf en dirección al centro de San Francisco",
         "pointsOfInterest": {
-            "0": "Dirigiéndose hacía el sudeste sobrevolando Fisherman’s Wharf en San Francisco",
-            "27": "Pasando el buque clase Liberty SS Jeremiah O’Brien",
-            "47": "Pasando el submarino USS Pampanito",
-            "80": "Pasando sobre North Beach en San Francisco",
-            "115": "Acercándose a la Torre Coit en Telegraph Hill, con el puente de la Bahía y el Downtown de San Francisco al fondo",
-            "135": "Acercándose a la Torre Coit en Telegraph Hill, con el iglesia de San Pedro y San Pablo a la derecha en segundo plano"
+            "0": "Vista aérea de Fisherman’s Wharf en dirección al centro de San Francisco",
+            "150": "Pasando junto a la torre Coit, hacia el centro de San Francisco y el puente Bay Bridge",
+            "196": "Centro de San Francisco",
+            "80": "Llegando a la torre Coit, con el centro de San Francisco y el puente Bay Bridge al fondo"
         }
     },
-    "b5-3": {
-        "name": "Embarcadero, Market Street",
+    "2B30E324-E4FF-4CC1-BA45-A958C2D2B2EC": {
+        "name": "Un banco de barracudas de aleta negra en aguas cercanas a Borneo",
         "pointsOfInterest": {
-            "0": "Dirigiéndose hacia el suroeste sobre la Bahía de San Francisco hacia Ferry Building",
-            "150": "Acercándose al Ferry Building y Embarcadero",
-            "210": "Dirigiéndose al suroeste por Market Street en San Francisco"
+            "0": "Un banco de barracudas de aleta negra en aguas cercanas a Borneo"
+        }
+    },
+    "2F52E34C-39D4-4AB1-9025-8F7141FAA720": {
+        "name": "El fiordo de Ilulissat en la costa de Groenlandia",
+        "pointsOfInterest": {
+            "0": "El fiordo de Ilulissat en la costa de Groenlandia"
+        }
+    },
+    "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
+        "name": "Vista aérea del Cuerno de África, en dirección al Golfo de Adén",
+        "pointsOfInterest": {
+            "0": "Vista aérea del Cuerno de África, en dirección al Golfo de Adén",
+            "115": "El golfo de Omán llegando a la costa de Makrán",
+            "145": "La costa de Makrán de Irán y Pakistán",
+            "160": "Vista aérea de Irán, en dirección a Afganistán y Pakistán",
+            "180": "Vista aérea de Afganistán y Pakistán hacia la cordillera del Karakórum",
+            "235": "Vista de la cordillera del Karakórum de camino a China",
+            "280": "El desierto de Taklamakán, en China occidental",
+            "315": "Las montañas Tian Shan en Asia central",
+            "45": "El sudeste de la península arábiga"
+        }
+    },
+    "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
+        "name": "Siguiendo la interestatal 110 hacia el norte a su paso por Los Ángeles",
+        "pointsOfInterest": {
+            "0": "Siguiendo la interestatal 110 hacia el norte a su paso por Los Ángeles"
+        }
+    },
+    "3716DD4B-01C0-4F5B-8DD6-DB771EC472FB": {
+        "name": "Tiburones grises nadando cerca de la Polinesia Francesa",
+        "pointsOfInterest": {
+            "0": "Tiburones grises nadando cerca de la Polinesia Francesa"
+        }
+    },
+    "391BDF6E-3279-4CE1-9CA5-0F82811452D7": {
+        "name": "Lobos marinos en la costa de la Península del Cabo, Sudáfrica",
+        "pointsOfInterest": {
+            "0": "Lobos marinos en la costa de la Península del Cabo, Sudáfrica"
+        }
+    },
+    "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
+        "name": "Vista aérea de Central Park en dirección a Midtown Manhattan, en Nueva York",
+        "pointsOfInterest": {
+            "0": "Vista aérea de Central Park en dirección a Midtown Manhattan, en Nueva York",
+            "246": "Vista aérea de Midtown Manhattan en Nueva York"
+        }
+    },
+    "3C4678E4-4D3D-4A40-8817-77752AEA62EB": {
+        "name": "Sobrevolando Europa occidental con las Islas Británicas a lo lejos",
+        "pointsOfInterest": {
+            "0": "Sobrevolando Europa occidental con las Islas Británicas a lo lejos",
+            "100": "Grecia, flanqueada por el mar Jónico y el mar Egeo",
+            "160": "Dirigiéndose al sudeste sobre el mar Mediterráneo",
+            "185": "El mar Mediterráneo y el delta del río Nilo",
+            "20": "Dirigiéndose al sudeste sobre los Alpes y el valle del río Po",
+            "205": "El río Nilo discurriendo por el Sahara en Egipto",
+            "220": "El desierto arábigo flanqueado por el río Nilo y el golfo de Suez",
+            "240": "Dirigiéndose al sudeste sobre el mar Rojo",
+            "50": "Bajando por la península itálica y el mar Adriático"
+        }
+    },
+    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": {
+        "name": "Siguiendo el litoral de Kohala, en la isla de Hawái",
+        "pointsOfInterest": {
+            "0": "Siguiendo el litoral de Kohala, en la isla de Hawái"
         }
     },
     "3E94AE98-EAF2-4B09-96E3-452F46BC114E": {
-        "name": "Puente de la Bahía"
-    },
-    "b2-4": {
-        "name": "Downtown y la Torre Sutro",
+        "name": "Llegando al puente Bay Bridge y centro de San Francisco",
         "pointsOfInterest": {
-            "0": "Dirigiéndose al distrito financiero de San Francisco, con la Torre Sutro al fondo",
-            "10": "Pasando la Pirámide Transamerica",
-            "50": "La antigua sede del Bank of America ocultando el sol"
+            "0": "Llegando al puente Bay Bridge y centro de San Francisco",
+            "116": "Vista aérea de la bahía de San Francisco en dirección al centro de la ciudad",
+            "80": "Cruzando el puente Bay Bridge en dirección al centro de San Francisco"
+        }
+    },
+    "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
+        "name": "Recorriendo Dubai Marina desde las alturas en los Emiratos Árabes Unidos",
+        "pointsOfInterest": {
+            "0": "Recorriendo Dubai Marina desde las alturas en los Emiratos Árabes Unidos"
+        }
+    },
+    "44166C39-8566-4ECA-BD16-43159429B52F": {
+        "name": "Bajando por la 7.ª Avenida hacia Times Square, Nueva York",
+        "pointsOfInterest": {
+            "0": "Bajando por la 7.ª Avenida hacia Times Square, Nueva York",
+            "120": "Bajando por la 7.ª Avenida en Midtown Manhattan, Nueva York",
+            "40": "Vista aérea de Times Square en Nueva York"
+        }
+    },
+    "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943": {
+        "name": "El valle Waimanu en la Reserva Forestal de Kohala, en la isla de Hawái",
+        "pointsOfInterest": {
+            "0": "El valle Waimanu en la Reserva Forestal de Kohala, en la isla de Hawái"
         }
     },
     "4AD99907-9E76-408D-A7FC-8429FF014201": {
-        "name": "Bahía de San Francisco y Embarcadero"
-    },
-    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": {
-        "name": "Antártida"
-    },
-    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
-        "name": "Aurora Boreal Norteamericana"
-    },
-    "A837FA8C-C643-4705-AE92-074EFDD067F7": {
-        "name": "Noche Africana"
-    },
-    "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
-        "name": "Africa y Oriente Medio"
-    },
-    "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
-        "name": "De California a Las Vegas"
-    },
-    "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
-        "name": "El Caribe"
+        "name": "Vista aérea de la bahía de San Francisco en dirección al Embarcadero",
+        "pointsOfInterest": {
+            "0": "Vista aérea de la bahía de San Francisco en dirección al Embarcadero",
+            "150": "Siguiendo la calle Market Street por el centro de San Francisco",
+            "360": "Siguiendo la calle Market Street por San Francisco",
+            "90": "Vista aérea del Embarcadero mirando hacia abajo sobre la calle Market Street, en San Francisco"
+        }
     },
     "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589": {
-        "name": "El Caribe de dia"
+        "name": "Dirigiéndose al sudeste sobre las Grandes Llanuras de Estados Unidos",
+        "pointsOfInterest": {
+            "0": "Dirigiéndose al sudeste sobre las Grandes Llanuras de Estados Unidos",
+            "120": "Vista aérea del sudeste de Estados Unidos en dirección a Florida",
+            "220": "Vista aérea de Florida, en dirección a las Bahamas",
+            "240": "Dirigiéndose al sudeste por encima de las Bahamas",
+            "285": "Vista aérea de las Bahamas llegando a la República Dominicana y Haití",
+            "300": "Vista aérea de la República Dominicana y Haití llegando al mar Caribe",
+            "315": "Vista aérea del mar Caribe en dirección al sur hacia Venezuela",
+            "90": "Dirigiéndose al sudeste sobre el Medio Oeste de Estados Unidos"
+        }
     },
-    "7825C73A-658F-48EE-B14C-EC56673094AC": {
-        "name": "China"
+    "537A4DAB-83B0-4B66-BCD1-05E5DBB4A268": {
+        "name": "Un banco de jureles voraces en la costa de Borneo",
+        "pointsOfInterest": {
+            "0": "Un banco de jureles voraces en la costa de Borneo"
+        }
     },
-    "E5DB138A-F04E-4619-B896-DE5CB538C534": {
-        "name": "De Italia a Asia"
+    "581A4F1A-2B6D-468C-A1BE-6F473F06D10B": {
+        "name": "Estrellas de mar cornudas en el fondo marino cerca de Borneo",
+        "pointsOfInterest": {
+            "0": "Estrellas de mar cornudas en el fondo marino cerca de Borneo"
+        }
     },
-    "F439B0A7-D18C-4B14-9681-6520E6A74FE9": {
-        "name": "Irán y Afganistán"
+    "58754319-8709-4AB0-8674-B34F04E7FFE2": {
+        "name": "Llegando al puente de la Torre sobre el río Támesis, Londres",
+        "pointsOfInterest": {
+            "0": "Llegando al puente de la Torre sobre el río Támesis, Londres",
+            "178": "Sur del río Támesis en Londres",
+            "258": "Cruzando el río Támesis, en Londres",
+            "78": "Siguiendo el río Támesis en Londres"
+        }
     },
-    "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": {
-        "name": "De Irlanda a Asia"
+    "58C75C62-3290-47B8-849C-56A583173570": {
+        "name": "Mantarrayas doradas en la costa de México",
+        "pointsOfInterest": {
+            "0": "Mantarrayas doradas en la costa de México"
+        }
+    },
+    "6143116D-03BB-485E-864E-A8CF58ACF6F1": {
+        "name": "Flotando por un bosque de algas cerca de la Península del Cabo, Sudáfrica",
+        "pointsOfInterest": {
+            "0": "Flotando por un bosque de algas cerca de la Península del Cabo, Sudáfrica"
+        }
     },
     "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": {
-        "name": "De África Occidental a los Alpes"
+        "name": "Islas Canarias, océano Atlántico y costa de África",
+        "pointsOfInterest": {
+            "0": "Islas Canarias, océano Atlántico y costa de África",
+            "105": "Vista aérea de Marruecos llegando al mar Mediterráneo",
+            "125": "El mar Mediterráneo y el sur de España",
+            "145": "Dirigiéndose al noreste por la Costa Blanca, España",
+            "165": "Dirigiéndose al noreste por las Islas Baleares, España",
+            "185": "Vista aérea del mar Mediterráneo occidental con los Alpes más allá",
+            "220": "Dirigiéndose al noreste por encima de los Alpes",
+            "45": "Dirigiéndose al noreste a lo largo de la costa de Marruecos",
+            "75": "Sobrevolando la cordillera del Atlas, en Marruecos"
+        }
+    },
+    "640DFB00-FBB9-45DA-9444-9F663859F4BC": {
+        "name": "Llegando a Lower Manhattan desde el puerto de Nueva York",
+        "pointsOfInterest": {
+            "0": "Llegando a Lower Manhattan desde el puerto de Nueva York",
+            "110": "Junto a Lower Manhattan, llegando al One World Trade Center",
+            "180": "Pasando por el One World Trade Center hacia Midtown Manhattan",
+            "210": "Vista aérea de Lower Manhattan en Nueva York en dirección a Midtown"
+        }
+    },
+    "64D11DAB-3B57-4F14-AD2F-E59A9282FA44": {
+        "name": "Vista aérea del océano Atlántico Norte en dirección a Portugal",
+        "pointsOfInterest": {
+            "0": "Vista aérea del océano Atlántico Norte en dirección a Portugal",
+            "115": "Vista aérea de Portugal y España",
+            "150": "Alejándose de la península ibérica, sobrevolando el golfo de Vizcaya y Francia",
+            "180": "Vista aérea de Europa occidental con el océano Atlántico Norte a lo lejos"
+        }
+    },
+    "687D03A2-18A5-4181-8E85-38F3A13409B9": {
+        "name": "Peces loro cototo verde sobre los arrecifes de coral de Borneo",
+        "pointsOfInterest": {
+            "0": "Peces loro cototo verde sobre los arrecifes de coral de Borneo"
+        }
+    },
+    "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
+        "name": "Llegando al Golden Gate desde San Francisco",
+        "pointsOfInterest": {
+            "0": "Llegando al Golden Gate desde San Francisco",
+            "140": "Cruzando sobre el Golden Gate",
+            "230": "Pasando por la torre norte del Golden Gate",
+            "260": "Vista aérea de la bahía de San Francisco, pasando junto al Golden Gate",
+            "60": "Junto al Golden Gate, hacia Marin Headlands"
+        }
+    },
+    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
+        "name": "Vista aérea del océano Pacífico de camino a Baja California",
+        "pointsOfInterest": {
+            "0": "Vista aérea del océano Pacífico de camino a Baja California",
+            "110": "Vista aérea de las Montañas Rocosas llegando a Denver",
+            "125": "Sobrevolando las Grandes Llanuras de Estados Unidos",
+            "185": "Llegando a los Grandes Lagos, con Ontario, Canadá, más allá",
+            "200": "Vista aérea de los Grandes Lagos llegando a Ontario, Canadá",
+            "210": "La aurora boreal sobre el oeste de Ontario, Canadá",
+            "235": "La aurora boreal sobre el norte de Ontario, Canadá",
+            "250": "La aurora boreal sobre el norte de Quebec, Canadá",
+            "300": "Dirigiéndose hacia el Atlántico Norte con la aurora boreal sobre Labrador, Canadá",
+            "45": "Vista aérea de Baja California mirando al norte hacia Estados Unidos",
+            "55": "Vista aérea de México en dirección al sudoeste de Estados Unidos",
+            "75": "Vista aérea del sudoeste de Estados Unidos"
+        }
+    },
+    "7719B48A-2005-4011-9280-2F64EEC6FD91": {
+        "name": "Vista aérea del océano Pacífico en dirección a Estados Unidos",
+        "pointsOfInterest": {
+            "0": "Vista aérea del océano Pacífico en dirección a Estados Unidos",
+            "130": "La Sierra Madre Occidental en la costa oeste de México",
+            "185": "Vista aérea de la Sierra Madre Occidental en dirección a la costa oeste de México",
+            "20": "En dirección al sur, bajando por la costa de California",
+            "225": "Mirando al sur hacia el océano Pacífico sobre la Sierra Madre del Sur en México",
+            "280": "El océano Pacífico en la costa de México",
+            "290": "El océano Pacífico en la costa de México y Guatemala",
+            "50": "Vista aérea del sur de California, en dirección a México",
+            "65": "Llegando al desierto de Mojave en el sur de California, con México más allá",
+            "95": "El golfo de California flanqueado por el desierto de Sonora y la península de Baja California"
+        }
+    },
+    "7825C73A-658F-48EE-B14C-EC56673094AC": {
+        "name": "Vista aérea de Asia central, en dirección a la costa de China",
+        "pointsOfInterest": {
+            "0": "Vista aérea de Asia central, en dirección a la costa de China",
+            "10": "Vista aérea de China, en dirección a Shanghái",
+            "30": "Pasando por encima de la China oriental, llegando a Shanghái",
+            "45": "Llegando a Shanghái, hacia el mar de la China Oriental",
+            "50": "Vista aérea de Shanghái, en dirección al mar de la China Oriental"
+        }
     },
     "78911B7E-3C69-47AD-B635-9C2486F6301D": {
-        "name": "Nueva Zelanda"
+        "name": "Cruzando sobre el océano Pacífico Sur de la noche al día",
+        "pointsOfInterest": {
+            "0": "Cruzando sobre el océano Pacífico Sur de la noche al día",
+            "110": "Llegando a Nueva Zelanda al amanecer",
+            "170": "Saliendo de Nueva Zelanda hacia el noreste sobre el océano Pacífico",
+            "70": "Cruzando sobre Nueva Zelanda de la noche al día"
+        }
+    },
+    "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": {
+        "name": "Vista aérea del Atlántico Norte llegando a las islas británicas",
+        "pointsOfInterest": {
+            "0": "Vista aérea del Atlántico Norte llegando a las islas británicas",
+            "105": "Vista aérea de Europa central, dirigiéndose a Rusia",
+            "15": "Irlanda y Gran Bretaña",
+            "150": "Vista aérea de Europa del este, con Moscú a lo lejos",
+            "165": "Vista aérea de Europa del este, mirando hacia Rusia",
+            "185": "Vista aérea del oeste de Rusia, pasando por Moscú",
+            "195": "Vista aérea de Rusia, en dirección a Asia central",
+            "45": "Vista aérea de Gran Bretaña en dirección hacia Europa continental",
+            "65": "Vista aérea del noroeste de Europa, dirigiéndose a Rusia"
+        }
+    },
+    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
+        "name": "Llegando al puente de la Torre sobre el río Támesis, Londres",
+        "pointsOfInterest": {
+            "0": "Llegando al puente de la Torre sobre el río Támesis, Londres",
+            "130": "Siguiendo el río Támesis en Londres hacia el London Eye",
+            "20": "Siguiendo el río Támesis en Londres",
+            "210": "Llegando al London Eye sobre el río Támesis",
+            "310": "Siguiendo el río Támesis más allá del London Eye",
+            "325": "Pasando por el palacio de Westminster sobre el río Támesis, en Londres"
+        }
+    },
+    "81337355-E156-4242-AAF4-711768D30A54": {
+        "name": "Vista aérea del océano Índico en dirección a Perth, Australia",
+        "pointsOfInterest": {
+            "0": "Vista aérea del océano Índico en dirección a Perth, Australia",
+            "170": "Vista aérea de Australia Occidental llegando al Territorio del Norte",
+            "220": "Vista aérea del Territorio del Norte, Australia, en dirección a Nueva Guinea",
+            "335": "Vista aérea del mar de Arafura en dirección a Nueva Guinea",
+            "50": "En dirección al noreste, atravesando Australia Occidental"
+        }
+    },
+    "82175C1F-153C-4EC8-AE37-2860EA828004": {
+        "name": "Arrecife de coral en el mar Rojo cerca de Egipto",
+        "pointsOfInterest": {
+            "0": "Arrecife de coral en el mar Rojo cerca de Egipto"
+        }
+    },
+    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": {
+        "name": "Por encima de la Reserva del Paraje Natural de Pu‘u O ‘Umi, en la isla de Hawái",
+        "pointsOfInterest": {
+            "0": "Por encima de la Reserva del Paraje Natural de Pu‘u O ‘Umi, en la isla de Hawái"
+        }
+    },
+    "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8": {
+        "name": "Vista aérea del Upper East Side y Central Park, en Nueva York",
+        "pointsOfInterest": {
+            "0": "Vista aérea del Upper East Side y Central Park, en Nueva York",
+            "160": "Llegando al Empire State, en Nueva York",
+            "205": "Sobrevolando el Empire State en dirección a Lower Manhattan",
+            "50": "Vista aérea de Midtown Manhattan, dirigiéndose al centro hacia el Empire State"
+        }
+    },
+    "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
+        "name": "Vista aérea de la bahía de San Francisco en dirección al Embarcadero",
+        "pointsOfInterest": {
+            "0": "Vista aérea de la bahía de San Francisco en dirección al Embarcadero",
+            "208": "Siguiendo la calle Market Street por San Francisco"
+        }
+    },
+    "87060EC2-D006-4102-98CC-3005C68BB343": {
+        "name": "En dirección al noreste, por encima del macizo Etíope",
+        "pointsOfInterest": {
+            "0": "En dirección al noreste, por encima del macizo Etíope",
+            "100": "Dirigiéndose al noreste sobre la península arábiga",
+            "130": "Vista aérea de la península arábiga en dirección a Irán",
+            "165": "Vista aérea de la península arábiga llegando a Irán",
+            "190": "Llegando a la costa de Irán, con la cordillera del Zagros más allá",
+            "210": "Vista aérea de la cordillera del Zagros, en Irán",
+            "240": "Vista aérea del desierto Dasht-e Lut en Irán",
+            "265": "En dirección a Turkmenistán y el desierto de Garagum",
+            "305": "El río Amu Darya y las montañas Pamir-Alay en Asia central",
+            "322": "Las montañas Pamir-Alay y el valle de Ferganá en Asia central",
+            "360": "Entrando en el sudeste de Kazajistán desde Kirguistán",
+            "400": "En dirección al norte, por encima de Kazajistán",
+            "45": "Sobrevolando el mar Rojo hacia la península arábiga",
+            "450": "Vista aérea del macizo de Altái entrando en Mongolia"
+        }
+    },
+    "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
+        "name": "Recorriendo la carretera Sheikh Zayed en Dubái, Emiratos Árabes Unidos",
+        "pointsOfInterest": {
+            "0": "Recorriendo la carretera Sheikh Zayed en Dubái, Emiratos Árabes Unidos"
+        }
+    },
+    "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
+        "name": "Observatorio Griffith y Hollywood Hills en Los Ángeles",
+        "pointsOfInterest": {
+            "0": "Observatorio Griffith y Hollywood Hills en Los Ángeles"
+        }
+    },
+    "8C31B06F-91A4-4F7C-93ED-56146D7F48B9": {
+        "name": "Olas rompiendo en la costa de Tahití",
+        "pointsOfInterest": {
+            "0": "Olas rompiendo en la costa de Tahití"
+        }
+    },
+    "92E48DE9-13A1-4172-B560-29B4668A87EE": {
+        "name": "Vista aérea de la playa de Santa Mónica, cerca de Los Ángeles",
+        "pointsOfInterest": {
+            "0": "Vista aérea de la playa de Santa Mónica, cerca de Los Ángeles",
+            "365": "Sobrevolando el muelle de Santa Mónica, cerca de Los Ángeles",
+            "430": "Vista aérea de la playa de Santa Mónica, cerca de Los Ángeles"
+        }
+    },
+    "9680B8EB-CE2A-4395-AF41-402801F4D6A6": {
+        "name": "Llegando al Burj Khalifa en el centro de Dubái (Emiratos Árabes Unidos)",
+        "pointsOfInterest": {
+            "0": "Llegando al Burj Khalifa en el centro de Dubái (Emiratos Árabes Unidos)",
+            "280": "Pasando por el Burj Khalifa en el centro de Dubái, Emiratos Árabes Unidos",
+            "330": "Vista aérea del centro de Dubái, llegando a la costa"
+        }
+    },
+    "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C": {
+        "name": "Sobrevolando las terrazas de arroz de Longji en la provincia de Guangxi, China",
+        "pointsOfInterest": {
+            "0": "Sobrevolando las terrazas de arroz de Longji en la provincia de Guangxi, China"
+        }
+    },
+    "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
+        "name": "Sobrevolando los terrenos del Palacio de Buckingham, Londres",
+        "pointsOfInterest": {
+            "0": "Sobrevolando los terrenos del Palacio de Buckingham, Londres",
+            "104": "Cruzando el río Támesis pasando por el London Eye",
+            "149": "Sobrevolando el sur de Londres",
+            "24": "Vista aérea del Palacio de Buckingham de Londres",
+            "279": "Pasando por The Shard en el sur de Londres",
+            "299": "Cruzando el río Támesis, en Londres",
+            "324": "Cruzando el río Támesis a la altura del puente de la Torre de Londres",
+            "49": "Vista aérea del parque de St. James, dirigiéndose al río Támesis, Londres"
+        }
+    },
+    "A837FA8C-C643-4705-AE92-074EFDD067F7": {
+        "name": "En dirección al noreste por la noche, por encima del Sáhara",
+        "pointsOfInterest": {
+            "0": "En dirección al noreste por la noche, por encima del Sáhara",
+            "100": "La costa mediterránea de Túnez y Libia",
+            "120": "Dirigiéndose a Italia, por encima del mar Mediterráneo",
+            "140": "Vista aérea del sur de Italia llegando a la península de los Balcanes, con Turquía a lo lejos",
+            "165": "Vista aérea de la península de los Balcanes llegando al mar Negro",
+            "180": "Vista aérea de la península de los Balcanes llegando al mar Negro",
+            "210": "Sobrevolando el mar Negro hacia Ucrania",
+            "230": "Pasando por encima de Ucrania, hacia Rusia",
+            "70": "Vista aérea del Gran Erg Oriental en dirección al mar Mediterráneo"
+        }
+    },
+    "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
+        "name": "Sobrevolando el oasis de Liwa en los Emiratos Árabes Unidos",
+        "pointsOfInterest": {
+            "0": "Sobrevolando el oasis de Liwa en los Emiratos Árabes Unidos"
+        }
+    },
+    "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
+        "name": "Vista aérea del océano Pacífico en dirección a México",
+        "pointsOfInterest": {
+            "0": "Vista aérea del océano Pacífico en dirección a México",
+            "105": "Sobrevolando la Ciudad de México hacia el Golfo de México",
+            "122": "Sobrevolando el Golfo de México hacia Estados Unidos",
+            "180": "Pasando por Houston y llegando a Nueva Orleans, en Estados Unidos",
+            "190": "Dirigiéndose a Nueva Orleans y la costa del golfo de los Estados Unidos",
+            "215": "Bajando por el sudeste de los Estados Unidos",
+            "280": "Vista aérea del este de Estados Unidos de camino a Nueva York",
+            "320": "Vista aérea del este de Estados Unidos llegando a Nueva York"
+        }
+    },
+    "B876B645-3955-420E-99DF-60139E451CF3": {
+        "name": "Pasando por el Parque Nacional de Wulingyuan, en China",
+        "pointsOfInterest": {
+            "0": "Pasando por el Parque Nacional de Wulingyuan, en China"
+        }
+    },
+    "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
+        "name": "Recorriendo la península de Nuussuaq en Groenlandia",
+        "pointsOfInterest": {
+            "0": "Recorriendo la península de Nuussuaq en Groenlandia"
+        }
+    },
+    "BA4ECA11-592F-4727-9221-D2A32A16EB28": {
+        "name": "Medusas doradas en las aguas de Palaos",
+        "pointsOfInterest": {
+            "0": "Medusas doradas en las aguas de Palaos",
+            "282": "Medusas doradas con una medusa luna en medio",
+            "348": "Medusas doradas en las aguas de Palaos"
+        }
+    },
+    "C6DC4E54-1130-44F8-AF6F-A551D8E8A181": {
+        "name": "Medusas luna cerca de la costa de Alaska, Estados Unidos",
+        "pointsOfInterest": {
+            "0": "Medusas luna cerca de la costa de Alaska, Estados Unidos"
+        }
+    },
+    "C7AD3D0A-7EDF-412C-A237-B3C9D27381A1": {
+        "name": "Flotando junto a medusas luna cerca de la costa de Alaska, Estados Unidos",
+        "pointsOfInterest": {
+            "0": "Flotando junto a medusas luna cerca de la costa de Alaska, Estados Unidos"
+        }
+    },
+    "C8559883-6F3E-4AF2-8960-903710CD47B7": {
+        "name": "Sobrevolando la Cumbre Victoria, en Hong Kong",
+        "pointsOfInterest": {
+            "0": "Sobrevolando la Cumbre Victoria, en Hong Kong",
+            "150": "Sobrevolando Hong Kong hacia Victoria Harbour",
+            "330": "Vista aérea de Victoria Harbour, llegando a la península de Kowloon"
+        }
+    },
+    "CE279831-1CA7-4A83-A97B-FF1E20234396": {
+        "name": "Sobrevolando el aeropuerto internacional de Los Ángeles",
+        "pointsOfInterest": {
+            "0": "Sobrevolando el aeropuerto internacional de Los Ángeles"
+        }
+    },
+    "CE9B5D5B-B6E7-47C5-8C04-59BF182E98FB": {
+        "name": "Delfines giradores en las aguas de Costa Rica",
+        "pointsOfInterest": {
+            "0": "Delfines giradores en las aguas de Costa Rica"
+        }
+    },
+    "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
+        "name": "Sobrevolando el océano Pacífico hacia América Central",
+        "pointsOfInterest": {
+            "0": "Sobrevolando el océano Pacífico hacia América Central",
+            "110": "Pasando por Jamaica, cubierta de nubes, en el mar Caribe",
+            "125": "Cruzando sobre Cuba, mirando hacia Haití y la República Dominicana",
+            "170": "Sobrevolando las Bahamas, mirando hacia Haití y la República Dominicana",
+            "190": "Islas Turcas y Caicos en el océano Atlántico",
+            "35": "Costas del Pacífico de Nicaragua, Costa Rica y Panamá",
+            "50": "Sobrevolando América Central, con Sudamérica a lo lejos",
+            "65": "La Costa de los Mosquitos de Nicaragua",
+            "85": "Vista aérea del mar Caribe de camino a Cuba"
+        }
+    },
+    "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
+        "name": "Explorando el Parque Nacional de Wulingyuan, en China",
+        "pointsOfInterest": {
+            "0": "Explorando el Parque Nacional de Wulingyuan, en China"
+        }
+    },
+    "DD47D8E1-CB66-4C12-BFEA-2ADB0D8D1E2E": {
+        "name": "Una ballena jorobada en los mares de la Polinesia Francesa",
+        "pointsOfInterest": {
+            "0": "Una ballena jorobada en los mares de la Polinesia Francesa"
+        }
+    },
+    "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
+        "name": "Bahía de San Francisco y Golden Gate",
+        "pointsOfInterest": {
+            "0": "Bahía de San Francisco y Golden Gate",
+            "140": "Dirigiéndose a la torre norte del Golden Gate hacia San Francisco",
+            "191": "Vista aérea de la bahía de San Francisco"
+        }
     },
     "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
-        "name": "El Sahara e Italia"
+        "name": "Vista aérea del África occidental, en dirección al Sáhara",
+        "pointsOfInterest": {
+            "0": "Vista aérea del África occidental, en dirección al Sáhara",
+            "110": "Pasando por encima del macizo del Ahaggar en el Sáhara, en el norte de África",
+            "155": "Vista aérea del Gran Erg Oriental en el norte de África en dirección al mar Mediterráneo",
+            "195": "La costa de Túnez y el mar Mediterráneo",
+            "210": "Vista aérea de la costa de Túnez, en dirección a Italia",
+            "230": "Llegando a Italia en el mar Mediterráneo",
+            "245": "Vista aérea de Italia en dirección a la península de los Balcanes",
+            "285": "Vista aérea de la península de los Balcanes llegando a los Cárpatos",
+            "30": "Cruzando el Sáhara, en el norte de África",
+            "310": "Los Cárpatos y el mar Negro"
+        }
+    },
+    "E580E5A5-0888-4BE8-A4CA-F74A18A643C3": {
+        "name": "Medusas doradas en las aguas de Palaos",
+        "pointsOfInterest": {
+            "0": "Medusas doradas en las aguas de Palaos"
+        }
+    },
+    "E5DB138A-F04E-4619-B896-DE5CB538C534": {
+        "name": "Vista aérea de Túnez, en dirección a Italia",
+        "pointsOfInterest": {
+            "0": "Vista aérea de Túnez, en dirección a Italia",
+            "15": "Vista aérea del sur de Italia con la península de los Balcanes más allá",
+            "25": "Vista aérea de la península de los Balcanes en dirección a Asia central",
+            "40": "Vista aérea de la península de los Balcanes pasando por el mar Negro",
+            "5": "Vista aérea del mar Mediterráneo mirando hacia Sicilia y la península itálica",
+            "55": "Vista aérea de Ucrania, con Rusia más allá",
+            "75": "Vista aérea del sudoeste de Rusia, pasando junto Kazajistán"
+        }
+    },
+    "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
+        "name": "Sobrevolando Dubai Marina en los Emiratos Árabes Unidos",
+        "pointsOfInterest": {
+            "0": "Sobrevolando Dubai Marina en los Emiratos Árabes Unidos"
+        }
+    },
+    "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
+        "name": "Vista aérea de Victoria Harbour en dirección al distrito central de Hong Kong",
+        "pointsOfInterest": {
+            "0": "Vista aérea de Victoria Harbour en dirección al distrito central de Hong Kong"
+        }
+    },
+    "EB3F48E7-D30F-4079-858F-1A61331D5026": {
+        "name": "Atravesando un bosque de algas en la costa de California, Estados Unidos",
+        "pointsOfInterest": {
+            "0": "Atravesando un bosque de algas en la costa de California, Estados Unidos"
+        }
+    },
+    "EC3DC957-D4C2-4732-AACE-7D0C0F390EC8": {
+        "name": "Medusas doradas en las aguas de Palaos",
+        "pointsOfInterest": {
+            "0": "Medusas doradas en las aguas de Palaos"
+        }
+    },
+    "EC67726A-8212-4C5E-83CF-8412932740D2": {
+        "name": "El letrero de Hollywood en Los Ángeles",
+        "pointsOfInterest": {
+            "0": "El letrero de Hollywood en Los Ángeles",
+            "250": "Vista aérea de Hollywood Hills llegando a Burbank, California"
+        }
+    },
+    "EE01F02D-1413-436C-AB05-410F224A5B7B": {
+        "name": "El fiordo de Ilulissat en la costa de Groenlandia",
+        "pointsOfInterest": {
+            "0": "El fiordo de Ilulissat en la costa de Groenlandia"
+        }
+    },
+    "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
+        "name": "Vista aérea de Marin Headlands mirando hacia el Golden Gate",
+        "pointsOfInterest": {
+            "0": "Vista aérea de Marin Headlands mirando hacia el Golden Gate",
+            "150": "Cruzando el Golden Gate en dirección al Presidio de San Francisco"
+        }
+    },
+    "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
+        "name": "La sección Mutianyu de la Gran Muralla China en el distrito de Huairóu, China",
+        "pointsOfInterest": {
+            "0": "La sección Mutianyu de la Gran Muralla China en el distrito de Huairóu, China"
+        }
+    },
+    "F07CC61B-30FC-4614-BDAD-3240B61F6793": {
+        "name": "Arrecife de coral cerca de Palaos",
+        "pointsOfInterest": {
+            "0": "Arrecife de coral cerca de Palaos"
+        }
+    },
+    "F439B0A7-D18C-4B14-9681-6520E6A74FE9": {
+        "name": "El reflejo del sol a lo largo de la costa de Irán",
+        "pointsOfInterest": {
+            "0": "El reflejo del sol a lo largo de la costa de Irán",
+            "15": "Pasando del día a la noche por encima de Irán",
+            "60": "Pasando del día a la noche por encima de Asia central"
+        }
+    },
+    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
+        "name": "Pasando por el centro de Los Ángeles",
+        "pointsOfInterest": {
+            "0": "Pasando por el centro de Los Ángeles"
+        }
+    },
+    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
+        "name": "Llegando al puente de la Torre sobre el río Támesis, Londres",
+        "pointsOfInterest": {
+            "0": "Llegando al puente de la Torre sobre el río Támesis, Londres",
+            "20": "Cruzando el río Támesis, en Londres",
+            "200": "Cruzando el río Támesis hacia Westminster, Londres",
+            "270": "Vista aérea de Westminster, Londres",
+            "60": "Pasando por The Shard en el sur de Londres",
+            "92": "Sur del río Támesis en dirección al London Eye"
+        }
+    },
+    "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {
+        "name": "Vista aérea de Victoria Harbour frente a la isla de Hong Kong",
+        "pointsOfInterest": {
+            "0": "Vista aérea de Victoria Harbour frente a la isla de Hong Kong"
+        }
     }
 }

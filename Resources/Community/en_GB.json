@@ -6,17 +6,17 @@
         }
     },
     "009BA758-7060-4479-8EE8-FB9B40C8FB97": {
-        "name": "Moving southeast over Siberia and Mongolia",
+        "name": "Moving south-east over Siberia and Mongolia",
         "pointsOfInterest": {
-            "0": "Moving southeast over Siberia and Mongolia",
-            "110": "Over China heading toward the Korean Peninsula",
+            "0": "Moving south-east over Siberia and Mongolia",
+            "110": "Over China heading towards the Korean Peninsula",
             "150": "The Korean Peninsula with Japan in the distance",
-            "180": "Over South Korea traveling toward Japan",
-            "195": "Over Japan looking toward the Pacific Ocean",
-            "22": "Heading toward Inner Mongolia",
-            "260": "Over the Pacific Ocean southeast of Japan",
-            "32": "Over Mongolia traveling toward China",
-            "60": "Over northern China moving toward the Korean Peninsula"
+            "180": "Over South Korea travelling towards Japan",
+            "195": "Over Japan looking towards the Pacific Ocean",
+            "22": "Heading towards Inner Mongolia",
+            "260": "Over the Pacific Ocean south-east of Japan",
+            "32": "Over Mongolia travelling towards China",
+            "60": "Over northern China moving towards the Korean Peninsula"
         }
     },
     "00BA71CD-2C54-415A-A68A-8358E677D750": {
@@ -47,26 +47,26 @@
         }
     },
     "1088217C-1410-4CF7-BDE9-8F573A4DBCD9": {
-        "name": "Over the Pacific Ocean moving toward Central America",
+        "name": "Over the Pacific Ocean moving towards Central America",
         "pointsOfInterest": {
-            "0": "Over the Pacific Ocean moving toward Central America",
-            "100": "Crossing Central America toward the Caribbean Sea",
-            "150": "Over the Caribbean Sea moving toward Cuba",
+            "0": "Over the Pacific Ocean moving towards Central America",
+            "100": "Crossing Central America towards the Caribbean Sea",
+            "150": "Over the Caribbean Sea moving towards Cuba",
             "240": "Over Cuba with Florida and the Bahamas beyond",
-            "300": "Over Florida and the Bahamas traveling toward the Sargasso Sea",
+            "300": "Over Florida and the Bahamas travelling towards the Sargasso Sea",
             "350": "Over the Sargasso Sea heading out into the Atlantic Ocean",
-            "70": "The southwest coast of Central America heading toward the Caribbean Sea"
+            "70": "The south-west coast of Central America heading towards the Caribbean Sea"
         }
     },
     "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
-        "name": "Over the Pacific Ocean moving toward the California coast",
+        "name": "Over the Pacific Ocean moving towards the California coast",
         "pointsOfInterest": {
-            "0": "Over the Pacific Ocean moving toward the California coast",
-            "110": "Over Las Vegas heading toward Salt Lake City in the United States",
+            "0": "Over the Pacific Ocean moving towards the California coast",
+            "110": "Over Las Vegas heading towards Salt Lake City in the United States",
             "120": "Over the western United States approaching Salt Lake City",
             "155": "Passing between Salt Lake City and Denver in the United States",
             "170": "Over the Rocky Mountains in the United States",
-            "70": "Over the California coast traveling inland",
+            "70": "Over the California coast travelling inland",
             "85": "Passing over Los Angeles on the west coast of the United States",
             "95": "Over Los Angeles approaching Las Vegas in the United States"
         }
@@ -102,10 +102,10 @@
         }
     },
     "29BDF297-EB43-403A-8719-A78DA11A2948": {
-        "name": "Over Fisherman’s Wharf heading toward downtown San Francisco",
+        "name": "Over Fisherman’s Wharf heading towards downtown San Francisco",
         "pointsOfInterest": {
-            "0": "Over Fisherman’s Wharf heading toward downtown San Francisco",
-            "150": "Passing Coit Tower toward downtown San Francisco and the Bay Bridge",
+            "0": "Over Fisherman’s Wharf heading towards downtown San Francisco",
+            "150": "Passing Coit Tower towards downtown San Francisco and the Bay Bridge",
             "196": "Downtown San Francisco",
             "80": "Approaching Coit Tower with downtown San Francisco and the Bay Bridge in the background"
         }
@@ -123,17 +123,17 @@
         }
     },
     "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
-        "name": "Over the Horn of Africa traveling toward the Gulf of Aden",
+        "name": "Over the Horn of Africa travelling towards the Gulf of Aden",
         "pointsOfInterest": {
-            "0": "Over the Horn of Africa traveling toward the Gulf of Aden",
+            "0": "Over the Horn of Africa travelling towards the Gulf of Aden",
             "115": "The Gulf of Oman approaching the Makran Coast",
             "145": "The Makran Coast of Iran and Pakistan",
-            "160": "Over Iran moving toward Afghanistan and Pakistan",
-            "180": "Over Afghanistan and Pakistan moving toward the Karakoram Range",
-            "235": "Over the Karakoram Range traveling into China",
+            "160": "Over Iran moving towards Afghanistan and Pakistan",
+            "180": "Over Afghanistan and Pakistan moving towards the Karakoram Range",
+            "235": "Over the Karakoram Range travelling into China",
             "280": "The Takla Makan Desert in western China",
             "315": "The Tian Shan mountains in Central Asia",
-            "45": "The southeastern Arabian Peninsula"
+            "45": "The south-eastern Arabian Peninsula"
         }
     },
     "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
@@ -143,9 +143,9 @@
         }
     },
     "3716DD4B-01C0-4F5B-8DD6-DB771EC472FB": {
-        "name": "Gray Reef Sharks swimming near French Polynesia",
+        "name": "Grey Reef Sharks swimming near French Polynesia",
         "pointsOfInterest": {
-            "0": "Gray Reef Sharks swimming near French Polynesia"
+            "0": "Grey Reef Sharks swimming near French Polynesia"
         }
     },
     "391BDF6E-3279-4CE1-9CA5-0F82811452D7": {
@@ -155,23 +155,23 @@
         }
     },
     "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
-        "name": "Over Central Park traveling toward Midtown Manhattan in New York",
+        "name": "Over Central Park travelling towards Midtown Manhattan in New York",
         "pointsOfInterest": {
-            "0": "Over Central Park traveling toward Midtown Manhattan in New York",
+            "0": "Over Central Park travelling towards Midtown Manhattan in New York",
             "246": "Over Midtown Manhattan in New York"
         }
     },
     "3C4678E4-4D3D-4A40-8817-77752AEA62EB": {
-        "name": "Traveling over Western Europe with the British Isles in the distance",
+        "name": "Travelling over Western Europe with the British Isles in the distance",
         "pointsOfInterest": {
-            "0": "Traveling over Western Europe with the British Isles in the distance",
+            "0": "Travelling over Western Europe with the British Isles in the distance",
             "100": "Greece flanked by the Ionian and Aegean Seas",
-            "160": "Traveling southeast over the Mediterranean Sea",
+            "160": "Travelling south-east over the Mediterranean Sea",
             "185": "The Mediterranean Sea and the Nile River Delta",
-            "20": "Heading southeast over the Alps and the Po River Valley",
+            "20": "Heading south-east over the Alps and the Po River Valley",
             "205": "The Nile River flowing through the Sahara in Egypt",
             "220": "The Eastern Desert flanked by the Nile River and the Gulf of Suez",
-            "240": "Heading southeast over the Red Sea",
+            "240": "Heading south-east over the Red Sea",
             "50": "Moving down the Italian Peninsula and the Adriatic Sea"
         }
     },
@@ -185,8 +185,8 @@
         "name": "Approaching the Bay Bridge and downtown San Francisco",
         "pointsOfInterest": {
             "0": "Approaching the Bay Bridge and downtown San Francisco",
-            "116": "Over San Francisco Bay heading toward downtown",
-            "80": "Crossing over the Bay Bridge heading toward downtown San Francisco"
+            "116": "Over San Francisco Bay heading towards downtown",
+            "80": "Crossing over the Bay Bridge heading towards downtown San Francisco"
         }
     },
     "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
@@ -196,9 +196,9 @@
         }
     },
     "44166C39-8566-4ECA-BD16-43159429B52F": {
-        "name": "Heading down 7th Avenue toward Times Square, New York",
+        "name": "Heading down 7th Avenue towards Times Square, New York",
         "pointsOfInterest": {
-            "0": "Heading down 7th Avenue toward Times Square, New York",
+            "0": "Heading down 7th Avenue towards Times Square, New York",
             "120": "Heading down 7th Avenue in Midtown Manhattan, New York",
             "40": "Over Times Square in New York"
         }
@@ -210,25 +210,25 @@
         }
     },
     "4AD99907-9E76-408D-A7FC-8429FF014201": {
-        "name": "Over the San Francisco Bay moving toward the Embarcadero",
+        "name": "Over San Francisco Bay moving towards the Embarcadero",
         "pointsOfInterest": {
-            "0": "Over the San Francisco Bay moving toward the Embarcadero",
+            "0": "Over San Francisco Bay moving towards the Embarcadero",
             "150": "Following Market Street through downtown San Francisco",
             "360": "Following Market Street through San Francisco",
             "90": "Over the Embarcadero looking down Market Street in San Francisco"
         }
     },
     "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589": {
-        "name": "Heading southeast over the Great Plains of the United States",
+        "name": "Heading south-east over the Great Plains of the United States",
         "pointsOfInterest": {
-            "0": "Heading southeast over the Great Plains of the United States",
-            "120": "Over the southeast United States heading toward Florida",
-            "220": "Over Florida traveling toward the Bahamas",
-            "240": "Moving southeast over the Bahamas",
+            "0": "Heading south-east over the Great Plains of the United States",
+            "120": "Over the south-east United States heading towards Florida",
+            "220": "Over Florida travelling towards the Bahamas",
+            "240": "Moving south-east over the Bahamas",
             "285": "Over the Bahamas approaching the Dominican Republic and Haiti",
             "300": "Over the Dominican Republic and Haiti approaching the Caribbean Sea",
-            "315": "Over the Caribbean Sea heading south toward Venezuela",
-            "90": "Heading southeast over the Midwest United States"
+            "315": "Over the Caribbean Sea heading south towards Venezuela",
+            "90": "Heading south-east over the Midwest United States"
         }
     },
     "537A4DAB-83B0-4B66-BCD1-05E5DBB4A268": {
@@ -265,16 +265,16 @@
         }
     },
     "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": {
-        "name": "The Canary Islands, Atlantic Ocean, and coast of Africa",
+        "name": "The Canary Islands, Atlantic Ocean and coast of Africa",
         "pointsOfInterest": {
-            "0": "The Canary Islands, Atlantic Ocean, and coast of Africa",
+            "0": "The Canary Islands, Atlantic Ocean and coast of Africa",
             "105": "Over Morocco approaching the Mediterranean Sea",
             "125": "The Mediterranean Sea and southern Spain",
-            "145": "Traveling northeast over Spain’s Costa Blanca",
-            "165": "Traveling northeast over Spain’s Balearic Islands",
+            "145": "Travelling northeast over Spain’s Costa Blanca",
+            "165": "Travelling northeast over Spain’s Balearic Islands",
             "185": "Over the western Mediterranean Sea with the Alps beyond",
-            "220": "Moving northeast over the Alps",
-            "45": "Moving northeast along the coast of Morocco",
+            "220": "Moving north-east over the Alps",
+            "45": "Moving north-east along the coast of Morocco",
             "75": "Passing over the Atlas Mountains in Morocco"
         }
     },
@@ -283,14 +283,14 @@
         "pointsOfInterest": {
             "0": "Approaching Lower Manhattan from New York Harbor",
             "110": "Alongside Lower Manhattan approaching One World Trade Center",
-            "180": "Passing One World Trade Center toward Midtown Manhattan",
-            "210": "Over Lower Manhattan in New York moving toward Midtown"
+            "180": "Passing One World Trade Center towards Midtown Manhattan",
+            "210": "Over Lower Manhattan in New York moving towards Midtown"
         }
     },
     "64D11DAB-3B57-4F14-AD2F-E59A9282FA44": {
-        "name": "Over the North Atlantic Ocean heading toward Portugal",
+        "name": "Over the North Atlantic Ocean heading towards Portugal",
         "pointsOfInterest": {
-            "0": "Over the North Atlantic Ocean heading toward Portugal",
+            "0": "Over the North Atlantic Ocean heading towards Portugal",
             "115": "Over Portugal and Spain",
             "150": "Moving away from the Iberian Peninsula and passing over the Bay of Biscay and France",
             "180": "Over Western Europe with the North Atlantic Ocean in the distance"
@@ -308,50 +308,50 @@
             "0": "Approaching the Golden Gate Bridge from San Francisco",
             "140": "Crossing over the Golden Gate Bridge",
             "230": "Passing by the North Tower of the Golden Gate Bridge",
-            "260": "Over San Francisco Bay traveling alongside the Golden Gate Bridge",
-            "60": "Alongside the Golden Gate Bridge heading toward the Marin Headlands"
+            "260": "Over San Francisco Bay travelling alongside the Golden Gate Bridge",
+            "60": "Alongside the Golden Gate Bridge heading towards the Marin Headlands"
         }
     },
     "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
-        "name": "Over the Pacific Ocean moving toward Baja California",
+        "name": "Over the Pacific Ocean moving towards Baja California",
         "pointsOfInterest": {
-            "0": "Over the Pacific Ocean moving toward Baja California",
+            "0": "Over the Pacific Ocean moving towards Baja California",
             "110": "Over the Rocky Mountains approaching Denver",
-            "125": "Traveling over the Great Plains of the United States",
+            "125": "Travelling over the Great Plains of the United States",
             "185": "Approaching the Great Lakes with Ontario, Canada beyond",
             "200": "Over the Great Lakes approaching Ontario, Canada",
             "210": "The Aurora Borealis over western Ontario, Canada",
             "235": "The Aurora Borealis over northern Ontario, Canada",
             "250": "The Aurora Borealis over northern Quebec, Canada",
-            "300": "Heading toward the North Atlantic with the Aurora Borealis over Labrador, Canada",
-            "45": "Over Baja California looking north toward the United States",
-            "55": "Over Mexico heading toward the southwest United States",
-            "75": "Over the southwest United States"
+            "300": "Heading towards the North Atlantic with the Aurora Borealis over Labrador, Canada",
+            "45": "Over Baja California looking north towards the United States",
+            "55": "Over Mexico heading towards the south-west United States",
+            "75": "Over the south-west United States"
         }
     },
     "7719B48A-2005-4011-9280-2F64EEC6FD91": {
-        "name": "Over the Pacific Ocean heading toward the United States",
+        "name": "Over the Pacific Ocean heading towards the United States",
         "pointsOfInterest": {
-            "0": "Over the Pacific Ocean heading toward the United States",
+            "0": "Over the Pacific Ocean heading towards the United States",
             "130": "The Sierra Madre Occidental mountains on the west coast of Mexico",
-            "185": "Over the Sierra Madre Occidental mountains moving toward the west coast of Mexico",
-            "20": "Traveling south down the coast of California",
+            "185": "Over the Sierra Madre Occidental mountains moving towards the west coast of Mexico",
+            "20": "Travelling south down the coast of California",
             "225": "Looking south to the Pacific Ocean over the Sierra Madre del Sur in Mexico",
             "280": "The Pacific Ocean off the coast of Mexico",
             "290": "The Pacific Ocean off the coast of Mexico and Guatemala",
-            "50": "Over southern California moving toward Mexico",
+            "50": "Over southern California moving towards Mexico",
             "65": "Approaching the Mojave Desert in southern California with Mexico beyond",
             "95": "The Gulf of California flanked by the Sonoran Desert and the Baja California Peninsula"
         }
     },
     "7825C73A-658F-48EE-B14C-EC56673094AC": {
-        "name": "Over central Asia traveling toward coastal China",
+        "name": "Over central Asia travelling towards coastal China",
         "pointsOfInterest": {
-            "0": "Over central Asia traveling toward coastal China",
-            "10": "Over central China traveling toward Shanghai",
+            "0": "Over central Asia travelling towards coastal China",
+            "10": "Over central China travelling towards Shanghai",
             "30": "Heading over eastern China approaching Shanghai",
-            "45": "Approaching Shanghai heading toward the East China Sea",
-            "50": "Over Shanghai moving toward the East China Sea"
+            "45": "Approaching Shanghai heading towards the East China Sea",
+            "50": "Over Shanghai moving towards the East China Sea"
         }
     },
     "78911B7E-3C69-47AD-B635-9C2486F6301D": {
@@ -359,7 +359,7 @@
         "pointsOfInterest": {
             "0": "Crossing from night to day over the South Pacific Ocean",
             "110": "Approaching sunrise over New Zealand",
-            "170": "Leaving New Zealand heading northeast over the Pacific Ocean",
+            "170": "Leaving New Zealand heading north-east over the Pacific Ocean",
             "70": "Crossing from night to day over New Zealand"
         }
     },
@@ -367,21 +367,21 @@
         "name": "Over the North Atlantic approaching the British Isles",
         "pointsOfInterest": {
             "0": "Over the North Atlantic approaching the British Isles",
-            "105": "Over central Europe heading toward Russia",
-            "15": "Ireland and Great Britain",
+            "105": "Over central Europe heading towards Russia",
+            "15": "Ireland and the United Kingdom",
             "150": "Over eastern Europe with Moscow in the distance",
-            "165": "Over eastern Europe looking toward Moscow",
+            "165": "Over eastern Europe looking towards Moscow",
             "185": "Over western Russia passing Moscow",
-            "195": "Over Russia traveling toward central Asia",
-            "45": "Over Great Britain traveling toward mainland Europe",
-            "65": "Over northwestern Europe heading toward Russia"
+            "195": "Over Russia travelling towards central Asia",
+            "45": "Over the United Kingdom travelling towards mainland Europe",
+            "65": "Over north-western Europe heading towards Russia"
         }
     },
     "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
         "name": "Approaching Tower Bridge on the River Thames, London",
         "pointsOfInterest": {
             "0": "Approaching Tower Bridge on the River Thames, London",
-            "130": "Following the River Thames toward the London Eye",
+            "130": "Following the River Thames towards the London Eye",
             "20": "Following the River Thames in London",
             "210": "Approaching the London Eye on the River Thames",
             "310": "Following the River Thames past the London Eye",
@@ -389,13 +389,13 @@
         }
     },
     "81337355-E156-4242-AAF4-711768D30A54": {
-        "name": "Over the Indian Ocean heading toward Perth, Australia",
+        "name": "Over the Indian Ocean heading towards Perth, Australia",
         "pointsOfInterest": {
-            "0": "Over the Indian Ocean heading toward Perth, Australia",
-            "170": "Over Western Australia approaching Northern Territory",
-            "220": "Over Northern Territory, Australia moving toward New Guinea",
-            "335": "Over the Arafura Sea traveling toward New Guinea",
-            "50": "Traveling northeast across Western Australia"
+            "0": "Over the Indian Ocean heading towards Perth, Australia",
+            "170": "Over Western Australia approaching the Northern Territory",
+            "220": "Over the Northern Territory, Australia moving towards New Guinea",
+            "335": "Over the Arafura Sea travelling towards New Guinea",
+            "50": "Travelling north-east across Western Australia"
         }
     },
     "82175C1F-153C-4EC8-AE37-2860EA828004": {
@@ -415,40 +415,40 @@
         "pointsOfInterest": {
             "0": "Over the Upper East Side and Central Park in New York",
             "160": "Approaching the Empire State Building in New York",
-            "205": "Passing the Empire State Building moving toward Lower Manhattan",
-            "50": "Over Midtown Manhattan heading downtown toward the Empire State Building"
+            "205": "Passing the Empire State Building moving towards Lower Manhattan",
+            "50": "Over Midtown Manhattan heading downtown towards the Empire State Building"
         }
     },
     "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
-        "name": "Over San Francisco Bay moving toward the Embarcadero",
+        "name": "Over San Francisco Bay moving towards the Embarcadero",
         "pointsOfInterest": {
-            "0": "Over San Francisco Bay moving toward the Embarcadero",
+            "0": "Over San Francisco Bay moving towards the Embarcadero",
             "208": "Following Market Street through San Francisco"
         }
     },
     "87060EC2-D006-4102-98CC-3005C68BB343": {
-        "name": "Traveling northeast over the Ethiopian Highlands",
+        "name": "Travelling north-east over the Ethiopian Highlands",
         "pointsOfInterest": {
-            "0": "Traveling northeast over the Ethiopian Highlands",
-            "100": "Heading northeast over the Arabian Peninsula",
-            "130": "Over the Arabian Peninsula moving toward Iran",
+            "0": "Travelling north-east over the Ethiopian Highlands",
+            "100": "Heading north-east over the Arabian Peninsula",
+            "130": "Over the Arabian Peninsula moving towards Iran",
             "165": "Over the Arabian Peninsula approaching Iran",
             "190": "Approaching the coast of Iran with the Zagros Mountains beyond",
             "210": "Over the Zagros Mountains in Iran",
             "240": "Over the Dasht-e Lut desert in Iran",
-            "265": "Moving toward Turkmenistan and the Garagum desert",
+            "265": "Moving towards Turkmenistan and the Garagum Desert",
             "305": "The Amu Darya River and the Pamir-Alay Mountains in central Asia",
             "322": "The Pamir-Alay Mountains and the Fergana Valley in central Asia",
-            "360": "Heading into southeastern Kazakhstan from Kyrgyzstan",
-            "400": "Traveling north over Kazakhstan",
-            "45": "Traveling over the Red Sea into the Arabian Peninsula",
+            "360": "Heading into south-eastern Kazakhstan from Kyrgyzstan",
+            "400": "Travelling north over Kazakhstan",
+            "45": "Travelling over the Red Sea into the Arabian Peninsula",
             "450": "Over the Altai Mountains moving into Mongolia"
         }
     },
     "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
-        "name": "Traveling along Sheikh Zayed Road in Dubai, United Arab Emirates",
+        "name": "Travelling along Sheikh Zayed Road in Dubai, United Arab Emirates",
         "pointsOfInterest": {
-            "0": "Traveling along Sheikh Zayed Road in Dubai, United Arab Emirates"
+            "0": "Travelling along Sheikh Zayed Road in Dubai, United Arab Emirates"
         }
     },
     "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
@@ -495,21 +495,21 @@
             "279": "Passing by The Shard in South London",
             "299": "Crossing the River Thames in London",
             "324": "Crossing the River Thames at Tower Bridge in London",
-            "49": "Over St James’s Park heading toward the River Thames, London"
+            "49": "Over St James’s Park heading towards the River Thames, London"
         }
     },
     "A837FA8C-C643-4705-AE92-074EFDD067F7": {
-        "name": "Traveling northeast over the Sahara at night",
+        "name": "Travelling north-east over the Sahara at night",
         "pointsOfInterest": {
-            "0": "Traveling northeast over the Sahara at night",
+            "0": "Travelling north-east over the Sahara at night",
             "100": "The Mediterranean coast of Tunisia and Libya",
-            "120": "Moving over the Mediterranean Sea toward Italy",
+            "120": "Moving over the Mediterranean Sea towards Italy",
             "140": "Over southern Italy approaching the Balkan Peninsula with Turkey in the distance",
-            "165": "Over the Balkan Peninsula moving toward the Black Sea",
+            "165": "Over the Balkan Peninsula moving towards the Black Sea",
             "180": "Over the Balkan Peninsula approaching the Black Sea",
-            "210": "Traveling over the Black Sea toward Ukraine",
-            "230": "Traveling over Ukraine toward Russia",
-            "70": "Over the Grand Erg Oriental heading toward the Mediterranean Sea"
+            "210": "Travelling over the Black Sea towards Ukraine",
+            "230": "Travelling over Ukraine towards Russia",
+            "70": "Over the Grand Erg Oriental heading towards the Mediterranean Sea"
         }
     },
     "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
@@ -519,28 +519,28 @@
         }
     },
     "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
-        "name": "Over the Pacific Ocean heading toward Mexico",
+        "name": "Over the Pacific Ocean heading towards Mexico",
         "pointsOfInterest": {
-            "0": "Over the Pacific Ocean heading toward Mexico",
-            "105": "Passing over Mexico City toward the Gulf of Mexico",
-            "122": "Flying over the Gulf of Mexico toward the United States",
+            "0": "Over the Pacific Ocean heading towards Mexico",
+            "105": "Passing over Mexico City towards the Gulf of Mexico",
+            "122": "Flying over the Gulf of Mexico towards the United States",
             "180": "Passing by Houston and approaching New Orleans in the United States",
             "190": "Heading over New Orleans and the Gulf Coast of the United States",
-            "215": "Moving over the southeastern United States",
-            "280": "Over the eastern United States traveling toward New York",
+            "215": "Moving over the south-eastern United States",
+            "280": "Over the eastern United States travelling towards New York",
             "320": "Over the eastern United States approaching New York City"
         }
     },
     "B876B645-3955-420E-99DF-60139E451CF3": {
-        "name": "Traveling through Wulingyuan National Park in China",
+        "name": "Travelling through Wulingyuan National Park in China",
         "pointsOfInterest": {
-            "0": "Traveling through Wulingyuan National Park in China"
+            "0": "Travelling through Wulingyuan National Park in China"
         }
     },
     "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
-        "name": "Traveling along the Nuussuaq Peninsula in Greenland",
+        "name": "Travelling along the Nuussuaq Peninsula in Greenland",
         "pointsOfInterest": {
-            "0": "Traveling along the Nuussuaq Peninsula in Greenland"
+            "0": "Travelling along the Nuussuaq Peninsula in Greenland"
         }
     },
     "BA4ECA11-592F-4727-9221-D2A32A16EB28": {
@@ -567,7 +567,7 @@
         "name": "Flying over Victoria Peak in Hong Kong",
         "pointsOfInterest": {
             "0": "Flying over Victoria Peak in Hong Kong",
-            "150": "Flying over Hong Kong toward Victoria Harbour",
+            "150": "Flying over Hong Kong towards Victoria Harbour",
             "330": "Over Victoria Harbour approaching the Kowloon Peninsula"
         }
     },
@@ -578,23 +578,23 @@
         }
     },
     "CE9B5D5B-B6E7-47C5-8C04-59BF182E98FB": {
-        "name": "Spinner Dolphins in the waters off of Costa Rica",
+        "name": "Spinner Dolphins in the waters off Costa Rica",
         "pointsOfInterest": {
-            "0": "Spinner Dolphins in the waters off of Costa Rica"
+            "0": "Spinner Dolphins in the waters off Costa Rica"
         }
     },
     "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
-        "name": "Traveling over the Pacific Ocean toward Central America",
+        "name": "Travelling over the Pacific Ocean towards Central America",
         "pointsOfInterest": {
-            "0": "Traveling over the Pacific Ocean toward Central America",
+            "0": "Travelling over the Pacific Ocean towards Central America",
             "110": "Passing by a cloud-covered Jamaica in the Caribbean Sea",
-            "125": "Crossing over Cuba looking toward Haiti and the Dominican Republic",
-            "170": "Traveling over the Bahamas looking toward Haiti and the Dominican Republic",
+            "125": "Crossing over Cuba looking towards Haiti and the Dominican Republic",
+            "170": "Travelling over the Bahamas looking towards Haiti and the Dominican Republic",
             "190": "Turks and Caicos Islands in the Atlantic Ocean",
-            "35": "The Pacific coasts of Nicaragua, Costa Rica, and Panama",
+            "35": "The Pacific coasts of Nicaragua, Costa Rica and Panama",
             "50": "Passing over Central America with South America in the distance",
             "65": "The Mosquito Coast of Nicaragua",
-            "85": "Over the Caribbean Sea traveling toward Cuba"
+            "85": "Over the Caribbean Sea travelling towards Cuba"
         }
     },
     "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
@@ -604,30 +604,30 @@
         }
     },
     "DD47D8E1-CB66-4C12-BFEA-2ADB0D8D1E2E": {
-        "name": "A Humpback Whale off of French Polynesia",
+        "name": "A Humpback Whale off French Polynesia",
         "pointsOfInterest": {
-            "0": "A Humpback Whale off of French Polynesia"
+            "0": "A Humpback Whale off French Polynesia"
         }
     },
     "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
         "name": "San Francisco Bay and the Golden Gate Bridge",
         "pointsOfInterest": {
             "0": "San Francisco Bay and the Golden Gate Bridge",
-            "140": "Heading over the north tower of the Golden Gate Bridge toward San Francisco",
+            "140": "Heading over the north tower of the Golden Gate Bridge towards San Francisco",
             "191": "Over San Francisco Bay"
         }
     },
     "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
-        "name": "Over western Africa moving toward the Sahara",
+        "name": "Over western Africa moving towards the Sahara",
         "pointsOfInterest": {
-            "0": "Over western Africa moving toward the Sahara",
+            "0": "Over western Africa moving towards the Sahara",
             "110": "Passing over the Ahaggar Mountains in the Sahara, North Africa",
-            "155": "Over the Grand Erg Oriental in North Africa moving toward the Mediterranean Sea",
+            "155": "Over the Grand Erg Oriental in North Africa moving towards the Mediterranean Sea",
             "195": "The coast of Tunisia and the Mediterranean Sea",
-            "210": "Over the coast of Tunisia traveling toward Italy",
+            "210": "Over the coast of Tunisia travelling towards Italy",
             "230": "Approaching Italy in the Mediterranean Sea",
-            "245": "Over Italy traveling toward the Balkan Peninsula",
-            "285": "Over the Balkan Peninsula heading toward the Carpathian Mountains",
+            "245": "Over Italy travelling towards the Balkan Peninsula",
+            "285": "Over the Balkan Peninsula heading towards the Carpathian Mountains",
             "30": "Crossing the Sahara in North Africa",
             "310": "The Carpathian Mountains and the Black Sea"
         }
@@ -639,15 +639,15 @@
         }
     },
     "E5DB138A-F04E-4619-B896-DE5CB538C534": {
-        "name": "Over Tunisia heading toward Italy",
+        "name": "Over Tunisia heading towards Italy",
         "pointsOfInterest": {
-            "0": "Over Tunisia heading toward Italy",
+            "0": "Over Tunisia heading towards Italy",
             "15": "Over southern Italy with the Balkan Peninsula beyond",
-            "25": "Over the Balkan Peninsula moving toward central Asia",
+            "25": "Over the Balkan Peninsula moving towards central Asia",
             "40": "Over the Balkan Peninsula passing by the Black Sea",
-            "5": "Over the Mediterranean Sea looking toward Sicily and the Italian Peninsula",
+            "5": "Over the Mediterranean Sea looking towards Sicily and the Italian Peninsula",
             "55": "Over Ukraine with Russia beyond",
-            "75": "Over southwest Russia passing by Kazakhstan"
+            "75": "Over south-west Russia passing by Kazakhstan"
         }
     },
     "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
@@ -657,15 +657,15 @@
         }
     },
     "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
-        "name": "Over Victoria Harbour heading toward Central Hong Kong",
+        "name": "Over Victoria Harbour heading towards Central Hong Kong",
         "pointsOfInterest": {
-            "0": "Over Victoria Harbour heading toward Central Hong Kong"
+            "0": "Over Victoria Harbour heading towards Central Hong Kong"
         }
     },
     "EB3F48E7-D30F-4079-858F-1A61331D5026": {
-        "name": "Moving through a kelp forest off of the California coast, United States",
+        "name": "Moving through a kelp forest off the California coast, United States",
         "pointsOfInterest": {
-            "0": "Moving through a kelp forest off of the California coast, United States"
+            "0": "Moving through a kelp forest off the California coast, United States"
         }
     },
     "EC3DC957-D4C2-4732-AACE-7D0C0F390EC8": {
@@ -688,10 +688,10 @@
         }
     },
     "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
-        "name": "Over the Marin Headlands looking toward the Golden Gate Bridge",
+        "name": "Over the Marin Headlands looking towards the Golden Gate Bridge",
         "pointsOfInterest": {
-            "0": "Over the Marin Headlands looking toward the Golden Gate Bridge",
-            "150": "Crossing the Golden Gate Bridge toward the Presidio of San Francisco"
+            "0": "Over the Marin Headlands looking towards the Golden Gate Bridge",
+            "150": "Crossing the Golden Gate Bridge towards the Presidio of San Francisco"
         }
     },
     "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
@@ -725,10 +725,10 @@
         "pointsOfInterest": {
             "0": "Approaching Tower Bridge on the River Thames, London",
             "20": "Crossing the River Thames in London",
-            "200": "Crossing the River Thames toward Westminster, London",
+            "200": "Crossing the River Thames towards Westminster, London",
             "270": "Over Westminster, London",
             "60": "Passing The Shard in South London",
-            "92": "South of the River Thames heading toward the London Eye"
+            "92": "South of the River Thames heading towards the London Eye"
         }
     },
     "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {

@@ -1,0 +1,740 @@
+{
+    "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8": {
+        "name": "Sobrevolant l’oasi de Liwa als Emirats Àrabs Units",
+        "pointsOfInterest": {
+            "0": "Sobrevolant l’oasi de Liwa als Emirats Àrabs Units"
+        }
+    },
+    "009BA758-7060-4479-8EE8-FB9B40C8FB97": {
+        "name": "Sobrevolant Sibèria i Mongòlia en direcció sud‑est",
+        "pointsOfInterest": {
+            "0": "Sobrevolant Sibèria i Mongòlia en direcció sud‑est",
+            "110": "Sobrevolant la Xina en direcció a la península de Corea",
+            "150": "La península de Corea amb el Japó a la llunyania",
+            "180": "Sobrevolant Corea del Sud en direcció al Japó",
+            "195": "Sobrevolant el Japó, mirant cap a l’oceà Pacífic",
+            "22": "Anant cap a la Mongòlia Interior",
+            "260": "Sobrevolant l’oceà Pacífic al sud‑est del Japó",
+            "32": "Sobrevolant Mongòlia en direcció a la Xina",
+            "60": "Sobrevolant el nord de la Xina en direcció a la península de Corea"
+        }
+    },
+    "00BA71CD-2C54-415A-A68A-8358E677D750": {
+        "name": "Acostant-se al centre de Dubai, als Emirats Àrabs Units",
+        "pointsOfInterest": {
+            "0": "Acostant-se al centre de Dubai, als Emirats Àrabs Units",
+            "210": "Cap al centre de Dubai, als Emirats Àrabs Units"
+        }
+    },
+    "024891DE-B7F6-4187-BFE0-E6D237702EF0": {
+        "name": "Sobre Wan Chai apropant-se al districte central de Hong Kong",
+        "pointsOfInterest": {
+            "0": "Sobre Wan Chai apropant-se al districte central de Hong Kong",
+            "150": "Sobre el districte central de Hong Kong",
+            "270": "Sobre l’illa de Hong Kong"
+        }
+    },
+    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": {
+        "name": "L’aurora austral, a l’Antàrtida",
+        "pointsOfInterest": {
+            "0": "L’aurora austral, a l’Antàrtida"
+        }
+    },
+    "044AD56C-A107-41B2-90CC-E60CCACFBCF5": {
+        "name": "La secció Mutianyu de la Gran Muralla al districte de Huairou, a la Xina",
+        "pointsOfInterest": {
+            "0": "La secció Mutianyu de la Gran Muralla al districte de Huairou, a la Xina"
+        }
+    },
+    "1088217C-1410-4CF7-BDE9-8F573A4DBCD9": {
+        "name": "Sobrevolant l’oceà Pacífic en direcció a l’Amèrica Central",
+        "pointsOfInterest": {
+            "0": "Sobrevolant l’oceà Pacífic en direcció a l’Amèrica Central",
+            "100": "Creuant l’Amèrica Central en direcció al mar Carib",
+            "150": "Sobrevolant el mar Carib en direcció a Cuba",
+            "240": "Sobrevolant Cuba, amb Florida i les Bahames al fons",
+            "300": "Sobrevolant Florida i les Bahames en direcció al mar dels Sargassos",
+            "350": "Sobrevolant el mar dels Sargassos, endinsant‑se a l’oceà Atlàntic",
+            "70": "Passant per la costa sud‑occidental de l’Àmerica Central en direcció al mar Carib"
+        }
+    },
+    "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
+        "name": "Sobrevolant l’oceà Pacífic en direcció a la costa de Califòrnia",
+        "pointsOfInterest": {
+            "0": "Sobrevolant l’oceà Pacífic en direcció a la costa de Califòrnia",
+            "110": "Sobrevolant Las Vegas en direcció a Salt Lake City, als Estats Units",
+            "120": "Sobrevolant l’oest dels Estats Units en direcció a Salt Lake City",
+            "155": "Passant entre Salt Lake City i Denver, als Estats Units",
+            "170": "Sobrevolant les muntanyes Rocalloses, als Estats Units",
+            "70": "Sobrevolant la costa de Califòrnia en direcció a l’interior",
+            "85": "Passant per Los Angeles, a la costa oest dels Estats Units",
+            "95": "Sobrevolant Los Angeles en direcció a Las Vegas, als Estats Units"
+        }
+    },
+    "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7": {
+        "name": "Sobrevolant Laupāhoehoe Nui a la reserva forestal de Kohala, a l’illa de Hawaii",
+        "pointsOfInterest": {
+            "0": "Sobrevolant Laupāhoehoe Nui a la reserva forestal de Kohala, a l’illa de Hawaii"
+        }
+    },
+    "149E7795-DBDA-4F5D-B39A-14712F841118": {
+        "name": "Onades trencant a les costes de Tahití",
+        "pointsOfInterest": {
+            "0": "Onades trencant a les costes de Tahití"
+        }
+    },
+    "22162A9B-DB90-4517-867C-C676BC3E8E95": {
+        "name": "La secció Mutianyu de la Gran Muralla al districte de Huairou, a la Xina",
+        "pointsOfInterest": {
+            "0": "La secció Mutianyu de la Gran Muralla al districte de Huairou, a la Xina"
+        }
+    },
+    "258A6797-CC13-4C3A-AB35-4F25CA3BF474": {
+        "name": "A sobre de la Reserva Natural de Pu‘u O ‘Umi, a l’illa de Hawaii",
+        "pointsOfInterest": {
+            "0": "A sobre de la Reserva Natural de Pu‘u O ‘Umi, a l’illa de Hawaii"
+        }
+    },
+    "27A37B0F-738D-4644-A7A4-E33E7A6C1175": {
+        "name": "Dofins comuns de musell curt a la costa de Califòrnia, als Estats Units",
+        "pointsOfInterest": {
+            "0": "Dofins comuns de musell curt a la costa de Califòrnia, als Estats Units"
+        }
+    },
+    "29BDF297-EB43-403A-8719-A78DA11A2948": {
+        "name": "Sobre Fisherman’s Wharf cap al centre de San Francisco",
+        "pointsOfInterest": {
+            "0": "Sobre Fisherman’s Wharf cap al centre de San Francisco",
+            "150": "Passant per la torre Coit cap al centre de San Francisco i el pont Bay Bridge",
+            "196": "Centre de San Francisco",
+            "80": "Acostant-se a la torre Coit amb el centre de San Francisco i el pont Bay Bridge al fons"
+        }
+    },
+    "2B30E324-E4FF-4CC1-BA45-A958C2D2B2EC": {
+        "name": "Banc de barracudes d’aleta negra a les aigües properes a Borneo",
+        "pointsOfInterest": {
+            "0": "Banc de barracudes d’aleta negra a les aigües properes a Borneo"
+        }
+    },
+    "2F52E34C-39D4-4AB1-9025-8F7141FAA720": {
+        "name": "El fiord gelat d’Ilulissat a prop de la costa de Groenlàndia",
+        "pointsOfInterest": {
+            "0": "El fiord gelat d’Ilulissat a prop de la costa de Groenlàndia"
+        }
+    },
+    "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
+        "name": "Sobrevolant la Banya d’Àfrica en direcció al golf d’Aden",
+        "pointsOfInterest": {
+            "0": "Sobrevolant la Banya d’Àfrica en direcció al golf d’Aden",
+            "115": "Apropant‑se a la costa de Makran des del golf d’Oman",
+            "145": "La costa de Makran de l’Iran i el Pakistan",
+            "160": "Sobrevolant l’Iran en direcció a l’Afganistan i el Pakistan",
+            "180": "Sobrevolant l’Afganistan i el Pakistan en direcció a les muntanyes del Karakorum",
+            "235": "Sobrevolant les muntanyes del Karakorum en direcció a la Xina",
+            "280": "El desert de Takla Makan, a l’oest de la Xina",
+            "315": "Les muntanyes de Tian Shan, a l’Àsia central",
+            "45": "El sud‑est de la península Aràbiga"
+        }
+    },
+    "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
+        "name": "Seguint la Interestatal 110 direcció nord per Los Angeles",
+        "pointsOfInterest": {
+            "0": "Seguint la Interestatal 110 direcció nord per Los Angeles"
+        }
+    },
+    "3716DD4B-01C0-4F5B-8DD6-DB771EC472FB": {
+        "name": "Taurons grisos d’escull de corall nadant a prop de la Polinèsia Francesa",
+        "pointsOfInterest": {
+            "0": "Taurons grisos d’escull de corall nadant a prop de la Polinèsia Francesa"
+        }
+    },
+    "391BDF6E-3279-4CE1-9CA5-0F82811452D7": {
+        "name": "Ossos marins afroaustralians a la costa de la península del Cap, Sud‑àfrica",
+        "pointsOfInterest": {
+            "0": "Ossos marins afroaustralians a la costa de la península del Cap, Sud‑àfrica"
+        }
+    },
+    "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
+        "name": "Per sobre del Central Park, en direcció a la zona de Midtown Manhattan, a Nova York",
+        "pointsOfInterest": {
+            "0": "Per sobre del Central Park, en direcció a la zona de Midtown Manhattan, a Nova York",
+            "246": "Sobre la zona de Midtown Manhattan a Nova York"
+        }
+    },
+    "3C4678E4-4D3D-4A40-8817-77752AEA62EB": {
+        "name": "Viatjant per l’oest d’Europa, amb les Illes britàniques a la llunyania",
+        "pointsOfInterest": {
+            "0": "Viatjant per l’oest d’Europa, amb les Illes britàniques a la llunyania",
+            "100": "Grècia flanquejada pels mars Jònic i Egeu",
+            "160": "Passant pel mar Mediterrani en direcció sud-est",
+            "185": "El mar Mediterrani i el delta del Nil",
+            "20": "Anant cap al sud-est passant pels Alps i la vall del riu Po",
+            "205": "El riu Nil travessant el Sàhara, a Egipte",
+            "220": "El desert oriental d’Egipte flanquejat pel riu Nil i el golf de Suez",
+            "240": "Anant cap al sud‑est passant pel mar Roig",
+            "50": "Baixant per la península italiana i el mar Adriàtic"
+        }
+    },
+    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": {
+        "name": "Seguint la costa de Kohala a l’illa de Hawaii",
+        "pointsOfInterest": {
+            "0": "Seguint la costa de Kohala a l’illa de Hawaii"
+        }
+    },
+    "3E94AE98-EAF2-4B09-96E3-452F46BC114E": {
+        "name": "Acostant-se al pont Bay Bridge i al centre de San Francisco",
+        "pointsOfInterest": {
+            "0": "Acostant-se al pont Bay Bridge i al centre de San Francisco",
+            "116": "Sobre la badia de San Francisco en direcció al centre",
+            "80": "Creuant el pont Bay Bridge en direcció al centre de San Francisco"
+        }
+    },
+    "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
+        "name": "Sobrevolant Dubai Marina als Emirats Àrabs Units",
+        "pointsOfInterest": {
+            "0": "Sobrevolant Dubai Marina als Emirats Àrabs Units"
+        }
+    },
+    "44166C39-8566-4ECA-BD16-43159429B52F": {
+        "name": "Baixant per la Setena Avinguda cap a Times Square, a Nova York",
+        "pointsOfInterest": {
+            "0": "Baixant per la Setena Avinguda cap a Times Square, a Nova York",
+            "120": "Baixant per la Setena Avinguda a la zona de Midtown Manhattan, a Nova York",
+            "40": "Sobre Times Square, a Nova York"
+        }
+    },
+    "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943": {
+        "name": "La vall de Waimanu a la reserva forestal de Kohala, a l’illa de Hawaii",
+        "pointsOfInterest": {
+            "0": "La vall de Waimanu a la reserva forestal de Kohala, a l’illa de Hawaii"
+        }
+    },
+    "4AD99907-9E76-408D-A7FC-8429FF014201": {
+        "name": "Sobre la badia de San Francisco en direcció a l’Embarcadero",
+        "pointsOfInterest": {
+            "0": "Sobre la badia de San Francisco en direcció a l’Embarcadero",
+            "150": "Seguint Market Street pel centre de San Francisco",
+            "360": "Seguint Market Street per San Francisco",
+            "90": "Sobre l’Embarcadero mirant cap a Market Street, a San Francisco"
+        }
+    },
+    "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589": {
+        "name": "Anant cap al sud‑est passant per les Grans Planes dels Estats Units",
+        "pointsOfInterest": {
+            "0": "Anant cap al sud‑est passant per les Grans Planes dels Estats Units",
+            "120": "Sobrevolant el sud‑est dels Estats Units en direcció a Florida",
+            "220": "Sobrevolant Florida en direcció a les Bahames",
+            "240": "Sobrevolant les Bahames en direcció sud‑est",
+            "285": "Sobrevolant les Bahames en direcció a la República Dominicana i Haití",
+            "300": "Sobrevolant la República Dominicana i Haití en direcció al mar Carib",
+            "315": "Sobrevolant el mar Carib en direcció sud, cap a Veneçuela",
+            "90": "Anant cap al sud‑est passant per l’Oest Mitjà dels Estats Units"
+        }
+    },
+    "537A4DAB-83B0-4B66-BCD1-05E5DBB4A268": {
+        "name": "Banc de sorelles voraces a la costa de Borneo",
+        "pointsOfInterest": {
+            "0": "Banc de sorelles voraces a la costa de Borneo"
+        }
+    },
+    "581A4F1A-2B6D-468C-A1BE-6F473F06D10B": {
+        "name": "Estrelles de mar nodoses al fons marí a prop de Borneo",
+        "pointsOfInterest": {
+            "0": "Estrelles de mar nodoses al fons marí a prop de Borneo"
+        }
+    },
+    "58754319-8709-4AB0-8674-B34F04E7FFE2": {
+        "name": "Acostant-se al pont de la Torre sobre el riu Tàmesi, a Londres",
+        "pointsOfInterest": {
+            "0": "Acostant-se al pont de la Torre sobre el riu Tàmesi, a Londres",
+            "178": "Al sud del riu Tàmesi a Londres",
+            "258": "Creuant el riu Tàmesi a Londres",
+            "78": "Seguint el riu Tàmesi a Londres"
+        }
+    },
+    "58C75C62-3290-47B8-849C-56A583173570": {
+        "name": "Veles llatines del Pacífic a la costa de Mèxic",
+        "pointsOfInterest": {
+            "0": "Veles llatines del Pacífic a la costa de Mèxic"
+        }
+    },
+    "6143116D-03BB-485E-864E-A8CF58ACF6F1": {
+        "name": "Flotant per un bosc de varec a prop de la península del Cap, Sud‑àfrica",
+        "pointsOfInterest": {
+            "0": "Flotant per un bosc de varec a prop de la península del Cap, Sud‑àfrica"
+        }
+    },
+    "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": {
+        "name": "Les Canàries, l’oceà Atlàntic i la costa d’Àfrica",
+        "pointsOfInterest": {
+            "0": "Les Canàries, l’oceà Atlàntic i la costa d’Àfrica",
+            "105": "Sobrevolant el Marroc en direcció al mar Mediterrani",
+            "125": "El mar Mediterrani i el sud d’Espanya",
+            "145": "Passant per la Costa Blanca en direcció nord‑est",
+            "165": "Passant per les illes Balears en direcció nord‑est",
+            "185": "Sobrevolant el mar Mediterrani occidental, amb els Alps al fons",
+            "220": "Sobrevolant els Alps en direcció nord‑est",
+            "45": "Sobrevolant la costa del Marroc en direcció nord‑est",
+            "75": "Passant per les muntanyes de l’Atles, al Marroc"
+        }
+    },
+    "640DFB00-FBB9-45DA-9444-9F663859F4BC": {
+        "name": "Acostant-se a la zona de Lower Manhattan des del port de Nova York",
+        "pointsOfInterest": {
+            "0": "Acostant-se a la zona de Lower Manhattan des del port de Nova York",
+            "110": "Al costat de la zona de Lower Manhattan, acostant-se al One World Trade Center",
+            "180": "Passant pel One World Trade Center cap a la zona de Midtown Manhattan",
+            "210": "Sobre la zona de Lower Manhattan a Nova York, en direcció a la zona de Midtown"
+        }
+    },
+    "64D11DAB-3B57-4F14-AD2F-E59A9282FA44": {
+        "name": "Sobrevolant l’Atlàntic Nord en direcció a Portugal",
+        "pointsOfInterest": {
+            "0": "Sobrevolant l’Atlàntic Nord en direcció a Portugal",
+            "115": "Sobrevolant Portugal i Espanya",
+            "150": "Allunyant‑se de la península Ibèrica, passant pel golf de Biscaia i França",
+            "180": "Sobrevolant l’Europa occidental, amb l’Atlàntic Nord a la llunyania"
+        }
+    },
+    "687D03A2-18A5-4181-8E85-38F3A13409B9": {
+        "name": "Peixos lloro geperuts verds a sobre dels esculls de corall de Borneo",
+        "pointsOfInterest": {
+            "0": "Peixos lloro geperuts verds a sobre dels esculls de corall de Borneo"
+        }
+    },
+    "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
+        "name": "Acostant‑se al pont Golden Gate des de San Francisco",
+        "pointsOfInterest": {
+            "0": "Acostant‑se al pont Golden Gate des de San Francisco",
+            "140": "Creuant el pont Golden Gate",
+            "230": "Passant per la torre nord del pont Golden Gate",
+            "260": "Sobre la badia de San Francisco passant pel costat del pont Golden Gate",
+            "60": "Al costat del pont Golden Gate, en direcció a Marin Headlands"
+        }
+    },
+    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
+        "name": "Sobrevolant l’oceà Pacífic en direcció a la Baixa Califòrnia",
+        "pointsOfInterest": {
+            "0": "Sobrevolant l’oceà Pacífic en direcció a la Baixa Califòrnia",
+            "110": "Sobrevolant les muntanyes Rocalloses en direcció a Denver",
+            "125": "Passant per les Grans Planes dels Estats Units",
+            "185": "Acostant‑se als Grans Llacs, amb la província canadenca d’Ontario al fons",
+            "200": "Sobrevolant els Grans Llacs, acostant‑se a Ontario, al Canadà",
+            "210": "L’aurora boreal a l’oest d’Ontario, al Canadà",
+            "235": "L’aurora boreal al nord d’Ontario, al Canadà",
+            "250": "L’aurora boreal al nord del Quebec, al Canadà",
+            "300": "Anant cap a l’Atlàntic Nord, amb l’aurora boreal sobre Labrador, al Canadà",
+            "45": "Sobrevolant la Baixa Califòrnia, mirant cap al nord en direcció als Estats Units",
+            "55": "Sobrevolant Mèxic en direcció al sud‑oest dels Estats Units",
+            "75": "Sobrevolant el sud‑oest dels Estats Units"
+        }
+    },
+    "7719B48A-2005-4011-9280-2F64EEC6FD91": {
+        "name": "Sobrevolant l’oceà Pacífic en direcció als Estats Units",
+        "pointsOfInterest": {
+            "0": "Sobrevolant l’oceà Pacífic en direcció als Estats Units",
+            "130": "Les muntanyes de la Sierra Madre Occidental, a la costa oest de Mèxic",
+            "185": "Sobrevolant les muntanyes de la Sierra Madre Occidental en direcció a la costa oest de Mèxic",
+            "20": "Passant per la costa de Califòrnia en direcció sud",
+            "225": "Mirant cap al sud en direcció a l’oceà Pacífic, a la Sierra Madre del Sur, a Mèxic",
+            "280": "L’oceà Pacífic a prop de la costa de Mèxic",
+            "290": "L’oceà Pacífic a prop de la costa de Mèxic i Guatemala",
+            "50": "Sobrevolant el sud de Califòrnia en direcció a Mèxic",
+            "65": "Acostant‑se al desert de Mojave, al sud de Califòrnia, amb Mèxic al fons",
+            "95": "El golf de Califòrnia flanquejat pel desert de Sonora i la península de la Baixa Califòrnia"
+        }
+    },
+    "7825C73A-658F-48EE-B14C-EC56673094AC": {
+        "name": "Sobrevolant l’Àsia central en direcció a la costa de la Xina",
+        "pointsOfInterest": {
+            "0": "Sobrevolant l’Àsia central en direcció a la costa de la Xina",
+            "10": "Sobrevolant el centre de la Xina en direcció a Xangai",
+            "30": "Anant cap a l’est de la Xina, acostant‑se a Xangai",
+            "45": "Acostant‑se a Xangai en direcció al mar de la Xina Oriental",
+            "50": "Sobrevolant Xangai en direcció al mar de la Xina Oriental"
+        }
+    },
+    "78911B7E-3C69-47AD-B635-9C2486F6301D": {
+        "name": "Creuant el Pacífic Sud de la nit al dia",
+        "pointsOfInterest": {
+            "0": "Creuant el Pacífic Sud de la nit al dia",
+            "110": "Acostant‑se a la sortida del sol, a Nova Zelanda",
+            "170": "Sortint de Nova Zelanda en direcció al nord‑est, passant per l’oceà Pacífic",
+            "70": "Creuant Nova Zelanda de la nit al dia"
+        }
+    },
+    "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": {
+        "name": "Sobrevolant l’Atlàntic Nord en direcció a les illes Britàniques",
+        "pointsOfInterest": {
+            "0": "Sobrevolant l’Atlàntic Nord en direcció a les illes Britàniques",
+            "105": "Sobrevolant el centre d’Europa en direcció a Rússia",
+            "15": "Irlanda i Gran Bretanya",
+            "150": "Sobrevolant l’est d’Europa, amb Moscou a la llunyania",
+            "165": "Sobrevolant l’est d’Europa, mirant cap a Moscou",
+            "185": "Sobrevolant l’oest de Rússia, passant per Moscou",
+            "195": "Sobrevolant Rússia en direcció a l’Àsia central",
+            "45": "Sobrevolant la Gran Bretanya en direcció a l’Europa continental",
+            "65": "Sobrevolant el nord‑oest d’Europa en direcció a Rússia"
+        }
+    },
+    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
+        "name": "Acostant-se al pont de la Torre sobre el riu Tàmesi, a Londres",
+        "pointsOfInterest": {
+            "0": "Acostant-se al pont de la Torre sobre el riu Tàmesi, a Londres",
+            "130": "Seguint el riu Tàmesi cap al London Eye",
+            "20": "Seguint el riu Tàmesi a Londres",
+            "210": "Acostant-se al London Eye sobre el riu Tàmesi",
+            "310": "Seguint el riu Tàmesi més enllà del London Eye",
+            "325": "Passant pel Parlament del Regne Unit sobre el riu Tàmesi, a Londres"
+        }
+    },
+    "81337355-E156-4242-AAF4-711768D30A54": {
+        "name": "Sobrevolant l’oceà Índic en direcció a Perth, Austràlia",
+        "pointsOfInterest": {
+            "0": "Sobrevolant l’oceà Índic en direcció a Perth, Austràlia",
+            "170": "Sobrevolant Austràlia Occidental en direcció al Territori del Nord",
+            "220": "Sobrevolant el Territori del Nord, a Austràlia, en direcció a Nova Guinea",
+            "335": "Sobrevolant el mar d’Arafura en direcció a Nova Guinea",
+            "50": "Passant per Austràlia Occidental en direcció nord‑est"
+        }
+    },
+    "82175C1F-153C-4EC8-AE37-2860EA828004": {
+        "name": "Escull de corall al mar Roig a prop d’Egipte",
+        "pointsOfInterest": {
+            "0": "Escull de corall al mar Roig a prop d’Egipte"
+        }
+    },
+    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": {
+        "name": "A sobre de la Reserva Natural de Pu‘u O ‘Umi, a l’illa de Hawaii",
+        "pointsOfInterest": {
+            "0": "A sobre de la Reserva Natural de Pu‘u O ‘Umi, a l’illa de Hawaii"
+        }
+    },
+    "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8": {
+        "name": "Sobre l’Upper East Side i Central Park, a Nova York",
+        "pointsOfInterest": {
+            "0": "Sobre l’Upper East Side i Central Park, a Nova York",
+            "160": "Acostant-se a l’Empire State Building, a Nova York",
+            "205": "Passant per l’Empire State Building en direcció a la zona de Lower Manhattan",
+            "50": "Sobre la zona de Midtown Manhattan en direcció al centre cap a l’Empire State Building"
+        }
+    },
+    "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
+        "name": "Sobre la badia de San Francisco en direcció a l’Embarcadero",
+        "pointsOfInterest": {
+            "0": "Sobre la badia de San Francisco en direcció a l’Embarcadero",
+            "208": "Seguint Market Street per San Francisco"
+        }
+    },
+    "87060EC2-D006-4102-98CC-3005C68BB343": {
+        "name": "Passant per l’altiplà d’Etiòpia en direcció nord‑est",
+        "pointsOfInterest": {
+            "0": "Passant per l’altiplà d’Etiòpia en direcció nord‑est",
+            "100": "Anant cap al nord‑est de la península Aràbiga",
+            "130": "Sobrevolant la península Aràbiga en direcció a l’Iran",
+            "165": "Sobrevolant la península Aràbiga en direcció a l’Iran",
+            "190": "Apropant‑se a la costa de l’Iran, amb les muntanyes del Zagros al fons",
+            "210": "Sobrevolant les muntanyes del Zagros, a l’Iran",
+            "240": "Sobrevolant el desert de Dasht‑e Lut a l’Iran",
+            "265": "Apropant‑se al Turkmenistan i al desert de Garagum",
+            "305": "El riu Amudarià i les muntanyes de Pamir‑Alay, a l’Àsia central",
+            "322": "Les muntanyes de Pamir‑Alay i la vall de Fergana, a l’Àsia central",
+            "360": "Anant cap al sud‑est del Kazakhstan des del Kirguizistan",
+            "400": "Passant pel Kazakhstan en direcció nord",
+            "45": "Passant pel mar Roig en direcció a la península Aràbiga",
+            "450": "Sobrevolant les muntanyes d’Altai en direcció a Mongòlia"
+        }
+    },
+    "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
+        "name": "Passant per la carretera del xeic Zayed a Dubai, als Emirats Àrabs Units",
+        "pointsOfInterest": {
+            "0": "Passant per la carretera del xeic Zayed a Dubai, als Emirats Àrabs Units"
+        }
+    },
+    "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
+        "name": "L’Observatori Griffith i Hollywood Hills, a Los Angeles",
+        "pointsOfInterest": {
+            "0": "L’Observatori Griffith i Hollywood Hills, a Los Angeles"
+        }
+    },
+    "8C31B06F-91A4-4F7C-93ED-56146D7F48B9": {
+        "name": "Onades trencant a les costes de Tahití",
+        "pointsOfInterest": {
+            "0": "Onades trencant a les costes de Tahití"
+        }
+    },
+    "92E48DE9-13A1-4172-B560-29B4668A87EE": {
+        "name": "Sobre la platja de Santa Monica a prop de Los Angeles",
+        "pointsOfInterest": {
+            "0": "Sobre la platja de Santa Monica a prop de Los Angeles",
+            "365": "Passant pel moll de Santa Monica a prop de Los Angeles",
+            "430": "Sobre la platja de Santa Monica a prop de Los Angeles"
+        }
+    },
+    "9680B8EB-CE2A-4395-AF41-402801F4D6A6": {
+        "name": "Acostant-se a la torre de Khalifa al centre de Dubai, als Emirats Àrabs Units",
+        "pointsOfInterest": {
+            "0": "Acostant-se a la torre de Khalifa al centre de Dubai, als Emirats Àrabs Units",
+            "280": "Passant per la torre de Khalifa al centre de Dubai, als Emirats Àrabs Units",
+            "330": "Sobre el centre de Dubai acostant-se a la costa"
+        }
+    },
+    "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C": {
+        "name": "Passant per les terrasses d’arròs de Longji a la província de Guangxi, a la Xina",
+        "pointsOfInterest": {
+            "0": "Passant per les terrasses d’arròs de Longji a la província de Guangxi, a la Xina"
+        }
+    },
+    "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
+        "name": "Passant pels terrenys del palau de Buckingham, Londres",
+        "pointsOfInterest": {
+            "0": "Passant pels terrenys del palau de Buckingham, Londres",
+            "104": "Creuant el riu Tàmesi i passant pel London Eye",
+            "149": "Passant per sobre del sud de Londres",
+            "24": "Sobre el palau de Buckingham, a Londres",
+            "279": "Passant per The Shard al sud de Londres",
+            "299": "Creuant el riu Tàmesi a Londres",
+            "324": "Creuant el riu Tàmesi al pont de la Torre, a Londres",
+            "49": "Sobre St James’s Park cap al riu Tàmesi, a Londres"
+        }
+    },
+    "A837FA8C-C643-4705-AE92-074EFDD067F7": {
+        "name": "Passant pel Sàhara de nit en direcció nord‑est",
+        "pointsOfInterest": {
+            "0": "Passant pel Sàhara de nit en direcció nord‑est",
+            "100": "La costa mediterrània de Tunísia i Líbia",
+            "120": "Sobrevolant el mar Mediterrani en direcció a Itàlia",
+            "140": "Sobrevolant el sud d’Itàlia en direcció a la península Balcànica, amb Turquia a la llunyania",
+            "165": "Sobrevolant la península Balcànica en direcció al mar Negre",
+            "180": "Sobrevolant la península Balcànica en direcció al mar Negre",
+            "210": "Passant pel mar Negre en direcció a Ucraïna",
+            "230": "Passant per Ucraïna en direcció a Rússia",
+            "70": "Sobrevolant el desert del Gran Erg Oriental en direcció al mar Mediterrani"
+        }
+    },
+    "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
+        "name": "Sobrevolant l’oasi de Liwa als Emirats Àrabs Units",
+        "pointsOfInterest": {
+            "0": "Sobrevolant l’oasi de Liwa als Emirats Àrabs Units"
+        }
+    },
+    "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
+        "name": "Sobrevolant l’oceà Pacífic en direcció a Mèxic",
+        "pointsOfInterest": {
+            "0": "Sobrevolant l’oceà Pacífic en direcció a Mèxic",
+            "105": "Passant per la Ciutat de Mèxic en direcció al golf de Mèxic",
+            "122": "Sobrevolant el golf de Mèxic en direcció als Estats Units",
+            "180": "Passant per Houston en direcció a Nova Orleans, als Estats Units",
+            "190": "Anant cap a Nova Orleans i la Costa del Golf dels Estats Units",
+            "215": "Sobrevolant el sud‑est dels Estats Units",
+            "280": "Sobrevolant l’est dels Estats Units en direcció a Nova York",
+            "320": "Sobrevolant l’est dels Estats Units, acostant‑se a Nova York"
+        }
+    },
+    "B876B645-3955-420E-99DF-60139E451CF3": {
+        "name": "Passant pel Parc Nacional de Wulingyuan, a la Xina",
+        "pointsOfInterest": {
+            "0": "Passant pel Parc Nacional de Wulingyuan, a la Xina"
+        }
+    },
+    "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
+        "name": "Passant per la península de Nuussuaq a Groenlàndia",
+        "pointsOfInterest": {
+            "0": "Passant per la península de Nuussuaq a Groenlàndia"
+        }
+    },
+    "BA4ECA11-592F-4727-9221-D2A32A16EB28": {
+        "name": "Meduses daurades a les aigües de Palau",
+        "pointsOfInterest": {
+            "0": "Meduses daurades a les aigües de Palau",
+            "282": "Meduses daurades i una aurèlia",
+            "348": "Meduses daurades a les aigües de Palau"
+        }
+    },
+    "C6DC4E54-1130-44F8-AF6F-A551D8E8A181": {
+        "name": "Aurèlies a prop de la costa d’Alaska, als Estats Units",
+        "pointsOfInterest": {
+            "0": "Aurèlies a prop de la costa d’Alaska, als Estats Units"
+        }
+    },
+    "C7AD3D0A-7EDF-412C-A237-B3C9D27381A1": {
+        "name": "Nadant amb aurèlies a prop de la costa d’Alaska, als Estats Units",
+        "pointsOfInterest": {
+            "0": "Nadant amb aurèlies a prop de la costa d’Alaska, als Estats Units"
+        }
+    },
+    "C8559883-6F3E-4AF2-8960-903710CD47B7": {
+        "name": "Sobrevolant Victoria Peak a Hong Kong",
+        "pointsOfInterest": {
+            "0": "Sobrevolant Victoria Peak a Hong Kong",
+            "150": "Sobrevolant Hong Kong en direcció al port de Victòria",
+            "330": "Sobre el port de Victòria apropant-se a la península de Kowloon"
+        }
+    },
+    "CE279831-1CA7-4A83-A97B-FF1E20234396": {
+        "name": "Sobrevolant l’Aeroport Internacional de Los Angeles",
+        "pointsOfInterest": {
+            "0": "Sobrevolant l’Aeroport Internacional de Los Angeles"
+        }
+    },
+    "CE9B5D5B-B6E7-47C5-8C04-59BF182E98FB": {
+        "name": "Dofins de musell llarg a les aigües de Costa Rica",
+        "pointsOfInterest": {
+            "0": "Dofins de musell llarg a les aigües de Costa Rica"
+        }
+    },
+    "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
+        "name": "Passant per l’oceà Pacífic en direcció a l’Amèrica Central",
+        "pointsOfInterest": {
+            "0": "Passant per l’oceà Pacífic en direcció a l’Amèrica Central",
+            "110": "Passant per una Jamaica coberta de núvols, al mar Carib",
+            "125": "Creuant Cuba, mirant cap a Haití i la República Dominicana",
+            "170": "Sobrevolant les Bahames, mirant cap a Haití i la República Dominicana",
+            "190": "Les illes Turks i Caicos, a l’oceà Atlàntic",
+            "35": "Les costes pacífiques de Nicaragua, Costa Rica i Panamà",
+            "50": "Passant per l’Amèrica Central, amb Sud‑Amèrica a la llunyania",
+            "65": "La costa de Los Mosquitos de Nicaragua",
+            "85": "Sobrevolant el mar Carib en direcció a Cuba"
+        }
+    },
+    "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
+        "name": "Explorant el Parc Nacional de Wulingyuan, a la Xina",
+        "pointsOfInterest": {
+            "0": "Explorant el Parc Nacional de Wulingyuan, a la Xina"
+        }
+    },
+    "DD47D8E1-CB66-4C12-BFEA-2ADB0D8D1E2E": {
+        "name": "Una balena amb gep a la Polinèsia Francesa",
+        "pointsOfInterest": {
+            "0": "Una balena amb gep a la Polinèsia Francesa"
+        }
+    },
+    "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
+        "name": "La badia de San Francisco i el pont Golden Gate",
+        "pointsOfInterest": {
+            "0": "La badia de San Francisco i el pont Golden Gate",
+            "140": "Anant a la torre nord del pont Golden Gate cap a San Francisco",
+            "191": "Sobrevolant la badia de San Francisco"
+        }
+    },
+    "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
+        "name": "Sobrevolant l’Àfrica occidental en direcció al Sàhara",
+        "pointsOfInterest": {
+            "0": "Sobrevolant l’Àfrica occidental en direcció al Sàhara",
+            "110": "Passant pel massís de l’Ahaggar al Sàhara, al nord d’Àfrica",
+            "155": "Sobrevolant el desert del Gran Erg Oriental, al nord d’Àfrica, en direcció al mar Mediterrani",
+            "195": "La costa de Tunísia i el mar Mediterrani",
+            "210": "Sobrevolant la costa de Tunísia en direcció a Itàlia",
+            "230": "Acostant‑se a Itàlia, al mar Mediterrani",
+            "245": "Sobrevolant Itàlia en direcció a la península Balcànica",
+            "285": "Sobrevolant la península Balcànica en direcció als Carpats",
+            "30": "Creuant el Sàhara, al nord d’Àfrica",
+            "310": "Els Carpats i el mar Negre"
+        }
+    },
+    "E580E5A5-0888-4BE8-A4CA-F74A18A643C3": {
+        "name": "Meduses daurades a les aigües de Palau",
+        "pointsOfInterest": {
+            "0": "Meduses daurades a les aigües de Palau"
+        }
+    },
+    "E5DB138A-F04E-4619-B896-DE5CB538C534": {
+        "name": "Sobrevolant Tunísia en direcció a Itàlia",
+        "pointsOfInterest": {
+            "0": "Sobrevolant Tunísia en direcció a Itàlia",
+            "15": "Sobrevolant el sud d’Itàlia, amb la península Balcànica al fons",
+            "25": "Sobrevolant la península Balcànica en direcció a l’Àsia central",
+            "40": "Sobrevolant la península Balcànica, passant pel mar Negre",
+            "5": "Sobrevolant el mar Mediterrani, mirant cap a Sicília i la península italiana",
+            "55": "Sobrevolant Ucraïna, amb Rússia al fons",
+            "75": "Sobrevolant el sud‑oest de Rússia, passant pel Kazakhstan"
+        }
+    },
+    "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
+        "name": "Sobrevolant Dubai Marina als Emirats Àrabs Units",
+        "pointsOfInterest": {
+            "0": "Sobrevolant Dubai Marina als Emirats Àrabs Units"
+        }
+    },
+    "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
+        "name": "Sobre el port de Victòria cap al districte central de Hong Kong",
+        "pointsOfInterest": {
+            "0": "Sobre el port de Victòria cap al districte central de Hong Kong"
+        }
+    },
+    "EB3F48E7-D30F-4079-858F-1A61331D5026": {
+        "name": "Travessant un bosc de varec a la costa de Califòrnia, als Estats Units",
+        "pointsOfInterest": {
+            "0": "Travessant un bosc de varec a la costa de Califòrnia, als Estats Units"
+        }
+    },
+    "EC3DC957-D4C2-4732-AACE-7D0C0F390EC8": {
+        "name": "Meduses daurades a les aigües de Palau",
+        "pointsOfInterest": {
+            "0": "Meduses daurades a les aigües de Palau"
+        }
+    },
+    "EC67726A-8212-4C5E-83CF-8412932740D2": {
+        "name": "El rètol de Hollywood a Los Angeles",
+        "pointsOfInterest": {
+            "0": "El rètol de Hollywood a Los Angeles",
+            "250": "Sobre Hollywood Hills acostant-se a Burbank, a Califòrnia"
+        }
+    },
+    "EE01F02D-1413-436C-AB05-410F224A5B7B": {
+        "name": "El fiord gelat d’Ilulissat a prop de la costa de Groenlàndia",
+        "pointsOfInterest": {
+            "0": "El fiord gelat d’Ilulissat a prop de la costa de Groenlàndia"
+        }
+    },
+    "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
+        "name": "Sobre Marin Headlands mirant cap al pont Golden Gate",
+        "pointsOfInterest": {
+            "0": "Sobre Marin Headlands mirant cap al pont Golden Gate",
+            "150": "Creuant el pont Golden Gate cap al Presidi de San Francisco"
+        }
+    },
+    "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
+        "name": "La secció Mutianyu de la Gran Muralla al districte de Huairou, a la Xina",
+        "pointsOfInterest": {
+            "0": "La secció Mutianyu de la Gran Muralla al districte de Huairou, a la Xina"
+        }
+    },
+    "F07CC61B-30FC-4614-BDAD-3240B61F6793": {
+        "name": "Escull de corall a prop de Palau",
+        "pointsOfInterest": {
+            "0": "Escull de corall a prop de Palau"
+        }
+    },
+    "F439B0A7-D18C-4B14-9681-6520E6A74FE9": {
+        "name": "El reflex del sol a la costa d’Iran",
+        "pointsOfInterest": {
+            "0": "El reflex del sol a la costa d’Iran",
+            "15": "Sobrevolant l’Iran del dia a la nit",
+            "60": "Sobrevolant l’Àsia central del dia a la nit"
+        }
+    },
+    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
+        "name": "Passant pel centre de Los Angeles",
+        "pointsOfInterest": {
+            "0": "Passant pel centre de Los Angeles"
+        }
+    },
+    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
+        "name": "Acostant-se al pont de la Torre sobre el riu Tàmesi, a Londres",
+        "pointsOfInterest": {
+            "0": "Acostant-se al pont de la Torre sobre el riu Tàmesi, a Londres",
+            "20": "Creuant el riu Tàmesi a Londres",
+            "200": "Creuant el riu Tàmesi cap a Westminster, a Londres",
+            "270": "Sobrevolant Westminster, Londres",
+            "60": "Passant per The Shard al sud de Londres",
+            "92": "Al sud del riu Tàmesi a Londres, en direcció al London Eye"
+        }
+    },
+    "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {
+        "name": "Sobre el port de Victòria enfront de l’illa de Hong Kong",
+        "pointsOfInterest": {
+            "0": "Sobre el port de Victòria enfront de l’illa de Hong Kong"
+        }
+    }
+}

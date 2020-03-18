@@ -1,0 +1,740 @@
+{
+    "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8": {
+        "name": "A Liwa oázis felett repülve az Egyesült Arab Emírségekben",
+        "pointsOfInterest": {
+            "0": "A Liwa oázis felett repülve az Egyesült Arab Emírségekben"
+        }
+    },
+    "009BA758-7060-4479-8EE8-FB9B40C8FB97": {
+        "name": "Utazás délkelet felé Szibéria és Mongólia felett",
+        "pointsOfInterest": {
+            "0": "Utazás délkelet felé Szibéria és Mongólia felett",
+            "110": "A Koreai-félsziget felé haladva Kína felett",
+            "150": "A Koreai-félsziget, a távolban Japán",
+            "180": "Dél-Korea felett, utazás Japán felé",
+            "195": "Japán felett, a Csendes-óceán felé nézve",
+            "22": "Belső-Mongólia felé haladva",
+            "260": "A Csendes-Óceán felett, Japántól délkeletre",
+            "32": "Mongólia felett, utazás Kína felé",
+            "60": "Észak-Kína felett, utazás a Koreai-félsziget felé"
+        }
+    },
+    "00BA71CD-2C54-415A-A68A-8358E677D750": {
+        "name": "Dubaj belvárosához közeledve az Egyesült Arab Emírségekben",
+        "pointsOfInterest": {
+            "0": "Dubaj belvárosához közeledve az Egyesült Arab Emírségekben",
+            "210": "Dubaj belvárosa felett haladva az Egyesült Arab Emírségekben"
+        }
+    },
+    "024891DE-B7F6-4187-BFE0-E6D237702EF0": {
+        "name": "Wan Chai felett Hongkong Central negyede felé közeledve",
+        "pointsOfInterest": {
+            "0": "Wan Chai felett Hongkong Central negyede felé közeledve",
+            "150": "Hongkong Central negyede felett",
+            "270": "A Hongkong-sziget felett"
+        }
+    },
+    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": {
+        "name": "Sarki fény az Antarktisz felett",
+        "pointsOfInterest": {
+            "0": "Sarki fény az Antarktisz felett"
+        }
+    },
+    "044AD56C-A107-41B2-90CC-E60CCACFBCF5": {
+        "name": "A Kínai nagy fal Mutianyu szakasza Huairou körzetben, Kínában",
+        "pointsOfInterest": {
+            "0": "A Kínai nagy fal Mutianyu szakasza Huairou körzetben, Kínában"
+        }
+    },
+    "1088217C-1410-4CF7-BDE9-8F573A4DBCD9": {
+        "name": "A Csendes-óceán felett, Közép-Amerika felé haladva",
+        "pointsOfInterest": {
+            "0": "A Csendes-óceán felett, Közép-Amerika felé haladva",
+            "100": "Átkelés Közép-Amerikán a Karib-tenger irányában",
+            "150": "A Karib-tenger felett Kuba felé haladva",
+            "240": "Kuba felett, a távolban Florida és a Bahamák",
+            "300": "Florida és a Bahamák felett, utazás a Sargasso-tenger felé",
+            "350": "Az Atlanti-óceán felé haladva a Sargasso-tenger felett",
+            "70": "A Karib-tenger felé haladva Közép-Amerika délnyugati partja mentén"
+        }
+    },
+    "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
+        "name": "A Csendes-óceán felett, a kaliforniai part felé haladva",
+        "pointsOfInterest": {
+            "0": "A Csendes-óceán felett, a kaliforniai part felé haladva",
+            "110": "Las Vegas felett, az egyesült államokbeli Salt Lake City felé haladva",
+            "120": "Az Egyesült Államok nyugati része felett, Salt Lake City felé közeledve",
+            "155": "Az egyesült államokbeli Salt Lake City és Denver között elhaladva",
+            "170": "Az egyesült államokbeli Sziklás-hegység felett",
+            "70": "A kaliforniai partvidék felett a szárazföld belseje felé haladva",
+            "85": "Los Angeles felett elhaladva, az Egyesült Államok nyugati partja felett",
+            "95": "Los Angeles felett, az egyesült államokbeli Las Vegas felé közeledve"
+        }
+    },
+    "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7": {
+        "name": "A Laupāhoehoe Nui felett repülve a Kohala Erdőrezervátumban Hawaii szigetén",
+        "pointsOfInterest": {
+            "0": "A Laupāhoehoe Nui felett repülve a Kohala Erdőrezervátumban Hawaii szigetén"
+        }
+    },
+    "149E7795-DBDA-4F5D-B39A-14712F841118": {
+        "name": "Tahiti partjainál megtörő hullámok",
+        "pointsOfInterest": {
+            "0": "Tahiti partjainál megtörő hullámok"
+        }
+    },
+    "22162A9B-DB90-4517-867C-C676BC3E8E95": {
+        "name": "A Kínai nagy fal Mutianyu szakasza Huairou körzetben, Kínában",
+        "pointsOfInterest": {
+            "0": "A Kínai nagy fal Mutianyu szakasza Huairou körzetben, Kínában"
+        }
+    },
+    "258A6797-CC13-4C3A-AB35-4F25CA3BF474": {
+        "name": "A Puu O Umi Természetvédelmi Terület felett Hawaii szigetén",
+        "pointsOfInterest": {
+            "0": "A Puu O Umi Természetvédelmi Terület felett Hawaii szigetén"
+        }
+    },
+    "27A37B0F-738D-4644-A7A4-E33E7A6C1175": {
+        "name": "Közönséges delfinek az egyesült államokbeli Kalifornia partjainál",
+        "pointsOfInterest": {
+            "0": "Közönséges delfinek az egyesült államokbeli Kalifornia partjainál"
+        }
+    },
+    "29BDF297-EB43-403A-8719-A78DA11A2948": {
+        "name": "A Fisherman’s Wharf felett San Francisco belvárosa felé haladva",
+        "pointsOfInterest": {
+            "0": "A Fisherman’s Wharf felett San Francisco belvárosa felé haladva",
+            "150": "A Coit Tower mellett haladva San Francisco belvárosa és a Bay Bridge felé",
+            "196": "San Francisco belvárosa",
+            "80": "A Coit Tower felé közeledve, a Bay Bridge-dzsel és San Francisco belvárosával a háttérben"
+        }
+    },
+    "2B30E324-E4FF-4CC1-BA45-A958C2D2B2EC": {
+        "name": "Egy csapat chevron barrakuda a Borneó közelében lévő vizekben",
+        "pointsOfInterest": {
+            "0": "Egy csapat chevron barrakuda a Borneó közelében lévő vizekben"
+        }
+    },
+    "2F52E34C-39D4-4AB1-9025-8F7141FAA720": {
+        "name": "Az Ilulissat jégfjord Grönland partjainál",
+        "pointsOfInterest": {
+            "0": "Az Ilulissat jégfjord Grönland partjainál"
+        }
+    },
+    "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
+        "name": "Afrika szarva felett, utazás az Ádeni-öböl irányában",
+        "pointsOfInterest": {
+            "0": "Afrika szarva felett, utazás az Ádeni-öböl irányában",
+            "115": "Az Ománi-öböl, a Makrán partja felé közeledve",
+            "145": "Az iráni és pakisztáni Makrán partja",
+            "160": "Irán felett, utazás Afganisztán és Pakisztán felé",
+            "180": "Afganisztán és Pakisztán felett, utazás a Karakorum felé",
+            "235": "A Karakorum felett, utazás Kínába",
+            "280": "A Takla-Makán sivatag Nyugat-Kínában",
+            "315": "A Tien-san hegység Közép-Ázsiában",
+            "45": "Az Arab-félsziget délkeleti része"
+        }
+    },
+    "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
+        "name": "Az Interstate 110 north autópályán haladva Los Angelesben",
+        "pointsOfInterest": {
+            "0": "Az Interstate 110 north autópályán haladva Los Angelesben"
+        }
+    },
+    "3716DD4B-01C0-4F5B-8DD6-DB771EC472FB": {
+        "name": "Francia Polinézia partjainál úszó szürke szirtcápák",
+        "pointsOfInterest": {
+            "0": "Francia Polinézia partjainál úszó szürke szirtcápák"
+        }
+    },
+    "391BDF6E-3279-4CE1-9CA5-0F82811452D7": {
+        "name": "Dél-afrikai medvefókák a Dél-afrikai Köztársaságban lévő Cape Peninsula partjánál",
+        "pointsOfInterest": {
+            "0": "Dél-afrikai medvefókák a Dél-afrikai Köztársaságban lévő Cape Peninsula partjánál"
+        }
+    },
+    "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
+        "name": "A Central Park felett Manhattan Midtown része felé haladva New Yorkban",
+        "pointsOfInterest": {
+            "0": "A Central Park felett Manhattan Midtown része felé haladva New Yorkban",
+            "246": "Manhattan Midtown része felett New Yorkban"
+        }
+    },
+    "3C4678E4-4D3D-4A40-8817-77752AEA62EB": {
+        "name": "Utazás Nyugat-Európa felett, a távolban a Brit-szigetekkel",
+        "pointsOfInterest": {
+            "0": "Utazás Nyugat-Európa felett, a távolban a Brit-szigetekkel",
+            "100": "Görögország, a Jón- és az Égei-tenger ölelésében",
+            "160": "Utazás délkelet felé a Földközi-tenger felett",
+            "185": "A Földközi-tenger és a Nílus deltája",
+            "20": "Az Alpok és a Pó folyó völgye felett délkeleti irányban haladva",
+            "205": "A Szaharán átfolyó Nílus Egyiptomban",
+            "220": "A Keleti-sivatag a Nílus és a Szuezi-öböl között",
+            "240": "A Vörös-tenger felett délkelet felé haladva",
+            "50": "Az Appennini-félsziget és az Adriai-tenger mentén haladva"
+        }
+    },
+    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": {
+        "name": "A kohalai partszakaszon haladva Hawaii szigetén",
+        "pointsOfInterest": {
+            "0": "A kohalai partszakaszon haladva Hawaii szigetén"
+        }
+    },
+    "3E94AE98-EAF2-4B09-96E3-452F46BC114E": {
+        "name": "A Bay Bridgehez és San Francisco belvárosához közeledve",
+        "pointsOfInterest": {
+            "0": "A Bay Bridgehez és San Francisco belvárosához közeledve",
+            "116": "A San Francisco-öböl felett a belváros felé haladva",
+            "80": "A Bay Bridge-en átkelve San Francisco belvárosa felé haladva"
+        }
+    },
+    "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
+        "name": "A Dubai Marina negyed mentén repülve az Egyesült Arab Emírségekben",
+        "pointsOfInterest": {
+            "0": "A Dubai Marina negyed mentén repülve az Egyesült Arab Emírségekben"
+        }
+    },
+    "44166C39-8566-4ECA-BD16-43159429B52F": {
+        "name": "A 7. sugárút felett haladva a Times Square felé New Yorkban",
+        "pointsOfInterest": {
+            "0": "A 7. sugárút felett haladva a Times Square felé New Yorkban",
+            "120": "A 7. sugárúton haladva Manhattan Midtown részében, New Yorkban",
+            "40": "A Times Square felett New Yorkban"
+        }
+    },
+    "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943": {
+        "name": "A Waimanu Valley a Kohala Erdőrezervátumban Hawaii szigetén",
+        "pointsOfInterest": {
+            "0": "A Waimanu Valley a Kohala Erdőrezervátumban Hawaii szigetén"
+        }
+    },
+    "4AD99907-9E76-408D-A7FC-8429FF014201": {
+        "name": "A San Francisco-öböl felett az Embarcadero felé haladva",
+        "pointsOfInterest": {
+            "0": "A San Francisco-öböl felett az Embarcadero felé haladva",
+            "150": "A Market Streeten haladva San Francisco belvárosában",
+            "360": "A Market Streeten haladva San Franciscóban",
+            "90": "Az Embarcadero felett a Market Street felé nézve San Franciscóban"
+        }
+    },
+    "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589": {
+        "name": "Az Egyesült Államok Belső-síksága felett délkelet felé haladva",
+        "pointsOfInterest": {
+            "0": "Az Egyesült Államok Belső-síksága felett délkelet felé haladva",
+            "120": "Az Egyesült Államok délkeleti része felett Florida felé haladva",
+            "220": "Florida felett, utazás a Bahamák felé",
+            "240": "A Bahamák felett délkelet felé haladva",
+            "285": "A Bahamák felett, a Dominikai Köztársaság és Haiti felé közeledve",
+            "300": "A Dominikai Köztársaság és Haiti felett, a Karib-tenger felé közeledve",
+            "315": "Déli irányban, Venezuela felé haladva a Karib-tenger felett",
+            "90": "Az Egyesült Államok közép-nyugati része felett délkelet felé haladva"
+        }
+    },
+    "537A4DAB-83B0-4B66-BCD1-05E5DBB4A268": {
+        "name": "Egy csapat nagy szemű tüskésmakréla Borneó partjánál",
+        "pointsOfInterest": {
+            "0": "Egy csapat nagy szemű tüskésmakréla Borneó partjánál"
+        }
+    },
+    "581A4F1A-2B6D-468C-A1BE-6F473F06D10B": {
+        "name": "Szarvas tengeri csillagok az óceán fenekén Borneó közelében",
+        "pointsOfInterest": {
+            "0": "Szarvas tengeri csillagok az óceán fenekén Borneó közelében"
+        }
+    },
+    "58754319-8709-4AB0-8674-B34F04E7FFE2": {
+        "name": "A Tower-hídhoz közeledve a Temzén Londonban",
+        "pointsOfInterest": {
+            "0": "A Tower-hídhoz közeledve a Temzén Londonban",
+            "178": "A Temzétől délre, Londonban",
+            "258": "A Temzén átkelve Londonban",
+            "78": "A Temze mentén haladva Londonban"
+        }
+    },
+    "58C75C62-3290-47B8-849C-56A583173570": {
+        "name": "Tehénorrú ráják Mexikó partjainál",
+        "pointsOfInterest": {
+            "0": "Tehénorrú ráják Mexikó partjainál"
+        }
+    },
+    "6143116D-03BB-485E-864E-A8CF58ACF6F1": {
+        "name": "Lebegés egy tengeri moszaterdőn keresztül a Dél-afrikai Köztársaságban lévő Cape Peninsula közelében",
+        "pointsOfInterest": {
+            "0": "Lebegés egy tengeri moszaterdőn keresztül a Dél-afrikai Köztársaságban lévő Cape Peninsula közelében"
+        }
+    },
+    "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": {
+        "name": "A Kanári-szigetek, az Atlanti-óceán és Afrika partja",
+        "pointsOfInterest": {
+            "0": "A Kanári-szigetek, az Atlanti-óceán és Afrika partja",
+            "105": "Marokkó felett, a Földközi-tengerhez közeledve",
+            "125": "A Földközi-tenger és Dél-Spanyolország",
+            "145": "Utazás északkeleti irányban, a spanyolországi Costa Blanca felett",
+            "165": "Utazás északkeleti irányban, a spanyolországi Baleár-szigetek felett",
+            "185": "A Földközi-tenger nyugati része felett, háttérben az Alpok",
+            "220": "Az Alpok felett északkelet felé haladva",
+            "45": "Marokkó partjai mentén északkelet felé haladva",
+            "75": "Az Atlasz felett elhaladva, Marokkóban"
+        }
+    },
+    "640DFB00-FBB9-45DA-9444-9F663859F4BC": {
+        "name": "Alsó-Manhattanhez közeledve a New York-i kikötő felől",
+        "pointsOfInterest": {
+            "0": "Alsó-Manhattanhez közeledve a New York-i kikötő felől",
+            "110": "Alsó-Manhattan mentén a One World Trade Centerhez közeledve",
+            "180": "Midtown felé haladva Manhattanben, a One World Trade Center mellett",
+            "210": "Alsó-Manhattan felett New Yorkban, Midtown felé haladva"
+        }
+    },
+    "64D11DAB-3B57-4F14-AD2F-E59A9282FA44": {
+        "name": "Portugália felé haladva az Észak-Atlanti-óceán felett",
+        "pointsOfInterest": {
+            "0": "Portugália felé haladva az Észak-Atlanti-óceán felett",
+            "115": "Portugália és Spanyolország felett",
+            "150": "Átkelés a Vizcayai-öböl és Franciaország felett, az Ibériai-félszigettől távolodva",
+            "180": "Nyugat-Európa felett, a távolban az Észak-Atlanti-óceán"
+        }
+    },
+    "687D03A2-18A5-4181-8E85-38F3A13409B9": {
+        "name": "Bütykösfejű papagájhalak a korallzátonyok felett Borneó partjainál",
+        "pointsOfInterest": {
+            "0": "Bütykösfejű papagájhalak a korallzátonyok felett Borneó partjainál"
+        }
+    },
+    "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
+        "name": "A Golden Gate-hídhoz közeledve San Francisco felől",
+        "pointsOfInterest": {
+            "0": "A Golden Gate-hídhoz közeledve San Francisco felől",
+            "140": "A Golden Gate-hídon átkelve",
+            "230": "A Golden Gate-híd északi tornya mellett haladva",
+            "260": "A San Francisco-öböl felett a Golden Gate-híd mentén haladva",
+            "60": "A Golden Gate-híd mentén a Marin Headlands felé haladva"
+        }
+    },
+    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
+        "name": "A Csendes-óceán felett, Alsó-Kalifornia felé haladva",
+        "pointsOfInterest": {
+            "0": "A Csendes-óceán felett, Alsó-Kalifornia felé haladva",
+            "110": "A Sziklás-hegység felett, Denver felé közeledve",
+            "125": "Utazás az Egyesült Államok Belső-síksága felett",
+            "185": "A Nagy-tavak felé közeledve, háttérben a kanadai Ontario",
+            "200": "A Nagy-Tavak felett, a kanadai Ontario felé közeledve",
+            "210": "Sarki fény a kanadai Nyugat-Ontario felett",
+            "235": "Sarki fény a kanadai Észak-Ontario felett",
+            "250": "Sarki fény a kanadai Észak-Quebec felett",
+            "300": "Az Észak-Atlanti-óceán irányában haladva; a kanadai Labrador felett Sarki fény látható",
+            "45": "Alsó-Kalifornia felett, észak, vagyis az Egyesült Államok felé tekintve",
+            "55": "Mexikó felett, az Egyesült Államok délnyugati része felé haladva",
+            "75": "Az Egyesült Államok délnyugati része felett"
+        }
+    },
+    "7719B48A-2005-4011-9280-2F64EEC6FD91": {
+        "name": "Az Egyesült Államok felé haladva a Csendes-óceán felett",
+        "pointsOfInterest": {
+            "0": "Az Egyesült Államok felé haladva a Csendes-óceán felett",
+            "130": "A Nyugati-Sierra Madre hegység Mexikó nyugati partjainál",
+            "185": "A Nyugati-Sierra Madre hegység felett, Mexikó nyugati partjai felé haladva",
+            "20": "Utazás dél felé, Kalifornia partjai mentén",
+            "225": "Déli irányban a Csendes-óceánra nézve, a mexikói Sierra Madre del Sur felett",
+            "280": "A Csendes-óceán Mexikó partjai mellett",
+            "290": "A Csendes-óceán Mexikó és Guatemala partjai mellett",
+            "50": "Dél-Kalifornia felett, utazás Mexikó felé",
+            "65": "A dél-kaliforniai Mojave-sivatag felé közeledve, háttérben Mexikó",
+            "95": "A Kaliforniai-öböl a Sonora-sivatag és az Alsó-Kaliforniai-félsziget között"
+        }
+    },
+    "7825C73A-658F-48EE-B14C-EC56673094AC": {
+        "name": "Közép-Ázsia felett, utazás Kína partvidéke felé",
+        "pointsOfInterest": {
+            "0": "Közép-Ázsia felett, utazás Kína partvidéke felé",
+            "10": "Közép-Kína felett, Sanghaj felé haladva",
+            "30": "Kelet-Kína felett, Sanghaj felé közeledve",
+            "45": "Sanghaj felé közeledve a Kelet-kínai-tenger irányában",
+            "50": "Sanghaj felett, a Kelet-kínai-tenger felé haladva"
+        }
+    },
+    "78911B7E-3C69-47AD-B635-9C2486F6301D": {
+        "name": "Átmenet éjszakából nappalba a déli Csendes-óceán felett",
+        "pointsOfInterest": {
+            "0": "Átmenet éjszakából nappalba a déli Csendes-óceán felett",
+            "110": "Új-Zéland feletti közeledő napfelkelte",
+            "170": "Új-Zélandot elhagyva, északkeleti irányban a Csendes-óceán felett",
+            "70": "Átmenet éjszakából nappalba Új-Zéland felett"
+        }
+    },
+    "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": {
+        "name": "Az Észak-Atlanti-óceán felett, a Brit-szigetek felé közeledve",
+        "pointsOfInterest": {
+            "0": "Az Észak-Atlanti-óceán felett, a Brit-szigetek felé közeledve",
+            "105": "Oroszország felé haladva Közép-Európa felett",
+            "15": "Írország és Nagy-Britannia",
+            "150": "Kelet-Európa felett, a távolban Moszkva",
+            "165": "Kelet-Európa felett, Moszkva felé nézve",
+            "185": "Nyugat-Oroszország felett, Moszkvát elhagyva",
+            "195": "Oroszország felett, Közép-Ázsia felé haladva",
+            "45": "Nagy-Britannia felett, az európai kontinens felé haladva",
+            "65": "Oroszország felé haladva Északnyugat-Európa felett"
+        }
+    },
+    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
+        "name": "A Tower-hídhoz közeledve a Temzén Londonban",
+        "pointsOfInterest": {
+            "0": "A Tower-hídhoz közeledve a Temzén Londonban",
+            "130": "A Temzén haladva a London Eye felé",
+            "20": "A Temze mentén haladva Londonban",
+            "210": "A London Eye-hoz közeledve a Temzén",
+            "310": "A Temzén haladva a London Eye érintésével",
+            "325": "A Parlament mellett haladva a Temzén, Londonban"
+        }
+    },
+    "81337355-E156-4242-AAF4-711768D30A54": {
+        "name": "Az ausztráliai Perth felé haladva az Indiai-óceán felett",
+        "pointsOfInterest": {
+            "0": "Az ausztráliai Perth felé haladva az Indiai-óceán felett",
+            "170": "Nyugat-Ausztrália felett, az Északi terület felé közelítve",
+            "220": "Az ausztráliai Északi terület felett, utazás Új-Guinea felé",
+            "335": "Az Arafura-tenger felett, utazás Új-Guinea irányában",
+            "50": "Utazás északkeleti irányban, Nyugat-Ausztrálián keresztül"
+        }
+    },
+    "82175C1F-153C-4EC8-AE37-2860EA828004": {
+        "name": "Korallzátony a Vörös-tengerben, Egyiptom közelében",
+        "pointsOfInterest": {
+            "0": "Korallzátony a Vörös-tengerben, Egyiptom közelében"
+        }
+    },
+    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": {
+        "name": "A Puu O Umi Természetvédelmi Terület felett Hawaii szigetén",
+        "pointsOfInterest": {
+            "0": "A Puu O Umi Természetvédelmi Terület felett Hawaii szigetén"
+        }
+    },
+    "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8": {
+        "name": "Az Upper East Side és a Central Park felett New Yorkban",
+        "pointsOfInterest": {
+            "0": "Az Upper East Side és a Central Park felett New Yorkban",
+            "160": "Az Empire State Buildinghez közeledve New Yorkban",
+            "205": "Alsó-Manhattan felé haladva az Empire State Building mellett",
+            "50": "Manhattan Midtown része felett a belvárosban lévő Empire State Building felé haladva"
+        }
+    },
+    "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
+        "name": "A San Francisco-öböl felett az Embarcadero felé haladva",
+        "pointsOfInterest": {
+            "0": "A San Francisco-öböl felett az Embarcadero felé haladva",
+            "208": "A Market Streeten haladva San Franciscóban"
+        }
+    },
+    "87060EC2-D006-4102-98CC-3005C68BB343": {
+        "name": "Utazás északkeleti irányban, az Etióp-magasföld felett",
+        "pointsOfInterest": {
+            "0": "Utazás északkeleti irányban, az Etióp-magasföld felett",
+            "100": "Az Arab-félsziget felett északkeleti irányban haladva",
+            "130": "Az Arab-félsziget felett, utazás Irán irányában",
+            "165": "Az Arab-félsziget felett, Irán felé közeledve",
+            "190": "Irán partjai felé közeledve, háttérben a Zagrosz-hegység",
+            "210": "Az iráni Zagrosz-hegység felett",
+            "240": "Az iráni Dast-e Lut sivatag felett",
+            "265": "Utazás Türkmenisztán és a Kara-kum sivatag felé",
+            "305": "Az Amu-darja folyó és a Pamír-Alaj-hegység Közép-Ázsiában",
+            "322": "A Pamír-Alaj-hegység és a Fergánai-medence Közép-Ázsiában",
+            "360": "Kirgizisztánból Délkelet-Kazahsztán felé haladva",
+            "400": "Utazás északi irányban, Kazahsztán felett",
+            "45": "Utazás a Vörös-tenger felett, az Arab-félsziget irányában",
+            "450": "Az Altáj hegység felett, utazás Mongóliába"
+        }
+    },
+    "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
+        "name": "Utazás a Sheikh Zayed Roadon Dubajban, az Egyesült Arab Emírségekben",
+        "pointsOfInterest": {
+            "0": "Utazás a Sheikh Zayed Roadon Dubajban, az Egyesült Arab Emírségekben"
+        }
+    },
+    "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
+        "name": "A Griffith Obszervatórium és a Hollywood Hills Los Angelesben",
+        "pointsOfInterest": {
+            "0": "A Griffith Obszervatórium és a Hollywood Hills Los Angelesben"
+        }
+    },
+    "8C31B06F-91A4-4F7C-93ED-56146D7F48B9": {
+        "name": "Tahiti partjainál megtörő hullámok",
+        "pointsOfInterest": {
+            "0": "Tahiti partjainál megtörő hullámok"
+        }
+    },
+    "92E48DE9-13A1-4172-B560-29B4668A87EE": {
+        "name": "A Santa Monica State Beach felett Los Angeles közelében",
+        "pointsOfInterest": {
+            "0": "A Santa Monica State Beach felett Los Angeles közelében",
+            "365": "A Santa Monica Pier felett haladva Los Angeles közelében",
+            "430": "A Santa Monica State Beach felett Los Angeles közelében"
+        }
+    },
+    "9680B8EB-CE2A-4395-AF41-402801F4D6A6": {
+        "name": "A Kalifa-toronyhoz közeledve Dubaj belvárosában, az Egyesült Arab Emírségekben",
+        "pointsOfInterest": {
+            "0": "A Kalifa-toronyhoz közeledve Dubaj belvárosában, az Egyesült Arab Emírségekben",
+            "280": "A Kalifa-torony mellett haladva Dubaj belvárosában, az Egyesült Arab Emírségekben",
+            "330": "Dubaj belvárosa felett a part felé közeledve"
+        }
+    },
+    "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C": {
+        "name": "A Longji rizsültetvények felett haladva Kína Kuanghszi tartományában",
+        "pointsOfInterest": {
+            "0": "A Longji rizsültetvények felett haladva Kína Kuanghszi tartományában"
+        }
+    },
+    "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
+        "name": "A Buckingham-palota felett haladva Londonban",
+        "pointsOfInterest": {
+            "0": "A Buckingham-palota felett haladva Londonban",
+            "104": "A Temzén átkelve a London Eye felett haladva",
+            "149": "Dél-London felett haladva",
+            "24": "A Buckingham-palota felett Londonban",
+            "279": "A The Shard mellett haladva London déli részén",
+            "299": "A Temzén átkelve Londonban",
+            "324": "A Temzén átkelve a Tower-hídnál Londonban",
+            "49": "A Saint James-park felett a Temze felé haladva Londonban"
+        }
+    },
+    "A837FA8C-C643-4705-AE92-074EFDD067F7": {
+        "name": "Utazás északkeleti irányban a Szahara felett, éjszaka",
+        "pointsOfInterest": {
+            "0": "Utazás északkeleti irányban a Szahara felett, éjszaka",
+            "100": "Tunézia és Líbia földközi-tengeri partja",
+            "120": "A Földközi-tenger felett Olaszország felé haladva",
+            "140": "Dél-Olaszország felett, a Balkán-félsziget felé közeledve, a távolban Törökország",
+            "165": "A Balkán-félsziget felett, utazás a Fekete-tenger irányában",
+            "180": "A Balkán-félsziget felett, a Fekete-tenger felé közeledve",
+            "210": "Utazás a Fekete-tenger felett, Ukrajna irányában",
+            "230": "Utazás Ukrajna felett, Oroszország irányában",
+            "70": "A Földközi-tenger felé haladva a Grand Erg Oriental felett"
+        }
+    },
+    "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
+        "name": "A Liwa oázis felett repülve az Egyesült Arab Emírségekben",
+        "pointsOfInterest": {
+            "0": "A Liwa oázis felett repülve az Egyesült Arab Emírségekben"
+        }
+    },
+    "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
+        "name": "Mexikó felé haladva a Csendes-óceán felett",
+        "pointsOfInterest": {
+            "0": "Mexikó felé haladva a Csendes-óceán felett",
+            "105": "Mexikóváros felett, a Mexikói-öböl felé haladva",
+            "122": "A Mexikói-öböl felett repülve az Egyesült Államok irányába",
+            "180": "Az Egyesült Államokban, Houston mellett elhaladva és New Orleans felé közeledve",
+            "190": "New Orleans és az Egyesült Államok öbölmenti partja felett haladva",
+            "215": "Utazás az Egyesült Államok délkeleti része felett",
+            "280": "Az Egyesült Államok keleti része felett, utazás New York felé",
+            "320": "Az Egyesült Államok keleti része felett, New York felé közeledve"
+        }
+    },
+    "B876B645-3955-420E-99DF-60139E451CF3": {
+        "name": "Utazás a Vulingjüan Nemzeti Parkon keresztül Kínában",
+        "pointsOfInterest": {
+            "0": "Utazás a Vulingjüan Nemzeti Parkon keresztül Kínában"
+        }
+    },
+    "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
+        "name": "Utazás a Nuussuaq-félsziget mentén Grönlandon",
+        "pointsOfInterest": {
+            "0": "Utazás a Nuussuaq-félsziget mentén Grönlandon"
+        }
+    },
+    "BA4ECA11-592F-4727-9221-D2A32A16EB28": {
+        "name": "Arany medúzák Palau vizeiben",
+        "pointsOfInterest": {
+            "0": "Arany medúzák Palau vizeiben",
+            "282": "Arany medúzák, középen egy fülesmedúzával",
+            "348": "Arany medúzák Palau vizeiben"
+        }
+    },
+    "C6DC4E54-1130-44F8-AF6F-A551D8E8A181": {
+        "name": "Fülesmedúzák az egyesült államokbeli Alaszka partjainál",
+        "pointsOfInterest": {
+            "0": "Fülesmedúzák az egyesült államokbeli Alaszka partjainál"
+        }
+    },
+    "C7AD3D0A-7EDF-412C-A237-B3C9D27381A1": {
+        "name": "Lebegés fülesmedúzák felett az egyesült államokbeli Alaszka partjainál",
+        "pointsOfInterest": {
+            "0": "Lebegés fülesmedúzák felett az egyesült államokbeli Alaszka partjainál"
+        }
+    },
+    "C8559883-6F3E-4AF2-8960-903710CD47B7": {
+        "name": "A Victoria Peak felett repülve Hongkongban",
+        "pointsOfInterest": {
+            "0": "A Victoria Peak felett repülve Hongkongban",
+            "150": "Hongkong felett repülve a Victoria Harbour felé",
+            "330": "A Victoria Harbour felett a Kowloon-félsziget felé közeledve"
+        }
+    },
+    "CE279831-1CA7-4A83-A97B-FF1E20234396": {
+        "name": "A Los Angeles-i nemzetközi repülőtér felett repülve",
+        "pointsOfInterest": {
+            "0": "A Los Angeles-i nemzetközi repülőtér felett repülve"
+        }
+    },
+    "CE9B5D5B-B6E7-47C5-8C04-59BF182E98FB": {
+        "name": "Trópusi delfinek a Costa Rica-menti vizekben",
+        "pointsOfInterest": {
+            "0": "Trópusi delfinek a Costa Rica-menti vizekben"
+        }
+    },
+    "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
+        "name": "Utazás a Csendes-óceán felett, Közép-Amerika irányában",
+        "pointsOfInterest": {
+            "0": "Utazás a Csendes-óceán felett, Közép-Amerika irányában",
+            "110": "A felhős Jamaica mellett elhaladva a Karib-tengeren",
+            "125": "Átkelés Kuba felett, Haiti és a Dominikai Köztársaság felé nézve",
+            "170": "Utazás a Bahamák felett, Haiti és a Dominikai Köztársaság felé nézve",
+            "190": "A Turks- és Caicos-szigetek az Atlanti-óceánban",
+            "35": "Nicaragua, Costa Rica és Panama csendes-óceáni partja",
+            "50": "Közép-Amerika felett elhaladva, a távolban Dél-Amerika",
+            "65": "A Moszkító-part Nicaraguában",
+            "85": "A Karib-tenger felett, utazás Kuba irányában"
+        }
+    },
+    "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
+        "name": "A Vulingjüan Nemzeti Park felfedezése Kínában",
+        "pointsOfInterest": {
+            "0": "A Vulingjüan Nemzeti Park felfedezése Kínában"
+        }
+    },
+    "DD47D8E1-CB66-4C12-BFEA-2ADB0D8D1E2E": {
+        "name": "Egy hosszúszárnyú bálna Francia Polinéziánál",
+        "pointsOfInterest": {
+            "0": "Egy hosszúszárnyú bálna Francia Polinéziánál"
+        }
+    },
+    "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
+        "name": "A San Francisco-öböl és a Golden Gate-híd",
+        "pointsOfInterest": {
+            "0": "A San Francisco-öböl és a Golden Gate-híd",
+            "140": "A Golden Gate-híd északi tornya felett San Francisco felé haladva",
+            "191": "A San Francisco-öböl felett"
+        }
+    },
+    "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
+        "name": "Nyugat-Afrika felett, a Szahara felé haladva",
+        "pointsOfInterest": {
+            "0": "Nyugat-Afrika felett, a Szahara felé haladva",
+            "110": "Az észak-afrikai Szaharában található Ahaggar-hegység felett elhaladva",
+            "155": "A Földközi-tenger felé haladva az észak-afrikai Grand Erg Oriental felett",
+            "195": "Tunézia partja és a Földközi-tenger",
+            "210": "Tunézia partjai felett, utazás Olaszország irányában",
+            "230": "Olaszország felé közeledve a Földközi-tengeren",
+            "245": "Olaszország felett, utazás a Balkán-félsziget felé",
+            "285": "A Kárpátok felé haladva a Balkán-félsziget felett",
+            "30": "Átkelés a Szaharán Észak-Afrikában",
+            "310": "A Kárpátok és a Fekete-tenger"
+        }
+    },
+    "E580E5A5-0888-4BE8-A4CA-F74A18A643C3": {
+        "name": "Arany medúzák Palau vizeiben",
+        "pointsOfInterest": {
+            "0": "Arany medúzák Palau vizeiben"
+        }
+    },
+    "E5DB138A-F04E-4619-B896-DE5CB538C534": {
+        "name": "Olaszország felé haladva Tunézia felett",
+        "pointsOfInterest": {
+            "0": "Olaszország felé haladva Tunézia felett",
+            "15": "Dél-Olaszország felett, a távolban a Balkán-félsziget",
+            "25": "A Balkán-félsziget felett, utazás Közép-Ázsia irányában",
+            "40": "A Balkán-félsziget felett, átkelés a Fekete-tengeren",
+            "5": "A Földközi-tenger felett, Szicília és az Appennini-félsziget felé tekintve",
+            "55": "Ukrajna felett, a háttérben Oroszország",
+            "75": "Délnyugat-Oroszország felett, Kazahsztánt elhagyva"
+        }
+    },
+    "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
+        "name": "A Dubai Marina negyed felett repülve az Egyesült Arab Emírségekben",
+        "pointsOfInterest": {
+            "0": "A Dubai Marina negyed felett repülve az Egyesült Arab Emírségekben"
+        }
+    },
+    "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
+        "name": "A Victoria Harbour felett Hongkong Central negyede felé közeledve",
+        "pointsOfInterest": {
+            "0": "A Victoria Harbour felett Hongkong Central negyede felé közeledve"
+        }
+    },
+    "EB3F48E7-D30F-4079-858F-1A61331D5026": {
+        "name": "Átkelés egy hínárerdő felett az egyesült államokbeli Kalifornia partjainál",
+        "pointsOfInterest": {
+            "0": "Átkelés egy hínárerdő felett az egyesült államokbeli Kalifornia partjainál"
+        }
+    },
+    "EC3DC957-D4C2-4732-AACE-7D0C0F390EC8": {
+        "name": "Arany medúzák Palau vizeiben",
+        "pointsOfInterest": {
+            "0": "Arany medúzák Palau vizeiben"
+        }
+    },
+    "EC67726A-8212-4C5E-83CF-8412932740D2": {
+        "name": "A Hollywood-felirat Los Angelesben",
+        "pointsOfInterest": {
+            "0": "A Hollywood-felirat Los Angelesben",
+            "250": "A Hollywood Hills felett Burbank felé haladva Kaliforniában"
+        }
+    },
+    "EE01F02D-1413-436C-AB05-410F224A5B7B": {
+        "name": "Az Ilulissat jégfjord Grönland partjainál",
+        "pointsOfInterest": {
+            "0": "Az Ilulissat jégfjord Grönland partjainál"
+        }
+    },
+    "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
+        "name": "A Marin Headlands felett a Golden Gate-híd felé nézve",
+        "pointsOfInterest": {
+            "0": "A Marin Headlands felett a Golden Gate-híd felé nézve",
+            "150": "A Golden Gate-hídon átkelve a The Presidio of San Francisco felé"
+        }
+    },
+    "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
+        "name": "A Kínai nagy fal Mutianyu szakasza Huairou körzetben, Kínában",
+        "pointsOfInterest": {
+            "0": "A Kínai nagy fal Mutianyu szakasza Huairou körzetben, Kínában"
+        }
+    },
+    "F07CC61B-30FC-4614-BDAD-3240B61F6793": {
+        "name": "Korallzátony Palau közelében",
+        "pointsOfInterest": {
+            "0": "Korallzátony Palau közelében"
+        }
+    },
+    "F439B0A7-D18C-4B14-9681-6520E6A74FE9": {
+        "name": "A tükröződő Nap Irán partjai mentén",
+        "pointsOfInterest": {
+            "0": "A tükröződő Nap Irán partjai mentén",
+            "15": "Átmenet nappalból éjszakába Irán felett",
+            "60": "Átmenet nappalból éjszakába Közép-Ázsia felett"
+        }
+    },
+    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
+        "name": "Los Angeles belvárosa felett haladva",
+        "pointsOfInterest": {
+            "0": "Los Angeles belvárosa felett haladva"
+        }
+    },
+    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
+        "name": "A Tower-hídhoz közeledve a Temzén Londonban",
+        "pointsOfInterest": {
+            "0": "A Tower-hídhoz közeledve a Temzén Londonban",
+            "20": "A Temzén átkelve Londonban",
+            "200": "Átkelve a Temzén Westminster felé Londonban",
+            "270": "A Westminster felett Londonban",
+            "60": "A The Shard mellett haladva London déli részén",
+            "92": "A Temze déli része a London Eye felé haladva"
+        }
+    },
+    "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {
+        "name": "A Victoria Harbour felett a Hongkong-szigettel szemben",
+        "pointsOfInterest": {
+            "0": "A Victoria Harbour felett a Hongkong-szigettel szemben"
+        }
+    }
+}

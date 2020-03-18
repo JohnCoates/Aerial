@@ -1,0 +1,740 @@
+{
+    "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8": {
+        "name": "Voo sobre o Oásis Liwa, nos Emirados Árabes Unidos",
+        "pointsOfInterest": {
+            "0": "Voo sobre o Oásis Liwa, nos Emirados Árabes Unidos"
+        }
+    },
+    "009BA758-7060-4479-8EE8-FB9B40C8FB97": {
+        "name": "A seguir para sudeste sobre a Sibéria e Mongólia",
+        "pointsOfInterest": {
+            "0": "A seguir para sudeste sobre a Sibéria e Mongólia",
+            "110": "Sobre a China, seguindo em direção à península da Coreia",
+            "150": "A península da Coreia, com o Japão ao longe",
+            "180": "Sobre a Coreia do Sul em direção ao Japão",
+            "195": "Sobre o Japão, olhando para o Oceano Pacífico",
+            "22": "Em direção à Mongólia Interior",
+            "260": "Sobre o Oceano Pacífico, a sudeste do Japão",
+            "32": "Sobre a Mongólia em direção à China",
+            "60": "Sobre o norte da China, em direção à península da Coreia"
+        }
+    },
+    "00BA71CD-2C54-415A-A68A-8358E677D750": {
+        "name": "Aproximação à baixa do Dubai nos Emirados Árabes Unidos",
+        "pointsOfInterest": {
+            "0": "Aproximação à baixa do Dubai nos Emirados Árabes Unidos",
+            "210": "Sobrevoo da baixa do Dubai nos Emirados Árabes Unidos"
+        }
+    },
+    "024891DE-B7F6-4187-BFE0-E6D237702EF0": {
+        "name": "Sobre Wan Chai e em aproximação ao centro de Hong Kong",
+        "pointsOfInterest": {
+            "0": "Sobre Wan Chai e em aproximação ao centro de Hong Kong",
+            "150": "Sobre o centro de Hong Kong",
+            "270": "Sobre a ilha de Hong Kong"
+        }
+    },
+    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": {
+        "name": "Aurora austral sobre a Antártida",
+        "pointsOfInterest": {
+            "0": "Aurora austral sobre a Antártida"
+        }
+    },
+    "044AD56C-A107-41B2-90CC-E60CCACFBCF5": {
+        "name": "Secção Mutianyu da Grande Muralha no distrito de Huairou, China",
+        "pointsOfInterest": {
+            "0": "Secção Mutianyu da Grande Muralha no distrito de Huairou, China"
+        }
+    },
+    "1088217C-1410-4CF7-BDE9-8F573A4DBCD9": {
+        "name": "Sobre o Oceano Pacífico, em direção à América Central",
+        "pointsOfInterest": {
+            "0": "Sobre o Oceano Pacífico, em direção à América Central",
+            "100": "Travessia da América Central em direção ao Mar das Caraíbas",
+            "150": "Sobre o Mar das Caraíbas, em direção a Cuba",
+            "240": "Sobre Cuba com a Florida e as Baamas adiante",
+            "300": "Sobre a Florida e as Baamas, em direção ao Mar dos Sargaços",
+            "350": "Sobre o Mar dos Sargaços em direção ao Oceano Atlântico",
+            "70": "Travessia da costa sudoeste da América Central em direção ao Mar das Caraíbas"
+        }
+    },
+    "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
+        "name": "Sobre o Oceano Pacífico, em direção à costa da Califórnia",
+        "pointsOfInterest": {
+            "0": "Sobre o Oceano Pacífico, em direção à costa da Califórnia",
+            "110": "Sobre Las Vegas, na direção de Salt Lake City, nos Estados Unidos",
+            "120": "Sobre a costa oeste dos Estados Unidos, em aproximação a Salt Lake City",
+            "155": "Passagem entre Salt Lake City e Denver, nos Estados Unidos",
+            "170": "Sobre as Montanhas Rochosas, nos Estados Unidos",
+            "70": "Sobre a costa da Califórnia a dirigir‑se para o interior",
+            "85": "Passagem por Los Angeles, na costa oeste dos Estados Unidos",
+            "95": "Sobre Los Angeles, em aproximação a Las Vegas, nos Estados Unidos"
+        }
+    },
+    "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7": {
+        "name": "Voo sobre Laupāhoehoe Nui na Reserva Florestal de Kohala na ilha do Havai",
+        "pointsOfInterest": {
+            "0": "Voo sobre Laupāhoehoe Nui na Reserva Florestal de Kohala na ilha do Havai"
+        }
+    },
+    "149E7795-DBDA-4F5D-B39A-14712F841118": {
+        "name": "Rebentação de ondas na costa do Taiti",
+        "pointsOfInterest": {
+            "0": "Rebentação de ondas na costa do Taiti"
+        }
+    },
+    "22162A9B-DB90-4517-867C-C676BC3E8E95": {
+        "name": "Secção Mutianyu da Grande Muralha no distrito de Huairou, China",
+        "pointsOfInterest": {
+            "0": "Secção Mutianyu da Grande Muralha no distrito de Huairou, China"
+        }
+    },
+    "258A6797-CC13-4C3A-AB35-4F25CA3BF474": {
+        "name": "Vista aérea da Zona de Reserva Natural de Pu‘u O ‘Umi, na ilha do Havai",
+        "pointsOfInterest": {
+            "0": "Vista aérea da Zona de Reserva Natural de Pu‘u O ‘Umi, na ilha do Havai"
+        }
+    },
+    "27A37B0F-738D-4644-A7A4-E33E7A6C1175": {
+        "name": "Golfinhos‑comuns ao largo da costa da Califórnia, nos Estados Unidos",
+        "pointsOfInterest": {
+            "0": "Golfinhos‑comuns ao largo da costa da Califórnia, nos Estados Unidos"
+        }
+    },
+    "29BDF297-EB43-403A-8719-A78DA11A2948": {
+        "name": "Sobre o Fisherman’s Wharf na direção da baixa de São Francisco",
+        "pointsOfInterest": {
+            "0": "Sobre o Fisherman’s Wharf na direção da baixa de São Francisco",
+            "150": "Passagem pela Coit Tower na direção da baixa de São Francisco e da Bay Bridge",
+            "196": "Baixa de São Francisco",
+            "80": "Aproximação à Coit Tower com a baixa de São Francisco e a Bay Bridge ao fundo"
+        }
+    },
+    "2B30E324-E4FF-4CC1-BA45-A958C2D2B2EC": {
+        "name": "Um cardume de barracudas‑de‑barbatana‑negra  nas águas de Bornéu",
+        "pointsOfInterest": {
+            "0": "Um cardume de barracudas‑de‑barbatana‑negra  nas águas de Bornéu"
+        }
+    },
+    "2F52E34C-39D4-4AB1-9025-8F7141FAA720": {
+        "name": "Fiorde gelado de Ilulissat, ao largo da Gronelândia",
+        "pointsOfInterest": {
+            "0": "Fiorde gelado de Ilulissat, ao largo da Gronelândia"
+        }
+    },
+    "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
+        "name": "Sobre o Corno de África em direção ao Golfo de Adém",
+        "pointsOfInterest": {
+            "0": "Sobre o Corno de África em direção ao Golfo de Adém",
+            "115": "O Golfo de Omã, em aproximação da costa Makran",
+            "145": "A costa Makran do Irão e do Paquistão",
+            "160": "Sobre o Irão em direção ao Afeganistão e Paquistão",
+            "180": "Sobre o Afeganistão e Paquistão, em direção da cordilheira de Caracórum",
+            "235": "Sobre a cordilheira Caracórum, em direção à China",
+            "280": "O deserto de Taklamakan, na China ocidental",
+            "315": "As montanhas Tien Shan, na Ásia Central",
+            "45": "O sudeste da Península Arábica"
+        }
+    },
+    "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
+        "name": "A seguir a Interstate 110, para norte, passando por Los Angeles",
+        "pointsOfInterest": {
+            "0": "A seguir a Interstate 110, para norte, passando por Los Angeles"
+        }
+    },
+    "3716DD4B-01C0-4F5B-8DD6-DB771EC472FB": {
+        "name": "Tubarões-cinzentos-dos-recifes a nadar perto da Polinésia Francesa",
+        "pointsOfInterest": {
+            "0": "Tubarões-cinzentos-dos-recifes a nadar perto da Polinésia Francesa"
+        }
+    },
+    "391BDF6E-3279-4CE1-9CA5-0F82811452D7": {
+        "name": "Lobos‑marinhos‑do‑cabo ao largo da Península do Cabo, África do Sul",
+        "pointsOfInterest": {
+            "0": "Lobos‑marinhos‑do‑cabo ao largo da Península do Cabo, África do Sul"
+        }
+    },
+    "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
+        "name": "Sobre o Central Park na direção de Midtown Manhattan, em Nova Iorque",
+        "pointsOfInterest": {
+            "0": "Sobre o Central Park na direção de Midtown Manhattan, em Nova Iorque",
+            "246": "Sobre Midtown Manhattan, em Nova Iorque"
+        }
+    },
+    "3C4678E4-4D3D-4A40-8817-77752AEA62EB": {
+        "name": "Viajar sobre a Europa Ocidental com as ilhas britânicas ao longe",
+        "pointsOfInterest": {
+            "0": "Viajar sobre a Europa Ocidental com as ilhas britânicas ao longe",
+            "100": "Grécia, ladeada pelo Mar Jónico e Mar Egeu",
+            "160": "Percurso para sudeste, sobre o Mar Mediterrâneo",
+            "185": "O Mar Mediterrâneo e o delta do rio Nilo",
+            "20": "Seguindo para sudeste, sobre os Alpes e o vale do rio Po",
+            "205": "O rio Nilo atravessando o Sara, no Egito",
+            "220": "O Deserto Oriental ladeado pelo rio Nilo e pelo Golfo de Suez",
+            "240": "Seguindo para sudeste, sobre o Mar Vermelho",
+            "50": "Percorrendo a Península Itálica e o Mar Adriático"
+        }
+    },
+    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": {
+        "name": "A seguir a costa de Kohala, na ilha do Havai",
+        "pointsOfInterest": {
+            "0": "A seguir a costa de Kohala, na ilha do Havai"
+        }
+    },
+    "3E94AE98-EAF2-4B09-96E3-452F46BC114E": {
+        "name": "Aproximação à Bay Bridge e baixa de São Francisco",
+        "pointsOfInterest": {
+            "0": "Aproximação à Bay Bridge e baixa de São Francisco",
+            "116": "Sobre a baía de São Francisco na direção da baixa",
+            "80": "Travessia da Bay Bridge na direção da baixa de São Francisco"
+        }
+    },
+    "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
+        "name": "Voo ao longo da marina do Dubai, nos Emirados Árabes Unidos",
+        "pointsOfInterest": {
+            "0": "Voo ao longo da marina do Dubai, nos Emirados Árabes Unidos"
+        }
+    },
+    "44166C39-8566-4ECA-BD16-43159429B52F": {
+        "name": "A descer a 7.ª Avenida na direção de Times Square, Nova Iorque",
+        "pointsOfInterest": {
+            "0": "A descer a 7.ª Avenida na direção de Times Square, Nova Iorque",
+            "120": "A descer a 7.ª Avenida em Midtown Manhattan, Nova Iorque",
+            "40": "Sobre Times Square, em Nova Iorque"
+        }
+    },
+    "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943": {
+        "name": "O vale Waimanu na Reserva Florestal de Kohala, na ilha do Havai",
+        "pointsOfInterest": {
+            "0": "O vale Waimanu na Reserva Florestal de Kohala, na ilha do Havai"
+        }
+    },
+    "4AD99907-9E76-408D-A7FC-8429FF014201": {
+        "name": "Sobre a baía de São Francisco na direção do Embarcadero",
+        "pointsOfInterest": {
+            "0": "Sobre a baía de São Francisco na direção do Embarcadero",
+            "150": "A seguir a Market Street na baixa de São Francisco",
+            "360": "A seguir a Market Street, atravessando São Francisco",
+            "90": "Sobre o Embarcadero e a avistar a Market Street, em São Francisco"
+        }
+    },
+    "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589": {
+        "name": "Seguindo para sudeste, sobre as grandes planícies dos Estados Unidos",
+        "pointsOfInterest": {
+            "0": "Seguindo para sudeste, sobre as grandes planícies dos Estados Unidos",
+            "120": "Sobre a costa sudeste dos Estados Unidos, em direção à Florida",
+            "220": "Sobre a Florida em direção às Baamas",
+            "240": "A seguir para sudeste sobre as Baamas",
+            "285": "Sobre as Baamas, em aproximação à República Dominicana e ao Haiti",
+            "300": "Sobre a República Dominicana e o Haiti, em aproximação ao Mar das Caraíbas",
+            "315": "Sobre o Mar das Caraíbas, em direção à Venezuela",
+            "90": "Seguindo para sudeste, sobre o Midwest dos Estados Unidos"
+        }
+    },
+    "537A4DAB-83B0-4B66-BCD1-05E5DBB4A268": {
+        "name": "Um cardume de xaréus-vorazes  ao largo de Bornéu",
+        "pointsOfInterest": {
+            "0": "Um cardume de xaréus-vorazes  ao largo de Bornéu"
+        }
+    },
+    "581A4F1A-2B6D-468C-A1BE-6F473F06D10B": {
+        "name": "Estrelas‑do‑mar nodosas no  leito do oceano perto de Bornéu",
+        "pointsOfInterest": {
+            "0": "Estrelas‑do‑mar nodosas no  leito do oceano perto de Bornéu"
+        }
+    },
+    "58754319-8709-4AB0-8674-B34F04E7FFE2": {
+        "name": "Aproximação à Tower Bridge sobre o rio Tamisa, Londres",
+        "pointsOfInterest": {
+            "0": "Aproximação à Tower Bridge sobre o rio Tamisa, Londres",
+            "178": "Sul do rio Tamisa, em Londres",
+            "258": "Travessia do rio Tamisa, em Londres",
+            "78": "A seguir o rio Tamisa, em Londres"
+        }
+    },
+    "58C75C62-3290-47B8-849C-56A583173570": {
+        "name": "Raias‑focinho‑de‑vaca ao largo da costa do México",
+        "pointsOfInterest": {
+            "0": "Raias‑focinho‑de‑vaca ao largo da costa do México"
+        }
+    },
+    "6143116D-03BB-485E-864E-A8CF58ACF6F1": {
+        "name": "Mergulhar por uma floresta de laminárias perto da Península do Cabo, África do Sul",
+        "pointsOfInterest": {
+            "0": "Mergulhar por uma floresta de laminárias perto da Península do Cabo, África do Sul"
+        }
+    },
+    "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": {
+        "name": "As Ilhas Canárias, o Oceano Atlântico e a costa de África",
+        "pointsOfInterest": {
+            "0": "As Ilhas Canárias, o Oceano Atlântico e a costa de África",
+            "105": "Sobre Marrocos, em aproximação ao Mar Mediterrâneo",
+            "125": "O Mar Mediterrâneo e o sul de Espanha",
+            "145": "Percurso para nordeste, sobre a Costa Branca espanhola",
+            "165": "Percurso para nordeste, sobre as ilhas Baleares",
+            "185": "Sobre o Mar Mediterrâneo ocidental, com os Alpes ao longe",
+            "220": "A seguir para nordeste sobre os Alpes",
+            "45": "A seguir para nordeste ao longo da costa de Marrocos",
+            "75": "Passagem pela cordilheira do Atlas, em Marrocos"
+        }
+    },
+    "640DFB00-FBB9-45DA-9444-9F663859F4BC": {
+        "name": "Aproximação a Lower Manhattan do porto de Nova Iorque",
+        "pointsOfInterest": {
+            "0": "Aproximação a Lower Manhattan do porto de Nova Iorque",
+            "110": "Ao longo de Lower Manhattan e em aproximação ao One World Trade Center",
+            "180": "Passagem pelo One World Trade Center na direção de Midtown Manhattan",
+            "210": "Sobre Lower Manhattan, em Nova Iorque, na direção de Midtown"
+        }
+    },
+    "64D11DAB-3B57-4F14-AD2F-E59A9282FA44": {
+        "name": "Sobre o Atlântico Norte, na direção de Portugal",
+        "pointsOfInterest": {
+            "0": "Sobre o Atlântico Norte, na direção de Portugal",
+            "115": "Sobre Portugal e Espanha",
+            "150": "Afastando‑se da Península Ibérica, passando pelo Golfo da Biscaia e por França",
+            "180": "Sobre a Europa Ocidental, com o Atlântico Norte ao longe"
+        }
+    },
+    "687D03A2-18A5-4181-8E85-38F3A13409B9": {
+        "name": "Peixe‑papagaio gigante sobre os  recifes de coral ao largo de Bornéu",
+        "pointsOfInterest": {
+            "0": "Peixe‑papagaio gigante sobre os  recifes de coral ao largo de Bornéu"
+        }
+    },
+    "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
+        "name": "Aproximação à ponte Golden Gate a partir de São Francisco",
+        "pointsOfInterest": {
+            "0": "Aproximação à ponte Golden Gate a partir de São Francisco",
+            "140": "Travessia da ponte Golden Gate",
+            "230": "Passagem pela torre norte da ponte Golden Gate",
+            "260": "Sobre a baía de São Francisco ao lado da Golden Gate Bridge",
+            "60": "Ao longo da ponte Golden Gate na direção de Marin Headlands"
+        }
+    },
+    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
+        "name": "Sobre o Oceano Pacífico em direção à Baixa Califórnia",
+        "pointsOfInterest": {
+            "0": "Sobre o Oceano Pacífico em direção à Baixa Califórnia",
+            "110": "Sobre as Montanhas Rochosas, em aproximação a Denver",
+            "125": "A sobrevoar as grandes planícies dos Estados Unidos",
+            "185": "Aproximação aos Grandes Lagos, com Ontário, Canadá, ao fundo",
+            "200": "Sobre os Grandes Lagos, em aproximação a Ontário, no Canadá",
+            "210": "Aurora boreal sobre Ontário ocidental, no Canadá",
+            "235": "Aurora boreal sobre Ontário setentrional, no Canadá",
+            "250": "Aurora boreal sobre o Quebeque setentrional, no Canadá",
+            "300": "Em direção ao Atlântico Norte com a aurora boreal sobre Labrador, no Canadá",
+            "45": "Sobre a Baixa Califórnia, olhando para norte, para os Estados Unidos",
+            "55": "Sobre o México, na direção do sudoeste dos Estados Unidos",
+            "75": "Sobre o sudoeste dos Estados Unidos"
+        }
+    },
+    "7719B48A-2005-4011-9280-2F64EEC6FD91": {
+        "name": "Sobre o Oceano Pacífico, na direção dos Estados Unidos",
+        "pointsOfInterest": {
+            "0": "Sobre o Oceano Pacífico, na direção dos Estados Unidos",
+            "130": "As montanhas da Sierra Madre Ocidental, na costa ocidental do México",
+            "185": "Sobre as montanhas da Sierra Madre Ocidental, em direção à costa ocidental do México",
+            "20": "Percurso para sul, ao longo da costa da Califórnia",
+            "225": "Olhando para sul, para o Oceano Pacífico sobre a Sierra Madre del Sur, no México",
+            "280": "O Oceano Pacífico, visto da costa do México",
+            "290": "O Oceano Pacífico, visto da costa do México e da Guatemala",
+            "50": "Sobre o sul da Califórnia em direção ao México",
+            "65": "Aproximação do deserto do Mojave, no sul da Califórnia, com o México ao fundo",
+            "95": "O Golfo da Califórnia ladeado pelo deserto de Sonora e a península da Baixa Califórnia"
+        }
+    },
+    "7825C73A-658F-48EE-B14C-EC56673094AC": {
+        "name": "Sobre a Ásia Central em direção à região costeira da China",
+        "pointsOfInterest": {
+            "0": "Sobre a Ásia Central em direção à região costeira da China",
+            "10": "Sobre a China Central em direção a Xangai",
+            "30": "Sobrevoo da China Oriental em aproximação a Xangai",
+            "45": "Aproximação a Xangai em direção ao Mar da China Meridional",
+            "50": "Sobre Xangai em direção ao Mar da China Meridional"
+        }
+    },
+    "78911B7E-3C69-47AD-B635-9C2486F6301D": {
+        "name": "Da noite para o dia, sobre o Oceano Pacífico sul",
+        "pointsOfInterest": {
+            "0": "Da noite para o dia, sobre o Oceano Pacífico sul",
+            "110": "Aproximação ao nascer do sol, na Nova Zelândia",
+            "170": "Deixando a Nova Zelândia para trás, seguindo para nordeste, sobre o Oceano Pacífico",
+            "70": "Travessia da noite para o dia sobre a Nova Zelândia"
+        }
+    },
+    "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": {
+        "name": "Sobre o Atlântico Norte, em aproximação às Ilhas Britânicas",
+        "pointsOfInterest": {
+            "0": "Sobre o Atlântico Norte, em aproximação às Ilhas Britânicas",
+            "105": "Sobre a Europa Central em direção à Rússia",
+            "15": "Irlanda e Grã‑Bretanha",
+            "150": "Sobre a Europa de Leste, com Moscovo ao longe",
+            "165": "Sobre a Europa de Leste olhando na direção da Rússia",
+            "185": "Sobre a Rússia ocidental de passagem por Moscovo",
+            "195": "Sobre a Rússia em direção à Ásia Central",
+            "45": "Sobre a Grã‑Bretanha em direção à Europa continental",
+            "65": "Sobre a Europa do Noroeste em direção à Rússia"
+        }
+    },
+    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
+        "name": "Aproximação à Tower Bridge sobre o rio Tamisa, Londres",
+        "pointsOfInterest": {
+            "0": "Aproximação à Tower Bridge sobre o rio Tamisa, Londres",
+            "130": "A seguir o rio Tamisa, em direção ao London Eye",
+            "20": "A seguir o rio Tamisa, em Londres",
+            "210": "Aproximação ao London Eye sobre o rio Tamisa",
+            "310": "A seguir o rio Tamisa para além do London Eye",
+            "325": "Passagem pelas Casas do Parlamento junto ao rio Tamisa, em Londres"
+        }
+    },
+    "81337355-E156-4242-AAF4-711768D30A54": {
+        "name": "Sobre o Oceano Índico, na direção de Perth, Austrália",
+        "pointsOfInterest": {
+            "0": "Sobre o Oceano Índico, na direção de Perth, Austrália",
+            "170": "Sobre o oeste da Austrália, em aproximação ao Território do Norte",
+            "220": "Sobre o Território do Norte, na Austrália, em direção a Nova Guiné",
+            "335": "Sobre o mar de Arafura, em direção a Nova Guiné",
+            "50": "Percurso para nordeste, atravessando a Austrália Ocidental"
+        }
+    },
+    "82175C1F-153C-4EC8-AE37-2860EA828004": {
+        "name": "Recife de coral no Mar Vermelho perto do Egito",
+        "pointsOfInterest": {
+            "0": "Recife de coral no Mar Vermelho perto do Egito"
+        }
+    },
+    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": {
+        "name": "Vista aérea da Zona de Reserva Natural de Pu‘u O ‘Umi, na ilha do Havai",
+        "pointsOfInterest": {
+            "0": "Vista aérea da Zona de Reserva Natural de Pu‘u O ‘Umi, na ilha do Havai"
+        }
+    },
+    "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8": {
+        "name": "Sobre o Upper East Side e Central Park, em Nova Iorque",
+        "pointsOfInterest": {
+            "0": "Sobre o Upper East Side e Central Park, em Nova Iorque",
+            "160": "Aproximação ao Empire State Building, em Nova Iorque",
+            "205": "Passagem pelo Empire State Building em direção a Lower Manhattan",
+            "50": "Sobre Midtown Manhattan na direção da baixa, rumo ao Empire State Building"
+        }
+    },
+    "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
+        "name": "Sobre a baía de São Francisco na direção do Embarcadero",
+        "pointsOfInterest": {
+            "0": "Sobre a baía de São Francisco na direção do Embarcadero",
+            "208": "A seguir a Market Street, atravessando São Francisco"
+        }
+    },
+    "87060EC2-D006-4102-98CC-3005C68BB343": {
+        "name": "Percurso para nordeste sobre o Planalto da Etiópia",
+        "pointsOfInterest": {
+            "0": "Percurso para nordeste sobre o Planalto da Etiópia",
+            "100": "Seguindo para nordeste, sobre a Península Arábica",
+            "130": "Sobre a Península Arábica, em direção ao Irão",
+            "165": "Sobre a Península Arábica, em aproximação ao Irão",
+            "190": "Aproximação da costa do Irão, com as montanhas de Zagros ao fundo",
+            "210": "Sobre as Montanhas Zagros no Irão",
+            "240": "Sobre o deserto de Dasht-e Lut, no Irão",
+            "265": "Em direção ao Turquemenistão e ao deserto de Karakum",
+            "305": "O rio Amu Darya e as montanhas Pamir-Alay, na Ásia Central",
+            "322": "As montanhas Pamir-Alay e o vale Fergana, na Ásia Central",
+            "360": "Em direção ao sudeste do Cazaquistão a partir do Quirguistão",
+            "400": "Percurso para norte sobre o Cazaquistão",
+            "45": "A sobrevoar o Mar Vermelho, para a Península Arábica",
+            "450": "Sobre as Montanhas Altai, em direção à Mongólia"
+        }
+    },
+    "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
+        "name": "Percurso ao longo da estrada Sheikh Zayed no Dubai, nos Emirados Árabes Unidos",
+        "pointsOfInterest": {
+            "0": "Percurso ao longo da estrada Sheikh Zayed no Dubai, nos Emirados Árabes Unidos"
+        }
+    },
+    "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
+        "name": "Observatório Griffith e Hollywood Hills em Los Angeles",
+        "pointsOfInterest": {
+            "0": "Observatório Griffith e Hollywood Hills em Los Angeles"
+        }
+    },
+    "8C31B06F-91A4-4F7C-93ED-56146D7F48B9": {
+        "name": "Rebentação de ondas na costa do Taiti",
+        "pointsOfInterest": {
+            "0": "Rebentação de ondas na costa do Taiti"
+        }
+    },
+    "92E48DE9-13A1-4172-B560-29B4668A87EE": {
+        "name": "Sobre a praia de Santa Monica State perto de Los Angeles",
+        "pointsOfInterest": {
+            "0": "Sobre a praia de Santa Monica State perto de Los Angeles",
+            "365": "Passagem sobre o pontão de Santa Monica perto de Los Angeles",
+            "430": "Sobre a praia de Santa Monica State perto de Los Angeles"
+        }
+    },
+    "9680B8EB-CE2A-4395-AF41-402801F4D6A6": {
+        "name": "Aproximação ao Burj Khalifa na baixa do Dubai, Emirados Árabes Unidos",
+        "pointsOfInterest": {
+            "0": "Aproximação ao Burj Khalifa na baixa do Dubai, Emirados Árabes Unidos",
+            "280": "Passagem por Burj Khalifa na baixa do Dubai, Emirados Árabes Unidos",
+            "330": "Sobre a baixa do Dubai e a aproximar‑se da costa"
+        }
+    },
+    "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C": {
+        "name": "Passagem sobre os arrozais em socalcos de Longji na província de Guangxi, China",
+        "pointsOfInterest": {
+            "0": "Passagem sobre os arrozais em socalcos de Longji na província de Guangxi, China"
+        }
+    },
+    "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
+        "name": "Passagem pelo Palácio de Buckingham, em Londres",
+        "pointsOfInterest": {
+            "0": "Passagem pelo Palácio de Buckingham, em Londres",
+            "104": "Travessia do rio Tamisa e passagem sobre o London Eye",
+            "149": "Passagem sobre a zona sul de Londres",
+            "24": "Sobre o Palácio de Buckingham, em Londres",
+            "279": "Passagem pelo The Shard, na zona sul de Londres",
+            "299": "Travessia do rio Tamisa, em Londres",
+            "324": "Travessia do rio Tamisa na Tower Bridge em Londres",
+            "49": "Sobre St James’s Park na direção do rio Tamisa, Londres"
+        }
+    },
+    "A837FA8C-C643-4705-AE92-074EFDD067F7": {
+        "name": "Percurso para nordeste sobre o deserto do Sara, à noite",
+        "pointsOfInterest": {
+            "0": "Percurso para nordeste sobre o deserto do Sara, à noite",
+            "100": "Costa do Mediterrâneo da Tunísia e da Líbia",
+            "120": "Passagem sobre o Mar Mediterrâneo em direção à Itália",
+            "140": "Sobre o sul da Itália, em aproximação à Península Balcânica, com a Turquia ao longe",
+            "165": "Sobre a Península Balcânica, em direção ao Mar Negro",
+            "180": "Sobre a Península Balcânica, em aproximação ao Mar Negro",
+            "210": "A sobrevoar o Mar Negro, em direção à Ucrânia",
+            "230": "A sobrevoar a Ucrânia em direção à Rússia",
+            "70": "Sobre o Grande Erg Oriental, na direção do Mar Mediterrâneo"
+        }
+    },
+    "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
+        "name": "Voo sobre o Oásis Liwa, nos Emirados Árabes Unidos",
+        "pointsOfInterest": {
+            "0": "Voo sobre o Oásis Liwa, nos Emirados Árabes Unidos"
+        }
+    },
+    "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
+        "name": "Sobre o Oceano Pacífico, na direção do México",
+        "pointsOfInterest": {
+            "0": "Sobre o Oceano Pacífico, na direção do México",
+            "105": "Passagem pela Cidade do México, em direção ao Golfo do México",
+            "122": "Voo sobre o Golfo do México, em direção aos Estados Unidos",
+            "180": "Passagem por Houston e em aproximação a Nova Orleães, nos Estados Unidos",
+            "190": "Sobrevoo de Nova Orleães e a costa do Golfo dos Estados Unidos",
+            "215": "Passagem sobre o sudeste dos Estados Unidos",
+            "280": "Sobre a costa leste dos Estados Unidos, em direção a Nova Iorque",
+            "320": "Sobre a costa leste dos Estados Unidos, em aproximação a Nova Iorque"
+        }
+    },
+    "B876B645-3955-420E-99DF-60139E451CF3": {
+        "name": "Percurso pelo Parque Nacional de Wulingyuan, na China",
+        "pointsOfInterest": {
+            "0": "Percurso pelo Parque Nacional de Wulingyuan, na China"
+        }
+    },
+    "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
+        "name": "Percurso ao longo da península de Nuussuaq, na Gronelândia",
+        "pointsOfInterest": {
+            "0": "Percurso ao longo da península de Nuussuaq, na Gronelândia"
+        }
+    },
+    "BA4ECA11-592F-4727-9221-D2A32A16EB28": {
+        "name": "Medusas douradas nas águas de Palau",
+        "pointsOfInterest": {
+            "0": "Medusas douradas nas águas de Palau",
+            "282": "Medusas douradas com uma  medusa‑da‑lua entre elas",
+            "348": "Medusas douradas nas águas de Palau"
+        }
+    },
+    "C6DC4E54-1130-44F8-AF6F-A551D8E8A181": {
+        "name": "Medusas‑da‑lua perto da costa do Alasca, nos Estados Unidos",
+        "pointsOfInterest": {
+            "0": "Medusas‑da‑lua perto da costa do Alasca, nos Estados Unidos"
+        }
+    },
+    "C7AD3D0A-7EDF-412C-A237-B3C9D27381A1": {
+        "name": "Passagem sobre medusas‑da‑lua perto da costa do Alasca, nos Estados Unidos",
+        "pointsOfInterest": {
+            "0": "Passagem sobre medusas‑da‑lua perto da costa do Alasca, nos Estados Unidos"
+        }
+    },
+    "C8559883-6F3E-4AF2-8960-903710CD47B7": {
+        "name": "Voo sobre Victoria Peak, em Hong Kong",
+        "pointsOfInterest": {
+            "0": "Voo sobre Victoria Peak, em Hong Kong",
+            "150": "Voo sobre Hong Kong na direção de Victoria Harbour",
+            "330": "Sobre Victoria Harbour e a aproximar‑se da península de Kowloon"
+        }
+    },
+    "CE279831-1CA7-4A83-A97B-FF1E20234396": {
+        "name": "Voo sobre o Aeroporto Internacional de Los Angeles",
+        "pointsOfInterest": {
+            "0": "Voo sobre o Aeroporto Internacional de Los Angeles"
+        }
+    },
+    "CE9B5D5B-B6E7-47C5-8C04-59BF182E98FB": {
+        "name": "Golfinhos‑rotadores nas águas da Costa Rica",
+        "pointsOfInterest": {
+            "0": "Golfinhos‑rotadores nas águas da Costa Rica"
+        }
+    },
+    "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
+        "name": "A sobrevoar o Oceano Pacífico, em direção à América Central",
+        "pointsOfInterest": {
+            "0": "A sobrevoar o Oceano Pacífico, em direção à América Central",
+            "110": "Passagem sobre uma Jamaica coberta de nuvens, no Mar das Caraíbas",
+            "125": "Passagem sobre Cuba, olhando na direção do Haiti e da República Dominicana",
+            "170": "A sobrevoar as Baamas, olhando na direção do Haiti e da República Dominicana",
+            "190": "Ilhas Turcas e Caicos, no Oceano Atlântico",
+            "35": "As costa do Pacífico na Nicaragua, na Costa Rica e no Panamá",
+            "50": "Passagem pela América Central com a América do Sul ao longe",
+            "65": "Costa dos Mosquitos, na Nicarágua",
+            "85": "Sobre o Mar das Caraíbas, em direção a Cuba"
+        }
+    },
+    "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
+        "name": "Exploração do Parque Nacional de Wulingyuan, na China",
+        "pointsOfInterest": {
+            "0": "Exploração do Parque Nacional de Wulingyuan, na China"
+        }
+    },
+    "DD47D8E1-CB66-4C12-BFEA-2ADB0D8D1E2E": {
+        "name": "Uma baleia‑de‑bossa ao largo da Polinésia Francesa",
+        "pointsOfInterest": {
+            "0": "Uma baleia‑de‑bossa ao largo da Polinésia Francesa"
+        }
+    },
+    "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
+        "name": "Baía de São Francisco e a ponte Golden Gate",
+        "pointsOfInterest": {
+            "0": "Baía de São Francisco e a ponte Golden Gate",
+            "140": "Sobrevoo da torre norte da Golden Gate Bridge na direção de São Francisco",
+            "191": "Sobre a Baía de São Francisco"
+        }
+    },
+    "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
+        "name": "Sobre a África Ocidental em direção ao deserto do Sara",
+        "pointsOfInterest": {
+            "0": "Sobre a África Ocidental em direção ao deserto do Sara",
+            "110": "Passagem sobre as Montanhas Ahaggar no Sara, no Norte de África",
+            "155": "Sobre o Grande Erg Oriental, no norte de África, em direção ao Mar Mediterrâneo",
+            "195": "A costa da Tunísia e o Mar Mediterrâneo",
+            "210": "Sobre a costa da Tunísia em direção à Itália",
+            "230": "Aproximação a Itália no Mar Mediterrâneo",
+            "245": "Sobre a Itália, em direção à Península Balcânica",
+            "285": "Sobre a Península Balcânica, na direção dos Cárpatos",
+            "30": "Travessia do deserto do Sara no Norte de África",
+            "310": "Os Cárpatos e o Mar Negro"
+        }
+    },
+    "E580E5A5-0888-4BE8-A4CA-F74A18A643C3": {
+        "name": "Medusas douradas nas águas de Palau",
+        "pointsOfInterest": {
+            "0": "Medusas douradas nas águas de Palau"
+        }
+    },
+    "E5DB138A-F04E-4619-B896-DE5CB538C534": {
+        "name": "Sobre a Tunísia em direção à Itália",
+        "pointsOfInterest": {
+            "0": "Sobre a Tunísia em direção à Itália",
+            "15": "Sobre o sul da Itália, com a Península Balcânica ao longe",
+            "25": "Sobre a Península Balcânica, em direção à Ásia Central",
+            "40": "Sobre a Península Balcânica, passando pelo Mar Negro",
+            "5": "Sobre o Mar Mediterrâneo, olhando para a Sicília e para a Península Itálica",
+            "55": "Sobre a Ucrânia com a Rússia adiante",
+            "75": "Sobre o sudoeste da Rússia de passagem pelo Cazaquistão"
+        }
+    },
+    "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
+        "name": "Voo sobre a marina do Dubai, nos Emirados Árabes Unidos",
+        "pointsOfInterest": {
+            "0": "Voo sobre a marina do Dubai, nos Emirados Árabes Unidos"
+        }
+    },
+    "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
+        "name": "Sobre Victoria Harbour na direção do centro de Hong Kong",
+        "pointsOfInterest": {
+            "0": "Sobre Victoria Harbour na direção do centro de Hong Kong"
+        }
+    },
+    "EB3F48E7-D30F-4079-858F-1A61331D5026": {
+        "name": "Passagem por uma floresta de laminárias ao largo da costa da Califórnia, nos Estados Unidos",
+        "pointsOfInterest": {
+            "0": "Passagem por uma floresta de laminárias ao largo da costa da Califórnia, nos Estados Unidos"
+        }
+    },
+    "EC3DC957-D4C2-4732-AACE-7D0C0F390EC8": {
+        "name": "Medusas douradas nas águas de Palau",
+        "pointsOfInterest": {
+            "0": "Medusas douradas nas águas de Palau"
+        }
+    },
+    "EC67726A-8212-4C5E-83CF-8412932740D2": {
+        "name": "Placa de Hollywood em Los Angeles",
+        "pointsOfInterest": {
+            "0": "Placa de Hollywood em Los Angeles",
+            "250": "Sobre Hollywood Hills e em aproximação a Burbank, Califórnia"
+        }
+    },
+    "EE01F02D-1413-436C-AB05-410F224A5B7B": {
+        "name": "Fiorde gelado de Ilulissat, ao largo da Gronelândia",
+        "pointsOfInterest": {
+            "0": "Fiorde gelado de Ilulissat, ao largo da Gronelândia"
+        }
+    },
+    "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
+        "name": "Sobre Marin Headlands, olhando para a ponte Golden Gate",
+        "pointsOfInterest": {
+            "0": "Sobre Marin Headlands, olhando para a ponte Golden Gate",
+            "150": "Travessia da ponte Golden Gate na direção do parque Presidio de São Francisco"
+        }
+    },
+    "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
+        "name": "Secção Mutianyu da Grande Muralha no distrito de Huairou, China",
+        "pointsOfInterest": {
+            "0": "Secção Mutianyu da Grande Muralha no distrito de Huairou, China"
+        }
+    },
+    "F07CC61B-30FC-4614-BDAD-3240B61F6793": {
+        "name": "Recife de coral perto de Palau",
+        "pointsOfInterest": {
+            "0": "Recife de coral perto de Palau"
+        }
+    },
+    "F439B0A7-D18C-4B14-9681-6520E6A74FE9": {
+        "name": "O reflexo do sol ao longo da costa do Irão",
+        "pointsOfInterest": {
+            "0": "O reflexo do sol ao longo da costa do Irão",
+            "15": "Do dia para a noite sobre o Irão",
+            "60": "Do dia para a noite sobre a Ásia Central"
+        }
+    },
+    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
+        "name": "Passagem pelo centro de Los Angeles",
+        "pointsOfInterest": {
+            "0": "Passagem pelo centro de Los Angeles"
+        }
+    },
+    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
+        "name": "Aproximação à Tower Bridge sobre o rio Tamisa, Londres",
+        "pointsOfInterest": {
+            "0": "Aproximação à Tower Bridge sobre o rio Tamisa, Londres",
+            "20": "Travessia do rio Tamisa, em Londres",
+            "200": "Travessia do rio Tamisa na direção de Westminster, Londres",
+            "270": "Sobre Westminster, Londres",
+            "60": "Passagem pelo The Shard, na zona sul de Londres",
+            "92": "Sul do rio Tamisa na direção do London Eye"
+        }
+    },
+    "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {
+        "name": "Sobre Victoria Harbour e na direção da ilha de Hong Kong",
+        "pointsOfInterest": {
+            "0": "Sobre Victoria Harbour e na direção da ilha de Hong Kong"
+        }
+    }
+}

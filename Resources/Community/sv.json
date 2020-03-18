@@ -1,0 +1,740 @@
+{
+    "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8": {
+        "name": "Flyger ovanför Liwa-oasen i Förenade Arabemiraten",
+        "pointsOfInterest": {
+            "0": "Flyger ovanför Liwa-oasen i Förenade Arabemiraten"
+        }
+    },
+    "009BA758-7060-4479-8EE8-FB9B40C8FB97": {
+        "name": "Färdas sydost över Sibirien och Mongoliet",
+        "pointsOfInterest": {
+            "0": "Färdas sydost över Sibirien och Mongoliet",
+            "110": "Över Kina på väg mot Koreahalvön",
+            "150": "Koreahalvön med Japan på långt avstånd",
+            "180": "Över Sydkorea på väg mot Japan",
+            "195": "Över Japan med vy mot Stilla havet",
+            "22": "På väg mot Inre Mongoliet",
+            "260": "Över Stilla havet sydost om Japan",
+            "32": "Över Mongoliet på väg mot Kina",
+            "60": "Över norra Kina i riktning mot Koreahalvön"
+        }
+    },
+    "00BA71CD-2C54-415A-A68A-8358E677D750": {
+        "name": "På väg mot centrala Dubai i Förenade Arabemiraten",
+        "pointsOfInterest": {
+            "0": "På väg mot centrala Dubai i Förenade Arabemiraten",
+            "210": "På väg över centrala Dubai i Förenade Arabemiraten"
+        }
+    },
+    "024891DE-B7F6-4187-BFE0-E6D237702EF0": {
+        "name": "Ovanför Wan Chai på väg mot centrala Hongkong",
+        "pointsOfInterest": {
+            "0": "Ovanför Wan Chai på väg mot centrala Hongkong",
+            "150": "Ovanför centrala Hongkong",
+            "270": "Ovanför Hongkongön"
+        }
+    },
+    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": {
+        "name": "Polarsken över Antarktis",
+        "pointsOfInterest": {
+            "0": "Polarsken över Antarktis"
+        }
+    },
+    "044AD56C-A107-41B2-90CC-E60CCACFBCF5": {
+        "name": "Mutianyu‑sektionen av kinesiska muren i Huairou‑distriktet i Kina",
+        "pointsOfInterest": {
+            "0": "Mutianyu‑sektionen av kinesiska muren i Huairou‑distriktet i Kina"
+        }
+    },
+    "1088217C-1410-4CF7-BDE9-8F573A4DBCD9": {
+        "name": "Över Stilla havet på väg mot Centralamerika",
+        "pointsOfInterest": {
+            "0": "Över Stilla havet på väg mot Centralamerika",
+            "100": "Korsar Centralamerika mot Karibiska havet",
+            "150": "Över Karibiska havet på väg mot Kuba",
+            "240": "Över Kuba med Florida och Bahamas i fjärran",
+            "300": "Över Florida och Bahamas på väg mot Sargassohavet",
+            "350": "Över Sargassohavet på färd ut i Atlanten",
+            "70": "Centralamerikas sydvästra kust på väg mot Karibiska havet"
+        }
+    },
+    "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
+        "name": "Över Stilla havet på väg mot Kaliforniens kust",
+        "pointsOfInterest": {
+            "0": "Över Stilla havet på väg mot Kaliforniens kust",
+            "110": "Över Las Vegas i riktning mot Salt Lake City i USA",
+            "120": "Över västra USA på väg mot Salt Lake City",
+            "155": "Färdas mellan Salt Lake City och Denver i USA",
+            "170": "Över Klippiga bergen i USA",
+            "70": "Över Kaliforniens kust på väg in i landet",
+            "85": "Reser över Los Angeles på USA:s västkust",
+            "95": "Över Los Angeles på väg mot Las Vegas i USA"
+        }
+    },
+    "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7": {
+        "name": "Flyger ovanför Laupāhoehoe Nui i Kohala‑skogsreservatet på Hawaii",
+        "pointsOfInterest": {
+            "0": "Flyger ovanför Laupāhoehoe Nui i Kohala‑skogsreservatet på Hawaii"
+        }
+    },
+    "149E7795-DBDA-4F5D-B39A-14712F841118": {
+        "name": "Vågor slår in mot stränderna på Tahiti",
+        "pointsOfInterest": {
+            "0": "Vågor slår in mot stränderna på Tahiti"
+        }
+    },
+    "22162A9B-DB90-4517-867C-C676BC3E8E95": {
+        "name": "Mutianyu‑sektionen av kinesiska muren i Huairou‑distriktet i Kina",
+        "pointsOfInterest": {
+            "0": "Mutianyu‑sektionen av kinesiska muren i Huairou‑distriktet i Kina"
+        }
+    },
+    "258A6797-CC13-4C3A-AB35-4F25CA3BF474": {
+        "name": "Ovanför naturreservatet Pu’u O Umi på Hawaii",
+        "pointsOfInterest": {
+            "0": "Ovanför naturreservatet Pu’u O Umi på Hawaii"
+        }
+    },
+    "27A37B0F-738D-4644-A7A4-E33E7A6C1175": {
+        "name": "Sadeldelfiner utanför den kaliforniska kusten i USA",
+        "pointsOfInterest": {
+            "0": "Sadeldelfiner utanför den kaliforniska kusten i USA"
+        }
+    },
+    "29BDF297-EB43-403A-8719-A78DA11A2948": {
+        "name": "Ovanför Fisherman’s Wharf på väg mot centrala San Francisco",
+        "pointsOfInterest": {
+            "0": "Ovanför Fisherman’s Wharf på väg mot centrala San Francisco",
+            "150": "Passerar Coit Tower på väg mot centrala San Francisco och Bay Bridge",
+            "196": "Centrala San Francisco",
+            "80": "På väg mot Coit Tower med centrala San Francisco och Bay Bridge i bakgrunden"
+        }
+    },
+    "2B30E324-E4FF-4CC1-BA45-A958C2D2B2EC": {
+        "name": "Ett stim svartfenade barracudor i vattnet nära Borneo",
+        "pointsOfInterest": {
+            "0": "Ett stim svartfenade barracudor i vattnet nära Borneo"
+        }
+    },
+    "2F52E34C-39D4-4AB1-9025-8F7141FAA720": {
+        "name": "Ilulissatfjorden vid Grönlandskusten",
+        "pointsOfInterest": {
+            "0": "Ilulissatfjorden vid Grönlandskusten"
+        }
+    },
+    "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
+        "name": "Över Afrikas horn på färd mot Adenviken",
+        "pointsOfInterest": {
+            "0": "Över Afrikas horn på färd mot Adenviken",
+            "115": "Omanbukten på väg mot Makrankusten",
+            "145": "Makrankusten i Iran och Pakistan",
+            "160": "Över Iran på väg mot Afghanistan och Pakistan",
+            "180": "Över Afghanistan och Pakistan på väg mot bergskedjan Karakoram",
+            "235": "Över bergskedjan Karakoram på färd in i Kina",
+            "280": "Taklamakanöknen i västra Kina",
+            "315": "Tianshanbergen i Centralasien",
+            "45": "Sydöstra Arabiska halvön"
+        }
+    },
+    "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
+        "name": "Följer Interstate 110 norrut genom Los Angeles",
+        "pointsOfInterest": {
+            "0": "Följer Interstate 110 norrut genom Los Angeles"
+        }
+    },
+    "3716DD4B-01C0-4F5B-8DD6-DB771EC472FB": {
+        "name": "Grå revhajar simmar nära Franska Polynesien",
+        "pointsOfInterest": {
+            "0": "Grå revhajar simmar nära Franska Polynesien"
+        }
+    },
+    "391BDF6E-3279-4CE1-9CA5-0F82811452D7": {
+        "name": "Sydafrikanska pälssälar utanför Kaphalvöns kust i Sydafrika",
+        "pointsOfInterest": {
+            "0": "Sydafrikanska pälssälar utanför Kaphalvöns kust i Sydafrika"
+        }
+    },
+    "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
+        "name": "Ovanför Central Park på väg mot Midtown Manhattan i New York",
+        "pointsOfInterest": {
+            "0": "Ovanför Central Park på väg mot Midtown Manhattan i New York",
+            "246": "Ovanför Midtown Manhattan i New York"
+        }
+    },
+    "3C4678E4-4D3D-4A40-8817-77752AEA62EB": {
+        "name": "Reser över Västeuropa med de brittiska öarna på långt avstånd",
+        "pointsOfInterest": {
+            "0": "Reser över Västeuropa med de brittiska öarna på långt avstånd",
+            "100": "Grekland omgivet av Joniska och Egeiska havet",
+            "160": "Reser sydost över Medelhavet",
+            "185": "Medelhavet och Nildeltat",
+            "20": "På väg sydost över Alperna och Poflodens dal",
+            "205": "Nilen flyter genom Sahara i Egypten",
+            "220": "Östra delen av Sahara omgiven av Nilen och Suezviken",
+            "240": "På väg sydost över Röda havet",
+            "50": "Färdas nedför Italienska halvön och Adriatiska havet"
+        }
+    },
+    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": {
+        "name": "Följer Kohala‑kustlinjen på Hawaii",
+        "pointsOfInterest": {
+            "0": "Följer Kohala‑kustlinjen på Hawaii"
+        }
+    },
+    "3E94AE98-EAF2-4B09-96E3-452F46BC114E": {
+        "name": "På väg mot Bay Bridge och centrala San Francisco",
+        "pointsOfInterest": {
+            "0": "På väg mot Bay Bridge och centrala San Francisco",
+            "116": "Ovanför San Franciscobukten i riktning mot centrala stan",
+            "80": "Korsar ovanför Bay Bridge på väg mot centrala San Francisco"
+        }
+    },
+    "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
+        "name": "Flyger längs Dubai Marina i Förenade Arabemiraten",
+        "pointsOfInterest": {
+            "0": "Flyger längs Dubai Marina i Förenade Arabemiraten"
+        }
+    },
+    "44166C39-8566-4ECA-BD16-43159429B52F": {
+        "name": "På väg nedför 7:e avenyn i riktning mot Times Square i New York",
+        "pointsOfInterest": {
+            "0": "På väg nedför 7:e avenyn i riktning mot Times Square i New York",
+            "120": "På väg nedför 7:e avenyn i Midtown Manhattan i New York",
+            "40": "Ovanför Times Square i New York"
+        }
+    },
+    "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943": {
+        "name": "Waimanu Valley i Kohala‑skogsreservatet på Hawaii",
+        "pointsOfInterest": {
+            "0": "Waimanu Valley i Kohala‑skogsreservatet på Hawaii"
+        }
+    },
+    "4AD99907-9E76-408D-A7FC-8429FF014201": {
+        "name": "Ovanför San Francisco‑bukten på väg mot Embarcadero",
+        "pointsOfInterest": {
+            "0": "Ovanför San Francisco‑bukten på väg mot Embarcadero",
+            "150": "Följer Market Street genom centrala San Francisco",
+            "360": "Följer Market Street genom centrala San Francisco",
+            "90": "Ovanför Embarcadero med vy längs Market Street i San Francisco"
+        }
+    },
+    "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589": {
+        "name": "På väg sydost över Great Plains i USA",
+        "pointsOfInterest": {
+            "0": "På väg sydost över Great Plains i USA",
+            "120": "Över sydöstra USA på väg mot Florida",
+            "220": "Över Florida på väg mot Bahamas",
+            "240": "Färdas sydost över Bahamas",
+            "285": "Över Bahamas på väg mot Dominikanska republiken och Haiti",
+            "300": "Över Dominikanska republiken och Haiti vid Karibiska havet",
+            "315": "Över Karibiska havet på väg söderut mot Venezuela",
+            "90": "På väg sydost över Mellanvästern i USA"
+        }
+    },
+    "537A4DAB-83B0-4B66-BCD1-05E5DBB4A268": {
+        "name": "Ett stim storögda taggmakriller utanför Borneos kust",
+        "pointsOfInterest": {
+            "0": "Ett stim storögda taggmakriller utanför Borneos kust"
+        }
+    },
+    "581A4F1A-2B6D-468C-A1BE-6F473F06D10B": {
+        "name": "Behornade sjöstjärnor på havsbotten nära Borneo",
+        "pointsOfInterest": {
+            "0": "Behornade sjöstjärnor på havsbotten nära Borneo"
+        }
+    },
+    "58754319-8709-4AB0-8674-B34F04E7FFE2": {
+        "name": "På väg mot Tower Bridge på Themsen i London",
+        "pointsOfInterest": {
+            "0": "På väg mot Tower Bridge på Themsen i London",
+            "178": "Söder om Themsen i London",
+            "258": "Korsar Themsen i London",
+            "78": "Följer Themsen i London"
+        }
+    },
+    "58C75C62-3290-47B8-849C-56A583173570": {
+        "name": "Rockor nära Mexikos kust",
+        "pointsOfInterest": {
+            "0": "Rockor nära Mexikos kust"
+        }
+    },
+    "6143116D-03BB-485E-864E-A8CF58ACF6F1": {
+        "name": "Flyter genom en tångskog nära Kaphalvön i Sydafrika",
+        "pointsOfInterest": {
+            "0": "Flyter genom en tångskog nära Kaphalvön i Sydafrika"
+        }
+    },
+    "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": {
+        "name": "Kanarieöarna, Atlanten och Afrikas kust",
+        "pointsOfInterest": {
+            "0": "Kanarieöarna, Atlanten och Afrikas kust",
+            "105": "Över Marocko på väg mot Medelhavet",
+            "125": "Medelhavet och södra Spanien",
+            "145": "Reser nordost över Costa Blanca i Spanien",
+            "165": "Reser nordost över Balearerna i Spanien",
+            "185": "Över västra Medelhavet med Alperna i fjärran",
+            "220": "Färdas nordost över Alperna",
+            "45": "Färdas nordost längs Marockos kust",
+            "75": "Färdas över Atlasbergen i Marocko"
+        }
+    },
+    "640DFB00-FBB9-45DA-9444-9F663859F4BC": {
+        "name": "På väg mot Lower Manhattan från New York Harbor",
+        "pointsOfInterest": {
+            "0": "På väg mot Lower Manhattan från New York Harbor",
+            "110": "Längs Lower Manhattan på väg mot One World Trade Center",
+            "180": "Passerar One World Trade Center på väg mot Midtown Manhattan",
+            "210": "Ovanför Lower Manhattan i New York på väg mot Midtown"
+        }
+    },
+    "64D11DAB-3B57-4F14-AD2F-E59A9282FA44": {
+        "name": "Över Nordatlanten på väg mot Portugal",
+        "pointsOfInterest": {
+            "0": "Över Nordatlanten på väg mot Portugal",
+            "115": "Över Portugal och Spanien",
+            "150": "Rör sig bort från Iberiska halvön och färdas över Biscayabukten och Frankrike",
+            "180": "Över Västeuropa med Nordatlanten på långt avstånd"
+        }
+    },
+    "687D03A2-18A5-4181-8E85-38F3A13409B9": {
+        "name": "Knölhuvade papegojfiskar över korallreven utanför Borneo",
+        "pointsOfInterest": {
+            "0": "Knölhuvade papegojfiskar över korallreven utanför Borneo"
+        }
+    },
+    "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
+        "name": "På väg mot Golden Gate‑bron från San Francisco",
+        "pointsOfInterest": {
+            "0": "På väg mot Golden Gate‑bron från San Francisco",
+            "140": "Korsar över Golden Gate‑bron",
+            "230": "Passerar det norra tornet på Golden Gate‑bron",
+            "260": "Ovanför San Franciscobukten längs med Golden Gate‑bron",
+            "60": "Längs Golden Gate‑bron på väg mot Marin Headlands"
+        }
+    },
+    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
+        "name": "Över Stilla havet på väg mot Baja California",
+        "pointsOfInterest": {
+            "0": "Över Stilla havet på väg mot Baja California",
+            "110": "Över Klippiga bergen på väg mot Denver",
+            "125": "Reser över Great Plains i USA",
+            "185": "På väg mot Stora Sjöarna med Ontario, Kanada i fjärran",
+            "200": "Över Stora Sjöarna på väg in mot Ontario i Kanada",
+            "210": "Polarsken över västra Ontario i Kanada",
+            "235": "Polarsken över norra Ontario i Kanada",
+            "250": "Polarsken över norra Québec i Kanada",
+            "300": "På väg mot Nordatlanten med polarsken över Labrador, Kanada",
+            "45": "Över Baja California och tittar norrut mot USA",
+            "55": "Över Mexiko på väg mot sydvästra USA",
+            "75": "Över sydvästra USA"
+        }
+    },
+    "7719B48A-2005-4011-9280-2F64EEC6FD91": {
+        "name": "Över Stilla havet på väg mot USA",
+        "pointsOfInterest": {
+            "0": "Över Stilla havet på väg mot USA",
+            "130": "Bergskedjan Sierra Madre Occidental på Mexikos västkust",
+            "185": "Över bergskedjan Sierra Madre Occidental på väg mot Mexikos västkust",
+            "20": "Reser söderut längs Kaliforniens kust",
+            "225": "Blickar söderut mot Stilla havet över Sierra Madre del Sur i Mexiko",
+            "280": "Stilla havet utanför Mexikos kust",
+            "290": "Stilla havet utanför Mexikos och Guatemalas kust",
+            "50": "Över södra Kalifornien på väg mot Mexiko",
+            "65": "På väg mot Mojaveöknen i södra Kalifornien med Mexiko i fjärran",
+            "95": "Californiaviken omgiven av Sonoraöknen och halvön Baja California"
+        }
+    },
+    "7825C73A-658F-48EE-B14C-EC56673094AC": {
+        "name": "Över Centralasien på resa mot Kinas kust",
+        "pointsOfInterest": {
+            "0": "Över Centralasien på resa mot Kinas kust",
+            "10": "Över centrala Kina på väg mot Shanghai",
+            "30": "Reser över östra Kina på väg mot Shanghai",
+            "45": "På väg mot Shanghai i riktning mot Östkinesiska havet",
+            "50": "Över Shanghai i riktning mot Östkinesiska havet"
+        }
+    },
+    "78911B7E-3C69-47AD-B635-9C2486F6301D": {
+        "name": "Natt övergår i dag över södra Stilla havet",
+        "pointsOfInterest": {
+            "0": "Natt övergår i dag över södra Stilla havet",
+            "110": "På väg mot soluppgång över Nya Zeeland",
+            "170": "Lämnar Nya Zeeland och reser nordost över Stilla havet",
+            "70": "Natt övergår i dag över Nya Zeeland"
+        }
+    },
+    "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": {
+        "name": "Över Nordatlanten på väg mot Brittiska öarna",
+        "pointsOfInterest": {
+            "0": "Över Nordatlanten på väg mot Brittiska öarna",
+            "105": "Över Centraleuropa på väg mot Ryssland",
+            "15": "Irland och Storbritannien",
+            "150": "Över Östeuropa med Moskva på långt avstånd",
+            "165": "Över Östeuropa med vy mot Moskva",
+            "185": "Över västra Ryssland, passerar över Moskva",
+            "195": "Över Ryssland på resa mot Centralasien",
+            "45": "Över Storbritannien på väg mot fastlandet i Europa",
+            "65": "Över nordvästra Europa på väg mot Ryssland"
+        }
+    },
+    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
+        "name": "På väg mot Tower Bridge på Themsen i London",
+        "pointsOfInterest": {
+            "0": "På väg mot Tower Bridge på Themsen i London",
+            "130": "Följer Themsen mot London Eye",
+            "20": "Följer Themsen i London",
+            "210": "På väg mot London Eye på Themsen",
+            "310": "Följer Themsen förbi London Eye",
+            "325": "Passerar Westminsterpalatset på floden Themsen i London"
+        }
+    },
+    "81337355-E156-4242-AAF4-711768D30A54": {
+        "name": "Över Indiska oceanen på väg mot Perth i Australien",
+        "pointsOfInterest": {
+            "0": "Över Indiska oceanen på väg mot Perth i Australien",
+            "170": "Över Västaustralien på väg mot Nordterritoriet",
+            "220": "Över Nordterritoriet i Australien på väg mot Nya Guinea",
+            "335": "Över Arafurasjön på resa mot Nya Guinea",
+            "50": "Reser nordost över Västaustralien"
+        }
+    },
+    "82175C1F-153C-4EC8-AE37-2860EA828004": {
+        "name": "Korallrev i Röda havet nära Egypten",
+        "pointsOfInterest": {
+            "0": "Korallrev i Röda havet nära Egypten"
+        }
+    },
+    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": {
+        "name": "Ovanför naturreservatet Pu’u O Umi på Hawaii",
+        "pointsOfInterest": {
+            "0": "Ovanför naturreservatet Pu’u O Umi på Hawaii"
+        }
+    },
+    "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8": {
+        "name": "Ovanför Upper East Side och Central Park i New York",
+        "pointsOfInterest": {
+            "0": "Ovanför Upper East Side och Central Park i New York",
+            "160": "På väg mot Empire State Building i New York",
+            "205": "Passerar Empire State Building på väg mot Lower Manhattan",
+            "50": "Ovanför Midtown Manhattan på väg mot Empire State Building"
+        }
+    },
+    "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
+        "name": "Ovanför San Franciscobukten på väg mot Embarcadero",
+        "pointsOfInterest": {
+            "0": "Ovanför San Franciscobukten på väg mot Embarcadero",
+            "208": "Följer Market Street genom centrala San Francisco"
+        }
+    },
+    "87060EC2-D006-4102-98CC-3005C68BB343": {
+        "name": "Reser nordost över det etiopiska höglandet",
+        "pointsOfInterest": {
+            "0": "Reser nordost över det etiopiska höglandet",
+            "100": "På väg nordost över Arabiska halvön",
+            "130": "Över Arabiska halvön på väg mot Iran",
+            "165": "Över Arabiska halvön på väg in i Iran",
+            "190": "På väg mot Irans kust med Zagrosbergen i fjärran",
+            "210": "Över Zagrosbergen i Iran",
+            "240": "Över Dasht-e Lut-öknen i Iran",
+            "265": "Färdas mot Turkmenistan och Karakumöknen",
+            "305": "Floden Amu-Darja och bergsområdet Pamiro-Alaj i Centralasien",
+            "322": "Bergen Pamiro-Alaj och Ferganadalen i Centralasien",
+            "360": "På väg in i sydöstra Kazakstan från Kirgizistan",
+            "400": "Reser norrut över Kazakstan",
+            "45": "Reser över Röda havet in mot Arabiska halvön",
+            "450": "Över Altajbergen på väg in i Mongoliet"
+        }
+    },
+    "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
+        "name": "Reser längs Sheikh Zayed‑vägen i Dubai i Förenade Arabemiraten",
+        "pointsOfInterest": {
+            "0": "Reser längs Sheikh Zayed‑vägen i Dubai i Förenade Arabemiraten"
+        }
+    },
+    "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
+        "name": "Griffith Observatory och Hollywood Hills i Los Angeles",
+        "pointsOfInterest": {
+            "0": "Griffith Observatory och Hollywood Hills i Los Angeles"
+        }
+    },
+    "8C31B06F-91A4-4F7C-93ED-56146D7F48B9": {
+        "name": "Vågor slår in mot stränderna på Tahiti",
+        "pointsOfInterest": {
+            "0": "Vågor slår in mot stränderna på Tahiti"
+        }
+    },
+    "92E48DE9-13A1-4172-B560-29B4668A87EE": {
+        "name": "Ovanför Santa Monica State Beach nära Los Angeles",
+        "pointsOfInterest": {
+            "0": "Ovanför Santa Monica State Beach nära Los Angeles",
+            "365": "Passerar ovanför Santa Monica Pier nära Los Angeles",
+            "430": "Ovanför Santa Monica State Beach nära Los Angeles"
+        }
+    },
+    "9680B8EB-CE2A-4395-AF41-402801F4D6A6": {
+        "name": "På väg mot Burj Khalifa i centrala Dubai i Förenade Arabemiraten",
+        "pointsOfInterest": {
+            "0": "På väg mot Burj Khalifa i centrala Dubai i Förenade Arabemiraten",
+            "280": "Passerar Burj Khalifa i centrala Dubai i Förenade Arabemiraten",
+            "330": "Ovanför centrala Dubai på väg mot kusten"
+        }
+    },
+    "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C": {
+        "name": "Passerar ovanför Longji‑risterrasserna i Guangxi‑provinsen i Kina",
+        "pointsOfInterest": {
+            "0": "Passerar ovanför Longji‑risterrasserna i Guangxi‑provinsen i Kina"
+        }
+    },
+    "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
+        "name": "Passerar ovanför Buckingham Palace i London",
+        "pointsOfInterest": {
+            "0": "Passerar ovanför Buckingham Palace i London",
+            "104": "Korsar Themsen och passerar ovanför London Eye",
+            "149": "Passerar ovanför södra London",
+            "24": "Ovanför Buckingham Palace i London",
+            "279": "Passerar The Shard i södra London",
+            "299": "Korsar Themsen i London",
+            "324": "Korsar Themsen vid Tower Bridge i London",
+            "49": "Ovanför St James’s Park på väg mot Themsen i London"
+        }
+    },
+    "A837FA8C-C643-4705-AE92-074EFDD067F7": {
+        "name": "Reser nordost över Sahara på natten",
+        "pointsOfInterest": {
+            "0": "Reser nordost över Sahara på natten",
+            "100": "Medelhavskusten i Tunisien och Libyen",
+            "120": "Färdas över Medelhavet mot Italien",
+            "140": "Över södra Italien mot Balkanhalvön med Turkiet på långt avstånd",
+            "165": "Över Balkanhalvön på väg mot Svarta havet",
+            "180": "Över Balkanhalvön på väg till Svarta havet",
+            "210": "Reser över Svarta havet på väg mot Ukraina",
+            "230": "Reser över Ukraina mot Ryssland",
+            "70": "Över Grand Erg Oriental på väg mot Medelhavet"
+        }
+    },
+    "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
+        "name": "Flyger ovanför Liwa-oasen i Förenade Arabemiraten",
+        "pointsOfInterest": {
+            "0": "Flyger ovanför Liwa-oasen i Förenade Arabemiraten"
+        }
+    },
+    "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
+        "name": "Över Stilla havet på väg mot Mexiko",
+        "pointsOfInterest": {
+            "0": "Över Stilla havet på väg mot Mexiko",
+            "105": "Färdas över Mexico City mot Mexikanska golfen",
+            "122": "Flyger över Mexikanska golfen mot USA",
+            "180": "Passerar Houston på väg mot New Orleans i USA",
+            "190": "Reser över New Orleans och USA:s gulfkust",
+            "215": "Färdas över sydöstra USA",
+            "280": "Över östra USA på färd mot New York",
+            "320": "Över östra USA på väg mot New York City"
+        }
+    },
+    "B876B645-3955-420E-99DF-60139E451CF3": {
+        "name": "Reser genom nationalparken Wulingyuan i Kina",
+        "pointsOfInterest": {
+            "0": "Reser genom nationalparken Wulingyuan i Kina"
+        }
+    },
+    "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
+        "name": "Reser längs Nuussuaqhalvön på Grönland",
+        "pointsOfInterest": {
+            "0": "Reser längs Nuussuaqhalvön på Grönland"
+        }
+    },
+    "BA4ECA11-592F-4727-9221-D2A32A16EB28": {
+        "name": "Gyllene maneter i Palau",
+        "pointsOfInterest": {
+            "0": "Gyllene maneter i Palau",
+            "282": "Gyllene maneter med en öronmanet mitt ibland dem",
+            "348": "Gyllene maneter i Palau"
+        }
+    },
+    "C6DC4E54-1130-44F8-AF6F-A551D8E8A181": {
+        "name": "Öronmaneter nära Alaskas kust i USA",
+        "pointsOfInterest": {
+            "0": "Öronmaneter nära Alaskas kust i USA"
+        }
+    },
+    "C7AD3D0A-7EDF-412C-A237-B3C9D27381A1": {
+        "name": "Driver ovanför öronmaneter nära Alaskas kust i USA",
+        "pointsOfInterest": {
+            "0": "Driver ovanför öronmaneter nära Alaskas kust i USA"
+        }
+    },
+    "C8559883-6F3E-4AF2-8960-903710CD47B7": {
+        "name": "Flyger över Victoria Peak i Hongkong",
+        "pointsOfInterest": {
+            "0": "Flyger över Victoria Peak i Hongkong",
+            "150": "Flyger över Hongkong i riktning mot Victoria Harbour",
+            "330": "Ovanför Victoria Harbour på väg mot Kowloon-halvön"
+        }
+    },
+    "CE279831-1CA7-4A83-A97B-FF1E20234396": {
+        "name": "Flyger över Los Angeles International Airport",
+        "pointsOfInterest": {
+            "0": "Flyger över Los Angeles International Airport"
+        }
+    },
+    "CE9B5D5B-B6E7-47C5-8C04-59BF182E98FB": {
+        "name": "Spinndelfiner i havet utanför Costa Rica",
+        "pointsOfInterest": {
+            "0": "Spinndelfiner i havet utanför Costa Rica"
+        }
+    },
+    "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
+        "name": "Reser över Stilla havet mot Centralamerika",
+        "pointsOfInterest": {
+            "0": "Reser över Stilla havet mot Centralamerika",
+            "110": "Reser förbi ett molnhöljt Jamaica i Karibiska havet",
+            "125": "Korsar Kuba med vy mot Haiti och Dominikanska republiken",
+            "170": "Reser över Bahamas med vy mot Haiti och Dominikanska republiken",
+            "190": "Turks- och Caicosöarna i Atlanten",
+            "35": "Stillahavskusterna i Nicaragua, Costa Rica och Panama",
+            "50": "Färdas över Centralamerika med Sydamerika på långt avstånd",
+            "65": "Mosquitokusten i Nicaragua",
+            "85": "Över Karibiska havet på väg mot Kuba"
+        }
+    },
+    "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
+        "name": "Utforskar nationalparken Wulingyuan i Kina",
+        "pointsOfInterest": {
+            "0": "Utforskar nationalparken Wulingyuan i Kina"
+        }
+    },
+    "DD47D8E1-CB66-4C12-BFEA-2ADB0D8D1E2E": {
+        "name": "En knölval utanför Franska Polynesien",
+        "pointsOfInterest": {
+            "0": "En knölval utanför Franska Polynesien"
+        }
+    },
+    "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
+        "name": "San Franciscobukten och Golden Gate‑bron",
+        "pointsOfInterest": {
+            "0": "San Franciscobukten och Golden Gate‑bron",
+            "140": "På väg över det norra tornet på Golden Gate‑bron i riktning mot San Francisco",
+            "191": "Över San Franciscobukten"
+        }
+    },
+    "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
+        "name": "Över Västafrika på färd mot Sahara",
+        "pointsOfInterest": {
+            "0": "Över Västafrika på färd mot Sahara",
+            "110": "Färdas över Ahaggarbergen i Sahara i Nordafrika",
+            "155": "Över Grand Erg Oriental i Nordafrika på färd mot Medelhavet",
+            "195": "Tunisiens kust och Medelhavet",
+            "210": "Över Tunisiens kust på färd mot Italien",
+            "230": "På väg mot Italien i Medelhavet",
+            "245": "Över Italien på väg mot Balkanhalvön",
+            "285": "Över Balkanhalvön på väg mot Karpaterna",
+            "30": "Korsar Sahara i Nordafrika",
+            "310": "Karpaterna och Svarta havet"
+        }
+    },
+    "E580E5A5-0888-4BE8-A4CA-F74A18A643C3": {
+        "name": "Gyllene maneter i Palau",
+        "pointsOfInterest": {
+            "0": "Gyllene maneter i Palau"
+        }
+    },
+    "E5DB138A-F04E-4619-B896-DE5CB538C534": {
+        "name": "Över Tunisien på väg mot Italien",
+        "pointsOfInterest": {
+            "0": "Över Tunisien på väg mot Italien",
+            "15": "Över södra Italien med Balkanhalvön i fjärran",
+            "25": "Över Balkanhalvön på väg mot Centralasien",
+            "40": "Över Balkanhalvön och passerar Svarta havet",
+            "5": "Över Medelhavet med vy mot Sicilien och Italienska halvön",
+            "55": "Över Ukraina med Ryssland i fjärran",
+            "75": "Över sydvästra Ryssland på väg över Kazakstan"
+        }
+    },
+    "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
+        "name": "Flyger ovanför Dubai Marina i Förenade Arabemiraten",
+        "pointsOfInterest": {
+            "0": "Flyger ovanför Dubai Marina i Förenade Arabemiraten"
+        }
+    },
+    "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
+        "name": "Ovanför Victoria Harbour på väg mot centrala Hongkong",
+        "pointsOfInterest": {
+            "0": "Ovanför Victoria Harbour på väg mot centrala Hongkong"
+        }
+    },
+    "EB3F48E7-D30F-4079-858F-1A61331D5026": {
+        "name": "På väg genom en kelpskog utanför den kaliforniska kusten i USA",
+        "pointsOfInterest": {
+            "0": "På väg genom en kelpskog utanför den kaliforniska kusten i USA"
+        }
+    },
+    "EC3DC957-D4C2-4732-AACE-7D0C0F390EC8": {
+        "name": "Gyllene maneter i Palau",
+        "pointsOfInterest": {
+            "0": "Gyllene maneter i Palau"
+        }
+    },
+    "EC67726A-8212-4C5E-83CF-8412932740D2": {
+        "name": "Hollywood‑skylten i Los Angeles",
+        "pointsOfInterest": {
+            "0": "Hollywood‑skylten i Los Angeles",
+            "250": "Ovanför Hollywood Hills på väg mot Burbank i Kalifornien"
+        }
+    },
+    "EE01F02D-1413-436C-AB05-410F224A5B7B": {
+        "name": "Ilulissatfjorden vid Grönlandskusten",
+        "pointsOfInterest": {
+            "0": "Ilulissatfjorden vid Grönlandskusten"
+        }
+    },
+    "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
+        "name": "Ovanför Marin Headlands med vy mot Golden Gate‑bron",
+        "pointsOfInterest": {
+            "0": "Ovanför Marin Headlands med vy mot Golden Gate‑bron",
+            "150": "Korsar Golden Gate‑bron på väg mot Presidio i San Francisco"
+        }
+    },
+    "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
+        "name": "Mutianyu‑sektionen av kinesiska muren i Huairou‑distriktet i Kina",
+        "pointsOfInterest": {
+            "0": "Mutianyu‑sektionen av kinesiska muren i Huairou‑distriktet i Kina"
+        }
+    },
+    "F07CC61B-30FC-4614-BDAD-3240B61F6793": {
+        "name": "Korallrev nära Palau",
+        "pointsOfInterest": {
+            "0": "Korallrev nära Palau"
+        }
+    },
+    "F439B0A7-D18C-4B14-9681-6520E6A74FE9": {
+        "name": "Solen speglas längs Irans kust",
+        "pointsOfInterest": {
+            "0": "Solen speglas längs Irans kust",
+            "15": "Skifte mellan dag och natt över Iran",
+            "60": "Skifte mellan dag och natt över Centralasien"
+        }
+    },
+    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
+        "name": "Passerar centrala Los Angeles",
+        "pointsOfInterest": {
+            "0": "Passerar centrala Los Angeles"
+        }
+    },
+    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
+        "name": "På väg mot Tower Bridge på Themsen i London",
+        "pointsOfInterest": {
+            "0": "På väg mot Tower Bridge på Themsen i London",
+            "20": "Korsar Themsen i London",
+            "200": "Korsar Themsen på väg mot Westminster i London",
+            "270": "Ovanför Westminster i London",
+            "60": "Passerar The Shard i södra London",
+            "92": "Söder om Themsen med riktning mot London Eye"
+        }
+    },
+    "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {
+        "name": "Ovanför Victoria Harbour med vy mot Hongkongön",
+        "pointsOfInterest": {
+            "0": "Ovanför Victoria Harbour med vy mot Hongkongön"
+        }
+    }
+}

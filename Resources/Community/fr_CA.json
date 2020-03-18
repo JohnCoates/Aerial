@@ -1,0 +1,740 @@
+{
+    "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8": {
+        "name": "Vol au-dessus de l’oasis de Liwa aux Émirats arabes unis",
+        "pointsOfInterest": {
+            "0": "Vol au-dessus de l’oasis de Liwa aux Émirats arabes unis"
+        }
+    },
+    "009BA758-7060-4479-8EE8-FB9B40C8FB97": {
+        "name": "Vol vers le sud-est, au-dessus de la Sibérie et de la Mongolie",
+        "pointsOfInterest": {
+            "0": "Vol vers le sud-est, au-dessus de la Sibérie et de la Mongolie",
+            "110": "Au-dessus de la Chine, en direction de la péninsule coréenne",
+            "150": "La péninsule coréenne avec le Japon au loin",
+            "180": "Au-dessus de la Corée du Sud, cap sur le Japon",
+            "195": "Au-dessus du Japon, face à l’océan Pacifique",
+            "22": "Cap sur la Mongolie-Intérieure",
+            "260": "Au-dessus de l’océan Pacifique au sud-est du Japon",
+            "32": "Au-dessus de la Mongolie, en direction de la Chine",
+            "60": "Au-dessus du nord de la Chine, cap sur la péninsule coréenne"
+        }
+    },
+    "00BA71CD-2C54-415A-A68A-8358E677D750": {
+        "name": "À l’approche du centre-ville de Dubaï aux Émirats arabes unis",
+        "pointsOfInterest": {
+            "0": "À l’approche du centre-ville de Dubaï aux Émirats arabes unis",
+            "210": "En direction du centre-ville de Dubaï aux Émirats arabes unis"
+        }
+    },
+    "024891DE-B7F6-4187-BFE0-E6D237702EF0": {
+        "name": "Au-dessus de Wan Chai, à l’approche du centre de Hong Kong",
+        "pointsOfInterest": {
+            "0": "Au-dessus de Wan Chai, à l’approche du centre de Hong Kong",
+            "150": "Au-dessus du centre de Hong Kong",
+            "270": "Au-dessus de l’Île de Hong Kong"
+        }
+    },
+    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": {
+        "name": "Aurore australe sur l’Antarctique",
+        "pointsOfInterest": {
+            "0": "Aurore australe sur l’Antarctique"
+        }
+    },
+    "044AD56C-A107-41B2-90CC-E60CCACFBCF5": {
+        "name": "La section Mutianyu de la Grande Muraille dans le district de Huairou, en Chine",
+        "pointsOfInterest": {
+            "0": "La section Mutianyu de la Grande Muraille dans le district de Huairou, en Chine"
+        }
+    },
+    "1088217C-1410-4CF7-BDE9-8F573A4DBCD9": {
+        "name": "Au-dessus de l’océan Pacifique, cap sur l’Amérique centrale",
+        "pointsOfInterest": {
+            "0": "Au-dessus de l’océan Pacifique, cap sur l’Amérique centrale",
+            "100": "Traversée de l’Amérique centrale en direction de la mer des Caraïbes",
+            "150": "Au-dessus de la mer des Caraïbes, cap sur Cuba",
+            "240": "Au-dessus de Cuba, avec la Floride et les Bahamas au loin",
+            "300": "Au-dessus de la Floride et des Bahamas, en direction de la mer des Sargasses",
+            "350": "Au-dessus de la mer des Sargasses, en direction de l’océan Atlantique",
+            "70": "La côte sud-ouest de l’Amérique centrale en direction de la mer des Caraïbes"
+        }
+    },
+    "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
+        "name": "Au-dessus de l’océan Pacifique, cap sur la côte californienne",
+        "pointsOfInterest": {
+            "0": "Au-dessus de l’océan Pacifique, cap sur la côte californienne",
+            "110": "Au-dessus de Las Vegas en direction de Salt Lake City, aux États-Unis",
+            "120": "Au-dessus de l’ouest des États-Unis, à l’approche de Salt Lake City",
+            "155": "Au-dessus de Salt Lake City et Denver, aux États-Unis",
+            "170": "Au-dessus des Rocheuses aux États-Unis",
+            "70": "Au-dessus de la côte californienne, en direction de l’intérieur des terres",
+            "85": "Vol au-dessus de Los Angeles et la côte ouest des États-Unis",
+            "95": "Au-dessus de Los Angeles, à l’approche de Las Vegas aux États-Unis"
+        }
+    },
+    "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7": {
+        "name": "Vol au-dessus de Laupāhoehoe Nui, dans la réserve forestière de Kohala sur l’île de Hawaii",
+        "pointsOfInterest": {
+            "0": "Vol au-dessus de Laupāhoehoe Nui, dans la réserve forestière de Kohala sur l’île de Hawaii"
+        }
+    },
+    "149E7795-DBDA-4F5D-B39A-14712F841118": {
+        "name": "Vagues qui se brisent sur la côte de Tahiti",
+        "pointsOfInterest": {
+            "0": "Vagues qui se brisent sur la côte de Tahiti"
+        }
+    },
+    "22162A9B-DB90-4517-867C-C676BC3E8E95": {
+        "name": "La section Mutianyu de la Grande Muraille dans le district de Huairou, en Chine",
+        "pointsOfInterest": {
+            "0": "La section Mutianyu de la Grande Muraille dans le district de Huairou, en Chine"
+        }
+    },
+    "258A6797-CC13-4C3A-AB35-4F25CA3BF474": {
+        "name": "Au-dessus de la réserve naturelle de Puu o Umi sur l’île de Hawaii",
+        "pointsOfInterest": {
+            "0": "Au-dessus de la réserve naturelle de Puu o Umi sur l’île de Hawaii"
+        }
+    },
+    "27A37B0F-738D-4644-A7A4-E33E7A6C1175": {
+        "name": "Dauphins communs au large des côtes californiennes aux États-Unis",
+        "pointsOfInterest": {
+            "0": "Dauphins communs au large des côtes californiennes aux États-Unis"
+        }
+    },
+    "29BDF297-EB43-403A-8719-A78DA11A2948": {
+        "name": "Au-dessus de Fisherman’s Wharf, en direction du centre-ville de San Francisco",
+        "pointsOfInterest": {
+            "0": "Au-dessus de Fisherman’s Wharf, en direction du centre-ville de San Francisco",
+            "150": "Vue de la Coit Tower vers le centre-ville de San Francisco et le Bay Bridge",
+            "196": "Centre-ville de San Francisco",
+            "80": "À l’approche de la Coit Tower, avec le centre-ville de San Francisco et le Bay Bridge en arrière-plan"
+        }
+    },
+    "2B30E324-E4FF-4CC1-BA45-A958C2D2B2EC": {
+        "name": "Un banc de barracudas à chevrons dans les eaux situées au large de Bornéo",
+        "pointsOfInterest": {
+            "0": "Un banc de barracudas à chevrons dans les eaux situées au large de Bornéo"
+        }
+    },
+    "2F52E34C-39D4-4AB1-9025-8F7141FAA720": {
+        "name": "Le fjord glacé d’Ilulissat au large de la côte du Groenland",
+        "pointsOfInterest": {
+            "0": "Le fjord glacé d’Ilulissat au large de la côte du Groenland"
+        }
+    },
+    "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
+        "name": "Au-dessus de la Corne de l’Afrique, en direction du golfe d’Aden",
+        "pointsOfInterest": {
+            "0": "Au-dessus de la Corne de l’Afrique, en direction du golfe d’Aden",
+            "115": "Le golfe d’Oman à l’approche de la côte du Makran",
+            "145": "La côte du Makran de l’Iran et du Pakistan",
+            "160": "Au-dessus de l’Iran, en direction de l’Afghanistan et du Pakistan",
+            "180": "Au-dessus de l’Afghanistan et du Pakistan, cap sur le Karakoram",
+            "235": "Au-dessus du Karakoram, cap sur la Chine",
+            "280": "Le désert du Taklamakan dans l’ouest de la Chine",
+            "315": "Les montagnes du Tian Shan en Asie centrale",
+            "45": "Le sud-est de la péninsule d’Arabie"
+        }
+    },
+    "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
+        "name": "Le long de l’Interstate 110 North dans Los Angeles",
+        "pointsOfInterest": {
+            "0": "Le long de l’Interstate 110 North dans Los Angeles"
+        }
+    },
+    "3716DD4B-01C0-4F5B-8DD6-DB771EC472FB": {
+        "name": "Requins gris de récif qui nagent au large de la Polynésie française",
+        "pointsOfInterest": {
+            "0": "Requins gris de récif qui nagent au large de la Polynésie française"
+        }
+    },
+    "391BDF6E-3279-4CE1-9CA5-0F82811452D7": {
+        "name": "Otaries du Sud au large de la côte de la péninsule du Cap, en Afrique du Sud",
+        "pointsOfInterest": {
+            "0": "Otaries du Sud au large de la côte de la péninsule du Cap, en Afrique du Sud"
+        }
+    },
+    "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
+        "name": "Au-dessus de Central Park, en direction de Midtown Manhattan à New York",
+        "pointsOfInterest": {
+            "0": "Au-dessus de Central Park, en direction de Midtown Manhattan à New York",
+            "246": "Au-dessus de Midtown Manhattan à New York"
+        }
+    },
+    "3C4678E4-4D3D-4A40-8817-77752AEA62EB": {
+        "name": "Voyage au-dessus de l’Europe occidentale avec les îles Britanniques au loin",
+        "pointsOfInterest": {
+            "0": "Voyage au-dessus de l’Europe occidentale avec les îles Britanniques au loin",
+            "100": "La Grèce bordée par les mers Ionienne et Égée",
+            "160": "Cap au sud-est, au-dessus de la mer Méditerranée",
+            "185": "La mer Méditerranée et le delta du Nil",
+            "20": "En direction du sud-est, au-dessus des Alpes et de la vallée du Pô",
+            "205": "Vue du Nil qui traverse le Sahara, en Égypte",
+            "220": "Le désert oriental bordé par le Nil et le golfe de Suez",
+            "240": "En direction du sud-est, au-dessus de la mer Rouge",
+            "50": "Le long de la péninsule italienne et de la mer Adriatique"
+        }
+    },
+    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": {
+        "name": "Survol de la côte de Kohala sur l’île de Hawaii",
+        "pointsOfInterest": {
+            "0": "Survol de la côte de Kohala sur l’île de Hawaii"
+        }
+    },
+    "3E94AE98-EAF2-4B09-96E3-452F46BC114E": {
+        "name": "À l’approche du Bay Bridge et du centre-ville de San Francisco",
+        "pointsOfInterest": {
+            "0": "À l’approche du Bay Bridge et du centre-ville de San Francisco",
+            "116": "Au-dessus de la baie de San Francisco, en direction du centre-ville",
+            "80": "Traversée du Bay Bridge vers le centre-ville de San Francisco"
+        }
+    },
+    "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
+        "name": "Vol le long de la marina de Dubaï aux Émirats arabes unis",
+        "pointsOfInterest": {
+            "0": "Vol le long de la marina de Dubaï aux Émirats arabes unis"
+        }
+    },
+    "44166C39-8566-4ECA-BD16-43159429B52F": {
+        "name": "En direction du sud de la 7th Avenue vers Times Square, à New York",
+        "pointsOfInterest": {
+            "0": "En direction du sud de la 7th Avenue vers Times Square, à New York",
+            "120": "En direction du sud de la 7th Avenue à Midtown Manhattan, à New York",
+            "40": "Au-dessus de Times Square à New York"
+        }
+    },
+    "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943": {
+        "name": "La vallée de Waimanu, dans la réserve forestière de Kohala sur l’île de Hawaii",
+        "pointsOfInterest": {
+            "0": "La vallée de Waimanu, dans la réserve forestière de Kohala sur l’île de Hawaii"
+        }
+    },
+    "4AD99907-9E76-408D-A7FC-8429FF014201": {
+        "name": "Au-dessus de la baie de San Francisco, cap sur l’Embarcadero",
+        "pointsOfInterest": {
+            "0": "Au-dessus de la baie de San Francisco, cap sur l’Embarcadero",
+            "150": "Le long de Market Street dans le centre-ville de San Francisco",
+            "360": "Le long de Market Street dans San Francisco",
+            "90": "Au-dessus de l’Embarcadero avec vue sur Market Street, à San Francisco"
+        }
+    },
+    "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589": {
+        "name": "En direction du sud-est, au-dessus des Grandes Plaines des États-Unis",
+        "pointsOfInterest": {
+            "0": "En direction du sud-est, au-dessus des Grandes Plaines des États-Unis",
+            "120": "Au-dessus du sud-est des États-Unis, en direction de la Floride",
+            "220": "Au-dessus de la Floride, en direction des Bahamas",
+            "240": "Vol vers le sud-est, au-dessus des Bahamas",
+            "285": "Au-dessus des Bahamas, à l’approche de la République dominicaine et d’Haïti",
+            "300": "Au-dessus de la République dominicaine et d’Haïti, à l’approche de la mer des Caraïbes",
+            "315": "Au-dessus de la mer des Caraïbes, cap au sud, en direction du Venezuela",
+            "90": "En direction du sud-est, au-dessus du Midwest américain"
+        }
+    },
+    "537A4DAB-83B0-4B66-BCD1-05E5DBB4A268": {
+        "name": "Un banc de carangues à gros yeux au large de la côte de Bornéo",
+        "pointsOfInterest": {
+            "0": "Un banc de carangues à gros yeux au large de la côte de Bornéo"
+        }
+    },
+    "581A4F1A-2B6D-468C-A1BE-6F473F06D10B": {
+        "name": "Étoiles de mer à cornes au fond de l’océan près de Bornéo",
+        "pointsOfInterest": {
+            "0": "Étoiles de mer à cornes au fond de l’océan près de Bornéo"
+        }
+    },
+    "58754319-8709-4AB0-8674-B34F04E7FFE2": {
+        "name": "À l’approche du Tower Bridge sur la Tamise, à Londres",
+        "pointsOfInterest": {
+            "0": "À l’approche du Tower Bridge sur la Tamise, à Londres",
+            "178": "Au sud de la Tamise à Londres",
+            "258": "Traversée de la Tamise à Londres",
+            "78": "Le long de la Tamise à Londres"
+        }
+    },
+    "58C75C62-3290-47B8-849C-56A583173570": {
+        "name": "Mourines du Pacifique au large du Mexique",
+        "pointsOfInterest": {
+            "0": "Mourines du Pacifique au large du Mexique"
+        }
+    },
+    "6143116D-03BB-485E-864E-A8CF58ACF6F1": {
+        "name": "Traversée d’une forêt de varech près de la péninsule du Cap, en Afrique du Sud",
+        "pointsOfInterest": {
+            "0": "Traversée d’une forêt de varech près de la péninsule du Cap, en Afrique du Sud"
+        }
+    },
+    "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": {
+        "name": "Les îles Canaries, l’océan Atlantique et la côte africaine",
+        "pointsOfInterest": {
+            "0": "Les îles Canaries, l’océan Atlantique et la côte africaine",
+            "105": "Au-dessus du Maroc, à l’approche de la mer Méditerranée",
+            "125": "La mer Méditerranée et le sud de l’Espagne",
+            "145": "Cap au nord-est, au-dessus de la Costa Blanca en Espagne",
+            "165": "Cap au nord-est, au-dessus des îles Baléares en Espagne",
+            "185": "Au-dessus de l’ouest de la mer Méditerranée avec les Alpes au loin",
+            "220": "Vol vers le nord-est, au-dessus des Alpes",
+            "45": "Vol vers le nord-est, le long de la côte marocaine",
+            "75": "Vol au-dessus des monts Atlas, au Maroc"
+        }
+    },
+    "640DFB00-FBB9-45DA-9444-9F663859F4BC": {
+        "name": "À l’approche de Lower Manhattan depuis le port de New York",
+        "pointsOfInterest": {
+            "0": "À l’approche de Lower Manhattan depuis le port de New York",
+            "110": "Le long de Lower Manhattan, à l’approche du One World Trade Center",
+            "180": "Le One World Trade Center vers Midtown Manhattan",
+            "210": "Au-dessus de Lower Manhattan à New York, cap sur Midtown"
+        }
+    },
+    "64D11DAB-3B57-4F14-AD2F-E59A9282FA44": {
+        "name": "Au-dessus de l’Atlantique Nord, en direction du Portugal",
+        "pointsOfInterest": {
+            "0": "Au-dessus de l’Atlantique Nord, en direction du Portugal",
+            "115": "Au-dessus du Portugal et de l’Espagne",
+            "150": "Éloignement de la péninsule Ibérique et vol au-dessus du golfe de Gascogne et de la France",
+            "180": "Au-dessus de l’Europe de l’Ouest avec l’Atlantique Nord au loin"
+        }
+    },
+    "687D03A2-18A5-4181-8E85-38F3A13409B9": {
+        "name": "Poissons-perroquets à bosse au-dessus des récifs coralliens au large de Bornéo",
+        "pointsOfInterest": {
+            "0": "Poissons-perroquets à bosse au-dessus des récifs coralliens au large de Bornéo"
+        }
+    },
+    "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
+        "name": "À l’approche du pont Golden Gate depuis San Francisco",
+        "pointsOfInterest": {
+            "0": "À l’approche du pont Golden Gate depuis San Francisco",
+            "140": "Traversée du Golden Gate",
+            "230": "Vue de la tour nord du Golden Gate",
+            "260": "Au-dessus de la baie de San Francisco, le long du pont du Golden Gate",
+            "60": "Le long du pont Golden Gate, en direction des Marin Headlands"
+        }
+    },
+    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
+        "name": "Au-dessus de l’océan Pacifique, cap sur la Basse-Californie",
+        "pointsOfInterest": {
+            "0": "Au-dessus de l’océan Pacifique, cap sur la Basse-Californie",
+            "110": "Au-dessus des Rocheuses, à l’approche de Denver",
+            "125": "Voyage au-dessus des Grandes Plaines des États-Unis",
+            "185": "À l’approche des Grands Lacs avec l’Ontario, au Canada, au loin",
+            "200": "Au-dessus des Grands Lacs, à l’approche de l’Ontario, au Canada",
+            "210": "Une aurore boréale au-dessus de l’ouest de l’Ontario, au Canada",
+            "235": "Une aurore boréale au-dessus du nord de l’Ontario, au Canada",
+            "250": "Une aurore boréale au-dessus du nord du Québec, au Canada",
+            "300": "En direction de l’Atlantique Nord avec une aurore boréale au-dessus du Labrador, au Canada",
+            "45": "Au-dessus de la Basse-Californie, vers le nord en direction des États-Unis",
+            "55": "Au-dessus du Mexique, en direction du sud-ouest des États-Unis",
+            "75": "Au-dessus du sud-ouest des États-Unis"
+        }
+    },
+    "7719B48A-2005-4011-9280-2F64EEC6FD91": {
+        "name": "Au-dessus de l’océan Pacifique, en direction des États-Unis",
+        "pointsOfInterest": {
+            "0": "Au-dessus de l’océan Pacifique, en direction des États-Unis",
+            "130": "Les montagnes de la Sierra Madre occidentale sur la côte ouest du Mexique",
+            "185": "Au-dessus des montagnes de la Sierra Madre occidentale, cap sur la côte ouest du Mexique",
+            "20": "Cap au sud, le long de la côte californienne",
+            "225": "Vue vers le sud, sur l’océan Pacifique, au-dessus de la Sierra Madre del Sur, au Mexique",
+            "280": "L’océan Pacifique au large de la côte du Mexique",
+            "290": "L’océan Pacifique au large de la côte du Mexique et du Guatemala",
+            "50": "Au-dessus du sud de la Californie, cap sur le Mexique",
+            "65": "À l’approche du désert de Mojave dans le sud de la Californie, avec le Mexique au loin",
+            "95": "Le golfe de Californie bordé par le désert de Sonora et la péninsule de Basse-Californie"
+        }
+    },
+    "7825C73A-658F-48EE-B14C-EC56673094AC": {
+        "name": "Au-dessus de l’Asie centrale, en direction des côtes chinoises",
+        "pointsOfInterest": {
+            "0": "Au-dessus de l’Asie centrale, en direction des côtes chinoises",
+            "10": "Au-dessus du centre de la Chine, en direction de Shanghai",
+            "30": "À l’approche de Shanghai, en direction de la Chine orientale",
+            "45": "À l’approche de Shanghai, en direction de la mer de Chine orientale",
+            "50": "Au-dessus de Shanghai, cap sur la mer de Chine orientale"
+        }
+    },
+    "78911B7E-3C69-47AD-B635-9C2486F6301D": {
+        "name": "L’aube au-dessus de l’océan Pacifique Sud",
+        "pointsOfInterest": {
+            "0": "L’aube au-dessus de l’océan Pacifique Sud",
+            "110": "À l’approche du lever du soleil sur la Nouvelle-Zélande",
+            "170": "Départ de la Nouvelle-Zélande en direction du nord-est, au-dessus de l’océan Pacifique",
+            "70": "L’aube au-dessus de la Nouvelle-Zélande"
+        }
+    },
+    "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": {
+        "name": "Au-dessus de l’Atlantique Nord, à l’approche des îles Britanniques",
+        "pointsOfInterest": {
+            "0": "Au-dessus de l’Atlantique Nord, à l’approche des îles Britanniques",
+            "105": "Au-dessus de l’Europe, en direction de la Russie",
+            "15": "Irlande et Grande-Bretagne",
+            "150": "Au-dessus de l’Europe de l’Est avec Moscou au loin",
+            "165": "Au-dessus de l’Europe de l’Est, en direction de Moscou",
+            "185": "Au-dessus de la Russie occidentale en passant par Moscou",
+            "195": "Au-dessus de la Russie, cap sur l’Asie centrale",
+            "45": "Au-dessus de la Grande-Bretagne, en direction du continent européen",
+            "65": "Au-dessus du nord-ouest de l’Europe, cap sur la Russie"
+        }
+    },
+    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
+        "name": "À l’approche du Tower Bridge sur la Tamise, à Londres",
+        "pointsOfInterest": {
+            "0": "À l’approche du Tower Bridge sur la Tamise, à Londres",
+            "130": "Le long de la Tamise vers le London Eye",
+            "20": "Le long de la Tamise à Londres",
+            "210": "À l’approche du London Eye sur la Tamise",
+            "310": "Le long de la Tamise de l’autre côté du London Eye",
+            "325": "Vue des Chambres du Parlement sur la Tamise, à Londres"
+        }
+    },
+    "81337355-E156-4242-AAF4-711768D30A54": {
+        "name": "Au-dessus de l’océan Indien en direction de Perth, en Australie",
+        "pointsOfInterest": {
+            "0": "Au-dessus de l’océan Indien en direction de Perth, en Australie",
+            "170": "Au-dessus de l’Australie-Occidentale, à l’approche du Territoire du Nord",
+            "220": "Au-dessus du Territoire du Nord, en Australie, cap sur la Nouvelle-Guinée",
+            "335": "Au-dessus de la mer d’Arafura, en direction de la Nouvelle-Guinée",
+            "50": "Cap au nord-est, à travers l’Australie occidentale"
+        }
+    },
+    "82175C1F-153C-4EC8-AE37-2860EA828004": {
+        "name": "Récifs de corail dans la mer Rouge, près de l’Égypte",
+        "pointsOfInterest": {
+            "0": "Récifs de corail dans la mer Rouge, près de l’Égypte"
+        }
+    },
+    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": {
+        "name": "Au-dessus de la réserve naturelle de Puu o Umi sur l’île de Hawaii",
+        "pointsOfInterest": {
+            "0": "Au-dessus de la réserve naturelle de Puu o Umi sur l’île de Hawaii"
+        }
+    },
+    "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8": {
+        "name": "Au-dessus de l’Upper East Side et de Central Park à New York",
+        "pointsOfInterest": {
+            "0": "Au-dessus de l’Upper East Side et de Central Park à New York",
+            "160": "À l’approche de l’Empire State Building à New York",
+            "205": "L’Empire State Building, cap sur Lower Manhattan",
+            "50": "Au-dessus de Midtown Manhattan, en direction du centre-ville et l’Empire State Building"
+        }
+    },
+    "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
+        "name": "Au-dessus de la baie de San Francisco, cap sur l’Embarcadero",
+        "pointsOfInterest": {
+            "0": "Au-dessus de la baie de San Francisco, cap sur l’Embarcadero",
+            "208": "Le long de Market Street dans San Francisco"
+        }
+    },
+    "87060EC2-D006-4102-98CC-3005C68BB343": {
+        "name": "Cap au nord-est, au-dessus des plateaux d’Éthiopie",
+        "pointsOfInterest": {
+            "0": "Cap au nord-est, au-dessus des plateaux d’Éthiopie",
+            "100": "En direction du nord-est, au-dessus de la péninsule d’Arabie",
+            "130": "Au-dessus de la péninsule d’Arabie, cap sur l’Iran",
+            "165": "Au-dessus de la péninsule d’Arabie, à l’approche de l’Iran",
+            "190": "À l’approche de la côte de l’Iran avec les monts Zagros au loin",
+            "210": "Au-dessus des monts Zagros, en Iran",
+            "240": "Au-dessus du désert du Dasht-e Lut en Iran",
+            "265": "Cap sur le Turkménistan et le désert du Karakoum",
+            "305": "Le fleuve Amou-Daria et les montagnes du Pamir-Alaï en Asie centrale",
+            "322": "Les montagnes du Pamir-Alaï et la vallée du Fergana en Asie centrale",
+            "360": "En direction du sud-est du Kazakhstan, en provenance du Kirghizistan",
+            "400": "Cap au nord, au-dessus du Kazakhstan",
+            "45": "Voyage au-dessus de la mer Rouge vers la péninsule d’Arabie",
+            "450": "Au-dessus des montagnes de l’Altaï, cap sur la Mongolie"
+        }
+    },
+    "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
+        "name": "Voyage le long de la Sheikh Zayed Road à Dubaï, aux Émirats arabes unis",
+        "pointsOfInterest": {
+            "0": "Voyage le long de la Sheikh Zayed Road à Dubaï, aux Émirats arabes unis"
+        }
+    },
+    "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
+        "name": "L’observatoire Griffith et les collines d’Hollywood à Los Angeles",
+        "pointsOfInterest": {
+            "0": "L’observatoire Griffith et les collines d’Hollywood à Los Angeles"
+        }
+    },
+    "8C31B06F-91A4-4F7C-93ED-56146D7F48B9": {
+        "name": "Vagues qui se brisent sur la côte de Tahiti",
+        "pointsOfInterest": {
+            "0": "Vagues qui se brisent sur la côte de Tahiti"
+        }
+    },
+    "92E48DE9-13A1-4172-B560-29B4668A87EE": {
+        "name": "Au-dessus de Santa Monica State Beach, près de Los Angeles",
+        "pointsOfInterest": {
+            "0": "Au-dessus de Santa Monica State Beach, près de Los Angeles",
+            "365": "Vol au-dessus de la jetée de Santa Monica, près de Los Angeles",
+            "430": "Au-dessus de Santa Monica State Beach, près de Los Angeles"
+        }
+    },
+    "9680B8EB-CE2A-4395-AF41-402801F4D6A6": {
+        "name": "À l’approche du Burj Khalifa au centre-ville de Dubaï, aux Émirats arabes unis",
+        "pointsOfInterest": {
+            "0": "À l’approche du Burj Khalifa au centre-ville de Dubaï, aux Émirats arabes unis",
+            "280": "Le Burj Khalifa au centre-ville de Dubaï, aux Émirats arabes unis",
+            "330": "Au-dessus du centre-ville de Dubaï, à l’approche de la côte"
+        }
+    },
+    "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C": {
+        "name": "Vol au-dessus des rizières en terrasse de Longji dans la province de Guangxi, en Chine",
+        "pointsOfInterest": {
+            "0": "Vol au-dessus des rizières en terrasse de Longji dans la province de Guangxi, en Chine"
+        }
+    },
+    "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
+        "name": "Vol au-dessus du domaine du palais de Buckingham, à Londres",
+        "pointsOfInterest": {
+            "0": "Vol au-dessus du domaine du palais de Buckingham, à Londres",
+            "104": "Traversée de la Tamise et vol au-dessus du London Eye",
+            "149": "Survol de South London",
+            "24": "Au-dessus du palais de Buckingham à Londres",
+            "279": "The Shard à South London",
+            "299": "Traversée de la Tamise à Londres",
+            "324": "Traversée de la Tamise au niveau du Tower Bridge, à Londres",
+            "49": "Au-dessus du parc Saint James en direction de la Tamise, à Londres"
+        }
+    },
+    "A837FA8C-C643-4705-AE92-074EFDD067F7": {
+        "name": "Cap au nord-est, au-dessus du Sahara, de nuit",
+        "pointsOfInterest": {
+            "0": "Cap au nord-est, au-dessus du Sahara, de nuit",
+            "100": "La côte méditerranéenne de Tunisie et de Libye",
+            "120": "Vol au-dessus de la mer Méditerranée, vers l’Italie",
+            "140": "Au-dessus du sud de l’Italie, à l’approche de la péninsule des Balkans avec la Turquie au loin",
+            "165": "Au-dessus de la péninsule des Balkans, cap sur la mer Noire",
+            "180": "Au-dessus de la péninsule des Balkans, à l’approche de la mer Noire",
+            "210": "Voyage au-dessus de la mer Noire vers l’Ukraine",
+            "230": "Voyage au-dessus de l’Ukraine, en direction de la Russie",
+            "70": "Au-dessus du Grand Erg oriental, en direction de la mer Méditerranée"
+        }
+    },
+    "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
+        "name": "Vol au-dessus de l’oasis de Liwa aux Émirats arabes unis",
+        "pointsOfInterest": {
+            "0": "Vol au-dessus de l’oasis de Liwa aux Émirats arabes unis"
+        }
+    },
+    "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
+        "name": "Au-dessus de l’océan Pacifique, en direction du Mexique",
+        "pointsOfInterest": {
+            "0": "Au-dessus de l’océan Pacifique, en direction du Mexique",
+            "105": "Vol au-dessus de la ville de Mexico en direction du golfe du Mexique",
+            "122": "Vol au-dessus du golfe du Mexique, en direction des États-Unis",
+            "180": "Au-dessus de Houston, à l’approche de La Nouvelle-Orléans aux États-Unis",
+            "190": "En direction de La Nouvelle-Orléans et de la côte du golfe du Mexique aux États-Unis",
+            "215": "Vol au-dessus du sud-est des États-Unis",
+            "280": "Au-dessus de l’est des États-Unis, en direction de New York",
+            "320": "Au-dessus de l’est des États-Unis, à l’approche de la ville de New York"
+        }
+    },
+    "B876B645-3955-420E-99DF-60139E451CF3": {
+        "name": "Voyage dans le parc national de Wulingyuan en Chine",
+        "pointsOfInterest": {
+            "0": "Voyage dans le parc national de Wulingyuan en Chine"
+        }
+    },
+    "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
+        "name": "Voyage le long de la péninsule de Nuussuaq au Groenland",
+        "pointsOfInterest": {
+            "0": "Voyage le long de la péninsule de Nuussuaq au Groenland"
+        }
+    },
+    "BA4ECA11-592F-4727-9221-D2A32A16EB28": {
+        "name": "Méduses dorées dans les eaux des Palaos",
+        "pointsOfInterest": {
+            "0": "Méduses dorées dans les eaux des Palaos",
+            "282": "Méduse lune au milieu de méduses dorées",
+            "348": "Méduses dorées dans les eaux des Palaos"
+        }
+    },
+    "C6DC4E54-1130-44F8-AF6F-A551D8E8A181": {
+        "name": "Méduses bleues, près des côtes de l’Alaska aux États-Unis",
+        "pointsOfInterest": {
+            "0": "Méduses bleues, près des côtes de l’Alaska aux États-Unis"
+        }
+    },
+    "C7AD3D0A-7EDF-412C-A237-B3C9D27381A1": {
+        "name": "À la dérive au-dessus de méduses bleues, près des côtes de l’Alaska aux États-Unis",
+        "pointsOfInterest": {
+            "0": "À la dérive au-dessus de méduses bleues, près des côtes de l’Alaska aux États-Unis"
+        }
+    },
+    "C8559883-6F3E-4AF2-8960-903710CD47B7": {
+        "name": "Vol au-dessus du pic Victoria à Hong Kong",
+        "pointsOfInterest": {
+            "0": "Vol au-dessus du pic Victoria à Hong Kong",
+            "150": "Vol au-dessus de Hong Kong vers Victoria Harbour",
+            "330": "Au-dessus de Victoria Harbour, à l’approche de la péninsule de Kowloon"
+        }
+    },
+    "CE279831-1CA7-4A83-A97B-FF1E20234396": {
+        "name": "Vol au-dessus de l’aéroport international de Los Angeles",
+        "pointsOfInterest": {
+            "0": "Vol au-dessus de l’aéroport international de Los Angeles"
+        }
+    },
+    "CE9B5D5B-B6E7-47C5-8C04-59BF182E98FB": {
+        "name": "Dauphins à long bec dans les eaux costaricaines",
+        "pointsOfInterest": {
+            "0": "Dauphins à long bec dans les eaux costaricaines"
+        }
+    },
+    "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
+        "name": "Voyage au-dessus de l’océan Pacifique vers l’Amérique centrale",
+        "pointsOfInterest": {
+            "0": "Voyage au-dessus de l’océan Pacifique vers l’Amérique centrale",
+            "110": "Au-dessus de la Jamaïque recouverte de nuages, dans la mer des Caraïbes",
+            "125": "Traversée de Cuba en direction d’Haïti et de la République dominicaine",
+            "170": "Voyage au-dessus des Bahamas vers Haïti et la République dominicaine",
+            "190": "Îles Turques-et-Caïques dans l’océan Atlantique",
+            "35": "Les côtes du Pacifique au Nicaragua, au Costa Rica et au Panama",
+            "50": "Vol au-dessus de l’Amérique centrale avec l’Amérique du Sud au loin",
+            "65": "La côte des Mosquitos du Nicaragua",
+            "85": "Au-dessus de la mer des Caraïbes, en direction de Cuba"
+        }
+    },
+    "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
+        "name": "Exploration du parc national de Wulingyuan en Chine",
+        "pointsOfInterest": {
+            "0": "Exploration du parc national de Wulingyuan en Chine"
+        }
+    },
+    "DD47D8E1-CB66-4C12-BFEA-2ADB0D8D1E2E": {
+        "name": "Une baleine à bosse au large de la Polynésie française",
+        "pointsOfInterest": {
+            "0": "Une baleine à bosse au large de la Polynésie française"
+        }
+    },
+    "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
+        "name": "La baie de San Francisco et le pont Golden Gate",
+        "pointsOfInterest": {
+            "0": "La baie de San Francisco et le pont Golden Gate",
+            "140": "En direction de la tour nord du Golden Gate, vers San Francisco",
+            "191": "Au-dessus de la baie de San Francisco"
+        }
+    },
+    "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
+        "name": "Au-dessus de l’Afrique occidentale, cap sur le Sahara",
+        "pointsOfInterest": {
+            "0": "Au-dessus de l’Afrique occidentale, cap sur le Sahara",
+            "110": "Vol au-dessus du Hoggar dans le Sahara, en Afrique du Nord",
+            "155": "Au-dessus du Grand Erg oriental, en Afrique du Nord, cap sur la mer Méditerranée",
+            "195": "La côte tunisienne et la mer Méditerranée",
+            "210": "Au-dessus de la côte tunisienne, cap sur l’Italie",
+            "230": "À l’approche de l’Italie dans la mer Méditerranée",
+            "245": "Au-dessus de l’Italie, en direction de la péninsule des Balkans",
+            "285": "Au-dessus de la péninsule des Balkans, en direction des monts Carpathes",
+            "30": "Traversée du Sahara en Afrique du Nord",
+            "310": "Les monts Carpathes et la mer Noire"
+        }
+    },
+    "E580E5A5-0888-4BE8-A4CA-F74A18A643C3": {
+        "name": "Méduses dorées dans les eaux des Palaos",
+        "pointsOfInterest": {
+            "0": "Méduses dorées dans les eaux des Palaos"
+        }
+    },
+    "E5DB138A-F04E-4619-B896-DE5CB538C534": {
+        "name": "Au-dessus de la Tunisie, en direction de l’Italie",
+        "pointsOfInterest": {
+            "0": "Au-dessus de la Tunisie, en direction de l’Italie",
+            "15": "Au-dessus du sud de l’Italie avec la péninsule des Balkans au loin",
+            "25": "Au-dessus de la péninsule des Balkans, cap sur l’Asie centrale",
+            "40": "Au-dessus de la péninsule des Balkans, passant par la mer Noire",
+            "5": "Au-dessus de la mer Méditerranée, face à la Sicile et à la péninsule italienne",
+            "55": "Au-dessus de l’Ukraine avec la Russie au loin",
+            "75": "Au-dessus du sud-ouest de la Russie en passant par le Kazakhstan"
+        }
+    },
+    "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
+        "name": "Vol au-dessus de la marina de Dubaï, aux Émirats arabes unis",
+        "pointsOfInterest": {
+            "0": "Vol au-dessus de la marina de Dubaï, aux Émirats arabes unis"
+        }
+    },
+    "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
+        "name": "Au-dessus de Victoria Harbour, en direction du centre de Hong Kong",
+        "pointsOfInterest": {
+            "0": "Au-dessus de Victoria Harbour, en direction du centre de Hong Kong"
+        }
+    },
+    "EB3F48E7-D30F-4079-858F-1A61331D5026": {
+        "name": "Dans une forêt d’algues au large des côtes californiennes aux États-Unis",
+        "pointsOfInterest": {
+            "0": "Dans une forêt d’algues au large des côtes californiennes aux États-Unis"
+        }
+    },
+    "EC3DC957-D4C2-4732-AACE-7D0C0F390EC8": {
+        "name": "Méduses dorées dans les eaux des Palaos",
+        "pointsOfInterest": {
+            "0": "Méduses dorées dans les eaux des Palaos"
+        }
+    },
+    "EC67726A-8212-4C5E-83CF-8412932740D2": {
+        "name": "Le panneau Hollywood à Los Angeles",
+        "pointsOfInterest": {
+            "0": "Le panneau Hollywood à Los Angeles",
+            "250": "Au-dessus des collines de Hollywood, à l’approche de Burbank, en Californie"
+        }
+    },
+    "EE01F02D-1413-436C-AB05-410F224A5B7B": {
+        "name": "Le fjord glacé d’Ilulissat au large de la côte du Groenland",
+        "pointsOfInterest": {
+            "0": "Le fjord glacé d’Ilulissat au large de la côte du Groenland"
+        }
+    },
+    "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
+        "name": "Au-dessus des Marin Headlands, face au pont Golden Gate",
+        "pointsOfInterest": {
+            "0": "Au-dessus des Marin Headlands, face au pont Golden Gate",
+            "150": "Traversée du pont Golden Gate vers le Presidio de San Francisco"
+        }
+    },
+    "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
+        "name": "La section Mutianyu de la Grande Muraille dans le district de Huairou, en Chine",
+        "pointsOfInterest": {
+            "0": "La section Mutianyu de la Grande Muraille dans le district de Huairou, en Chine"
+        }
+    },
+    "F07CC61B-30FC-4614-BDAD-3240B61F6793": {
+        "name": "Récif corallien près des Palaos",
+        "pointsOfInterest": {
+            "0": "Récif corallien près des Palaos"
+        }
+    },
+    "F439B0A7-D18C-4B14-9681-6520E6A74FE9": {
+        "name": "Le reflet du soleil le long de la côte iranienne",
+        "pointsOfInterest": {
+            "0": "Le reflet du soleil le long de la côte iranienne",
+            "15": "Vol au-dessus de l’Iran au crépuscule",
+            "60": "Vol au-dessus de l’Asie centrale au crépuscule"
+        }
+    },
+    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
+        "name": "Vue du centre-ville de Los Angeles",
+        "pointsOfInterest": {
+            "0": "Vue du centre-ville de Los Angeles"
+        }
+    },
+    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
+        "name": "À l’approche du Tower Bridge sur la Tamise, à Londres",
+        "pointsOfInterest": {
+            "0": "À l’approche du Tower Bridge sur la Tamise, à Londres",
+            "20": "Traversée de la Tamise à Londres",
+            "200": "Traversée de la Tamise vers Westminster, à Londres",
+            "270": "Au-dessus de Westminster, à Londres",
+            "60": "The Shard à South London",
+            "92": "Au sud de la Tamise, en direction du London Eye"
+        }
+    },
+    "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {
+        "name": "Au-dessus de Victoria Harbour, face à l’Île de Hong Kong",
+        "pointsOfInterest": {
+            "0": "Au-dessus de Victoria Harbour, face à l’Île de Hong Kong"
+        }
+    }
+}

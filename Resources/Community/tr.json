@@ -1,0 +1,740 @@
+{
+    "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8": {
+        "name": "Birleşik Arap Emirlikleri’nde Dubai Marina üzerinde uçuluyor",
+        "pointsOfInterest": {
+            "0": "Birleşik Arap Emirlikleri’nde Dubai Marina üzerinde uçuluyor"
+        }
+    },
+    "009BA758-7060-4479-8EE8-FB9B40C8FB97": {
+        "name": "Sibirya ve Moğolistan üzerinde güneydoğuya doğru gidiliyor",
+        "pointsOfInterest": {
+            "0": "Sibirya ve Moğolistan üzerinde güneydoğuya doğru gidiliyor",
+            "110": "Kore Yarımadası üzerinde Çin’e doğru yolculuk",
+            "150": "Kore Yarımadası üzerinde, ufukta Japonya",
+            "180": "Güney Kore üzerinde Japonya’ya doğru yolculuk",
+            "195": "Japonya üzerinde Pasifik Okyanusu’na doğru bakılıyor",
+            "22": "Moğolistan’ın iç bölgelerine doğru ilerleniyor",
+            "260": "Japonya’nın güney doğusunda Pasifik Okyanusu üzerinde",
+            "32": "Moğolistan üzerinde Çin’e doğru yolculuk",
+            "60": "Kuzey Çin üzerinde Kore Yarımadası’na doğru ilerleniyor"
+        }
+    },
+    "00BA71CD-2C54-415A-A68A-8358E677D750": {
+        "name": "Birleşik Arap Emirlikleri’nde Dubai şehir merkezine yaklaşılıyor",
+        "pointsOfInterest": {
+            "0": "Birleşik Arap Emirlikleri’nde Dubai şehir merkezine yaklaşılıyor",
+            "210": "Birleşik Arap Emirlikleri’nde Dubai şehir merkezine doğru yol alınıyor"
+        }
+    },
+    "024891DE-B7F6-4187-BFE0-E6D237702EF0": {
+        "name": "Wan Chai üzerinde Hong Kong şehir merkezine yaklaşılıyor",
+        "pointsOfInterest": {
+            "0": "Wan Chai üzerinde Hong Kong şehir merkezine yaklaşılıyor",
+            "150": "Hong Kong şehir merkezi üzerinde",
+            "270": "Hong Kong Adası üzerinde"
+        }
+    },
+    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": {
+        "name": "Antarktika üzerinde Güney Işıkları",
+        "pointsOfInterest": {
+            "0": "Antarktika üzerinde Güney Işıkları"
+        }
+    },
+    "044AD56C-A107-41B2-90CC-E60CCACFBCF5": {
+        "name": "Çin Seddi’nin Mutianyu bölümü, Huairou Semti, Çin",
+        "pointsOfInterest": {
+            "0": "Çin Seddi’nin Mutianyu bölümü, Huairou Semti, Çin"
+        }
+    },
+    "1088217C-1410-4CF7-BDE9-8F573A4DBCD9": {
+        "name": "Pasifik Okyanusu üzerinde Orta Amerika’ya doğru yolculuk",
+        "pointsOfInterest": {
+            "0": "Pasifik Okyanusu üzerinde Orta Amerika’ya doğru yolculuk",
+            "100": "Karayip Denizi’ne doğru Orta Amerika üzerinden geçiliyor",
+            "150": "Karayip Denizi üzerinde Küba’ya doğru ilerleniyor",
+            "240": "Küba üzerinde, arkada Florida ve Bahamalar",
+            "300": "Florida ve Bahamalar üzerinde Sargasso Denizi’ne doğru yolculuk",
+            "350": "Sargasso Denizi üzerinde Atlantik Okyanusu’na doğru yol alınıyor",
+            "70": "Orta Amerika’nın güneybatı kıyılarında Karayip Denizi’ne doğru yol alınıyor"
+        }
+    },
+    "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
+        "name": "Pasifik Okyanusu üzerinde Kaliforniya kıyılarına doğru yolculuk",
+        "pointsOfInterest": {
+            "0": "Pasifik Okyanusu üzerinde Kaliforniya kıyılarına doğru yolculuk",
+            "110": "Amerika Birleşik Devletleri’nde Las Vegas üzerinde Salt Lake City’ye doğru yol alınıyor",
+            "120": "Amerika Birleşik Devletleri’nin doğusu üzerinde New York City’ye yaklaşılıyor",
+            "155": "Amerika Birleşik Devletleri’nde Salt Lake City ve Denver arasından geçiliyor",
+            "170": "Amerika Birleşik Devletleri’nde, Rocky Dağları üzerinde",
+            "70": "Kaliforniya kıyıları üzerinde iç bölgelere doğru yolculuk",
+            "85": "Amerika Birleşik Devletleri’nin batı kıyılarında Los Angeles üzerinden geçiliyor",
+            "95": "Amerika Birleşik Devletleri’nde Los Angeles üzerinde Las Vegas’a yaklaşılıyor"
+        }
+    },
+    "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7": {
+        "name": "Hawaii adasındaki Kohala Forest Reserve’de Laupāhoehoe Nui üzerinde uçuluyor",
+        "pointsOfInterest": {
+            "0": "Hawaii adasındaki Kohala Forest Reserve’de Laupāhoehoe Nui üzerinde uçuluyor"
+        }
+    },
+    "149E7795-DBDA-4F5D-B39A-14712F841118": {
+        "name": "Tahiti kıyılarına çarpan dalgalar",
+        "pointsOfInterest": {
+            "0": "Tahiti kıyılarına çarpan dalgalar"
+        }
+    },
+    "22162A9B-DB90-4517-867C-C676BC3E8E95": {
+        "name": "Çin Seddi’nin Mutianyu bölümü, Huairou Semti, Çin",
+        "pointsOfInterest": {
+            "0": "Çin Seddi’nin Mutianyu bölümü, Huairou Semti, Çin"
+        }
+    },
+    "258A6797-CC13-4C3A-AB35-4F25CA3BF474": {
+        "name": "Hawaii adasındaki Pu‘u O ‘Umi Natural Area Reserve üzerinde",
+        "pointsOfInterest": {
+            "0": "Hawaii adasındaki Pu‘u O ‘Umi Natural Area Reserve üzerinde"
+        }
+    },
+    "27A37B0F-738D-4644-A7A4-E33E7A6C1175": {
+        "name": "Amerika Birleşik Devletleri’nde Kaliforniya kıyıları açıklarında yunuslar",
+        "pointsOfInterest": {
+            "0": "Amerika Birleşik Devletleri’nde Kaliforniya kıyıları açıklarında yunuslar"
+        }
+    },
+    "29BDF297-EB43-403A-8719-A78DA11A2948": {
+        "name": "Fisherman’s Wharf üzerinde San Francisco şehir merkezine doğru yol alınıyor",
+        "pointsOfInterest": {
+            "0": "Fisherman’s Wharf üzerinde San Francisco şehir merkezine doğru yol alınıyor",
+            "150": "San Francisco şehir merkezi ve Körfez Köprüsü’ne doğru Coit Kulesi’nden geçiliyor",
+            "196": "San Francisco şehir merkezi",
+            "80": "Arka planda San Francisco şehir merkezi ve Körfez Köprüsü ile Coit Tower’a yaklaşılıyor"
+        }
+    },
+    "2B30E324-E4FF-4CC1-BA45-A958C2D2B2EC": {
+        "name": "Borneo yakınlarındaki sularda Chevron Barracuda sürüsü",
+        "pointsOfInterest": {
+            "0": "Borneo yakınlarındaki sularda Chevron Barracuda sürüsü"
+        }
+    },
+    "2F52E34C-39D4-4AB1-9025-8F7141FAA720": {
+        "name": "Grönland açıklarında Ilulissat Buz Fiyordu",
+        "pointsOfInterest": {
+            "0": "Grönland açıklarında Ilulissat Buz Fiyordu"
+        }
+    },
+    "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
+        "name": "Afrika Boynuzu üzerinde Aden Körfezi’ne doğru yolculuk",
+        "pointsOfInterest": {
+            "0": "Afrika Boynuzu üzerinde Aden Körfezi’ne doğru yolculuk",
+            "115": "Umman Körfezi üzerinde Mekran’a yaklaşılıyor",
+            "145": "İran’ın and Pakistan’ın Mekran Bölgesi",
+            "160": "İran üzerinde, Afganistan’a ve Pakistan’a doğru ilerleniyor",
+            "180": "Afganistan ve Pakistan üzerinde Karakurum Dağları’na doğru ilerleniyor",
+            "235": "Karakurum Dağları üzerinde Çin’in iç bölgelerine doğru yolculuk",
+            "280": "Çin’in batısındaki Taklamakan Çölü",
+            "315": "Orta Asya’da Tanrı Dağları",
+            "45": "Güneydoğu Arap Yarımadası"
+        }
+    },
+    "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
+        "name": "Los Angeles üzerinde Interstate 110 north takip ediliyor",
+        "pointsOfInterest": {
+            "0": "Los Angeles üzerinde Interstate 110 north takip ediliyor"
+        }
+    },
+    "3716DD4B-01C0-4F5B-8DD6-DB771EC472FB": {
+        "name": "Fransız Polinezyası yakınında yüzen gri resif köpek balıkları",
+        "pointsOfInterest": {
+            "0": "Fransız Polinezyası yakınında yüzen gri resif köpek balıkları"
+        }
+    },
+    "391BDF6E-3279-4CE1-9CA5-0F82811452D7": {
+        "name": "Güney Afrika'daki Cape Yarımadası açıklarında Güney Afrika Kürklü Fokları",
+        "pointsOfInterest": {
+            "0": "Güney Afrika'daki Cape Yarımadası açıklarında Güney Afrika Kürklü Fokları"
+        }
+    },
+    "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
+        "name": "Central Park üzerinde New York’taki Midtown Manhattan’a doğru yolculuk",
+        "pointsOfInterest": {
+            "0": "Central Park üzerinde New York’taki Midtown Manhattan’a doğru yolculuk",
+            "246": "New York’ta Midtown Manhattan üzerinde"
+        }
+    },
+    "3C4678E4-4D3D-4A40-8817-77752AEA62EB": {
+        "name": "Uzakta Britanya Adaları ile Batı Avrupa üzerinden seyahat ediliyor",
+        "pointsOfInterest": {
+            "0": "Uzakta Britanya Adaları ile Batı Avrupa üzerinden seyahat ediliyor",
+            "100": "İyonya Denizi ve Ege Denizi arasında Yunanistan",
+            "160": "Akdeniz üzerinde güneydoğuya doğru yolculuk",
+            "185": "Akdeniz ve Nil Nehri Havzası",
+            "20": "Alp Dağları ve Po Nehri Ovası üzerinde kuzeydoğuya doğru ilerleniyor",
+            "205": "Mısır’da Sahra Çölü boyunca akan Nil Nehri",
+            "220": "Nil Nehri ve Süveyş Kanalı arasında Doğu Sahra Çölü",
+            "240": "Kızıl Deniz üzerinde güneydoğuya doğru ilerleniyor",
+            "50": "İtalyan Yarımadası’nın ve Adriyatik Denizi’nin güneyine doğru ilerleniyor"
+        }
+    },
+    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": {
+        "name": "Hawaii adasındaki Kohala sahil şeridi takip ediliyor",
+        "pointsOfInterest": {
+            "0": "Hawaii adasındaki Kohala sahil şeridi takip ediliyor"
+        }
+    },
+    "3E94AE98-EAF2-4B09-96E3-452F46BC114E": {
+        "name": "Körfez Köprüsü ve San Francisco şehir merkezine yaklaşılıyor",
+        "pointsOfInterest": {
+            "0": "Körfez Köprüsü ve San Francisco şehir merkezine yaklaşılıyor",
+            "116": "San Francisco Köprüsü üzerinde şehir merkezine doğru gidiliyor",
+            "80": "San Francisco şehir merkezine doğru Körfez Köprüsü üzerinden geçiliyor"
+        }
+    },
+    "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
+        "name": "Birleşik Arap Emirlikleri’nde Dubai Marina boyunca uçuluyor",
+        "pointsOfInterest": {
+            "0": "Birleşik Arap Emirlikleri’nde Dubai Marina boyunca uçuluyor"
+        }
+    },
+    "44166C39-8566-4ECA-BD16-43159429B52F": {
+        "name": "Times Meydanı, New York’a doğru 7. Cadde’ye doğru gidiliyor",
+        "pointsOfInterest": {
+            "0": "Times Meydanı, New York’a doğru 7. Cadde’ye doğru gidiliyor",
+            "120": "Midtown Manhattan, New York’ta 7. Cadde’ye doğru gidiliyor",
+            "40": "New York’ta Aşağı Manhattan üzerinde"
+        }
+    },
+    "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943": {
+        "name": "Hawaii adasındaki Kohala Forest Reserve’de Honopū Valley’e yaklaşırken",
+        "pointsOfInterest": {
+            "0": "Hawaii adasındaki Kohala Forest Reserve’de Honopū Valley’e yaklaşırken"
+        }
+    },
+    "4AD99907-9E76-408D-A7FC-8429FF014201": {
+        "name": "San Francisco Körfezi üzerinde Embarcadero’ya doğru gidiliyor",
+        "pointsOfInterest": {
+            "0": "San Francisco Körfezi üzerinde Embarcadero’ya doğru gidiliyor",
+            "150": "San Francisco şehir merkezi üzerinde Market Street takip ediliyor",
+            "360": "San Francisco üzerinde Market Street takip ediliyor",
+            "90": "Embarcadero’dan San Francisco’daki Market Street’e bakılıyor"
+        }
+    },
+    "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589": {
+        "name": "Amerika Birleşik Devletleri’nde Büyük Ovalar’a doğru ilerleniyor",
+        "pointsOfInterest": {
+            "0": "Amerika Birleşik Devletleri’nde Büyük Ovalar’a doğru ilerleniyor",
+            "120": "Amerika Birleşik Devletleri’nin güneydoğusu üzerinde Florida’ya doğru yol alınıyor",
+            "220": "Florida üzerinde Bahamalar’a doğru yolculuk",
+            "240": "Bahamalar üzerinde güneydoğuya doğru ilerleniyor",
+            "285": "Bahamalar üzerinde Dominik Cumhuriyeti’ne ve Haiti’ye yaklaşılıyor",
+            "300": "Dominik Cumhuriyeti ve Haiti üzerinde Karayip Denizi’ne yaklaşılıyor",
+            "315": "Karayip Denizi üzerinde Venezuela’ya doğru yol alınıyor",
+            "90": "Amerika Birleşik Devletleri’nin Ortabatı eyaletleri üzerinde güneydoğuya doğru ilerleniyor"
+        }
+    },
+    "537A4DAB-83B0-4B66-BCD1-05E5DBB4A268": {
+        "name": "Borneo açıklarında Bigeye Jack sürüsü",
+        "pointsOfInterest": {
+            "0": "Borneo açıklarında Bigeye Jack sürüsü"
+        }
+    },
+    "581A4F1A-2B6D-468C-A1BE-6F473F06D10B": {
+        "name": "Borneo’nun okyanus tabanında Boynuzlu Deniz Yıldızları",
+        "pointsOfInterest": {
+            "0": "Borneo’nun okyanus tabanında Boynuzlu Deniz Yıldızları"
+        }
+    },
+    "58754319-8709-4AB0-8674-B34F04E7FFE2": {
+        "name": "Londra’da Thames Nehri üzerindeki Tower Bridge’e yaklaşılıyor",
+        "pointsOfInterest": {
+            "0": "Londra’da Thames Nehri üzerindeki Tower Bridge’e yaklaşılıyor",
+            "178": "Londra’daki Thames Nehri’nin güneyi",
+            "258": "Londra’daki Thames Nehri üzerinden geçiliyor",
+            "78": "Londra’daki Thames Nehri takip edilirken"
+        }
+    },
+    "58C75C62-3290-47B8-849C-56A583173570": {
+        "name": "Meksika kıyıları açıklarında altın renkli inek burunlu vatozlar",
+        "pointsOfInterest": {
+            "0": "Meksika kıyıları açıklarında altın renkli inek burunlu vatozlar"
+        }
+    },
+    "6143116D-03BB-485E-864E-A8CF58ACF6F1": {
+        "name": "Güney Afrika'daki Cape Yarımadası yakınlarında bir yosun ormanında dolaşılıyor",
+        "pointsOfInterest": {
+            "0": "Güney Afrika'daki Cape Yarımadası yakınlarında bir yosun ormanında dolaşılıyor"
+        }
+    },
+    "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": {
+        "name": "Kanarya Adaları, Atlantik Okyanusu ve Afrika kıyıları",
+        "pointsOfInterest": {
+            "0": "Kanarya Adaları, Atlantik Okyanusu ve Afrika kıyıları",
+            "105": "Fas üzerinde Akdeniz’e yaklaşılıyor",
+            "125": "Akdeniz ve güney İspanya",
+            "145": "İspanya, Costa Blanca üzerinde kuzeydoğuya doğru yolculuk",
+            "165": "İspanya’nın Balear Adaları üzerinde kuzeydoğuya doğru yolculuk",
+            "185": "Batı Akdeniz üzerinde ufukta Alp dağları",
+            "220": "Alp Dağları üzerinde kuzeydoğuya doğru gidiliyor",
+            "45": "Fas kıyılarından kuzeye doğru gidiliyor",
+            "75": "Fas’ta Atlas Dağları üzerinden geçiliyor"
+        }
+    },
+    "640DFB00-FBB9-45DA-9444-9F663859F4BC": {
+        "name": "New York Limanı’ndan Aşağı Manhattan’a yaklaşılıyor",
+        "pointsOfInterest": {
+            "0": "New York Limanı’ndan Aşağı Manhattan’a yaklaşılıyor",
+            "110": "Aşağı Manhattan yakınlarından Özgürlük Kulesi’ne yaklaşılıyor",
+            "180": "Midtown Manhattan’a doğru One World Trade Center’dan geçiliyor",
+            "210": "New York’ta Aşağı Manhattan üzerinden Midtown’a doğru gidiliyor"
+        }
+    },
+    "64D11DAB-3B57-4F14-AD2F-E59A9282FA44": {
+        "name": "Kuzey Atlantik Okyanusu üzerinde Portekiz’e doğru yol alınıyor",
+        "pointsOfInterest": {
+            "0": "Kuzey Atlantik Okyanusu üzerinde Portekiz’e doğru yol alınıyor",
+            "115": "Portekiz ve İspanya üzerinde",
+            "150": "İber Yarımadasından uzaklaşıp Biskay Körfezi ve Fransa üzerinden geçiliyor",
+            "180": "Batı Avrupa üzerinde ufukta Kuzey Atlantik Okyanusu"
+        }
+    },
+    "687D03A2-18A5-4181-8E85-38F3A13409B9": {
+        "name": "Borneo’nun mercan resifleri üzerinde Küt Kafalı Papağan Balıkları",
+        "pointsOfInterest": {
+            "0": "Borneo’nun mercan resifleri üzerinde Küt Kafalı Papağan Balıkları"
+        }
+    },
+    "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
+        "name": "San Francisco’dan Golden Gate Köprüsü’ne yaklaşılıyor",
+        "pointsOfInterest": {
+            "0": "San Francisco’dan Golden Gate Köprüsü’ne yaklaşılıyor",
+            "140": "Golden Gate Köprüsü üzerinden geçiliyor",
+            "230": "Golden Gate Köprüsü’nün Kuzey Kulesi tarafından geçiliyor",
+            "260": "San Francisco Körfezi üzerinde Golden Gate Köprüsü yakınlarına gidiliyor",
+            "60": "Marin Headlands yönüne doğru Golden Gate Köprüsü yakınları"
+        }
+    },
+    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
+        "name": "Pasifik Okyanusu üzerinde Güney Aşağı Kaliforniya’ya doğru yolculuk",
+        "pointsOfInterest": {
+            "0": "Pasifik Okyanusu üzerinde Güney Aşağı Kaliforniya’ya doğru yolculuk",
+            "110": "Rocky Dağları üzerinde Denver’a yaklaşılıyor",
+            "125": "Amerika Birleşik Devletleri’nde Büyük Ovalar üzerinde yolculuk",
+            "185": "Ufukta Ontario, Kanada, Büyük Göller’e doğru yaklaşılıyor",
+            "200": "Büyük Göller üzerinde Ontario, Kanada’ya yaklaşılıyor",
+            "210": "Batı Ontario, Kanada üzerinde Kuzey Işıkları",
+            "235": "Kuzey Ontario, Kanada üzerinde Kuzey Işıkları",
+            "250": "Quebec, Kanada üzerinde Kuzey Işıkları",
+            "300": "Labrador, Kanada üzerinde Kuzey Işıkları’nın göründüğü Kuzey Atlantik’e doğru yol alınıyor",
+            "45": "Güney Aşağı Kaliforniya üzerinde kuzeye, Amerika Birleşik Devletleri’ne doğru bakılıyor",
+            "55": "Meksika üzerinde Amerika Birleşik Devletleri’nin güneybatısına doğru yol alınıyor",
+            "75": "Amerika Birleşik Devletleri’nin güneybatısı üzerinde"
+        }
+    },
+    "7719B48A-2005-4011-9280-2F64EEC6FD91": {
+        "name": "Pasifik Okyanusu üzerinde Amerika Birleşik Devletleri’ne doğru yol alınıyor",
+        "pointsOfInterest": {
+            "0": "Pasifik Okyanusu üzerinde Amerika Birleşik Devletleri’ne doğru yol alınıyor",
+            "130": "Meksika’nın batı kıyılarında Sierra Madre Occidental dağları",
+            "185": "Sierra Madre Occidental dağları üzerinde Meksika’nın batı kıyılarına doğru yolculuk",
+            "20": "Kaliforniya kıyılarından güneye doğru yolculuk",
+            "225": "Meksika’daki Sierra Madre del Sur üzerinde güneye, Pasifik Okyanusu’na bakılıyor",
+            "280": "Meksika’nın Pasifik Okyanusu kıyıları",
+            "290": "Meksika’nın ve Guatemala’nın Pasifik Okyanusu kıyıları",
+            "50": "Güney Kaliforniya üzerinde Meksika’ya doğru yol alınıyor",
+            "65": "Güney Kaliforniya’da ufukta Meksika, Mojave Çölü’ne yaklaşılıyor",
+            "95": "Sonoran Çölü ve Güney Aşağı Kaliforniya Yarımadası arasında Kaliforniya Körfez"
+        }
+    },
+    "7825C73A-658F-48EE-B14C-EC56673094AC": {
+        "name": "Orta Asya üzerinde Çin sahillerine doğru yolculuk",
+        "pointsOfInterest": {
+            "0": "Orta Asya üzerinde Çin sahillerine doğru yolculuk",
+            "10": "Çin üzerinde Şangay’a doğru yolculuk",
+            "30": "Doğu Çin yolunda Şangay’a doğru yol alınıyor",
+            "45": "Doğu Çin Denizi yolunda Şangay’a yaklaşılıyor",
+            "50": "Şangay üzerinden Doğu Çin Denizi’ne doğru gidiliyor"
+        }
+    },
+    "78911B7E-3C69-47AD-B635-9C2486F6301D": {
+        "name": "Güney Pasifik Okyanusu üzerinde geceden gündüze geçiliyor",
+        "pointsOfInterest": {
+            "0": "Güney Pasifik Okyanusu üzerinde geceden gündüze geçiliyor",
+            "110": "Yeni Zelanda üzerinde güneşin doğuşuna yaklaşılıyor",
+            "170": "Pasifik Okyanusu üzerinde Yeni Zelanda’dan kuzeydoğuya doğru yol alınıyor",
+            "70": "Yeni Zelanda üzerinde geceden gündüze geçiliyor"
+        }
+    },
+    "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": {
+        "name": "Kuzey Atlantik üzerinde Britanya Adaları’na yaklaşılıyor",
+        "pointsOfInterest": {
+            "0": "Kuzey Atlantik üzerinde Britanya Adaları’na yaklaşılıyor",
+            "105": "Orta Avrupa üzerinde Rusya’ya doğru yol alınıyor",
+            "15": "İrlanda ve Büyük Britanya",
+            "150": "Doğu Avrupa üzerinde, ufukta Moskova",
+            "165": "Doğu Avrupa üzerinde Moskova’ya doğru bakılıyor",
+            "185": "Rusya’nın batısında Moskova üzerinden geçiliyor",
+            "195": "Rusya üzerinde orta Asya’ya doğru yolculuk",
+            "45": "Büyük Britanya üzerinde Avrupa’ya doğru yolculuk",
+            "65": "Kuzeybatı Avrupa üzerinde Rusya’ya doğru yol alınıyor"
+        }
+    },
+    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
+        "name": "Londra’da Thames Nehri üzerindeki Tower Bridge’e yaklaşılıyor",
+        "pointsOfInterest": {
+            "0": "Londra’da Thames Nehri üzerindeki Tower Bridge’e yaklaşılıyor",
+            "130": "London Eye’a doğru Thames Nehri takip ediliyor",
+            "20": "Londra’daki Thames Nehri takip edilirken",
+            "210": "Thames Nehri üzerindeki London Eye’a yaklaşılıyor",
+            "310": "London Eye geçilerek Thames Nehri takip ediliyor",
+            "325": "Londra’daki Thames Nehri üzerinde Parlamento Binası üzerinde geçiliyor"
+        }
+    },
+    "81337355-E156-4242-AAF4-711768D30A54": {
+        "name": "Hint Okyanusu üzerinde Perth, Avustralya’ya doğru yol alınıyor",
+        "pointsOfInterest": {
+            "0": "Hint Okyanusu üzerinde Perth, Avustralya’ya doğru yol alınıyor",
+            "170": "Batı Avustralya üzerinde Kuzey Toprakları’na yaklaşılıyor",
+            "220": "Avustralya’nın Kuzey Toprakları üzerinde Yeni Gine’ye doğru ilerleniyor",
+            "335": "Arafura Denizi üzerinde Yeni Gine’ye doğru yolculuk",
+            "50": "Avustralya’nın batısı boyunca kuzeydoğuya doğru yolculuk"
+        }
+    },
+    "82175C1F-153C-4EC8-AE37-2860EA828004": {
+        "name": "Mısır yakınında Kızıldeniz’de mercan resifi",
+        "pointsOfInterest": {
+            "0": "Mısır yakınında Kızıldeniz’de mercan resifi"
+        }
+    },
+    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": {
+        "name": "Hawaii adasındaki Pu‘u O ‘Umi Natural Area Reserve üzerinde",
+        "pointsOfInterest": {
+            "0": "Hawaii adasındaki Pu‘u O ‘Umi Natural Area Reserve üzerinde"
+        }
+    },
+    "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8": {
+        "name": "New York’ta Upper East Side ve Central Park üzerinde",
+        "pointsOfInterest": {
+            "0": "New York’ta Upper East Side ve Central Park üzerinde",
+            "160": "New York’taki Empire State Binası’na yaklaşılıyor",
+            "205": "Empire State Binası geçilerek Aşağı Manhattan’a doğru gidiliyor",
+            "50": "Midtown Manhattan üzerinde Empire State Binası’na doğru şehir merkezine gidiliyor"
+        }
+    },
+    "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
+        "name": "San Francisco Körfezi üzerinde Embarcadero’ya doğru gidiliyor",
+        "pointsOfInterest": {
+            "0": "San Francisco Körfezi üzerinde Embarcadero’ya doğru gidiliyor",
+            "208": "San Francisco üzerinde Market Street takip ediliyor"
+        }
+    },
+    "87060EC2-D006-4102-98CC-3005C68BB343": {
+        "name": "Etiyopya Yükseltileri üzerinde kuzeydoğuya doğru yolculuk",
+        "pointsOfInterest": {
+            "0": "Etiyopya Yükseltileri üzerinde kuzeydoğuya doğru yolculuk",
+            "100": "Arap Yarımadası üzerinde kuzeydoğuya doğru gidiliyor",
+            "130": "Arap Yarımadası üzerinde İran’a doğru ilerleniyor",
+            "165": "Arap Yarımadası üzerinde İran’a yaklaşılıyor",
+            "190": "Ufukta Zagros Dağları İran’a doğru yaklaşılıyor",
+            "210": "İran’da Zagros Dağları üzerinde",
+            "240": "İran’da Lut Çölü üzerinde",
+            "265": "Türkmenistan’a ve Karakum Çölü’ne doğru ilerleniyor",
+            "305": "Orta Asya’da Ceyhun Nehri ve Pamir-Altay Dağları",
+            "322": "Orta Asya’da Pamir-Altay Dağları ve Fergana Vadisi",
+            "360": "Kırgızistan’dan güneydoğu Kazakistan’a doğru ilerleniyor",
+            "400": "Kazakistan üzerinde kuzeye doğru yolculuk",
+            "45": "Kızıl Deniz üzerinde Arap Yarımadası’na doğru gidiliyor",
+            "450": "Altay Dağları üzerinde Moğolistan’a doğru ilerleniyor"
+        }
+    },
+    "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
+        "name": "Birleşik Arap Emirlikleri’nde Dubai’deki Şeyh Zayed Yolu boyunca ilerleniyor",
+        "pointsOfInterest": {
+            "0": "Birleşik Arap Emirlikleri’nde Dubai’deki Şeyh Zayed Yolu boyunca ilerleniyor"
+        }
+    },
+    "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
+        "name": "Los Angeles’taki Griffith Rasathanesi ve Hollywood Hills",
+        "pointsOfInterest": {
+            "0": "Los Angeles’taki Griffith Rasathanesi ve Hollywood Hills"
+        }
+    },
+    "8C31B06F-91A4-4F7C-93ED-56146D7F48B9": {
+        "name": "Tahiti kıyılarına çarpan dalgalar",
+        "pointsOfInterest": {
+            "0": "Tahiti kıyılarına çarpan dalgalar"
+        }
+    },
+    "92E48DE9-13A1-4172-B560-29B4668A87EE": {
+        "name": "Los Angeles yakınlarındaki Santa Monica State Beach üzerinde",
+        "pointsOfInterest": {
+            "0": "Los Angeles yakınlarındaki Santa Monica State Beach üzerinde",
+            "365": "Los Angeles yakınlarında Santa Monica İskelesi üzerinden geçiliyor",
+            "430": "Los Angeles yakınlarındaki Santa Monica State Beach üzerinde"
+        }
+    },
+    "9680B8EB-CE2A-4395-AF41-402801F4D6A6": {
+        "name": "Birleşik Arap Emirlikleri’nde Dubai şehir merkezi Burj Khalifa’ya yaklaşılıyor",
+        "pointsOfInterest": {
+            "0": "Birleşik Arap Emirlikleri’nde Dubai şehir merkezi Burj Khalifa’ya yaklaşılıyor",
+            "280": "Birleşik Arap Emirlikleri’nde Dubai şehir merkezi Burj Khalifa üzerinden geçiliyor",
+            "330": "Dubai şehir merkezi üzerinde sahil şeridine yaklaşılıyor"
+        }
+    },
+    "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C": {
+        "name": "Guangksi Bölgesi, Çin’deki Longji pirinç tarlalarından geçiliyor",
+        "pointsOfInterest": {
+            "0": "Guangksi Bölgesi, Çin’deki Longji pirinç tarlalarından geçiliyor"
+        }
+    },
+    "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
+        "name": "Londra’daki Buckingham Sarayı üzerinden geçiliyor",
+        "pointsOfInterest": {
+            "0": "Londra’daki Buckingham Sarayı üzerinden geçiliyor",
+            "104": "Thames Nehri ve London Eye üzerinden geçiliyor",
+            "149": "Güney Londra üzerinden geçiliyor",
+            "24": "Londra’daki Buckingham Sarayı üzerinde",
+            "279": "Güney Londra’da The Shard üzerinden geçiliyor",
+            "299": "Londra’daki Thames Nehri üzerinden geçiliyor",
+            "324": "Londra’da Tower Bridge’den Thames Nehri üzerinden geçiliyor",
+            "49": "St James’s Park üzerinde Thames Nehri, Londra’ya doğru gidiliyor"
+        }
+    },
+    "A837FA8C-C643-4705-AE92-074EFDD067F7": {
+        "name": "Gece Sahra Çölü üzerinde kuzeydoğuya doğru yolculuk",
+        "pointsOfInterest": {
+            "0": "Gece Sahra Çölü üzerinde kuzeydoğuya doğru yolculuk",
+            "100": "Tunus’un ve Libya’nın Akdeniz kıyıları",
+            "120": "Akdeniz üzerinde İtalya’ya doğru gidiliyor",
+            "140": "Güney İtalya üzerinde uzakta görünen Türkiye’ye doğru Balkan Yarımadası’na yaklaşılıyor",
+            "165": "Balkan Yarımadası üzerinde Karadeniz’e doğru ilerleniyor",
+            "180": "Balkan Yarımadası üzerinde Karadeniz’e yaklaşılıyor",
+            "210": "Karadeniz üzerinde Ukrayna’ya doğru gidiliyor",
+            "230": "Ukrayna üzerinde Rusya’ya doğru gidiliyor",
+            "70": "Sahra Çölü üzerinde Akdeniz’e doğru yol alınıyor"
+        }
+    },
+    "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
+        "name": "Birleşik Arap Emirlikleri’nde Dubai Marina üzerinde uçuluyor",
+        "pointsOfInterest": {
+            "0": "Birleşik Arap Emirlikleri’nde Dubai Marina üzerinde uçuluyor"
+        }
+    },
+    "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
+        "name": "Pasifik Okyanusu üzerinde Meksika’ya doğru yol alınıyor",
+        "pointsOfInterest": {
+            "0": "Pasifik Okyanusu üzerinde Meksika’ya doğru yol alınıyor",
+            "105": "Meksika Körfezi tarafından Meksiko üzerinden geçiliyor",
+            "122": "Meksika Körfezi üzerinde Amerika Birleşik Devletleri’ne doğru gidiliyor",
+            "180": "Amerika Birleşik Devletleri’nde Houston geçilip New Orleans’a yaklaşılıyor",
+            "190": "Meksika Körfezi üzerinde New Orleans’a doğru yol alınıyor",
+            "215": "Amerika Birleşik Devletleri’nin güneydoğusu üzerinde ilerleniyor",
+            "280": "Amerika Birleşik Devletleri’nin doğusu üzerinde New York’a doğru yolculuk",
+            "320": "Amerika Birleşik Devletleri’nin doğusu üzerinde New York City’e yaklaşılıyor"
+        }
+    },
+    "B876B645-3955-420E-99DF-60139E451CF3": {
+        "name": "Çin’de Wulingyuan Ulusal Parkı boyunca ilerleniyor",
+        "pointsOfInterest": {
+            "0": "Çin’de Wulingyuan Ulusal Parkı boyunca ilerleniyor"
+        }
+    },
+    "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
+        "name": "Grönland’daki Nuussuaq Yarımadası boyunca ilerleniyor",
+        "pointsOfInterest": {
+            "0": "Grönland’daki Nuussuaq Yarımadası boyunca ilerleniyor"
+        }
+    },
+    "BA4ECA11-592F-4727-9221-D2A32A16EB28": {
+        "name": "Palau sularında Altın Rengi Denizanası",
+        "pointsOfInterest": {
+            "0": "Palau sularında Altın Rengi Denizanası",
+            "282": "Ortasında Ay Denizanası olan Altın Denizanası",
+            "348": "Palau sularında Altın Rengi Denizanası"
+        }
+    },
+    "C6DC4E54-1130-44F8-AF6F-A551D8E8A181": {
+        "name": "Amerika Birleşik Devletleri’nde Alaska kıyıları yakınında ay denizanası",
+        "pointsOfInterest": {
+            "0": "Amerika Birleşik Devletleri’nde Alaska kıyıları yakınında ay denizanası"
+        }
+    },
+    "C7AD3D0A-7EDF-412C-A237-B3C9D27381A1": {
+        "name": "Amerika Birleşik Devletleri’nde Alaska kıyıları yakınında ay denizanasının üzerinde dolaşılıyor",
+        "pointsOfInterest": {
+            "0": "Amerika Birleşik Devletleri’nde Alaska kıyıları yakınında ay denizanasının üzerinde dolaşılıyor"
+        }
+    },
+    "C8559883-6F3E-4AF2-8960-903710CD47B7": {
+        "name": "Hong Kong’daki Victoria Zirvesi üzerinde uçuluyor",
+        "pointsOfInterest": {
+            "0": "Hong Kong’daki Victoria Zirvesi üzerinde uçuluyor",
+            "150": "Victoria Limanı’na doğru Hong Kong üzerinde uçuluyor",
+            "330": "Victoria Limanı üzerinde Kowloon Yarımadası’na yaklaşılıyor"
+        }
+    },
+    "CE279831-1CA7-4A83-A97B-FF1E20234396": {
+        "name": "Los Angeles Uluslararası Havalimanı üzerinde uçuluyor",
+        "pointsOfInterest": {
+            "0": "Los Angeles Uluslararası Havalimanı üzerinde uçuluyor"
+        }
+    },
+    "CE9B5D5B-B6E7-47C5-8C04-59BF182E98FB": {
+        "name": "Kosta Rika açıklarındaki sularda dönücü yunusları",
+        "pointsOfInterest": {
+            "0": "Kosta Rika açıklarındaki sularda dönücü yunusları"
+        }
+    },
+    "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
+        "name": "Pasifik Okyanusu üzerinde Orta Amerika’ya doğru gidiliyor",
+        "pointsOfInterest": {
+            "0": "Pasifik Okyanusu üzerinde Orta Amerika’ya doğru gidiliyor",
+            "110": "Karayip Denizi’nde bulutlarla kaplı Jamaika üzerinden geçiliyor",
+            "125": "Küba üzerinden Haiti’ye ve Dominik Cumhuriyeti’ne doğru ilerleniyor",
+            "170": "Bahamalar üzerinde Haiti’ye ve Dominik Cumhuriyeti’ne doğru yolculuk",
+            "190": "Atlantik Okyanusu’nda Turks ve Caicos Adaları",
+            "35": "Nikaragua’nın, Kosta Rika’nın ve Panama’nın Pasifik kıyıları",
+            "50": "Güney Amerika ufuktayken Orta Amerika üzerinden geçiliyor",
+            "65": "Nikaragua’da Sivrisinek Sahili",
+            "85": "Karayip Denizi üzerinde Küba’ya doğru yol alınıyor"
+        }
+    },
+    "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
+        "name": "Çin’de Wulingyuan Ulusal Parkı’nda dolaşılıyor",
+        "pointsOfInterest": {
+            "0": "Çin’de Wulingyuan Ulusal Parkı’nda dolaşılıyor"
+        }
+    },
+    "DD47D8E1-CB66-4C12-BFEA-2ADB0D8D1E2E": {
+        "name": "Fransız Polinezyası’nın açıklarında kambur balinalar",
+        "pointsOfInterest": {
+            "0": "Fransız Polinezyası’nın açıklarında kambur balinalar"
+        }
+    },
+    "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
+        "name": "San Francisco Körfezi ve Golden Gate Köprüsü",
+        "pointsOfInterest": {
+            "0": "San Francisco Körfezi ve Golden Gate Köprüsü",
+            "140": "San Francisco’ya doğru Golden Gate Köprüsü’nün kuzey kulesi üzerinde yol alınıyor",
+            "191": "San Francisco körfezi üzerinde"
+        }
+    },
+    "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
+        "name": "Batı Afrika üzerinde Sahra Çölü’ne doğru yolculuk",
+        "pointsOfInterest": {
+            "0": "Batı Afrika üzerinde Sahra Çölü’ne doğru yolculuk",
+            "110": "Kuzey Afrika’da Sahra Çölü’ndeki Ahaggar Dağları üzerinde yolculuk",
+            "155": "Kuzey Afrika Sahra Çölü üzerinde Akdeniz’e doğru yol alınıyor",
+            "195": "Tunus kıyıları ve Akdeniz",
+            "210": "Tunus kıyıları üzerinde İtalya’ya doğru yolculuk",
+            "230": "Akdeniz’den İtalya’ya yaklaşılıyor",
+            "245": "İtalya üzerinde Balkan Yarımadası’na doğru yolculuk",
+            "285": "Balkan Yarımadası üzerinde Karpat Dağları’na doğru yol alınıyor",
+            "30": "Kuzey Afrika’da Sahra Çölü üzerinde yolculuk",
+            "310": "Karpatlar ve Karadeniz"
+        }
+    },
+    "E580E5A5-0888-4BE8-A4CA-F74A18A643C3": {
+        "name": "Palau sularında Altın Rengi Denizanası",
+        "pointsOfInterest": {
+            "0": "Palau sularında Altın Rengi Denizanası"
+        }
+    },
+    "E5DB138A-F04E-4619-B896-DE5CB538C534": {
+        "name": "Tunus üzerinde İtalya’ya doğru yol alınıyor",
+        "pointsOfInterest": {
+            "0": "Tunus üzerinde İtalya’ya doğru yol alınıyor",
+            "15": "Güney İtalya üzerinde, arkada Balkan Yarımadası",
+            "25": "Balkan Yarımadası üzerinde Orta Asya’ya doğru ilerleniyor",
+            "40": "Balkan Yarımadası üzerinde Karadeniz geçiliyor",
+            "5": "Akdeniz üzerinde uzakta Sicilya ve İtalya Yarımadası görünüyor",
+            "55": "Ukrayna üzerinde, arkada Rusya",
+            "75": "Rusya’nın güneybatısında Kazakistan üzerinden geçiliyor"
+        }
+    },
+    "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
+        "name": "Birleşik Arap Emirlikleri’nde Dubai Marina üzerinde uçuluyor",
+        "pointsOfInterest": {
+            "0": "Birleşik Arap Emirlikleri’nde Dubai Marina üzerinde uçuluyor"
+        }
+    },
+    "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
+        "name": "Victoria Limanı üzerinde Hong Kong şehir merkezine doğru gidiliyor",
+        "pointsOfInterest": {
+            "0": "Victoria Limanı üzerinde Hong Kong şehir merkezine doğru gidiliyor"
+        }
+    },
+    "EB3F48E7-D30F-4079-858F-1A61331D5026": {
+        "name": "Amerika Birleşik Devletleri’nde Kaliforniya kıyıları açıklarında bir yosun ormanında dolaşılıyor",
+        "pointsOfInterest": {
+            "0": "Amerika Birleşik Devletleri’nde Kaliforniya kıyıları açıklarında bir yosun ormanında dolaşılıyor"
+        }
+    },
+    "EC3DC957-D4C2-4732-AACE-7D0C0F390EC8": {
+        "name": "Palau sularında Altın Rengi Denizanası",
+        "pointsOfInterest": {
+            "0": "Palau sularında Altın Rengi Denizanası"
+        }
+    },
+    "EC67726A-8212-4C5E-83CF-8412932740D2": {
+        "name": "Los Angeles’taki Hollywood Yazısı",
+        "pointsOfInterest": {
+            "0": "Los Angeles’taki Hollywood Yazısı",
+            "250": "Hollywood Hills üzerinde Burbank, Kaliforniya’ya yaklaşılıyor"
+        }
+    },
+    "EE01F02D-1413-436C-AB05-410F224A5B7B": {
+        "name": "Grönland açıklarında Ilulissat Buz Fiyordu",
+        "pointsOfInterest": {
+            "0": "Grönland açıklarında Ilulissat Buz Fiyordu"
+        }
+    },
+    "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
+        "name": "Marin Headlands üzerinde Golden Gate Köprüsü’ne doğru bakılıyor",
+        "pointsOfInterest": {
+            "0": "Marin Headlands üzerinde Golden Gate Köprüsü’ne doğru bakılıyor",
+            "150": "Presidio of San Francisco yönüne doğru Golden Gate Köprüsü üzerinden geçiliyor"
+        }
+    },
+    "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
+        "name": "Çin Seddi’nin Mutianyu bölümü, Huairou Semti, Çin",
+        "pointsOfInterest": {
+            "0": "Çin Seddi’nin Mutianyu bölümü, Huairou Semti, Çin"
+        }
+    },
+    "F07CC61B-30FC-4614-BDAD-3240B61F6793": {
+        "name": "Palau yakınlarındaki mercan resifi",
+        "pointsOfInterest": {
+            "0": "Palau yakınlarındaki mercan resifi"
+        }
+    },
+    "F439B0A7-D18C-4B14-9681-6520E6A74FE9": {
+        "name": "İran sınırlarında güneşin yansıması",
+        "pointsOfInterest": {
+            "0": "İran sınırlarında güneşin yansıması",
+            "15": "İran üzerinde gündüzden geceye geçiliyor",
+            "60": "Orta Asya üzerinde gündüzden geceye geçiliyor"
+        }
+    },
+    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
+        "name": "Los Angeles şehir merkezinden geçiliyor",
+        "pointsOfInterest": {
+            "0": "Los Angeles şehir merkezinden geçiliyor"
+        }
+    },
+    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
+        "name": "Londra’da Thames Nehri üzerindeki Tower Bridge’e yaklaşılıyor",
+        "pointsOfInterest": {
+            "0": "Londra’da Thames Nehri üzerindeki Tower Bridge’e yaklaşılıyor",
+            "20": "Londra’daki Thames Nehri üzerinden geçiliyor",
+            "200": "Westminster, Londra yönüne doğru Thames Nehri üzerinden geçiliyor",
+            "270": "Westminster, Londra üzerinde",
+            "60": "Güney Londra’da The Shard üzerinden geçiliyor",
+            "92": "Thames Nehri’nin güneyinden London Eye’a doğru gidiliyor"
+        }
+    },
+    "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {
+        "name": "Victoria Limanı üzerinde, karşıda Hong Kong Adası",
+        "pointsOfInterest": {
+            "0": "Victoria Limanı üzerinde, karşıda Hong Kong Adası"
+        }
+    }
+}

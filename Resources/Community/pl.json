@@ -1,428 +1,740 @@
 {
+    "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8": {
+        "name": "Przelot nad oazą Liwa (Zjednoczone Emiraty Arabskie)",
+        "pointsOfInterest": {
+            "0": "Przelot nad oazą Liwa (Zjednoczone Emiraty Arabskie)"
+        }
+    },
     "009BA758-7060-4479-8EE8-FB9B40C8FB97": {
-        "name": "Korea i Japonia"
-    },
-    "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
-        "name": "Od Mexico City do Nowego Jorku"
-    },
-    "7719B48A-2005-4011-9280-2F64EEC6FD91": {
-        "name": "Od Kalifornii do Baja"
-    },
-    "B876B645-3955-420E-99DF-60139E451CF3": {
-        "name": "Park Narodowy Wulingyuan 1"
-    },
-    "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C": {
-        "name": "Tarasy ryżowe Longji"
-    },
-    "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
-        "name": "Park Narodowy Wulingyuan 2"
-    },
-    "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
-        "name": "Wielki Mur 1"
-    },
-    "22162A9B-DB90-4517-867C-C676BC3E8E95": {
-        "name": "Wielki Mur 2"
-    },
-    "044AD56C-A107-41B2-90CC-E60CCACFBCF5": {
-        "name": "Wielki Mur 3"
-    },
-    "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
-        "name": "Droga Sheikh Zayed"
-    },
-    "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
-        "name": "Przystań 1"
+        "name": "Na południowy wschód ponad Syberią i Mongolią",
+        "pointsOfInterest": {
+            "0": "Na południowy wschód ponad Syberią i Mongolią",
+            "110": "Nad Chinami, w kierunku Półwyspu Koreańskiego",
+            "150": "Półwysep Koreański z widoczną w oddali Japonią",
+            "180": "Podróż nad Koreą Południową w kierunku Japonii",
+            "195": "Nad Japonią, widok w kierunku Pacyfiku",
+            "22": "W kierunku Mongolii Wewnętrznej",
+            "260": "Nad Pacyfikiem, na południowy wschód od Japonii",
+            "32": "Podróż nad Mongolią w kierunku Chin",
+            "60": "Nad północnymi Chinami w kierunku Półwyspu Koreańskiego"
+        }
     },
     "00BA71CD-2C54-415A-A68A-8358E677D750": {
-        "name": "Śródmieście"
-    },
-    "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
-        "name": "Przystań 2"
-    },
-    "9680B8EB-CE2A-4395-AF41-402801F4D6A6": {
-        "name": "Zbliżając się do Burj Khalifa"
-    },
-    "2F11E857-4F77-4476-8033-4A1E4610AFCC": {
-        "name": "Droga Sheikh Zayed",
+        "name": "Zbliżając się do centrum Dubaju w Zjednoczonych Emiratach Arabskich",
         "pointsOfInterest": {
-            "0": "Nad drogą Sheikh Zayed w Dubaju, Zjednoczone Emiraty Arabskie"
+            "0": "Zbliżając się do centrum Dubaju w Zjednoczonych Emiratach Arabskich",
+            "210": "Przelot nad centrum Dubaju w Zjednoczonych Emiratach Arabskich"
         }
-    },
-    "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
-        "name": "Półwysep Nuussuaq"
-    },
-    "2F52E34C-39D4-4AB1-9025-8F7141FAA720": {
-        "name": "Fjord lodowy w llulissat"
-    },
-    "EE01F02D-1413-436C-AB05-410F224A5B7B": {
-        "name": "Fjord lodowy w llulissat"
-    },
-    "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943": {
-        "name": "Dolina Waimanu"
-    },
-    "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7": {
-        "name": "Laupāhoehoe Nui"
-    },
-    "b2-2": {
-        "name": "Dolina Honopū"
-    },
-    "258A6797-CC13-4C3A-AB35-4F25CA3BF474": {
-        "name": "Pu'u O 'Umi"
-    },
-    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": {
-        "name": "Wybrzeże Kohala"
-    },
-    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": {
-        "name": "Pu'u O 'Umi"
-    },
-    "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {
-        "name": "Port Wiktorii 1"
-    },
-    "C8559883-6F3E-4AF2-8960-903710CD47B7": {
-        "name": "Szczyt Wiktorii"
     },
     "024891DE-B7F6-4187-BFE0-E6D237702EF0": {
-        "name": "Wan Chai"
-    },
-    "64EA30BD-C4B5-4CDD-86D7-DFE47E9CB9AA": {
-        "name": "Port Wiktorii 2"
-    },
-    "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
-        "name": "Port Wiktorii"
-    },
-    "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8": {
-        "name": "Oaza Liwa 1"
-    },
-    "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
-        "name": "Oaza Liwa 2"
-    },
-    "58754319-8709-4AB0-8674-B34F04E7FFE2": {
-        "name": "Tamiza",
+        "name": "Nad Marokiem, zbliżając się do Morza Śródziemnego",
         "pointsOfInterest": {
-            "0": "Zbliżając się do mostu Tower Bridge na Tamizie w Londynie",
-            "40": "Mijając Gherkin w londyńskim City, po prawej stronie",
-            "70": "Przelot nad mostem Tower Bridge na Tamizie, z Ratuszem i Wieżą Londynu po prawej stronie",
-            "85": "Zbliżając się do krążownika HMS Belfast na Tamizie, mijając po prawej stronie Walkie-Talkie",
-            "115": "Podróżując na zachód w górę Tamizy, z The Shard po lewej stronie i Katedrą Świętego Pawła po prawej",
-            "135": "Mijająć Katedrę Southwark, z Katedry Świętego Pawła po prawej",
-            "175": "W pobliżu Globu Shakespeare'a (pierwszy plan po prawej stronie)",
-            "230": "Mijając stację Waterloo po lewej stronie, z Pałacem Westminster (Izby Parlamentu) po drugiej stronie Tamizy",
-            "260": "Mijając BFI IMAX na lewym pierwszym planie, z London Eye z tyłu",
-            "280": "W kierunku Westminster nad Tamizą",
-            "300": "Zbliżając się do stacji Charing Cross na prawym, pierwszym planie",
-            "312": "W pobliżu Parady Strażników Konnych i Parku Świętego Jakuba po lewej środkowym planie",
-            "324": "Przelot nad Saint Martin-in-the-Fields po prawej stronie, z Łukiem Admirała, Kolumną Nelsona i Placem Trafalgar po lewej stronie"
+            "0": "Nad Marokiem, zbliżając się do Morza Śródziemnego",
+            "150": "Nad centrum Hongkongu",
+            "270": "Nad wyspą Hongkong"
         }
     },
-    "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
-        "name": "Pałac Buckingham",
+    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": {
+        "name": "Zorza polarna nad Antarktydą",
         "pointsOfInterest": {
-            "0": "W pobliżu Łuku Wellington w Londynie, po lewej stronie",
-            "12": "Przelot nad Ogrodami Pałacu Buckingham, z Zielonym Parkiem po lewej",
-            "24": "Przelot nad Pałacem Buckingham w Londynie",
-            "40": "Przelot nad Memorialem Wiktorii, mijając po prawej stronie Koszary Wellington",
-            "55": "Wzdłuż Ptasich Klatek w Parku Świętego Jakuba",
-            "90": "Przelot nad Biurem Spraw Zagranicznych i Brytyjskiej Wspólnoty Narodów w Whitehall, z Paradą Straży Konnej po lewej stronie i Skarbem Jej Królewskiej Mości po prawej",
-            "102": "Przelot nad Cenotaf, z Ministerstwem Obrony po lewej stronie i Big Ben oraz Pałacem Westminster (Izby Parlamentu) po prawej",
-            "125": "Przeprawa przez rzekę Tamizę, przelatując nad London Eye",
-            "160": "Nad stacją Waterloo w południowym Londynie, z BFI IMAX po lewej",
-            "270": "W pobliżu Katedry Southwark, po lewej",
-            "285": "Mijając The Shard po prawej stronie",
-            "305": "Nad krążownikiem HMS Belfast na Tamizie",
-            "330": "Przeprawa przez rzekę Tamizę na moście Tower Bridge, z Ratuszem po prawej stronie i Wieżą Londynu po lewej stronie"
+            "0": "Zorza polarna nad Antarktydą"
         }
     },
-    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
-        "name": "Rzeka Tamiza podczas zachodu słońca",
+    "044AD56C-A107-41B2-90CC-E60CCACFBCF5": {
+        "name": "Sekcja Mutianyu Wielkiego Muru w dystrykcie Huairou (Chiny)",
         "pointsOfInterest": {
-            "0": "W kierunku mostu Tower Bridge na Tamizie, z Wieżą Londynu po prawej stronie",
-            "25": "Przeprawa przez rzekę Tamizę i przelot nad Ratuszem",
-            "35": "Nad krążownikiem HMS Belfast na Tamizie",
-            "60": "Zbliżając się do The Shard",
-            "92": "Lecąc na zachód nad Southwark, w kierunku Lambeth w południowym Londynie",
-            "200": "Pałac Lambeth po lewej stronie i stacja Waterloo po prawej",
-            "245": "Przeprawa przez rzekę Tamizę w kierunku Pałacu Westminsterskiego (Izby Parlamentu)",
-            "265": "W pobliżu Pałacu Westminster (Izby Parlamentu), z opactwem Westminster w tle"
+            "0": "Sekcja Mutianyu Wielkiego Muru w dystrykcie Huairou (Chiny)"
         }
     },
-    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
-        "name": "Tamiza o zmierzchu",
+    "1088217C-1410-4CF7-BDE9-8F573A4DBCD9": {
+        "name": "Nad Pacyfikiem, w stronę Ameryki Środkowej",
         "pointsOfInterest": {
-            "0": "Kierując się wzdłuż Tamizy w stronę mostu Tower Bridge, z Wieżą Londynu po prawej",
-            "28": "Podróżując na zachód wzdłuż Tamizy, mijając Ratusz po lewej stronie",
-            "40": "Nad krążownikiem HMS Belfast na Tamizie, z The Shard po lewej stronie i Walkie-Talkie po prawej",
-            "75": "W pobliżu katedry Southwark, po lewej",
-            "110": "W pobliżu katedry Św. Pawła, po prawej stronie",
-            "130": "W pobliżu Globu Shakespeare'a na pierwszym planie po lewej stronie",
-            "210": "Kontynuując wzdłuż Tamizy w kierunku Westminster",
-            "300": "Nad London Eye na Tamizie",
-            "315": "Zbliżając się do Big Bena i Izby Parlamentu, z opactwem Westminster po prawej"
+            "0": "Nad Pacyfikiem, w stronę Ameryki Środkowej",
+            "100": "Przelot nad Ameryką Środkową w kierunku Morza Karaibskiego",
+            "150": "Nad Morzem Karaibskim w kierunku Kuby",
+            "240": "Nad Kubą i Florydą, Bahamy w tle",
+            "300": "Podróż nad Florydą i wyspami Bahama w kierunku Morza Sargassowego",
+            "350": "Nad Morzem Sargassowym, w stronę Atlantyku",
+            "70": "Południowo-zachodnie wybrzeże Ameryki Środkowej, widok w kierunku Morza Karaibskiego"
         }
     },
-    "CE279831-1CA7-4A83-A97B-FF1E20234396": {
-        "name": "Międzynarodowy port lotniczy Los Angeles",
+    "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
+        "name": "Podróż nad Pacyfikiem w stronę wybrzeża Kaliforni",
         "pointsOfInterest": {
-            "0": "W kierunku zachodnim nad międzynarodowym portem lotniczym Los Angeles (LAX)",
-            "80": "Nad Theme Building",
-            "210": "Nad Międzynarodowym Terminalem Tom Bradley"
+            "0": "Podróż nad Pacyfikiem w stronę wybrzeża Kaliforni",
+            "110": "Podróż nad Las Vegas w kierunku Salt Lake City (USA)",
+            "120": "Nad zachodnią częścią USA, zbliżając się do Salt Lake City",
+            "155": "Między Salt Lake City a Denver (USA)",
+            "170": "Nad Górami Skalistymi (USA)",
+            "70": "Podróż nad wybrzeżem Kaliforni w stronę lądu",
+            "85": "Przelot nad Los Angeles na zachodnim wybrzeżu USA",
+            "95": "Podróż nad Los Angeles w kierunku Las Vegas (USA)"
         }
     },
-    "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
-        "name": "Harbor Freeway",
+    "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7": {
+        "name": "Przelot nad Laupāhoehoe Nui w rezerwacie leśnym Kohala na Hawajach",
         "pointsOfInterest": {
-            "0": "Przelot nad Harbor Freeway (Interstate 110) na południe od Los Angeles",
-            "50": "Skrzyżowanie z Century Freeway (interstate 105)",
-            "65": "Nad stacją Harbor Freeway na zielonej linii metra, która biegnie wzdłuż Century Freeway",
-            "170": "Skrzyżowanie Imperial Highway"
+            "0": "Przelot nad Laupāhoehoe Nui w rezerwacie leśnym Kohala na Hawajach"
         }
     },
-    "92E48DE9-13A1-4172-B560-29B4668A87EE": {
-        "name": "Plaża Santa Monica"
-    },
-    "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
-        "name": "Obserwatorium Griffitha"
-    },
-    "EC67726A-8212-4C5E-83CF-8412932740D2": {
-        "name": "Wzgórza Hollywood",
+    "149E7795-DBDA-4F5D-B39A-14712F841118": {
+        "name": "Fale bijące w brzeg na Tahiti",
         "pointsOfInterest": {
-            "0": "Podróżując na północ wzdłuż Beachwood Drive przez Hollywood Hills w Los Angeles",
-            "60": "Kontynuując na północ przez kanion Beachwood",
-            "250": "W pobliżu centrum komunikacji Mount Lee, w kierunku Burbank, Kalifornia"
+            "0": "Fale bijące w brzeg na Tahiti"
         }
     },
-    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
-        "name": "Śródmieście",
+    "22162A9B-DB90-4517-867C-C676BC3E8E95": {
+        "name": "Sekcja Mutianyu Wielkiego Muru w dystrykcie Huairou (Chiny)",
         "pointsOfInterest": {
-            "0": "Zbliżając się do śródmieścia Los Angeles, z budynkiem MTA (na żółto) i Union Station (na różowo) po lewej stronie",
-            "35": "W pobliżu katedry Matki Bożej Anielskiej (w środku)",
-            "55": "Nad Centrum Muzyki Hrabstwa Los Angeles (w środku)",
-            "65": "Przekraczając Hollywood Freeway, w kieurnku południowym przez centrum miasta wzdłuż Harbor Freeway",
-            "105": "W pobliżu sali koncertowej Walta Disneya (w środku)",
-            "120": "W pobliżu ratusza (w kolorze jasnoniebieskim, po lewej)",
-            "180": "W pobliżu Library Tower (w środku)",
-            "200": "W pobliżu hotelu Bonaventure (w środku)",
-            "230": "Centralna Biblioteka w Los Angeles, jaskrawo oświetlona, znajduje się za hotelem Bonaventure",
-            "275": "W pobliżu Wilshire Grand Center (w budowie)",
-            "365": "Nad L.A. Live",
-            "395": "W pobliżu hotelu Ritz-Carlton i Staples Center",
-            "425": "W pobliżu Centrum Kongresowego w Los Angeles",
-            "495": "Zbliżając się do autostrady Santa Monica"
+            "0": "Sekcja Mutianyu Wielkiego Muru w dystrykcie Huairou (Chiny)"
         }
     },
-    "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
-        "name": "Central Park"
-    },
-    "b1-3": {
-        "name": "Dolny Manhattan"
-    },
-    "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8": {
-        "name": "Upper East Side"
-    },
-    "44166C39-8566-4ECA-BD16-43159429B52F": {
-        "name": "Siódma Aleja"
-    },
-    "640DFB00-FBB9-45DA-9444-9F663859F4BC": {
-        "name": "Dolny Manhattan"
-    },
-    "b8-2": {
-        "name": "Marin Headlands"
-    },
-    "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
-        "name": "Marin Headlands we mgle",
+    "258A6797-CC13-4C3A-AB35-4F25CA3BF474": {
+        "name": "Nad rezerwatem Pu‘u O ‘Umi na Hawajach",
         "pointsOfInterest": {
-            "0": "Nad Headlands Marin wzdłuż autostrady 101 w kierunku mostu Golden Gate",
-            "20": "Horseshoe Cove pojawia się po lewej stronie",
-            "105": "Przemierzając przez Battery Spencer po prawej",
-            "155": "Przemierzając przez most Golden Gate w kierunku San Francisco"
+            "0": "Nad rezerwatem Pu‘u O ‘Umi na Hawajach"
         }
     },
-    "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
-        "name": "Zatoka i Most Golden Gate"
-    },
-    "b8-3": {
-        "name": "Plac Alama",
+    "27A37B0F-738D-4644-A7A4-E33E7A6C1175": {
+        "name": "Delfiny pospolite u wybrzeży Kalifornii",
         "pointsOfInterest": {
-            "0": "\"Malowane Panie\" naprzeciwko placu Alamo w San Francisco",
-            "35": "Katedra Najświętszej Marii Panny po lewej, z centrum San Francisco w tle",
-            "70": "Kopuła ratusza pojawiająca się po prawej stronie",
-            "210": "Kopuła ratusza, widoczna po prawej"
-        }
-    },
-    "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
-        "name": "Embarcadero, Market Street",
-        "pointsOfInterest": {
-            "0": "W kierunku południowo-zachodnim nad Zatoką San Francisco do \"Ferry Building\"",
-            "150": "Zbliżając się do \"Ferry Building\" w San Francisco i Embarcadero",
-            "210": "W kierunku południowo-zachodnim wzdłuż ulicy Market Street w centrum San Francisco"
-        }
-    },
-    "b4-3": {
-        "name": "Od Prezydium do Mostu Golden Gate",
-        "pointsOfInterest": {
-            "0": "Poruszając się wzdłuż Prezydium San Francisco w kierunku mostu Golden Gate",
-            "190": "Przekraczając most Golden Gate w kierunku Marin Headlands"
-        }
-    },
-    "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
-        "name": "Most Golden Gate od strony San Franciso"
-    },
-    "b6-4": {
-        "name": "Śródmieście i Wieża Coit",
-        "pointsOfInterest": {
-            "0": "Śródmieście San Francisco z piramidą Transamerica w centrum",
-            "100": "Śródmieście San Francisco z widokiem na Wieżę Coit"
+            "0": "Delfiny pospolite u wybrzeży Kalifornii"
         }
     },
     "29BDF297-EB43-403A-8719-A78DA11A2948": {
-        "name": "Fisherman's Wharf",
+        "name": "Nad Fisherman's Wharf w kierunku śródmieścia San Francisco",
         "pointsOfInterest": {
-            "0": "W kierunku południowo-wschodnim nad Fisherman's Wharf w San Francisco",
-            "27": "Przepłynięcie statku typu Liberty, SS Jeremiah O'Brien",
-            "47": "Nad okrętem podwodnym USS Pampanito",
-            "80": "Nad North Beach w San Francisco",
-            "115": "Zbliżając się do Wieży Coit na wzgórzu Telegraph, z Mostem Zatokowym i centrum miasta San Franciso w tle",
-            "135": "Zbliżając się do Wieży Coit na wzgórzu Telegraph, z Kościołem Świętych Piotra i Pawła na prawyo-środkowym planie"
+            "0": "Nad Fisherman's Wharf w kierunku śródmieścia San Francisco",
+            "150": "Mijając Coit Tower, w kierunku śródmieścia San Francisco i Bay Bridge",
+            "196": "Śródmieście San Francisco",
+            "80": "Zbliżając się do Coit Tower, w tle śródmieście San Francisco i Bay Bridge"
         }
     },
-    "b5-3": {
-        "name": "Embarcadero, Market Street",
+    "2B30E324-E4FF-4CC1-BA45-A958C2D2B2EC": {
+        "name": "Ławica barakud chevron w wodach Borneo",
         "pointsOfInterest": {
-            "0": "W kierunku południowo-zachodnim nad Zatoką San Francisco do \"Ferry Building\"",
-            "150": "Podejście do \"Ferry Building\" w San Francisco i Embarcadero",
-            "210": "W kierunku południowo-zachodnim wzdłuż Market Street w San Francisco"
+            "0": "Ławica barakud chevron w wodach Borneo"
+        }
+    },
+    "2F52E34C-39D4-4AB1-9025-8F7141FAA720": {
+        "name": "Fiord Ilulissat, wybrzeże Grenlandii",
+        "pointsOfInterest": {
+            "0": "Fiord Ilulissat, wybrzeże Grenlandii"
+        }
+    },
+    "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
+        "name": "Podróż nad Rogiem Afryki w kierunku Zatoki Adeńskiej",
+        "pointsOfInterest": {
+            "0": "Podróż nad Rogiem Afryki w kierunku Zatoki Adeńskiej",
+            "115": "Nad Zatoką Omańską, zbliżając się do wybrzeża z górami Makran",
+            "145": "Wybrzeże z górami Mekran (Iran i Pakistan)",
+            "160": "Podróż nad Iranem w kierunku Afganistanu i Pakistanu",
+            "180": "Nad Afganistanem i Pakistanem w kierunku łańcucha Karakorum",
+            "235": "Podróż nad łańcuchem Karakorum w stronę Chin",
+            "280": "Pustynia Takla Makan w zachodnich Chinach",
+            "315": "Góry Tienszan w Azji Środkowej",
+            "45": "Południowo-wschodnia część Półwyspu Arabskiego"
+        }
+    },
+    "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
+        "name": "Wzdłuż autostrady 110, na północ przez Los Angeles",
+        "pointsOfInterest": {
+            "0": "Wzdłuż autostrady 110, na północ przez Los Angeles"
+        }
+    },
+    "3716DD4B-01C0-4F5B-8DD6-DB771EC472FB": {
+        "name": "Rafowe rekiny szare u wybrzeży Polinezji Francuskiej",
+        "pointsOfInterest": {
+            "0": "Rafowe rekiny szare u wybrzeży Polinezji Francuskiej"
+        }
+    },
+    "391BDF6E-3279-4CE1-9CA5-0F82811452D7": {
+        "name": "Kotik karłowaty przy wybrzeżu Półwyspu Przylądkowego (Południowa Afryka)",
+        "pointsOfInterest": {
+            "0": "Kotik karłowaty przy wybrzeżu Półwyspu Przylądkowego (Południowa Afryka)"
+        }
+    },
+    "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
+        "name": "Nad Central Park w kierunku środkowego Manhattanu (Nowy Jork)",
+        "pointsOfInterest": {
+            "0": "Nad Central Park w kierunku środkowego Manhattanu (Nowy Jork)",
+            "246": "Nad Środkowym Manhattanem w Nowym Jorku"
+        }
+    },
+    "3C4678E4-4D3D-4A40-8817-77752AEA62EB": {
+        "name": "Podróż nad Europą Zachodnią z widocznymi w oddali Wyspami Brytyjskimi",
+        "pointsOfInterest": {
+            "0": "Podróż nad Europą Zachodnią z widocznymi w oddali Wyspami Brytyjskimi",
+            "100": "Grecja między Morzem Jońskim i Egejskim",
+            "160": "Podróż na południowy wschód nad Morzem Śródziemnym",
+            "185": "Morze Śródziemne i delta Nilu",
+            "20": "Na południowy wschód, ponad Alpami i doliną Padu",
+            "205": "Nil płynący przez Saharę (Egipt)",
+            "220": "Pustynia Wschodnia między Nilem i Zatoką Sueską",
+            "240": "Na południowy wschód, ponad Morzem Czerwonym",
+            "50": "Na południe, nad Półwyspem Apenińskim i Adriatykiem"
+        }
+    },
+    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": {
+        "name": "Wzdłuż wybrzeża Kohala na Hawajach",
+        "pointsOfInterest": {
+            "0": "Wzdłuż wybrzeża Kohala na Hawajach"
         }
     },
     "3E94AE98-EAF2-4B09-96E3-452F46BC114E": {
-        "name": "Most Zatokowy"
-    },
-    "b2-4": {
-        "name": "Śródmieście i wieża Sutro",
+        "name": "Zbliżając się do mostu Bay Bridge i śródmieście San Francisco",
         "pointsOfInterest": {
-            "0": "W kierunku dzielnicy finansowej San Francisco, z wieżą Sutro w tle",
-            "10": "Przelot nad Piramidą Transamerica",
-            "50": "Dawna siedziba Banku Centralnego Ameryki w słońcu"
+            "0": "Zbliżając się do mostu Bay Bridge i śródmieście San Francisco",
+            "116": "Nad Zatoką San Francisco w kierunku śródmieścia",
+            "80": "Przelot nad mostem Bay Bridge w kierunku śródmieścia San Francisco"
+        }
+    },
+    "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
+        "name": "Przelot wzdłuż dystryktu Dubai Marina (Zjednoczone Emiraty Arabskie)",
+        "pointsOfInterest": {
+            "0": "Przelot wzdłuż dystryktu Dubai Marina (Zjednoczone Emiraty Arabskie)"
+        }
+    },
+    "44166C39-8566-4ECA-BD16-43159429B52F": {
+        "name": "Wzdłuż 7. Alei w kierunku Times Square (Nowy Jork)",
+        "pointsOfInterest": {
+            "0": "Wzdłuż 7. Alei w kierunku Times Square (Nowy Jork)",
+            "120": "Wzdłuż 7. Alei w środkowym Manhattanie (Nowy Jork)",
+            "40": "Nad Times Square w Nowym Jorku"
+        }
+    },
+    "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943": {
+        "name": "Dolina Waimanu w rezerwacie leśnym Kohala na Hawajach",
+        "pointsOfInterest": {
+            "0": "Dolina Waimanu w rezerwacie leśnym Kohala na Hawajach"
         }
     },
     "4AD99907-9E76-408D-A7FC-8429FF014201": {
-        "name": "Zatoka San Francisco i Embarcadero"
-    },
-    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": {
-        "name": "Antarktyda"
-    },
-    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
-        "name": "Zorza nad Ameryką Północną"
-    },
-    "A837FA8C-C643-4705-AE92-074EFDD067F7": {
-        "name": "Noc afrykańska"
-    },
-    "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
-        "name": "Afryka i Bliski Wschód"
-    },
-    "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
-        "name": "Od Kalifornii do Vegas"
-    },
-    "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
-        "name": "Karaiby"
+        "name": "Nad Zatoką San Francisco w kierunku Embarcadero",
+        "pointsOfInterest": {
+            "0": "Nad Zatoką San Francisco w kierunku Embarcadero",
+            "150": "Wzdłuż Market Street przez śródmieście San Francisco",
+            "360": "Wzdłuż Market Street przez San Francisco",
+            "90": "Nad Embarcadero z widokiem na Market Street w San Francisco"
+        }
     },
     "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589": {
-        "name": "Karaiby za dnia"
-    },
-    "7825C73A-658F-48EE-B14C-EC56673094AC": {
-        "name": "Chiny"
-    },
-    "E5DB138A-F04E-4619-B896-DE5CB538C534": {
-        "name": "Od Włoch do Azji"
-    },
-    "F439B0A7-D18C-4B14-9681-6520E6A74FE9": {
-        "name": "Iran i Afganistan"
-    },
-    "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": {
-        "name": "Od Irlandii do Azji"
-    },
-    "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": {
-        "name": "Od Afryki Zachodniej do Alp"
-    },
-    "78911B7E-3C69-47AD-B635-9C2486F6301D": {
-        "name": "Nowa Zelandia"
-    },
-    "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
-        "name": "Sahara i Włochy"
-    },
-    "64D11DAB-3B57-4F14-AD2F-E59A9282FA44": {
-        "name": "Od Oceanu Atlantyckiego do Hiszpanii i Francji"
-    },
-    "81337355-E156-4242-AAF4-711768D30A54": {
-        "name": "Australia"
-    },
-    "1088217C-1410-4CF7-BDE9-8F573A4DBCD9": {
-        "name": "Od Karaibów do Ameryki Środkowej"
-    },
-    "3C4678E4-4D3D-4A40-8817-77752AEA62EB": {
-        "name": "Delta Nilu"
-    },
-    "87060EC2-D006-4102-98CC-3005C68BB343": {
-        "name": "Od Afryki Południowej do Azji Północnej"
-    },
-    "F07CC61B-30FC-4614-BDAD-3240B61F6793": {
-        "name": "Rafa koralowa Palau"
-    },
-    "6143116D-03BB-485E-864E-A8CF58ACF6F1": {
-        "name": "Wodorosty południowoafrykańskie"
-    },
-    "2B30E324-E4FF-4CC1-BA45-A958C2D2B2EC": {
-        "name": "Barrakuda"
-    },
-    "581A4F1A-2B6D-468C-A1BE-6F473F06D10B": {
-        "name": "Gwiazdy morskie"
-    },
-    "687D03A2-18A5-4181-8E85-38F3A13409B9": {
-        "name": "Bolbometopon muricatum"
+        "name": "Na południowy wschód, ponad Wielkimi Równinami (USA)",
+        "pointsOfInterest": {
+            "0": "Na południowy wschód, ponad Wielkimi Równinami (USA)",
+            "120": "Nad południowo-wschodnią częścią USA, w stronę Florydy",
+            "220": "Podróż nad Florydą w kierunku Bahamów",
+            "240": "Na południowy wschód ponad wyspami Bahama",
+            "285": "Nad wyspami Bahama, zbliżając się do Dominikany i Haiti",
+            "300": "Nad Dominikaną i Haiti, zbliżając się do Morza Karaibskiego",
+            "315": "Nad Morzem Karaibskim w kierunku Wenezueli",
+            "90": "Na południowy wschód, ponad regionem Midwest (USA)"
+        }
     },
     "537A4DAB-83B0-4B66-BCD1-05E5DBB4A268": {
-        "name": "Karanks smugowy"
+        "name": "Ławica karanksów smugowych u wybrzeży Borneo",
+        "pointsOfInterest": {
+            "0": "Ławica karanksów smugowych u wybrzeży Borneo"
+        }
     },
-    "27A37B0F-738D-4644-A7A4-E33E7A6C1175": {
-        "name": "Delfiny kalifornijskie"
+    "581A4F1A-2B6D-468C-A1BE-6F473F06D10B": {
+        "name": "Protoreaster na dnie oceanu w pobliżu Borneo",
+        "pointsOfInterest": {
+            "0": "Protoreaster na dnie oceanu w pobliżu Borneo"
+        }
     },
-    "EB3F48E7-D30F-4079-858F-1A61331D5026": {
-        "name": "Las Kelp w Kalifornii"
-    },
-    "CE9B5D5B-B6E7-47C5-8C04-59BF182E98FB": {
-        "name": "Delfiny kostarykańskie"
+    "58754319-8709-4AB0-8674-B34F04E7FFE2": {
+        "name": "Zbliżając się do londyńskiego Tower Bridge nad Tamizą",
+        "pointsOfInterest": {
+            "0": "Zbliżając się do londyńskiego Tower Bridge nad Tamizą",
+            "178": "Południowy brzeg Tamizy w Londynie",
+            "258": "Przelot nad Tamizą w Londynie",
+            "78": "Wzdłuż Tamizy w Londynie"
+        }
     },
     "58C75C62-3290-47B8-849C-56A583173570": {
-        "name": "Płaszczka karbogłowa"
+        "name": "Złote orlenie krowonose u wybrzeży Meksyku",
+        "pointsOfInterest": {
+            "0": "Złote orlenie krowonose u wybrzeży Meksyku"
+        }
     },
-    "3716DD4B-01C0-4F5B-8DD6-DB771EC472FB": {
-        "name": "Rekin szary rafowy"
+    "6143116D-03BB-485E-864E-A8CF58ACF6F1": {
+        "name": "Płynąc przez las wodorostów w pobliżu Półwyspu Przylądkowego (Południowa Afryka)",
+        "pointsOfInterest": {
+            "0": "Płynąc przez las wodorostów w pobliżu Półwyspu Przylądkowego (Południowa Afryka)"
+        }
     },
-    "DD47D8E1-CB66-4C12-BFEA-2ADB0D8D1E2E": {
-        "name": "Długopłetwiec oceaniczny"
+    "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": {
+        "name": "Wyspy Kanaryjskie, Atlantyk i wybrzeże Afryki",
+        "pointsOfInterest": {
+            "0": "Wyspy Kanaryjskie, Atlantyk i wybrzeże Afryki",
+            "105": "Nad Marokiem, zbliżając się do Morza Śródziemnego",
+            "125": "Morze Śródziemne i południowa Hiszpania",
+            "145": "Podróż na północny wschód nad regionem Costa Blanca (Hiszpania)",
+            "165": "Podróż na północny wschód nad Balearami (Hiszpania)",
+            "185": "Nad zachodnią częścią Morza Śródziemnego, Alpy w tle",
+            "220": "Na północny wschód ponad Alpami",
+            "45": "Na północny wschód wzdłuż wybrzeża Maroka",
+            "75": "Nad górami Atlas (Maroko)"
+        }
+    },
+    "640DFB00-FBB9-45DA-9444-9F663859F4BC": {
+        "name": "Zbliżając się do Dolnego Manhattanu od strony New York Harbor",
+        "pointsOfInterest": {
+            "0": "Zbliżając się do Dolnego Manhattanu od strony New York Harbor",
+            "110": "Wzdłuż Dolnego Manhattanu w stronę One World Trade Center",
+            "180": "Mijając wieżowiec One World Trade Center w stronę Środkowego Manhattanu",
+            "210": "Nad Dolnym Manhattanem w Nowym Jorku, w kierunku centrum"
+        }
+    },
+    "64D11DAB-3B57-4F14-AD2F-E59A9282FA44": {
+        "name": "Nad północnym Atlantykiem, w stronę Portugalii",
+        "pointsOfInterest": {
+            "0": "Nad północnym Atlantykiem, w stronę Portugalii",
+            "115": "Nad Portugalią i Hiszpanią",
+            "150": "Oddalając się od Półwyspu Iberyjskiego i przelatując nad Zatoką Biskajską i Francją",
+            "180": "Nad Europą Zachodnią, z widocznym w oddali północnym Atlantykiem"
+        }
+    },
+    "687D03A2-18A5-4181-8E85-38F3A13409B9": {
+        "name": "Bolbometopon nad rafami koralowymi u wybrzeży Borneo",
+        "pointsOfInterest": {
+            "0": "Bolbometopon nad rafami koralowymi u wybrzeży Borneo"
+        }
+    },
+    "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
+        "name": "Zbliżając się do Golden Gate Bridge od strony San Francisco",
+        "pointsOfInterest": {
+            "0": "Zbliżając się do Golden Gate Bridge od strony San Francisco",
+            "140": "Przelot nad Golden Gate Bridge",
+            "230": "Mijając północną wieżę Golden Gate Bridge",
+            "260": "Nad Zatoką San Francisco wzdłuż Golden Gate Bridge",
+            "60": "Wzdłuż Golden Gate Bridge w stronę Marin Headlands"
+        }
+    },
+    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
+        "name": "Nad Pacyfikiem, w stronę Kaliforni Dolnej",
+        "pointsOfInterest": {
+            "0": "Nad Pacyfikiem, w stronę Kaliforni Dolnej",
+            "110": "Nad Górami Skalistymi, zbliżając się do Denver",
+            "125": "Podróż nad Wielkimi Równinami (USA)",
+            "185": "Zbliżając się do Wielkich Jezior, za nimi Ontario (Kanada)",
+            "200": "Nad Wielkimi Jeziorami, zbliżając się do Ontario (Kanada)",
+            "210": "Zorza polarna nad zachodnim Ontario (Kanada)",
+            "235": "Zorza polarna nad północnym Ontario (Kanada)",
+            "250": "Zorza polarna nad północnym Quebekiem (Kanada)",
+            "300": "W kierunku północnego Atlantyku, z zorzą polarną nad Labradorem (Kanada)",
+            "45": "Nad Kalifornią Dolną, widok na północ w kierunku USA",
+            "55": "Podróż nad Meksykiem na południowy zachód USA",
+            "75": "Nad południowo-zachodnim regionem USA"
+        }
+    },
+    "7719B48A-2005-4011-9280-2F64EEC6FD91": {
+        "name": "Nad Pacyfikiem, w stronę USA",
+        "pointsOfInterest": {
+            "0": "Nad Pacyfikiem, w stronę USA",
+            "130": "Sierra Madre Zachodnia na zachodnim wybrzeżu Meksyku",
+            "185": "Nad Sierra Madre Zachodnią w stronę zachodniego wybrzeża Meksyku",
+            "20": "Podróż na południe wzdłuż wybrzeża Kaliforni",
+            "225": "Widok w kierunku Pacyfiku, ponad Sierra Madre del Sur (Meksyk)",
+            "280": "Pacyfik i wybrzeże Meksyku",
+            "290": "Pacyfik oraz wybrzeże Meksyku i Gwatemali",
+            "50": "Nad południową Kalifornią w kierunku Meksyku",
+            "65": "Zbliżając się do pustyni Mojave w południowej Kaliforni, Meksyk w tle",
+            "95": "Zatoka Kalifornijska między Sonorą i Półwyspem Kalifornijskim"
+        }
+    },
+    "7825C73A-658F-48EE-B14C-EC56673094AC": {
+        "name": "Nad Azją Środkową w kierunku wybrzeża Chin",
+        "pointsOfInterest": {
+            "0": "Nad Azją Środkową w kierunku wybrzeża Chin",
+            "10": "Nad środkowymi Chinami w kierunku Szanghaju",
+            "30": "Nad wschodnimi Chinami, zbliżając się do Szanghaju",
+            "45": "Zbliżając się do Szanghaju w stronę Morza Wschodniochińskiego",
+            "50": "Nad Szanghajem w stronę Morza Wschodniochińskiego"
+        }
+    },
+    "78911B7E-3C69-47AD-B635-9C2486F6301D": {
+        "name": "Przelot z nocy w dzień nad południowym Pacyfikiem",
+        "pointsOfInterest": {
+            "0": "Przelot z nocy w dzień nad południowym Pacyfikiem",
+            "110": "Zbliżając się do Nowej Zelandii o wschodzie słońca",
+            "170": "Nad Pacyfikiem, z Nowej Zelandii na północny wschód",
+            "70": "Przelot z nocy w dzień nad Nową Zelandią"
+        }
+    },
+    "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": {
+        "name": "Nad północnym Atlantykiem, zbliżając się do Wysp Brytyjskich",
+        "pointsOfInterest": {
+            "0": "Nad północnym Atlantykiem, zbliżając się do Wysp Brytyjskich",
+            "105": "Nad Europą Środkową w kierunku Rosji",
+            "15": "Irlandia i Wielka Brytania",
+            "150": "Nad Europą Wschodnią, z widoczną w oddali Moskwą",
+            "165": "Nad Europą Wschodnią, widok w kierunku Moskwy",
+            "185": "Nad zachodnią Rosją, mijając Moskwę",
+            "195": "Podróż nad Rosją w kierunku Azji Środkowej",
+            "45": "Podróż nad Wielką Brytanią w kierunku Europy kontynentalnej",
+            "65": "Nad północnozachodnią Europą w kierunku Rosji"
+        }
+    },
+    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
+        "name": "Zbliżając się do londyńskiego Tower Bridge nad Tamizą",
+        "pointsOfInterest": {
+            "0": "Zbliżając się do londyńskiego Tower Bridge nad Tamizą",
+            "130": "Wzdłuż Tamizy, w kierunku London Eye",
+            "20": "Wzdłuż Tamizy w Londynie",
+            "210": "Zbliżając się do London Eye nad Tamizą",
+            "310": "Wzdłuż Tamizy, mijając London Eye",
+            "325": "Przelot nad Pałacem Westminsterskim nad Tamizą (Londyn)"
+        }
+    },
+    "81337355-E156-4242-AAF4-711768D30A54": {
+        "name": "Nad Oceanem Indyjskim, w stronę Perth (Australia)",
+        "pointsOfInterest": {
+            "0": "Nad Oceanem Indyjskim, w stronę Perth (Australia)",
+            "170": "Nad zachodnią Australią, zbliżając się do Terytorium Północnego",
+            "220": "Nad Terytorium Północnym (Australia) w kierunku Nowej Gwinei",
+            "335": "Podróż nad morzem Arafura w kierunku Nowej Gwinei",
+            "50": "Podróż na północny wschód nad Australią Zachodnią"
+        }
     },
     "82175C1F-153C-4EC8-AE37-2860EA828004": {
-        "name": "Koralowce Morza Czerwonego"
+        "name": "Rafa koralowa na Morzu Czerwonym u wybrzeży Egiptu",
+        "pointsOfInterest": {
+            "0": "Rafa koralowa na Morzu Czerwonym u wybrzeży Egiptu"
+        }
     },
-    "391BDF6E-3279-4CE1-9CA5-0F82811452D7": {
-        "name": "Płetwonogie"
+    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": {
+        "name": "Nad rezerwatem Pu‘u O ‘Umi na Hawajach",
+        "pointsOfInterest": {
+            "0": "Nad rezerwatem Pu‘u O ‘Umi na Hawajach"
+        }
     },
-    "BA4ECA11-592F-4727-9221-D2A32A16EB28": {
-        "name": "Meduzy Palau 1"
+    "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8": {
+        "name": "Nad Upper East Side i Central Parkiem w Nowym Jorku",
+        "pointsOfInterest": {
+            "0": "Nad Upper East Side i Central Parkiem w Nowym Jorku",
+            "160": "Zbliżając się do Empire State Building w Nowym Jorku",
+            "205": "Mijając Empire State Building w kierunku Dolnego Manhattanu",
+            "50": "Nad Środkowym Manhattanem, w kierunku centrum i Empire State Building"
+        }
     },
-    "E580E5A5-0888-4BE8-A4CA-F74A18A643C3": {
-        "name": "Meduzy Palau 2"
+    "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
+        "name": "Nad Zatoką San Francisco w kierunku Embarcadero",
+        "pointsOfInterest": {
+            "0": "Nad Zatoką San Francisco w kierunku Embarcadero",
+            "208": "Wzdłuż Market Street przez San Francisco"
+        }
     },
-    "EC3DC957-D4C2-4732-AACE-7D0C0F390EC8": {
-        "name": "Meduzy Palau 3"
+    "87060EC2-D006-4102-98CC-3005C68BB343": {
+        "name": "Podróż na północny wschód nad Wyżyną Abisyńską",
+        "pointsOfInterest": {
+            "0": "Podróż na północny wschód nad Wyżyną Abisyńską",
+            "100": "Nad Półwyspem Arabskim, na północny wschód",
+            "130": "Nad Półwyspem Arabskim w kierunku Iranu",
+            "165": "Nad Półwyspem Arabskim, zbliżając się do Iranu",
+            "190": "Zbliżając się do wybrzeża Iranu z górami Zagros w tle",
+            "210": "Nad górami Zagros (Iran)",
+            "240": "Nad pustynią Daszt-e Lut w Iranie",
+            "265": "Przelot w kierunku Turkmenistanu i pustyni Kara-kum",
+            "305": "Rzeka Amu-daria i góry Pamiro-Ałaj (Azja Środkowa)",
+            "322": "Góry Pamiro-Ałaj i Kotlina Fergańska (Azja Środkowa)",
+            "360": "Zmierzając z Kirgistanu w stronę Kazachstanu",
+            "400": "Podróż na północ nad Kazachstanem",
+            "45": "Podróż nad Morzem Czerwonym w stronę Półwyspu Arabskiego",
+            "450": "Nad górami Ałtaju w stronę Mongolii"
+        }
     },
-    "C7AD3D0A-7EDF-412C-A237-B3C9D27381A1": {
-        "name": "Meduzy Alaskie 1"
+    "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
+        "name": "Przelot wzdłuż Sheikh Zayed Road w Dubaju (Zjednoczone Emiraty Arabskie)",
+        "pointsOfInterest": {
+            "0": "Przelot wzdłuż Sheikh Zayed Road w Dubaju (Zjednoczone Emiraty Arabskie)"
+        }
     },
-    "C6DC4E54-1130-44F8-AF6F-A551D8E8A181": {
-        "name": "Meduzy Alaskie 2"
-    },
-    "149E7795-DBDA-4F5D-B39A-14712F841118": {
-        "name": "Fale Tahiti 1"
+    "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
+        "name": "Obserwatorium Griffitha i Hollywood Hills w Los Angeles",
+        "pointsOfInterest": {
+            "0": "Obserwatorium Griffitha i Hollywood Hills w Los Angeles"
+        }
     },
     "8C31B06F-91A4-4F7C-93ED-56146D7F48B9": {
-        "name": "Fale Tahiti 2"
+        "name": "Fale bijące w brzeg na Tahiti",
+        "pointsOfInterest": {
+            "0": "Fale bijące w brzeg na Tahiti"
+        }
+    },
+    "92E48DE9-13A1-4172-B560-29B4668A87EE": {
+        "name": "Nad Santa Monica State Beach nieopodal Los Angeles",
+        "pointsOfInterest": {
+            "0": "Nad Santa Monica State Beach nieopodal Los Angeles",
+            "365": "Mijając molo Santa Monica Pier w pobliżu Los Angeles",
+            "430": "Nad Santa Monica State Beach nieopodal Los Angeles"
+        }
+    },
+    "9680B8EB-CE2A-4395-AF41-402801F4D6A6": {
+        "name": "Zbliżając się do Burdż Chalifa w centrum Dubaju (Zjednoczone Emiraty Arabskie)",
+        "pointsOfInterest": {
+            "0": "Zbliżając się do Burdż Chalifa w centrum Dubaju (Zjednoczone Emiraty Arabskie)",
+            "280": "Mijając Burdż Chalifa w centrum Dubaju (Zjednoczone Emiraty Arabskie)",
+            "330": "Nad centrum Dubaju, w kierunku wybrzeża"
+        }
+    },
+    "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C": {
+        "name": "Przelot nad tarasami ryżowymi Longji w prowincji Guangxi (Chiny)",
+        "pointsOfInterest": {
+            "0": "Przelot nad tarasami ryżowymi Longji w prowincji Guangxi (Chiny)"
+        }
+    },
+    "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
+        "name": "Przelot nad terenem pałacu Buckingham (Londyn)",
+        "pointsOfInterest": {
+            "0": "Przelot nad terenem pałacu Buckingham (Londyn)",
+            "104": "Przelot nad Tamizą przy London Eye",
+            "149": "Mijając południową część Londynu",
+            "24": "Nad pałacem Buckingham w Londynie",
+            "279": "Mijając The Shard w południowym Londynie",
+            "299": "Przelot nad Tamizą w Londynie",
+            "324": "Przelot nad Tamizą przy londyńskim Tower Bridge",
+            "49": "Nad stadionem St James Park w kierunku Tamizy (London)"
+        }
+    },
+    "A837FA8C-C643-4705-AE92-074EFDD067F7": {
+        "name": "Nocna podróż na północny wschód nad Saharą",
+        "pointsOfInterest": {
+            "0": "Nocna podróż na północny wschód nad Saharą",
+            "100": "Wybrzeże Morza Śródziemnego (Tunezja i Libia)",
+            "120": "Nad Morzem Śródziemnym w kierunku Włoch",
+            "140": "Nad południowymi Włochami, zbliżając się do Półwyspu Bałkańskiego, z widoczną w oddali Turcją",
+            "165": "Nad Półwyspem Bałkańskim w kierunku Morza Czarnego",
+            "180": "Nad Półwyspem Bałkańskim, zbliżając się do Morza Czarnego",
+            "210": "Podróż nad Morzem Czarnym w stronę Ukrainy",
+            "230": "Podróż nad Ukrainą w stronę Rosji",
+            "70": "Nad Wielkim Ergiem Wschodnim, w stronę Morza Śródziemnego"
+        }
+    },
+    "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
+        "name": "Przelot nad oazą Liwa (Zjednoczone Emiraty Arabskie)",
+        "pointsOfInterest": {
+            "0": "Przelot nad oazą Liwa (Zjednoczone Emiraty Arabskie)"
+        }
+    },
+    "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
+        "name": "Nad Pacyfikiem, w stronę Meksyku",
+        "pointsOfInterest": {
+            "0": "Nad Pacyfikiem, w stronę Meksyku",
+            "105": "Nad miastem Meksyk w kierunku Zatoki Meksykańskiej",
+            "122": "Przelot nad Zatoką Meksykańską w kierunku USA",
+            "180": "Mijając Houston i zbliżając się do Nowego Orleanu (USA)",
+            "190": "Przelod nad Nowym Orleanem i południowym wybrzeżem USA",
+            "215": "Nad południowo-wschodnim regionem USA",
+            "280": "Podróż nad wschodnią częścią USA w kierunku Nowego Jorku",
+            "320": "Nad wschodnią częścią USA, zbliżając się do Nowego Jorku"
+        }
+    },
+    "B876B645-3955-420E-99DF-60139E451CF3": {
+        "name": "Przelot nad parkiem narodowym Wulingyuan (Chiny)",
+        "pointsOfInterest": {
+            "0": "Przelot nad parkiem narodowym Wulingyuan (Chiny)"
+        }
+    },
+    "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
+        "name": "Przelot wzdłuż Półwyspu Nuussuaq na Grenlandii",
+        "pointsOfInterest": {
+            "0": "Przelot wzdłuż Półwyspu Nuussuaq na Grenlandii"
+        }
+    },
+    "BA4ECA11-592F-4727-9221-D2A32A16EB28": {
+        "name": "Meduza złota w wodach Palau",
+        "pointsOfInterest": {
+            "0": "Meduza złota w wodach Palau",
+            "282": "Meduza złota wśród meduz księżycowych",
+            "348": "Meduza złota w wodach Palau"
+        }
+    },
+    "C6DC4E54-1130-44F8-AF6F-A551D8E8A181": {
+        "name": "Chełbia modra u wybrzeży Alaski",
+        "pointsOfInterest": {
+            "0": "Chełbia modra u wybrzeży Alaski"
+        }
+    },
+    "C7AD3D0A-7EDF-412C-A237-B3C9D27381A1": {
+        "name": "Dryfując nad chełbią modrą u wybrzeży Alaski",
+        "pointsOfInterest": {
+            "0": "Dryfując nad chełbią modrą u wybrzeży Alaski"
+        }
+    },
+    "C8559883-6F3E-4AF2-8960-903710CD47B7": {
+        "name": "Przelot nad Wzgórzem Wiktorii (Hong Kong)",
+        "pointsOfInterest": {
+            "0": "Przelot nad Wzgórzem Wiktorii (Hong Kong)",
+            "150": "Przelot nad Hongkongiem w kierunku Victoria Harbour",
+            "330": "Nad Victoria Harbour w kierunku półwyspu Koulun"
+        }
+    },
+    "CE279831-1CA7-4A83-A97B-FF1E20234396": {
+        "name": "Przelot nad portem lotniczym Los Angeles",
+        "pointsOfInterest": {
+            "0": "Przelot nad portem lotniczym Los Angeles"
+        }
+    },
+    "CE9B5D5B-B6E7-47C5-8C04-59BF182E98FB": {
+        "name": "Delfinki długoszczękie u wybrzeży Kostaryki",
+        "pointsOfInterest": {
+            "0": "Delfinki długoszczękie u wybrzeży Kostaryki"
+        }
+    },
+    "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
+        "name": "Podróż nad Pacyfikiem w stronę Ameryki Środkowej",
+        "pointsOfInterest": {
+            "0": "Podróż nad Pacyfikiem w stronę Ameryki Środkowej",
+            "110": "Nad pogrążoną w chmurach Jamajką na Morzu Karaibskim",
+            "125": "Przelot nad Kubą, widok w kierunku Haiti i Dominikany",
+            "170": "Podróż nad wyspami Bahama, widok w kierunku Haiti i Dominikany",
+            "190": "Wyspy Turks i Caicos na Atlantyku",
+            "35": "Wybrzeże pacyficzne Nikaragui, Kostaryki i Panamy",
+            "50": "Przelot nad Ameryką Środkową, z widoczną w oddali Ameryką Południową",
+            "65": "Wybrzeże Moskitów (Nikaragua)",
+            "85": "Nad Morzem Karaibskim w kierunku Kuby"
+        }
+    },
+    "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
+        "name": "Nad parkiem narodowym Wulingyuan (Chiny)",
+        "pointsOfInterest": {
+            "0": "Nad parkiem narodowym Wulingyuan (Chiny)"
+        }
+    },
+    "DD47D8E1-CB66-4C12-BFEA-2ADB0D8D1E2E": {
+        "name": "Humbak u wybrzeży Polinezji Francuskiej",
+        "pointsOfInterest": {
+            "0": "Humbak u wybrzeży Polinezji Francuskiej"
+        }
+    },
+    "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
+        "name": "Nad Zatoką San Francisco i Golden Gate Bridge",
+        "pointsOfInterest": {
+            "0": "Nad Zatoką San Francisco i Golden Gate Bridge",
+            "140": "Nad północną wieżą Golden Gate Bridge w stronę San Francisco",
+            "191": "Nad Zatoką San Francisco"
+        }
+    },
+    "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
+        "name": "Nad Afryką Zachodnią, w stronę Sahary",
+        "pointsOfInterest": {
+            "0": "Nad Afryką Zachodnią, w stronę Sahary",
+            "110": "Nad górami Ahaggar na Saharze (Afryka Północna)",
+            "155": "Nad Wielkim Ergiem Wschodnim, w stronę Morza Śródziemnego (Afryka Północna)",
+            "195": "Wybrzeże Tunezji i Morze Śródziemne",
+            "210": "Podróż nad wybrzeżem Tunezji w kierunku Włoch",
+            "230": "Zbliżając się do śródziemnomorskiego wybrzeża Włoch",
+            "245": "Podróż nad Włochami w kierunku Półwyspu Bałkańskiego",
+            "285": "Nad Półwyspem Bałkańskim w kierunku Karpat",
+            "30": "Przelot nad Saharą (północna Afryka)",
+            "310": "Karpaty i Morze Czarne"
+        }
+    },
+    "E580E5A5-0888-4BE8-A4CA-F74A18A643C3": {
+        "name": "Meduza złota w wodach Palau",
+        "pointsOfInterest": {
+            "0": "Meduza złota w wodach Palau"
+        }
+    },
+    "E5DB138A-F04E-4619-B896-DE5CB538C534": {
+        "name": "Nad Tunezją, w stronę Włoch",
+        "pointsOfInterest": {
+            "0": "Nad Tunezją, w stronę Włoch",
+            "15": "Nad południowymi Włochami, Półwysep Bałkański w tle",
+            "25": "Nad Półwyspem Bałkańskim w kierunku Azji Środkowej",
+            "40": "Nad Półwyspem Bałkańskim, mijając Morze Czarne",
+            "5": "Nad Morzem Śródziemnym, widok w kierunku Sycylii i Półwyspu Apenińskiego",
+            "55": "Nad Ukrainą, Rosja w tle",
+            "75": "Nad południowozachodnią Rosją, mijając Kazachstan"
+        }
+    },
+    "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
+        "name": "Przelot nad dystryktem Dubai Marina (Zjednoczone Emiraty Arabskie)",
+        "pointsOfInterest": {
+            "0": "Przelot nad dystryktem Dubai Marina (Zjednoczone Emiraty Arabskie)"
+        }
+    },
+    "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
+        "name": "Nad Victoria Harbour w kierunku centrum Hongkongu",
+        "pointsOfInterest": {
+            "0": "Nad Victoria Harbour w kierunku centrum Hongkongu"
+        }
+    },
+    "EB3F48E7-D30F-4079-858F-1A61331D5026": {
+        "name": "Las wodorostów u wybrzeży Kalifornii",
+        "pointsOfInterest": {
+            "0": "Las wodorostów u wybrzeży Kalifornii"
+        }
+    },
+    "EC3DC957-D4C2-4732-AACE-7D0C0F390EC8": {
+        "name": "Meduza złota w wodach Palau",
+        "pointsOfInterest": {
+            "0": "Meduza złota w wodach Palau"
+        }
+    },
+    "EC67726A-8212-4C5E-83CF-8412932740D2": {
+        "name": "Napis Hollywood w Los Angeles",
+        "pointsOfInterest": {
+            "0": "Napis Hollywood w Los Angeles",
+            "250": "Nad Hollywood Hills w stronę Burbank (Kalifornia)"
+        }
+    },
+    "EE01F02D-1413-436C-AB05-410F224A5B7B": {
+        "name": "Fiord Ilulissat, wybrzeże Grenlandii",
+        "pointsOfInterest": {
+            "0": "Fiord Ilulissat, wybrzeże Grenlandii"
+        }
+    },
+    "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
+        "name": "Nad Marin Headlands z widokiem na Golden Gate Bridge",
+        "pointsOfInterest": {
+            "0": "Nad Marin Headlands z widokiem na Golden Gate Bridge",
+            "150": "Przelot nad Golden Gate Bridge w stronę Presidio (San Francisco)"
+        }
+    },
+    "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
+        "name": "Sekcja Mutianyu Wielkiego Muru w dystrykcie Huairou (Chiny)",
+        "pointsOfInterest": {
+            "0": "Sekcja Mutianyu Wielkiego Muru w dystrykcie Huairou (Chiny)"
+        }
+    },
+    "F07CC61B-30FC-4614-BDAD-3240B61F6793": {
+        "name": "Rafa koralowa w pobliżu Palau",
+        "pointsOfInterest": {
+            "0": "Rafa koralowa w pobliżu Palau"
+        }
+    },
+    "F439B0A7-D18C-4B14-9681-6520E6A74FE9": {
+        "name": "Słońce odbijające się wzdłuż wybrzeża Iranu",
+        "pointsOfInterest": {
+            "0": "Słońce odbijające się wzdłuż wybrzeża Iranu",
+            "15": "Przejście z dnia w noc nad Iranem",
+            "60": "Przejście z dnia w noc nad Azją Środkową"
+        }
+    },
+    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
+        "name": "Nad centrum Los Angeles",
+        "pointsOfInterest": {
+            "0": "Nad centrum Los Angeles"
+        }
+    },
+    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
+        "name": "Zbliżając się do londyńskiego Tower Bridge nad Tamizą",
+        "pointsOfInterest": {
+            "0": "Zbliżając się do londyńskiego Tower Bridge nad Tamizą",
+            "20": "Przelot nad Tamizą w Londynie",
+            "200": "Przelot nad Tamizą w stronę Westminster (Londyn)",
+            "270": "Nad Westminster (Londyn)",
+            "60": "Przelot nad The Shard w południowym Londynie",
+            "92": "Południowy brzeg Tamizy, w kierunku London Eye"
+        }
+    },
+    "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {
+        "name": "Nad Victoria Harbour z widokiem na wyspę Hongkong",
+        "pointsOfInterest": {
+            "0": "Nad Victoria Harbour z widokiem na wyspę Hongkong"
+        }
     }
 }

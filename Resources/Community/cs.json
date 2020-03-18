@@ -1,0 +1,740 @@
+{
+    "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8": {
+        "name": "Přelet nad oázou Liwa ve Spojených arabských emirátech",
+        "pointsOfInterest": {
+            "0": "Přelet nad oázou Liwa ve Spojených arabských emirátech"
+        }
+    },
+    "009BA758-7060-4479-8EE8-FB9B40C8FB97": {
+        "name": "Let přes Sibiř a Mongolsko na jihovýchod",
+        "pointsOfInterest": {
+            "0": "Let přes Sibiř a Mongolsko na jihovýchod",
+            "110": "Přes Čínu směrem na Korejský poloostrov",
+            "150": "Korejský poloostrov s Japonskem v dálce",
+            "180": "Cesta přes Jižní Koreu směrem na Japonsko",
+            "195": "Přes Japonsko s výhledem na Tichý oceán",
+            "22": "Let směrem na Vnitřní Mongolsko",
+            "260": "Přes Tichý oceán jihovýchodně od Japonska",
+            "32": "Cesta přes Mongolsko směrem na Čínu",
+            "60": "Let přes severní Čínu směrem na Korejský poloostrov"
+        }
+    },
+    "00BA71CD-2C54-415A-A68A-8358E677D750": {
+        "name": "Přílet k centru Dubaje ve Spojených arabských emirátech",
+        "pointsOfInterest": {
+            "0": "Přílet k centru Dubaje ve Spojených arabských emirátech",
+            "210": "Přelet nad centrem Dubaje ve Spojených arabských emirátech"
+        }
+    },
+    "024891DE-B7F6-4187-BFE0-E6D237702EF0": {
+        "name": "Přílet přes Wan‑čaj do centra Hongkongu",
+        "pointsOfInterest": {
+            "0": "Přílet přes Wan‑čaj do centra Hongkongu",
+            "150": "Přes centrum Hongkongu",
+            "270": "Přes ostrov Hongkong"
+        }
+    },
+    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": {
+        "name": "Polární záře nad Antarktidou",
+        "pointsOfInterest": {
+            "0": "Polární záře nad Antarktidou"
+        }
+    },
+    "044AD56C-A107-41B2-90CC-E60CCACFBCF5": {
+        "name": "Úsek Mu‑tchien‑jü Velké čínské zdi v obvodu Chuaj‑žou",
+        "pointsOfInterest": {
+            "0": "Úsek Mu‑tchien‑jü Velké čínské zdi v obvodu Chuaj‑žou"
+        }
+    },
+    "1088217C-1410-4CF7-BDE9-8F573A4DBCD9": {
+        "name": "Let přes Tichý oceán směrem na Střední Ameriku",
+        "pointsOfInterest": {
+            "0": "Let přes Tichý oceán směrem na Střední Ameriku",
+            "100": "Napříč Střední Amerikou směrem ke Karibskému moři",
+            "150": "Let přes Karibské moře směrem na Kubu",
+            "240": "Přes Kubu s Floridou a Bahamami v pozadí",
+            "300": "Cesta přes Floridu a Bahamy směrem na Sargasové moře",
+            "350": "Přílet přes Sargasové moře k Atlantskému oceánu",
+            "70": "Přes jihozápadní pobřeží Střední Ameriky směrem na Karibské moře"
+        }
+    },
+    "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
+        "name": "Let přes Tichý oceán směrem k pobřeží Kalifornie",
+        "pointsOfInterest": {
+            "0": "Let přes Tichý oceán směrem k pobřeží Kalifornie",
+            "110": "Přes Las Vegas směrem na Salt Lake City ve Spojených státech",
+            "120": "Přílet přes západní Spojené státy k Salt Lake City",
+            "155": "Průlet mezi Salt Lake City a Denverem ve Spojených státech",
+            "170": "Let přes Skalnaté hory ve Spojených státech",
+            "70": "Cesta přes pobřeží Kalifornie směrem do vnitrozemí",
+            "85": "Přelet nad Los Angeles na západním pobřeží Spojených států",
+            "95": "Přílet přes Los Angeles k Las Vegas ve Spojených státech"
+        }
+    },
+    "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7": {
+        "name": "Přelet nad Laupāhoehoe Nui v lesní rezervaci Kohala na ostrově Havaj",
+        "pointsOfInterest": {
+            "0": "Přelet nad Laupāhoehoe Nui v lesní rezervaci Kohala na ostrově Havaj"
+        }
+    },
+    "149E7795-DBDA-4F5D-B39A-14712F841118": {
+        "name": "Vlny rozbíjející se o pobřeží Tahiti",
+        "pointsOfInterest": {
+            "0": "Vlny rozbíjející se o pobřeží Tahiti"
+        }
+    },
+    "22162A9B-DB90-4517-867C-C676BC3E8E95": {
+        "name": "Úsek Mu‑tchien‑jü Velké čínské zdi v obvodu Chuaj‑žou",
+        "pointsOfInterest": {
+            "0": "Úsek Mu‑tchien‑jü Velké čínské zdi v obvodu Chuaj‑žou"
+        }
+    },
+    "258A6797-CC13-4C3A-AB35-4F25CA3BF474": {
+        "name": "Nad přírodní rezervací Pu'u o 'Umi na ostrově Havaj",
+        "pointsOfInterest": {
+            "0": "Nad přírodní rezervací Pu'u o 'Umi na ostrově Havaj"
+        }
+    },
+    "27A37B0F-738D-4644-A7A4-E33E7A6C1175": {
+        "name": "Delfíni obecní u pobřeží Kalifornie ve Spojených státech",
+        "pointsOfInterest": {
+            "0": "Delfíni obecní u pobřeží Kalifornie ve Spojených státech"
+        }
+    },
+    "29BDF297-EB43-403A-8719-A78DA11A2948": {
+        "name": "Přes Fisherman's Wharf směrem na centrum San Franciska",
+        "pointsOfInterest": {
+            "0": "Přes Fisherman's Wharf směrem na centrum San Franciska",
+            "150": "Kolem Coit Tower směrem na centrum San Franciska a Bay Bridge",
+            "196": "Centrum San Franciska",
+            "80": "Přílet ke Coit Tower s centrem San Franciska a Bay Bridge v pozadí"
+        }
+    },
+    "2B30E324-E4FF-4CC1-BA45-A958C2D2B2EC": {
+        "name": "Hejno barakud v moři poblíž Bornea",
+        "pointsOfInterest": {
+            "0": "Hejno barakud v moři poblíž Bornea"
+        }
+    },
+    "2F52E34C-39D4-4AB1-9025-8F7141FAA720": {
+        "name": "Ledovcový fjord v Ilulissatu u pobřeží Grónska",
+        "pointsOfInterest": {
+            "0": "Ledovcový fjord v Ilulissatu u pobřeží Grónska"
+        }
+    },
+    "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
+        "name": "Cesta přes Africký roh směrem na Adenský záliv",
+        "pointsOfInterest": {
+            "0": "Cesta přes Africký roh směrem na Adenský záliv",
+            "115": "Přílet přes Ománský záliv k pobřeží Makránu",
+            "145": "Pobřeží Makránu v Íránu a Pákistánu",
+            "160": "Let přes Írán směrem na Afghánistán a Pákistán",
+            "180": "Let přes Afghánistán a Pákistán směrem na pohoří Karákóram",
+            "235": "Cesta přes pohoří Karákóram směrem na Čínu",
+            "280": "Poušť Taklamakan v západní Číně",
+            "315": "Pohoří Ťan‑šan ve Střední Asii",
+            "45": "Jihovýchod Arabského poloostrova"
+        }
+    },
+    "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
+        "name": "Na server přes Los Angeles po Interstate 110",
+        "pointsOfInterest": {
+            "0": "Na server přes Los Angeles po Interstate 110"
+        }
+    },
+    "3716DD4B-01C0-4F5B-8DD6-DB771EC472FB": {
+        "name": "Žraloci spanilí plovoucí u Francouzské Polynésie",
+        "pointsOfInterest": {
+            "0": "Žraloci spanilí plovoucí u Francouzské Polynésie"
+        }
+    },
+    "391BDF6E-3279-4CE1-9CA5-0F82811452D7": {
+        "name": "Lachtani jihoafričtí u pobřeží poloostrova Cape Peninsula, Jižní Afrika",
+        "pointsOfInterest": {
+            "0": "Lachtani jihoafričtí u pobřeží poloostrova Cape Peninsula, Jižní Afrika"
+        }
+    },
+    "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
+        "name": "Cesta přes Central Park směrem na střední Manhattan v New Yorku",
+        "pointsOfInterest": {
+            "0": "Cesta přes Central Park směrem na střední Manhattan v New Yorku",
+            "246": "Přes střední Manhattan v New Yorku"
+        }
+    },
+    "3C4678E4-4D3D-4A40-8817-77752AEA62EB": {
+        "name": "Cesta západní Evropou s Britskými ostrovy v dálce",
+        "pointsOfInterest": {
+            "0": "Cesta západní Evropou s Britskými ostrovy v dálce",
+            "100": "Řecko lemované Jónským a Egejským mořem",
+            "160": "Cesta přes Středozemní moře na jihovýchod",
+            "185": "Středozemní moře a delta Nilu",
+            "20": "Let přes Alpy a Pádskou nížinu na jihovýchod",
+            "205": "Řeka Nil tekoucí přes Saharu v Egyptě",
+            "220": "Arabská poušť lemovaná řekou Nil a Suezským zálivem",
+            "240": "Let přes Rudé moře na jihovýchod",
+            "50": "Let přes Pyrenejský poloostrov a Jaderské moře"
+        }
+    },
+    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": {
+        "name": "Podél pobřeží rezervace Kohala na ostrově Havaj",
+        "pointsOfInterest": {
+            "0": "Podél pobřeží rezervace Kohala na ostrově Havaj"
+        }
+    },
+    "3E94AE98-EAF2-4B09-96E3-452F46BC114E": {
+        "name": "Přílet k Bay Bridge a centru San Franciska",
+        "pointsOfInterest": {
+            "0": "Přílet k Bay Bridge a centru San Franciska",
+            "116": "Přes San Francisco Bay směrem do centra",
+            "80": "Napříč přes Bay Bridge směrem na centrum San Franciska"
+        }
+    },
+    "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
+        "name": "Let podél dubajské přístavní čtvrti ve Spojených arabských emirátech",
+        "pointsOfInterest": {
+            "0": "Let podél dubajské přístavní čtvrti ve Spojených arabských emirátech"
+        }
+    },
+    "44166C39-8566-4ECA-BD16-43159429B52F": {
+        "name": "7. avenue směrem na Times Square, New York",
+        "pointsOfInterest": {
+            "0": "7. avenue směrem na Times Square, New York",
+            "120": "7. avenue na středním Manhattanu, New York",
+            "40": "Přes Times Square v New Yorku"
+        }
+    },
+    "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943": {
+        "name": "Údolí Waimanu v lesní rezervaci Kohala na ostrově Havaj",
+        "pointsOfInterest": {
+            "0": "Údolí Waimanu v lesní rezervaci Kohala na ostrově Havaj"
+        }
+    },
+    "4AD99907-9E76-408D-A7FC-8429FF014201": {
+        "name": "Let přes San Francisco Bay směrem na Embarcadero",
+        "pointsOfInterest": {
+            "0": "Let přes San Francisco Bay směrem na Embarcadero",
+            "150": "Centrem San Franciska po Market Street",
+            "360": "San Franciskem po Market Street",
+            "90": "Přes Embarcadero s výhledem na Market Street v San Francisku"
+        }
+    },
+    "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589": {
+        "name": "Let přes Velké planiny Spojených států na jihovýchod",
+        "pointsOfInterest": {
+            "0": "Let přes Velké planiny Spojených států na jihovýchod",
+            "120": "Přes jihovýchod Spojených států směrem na Floridu",
+            "220": "Cesta přes Floridu směrem na Bahamy",
+            "240": "Let přes Bahamy na jihovýchod",
+            "285": "Přílet přes Bahamy k Dominikánské republice a Haiti",
+            "300": "Přílet přes Dominikánskou republiku a Haiti ke Karibskému moři",
+            "315": "Přes Karibské moře směrem na Venezuelu",
+            "90": "Let přes středozápad Spojených států na jihovýchod"
+        }
+    },
+    "537A4DAB-83B0-4B66-BCD1-05E5DBB4A268": {
+        "name": "Hejno kranasů šestipruhých u pobřeží Bornea",
+        "pointsOfInterest": {
+            "0": "Hejno kranasů šestipruhých u pobřeží Bornea"
+        }
+    },
+    "581A4F1A-2B6D-468C-A1BE-6F473F06D10B": {
+        "name": "Hvězdice uzlovitá na dně oceánu poblíž Bornea",
+        "pointsOfInterest": {
+            "0": "Hvězdice uzlovitá na dně oceánu poblíž Bornea"
+        }
+    },
+    "58754319-8709-4AB0-8674-B34F04E7FFE2": {
+        "name": "Přílet k mostu Tower Bridge na řece Temži v Londýně",
+        "pointsOfInterest": {
+            "0": "Přílet k mostu Tower Bridge na řece Temži v Londýně",
+            "178": "Jižně od řeky Temže v Londýně",
+            "258": "Napříč přes Temži v Londýně",
+            "78": "Podél řeky Temže v Londýně"
+        }
+    },
+    "58C75C62-3290-47B8-849C-56A583173570": {
+        "name": "Marani tichomořští u pobřeží Mexika",
+        "pointsOfInterest": {
+            "0": "Marani tichomořští u pobřeží Mexika"
+        }
+    },
+    "6143116D-03BB-485E-864E-A8CF58ACF6F1": {
+        "name": "Proplouvání hustými chaluhami v blízkosti poloostrova Cape Peninsula, Jižní Afrika",
+        "pointsOfInterest": {
+            "0": "Proplouvání hustými chaluhami v blízkosti poloostrova Cape Peninsula, Jižní Afrika"
+        }
+    },
+    "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": {
+        "name": "Kanárské ostrovy, Atlantský oceán a pobřeží Afriky",
+        "pointsOfInterest": {
+            "0": "Kanárské ostrovy, Atlantský oceán a pobřeží Afriky",
+            "105": "Přílet přes Maroko ke Středozemnímu moři",
+            "125": "Středozemní moře a jižní Španělsko",
+            "145": "Cesta na severovýchod přes španělské pobřeží Costa Blanca",
+            "165": "Cesta na severovýchod přes španělské Baleárské ostrovy",
+            "185": "Přes západní Středozemní moře s Alpami v pozadí",
+            "220": "Let přes Alpy na severovýchod",
+            "45": "Let podél pobřeží Maroka na severovýchod",
+            "75": "Přelet nad pohořím Atlas v Maroku"
+        }
+    },
+    "640DFB00-FBB9-45DA-9444-9F663859F4BC": {
+        "name": "Přílet k dolnímu Manhattanu od newyorského přístavu",
+        "pointsOfInterest": {
+            "0": "Přílet k dolnímu Manhattanu od newyorského přístavu",
+            "110": "Přílet k One World Trade Center podél dolního Manhattanu",
+            "180": "Kolem One World Trade Center směrem na střední Manhattan",
+            "210": "Let přes dolní Manhattan v New Yorku směrem na střední Manhattan"
+        }
+    },
+    "64D11DAB-3B57-4F14-AD2F-E59A9282FA44": {
+        "name": "Přílet přes severní Atlantský oceán k Portugalsku",
+        "pointsOfInterest": {
+            "0": "Přílet přes severní Atlantský oceán k Portugalsku",
+            "115": "Přes Portugalsko a Španělsko",
+            "150": "Odlet z pyrenejského poloostrova a přelet nad Biskajským zálivem a Francií",
+            "180": "Přes západní Evropu se severním Atlantským oceánem v dálce"
+        }
+    },
+    "687D03A2-18A5-4181-8E85-38F3A13409B9": {
+        "name": "Ploskozubec vysokočelý nad korálovými útesy u Bornea",
+        "pointsOfInterest": {
+            "0": "Ploskozubec vysokočelý nad korálovými útesy u Bornea"
+        }
+    },
+    "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
+        "name": "Přílet ke Golden Gate Bridge ve směru od San Franciska",
+        "pointsOfInterest": {
+            "0": "Přílet ke Golden Gate Bridge ve směru od San Franciska",
+            "140": "Napříč přes Golden Gate Bridge",
+            "230": "Kolem severní věže mostu Golden Gate Bridge",
+            "260": "Cesta přes San Francisco Bay podél Golden Gate Bridge",
+            "60": "Podél mostu Golden Gate Bridge směrem na Marin Headlands"
+        }
+    },
+    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
+        "name": "Let přes Tichý oceán směrem na Baja California",
+        "pointsOfInterest": {
+            "0": "Let přes Tichý oceán směrem na Baja California",
+            "110": "Přílet přes Skalnaté hory k Denveru",
+            "125": "Cesta přes Velké planiny Spojených států",
+            "185": "Přílet k Velkým jezerům s kanadským Ontariem v pozadí",
+            "200": "Přílet přes Velká jezera k Ontariu v Kanadě",
+            "210": "Polární záře nad západním Ontariem v Kanadě",
+            "235": "Polární záře nad severním Ontariem v Kanadě",
+            "250": "Polární záře nad severním Québecem v Kanadě",
+            "300": "Let směrem na severní Atlantik s polární září nad Labradorem v Kanadě",
+            "45": "Napříč Baja California s výhledem na sever ke Spojeným státům",
+            "55": "Přes Mexiko směrem na jihozápad Spojených států",
+            "75": "Let přes jihovýchod Spojených států"
+        }
+    },
+    "7719B48A-2005-4011-9280-2F64EEC6FD91": {
+        "name": "Přes Tichý oceán směrem na Spojené státy",
+        "pointsOfInterest": {
+            "0": "Přes Tichý oceán směrem na Spojené státy",
+            "130": "Pohoří Sierra Madre Occidental na západním pobřeží Mexika",
+            "185": "Let přes pohoří Sierra Madre Occidental směrem k západnímu pobřeží Mexika",
+            "20": "Cesta na jih podél pobřeží Kalifornie",
+            "225": "Výhled na jih na Tichý oceán přes Sierra Madre del Sur v Mexiku",
+            "280": "Tichý oceán u pobřeží Mexika",
+            "290": "Tichý oceán u pobřeží Mexika a Guatemaly",
+            "50": "Let přes jižní Kalifornii směrem na Mexiko",
+            "65": "Přílet k Mohavské poušti v jižní Kalifornii s Mexikem v pozadí",
+            "95": "Kalifornský záliv lemovaný Sonorskou pouští a Kalifornským poloostrovem"
+        }
+    },
+    "7825C73A-658F-48EE-B14C-EC56673094AC": {
+        "name": "Cesta přes Střední Asii směrem k pobřeží Číny",
+        "pointsOfInterest": {
+            "0": "Cesta přes Střední Asii směrem k pobřeží Číny",
+            "10": "Cesta přes střední Čínu směrem k Šanghaji",
+            "30": "Přílet přes východní Čínu do Šanghaje",
+            "45": "Přílet k Šanghaji směrem na Východočínské moře",
+            "50": "Let přes Šanghaj směrem na Východočínské moře"
+        }
+    },
+    "78911B7E-3C69-47AD-B635-9C2486F6301D": {
+        "name": "Průlet z noci do dne nad Jižním Tichým oceánem",
+        "pointsOfInterest": {
+            "0": "Průlet z noci do dne nad Jižním Tichým oceánem",
+            "110": "Blížící se východ slunce nad Novým Zélandem",
+            "170": "Odlet z Nového Zélandu směrem na severovýchod přes Tichý oceán",
+            "70": "Průlet z noci do dne nad Novým Zélandem"
+        }
+    },
+    "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": {
+        "name": "Přílet přes severní Atlantik k Britským ostrovům",
+        "pointsOfInterest": {
+            "0": "Přílet přes severní Atlantik k Britským ostrovům",
+            "105": "Přes střední Evropu směrem na Rusko",
+            "15": "Irsko a Velká Británie",
+            "150": "Přes východní Evropu s Moskvou v dálce",
+            "165": "Napříč východní Evropou s výhledem na Moskvu",
+            "185": "Přes západní Rusko kolem Moskvy",
+            "195": "Cesta přes Rusko směrem na Střední Asii",
+            "45": "Cesta přes Velkou Británii směrem na kontinentální Evropu",
+            "65": "Přes severozápadní Evropu směrem na Rusko"
+        }
+    },
+    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
+        "name": "Přílet k mostu Tower Bridge na řece Temži v Londýně",
+        "pointsOfInterest": {
+            "0": "Přílet k mostu Tower Bridge na řece Temži v Londýně",
+            "130": "Podél řeky Temže směrem k Londýnskému oku",
+            "20": "Podél řeky Temže v Londýně",
+            "210": "Přílet k Londýnskému oku na řece Temži",
+            "310": "Podél řeky Temže kolem Londýnského oka",
+            "325": "Kolem Westminsterského paláce na řece Temži v Londýně"
+        }
+    },
+    "81337355-E156-4242-AAF4-711768D30A54": {
+        "name": "Přes Indický oceán směrem na Perth v Austrálii",
+        "pointsOfInterest": {
+            "0": "Přes Indický oceán směrem na Perth v Austrálii",
+            "170": "Přílet přes Západní Austrálii k Severnímu teritoriu",
+            "220": "Let přes Severní teritorium Austrálie směrem na Novou Guineu",
+            "335": "Cesta přes Arafurské moře směrem na Novou Guineu",
+            "50": "Cesta na severovýchod přes Západní Austrálii"
+        }
+    },
+    "82175C1F-153C-4EC8-AE37-2860EA828004": {
+        "name": "Korálový útes v Rudém moři u Egypta",
+        "pointsOfInterest": {
+            "0": "Korálový útes v Rudém moři u Egypta"
+        }
+    },
+    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": {
+        "name": "Nad přírodní rezervací Pu'u o 'Umi na ostrově Havaj",
+        "pointsOfInterest": {
+            "0": "Nad přírodní rezervací Pu'u o 'Umi na ostrově Havaj"
+        }
+    },
+    "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8": {
+        "name": "Přes Upper East Side a Central Park v New Yorku",
+        "pointsOfInterest": {
+            "0": "Přes Upper East Side a Central Park v New Yorku",
+            "160": "Přílet k Empire State Building v New Yorku",
+            "205": "Kolem Empire State Building směrem na dolní Manhattan",
+            "50": "Přes střední Manhattan směrem do centra k Empire State Building"
+        }
+    },
+    "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
+        "name": "Přes San Francisco Bay směrem na Embarcadero",
+        "pointsOfInterest": {
+            "0": "Přes San Francisco Bay směrem na Embarcadero",
+            "208": "San Franciskem po Market Street"
+        }
+    },
+    "87060EC2-D006-4102-98CC-3005C68BB343": {
+        "name": "Cesta na severovýchod přes Etiopskou vysočinu",
+        "pointsOfInterest": {
+            "0": "Cesta na severovýchod přes Etiopskou vysočinu",
+            "100": "Let přes Arabský poloostrov směrem na severovýchod",
+            "130": "Let přes Arabský poloostrov směrem na Írán",
+            "165": "Přílet přes Arabský poloostrov k Íránu",
+            "190": "Přílet k pobřeží Íránu s pohořím Zargos v pozadí",
+            "210": "Let přes pohoří Zagros v Íránu",
+            "240": "Let přes poušť Lút v Íránu",
+            "265": "Let směrem na Turkmenistán a poušť Karakum",
+            "305": "Řeka Amudarja a pohoří Pamíro‑Alaj ve Střední Asii",
+            "322": "Pohoří Pamíro‑Alaj a Ferganská kotlina ve Střední Asii",
+            "360": "Let z Kyrgyzstánu směrem na jihovýchodní Kazachstán",
+            "400": "Cesta na sever přes Kazachstán",
+            "45": "Cesta přes Rudé moře na Arabský poloostrov",
+            "450": "Let přes Altaj do Mongolska"
+        }
+    },
+    "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
+        "name": "Cesta po dálnici šejka Zajda v Dubaji, Spojené arabské emiráty",
+        "pointsOfInterest": {
+            "0": "Cesta po dálnici šejka Zajda v Dubaji, Spojené arabské emiráty"
+        }
+    },
+    "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
+        "name": "Griffithova observatoř a Hollywood Hills v Los Angeles",
+        "pointsOfInterest": {
+            "0": "Griffithova observatoř a Hollywood Hills v Los Angeles"
+        }
+    },
+    "8C31B06F-91A4-4F7C-93ED-56146D7F48B9": {
+        "name": "Vlny rozbíjející se o pobřeží Tahiti",
+        "pointsOfInterest": {
+            "0": "Vlny rozbíjející se o pobřeží Tahiti"
+        }
+    },
+    "92E48DE9-13A1-4172-B560-29B4668A87EE": {
+        "name": "Přes veřejnou pláž Santa Monica poblíž Los Angeles",
+        "pointsOfInterest": {
+            "0": "Přes veřejnou pláž Santa Monica poblíž Los Angeles",
+            "365": "Přelet nad molem Santa Monica poblíž Los Angeles",
+            "430": "Přes veřejnou pláž Santa Monica poblíž Los Angeles"
+        }
+    },
+    "9680B8EB-CE2A-4395-AF41-402801F4D6A6": {
+        "name": "Přílet k Burdž Chalífa v centru Dubaje, Spojené arabské emiráty",
+        "pointsOfInterest": {
+            "0": "Přílet k Burdž Chalífa v centru Dubaje, Spojené arabské emiráty",
+            "280": "Kolem Burdž Chalífa v centru Dubaje, Spojené arabské emiráty",
+            "330": "Přes centrum Dubaje směrem k pobřeží"
+        }
+    },
+    "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C": {
+        "name": "Přelet nad rýžovými terasami Lung‑ťi v čínské provincii Kuang‑si",
+        "pointsOfInterest": {
+            "0": "Přelet nad rýžovými terasami Lung‑ťi v čínské provincii Kuang‑si"
+        }
+    },
+    "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
+        "name": "Přelet nad pozemky Buckinghamského paláce v Londýně",
+        "pointsOfInterest": {
+            "0": "Přelet nad pozemky Buckinghamského paláce v Londýně",
+            "104": "Napříč přes Temži a nad Londýnským okem",
+            "149": "Přelet nad jižním Londýnem",
+            "24": "Přes Buckinghamský palác v Londýně",
+            "279": "Kolem mrakodrapu The Shard na jihu Londýna",
+            "299": "Napříč přes Temži v Londýně",
+            "324": "Napříč přes Temži u mostu Tower Bridge v Londýně",
+            "49": "Přes St. James's Park směrem k londýnské Temži"
+        }
+    },
+    "A837FA8C-C643-4705-AE92-074EFDD067F7": {
+        "name": "Cesta na severovýchod přes noční Saharu",
+        "pointsOfInterest": {
+            "0": "Cesta na severovýchod přes noční Saharu",
+            "100": "Středozemní pobřeží Tuniska a Lybie",
+            "120": "Let přes Středozemní moře směrem na Itálii",
+            "140": "Přílet přes jižní Itálii k Balkánskému poloostrovu s Tureckem v dálce",
+            "165": "Let přes Balkánský poloostrov směrem na Černé moře",
+            "180": "Přílet přes Balkánský poloostrov k Černému moři",
+            "210": "Cesta přes Černé moře směrem na Ukrajinu",
+            "230": "Cesta přes Ukrajinu směrem na Rusko",
+            "70": "Přes Velký východní erg směrem na Středozemní moře"
+        }
+    },
+    "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
+        "name": "Přelet nad oázou Liwa ve Spojených arabských emirátech",
+        "pointsOfInterest": {
+            "0": "Přelet nad oázou Liwa ve Spojených arabských emirátech"
+        }
+    },
+    "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
+        "name": "Přes Tichý oceán směrem na Mexiko",
+        "pointsOfInterest": {
+            "0": "Přes Tichý oceán směrem na Mexiko",
+            "105": "Přelet nad Mexico City směrem na Mexický záliv",
+            "122": "Přelet přes Mexický záliv směrem na Spojené státy",
+            "180": "Kolem Houstonu směrem na New Orleans ve Spojených státech",
+            "190": "Let přes New Orleans a Gulf Coast ve Spojených státech",
+            "215": "Let přes jihovýchod Spojených států",
+            "280": "Cesta přes východní Spojené státy směrem na New York",
+            "320": "Přílet přes východní Spojené státy k New Yorku"
+        }
+    },
+    "B876B645-3955-420E-99DF-60139E451CF3": {
+        "name": "Cesta národním parkem Wu‑ling‑jüan v Číně",
+        "pointsOfInterest": {
+            "0": "Cesta národním parkem Wu‑ling‑jüan v Číně"
+        }
+    },
+    "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
+        "name": "Cesta podél grónského poloostrova Nuussuaq",
+        "pointsOfInterest": {
+            "0": "Cesta podél grónského poloostrova Nuussuaq"
+        }
+    },
+    "BA4ECA11-592F-4727-9221-D2A32A16EB28": {
+        "name": "Zlaté medúzy Chrysaora fuscescens v jezeře Palau",
+        "pointsOfInterest": {
+            "0": "Zlaté medúzy Chrysaora fuscescens v jezeře Palau",
+            "282": "Zlaté medúzy Chrysaora fuscescens s talířovkou ušatou uprostřed",
+            "348": "Zlaté medúzy Chrysaora fuscescens v jezeře Palau"
+        }
+    },
+    "C6DC4E54-1130-44F8-AF6F-A551D8E8A181": {
+        "name": "Talířovky ušaté u pobřeží Aljašky ve Spojených Státech",
+        "pointsOfInterest": {
+            "0": "Talířovky ušaté u pobřeží Aljašky ve Spojených Státech"
+        }
+    },
+    "C7AD3D0A-7EDF-412C-A237-B3C9D27381A1": {
+        "name": "Pohled shora na talířovky ušaté u pobřeží Aljašky ve Spojených Státech",
+        "pointsOfInterest": {
+            "0": "Pohled shora na talířovky ušaté u pobřeží Aljašky ve Spojených Státech"
+        }
+    },
+    "C8559883-6F3E-4AF2-8960-903710CD47B7": {
+        "name": "Přelet nad Victoria Peak v Hongkongu",
+        "pointsOfInterest": {
+            "0": "Přelet nad Victoria Peak v Hongkongu",
+            "150": "Let nad Hongkongem směrem k přístavu Victoria",
+            "330": "Přílet přes přístav Victoria k poloostrovu Kowloon"
+        }
+    },
+    "CE279831-1CA7-4A83-A97B-FF1E20234396": {
+        "name": "Přelet nad mezinárodním letištěm v Los Angeles",
+        "pointsOfInterest": {
+            "0": "Přelet nad mezinárodním letištěm v Los Angeles"
+        }
+    },
+    "CE9B5D5B-B6E7-47C5-8C04-59BF182E98FB": {
+        "name": "Delfíni dlouholebí ve vodách u Kostariky",
+        "pointsOfInterest": {
+            "0": "Delfíni dlouholebí ve vodách u Kostariky"
+        }
+    },
+    "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
+        "name": "Cesta přes Tichý oceán směrem na Střední Ameriku",
+        "pointsOfInterest": {
+            "0": "Cesta přes Tichý oceán směrem na Střední Ameriku",
+            "110": "Kolem oblačností zahalené Jamajky v Karibském moři",
+            "125": "Napříč Kubou s výhledem na Haiti a Dominikánskou republiku",
+            "170": "Cesta přes Bahamy s výhledem na Haiti a Dominikánskou republiku",
+            "190": "Ostrovy Turks a Caicos v Atlantském oceánu",
+            "35": "Pacifické pobřeží Nikaraguy, Kostariky a Panamy",
+            "50": "Přelet nad Střední Amerikou s Jižní Amerikou v dálce",
+            "65": "Pobřeží Moskytů v Nikaragui",
+            "85": "Cesta přes Karibské moře směrem na Kubu"
+        }
+    },
+    "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
+        "name": "Krásy národního parku Wu‑ling‑jüan v Číně",
+        "pointsOfInterest": {
+            "0": "Krásy národního parku Wu‑ling‑jüan v Číně"
+        }
+    },
+    "DD47D8E1-CB66-4C12-BFEA-2ADB0D8D1E2E": {
+        "name": "Keporkak u Francouzské Polynésie",
+        "pointsOfInterest": {
+            "0": "Keporkak u Francouzské Polynésie"
+        }
+    },
+    "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
+        "name": "San Francisco Bay a Golden Gate Bridge",
+        "pointsOfInterest": {
+            "0": "San Francisco Bay a Golden Gate Bridge",
+            "140": "Přelet nad severní věží mostu Golden Gate Bridge směrem na San Francisco",
+            "191": "Přes San Francisco Bay"
+        }
+    },
+    "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
+        "name": "Let přes západní Afriku směrem na Saharu",
+        "pointsOfInterest": {
+            "0": "Let přes západní Afriku směrem na Saharu",
+            "110": "Přelet nad pohořím Atlas na Sahaře v Severní Africe",
+            "155": "Let přes Velký východní erg v Severní Africe směrem na Středozemní moře",
+            "195": "Pobřeží Tuniska a Středozemní moře",
+            "210": "Cesta přes pobřeží Tuniska směrem na Itálii",
+            "230": "Přílet k Itálii ve Středozemním moři",
+            "245": "Cesta přes Itálii směrem na Balkánský poloostrov",
+            "285": "Přes Balkánský poloostrov směrem na Karpaty",
+            "30": "Napříč Saharou v Severní Africe",
+            "310": "Karpaty a Černé moře"
+        }
+    },
+    "E580E5A5-0888-4BE8-A4CA-F74A18A643C3": {
+        "name": "Zlaté medúzy Chrysaora fuscescens v jezeře Palau",
+        "pointsOfInterest": {
+            "0": "Zlaté medúzy Chrysaora fuscescens v jezeře Palau"
+        }
+    },
+    "E5DB138A-F04E-4619-B896-DE5CB538C534": {
+        "name": "Přes Tunisko směrem na Itálii",
+        "pointsOfInterest": {
+            "0": "Přes Tunisko směrem na Itálii",
+            "15": "Přes jižní Itálii s Balkánským poloostrovem v pozadí",
+            "25": "Let přes Balkánský poloostrov směrem na Střední Asii",
+            "40": "Přes Balkánský poloostrov podél Černého moře",
+            "5": "Napříč Středozemním mořem s výhledem na Sicílii a Apeninský poloostrov",
+            "55": "Přes Ukrajinu s Ruskem v pozadí",
+            "75": "Přes jihozápad Ruska podél Kazachstánu"
+        }
+    },
+    "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
+        "name": "Přelet nad dubajskou přístavní čtvrtí ve Spojených arabských emirátech",
+        "pointsOfInterest": {
+            "0": "Přelet nad dubajskou přístavní čtvrtí ve Spojených arabských emirátech"
+        }
+    },
+    "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
+        "name": "Přes přístav Victoria směrem k centru Hongkongu",
+        "pointsOfInterest": {
+            "0": "Přes přístav Victoria směrem k centru Hongkongu"
+        }
+    },
+    "EB3F48E7-D30F-4079-858F-1A61331D5026": {
+        "name": "Proplouvání chaluhovým lesem u pobřeží Kalifornie ve Spojených státech",
+        "pointsOfInterest": {
+            "0": "Proplouvání chaluhovým lesem u pobřeží Kalifornie ve Spojených státech"
+        }
+    },
+    "EC3DC957-D4C2-4732-AACE-7D0C0F390EC8": {
+        "name": "Zlaté medúzy Chrysaora fuscescens v jezeře Palau",
+        "pointsOfInterest": {
+            "0": "Zlaté medúzy Chrysaora fuscescens v jezeře Palau"
+        }
+    },
+    "EC67726A-8212-4C5E-83CF-8412932740D2": {
+        "name": "Nápis Hollywood v Los Angeles",
+        "pointsOfInterest": {
+            "0": "Nápis Hollywood v Los Angeles",
+            "250": "Přílet přes Hollywood Hills do Burbanku v Kalifornii"
+        }
+    },
+    "EE01F02D-1413-436C-AB05-410F224A5B7B": {
+        "name": "Ledovcový fjord v Ilulissatu u pobřeží Grónska",
+        "pointsOfInterest": {
+            "0": "Ledovcový fjord v Ilulissatu u pobřeží Grónska"
+        }
+    },
+    "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
+        "name": "Přes Marin Headlands s výhledem na Golden Gate Bridge",
+        "pointsOfInterest": {
+            "0": "Přes Marin Headlands s výhledem na Golden Gate Bridge",
+            "150": "Napříč přes Golden Gate Bridge směrem na Presidio of San Francisco"
+        }
+    },
+    "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
+        "name": "Úsek Mu‑tchien‑jü Velké čínské zdi v obvodu Chuaj‑žou",
+        "pointsOfInterest": {
+            "0": "Úsek Mu‑tchien‑jü Velké čínské zdi v obvodu Chuaj‑žou"
+        }
+    },
+    "F07CC61B-30FC-4614-BDAD-3240B61F6793": {
+        "name": "Korálový útes poblíž Palau",
+        "pointsOfInterest": {
+            "0": "Korálový útes poblíž Palau"
+        }
+    },
+    "F439B0A7-D18C-4B14-9681-6520E6A74FE9": {
+        "name": "Odraz slunce u pobřeží Íránu",
+        "pointsOfInterest": {
+            "0": "Odraz slunce u pobřeží Íránu",
+            "15": "Průlet ze dne do noci nad Íránem",
+            "60": "Průlet ze dne do noci nad Střední Asií"
+        }
+    },
+    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
+        "name": "Kolem centra Los Angeles",
+        "pointsOfInterest": {
+            "0": "Kolem centra Los Angeles"
+        }
+    },
+    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
+        "name": "Přílet k mostu Tower Bridge na řece Temži v Londýně",
+        "pointsOfInterest": {
+            "0": "Přílet k mostu Tower Bridge na řece Temži v Londýně",
+            "20": "Napříč přes Temži v Londýně",
+            "200": "Napříč přes Temži směrem na londýnský Westminster",
+            "270": "Přes londýnský Westminster",
+            "60": "Kolem mrakodrapu The Shard na jihu Londýna",
+            "92": "Jižně od Temže směrem k Londýnskému oku"
+        }
+    },
+    "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {
+        "name": "Přes přístav Victoria s výhledem na ostrov Hongkong",
+        "pointsOfInterest": {
+            "0": "Přes přístav Victoria s výhledem na ostrov Hongkong"
+        }
+    }
+}

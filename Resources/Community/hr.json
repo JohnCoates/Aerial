@@ -1,0 +1,740 @@
+{
+    "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8": {
+        "name": "Let preko oaze Liwa Oasis u Ujedinjenim Arapskim Emiratima",
+        "pointsOfInterest": {
+            "0": "Let preko oaze Liwa Oasis u Ujedinjenim Arapskim Emiratima"
+        }
+    },
+    "009BA758-7060-4479-8EE8-FB9B40C8FB97": {
+        "name": "Kretanje jugoistočno iznad Sibira i Mongolije",
+        "pointsOfInterest": {
+            "0": "Kretanje jugoistočno iznad Sibira i Mongolije",
+            "110": "Iznad Kine u smjeru Korejskog poluotoka",
+            "150": "Korejski poluotok s Japanom u daljini",
+            "180": "Iznad Južne Koreje putujući prema Japanu",
+            "195": "Iznad Japana gledajući prema Tihom oceanu",
+            "22": "U smjeru Unutarnje Mongolije",
+            "260": "Iznad Tihog oceana, jugoistok Japana",
+            "32": "Iznad Mongolije putujući prema Kini",
+            "60": "Iznad sjeverne Kine krećući se prema Korejskom poluotoku"
+        }
+    },
+    "00BA71CD-2C54-415A-A68A-8358E677D750": {
+        "name": "U smjeru centra Dubaija u Ujedinjenim Arapskim Emiratima",
+        "pointsOfInterest": {
+            "0": "U smjeru centra Dubaija u Ujedinjenim Arapskim Emiratima",
+            "210": "U smjeru centra Dubaija u Ujedinjenim Arapskim Emiratima"
+        }
+    },
+    "024891DE-B7F6-4187-BFE0-E6D237702EF0": {
+        "name": "Iznad okruga Wan Chai u smjeru središta Hong Konga",
+        "pointsOfInterest": {
+            "0": "Iznad okruga Wan Chai u smjeru središta Hong Konga",
+            "150": "Iznad centra Hong Konga",
+            "270": "Iznad otoka Hong Kong"
+        }
+    },
+    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": {
+        "name": "Aurora Australis iznad Antarktike",
+        "pointsOfInterest": {
+            "0": "Aurora Australis iznad Antarktike"
+        }
+    },
+    "044AD56C-A107-41B2-90CC-E60CCACFBCF5": {
+        "name": "Mutianyu dio Velikog zida u kineskoj pokrajini Huairou",
+        "pointsOfInterest": {
+            "0": "Mutianyu dio Velikog zida u kineskoj pokrajini Huairou"
+        }
+    },
+    "1088217C-1410-4CF7-BDE9-8F573A4DBCD9": {
+        "name": "Iznad Tihog oceana krećući se prema Srednjoj Americi",
+        "pointsOfInterest": {
+            "0": "Iznad Tihog oceana krećući se prema Srednjoj Americi",
+            "100": "Prelazak preko Srednje Amerike prema Karipskom moru",
+            "150": "Iznad Karipskog mora krećući se prema Kubi",
+            "240": "Iznad Kube s Floridom i Bahamima u daljini",
+            "300": "Iznad Floride i Bahama putujući prema Sargaškom moru",
+            "350": "Iznad Sargaškog mora u Atlantski ocean",
+            "70": "Jugozapadna obala Srednje Amerike krećući se prema Karipskom moru"
+        }
+    },
+    "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
+        "name": "Iznad Tihog oceana krećući se prema obali Kalifornije",
+        "pointsOfInterest": {
+            "0": "Iznad Tihog oceana krećući se prema obali Kalifornije",
+            "110": "Iznad Las Vegasa u smjeru Salt Lake Cityja u Sjedinjenim Državama",
+            "120": "Iznad zapada Sjedinjenih Država približavajući se Salt Lake Cityju",
+            "155": "Prolazak između Salt Lake Cityja i Denvera u Sjedinjenim Državama",
+            "170": "Iznad planinskog niza Rocky Mountains u Sjedinjenim Državama",
+            "70": "Iznad obale Kalifornije putujući prema unutrašnjosti",
+            "85": "Prolazak preko Los Angelesa na zapadnoj obali Sjedinjenih Država",
+            "95": "Iznad Los Angelesa približavajući se Las Vegasu u Sjedinjenim Državama"
+        }
+    },
+    "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7": {
+        "name": "Let preko rta Laupāhoehoe Nui u šumskom rezervatu Kohala na Havajskom otočju",
+        "pointsOfInterest": {
+            "0": "Let preko rta Laupāhoehoe Nui u šumskom rezervatu Kohala na Havajskom otočju"
+        }
+    },
+    "149E7795-DBDA-4F5D-B39A-14712F841118": {
+        "name": "Udaranje valova u obale Tahitija",
+        "pointsOfInterest": {
+            "0": "Udaranje valova u obale Tahitija"
+        }
+    },
+    "22162A9B-DB90-4517-867C-C676BC3E8E95": {
+        "name": "Mutianyu dio Velikog zida u kineskoj pokrajini Huairou",
+        "pointsOfInterest": {
+            "0": "Mutianyu dio Velikog zida u kineskoj pokrajini Huairou"
+        }
+    },
+    "258A6797-CC13-4C3A-AB35-4F25CA3BF474": {
+        "name": "Iznad prirodnog rezervata Pu‘u O ‘Umi na Havajskom otočju",
+        "pointsOfInterest": {
+            "0": "Iznad prirodnog rezervata Pu‘u O ‘Umi na Havajskom otočju"
+        }
+    },
+    "27A37B0F-738D-4644-A7A4-E33E7A6C1175": {
+        "name": "Obični dupini blizu obale Kalifornije, SAD",
+        "pointsOfInterest": {
+            "0": "Obični dupini blizu obale Kalifornije, SAD"
+        }
+    },
+    "29BDF297-EB43-403A-8719-A78DA11A2948": {
+        "name": "Iznad četvrti Fisherman’s Wharf, u smjeru centra San Francisca",
+        "pointsOfInterest": {
+            "0": "Iznad četvrti Fisherman’s Wharf, u smjeru centra San Francisca",
+            "150": "Prolazak kraj tornja Coit Tower, u smjeru centra San Francisca i mosta Bay Bridge",
+            "196": "Centar San Francisca",
+            "80": "U smjeru Coit Towera, iza kojeg se vide centar San Francisca i most Bay Bridge"
+        }
+    },
+    "2B30E324-E4FF-4CC1-BA45-A958C2D2B2EC": {
+        "name": "Jato barakuda u vodama blizu Bornea",
+        "pointsOfInterest": {
+            "0": "Jato barakuda u vodama blizu Bornea"
+        }
+    },
+    "2F52E34C-39D4-4AB1-9025-8F7141FAA720": {
+        "name": "Fjord Ilulissat pored obale Grenlanda",
+        "pointsOfInterest": {
+            "0": "Fjord Ilulissat pored obale Grenlanda"
+        }
+    },
+    "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
+        "name": "Iznad Afričkog roga putujući prema Adenskom zaljevu",
+        "pointsOfInterest": {
+            "0": "Iznad Afričkog roga putujući prema Adenskom zaljevu",
+            "115": "Omanski zaljev prema obali Makran",
+            "145": "Obala Makran Irana i Pakistana",
+            "160": "Iznad Irana krećući se prema Afganistanu i Pakistanu",
+            "180": "Iznad Afganistana i Pakistana prema planinskom lancu Karakorum",
+            "235": "Iznad planinskog lanca Karakorum putujući u Kinu",
+            "280": "Pustinja Takla Makan u zapadnoj Kini",
+            "315": "Planina Tanšan u Srednjoj Aziji",
+            "45": "Jugoistočni Arapski poluotok"
+        }
+    },
+    "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
+        "name": "Duž autoceste 110 u Los Angelesu, u smjeru sjevera",
+        "pointsOfInterest": {
+            "0": "Duž autoceste 110 u Los Angelesu, u smjeru sjevera"
+        }
+    },
+    "3716DD4B-01C0-4F5B-8DD6-DB771EC472FB": {
+        "name": "Plivanje sivih grebenskih pasa blizu Francuske Polinezije",
+        "pointsOfInterest": {
+            "0": "Plivanje sivih grebenskih pasa blizu Francuske Polinezije"
+        }
+    },
+    "391BDF6E-3279-4CE1-9CA5-0F82811452D7": {
+        "name": "Tuljani krznaši blizu obale poluotoka Cape, Južna Afrika",
+        "pointsOfInterest": {
+            "0": "Tuljani krznaši blizu obale poluotoka Cape, Južna Afrika"
+        }
+    },
+    "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
+        "name": "Putovanje iznad Central Parka, u smjeru njujorške četvrti Midtown Manhattan",
+        "pointsOfInterest": {
+            "0": "Putovanje iznad Central Parka, u smjeru njujorške četvrti Midtown Manhattan",
+            "246": "Iznad njujorške četvrti Lower Manhattan"
+        }
+    },
+    "3C4678E4-4D3D-4A40-8817-77752AEA62EB": {
+        "name": "Putovanje preko Zapadne Europe s Britanskim otocima u daljini",
+        "pointsOfInterest": {
+            "0": "Putovanje preko Zapadne Europe s Britanskim otocima u daljini",
+            "100": "Grčka okružena Jonskim i Egejskim morem",
+            "160": "Putovanje prema jugoistoku preko Sredozemnog mora",
+            "185": "Sredozemno more i delta rijeke Nil",
+            "20": "U smjeru jugoistoka iznad Alpa i doline rijeke Po",
+            "205": "Rijeka Nil teče kroz Saharu u Egiptu",
+            "220": "Istočna pustinja s rijekom Nil i Sueskim zaljevom uz bok",
+            "240": "U smjeru jugoistoka iznad Crvenog mora",
+            "50": "Kretanje niz Apeninski poluotok i Jadransko more"
+        }
+    },
+    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": {
+        "name": "Duž obale Kohala na Havajskom otočju",
+        "pointsOfInterest": {
+            "0": "Duž obale Kohala na Havajskom otočju"
+        }
+    },
+    "3E94AE98-EAF2-4B09-96E3-452F46BC114E": {
+        "name": "U smjeru mosta Bay Bridge i centra San Francisca",
+        "pointsOfInterest": {
+            "0": "U smjeru mosta Bay Bridge i centra San Francisca",
+            "116": "Iznad zaljeva San Francisca, u smjeru centra grada",
+            "80": "Prelazak preko mosta Bay Bridge prema centru San Francisca"
+        }
+    },
+    "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
+        "name": "Let duž marine Dubai Marina u Ujedinjenim Arapskim Emiratima",
+        "pointsOfInterest": {
+            "0": "Let duž marine Dubai Marina u Ujedinjenim Arapskim Emiratima"
+        }
+    },
+    "44166C39-8566-4ECA-BD16-43159429B52F": {
+        "name": "Duž ulice 7th Avenue prema njujorškoj četvrti Times Square",
+        "pointsOfInterest": {
+            "0": "Duž ulice 7th Avenue prema njujorškoj četvrti Times Square",
+            "120": "Duž ulice 7th Avenue u njujorškoj četvrti Midtown Manhattan",
+            "40": "Iznad njujorške četvrti Times Square"
+        }
+    },
+    "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943": {
+        "name": "Dolina Waimanu Valley u šumskom rezervatu Kohala na Havajskom otočju",
+        "pointsOfInterest": {
+            "0": "Dolina Waimanu Valley u šumskom rezervatu Kohala na Havajskom otočju"
+        }
+    },
+    "4AD99907-9E76-408D-A7FC-8429FF014201": {
+        "name": "Iznad zaljeva San Francisca, u smjeru rive Embarcadero",
+        "pointsOfInterest": {
+            "0": "Iznad zaljeva San Francisca, u smjeru rive Embarcadero",
+            "150": "Duž ulice Market Street kroz centar San Francisca",
+            "360": "Duž ulice Market Street kroz San Francisco",
+            "90": "Iznad rive Embarcadero, s pogledom na ulicu Market Street u San Franciscu"
+        }
+    },
+    "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589": {
+        "name": "U smjeru jugoistoka iznad Velike nizine Sjedinjenih Država",
+        "pointsOfInterest": {
+            "0": "U smjeru jugoistoka iznad Velike nizine Sjedinjenih Država",
+            "120": "Iznad jugoistoka Sjedinjenih Država prema Floridi",
+            "220": "Iznad Floride putujući prema Bahamima",
+            "240": "Kretanje jugoistočno iznad Bahama",
+            "285": "Iznad Bahama približavajući se Dominikanskoj Republici i Haitiju",
+            "300": "Iznad Dominikanske Republike i Haitija približavajući se Karipskom moru",
+            "315": "Iznad Karipskog mora u smjeru juga prema Venezueli",
+            "90": "U smjeru jugoistoka iznad Srednjeg zapada Sjedinjenih Država"
+        }
+    },
+    "537A4DAB-83B0-4B66-BCD1-05E5DBB4A268": {
+        "name": "Jato bitnica blizu obale Bornea",
+        "pointsOfInterest": {
+            "0": "Jato bitnica blizu obale Bornea"
+        }
+    },
+    "581A4F1A-2B6D-468C-A1BE-6F473F06D10B": {
+        "name": "Zvjezdače na dnu oceana blizu Bornea",
+        "pointsOfInterest": {
+            "0": "Zvjezdače na dnu oceana blizu Bornea"
+        }
+    },
+    "58754319-8709-4AB0-8674-B34F04E7FFE2": {
+        "name": "U smjeru mosta Tower Bridge na rijeci Temzi u Londonu",
+        "pointsOfInterest": {
+            "0": "U smjeru mosta Tower Bridge na rijeci Temzi u Londonu",
+            "178": "Južno od rijeke Temze u Londonu",
+            "258": "Prelazak preko rijeke Temze u Londonu",
+            "78": "Duž rijeke Temze u Londonu"
+        }
+    },
+    "58C75C62-3290-47B8-849C-56A583173570": {
+        "name": "Zračni zlatni raji kod obale Meksika",
+        "pointsOfInterest": {
+            "0": "Zračni zlatni raji kod obale Meksika"
+        }
+    },
+    "6143116D-03BB-485E-864E-A8CF58ACF6F1": {
+        "name": "Prolazak kroz šumu morske trave blizu poluotoka Cape, Južna Afrika",
+        "pointsOfInterest": {
+            "0": "Prolazak kroz šumu morske trave blizu poluotoka Cape, Južna Afrika"
+        }
+    },
+    "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": {
+        "name": "Kanarski otoci, Atlantski ocean i obala Afrike",
+        "pointsOfInterest": {
+            "0": "Kanarski otoci, Atlantski ocean i obala Afrike",
+            "105": "Iznad Maroka približavajući se Sredozemnom moru",
+            "125": "Sredozemno more i južna Španjolska",
+            "145": "Putovanje prema sjeveroistoku preko španjolske Costa Blance",
+            "165": "Putovanje prema sjeveroistoku preko španjolskih Balearskih otoka",
+            "185": "Iznad zapadnog Sredozemnog mora s Alpama u daljini",
+            "220": "Kretanje sjeveroistočno iznad Alpa",
+            "45": "Kretanje sjeveroistočno duž obale Maroka",
+            "75": "Prelazak preko lanaca Atlas u Maroku"
+        }
+    },
+    "640DFB00-FBB9-45DA-9444-9F663859F4BC": {
+        "name": "U smjeru četvrti Lower Manhattan iz smjera luke New York",
+        "pointsOfInterest": {
+            "0": "U smjeru četvrti Lower Manhattan iz smjera luke New York",
+            "110": "Duž četvrti Lower Manhattan, u smjeru zgrade One World Trade Center",
+            "180": "Prolazak kraj nebodera One World Trade Center, u smjeru četvrti Midtown Manhattan",
+            "210": "Iznad njujorške četvrti Lower Manhattan, u smjeru četvrti Midtown"
+        }
+    },
+    "64D11DAB-3B57-4F14-AD2F-E59A9282FA44": {
+        "name": "Iznad sjevernog Atlantskog oceana prema Portugalu",
+        "pointsOfInterest": {
+            "0": "Iznad sjevernog Atlantskog oceana prema Portugalu",
+            "115": "Iznad Portugala i Španjolske",
+            "150": "Udaljavanje od Pirinejskog poluotoka i prolazak iznad Biskajskog zaljeva i Francuske",
+            "180": "Iznad Zapadne Europe sa sjevernim Atlantskim oceanom u daljini"
+        }
+    },
+    "687D03A2-18A5-4181-8E85-38F3A13409B9": {
+        "name": "Papigača iznad koraljnog grebena blizu Bornea",
+        "pointsOfInterest": {
+            "0": "Papigača iznad koraljnog grebena blizu Bornea"
+        }
+    },
+    "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
+        "name": "U smjeru mosta Golden Gate iz smjera San Francisca",
+        "pointsOfInterest": {
+            "0": "U smjeru mosta Golden Gate iz smjera San Francisca",
+            "140": "Prelazak preko mosta Golden Gate",
+            "230": "Prelazak sjevernog tornja mosta Golden Gate",
+            "260": "Iznad zaljeva San Francisca, uzduž mosta Golden Gate",
+            "60": "Duž mosta Golden Gate, u smjeru poluotoka Marin Headlands"
+        }
+    },
+    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
+        "name": "Iznad Tihog oceana krećući se prema Baja Californiji",
+        "pointsOfInterest": {
+            "0": "Iznad Tihog oceana krećući se prema Baja Californiji",
+            "110": "Iznad planinskog niza Rocky Mountains približavajući se Denveru",
+            "125": "Putovanje preko Velike nizine Sjedinjenih Država",
+            "185": "U smjeru Velikih jezera s Ontariom, Kanada u daljini",
+            "200": "Iznad Velikih jezera približavajući se Ontariju, Kanada",
+            "210": "Aurora Borealis iznad zapadnog Ontarija, Kanada",
+            "235": "Aurora Borealis iznad sjevernog Ontarija, Kanada",
+            "250": "Aurora Borealis iznad sjevernog Quebeca, Kanada",
+            "300": "U smjeru Sjevernog Atlantika s Aurorom Borealis iznad Labradora, Kanada",
+            "45": "Iznad poluotoka Baja California gledajući prema sjeveru prema Sjedinjenim Državama",
+            "55": "Iznad Meksika krećući se prema jugozapadu Sjedinjenih Država",
+            "75": "Iznad jugozapada Sjedinjenih Država"
+        }
+    },
+    "7719B48A-2005-4011-9280-2F64EEC6FD91": {
+        "name": "Iznad Tihog oceana prema Sjedinjenim Državama",
+        "pointsOfInterest": {
+            "0": "Iznad Tihog oceana prema Sjedinjenim Državama",
+            "130": "Planine Sierra Madre Occidental na zapadnoj obali Meksika",
+            "185": "Iznad planina Sierra Madre Occidental krećući se prema zapadnoj obali Meksika",
+            "20": "Putovanje prema jugu duž obale Kalifornije",
+            "225": "Gledajući južno prema Tihom oceanu iznad Sierra Madre del Sur u Meksiku",
+            "280": "Tihi ocean uz obalu Meksika",
+            "290": "Tihi ocean uz obalu Meksika i Gvatemale",
+            "50": "Iznad južne Kalifornije krećući se prema Meksiku",
+            "65": "U smjeru pustinje Mojave u južnoj Kaliforniji s Meksikom u daljini",
+            "95": "Kalifornijski zaljev s pustinjom Sonora i poluotokom Baja California uz bok"
+        }
+    },
+    "7825C73A-658F-48EE-B14C-EC56673094AC": {
+        "name": "Iznad srednje Azije putujući prema obalnoj Kini",
+        "pointsOfInterest": {
+            "0": "Iznad srednje Azije putujući prema obalnoj Kini",
+            "10": "Iznad srednje Kine putujući prema Šangaju",
+            "30": "U smjeru istočne Kine prema Šangaju",
+            "45": "U smjeru Šangaja prema Istočnom kineskom moru",
+            "50": "Iznad Šangaja krećući se prema Istočnom kineskom moru"
+        }
+    },
+    "78911B7E-3C69-47AD-B635-9C2486F6301D": {
+        "name": "Prelazak iz noći u dan iznad Južnog Tihog oceana",
+        "pointsOfInterest": {
+            "0": "Prelazak iz noći u dan iznad Južnog Tihog oceana",
+            "110": "U smjeru izlaska Sunca iznad Novog Zelanda",
+            "170": "Napuštanje Novog Zelanda u smjeru sjeveroistoka iznad Tihog oceana",
+            "70": "Prelazak iz noći u dan iznad Novog Zelanda"
+        }
+    },
+    "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": {
+        "name": "Iznad sjevernog Atlantika približavajući se Britanskim otocima",
+        "pointsOfInterest": {
+            "0": "Iznad sjevernog Atlantika približavajući se Britanskim otocima",
+            "105": "Iznad srednje Europe u smjeru Rusije",
+            "15": "Irska i Velika Britanija",
+            "150": "Iznad istočne Europe s Moskvom u daljini",
+            "165": "Iznad istočne Europe gledajući prema Moskvi",
+            "185": "Iznad zapadne Rusije prolazeći Moskvu",
+            "195": "Iznad Rusije putujući prema srednjoj Aziji",
+            "45": "Iznad Velike Britanije putujući prema unutrašnjosti Europe",
+            "65": "Iznad sjeverozapadne Europe u smjeru Rusije"
+        }
+    },
+    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
+        "name": "U smjeru mosta Tower Bridge na rijeci Temzi u Londonu",
+        "pointsOfInterest": {
+            "0": "U smjeru mosta Tower Bridge na rijeci Temzi u Londonu",
+            "130": "Duž rijeke Temze, prema znamenitosti London Eye",
+            "20": "Duž rijeke Temze u Londonu",
+            "210": "U smjeru znamenitosti London Eye na rijeci Temzi",
+            "310": "Duž rijeke Temze, pored znamenitosti London Eye",
+            "325": "Prelazak zgrade parlamenta na rijeci Temzi u Londonu"
+        }
+    },
+    "81337355-E156-4242-AAF4-711768D30A54": {
+        "name": "Iznad Indijskog oceana prema Perthu, Australija",
+        "pointsOfInterest": {
+            "0": "Iznad Indijskog oceana prema Perthu, Australija",
+            "170": "Iznad Zapadne Australije približavajući se Sjevernom teritoriju",
+            "220": "Iznad Sjevernog teritorija u Australiji, krećući se prema Novoj Gvineji",
+            "335": "Iznad Arafurskog mora putujući prema Novoj Gvineji",
+            "50": "Putovanje prema sjeveroistoku preko Zapadne Australije"
+        }
+    },
+    "82175C1F-153C-4EC8-AE37-2860EA828004": {
+        "name": "Koraljni greben u Crvenom moru blizu Egipta",
+        "pointsOfInterest": {
+            "0": "Koraljni greben u Crvenom moru blizu Egipta"
+        }
+    },
+    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": {
+        "name": "Iznad prirodnog rezervata Pu‘u O ‘Umi na Havajskom otočju",
+        "pointsOfInterest": {
+            "0": "Iznad prirodnog rezervata Pu‘u O ‘Umi na Havajskom otočju"
+        }
+    },
+    "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8": {
+        "name": "Iznad njujorške četvrti Upper East Side i parka Central Park",
+        "pointsOfInterest": {
+            "0": "Iznad njujorške četvrti Upper East Side i parka Central Park",
+            "160": "U smjeru nebodera Empire State Building u New Yorku",
+            "205": "Prelazak nebodera Empire State Building, u smjeru četvrti Lower Manhattan",
+            "50": "Iznad četvrti Midtown Manhattan, u smjeru centra grada prema neboderu Empire State Building"
+        }
+    },
+    "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
+        "name": "Iznad zaljeva San Francisca, u smjeru rive Embarcadero",
+        "pointsOfInterest": {
+            "0": "Iznad zaljeva San Francisca, u smjeru rive Embarcadero",
+            "208": "Duž ulice Market Street kroz San Francisco"
+        }
+    },
+    "87060EC2-D006-4102-98CC-3005C68BB343": {
+        "name": "Putovanje prema sjeveroistoku preko Etiopske visoravni",
+        "pointsOfInterest": {
+            "0": "Putovanje prema sjeveroistoku preko Etiopske visoravni",
+            "100": "U smjeru sjeveroistoka preko Arapskog poluotoka",
+            "130": "Iznad Arapskog poluotoka krećući se prema Iranu",
+            "165": "Iznad Arapskog poluotoka približavajući se Iranu",
+            "190": "U smjeru obale Irana s planinom Zagros u daljini",
+            "210": "Iznad masiva Zagros u Iranu",
+            "240": "Iznad pustinje Dašt-e Lut u Iranu",
+            "265": "Kretanje prema Turkmenistanu i pustinji Karakum",
+            "305": "Rijeka Amu Darja i planine Pamir-Alai u srednjoj Aziji",
+            "322": "Planina Pamir-Alai i Ferganska dolina u srednjoj Aziji",
+            "360": "U smjeru jugoistočnog Kazahstana iz Kirgistana",
+            "400": "Putovanje prema sjeveru preko Kazahstana",
+            "45": "Putovanje preko Crvenog mora u Arapski poluotok",
+            "450": "Iznad gorja Altaj ulazeći u Mongoliju"
+        }
+    },
+    "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
+        "name": "Putovanje duž autoceste Sheikh Zayed Road u Dubaiju u Ujedinjenim Arapskim Emiratima",
+        "pointsOfInterest": {
+            "0": "Putovanje duž autoceste Sheikh Zayed Road u Dubaiju u Ujedinjenim Arapskim Emiratima"
+        }
+    },
+    "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
+        "name": "Opservatorij Griffith Observatory i brda Hollywood Hills u Los Angelesu",
+        "pointsOfInterest": {
+            "0": "Opservatorij Griffith Observatory i brda Hollywood Hills u Los Angelesu"
+        }
+    },
+    "8C31B06F-91A4-4F7C-93ED-56146D7F48B9": {
+        "name": "Udaranje valova u obale Tahitija",
+        "pointsOfInterest": {
+            "0": "Udaranje valova u obale Tahitija"
+        }
+    },
+    "92E48DE9-13A1-4172-B560-29B4668A87EE": {
+        "name": "Iznad javne plaže Santa Monice, u blizini Los Angelesa",
+        "pointsOfInterest": {
+            "0": "Iznad javne plaže Santa Monice, u blizini Los Angelesa",
+            "365": "Prolazak preko gata Santa Monice, u blizini Los Angelesa",
+            "430": "Iznad javne plaže Santa Monice, u blizini Los Angelesa"
+        }
+    },
+    "9680B8EB-CE2A-4395-AF41-402801F4D6A6": {
+        "name": "U smjeru nebodera Burj Khalifa u centru Dubaija u Ujedinjenim Arapskim Emiratima",
+        "pointsOfInterest": {
+            "0": "U smjeru nebodera Burj Khalifa u centru Dubaija u Ujedinjenim Arapskim Emiratima",
+            "280": "Prolazak kraj nebodera Burj Khalifa u centru Dubaija u Ujedinjenim Arapskim Emiratima",
+            "330": "Iznad centra Dubaija, u smjeru obale"
+        }
+    },
+    "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C": {
+        "name": "Let iznad terasa rižinih polja Longji u kineskoj pokrajini Guangxi",
+        "pointsOfInterest": {
+            "0": "Let iznad terasa rižinih polja Longji u kineskoj pokrajini Guangxi"
+        }
+    },
+    "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
+        "name": "Prolazak preko imanja Buckinghamske palače u Londonu",
+        "pointsOfInterest": {
+            "0": "Prolazak preko imanja Buckinghamske palače u Londonu",
+            "104": "Prelazak preko rijeke Temze pored znamenitosti London Eye",
+            "149": "Let iznad Južnog Londona",
+            "24": "Iznad Buckinghamske palače u Londonu",
+            "279": "Prolazak kraj nebodera The Shard u Južnom Londonu",
+            "299": "Prelazak preko rijeke Temze u Londonu",
+            "324": "Prelazak preko rijeke Temze mostom Tower Bridge u Londonu",
+            "49": "Iznad parka St James’s Park, u smjeru rijeke Temze u Londonu"
+        }
+    },
+    "A837FA8C-C643-4705-AE92-074EFDD067F7": {
+        "name": "Putovanje prema sjeveroistoku preko Sahare noću",
+        "pointsOfInterest": {
+            "0": "Putovanje prema sjeveroistoku preko Sahare noću",
+            "100": "Obala Sredozemlja Tunisa i Libije",
+            "120": "Kretanje iznad Sredozemnog mora prema Italiji",
+            "140": "Iznad južne Italije približavajući se Balkanskom poluotoku s Turskom u daljini",
+            "165": "Iznad Balkanskog poluotoka krećući se prema Crnom moru",
+            "180": "Iznad Balkanskog poluotoka približavajući se Crnom moru",
+            "210": "Putovanje preko Crnog mora prema Ukrajini",
+            "230": "Putovanje preko Ukrajine prema Rusiji",
+            "70": "Iznad regije Grand Erg Oriental prema Sredozemnom moru"
+        }
+    },
+    "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
+        "name": "Let preko oaze Liwa Oasis u Ujedinjenim Arapskim Emiratima",
+        "pointsOfInterest": {
+            "0": "Let preko oaze Liwa Oasis u Ujedinjenim Arapskim Emiratima"
+        }
+    },
+    "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
+        "name": "Iznad Tihog oceana prema Meksiku",
+        "pointsOfInterest": {
+            "0": "Iznad Tihog oceana prema Meksiku",
+            "105": "Prolazak preko Mexico Cityja prema Meksičkom zaljevu",
+            "122": "Let preko Meksičkog zaljeva prema Sjedinjenim Državama",
+            "180": "Prolazak kraj Houstona i prema New Orleansu u Sjedinjenim Državama",
+            "190": "U smjeru New Orleansa i Meksičkog zaljeva u Sjedinjenim Državama",
+            "215": "Kretanje iznad jugoistoka Sjedinjenih Država",
+            "280": "Iznad istoka Sjedinjenih Država putujući prema New Yorku",
+            "320": "Iznad istoka Sjedinjenih Država približavajući se New York Cityju"
+        }
+    },
+    "B876B645-3955-420E-99DF-60139E451CF3": {
+        "name": "Putovanje kroz Nacionalni park Wulingyuan u Kini",
+        "pointsOfInterest": {
+            "0": "Putovanje kroz Nacionalni park Wulingyuan u Kini"
+        }
+    },
+    "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
+        "name": "Putovanje duž poluotoka Nuussuaq na Grenlandu",
+        "pointsOfInterest": {
+            "0": "Putovanje duž poluotoka Nuussuaq na Grenlandu"
+        }
+    },
+    "BA4ECA11-592F-4727-9221-D2A32A16EB28": {
+        "name": "Zlatne meduze u vodama Palaua",
+        "pointsOfInterest": {
+            "0": "Zlatne meduze u vodama Palaua",
+            "282": "Susret zlatne meduze i uhatog klobuka",
+            "348": "Zlatne meduze u vodama Palaua"
+        }
+    },
+    "C6DC4E54-1130-44F8-AF6F-A551D8E8A181": {
+        "name": "Uhati klobuci blizu obale Aljaske, SAD",
+        "pointsOfInterest": {
+            "0": "Uhati klobuci blizu obale Aljaske, SAD"
+        }
+    },
+    "C7AD3D0A-7EDF-412C-A237-B3C9D27381A1": {
+        "name": "Prolazak iznad uhatih klobuka blizu obale Aljaske, SAD",
+        "pointsOfInterest": {
+            "0": "Prolazak iznad uhatih klobuka blizu obale Aljaske, SAD"
+        }
+    },
+    "C8559883-6F3E-4AF2-8960-903710CD47B7": {
+        "name": "Let preko planine Victoria Peak u Hong Kongu",
+        "pointsOfInterest": {
+            "0": "Let preko planine Victoria Peak u Hong Kongu",
+            "150": "Let preko Hong Konga prema luci Victoria Harbour",
+            "330": "Iznad luke Victoria Harbour, u smjeru poluotoka Kowloon"
+        }
+    },
+    "CE279831-1CA7-4A83-A97B-FF1E20234396": {
+        "name": "Let preko Međunarodne zračne luke Los Angeles",
+        "pointsOfInterest": {
+            "0": "Let preko Međunarodne zračne luke Los Angeles"
+        }
+    },
+    "CE9B5D5B-B6E7-47C5-8C04-59BF182E98FB": {
+        "name": "Istočnopacifički dupini u vodama Kostarike",
+        "pointsOfInterest": {
+            "0": "Istočnopacifički dupini u vodama Kostarike"
+        }
+    },
+    "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
+        "name": "Putovanje preko Tihog oceana prema Srednjoj Americi",
+        "pointsOfInterest": {
+            "0": "Putovanje preko Tihog oceana prema Srednjoj Americi",
+            "110": "Prolazak pokraj oblacima prekrivene Jamajke u Karipskom moru",
+            "125": "Prelazak preko Kube gledajući prema Haitiju i Dominikanskoj Republici",
+            "170": "Putovanje preko Bahama gledajući prema Haitiju i Dominikanskoj Republici",
+            "190": "Otoci Turks i Caicos u Atlantskom oceanu",
+            "35": "Obala Nikaragve, Kostarike i Paname",
+            "50": "Prolazak preko Srednje Amerike s Južnom Amerikom u daljini",
+            "65": "Obala komaraca u Nikaragvi",
+            "85": "Iznad Karipskog mora putujući prema Kubi"
+        }
+    },
+    "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
+        "name": "Razgledavanje Nacionalnog parka Wulingyuan u Kini",
+        "pointsOfInterest": {
+            "0": "Razgledavanje Nacionalnog parka Wulingyuan u Kini"
+        }
+    },
+    "DD47D8E1-CB66-4C12-BFEA-2ADB0D8D1E2E": {
+        "name": "Grbavi kit u vodama Francuske Polinezije",
+        "pointsOfInterest": {
+            "0": "Grbavi kit u vodama Francuske Polinezije"
+        }
+    },
+    "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
+        "name": "Zaljev San Francisca i most Golden Gate",
+        "pointsOfInterest": {
+            "0": "Zaljev San Francisca i most Golden Gate",
+            "140": "U smjeru sjevernog tornja mosta Golden Gate, prema San Franciscu",
+            "191": "Iznad zaljeva San Francisca"
+        }
+    },
+    "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
+        "name": "Iznad zapadne Afrike krećući se prema Sahari",
+        "pointsOfInterest": {
+            "0": "Iznad zapadne Afrike krećući se prema Sahari",
+            "110": "Prelazak preko masiva Ahaggar u Sahari, Sjeverna Afrika",
+            "155": "Iznad regije Grand Erg Oriental u Sjevernoj Africi prema Sredozemnom moru",
+            "195": "Obala Tunisa i Sredozemno more",
+            "210": "Iznad obale Tunisa putujući prema Italiji",
+            "230": "U smjeru Italije u Sredozemnom moru",
+            "245": "Iznad Italije putujući prema Balkanskom poluotoku",
+            "285": "Iznad Balkanskog poluotoka u smjeru Karpata",
+            "30": "Prelazak preko Sahare u Sjevernoj Africi",
+            "310": "Karpati i Crno more"
+        }
+    },
+    "E580E5A5-0888-4BE8-A4CA-F74A18A643C3": {
+        "name": "Zlatne meduze u vodama Palaua",
+        "pointsOfInterest": {
+            "0": "Zlatne meduze u vodama Palaua"
+        }
+    },
+    "E5DB138A-F04E-4619-B896-DE5CB538C534": {
+        "name": "Iznad Tunisa prema Italiji",
+        "pointsOfInterest": {
+            "0": "Iznad Tunisa prema Italiji",
+            "15": "Iznad južne Italije s Balkanskim poluotokom u daljini",
+            "25": "Iznad Balkanskog poluotoka krećući se prema srednjoj Aziji",
+            "40": "Iznad Balkanskog poluotoka prolazeći kraj Crnog mora",
+            "5": "Iznad Sredozemnog mora gledajući prema Siciliji i Apeninskom poluotoku",
+            "55": "Iznad Ukrajine s Rusijom u daljini",
+            "75": "Iznad jugozapadne Rusije prolazeći kraj Kazahstana"
+        }
+    },
+    "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
+        "name": "Let preko marine Dubai Marina u Ujedinjenim Arapskim Emiratima",
+        "pointsOfInterest": {
+            "0": "Let preko marine Dubai Marina u Ujedinjenim Arapskim Emiratima"
+        }
+    },
+    "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
+        "name": "Iznad luke Victoria Harbour, u smjeru centra Hong Konga",
+        "pointsOfInterest": {
+            "0": "Iznad luke Victoria Harbour, u smjeru centra Hong Konga"
+        }
+    },
+    "EB3F48E7-D30F-4079-858F-1A61331D5026": {
+        "name": "Prolazak kroz šumu morske trave blizu obale Kalifornije, SAD",
+        "pointsOfInterest": {
+            "0": "Prolazak kroz šumu morske trave blizu obale Kalifornije, SAD"
+        }
+    },
+    "EC3DC957-D4C2-4732-AACE-7D0C0F390EC8": {
+        "name": "Zlatne meduze u vodama Palaua",
+        "pointsOfInterest": {
+            "0": "Zlatne meduze u vodama Palaua"
+        }
+    },
+    "EC67726A-8212-4C5E-83CF-8412932740D2": {
+        "name": "Znak Hollywood u Los Angelesu",
+        "pointsOfInterest": {
+            "0": "Znak Hollywood u Los Angelesu",
+            "250": "Iznad brda Hollywood Hills, u smjeru Burbanka u Kaliforniji"
+        }
+    },
+    "EE01F02D-1413-436C-AB05-410F224A5B7B": {
+        "name": "Fjord Ilulissat pored obale Grenlanda",
+        "pointsOfInterest": {
+            "0": "Fjord Ilulissat pored obale Grenlanda"
+        }
+    },
+    "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
+        "name": "Iznad poluotoka Marin Headlands, s pogledom na most Golden Gate",
+        "pointsOfInterest": {
+            "0": "Iznad poluotoka Marin Headlands, s pogledom na most Golden Gate",
+            "150": "Prelazak preko mosta Golden Gate, u smjeru parka Presidio of San Francisco"
+        }
+    },
+    "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
+        "name": "Mutianyu dio Velikog zida u kineskoj pokrajini Huairou",
+        "pointsOfInterest": {
+            "0": "Mutianyu dio Velikog zida u kineskoj pokrajini Huairou"
+        }
+    },
+    "F07CC61B-30FC-4614-BDAD-3240B61F6793": {
+        "name": "Koraljni greben blizu Palaua",
+        "pointsOfInterest": {
+            "0": "Koraljni greben blizu Palaua"
+        }
+    },
+    "F439B0A7-D18C-4B14-9681-6520E6A74FE9": {
+        "name": "Odraz Sunca duž obale Irana",
+        "pointsOfInterest": {
+            "0": "Odraz Sunca duž obale Irana",
+            "15": "Kretanje iz dana u noć iznad Irana",
+            "60": "Kretanje iz dana u noć iznad Srednje Azije"
+        }
+    },
+    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
+        "name": "Prolazak kraj centra Los Angelesa",
+        "pointsOfInterest": {
+            "0": "Prolazak kraj centra Los Angelesa"
+        }
+    },
+    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
+        "name": "U smjeru mosta Tower Bridge na rijeci Temzi u Londonu",
+        "pointsOfInterest": {
+            "0": "U smjeru mosta Tower Bridge na rijeci Temzi u Londonu",
+            "20": "Prelazak preko rijeke Temze u Londonu",
+            "200": "Prelazak preko rijeke Temze u smjeru palače Westminster u Londonu",
+            "270": "Iznad Westminstera u Londonu",
+            "60": "Prelazak nebodera The Shard u Južnom Londonu",
+            "92": "Južno od rijeke Temze, prema znamenitosti London Eye"
+        }
+    },
+    "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {
+        "name": "Iznad luke Victoria Harbour, s pogledom na otok Hong Kong",
+        "pointsOfInterest": {
+            "0": "Iznad luke Victoria Harbour, s pogledom na otok Hong Kong"
+        }
+    }
+}

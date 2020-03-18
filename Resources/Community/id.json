@@ -1,0 +1,740 @@
+{
+    "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8": {
+        "name": "Terbang di atas Liwa Oasis di Uni Emirat Arab",
+        "pointsOfInterest": {
+            "0": "Terbang di atas Liwa Oasis di Uni Emirat Arab"
+        }
+    },
+    "009BA758-7060-4479-8EE8-FB9B40C8FB97": {
+        "name": "Mengarah ke tenggara di atas Siberia dan Mongolia",
+        "pointsOfInterest": {
+            "0": "Mengarah ke tenggara di atas Siberia dan Mongolia",
+            "110": "Di atas Tiongkok ke arah Semenanjung Korea",
+            "150": "Semenanjung Korea dengan Jepang di kejauhan",
+            "180": "Di atas Korea Selatan menuju Jepang",
+            "195": "Di atas Jepang menghadap ke Samudra Pasifik",
+            "22": "Ke arah Mongolia Dalam",
+            "260": "Di atas Samudra Pasifik di sebelah tenggara Jepang",
+            "32": "Di atas Mongolia menuju Tiongkok",
+            "60": "Di atas Tiongkok bagian utara menuju Semenanjung Korea"
+        }
+    },
+    "00BA71CD-2C54-415A-A68A-8358E677D750": {
+        "name": "Menuju Pusat Kota Dubai di Uni Emirat Arab",
+        "pointsOfInterest": {
+            "0": "Menuju Pusat Kota Dubai di Uni Emirat Arab",
+            "210": "Melintas di atas Pusat Kota Dubai di Uni Emirat Arab"
+        }
+    },
+    "024891DE-B7F6-4187-BFE0-E6D237702EF0": {
+        "name": "Di atas Wan Chai menuju Central Hong Kong",
+        "pointsOfInterest": {
+            "0": "Di atas Wan Chai menuju Central Hong Kong",
+            "150": "Di atas Central Hong Kong",
+            "270": "Di atas Pulau Hong Kong"
+        }
+    },
+    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": {
+        "name": "Aurora Australis di atas Antarktika",
+        "pointsOfInterest": {
+            "0": "Aurora Australis di atas Antarktika"
+        }
+    },
+    "044AD56C-A107-41B2-90CC-E60CCACFBCF5": {
+        "name": "Bagian Mutianyu dari Tembok Besar di Distrik Huairou, Tiongkok",
+        "pointsOfInterest": {
+            "0": "Bagian Mutianyu dari Tembok Besar di Distrik Huairou, Tiongkok"
+        }
+    },
+    "1088217C-1410-4CF7-BDE9-8F573A4DBCD9": {
+        "name": "Di atas Samudra Pasifik menuju Amerika Tengah",
+        "pointsOfInterest": {
+            "0": "Di atas Samudra Pasifik menuju Amerika Tengah",
+            "100": "Menyeberangi Amerika Tengah ke arah Laut Karibia",
+            "150": "Di atas Laut Karibia ke arah Kuba",
+            "240": "Di atas Kuba dengan Florida dan Bahama di kejauhan",
+            "300": "Di atas Florida dan Bahama menuju Laut Sargasso",
+            "350": "Di atas Laut Sargasso ke arah Samudra Atlantik",
+            "70": "Pesisir barat daya Amerika Tengah ke arah Laut Karibia"
+        }
+    },
+    "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
+        "name": "Di atas Samudra Pasifik menuju pesisir California",
+        "pointsOfInterest": {
+            "0": "Di atas Samudra Pasifik menuju pesisir California",
+            "110": "Di atas Las Vegas ke arah Salt Lake City di Amerika Serikat",
+            "120": "Di atas Amerika Serikat bagian barat menuju Salt Lake City",
+            "155": "Lewat di antara Salt Lake City dan Denver di Amerika Serikat",
+            "170": "Di atas Pegunungan Rocky di Amerika Serikat",
+            "70": "Di atas pesisir California menuju wilayah tengah",
+            "85": "Lewat di atas Los Angeles dan pesisir barat Amerika Serikat",
+            "95": "Di atas Los Angeles menuju Las Vegas di Amerika Serikat"
+        }
+    },
+    "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7": {
+        "name": "Terbang di atas Laupāhoehoe Nui di Kohala Forest Reserve di pulau Hawaii",
+        "pointsOfInterest": {
+            "0": "Terbang di atas Laupāhoehoe Nui di Kohala Forest Reserve di pulau Hawaii"
+        }
+    },
+    "149E7795-DBDA-4F5D-B39A-14712F841118": {
+        "name": "Ombak pecah di pantai Tahiti",
+        "pointsOfInterest": {
+            "0": "Ombak pecah di pantai Tahiti"
+        }
+    },
+    "22162A9B-DB90-4517-867C-C676BC3E8E95": {
+        "name": "Bagian Mutianyu dari Tembok Besar di Distrik Huairou, Tiongkok",
+        "pointsOfInterest": {
+            "0": "Bagian Mutianyu dari Tembok Besar di Distrik Huairou, Tiongkok"
+        }
+    },
+    "258A6797-CC13-4C3A-AB35-4F25CA3BF474": {
+        "name": "Di atas Pu‘u O ‘Umi Natural Area Reserve, di pulau Hawaii",
+        "pointsOfInterest": {
+            "0": "Di atas Pu‘u O ‘Umi Natural Area Reserve, di pulau Hawaii"
+        }
+    },
+    "27A37B0F-738D-4644-A7A4-E33E7A6C1175": {
+        "name": "Lumba-Lumba Moncong Pendek di lepas pantai California, Amerika Serikat",
+        "pointsOfInterest": {
+            "0": "Lumba-Lumba Moncong Pendek di lepas pantai California, Amerika Serikat"
+        }
+    },
+    "29BDF297-EB43-403A-8719-A78DA11A2948": {
+        "name": "Di atas Fisherman’s Wharf ke arah pusat kota San Francisco",
+        "pointsOfInterest": {
+            "0": "Di atas Fisherman’s Wharf ke arah pusat kota San Francisco",
+            "150": "Melewati Coit Tower ke arah pusat kota San Francisco dan Bay Bridge",
+            "196": "Pusat kota San Francisco",
+            "80": "Menuju Gedung Coit dengan pusat kota San Francisco dan Bay Bridge di latar belakang"
+        }
+    },
+    "2B30E324-E4FF-4CC1-BA45-A958C2D2B2EC": {
+        "name": "Kawanan ikan Barakuda Chevron di perairan dekat Borneo",
+        "pointsOfInterest": {
+            "0": "Kawanan ikan Barakuda Chevron di perairan dekat Borneo"
+        }
+    },
+    "2F52E34C-39D4-4AB1-9025-8F7141FAA720": {
+        "name": "Ilulissat Icefjord di lepas pantai Grinlandia",
+        "pointsOfInterest": {
+            "0": "Ilulissat Icefjord di lepas pantai Grinlandia"
+        }
+    },
+    "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
+        "name": "Di atas Tanduk Afrika menuju Teluk Aden",
+        "pointsOfInterest": {
+            "0": "Di atas Tanduk Afrika menuju Teluk Aden",
+            "115": "Teluk Oman menuju Pesisir Makran",
+            "145": "Pesisir Makran Iran dan Pakistan",
+            "160": "Di atas Iran menuju Afganistan dan Pakistan",
+            "180": "Di atas Afganistan dan Pakistan menuju Pegunungan Karakoram",
+            "235": "Di atas Pegunungan Karakoram menuju Tiongkok",
+            "280": "Gurun Takla Makan di Tiongkok bagian barat",
+            "315": "Pegunungan Tian Shan di Asia Tengah",
+            "45": "Jazirah Arab bagian tenggara"
+        }
+    },
+    "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
+        "name": "Menyusuri Interstate 110 utara melalui Los Angeles",
+        "pointsOfInterest": {
+            "0": "Menyusuri Interstate 110 utara melalui Los Angeles"
+        }
+    },
+    "3716DD4B-01C0-4F5B-8DD6-DB771EC472FB": {
+        "name": "Ikan Hiu Lonjor berenang di dekat Polinesia Prancis",
+        "pointsOfInterest": {
+            "0": "Ikan Hiu Lonjor berenang di dekat Polinesia Prancis"
+        }
+    },
+    "391BDF6E-3279-4CE1-9CA5-0F82811452D7": {
+        "name": "Anjing Laut Bulu Cokelat di lepas pantai Semenanjung Cape, Afrika Selatan",
+        "pointsOfInterest": {
+            "0": "Anjing Laut Bulu Cokelat di lepas pantai Semenanjung Cape, Afrika Selatan"
+        }
+    },
+    "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
+        "name": "Di atas Central Park ke arah Midtown Manhattan di New York",
+        "pointsOfInterest": {
+            "0": "Di atas Central Park ke arah Midtown Manhattan di New York",
+            "246": "Di atas Midtown Manhattan di New York"
+        }
+    },
+    "3C4678E4-4D3D-4A40-8817-77752AEA62EB": {
+        "name": "Melintas di atas Eropa Barat dengan Kepulauan Inggris di kejauhan",
+        "pointsOfInterest": {
+            "0": "Melintas di atas Eropa Barat dengan Kepulauan Inggris di kejauhan",
+            "100": "Yunani diapit oleh Laut Ionian dan Aegean",
+            "160": "Mengarah ke tenggara di atas Laut Tengah",
+            "185": "Laut Tengah dan Sungai Nil Delta",
+            "20": "Ke arah tenggara di atas Pegunungan Alpen dan Lembah Sungai Po",
+            "205": "Sungai Nil mengalir melalui Sahara di Mesir",
+            "220": "Gurun Timur diapit oleh Sungai Nil dan Teluk Suez",
+            "240": "Ke arah tenggara di atas Laut Merah",
+            "50": "Melintasi Semenanjung Italia dan Laut Adriatik"
+        }
+    },
+    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": {
+        "name": "Menyusuri garis pantai Kohala di pulau Hawaii",
+        "pointsOfInterest": {
+            "0": "Menyusuri garis pantai Kohala di pulau Hawaii"
+        }
+    },
+    "3E94AE98-EAF2-4B09-96E3-452F46BC114E": {
+        "name": "Menuju Bay Bridge dan pusat kota San Francisco",
+        "pointsOfInterest": {
+            "0": "Menuju Bay Bridge dan pusat kota San Francisco",
+            "116": "Di atas Teluk San Francisco ke arah pusat kota",
+            "80": "Menyeberang di atas Bay Bridge ke arah pusat kota San Francisco"
+        }
+    },
+    "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
+        "name": "Terbang di sepanjang Dubai Marina di Uni Emirat Arab",
+        "pointsOfInterest": {
+            "0": "Terbang di sepanjang Dubai Marina di Uni Emirat Arab"
+        }
+    },
+    "44166C39-8566-4ECA-BD16-43159429B52F": {
+        "name": "Melintasi 7th Avenue ke arah Times Square, New York",
+        "pointsOfInterest": {
+            "0": "Melintasi 7th Avenue ke arah Times Square, New York",
+            "120": "Mengarah ke 7th Avenue di Midtown Manhattan, New York",
+            "40": "Di atas Times Square di New York"
+        }
+    },
+    "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943": {
+        "name": "Waimanu Valley di Kohala Forest Reserve di pulau Hawaii",
+        "pointsOfInterest": {
+            "0": "Waimanu Valley di Kohala Forest Reserve di pulau Hawaii"
+        }
+    },
+    "4AD99907-9E76-408D-A7FC-8429FF014201": {
+        "name": "Di atas Teluk San Francisco ke arah Embarcadero",
+        "pointsOfInterest": {
+            "0": "Di atas Teluk San Francisco ke arah Embarcadero",
+            "150": "Menyusuri Market Street melalui pusat kota San Francisco",
+            "360": "Menyusuri Market Street melalui San Francisco",
+            "90": "Di atas Embarcadero menghadap Market Street di San Francisco"
+        }
+    },
+    "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589": {
+        "name": "Ke arah tenggara di atas Great Plains di Amerika Serikat",
+        "pointsOfInterest": {
+            "0": "Ke arah tenggara di atas Great Plains di Amerika Serikat",
+            "120": "Di atas Amerika Serikat bagian tenggara ke arah Florida",
+            "220": "Di atas Florida menuju Bahama",
+            "240": "Mengarah ke tenggara di atas Bahama",
+            "285": "Di atas Bahama menuju Republik Dominika dan Haiti",
+            "300": "Di atas Republik Dominika dan Haiti menuju Laut Karibia",
+            "315": "Di atas Laut Karibia ke arah selatan menuju Venezuela",
+            "90": "Ke arah tenggara di atas Amerika Serikat bagian Midwest"
+        }
+    },
+    "537A4DAB-83B0-4B66-BCD1-05E5DBB4A268": {
+        "name": "Kawanan ikan Bigeye Jacks di lepas pantai Borneo",
+        "pointsOfInterest": {
+            "0": "Kawanan ikan Bigeye Jacks di lepas pantai Borneo"
+        }
+    },
+    "581A4F1A-2B6D-468C-A1BE-6F473F06D10B": {
+        "name": "Bintang Laut Bertanduk di dasar samudra dekat Borneo",
+        "pointsOfInterest": {
+            "0": "Bintang Laut Bertanduk di dasar samudra dekat Borneo"
+        }
+    },
+    "58754319-8709-4AB0-8674-B34F04E7FFE2": {
+        "name": "Menuju Tower Bridge di Sungai Thames, London",
+        "pointsOfInterest": {
+            "0": "Menuju Tower Bridge di Sungai Thames, London",
+            "178": "Selatan Sungai Thames di London",
+            "258": "Menyeberangi Sungai Thames di London",
+            "78": "Menyusuri Sungai Thames di London"
+        }
+    },
+    "58C75C62-3290-47B8-849C-56A583173570": {
+        "name": "Ikan Pari Pesek Keemasan di lepas pantai Meksiko",
+        "pointsOfInterest": {
+            "0": "Ikan Pari Pesek Keemasan di lepas pantai Meksiko"
+        }
+    },
+    "6143116D-03BB-485E-864E-A8CF58ACF6F1": {
+        "name": "Berenang melalui hutan rumput laut dekat Semenanjung Cape, Afrika Selatan",
+        "pointsOfInterest": {
+            "0": "Berenang melalui hutan rumput laut dekat Semenanjung Cape, Afrika Selatan"
+        }
+    },
+    "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": {
+        "name": "Kepulauan Canary, Samudra Atlantik, dan pesisir Afrika",
+        "pointsOfInterest": {
+            "0": "Kepulauan Canary, Samudra Atlantik, dan pesisir Afrika",
+            "105": "Di atas Maroko menuju Laut Tengah",
+            "125": "Laut Tengah dan Spanyol bagian selatan",
+            "145": "Mengarah ke timur laut di atas Costa Blanca di Spanyol",
+            "165": "Mengarah ke timur laut di atas Kepulauan Balears di Spanyol",
+            "185": "Di atas Laut Tengah bagian barat dengan Pegunungan Alpen di kejauhan",
+            "220": "Mengarah ke timur laut di atas Pegunungan Alpen",
+            "45": "Mengarah ke timur laut di sepanjang pesisir Maroko",
+            "75": "Lewat di atas Pegunungan Atlas di Maroko"
+        }
+    },
+    "640DFB00-FBB9-45DA-9444-9F663859F4BC": {
+        "name": "Menuju Lower Manhattan dari New York Harbor",
+        "pointsOfInterest": {
+            "0": "Menuju Lower Manhattan dari New York Harbor",
+            "110": "Di sepanjang Lower Manhattan menuju One World Trade Center",
+            "180": "Melewati One World Trade Center ke arah Midtown Manhattan",
+            "210": "Di atas Lower Manhattan di New York ke arah Midtown"
+        }
+    },
+    "64D11DAB-3B57-4F14-AD2F-E59A9282FA44": {
+        "name": "Di atas Samudra Atlantik Utara ke arah Portugal",
+        "pointsOfInterest": {
+            "0": "Di atas Samudra Atlantik Utara ke arah Portugal",
+            "115": "Di atas Portugal dan Spanyol",
+            "150": "Menjauh dari Semenanjung Iberia dan lewat di atas Bay of Biscay dan Prancis",
+            "180": "Di atas Eropa Barat dengan Samudra Atlantik Utara di kejauhan"
+        }
+    },
+    "687D03A2-18A5-4181-8E85-38F3A13409B9": {
+        "name": "Ikan Kakaktua Berdahi Bulat di atas terumbu karang Borneo",
+        "pointsOfInterest": {
+            "0": "Ikan Kakaktua Berdahi Bulat di atas terumbu karang Borneo"
+        }
+    },
+    "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
+        "name": "Menuju Jembatan Golden Gate dari San Francisco",
+        "pointsOfInterest": {
+            "0": "Menuju Jembatan Golden Gate dari San Francisco",
+            "140": "Menyeberangi Jembatan Golden Gate",
+            "230": "Melewati North Tower Jembatan Golden Gate",
+            "260": "Di atas Teluk San Francisco di sepanjang Jembatan Golden Gate",
+            "60": "Di sepanjang Jembatan Golden Gate ke arah Marin Headlands"
+        }
+    },
+    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
+        "name": "Di atas Samudra Pasifik menuju Baja California",
+        "pointsOfInterest": {
+            "0": "Di atas Samudra Pasifik menuju Baja California",
+            "110": "Di atas Pegunungan Rocky menuju Denver",
+            "125": "Melintas di atas Great Plains di Amerika Serikat",
+            "185": "Menuju Great Lakes dengan Ontario, Kanada di kejauhan",
+            "200": "Di atas Great Lakes menuju Ontario, Kanada",
+            "210": "Aurora Borealis di atas Ontario bagian barat, Kanada",
+            "235": "Aurora Borealis di atas Ontario bagian utara, Kanada",
+            "250": "Aurora Borealis di atas Quebec bagian utara, Kanada",
+            "300": "Ke arah Atlantik Utara dengan Aurora Borealis di atas Labrador, Kanada",
+            "45": "Di atas Baja California menghadap ke utara ke arah Amerika Serikat",
+            "55": "Di atas Meksiko ke arah Amerika Serikat bagian barat daya",
+            "75": "Di atas Amerika Selatan bagian barat daya"
+        }
+    },
+    "7719B48A-2005-4011-9280-2F64EEC6FD91": {
+        "name": "Di atas Samudra Pasifik ke arah Amerika Serikat",
+        "pointsOfInterest": {
+            "0": "Di atas Samudra Pasifik ke arah Amerika Serikat",
+            "130": "Pegunungan Sierra Madre Occidental di pesisir barat Meksiko",
+            "185": "Di atas pegunungan Sierra Madre Occidental menuju pesisir barat Meksiko",
+            "20": "Mengarah ke selatan di pesisir California",
+            "225": "Menghadap ke selatan ke arah Samudra Pasifik di atas Sierra Madre del Sur di Meksiko",
+            "280": "Samudra Pasifik di lepas pantai Meksiko",
+            "290": "Samudra Pasifik di lepas pantai Meksiko dan Guatemala",
+            "50": "Di atas California bagian selatan menuju Meksiko",
+            "65": "Menuju Gurun Mojave di California selatan dengan Meksiko di kejauhan",
+            "95": "Pesisir California diapit oleh Gurun Sonoran dan Semenanjung Baja California"
+        }
+    },
+    "7825C73A-658F-48EE-B14C-EC56673094AC": {
+        "name": "Di atas Asia bagian tengah menuju pesisir Tiongkok",
+        "pointsOfInterest": {
+            "0": "Di atas Asia bagian tengah menuju pesisir Tiongkok",
+            "10": "Di atas Tiongkok bagian tengah menuju Shanghai",
+            "30": "Melintas di atas Tiongkok bagian timur menuju Shanghai",
+            "45": "Menuju Shanghai ke arah Laut Cina Timur",
+            "50": "Di atas Shanghai menuju Laut Cina Timur"
+        }
+    },
+    "78911B7E-3C69-47AD-B635-9C2486F6301D": {
+        "name": "Menyeberangi Samudra Pasifik Selatan dari malam hingga siang hari",
+        "pointsOfInterest": {
+            "0": "Menyeberangi Samudra Pasifik Selatan dari malam hingga siang hari",
+            "110": "Menuju matahari terbit di atas Selandia Baru",
+            "170": "Meninggalkan Selandia Baru ke arah timur laut di atas Samudra Pasifik",
+            "70": "Menyeberangi Selandia Baru dari malam hingga siang hari"
+        }
+    },
+    "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": {
+        "name": "Di atas Atlantik Utara menuju Kepulauan Britania",
+        "pointsOfInterest": {
+            "0": "Di atas Atlantik Utara menuju Kepulauan Britania",
+            "105": "Di atas Eropa bagian tengah ke arah Rusia",
+            "15": "Irlandia dan Inggris Raya",
+            "150": "Di atas Eropa bagian timur dengan Moscow di kejauhan",
+            "165": "Di atas Eropa bagian timur menghadap ke Moscow",
+            "185": "Di atas Rusia bagian barat melalui Moscow",
+            "195": "Di atas Rusia menuju Asia bagian tengah",
+            "45": "Di atas Inggris Raya menuju Eropa daratan",
+            "65": "Di atas Eropa bagian barat laut ke arah Rusia"
+        }
+    },
+    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
+        "name": "Menuju Tower Bridge di Sungai Thames, London",
+        "pointsOfInterest": {
+            "0": "Menuju Tower Bridge di Sungai Thames, London",
+            "130": "Menyusuri Sungai Thames ke arah London Eye",
+            "20": "Menyusuri Sungai Thames di London",
+            "210": "Menuju London Eye di Sungai Thames",
+            "310": "Menyusuri Sungai Thames lewat London Eye",
+            "325": "Melewati Gedung Parlemen di Sungai Thames di London"
+        }
+    },
+    "81337355-E156-4242-AAF4-711768D30A54": {
+        "name": "Di atas Samudra Hindia ke arah Perth, Australia",
+        "pointsOfInterest": {
+            "0": "Di atas Samudra Hindia ke arah Perth, Australia",
+            "170": "Di atas Australia Barat menuju Wilayah Utara",
+            "220": "Di atas Wilayah Utara, Australia menuju Papua Nugini",
+            "335": "Di atas Laut Arafura menuju Papua Nugini",
+            "50": "Mengarah ke timur laut di atas Australia Barat"
+        }
+    },
+    "82175C1F-153C-4EC8-AE37-2860EA828004": {
+        "name": "Terumbu karang di Laut Merah dekat Mesir",
+        "pointsOfInterest": {
+            "0": "Terumbu karang di Laut Merah dekat Mesir"
+        }
+    },
+    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": {
+        "name": "Di atas Pu‘u O ‘Umi Natural Area Reserve, di pulau Hawaii",
+        "pointsOfInterest": {
+            "0": "Di atas Pu‘u O ‘Umi Natural Area Reserve, di pulau Hawaii"
+        }
+    },
+    "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8": {
+        "name": "Di atas Upper East Side dan Central Park di New York",
+        "pointsOfInterest": {
+            "0": "Di atas Upper East Side dan Central Park di New York",
+            "160": "Menuju Gedung Empire State di New York",
+            "205": "Melewati Gedung Empire State ke arah Lower Manhattan",
+            "50": "Di atas Midtown Manhattan ke arah pusat kota menuju Gedung Empire State"
+        }
+    },
+    "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
+        "name": "Di atas Teluk San Francisco ke arah Embarcadero",
+        "pointsOfInterest": {
+            "0": "Di atas Teluk San Francisco ke arah Embarcadero",
+            "208": "Menyusuri Market Street melalui San Francisco"
+        }
+    },
+    "87060EC2-D006-4102-98CC-3005C68BB343": {
+        "name": "Mengarah ke timur laut di atas Dataran Tinggi Etiopia",
+        "pointsOfInterest": {
+            "0": "Mengarah ke timur laut di atas Dataran Tinggi Etiopia",
+            "100": "Ke arah timur laut di atas Jazirah Arab",
+            "130": "Di atas Jazirah Arab menuju Iran",
+            "165": "Di atas Jazirah Arab menuju Iran",
+            "190": "Menuju pesisir Iran dengan Pegunungan Zagros di kejauhan",
+            "210": "Di atas Pegunungan Zagros di Iran",
+            "240": "Di atas gurun Dasht-e Lut di Iran",
+            "265": "Mengarah ke Turkmenistan dan gurun Garagum",
+            "305": "Sungai Amu Darya dan Pegunungan Pamir-Alay di Asia bagian tengah",
+            "322": "Pegunungan Pamir-Alay dan Lembah Fergana di Asia bagian tengah",
+            "360": "Mengarah ke Kazakhstan bagian tenggara Kyrgyzstan",
+            "400": "Ke arah utara di atas Kazakhstan",
+            "45": "Melintas di atas Laut Merah ke Jazirah Arab",
+            "450": "Di atas Pegunungan Altai menuju Mongolia"
+        }
+    },
+    "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
+        "name": "Menyusuri Sheikh Zayed Road di Dubai, Uni Emirat Arab",
+        "pointsOfInterest": {
+            "0": "Menyusuri Sheikh Zayed Road di Dubai, Uni Emirat Arab"
+        }
+    },
+    "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
+        "name": "Observatorium Griffith dan Hollywood Hills di Los Angeles",
+        "pointsOfInterest": {
+            "0": "Observatorium Griffith dan Hollywood Hills di Los Angeles"
+        }
+    },
+    "8C31B06F-91A4-4F7C-93ED-56146D7F48B9": {
+        "name": "Ombak pecah di pantai Tahiti",
+        "pointsOfInterest": {
+            "0": "Ombak pecah di pantai Tahiti"
+        }
+    },
+    "92E48DE9-13A1-4172-B560-29B4668A87EE": {
+        "name": "Di atas Santa Monica State Beach dekat Los Angeles",
+        "pointsOfInterest": {
+            "0": "Di atas Santa Monica State Beach dekat Los Angeles",
+            "365": "Lewat di atas Santa Monica Pier dekat Los Angeles",
+            "430": "Di atas Santa Monica State Beach dekat Los Angeles"
+        }
+    },
+    "9680B8EB-CE2A-4395-AF41-402801F4D6A6": {
+        "name": "Menuju Burj Khalifa di Pusat Kota Dubai, Uni Emirat Arab",
+        "pointsOfInterest": {
+            "0": "Menuju Burj Khalifa di Pusat Kota Dubai, Uni Emirat Arab",
+            "280": "Melewati Burj Khalifa di Pusat Kota Dubai, Uni Emirat Arab",
+            "330": "Di atas Pusat Kota Dubai menuju pesisir"
+        }
+    },
+    "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C": {
+        "name": "Lewat di atas persawahan Longji di Provinsi Guangxi, Tiongkok",
+        "pointsOfInterest": {
+            "0": "Lewat di atas persawahan Longji di Provinsi Guangxi, Tiongkok"
+        }
+    },
+    "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
+        "name": "Lewat di atas Istana Buckingham, London",
+        "pointsOfInterest": {
+            "0": "Lewat di atas Istana Buckingham, London",
+            "104": "Menyeberangi Sungai Thames dan melintas di atas London Eye",
+            "149": "Lewat di atas London Selatan",
+            "24": "Di atas Istana Buckingham di London",
+            "279": "Melewati The Shard di London Selatan",
+            "299": "Menyeberangi Sungai Thames di London",
+            "324": "Menyeberangi Sungai Thames di Tower Bridge di London",
+            "49": "Di atas St James’s Park ke arah Sungai Thames, London"
+        }
+    },
+    "A837FA8C-C643-4705-AE92-074EFDD067F7": {
+        "name": "Mengarah ke timur laut di atas Sahara pada malam hari",
+        "pointsOfInterest": {
+            "0": "Mengarah ke timur laut di atas Sahara pada malam hari",
+            "100": "Pesisir Mediterania Tunisia dan Libya",
+            "120": "Melintas di atas Laut Tengah ke arah Italia",
+            "140": "Di atas Italia bagian selatan menuju Semenanjung Balkan dengan Turki di kejauhan",
+            "165": "Di atas Semenanjung Balkan menuju Laut Hitam",
+            "180": "Di atas Semenanjung Balkan menuju Laut Hitam",
+            "210": "Melintas di atas Laut Hitam ke arah Ukraina",
+            "230": "Melintas di atas Ukraina ke arah Rusia",
+            "70": "Di atas Grand Erg Oriental ke arah Laut Tengah"
+        }
+    },
+    "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
+        "name": "Terbang di atas Liwa Oasis di Uni Emirat Arab",
+        "pointsOfInterest": {
+            "0": "Terbang di atas Liwa Oasis di Uni Emirat Arab"
+        }
+    },
+    "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
+        "name": "Di atas Samudra Pasifik ke arah Meksiko",
+        "pointsOfInterest": {
+            "0": "Di atas Samudra Pasifik ke arah Meksiko",
+            "105": "Lewat di atas Mexico City ke arah Teluk Meksiko",
+            "122": "Terbang di atas Teluk Meksiko ke arah Amerika Serikat",
+            "180": "Melewati Houston dan menuju New Orleans di Amerika Serikat",
+            "190": "Melintas di atas New Orleans dan Pantai Teluk Amerika Serikat",
+            "215": "Melintas di atas Amerika Serikat bagian tenggara",
+            "280": "Di atas Amerika Serikat bagian timur menuju New York",
+            "320": "Di atas Amerika Serikat bagian timur menuju New York City"
+        }
+    },
+    "B876B645-3955-420E-99DF-60139E451CF3": {
+        "name": "Menelusuri Taman Nasional Wulingyuan di Tiongkok",
+        "pointsOfInterest": {
+            "0": "Menelusuri Taman Nasional Wulingyuan di Tiongkok"
+        }
+    },
+    "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
+        "name": "Menyusuri Semenanjung Nuussuaq di Grinlandia",
+        "pointsOfInterest": {
+            "0": "Menyusuri Semenanjung Nuussuaq di Grinlandia"
+        }
+    },
+    "BA4ECA11-592F-4727-9221-D2A32A16EB28": {
+        "name": "Ubur-Ubur Emas di perairan Palau",
+        "pointsOfInterest": {
+            "0": "Ubur-Ubur Emas di perairan Palau",
+            "282": "Kawanan Ubur-Ubur Emas dengan Ubur-Ubur Bulan di tengah-tengahnya",
+            "348": "Ubur-Ubur Emas di perairan Palau"
+        }
+    },
+    "C6DC4E54-1130-44F8-AF6F-A551D8E8A181": {
+        "name": "Ubur-Ubur Bulan di dekat pesisir Alaska, Amerika Serikat",
+        "pointsOfInterest": {
+            "0": "Ubur-Ubur Bulan di dekat pesisir Alaska, Amerika Serikat"
+        }
+    },
+    "C7AD3D0A-7EDF-412C-A237-B3C9D27381A1": {
+        "name": "Berenang di atas Ubur-Ubur Bulan di dekat pesisir Alaska, Amerika Serikat",
+        "pointsOfInterest": {
+            "0": "Berenang di atas Ubur-Ubur Bulan di dekat pesisir Alaska, Amerika Serikat"
+        }
+    },
+    "C8559883-6F3E-4AF2-8960-903710CD47B7": {
+        "name": "Terbang di atas Victoria Peak di Hong Kong",
+        "pointsOfInterest": {
+            "0": "Terbang di atas Victoria Peak di Hong Kong",
+            "150": "Terbang di atas Hong Kong ke arah Victoria Harbour",
+            "330": "Di atas Victoria Harbour menuju Kowloon Peninsula"
+        }
+    },
+    "CE279831-1CA7-4A83-A97B-FF1E20234396": {
+        "name": "Terbang di atas Bandara Internasional Los Angeles",
+        "pointsOfInterest": {
+            "0": "Terbang di atas Bandara Internasional Los Angeles"
+        }
+    },
+    "CE9B5D5B-B6E7-47C5-8C04-59BF182E98FB": {
+        "name": "Lumba-Lumba Pemintal di perairan Kosta Rika",
+        "pointsOfInterest": {
+            "0": "Lumba-Lumba Pemintal di perairan Kosta Rika"
+        }
+    },
+    "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
+        "name": "Melintas di atas Samudra Pasifik ke arah Amerika Tengah",
+        "pointsOfInterest": {
+            "0": "Melintas di atas Samudra Pasifik ke arah Amerika Tengah",
+            "110": "Melewati Jamaika yang berselimut awan di Laut Karibia",
+            "125": "Melintas di atas Kuba menghadap ke Haiti dan Republik Dominika",
+            "170": "Melintas di atas Bahama menghadap ke Haiti dan Republik Dominika",
+            "190": "Kepulauan Turks dan Caicos di Samudra Atlantik",
+            "35": "Pesisir Pasifik Nikaragua, Kosta Rika, dan Panama",
+            "50": "Lewat di atas Amerika Tengah dengan Amerika Selatan di kejauhan",
+            "65": "Mosquito Coast di Nikaragua",
+            "85": "Di atas Laut Karibia menuju Kuba"
+        }
+    },
+    "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
+        "name": "Menjelajahi Taman Nasional Wulingyuan di Tiongkok",
+        "pointsOfInterest": {
+            "0": "Menjelajahi Taman Nasional Wulingyuan di Tiongkok"
+        }
+    },
+    "DD47D8E1-CB66-4C12-BFEA-2ADB0D8D1E2E": {
+        "name": "Paus Bungkuk di Polinesia Prancis",
+        "pointsOfInterest": {
+            "0": "Paus Bungkuk di Polinesia Prancis"
+        }
+    },
+    "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
+        "name": "Teluk San Francisco dan Jembatan Golden Gate",
+        "pointsOfInterest": {
+            "0": "Teluk San Francisco dan Jembatan Golden Gate",
+            "140": "Melintas di atas menara utara Jembatan Golden Gate ke arah San Francisco",
+            "191": "Di atas Teluk San Francisco"
+        }
+    },
+    "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
+        "name": "Di atas Afrika bagian barat menuju Sahara",
+        "pointsOfInterest": {
+            "0": "Di atas Afrika bagian barat menuju Sahara",
+            "110": "Lewat di atas Pegunungan Ahaggar di Sahara, Afrika Utara",
+            "155": "Di atas Grand Erg Oriental di Afrika Utara ke arah Laut Tengah",
+            "195": "Pesisir Tunisia dan Laut Tengah",
+            "210": "Di atas pesisir Tunisia menuju Italia",
+            "230": "Menuju Italia di Laut Tengah",
+            "245": "Di atas Italia menuju Semenanjung Balkan",
+            "285": "Di atas Semenanjung Balkan ke arah Pegunungan Carpathian",
+            "30": "Menyeberangi Sahara di Afrika Utara",
+            "310": "Pegunungan Carpathian dan Laut Hitam"
+        }
+    },
+    "E580E5A5-0888-4BE8-A4CA-F74A18A643C3": {
+        "name": "Ubur-Ubur Emas di perairan Palau",
+        "pointsOfInterest": {
+            "0": "Ubur-Ubur Emas di perairan Palau"
+        }
+    },
+    "E5DB138A-F04E-4619-B896-DE5CB538C534": {
+        "name": "Di atas Tunisia ke arah Italia",
+        "pointsOfInterest": {
+            "0": "Di atas Tunisia ke arah Italia",
+            "15": "Di atas Italia bagian selatan dengan Semenanjung Balkan di kejauhan",
+            "25": "Di atas Semenanjung Balkan menuju Asia bagian tengah",
+            "40": "Di atas Semenanjung Balkan melewati Laut Hitam",
+            "5": "Di atas Laut Tengah menghadap ke Sisilia dan Semenanjung Italia",
+            "55": "Di atas Ukraina dengan Rusia di kejauhan",
+            "75": "Di atas Rusia bagian barat daya melewati Kazakhstan"
+        }
+    },
+    "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
+        "name": "Terbang di atas Dubai Marina di Uni Emirat Arab",
+        "pointsOfInterest": {
+            "0": "Terbang di atas Dubai Marina di Uni Emirat Arab"
+        }
+    },
+    "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
+        "name": "Di atas Victoria Harbour ke arah Central Hong Kong",
+        "pointsOfInterest": {
+            "0": "Di atas Victoria Harbour ke arah Central Hong Kong"
+        }
+    },
+    "EB3F48E7-D30F-4079-858F-1A61331D5026": {
+        "name": "Melintas melalui hutan rumput laut di lepas pantai California, Amerika Serikat",
+        "pointsOfInterest": {
+            "0": "Melintas melalui hutan rumput laut di lepas pantai California, Amerika Serikat"
+        }
+    },
+    "EC3DC957-D4C2-4732-AACE-7D0C0F390EC8": {
+        "name": "Ubur-Ubur Emas di perairan Palau",
+        "pointsOfInterest": {
+            "0": "Ubur-Ubur Emas di perairan Palau"
+        }
+    },
+    "EC67726A-8212-4C5E-83CF-8412932740D2": {
+        "name": "Tanda Hollywood di Los Angeles",
+        "pointsOfInterest": {
+            "0": "Tanda Hollywood di Los Angeles",
+            "250": "Di atas Hollywood Hills menuju Burbank, California"
+        }
+    },
+    "EE01F02D-1413-436C-AB05-410F224A5B7B": {
+        "name": "Ilulissat Icefjord di lepas pantai Grinlandia",
+        "pointsOfInterest": {
+            "0": "Ilulissat Icefjord di lepas pantai Grinlandia"
+        }
+    },
+    "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
+        "name": "Di atas Marin Headlands mengarah ke Golden Gate Bridge",
+        "pointsOfInterest": {
+            "0": "Di atas Marin Headlands mengarah ke Golden Gate Bridge",
+            "150": "Menyeberangi Jembatan Golden Gate ke arah Presidio San Francisco"
+        }
+    },
+    "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
+        "name": "Bagian Mutianyu dari Tembok Besar di Distrik Huairou, Tiongkok",
+        "pointsOfInterest": {
+            "0": "Bagian Mutianyu dari Tembok Besar di Distrik Huairou, Tiongkok"
+        }
+    },
+    "F07CC61B-30FC-4614-BDAD-3240B61F6793": {
+        "name": "Terumbu karang dekat Palau",
+        "pointsOfInterest": {
+            "0": "Terumbu karang dekat Palau"
+        }
+    },
+    "F439B0A7-D18C-4B14-9681-6520E6A74FE9": {
+        "name": "Refleksi matahari di sepanjang pesisir Iran",
+        "pointsOfInterest": {
+            "0": "Refleksi matahari di sepanjang pesisir Iran",
+            "15": "Melintas di atas Iran dari siang hingga malam hari",
+            "60": "Melintas di atas Asia bagian tengah dari siang hingga malam hari"
+        }
+    },
+    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
+        "name": "Melewati Pusat Kota Los Angeles",
+        "pointsOfInterest": {
+            "0": "Melewati Pusat Kota Los Angeles"
+        }
+    },
+    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
+        "name": "Menuju Tower Bridge di Sungai Thames, London",
+        "pointsOfInterest": {
+            "0": "Menuju Tower Bridge di Sungai Thames, London",
+            "20": "Menyeberangi Sungai Thames di London",
+            "200": "Menyeberangi Sungai Thames ke arah Westminster, London",
+            "270": "Di atas Westminster, London",
+            "60": "Melewati The Shard di London Selatan",
+            "92": "Selatan Sungai Thames ke arah London Eye"
+        }
+    },
+    "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {
+        "name": "Di atas Victoria Harbour menghadap Pulau Hong Kong",
+        "pointsOfInterest": {
+            "0": "Di atas Victoria Harbour menghadap Pulau Hong Kong"
+        }
+    }
+}

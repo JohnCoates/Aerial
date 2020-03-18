@@ -1,0 +1,740 @@
+{
+    "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8": {
+        "name": "In volo sull'oasi di Liwa negli Emirati Arabi Uniti",
+        "pointsOfInterest": {
+            "0": "In volo sull'oasi di Liwa negli Emirati Arabi Uniti"
+        }
+    },
+    "009BA758-7060-4479-8EE8-FB9B40C8FB97": {
+        "name": "In volo verso sud-est su Siberia e Mongolia",
+        "pointsOfInterest": {
+            "0": "In volo verso sud-est su Siberia e Mongolia",
+            "110": "In volo sulla Cina verso la penisola coreana",
+            "150": "In volo sulla penisola coreana, con il Giappone in lontananza",
+            "180": "In volo dalla Corea del Sud al Giappone",
+            "195": "In volo sul Giappone verso l'Oceano Pacifico",
+            "22": "In volo sulla Mongolia Interna",
+            "260": "In volo sull'Oceano Pacifico verso il Giappone",
+            "32": "In volo dalla Mongolia alla Cina",
+            "60": "In volo dalla Cina settentrionale alla penisola coreana"
+        }
+    },
+    "00BA71CD-2C54-415A-A68A-8358E677D750": {
+        "name": "In volo verso il centro di Dubai negli Emirati Arabi Uniti",
+        "pointsOfInterest": {
+            "0": "In volo verso il centro di Dubai negli Emirati Arabi Uniti",
+            "210": "In volo verso il centro di Dubai negli Emirati Arabi Uniti"
+        }
+    },
+    "024891DE-B7F6-4187-BFE0-E6D237702EF0": {
+        "name": "In volo su Wan Chai verso il centro di Hong Kong",
+        "pointsOfInterest": {
+            "0": "In volo su Wan Chai verso il centro di Hong Kong",
+            "150": "In volo sul centro di Hong Kong",
+            "270": "In volo sull’isola di Hong Kong"
+        }
+    },
+    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": {
+        "name": "Aurora australe sull'Antartide",
+        "pointsOfInterest": {
+            "0": "Aurora australe sull'Antartide"
+        }
+    },
+    "044AD56C-A107-41B2-90CC-E60CCACFBCF5": {
+        "name": "Sezione Mutianyu della Grande Muraglia nel distretto di Huairou in Cina",
+        "pointsOfInterest": {
+            "0": "Sezione Mutianyu della Grande Muraglia nel distretto di Huairou in Cina"
+        }
+    },
+    "1088217C-1410-4CF7-BDE9-8F573A4DBCD9": {
+        "name": "In volo sull'Oceano Pacifico verso l'America Centrale",
+        "pointsOfInterest": {
+            "0": "In volo sull'Oceano Pacifico verso l'America Centrale",
+            "100": "In volo sull'America Centrale verso il Mar dei Caraibi",
+            "150": "In volo sul Mar dei Caraibi verso Cuba",
+            "240": "In volo su Cuba, con la Florida e le Bahamas in lontananza",
+            "300": "In volo sulla Florida e sulle Bahamas verso il Mar dei Sargassi",
+            "350": "In volo sul Mar dei Sargassi verso l'Oceano Atlantico",
+            "70": "Costa sud-occidentale dell'America Centrale verso il Mar dei Caraibi"
+        }
+    },
+    "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
+        "name": "In volo sull'Oceano Pacifico verso la costa della California",
+        "pointsOfInterest": {
+            "0": "In volo sull'Oceano Pacifico verso la costa della California",
+            "110": "In volo su Las Vegas in direzione Salt Lake City",
+            "120": "In volo sugli Stati Uniti occidentali verso Salt Lake City",
+            "155": "In volo da Salt Lake City a Denver",
+            "170": "In volo sulle Montagne Rocciose negli Stati Uniti",
+            "70": "In volo sulla costa della California verso l'entroterra",
+            "85": "In volo su Los Angeles passando sulla costa occidentale degli Stati Uniti",
+            "95": "In volo da Los Angeles a Las Vegas"
+        }
+    },
+    "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7": {
+        "name": "In volo su Laupāhoehoe Nui nella riserva forestale di Kohala sull’isola di Hawaii",
+        "pointsOfInterest": {
+            "0": "In volo su Laupāhoehoe Nui nella riserva forestale di Kohala sull’isola di Hawaii"
+        }
+    },
+    "149E7795-DBDA-4F5D-B39A-14712F841118": {
+        "name": "Onde che si infrangono lungo le spiagge di Tahiti",
+        "pointsOfInterest": {
+            "0": "Onde che si infrangono lungo le spiagge di Tahiti"
+        }
+    },
+    "22162A9B-DB90-4517-867C-C676BC3E8E95": {
+        "name": "Sezione Mutianyu della Grande Muraglia nel distretto di Huairou in Cina",
+        "pointsOfInterest": {
+            "0": "Sezione Mutianyu della Grande Muraglia nel distretto di Huairou in Cina"
+        }
+    },
+    "258A6797-CC13-4C3A-AB35-4F25CA3BF474": {
+        "name": "In volo sulla riserva naturale di Pu’u O Umi, sull'isola di Hawaii",
+        "pointsOfInterest": {
+            "0": "In volo sulla riserva naturale di Pu’u O Umi, sull'isola di Hawaii"
+        }
+    },
+    "27A37B0F-738D-4644-A7A4-E33E7A6C1175": {
+        "name": "Delfini al largo della costa della California, Stati Uniti",
+        "pointsOfInterest": {
+            "0": "Delfini al largo della costa della California, Stati Uniti"
+        }
+    },
+    "29BDF297-EB43-403A-8719-A78DA11A2948": {
+        "name": "In volo sulla zona del Fisherman’s Wharf verso il centro di San Francisco",
+        "pointsOfInterest": {
+            "0": "In volo sulla zona del Fisherman’s Wharf verso il centro di San Francisco",
+            "150": "In volo oltre la Coit Tower verso il centro di San Francisco e il Bay Bridge",
+            "196": "Centro di San Francisco",
+            "80": "In volo verso la Coit Tower, con il centro di San Francisco e il Bay Bridge in lontananza"
+        }
+    },
+    "2B30E324-E4FF-4CC1-BA45-A958C2D2B2EC": {
+        "name": "Un banco di barracuda nelle acque vicino al Borneo",
+        "pointsOfInterest": {
+            "0": "Un banco di barracuda nelle acque vicino al Borneo"
+        }
+    },
+    "2F52E34C-39D4-4AB1-9025-8F7141FAA720": {
+        "name": "Fiordo di Ilulissat al largo della costa della Groenlandia",
+        "pointsOfInterest": {
+            "0": "Fiordo di Ilulissat al largo della costa della Groenlandia"
+        }
+    },
+    "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
+        "name": "In volo sulla regione del Corno d'Africa verso il Golfo di Aden",
+        "pointsOfInterest": {
+            "0": "In volo sulla regione del Corno d'Africa verso il Golfo di Aden",
+            "115": "In volo sul Golfo di Oman verso la costa del Makran",
+            "145": "Regione costiera del Makran in Iran e Pakistan",
+            "160": "In volo sull'Iran verso Afghanistan e Pakistan",
+            "180": "In volo su Afghanistan e Pakistan verso i monti del Karakorum",
+            "235": "In volo sui monti del Karakorum verso la Cina",
+            "280": "Deserto del Taklamakan nella Cina occidentale",
+            "315": "Catena del Tian Shan in Asia centrale",
+            "45": "Regione a sud-est della penisola arabica"
+        }
+    },
+    "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
+        "name": "In volo lungo la Interstate 110 North attraverso Los Angeles",
+        "pointsOfInterest": {
+            "0": "In volo lungo la Interstate 110 North attraverso Los Angeles"
+        }
+    },
+    "3716DD4B-01C0-4F5B-8DD6-DB771EC472FB": {
+        "name": "Squali grigi del reef che nuotano nelle acque della Polinesia Francese",
+        "pointsOfInterest": {
+            "0": "Squali grigi del reef che nuotano nelle acque della Polinesia Francese"
+        }
+    },
+    "391BDF6E-3279-4CE1-9CA5-0F82811452D7": {
+        "name": "Otarie orsine del Capo al largo della costa della penisola del Capo, in Sudafrica",
+        "pointsOfInterest": {
+            "0": "Otarie orsine del Capo al largo della costa della penisola del Capo, in Sudafrica"
+        }
+    },
+    "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
+        "name": "In volo su Central Park verso Midtown Manhattan a New York",
+        "pointsOfInterest": {
+            "0": "In volo su Central Park verso Midtown Manhattan a New York",
+            "246": "In volo su Midtown Manhattan a New York"
+        }
+    },
+    "3C4678E4-4D3D-4A40-8817-77752AEA62EB": {
+        "name": "In volo sull'Europa occidentale con le Isole britanniche in lontananza",
+        "pointsOfInterest": {
+            "0": "In volo sull'Europa occidentale con le Isole britanniche in lontananza",
+            "100": "La Grecia bagnata dal Mar Ionio e dal Mar Egeo",
+            "160": "In volo verso sud-est sul Mar Mediterraneo",
+            "185": "Mar Mediterraneo e delta del fiume Nilo",
+            "20": "In volo verso sud-est sulle Alpi e sulla valle del fiume Po",
+            "205": "Nilo che attraversa il Sahara egiziano",
+            "220": "Deserto Orientale fiancheggiato dal Nilo e dal Golfo di Suez",
+            "240": "In volo verso sud-est sul Mar Rosso",
+            "50": "In volo sull'Italia e sul Mare Adriatico"
+        }
+    },
+    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": {
+        "name": "In volo lungo la costa di Kohala sull’isola di Hawaii",
+        "pointsOfInterest": {
+            "0": "In volo lungo la costa di Kohala sull’isola di Hawaii"
+        }
+    },
+    "3E94AE98-EAF2-4B09-96E3-452F46BC114E": {
+        "name": "In volo verso il Bay Bridge e il centro di San Francisco",
+        "pointsOfInterest": {
+            "0": "In volo verso il Bay Bridge e il centro di San Francisco",
+            "116": "In volo sulla baia di San Francisco verso il centro",
+            "80": "In volo sul Bay Bridge verso il centro di San Francisco"
+        }
+    },
+    "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
+        "name": "In volo attraverso il quartiere di Dubai Marina negli Emirati Arabi Uniti",
+        "pointsOfInterest": {
+            "0": "In volo attraverso il quartiere di Dubai Marina negli Emirati Arabi Uniti"
+        }
+    },
+    "44166C39-8566-4ECA-BD16-43159429B52F": {
+        "name": "In volo lungo la Seventh Avenue verso Times Square",
+        "pointsOfInterest": {
+            "0": "In volo lungo la Seventh Avenue verso Times Square",
+            "120": "In volo lungo la Seventh Avenue a Midtown Manhattan",
+            "40": "In volo su Times Square a New York"
+        }
+    },
+    "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943": {
+        "name": "Honopū Valley nella riserva forestale di Kohala sull’isola di Hawaii",
+        "pointsOfInterest": {
+            "0": "Honopū Valley nella riserva forestale di Kohala sull’isola di Hawaii"
+        }
+    },
+    "4AD99907-9E76-408D-A7FC-8429FF014201": {
+        "name": "In volo sulla baia di San Francisco in direzione di Embarcadero",
+        "pointsOfInterest": {
+            "0": "In volo sulla baia di San Francisco in direzione di Embarcadero",
+            "150": "In volo lungo Market Street attraverso il centro di San Francisco",
+            "360": "In volo lungo Market Street attraverso San Francisco",
+            "90": "In volo su Embarcadero verso Market Street a San Francisco"
+        }
+    },
+    "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589": {
+        "name": "In volo verso sud-est sulla regione delle Grandi Pianure negli Stati Uniti",
+        "pointsOfInterest": {
+            "0": "In volo verso sud-est sulla regione delle Grandi Pianure negli Stati Uniti",
+            "120": "In volo sugli Stati Uniti verso la Florida",
+            "220": "In volo dalla Florida alle Bahamas",
+            "240": "In volo verso sud-est sulle Bahamas",
+            "285": "In volo sulle Bahamas verso la Repubblica Dominicana e Haiti",
+            "300": "In volo sulla Repubblica Dominicana e su Haiti verso il Mar dei Caraibi",
+            "315": "In volo sul Mar dei Caraibi verso il Venezuela",
+            "90": "In volo verso sud-est sulla regione del Midwest negli Stati Uniti"
+        }
+    },
+    "537A4DAB-83B0-4B66-BCD1-05E5DBB4A268": {
+        "name": "Un banco di Caranx latus al largo della costa del Borneo",
+        "pointsOfInterest": {
+            "0": "Un banco di Caranx latus al largo della costa del Borneo"
+        }
+    },
+    "581A4F1A-2B6D-468C-A1BE-6F473F06D10B": {
+        "name": "Stelle marine cornute nei fondali oceanici vicino al Borneo",
+        "pointsOfInterest": {
+            "0": "Stelle marine cornute nei fondali oceanici vicino al Borneo"
+        }
+    },
+    "58754319-8709-4AB0-8674-B34F04E7FFE2": {
+        "name": "In volo verso il Tower Bridge sul fiume Tamigi",
+        "pointsOfInterest": {
+            "0": "In volo verso il Tower Bridge sul fiume Tamigi",
+            "178": "A sud del fiume Tamigi a Londra",
+            "258": "In volo sul fiume Tamigi",
+            "78": "In volo sul fiume Tamigi"
+        }
+    },
+    "58C75C62-3290-47B8-849C-56A583173570": {
+        "name": "Mante al largo nelle acque della costa del Messico",
+        "pointsOfInterest": {
+            "0": "Mante al largo nelle acque della costa del Messico"
+        }
+    },
+    "6143116D-03BB-485E-864E-A8CF58ACF6F1": {
+        "name": "Un tuffo in una foresta di laminarie vicino alla penisola del Capo, in Sudafrica",
+        "pointsOfInterest": {
+            "0": "Un tuffo in una foresta di laminarie vicino alla penisola del Capo, in Sudafrica"
+        }
+    },
+    "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": {
+        "name": "Isole Canarie, Oceano Atlantico e costa africana",
+        "pointsOfInterest": {
+            "0": "Isole Canarie, Oceano Atlantico e costa africana",
+            "105": "In volo dal Marocco al Mar Mediterraneo",
+            "125": "Mar Mediterraneo e Spagna meridionale",
+            "145": "In volo sulla Costa Blanca in direzione nord-est",
+            "165": "In volo sulle Isole Baleari in direzione nord-est",
+            "185": "In volo sul Mar Mediterraneo occidentale, con le Alpi in lontananza",
+            "220": "In volo verso nord-est sulle Alpi",
+            "45": "In volo verso nord-est sulla costa del Marocco",
+            "75": "In volo sulla catena dell'Atlante in Marocco"
+        }
+    },
+    "640DFB00-FBB9-45DA-9444-9F663859F4BC": {
+        "name": "In volo verso Lower Manhattan dal porto di New York",
+        "pointsOfInterest": {
+            "0": "In volo verso Lower Manhattan dal porto di New York",
+            "110": "In volo lungo Lower Manhattan verso il One World Trade Center",
+            "180": "In volo accanto al One World Trade Center verso Midtown Manhattan",
+            "210": "In volo su Lower Manhattan a New York in direzione di Midtown Manhattan"
+        }
+    },
+    "64D11DAB-3B57-4F14-AD2F-E59A9282FA44": {
+        "name": "In volo sull'Oceano Atlantico verso il Portogallo",
+        "pointsOfInterest": {
+            "0": "In volo sull'Oceano Atlantico verso il Portogallo",
+            "115": "In volo su Portogallo e Spagna",
+            "150": "In volo dalla penisola iberica, superando la Baia di Biscay e la Francia",
+            "180": "In volo sull'Europa occidentale, con l'Oceano Atlantico settentrionale in lontananza"
+        }
+    },
+    "687D03A2-18A5-4181-8E85-38F3A13409B9": {
+        "name": "Pesce pappagallo gigante sulle barriere coralline vicino al Borneo",
+        "pointsOfInterest": {
+            "0": "Pesce pappagallo gigante sulle barriere coralline vicino al Borneo"
+        }
+    },
+    "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
+        "name": "In volo verso il Golden Gate Bridge da San Francisco",
+        "pointsOfInterest": {
+            "0": "In volo verso il Golden Gate Bridge da San Francisco",
+            "140": "In volo sul Golden Gate Bridge",
+            "230": "In volo accanto la torre nord del Golden Gate Bridge",
+            "260": "In volo sulla baia di San Francisco lungo il Golden Gate Bridge",
+            "60": "In volo lungo il Golden Gate Bridge verso le Marin Headlands"
+        }
+    },
+    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
+        "name": "In volo sull'Oceano Pacifico verso la Baja California",
+        "pointsOfInterest": {
+            "0": "In volo sull'Oceano Pacifico verso la Baja California",
+            "110": "In volo sulle Montagne Rocciose verso Denver",
+            "125": "In volo sulla regione delle Grandi Pianure negli Stati Uniti",
+            "185": "In volo sui Grandi Laghi, con la regione dell'Ontario in lontananza",
+            "200": "In volo sulla regione dei Grandi Laghi verso l’Ontario",
+            "210": "Aurora boreale sull'Ontario settentrionale",
+            "235": "Aurora boreale sull'Ontario settentrionale",
+            "250": "Aurora boreale sul Quebec settentrionale",
+            "300": "Aurora boreale sull'Oceano Atlantico verso la regione canadese del Labrador",
+            "45": "In volo dalla Baja California agli Stati Uniti",
+            "55": "In volo dal Messico agli Stati Uniti sudoccidentali",
+            "75": "In volo sul sud-ovest degli Stati Uniti"
+        }
+    },
+    "7719B48A-2005-4011-9280-2F64EEC6FD91": {
+        "name": "In volo sull'Oceano Pacifico verso gli Stati Uniti",
+        "pointsOfInterest": {
+            "0": "In volo sull'Oceano Pacifico verso gli Stati Uniti",
+            "130": "Catena della Sierra Madre Occidentale nella costa occidentale del Messico",
+            "185": "In volo sulla catena della Sierra Madre Occidentale verso la costa occidentale del Messico",
+            "20": "In volo verso sud lungo la costa della California",
+            "225": "In volo verso sud in direzione dell'Oceano Pacifico sulla catena messicana della Sierra Madre del Sud",
+            "280": "Oceano Pacifico, al largo della costa del Messico",
+            "290": "Oceano Pacifico, al largo della costa del Messico e del Guatemala",
+            "50": "In volo dalla California meridionale al Messico",
+            "65": "In volo sul deserto californiano del Mojave, con il Messico in lontananza",
+            "95": "In volo sul Golfo della California, con il deserto di Sonora e la Baja California"
+        }
+    },
+    "7825C73A-658F-48EE-B14C-EC56673094AC": {
+        "name": "In volo sull'Asia centrale verso la costa della Cina",
+        "pointsOfInterest": {
+            "0": "In volo sull'Asia centrale verso la costa della Cina",
+            "10": "In volo sulla Cina centrale verso Shanghai",
+            "30": "In volo sulla Cina orientale verso Shanghai",
+            "45": "In volo su Shanghai verso il Mar Cinese Orientale",
+            "50": "In volo su Shanghai verso il Mar Cinese Orientale"
+        }
+    },
+    "78911B7E-3C69-47AD-B635-9C2486F6301D": {
+        "name": "Passaggio dalla notte al giorno sull'Oceano Pacifico meridionale",
+        "pointsOfInterest": {
+            "0": "Passaggio dalla notte al giorno sull'Oceano Pacifico meridionale",
+            "110": "Alba sulla Nuova Zelanda",
+            "170": "In volo verso nord-est dalla Nuova Zelanda all'Oceano Pacifico",
+            "70": "Passaggio dalla notte al giorno sulla Nuova Zelanda"
+        }
+    },
+    "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": {
+        "name": "In volo sull'Oceano Atlantico settentrionale verso l'arcipelago delle Isole Britanniche",
+        "pointsOfInterest": {
+            "0": "In volo sull'Oceano Atlantico settentrionale verso l'arcipelago delle Isole Britanniche",
+            "105": "In volo verso la Russia dall'Europa centrale",
+            "15": "Irlanda e Gran Bretagna",
+            "150": "In volo sull'Europa orientale, con Mosca in lontananza",
+            "165": "In volo sull'Europa orientale verso Mosca",
+            "185": "In volo sulla Russia occidentale passando per Mosca",
+            "195": "In volo dalla Russia all'Asia centrale",
+            "45": "In volo dalla Gran Bretagna all'Europa continentale",
+            "65": "In volo sull'Europa nordoccidentale verso la Russia"
+        }
+    },
+    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
+        "name": "In volo verso il Tower Bridge sul fiume Tamigi",
+        "pointsOfInterest": {
+            "0": "In volo verso il Tower Bridge sul fiume Tamigi",
+            "130": "In volo lungo il fiume Tamigi verso il London Eye",
+            "20": "In volo sul fiume Tamigi",
+            "210": "In volo verso il London Eye sul fiume Tamigi",
+            "310": "In volo lungo il fiume Tamigi oltre il London Eye",
+            "325": "In volo sul palazzo di Westminster sul fiume Tamigi"
+        }
+    },
+    "81337355-E156-4242-AAF4-711768D30A54": {
+        "name": "In volo sull'Oceano Indiano verso Perth, Australia",
+        "pointsOfInterest": {
+            "0": "In volo sull'Oceano Indiano verso Perth, Australia",
+            "170": "In volo sull'Australia occidentale verso il Territorio del Nord",
+            "220": "In volo sul Territorio del Nord, Australia, verso la Nuova Guinea",
+            "335": "In volo sul Mar degli Arafura verso la Nuova Guinea",
+            "50": "In volo sull'Australia occidentale in direzione nord-est"
+        }
+    },
+    "82175C1F-153C-4EC8-AE37-2860EA828004": {
+        "name": "Barriera corallina nel Mar Rosso vicino all'Egitto",
+        "pointsOfInterest": {
+            "0": "Barriera corallina nel Mar Rosso vicino all'Egitto"
+        }
+    },
+    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": {
+        "name": "In volo sulla riserva naturale di Pu’u O Umi, sull'isola di Hawaii",
+        "pointsOfInterest": {
+            "0": "In volo sulla riserva naturale di Pu’u O Umi, sull'isola di Hawaii"
+        }
+    },
+    "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8": {
+        "name": "In volo sull’Upper East Side e Central Park a New York",
+        "pointsOfInterest": {
+            "0": "In volo sull’Upper East Side e Central Park a New York",
+            "160": "In volo su New York verso l’Empire State Building",
+            "205": "In volo accanto all’Empire State Building in direzione di Lower Manhattan",
+            "50": "In volo su Midtown Manhattan in direzione del centro verso l’Empire State Building"
+        }
+    },
+    "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
+        "name": "In volo sulla baia di San Francisco in direzione di Embarcadero",
+        "pointsOfInterest": {
+            "0": "In volo sulla baia di San Francisco in direzione di Embarcadero",
+            "208": "In volo lungo Market Street attraverso San Francisco"
+        }
+    },
+    "87060EC2-D006-4102-98CC-3005C68BB343": {
+        "name": "In volo in direzione nord-est verso la regione dell'Acrocoro Etiopico",
+        "pointsOfInterest": {
+            "0": "In volo in direzione nord-est verso la regione dell'Acrocoro Etiopico",
+            "100": "In volo verso nord-est sulla penisola Arabica",
+            "130": "In volo sulla penisola arabica verso l'Iran",
+            "165": "In volo sulla penisola arabica verso l'Iran",
+            "190": "In volo sulla costa dell'Iran, con i monti Zagros in lontananza",
+            "210": "In volo sui monti Zagros in Iran",
+            "240": "In volo sul deserto del Dasht-e Lut in Iran",
+            "265": "In volo verso il Turkmenistan e il deserto del Garagum",
+            "305": "Fiume Amu Darya e catena del Pamir Alai in Asia centrale",
+            "322": "Regione del Pamir Alai e Valle del Fergana in Asia centrale",
+            "360": "In volo dal Kyrgyzstan verso il Kazakistan sudorientale",
+            "400": "In volo verso nord sul Kazakistan",
+            "45": "In volo sul Mar Rosso verso la penisola arabica",
+            "450": "In volo sui monti Altai verso la Mongolia"
+        }
+    },
+    "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
+        "name": "In volo lungo Sheikh Zayed Road a Dubai negli Emirati Arabi Uniti",
+        "pointsOfInterest": {
+            "0": "In volo lungo Sheikh Zayed Road a Dubai negli Emirati Arabi Uniti"
+        }
+    },
+    "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
+        "name": "Osservatorio Griffith e le colline di Hollywood a Los Angeles",
+        "pointsOfInterest": {
+            "0": "Osservatorio Griffith e le colline di Hollywood a Los Angeles"
+        }
+    },
+    "8C31B06F-91A4-4F7C-93ED-56146D7F48B9": {
+        "name": "Onde che si infrangono lungo le spiagge di Tahiti",
+        "pointsOfInterest": {
+            "0": "Onde che si infrangono lungo le spiagge di Tahiti"
+        }
+    },
+    "92E48DE9-13A1-4172-B560-29B4668A87EE": {
+        "name": "In volo sulla spiaggia di Santa Monica nei pressi di Los Angeles",
+        "pointsOfInterest": {
+            "0": "In volo sulla spiaggia di Santa Monica nei pressi di Los Angeles",
+            "365": "In volo sul molo di Santa Monica nei pressi di Los Angeles",
+            "430": "In volo sulla spiaggia di Santa Monica nei pressi di Los Angeles"
+        }
+    },
+    "9680B8EB-CE2A-4395-AF41-402801F4D6A6": {
+        "name": "In volo verso il Burj Khalifa nel centro di Dubai",
+        "pointsOfInterest": {
+            "0": "In volo verso il Burj Khalifa nel centro di Dubai",
+            "280": "In volo accanto al Burj Khalifa nel centro di Dubai negli Emirati Arabi Uniti",
+            "330": "In volo sul centro di Dubai verso la costa"
+        }
+    },
+    "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C": {
+        "name": "In volo sulle risaie a terrazza di Longji nella provincia di Guangxi in Cina",
+        "pointsOfInterest": {
+            "0": "In volo sulle risaie a terrazza di Longji nella provincia di Guangxi in Cina"
+        }
+    },
+    "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
+        "name": "In volo su Buckingham Palace",
+        "pointsOfInterest": {
+            "0": "In volo su Buckingham Palace",
+            "104": "In volo sul fiume Tamigi superando il London Eye",
+            "149": "In volo su South London",
+            "24": "In volo su Buckingham Palace",
+            "279": "In volo accanto a The Shard a South London",
+            "299": "In volo sul fiume Tamigi",
+            "324": "In volo sul fiume Tamigi all’altezza del Tower Bridge",
+            "49": "In volo su St James’s Park in direzione del fiume Tamigi"
+        }
+    },
+    "A837FA8C-C643-4705-AE92-074EFDD067F7": {
+        "name": "In volo notturno sul Sahara in direzione nord-est",
+        "pointsOfInterest": {
+            "0": "In volo notturno sul Sahara in direzione nord-est",
+            "100": "Costa della Tunisia e della Libia",
+            "120": "In volo sul Mar Mediterraneo verso l'Italia",
+            "140": "In volo sull'Italia meridionale verso la penisola balcanica, con la Turchia in lontananza",
+            "165": "In volo sulla penisola balcanica verso il Mar Nero",
+            "180": "In volo sulla penisola balcanica verso il Mar Nero",
+            "210": "In volo sul Mar Nero verso l'Ucraina",
+            "230": "In volo sull'Ucraina verso la Russia",
+            "70": "In volo sul Grande Erg Orientale verso il Mar Mediterraneo"
+        }
+    },
+    "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
+        "name": "In volo sull'oasi di Liwa negli Emirati Arabi Uniti",
+        "pointsOfInterest": {
+            "0": "In volo sull'oasi di Liwa negli Emirati Arabi Uniti"
+        }
+    },
+    "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
+        "name": "In volo sull'Oceano Pacifico verso il Messico",
+        "pointsOfInterest": {
+            "0": "In volo sull'Oceano Pacifico verso il Messico",
+            "105": "In volo da Città del Messico al Golfo del Messico",
+            "122": "In volo sul Golfo del Messico verso gli Stati Uniti",
+            "180": "In volo da Houston a New Orleans",
+            "190": "In volo verso New Orleans e la Costa del Golfo degli Stati Uniti",
+            "215": "In volo verso sud-est sugli Stati Uniti",
+            "280": "In volo sugli Stati Uniti orientali verso New York",
+            "320": "In volo sugli Stati Uniti orientali in direzione New York"
+        }
+    },
+    "B876B645-3955-420E-99DF-60139E451CF3": {
+        "name": "In volo attraverso il parco nazionale di Wulingyuan in Cina",
+        "pointsOfInterest": {
+            "0": "In volo attraverso il parco nazionale di Wulingyuan in Cina"
+        }
+    },
+    "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
+        "name": "In volo lungo la penisola di Nuussuaq in Groenlandia",
+        "pointsOfInterest": {
+            "0": "In volo lungo la penisola di Nuussuaq in Groenlandia"
+        }
+    },
+    "BA4ECA11-592F-4727-9221-D2A32A16EB28": {
+        "name": "Meduse d'oro nelle acque di Palau",
+        "pointsOfInterest": {
+            "0": "Meduse d'oro nelle acque di Palau",
+            "282": "Meduse d'oro con una medusa quadrifoglio al centro",
+            "348": "Meduse d'oro nelle acque di Palau"
+        }
+    },
+    "C6DC4E54-1130-44F8-AF6F-A551D8E8A181": {
+        "name": "Meduse quadrifoglio vicino alla costa dell'Alaska, Stati Uniti",
+        "pointsOfInterest": {
+            "0": "Meduse quadrifoglio vicino alla costa dell'Alaska, Stati Uniti"
+        }
+    },
+    "C7AD3D0A-7EDF-412C-A237-B3C9D27381A1": {
+        "name": "Trasportati dalla corrente con le meduse quadrifoglio vicino alla costa dell'Alaska, Stati Uniti",
+        "pointsOfInterest": {
+            "0": "Trasportati dalla corrente con le meduse quadrifoglio vicino alla costa dell'Alaska, Stati Uniti"
+        }
+    },
+    "C8559883-6F3E-4AF2-8960-903710CD47B7": {
+        "name": "In volo sul Victoria Peak a Hong Kong",
+        "pointsOfInterest": {
+            "0": "In volo sul Victoria Peak a Hong Kong",
+            "150": "In volo su Hong Kong verso il Victoria Harbour",
+            "330": "In volo sul Victoria Harbour verso la penisola di Kowloon"
+        }
+    },
+    "CE279831-1CA7-4A83-A97B-FF1E20234396": {
+        "name": "In volo sull’aeroporto internazionale di Los Angeles",
+        "pointsOfInterest": {
+            "0": "In volo sull’aeroporto internazionale di Los Angeles"
+        }
+    },
+    "CE9B5D5B-B6E7-47C5-8C04-59BF182E98FB": {
+        "name": "Delfini al largo nelle acque della Costa Rica",
+        "pointsOfInterest": {
+            "0": "Delfini al largo nelle acque della Costa Rica"
+        }
+    },
+    "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
+        "name": "In volo sull'Oceano Pacifico verso l'America Centrale",
+        "pointsOfInterest": {
+            "0": "In volo sull'Oceano Pacifico verso l'America Centrale",
+            "110": "In volo, tra le nuvole, sulla Giamaica e il Mar dei Caraibi",
+            "125": "In volo su Cuba verso Haiti e la Repubblica Dominicana",
+            "170": "In volo sulle Bahamas verso Haiti e la Repubblica Dominicana",
+            "190": "Arcipelago di Turks e Caicos nell'Oceano Atlantico",
+            "35": "Versante pacifico del Nicaragua, della Costa Rica e di Panama",
+            "50": "In volo sull'America Centrale, con il Sudamerica in lontananza",
+            "65": "Costa dei Mosquito in Nicaragua",
+            "85": "In volo sul Mar dei Caraibi verso Cuba"
+        }
+    },
+    "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
+        "name": "In volo sul parco nazionale di Wulingyuan in Cina",
+        "pointsOfInterest": {
+            "0": "In volo sul parco nazionale di Wulingyuan in Cina"
+        }
+    },
+    "DD47D8E1-CB66-4C12-BFEA-2ADB0D8D1E2E": {
+        "name": "Una megattera nelle acque della Polinesia Francese",
+        "pointsOfInterest": {
+            "0": "Una megattera nelle acque della Polinesia Francese"
+        }
+    },
+    "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
+        "name": "Baia di San Francisco e il Golden Gate Bridge",
+        "pointsOfInterest": {
+            "0": "Baia di San Francisco e il Golden Gate Bridge",
+            "140": "In volo verso la torre nord del Golden Gate Bridge verso San Francisco",
+            "191": "In volo sulla baia di San Francisco"
+        }
+    },
+    "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
+        "name": "In volo sull'Africa occidentale verso il Sahara",
+        "pointsOfInterest": {
+            "0": "In volo sull'Africa occidentale verso il Sahara",
+            "110": "In volo sui monti Ahaggar nel Sahara",
+            "155": "In volo sul Grande Erg Orientale in Africa settentrionale verso il Mar Mediterraneo",
+            "195": "La costa della Tunisia bagnata dal Mar Mediterraneo",
+            "210": "In volo sulla costa della Tunisia verso l'Italia",
+            "230": "In volo verso l'Italia dal Mar Mediterraneo",
+            "245": "In volo sull'Italia verso la penisola balcanica",
+            "285": "In volo sulla penisola balcanica verso i Carpazi",
+            "30": "In volo sul deserto del Sahara",
+            "310": "Carpazi e Mar Nero"
+        }
+    },
+    "E580E5A5-0888-4BE8-A4CA-F74A18A643C3": {
+        "name": "Meduse d'oro nelle acque di Palau",
+        "pointsOfInterest": {
+            "0": "Meduse d'oro nelle acque di Palau"
+        }
+    },
+    "E5DB138A-F04E-4619-B896-DE5CB538C534": {
+        "name": "In volo sulla Tunisia verso l'Italia",
+        "pointsOfInterest": {
+            "0": "In volo sulla Tunisia verso l'Italia",
+            "15": "In volo sull'Italia meridionale, con la penisola balcanica in lontananza",
+            "25": "In volo sulla penisola balcanica verso l'Asia centrale",
+            "40": "In volo sulla penisola balcanica passando sul Mar Nero",
+            "5": "In volo sul Mar Mediterraneo verso la Sicilia",
+            "55": "In volo sull'Ucraina, con la Russia in lontananza",
+            "75": "In volo dalla Russia sudoccidentale al Kazakistan"
+        }
+    },
+    "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
+        "name": "In volo sul quartiere di Dubai Marina negli Emirati Arabi Uniti",
+        "pointsOfInterest": {
+            "0": "In volo sul quartiere di Dubai Marina negli Emirati Arabi Uniti"
+        }
+    },
+    "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
+        "name": "In volo sul Victoria Harbour verso il centro di Hong Kong",
+        "pointsOfInterest": {
+            "0": "In volo sul Victoria Harbour verso il centro di Hong Kong"
+        }
+    },
+    "EB3F48E7-D30F-4079-858F-1A61331D5026": {
+        "name": "Attraverso una foresta di laminarie al largo della costa della California, Stati Uniti",
+        "pointsOfInterest": {
+            "0": "Attraverso una foresta di laminarie al largo della costa della California, Stati Uniti"
+        }
+    },
+    "EC3DC957-D4C2-4732-AACE-7D0C0F390EC8": {
+        "name": "Meduse d'oro nelle acque di Palau",
+        "pointsOfInterest": {
+            "0": "Meduse d'oro nelle acque di Palau"
+        }
+    },
+    "EC67726A-8212-4C5E-83CF-8412932740D2": {
+        "name": "Scritta di Hollywood a Los Angeles",
+        "pointsOfInterest": {
+            "0": "Scritta di Hollywood a Los Angeles",
+            "250": "In volo sulle colline di Hollywood verso Burbank, California"
+        }
+    },
+    "EE01F02D-1413-436C-AB05-410F224A5B7B": {
+        "name": "Fiordo di Ilulissat al largo della costa della Groenlandia",
+        "pointsOfInterest": {
+            "0": "Fiordo di Ilulissat al largo della costa della Groenlandia"
+        }
+    },
+    "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
+        "name": "In volo sulle Marin Headlands in direzione del Golden Gate Bridge",
+        "pointsOfInterest": {
+            "0": "In volo sulle Marin Headlands in direzione del Golden Gate Bridge",
+            "150": "In volo sul Golden Gate Bridge verso il Presidio di San Francisco"
+        }
+    },
+    "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
+        "name": "Sezione Mutianyu della Grande Muraglia nel distretto di Huairou in Cina",
+        "pointsOfInterest": {
+            "0": "Sezione Mutianyu della Grande Muraglia nel distretto di Huairou in Cina"
+        }
+    },
+    "F07CC61B-30FC-4614-BDAD-3240B61F6793": {
+        "name": "Barriera corallina vicino a Palau",
+        "pointsOfInterest": {
+            "0": "Barriera corallina vicino a Palau"
+        }
+    },
+    "F439B0A7-D18C-4B14-9681-6520E6A74FE9": {
+        "name": "Riflesso del sole sulla costa dell'Iran",
+        "pointsOfInterest": {
+            "0": "Riflesso del sole sulla costa dell'Iran",
+            "15": "Passaggio dal giorno alla notte sull'Iran",
+            "60": "Passaggio dal giorno alla notte sull'Asia centrale"
+        }
+    },
+    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
+        "name": "In volo sul centro di Los Angeles",
+        "pointsOfInterest": {
+            "0": "In volo sul centro di Los Angeles"
+        }
+    },
+    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
+        "name": "In volo verso il Tower Bridge sul fiume Tamigi",
+        "pointsOfInterest": {
+            "0": "In volo verso il Tower Bridge sul fiume Tamigi",
+            "20": "In volo sul fiume Tamigi",
+            "200": "In volo sul fiume Tamigi verso Westminster",
+            "270": "In volo su Westminster",
+            "60": "In volo accanto a The Shard a South London",
+            "92": "A sud del fiume Tamigi in direzione del London Eye"
+        }
+    },
+    "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {
+        "name": "In volo sul Victoria Harbour guardando verso l’isola di Hong Kong",
+        "pointsOfInterest": {
+            "0": "In volo sul Victoria Harbour guardando verso l’isola di Hong Kong"
+        }
+    }
+}

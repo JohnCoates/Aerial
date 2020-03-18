@@ -1,0 +1,740 @@
+{
+    "001C94AE-2BA4-4E77-A202-F7DE60E8B1C8": {
+        "name": "Lennetään Liwan keitaan yli Arabiemiirikunnissa",
+        "pointsOfInterest": {
+            "0": "Lennetään Liwan keitaan yli Arabiemiirikunnissa"
+        }
+    },
+    "009BA758-7060-4479-8EE8-FB9B40C8FB97": {
+        "name": "Kuljetaan kohti kaakkoa Siperian ja Mongolian yllä",
+        "pointsOfInterest": {
+            "0": "Kuljetaan kohti kaakkoa Siperian ja Mongolian yllä",
+            "110": "Kiinan yllä, kuljetaan kohti Korean niemimaata",
+            "150": "Korean niemimaa, kaukaisuudessa näkyy Japani",
+            "180": "Etelä-Korean yllä, kuljetaan kohti Japania",
+            "195": "Japanin yllä, katse kohti Tyyntämerta",
+            "22": "Kuljetaan kohti Sisä-Mongoliaa",
+            "260": "Tyynenmeren yllä Japanin kaakkoispuolella",
+            "32": "Mongolian yllä, kuljetaan kohti Kiinaa",
+            "60": "Pohjois-Kiinan yllä, kuljetaan kohti Korean niemimaata"
+        }
+    },
+    "00BA71CD-2C54-415A-A68A-8358E677D750": {
+        "name": "Lähestytään Dubain keskustaa Arabiemiirikunnissa",
+        "pointsOfInterest": {
+            "0": "Lähestytään Dubain keskustaa Arabiemiirikunnissa",
+            "210": "Kuljetaan Dubain keskustan ohi Arabiemiirikunnissa"
+        }
+    },
+    "024891DE-B7F6-4187-BFE0-E6D237702EF0": {
+        "name": "Wan Chain yllä, lähestytään Hongkongin keskustaa",
+        "pointsOfInterest": {
+            "0": "Wan Chain yllä, lähestytään Hongkongin keskustaa",
+            "150": "Hongkongin keskustan yllä",
+            "270": "Hongkongin saaren yllä"
+        }
+    },
+    "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": {
+        "name": "Revontulia Etelämantereen yllä",
+        "pointsOfInterest": {
+            "0": "Revontulia Etelämantereen yllä"
+        }
+    },
+    "044AD56C-A107-41B2-90CC-E60CCACFBCF5": {
+        "name": "Mutianyu-osa Kiinan muurista Huairoun maakunnassa Kiinassa",
+        "pointsOfInterest": {
+            "0": "Mutianyu-osa Kiinan muurista Huairoun maakunnassa Kiinassa"
+        }
+    },
+    "1088217C-1410-4CF7-BDE9-8F573A4DBCD9": {
+        "name": "Tyynenmeren yllä, kuljetaan kohti Keski-Amerikkaa",
+        "pointsOfInterest": {
+            "0": "Tyynenmeren yllä, kuljetaan kohti Keski-Amerikkaa",
+            "100": "Ylitetään Keski-Amerikka matkalla kohti Karibianmerta",
+            "150": "Karibianmeren yllä, kuljetaan kohti Kuubaa",
+            "240": "Kuuban yllä, takana näkyy Florida ja Bahama",
+            "300": "Floridan ja Bahaman yllä, kuljetaan kohti Sargassomerta",
+            "350": "Sargassomeren yllä, kuljetaan kohti Atlanttia",
+            "70": "Keski-Amerikan lounaisrannikko, kuljetaan kohti Karibianmerta"
+        }
+    },
+    "12318CCB-3F78-43B7-A854-EFDCCE5312CD": {
+        "name": "Tyynenmeren yllä, kuljetaan kohti Kalifornian rannikkoa",
+        "pointsOfInterest": {
+            "0": "Tyynenmeren yllä, kuljetaan kohti Kalifornian rannikkoa",
+            "110": "Las Vegasin yllä, kuljetaan kohti Salt Lake Cityä",
+            "120": "Yhdysvaltojen itäosissa, lähestytään Salt Lake Cityä",
+            "155": "Kuljetaan Salt Lake Cityn ja Denverin välissä Yhdysvalloissa",
+            "170": "Kalliovuorten yllä Yhdysvalloissa",
+            "70": "Kalifornian rannikon yllä, kuljetaan kohti sisämaata",
+            "85": "Kuljetaan Los Angelesin yli Yhdysvaltojen länsirannikolla",
+            "95": "Los Angelesin yllä, lähestytään Las Vegasia"
+        }
+    },
+    "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7": {
+        "name": "Lennetään Laupāhoehoe Nuin yli Kohala Forest Reservessä Havaijilla",
+        "pointsOfInterest": {
+            "0": "Lennetään Laupāhoehoe Nuin yli Kohala Forest Reservessä Havaijilla"
+        }
+    },
+    "149E7795-DBDA-4F5D-B39A-14712F841118": {
+        "name": "Aallot murtuvat Tahitin rannoille",
+        "pointsOfInterest": {
+            "0": "Aallot murtuvat Tahitin rannoille"
+        }
+    },
+    "22162A9B-DB90-4517-867C-C676BC3E8E95": {
+        "name": "Mutianyu-osa Kiinan muurista Huairoun maakunnassa Kiinassa",
+        "pointsOfInterest": {
+            "0": "Mutianyu-osa Kiinan muurista Huairoun maakunnassa Kiinassa"
+        }
+    },
+    "258A6797-CC13-4C3A-AB35-4F25CA3BF474": {
+        "name": "Pu’u O Umi -luonnonpuiston yllä Havaijilla",
+        "pointsOfInterest": {
+            "0": "Pu’u O Umi -luonnonpuiston yllä Havaijilla"
+        }
+    },
+    "27A37B0F-738D-4644-A7A4-E33E7A6C1175": {
+        "name": "Delfiinejä Kalifornian rannikolla Yhdysvalloissa",
+        "pointsOfInterest": {
+            "0": "Delfiinejä Kalifornian rannikolla Yhdysvalloissa"
+        }
+    },
+    "29BDF297-EB43-403A-8719-A78DA11A2948": {
+        "name": "Fisherman’s Wharfin yllä, kuljetaan kohti San Franciscon keskustaa",
+        "pointsOfInterest": {
+            "0": "Fisherman’s Wharfin yllä, kuljetaan kohti San Franciscon keskustaa",
+            "150": "Kuljetaan Coit Towerin ohi kohti San Franciscon keskustaa ja Bay Bridgeä",
+            "196": "San Franciscon keskusta",
+            "80": "Lähestytään Coit Toweria, taustalla San Franciscon keskusta ja Bay Bridge"
+        }
+    },
+    "2B30E324-E4FF-4CC1-BA45-A958C2D2B2EC": {
+        "name": "Lauma Chevron-barrakudia Borneon lähivesillä",
+        "pointsOfInterest": {
+            "0": "Lauma Chevron-barrakudia Borneon lähivesillä"
+        }
+    },
+    "2F52E34C-39D4-4AB1-9025-8F7141FAA720": {
+        "name": "Ilulissat-vuono Grönlannin rannikolla",
+        "pointsOfInterest": {
+            "0": "Ilulissat-vuono Grönlannin rannikolla"
+        }
+    },
+    "2F72BC1E-3D76-456C-81EB-842EBA488C27": {
+        "name": "Afrikan sarven yllä, kuljetaan kohti Adeninlahtea",
+        "pointsOfInterest": {
+            "0": "Afrikan sarven yllä, kuljetaan kohti Adeninlahtea",
+            "115": "Omaninlahti, lähestytään Makranin rannikkoa",
+            "145": "Makranin rannikko Iranissa ja Pakistanissa",
+            "160": "Iranin yllä, kuljetaan kohti Afganistania ja Pakistania",
+            "180": "Afganistanin ja Pakistanin yllä, kuljetaan kohti Karakorumia",
+            "235": "Karakoramin yllä, kuljetaan kohti Kiinaa",
+            "280": "Takla Makanin aavikko Länsi-Kiinassa",
+            "315": "Tienšan-vuoristo Keski-Aasiassa",
+            "45": "Arabian niemimaan kaakkoisosa"
+        }
+    },
+    "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
+        "name": "Seurataan Interstate 110:tä pohjoiseen Los Angelesin läpi",
+        "pointsOfInterest": {
+            "0": "Seurataan Interstate 110:tä pohjoiseen Los Angelesin läpi"
+        }
+    },
+    "3716DD4B-01C0-4F5B-8DD6-DB771EC472FB": {
+        "name": "Harmaariuttahait uivat lähellä Ranskan Polynesiaa",
+        "pointsOfInterest": {
+            "0": "Harmaariuttahait uivat lähellä Ranskan Polynesiaa"
+        }
+    },
+    "391BDF6E-3279-4CE1-9CA5-0F82811452D7": {
+        "name": "Afrikanmerikarhuja Cape Peninsulan rannikolla Etelä-Afrikassa",
+        "pointsOfInterest": {
+            "0": "Afrikanmerikarhuja Cape Peninsulan rannikolla Etelä-Afrikassa"
+        }
+    },
+    "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
+        "name": "Central Parkin yllä, kuljetaan kohti Midtown Manhattania New Yorkissa",
+        "pointsOfInterest": {
+            "0": "Central Parkin yllä, kuljetaan kohti Midtown Manhattania New Yorkissa",
+            "246": "Midtown Manhattanin yllä New Yorkissa"
+        }
+    },
+    "3C4678E4-4D3D-4A40-8817-77752AEA62EB": {
+        "name": "Kuljetaan yli Länsi-Euroopan, Brittein saaret kaukaisuudessa",
+        "pointsOfInterest": {
+            "0": "Kuljetaan yli Länsi-Euroopan, Brittein saaret kaukaisuudessa",
+            "100": "Kreikka Joonianmeren ja Egeanmeren välissä",
+            "160": "Kuljetaan kohti kaakkoa Välimeren yllä",
+            "185": "Välimeri ja Niilin suisto",
+            "20": "Kuljetaan kohti kaakkoa Alppien ja Pojoen laakson yllä",
+            "205": "Niili virtaa Saharan läpi Egyptissä",
+            "220": "Arabian aavikko Niilin ja Suezinlahden välissä",
+            "240": "Kuljetaan kohti kaakkoa Punaisenmeren yllä",
+            "50": "Kuljetaan Italian niemimaata ja Adrianmerta alaspäin"
+        }
+    },
+    "3D729CFC-9000-48D3-A052-C5BD5B7A6842": {
+        "name": "Seurataan Kohalan rantaviivaa Havaijilla",
+        "pointsOfInterest": {
+            "0": "Seurataan Kohalan rantaviivaa Havaijilla"
+        }
+    },
+    "3E94AE98-EAF2-4B09-96E3-452F46BC114E": {
+        "name": "Lähestytään Bay Bridgeä ja San Franciscon keskustaa",
+        "pointsOfInterest": {
+            "0": "Lähestytään Bay Bridgeä ja San Franciscon keskustaa",
+            "116": "San Franciscon lahden yllä, kuljetaan kohti keskustaa",
+            "80": "Ylitetään Bay Bridge matkalla kohti San Franciscon keskustaa"
+        }
+    },
+    "3FFA2A97-7D28-49EA-AA39-5BC9051B2745": {
+        "name": "Lennetään Dubai Marinaa pitkin Arabiemiirikunnissa",
+        "pointsOfInterest": {
+            "0": "Lennetään Dubai Marinaa pitkin Arabiemiirikunnissa"
+        }
+    },
+    "44166C39-8566-4ECA-BD16-43159429B52F": {
+        "name": "Kuljetaan pitkin New Yorkin 7th Avenueta kohti Time Squarea",
+        "pointsOfInterest": {
+            "0": "Kuljetaan pitkin New Yorkin 7th Avenueta kohti Time Squarea",
+            "120": "Kuljetaan kohti 7th Avenueta Midtown Manhattanilla New Yorkissa",
+            "40": "Times Squaren yllä New Yorkissa"
+        }
+    },
+    "499995FA-E51A-4ACE-8DFD-BDF8AFF6C943": {
+        "name": "Waimanu Valley Kohala Forest Reservessä Havaijilla",
+        "pointsOfInterest": {
+            "0": "Waimanu Valley Kohala Forest Reservessä Havaijilla"
+        }
+    },
+    "4AD99907-9E76-408D-A7FC-8429FF014201": {
+        "name": "San Franciscon lahden yllä, kuljetaan kohti Embarcaderoa",
+        "pointsOfInterest": {
+            "0": "San Franciscon lahden yllä, kuljetaan kohti Embarcaderoa",
+            "150": "Seurataan Market Streetiä San Franciscon keskustan läpi",
+            "360": "Seurataan Market Streetiä San Franciscon läpi",
+            "90": "Embarcaderon yllä, katse kohti Market Streetiä San Franciscossa"
+        }
+    },
+    "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589": {
+        "name": "Kuljetaan kohti kaakkoa Yhdysvaltojen Suurten tasankojen yllä",
+        "pointsOfInterest": {
+            "0": "Kuljetaan kohti kaakkoa Yhdysvaltojen Suurten tasankojen yllä",
+            "120": "Yhdysvaltojen kaakkoisosien yllä, kuljetaan kohti Floridaa",
+            "220": "Floridan yllä, kuljetaan kohti Bahamaa",
+            "240": "Kuljetaan kohti kaakkoa Bahaman yllä",
+            "285": "Bahaman yllä, lähestytään Haitia ja Dominikaanista tasavaltaa",
+            "300": "Dominikaanisen tasavallan ja Haitin yllä, lähestytään Karibianmerta",
+            "315": "Karibianmeren yllä, kuljetaan etelään kohti Venezuelaa",
+            "90": "Kuljetaan kohti kaakkoa Yhdysvaltojen Keskilännen yllä"
+        }
+    },
+    "537A4DAB-83B0-4B66-BCD1-05E5DBB4A268": {
+        "name": "Lauma isosilmämakrilleja Borneon rannikolla",
+        "pointsOfInterest": {
+            "0": "Lauma isosilmämakrilleja Borneon rannikolla"
+        }
+    },
+    "581A4F1A-2B6D-468C-A1BE-6F473F06D10B": {
+        "name": "Sarvimeritähtiä meren- pohjassa lähellä Borneota",
+        "pointsOfInterest": {
+            "0": "Sarvimeritähtiä meren- pohjassa lähellä Borneota"
+        }
+    },
+    "58754319-8709-4AB0-8674-B34F04E7FFE2": {
+        "name": "Lähestytään Tower Bridgeä Thames-joella Lontoossa",
+        "pointsOfInterest": {
+            "0": "Lähestytään Tower Bridgeä Thames-joella Lontoossa",
+            "178": "Thames-joen eteläpuolella Lontoossa",
+            "258": "Ylitetään Thames-joki Lontoossa",
+            "78": "Seurataan Thames-jokea Lontoossa"
+        }
+    },
+    "58C75C62-3290-47B8-849C-56A583173570": {
+        "name": "Kotkarauskuja Meksikon rannikolla",
+        "pointsOfInterest": {
+            "0": "Kotkarauskuja Meksikon rannikolla"
+        }
+    },
+    "6143116D-03BB-485E-864E-A8CF58ACF6F1": {
+        "name": "Liu'utaan leväviidakon läpi lähellä Cape Peninsulaa Etelä-Afrikassa",
+        "pointsOfInterest": {
+            "0": "Liu'utaan leväviidakon läpi lähellä Cape Peninsulaa Etelä-Afrikassa"
+        }
+    },
+    "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": {
+        "name": "Kanariansaaret, Atlantti ja Afrikan rannikko",
+        "pointsOfInterest": {
+            "0": "Kanariansaaret, Atlantti ja Afrikan rannikko",
+            "105": "Marokon yllä, lähestytään Välimerta",
+            "125": "Välimeri ja Etelä-Espanja",
+            "145": "Kuljetaan kohti koillista Costa Blancan yllä",
+            "165": "Kuljetaan kohti koillista Baleaarien yllä",
+            "185": "Läntisen Välimeren yllä, Alpit näkyvät takana",
+            "220": "Kuljetaan kohti koillista Alppien yllä",
+            "45": "Kuljetaan kohti koillista Marokon rannikkoa pitkin",
+            "75": "Kuljetaan Atlasvuorten yli Marokossa"
+        }
+    },
+    "640DFB00-FBB9-45DA-9444-9F663859F4BC": {
+        "name": "Lähestytään Lower Manhattania New Yorkin sataman suunnalta",
+        "pointsOfInterest": {
+            "0": "Lähestytään Lower Manhattania New Yorkin sataman suunnalta",
+            "110": "Kuljetaan Lower Manhattania pitkin matkalla kohti One World Trade Centeriä",
+            "180": "Kuljetaan One World Trade Centerin ohi kohti Midtown Manhattania",
+            "210": "Lower Manhattanin yllä New Yorkissa, kuljetaan kohti Midtownia"
+        }
+    },
+    "64D11DAB-3B57-4F14-AD2F-E59A9282FA44": {
+        "name": "Pohjois-Atlantin yllä, kuljetaan kohti Portugalia",
+        "pointsOfInterest": {
+            "0": "Pohjois-Atlantin yllä, kuljetaan kohti Portugalia",
+            "115": "Portugalin ja Espanjan yllä",
+            "150": "Kuljetaan poispäin Iberian niemimaalta ja kuljetaan Biskajanlahden ja Ranskan yli",
+            "180": "Länsi-Euroopan yllä, kaukaisuudessa näkyy Pohjois-Atlantti"
+        }
+    },
+    "687D03A2-18A5-4181-8E85-38F3A13409B9": {
+        "name": "Kyhmypapukaijakaloja koralli- riuttojen yllä Borneolla",
+        "pointsOfInterest": {
+            "0": "Kyhmypapukaijakaloja koralli- riuttojen yllä Borneolla"
+        }
+    },
+    "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
+        "name": "Lähestytään Golden Gate -siltaa San Franciscosta",
+        "pointsOfInterest": {
+            "0": "Lähestytään Golden Gate -siltaa San Franciscosta",
+            "140": "Ylitetään Golden Gate -silta",
+            "230": "Kuljetaan Golden Gate -sillan pohjoisen tornin ohi",
+            "260": "Kuljetaan San Franciscon lahden yllä Golden Gate -siltaa pitkin",
+            "60": "Kuljetaan Golden Gate -sillan vieressä kohti Marin Headlandsia"
+        }
+    },
+    "737E9E24-49BE-4104-9B72-F352DE1AD2BF": {
+        "name": "Tyynenmeren yllä, kuljetaan kohti Baja Californiaa",
+        "pointsOfInterest": {
+            "0": "Tyynenmeren yllä, kuljetaan kohti Baja Californiaa",
+            "110": "Kalliovuorten yllä, lähestytään Denveriä",
+            "125": "Kuljetaan Yhdysvaltojen Suurten tasankojen yli",
+            "185": "Lähestytään Suuria järviä, takana näkyy Kanadan Ontario",
+            "200": "Suurten järvien yllä, lähestytään Kanadan Ontariota",
+            "210": "Revontulia Länsi-Ontarion yllä Kanadassa",
+            "235": "Revontulia Pohjois-Ontarion yllä Kanadassa",
+            "250": "Revontulia Pohjois-Quebecin yllä Kanadassa",
+            "300": "Kuljetaan kohti Pohjois-Atlanttia, revontulia Labradorin yllä Kanadassa",
+            "45": "Baja Californian yllä, katsotaan pohjoiseen kohti Yhdysvaltoja",
+            "55": "Meksikon yllä, kuljetaan kohti Yhdysvaltojen lounaisosia",
+            "75": "Yhdysvaltojen lounaisosien yllä"
+        }
+    },
+    "7719B48A-2005-4011-9280-2F64EEC6FD91": {
+        "name": "Tyynenmeren yllä, kuljetaan kohti Yhdysvaltoja",
+        "pointsOfInterest": {
+            "0": "Tyynenmeren yllä, kuljetaan kohti Yhdysvaltoja",
+            "130": "Läntisten Sierra Madre -vuorten yllä Meksikon länsirannikolla",
+            "185": "Kuljetaan kohti Meksikon länsirannikkoa läntisten Sierra Madre -vuorten yllä",
+            "20": "Kuljetaan etelää kohti Kalifornian rannikolla",
+            "225": "Katsotaan etelään kohti Tyyntämerta Sierra Madre del Surin yli Meksikossa",
+            "280": "Tyynimeri Meksikon edustalla",
+            "290": "Tyynimeri Meksikon ja Guatemalan edustalla",
+            "50": "Läntisen Kalifornian yllä, kuljetaan kohti Meksikoa",
+            "65": "Lähestytään Mojaven aavikkoa eteläisessä Kaliforniassa, takana näkyy Meksiko",
+            "95": "Kalifornian lahti Sonoran aavikon ja Baja Californian niemimaan välissä"
+        }
+    },
+    "7825C73A-658F-48EE-B14C-EC56673094AC": {
+        "name": "Keski-Aasian yllä, kuljetaan kohti Kiinan rannikkoa",
+        "pointsOfInterest": {
+            "0": "Keski-Aasian yllä, kuljetaan kohti Kiinan rannikkoa",
+            "10": "Keski-Kiinan yllä, kuljetaan kohti Shanghaita",
+            "30": "Kuljetaan Itä-Kiinan yli lähestyen Shanghaita",
+            "45": "Lähestytään Shanghaita, kuljetaan kohti Itä-Kiinan merta",
+            "50": "Shanghain yllä, kuljetaan kohti Itä-Kiinan merta"
+        }
+    },
+    "78911B7E-3C69-47AD-B635-9C2486F6301D": {
+        "name": "Siirrytään yöstä päivään eteläisen Tyynenmeren yläpuolella",
+        "pointsOfInterest": {
+            "0": "Siirrytään yöstä päivään eteläisen Tyynenmeren yläpuolella",
+            "110": "Lähestytään auringonnousua Uuden-Seelannin yllä",
+            "170": "Poistutaan Uudesta-Seelannista, kuljetaan kohti koillista Tyynenmeren yllä",
+            "70": "Siirrytään yöstä päivään Uuden-Seelannin yläpuolella"
+        }
+    },
+    "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": {
+        "name": "Pohjois-Atlantin yllä, lähestytään Britteinsaaria",
+        "pointsOfInterest": {
+            "0": "Pohjois-Atlantin yllä, lähestytään Britteinsaaria",
+            "105": "Keski-Euroopan yllä, kuljetaan kohti Venäjää",
+            "15": "Irlanti ja Iso-Britannia",
+            "150": "Itä-Euroopan yllä, kaukaisuudessa näkyy Moskova",
+            "165": "Itä-Euroopan yllä, katse kohti Moskovaa",
+            "185": "Läntisen Venäjän yllä, kuljetaan Moskovan ohi",
+            "195": "Venäjän yllä, kuljetaan kohti Keski-Aasiaa",
+            "45": "Iso-Britannian yllä, kuljetaan kohti manner-Eurooppaa",
+            "65": "Luoteis-Euroopan yllä, kuljetaan kohti Venäjää"
+        }
+    },
+    "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
+        "name": "Lähestytään Tower Bridgeä Thames-joella Lontoossa",
+        "pointsOfInterest": {
+            "0": "Lähestytään Tower Bridgeä Thames-joella Lontoossa",
+            "130": "Seurataan Thames-jokea kohti London Eyeta",
+            "20": "Seurataan Thames-jokea Lontoossa",
+            "210": "Lähestytään London Eyeta Thames-joella",
+            "310": "Seurataan Thames-jokea London Eyen ohi",
+            "325": "Kuljetaan Westminsterin palatsin ohi Thames-joella Lontoossa"
+        }
+    },
+    "81337355-E156-4242-AAF4-711768D30A54": {
+        "name": "Intian valtameren yllä, kuljetaan kohti Australian Perthiä",
+        "pointsOfInterest": {
+            "0": "Intian valtameren yllä, kuljetaan kohti Australian Perthiä",
+            "170": "Länsi-Australian yllä, lähestytään Pohjoisterritoriota",
+            "220": "Australian Pohjoisterritorion yllä, kuljetaan kohti Uutta-Guineaa",
+            "335": "Arafuranmeren yllä, kuljetaan kohti Uutta-Guineaa",
+            "50": "Kuljetaan kohti koillista Länsi-Australian halki"
+        }
+    },
+    "82175C1F-153C-4EC8-AE37-2860EA828004": {
+        "name": "Koralliriutta Punaisessa meressä lähellä Egyptiä",
+        "pointsOfInterest": {
+            "0": "Koralliriutta Punaisessa meressä lähellä Egyptiä"
+        }
+    },
+    "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": {
+        "name": "Pu’u O Umi -luonnonpuiston yllä Havaijilla",
+        "pointsOfInterest": {
+            "0": "Pu’u O Umi -luonnonpuiston yllä Havaijilla"
+        }
+    },
+    "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8": {
+        "name": "Upper East Siden ja Central Parkin yllä New Yorkissa",
+        "pointsOfInterest": {
+            "0": "Upper East Siden ja Central Parkin yllä New Yorkissa",
+            "160": "Lähestytään Empire State Buildingiä New Yorkissa",
+            "205": "Kuljetaan Empire State Buildingin ohi kohti Lower Manhattania",
+            "50": "Midtown Manhattanin yllä, kuljetaan kohti Empire State Buildingia"
+        }
+    },
+    "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
+        "name": "San Franciscon lahden yllä, kuljetaan kohti Embarcaderoa",
+        "pointsOfInterest": {
+            "0": "San Franciscon lahden yllä, kuljetaan kohti Embarcaderoa",
+            "208": "Seurataan Market Streetiä San Franciscon läpi"
+        }
+    },
+    "87060EC2-D006-4102-98CC-3005C68BB343": {
+        "name": "Kuljetaan kohti koillista Etiopian ylängön yllä",
+        "pointsOfInterest": {
+            "0": "Kuljetaan kohti koillista Etiopian ylängön yllä",
+            "100": "Kuljetaan kohti koillista Arabian niemimaan yllä",
+            "130": "Arabian niemimaan yllä, kuljetaan kohti Irania",
+            "165": "Arabian niemimaan yllä, lähestytään Irania",
+            "190": "Lähestytään Iranin rannikkoa, takana näkyy Zagrosvuoret",
+            "210": "Zagrosvuorten yllä Iranissa",
+            "240": "Ison Hiekka-aavikon yllä Iranissa",
+            "265": "Kuljetaan kohti Turkmenistania ja Garagumin aavikkoa",
+            "305": "Amudarjajoki ja Pamir-Alay-vuoristo Keski-Aasiassa",
+            "322": "Pamir-Alay-vuoristo ja Ferganan laakso Keski-Aasiassa",
+            "360": "Kuljetaan Kirgisiasta kohti Kaakkois-Kazakstania",
+            "400": "Kuljetaan kohti pohjoista Kazakstanin yllä",
+            "45": "Kuljetaan Punaisenmeren yllä Arabian niemimaalle",
+            "450": "Altai-vuoriston yllä, kuljetaan kohti Mongoliaa"
+        }
+    },
+    "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9": {
+        "name": "Kuljetaan pitkin Sheikh Zayed Roadia Dubaissa Arabiemiirikunnissa",
+        "pointsOfInterest": {
+            "0": "Kuljetaan pitkin Sheikh Zayed Roadia Dubaissa Arabiemiirikunnissa"
+        }
+    },
+    "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": {
+        "name": "Griffith Observatory ja Hollywood Hills Los Angelesissa",
+        "pointsOfInterest": {
+            "0": "Griffith Observatory ja Hollywood Hills Los Angelesissa"
+        }
+    },
+    "8C31B06F-91A4-4F7C-93ED-56146D7F48B9": {
+        "name": "Aallot murtuvat Tahitin rannoille",
+        "pointsOfInterest": {
+            "0": "Aallot murtuvat Tahitin rannoille"
+        }
+    },
+    "92E48DE9-13A1-4172-B560-29B4668A87EE": {
+        "name": "Santa Monica State Beachin yllä Los Angelesissa",
+        "pointsOfInterest": {
+            "0": "Santa Monica State Beachin yllä Los Angelesissa",
+            "365": "Kuljetaan Santa Monica Pierin yli Los Angelesin lähellä",
+            "430": "Santa Monica State Beachin yllä Los Angelesissa"
+        }
+    },
+    "9680B8EB-CE2A-4395-AF41-402801F4D6A6": {
+        "name": "Lähestytään Burj Khalifaa Dubain keskustassa Arabiemiirikunnissa",
+        "pointsOfInterest": {
+            "0": "Lähestytään Burj Khalifaa Dubain keskustassa Arabiemiirikunnissa",
+            "280": "Kuljetaan Burj Khalifan ohi Dubain keskustassa Arabiemiirikunnissa",
+            "330": "Lähestytään rantaa Dubain keskustan yllä"
+        }
+    },
+    "9CCB8297-E9F5-4699-AE1F-890CFBD5E29C": {
+        "name": "Kuljetaan Longjin riisipeltojen ohi Guangxissa Kiinassa",
+        "pointsOfInterest": {
+            "0": "Kuljetaan Longjin riisipeltojen ohi Guangxissa Kiinassa"
+        }
+    },
+    "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
+        "name": "Kuljetaan Buckinghamin palatsin yli Lontoossa",
+        "pointsOfInterest": {
+            "0": "Kuljetaan Buckinghamin palatsin yli Lontoossa",
+            "104": "Ylitetään Thames-joki ja kuljetaan London Eyen yli",
+            "149": "Kuljetaan Etelä-Lontoon ohi",
+            "24": "Buckinghamin palatsin yllä Lontoossa",
+            "279": "Kuljetaan The Shardin ohi Etelä-Lontoossa",
+            "299": "Ylitetään Thames-joki Lontoossa",
+            "324": "Ylitetään Thames-joki Tower Bridgen kohdalla Lontoossa",
+            "49": "Kuljetaan St James’s Parkin yllä kohti Thames-jokea Lontoossa"
+        }
+    },
+    "A837FA8C-C643-4705-AE92-074EFDD067F7": {
+        "name": "Kuljetaan kohti koillista Saharan yllä yöllä",
+        "pointsOfInterest": {
+            "0": "Kuljetaan kohti koillista Saharan yllä yöllä",
+            "100": "Välimeren rannikko Tunisiassa ja Libyassa",
+            "120": "Kuljetaan Välimeren yllä kohti Italiaa",
+            "140": "Etelä-Italian yllä, lähestytään Balkanin niemimaata ja kaukaisuudessa näkyy Turkki",
+            "165": "Balkanin niemimaan yllä, kuljetaan kohti Mustaamerta",
+            "180": "Balkanin niemimaan yllä, lähestytään Mustaamerta",
+            "210": "Kuljetaan Mustanmeren yli kohti Ukrainaa",
+            "230": "Kuljetaan Ukrainan yllä kohti Venäjää",
+            "70": "Itäisen Iso Ergin yllä, kuljetaan kohti Välimerta"
+        }
+    },
+    "AFA22C08-A486-4CE8-9A13-E355B6C38559": {
+        "name": "Lennetään Liwan keitaan yli Arabiemiirikunnissa",
+        "pointsOfInterest": {
+            "0": "Lennetään Liwan keitaan yli Arabiemiirikunnissa"
+        }
+    },
+    "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": {
+        "name": "Tyynenmeren yllä, kuljetaan kohti Meksikoa",
+        "pointsOfInterest": {
+            "0": "Tyynenmeren yllä, kuljetaan kohti Meksikoa",
+            "105": "Kuljetaan Méxicon yli kohti Meksikonlahtea",
+            "122": "Lennetään Meksikonlahden yli kohti Yhdysvaltoja",
+            "180": "Kuljetaan Houstonin ohi ja lähestytään New Orleansia",
+            "190": "Kuljetaan New Orleansin ja Yhdysvaltojen Gulf Coastin yllä",
+            "215": "Kuljetaan Yhdysvaltojen kaakkoisosien yllä",
+            "280": "Yhdysvaltojen itäosissa, kuljetaan kohti New Yorkia",
+            "320": "Yhdysvaltojen itäosissa, lähestytään New York Cityä"
+        }
+    },
+    "B876B645-3955-420E-99DF-60139E451CF3": {
+        "name": "Kuljetaan Wulingyuanin kansallispuiston läpi Kiinassa",
+        "pointsOfInterest": {
+            "0": "Kuljetaan Wulingyuanin kansallispuiston läpi Kiinassa"
+        }
+    },
+    "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
+        "name": "Kuljetaan Nuussuaq-niemellä Grönlannissa",
+        "pointsOfInterest": {
+            "0": "Kuljetaan Nuussuaq-niemellä Grönlannissa"
+        }
+    },
+    "BA4ECA11-592F-4727-9221-D2A32A16EB28": {
+        "name": "Kultameduusoja Palaun vesillä",
+        "pointsOfInterest": {
+            "0": "Kultameduusoja Palaun vesillä",
+            "282": "Kultameduusoja ja kuumeduusa niiden keskellä",
+            "348": "Kultameduusoja Palaun vesillä"
+        }
+    },
+    "C6DC4E54-1130-44F8-AF6F-A551D8E8A181": {
+        "name": "Korvameduusoja Alaskan rannikolla Yhdysvalloissa",
+        "pointsOfInterest": {
+            "0": "Korvameduusoja Alaskan rannikolla Yhdysvalloissa"
+        }
+    },
+    "C7AD3D0A-7EDF-412C-A237-B3C9D27381A1": {
+        "name": "Ajelehditaan korvameduusojen yllä lähellä Alaskan rannikkoa Yhdysvalloissa",
+        "pointsOfInterest": {
+            "0": "Ajelehditaan korvameduusojen yllä lähellä Alaskan rannikkoa Yhdysvalloissa"
+        }
+    },
+    "C8559883-6F3E-4AF2-8960-903710CD47B7": {
+        "name": "Lennetään Victoria Peakin yli Hongkongissa",
+        "pointsOfInterest": {
+            "0": "Lennetään Victoria Peakin yli Hongkongissa",
+            "150": "Lennetään Hongkongin yli kohti Victoria Harbouria",
+            "330": "Victoria Harbourin yllä, lähestytään Kowloonin niemimaata"
+        }
+    },
+    "CE279831-1CA7-4A83-A97B-FF1E20234396": {
+        "name": "Lennetään Los Angelesin kansainvälisen lentokentän yli",
+        "pointsOfInterest": {
+            "0": "Lennetään Los Angelesin kansainvälisen lentokentän yli"
+        }
+    },
+    "CE9B5D5B-B6E7-47C5-8C04-59BF182E98FB": {
+        "name": "Pyöriäisdelfiinejä Costa Rican vesillä",
+        "pointsOfInterest": {
+            "0": "Pyöriäisdelfiinejä Costa Rican vesillä"
+        }
+    },
+    "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": {
+        "name": "Kuljetaan Tyynenmeren yllä kohti Keski-Amerikkaa",
+        "pointsOfInterest": {
+            "0": "Kuljetaan Tyynenmeren yllä kohti Keski-Amerikkaa",
+            "110": "Kuljetaan pilvien peittämän Jamaikan ohi Karibianmerellä",
+            "125": "Ylitetään Kuuba, katse kohti Haitia ja Dominikaanista tasavaltaa",
+            "170": "Kuljetaan Bahaman yli, katse kohti Haitia ja Dominikaanista tasavaltaa",
+            "190": "Turks- ja Caicossaaret Atlantilla",
+            "35": "Tyynenmeren rannikkoa Nicaraguassa, Costa Ricassa ja Panamassa",
+            "50": "Kuljetaan Keski-Amerikan yli, kaukaisuudessa näkyy Etelä-Amerikka",
+            "65": "Nicaraguan Moskiittorannikko",
+            "85": "Karibianmeren yllä, kuljetaan kohti Kuubaa"
+        }
+    },
+    "D5E76230-81A3-4F65-A1BA-51B8CADED625": {
+        "name": "Tutustutaan Wulingyuanin kansallispuistoon Kiinassa",
+        "pointsOfInterest": {
+            "0": "Tutustutaan Wulingyuanin kansallispuistoon Kiinassa"
+        }
+    },
+    "DD47D8E1-CB66-4C12-BFEA-2ADB0D8D1E2E": {
+        "name": "Ryhävalas lähellä Ranskan Polynesiaa",
+        "pointsOfInterest": {
+            "0": "Ryhävalas lähellä Ranskan Polynesiaa"
+        }
+    },
+    "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
+        "name": "San Franciscon lahti ja Golden Gate -silta",
+        "pointsOfInterest": {
+            "0": "San Franciscon lahti ja Golden Gate -silta",
+            "140": "Kuljetaan Golden Gate -sillan pohjoisen tornin ohi kohti San Franciscoa",
+            "191": "San Franciscon lahden yllä"
+        }
+    },
+    "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
+        "name": "Läntisen Afrikan yllä, kuljetaan kohti Saharaa",
+        "pointsOfInterest": {
+            "0": "Läntisen Afrikan yllä, kuljetaan kohti Saharaa",
+            "110": "Kuljetaan Ahaggar-vuorten yli Saharassa",
+            "155": "Itäisen Iso Ergin yllä Pohjois-Afrikassa, kuljetaan kohti Välimerta",
+            "195": "Tunisian rannikko ja Välimeri",
+            "210": "Tunisian rannikon yllä, kuljetaan kohti Italiaa",
+            "230": "Lähestytään Italiaa Välimerellä",
+            "245": "Italian yllä, kuljetaan kohti Balkanin niemimaata",
+            "285": "Balkanin niemimaan yllä, kuljetaan kohti Karpaatteja",
+            "30": "Ylitetään Sahara",
+            "310": "Karpaatit ja Mustameri"
+        }
+    },
+    "E580E5A5-0888-4BE8-A4CA-F74A18A643C3": {
+        "name": "Kultameduusoja Palaun vesillä",
+        "pointsOfInterest": {
+            "0": "Kultameduusoja Palaun vesillä"
+        }
+    },
+    "E5DB138A-F04E-4619-B896-DE5CB538C534": {
+        "name": "Tunisian yllä, kuljetaan kohti Italiaa",
+        "pointsOfInterest": {
+            "0": "Tunisian yllä, kuljetaan kohti Italiaa",
+            "15": "Etelä-Italian yllä, takana näkyy Balkanin niemimaa",
+            "25": "Balkanin niemimaan yllä, kuljetaan kohti Keski-Aasiaa",
+            "40": "Balkanin niemimaan yllä, kuljetaan Mustanmeren ohi",
+            "5": "Välimeren yllä, katse kohti Sisiliaa ja Italian niemimaata",
+            "55": "Ukrainan yllä, takana näkyy Venäjä",
+            "75": "Lounais-Venäjän yllä, kuljetaan Kazakstanin ohi"
+        }
+    },
+    "E991AC0C-F272-44D8-88F3-05F44EDFE3AE": {
+        "name": "Lennetään Dubai Marinan yli Arabiemiirikunnissa",
+        "pointsOfInterest": {
+            "0": "Lennetään Dubai Marinan yli Arabiemiirikunnissa"
+        }
+    },
+    "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": {
+        "name": "Victoria Harbourin yllä, kuljetaan kohti Hongkongin keskustaa",
+        "pointsOfInterest": {
+            "0": "Victoria Harbourin yllä, kuljetaan kohti Hongkongin keskustaa"
+        }
+    },
+    "EB3F48E7-D30F-4079-858F-1A61331D5026": {
+        "name": "Kuljetaan merilevän keskellä Kalifornian rannikolla Yhdysvalloissa",
+        "pointsOfInterest": {
+            "0": "Kuljetaan merilevän keskellä Kalifornian rannikolla Yhdysvalloissa"
+        }
+    },
+    "EC3DC957-D4C2-4732-AACE-7D0C0F390EC8": {
+        "name": "Kultameduusoja Palaun vesillä",
+        "pointsOfInterest": {
+            "0": "Kultameduusoja Palaun vesillä"
+        }
+    },
+    "EC67726A-8212-4C5E-83CF-8412932740D2": {
+        "name": "Hollywood-kyltti Los Angelesissa",
+        "pointsOfInterest": {
+            "0": "Hollywood-kyltti Los Angelesissa",
+            "250": "Kaliforniassa Hollywood Hillsin yllä, lähestytään Burbankia"
+        }
+    },
+    "EE01F02D-1413-436C-AB05-410F224A5B7B": {
+        "name": "Ilulissat-vuono Grönlannin rannikolla",
+        "pointsOfInterest": {
+            "0": "Ilulissat-vuono Grönlannin rannikolla"
+        }
+    },
+    "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
+        "name": "Marin Headlandsin yllä, katse kohti Golden Gate -siltaa",
+        "pointsOfInterest": {
+            "0": "Marin Headlandsin yllä, katse kohti Golden Gate -siltaa",
+            "150": "Ylitetään Golden Gate -silta matkalla kohti Presidio of San Franciscoa"
+        }
+    },
+    "F0236EC5-EE72-4058-A6CE-1F7D2E8253BF": {
+        "name": "Mutianyu-osa Kiinan muurista Huairoun maakunnassa Kiinassa",
+        "pointsOfInterest": {
+            "0": "Mutianyu-osa Kiinan muurista Huairoun maakunnassa Kiinassa"
+        }
+    },
+    "F07CC61B-30FC-4614-BDAD-3240B61F6793": {
+        "name": "Koralliriutta Palaun lähellä",
+        "pointsOfInterest": {
+            "0": "Koralliriutta Palaun lähellä"
+        }
+    },
+    "F439B0A7-D18C-4B14-9681-6520E6A74FE9": {
+        "name": "Aurinko heijastuu Iranin rannikkoa pitkin",
+        "pointsOfInterest": {
+            "0": "Aurinko heijastuu Iranin rannikkoa pitkin",
+            "15": "Siirrytään päivästä yöhön Iranin yllä",
+            "60": "Siirrytään päivästä yöhön Keski-Aasian yllä"
+        }
+    },
+    "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
+        "name": "Ylitetään Los Angelesin keskusta",
+        "pointsOfInterest": {
+            "0": "Ylitetään Los Angelesin keskusta"
+        }
+    },
+    "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
+        "name": "Lähestytään Tower Bridgeä Thames-joella Lontoossa",
+        "pointsOfInterest": {
+            "0": "Lähestytään Tower Bridgeä Thames-joella Lontoossa",
+            "20": "Ylitetään Thames-joki Lontoossa",
+            "200": "Ylitetään Thames-joki matkalla kohti Westminsteriä Lontoossa",
+            "270": "Westminsterin yllä Lontoossa",
+            "60": "Kuljetaan The Shardin ohi Etelä-Lontoossa",
+            "92": "Kuljetaan Thames-joen eteläpuolella kohti London Eyeta"
+        }
+    },
+    "FE8E1F9D-59BA-4207-B626-28E34D810D0A": {
+        "name": "Victoria Harbourin yllä, katse kohti Hongkongin saarta",
+        "pointsOfInterest": {
+            "0": "Victoria Harbourin yllä, katse kohti Hongkongin saarta"
+        }
+    }
+}
