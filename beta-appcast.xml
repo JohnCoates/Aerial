@@ -1,7 +1,21 @@
 <?xml version="1.0" standalone="yes"?><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
 <channel>
 <title>Aerial</title>
-
+<item>
+<title>1.8.2beta1</title>
+  <description>
+          <![CDATA[
+<p>New features:</p>
+<ul><li>Add updated .pl translations</li>
+<li>Tentative fix for a description bug when skipping videos on multiple monitors.</li>
+</ul>
+          ]]>
+  </description>
+<pubDate>mar., 10 mar. 2020 18:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.2beta1/Aerial.saver.zip" sparkle:version="1.8.2beta1" 
+sparkle:edSignature="7eoSrfIP3HjIrS/pGQEMRFHxl0o6CIUrfLtvwkCaXhEHFRqXbedlHFNLSD92c4C+jAVZpFW8izMggMLrEOMWCw==" length="5961990" type="application/octet-stream"/>
+</item>
 <item>
 <title>1.8.1</title>
   <description>
