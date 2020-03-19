@@ -21,6 +21,10 @@ extension PreferencesWindowController {
             PrefsInfo.layers.append(.countdown)
         }
 
+        if !PrefsInfo.layers.contains(.timer) {
+            PrefsInfo.layers.append(.timer)
+        }
+
         // Annnd for backward compatibility with 1.7.2 betas, remove the updates that was once here ;)
         if PrefsInfo.layers.contains(.updates) {
             PrefsInfo.layers.remove(at: PrefsInfo.layers.firstIndex(of: .updates)!)
@@ -79,6 +83,10 @@ extension PreferencesWindowController {
             infoContainerView.addSubview(infoCountdownView)
             infoCountdownView.frame.origin.y = infoCommonView.frame.height
             infoCountdownView.setStates()
+        case .timer:
+            infoContainerView.addSubview(infoTimerView)
+            infoTimerView.frame.origin.y = infoCommonView.frame.height
+            infoTimerView.setStates()
         }
     }
 

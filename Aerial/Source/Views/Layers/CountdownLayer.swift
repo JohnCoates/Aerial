@@ -60,33 +60,6 @@ class CountdownLayer: AnimationLayer {
         }
     }
 
-    // Transform a date by setting it to today (or tommorrow)
-    func todayizeDate(_ target: Date, strict: Bool) -> Date {
-        let now = Date()
-
-        let calendar = Calendar.current
-        var targetComponent = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: target)
-        let nowComponent = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: now)
-
-        targetComponent.year = nowComponent.year
-        targetComponent.month = nowComponent.month
-        targetComponent.day = nowComponent.day
-
-        let candidate = Calendar.current.date(from: targetComponent) ?? target
-
-        if strict {
-            return candidate
-        } else {
-            // In non strict mode, if the hour is passed already
-            // we return tomorrow
-            if candidate > now {
-                return candidate
-            } else {
-                return candidate.tomorrow ?? candidate
-            }
-        }
-    }
-
     func shouldCountdown() -> Bool {
         let now = Date()
         var target = PrefsInfo.countdown.targetDate

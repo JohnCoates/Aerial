@@ -40,11 +40,11 @@ enum InfoCountdownMode: Int, Codable {
 
 // The various info types available
 enum InfoType: String, Codable {
-    case location, message, clock, battery, updates, countdown
+    case location, message, clock, battery, updates, countdown, timer
 }
 
+// swiftlint:disable:next type_body_length
 struct PrefsInfo {
-
     struct Location: CommonInfo, Codable {
         var isEnabled: Bool
         var fontName: String
@@ -103,8 +103,21 @@ struct PrefsInfo {
         var showSeconds: Bool
     }
 
+    struct Timer: CommonInfo, Codable {
+        var isEnabled: Bool
+        var fontName: String
+        var fontSize: Double
+        var corner: InfoCorner
+        var displays: InfoDisplays
+        var duration: Date
+        var showSeconds: Bool
+        var disableWhenElapsed: Bool
+        var replaceWithMessage: Bool
+        var customMessage: String
+    }
+
     // Our array of Info layers. User can reorder the array, and we may periodically add new Info types
-    @Storage(key: "layers", defaultValue: [ .message, .clock, .location, .battery, .updates, .countdown])
+    @Storage(key: "layers", defaultValue: [ .message, .clock, .location, .battery, .updates, .countdown, .timer])
     static var layers: [InfoType]
 
     // Location information
@@ -165,6 +178,20 @@ struct PrefsInfo {
                                                      showSeconds: true))
     static var countdown: Countdown
 
+    // Timer
+    @Storage(key: "LayerTimer", defaultValue: Timer(isEnabled: false,
+                                                    fontName: "Helvetica Neue Medium",
+                                                    fontSize: 100,
+                                                    corner: .screenCenter,
+                                                    displays: .allDisplays,
+                                                    duration: Date(),
+                                                    showSeconds: true,
+                                                    disableWhenElapsed: true,
+                                                    replaceWithMessage: false,
+                                                    customMessage: ""))
+
+    static var timer: Timer
+
     // MARK: - Advanced text settings
 
     // Text fade in/out mode
@@ -218,6 +245,8 @@ struct PrefsInfo {
             return updates
         case .countdown:
             return countdown
+        case .timer:
+            return timer
         }
     }
 
@@ -236,6 +265,8 @@ struct PrefsInfo {
             updates.isEnabled = value
         case .countdown:
             countdown.isEnabled = value
+        case .timer:
+            timer.isEnabled = value
         }
     }
 
@@ -253,6 +284,8 @@ struct PrefsInfo {
             updates.fontName = name
         case .countdown:
             countdown.fontName = name
+        case .timer:
+            timer.fontName = name
         }
     }
 
@@ -270,6 +303,8 @@ struct PrefsInfo {
             updates.fontSize = size
         case .countdown:
             countdown.fontSize = size
+        case .timer:
+            timer.fontSize = size
         }
     }
 
@@ -287,6 +322,8 @@ struct PrefsInfo {
             updates.corner = corner
         case .countdown:
             countdown.corner = corner
+        case .timer:
+            timer.corner = corner
         }
 
     }
@@ -304,6 +341,8 @@ struct PrefsInfo {
             updates.displays = mode
         case .countdown:
             countdown.displays = mode
+        case .timer:
+            timer.displays = mode
         }
     }
 }
