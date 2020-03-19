@@ -37,6 +37,10 @@ brew cask upgrade aerial
 
 Please note that if you prefer using homebrew to update Aerial, we recommend you disable Sparkle auto updates in the `Updates`tab. 
 
+**Warning** If you see that your settings aren't saved in Catalina, please check if this folder exists : You may need to create this folder manually : `~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/ByHost/`
+
+You may need to manually create the ByHost folder manually as Catalina may not do so for you.
+
 ## Setting Aerial as Your Screen Saver
 
 1. Open `System Preferences` -> `Desktop & Screen Saver` -> `Screen Saver`
