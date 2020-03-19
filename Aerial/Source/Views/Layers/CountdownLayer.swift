@@ -116,8 +116,13 @@ class CountdownLayer: AnimationLayer {
     func getTimeString() -> String {
         if #available(OSX 10.12, *) {
             let dateComponentsFormatter = DateComponentsFormatter()
-            dateComponentsFormatter.allowedUnits = [.year, .month, .day, .hour, .minute, .second]
-            dateComponentsFormatter.maximumUnitCount = 3
+            if config!.showSeconds {
+                dateComponentsFormatter.allowedUnits = [.day, .hour, .minute, .second]
+                dateComponentsFormatter.maximumUnitCount = 4
+            } else {
+                dateComponentsFormatter.allowedUnits = [.day, .hour, .minute]
+                dateComponentsFormatter.maximumUnitCount = 3
+            }
             dateComponentsFormatter.unitsStyle = .full
 
             var target = PrefsInfo.countdown.targetDate
