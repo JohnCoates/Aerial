@@ -7,7 +7,7 @@
   - Consider using homebrew
 Another solution would be to have a separate updater app, which is something that will hopefully be provided soon. You can follow the progress on this in this issue : https://github.com/JohnCoates/Aerial/issues/909
 - Custom videos location : In Catalina, while it's possible to add videos that are stored in your user's Documents or Downloads folder, these files will not playback when Aerial is running as a screensaver. This is a sandboxing restriction, we recommend that you place your videos in a "less protected" folder such as `/Users/Shared/`.
-- Settings aren't saved : Some users (using MDM management software) seem to have run into an issue where macOS Catalina didn't create the folder where Aerial saves its preferences. You may need to create this folder manually : `~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/ByHost/`
+- Settings aren't saved : Some users (using MDM management software and/or Homebrew) seem to have run into an issue where macOS Catalina didn't create the folder where Aerial saves its preferences. You may need to create this folder manually : `~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/ByHost/`
 - Some current (or wanted/upcoming) features that require specific privileges are no longer working/impossible because of restrictions, this includes `Right arrow key to skip`.
 
 ## Very common issues/macOS bugs
