@@ -70,8 +70,9 @@ class AnimationLayer: CATextLayer {
         self.isWrapped = true
 
         // This is the rect resized to our string
-        frame = calculateRect(string: string, font: font as! NSFont)
-        move(toCorner: getCorner(), fullRedraw: false)
+        let newCorner = getCorner()
+        frame = calculateRect(string: string, font: font as! NSFont, newCorner: newCorner)
+        move(toCorner: newCorner, fullRedraw: false)
     }
 
     // Handle the random corner
@@ -231,9 +232,30 @@ class AnimationLayer: CATextLayer {
 
     // MARK: Text/Font stuff
     // Calculate the screen rect that will be used by our string
-    func calculateRect(string: String, font: NSFont) -> CGRect {
+    func calculateRect(string: String, font: NSFont, newCorner: InfoCorner) -> CGRect {
         let mx = getHorizontalMargin()
-        let boundingRect = CGSize(width: baseLayer.visibleRect.size.width-2*mx,
+
+        var oppoMargin: CGFloat
+
+        if corner == .random {
+            switch newCorner {
+            case .topLeft:
+                oppoMargin = offsets.maxWidth[.topRight]!
+            case .topRight:
+                oppoMargin = offsets.maxWidth[.topLeft]!
+            case .bottomLeft:
+                oppoMargin = offsets.maxWidth[.bottomRight]!
+            default: // .bottomRight, we only allow the 4 corners for random
+                oppoMargin = offsets.maxWidth[.bottomLeft]!
+            }
+
+            print(offsets.maxWidth)
+            print("oppoMargin \(oppoMargin)")
+        } else {
+            oppoMargin = 0
+        }
+
+        let boundingRect = CGSize(width: baseLayer.visibleRect.size.width-2*mx-oppoMargin,
                                   height: baseLayer.visibleRect.size.height)
 
         // We need an attributed string to take the font into account
@@ -242,6 +264,12 @@ class AnimationLayer: CATextLayer {
 
         // Calculate bounding box
         let rect = str.boundingRect(with: boundingRect, options: [.truncatesLastVisibleLine, .usesLineFragmentOrigin])
+
+        if corner != .random {
+            if rect.width+10 > offsets.maxWidth[corner]! {
+                offsets.maxWidth[corner] = rect.width+10
+            }
+        }
 
         // Last line won't appear if we don't adjust a bit (why!?)
         return CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width+10, height: rect.height + 10)

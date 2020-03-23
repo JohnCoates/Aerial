@@ -98,6 +98,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var infoBatteryView: InfoBatteryView!
     @IBOutlet var infoCountdownView: InfoCountdownView!
     @IBOutlet var infoTimerView: InfoTimerView!
+    @IBOutlet var infoDateView: InfoDateView!
 
     // Time Tab
     @IBOutlet var iconTime1: NSImageCell!

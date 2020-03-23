@@ -50,7 +50,10 @@ class InfoCommonView: NSView {
             controller.infoBox.title = "Custom message"
             posRandom.isHidden = true
         case .clock:
-            controller.infoBox.title = "Clock"
+            controller.infoBox.title = "Current time"
+            posRandom.isHidden = true
+        case .date:
+            controller.infoBox.title = "Current date"
             posRandom.isHidden = true
         case .battery:
             controller.infoBox.title = "Battery status"
@@ -174,6 +177,8 @@ class InfoCommonView: NSView {
             PrefsInfo.message.fontSize = 20
         case .clock:
             PrefsInfo.clock.fontSize = 50
+        case .date:
+            PrefsInfo.date.fontSize = 20
         case .battery:
             PrefsInfo.battery.fontSize = 20
         case .updates:

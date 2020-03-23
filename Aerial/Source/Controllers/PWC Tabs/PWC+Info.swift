@@ -25,6 +25,10 @@ extension PreferencesWindowController {
             PrefsInfo.layers.append(.timer)
         }
 
+        if !PrefsInfo.layers.contains(.date) {
+            PrefsInfo.layers.append(.date)
+        }
+
         // Annnd for backward compatibility with 1.7.2 betas, remove the updates that was once here ;)
         if PrefsInfo.layers.contains(.updates) {
             PrefsInfo.layers.remove(at: PrefsInfo.layers.firstIndex(of: .updates)!)
@@ -73,6 +77,10 @@ extension PreferencesWindowController {
             infoContainerView.addSubview(infoClockView)
             infoClockView.frame.origin.y = infoCommonView.frame.height
             infoClockView.setStates()
+        case .date:
+            infoContainerView.addSubview(infoDateView)
+            infoDateView.frame.origin.y = infoCommonView.frame.height
+            infoDateView.setStates()
         case .battery:
             infoContainerView.addSubview(infoBatteryView)
             infoBatteryView.frame.origin.y = infoCommonView.frame.height

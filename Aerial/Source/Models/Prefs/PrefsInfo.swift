@@ -30,6 +30,10 @@ enum InfoTime: Int, Codable {
     case always, tenSeconds
 }
 
+enum InfoDate: Int, Codable {
+    case textual, compact
+}
+
 enum InfoIconText: Int, Codable {
     case textOnly, iconAndText, iconOnly
 }
@@ -40,7 +44,7 @@ enum InfoCountdownMode: Int, Codable {
 
 // The various info types available
 enum InfoType: String, Codable {
-    case location, message, clock, battery, updates, countdown, timer
+    case location, message, clock, date, battery, updates, countdown, timer
 }
 
 // swiftlint:disable:next type_body_length
@@ -70,6 +74,16 @@ struct PrefsInfo {
         var corner: InfoCorner
         var displays: InfoDisplays
         var showSeconds: Bool
+    }
+
+    struct IDate: CommonInfo, Codable {
+        var isEnabled: Bool
+        var fontName: String
+        var fontSize: Double
+        var corner: InfoCorner
+        var displays: InfoDisplays
+        var format: InfoDate
+        var withYear: Bool
     }
 
     struct Battery: CommonInfo, Codable {
@@ -146,6 +160,16 @@ struct PrefsInfo {
                                                      displays: .allDisplays,
                                                      showSeconds: true))
     static var clock: Clock
+
+    // Date
+    @Storage(key: "LayerDate", defaultValue: IDate(isEnabled: false,
+                                                     fontName: "Helvetica Neue Medium",
+                                                     fontSize: 25,
+                                                     corner: .bottomLeft,
+                                                     displays: .allDisplays,
+                                                     format: .textual,
+                                                     withYear: false))
+    static var date: IDate
 
     // Battery
     @Storage(key: "LayerBattery", defaultValue: Battery(isEnabled: false,
@@ -239,6 +263,8 @@ struct PrefsInfo {
             return message
         case .clock:
             return clock
+        case .date:
+            return date
         case .battery:
             return battery
         case .updates:
@@ -259,6 +285,8 @@ struct PrefsInfo {
             message.isEnabled = value
         case .clock:
             clock.isEnabled = value
+        case .date:
+            date.isEnabled = value
         case .battery:
             battery.isEnabled = value
         case .updates:
@@ -278,6 +306,8 @@ struct PrefsInfo {
             message.fontName = name
         case .clock:
             clock.fontName = name
+        case .date:
+            date.fontName = name
         case .battery:
             battery.fontName = name
         case .updates:
@@ -297,6 +327,8 @@ struct PrefsInfo {
             message.fontSize = size
         case .clock:
             clock.fontSize = size
+        case .date:
+            date.fontSize = size
         case .battery:
             battery.fontSize = size
         case .updates:
@@ -316,6 +348,8 @@ struct PrefsInfo {
             message.corner = corner
         case .clock:
             clock.corner = corner
+        case .date:
+            date.corner = corner
         case .battery:
             battery.corner = corner
         case .updates:
@@ -335,6 +369,8 @@ struct PrefsInfo {
             message.displays = mode
         case .clock:
             clock.displays = mode
+        case .date:
+            date.displays = mode
         case .battery:
             battery.displays = mode
         case .updates:
