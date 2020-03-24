@@ -1,6 +1,37 @@
 <?xml version="1.0" standalone="yes"?><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
 <channel>
 <title>Aerial</title>
+
+<item>
+<title>1.8.2beta4</title>
+  <description>
+          <![CDATA[
+<ul><li>Fix the overlap bug for smaller screens/large fonts</li>
+<li>Add a Date info to show the current date</li></ul>
+          ]]>
+  </description>
+<pubDate>lun., 23 mar. 2020 19:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.2beta4/Aerial.saver.zip" sparkle:version="1.8.2beta4" 
+sparkle:edSignature="GOAdKfC/esCHVOZjNP2VTJBO3c5Z+O6m+Cp639QcJn56fRkYymQoMXpmwunCw6zebH6pKnKBRQ/wNmcLATGIBA==" length="5987926" type="application/octet-stream"/>
+</item>    
+  
+<item>
+<title>1.8.2beta2</title>
+  <description>
+          <![CDATA[
+<p>New features:</p>
+<ul><li>Fix the seconds thing not working in Countdown info, removed year/months from the countdown info</li>
+<li>Add a new Timer Info similar to Countdown, except it's a timer (say, 5 minutes).</li>
+</ul>
+          ]]>
+  </description>
+<pubDate>jeu., 19 mar. 2020 18:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.2beta2/Aerial.saver.zip" sparkle:version="1.8.2beta2" 
+sparkle:edSignature="B5+J0DjZpAsSZjg1XU980ZAQxnLh/x1DTBsG/rHn9W/F45bhl56LCKfXtB+/hWzCCcI/JJhI+7VYHbHxqaDcCg==" length="5977590" type="application/octet-stream"/>
+</item>
+  
 <item>
 <title>1.8.2beta1</title>
   <description>
