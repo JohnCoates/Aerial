@@ -237,7 +237,8 @@ class AnimationLayer: CATextLayer {
 
         var oppoMargin: CGFloat
 
-        if corner == .random {
+        if self is LocationLayer {
+            print("Location Layer")
             switch newCorner {
             case .topLeft:
                 oppoMargin = offsets.maxWidth[.topRight]!
@@ -265,7 +266,7 @@ class AnimationLayer: CATextLayer {
         // Calculate bounding box
         let rect = str.boundingRect(with: boundingRect, options: [.truncatesLastVisibleLine, .usesLineFragmentOrigin])
 
-        if corner != .random {
+        if !(self is LocationLayer) {
             if rect.width+10 > offsets.maxWidth[corner]! {
                 offsets.maxWidth[corner] = rect.width+10
             }

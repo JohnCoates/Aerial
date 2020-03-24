@@ -125,7 +125,14 @@ class LayerManager {
 
     // Called at each new video
     func setupLayersForVideo(video: AerialVideo, player: AVPlayer) {
-        for layer in additionalLayers {
+        // We first setup all the regular layers, this will fill up the margin information
+        // and act as a preflight so we can calculate how to wrap things for long location layer text
+        for layer in additionalLayers where !(layer is LocationLayer) {
+            layer.setupForVideo(video: video, player: player)
+        }
+
+        // And only last the Location layer !
+        for layer in additionalLayers where layer is LocationLayer {
             layer.setupForVideo(video: video, player: player)
         }
     }

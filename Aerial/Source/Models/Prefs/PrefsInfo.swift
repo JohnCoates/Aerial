@@ -74,6 +74,7 @@ struct PrefsInfo {
         var corner: InfoCorner
         var displays: InfoDisplays
         var showSeconds: Bool
+        var hideAmPm: Bool
     }
 
     struct IDate: CommonInfo, Codable {
@@ -158,7 +159,8 @@ struct PrefsInfo {
                                                      fontSize: 50,
                                                      corner: .bottomLeft,
                                                      displays: .allDisplays,
-                                                     showSeconds: true))
+                                                     showSeconds: true,
+                                                     hideAmPm: false))
     static var clock: Clock
 
     // Date
