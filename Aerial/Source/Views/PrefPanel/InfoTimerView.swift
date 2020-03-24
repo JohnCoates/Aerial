@@ -18,6 +18,7 @@ class InfoTimerView: NSView {
     // Init(ish)
     func setStates() {
         durationTimePicker.dateValue = PrefsInfo.timer.duration
+        durationTimePicker.locale = Locale(identifier: "fr_FR")
         withSecondsCheckbox.state = PrefsInfo.timer.showSeconds ? .on : .off
         disableWhenElapsedCheckbox.state = PrefsInfo.timer.disableWhenElapsed ? .on : .off
         replaceWithMessageCheckbox.state = PrefsInfo.timer.replaceWithMessage ? .on : .off

@@ -210,7 +210,7 @@ struct PrefsInfo {
                                                     fontSize: 100,
                                                     corner: .screenCenter,
                                                     displays: .allDisplays,
-                                                    duration: Date(),
+                                                    duration: Date(timeIntervalSince1970: 300),
                                                     showSeconds: true,
                                                     disableWhenElapsed: true,
                                                     replaceWithMessage: false,

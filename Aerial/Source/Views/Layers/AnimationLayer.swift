@@ -238,7 +238,6 @@ class AnimationLayer: CATextLayer {
         var oppoMargin: CGFloat
 
         if self is LocationLayer {
-            print("Location Layer")
             switch newCorner {
             case .topLeft:
                 oppoMargin = offsets.maxWidth[.topRight]!
@@ -249,9 +248,6 @@ class AnimationLayer: CATextLayer {
             default: // .bottomRight, we only allow the 4 corners for random
                 oppoMargin = offsets.maxWidth[.bottomLeft]!
             }
-
-            print(offsets.maxWidth)
-            print("oppoMargin \(oppoMargin)")
         } else {
             oppoMargin = 0
         }
