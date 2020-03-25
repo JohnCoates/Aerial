@@ -60,10 +60,10 @@ class DateLayer: AnimationLayer {
 
     func getTimeString() -> String {
         // Handle locale
-        var localeId = Locale.preferredLanguages[0]
+        var locale = Locale.current
         let preferences = Preferences.sharedInstance
         if preferences.ciOverrideLanguage != "" {
-            localeId = preferences.ciOverrideLanguage!
+            locale = Locale(identifier: preferences.ciOverrideLanguage!)
         }
         var template = ""
 
@@ -81,8 +81,8 @@ class DateLayer: AnimationLayer {
                 template = "MM/dd"
             }
         }
-        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: template, options: 0, locale: Locale(identifier: localeId))
-        dateFormatter.locale = Locale(identifier: localeId)
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: template, options: 0, locale: locale)
+        dateFormatter.locale = locale
         return dateFormatter.string(from: Date()).capitalizeFirstLetter()
     }
 }

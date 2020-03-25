@@ -59,16 +59,17 @@ class ClockLayer: AnimationLayer {
     }
 
     func getTimeString() -> String {
-        var localeId = Locale.preferredLanguages[0]
+        var locale = Locale.current
+        
         let preferences = Preferences.sharedInstance
         if preferences.ciOverrideLanguage != "" {
-            localeId = preferences.ciOverrideLanguage!
+            locale = Locale(identifier: preferences.ciOverrideLanguage!)
         }
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: config!.showSeconds
             ? "j:mm:ss"
-            : "j:mm", options: 0, locale: Locale(identifier: localeId))
+            : "j:mm", options: 0, locale: locale)
 
         if config!.hideAmPm {
             dateFormatter.amSymbol = ""
