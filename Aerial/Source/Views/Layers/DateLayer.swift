@@ -60,7 +60,7 @@ class DateLayer: AnimationLayer {
 
     func getTimeString() -> String {
         // Handle locale
-        var locale = Locale.current
+        var locale = Locale(identifier: Locale.preferredLanguages[0])
         let preferences = Preferences.sharedInstance
         if preferences.ciOverrideLanguage != "" {
             locale = Locale(identifier: preferences.ciOverrideLanguage!)

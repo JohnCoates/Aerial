@@ -60,7 +60,7 @@ class ClockLayer: AnimationLayer {
 
     func getTimeString() -> String {
         var locale = Locale.current
-        
+
         let preferences = Preferences.sharedInstance
         if preferences.ciOverrideLanguage != "" {
             locale = Locale(identifier: preferences.ciOverrideLanguage!)
