@@ -15,5 +15,5 @@ import Foundation
 struct APISecrets {
     static let yahooAppId = "intentionally"
     static let yahooClientId = "left"
-    static let yahooClientSecret = "empty"
+    static let yahooClientSecret = "empty!"
 }
