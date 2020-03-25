@@ -1,7 +1,30 @@
 <?xml version="1.0" standalone="yes"?><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
 <channel>
 <title>Aerial</title>
+<item>
+<title>1.8.2</title>
+  <description>
+          <![CDATA[
+<p>New features:</p>
+<ul><li>Add a new Date Info </li>
+<li>Add a new Timer Info similar to Countdown, except it's a timer (say, 5 minutes)</li></ul>
 
+<p>Bug fixes:</p>
+Fix text overlap bug 
+<ul><li>Fix Location description bug when skipping videos on multiple monitors</li>
+<li>Fix and updates Countdown's display options</li></ul>
+
+<p>Updated translations:</p>
+<ul><li>Polish translations thanks to @Soruk !</li>
+<li>Chinese Simplified/Traditional translations thanks to @LinkeyLeo !</li>
+<li>Arabic translations thanks to @kachikulu !</li></ul>
+          ]]>
+  </description>
+<pubDate>mar., 24 mar. 2020 16:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.2/Aerial.saver.zip" sparkle:version="1.8.2" 
+sparkle:edSignature="P/P3lB7ZZu+q8KraIZFaOnz5p4QpqeYoW3hT12FcJ6xVzPZUAgv/3EkFExANOV+DvMRjixpiLLQ7nFUdOcRtCA==" length="5991814" type="application/octet-stream"/>
+</item>
 <item>
 <title>1.8.2beta4</title>
   <description>
