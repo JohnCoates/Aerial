@@ -104,6 +104,8 @@
 		036A57D923F4747D0009DC02 /* InfoCountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57D723F470940009DC02 /* InfoCountdownView.swift */; };
 		036A57DB23F5820A0009DC02 /* CountdownLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57DA23F5820A0009DC02 /* CountdownLayer.swift */; };
 		036A57DC23F5828E0009DC02 /* CountdownLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57DA23F5820A0009DC02 /* CountdownLayer.swift */; };
+		0385FC59242B9AE1007E6513 /* APISecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0385FC58242B9AE1007E6513 /* APISecrets.swift */; };
+		0385FC5A242B9AE1007E6513 /* APISecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0385FC58242B9AE1007E6513 /* APISecrets.swift */; };
 		03893CB3217749F0008E7125 /* ErrorLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03893CB2217749F0008E7125 /* ErrorLog.swift */; };
 		03893CB4217753AC008E7125 /* ErrorLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03893CB2217749F0008E7125 /* ErrorLog.swift */; };
 		038C584723A9304800224630 /* InfoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038C584623A9304800224630 /* InfoContainerView.swift */; };
@@ -390,6 +392,7 @@
 		036A57D423F30DD00009DC02 /* UpdatesLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesLayer.swift; sourceTree = "<group>"; };
 		036A57D723F470940009DC02 /* InfoCountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCountdownView.swift; sourceTree = "<group>"; };
 		036A57DA23F5820A0009DC02 /* CountdownLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownLayer.swift; sourceTree = "<group>"; };
+		0385FC58242B9AE1007E6513 /* APISecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISecrets.swift; sourceTree = "<group>"; };
 		03893CB2217749F0008E7125 /* ErrorLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLog.swift; sourceTree = "<group>"; };
 		038C584623A9304800224630 /* InfoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoContainerView.swift; sourceTree = "<group>"; };
 		038C584923A9394000224630 /* InfoCommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCommonView.swift; sourceTree = "<group>"; };
@@ -600,6 +603,14 @@
 			path = "PWC Tabs";
 			sourceTree = "<group>";
 		};
+		0385FC57242B9A9B007E6513 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				0385FC58242B9AE1007E6513 /* APISecrets.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		03958347217F43FF008E8F9C /* Time */ = {
 			isa = PBXGroup;
 			children = (
@@ -742,6 +753,7 @@
 		FAC36F3F1BE1756D007F2A20 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0385FC57242B9A9B007E6513 /* API */,
 				F008DAFB23AADC8E00739DE1 /* Hardware */,
 				034F29BA23A7D516004B34D5 /* Prefs */,
 				03958347217F43FF008E8F9C /* Time */,
@@ -1210,6 +1222,7 @@
 				03BF51C023A275D9008AD373 /* MessageLayer.swift in Sources */,
 				035D5250239AA31A00DC29DC /* AerialView+Player.swift in Sources */,
 				0354D0EA23F6C3EE00D86F9E /* InfoSettingsTableSource.swift in Sources */,
+				0385FC5A242B9AE1007E6513 /* APISecrets.swift in Sources */,
 				0395834A217F442A008E8F9C /* Solar.swift in Sources */,
 				FAB22A7F1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */,
 				FAC36F601BE175CF007F2A20 /* AppDelegate.swift in Sources */,
@@ -1257,6 +1270,7 @@
 				03CB892F239A758B005D1F64 /* AutoUpdates.swift in Sources */,
 				03D1E78A2284471A00D10CF7 /* DisplayDetection.swift in Sources */,
 				0306336B23A142FA00046A59 /* LayerOffsets.swift in Sources */,
+				0385FC59242B9AE1007E6513 /* APISecrets.swift in Sources */,
 				F00864B723AAE8E9003210EF /* NightShift.swift in Sources */,
 				03608A1A22A55B9A008F08A2 /* PWC+Time.swift in Sources */,
 				FAC36F5D1BE1756D007F2A20 /* CheckCellView.swift in Sources */,
