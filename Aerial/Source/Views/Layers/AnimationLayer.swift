@@ -9,6 +9,7 @@
 import Foundation
 import AVKit
 
+// swiftlint:disable:next type_body_length
 class AnimationLayer: CATextLayer {
     var layerManager: LayerManager
     var lastCorner = -1

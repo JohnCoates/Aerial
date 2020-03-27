@@ -87,6 +87,10 @@ extension PreferencesWindowController {
             infoBatteryView.setStates()
         case .updates:
             break
+        case .weather:
+            infoContainerView.addSubview(infoWeatherView)
+            infoWeatherView.frame.origin.y = infoCommonView.frame.height
+            //infoWeatherView.setStates()
         case .countdown:
             infoContainerView.addSubview(infoCountdownView)
             infoCountdownView.frame.origin.y = infoCommonView.frame.height

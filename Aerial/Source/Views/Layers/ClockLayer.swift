@@ -66,6 +66,13 @@ class ClockLayer: AnimationLayer {
             locale = Locale(identifier: preferences.ciOverrideLanguage!)
         }
 
+        // Handle the manual override
+        if PrefsInfo.clock.clockFormat == .t12hours {
+            locale = Locale(identifier: "en_US")
+        } else {
+            locale = Locale(identifier: "fr_FR")
+        }
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: config!.showSeconds
             ? "j:mm:ss"

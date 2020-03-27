@@ -78,6 +78,8 @@ class LayerManager {
                 newLayer = BatteryLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.battery)
             case .updates:
                 newLayer = UpdatesLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.updates)
+            case .weather:
+                break
             case .countdown:
                 newLayer = CountdownLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.countdown)
             case .timer:

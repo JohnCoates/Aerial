@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16092.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.AVKitIBPlugin" version="16092.1"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16092.1"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="16096"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -71,6 +71,7 @@
                 <outlet property="infoSettingsView" destination="gct-tE-NYN" id="qCj-bL-0Ww"/>
                 <outlet property="infoTableView" destination="ipD-s9-BUc" id="crX-VX-JYF"/>
                 <outlet property="infoTimerView" destination="X0J-hs-YCV" id="5Ru-EE-x9E"/>
+                <outlet property="infoWeatherView" destination="zD2-l0-PAj" id="wIG-pT-TFP"/>
                 <outlet property="languagePopup" destination="Thy-6K-bQe" id="qZs-E7-lYi"/>
                 <outlet property="lastCheckedSparkle" destination="eIe-xw-mO4" id="sLF-im-fXK"/>
                 <outlet property="lastCheckedVideosLabel" destination="N4V-cr-IpU" id="e9x-ZB-zu3"/>
@@ -2608,11 +2609,11 @@ You can still decide to disable Aerial when running on battery, or if your batte
             <point key="canvasLocation" x="-366" y="277"/>
         </menu>
         <customView id="Yds-eJ-nUH" userLabel="Clock Extra View" customClass="InfoClockView" customModule="Aerial" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="406" height="73"/>
+            <rect key="frame" x="0.0" y="0.0" width="406" height="108"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h3J-Gc-SIR">
-                    <rect key="frame" x="114" y="44" width="123" height="18"/>
+                    <rect key="frame" x="114" y="79" width="123" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="With seconds" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="RhQ-hz-Pxt">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2623,9 +2624,9 @@ You can still decide to disable Aerial when running on battery, or if your batte
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6if-2I-Cn8">
-                    <rect key="frame" x="114" y="18" width="195" height="18"/>
+                    <rect key="frame" x="114" y="22" width="98" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Hide AM/PM (on 12hr locals)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="sNi-u4-gJX">
+                    <buttonCell key="cell" type="check" title="Hide AM/PM" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="sNi-u4-gJX">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -2633,12 +2634,40 @@ You can still decide to disable Aerial when running on battery, or if your batte
                         <action selector="hideAmPmCheckboxClick:" target="Yds-eJ-nUH" id="CDl-GM-0h5"/>
                     </connections>
                 </button>
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GKW-dg-Itp">
+                    <rect key="frame" x="114" y="46" width="99" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Default" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="NiG-xL-7tK" id="5sV-dF-pgb">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <menu key="menu" id="yAj-cv-HOH">
+                            <items>
+                                <menuItem title="Default" state="on" id="NiG-xL-7tK"/>
+                                <menuItem title="24 hours" id="8PE-DU-6bN"/>
+                                <menuItem title="12 hours" id="QB2-PD-8rW"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="clockFormatChange:" target="Yds-eJ-nUH" id="XH5-yS-TYF"/>
+                    </connections>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ue-nY-VW2">
+                    <rect key="frame" x="59" y="52" width="51" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Format:" id="mbw-sh-baX">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <connections>
+                <outlet property="clockFormat" destination="GKW-dg-Itp" id="fkC-Qz-11Y"/>
                 <outlet property="hideAmPmCheckbox" destination="6if-2I-Cn8" id="OBw-ZU-rTH"/>
                 <outlet property="secondsCheckbox" destination="h3J-Gc-SIR" id="9uw-TM-S9f"/>
             </connections>
-            <point key="canvasLocation" x="-174" y="1093.5"/>
+            <point key="canvasLocation" x="-186" y="1139"/>
         </customView>
         <window title="Add a new video set" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="chX-6d-c0t" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
@@ -3637,6 +3666,22 @@ corner</string>
                 <outlet property="withYearCheckbox" destination="p02-ZE-Jih" id="teP-uk-2bh"/>
             </connections>
             <point key="canvasLocation" x="-174" y="1249"/>
+        </customView>
+        <customView id="zD2-l0-PAj" customClass="InfoWeatherView" customModule="Aerial" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="406" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hMH-6f-Fuk">
+                    <rect key="frame" x="11" y="70" width="98" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Yahoo weather:" id="ceV-5t-xCX">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="-186" y="998"/>
         </customView>
     </objects>
     <resources>

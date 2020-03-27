@@ -61,6 +61,10 @@ class InfoCommonView: NSView {
         case .updates:
             controller.infoBox.title = "Updates notifications"
             posRandom.isHidden = true
+        case .weather:
+            controller.infoBox.title = "Weather provided by Yahoo! Weather"
+            posRandom.isHidden = true
+
         case .countdown:
             controller.infoBox.title = "Countdown to a time/date"
             posRandom.isHidden = true
@@ -183,6 +187,8 @@ class InfoCommonView: NSView {
             PrefsInfo.battery.fontSize = 20
         case .updates:
             PrefsInfo.updates.fontSize = 20
+        case .weather:
+            PrefsInfo.weather.fontSize = 20
         case .countdown:
             PrefsInfo.countdown.fontSize = 100
         case .timer:
