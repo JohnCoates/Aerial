@@ -13,9 +13,9 @@ class WeatherLayer: AnimationLayer {
     var config: PrefsInfo.Weather?
     var wasSetup = false
 
-/*    override init(layer: Any) {
+    override init(layer: Any) {
         super.init(layer: layer)
-    }*/
+    }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -45,11 +45,22 @@ class WeatherLayer: AnimationLayer {
         if !wasSetup {
             wasSetup = true
 
-            /*update(string: "WeatherLayer")
-            let fadeAnimation = self.createFadeInAnimation()
-            add(fadeAnimation, forKey: "textfade")*/
-            contents = NSImage(contentsOfFile: "purple_retina.png")
+            print("SFV weather")
+            let imagePath = Bundle(for: PreferencesWindowController.self).path(
+                forResource: "purple_retina",
+                ofType: "png")
+
+            let img = NSImage(contentsOfFile: imagePath!)
+            frame.size = img!.size  // Grab the size
+            contents = img  // Set the img
+
+            masksToBounds = true
+            //frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+            backgroundColor = .white
             opacity = 1
+            update()
+            let fadeAnimation = self.createFadeInAnimation()
+            add(fadeAnimation, forKey: "textfade")
         }
     }
 

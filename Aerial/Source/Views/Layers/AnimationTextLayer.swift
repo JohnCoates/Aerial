@@ -77,67 +77,6 @@ class AnimationTextLayer: CATextLayer, AnimatableLayer {
         move(toCorner: newCorner, fullRedraw: false)
     }
 
-    // Handle the random corner
-    func getCorner() -> InfoCorner {
-        if corner != .random {
-            return corner
-        }
-
-        // Find a new corner, different from the previous one
-        var newCorner = getRandomCorner()
-
-        while newCorner == lastCorner || !layerManager.isCornerAcceptable(corner: newCorner) {
-            newCorner = getRandomCorner()
-        }
-
-        return InfoCorner(rawValue: newCorner)!
-    }
-
-    // Return a strict corner, not a center pos
-    func getRandomCorner() -> Int {
-        let rnd = Int.random(in: 0...3)
-        if rnd == 0 {
-            return 0
-        } else if rnd == 1 {
-            return 2
-        } else if rnd == 2 {
-            return 3
-        } else {
-            return 5
-        }
-    }
-
-    // MARK: Animations
-
-    // Create a Fade In/Out animation
-    func createFadeInOutAnimation(duration: Double) -> CAKeyframeAnimation {
-        let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
-        fadeAnimation.values = [0, 0, 1, 1, 0] as [NSNumber]
-        fadeAnimation.keyTimes = [
-            0,
-            Double(1 / duration ),
-            Double((1 + AerialView.textFadeDuration) / duration),
-            Double(1 - AerialView.textFadeDuration / duration),
-            1,
-        ] as [NSNumber]
-        fadeAnimation.duration = duration
-        return fadeAnimation
-    }
-
-    // Create a Fade In (only) animation, used for things that
-    // should always be on screen (clock, etc)
-    func createFadeInAnimation() -> CAKeyframeAnimation {
-        let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
-        fadeAnimation.values = [0, 0, 1] as [NSNumber]
-        fadeAnimation.keyTimes = [
-            0,
-            Double(1 / (1 + AerialView.textFadeDuration)),
-            Double(1),
-        ] as [NSNumber]
-        fadeAnimation.duration = 1 + AerialView.textFadeDuration
-        return fadeAnimation
-    }
-
     // MARK: Text/Font stuff
     // Calculate the screen rect that will be used by our string
     func calculateRect(string: String, font: NSFont, newCorner: InfoCorner) -> CGRect {
