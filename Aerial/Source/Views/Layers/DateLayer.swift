@@ -41,7 +41,7 @@ class DateLayer: AnimationTextLayer {
     }
 
     // Called at each new video, we only setup once though !
-    func setupForVideo(video: AerialVideo, player: AVPlayer) {
+    override func setupForVideo(video: AerialVideo, player: AVPlayer) {
         // Only run this once
         if !wasSetup {
             wasSetup = true

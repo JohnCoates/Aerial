@@ -50,6 +50,8 @@
 		034116DD23FADEDA00CD7674 /* UpdateReleaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034116DB23FADEDA00CD7674 /* UpdateReleaseController.swift */; };
 		0345872D2449C52F00C97D1B /* AnimatableLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345872C2449C52F00C97D1B /* AnimatableLayer.swift */; };
 		0345872E2449C59900C97D1B /* AnimatableLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345872C2449C52F00C97D1B /* AnimatableLayer.swift */; };
+		034587322449D8EB00C97D1B /* AnimationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034587312449D8EB00C97D1B /* AnimationLayer.swift */; };
+		034587332449E22000C97D1B /* AnimationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034587312449D8EB00C97D1B /* AnimationLayer.swift */; };
 		034F29B423A7A79B004B34D5 /* PWC+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F29B323A7A79B004B34D5 /* PWC+Info.swift */; };
 		034F29B723A7A93D004B34D5 /* InfoTableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F29B623A7A93D004B34D5 /* InfoTableSource.swift */; };
 		034F29B823A7A9B3004B34D5 /* InfoTableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F29B623A7A93D004B34D5 /* InfoTableSource.swift */; };
@@ -429,6 +431,7 @@
 		034116D823FADE3600CD7674 /* UpdateReleaseWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateReleaseWindow.xib; sourceTree = "<group>"; };
 		034116DB23FADEDA00CD7674 /* UpdateReleaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateReleaseController.swift; sourceTree = "<group>"; };
 		0345872C2449C52F00C97D1B /* AnimatableLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableLayer.swift; sourceTree = "<group>"; };
+		034587312449D8EB00C97D1B /* AnimationLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationLayer.swift; sourceTree = "<group>"; };
 		034F29B323A7A79B004B34D5 /* PWC+Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PWC+Info.swift"; sourceTree = "<group>"; };
 		034F29B623A7A93D004B34D5 /* InfoTableSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableSource.swift; sourceTree = "<group>"; };
 		034F29BE23A7E28E004B34D5 /* PrefsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsInfo.swift; sourceTree = "<group>"; };
@@ -576,6 +579,7 @@
 				03BF51BB23A2643C008AD373 /* LayerManager.swift */,
 				0306336A23A142FA00046A59 /* LayerOffsets.swift */,
 				0345872C2449C52F00C97D1B /* AnimatableLayer.swift */,
+				034587312449D8EB00C97D1B /* AnimationLayer.swift */,
 				0306336D23A15FA900046A59 /* AnimationTextLayer.swift */,
 				0306336723A1012200046A59 /* LocationLayer.swift */,
 				03BF51BE23A274CA008AD373 /* MessageLayer.swift */,
@@ -1354,6 +1358,7 @@
 				03608A2122A55BC2008F08A2 /* PWC+Cache.swift in Sources */,
 				038D2EE523B6565900CD91F7 /* InfoBatteryView.swift in Sources */,
 				030D9B7C21551A8D00961E95 /* AerialPlayerItem.swift in Sources */,
+				034587332449E22000C97D1B /* AnimationLayer.swift in Sources */,
 				034116DD23FADEDA00CD7674 /* UpdateReleaseController.swift in Sources */,
 				03FA49A22423DA1F00863AF6 /* TimerLayer.swift in Sources */,
 				03608A2D22A56465008F08A2 /* HardwareDetection.swift in Sources */,
@@ -1495,6 +1500,7 @@
 				03E8730C2165013C002B469B /* DownloadManager.swift in Sources */,
 				03608A2622A55C03008F08A2 /* PWC+Advanced.swift in Sources */,
 				036A57D823F470940009DC02 /* InfoCountdownView.swift in Sources */,
+				034587322449D8EB00C97D1B /* AnimationLayer.swift in Sources */,
 				0345872D2449C52F00C97D1B /* AnimatableLayer.swift in Sources */,
 				03A596D523AA752F0097EA66 /* InfoClockView.swift in Sources */,
 				0313F9E822942B4500B074BB /* CustomVideoController.swift in Sources */,

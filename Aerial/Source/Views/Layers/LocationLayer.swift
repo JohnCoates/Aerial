@@ -37,7 +37,7 @@ class LocationLayer: AnimationTextLayer {
     }
 
     // We need to clear our callbacks on the player
-    func clear(player: AVPlayer) {
+    override func clear(player: AVPlayer) {
         if timeObserver != nil {
             player.removeTimeObserver(timeObserver!)
             timeObserver = nil
@@ -45,7 +45,7 @@ class LocationLayer: AnimationTextLayer {
     }
 
     // Called at each new video
-    func setupForVideo(video: AerialVideo, player: AVPlayer) {
+    override func setupForVideo(video: AerialVideo, player: AVPlayer) {
         let poiStringProvider = PoiStringProvider.sharedInstance
         let preferences = Preferences.sharedInstance
 

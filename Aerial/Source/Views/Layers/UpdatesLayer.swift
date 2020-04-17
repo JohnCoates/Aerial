@@ -40,7 +40,7 @@ class UpdatesLayer: AnimationTextLayer {
         self.corner = .absTopRight
     }
 
-    func setupForVideo(video: AerialVideo, player: AVPlayer) {
+    override func setupForVideo(video: AerialVideo, player: AVPlayer) {
         if !wasSetup {
             setupUpdateLayer()
         }

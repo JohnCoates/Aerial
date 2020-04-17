@@ -10,7 +10,7 @@ import Foundation
 import AVKit
 
 class LayerManager {
-    var additionalLayers = [AnimationTextLayer]()
+    var additionalLayers = [AnimatableLayer]()
     let offsets = LayerOffsets()
     var isPreview: Bool
     var frame: CGRect?
@@ -63,7 +63,7 @@ class LayerManager {
 
     // swiftlint:disable:next cyclomatic_complexity
     private func addLayerForType(_ layerType: InfoType, layer: CALayer) {
-        var newLayer: AnimationTextLayer?
+        var newLayer: AnimatableLayer?
 
         if PrefsInfo.ofType(layerType).isEnabled && shouldEnableOnScreen(PrefsInfo.ofType(layerType).displays) {
             switch layerType {

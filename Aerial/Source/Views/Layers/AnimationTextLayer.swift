@@ -9,7 +9,7 @@
 import Foundation
 import AVKit
 
-// swiftlint:disable:next type_body_length
+// s*wiftlint:disable:next type_body_length
 class AnimationTextLayer: CATextLayer, AnimatableLayer {
     var layerManager: LayerManager
     var lastCorner = -1
@@ -56,6 +56,15 @@ class AnimationTextLayer: CATextLayer, AnimatableLayer {
         self.shadowColor = CGColor.black
     }
 
+    // To be overriden if needed
+    func clear(player: AVPlayer) {} // Optional
+    func setupForVideo(video: AerialVideo, player: AVPlayer) {} // Pretty much required
+
+    // Called by the extension to set the text alignment
+    func setAlignment(mode: CATextLayerAlignmentMode) {
+        alignmentMode = mode
+    }
+
     // Update the string and move to a corner
     func update(string: String) {
         // Setup string
@@ -98,101 +107,7 @@ class AnimationTextLayer: CATextLayer, AnimatableLayer {
         }
     }
 
-    // Move to a corner, this may need to force the redraw of a whole corner
-    // swiftlint:disable:next cyclomatic_complexity
-    func move(toCorner: InfoCorner, fullRedraw: Bool) {
-        if let currCorner = currentCorner, !fullRedraw {
-            // Are we on the same corner ?
-            if currCorner == toCorner {
-                // And same height ?
-                if currentHeight! == frame.height {
-                    // position is reset, so we need to set it again
-                    position = currentPosition!
-                    return
-                } else {
-                    // It's a whole corner redraw, then
-                    layerManager.redrawCorner(corner: toCorner)
-                    return
-                }
-            } else {
-                // So we changed corner... we redraw our previous corner
-                // and redraw the new one too !
-                let prevCorner = currCorner
-                currentCorner = toCorner
-                layerManager.redrawCorner(corner: prevCorner)
-                layerManager.redrawCorner(corner: toCorner)
-                return
-            }
-        }
-
-        let mx = getHorizontalMargin()
-        let my = getVerticalMargin(forCorner: toCorner)
-
-        var newPos: CGPoint
-
-        switch toCorner {
-        case .topLeft:
-            anchorPoint = CGPoint(x: 0, y: 1)
-            newPos = CGPoint(x: mx, y: baseLayer.bounds.height - my)
-            alignmentMode = .left
-        case .topCenter:
-            anchorPoint = CGPoint(x: 0.5, y: 1)
-            newPos = CGPoint(x: baseLayer.bounds.width/2,
-                             y: baseLayer.bounds.height-my)
-            alignmentMode = .center
-        case .topRight:
-            anchorPoint = CGPoint(x: 1, y: 1)
-            newPos = CGPoint(x: baseLayer.bounds.width-mx,
-                             y: baseLayer.bounds.height-my)
-            alignmentMode = .right
-        case .screenCenter:
-            anchorPoint = CGPoint(x: 0.5, y: 0)
-            newPos = CGPoint(x: baseLayer.bounds.width/2,
-                             y: baseLayer.bounds.height/2 - my + 20)
-            alignmentMode = .center
-        case .bottomLeft:
-            anchorPoint = CGPoint(x: 0, y: 0)
-            newPos = CGPoint(x: mx, y: my)
-            alignmentMode = .left
-        case .bottomCenter:
-            anchorPoint = CGPoint(x: 0.5, y: 0)
-            newPos = CGPoint(x: baseLayer.bounds.width/2, y: my)
-            alignmentMode = .center
-        case .absTopRight:
-            anchorPoint = CGPoint(x: 1, y: 1)
-            newPos = CGPoint(x: baseLayer.bounds.width-mx,
-                             y: baseLayer.bounds.height-10)
-            alignmentMode = .right
-        default:    // bottomRight
-            anchorPoint = CGPoint(x: 1, y: 0)
-            newPos = CGPoint(x: baseLayer.bounds.width-mx, y: my)
-            alignmentMode = .right
-        }
-
-        moveTo(point: newPos)
-
-        let offset = offsets.corner[toCorner] == 0
-            ? my + frame.height
-            : frame.height
-
-        // Make sure we update our offsets for the next layer
-        offsets.corner[toCorner]! += offset
-
-        // We need to save for next time !
-        currentCorner = toCorner
-        currentHeight = frame.height
-        currentPosition = newPos
-    }
-
     // MARK: Animations
-    // Move in 1 second to a position
-    // Those are masked by the transition between fades
-    func moveTo(point: CGPoint) {
-        CATransaction.begin()
-        CATransaction.setValue(1, forKey: kCATransactionAnimationDuration)
-        self.position = point
-        CATransaction.commit()
-    }
 
     // Create a Fade In/Out animation
     func createFadeInOutAnimation(duration: Double) -> CAKeyframeAnimation {
@@ -277,7 +192,7 @@ class AnimationTextLayer: CATextLayer, AnimatableLayer {
 
         return (font!, fontSize)
     }
-
+/*
     // Get the horizontal margin to the border of the screen
     func getHorizontalMargin() -> CGFloat {
         // We override for previews
@@ -317,7 +232,7 @@ class AnimationTextLayer: CATextLayer, AnimatableLayer {
 
         offsets.corner[forCorner] = my
         return my
-    }
+    }*/
 
     // Transform a date by setting it to today (or tommorrow)
     func todayizeDate(_ target: Date, strict: Bool) -> Date {

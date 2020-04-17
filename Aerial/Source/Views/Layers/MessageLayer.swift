@@ -39,7 +39,7 @@ class MessageLayer: AnimationTextLayer {
         self.corner = config.corner
     }
 
-    func setupForVideo(video: AerialVideo, player: AVPlayer) {
+    override func setupForVideo(video: AerialVideo, player: AVPlayer) {
         // Only run this once, if enabled
         if !wasSetup && config!.message != "" {
             wasSetup = true
