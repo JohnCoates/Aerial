@@ -9,7 +9,7 @@
 import Foundation
 import AVKit
 
-class CountdownLayer: AnimationLayer {
+class CountdownLayer: AnimationTextLayer {
     var config: PrefsInfo.Countdown?
     var wasSetup = false
     var countdownTimer: Timer?
@@ -41,7 +41,7 @@ class CountdownLayer: AnimationLayer {
     }
 
     // Called at each new video, we only setup once though !
-    override func setupForVideo(video: AerialVideo, player: AVPlayer) {
+    func setupForVideo(video: AerialVideo, player: AVPlayer) {
         // Only run this once
         if !wasSetup {
             wasSetup = true

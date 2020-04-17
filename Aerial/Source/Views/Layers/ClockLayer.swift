@@ -9,7 +9,7 @@
 import Foundation
 import AVKit
 
-class ClockLayer: AnimationLayer {
+class ClockLayer: AnimationTextLayer {
     var config: PrefsInfo.Clock?
     var wasSetup = false
     var clockTimer: Timer?
@@ -41,7 +41,7 @@ class ClockLayer: AnimationLayer {
     }
 
     // Called at each new video, we only setup once though !
-    override func setupForVideo(video: AerialVideo, player: AVPlayer) {
+    func setupForVideo(video: AerialVideo, player: AVPlayer) {
         // Only run this once
         if !wasSetup {
             wasSetup = true

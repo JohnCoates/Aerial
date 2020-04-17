@@ -29,6 +29,10 @@ extension PreferencesWindowController {
             PrefsInfo.layers.append(.date)
         }
 
+        if !PrefsInfo.layers.contains(.weather) {
+            PrefsInfo.layers.append(.weather)
+        }
+
         // Annnd for backward compatibility with 1.7.2 betas, remove the updates that was once here ;)
         if PrefsInfo.layers.contains(.updates) {
             PrefsInfo.layers.remove(at: PrefsInfo.layers.firstIndex(of: .updates)!)
@@ -90,7 +94,7 @@ extension PreferencesWindowController {
         case .weather:
             infoContainerView.addSubview(infoWeatherView)
             infoWeatherView.frame.origin.y = infoCommonView.frame.height
-            //infoWeatherView.setStates()
+            infoWeatherView.setStates()
         case .countdown:
             infoContainerView.addSubview(infoCountdownView)
             infoCountdownView.frame.origin.y = infoCommonView.frame.height

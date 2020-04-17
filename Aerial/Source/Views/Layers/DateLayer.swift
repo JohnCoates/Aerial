@@ -9,7 +9,7 @@
 import Foundation
 import AVKit
 
-class DateLayer: AnimationLayer {
+class DateLayer: AnimationTextLayer {
     var config: PrefsInfo.IDate?
     var wasSetup = false
     var dateTimer: Timer?
@@ -41,7 +41,7 @@ class DateLayer: AnimationLayer {
     }
 
     // Called at each new video, we only setup once though !
-    override func setupForVideo(video: AerialVideo, player: AVPlayer) {
+    func setupForVideo(video: AerialVideo, player: AVPlayer) {
         // Only run this once
         if !wasSetup {
             wasSetup = true

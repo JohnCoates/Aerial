@@ -9,7 +9,7 @@
 import Foundation
 import AVKit
 
-class LocationLayer: AnimationLayer {
+class LocationLayer: AnimationTextLayer {
     var config: PrefsInfo.Location?
     var timeObserver: Any?
 
@@ -37,7 +37,7 @@ class LocationLayer: AnimationLayer {
     }
 
     // We need to clear our callbacks on the player
-    override func clear(player: AVPlayer) {
+    func clear(player: AVPlayer) {
         if timeObserver != nil {
             player.removeTimeObserver(timeObserver!)
             timeObserver = nil
@@ -45,7 +45,7 @@ class LocationLayer: AnimationLayer {
     }
 
     // Called at each new video
-    override func setupForVideo(video: AerialVideo, player: AVPlayer) {
+    func setupForVideo(video: AerialVideo, player: AVPlayer) {
         let poiStringProvider = PoiStringProvider.sharedInstance
         let preferences = Preferences.sharedInstance
 

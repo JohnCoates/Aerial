@@ -10,7 +10,7 @@ import Foundation
 import AVKit
 
 // swiftlint:disable:next type_body_length
-class AnimationLayer: CATextLayer {
+class AnimationTextLayer: CATextLayer, AnimatableLayer {
     var layerManager: LayerManager
     var lastCorner = -1
     var isPreview: Bool
@@ -24,11 +24,11 @@ class AnimationLayer: CATextLayer {
 
     // Super init, used by CATextLayer's setFont, etc
     override init(layer: Any) {
-        layerManager = (layer as! AnimationLayer).layerManager
-        isPreview = (layer as! AnimationLayer).isPreview
-        baseLayer = (layer as! AnimationLayer).baseLayer
-        offsets = (layer as! AnimationLayer).offsets
-        corner = (layer as! AnimationLayer).corner
+        layerManager = (layer as! AnimationTextLayer).layerManager
+        isPreview = (layer as! AnimationTextLayer).isPreview
+        baseLayer = (layer as! AnimationTextLayer).baseLayer
+        offsets = (layer as! AnimationTextLayer).offsets
+        corner = (layer as! AnimationTextLayer).corner
         super.init(layer: layer)
     }
 
@@ -54,14 +54,6 @@ class AnimationLayer: CATextLayer {
                                    height: PrefsInfo.shadowOffsetY)
 
         self.shadowColor = CGColor.black
-    }
-
-    // Called before starting a new video, usually overridden
-    func clear(player: AVPlayer) {
-    }
-
-    // Called at each new video, usually overridden
-    func setupForVideo(video: AerialVideo, player: AVPlayer) {
     }
 
     // Update the string and move to a corner

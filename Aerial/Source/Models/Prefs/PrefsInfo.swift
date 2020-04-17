@@ -46,6 +46,10 @@ enum InfoCountdownMode: Int, Codable {
     case preciseDate, timeOfDay
 }
 
+enum InfoLocationMode: Int, Codable {
+    case useCurrent, manuallySpecify
+}
+
 // The various info types available
 enum InfoType: String, Codable {
     case location, message, clock, date, battery, updates, weather, countdown, timer
@@ -98,6 +102,8 @@ struct PrefsInfo {
         var fontSize: Double
         var corner: InfoCorner
         var displays: InfoDisplays
+        var locationMode: InfoLocationMode
+        var locationString: String
     }
 
     struct Battery: CommonInfo, Codable {
@@ -210,7 +216,9 @@ struct PrefsInfo {
                                                         fontName: "Helvetica Neue Medium",
                                                         fontSize: 40,
                                                         corner: .topRight,
-                                                        displays: .allDisplays))
+                                                        displays: .allDisplays,
+                                                        locationMode: .useCurrent,
+                                                        locationString: ""))
     static var weather: Weather
 
     // Countdown

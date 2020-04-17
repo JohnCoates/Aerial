@@ -9,7 +9,7 @@
 import Foundation
 import AVKit
 
-class UpdatesLayer: AnimationLayer {
+class UpdatesLayer: AnimationTextLayer {
     var config: PrefsInfo.Updates?
     var wasSetup = false
     var updateTimer: Timer?
@@ -40,7 +40,7 @@ class UpdatesLayer: AnimationLayer {
         self.corner = .absTopRight
     }
 
-    override func setupForVideo(video: AerialVideo, player: AVPlayer) {
+    func setupForVideo(video: AerialVideo, player: AVPlayer) {
         if !wasSetup {
             setupUpdateLayer()
         }

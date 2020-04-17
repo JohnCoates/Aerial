@@ -64,7 +64,7 @@ final class PoiStringProvider {
                 bundlePath.append(contentsOf: "/TVIdleScreenStrings13.bundle")
             }
         } else {
-            debugLog("Language overriden to \(preferences.ciOverrideLanguage)")
+            debugLog("Language overriden to \(String(describing: preferences.ciOverrideLanguage))")
             // Or we load the overriden one
             bundlePath.append(contentsOf: "/TVIdleScreenStrings13.bundle/" + preferences.ciOverrideLanguage! + ".lproj/")
         }

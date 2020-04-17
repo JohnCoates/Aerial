@@ -9,7 +9,7 @@
 import Foundation
 import AVKit
 
-class BatteryLayer: AnimationLayer {
+class BatteryLayer: AnimationTextLayer {
     var config: PrefsInfo.Battery?
     var wasSetup = false
     var batteryTimer: Timer?
@@ -40,7 +40,7 @@ class BatteryLayer: AnimationLayer {
         self.corner = config.corner
     }
 
-    override func setupForVideo(video: AerialVideo, player: AVPlayer) {
+    func setupForVideo(video: AerialVideo, player: AVPlayer) {
         // Only run this once
         if !wasSetup {
             wasSetup = true

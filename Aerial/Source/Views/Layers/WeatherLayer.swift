@@ -1,16 +1,16 @@
 //
-//  MessageLayer.swift
+//  WeatherLayer.swift
 //  Aerial
 //
-//  Created by Guillaume Louel on 12/12/2019.
-//  Copyright © 2019 Guillaume Louel. All rights reserved.
+//  Created by Guillaume Louel on 16/04/2020.
+//  Copyright © 2020 Guillaume Louel. All rights reserved.
 //
 
 import Foundation
 import AVKit
 
-class MessageLayer: AnimationTextLayer {
-    var config: PrefsInfo.Message?
+class WeatherLayer: AnimationTextLayer {
+    var config: PrefsInfo.Weather?
     var wasSetup = false
 
     override init(layer: Any) {
@@ -25,11 +25,11 @@ class MessageLayer: AnimationTextLayer {
     override init(withLayer: CALayer, isPreview: Bool, offsets: LayerOffsets, manager: LayerManager) {
         super.init(withLayer: withLayer, isPreview: isPreview, offsets: offsets, manager: manager)
 
-        // We start with a full opacity
+        // Always on layers should start with full opacity
         self.opacity = 1
     }
 
-    convenience init(withLayer: CALayer, isPreview: Bool, offsets: LayerOffsets, manager: LayerManager, config: PrefsInfo.Message) {
+    convenience init(withLayer: CALayer, isPreview: Bool, offsets: LayerOffsets, manager: LayerManager, config: PrefsInfo.Weather) {
         self.init(withLayer: withLayer, isPreview: isPreview, offsets: offsets, manager: manager)
         self.config = config
 
@@ -39,15 +39,16 @@ class MessageLayer: AnimationTextLayer {
         self.corner = config.corner
     }
 
+    // Called at each new video, we only setup once though !
     func setupForVideo(video: AerialVideo, player: AVPlayer) {
-        // Only run this once, if enabled
-        if !wasSetup && config!.message != "" {
+        // Only run this once
+        if !wasSetup {
             wasSetup = true
 
-            update(string: config!.message)
-
+            update(string: "WeatherLayer")
             let fadeAnimation = self.createFadeInAnimation()
             add(fadeAnimation, forKey: "textfade")
         }
     }
+
 }

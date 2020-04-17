@@ -10,7 +10,7 @@ import Foundation
 import AVKit
 
 class LayerManager {
-    var additionalLayers = [AnimationLayer]()
+    var additionalLayers = [AnimationTextLayer]()
     let offsets = LayerOffsets()
     var isPreview: Bool
     var frame: CGRect?
@@ -61,8 +61,9 @@ class LayerManager {
 
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     private func addLayerForType(_ layerType: InfoType, layer: CALayer) {
-        var newLayer: AnimationLayer?
+        var newLayer: AnimationTextLayer?
 
         if PrefsInfo.ofType(layerType).isEnabled && shouldEnableOnScreen(PrefsInfo.ofType(layerType).displays) {
             switch layerType {
@@ -79,7 +80,7 @@ class LayerManager {
             case .updates:
                 newLayer = UpdatesLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.updates)
             case .weather:
-                break
+                newLayer = WeatherLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.weather)
             case .countdown:
                 newLayer = CountdownLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.countdown)
             case .timer:
