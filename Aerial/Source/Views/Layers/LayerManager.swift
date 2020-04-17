@@ -72,12 +72,18 @@ class LayerManager {
                 newLayer = MessageLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.message)
             case .clock:
                 newLayer = ClockLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.clock)
+            case .date:
+                newLayer = DateLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.date)
             case .battery:
                 newLayer = BatteryLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.battery)
             case .updates:
                 newLayer = UpdatesLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.updates)
+            case .weather:
+                break
             case .countdown:
                 newLayer = CountdownLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.countdown)
+            case .timer:
+                newLayer = TimerLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.timer)
             }
         }
 
@@ -121,7 +127,14 @@ class LayerManager {
 
     // Called at each new video
     func setupLayersForVideo(video: AerialVideo, player: AVPlayer) {
-        for layer in additionalLayers {
+        // We first setup all the regular layers, this will fill up the margin information
+        // and act as a preflight so we can calculate how to wrap things for long location layer text
+        for layer in additionalLayers where !(layer is LocationLayer) {
+            layer.setupForVideo(video: video, player: player)
+        }
+
+        // And only last the Location layer !
+        for layer in additionalLayers where layer is LocationLayer {
             layer.setupForVideo(video: video, player: player)
         }
     }

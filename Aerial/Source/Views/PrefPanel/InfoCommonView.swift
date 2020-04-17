@@ -50,7 +50,10 @@ class InfoCommonView: NSView {
             controller.infoBox.title = "Custom message"
             posRandom.isHidden = true
         case .clock:
-            controller.infoBox.title = "Clock"
+            controller.infoBox.title = "Current time"
+            posRandom.isHidden = true
+        case .date:
+            controller.infoBox.title = "Current date"
             posRandom.isHidden = true
         case .battery:
             controller.infoBox.title = "Battery status"
@@ -58,9 +61,17 @@ class InfoCommonView: NSView {
         case .updates:
             controller.infoBox.title = "Updates notifications"
             posRandom.isHidden = true
+        case .weather:
+            controller.infoBox.title = "Weather provided by Yahoo! Weather"
+            posRandom.isHidden = true
+
         case .countdown:
             controller.infoBox.title = "Countdown to a time/date"
             posRandom.isHidden = true
+        case .timer:
+            controller.infoBox.title = "Timer"
+            posRandom.isHidden = true
+
         }
     }
 
@@ -170,12 +181,18 @@ class InfoCommonView: NSView {
             PrefsInfo.message.fontSize = 20
         case .clock:
             PrefsInfo.clock.fontSize = 50
+        case .date:
+            PrefsInfo.date.fontSize = 20
         case .battery:
             PrefsInfo.battery.fontSize = 20
         case .updates:
             PrefsInfo.updates.fontSize = 20
+        case .weather:
+            PrefsInfo.weather.fontSize = 20
         case .countdown:
             PrefsInfo.countdown.fontSize = 100
+        case .timer:
+            PrefsInfo.timer.fontSize = 100
         }
 
         fontLabel.stringValue = PrefsInfo.ofType(forType).fontName + ", \(PrefsInfo.ofType(forType).fontSize) pt"

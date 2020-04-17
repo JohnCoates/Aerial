@@ -2,6 +2,176 @@
 <channel>
 <title>Aerial</title>
 <item>
+<title>1.8.2</title>
+  <description>
+          <![CDATA[
+<p>New features:</p>
+<ul><li>Add a new Date Info </li>
+<li>Add a new Timer Info similar to Countdown, except it's a timer (say, 5 minutes)</li></ul>
+
+<p>Bug fixes:</p>
+Fix text overlap bug 
+<ul><li>Fix Location description bug when skipping videos on multiple monitors</li>
+<li>Fix and updates Countdown's display options</li></ul>
+
+<p>Updated translations:</p>
+<ul><li>Polish translations thanks to @Soruk !</li>
+<li>Chinese Simplified/Traditional translations thanks to @LinkeyLeo !</li>
+<li>Arabic translations thanks to @kachikulu !</li></ul>
+          ]]>
+  </description>
+<pubDate>mar., 24 mar. 2020 16:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.2/Aerial.saver.zip" sparkle:version="1.8.2" 
+sparkle:edSignature="P/P3lB7ZZu+q8KraIZFaOnz5p4QpqeYoW3hT12FcJ6xVzPZUAgv/3EkFExANOV+DvMRjixpiLLQ7nFUdOcRtCA==" length="5991814" type="application/octet-stream"/>
+</item>
+<item>
+<title>1.8.2beta4</title>
+  <description>
+          <![CDATA[
+<ul><li>Fix the overlap bug for smaller screens/large fonts</li>
+<li>Add a Date info to show the current date</li></ul>
+          ]]>
+  </description>
+<pubDate>lun., 23 mar. 2020 19:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.2beta4/Aerial.saver.zip" sparkle:version="1.8.2beta4" 
+sparkle:edSignature="GOAdKfC/esCHVOZjNP2VTJBO3c5Z+O6m+Cp639QcJn56fRkYymQoMXpmwunCw6zebH6pKnKBRQ/wNmcLATGIBA==" length="5987926" type="application/octet-stream"/>
+</item>    
+  
+<item>
+<title>1.8.2beta2</title>
+  <description>
+          <![CDATA[
+<p>New features:</p>
+<ul><li>Fix the seconds thing not working in Countdown info, removed year/months from the countdown info</li>
+<li>Add a new Timer Info similar to Countdown, except it's a timer (say, 5 minutes).</li>
+</ul>
+          ]]>
+  </description>
+<pubDate>jeu., 19 mar. 2020 18:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.2beta2/Aerial.saver.zip" sparkle:version="1.8.2beta2" 
+sparkle:edSignature="B5+J0DjZpAsSZjg1XU980ZAQxnLh/x1DTBsG/rHn9W/F45bhl56LCKfXtB+/hWzCCcI/JJhI+7VYHbHxqaDcCg==" length="5977590" type="application/octet-stream"/>
+</item>
+  
+<item>
+<title>1.8.2beta1</title>
+  <description>
+          <![CDATA[
+<p>New features:</p>
+<ul><li>Add updated .pl translations</li>
+<li>Tentative fix for a description bug when skipping videos on multiple monitors.</li>
+</ul>
+          ]]>
+  </description>
+<pubDate>mar., 10 mar. 2020 18:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.2beta1/Aerial.saver.zip" sparkle:version="1.8.2beta1" 
+sparkle:edSignature="7eoSrfIP3HjIrS/pGQEMRFHxl0o6CIUrfLtvwkCaXhEHFRqXbedlHFNLSD92c4C+jAVZpFW8izMggMLrEOMWCw==" length="5961990" type="application/octet-stream"/>
+</item>
+<item>
+<title>1.8.1</title>
+  <description>
+          <![CDATA[
+<p>New features:</p>
+<ul><li>Changed "Random" to "Random corner" for location info randomness. Bottom/top center positions are now ignored here, but they can be used manually.</li>
+<li>Fix a preference panel crash if you disabled auto updates.</li>
+</ul>
+          ]]>
+  </description>
+<pubDate>mar., 3 mar. 2020 18:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.1/Aerial.saver.zip" sparkle:version="1.8.1" 
+sparkle:edSignature="9VAYxF1ZzzPAV4u7A4GnBPZBqqPfn75/PWfepc4QvwSjRUCm+ckj/o/MdKx7jTw1lmuBpaJ9ILSy75eHtJNqAA==" length="5960639" type="application/octet-stream"/>
+</item>
+
+<item>
+<title>1.8.1beta1</title>
+  <description>
+          <![CDATA[
+<p>Changed "Random" to "Random corner" for location info randomness. Bottom/top center positions are now ignored here, but they can be used manually.</p>
+          ]]>
+  </description>
+<pubDate>lun., 24 fev. 2020 19:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.1beta1/Aerial.saver.zip" sparkle:version="1.8.1beta1" 
+sparkle:edSignature="If2iGKSh/Cq23fhLuauufPpwLGZTrgjf4rtqpIuUkm7h1gKA7DeR1R2yW5OfnE9MJWvQYFKZyA7GYFcyhcizAQ==" length="5960620" type="application/octet-stream"/>
+</item>    
+  
+<item>
+<title>1.8.0</title>
+  <description>
+          <![CDATA[
+<p>New features:</p>
+<ul><li><b>New update system for macOS Catalina, you will now be notified and be able to download new versions. Aerial will still not be able to self update in Catalina, this is a sandboxing limitation that can't be worked around for the time being</b></li>
+<li>Add shadow controls</li>
+<li>Add translations for the new tvOS 13 videos in French</li>
+<li>Add a new Countdown information option</li></ul>
+<p>Bug fixes:</p>
+<ul><li>Fix the high sierra textfields workaround in new UI</li>
+<li>Fix battery detection in macs with no battery (oops)</li>
+<li>Fix localization that no longer worked in Catalina (come on...)</li></ul>
+
+<p>Misc:</p>
+<ul><li>Moved Sparkle from Cocoapods to a git submodule, updated Sparkle to 1.23</li>
+<li>Minimum macOS version is now 10.12</li></ul>
+          ]]>
+  </description>
+<pubDate>mar., 18 jan. 2020 18:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.0/Aerial.saver.zip" sparkle:version="1.8.0" 
+sparkle:edSignature="orTQ4SHPZDCcp+BLoffuL/1g+6fOpQPotDi7o3bAmQQ7mgpneRMyeOPbDNmM8eCs2VligzOlYlQOHdxju4kTBQ==" length="5963341" type="application/octet-stream"/>
+</item>    
+<item>
+<title>1.7.2beta3</title>
+  <description>
+          <![CDATA[
+<b>Automatic updates are broken for the time being in Catalina. If you try to auto-update, it will look like it install correctly but the update process will silently fail because of new sandboxing restrictions. You will need to update manually for the time being, my apologies.</b>
+
+<ul><li>More shadow options</li>
+<li>Fix High Sierra workarounds in new UI</li></ul>
+          ]]>
+  </description>
+<pubDate>sam., 15 jan. 2020 19:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.7.2beta3/Aerial.saver.zip" sparkle:version="1.7.2beta3" 
+sparkle:edSignature="RgtPcIcPMxur1jqgCDxsEmBddCQZq3vQHZMONrgw5WSTAt0cGz2EPjLghTsgFhIdgEDX5ZYDkGEFHrmH+BqyDA==" length="6006059" type="application/octet-stream"/>
+</item>  
+
+<item>
+<title>1.7.2beta2</title>
+  <description>
+          <![CDATA[
+<b>Automatic updates are broken for the time being in Catalina. If you try to auto-update, it will look like it install correctly but the update process will silently fail because of new sandboxing restrictions. You will need to update manually for the time being, my apologies.</b>
+
+<ul><li>Fix text clipping issues with some fonts</li>
+<li>More UI cleanup, add a new Text settings option in Info tab</li></ul>
+          ]]>
+  </description>
+<pubDate>ven., 14 jan. 2020 19:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.7.2beta2/Aerial.saver.zip" sparkle:version="1.7.2beta2" 
+sparkle:edSignature="y0CqlWKJTJx2TEmJb6pobnVJvQUw+lUpQBNGePn+8M3/dFJXiwoYRWfZ6O55O1QO0gLASb6GM9ahwp+SdoQ/Bg==" length="5999716" type="application/octet-stream"/>
+</item> 
+
+<item>
+<title>1.7.2beta1</title>
+  <description>
+          <![CDATA[
+<b>Automatic updates are broken for the time being in Catalina. If you try to auto-update, it will look like it install correctly but the update process will silently fail because of new sandboxing restrictions. You will need to update manually for the time being, my apologies.</b>
+
+<ul><li>Add a new update check that shows a message at the top of the screen, when the screensaver is running, to let you know that a new version is available. This is still a work in progress and will be improved in the next beta. More info <a href=https://github.com/JohnCoates/Aerial/issues/909>here</a></li>
+<li>Add an option to change the shadow radius of the texts.</li>
+<li>Add a new Countdown info type.</li></ul>
+          ]]>
+  </description>
+<pubDate>jeu., 13 jan. 2020 16:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.7.2beta1/Aerial.saver.zip" sparkle:version="1.7.2beta1" 
+sparkle:edSignature="JfJ/8/eUs+cPHKCXjlWIU4MU/LlclYJB5nnh0ZwwuhhzWFqu26gOViyQc/0pMRSCi1S2RbUeX4pvwiIIbt38Bw==" length="5996604" type="application/octet-stream"/>
+</item>  
+<item>
 <title>1.7.1</title>
   <description>
           <![CDATA[
@@ -14,7 +184,7 @@
   </description>
 <pubDate>mar., 11 jan. 2020 16:00:00 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/glouel/Aerial/releases/download/v1.7.1/Aerial.saver.zip" sparkle:version="1.7.1" 
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.7.2beta1/Aerial.saver.zip" sparkle:version="1.7.1" 
 sparkle:edSignature="PEHtV0rb00reYVBETDHAj3MgE2ZxeCJA8xwnVAjWtjlmMkVmvgMCNouCYZwamqZ3Kmv26kZLwbl7UkjpeSAdDA==" length="5968662" type="application/octet-stream"/>
 </item>  
 <item>

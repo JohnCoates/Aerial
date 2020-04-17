@@ -1,18 +1,18 @@
 //
-//  ClockLayer.swift
+//  DateLayer.swift
 //  Aerial
 //
-//  Created by Guillaume Louel on 12/12/2019.
-//  Copyright © 2019 Guillaume Louel. All rights reserved.
+//  Created by Guillaume Louel on 23/03/2020.
+//  Copyright © 2020 Guillaume Louel. All rights reserved.
 //
 
 import Foundation
 import AVKit
 
-class ClockLayer: AnimationLayer {
-    var config: PrefsInfo.Clock?
+class DateLayer: AnimationLayer {
+    var config: PrefsInfo.IDate?
     var wasSetup = false
-    var clockTimer: Timer?
+    var dateTimer: Timer?
 
     override init(layer: Any) {
         super.init(layer: layer)
@@ -30,7 +30,7 @@ class ClockLayer: AnimationLayer {
         self.opacity = 1
     }
 
-    convenience init(withLayer: CALayer, isPreview: Bool, offsets: LayerOffsets, manager: LayerManager, config: PrefsInfo.Clock) {
+    convenience init(withLayer: CALayer, isPreview: Bool, offsets: LayerOffsets, manager: LayerManager, config: PrefsInfo.IDate) {
         self.init(withLayer: withLayer, isPreview: isPreview, offsets: offsets, manager: manager)
         self.config = config
 
@@ -47,7 +47,7 @@ class ClockLayer: AnimationLayer {
             wasSetup = true
 
             if #available(OSX 10.12, *) {
-                clockTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (_) in
+                dateTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (_) in
                     self.update(string: self.getTimeString())
                 })
             }
@@ -59,30 +59,30 @@ class ClockLayer: AnimationLayer {
     }
 
     func getTimeString() -> String {
-        var locale = Locale.current
-
+        // Handle locale
+        var locale = Locale(identifier: Locale.preferredLanguages[0])
         let preferences = Preferences.sharedInstance
         if preferences.ciOverrideLanguage != "" {
             locale = Locale(identifier: preferences.ciOverrideLanguage!)
         }
-
-        // Handle the manual override
-        if PrefsInfo.clock.clockFormat == .t12hours {
-            locale = Locale(identifier: "en_US")
-        } else {
-            locale = Locale(identifier: "fr_FR")
-        }
+        var template = ""
 
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: config!.showSeconds
-            ? "j:mm:ss"
-            : "j:mm", options: 0, locale: locale)
-
-        if config!.hideAmPm {
-            dateFormatter.amSymbol = ""
-            dateFormatter.pmSymbol = ""
+        if config!.format == .textual {
+            if config!.withYear {
+                template = "EEEE, MMMM dd, yyyy"
+            } else {
+                template = "EEEE, MMMM dd"
+            }
+        } else {
+            if config!.withYear {
+                template = "MM/dd/yy"
+            } else {
+                template = "MM/dd"
+            }
         }
-
-        return dateFormatter.string(from: Date())
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: template, options: 0, locale: locale)
+        dateFormatter.locale = locale
+        return dateFormatter.string(from: Date()).capitalizeFirstLetter()
     }
 }

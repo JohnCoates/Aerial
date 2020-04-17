@@ -77,9 +77,6 @@ class AutoUpdates: NSObject, SUUpdaterDelegate {
 
         // If we never went into System Preferences, we may not have a lastUpdateCheckDate
         if updater.lastUpdateCheckDate != nil {
-            print("/*/*/*/*/*/*/*/*/*")
-            print(updater.lastUpdateCheckDate.timeIntervalSinceNow.distance(to: Double(distance)))
-
             if updater.lastUpdateCheckDate.timeIntervalSinceNow.distance(to: Double(distance)) > 0 {
                 // Then force check/install udpates
                 debugLog("Update check time elapsed")

@@ -37,6 +37,10 @@ brew cask upgrade aerial
 
 Please note that if you prefer using homebrew to update Aerial, we recommend you disable Sparkle auto updates in the `Updates`tab. 
 
+**Warning** If you see that your settings aren't saved in Catalina, please check if this folder exists : You may need to create this folder manually : `~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/ByHost/`
+
+You may need to manually create the ByHost folder manually as Catalina may not do so for you.
+
 ## Setting Aerial as Your Screen Saver
 
 1. Open `System Preferences` -> `Desktop & Screen Saver` -> `Screen Saver`
@@ -46,7 +50,7 @@ Please note that if you prefer using homebrew to update Aerial, we recommend you
 
 ## Uninstallation
 
-There are three ways to uninstall Aerial from your Mac.
+There are three ways to uninstall Aerial from your Mac. However please first read the "Removing the cache" section below.
 
 - Right-click on the Aerial screen saver in `System Preferences` and select `Delete "Aerial"`. This will uninstall the screen saver automatically.
 - If you prefer, you can delete the files manually. macOS can store screen savers in two locations depending on your choices, `/Library/Screen Savers` (if you installed for All Users) and `/Users/YOURUSERNAME/Library/Screen Savers` (installed for your user only). Check both locations for a file called `Aerial.saver` and delete any copies you find.
@@ -56,4 +60,22 @@ There are three ways to uninstall Aerial from your Mac.
 brew cask uninstall aerial
 ```
 
-You may also want to delete the folder `/Library/Caches/Aerial` (default Aerial cache folder on most systems, even if you installed for your user account only) or `/Users/YOURUSERNAME/Library/Caches/Aerial`. This is where Aerial stores the cached copies of the Aerial videos. The last thing, you may want to delete the preferences `plist`. The file is `/Users/YOURUSERNAME/Library/Preferences/ByHost/com.JohnCoates.Aerial.{UUID}.plist`.
+# Removing the cache 
+
+Aerial stores your videos in a local cache on your machine. It's location depends on the version of macOS you used, how you installed Aerial (for one user or multiple user) and when you first installed Aerial. You can find the location of the cache prior to uninstalling by going into Aerial's `Caches` tab.
+
+Prior to macOS Catalina (10.15), the cache for multiple user was either :
+- `/Library/Caches/Aerial` (long time users)
+- `/Library/Application Support/Aerial` (if you installed for the first time after summer 2019)
+
+Prior to macOS Catalina (10.15), the cache for a single user was either : 
+- `~/Library/Caches/Aerial` (long time users)
+- `~/Library/Application Support/Aerial` (if you installed for the first time after summer 2019)
+
+Starting with macOS Catalina (10.15), each user has a cache in it's own sandbox at this location : 
+- `~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Application Support/Aerial`
+
+Finally, the preference file is located either at :
+- `~/Library/Preferences/ByHost/com.JohnCoates.Aerial.{UUID}.plist` (before Catalina)
+- `~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/ByHost/com.JohnCoates.Aerial.{UUID}.plist` (starting with Catalina)
+

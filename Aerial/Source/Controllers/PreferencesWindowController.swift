@@ -96,8 +96,10 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var infoClockView: InfoClockView!
     @IBOutlet var infoMessageView: InfoMessageView!
     @IBOutlet var infoBatteryView: InfoBatteryView!
-
     @IBOutlet var infoCountdownView: InfoCountdownView!
+    @IBOutlet var infoTimerView: InfoTimerView!
+    @IBOutlet var infoDateView: InfoDateView!
+    @IBOutlet var infoWeatherView: InfoWeatherView!
 
     // Time Tab
     @IBOutlet var iconTime1: NSImageCell!
@@ -304,6 +306,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
                 sparkleUpdater!.automaticallyChecksForUpdates = true
             }
         } else {
+            sparkleUpdater = SUUpdater.init(for: Bundle(for: PreferencesWindowController.self))
             sparkleUpdater!.automaticallyChecksForUpdates = false
         }
 

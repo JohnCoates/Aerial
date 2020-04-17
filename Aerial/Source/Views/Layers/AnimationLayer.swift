@@ -9,6 +9,7 @@
 import Foundation
 import AVKit
 
+// swiftlint:disable:next type_body_length
 class AnimationLayer: CATextLayer {
     var layerManager: LayerManager
     var lastCorner = -1
@@ -70,8 +71,9 @@ class AnimationLayer: CATextLayer {
         self.isWrapped = true
 
         // This is the rect resized to our string
-        frame = calculateRect(string: string, font: font as! NSFont)
-        move(toCorner: getCorner(), fullRedraw: false)
+        let newCorner = getCorner()
+        frame = calculateRect(string: string, font: font as! NSFont, newCorner: newCorner)
+        move(toCorner: newCorner, fullRedraw: false)
     }
 
     // Handle the random corner
@@ -81,13 +83,27 @@ class AnimationLayer: CATextLayer {
         }
 
         // Find a new corner, different from the previous one
-        var newCorner = Int.random(in: 0...5)
+        var newCorner = getRandomCorner()
 
         while newCorner == lastCorner || !layerManager.isCornerAcceptable(corner: newCorner) {
-            newCorner = Int.random(in: 0...5)
+            newCorner = getRandomCorner()
         }
 
         return InfoCorner(rawValue: newCorner)!
+    }
+
+    // Return a strict corner, not a center pos
+    func getRandomCorner() -> Int {
+        let rnd = Int.random(in: 0...3)
+        if rnd == 0 {
+            return 0
+        } else if rnd == 1 {
+            return 2
+        } else if rnd == 2 {
+            return 3
+        } else {
+            return 5
+        }
     }
 
     // Move to a corner, this may need to force the redraw of a whole corner
@@ -217,9 +233,27 @@ class AnimationLayer: CATextLayer {
 
     // MARK: Text/Font stuff
     // Calculate the screen rect that will be used by our string
-    func calculateRect(string: String, font: NSFont) -> CGRect {
+    func calculateRect(string: String, font: NSFont, newCorner: InfoCorner) -> CGRect {
         let mx = getHorizontalMargin()
-        let boundingRect = CGSize(width: baseLayer.visibleRect.size.width-2*mx,
+
+        var oppoMargin: CGFloat
+
+        if self is LocationLayer {
+            switch newCorner {
+            case .topLeft:
+                oppoMargin = offsets.maxWidth[.topRight]!
+            case .topRight:
+                oppoMargin = offsets.maxWidth[.topLeft]!
+            case .bottomLeft:
+                oppoMargin = offsets.maxWidth[.bottomRight]!
+            default: // .bottomRight, we only allow the 4 corners for random
+                oppoMargin = offsets.maxWidth[.bottomLeft]!
+            }
+        } else {
+            oppoMargin = 0
+        }
+
+        let boundingRect = CGSize(width: baseLayer.visibleRect.size.width-2*mx-oppoMargin,
                                   height: baseLayer.visibleRect.size.height)
 
         // We need an attributed string to take the font into account
@@ -228,6 +262,12 @@ class AnimationLayer: CATextLayer {
 
         // Calculate bounding box
         let rect = str.boundingRect(with: boundingRect, options: [.truncatesLastVisibleLine, .usesLineFragmentOrigin])
+
+        if !(self is LocationLayer) {
+            if rect.width+10 > offsets.maxWidth[corner]! {
+                offsets.maxWidth[corner] = rect.width+10
+            }
+        }
 
         // Last line won't appear if we don't adjust a bit (why!?)
         return CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width+10, height: rect.height + 10)
@@ -285,5 +325,32 @@ class AnimationLayer: CATextLayer {
 
         offsets.corner[forCorner] = my
         return my
+    }
+
+    // Transform a date by setting it to today (or tommorrow)
+    func todayizeDate(_ target: Date, strict: Bool) -> Date {
+        let now = Date()
+
+        let calendar = Calendar.current
+        var targetComponent = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: target)
+        let nowComponent = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: now)
+
+        targetComponent.year = nowComponent.year
+        targetComponent.month = nowComponent.month
+        targetComponent.day = nowComponent.day
+
+        let candidate = Calendar.current.date(from: targetComponent) ?? target
+
+        if strict {
+            return candidate
+        } else {
+            // In non strict mode, if the hour is passed already
+            // we return tomorrow
+            if candidate > now {
+                return candidate
+            } else {
+                return candidate.tomorrow ?? candidate
+            }
+        }
     }
 }

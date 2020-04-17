@@ -10,6 +10,8 @@ This will open the "Manage Custom Videos" window.
 
 Click the "Add folder" at the top of the window, and point it to a folder that contains videos. Aerial will scan that folder and show you the videos it found in the left panel. For long time users, a good way to try this is your `oldvideos` folder in your Aerial cache folder. 
 
+**WARNING !!!!** If you are using Catalina, because of sandboxing restrictions, Aerial will not be able to load videos from your `Documents` folder, or the `Desktop` (precisely, you will be able to add them, but as soon as you close System Preferences or launch the full screen screensaver, Aerial will not be able to open them again and you'll get an error with a Play button in the preview, and a black screen in fullscreen mode). To get it to work in Catalina, please create a folder in `/Users/Shared/`, put your videos there and add them to Aerial from there.    
+
 ## Folders and files
 
 Aerial will scan your folder for video files, including subfolders. After scanning, all these video files will show up in the left column, grouped under the name of the folder you picked. 

@@ -30,6 +30,14 @@ enum InfoTime: Int, Codable {
     case always, tenSeconds
 }
 
+enum InfoClockFormat: Int, Codable {
+    case tdefault, t24hours, t12hours
+}
+
+enum InfoDate: Int, Codable {
+    case textual, compact
+}
+
 enum InfoIconText: Int, Codable {
     case textOnly, iconAndText, iconOnly
 }
@@ -40,11 +48,11 @@ enum InfoCountdownMode: Int, Codable {
 
 // The various info types available
 enum InfoType: String, Codable {
-    case location, message, clock, battery, updates, countdown
+    case location, message, clock, date, battery, updates, weather, countdown, timer
 }
 
+// swiftlint:disable:next type_body_length
 struct PrefsInfo {
-
     struct Location: CommonInfo, Codable {
         var isEnabled: Bool
         var fontName: String
@@ -70,6 +78,26 @@ struct PrefsInfo {
         var corner: InfoCorner
         var displays: InfoDisplays
         var showSeconds: Bool
+        var hideAmPm: Bool
+        var clockFormat: InfoClockFormat
+    }
+
+    struct IDate: CommonInfo, Codable {
+        var isEnabled: Bool
+        var fontName: String
+        var fontSize: Double
+        var corner: InfoCorner
+        var displays: InfoDisplays
+        var format: InfoDate
+        var withYear: Bool
+    }
+
+    struct Weather: CommonInfo, Codable {
+        var isEnabled: Bool
+        var fontName: String
+        var fontSize: Double
+        var corner: InfoCorner
+        var displays: InfoDisplays
     }
 
     struct Battery: CommonInfo, Codable {
@@ -103,8 +131,21 @@ struct PrefsInfo {
         var showSeconds: Bool
     }
 
+    struct Timer: CommonInfo, Codable {
+        var isEnabled: Bool
+        var fontName: String
+        var fontSize: Double
+        var corner: InfoCorner
+        var displays: InfoDisplays
+        var duration: Date
+        var showSeconds: Bool
+        var disableWhenElapsed: Bool
+        var replaceWithMessage: Bool
+        var customMessage: String
+    }
+
     // Our array of Info layers. User can reorder the array, and we may periodically add new Info types
-    @Storage(key: "layers", defaultValue: [ .message, .clock, .location, .battery, .updates, .countdown])
+    @Storage(key: "layers", defaultValue: [ .message, .clock, .date, .location, .battery, .updates, .weather, .countdown, .timer])
     static var layers: [InfoType]
 
     // Location information
@@ -131,8 +172,20 @@ struct PrefsInfo {
                                                      fontSize: 50,
                                                      corner: .bottomLeft,
                                                      displays: .allDisplays,
-                                                     showSeconds: true))
+                                                     showSeconds: true,
+                                                     hideAmPm: false,
+                                                     clockFormat: .tdefault))
     static var clock: Clock
+
+    // Date
+    @Storage(key: "LayerDate", defaultValue: IDate(isEnabled: false,
+                                                     fontName: "Helvetica Neue Thin",
+                                                     fontSize: 25,
+                                                     corner: .bottomLeft,
+                                                     displays: .allDisplays,
+                                                     format: .textual,
+                                                     withYear: false))
+    static var date: IDate
 
     // Battery
     @Storage(key: "LayerBattery", defaultValue: Battery(isEnabled: false,
@@ -152,6 +205,14 @@ struct PrefsInfo {
                                                      betaReset: true))
     static var updates: Updates
 
+    // Weather
+    @Storage(key: "LayerWeather", defaultValue: Weather(isEnabled: false,
+                                                        fontName: "Helvetica Neue Medium",
+                                                        fontSize: 40,
+                                                        corner: .topRight,
+                                                        displays: .allDisplays))
+    static var weather: Weather
+
     // Countdown
     @Storage(key: "LayerCountdown", defaultValue: Countdown(isEnabled: false,
                                                      fontName: "Helvetica Neue Medium",
@@ -164,6 +225,20 @@ struct PrefsInfo {
                                                      triggerDate: Date(),
                                                      showSeconds: true))
     static var countdown: Countdown
+
+    // Timer
+    @Storage(key: "LayerTimer", defaultValue: Timer(isEnabled: false,
+                                                    fontName: "Helvetica Neue Medium",
+                                                    fontSize: 100,
+                                                    corner: .screenCenter,
+                                                    displays: .allDisplays,
+                                                    duration: Date(timeIntervalSince1970: 300),
+                                                    showSeconds: true,
+                                                    disableWhenElapsed: true,
+                                                    replaceWithMessage: false,
+                                                    customMessage: ""))
+
+    static var timer: Timer
 
     // MARK: - Advanced text settings
 
@@ -212,12 +287,18 @@ struct PrefsInfo {
             return message
         case .clock:
             return clock
+        case .date:
+            return date
         case .battery:
             return battery
         case .updates:
             return updates
+        case .weather:
+            return weather
         case .countdown:
             return countdown
+        case .timer:
+            return timer
         }
     }
 
@@ -230,12 +311,18 @@ struct PrefsInfo {
             message.isEnabled = value
         case .clock:
             clock.isEnabled = value
+        case .date:
+            date.isEnabled = value
         case .battery:
             battery.isEnabled = value
         case .updates:
             updates.isEnabled = value
+        case .weather:
+            weather.isEnabled = value
         case .countdown:
             countdown.isEnabled = value
+        case .timer:
+            timer.isEnabled = value
         }
     }
 
@@ -247,12 +334,18 @@ struct PrefsInfo {
             message.fontName = name
         case .clock:
             clock.fontName = name
+        case .date:
+            date.fontName = name
         case .battery:
             battery.fontName = name
         case .updates:
             updates.fontName = name
+        case .weather:
+            weather.fontName = name
         case .countdown:
             countdown.fontName = name
+        case .timer:
+            timer.fontName = name
         }
     }
 
@@ -264,12 +357,18 @@ struct PrefsInfo {
             message.fontSize = size
         case .clock:
             clock.fontSize = size
+        case .date:
+            date.fontSize = size
         case .battery:
             battery.fontSize = size
         case .updates:
             updates.fontSize = size
+        case .weather:
+            weather.fontSize = size
         case .countdown:
             countdown.fontSize = size
+        case .timer:
+            timer.fontSize = size
         }
     }
 
@@ -281,12 +380,18 @@ struct PrefsInfo {
             message.corner = corner
         case .clock:
             clock.corner = corner
+        case .date:
+            date.corner = corner
         case .battery:
             battery.corner = corner
         case .updates:
             updates.corner = corner
+        case .weather:
+            weather.corner = corner
         case .countdown:
             countdown.corner = corner
+        case .timer:
+            timer.corner = corner
         }
 
     }
@@ -298,12 +403,18 @@ struct PrefsInfo {
             message.displays = mode
         case .clock:
             clock.displays = mode
+        case .date:
+            date.displays = mode
         case .battery:
             battery.displays = mode
         case .updates:
             updates.displays = mode
+        case .weather:
+            weather.displays = mode
         case .countdown:
             countdown.displays = mode
+        case .timer:
+            timer.displays = mode
         }
     }
 }
