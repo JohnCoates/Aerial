@@ -2,7 +2,32 @@
 
 If you want to use Aerial on a Mac behind a firewall or with no network access, the easiest way starting is to copy the content of the cache folder from another Mac where Aerial is already installed.
 
-If that's not an option, you can manually recreate a cache folder by downloading files manually. This is how to download ALL videos. We recommend you start with the first one, consider the others optional : 
+If that's not an option, you can manually recreate a cache folder by downloading files manually. This is how to download ALL videos. 
+
+# Automated version (needs a terminal)
+
+Assuming you are using a Mac and have homebrew installed (if not use your package manager of choice on your system), install wget and jq : 
+
+```
+brew install jq
+brew install wget
+```
+
+Then it's super easy, move to the location where files should be downloaded :
+
+`cd ~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Application Support/Aerial/`
+
+Then simply do, for 4K SDR videos from tvOS12 :  
+
+`cat entries.json | jq -r '.assets[]."url-4K-SDR"' | xargs wget -nc -i`
+
+(this will obviously take a while 😅) 
+
+Replace `url-4K-SDR` with `url-1080-H264` or `url-1080-SDR` for 1080p H264 (default) or 1080p HEVC (and `url-4K-HDR` for 4K HDR). 
+
+# Manual version
+
+We recommend you start with the first one, consider the others optional : 
 
 - Download and untar `https://sylvan.apple.com/Aerials/resources-13.tar` (tvOS13 resources), rename the bundle to `TVIdleScreenStrings13.bundle` and the JSON to `tvos13.json`
 - Optionnally, also download and untar `https://sylvan.apple.com/Aerials/resources.tar` (tvOS12 resources), rename the bundle to `TVIdleScreenStrings12.bundle` and the JSON to `tvos12.json`.
