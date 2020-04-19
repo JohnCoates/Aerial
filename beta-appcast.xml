@@ -2,9 +2,10 @@
 <channel>
 <title>Aerial</title>
 <item>
-<title>1.8.3beta1</title>
+<title>1.8.3beta2</title>
   <description>
           <![CDATA[
+          <p>I mistakenly uploaded the wrong file for beta1, this is the correct new version, my apologies !</p>
 <p>New features:</p>
 <ul><li>Add a new Weather info. This is still super experimental and will be improved in next betas</li>
 <li>Add a 12/24h override</li>
@@ -14,10 +15,10 @@
 <li>Fix looping if you only had one video in your playlist</li></ul>
           ]]>
   </description>
-<pubDate>sam., 18 mar. 2020 19:00:00 +0100</pubDate>
+<pubDate>dim., 19 mar. 2020 19:00:00 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v.1.8.3beta1/Aerial.saver.zip" sparkle:version="1.8.3beta1" 
-sparkle:edSignature="xt2JX++ocRwbvrkBlOtaZS3pUdl0a61diO6ZEwVRvfTil9aislBayFanQuyTE+KUMopz9lO61PjNBjtaWuEcDA==" length="6219576" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v.1.8.3beta2/Aerial.saver.zip" sparkle:version="1.8.3beta2" 
+sparkle:edSignature="0cjBnfkUq6koMoIVatnNFOSsMtOHNUH31B/RbKNTFP+tPH1zrii1C7wUlgSCeshQVCU/D0yBCrsckjWYl0YJCw==" length="6219582" type="application/octet-stream"/>
 </item>
 <item>
 <title>1.8.2</title>
