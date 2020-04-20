@@ -200,6 +200,7 @@
 		03FA49B82428F84500863AF6 /* DateLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA49B62428F84500863AF6 /* DateLayer.swift */; };
 		AA7E2E5E1FC62E8B00E5F320 /* AerialPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */; };
 		DA31AA5E244E32BA00A3C222 /* purple_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = DA31AA5C244E329B00A3C222 /* purple_retina.png */; };
+		DA31AA79244E361F00A3C222 /* purple_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = DA31AA5C244E329B00A3C222 /* purple_retina.png */; };
 		F00864B423AAE7F0003210EF /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00864B323AAE7F0003210EF /* DarkMode.swift */; };
 		F00864B523AAE7F0003210EF /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00864B323AAE7F0003210EF /* DarkMode.swift */; };
 		F00864B723AAE8E9003210EF /* NightShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00864B623AAE8E9003210EF /* NightShift.swift */; };
@@ -1208,6 +1209,7 @@
 				0369985E2196129C00E359D3 /* missingvideos.json in Resources */,
 				038EBE9522D0AA3D00C7AD02 /* nl.json in Resources */,
 				033D62B0216CAE2C00F3AF83 /* icon-night-dark.pdf in Resources */,
+				DA31AA79244E361F00A3C222 /* purple_retina.png in Resources */,
 				0395835621807D1F008E8F9C /* thumbnail.png in Resources */,
 				035A92AD226754760095AB85 /* ar.json in Resources */,
 				0313F9E92294337F00B074BB /* CustomVideos.xib in Resources */,
