@@ -2,6 +2,21 @@
 <channel>
 <title>Aerial</title>
 <item>
+<title>1.8.3beta3</title>
+  <description>
+          <![CDATA[
+<ul>
+<li>Add Fahrenheit on Weather, fix weather not working for some cities</li>
+<li>Add new options to easily check day or night videos</li>
+</ul>
+          ]]>
+  </description>
+<pubDate>lun., 20 mar. 2020 19:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v.1.8.3beta3/Aerial.saver.zip" sparkle:version="1.8.3beta3" 
+sparkle:edSignature="WEgmoTt46XBitqayKWGiJi6IFtinTA2l6HmERfWE6D2IDTj7gVYRFCgrXH1mM770fKwvlJmjwrpcRS8yQqupCw==" length="6221786" type="application/octet-stream"/>
+</item>
+<item>
 <title>1.8.3beta2</title>
   <description>
           <![CDATA[
