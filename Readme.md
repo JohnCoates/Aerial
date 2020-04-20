@@ -18,7 +18,7 @@ Aerial is completely open source, so feel free to contribute to its development.
 [![Code Climate](https://codeclimate.com/github/JohnCoates/Aerial/badges/gpa.svg)](https://codeclimate.com/github/JohnCoates/Aerial)
 [![codecov](https://codecov.io/gh/JohnCoates/Aerial/branch/master/graph/badge.svg)](https://codecov.io/gh/JohnCoates/Aerial)
 
-###### Windows user? Try [cDima/Aerial](https://github.com/cDima/Aerial/) Linux user? Try [graysky2/xscreensaver-aerial](https://github.com/graysky2/xscreensaver-aerial/)
+###### Windows user? Try [OrangeJedi/Aerial](https://github.com/OrangeJedi/Aerial) Linux user? Try [graysky2/xscreensaver-aerial](https://github.com/graysky2/xscreensaver-aerial/)
 
 Aerial was started in 2015 by John Coates ([Twitter](https://twitter.com/JohnCoatesDev), [Email](mailto:john@johncoates.me))
 
