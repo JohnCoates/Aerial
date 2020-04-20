@@ -229,28 +229,36 @@ extension PreferencesWindowController {
                         action: #selector(PreferencesWindowController.outlineViewCheck4K(button:)),
                         keyEquivalent: "",
                         at: 1)
+        menu.insertItem(withTitle: "Check Only Day",
+                        action: #selector(PreferencesWindowController.outlineViewCheckDay(button:)),
+                        keyEquivalent: "",
+                        at: 2)
+        menu.insertItem(withTitle: "Check Only Night",
+                        action: #selector(PreferencesWindowController.outlineViewCheckNight(button:)),
+                        keyEquivalent: "",
+                        at: 3)
         menu.insertItem(withTitle: "Check All",
                         action: #selector(PreferencesWindowController.outlineViewCheckAll(button:)),
                         keyEquivalent: "",
-                        at: 2)
+                        at: 4)
         menu.insertItem(withTitle: "Uncheck All",
                         action: #selector(PreferencesWindowController.outlineViewUncheckAll(button:)),
                         keyEquivalent: "",
-                        at: 3)
-        menu.insertItem(NSMenuItem.separator(), at: 4)
+                        at: 5)
+        menu.insertItem(NSMenuItem.separator(), at: 6)
         menu.insertItem(withTitle: "Download Checked",
                         action: #selector(PreferencesWindowController.outlineViewDownloadChecked(button:)),
                         keyEquivalent: "",
-                        at: 5)
+                        at: 7)
         menu.insertItem(withTitle: "Download All",
                         action: #selector(PreferencesWindowController.outlineViewDownloadAll(button:)),
                         keyEquivalent: "",
-                        at: 6)
-        menu.insertItem(NSMenuItem.separator(), at: 7)
+                        at: 8)
+        menu.insertItem(NSMenuItem.separator(), at: 9)
         menu.insertItem(withTitle: "Custom Videos...",
                         action: #selector(PreferencesWindowController.outlineViewCustomVideos(button:)),
                         keyEquivalent: "",
-                        at: 8)
+                        at: 10)
 
         let event = NSApp.currentEvent
         NSMenu.popUpContextMenu(menu, with: event!, for: button)
@@ -266,6 +274,36 @@ extension PreferencesWindowController {
 
     @objc func outlineViewCheckAll(button: NSButton) {
         setAllVideos(inRotation: true)
+    }
+
+    @objc func outlineViewCheckDay(button: NSButton) {
+        guard let videos = videos else {
+            return
+        }
+
+        for video in videos {
+            preferences.setVideo(videoID: video.id,
+                                 inRotation: video.timeOfDay == "day",
+                                 synchronize: false)
+        }
+        preferences.synchronize()
+
+        outlineView.reloadData()
+    }
+
+    @objc func outlineViewCheckNight(button: NSButton) {
+        guard let videos = videos else {
+            return
+        }
+
+        for video in videos {
+            preferences.setVideo(videoID: video.id,
+                                 inRotation: video.timeOfDay != "day",
+                                 synchronize: false)
+        }
+        preferences.synchronize()
+
+        outlineView.reloadData()
     }
 
     @objc func outlineViewCheck4K(button: NSButton) {

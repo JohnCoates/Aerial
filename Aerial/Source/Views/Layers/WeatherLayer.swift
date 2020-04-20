@@ -45,23 +45,35 @@ class WeatherLayer: AnimationLayer {
         if !wasSetup {
             wasSetup = true
 
-            print("SFV weather")
-            let imagePath = Bundle(for: PreferencesWindowController.self).path(
-                forResource: "purple_retina",
-                ofType: "png")
-
-            let img = NSImage(contentsOfFile: imagePath!)
-            frame.size = img!.size  // Grab the size
-            contents = img  // Set the img
-
-            masksToBounds = true
-            //frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-            backgroundColor = .white
-            opacity = 1
-            update()
-            let fadeAnimation = self.createFadeInAnimation()
-            add(fadeAnimation, forKey: "textfade")
+            if Weather.info != nil {
+                displayWeatherBlock()
+            } else {
+                Weather.fetch(failure: { (error) in
+                    print(error.localizedDescription)
+                }, success: { (_) in
+                    self.displayWeatherBlock()
+                })
+            }
         }
     }
 
+    func displayWeatherBlock() {
+        if Weather.info == nil {
+            return
+        }
+
+        let todayCond = ConditionLayer(condition: Weather.info!.currentObservation.condition)
+        addSublayer(todayCond)
+
+        self.frame.size = CGSize(width: todayCond.frame.size.width, height: 75)
+
+        let logo = YahooLayer()
+        logo.anchorPoint = CGPoint(x: 1, y: 0)
+        logo.position = CGPoint(x: frame.size.width-5, y: 0)
+        addSublayer(logo)
+
+        update()
+        let fadeAnimation = self.createFadeInAnimation()
+        add(fadeAnimation, forKey: "weatherfade")
+    }
 }

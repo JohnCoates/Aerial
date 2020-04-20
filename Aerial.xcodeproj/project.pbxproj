@@ -139,6 +139,14 @@
 		0395835621807D1F008E8F9C /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 0395835221807D1F008E8F9C /* thumbnail.png */; };
 		03A2CB9C216BA9AF0061E8E8 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A2CB9B216BA9AF0061E8E8 /* VideoManager.swift */; };
 		03A2CB9D216BB1490061E8E8 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A2CB9B216BA9AF0061E8E8 /* VideoManager.swift */; };
+		03A42A992449F5EA003B3012 /* white_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A42A822449F5EA003B3012 /* white_retina.png */; };
+		03A42A9A2449F5EA003B3012 /* white_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A42A822449F5EA003B3012 /* white_retina.png */; };
+		03A42A9C2449F602003B3012 /* purple_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A42A9B2449F601003B3012 /* purple_retina.png */; };
+		03A42A9D2449F602003B3012 /* purple_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A42A9B2449F601003B3012 /* purple_retina.png */; };
+		03A42AA02449F959003B3012 /* YahooLogoLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A42A9F2449F959003B3012 /* YahooLogoLayer.swift */; };
+		03A42AA12449F959003B3012 /* YahooLogoLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A42A9F2449F959003B3012 /* YahooLogoLayer.swift */; };
+		03A42AA3244A0E5F003B3012 /* ConditionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A42AA2244A0E5F003B3012 /* ConditionLayer.swift */; };
+		03A42AA4244A0E5F003B3012 /* ConditionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A42AA2244A0E5F003B3012 /* ConditionLayer.swift */; };
 		03A596D323AA750F0097EA66 /* InfoMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A596D223AA750F0097EA66 /* InfoMessageView.swift */; };
 		03A596D523AA752F0097EA66 /* InfoClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A596D423AA752F0097EA66 /* InfoClockView.swift */; };
 		03A596D623AA752F0097EA66 /* InfoClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A596D423AA752F0097EA66 /* InfoClockView.swift */; };
@@ -171,8 +179,6 @@
 		03D2A4352447438D003ABD30 /* YahooWeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2A43324474304003ABD30 /* YahooWeatherAPI.swift */; };
 		03D2A43824474C37003ABD30 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; };
 		03D2A43924474C38003ABD30 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		03D2A43B2447526C003ABD30 /* purple_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 03D2A43A2447526C003ABD30 /* purple_retina.png */; };
-		03D2A43C2447526C003ABD30 /* purple_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 03D2A43A2447526C003ABD30 /* purple_retina.png */; };
 		03D2A43E24476117003ABD30 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2A43D24476117003ABD30 /* WeatherAPI.swift */; };
 		03D2A43F24476117003ABD30 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2A43D24476117003ABD30 /* WeatherAPI.swift */; };
 		03D37FD922145487005A146F /* es.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D37FD722145487005A146F /* es.json */; };
@@ -193,6 +199,10 @@
 		03E8731121662AEB002B469B /* AsynchronousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8730E216501ED002B469B /* AsynchronousOperation.swift */; };
 		03E8731321675FE0002B469B /* TimeManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8731221675FE0002B469B /* TimeManagement.swift */; };
 		03E87314216760B7002B469B /* TimeManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8731221675FE0002B469B /* TimeManagement.swift */; };
+		03F8FF1D244B54E600813C96 /* it.json in Resources */ = {isa = PBXBuildFile; fileRef = 03F8FF06244B54E600813C96 /* it.json */; };
+		03F8FF1E244B54E600813C96 /* it.json in Resources */ = {isa = PBXBuildFile; fileRef = 03F8FF06244B54E600813C96 /* it.json */; };
+		03F8FF1F244B67D200813C96 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; };
+		03F8FF20244B67D200813C96 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03FA49A12423DA1F00863AF6 /* TimerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA49A02423DA1F00863AF6 /* TimerLayer.swift */; };
 		03FA49A22423DA1F00863AF6 /* TimerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA49A02423DA1F00863AF6 /* TimerLayer.swift */; };
 		03FA49B22423DA7D00863AF6 /* InfoTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DDA8F2423C3BE0072D5C9 /* InfoTimerView.swift */; };
@@ -390,6 +400,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				03F8FF20244B67D200813C96 /* OAuthSwift.framework in Embed Frameworks */,
 				034116CD23F9AD0100CD7674 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -475,6 +486,10 @@
 		0395835121807D1F008E8F9C /* thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail@2x.png"; sourceTree = "<group>"; };
 		0395835221807D1F008E8F9C /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail.png; sourceTree = "<group>"; };
 		03A2CB9B216BA9AF0061E8E8 /* VideoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
+		03A42A822449F5EA003B3012 /* white_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_retina.png; sourceTree = "<group>"; };
+		03A42A9B2449F601003B3012 /* purple_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purple_retina.png; sourceTree = "<group>"; };
+		03A42A9F2449F959003B3012 /* YahooLogoLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooLogoLayer.swift; sourceTree = "<group>"; };
+		03A42AA2244A0E5F003B3012 /* ConditionLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionLayer.swift; sourceTree = "<group>"; };
 		03A596D223AA750F0097EA66 /* InfoMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMessageView.swift; sourceTree = "<group>"; };
 		03A596D423AA752F0097EA66 /* InfoClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoClockView.swift; sourceTree = "<group>"; };
 		03A596D823AB8F000097EA66 /* InfoLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoLocationView.swift; sourceTree = "<group>"; };
@@ -490,7 +505,6 @@
 		03D1E79022848F7F00D10CF7 /* screen0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screen0.jpg; sourceTree = "<group>"; };
 		03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuthSwift.xcodeproj; path = Extern/OAuthSwift/OAuthSwift.xcodeproj; sourceTree = "<group>"; };
 		03D2A43324474304003ABD30 /* YahooWeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooWeatherAPI.swift; sourceTree = "<group>"; };
-		03D2A43A2447526C003ABD30 /* purple_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = purple_retina.png; path = ../../../../Desktop/purple_retina.png; sourceTree = "<group>"; };
 		03D2A43D24476117003ABD30 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 		03D37FD722145487005A146F /* es.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = es.json; sourceTree = "<group>"; };
 		03D37FD822145487005A146F /* fr.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fr.json; sourceTree = "<group>"; };
@@ -507,6 +521,7 @@
 		03E8730B2165013C002B469B /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		03E8730E216501ED002B469B /* AsynchronousOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousOperation.swift; sourceTree = "<group>"; };
 		03E8731221675FE0002B469B /* TimeManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManagement.swift; sourceTree = "<group>"; };
+		03F8FF06244B54E600813C96 /* it.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = it.json; sourceTree = "<group>"; };
 		03FA49A02423DA1F00863AF6 /* TimerLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLayer.swift; sourceTree = "<group>"; };
 		03FA49B32428EE3300863AF6 /* InfoDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDateView.swift; sourceTree = "<group>"; };
 		03FA49B62428F84500863AF6 /* DateLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLayer.swift; sourceTree = "<group>"; };
@@ -566,6 +581,7 @@
 			files = (
 				03510C732185EF76008F74F2 /* CoreLocation.framework in Frameworks */,
 				034116CC23F9AD0100CD7674 /* Sparkle.framework in Frameworks */,
+				03F8FF1F244B67D200813C96 /* OAuthSwift.framework in Frameworks */,
 				03510C6C21834EFF008F74F2 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -576,6 +592,7 @@
 		0306336623A1010800046A59 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				03A42A9E2449F946003B3012 /* Weather */,
 				03BF51BB23A2643C008AD373 /* LayerManager.swift */,
 				0306336A23A142FA00046A59 /* LayerOffsets.swift */,
 				0345872C2449C52F00C97D1B /* AnimatableLayer.swift */,
@@ -603,6 +620,7 @@
 				035A92AB226754760095AB85 /* ar.json */,
 				035A92A4225F8C480095AB85 /* de.json */,
 				035A92A5225F8C480095AB85 /* he.json */,
+				03F8FF06244B54E600813C96 /* it.json */,
 				03D3DAC3221F286700BDA52F /* pl.json */,
 				03D37FD722145487005A146F /* es.json */,
 				03D37FD822145487005A146F /* fr.json */,
@@ -701,6 +719,15 @@
 				03510C6D21834F38008F74F2 /* Aerial-Bridging-Header.h */,
 			);
 			path = Time;
+			sourceTree = "<group>";
+		};
+		03A42A9E2449F946003B3012 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				03A42A9F2449F959003B3012 /* YahooLogoLayer.swift */,
+				03A42AA2244A0E5F003B3012 /* ConditionLayer.swift */,
+			);
+			path = Weather;
 			sourceTree = "<group>";
 		};
 		03D1E78D22848F6D00D10CF7 /* Screenshots */ = {
@@ -811,7 +838,8 @@
 				03D1E78D22848F6D00D10CF7 /* Screenshots */,
 				033192DF217B77E90073B580 /* Community */,
 				033D62AA216CADCD00F3AF83 /* icon-day-dark.pdf */,
-				03D2A43A2447526C003ABD30 /* purple_retina.png */,
+				03A42A9B2449F601003B3012 /* purple_retina.png */,
+				03A42A822449F5EA003B3012 /* white_retina.png */,
 				FAC36F371BE1756D007F2A20 /* icon-day.pdf */,
 				FAC36F381BE1756D007F2A20 /* icon-night.pdf */,
 				033D62AE216CAE2C00F3AF83 /* icon-night-dark.pdf */,
@@ -1203,14 +1231,15 @@
 				033192E2217B78240073B580 /* en.json in Resources */,
 				03DAD470229EAC66000DA6D1 /* Installation.md in Resources */,
 				FAC36F541BE1756D007F2A20 /* PreferencesWindow.xib in Resources */,
+				03A42A9D2449F602003B3012 /* purple_retina.png in Resources */,
 				03D1E79522848F7F00D10CF7 /* screen1.jpg in Resources */,
 				FAC36F4E1BE1756D007F2A20 /* icon-day.pdf in Resources */,
 				03D37FDA22145487005A146F /* es.json in Resources */,
 				0369985E2196129C00E359D3 /* missingvideos.json in Resources */,
 				038EBE9522D0AA3D00C7AD02 /* nl.json in Resources */,
 				033D62B0216CAE2C00F3AF83 /* icon-night-dark.pdf in Resources */,
-				03D2A43C2447526C003ABD30 /* purple_retina.png in Resources */,
 				0395835621807D1F008E8F9C /* thumbnail.png in Resources */,
+				03F8FF1E244B54E600813C96 /* it.json in Resources */,
 				035A92AD226754760095AB85 /* ar.json in Resources */,
 				0313F9E92294337F00B074BB /* CustomVideos.xib in Resources */,
 				03D3DAC5221F286D00BDA52F /* pl.json in Resources */,
@@ -1224,6 +1253,7 @@
 				035A92A9225F8C480095AB85 /* he.json in Resources */,
 				035A92A7225F8C480095AB85 /* de.json in Resources */,
 				0395835421807D1F008E8F9C /* thumbnail@2x.png in Resources */,
+				03A42A9A2449F5EA003B3012 /* white_retina.png in Resources */,
 				034116DA23FADE3600CD7674 /* UpdateReleaseWindow.xib in Resources */,
 				03D1E79822848F7F00D10CF7 /* screen0.jpg in Resources */,
 				03D37FDC22145487005A146F /* fr.json in Resources */,
@@ -1251,6 +1281,7 @@
 				FAC36F531BE1756D007F2A20 /* PreferencesWindow.xib in Resources */,
 				035A92A6225F8C480095AB85 /* de.json in Resources */,
 				03D37FDB22145487005A146F /* fr.json in Resources */,
+				03A42A992449F5EA003B3012 /* white_retina.png in Resources */,
 				035A92AC226754760095AB85 /* ar.json in Resources */,
 				036A34B5227309FB00A49135 /* zh_CN.json in Resources */,
 				03D1E79122848F7F00D10CF7 /* screen2.jpg in Resources */,
@@ -1261,6 +1292,7 @@
 				03D1E79722848F7F00D10CF7 /* screen0.jpg in Resources */,
 				0395835321807D1F008E8F9C /* thumbnail@2x.png in Resources */,
 				0395835521807D1F008E8F9C /* thumbnail.png in Resources */,
+				03F8FF1D244B54E600813C96 /* it.json in Resources */,
 				03D37FD922145487005A146F /* es.json in Resources */,
 				03D1E79422848F7F00D10CF7 /* screen1.jpg in Resources */,
 				038EBE9422D0AA3D00C7AD02 /* nl.json in Resources */,
@@ -1270,8 +1302,8 @@
 				03E4B20D22DC7F8800C22EBE /* zh_TW.json in Resources */,
 				FAC36F4F1BE1756D007F2A20 /* icon-night.pdf in Resources */,
 				0313F9E622942AA500B074BB /* CustomVideos.xib in Resources */,
-				03D2A43B2447526C003ABD30 /* purple_retina.png in Resources */,
 				033192E1217B78240073B580 /* en.json in Resources */,
+				03A42A9C2449F602003B3012 /* purple_retina.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1402,10 +1434,12 @@
 				0393857B2175D4B80040B850 /* AVPlayerViewExtension.swift in Sources */,
 				03608A1E22A55BA7008F08A2 /* PWC+Brightness.swift in Sources */,
 				03608A1222A5499C008F08A2 /* PWC+Videos.swift in Sources */,
+				03A42AA12449F959003B3012 /* YahooLogoLayer.swift in Sources */,
 				033842F824489EC600A2C523 /* WeatherLayer.swift in Sources */,
 				038C584823A9308C00224630 /* InfoContainerView.swift in Sources */,
 				03BF51BA23A24B40008AD373 /* AnimationTextLayer.swift in Sources */,
 				F008DAFE23AADCFB00739DE1 /* Brightness.swift in Sources */,
+				03A42AA4244A0E5F003B3012 /* ConditionLayer.swift in Sources */,
 				036A57D623F30F490009DC02 /* UpdatesLayer.swift in Sources */,
 				03A596D623AA752F0097EA66 /* InfoClockView.swift in Sources */,
 				03D2A4352447438D003ABD30 /* YahooWeatherAPI.swift in Sources */,
@@ -1470,9 +1504,11 @@
 				AA7E2E5E1FC62E8B00E5F320 /* AerialPlayerItem.swift in Sources */,
 				03608A2C22A56465008F08A2 /* HardwareDetection.swift in Sources */,
 				034116DC23FADEDA00CD7674 /* UpdateReleaseController.swift in Sources */,
+				03A42AA02449F959003B3012 /* YahooLogoLayer.swift in Sources */,
 				03608A1022A54887008F08A2 /* PWC+Videos.swift in Sources */,
 				03A596D323AA750F0097EA66 /* InfoMessageView.swift in Sources */,
 				03608A2022A55BC2008F08A2 /* PWC+Cache.swift in Sources */,
+				03A42AA3244A0E5F003B3012 /* ConditionLayer.swift in Sources */,
 				03A2CB9C216BA9AF0061E8E8 /* VideoManager.swift in Sources */,
 				03608A1D22A55BA7008F08A2 /* PWC+Brightness.swift in Sources */,
 				038C584723A9304800224630 /* InfoContainerView.swift in Sources */,
@@ -1729,7 +1765,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.8.3test3;
+				CURRENT_PROJECT_VERSION = 1.8.3beta3;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1737,7 +1773,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.8.3test3;
+				MARKETING_VERSION = 1.8.3beta3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1757,7 +1793,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.8.3test3;
+				CURRENT_PROJECT_VERSION = 1.8.3beta3;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1765,7 +1801,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.8.3test3;
+				MARKETING_VERSION = 1.8.3beta3;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -240,3 +240,39 @@ extension AnimatableLayer {
         return fadeAnimation
     }
 }
+
+// MARK: Extra helpers for text layers
+
+extension CATextLayer {
+    // Calculate the screen rect that will be used by our string
+    func calculateRect(string: String, font: NSFont) -> CGRect {
+        let boundingRect = self.frame.size
+
+        // We need an attributed string to take the font into account
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font as Any]
+        let str = NSAttributedString(string: string, attributes: attributes)
+
+        // Calculate bounding box
+        let rect = str.boundingRect(with: boundingRect, options: [.truncatesLastVisibleLine, .usesLineFragmentOrigin])
+
+        return CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width+10, height: rect.height + 10)
+    }
+
+    // Get the font and font size
+    func makeFont(name: String, size: Double) -> (NSFont, CGFloat) {
+        let fontSize = CGFloat(size)    // Mayyybe some isPreview global somewhere
+
+        // Get font with a fallback in case
+        var font = NSFont(name: "Helvetica Neue Medium", size: 28)
+        if let tryFont = NSFont(name: name, size: fontSize) {
+            font = tryFont
+        }
+
+        return (font!, fontSize)
+    }
+
+    // Set font & size from some Aerial Preferences
+    func setFont(name: String, size: Double) {
+        (self.font, self.fontSize) = self.makeFont(name: name, size: size)
+    }
+}

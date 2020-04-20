@@ -131,47 +131,6 @@ class AnimationTextLayer: CATextLayer, AnimatableLayer {
 
         return (font!, fontSize)
     }
-/*
-    // Get the horizontal margin to the border of the screen
-    func getHorizontalMargin() -> CGFloat {
-        // We override for previews
-        if isPreview {
-            return 10
-        }
-
-        var mx: CGFloat = 50
-
-        // We may override margins
-        if PrefsInfo.overrideMargins {
-            mx = CGFloat(PrefsInfo.marginX)
-        }
-
-        return mx
-    }
-
-    // Get the horizontal margin to the border of the screen
-    func getVerticalMargin(forCorner: InfoCorner) -> CGFloat {
-        // If we already have an offset, use that !
-        if offsets.corner[forCorner] != 0 {
-            return offsets.corner[forCorner]!
-        }
-
-        // We override for previews
-        if isPreview {
-            offsets.corner[forCorner] = 10
-            return offsets.corner[forCorner]!
-        }
-
-        var my: CGFloat = 50
-
-        // We may override margins
-        if PrefsInfo.overrideMargins {
-            my = CGFloat(PrefsInfo.marginY)
-        }
-
-        offsets.corner[forCorner] = my
-        return my
-    }*/
 
     // Transform a date by setting it to today (or tommorrow)
     func todayizeDate(_ target: Date, strict: Bool) -> Date {
