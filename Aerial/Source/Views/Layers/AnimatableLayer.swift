@@ -135,6 +135,37 @@ extension AnimatableLayer {
         CATransaction.commit()
     }
 
+    // MARK: Corners
+    // Handle the random corner
+    func getCorner() -> InfoCorner {
+        if corner != .random {
+            return corner
+        }
+
+        // Find a new corner, different from the previous one
+        var newCorner = getRandomCorner()
+
+        while newCorner == lastCorner || !layerManager.isCornerAcceptable(corner: newCorner) {
+            newCorner = getRandomCorner()
+        }
+
+        return InfoCorner(rawValue: newCorner)!
+    }
+
+    // Return a strict corner, not a center pos
+    func getRandomCorner() -> Int {
+        let rnd = Int.random(in: 0...3)
+        if rnd == 0 {
+            return 0
+        } else if rnd == 1 {
+            return 2
+        } else if rnd == 2 {
+            return 3
+        } else {
+            return 5
+        }
+    }
+
     // MARK: - Margins
 
     // Get the horizontal margin to the border of the screen
@@ -178,4 +209,70 @@ extension AnimatableLayer {
         return my
     }
 
+    // MARK: Animations
+
+    // Create a Fade In/Out animation
+    func createFadeInOutAnimation(duration: Double) -> CAKeyframeAnimation {
+        let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
+        fadeAnimation.values = [0, 0, 1, 1, 0] as [NSNumber]
+        fadeAnimation.keyTimes = [
+            0,
+            Double(1 / duration ),
+            Double((1 + AerialView.textFadeDuration) / duration),
+            Double(1 - AerialView.textFadeDuration / duration),
+            1,
+            ] as [NSNumber]
+        fadeAnimation.duration = duration
+        return fadeAnimation
+    }
+
+    // Create a Fade In (only) animation, used for things that
+    // should always be on screen (clock, etc)
+    func createFadeInAnimation() -> CAKeyframeAnimation {
+        let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
+        fadeAnimation.values = [0, 0, 1] as [NSNumber]
+        fadeAnimation.keyTimes = [
+            0,
+            Double(1 / (1 + AerialView.textFadeDuration)),
+            Double(1),
+            ] as [NSNumber]
+        fadeAnimation.duration = 1 + AerialView.textFadeDuration
+        return fadeAnimation
+    }
+}
+
+// MARK: Extra helpers for text layers
+
+extension CATextLayer {
+    // Calculate the screen rect that will be used by our string
+    func calculateRect(string: String, font: NSFont) -> CGRect {
+        let boundingRect = self.frame.size
+
+        // We need an attributed string to take the font into account
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font as Any]
+        let str = NSAttributedString(string: string, attributes: attributes)
+
+        // Calculate bounding box
+        let rect = str.boundingRect(with: boundingRect, options: [.truncatesLastVisibleLine, .usesLineFragmentOrigin])
+
+        return CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width+10, height: rect.height + 10)
+    }
+
+    // Get the font and font size
+    func makeFont(name: String, size: Double) -> (NSFont, CGFloat) {
+        let fontSize = CGFloat(size)    // Mayyybe some isPreview global somewhere
+
+        // Get font with a fallback in case
+        var font = NSFont(name: "Helvetica Neue Medium", size: 28)
+        if let tryFont = NSFont(name: name, size: fontSize) {
+            font = tryFont
+        }
+
+        return (font!, fontSize)
+    }
+
+    // Set font & size from some Aerial Preferences
+    func setFont(name: String, size: Double) {
+        (self.font, self.fontSize) = self.makeFont(name: name, size: size)
+    }
 }

@@ -29,6 +29,16 @@ class AnimationLayer: CALayer, AnimatableLayer {
         // alignmentMode = mode
     }
 
+    // Super init, used by CATextLayer's setFont, etc
+    override init(layer: Any) {
+        layerManager = (layer as! AnimationLayer).layerManager
+        isPreview = (layer as! AnimationLayer).isPreview
+        baseLayer = (layer as! AnimationLayer).baseLayer
+        offsets = (layer as! AnimationLayer).offsets
+        corner = (layer as! AnimationLayer).corner
+        super.init(layer: layer)
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -52,4 +62,13 @@ class AnimationLayer: CALayer, AnimatableLayer {
 
         self.shadowColor = CGColor.black
     }
+
+    // Update and move to a corner
+    func update() {
+         // This is the rect resized to our string
+         let newCorner = getCorner()
+
+         //frame = calculateRect(string: string, font: font as! NSFont, newCorner: newCorner)
+         move(toCorner: newCorner, fullRedraw: false)
+     }
 }

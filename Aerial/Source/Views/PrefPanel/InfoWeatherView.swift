@@ -11,16 +11,22 @@ import Cocoa
 class InfoWeatherView: NSView {
     @IBOutlet var locationMode: NSPopUpButton!
     @IBOutlet var locationString: NSTextField!
+    @IBOutlet var degreePopup: NSPopUpButton!
 
     // Init(ish)
     func setStates() {
         locationMode.selectItem(at: PrefsInfo.weather.locationMode.rawValue)
+        degreePopup.selectItem(at: PrefsInfo.weather.degree.rawValue)
 
         locationString.stringValue = PrefsInfo.weather.locationString
     }
 
     @IBAction func locationModeChange(_ sender: NSPopUpButton) {
         PrefsInfo.weather.locationMode = InfoLocationMode(rawValue: sender.indexOfSelectedItem)!
+    }
+
+    @IBAction func degreePopupChange(_ sender: NSPopUpButton) {
+        PrefsInfo.weather.degree = InfoDegree(rawValue: sender.indexOfSelectedItem)!
     }
 
     @IBAction func locationStringChange(_ sender: NSTextField) {
@@ -30,13 +36,9 @@ class InfoWeatherView: NSView {
     @IBAction func testLocationButtonClick(_ sender: NSButton) {
         Weather.fetch(failure: { (error) in
             print(error.localizedDescription)
-        }, success: { (response) in
-            do {
-                //print(response.dataString())
-                try print(response.jsonObject())
-            } catch {
-                print(error.localizedDescription)
-            }
+        }, success: { (_) in
+            let pwc = self.window!.windowController as! PreferencesWindowController
+            pwc.openWeatherPreview()
         })
     }
 

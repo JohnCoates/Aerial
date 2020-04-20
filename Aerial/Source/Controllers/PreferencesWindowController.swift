@@ -188,6 +188,11 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var addVideoSetCancelButton: NSButton!
     @IBOutlet var addVideoSetErrorLabel: NSTextField!
 
+    // Weather Panel
+    @IBOutlet var weatherPanel: NSPanel!
+    @IBOutlet var weatherCustomView: NSView!
+    @IBOutlet var weatherLabel: NSTextField!
+
     // Log Panel
     @IBOutlet var logPanel: NSPanel!
     @IBOutlet weak var logTableView: NSTableView!

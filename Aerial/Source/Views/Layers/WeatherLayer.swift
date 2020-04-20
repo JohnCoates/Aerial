@@ -13,9 +13,9 @@ class WeatherLayer: AnimationLayer {
     var config: PrefsInfo.Weather?
     var wasSetup = false
 
-/*    override init(layer: Any) {
+    override init(layer: Any) {
         super.init(layer: layer)
-    }*/
+    }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -45,12 +45,35 @@ class WeatherLayer: AnimationLayer {
         if !wasSetup {
             wasSetup = true
 
-            /*update(string: "WeatherLayer")
-            let fadeAnimation = self.createFadeInAnimation()
-            add(fadeAnimation, forKey: "textfade")*/
-            contents = NSImage(contentsOfFile: "purple_retina.png")
-            opacity = 1
+            if Weather.info != nil {
+                displayWeatherBlock()
+            } else {
+                Weather.fetch(failure: { (error) in
+                    print(error.localizedDescription)
+                }, success: { (_) in
+                    self.displayWeatherBlock()
+                })
+            }
         }
     }
 
+    func displayWeatherBlock() {
+        if Weather.info == nil {
+            return
+        }
+
+        let todayCond = ConditionLayer(condition: Weather.info!.currentObservation.condition)
+        addSublayer(todayCond)
+
+        self.frame.size = CGSize(width: todayCond.frame.size.width, height: 75)
+
+        let logo = YahooLayer()
+        logo.anchorPoint = CGPoint(x: 1, y: 0)
+        logo.position = CGPoint(x: frame.size.width-5, y: 0)
+        addSublayer(logo)
+
+        update()
+        let fadeAnimation = self.createFadeInAnimation()
+        add(fadeAnimation, forKey: "weatherfade")
+    }
 }

@@ -110,4 +110,20 @@ extension PreferencesWindowController {
     func resetInfoPanel() {
         infoContainerView.subviews.forEach({ $0.removeFromSuperview() })
     }
+
+    func openWeatherPreview() {
+        if !weatherPanel.isVisible {
+            weatherPanel.makeKeyAndOrderFront(self)
+        }
+
+        if Weather.info != nil {
+            weatherLabel.stringValue = "\(Weather.info!.location) \n\n \(Weather.info!.currentObservation)"
+            let cond = ConditionLayer(condition: Weather.info!.currentObservation.condition)
+
+            weatherCustomView.layer = cond
+            weatherCustomView.wantsLayer = true
+        } else {
+            weatherLabel.stringValue = "City not found, please try again"
+        }
+    }
 }
