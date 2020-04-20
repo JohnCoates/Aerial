@@ -4,4 +4,4 @@
 	ignore = dirty
 [submodule "Extern/OAuthSwift"]
 	path = Extern/OAuthSwift
-	url = https://github.com/OAuthSwift/OAuthSwift
+	url = https://github.com/OAuthSwift/OAuthSwift.git
