@@ -2,6 +2,22 @@
 <channel>
 <title>Aerial</title>
 <item>
+<title>1.8.3beta4</title>
+  <description>
+          <![CDATA[
+<ul>
+<li>Fix (again) the beta update feed (sorry again !)</li>
+<li>Fix Location info not showing on some systems</li>
+</ul>
+          ]]>
+  </description>
+<pubDate>mar., 21 mar. 2020 19:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.3beta4/Aerial.saver.zip" sparkle:version="1.8.3beta4" 
+sparkle:edSignature="xYizghRQOVWsNrMUHEjdg3+NgiguME/I7aCv6wMf8Zfj/ff6LDopC7NyZZkt9nBcSUQhxHBbOjcsFY54dX16Bg==" length="6221829" type="application/octet-stream"/>
+</item>
+
+  <item>
 <title>1.8.3beta3</title>
   <description>
           <![CDATA[
