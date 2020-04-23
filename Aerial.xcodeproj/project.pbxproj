@@ -147,6 +147,10 @@
 		03A42AA12449F959003B3012 /* YahooLogoLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A42A9F2449F959003B3012 /* YahooLogoLayer.swift */; };
 		03A42AA3244A0E5F003B3012 /* ConditionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A42AA2244A0E5F003B3012 /* ConditionLayer.swift */; };
 		03A42AA4244A0E5F003B3012 /* ConditionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A42AA2244A0E5F003B3012 /* ConditionLayer.swift */; };
+		03A4A80B2451CE2C00A1F7A3 /* NSImage+trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A4A80A2451CE2C00A1F7A3 /* NSImage+trim.swift */; };
+		03A4A80C2451CE2C00A1F7A3 /* NSImage+trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A4A80A2451CE2C00A1F7A3 /* NSImage+trim.swift */; };
+		03A4A80E2451D04C00A1F7A3 /* PrefsAdvanced.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A4A80D2451D04C00A1F7A3 /* PrefsAdvanced.swift */; };
+		03A4A80F2451D04C00A1F7A3 /* PrefsAdvanced.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A4A80D2451D04C00A1F7A3 /* PrefsAdvanced.swift */; };
 		03A596D323AA750F0097EA66 /* InfoMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A596D223AA750F0097EA66 /* InfoMessageView.swift */; };
 		03A596D523AA752F0097EA66 /* InfoClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A596D423AA752F0097EA66 /* InfoClockView.swift */; };
 		03A596D623AA752F0097EA66 /* InfoClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A596D423AA752F0097EA66 /* InfoClockView.swift */; };
@@ -490,6 +494,8 @@
 		03A42A9B2449F601003B3012 /* purple_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purple_retina.png; sourceTree = "<group>"; };
 		03A42A9F2449F959003B3012 /* YahooLogoLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooLogoLayer.swift; sourceTree = "<group>"; };
 		03A42AA2244A0E5F003B3012 /* ConditionLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionLayer.swift; sourceTree = "<group>"; };
+		03A4A80A2451CE2C00A1F7A3 /* NSImage+trim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+trim.swift"; sourceTree = "<group>"; };
+		03A4A80D2451D04C00A1F7A3 /* PrefsAdvanced.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsAdvanced.swift; sourceTree = "<group>"; };
 		03A596D223AA750F0097EA66 /* InfoMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMessageView.swift; sourceTree = "<group>"; };
 		03A596D423AA752F0097EA66 /* InfoClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoClockView.swift; sourceTree = "<group>"; };
 		03A596D823AB8F000097EA66 /* InfoLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoLocationView.swift; sourceTree = "<group>"; };
@@ -680,6 +686,7 @@
 				0361B9A723D732A300B6252D /* PrefsDisplays.swift */,
 				0361B9AA23D73D4500B6252D /* PrefsTime.swift */,
 				034116D223F9BD3100CD7674 /* PrefsUpdates.swift */,
+				03A4A80D2451D04C00A1F7A3 /* PrefsAdvanced.swift */,
 			);
 			path = Prefs;
 			sourceTree = "<group>";
@@ -926,6 +933,7 @@
 			isa = PBXGroup;
 			children = (
 				039385792175D4B80040B850 /* AVPlayerViewExtension.swift */,
+				03A4A80A2451CE2C00A1F7A3 /* NSImage+trim.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1430,6 +1438,8 @@
 				038D2EBD23AB91C300CD91F7 /* InfoLocationView.swift in Sources */,
 				034F29B823A7A9B3004B34D5 /* InfoTableSource.swift in Sources */,
 				0313F9ED2294468600B074BB /* SeededGenerator.swift in Sources */,
+				03A4A80F2451D04C00A1F7A3 /* PrefsAdvanced.swift in Sources */,
+				03A4A80C2451CE2C00A1F7A3 /* NSImage+trim.swift in Sources */,
 				03FA49B22423DA7D00863AF6 /* InfoTimerView.swift in Sources */,
 				0393857B2175D4B80040B850 /* AVPlayerViewExtension.swift in Sources */,
 				03608A1E22A55BA7008F08A2 /* PWC+Brightness.swift in Sources */,
@@ -1497,6 +1507,7 @@
 				FAC36F591BE1756D007F2A20 /* AerialVideo.swift in Sources */,
 				03893CB3217749F0008E7125 /* ErrorLog.swift in Sources */,
 				0354D0EC23F6CB7B00D86F9E /* InfoSettingsView.swift in Sources */,
+				03A4A80B2451CE2C00A1F7A3 /* NSImage+trim.swift in Sources */,
 				032D1161239A7D82007E7756 /* Battery.swift in Sources */,
 				038D2EE423B6565900CD91F7 /* InfoBatteryView.swift in Sources */,
 				03608A2322A55BF1008F08A2 /* PWC+Updates.swift in Sources */,
@@ -1529,6 +1540,7 @@
 				F008DAFD23AADCFB00739DE1 /* Brightness.swift in Sources */,
 				0361B9AB23D73D4500B6252D /* PrefsTime.swift in Sources */,
 				03233B68217272640077D3F9 /* PoiStringProvider.swift in Sources */,
+				03A4A80E2451D04C00A1F7A3 /* PrefsAdvanced.swift in Sources */,
 				033842E124489D7300A2C523 /* WeatherLayer.swift in Sources */,
 				038D2EE123B6523800CD91F7 /* BatteryLayer.swift in Sources */,
 				FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */,

@@ -100,13 +100,12 @@ struct Weather {
     }
 
     static func processJson(response: OAuthSwiftResponse) {
-        //try? print(response.jsonObject())
+        try? print(response.dataString())
 
         info = try? newJSONDecoder().decode(Welcome.self, from: response.data)
-
         if info == nil {
-           errorLog("Couldn't parse JSON, please report")
-            print(response.dataString())
+            errorLog("Couldn't parse JSON, please report")
+            print(response.dataString()!)
         }
     }
 

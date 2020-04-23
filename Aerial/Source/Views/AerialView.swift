@@ -403,7 +403,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         // play another video
         let oldPlayer = self.player
         self.player = player
-        player.isMuted = true
+        player.isMuted = PrefsAdvanced.muteSound
         // player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
 
         self.playerLayer.player = self.player
