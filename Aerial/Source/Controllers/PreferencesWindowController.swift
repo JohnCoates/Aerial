@@ -175,6 +175,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet weak var showLogBottomClick: NSButton!
     @IBOutlet weak var logToDiskCheckbox: NSButton!
 
+    @IBOutlet var muteSoundCheckbox: NSButton!
+
     @IBOutlet var videoVersionsLabel: NSTextField!
     @IBOutlet var moveOldVideosButton: NSButton!
     @IBOutlet var trashOldVideosButton: NSButton!

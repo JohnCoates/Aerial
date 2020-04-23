@@ -693,7 +693,7 @@ extension PreferencesWindowController {
         case let video as AerialVideo:
             player = AVPlayer()
             playerView.player = player
-            player.isMuted = true
+            player.isMuted = PrefsAdvanced.muteSound
 
             debugLog("Playing this preview \(video)")
             // Workaround for cached videos generating online traffic

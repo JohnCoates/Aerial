@@ -46,71 +46,68 @@ class LocationLayer: AnimationTextLayer {
 
     // Called at each new video
     override func setupForVideo(video: AerialVideo, player: AVPlayer) {
+        print("sfv location")
         let poiStringProvider = PoiStringProvider.sharedInstance
-        let preferences = Preferences.sharedInstance
+        // We need to make sure we actually have descriptions to show.
+        // Custom videos, and earlier tvOS videos may not
+        if poiStringProvider.hasPoiKeys(video: video) {
+            // Grab a sorted array of timestamps and the keys
+            let (keys, times) = getKeysAndTimestamps(video: video)
 
-        if preferences.showDescriptions {
-            // We need to make sure we actually have descriptions to show.
-            // Custom videos, and earlier tvOS videos may not
-            if poiStringProvider.hasPoiKeys(video: video) {
-                // Grab a sorted array of timestamps and the keys
-                let (keys, times) = getKeysAndTimestamps(video: video)
+            // Animate the very first one on it's own
+            let str = poiStringProvider.getString(key: keys["0"]!, video: video)
 
-                // Animate the very first one on it's own
-                let str = poiStringProvider.getString(key: keys["0"]!, video: video)
+            let duration = calculateAnimationDuration(times: times, current: times[0], video: video)
+            let fadeAnimation = createFadeInOutAnimation(duration: duration)
 
-                let duration = calculateAnimationDuration(times: times, current: times[0], video: video)
-                let fadeAnimation = createFadeInOutAnimation(duration: duration)
+            update(string: str)
+            add(fadeAnimation, forKey: "textfade")
 
-                update(string: str)
-                add(fadeAnimation, forKey: "textfade")
+            // AVPlayer requires NSValues of CMTime
+            var timevals = [NSValue]()
+            for time in times {
+                timevals.append(NSValue(time: time))
+            }
 
-                // AVPlayer requires NSValues of CMTime
-                var timevals = [NSValue]()
+            // We then callback for each timestamp
+            timeObserver = player.addBoundaryTimeObserver(forTimes: timevals, queue: DispatchQueue.main) {
+                // find closest timestamp to when we're waking up
+                var closest = 1000.0
+                var closestTime = CMTime.zero
+
                 for time in times {
-                    timevals.append(NSValue(time: time))
-                }
-
-                // We then callback for each timestamp
-                timeObserver = player.addBoundaryTimeObserver(forTimes: timevals, queue: DispatchQueue.main) {
-                    // find closest timestamp to when we're waking up
-                    var closest = 1000.0
-                    var closestTime = CMTime.zero
-
-                    for time in times {
-                        let ts = time.seconds
-                        let distance = abs(ts - player.currentTime().seconds)
-                        if distance < closest {
-                            closest = distance
-                            closestTime = time
-                        }
+                    let ts = time.seconds
+                    let distance = abs(ts - player.currentTime().seconds)
+                    if distance < closest {
+                        closest = distance
+                        closestTime = time
                     }
-
-                    // Get the string for the current timestamp
-                    let key = String(format: "%.0f", closestTime.seconds)
-                    let str = poiStringProvider.getString(key: keys[key]!, video: video)
-
-                    let duration = self.calculateAnimationDuration(times: times, current: closestTime, video: video)
-                    let fadeAnimation = self.createFadeInOutAnimation(duration: duration)
-
-                    self.update(string: str)
-                    self.add(fadeAnimation, forKey: "textfade")
-                }
-            } else {
-                // We don't have any extended description, using Secondary name (location) or video name (City)
-                let str: String
-                if video.secondaryName != "" {
-                    str = video.secondaryName
-                } else {
-                    str = video.name
                 }
 
-                let duration = self.calculateAnimationDuration(times: [], current: CMTime.zero, video: video)
+                // Get the string for the current timestamp
+                let key = String(format: "%.0f", closestTime.seconds)
+                let str = poiStringProvider.getString(key: keys[key]!, video: video)
+
+                let duration = self.calculateAnimationDuration(times: times, current: closestTime, video: video)
                 let fadeAnimation = self.createFadeInOutAnimation(duration: duration)
 
-                update(string: str)
-                add(fadeAnimation, forKey: "textfade")
+                self.update(string: str)
+                self.add(fadeAnimation, forKey: "textfade")
             }
+        } else {
+            // We don't have any extended description, using Secondary name (location) or video name (City)
+            let str: String
+            if video.secondaryName != "" {
+                str = video.secondaryName
+            } else {
+                str = video.name
+            }
+
+            let duration = self.calculateAnimationDuration(times: [], current: CMTime.zero, video: video)
+            let fadeAnimation = self.createFadeInOutAnimation(duration: duration)
+
+            update(string: str)
+            add(fadeAnimation, forKey: "textfade")
         }
     }
 

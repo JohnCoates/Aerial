@@ -19,6 +19,7 @@ class InfoWeatherView: NSView {
         degreePopup.selectItem(at: PrefsInfo.weather.degree.rawValue)
 
         locationString.stringValue = PrefsInfo.weather.locationString
+        locationString.delegate = self
     }
 
     @IBAction func locationModeChange(_ sender: NSPopUpButton) {
@@ -45,5 +46,18 @@ class InfoWeatherView: NSView {
     @IBAction func yahooWeatherButtonClick(_ sender: Any) {
         // Logo must link here, per Yahoo!'s attribution guidelines
         NSWorkspace.shared.open(URL(string: "https://www.yahoo.com/?ilc=401")!)
+    }
+}
+
+extension InfoWeatherView: NSTextFieldDelegate {
+    // We need the delegate to intercept changes without the
+    // enter key being pressed on the textfield
+    func controlTextDidChange(_ obj: Notification) {
+        let textField = obj.object as! NSTextField
+        // Just in case...
+        if textField == locationString {
+            print(textField.stringValue)
+            PrefsInfo.weather.locationString = textField.stringValue
+        }
     }
 }

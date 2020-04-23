@@ -22,6 +22,8 @@ extension PreferencesWindowController {
             synchronizedModeCheckbox.state = .on
         }
 
+        muteSoundCheckbox.state = PrefsAdvanced.muteSound ? .on : .off
+
         // Grab preferred language as proper string
         currentLocaleLabel.stringValue = getPreferredLanguage()
 
@@ -111,6 +113,12 @@ extension PreferencesWindowController {
         let onState = sender.state == .on
         preferences.synchronizedMode = onState
         debugLog("UI synchronizedMode \(onState)")
+    }
+
+    @IBAction func muteSoundClick(_ sender: NSButton) {
+        let onState = sender.state == .on
+        PrefsAdvanced.muteSound = onState
+        debugLog("UI muteSound : \(onState)")
     }
 
     @IBAction func moveOldVideosClick(_ sender: Any) {

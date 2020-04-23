@@ -61,11 +61,12 @@ class WeatherLayer: AnimationLayer {
         if Weather.info == nil {
             return
         }
+        self.frame.size = CGSize(width: 200, height: 75)
 
         let todayCond = ConditionLayer(condition: Weather.info!.currentObservation.condition)
+        todayCond.anchorPoint = CGPoint(x: 1, y: 0)
+        todayCond.position = CGPoint(x: frame.size.width, y: 0)
         addSublayer(todayCond)
-
-        self.frame.size = CGSize(width: todayCond.frame.size.width, height: 75)
 
         let logo = YahooLayer()
         logo.anchorPoint = CGPoint(x: 1, y: 0)
