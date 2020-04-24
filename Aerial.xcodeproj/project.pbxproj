@@ -102,16 +102,12 @@
 		0345A28D24533EF400DD47CD /* cloud.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0345A26124533EF400DD47CD /* cloud.pdf */; };
 		0345A29924533F0700DD47CD /* thermometer.snowflake.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0345A28E24533F0700DD47CD /* thermometer.snowflake.pdf */; };
 		0345A29A24533F0700DD47CD /* thermometer.snowflake.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0345A28E24533F0700DD47CD /* thermometer.snowflake.pdf */; };
-		0345A29B24533F0700DD47CD /* sunset.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0345A28F24533F0700DD47CD /* sunset.pdf */; };
-		0345A29C24533F0700DD47CD /* sunset.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0345A28F24533F0700DD47CD /* sunset.pdf */; };
 		0345A29D24533F0700DD47CD /* tropicalstorm.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0345A29024533F0700DD47CD /* tropicalstorm.pdf */; };
 		0345A29E24533F0700DD47CD /* tropicalstorm.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0345A29024533F0700DD47CD /* tropicalstorm.pdf */; };
 		0345A29F24533F0700DD47CD /* wind.snow.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0345A29124533F0700DD47CD /* wind.snow.pdf */; };
 		0345A2A024533F0700DD47CD /* wind.snow.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0345A29124533F0700DD47CD /* wind.snow.pdf */; };
 		0345A2A124533F0700DD47CD /* wrench.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0345A29224533F0700DD47CD /* wrench.pdf */; };
 		0345A2A224533F0700DD47CD /* wrench.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0345A29224533F0700DD47CD /* wrench.pdf */; };
-		0345A2A324533F0800DD47CD /* sunrise.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0345A29324533F0700DD47CD /* sunrise.pdf */; };
-		0345A2A424533F0800DD47CD /* sunrise.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0345A29324533F0700DD47CD /* sunrise.pdf */; };
 		0345A2A524533F0800DD47CD /* wind.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0345A29424533F0700DD47CD /* wind.pdf */; };
 		0345A2A624533F0800DD47CD /* wind.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0345A29424533F0700DD47CD /* wind.pdf */; };
 		0345A2A724533F0800DD47CD /* sun.max.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0345A29524533F0700DD47CD /* sun.max.pdf */; };
@@ -542,11 +538,9 @@
 		0345A26024533EF400DD47CD /* cloud.sun.bolt.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = cloud.sun.bolt.pdf; sourceTree = "<group>"; };
 		0345A26124533EF400DD47CD /* cloud.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = cloud.pdf; sourceTree = "<group>"; };
 		0345A28E24533F0700DD47CD /* thermometer.snowflake.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = thermometer.snowflake.pdf; sourceTree = "<group>"; };
-		0345A28F24533F0700DD47CD /* sunset.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sunset.pdf; sourceTree = "<group>"; };
 		0345A29024533F0700DD47CD /* tropicalstorm.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = tropicalstorm.pdf; sourceTree = "<group>"; };
 		0345A29124533F0700DD47CD /* wind.snow.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = wind.snow.pdf; sourceTree = "<group>"; };
 		0345A29224533F0700DD47CD /* wrench.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = wrench.pdf; sourceTree = "<group>"; };
-		0345A29324533F0700DD47CD /* sunrise.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sunrise.pdf; sourceTree = "<group>"; };
 		0345A29424533F0700DD47CD /* wind.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = wind.pdf; sourceTree = "<group>"; };
 		0345A29524533F0700DD47CD /* sun.max.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sun.max.pdf; sourceTree = "<group>"; };
 		0345A29624533F0700DD47CD /* tornado.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = tornado.pdf; sourceTree = "<group>"; };
@@ -788,8 +782,6 @@
 				0345A24824532DD400DD47CD /* sun.haze.pdf */,
 				0345A29524533F0700DD47CD /* sun.max.pdf */,
 				0345A29724533F0700DD47CD /* sun.min.pdf */,
-				0345A29324533F0700DD47CD /* sunrise.pdf */,
-				0345A28F24533F0700DD47CD /* sunset.pdf */,
 				0345A28E24533F0700DD47CD /* thermometer.snowflake.pdf */,
 				0345A29824533F0700DD47CD /* thermometer.sun.pdf */,
 				0345A29624533F0700DD47CD /* tornado.pdf */,
@@ -1391,10 +1383,8 @@
 				0345A27524533EF400DD47CD /* cloud.sleet.pdf in Resources */,
 				03DAD470229EAC66000DA6D1 /* Installation.md in Resources */,
 				0345A28D24533EF400DD47CD /* cloud.pdf in Resources */,
-				0345A29C24533F0700DD47CD /* sunset.pdf in Resources */,
 				0345A26B24533EF400DD47CD /* cloud.bolt.pdf in Resources */,
 				FAC36F541BE1756D007F2A20 /* PreferencesWindow.xib in Resources */,
-				0345A2A424533F0800DD47CD /* sunrise.pdf in Resources */,
 				0345A27124533EF400DD47CD /* cloud.sun.rain.pdf in Resources */,
 				03A42A9D2449F602003B3012 /* purple_retina.png in Resources */,
 				0345A2A624533F0800DD47CD /* wind.pdf in Resources */,
@@ -1478,7 +1468,6 @@
 				035A92A6225F8C480095AB85 /* de.json in Resources */,
 				0345A2A724533F0800DD47CD /* sun.max.pdf in Resources */,
 				03D37FDB22145487005A146F /* fr.json in Resources */,
-				0345A2A324533F0800DD47CD /* sunrise.pdf in Resources */,
 				0345A28224533EF400DD47CD /* cloud.drizzle.pdf in Resources */,
 				03A42A992449F5EA003B3012 /* white_retina.png in Resources */,
 				0345A2AB24533F0800DD47CD /* sun.min.pdf in Resources */,
@@ -1523,7 +1512,6 @@
 				FAC36F4F1BE1756D007F2A20 /* icon-night.pdf in Resources */,
 				0313F9E622942AA500B074BB /* CustomVideos.xib in Resources */,
 				033192E1217B78240073B580 /* en.json in Resources */,
-				0345A29B24533F0700DD47CD /* sunset.pdf in Resources */,
 				0345A27E24533EF400DD47CD /* moon.stars.pdf in Resources */,
 				03A42A9C2449F602003B3012 /* purple_retina.png in Resources */,
 				0345A27A24533EF400DD47CD /* cloud.fog.pdf in Resources */,
@@ -1995,7 +1983,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.8.3beta5;
+				CURRENT_PROJECT_VERSION = 1.8.3beta6;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2003,7 +1991,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.8.3beta5;
+				MARKETING_VERSION = 1.8.3beta6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2023,7 +2011,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.8.3beta5;
+				CURRENT_PROJECT_VERSION = 1.8.3beta6;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2031,7 +2019,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.8.3beta5;
+				MARKETING_VERSION = 1.8.3beta6;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -12,11 +12,13 @@ class InfoWeatherView: NSView {
     @IBOutlet var locationMode: NSPopUpButton!
     @IBOutlet var locationString: NSTextField!
     @IBOutlet var degreePopup: NSPopUpButton!
+    @IBOutlet var iconsPopup: NSPopUpButton!
 
     // Init(ish)
     func setStates() {
         locationMode.selectItem(at: PrefsInfo.weather.locationMode.rawValue)
         degreePopup.selectItem(at: PrefsInfo.weather.degree.rawValue)
+        iconsPopup.selectItem(at: PrefsInfo.weather.icons.rawValue)
 
         locationString.stringValue = PrefsInfo.weather.locationString
         locationString.delegate = self
@@ -24,6 +26,10 @@ class InfoWeatherView: NSView {
 
     @IBAction func locationModeChange(_ sender: NSPopUpButton) {
         PrefsInfo.weather.locationMode = InfoLocationMode(rawValue: sender.indexOfSelectedItem)!
+    }
+
+    @IBAction func iconsChange(_ sender: NSPopUpButton) {
+        PrefsInfo.weather.icons = InfoIconsWeather(rawValue: sender.indexOfSelectedItem)!
     }
 
     @IBAction func degreePopupChange(_ sender: NSPopUpButton) {

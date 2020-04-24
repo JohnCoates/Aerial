@@ -149,16 +149,16 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="631" height="466"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-            <view key="contentView" identifier="windowView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="631" height="466"/>
+            <view key="contentView" identifier="windowView" misplaced="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="631" height="465"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <view identifier="preferencesView" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGe-MQ-1z1">
-                        <rect key="frame" x="0.0" y="41" width="625" height="425"/>
+                        <rect key="frame" x="0.0" y="41" width="625" height="424"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B9U-tn-dsp">
-                                <rect key="frame" x="-1" y="-5" width="634" height="427"/>
+                                <rect key="frame" x="-1" y="-5" width="634" height="426"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
@@ -1747,11 +1747,11 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                     </tabViewItem>
                                     <tabViewItem label="Advanced" identifier="" id="asf-lu-1rA">
                                         <view key="view" id="303-Jh-DVp">
-                                            <rect key="frame" x="10" y="33" width="614" height="381"/>
+                                            <rect key="frame" x="10" y="33" width="614" height="380"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button toolTip="Debug mode will enable extra debug information messages to be logged. " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Veo-4u-pxN">
-                                                    <rect key="frame" x="15" y="319" width="116" height="18"/>
+                                                    <rect key="frame" x="15" y="318" width="116" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Debug mode" bezelStyle="regularSquare" imagePosition="left" inset="2" id="lpe-59-RED">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1762,7 +1762,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </button>
                                                 <button toolTip="This setting will save Aerial logs to a file " verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="roX-7H-4ec">
-                                                    <rect key="frame" x="130" y="319" width="111" height="18"/>
+                                                    <rect key="frame" x="130" y="318" width="111" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Log to disk" bezelStyle="regularSquare" imagePosition="left" inset="2" id="4Zh-Wo-icG">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1773,15 +1773,15 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </button>
                                                 <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="qAf-pp-fUm">
-                                                    <rect key="frame" x="10" y="294" width="595" height="5"/>
+                                                    <rect key="frame" x="10" y="293" width="595" height="5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 </box>
                                                 <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="vVE-Vj-A0w">
-                                                    <rect key="frame" x="9" y="238" width="595" height="5"/>
+                                                    <rect key="frame" x="9" y="237" width="595" height="5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 </box>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="40L-6p-w4z">
-                                                    <rect key="frame" x="7" y="349" width="160" height="17"/>
+                                                    <rect key="frame" x="7" y="348" width="160" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Logs and debugging:" id="cLH-S1-Bfa">
                                                         <font key="font" metaFont="system"/>
@@ -1790,7 +1790,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PWQ-sH-YlW">
-                                                    <rect key="frame" x="15" y="59" width="236" height="18"/>
+                                                    <rect key="frame" x="15" y="58" width="236" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <string key="toolTip">When running Aerial simultaneously on multiple computers, enabling this will synchronize the video shuffle based on current time</string>
                                                     <buttonCell key="cell" type="check" title="Synchronize on multiple computers" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fo3-Di-Fl8">
@@ -1802,7 +1802,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </button>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NxQ-dm-lqE">
-                                                    <rect key="frame" x="7" y="85" width="156" height="17"/>
+                                                    <rect key="frame" x="7" y="84" width="156" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Misc:" id="Sze-wR-9hN">
                                                         <font key="font" metaFont="system"/>
@@ -1811,7 +1811,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <button toolTip="Show AerialLog.txt in finder" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TF9-0r-C9I">
-                                                    <rect key="frame" x="451" y="310" width="141" height="32"/>
+                                                    <rect key="frame" x="451" y="309" width="141" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="push" title="Show in Finder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HYt-mp-nmh">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1831,7 +1831,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <popUpButton verticalHuggingPriority="750" verifyAmbiguity="off" id="Thy-6K-bQe">
-                                                    <rect key="frame" x="82" y="255" width="160" height="25"/>
+                                                    <rect key="frame" x="82" y="254" width="160" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <popUpButtonCell key="cell" type="push" title="Preferred" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="xCg-g0-Bhx" id="nf2-lO-M2x">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1876,7 +1876,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </connections>
                                                 </popUpButton>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="AA1-DI-Dei">
-                                                    <rect key="frame" x="249" y="260" width="313" height="17"/>
+                                                    <rect key="frame" x="249" y="259" width="313" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Your current locale is " id="FRS-mq-r4b">
                                                         <font key="font" metaFont="system"/>
@@ -1885,7 +1885,7 @@ Shift, but macOS 10.12.4 or above and a compatible Mac are required) </string>
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jm9-Dk-lF0">
-                                                    <rect key="frame" x="15" y="33" width="94" height="18"/>
+                                                    <rect key="frame" x="15" y="32" width="94" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Mute sound" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="UXD-Dv-tQ0">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1943,7 +1943,7 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ndV-E9-x71">
-                        <rect key="frame" x="464" y="10" width="67" height="27"/>
+                        <rect key="frame" x="464" y="9" width="67" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" title="1.0.0beta1" bezelStyle="rounded" alignment="right" imageScaling="proportionallyDown" inset="2" id="O5H-2o-0dP">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -3710,7 +3710,7 @@ corner</string>
                     </connections>
                 </button>
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BIM-F8-2a9">
-                    <rect key="frame" x="113" y="106" width="165" height="25"/>
+                    <rect key="frame" x="113" y="106" width="196" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="Use current" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ZI3-lT-Ife" id="Lrm-ce-CGz">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -3726,20 +3726,8 @@ corner</string>
                         <action selector="locationModeChange:" target="zD2-l0-PAj" id="BXg-vU-GiG"/>
                     </connections>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bNo-I5-Pls">
-                    <rect key="frame" x="115" y="81" width="216" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Paris, FR" drawsBackground="YES" id="hPo-pT-njT">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <action selector="locationStringChange:" target="zD2-l0-PAj" id="Z0j-R5-zOQ"/>
-                    </connections>
-                </textField>
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w0n-JT-Rew">
-                    <rect key="frame" x="312" y="106" width="77" height="25"/>
+                    <rect key="frame" x="319" y="106" width="77" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="°C" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="KAC-ge-1QO" id="gJa-N1-BJp">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -3755,8 +3743,25 @@ corner</string>
                         <action selector="degreePopupChange:" target="zD2-l0-PAj" id="IlA-gg-Doz"/>
                     </connections>
                 </popUpButton>
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4XM-gH-akN">
+                    <rect key="frame" x="113" y="75" width="240" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Flat symbols" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="lxv-Jy-4cm" id="fdw-E7-ndh">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <menu key="menu" id="fjX-Tz-BYo">
+                            <items>
+                                <menuItem title="Flat symbols" state="on" id="lxv-Jy-4cm"/>
+                                <menuItem title="Color icons (requires network)" id="GKL-uV-AzG"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="iconsChange:" target="zD2-l0-PAj" id="ftL-C3-2op"/>
+                    </connections>
+                </popUpButton>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Tn-Yh-gOe">
-                    <rect key="frame" x="109" y="45" width="66" height="32"/>
+                    <rect key="frame" x="333" y="42" width="66" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Test" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wqy-ch-oY9">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -3766,9 +3771,31 @@ corner</string>
                         <action selector="testLocationButtonClick:" target="zD2-l0-PAj" id="mlT-Xd-sX8"/>
                     </connections>
                 </button>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bNo-I5-Pls">
+                    <rect key="frame" x="115" y="49" width="216" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Paris, FR" drawsBackground="YES" id="hPo-pT-njT">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <action selector="locationStringChange:" target="zD2-l0-PAj" id="Z0j-R5-zOQ"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mi8-Hl-Def">
+                    <rect key="frame" x="68" y="81" width="41" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Icons:" id="QUa-VP-jea">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <connections>
                 <outlet property="degreePopup" destination="w0n-JT-Rew" id="rzk-DZ-EQU"/>
+                <outlet property="iconsPopup" destination="4XM-gH-akN" id="OVw-Mh-XUa"/>
                 <outlet property="locationMode" destination="BIM-F8-2a9" id="ht4-pe-Y0F"/>
                 <outlet property="locationString" destination="bNo-I5-Pls" id="qsh-3W-AGX"/>
             </connections>
