@@ -38,7 +38,15 @@ class ConditionLayer: CALayer {
         frame.size = CGSize(width: 200, height: 75)
         print(condition)
 
-        downloadImage(from: URL(string: "https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/\(condition.code)d.png")!)
+        let cimg = ConditionSymbolLayer(condition: condition)
+        self.addSublayer(cimg)
+        /*
+        if Weather.isNight() {
+            downloadImage(from: URL(string: "https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/\(condition.code)n.png")!)
+
+        } else {
+            downloadImage(from: URL(string: "https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/\(condition.code)d.png")!)
+        }*/
     }
 
     override init(layer: Any) {

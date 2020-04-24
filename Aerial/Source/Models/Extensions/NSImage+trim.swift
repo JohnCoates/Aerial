@@ -85,4 +85,18 @@ extension NSImage {
 
         return CGRect(x: leftCrop, y: topCrop, width: rightCrop-leftCrop, height: bottomCrop-topCrop)
     }
+
+    func tinting(with tintColor: NSColor) -> NSImage {
+        guard let cgImage = self.cgImage(forProposedRect: nil, context: nil, hints: nil) else { return self }
+
+        return NSImage(size: size, flipped: false) { bounds in
+            guard let context = NSGraphicsContext.current?.cgContext else { return false }
+
+            tintColor.set()
+            context.clip(to: bounds, mask: cgImage)
+            context.fill(bounds)
+
+            return true
+        }
+    }
 }
