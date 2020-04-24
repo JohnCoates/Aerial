@@ -70,7 +70,7 @@ class WeatherLayer: AnimationLayer {
 
         let logo = YahooLayer()
         logo.anchorPoint = CGPoint(x: 1, y: 0)
-        logo.position = CGPoint(x: frame.size.width-5, y: 0)
+        logo.position = CGPoint(x: frame.size.width-10, y: 0)
         addSublayer(logo)
 
         update()

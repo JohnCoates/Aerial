@@ -38,7 +38,20 @@ class ConditionLayer: CALayer {
         frame.size = CGSize(width: 200, height: 75)
         print(condition)
 
-        downloadImage(from: URL(string: "https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/\(condition.code)d.png")!)
+        if PrefsInfo.weather.icons == .flat {
+            let tempWidth = addTemperature()
+
+            let imglayer = ConditionSymbolLayer(condition: condition, isNight: Weather.isNight())
+            imglayer.anchorPoint = CGPoint(x: 1, y: 0.5)
+            imglayer.position = CGPoint(x: self.frame.size.width - tempWidth - 15, y: 50)
+            self.addSublayer(imglayer)
+        } else {
+            if Weather.isNight() {
+                downloadImage(from: URL(string: "https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/\(condition.code)n.png")!)
+            } else {
+                downloadImage(from: URL(string: "https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/\(condition.code)d.png")!)
+            }
+        }
     }
 
     override init(layer: Any) {
@@ -53,6 +66,27 @@ class ConditionLayer: CALayer {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 
+    func addTemperature() -> CGFloat {
+        // Make a vertically centered layer for t°
+        let temp = CAVCTextLayer()
+        temp.string = "\(self.condition!.temperature)°"
+
+        // Get something large first
+        temp.frame.size = CGSize(width: 100, height: 100)
+        (temp.font, temp.fontSize) = temp.makeFont(name: PrefsInfo.weather.fontName, size: PrefsInfo.weather.fontSize)
+
+        // ReRect the temperature
+        let rect = temp.calculateRect(string: temp.string as! String, font: temp.font as! NSFont)
+        temp.frame = rect
+        self.addSublayer(temp)
+
+        // We put the temperature at the right of the weather icon
+        temp.anchorPoint = CGPoint(x: 1, y: 0.5)
+        temp.position = CGPoint(x: self.frame.size.width, y: 50)
+
+        return rect.size.width
+    }
+
     func downloadImage(from url: URL) {
         print("Download Started")
         getData(from: url) { data, response, error in
@@ -64,6 +98,7 @@ class ConditionLayer: CALayer {
 
                 // If we have something, trim and put it up
                 if let img = imgs {
+                    /*
                     // Make a vertically centered layer for t°
                     let temp = CAVCTextLayer()
                     temp.string = "\(self.condition!.temperature)°"
@@ -80,6 +115,8 @@ class ConditionLayer: CALayer {
                     // We put the temperature at the right of the weather icon
                     temp.anchorPoint = CGPoint(x: 1, y: 0.5)
                     temp.position = CGPoint(x: self.frame.size.width, y: 50)
+*/
+                    let tempWidth = self.addTemperature()
 
                     // Get the trimmed image first, goes on the left
                     let trimmedimg = img.trim()!
@@ -90,7 +127,7 @@ class ConditionLayer: CALayer {
                     imglayer.contents = trimmedimg
 
                     imglayer.anchorPoint = CGPoint(x: 1, y: 0.5)
-                    imglayer.position = CGPoint(x: self.frame.size.width - rect.size.width - 15, y: 50)
+                    imglayer.position = CGPoint(x: self.frame.size.width - tempWidth - 15, y: 50)
                     self.addSublayer(imglayer)
                 }
             }

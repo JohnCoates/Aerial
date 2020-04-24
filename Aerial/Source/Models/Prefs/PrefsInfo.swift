@@ -54,6 +54,10 @@ enum InfoDegree: Int, Codable {
     case celsius, fahrenheit
 }
 
+enum InfoIconsWeather: Int, Codable {
+    case flat, yahoo
+}
+
 // The various info types available
 enum InfoType: String, Codable {
     case location, message, clock, date, battery, updates, weather, countdown, timer
@@ -109,6 +113,7 @@ struct PrefsInfo {
         var locationMode: InfoLocationMode
         var locationString: String
         var degree: InfoDegree
+        var icons: InfoIconsWeather
     }
 
     struct Battery: CommonInfo, Codable {
@@ -224,7 +229,8 @@ struct PrefsInfo {
                                                         displays: .allDisplays,
                                                         locationMode: .manuallySpecify,
                                                         locationString: "",
-                                                        degree: .celsius))
+                                                        degree: .celsius,
+                                                        icons: .flat))
     static var weather: Weather
 
     // Countdown
