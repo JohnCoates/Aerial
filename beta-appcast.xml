@@ -2,6 +2,21 @@
 <channel>
 <title>Aerial</title>
 <item>
+<title>1.8.3beta6</title>
+  <description>
+          <![CDATA[
+<ul>
+<li>Add a new icon set exported from SF Symbols for weather</li>
+<li>Fixed night icons not showing, on SF Symbols and Yahoo's default icons</li>
+</ul>
+          ]]>
+  </description>
+<pubDate>ven., 24 mar. 2020 19:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.3beta6/Aerial.saver.zip" sparkle:version="1.8.3beta6" 
+sparkle:edSignature="z77zTXuSwWu+l3i4rzPckP43nJqriGe/mV5vFxNd7GqV8IIXhBbUOBKLbm8B2IHYme0ryatbWwf5roqh/IXxAA==" length="6406005" type="application/octet-stream"/>
+</item>
+<item>
 <title>1.8.3beta4</title>
   <description>
           <![CDATA[
