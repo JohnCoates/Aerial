@@ -138,6 +138,7 @@ struct Weather {
         let tSunset = todayizeDate(date: sunset!)!
 
         let currentTime = Date()
+        print("\(tSunrise) \(currentTime) \(tSunset)")
 
         if currentTime > tSunrise && currentTime < tSunset {
             return false

@@ -453,27 +453,42 @@ struct PrefsInfo {
     var wrappedValue: T {
         get {
             if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
-                // Read value from UserDefaults
-                guard let data = userDefaults.object(forKey: key) as? Data else {
-                    // Return defaultValue when no data in UserDefaults
-                    return defaultValue
+                // We shoot for a string in the new system
+                if let jsonString = userDefaults.string(forKey: key) {
+                    guard let jsonData = jsonString.data(using: .utf8) else {
+                        return defaultValue
+                    }
+                    guard let value = try? JSONDecoder().decode(T.self, from: jsonData) else {
+                        return defaultValue
+                    }
+                    return value
+                } else {
+                    // Old time users may have the prefs stored as a data blob though
+                    if let data = userDefaults.object(forKey: key) as? Data {
+                        let value = try? JSONDecoder().decode(T.self, from: data)
+                        return value ?? defaultValue
+                    } else {
+                        return defaultValue
+                    }
                 }
-
-                // Convert data to the desire data type
-                let value = try? JSONDecoder().decode(T.self, from: data)
-                return value ?? defaultValue
             }
 
             return defaultValue
         }
         set {
-            // Convert newValue to data
-            let data = try? JSONEncoder().encode(newValue)
+            let encoder = JSONEncoder()
+            if #available(OSX 10.13, *) {
+                encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+            } else {
+                encoder.outputFormatting = [.prettyPrinted]
+            }
 
-            //let module = "com.JohnCoates.Aerial"
+            let jsonData = try? encoder.encode(newValue)
+            let jsonString = String(bytes: jsonData!, encoding: .utf8)
+
             if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
                 // Set value to UserDefaults
-                userDefaults.set(data, forKey: key)
+                userDefaults.set(jsonString, forKey: key)
 
                 // We force the sync so the settings are automatically saved
                 // This is needed as the System Preferences instance of Aerial
