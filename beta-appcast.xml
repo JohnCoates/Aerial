@@ -2,6 +2,21 @@
 <channel>
 <title>Aerial</title>
 <item>
+<title>1.8.3beta7</title>
+  <description>
+          <![CDATA[
+<ul>
+<li>Fix sun icon being misnamed, causing a crash with sunny conditions (sorry!)</li>
+<li>Made the plist more human readable/editable for 3rd party toolsAdd a new icon set exported from SF Symbols for weather</li>
+</ul>
+          ]]>
+  </description>
+<pubDate>dim., 26 avr. 2020 19:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.3beta7/Aerial.saver.zip" sparkle:version="1.8.3beta7" 
+sparkle:edSignature="SkP8ugIRXY0Nubswx5X6lGPGh7Xr8rr6Cm6tTW9djDg/jh2ixbqckABTpTZ6vMouDGNk3XOT8GGQOfArYEAgBQ==" length="6409464" type="application/octet-stream"/>
+</item>
+<item>
 <title>1.8.3beta6</title>
   <description>
           <![CDATA[
