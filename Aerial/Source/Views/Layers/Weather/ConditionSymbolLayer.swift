@@ -42,8 +42,8 @@ class ConditionSymbolLayer: CALayer {
                        30: "cloud.sun",
                        31: "sun.max", //
                        32: "sun.max", //
-                       33: "sun", //
-                       34: "sun", //
+                       33: "sun.min", //
+                       34: "sun.min", //
                        35: "cloud.sleet",
                        36: "thermometer.sun",
                        37: "cloud.sun.bolt", //
