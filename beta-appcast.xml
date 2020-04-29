@@ -2,6 +2,22 @@
 <channel>
 <title>Aerial</title>
 <item>
+<title>1.8.3beta8</title>
+  <description>
+          <![CDATA[
+<ul>
+<li>Flat icons should look much crispier now</li>
+<li>Potential fix for issues with dates</li>
+</ul>
+          ]]>
+  </description>
+<pubDate>mer., 29 avr. 2020 19:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.3beta8/Aerial.saver.zip" sparkle:version="1.8.3beta8" 
+sparkle:edSignature="uhbOJk0//OvsOg0vxvoDcuyd+vrhte5YHcPZK3YgDQ0ZzcrDK8YzPjYcmqic5cRgZ2gSVGa/9S2I17gFoLJEBg==" length="6398568" type="application/octet-stream"/>
+</item>
+
+<item>
 <title>1.8.3beta7</title>
   <description>
           <![CDATA[
