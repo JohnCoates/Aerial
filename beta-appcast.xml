@@ -2,6 +2,22 @@
 <channel>
 <title>Aerial</title>
 <item>
+<title>1.8.3beta9</title>
+  <description>
+          <![CDATA[
+<ul>
+<li>Weather icons should be sharper</li>
+<li>Night time calculation should now be correct</li>
+<li>Add a new battery icon indicator, set as default</li>
+</ul>
+          ]]>
+  </description>
+<pubDate>ven., 1 mai. 2020 19:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.3beta9/Aerial.saver.zip" sparkle:version="1.8.3beta9" 
+sparkle:edSignature="cYuAqOd4ufadts6AL+zE/t1sqjK/j0EXK+V59pB655SZvLDtM177gynyTIWbkBos1J1Q035kCXCeJTZzA1ulDg==" length="6408710" type="application/octet-stream"/>
+</item>
+<item>
 <title>1.8.3beta8</title>
   <description>
           <![CDATA[
