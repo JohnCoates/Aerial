@@ -125,49 +125,32 @@ struct Weather {
             return false    // We shouldn't be here but hey
         }
 
-        // Apparently the string is always in am/pm format, assumed to be in local time...
-        let pmformatter = DateFormatter()
-        pmformatter.dateFormat = "h:mm a"
+        // First we need to get today's date !
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        let dateString = df.string(from: Date())
 
-        let sunrise = pmformatter.date(from: info!.currentObservation.astronomy.sunrise)
-        let sunset = pmformatter.date(from: info!.currentObservation.astronomy.sunset)
+        // Apparently the string is always in am/pm format, in local time
+        let pmformatter = DateFormatter()
+        pmformatter.dateFormat = "yyyy-MM-dd h:mm a"
+
+        let sunrise = pmformatter.date(from: dateString + " " + info!.currentObservation.astronomy.sunrise)
+        let sunset = pmformatter.date(from: dateString + " " + info!.currentObservation.astronomy.sunset)
 
         if sunrise == nil || sunset == nil {
             errorLog("Could not parse sunrise/sunset times, please report ! \(String(describing: sunrise)) \(String(describing: sunset))")
             return false
         }
 
-        let tSunrise = todayizeDate(date: sunrise!)!
-        let tSunset = todayizeDate(date: sunset!)!
-
         let currentTime = Date()
-        print("\(tSunrise) \(currentTime) \(tSunset)")
+        print("\(sunrise!) \(currentTime) \(sunset!)")
 
-        if currentTime > tSunrise && currentTime < tSunset {
+        if currentTime > sunrise! && currentTime < sunset! {
+            debugLog("=== YW: daytime")
             return false
         } else {
+            debugLog("=== YW: nighttime")
             return true
-        }
-    }
-
-    // This should be in a util struct or an extension...
-    static func todayizeDate(date: Date) -> Date? {
-        // Get today's date as a string
-        let dateFormatter = DateFormatter()
-        let current = Date()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let today = dateFormatter.string(from: current)
-
-        // Extract hour from date
-        dateFormatter.dateFormat = "HH:mm:ss +zzzz"
-        let format = today + " " + dateFormatter.string(from: date)
-
-        // Now return the todayized string
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
-        if let newdate = dateFormatter.date(from: format) {
-            return newdate
-        } else {
-            return nil
         }
     }
 }
