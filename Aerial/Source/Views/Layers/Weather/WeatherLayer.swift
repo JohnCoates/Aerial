@@ -13,6 +13,8 @@ class WeatherLayer: AnimationLayer {
     var config: PrefsInfo.Weather?
     var wasSetup = false
 
+    var cscale: CGFloat?
+
     override init(layer: Any) {
         super.init(layer: layer)
     }
@@ -37,6 +39,11 @@ class WeatherLayer: AnimationLayer {
         (self.font, self.fontSize) = getFont(name: config.fontName,
                                              size: config.fontSize)*/
         self.corner = config.corner
+    }
+
+    override func setContentScale(scale: CGFloat) {
+        print("sCS wov : \(scale)")
+        cscale = scale
     }
 
     // Called at each new video, we only setup once though !
@@ -66,11 +73,13 @@ class WeatherLayer: AnimationLayer {
         let todayCond = ConditionLayer(condition: Weather.info!.currentObservation.condition)
         todayCond.anchorPoint = CGPoint(x: 1, y: 0)
         todayCond.position = CGPoint(x: frame.size.width, y: 0)
+        todayCond.contentsScale = cscale!
         addSublayer(todayCond)
 
         let logo = YahooLayer()
         logo.anchorPoint = CGPoint(x: 1, y: 0)
         logo.position = CGPoint(x: frame.size.width-10, y: 0)
+        logo.contentsScale = cscale!
         addSublayer(logo)
 
         update()

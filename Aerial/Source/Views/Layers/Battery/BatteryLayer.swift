@@ -13,6 +13,7 @@ class BatteryLayer: AnimationTextLayer {
     var config: PrefsInfo.Battery?
     var wasSetup = false
     var batteryTimer: Timer?
+    var icon: BatteryIconLayer?
 
     override init(layer: Any) {
         super.init(layer: layer)
@@ -38,6 +39,21 @@ class BatteryLayer: AnimationTextLayer {
         (self.font, self.fontSize) = getFont(name: config.fontName,
                                              size: config.fontSize)
         self.corner = config.corner
+
+        if config.mode == .icon {
+            icon = BatteryIconLayer()
+            frame.size = icon!.frame.size
+            icon!.anchorPoint = CGPoint(x: 1, y: 0)
+            icon!.position = CGPoint(x: 15, y: 0)    // This is probably wrong...
+            self.addSublayer(icon!)
+        }
+    }
+
+    override func setContentScale(scale: CGFloat) {
+        print("sCS ov : \(scale)")
+        if icon != nil {
+            icon!.setContentScale(scale: scale)
+        }
     }
 
     override func setupForVideo(video: AerialVideo, player: AVPlayer) {
@@ -45,13 +61,27 @@ class BatteryLayer: AnimationTextLayer {
         if !wasSetup {
             wasSetup = true
 
-            if #available(OSX 10.12, *) {
-                batteryTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true, block: { (_) in
-                    self.update(string: self.getBatteryString())
-                })
+            if config!.mode == .text {
+                update(string: getBatteryString())
+            } else {
+                /*icon = BatteryIconLayer()
+                frame.size = icon!.frame.size
+                icon!.anchorPoint = CGPoint(x: 1, y: 0)
+                icon!.position = CGPoint(x: 15, y: 0)    // This is probably wrong...
+                addSublayer(icon!)*/
+                self.update(string: "")
             }
 
-            update(string: getBatteryString())
+            if #available(OSX 10.12, *) {
+                batteryTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true, block: { (_) in
+                    if self.config!.mode == .text {
+                        self.update(string: self.getBatteryString())
+                    } else {
+                        self.icon!.update()
+                        self.update(string: "")
+                    }
+                })
+            }
 
             let fadeAnimation = self.createFadeInAnimation()
             add(fadeAnimation, forKey: "textfade")

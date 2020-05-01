@@ -59,6 +59,7 @@ class AnimationTextLayer: CATextLayer, AnimatableLayer {
     // To be overriden if needed
     func clear(player: AVPlayer) {} // Optional
     func setupForVideo(video: AerialVideo, player: AVPlayer) {} // Pretty much required
+    func setContentScale(scale: CGFloat) {}
 
     // Called by the extension to set the text alignment
     func setAlignment(mode: CATextLayerAlignmentMode) {

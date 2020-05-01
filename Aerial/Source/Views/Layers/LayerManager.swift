@@ -145,6 +145,7 @@ class LayerManager {
     func setContentScale(scale: CGFloat) {
         for layer in additionalLayers {
             layer.contentsScale = scale
+            layer.setContentScale(scale: scale)
         }
     }
 

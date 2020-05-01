@@ -139,6 +139,8 @@ struct Weather {
 
         if sunrise == nil || sunset == nil {
             errorLog("Could not parse sunrise/sunset times, please report ! \(String(describing: sunrise)) \(String(describing: sunset))")
+            errorLog(dateString + " " + info!.currentObservation.astronomy.sunrise)
+            errorLog(dateString + " " + info!.currentObservation.astronomy.sunset)
             return false
         }
 

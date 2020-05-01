@@ -12,6 +12,12 @@
 		0306336B23A142FA00046A59 /* LayerOffsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306336A23A142FA00046A59 /* LayerOffsets.swift */; };
 		0306336C23A143D900046A59 /* LayerOffsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306336A23A142FA00046A59 /* LayerOffsets.swift */; };
 		0306336E23A15FA900046A59 /* AnimationTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306336D23A15FA900046A59 /* AnimationTextLayer.swift */; };
+		030A0F23245C7924009E1D97 /* battery.0.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 030A0F0C245C7924009E1D97 /* battery.0.pdf */; };
+		030A0F24245C7924009E1D97 /* battery.0.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 030A0F0C245C7924009E1D97 /* battery.0.pdf */; };
+		030A0F26245C7B37009E1D97 /* bolt.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 030A0F25245C7B37009E1D97 /* bolt.pdf */; };
+		030A0F27245C7B37009E1D97 /* bolt.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 030A0F25245C7B37009E1D97 /* bolt.pdf */; };
+		030A0F29245C7C7D009E1D97 /* BatteryIconLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030A0F28245C7C7D009E1D97 /* BatteryIconLayer.swift */; };
+		030A0F2A245C7C7D009E1D97 /* BatteryIconLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030A0F28245C7C7D009E1D97 /* BatteryIconLayer.swift */; };
 		030D9B7C21551A8D00961E95 /* AerialPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */; };
 		030DDA902423C3BE0072D5C9 /* InfoTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DDA8F2423C3BE0072D5C9 /* InfoTimerView.swift */; };
 		0313F9E622942AA500B074BB /* CustomVideos.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0313F9E522942AA500B074BB /* CustomVideos.xib */; };
@@ -492,6 +498,9 @@
 		0306336723A1012200046A59 /* LocationLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLayer.swift; sourceTree = "<group>"; };
 		0306336A23A142FA00046A59 /* LayerOffsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerOffsets.swift; sourceTree = "<group>"; };
 		0306336D23A15FA900046A59 /* AnimationTextLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTextLayer.swift; sourceTree = "<group>"; };
+		030A0F0C245C7924009E1D97 /* battery.0.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = battery.0.pdf; sourceTree = "<group>"; };
+		030A0F25245C7B37009E1D97 /* bolt.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = bolt.pdf; sourceTree = "<group>"; };
+		030A0F28245C7C7D009E1D97 /* BatteryIconLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryIconLayer.swift; sourceTree = "<group>"; };
 		030B5E32229FDD26008F2910 /* AutoUpdates.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AutoUpdates.md; sourceTree = "<group>"; };
 		030DDA8F2423C3BE0072D5C9 /* InfoTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimerView.swift; sourceTree = "<group>"; };
 		0313F9E522942AA500B074BB /* CustomVideos.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomVideos.xib; sourceTree = "<group>"; };
@@ -694,6 +703,7 @@
 		0306336623A1010800046A59 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				030A0F2E245C835F009E1D97 /* Battery */,
 				03A42A9E2449F946003B3012 /* Weather */,
 				03BF51BB23A2643C008AD373 /* LayerManager.swift */,
 				0306336A23A142FA00046A59 /* LayerOffsets.swift */,
@@ -704,13 +714,20 @@
 				03BF51BE23A274CA008AD373 /* MessageLayer.swift */,
 				03BF51C123A2978B008AD373 /* ClockLayer.swift */,
 				03FA49B62428F84500863AF6 /* DateLayer.swift */,
-				038D2EE023B6523800CD91F7 /* BatteryLayer.swift */,
 				036A57D423F30DD00009DC02 /* UpdatesLayer.swift */,
 				036A57DA23F5820A0009DC02 /* CountdownLayer.swift */,
 				03FA49A02423DA1F00863AF6 /* TimerLayer.swift */,
-				033842E024489D7300A2C523 /* WeatherLayer.swift */,
 			);
 			path = Layers;
+			sourceTree = "<group>";
+		};
+		030A0F2E245C835F009E1D97 /* Battery */ = {
+			isa = PBXGroup;
+			children = (
+				038D2EE023B6523800CD91F7 /* BatteryLayer.swift */,
+				030A0F28245C7C7D009E1D97 /* BatteryIconLayer.swift */,
+			);
+			path = Battery;
 			sourceTree = "<group>";
 		};
 		033192DF217B77E90073B580 /* Community */ = {
@@ -865,6 +882,7 @@
 		03A42A9E2449F946003B3012 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				033842E024489D7300A2C523 /* WeatherLayer.swift */,
 				03A42A9F2449F959003B3012 /* YahooLogoLayer.swift */,
 				03A42AA2244A0E5F003B3012 /* ConditionLayer.swift */,
 				033D68802453080C0016F837 /* ConditionSymbolLayer.swift */,
@@ -977,6 +995,8 @@
 		FAC36F361BE1756D007F2A20 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				030A0F0C245C7924009E1D97 /* battery.0.pdf */,
+				030A0F25245C7B37009E1D97 /* bolt.pdf */,
 				0345A23124532DC600DD47CD /* Weather */,
 				03D1E78D22848F6D00D10CF7 /* Screenshots */,
 				033192DF217B77E90073B580 /* Community */,
@@ -1393,6 +1413,7 @@
 				038EDFA22459E5D90087D230 /* cloud.bolt.pdf in Resources */,
 				038EDF922459E5D90087D230 /* smoke.pdf in Resources */,
 				038EDF962459E5D90087D230 /* cloud.pdf in Resources */,
+				030A0F24245C7924009E1D97 /* battery.0.pdf in Resources */,
 				038EBE9522D0AA3D00C7AD02 /* nl.json in Resources */,
 				033D62B0216CAE2C00F3AF83 /* icon-night-dark.pdf in Resources */,
 				038EDFC02459E5D90087D230 /* cloud.fog.pdf in Resources */,
@@ -1405,6 +1426,7 @@
 				0313F9E92294337F00B074BB /* CustomVideos.xib in Resources */,
 				038EDF9C2459E5D90087D230 /* tropicalstorm.pdf in Resources */,
 				03D3DAC5221F286D00BDA52F /* pl.json in Resources */,
+				030A0F27245C7B37009E1D97 /* bolt.pdf in Resources */,
 				038EDFBE2459E5D90087D230 /* cloud.rain.pdf in Resources */,
 				038EDFBA2459E5D90087D230 /* sun.haze.pdf in Resources */,
 				038EDFAA2459E5D90087D230 /* cloud.heavyrain.pdf in Resources */,
@@ -1461,6 +1483,7 @@
 				035A92A6225F8C480095AB85 /* de.json in Resources */,
 				038EDFB92459E5D90087D230 /* sun.haze.pdf in Resources */,
 				038EDFA52459E5D90087D230 /* cloud.moon.bolt.pdf in Resources */,
+				030A0F26245C7B37009E1D97 /* bolt.pdf in Resources */,
 				03D37FDB22145487005A146F /* fr.json in Resources */,
 				03A42A992449F5EA003B3012 /* white_retina.png in Resources */,
 				038EDFC32459E5D90087D230 /* cloud.bolt.rain.pdf in Resources */,
@@ -1477,6 +1500,7 @@
 				038EDFAD2459E5D90087D230 /* cloud.drizzle.pdf in Resources */,
 				038EDF972459E5D90087D230 /* tornado.pdf in Resources */,
 				03D3DAC4221F286700BDA52F /* pl.json in Resources */,
+				030A0F23245C7924009E1D97 /* battery.0.pdf in Resources */,
 				038EDFA92459E5D90087D230 /* cloud.heavyrain.pdf in Resources */,
 				033D62AB216CADCD00F3AF83 /* icon-day-dark.pdf in Resources */,
 				038EDFA32459E5D90087D230 /* cloud.snow.pdf in Resources */,
@@ -1596,6 +1620,7 @@
 				03608A2122A55BC2008F08A2 /* PWC+Cache.swift in Sources */,
 				038D2EE523B6565900CD91F7 /* InfoBatteryView.swift in Sources */,
 				030D9B7C21551A8D00961E95 /* AerialPlayerItem.swift in Sources */,
+				030A0F2A245C7C7D009E1D97 /* BatteryIconLayer.swift in Sources */,
 				034587332449E22000C97D1B /* AnimationLayer.swift in Sources */,
 				034116DD23FADEDA00CD7674 /* UpdateReleaseController.swift in Sources */,
 				03FA49A22423DA1F00863AF6 /* TimerLayer.swift in Sources */,
@@ -1691,6 +1716,7 @@
 				032D1164239A7F0C007E7756 /* AerialView+Brightness.swift in Sources */,
 				FA6F81DC1D939455007975FE /* Preferences.swift in Sources */,
 				FAF450241BE2D2FD00C1F98A /* VideoCache.swift in Sources */,
+				030A0F29245C7C7D009E1D97 /* BatteryIconLayer.swift in Sources */,
 				0361B9A823D732A300B6252D /* PrefsDisplays.swift in Sources */,
 				03D2A43424474304003ABD30 /* YahooWeatherAPI.swift in Sources */,
 				03D2A43E24476117003ABD30 /* WeatherAPI.swift in Sources */,

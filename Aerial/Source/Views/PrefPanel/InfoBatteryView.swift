@@ -11,9 +11,13 @@ import Cocoa
 class InfoBatteryView: NSView {
 
     @IBOutlet var modePopup: NSPopUpButton!
+
     // Init(ish)
     func setStates() {
         modePopup.selectItem(at: PrefsInfo.battery.mode.rawValue)
     }
 
+    @IBAction func modePopupChange(_ sender: NSPopUpButton) {
+        PrefsInfo.battery.mode = InfoIconText(rawValue: sender.indexOfSelectedItem)!
+    }
 }

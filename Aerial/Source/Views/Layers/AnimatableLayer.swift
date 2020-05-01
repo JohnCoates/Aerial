@@ -25,6 +25,7 @@ protocol AnimatableLayer: CALayer {
     // Lifecycle, can be overriden so this does NOT go into the extension
     func clear(player: AVPlayer)
     func setupForVideo(video: AerialVideo, player: AVPlayer)
+    func setContentScale(scale: CGFloat)
 
     // Used by TextLayers only
     func setAlignment(mode: CATextLayerAlignmentMode)

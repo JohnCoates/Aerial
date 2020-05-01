@@ -39,7 +39,7 @@ enum InfoDate: Int, Codable {
 }
 
 enum InfoIconText: Int, Codable {
-    case textOnly, iconAndText, iconOnly
+    case text, icon
 }
 
 enum InfoCountdownMode: Int, Codable {
@@ -209,7 +209,7 @@ struct PrefsInfo {
                                                      fontSize: 20,
                                                      corner: .topRight,
                                                      displays: .allDisplays,
-                                                     mode: .textOnly))
+                                                     mode: .icon))
     static var battery: Battery
 
     // Updates
