@@ -84,15 +84,16 @@ struct Weather {
     static func fetch(failure: @escaping (_ error: OAuthSwiftError) -> Void,
                       success: @escaping (_ response: OAuthSwiftResponse) -> Void) {
         if PrefsInfo.weather.locationMode == .useCurrent {
-            print("=== init yw")
+            debugLog("=== YW: Starting locationMode")
             YahooWeatherAPI.shared.weather(location: "sunnyvale,ca", failure: failure, success: success, unit: getDegree())
         } else {
             // Just in case, we add a failsafe
             if PrefsInfo.weather.locationString == "" {
                 PrefsInfo.weather.locationString = "Paris, FR"
             }
-            print("=== init yw")
+            debugLog("=== YW: Starting manual mode")
             YahooWeatherAPI.shared.weather(location: PrefsInfo.weather.locationString, failure: failure, success: { response in
+                    debugLog("=== YW: API callback success")
                     processJson(response: response) // First we process
                     success(response)   // Then the callback
                 }, unit: getDegree())
@@ -100,7 +101,8 @@ struct Weather {
     }
 
     static func processJson(response: OAuthSwiftResponse) {
-        try? print(response.dataString())
+        debugLog(response.dataString() ?? "=== YW: nil parsed data")
+        //try? print(response.dataString())
 
         info = try? newJSONDecoder().decode(Welcome.self, from: response.data)
         if info == nil {
@@ -131,7 +133,8 @@ struct Weather {
         let sunset = pmformatter.date(from: info!.currentObservation.astronomy.sunset)
 
         if sunrise == nil || sunset == nil {
-            errorLog("Could not parse sunrise/sunset times, please report ! \(sunrise) \(sunset)")
+            errorLog("Could not parse sunrise/sunset times, please report ! \(String(describing: sunrise)) \(String(describing: sunset))")
+            return false
         }
 
         let tSunrise = todayizeDate(date: sunrise!)!

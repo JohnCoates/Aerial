@@ -98,24 +98,6 @@ class ConditionLayer: CALayer {
 
                 // If we have something, trim and put it up
                 if let img = imgs {
-                    /*
-                    // Make a vertically centered layer for t°
-                    let temp = CAVCTextLayer()
-                    temp.string = "\(self.condition!.temperature)°"
-
-                    // Get something large first
-                    temp.frame.size = CGSize(width: 100, height: 100)
-                    (temp.font, temp.fontSize) = temp.makeFont(name: PrefsInfo.weather.fontName, size: PrefsInfo.weather.fontSize)
-
-                    // ReRect the temperature
-                    let rect = temp.calculateRect(string: temp.string as! String, font: temp.font as! NSFont)
-                    temp.frame = rect
-                    self.addSublayer(temp)
-
-                    // We put the temperature at the right of the weather icon
-                    temp.anchorPoint = CGPoint(x: 1, y: 0.5)
-                    temp.position = CGPoint(x: self.frame.size.width, y: 50)
-*/
                     let tempWidth = self.addTemperature()
 
                     // Get the trimmed image first, goes on the left

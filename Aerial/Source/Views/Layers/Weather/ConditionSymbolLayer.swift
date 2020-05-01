@@ -81,10 +81,10 @@ class ConditionSymbolLayer: CALayer {
             forResource: getSymbol(condition: condition.code, isNight: isNight),
             ofType: "pdf")
 
-        var img = NSImage(contentsOfFile: imagePath!)
-        img = img!.tinting(with: .white)
-        frame.size.height = img!.size.height*1.5
-        frame.size.width = img!.size.width*1.5
+        let img = NSImage(contentsOfFile: imagePath!)
+        /*img = img!.tinting(with: .white)*/
+        frame.size.height = img!.size.height*0.5
+        frame.size.width = img!.size.width*0.5
         contents = img
     }
 
