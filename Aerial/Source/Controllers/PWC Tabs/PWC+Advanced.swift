@@ -18,9 +18,6 @@ extension PreferencesWindowController {
         if preferences.logToDisk {
             logToDiskCheckbox.state = .on
         }
-        if preferences.synchronizedMode {
-            synchronizedModeCheckbox.state = .on
-        }
 
         muteSoundCheckbox.state = PrefsAdvanced.muteSound ? .on : .off
 
@@ -107,12 +104,6 @@ extension PreferencesWindowController {
         }
 
         showLogBottomClick.isHidden = false
-    }
-
-    @IBAction func synchronizedModeClick(_ sender: NSButton) {
-        let onState = sender.state == .on
-        preferences.synchronizedMode = onState
-        debugLog("UI synchronizedMode \(onState)")
     }
 
     @IBAction func muteSoundClick(_ sender: NSButton) {

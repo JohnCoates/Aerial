@@ -69,7 +69,7 @@ final class Preferences {
 //        case displayMarginsAdvanced = "displayMarginsAdvanced"
 //        case advancedMargins = "advancedMargins"
 
-        case synchronizedMode = "synchronizedMode"
+//        case synchronizedMode = "synchronizedMode"
 //        case aspectMode = "aspectMode"
 //        case useHDR = "useHDR"
     }
@@ -184,7 +184,7 @@ final class Preferences {
 //        defaultValues[.verticalMargin] = 0
 //        defaultValues[.displayMarginsAdvanced] = false
 
-        defaultValues[.synchronizedMode] = false
+//        defaultValues[.synchronizedMode] = false
 //        defaultValues[.aspectMode] = AspectMode.fill
 //        defaultValues[.useHDR] = false
 //        defaultValues[.advancedMargins] = ""
@@ -332,14 +332,14 @@ final class Preferences {
 //        }
 //    }
 
-    var synchronizedMode: Bool {
-        get {
-            return value(forIdentifier: .synchronizedMode)
-        }
-        set {
-            setValue(forIdentifier: .synchronizedMode, value: newValue)
-        }
-    }
+//    var synchronizedMode: Bool {
+//        get {
+//            return value(forIdentifier: .synchronizedMode)
+//        }
+//        set {
+//            setValue(forIdentifier: .synchronizedMode, value: newValue)
+//        }
+//    }
 
     var logMilliseconds: Bool {
         get {

@@ -157,7 +157,7 @@ class ManifestLoader {
         // Start with a shuffled list, we may have synchronized seed shuffle
         var shuffled: [AerialVideo]
         let preferences = Preferences.sharedInstance
-        if preferences.synchronizedMode {
+        /*if preferences.synchronizedMode {
             if #available(OSX 10.11, *) {
                 let date = Date()
                 let calendar = NSCalendar.current
@@ -172,7 +172,9 @@ class ManifestLoader {
             }
         } else {
             shuffled = loadedManifest.shuffled()
-        }
+        }*/
+        // Somehow code above doesn't work anymore, force disabling it for everyone for now
+        shuffled = loadedManifest.shuffled()
 
         for video in shuffled {
             // We exclude videos not in rotation
