@@ -77,6 +77,9 @@ class ConditionSymbolLayer: CALayer {
     init(condition: Weather.Condition, isNight: Bool) {
         super.init()
 
+        // In case icons are updated, it's important to test them !
+        // test()
+        
         let imagePath = Bundle(for: PreferencesWindowController.self).path(
             forResource: getSymbol(condition: condition.code, isNight: isNight),
             ofType: "pdf")
@@ -95,6 +98,32 @@ class ConditionSymbolLayer: CALayer {
 
     }
 
+    func test() {
+        for code in 0..<48 {
+            let imagePath = Bundle(for: PreferencesWindowController.self).path(
+            forResource: getSymbol(condition: code, isNight: true),
+            ofType: "pdf")
+            if imagePath == nil {
+                debugLog("ERROR night \(code)")
+            } else {
+                debugLog("OK night \(code)")
+            }
+
+        }
+        
+        for code in 0..<48 {
+            let imagePath = Bundle(for: PreferencesWindowController.self).path(
+            forResource: getSymbol(condition: code, isNight: true),
+            ofType: "pdf")
+            if imagePath == nil {
+                debugLog("ERROR day \(code)")
+            } else {
+                debugLog("OK day \(code)")
+            }
+        }
+
+        
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
