@@ -36,7 +36,7 @@ class ConditionLayer: CALayer {
         super.init()
 
         frame.size = CGSize(width: 200, height: 75)
-        print(condition)
+        debugLog("Condition : \(condition)")
 
         if PrefsInfo.weather.icons == .flat {
             let tempWidth = addTemperature()

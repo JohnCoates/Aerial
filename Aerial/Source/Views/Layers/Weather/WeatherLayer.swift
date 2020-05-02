@@ -78,6 +78,7 @@ class WeatherLayer: AnimationLayer {
 
     func displayWeatherBlock() {
         if Weather.info == nil {
+            errorLog("No weather info in dWB please report")
             return
         }
         self.frame.size = CGSize(width: 200, height: 75)
