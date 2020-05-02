@@ -12,6 +12,8 @@ import AVKit
 class WeatherLayer: AnimationLayer {
     var config: PrefsInfo.Weather?
     var wasSetup = false
+    var todayCond: ConditionLayer?
+    var logo: YahooLayer?
 
     var cscale: CGFloat?
 
@@ -43,6 +45,16 @@ class WeatherLayer: AnimationLayer {
 
     override func setContentScale(scale: CGFloat) {
         print("sCS wov : \(scale)")
+        if todayCond != nil {
+            debugLog("SCS WL todayCond")
+            todayCond?.contentsScale = scale
+        }
+        if logo != nil {
+            debugLog("SCS WL logo")
+            logo?.contentsScale = scale
+        }
+
+        // In case we haven't called displayWeatherBlock yet (should be all the time but hmm)
         cscale = scale
     }
 
@@ -73,13 +85,19 @@ class WeatherLayer: AnimationLayer {
         let todayCond = ConditionLayer(condition: Weather.info!.currentObservation.condition)
         todayCond.anchorPoint = CGPoint(x: 1, y: 0)
         todayCond.position = CGPoint(x: frame.size.width, y: 0)
-        todayCond.contentsScale = cscale!
+        if cscale != nil {
+            debugLog("dWB todayCond")
+            todayCond.contentsScale = cscale!
+        }
         addSublayer(todayCond)
 
         let logo = YahooLayer()
         logo.anchorPoint = CGPoint(x: 1, y: 0)
         logo.position = CGPoint(x: frame.size.width-10, y: 0)
-        logo.contentsScale = cscale!
+        if cscale != nil {
+            debugLog("dWB logo")
+            logo.contentsScale = cscale!
+        }
         addSublayer(logo)
 
         update()

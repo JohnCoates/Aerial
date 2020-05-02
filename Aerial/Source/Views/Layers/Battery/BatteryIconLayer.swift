@@ -24,28 +24,32 @@ class BatteryIconLayer: CALayer {
             ofType: "pdf")
 
         let img = NSImage(contentsOfFile: imagePath!)
-        frame.size.height = img!.size.height / 4
-        frame.size.width = img!.size.width / 4
-        contents = img
+        if imagePath != nil {
+            frame.size.height = img!.size.height / 3
+            frame.size.width = img!.size.width / 3
+            contents = img
 
-        textLayer.frame = CGRect(x: 0, y: 0, width: frame.size.width-5, height: frame.size.height)
-        textLayer.fontSize = 13
-        textLayer.alignmentMode = .center
-        textLayer.string = "100%"
-        textLayer.foregroundColor = .white
-        textLayer.position.y = 8.5
+            textLayer.frame = CGRect(x: 0, y: 0, width: frame.size.width-5, height: frame.size.height)
+            textLayer.fontSize = 15
+            textLayer.alignmentMode = .center
+            textLayer.string = "100%"
+            textLayer.foregroundColor = .white
+            textLayer.position.y = 9.5
+        }
         self.addSublayer(textLayer)
 
         let chargingPath = Bundle(for: PreferencesWindowController.self).path(
-            forResource: "bolt",
+            forResource: "bolt.fill",
             ofType: "pdf")
 
-        let cimg = NSImage(contentsOfFile: chargingPath!)
-        charging.contents = cimg
-        charging.frame.size.height = cimg!.size.height / 8
-        charging.frame.size.width = cimg!.size.width / 8
-        charging.position.x = -10
-        self.addSublayer(charging)
+        if chargingPath != nil {
+            let cimg = NSImage(contentsOfFile: chargingPath!)
+            charging.contents = cimg
+            charging.frame.size.height = cimg!.size.height / 6
+            charging.frame.size.width = cimg!.size.width / 6
+            charging.position.x = -10
+            self.addSublayer(charging)
+        }
         update()
     }
 

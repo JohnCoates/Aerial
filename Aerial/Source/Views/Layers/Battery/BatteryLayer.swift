@@ -64,11 +64,7 @@ class BatteryLayer: AnimationTextLayer {
             if config!.mode == .text {
                 update(string: getBatteryString())
             } else {
-                /*icon = BatteryIconLayer()
-                frame.size = icon!.frame.size
-                icon!.anchorPoint = CGPoint(x: 1, y: 0)
-                icon!.position = CGPoint(x: 15, y: 0)    // This is probably wrong...
-                addSublayer(icon!)*/
+                // Update also moves and align everything... So we call it here
                 self.update(string: "")
             }
 

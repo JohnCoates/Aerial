@@ -14,8 +14,6 @@
 		0306336E23A15FA900046A59 /* AnimationTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306336D23A15FA900046A59 /* AnimationTextLayer.swift */; };
 		030A0F23245C7924009E1D97 /* battery.0.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 030A0F0C245C7924009E1D97 /* battery.0.pdf */; };
 		030A0F24245C7924009E1D97 /* battery.0.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 030A0F0C245C7924009E1D97 /* battery.0.pdf */; };
-		030A0F26245C7B37009E1D97 /* bolt.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 030A0F25245C7B37009E1D97 /* bolt.pdf */; };
-		030A0F27245C7B37009E1D97 /* bolt.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 030A0F25245C7B37009E1D97 /* bolt.pdf */; };
 		030A0F29245C7C7D009E1D97 /* BatteryIconLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030A0F28245C7C7D009E1D97 /* BatteryIconLayer.swift */; };
 		030A0F2A245C7C7D009E1D97 /* BatteryIconLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030A0F28245C7C7D009E1D97 /* BatteryIconLayer.swift */; };
 		030D9B7C21551A8D00961E95 /* AerialPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */; };
@@ -122,6 +120,8 @@
 		0385FC5A242B9AE1007E6513 /* APISecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0385FC58242B9AE1007E6513 /* APISecrets.swift */; };
 		0385FC5D242B9F6E007E6513 /* InfoWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0385FC5C242B9F6E007E6513 /* InfoWeatherView.swift */; };
 		0385FC6D242BA097007E6513 /* InfoWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0385FC5C242B9F6E007E6513 /* InfoWeatherView.swift */; };
+		0387CA40245DC7A5000A7095 /* bolt.fill.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0387CA3F245DC7A4000A7095 /* bolt.fill.pdf */; };
+		0387CA41245DC7A5000A7095 /* bolt.fill.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0387CA3F245DC7A4000A7095 /* bolt.fill.pdf */; };
 		03893CB3217749F0008E7125 /* ErrorLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03893CB2217749F0008E7125 /* ErrorLog.swift */; };
 		03893CB4217753AC008E7125 /* ErrorLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03893CB2217749F0008E7125 /* ErrorLog.swift */; };
 		038C584723A9304800224630 /* InfoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038C584623A9304800224630 /* InfoContainerView.swift */; };
@@ -179,8 +179,6 @@
 		038EDFB42459E5D90087D230 /* thermometer.snowflake.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 038EDF812459E5D80087D230 /* thermometer.snowflake.pdf */; };
 		038EDFB52459E5D90087D230 /* thermometer.sun.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 038EDF822459E5D80087D230 /* thermometer.sun.pdf */; };
 		038EDFB62459E5D90087D230 /* thermometer.sun.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 038EDF822459E5D80087D230 /* thermometer.sun.pdf */; };
-		038EDFB72459E5D90087D230 /* genicons.sh in Resources */ = {isa = PBXBuildFile; fileRef = 038EDF832459E5D80087D230 /* genicons.sh */; };
-		038EDFB82459E5D90087D230 /* genicons.sh in Resources */ = {isa = PBXBuildFile; fileRef = 038EDF832459E5D80087D230 /* genicons.sh */; };
 		038EDFB92459E5D90087D230 /* sun.haze.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 038EDF842459E5D80087D230 /* sun.haze.pdf */; };
 		038EDFBA2459E5D90087D230 /* sun.haze.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 038EDF842459E5D80087D230 /* sun.haze.pdf */; };
 		038EDFBB2459E5D90087D230 /* wind.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 038EDF852459E5D80087D230 /* wind.pdf */; };
@@ -499,7 +497,6 @@
 		0306336A23A142FA00046A59 /* LayerOffsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerOffsets.swift; sourceTree = "<group>"; };
 		0306336D23A15FA900046A59 /* AnimationTextLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTextLayer.swift; sourceTree = "<group>"; };
 		030A0F0C245C7924009E1D97 /* battery.0.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = battery.0.pdf; sourceTree = "<group>"; };
-		030A0F25245C7B37009E1D97 /* bolt.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = bolt.pdf; sourceTree = "<group>"; };
 		030A0F28245C7C7D009E1D97 /* BatteryIconLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryIconLayer.swift; sourceTree = "<group>"; };
 		030B5E32229FDD26008F2910 /* AutoUpdates.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AutoUpdates.md; sourceTree = "<group>"; };
 		030DDA8F2423C3BE0072D5C9 /* InfoTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimerView.swift; sourceTree = "<group>"; };
@@ -552,6 +549,7 @@
 		036A57DA23F5820A0009DC02 /* CountdownLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownLayer.swift; sourceTree = "<group>"; };
 		0385FC58242B9AE1007E6513 /* APISecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISecrets.swift; sourceTree = "<group>"; };
 		0385FC5C242B9F6E007E6513 /* InfoWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoWeatherView.swift; sourceTree = "<group>"; };
+		0387CA3F245DC7A4000A7095 /* bolt.fill.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = bolt.fill.pdf; sourceTree = "<group>"; };
 		03893CB2217749F0008E7125 /* ErrorLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLog.swift; sourceTree = "<group>"; };
 		038C584623A9304800224630 /* InfoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoContainerView.swift; sourceTree = "<group>"; };
 		038C584923A9394000224630 /* InfoCommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCommonView.swift; sourceTree = "<group>"; };
@@ -580,7 +578,6 @@
 		038EDF802459E5D80087D230 /* hurricane.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = hurricane.pdf; sourceTree = "<group>"; };
 		038EDF812459E5D80087D230 /* thermometer.snowflake.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = thermometer.snowflake.pdf; sourceTree = "<group>"; };
 		038EDF822459E5D80087D230 /* thermometer.sun.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = thermometer.sun.pdf; sourceTree = "<group>"; };
-		038EDF832459E5D80087D230 /* genicons.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = genicons.sh; sourceTree = "<group>"; };
 		038EDF842459E5D80087D230 /* sun.haze.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sun.haze.pdf; sourceTree = "<group>"; };
 		038EDF852459E5D80087D230 /* wind.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = wind.pdf; sourceTree = "<group>"; };
 		038EDF862459E5D80087D230 /* cloud.rain.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = cloud.rain.pdf; sourceTree = "<group>"; };
@@ -785,7 +782,6 @@
 				038EDF7D2459E5D80087D230 /* cloud.sun.bolt.pdf */,
 				038EDF8A2459E5D90087D230 /* cloud.sun.pdf */,
 				038EDF762459E5D70087D230 /* cloud.sun.rain.pdf */,
-				038EDF832459E5D80087D230 /* genicons.sh */,
 				038EDF802459E5D80087D230 /* hurricane.pdf */,
 				038EDF8B2459E5D90087D230 /* moon.pdf */,
 				038EDF772459E5D70087D230 /* moon.stars.pdf */,
@@ -996,7 +992,7 @@
 			isa = PBXGroup;
 			children = (
 				030A0F0C245C7924009E1D97 /* battery.0.pdf */,
-				030A0F25245C7B37009E1D97 /* bolt.pdf */,
+				0387CA3F245DC7A4000A7095 /* bolt.fill.pdf */,
 				0345A23124532DC600DD47CD /* Weather */,
 				03D1E78D22848F6D00D10CF7 /* Screenshots */,
 				033192DF217B77E90073B580 /* Community */,
@@ -1426,15 +1422,14 @@
 				0313F9E92294337F00B074BB /* CustomVideos.xib in Resources */,
 				038EDF9C2459E5D90087D230 /* tropicalstorm.pdf in Resources */,
 				03D3DAC5221F286D00BDA52F /* pl.json in Resources */,
-				030A0F27245C7B37009E1D97 /* bolt.pdf in Resources */,
 				038EDFBE2459E5D90087D230 /* cloud.rain.pdf in Resources */,
 				038EDFBA2459E5D90087D230 /* sun.haze.pdf in Resources */,
 				038EDFAA2459E5D90087D230 /* cloud.heavyrain.pdf in Resources */,
 				FAC36F481BE1756D007F2A20 /* Assets.xcassets in Resources */,
 				03DAD473229EC031000DA6D1 /* Readme.md in Resources */,
 				033D62AC216CADCD00F3AF83 /* icon-day-dark.pdf in Resources */,
+				0387CA41245DC7A5000A7095 /* bolt.fill.pdf in Resources */,
 				038EDFA02459E5D90087D230 /* moon.stars.pdf in Resources */,
-				038EDFB82459E5D90087D230 /* genicons.sh in Resources */,
 				03D1E79222848F7F00D10CF7 /* screen2.jpg in Resources */,
 				038EDFA62459E5D90087D230 /* cloud.moon.bolt.pdf in Resources */,
 				FAC36F4A1BE1756D007F2A20 /* MainMenu.xib in Resources */,
@@ -1483,7 +1478,6 @@
 				035A92A6225F8C480095AB85 /* de.json in Resources */,
 				038EDFB92459E5D90087D230 /* sun.haze.pdf in Resources */,
 				038EDFA52459E5D90087D230 /* cloud.moon.bolt.pdf in Resources */,
-				030A0F26245C7B37009E1D97 /* bolt.pdf in Resources */,
 				03D37FDB22145487005A146F /* fr.json in Resources */,
 				03A42A992449F5EA003B3012 /* white_retina.png in Resources */,
 				038EDFC32459E5D90087D230 /* cloud.bolt.rain.pdf in Resources */,
@@ -1498,6 +1492,7 @@
 				038EDFB12459E5D90087D230 /* hurricane.pdf in Resources */,
 				038EDFAF2459E5D90087D230 /* cloud.sleet.pdf in Resources */,
 				038EDFAD2459E5D90087D230 /* cloud.drizzle.pdf in Resources */,
+				0387CA40245DC7A5000A7095 /* bolt.fill.pdf in Resources */,
 				038EDF972459E5D90087D230 /* tornado.pdf in Resources */,
 				03D3DAC4221F286700BDA52F /* pl.json in Resources */,
 				030A0F23245C7924009E1D97 /* battery.0.pdf in Resources */,
@@ -1508,7 +1503,6 @@
 				03D1E79722848F7F00D10CF7 /* screen0.jpg in Resources */,
 				0395835321807D1F008E8F9C /* thumbnail@2x.png in Resources */,
 				0395835521807D1F008E8F9C /* thumbnail.png in Resources */,
-				038EDFB72459E5D90087D230 /* genicons.sh in Resources */,
 				03F8FF1D244B54E600813C96 /* it.json in Resources */,
 				03D37FD922145487005A146F /* es.json in Resources */,
 				038EDF952459E5D90087D230 /* cloud.pdf in Resources */,
