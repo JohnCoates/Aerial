@@ -2,6 +2,20 @@
 <channel>
 <title>Aerial</title>
 <item>
+<title>1.8.3beta11</title>
+  <description>
+          <![CDATA[
+<ul>
+<li>Fix weather icons (for good!)</li>
+</ul>
+          ]]>
+  </description>
+<pubDate>sam., 2 mai. 2020 19:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.8.3beta11/Aerial.saver.zip" sparkle:version="1.8.3beta11" 
+sparkle:edSignature="eyL6lMTGKvs2tSt9CXvH4x03TNuFiXscnpKeqO2Bc8oFqtlEETksTm0PYlwsgbez2KewJL8yuaaIJiPxmYwVCw==" length="6420492" type="application/octet-stream"/>
+</item>
+<item>
 <title>1.8.3beta9</title>
   <description>
           <![CDATA[
