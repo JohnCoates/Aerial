@@ -195,8 +195,6 @@
 		038D2EBD23AB91C300CD91F7 /* InfoLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A596D823AB8F000097EA66 /* InfoLocationView.swift */; };
 		038D2EDE23B0FB0D00CD91F7 /* PrefsVideos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D2EDD23B0FB0D00CD91F7 /* PrefsVideos.swift */; };
 		038D2EDF23B0FB0D00CD91F7 /* PrefsVideos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D2EDD23B0FB0D00CD91F7 /* PrefsVideos.swift */; };
-		038D2EE123B6523800CD91F7 /* BatteryLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D2EE023B6523800CD91F7 /* BatteryLayer.swift */; };
-		038D2EE223B6523800CD91F7 /* BatteryLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D2EE023B6523800CD91F7 /* BatteryLayer.swift */; };
 		038D2EE423B6565900CD91F7 /* InfoBatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D2EE323B6565900CD91F7 /* InfoBatteryView.swift */; };
 		038D2EE523B6565900CD91F7 /* InfoBatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D2EE323B6565900CD91F7 /* InfoBatteryView.swift */; };
 		038EBE9422D0AA3D00C7AD02 /* nl.json in Resources */ = {isa = PBXBuildFile; fileRef = 038EBE9322D0AA3D00C7AD02 /* nl.json */; };
@@ -590,7 +588,6 @@
 		038C584623A9304800224630 /* InfoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoContainerView.swift; sourceTree = "<group>"; };
 		038C584923A9394000224630 /* InfoCommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCommonView.swift; sourceTree = "<group>"; };
 		038D2EDD23B0FB0D00CD91F7 /* PrefsVideos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsVideos.swift; sourceTree = "<group>"; };
-		038D2EE023B6523800CD91F7 /* BatteryLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryLayer.swift; sourceTree = "<group>"; };
 		038D2EE323B6565900CD91F7 /* InfoBatteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBatteryView.swift; sourceTree = "<group>"; };
 		038EBE9322D0AA3D00C7AD02 /* nl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nl.json; sourceTree = "<group>"; };
 		039385792175D4B80040B850 /* AVPlayerViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerViewExtension.swift; sourceTree = "<group>"; };
@@ -706,13 +703,13 @@
 		0306336623A1010800046A59 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				030A0F2E245C835F009E1D97 /* Battery */,
 				03A42A9E2449F946003B3012 /* Weather */,
 				03BF51BB23A2643C008AD373 /* LayerManager.swift */,
 				0306336A23A142FA00046A59 /* LayerOffsets.swift */,
 				0345872C2449C52F00C97D1B /* AnimatableLayer.swift */,
 				034587312449D8EB00C97D1B /* AnimationLayer.swift */,
 				0306336D23A15FA900046A59 /* AnimationTextLayer.swift */,
+				030A0F28245C7C7D009E1D97 /* BatteryIconLayer.swift */,
 				0306336723A1012200046A59 /* LocationLayer.swift */,
 				03BF51BE23A274CA008AD373 /* MessageLayer.swift */,
 				03BF51C123A2978B008AD373 /* ClockLayer.swift */,
@@ -722,15 +719,6 @@
 				03FA49A02423DA1F00863AF6 /* TimerLayer.swift */,
 			);
 			path = Layers;
-			sourceTree = "<group>";
-		};
-		030A0F2E245C835F009E1D97 /* Battery */ = {
-			isa = PBXGroup;
-			children = (
-				038D2EE023B6523800CD91F7 /* BatteryLayer.swift */,
-				030A0F28245C7C7D009E1D97 /* BatteryIconLayer.swift */,
-			);
-			path = Battery;
 			sourceTree = "<group>";
 		};
 		033192DF217B77E90073B580 /* Community */ = {
@@ -1642,7 +1630,6 @@
 				034F29C023A7E58C004B34D5 /* PrefsInfo.swift in Sources */,
 				0385FC6D242BA097007E6513 /* InfoWeatherView.swift in Sources */,
 				034F29B923A7B0FC004B34D5 /* PWC+Info.swift in Sources */,
-				038D2EE223B6523800CD91F7 /* BatteryLayer.swift in Sources */,
 				03BF51C023A275D9008AD373 /* MessageLayer.swift in Sources */,
 				035D5250239AA31A00DC29DC /* AerialView+Player.swift in Sources */,
 				0354D0EA23F6C3EE00D86F9E /* InfoSettingsTableSource.swift in Sources */,
@@ -1773,7 +1760,6 @@
 				03233B68217272640077D3F9 /* PoiStringProvider.swift in Sources */,
 				03A4A80E2451D04C00A1F7A3 /* PrefsAdvanced.swift in Sources */,
 				033842E124489D7300A2C523 /* WeatherLayer.swift in Sources */,
-				038D2EE123B6523800CD91F7 /* BatteryLayer.swift in Sources */,
 				FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */,
 				0354D0E923F6C31800D86F9E /* InfoSettingsTableSource.swift in Sources */,
 				03E8730C2165013C002B469B /* DownloadManager.swift in Sources */,

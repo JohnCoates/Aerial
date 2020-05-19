@@ -81,7 +81,7 @@ class WeatherLayer: AnimationLayer {
             errorLog("No weather info in dWB please report")
             return
         }
-        self.frame.size = CGSize(width: 200, height: 75)
+        self.frame.size = CGSize(width: 200, height: 85)
 
         let todayCond = ConditionLayer(condition: Weather.info!.currentObservation.condition)
         todayCond.anchorPoint = CGPoint(x: 1, y: 0)
