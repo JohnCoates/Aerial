@@ -59,16 +59,16 @@ class BatteryIconLayer: AnimationLayer {
 
         iconLayer!.frame.size.height = img.size.height / 3
         iconLayer!.frame.size.width = img.size.width / 3
-        iconLayer!.anchorPoint = CGPoint(x: 0.5, y: 1)
+        iconLayer!.anchorPoint = CGPoint(x: 1, y: 1)
         iconLayer!.contents = img
 
         frame.size.height = iconLayer!.frame.size.height + 10
+        frame.size.width = iconLayer!.frame.size.width + 20
 
+        iconLayer!.position.x = frame.size.width
         iconLayer!.position.y = frame.size.height
 
-        frame.size.width = iconLayer!.frame.size.width
-
-        textLayer!.frame = CGRect(x: 0, y: 0,
+        textLayer!.frame = CGRect(x: 20, y: 0,
                                   width: iconLayer!.frame.size.width-5,
                                   height: iconLayer!.frame.size.height)
         textLayer!.fontSize = 15
@@ -89,9 +89,9 @@ class BatteryIconLayer: AnimationLayer {
             charging!.contents = cimg
             charging!.frame.size.height = cimg!.size.height / 6
             charging!.frame.size.width = cimg!.size.width / 6
-            charging!.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+            charging!.anchorPoint = CGPoint(x: 0, y: 0.5)
             charging!.position.y = frame.size.height/2+5
-            charging!.position.x = -10
+            charging!.position.x = 2
             self.addSublayer(charging!)
         }
 
