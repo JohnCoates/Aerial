@@ -81,21 +81,17 @@ class WeatherLayer: AnimationLayer {
             errorLog("No weather info in dWB please report")
             return
         }
-        self.frame.size = CGSize(width: 160, height: 85)
         let todayCond = ConditionLayer(condition: Weather.info!.currentObservation.condition)
-        todayCond.anchorPoint = CGPoint(x: 1, y: 0)
-        todayCond.position = CGPoint(x: frame.size.width, y: 0)
         if cscale != nil {
-            debugLog("dWB todayCond")
             todayCond.contentsScale = cscale!
         }
         addSublayer(todayCond)
+        self.frame.size = CGSize(width: todayCond.frame.width, height: 85)
 
         let logo = YahooLayer()
         logo.anchorPoint = CGPoint(x: 1, y: 0)
         logo.position = CGPoint(x: frame.size.width-10, y: 0)
         if cscale != nil {
-            debugLog("dWB logo")
             logo.contentsScale = cscale!
         }
         addSublayer(logo)
