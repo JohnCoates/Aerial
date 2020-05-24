@@ -93,11 +93,9 @@ class ConditionLayer: CALayer {
     }
 
     func downloadImage(from url: URL) {
-        print("Download Started")
-        getData(from: url) { data, response, error in
+        getData(from: url) { data, _, error in
             guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
+            //print(response?.suggestedFilename ?? url.lastPathComponent)
             DispatchQueue.main.async() {
                 let imgs = NSImage(data: data)
 
@@ -116,7 +114,7 @@ class ConditionLayer: CALayer {
                     self.addSublayer(imglayer)
 
                     let tempWidth = self.addTemperature(at: imglayer.frame.width + 15)
-                    
+
                     // Set the final size
                     self.frame.size = CGSize(width: imglayer.frame.width + 15 + tempWidth, height: 75)
                 }

@@ -99,8 +99,20 @@ struct Weather {
         }
 
         if PrefsInfo.weather.locationMode == .useCurrent {
-            debugLog("=== YW: Starting locationMode")
-            YahooWeatherAPI.shared.weather(location: "sunnyvale,ca", failure: failure, success: success, unit: getDegree())
+            let location = AerialApp.Location.sharedInstance
+
+            location.getCoordinates(failure: { (_) in
+                failure(.cancelled) // Slightly naughty
+            }, success: { (coordinates) in
+                let lat = String(format: "%.2f", coordinates.latitude)
+                let lon = String(format: "%.2f", coordinates.longitude)
+                debugLog("=== YW: Starting locationMode")
+                YahooWeatherAPI.shared.weather(lat: lat, lon: lon, failure: failure, success: { response in
+                    debugLog("=== YW: API callback success")
+                    processJson(response: response) // First we process
+                    success(response)   // Then the callback
+                }, unit: getDegree())
+            })
         } else {
             // Just in case, we add a failsafe
             if PrefsInfo.weather.locationString == "" {
