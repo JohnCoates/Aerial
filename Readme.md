@@ -4,10 +4,7 @@
 
 # Aerial - Apple TV Aerial Views Screen Saver
 
-Aerial is a Mac screensaver based on the new Apple TV screensaver that displays the Aerial movies Apple shot over New York, San Francisco, Hawaii, China, etc. Starting with version 1.6, this also includes the new undersea videos available in tvOS 13!
-
-[Complete list of available wallpapers.](https://aerial-screensavers.netlify.com)
-
+Aerial is a Mac screensaver based on the new Apple TV screensaver that displays the Aerial movies Apple shot over New York, San Francisco, Hawaii, China, etc. Starting with version 1.6, this also includes the new undersea videos available in tvOS 13 ! See here for a [complete list of available videos.](https://aerial-screensavers.netlify.com)
 
 Aerial is completely open source, so feel free to contribute to its development.
 
@@ -22,7 +19,7 @@ Aerial is completely open source, so feel free to contribute to its development.
 
 Aerial was started in 2015 by John Coates ([Twitter](https://twitter.com/JohnCoatesDev), [Email](mailto:john@johncoates.me))
 
-Starting with version 1.4, Aerial is maintained by [Guillaume Louel](https://github.com/glouel) ([Twitter](https://twitter.com/C_Wiz), [![Support via PayPal][paypal-button]][paypal-glouel]).
+Starting with version 1.4, Aerial is maintained by [Guillaume Louel](https://github.com/glouel) ([Twitter](https://twitter.com/C_Wiz), if you are looking to support the development of Aerial, feel free to donate using the following button [![Support via PayPal][paypal-button]][paypal-glouel]).
 
 [paypal-button]: https://img.shields.io/badge/Donate-PayPal-green.svg
 [paypal-glouel]: https://www.paypal.me/glouel/
@@ -38,30 +35,27 @@ Installation instructions (latest versions require macOS 10.12 or above) :
 1. Quit **System Preferences**.
 2. [Download the latest release of `Aerial.saver.zip`](https://github.com/JohnCoates/Aerial/releases/latest). Alternatively, you can find the [latest beta here](https://github.com/JohnCoates/Aerial/releases). 
 3. Unzip the downloaded file (if you use Safari, it should already be done for you).
-4. Double-click `Aerial.saver`; it will open in `System Preferences` > `Desktop & Screen Saver` and ask you if you want to install for all users or for your user only. Be aware that installing for all users will require a password at install **and each subsequent update, including auto-updates.** By default, Aerial will still share its video cache if you install multiple times on the same system for each user.
+4. Double-click `Aerial.saver`; it will open in `System Preferences` > `Desktop & Screen Saver` and ask you if you want to install for all users or for your user only. Be aware that installing for all users will require a password at install **and each subsequent update, including auto-updates.** 
 
 Need more information on install, setup, or uninstall ? Or want to install via homebrew ? Check our extended [instructions here](Documentation/Installation.md). Curious about auto-updates ? [Have a look here](Documentation/AutoUpdates.md).
 
-## What's new in Aerial 1.8.0 (February 18, 2020)?
+## What's new in Aerial 1.9.0 (May 25, 2020)?
 
-- New update system for macOS Catalina. Starting with version 1.8.0, Aerial will now by default notify you with a message while the screen saver runs, when a new version of Aerial is available :
+![Capture d’écran 2020-05-25 à 15 46 42](https://user-images.githubusercontent.com/37544189/82818568-338ba580-9e9f-11ea-8f26-90b23958f587.jpg)
 
-![Capture d’écran 2020-02-18 à 17 57 39](https://user-images.githubusercontent.com/37544189/74758954-5858f700-5278-11ea-8e17-d034fdf57f33.jpg)
+- Weather ! Aerial can now display current conditions for a location of your choice using Yahoo! Weather's API. 
 
-You will also be notified when a new version is available in Aerial's settings, with that new mechanism that will redirect you to the new release page where you can download the new version :
-![Capture d’écran 2020-02-18 à 17 59 28](https://user-images.githubusercontent.com/37544189/74759068-7f172d80-5278-11ea-99bf-08621550087b.jpg)
+This feature can be enabled and configured inside the Info tab. 
 
-The update check process still uses Sparkle, but Aerial is not able to auto update in macOS Catalina due to the new sandboxing restrictions. I apologize for the inconvenience.
+![Capture d’écran 2020-05-25 à 15 44 37](https://user-images.githubusercontent.com/37544189/82818567-32f30f00-9e9f-11ea-81d1-cce630b224eb.jpg)
 
-- Add new shadow controls :
+You can either manually specify a location, or use your mac's location services to provide Aerial with your most recent location when it starts. To preserve your privacy, should you wish to use location services, Aerial will only provide your location with an approximate 1km margin of error. 
 
-![Capture d’écran 2020-02-18 à 18 06 26](https://user-images.githubusercontent.com/37544189/74759836-b3d7b480-5279-11ea-84cf-3ddbc810cbce.jpg)
+- Graphical battery indicator. The old text battery indicator was replaced with a nicer graphical one :
 
-- Add a new Countdown information option, to either countdown to a given date, or a given time of day :
+<center><img width="240" alt="Capture d’écran 2020-05-25 à 15 58 33" src="https://user-images.githubusercontent.com/37544189/82819429-a6e1e700-9ea0-11ea-9c1f-0a371413174b.png"></center>
 
-![Capture d’écran 2020-02-18 à 18 07 49](https://user-images.githubusercontent.com/37544189/74759838-b4704b00-5279-11ea-8446-9cad67da60ea.jpg)
-
-This version also fixes many issues with macOS Catalina, namely localization that always defaulted to English, due to the restrictions applied by `legacyScreenSaver.appex`'s sandboxing. Starting with 1.8.0, Aerial requires at least macOS 10.12.
+This [version](https://github.com/JohnCoates/Aerial/releases/tag/v1.9.0) also includes several extra refinements such as adding the ability to override the 12/24 hour format for the clock, and also includes Italian translation thanks to @marguglio. 
 
 You can find more about [version changes here](Documentation/ChangeLog.md).
 
