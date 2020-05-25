@@ -53,7 +53,7 @@ You can either manually specify a location, or use your mac's location services 
 
 - Graphical battery indicator. The old text battery indicator was replaced with a nicer graphical one :
 
-![Capture d’écran 2020-05-25 à 15 44 37](https://user-images.githubusercontent.com/37544189/82819429-a6e1e700-9ea0-11ea-9c1f-0a371413174b.png)
+<center><img width="240" alt="Capture d’écran 2020-05-25 à 15 58 33" src="https://user-images.githubusercontent.com/37544189/82819429-a6e1e700-9ea0-11ea-9c1f-0a371413174b.png"></center>
 
 This [version](https://github.com/JohnCoates/Aerial/releases/tag/v1.9.0) also includes several extra refinements such as adding the ability to override the 12/24 hour format for the clock, and also includes Italian translation thanks to @marguglio. 
 
