@@ -1,5 +1,25 @@
 #  Aerial change log
 
+## [1.8.0](https://github.com/JohnCoates/Aerial/releases/tag/v1.8.0) (February 18, 2020)?
+
+- New update system for macOS Catalina. Starting with version 1.8.0, Aerial will now by default notify you with a message while the screen saver runs, when a new version of Aerial is available :
+
+![Capture d’écran 2020-02-18 à 17 57 39](https://user-images.githubusercontent.com/37544189/74758954-5858f700-5278-11ea-8e17-d034fdf57f33.jpg)
+
+You will also be notified when a new version is available in Aerial's settings, with that new mechanism that will redirect you to the new release page where you can download the new version :
+![Capture d’écran 2020-02-18 à 17 59 28](https://user-images.githubusercontent.com/37544189/74759068-7f172d80-5278-11ea-99bf-08621550087b.jpg)
+
+The update check process still uses Sparkle, but Aerial is not able to auto update in macOS Catalina due to the new sandboxing restrictions. I apologize for the inconvenience.
+
+- Add new shadow controls :
+
+![Capture d’écran 2020-02-18 à 18 06 26](https://user-images.githubusercontent.com/37544189/74759836-b3d7b480-5279-11ea-84cf-3ddbc810cbce.jpg)
+
+- Add a new Countdown information option, to either countdown to a given date, or a given time of day :
+
+![Capture d’écran 2020-02-18 à 18 07 49](https://user-images.githubusercontent.com/37544189/74759838-b4704b00-5279-11ea-8446-9cad67da60ea.jpg)
+
+This version also fixes many issues with macOS Catalina, namely localization that always defaulted to English, due to the restrictions applied by `legacyScreenSaver.appex`'s sandboxing. Starting with 1.8.0, Aerial requires at least macOS 10.12.
 ## [1.7.1](https://github.com/JohnCoates/Aerial/releases/tag/v1.7.1) - February 11, 2020
 
 - Brings back "Allow right arrow to skip" for macOS versions prior to Catalina. That feature still won't work on Catalina.
