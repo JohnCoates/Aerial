@@ -1,6 +1,6 @@
 #  Aerial change log
 
-## [1.8.0](https://github.com/JohnCoates/Aerial/releases/tag/v1.8.0) (February 18, 2020)?
+## [1.8.0](https://github.com/JohnCoates/Aerial/releases/tag/v1.8.0) - February 18, 2020
 
 - New update system for macOS Catalina. Starting with version 1.8.0, Aerial will now by default notify you with a message while the screen saver runs, when a new version of Aerial is available :
 
