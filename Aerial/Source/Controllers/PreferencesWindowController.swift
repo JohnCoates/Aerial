@@ -40,6 +40,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var popoverPower: NSPopover!
     @IBOutlet var popoverUpdate: NSPopover!
+    @IBOutlet var popoverWeather: NSPopover!
 
     // Videos tab
     @IBOutlet var outlineView: NSOutlineView!
@@ -64,7 +65,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var onBatteryPopup: NSPopUpButton!
 
     @IBOutlet var rightArrowKeyPlaysNextCheckbox: NSButton!
-    @IBOutlet var synchronizedModeCheckbox: NSButton!
+    //@IBOutlet var synchronizedModeCheckbox: NSButton!
     @IBOutlet var projectPageLink: NSButton!
 
     // Displays tab

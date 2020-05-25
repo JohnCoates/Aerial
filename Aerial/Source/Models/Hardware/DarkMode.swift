@@ -30,5 +30,4 @@ struct DarkMode {
             return false
         }
     }
-
 }

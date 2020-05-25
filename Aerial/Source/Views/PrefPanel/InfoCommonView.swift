@@ -64,7 +64,6 @@ class InfoCommonView: NSView {
         case .weather:
             controller.infoBox.title = "Weather provided by Yahoo! Weather"
             posRandom.isHidden = true
-
         case .countdown:
             controller.infoBox.title = "Countdown to a time/date"
             posRandom.isHidden = true

@@ -12,6 +12,10 @@ import AVKit
 class WeatherLayer: AnimationLayer {
     var config: PrefsInfo.Weather?
     var wasSetup = false
+    var todayCond: ConditionLayer?
+    var logo: YahooLayer?
+
+    var cscale: CGFloat?
 
     override init(layer: Any) {
         super.init(layer: layer)
@@ -39,6 +43,21 @@ class WeatherLayer: AnimationLayer {
         self.corner = config.corner
     }
 
+    override func setContentScale(scale: CGFloat) {
+        print("sCS wov : \(scale)")
+        if todayCond != nil {
+            debugLog("SCS WL todayCond")
+            todayCond?.contentsScale = scale
+        }
+        if logo != nil {
+            debugLog("SCS WL logo")
+            logo?.contentsScale = scale
+        }
+
+        // In case we haven't called displayWeatherBlock yet (should be all the time but hmm)
+        cscale = scale
+    }
+
     // Called at each new video, we only setup once though !
     override func setupForVideo(video: AerialVideo, player: AVPlayer) {
         // Only run this once
@@ -59,18 +78,22 @@ class WeatherLayer: AnimationLayer {
 
     func displayWeatherBlock() {
         if Weather.info == nil {
+            errorLog("No weather info in dWB please report")
             return
         }
-        self.frame.size = CGSize(width: 200, height: 75)
-
         let todayCond = ConditionLayer(condition: Weather.info!.currentObservation.condition)
-        todayCond.anchorPoint = CGPoint(x: 1, y: 0)
-        todayCond.position = CGPoint(x: frame.size.width, y: 0)
+        if cscale != nil {
+            todayCond.contentsScale = cscale!
+        }
         addSublayer(todayCond)
+        self.frame.size = CGSize(width: todayCond.frame.width, height: 85)
 
         let logo = YahooLayer()
         logo.anchorPoint = CGPoint(x: 1, y: 0)
         logo.position = CGPoint(x: frame.size.width-10, y: 0)
+        if cscale != nil {
+            logo.contentsScale = cscale!
+        }
         addSublayer(logo)
 
         update()

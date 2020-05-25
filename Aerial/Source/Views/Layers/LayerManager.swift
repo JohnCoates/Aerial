@@ -76,7 +76,7 @@ class LayerManager {
             case .date:
                 newLayer = DateLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.date)
             case .battery:
-                newLayer = BatteryLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.battery)
+                newLayer = BatteryIconLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.battery)
             case .updates:
                 newLayer = UpdatesLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.updates)
             case .weather:
@@ -145,6 +145,7 @@ class LayerManager {
     func setContentScale(scale: CGFloat) {
         for layer in additionalLayers {
             layer.contentsScale = scale
+            layer.setContentScale(scale: scale)
         }
     }
 

@@ -35,17 +35,22 @@ class ConditionLayer: CALayer {
         self.condition = condition
         super.init()
 
-        frame.size = CGSize(width: 200, height: 75)
-        print(condition)
+        debugLog("Condition : \(condition)")
 
         if PrefsInfo.weather.icons == .flat {
-            let tempWidth = addTemperature()
-
             let imglayer = ConditionSymbolLayer(condition: condition, isNight: Weather.isNight())
-            imglayer.anchorPoint = CGPoint(x: 1, y: 0.5)
-            imglayer.position = CGPoint(x: self.frame.size.width - tempWidth - 15, y: 50)
+            imglayer.anchorPoint = CGPoint(x: 0, y: 0.5)
+            imglayer.position = CGPoint(x: 0, y: 50)
             self.addSublayer(imglayer)
+
+            let tempWidth = addTemperature(at: imglayer.frame.width + 15)
+
+            // Set the final size of that block
+            frame.size = CGSize(width: imglayer.frame.width + 15 + tempWidth, height: 75)
         } else {
+            // This is a temporary size
+            frame.size = CGSize(width: 160, height: 75)
+
             if Weather.isNight() {
                 downloadImage(from: URL(string: "https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/\(condition.code)n.png")!)
             } else {
@@ -66,7 +71,7 @@ class ConditionLayer: CALayer {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 
-    func addTemperature() -> CGFloat {
+    func addTemperature(at: CGFloat) -> CGFloat {
         // Make a vertically centered layer for t°
         let temp = CAVCTextLayer()
         temp.string = "\(self.condition!.temperature)°"
@@ -81,25 +86,21 @@ class ConditionLayer: CALayer {
         self.addSublayer(temp)
 
         // We put the temperature at the right of the weather icon
-        temp.anchorPoint = CGPoint(x: 1, y: 0.5)
-        temp.position = CGPoint(x: self.frame.size.width, y: 50)
+        temp.anchorPoint = CGPoint(x: 0, y: 0.5)
+        temp.position = CGPoint(x: at, y: 50)
 
         return rect.size.width
     }
 
     func downloadImage(from url: URL) {
-        print("Download Started")
-        getData(from: url) { data, response, error in
+        getData(from: url) { data, _, error in
             guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
+            //print(response?.suggestedFilename ?? url.lastPathComponent)
             DispatchQueue.main.async() {
                 let imgs = NSImage(data: data)
 
                 // If we have something, trim and put it up
                 if let img = imgs {
-                    let tempWidth = self.addTemperature()
-
                     // Get the trimmed image first, goes on the left
                     let trimmedimg = img.trim()!
 
@@ -108,9 +109,14 @@ class ConditionLayer: CALayer {
                     imglayer.frame.size.width = trimmedimg.size.width / 2
                     imglayer.contents = trimmedimg
 
-                    imglayer.anchorPoint = CGPoint(x: 1, y: 0.5)
-                    imglayer.position = CGPoint(x: self.frame.size.width - tempWidth - 15, y: 50)
+                    imglayer.anchorPoint = CGPoint(x: 0, y: 0.5)
+                    imglayer.position = CGPoint(x: 0, y: 50)
                     self.addSublayer(imglayer)
+
+                    let tempWidth = self.addTemperature(at: imglayer.frame.width + 15)
+
+                    // Set the final size
+                    self.frame.size = CGSize(width: imglayer.frame.width + 15 + tempWidth, height: 75)
                 }
             }
         }
