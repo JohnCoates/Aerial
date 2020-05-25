@@ -2,6 +2,26 @@
 <channel>
 <title>Aerial</title>
 <item>
+<title>1.9.0</title>
+  <description>
+          <![CDATA[
+<p>New features:</p>
+<ul>
+<li>Aerial can now display current weather conditions. This is done through Yahoo! Weather's API and can be configured in the Info tab.</li>
+<li>The textual battery indicator is now replaced with icons</li>
+<li>Add a 12/24h override to the Time info.</li>
+<li>New options to quickly select day/night videos</li>
+<li>Added an option to unmute sound in custom videos</li>
+<li>Add Italian translation, many thanks to @marguglio !</li>
+</ul>
+          ]]>
+  </description>
+<pubDate>mon., 25 mai. 2020 15:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.9.0/Aerial.saver.zip" sparkle:version="1.9.0" 
+sparkle:edSignature="TMRT0eUXNLVeq/za6lrRgxTzZd7FJazpzRu36xWXbMDK0xqF0BBOiKuIIy0sZ7fee9pVsmQt+mQ9u95WEwxzAg==" length="6424628" type="application/octet-stream"/>
+</item>
+<item>
 <title>1.8.3beta11</title>
   <description>
           <![CDATA[
