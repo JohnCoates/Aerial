@@ -71,7 +71,7 @@ class InfoWeatherView: NSView {
             })
         } else {
             // Get the location
-            let location = Location.sharedInstance
+            let location = Locations.sharedInstance
 
             location.getCoordinates(failure: { (error) in
                 self.locationLabel.stringValue = error

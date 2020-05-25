@@ -116,8 +116,8 @@
 		036A57D923F4747D0009DC02 /* InfoCountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57D723F470940009DC02 /* InfoCountdownView.swift */; };
 		036A57DB23F5820A0009DC02 /* CountdownLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57DA23F5820A0009DC02 /* CountdownLayer.swift */; };
 		036A57DC23F5828E0009DC02 /* CountdownLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57DA23F5820A0009DC02 /* CountdownLayer.swift */; };
-		0374C9FE247AC5BC002F29D3 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374C9FD247AC5BC002F29D3 /* Location.swift */; };
-		0374C9FF247AC5BC002F29D3 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374C9FD247AC5BC002F29D3 /* Location.swift */; };
+		0374C9FE247AC5BC002F29D3 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374C9FD247AC5BC002F29D3 /* Locations.swift */; };
+		0374C9FF247AC5BC002F29D3 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374C9FD247AC5BC002F29D3 /* Locations.swift */; };
 		0385FC59242B9AE1007E6513 /* APISecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0385FC58242B9AE1007E6513 /* APISecrets.swift */; };
 		0385FC5A242B9AE1007E6513 /* APISecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0385FC58242B9AE1007E6513 /* APISecrets.swift */; };
 		0385FC5D242B9F6E007E6513 /* InfoWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0385FC5C242B9F6E007E6513 /* InfoWeatherView.swift */; };
@@ -551,7 +551,7 @@
 		036A57D423F30DD00009DC02 /* UpdatesLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesLayer.swift; sourceTree = "<group>"; };
 		036A57D723F470940009DC02 /* InfoCountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCountdownView.swift; sourceTree = "<group>"; };
 		036A57DA23F5820A0009DC02 /* CountdownLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownLayer.swift; sourceTree = "<group>"; };
-		0374C9FD247AC5BC002F29D3 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		0374C9FD247AC5BC002F29D3 /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 		0385FC58242B9AE1007E6513 /* APISecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISecrets.swift; sourceTree = "<group>"; };
 		0385FC5C242B9F6E007E6513 /* InfoWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoWeatherView.swift; sourceTree = "<group>"; };
 		0387CA3F245DC7A4000A7095 /* bolt.fill.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = bolt.fill.pdf; sourceTree = "<group>"; };
@@ -1044,7 +1044,7 @@
 				FAC36F411BE1756D007F2A20 /* Cache */,
 				FAC36F621BE17701007F2A20 /* Extensions */,
 				FAC36F401BE1756D007F2A20 /* AerialVideo.swift */,
-				0374C9FD247AC5BC002F29D3 /* Location.swift */,
+				0374C9FD247AC5BC002F29D3 /* Locations.swift */,
 				FAC36F661BE1778C007F2A20 /* ManifestLoader.swift */,
 				03893CB2217749F0008E7125 /* ErrorLog.swift */,
 				0313F9EB2294468600B074BB /* SeededGenerator.swift */,
@@ -1652,7 +1652,7 @@
 				FA6F81DD1D939455007975FE /* Preferences.swift in Sources */,
 				034116D423F9BD3100CD7674 /* PrefsUpdates.swift in Sources */,
 				FAF450221BE2B45D00C1F98A /* VideoLoader.swift in Sources */,
-				0374C9FF247AC5BC002F29D3 /* Location.swift in Sources */,
+				0374C9FF247AC5BC002F29D3 /* Locations.swift in Sources */,
 				036A57DC23F5828E0009DC02 /* CountdownLayer.swift in Sources */,
 				0313F9EA2294338300B074BB /* CustomVideoController.swift in Sources */,
 				FAC36F5A1BE1756D007F2A20 /* AerialVideo.swift in Sources */,
@@ -1713,7 +1713,7 @@
 				038C584A23A9394000224630 /* InfoCommonView.swift in Sources */,
 				032D1164239A7F0C007E7756 /* AerialView+Brightness.swift in Sources */,
 				FA6F81DC1D939455007975FE /* Preferences.swift in Sources */,
-				0374C9FE247AC5BC002F29D3 /* Location.swift in Sources */,
+				0374C9FE247AC5BC002F29D3 /* Locations.swift in Sources */,
 				FAF450241BE2D2FD00C1F98A /* VideoCache.swift in Sources */,
 				030A0F29245C7C7D009E1D97 /* BatteryIconLayer.swift in Sources */,
 				0361B9A823D732A300B6252D /* PrefsDisplays.swift in Sources */,
@@ -2001,7 +2001,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.8.3beta11;
+				CURRENT_PROJECT_VERSION = 1.9.0;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2009,7 +2009,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.8.3beta11;
+				MARKETING_VERSION = 1.9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2029,7 +2029,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.8.3beta11;
+				CURRENT_PROJECT_VERSION = 1.9.0;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2037,7 +2037,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.8.3beta11;
+				MARKETING_VERSION = 1.9.0;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

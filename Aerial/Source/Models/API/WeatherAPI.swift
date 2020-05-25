@@ -99,7 +99,7 @@ struct Weather {
         }
 
         if PrefsInfo.weather.locationMode == .useCurrent {
-            let location = AerialApp.Location.sharedInstance
+            let location = Locations.sharedInstance
 
             location.getCoordinates(failure: { (_) in
                 failure(.cancelled) // Slightly naughty

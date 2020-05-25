@@ -108,6 +108,7 @@
                 <outlet property="popoverPower" destination="7lP-6F-c7D" id="Ozn-hU-sAe"/>
                 <outlet property="popoverTime" destination="6un-1I-4G4" id="ZD7-ym-bLw"/>
                 <outlet property="popoverUpdate" destination="YTC-a3-Mrn" id="4UV-3D-X5W"/>
+                <outlet property="popoverWeather" destination="SJ8-ia-Zxf" id="5NW-7D-WNj"/>
                 <outlet property="popupVideoFormat" destination="rUc-qc-3p7" id="JNx-id-07t"/>
                 <outlet property="prefTabView" destination="B9U-tn-dsp" id="3c5-Fy-jcB"/>
                 <outlet property="previewDisabledTextfield" destination="kQD-aR-CSY" id="3BE-5n-RJW"/>
@@ -148,16 +149,16 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="631" height="466"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-            <view key="contentView" identifier="windowView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="631" height="466"/>
+            <view key="contentView" identifier="windowView" misplaced="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="631" height="465"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <view identifier="preferencesView" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGe-MQ-1z1">
-                        <rect key="frame" x="0.0" y="41" width="625" height="425"/>
+                        <rect key="frame" x="0.0" y="41" width="625" height="424"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B9U-tn-dsp">
-                                <rect key="frame" x="-1" y="-5" width="634" height="427"/>
+                                <rect key="frame" x="-1" y="-5" width="634" height="426"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
@@ -460,7 +461,7 @@ is disabled
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSBookmarksTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kGs-X6-tPb">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="controlContent"/>
+                                                        <font key="font" metaFont="system" size="12"/>
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="videoSetsButtonClick:" target="-2" id="aDh-Hf-5AD"/>
@@ -482,7 +483,7 @@ is disabled
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSActionTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nxM-5Y-pQM">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="controlContent"/>
+                                                        <font key="font" metaFont="system" size="12"/>
                                                     </buttonCell>
                                                     <connections>
                                                         <action selector="outlineViewSettingsClick:" target="-2" id="foF-Fr-895"/>
@@ -1930,7 +1931,7 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ndV-E9-x71">
-                        <rect key="frame" x="464" y="10" width="67" height="27"/>
+                        <rect key="frame" x="464" y="9" width="67" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" title="1.0.0beta1" bezelStyle="rounded" alignment="right" imageScaling="proportionallyDown" inset="2" id="O5H-2o-0dP">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -3788,6 +3789,9 @@ corner</string>
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="helpWeatherButtonClick:" target="-2" id="o3x-Sm-gGF"/>
+                    </connections>
                 </button>
                 <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tCU-C1-NTt">
                     <rect key="frame" x="113" y="50" width="221" height="16"/>
@@ -3808,17 +3812,17 @@ corner</string>
             </connections>
             <point key="canvasLocation" x="-186" y="1309"/>
         </customView>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="3Oo-WJ-FbU" customClass="NSPanel">
+        <window title="Weather preview" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="3Oo-WJ-FbU" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="272" y="172" width="335" height="409"/>
+            <rect key="contentRect" x="272" y="172" width="335" height="374"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="G1c-bU-lml">
-                <rect key="frame" x="0.0" y="0.0" width="335" height="409"/>
+                <rect key="frame" x="0.0" y="0.0" width="335" height="374"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jaf-aN-OEX">
-                        <rect key="frame" x="0.0" y="0.0" width="335" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="335" height="285"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="E5D-ek-AmQ">
                             <font key="font" metaFont="system"/>
@@ -3827,13 +3831,49 @@ corner</string>
                         </textFieldCell>
                     </textField>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UBA-a7-4iD">
-                        <rect key="frame" x="0.0" y="319" width="335" height="90"/>
+                        <rect key="frame" x="0.0" y="284" width="335" height="90"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-98.5" y="57.5"/>
+            <point key="canvasLocation" x="-98.5" y="40"/>
         </window>
+        <viewController id="atm-fA-D7i" userLabel="PopoverWeather View Controller">
+            <connections>
+                <outlet property="view" destination="ezZ-fO-Urf" id="fgl-u4-Hwt"/>
+            </connections>
+        </viewController>
+        <popover behavior="t" id="SJ8-ia-Zxf" userLabel="PopoverWeather">
+            <connections>
+                <outlet property="contentViewController" destination="atm-fA-D7i" id="Frv-CI-sFK"/>
+                <outlet property="delegate" destination="-3" id="nAZ-TN-g8N"/>
+            </connections>
+        </popover>
+        <customView id="ezZ-fO-Urf">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="340"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dch-Be-47z">
+                    <rect key="frame" x="18" y="20" width="364" height="300"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <textFieldCell key="cell" selectable="YES" id="oPE-NX-GQR">
+                        <font key="font" metaFont="message" size="11"/>
+                        <mutableString key="title">Aerial uses Yahoo! Weather's API to retrieve and display the current conditions. In order for this to work, you will need to specify your location. There are two ways to do that :
+
+- Manually specify : Simply enter your location (the name of your city, followed by a state abbreviation or country, such as "Paris, FR" or "Cupertino, CA".
+
+- Use current location : For this to work, Aerial will ask your mac for your current location, which is provided by macOS location services. This information is then sent to Yahoo's API to retrieve conditions to the city closest to the location specified. 
+
+For privacy reasons, the coordinates of your location are rounded to two decimals, leaving a precision of about 1 km. Please note that you will need to allow Aerial to use location services for this to work. In macOS Catalina, a prompt will ask you to allow "legacyScreenSaver" to access your location. 
+
+Independant of your choice, you can preview the results using the "Test" button below. </mutableString>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="-698" y="74"/>
+        </customView>
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>

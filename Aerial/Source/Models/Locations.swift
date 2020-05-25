@@ -9,8 +9,8 @@
 import Foundation
 import CoreLocation
 
-class Location: NSObject {
-    static let sharedInstance = Location()
+class Locations: NSObject {
+    static let sharedInstance = Locations()
     let locationManager = CLLocationManager()
     var coordinates: CLLocationCoordinate2D?
     var failures: [(String) -> Void] = []
@@ -53,7 +53,7 @@ class Location: NSObject {
     }
 }
 
-extension Location: CLLocationManagerDelegate {
+extension Locations: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let currentLocation = locations[locations.count - 1]
