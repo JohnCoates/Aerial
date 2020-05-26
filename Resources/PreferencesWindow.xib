@@ -149,7 +149,7 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="631" height="466"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-            <view key="contentView" identifier="windowView" misplaced="YES" id="EiT-Mj-1SZ">
+            <view key="contentView" identifier="windowView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="631" height="465"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
@@ -3162,7 +3162,7 @@ corner</string>
                     </connections>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k2i-SA-fme">
-                    <rect key="frame" x="372" y="4" width="27" height="23"/>
+                    <rect key="frame" x="371.5" y="4" width="28" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundTextured" title="..." bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="19h-Pw-qR4">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

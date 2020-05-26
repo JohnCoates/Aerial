@@ -126,4 +126,8 @@ extension PreferencesWindowController {
             weatherLabel.stringValue = "City not found, please try again"
         }
     }
+
+    @IBAction func helpWeatherButtonClick(_ button: NSButton) {
+        popoverWeather.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
+    }
 }
