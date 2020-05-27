@@ -44,7 +44,7 @@ You may need to manually create the ByHost folder manually as Catalina may not d
 ## Setting Aerial as Your Screen Saver
 
 1. Open `System Preferences` -> `Desktop & Screen Saver` -> `Screen Saver`
-2. Choose Aerial and click on `Screen Saver` Options to select your settings.
+2. Choose Aerial and click on `Screen Saver Options` to select your settings.
 
 ![screen shot 2018-10-29 at 13 17 23](https://user-images.githubusercontent.com/37544189/47649971-1f76a980-db7f-11e8-97be-d1f90b943c9d.png)
 
