@@ -65,7 +65,7 @@ class AnimationLayer: CALayer, AnimatableLayer {
     }
 
     // Update and move to a corner
-    func update() {
+    func update(redraw: Bool = false) {
          // This is the rect resized to our string
          let newCorner = getCorner()
 

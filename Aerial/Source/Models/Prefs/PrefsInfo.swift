@@ -123,6 +123,7 @@ struct PrefsInfo {
         var corner: InfoCorner
         var displays: InfoDisplays
         var mode: InfoIconText
+        var disableWhenFull: Bool
     }
 
     struct Updates: CommonInfo, Codable {
@@ -209,7 +210,8 @@ struct PrefsInfo {
                                                      fontSize: 20,
                                                      corner: .topRight,
                                                      displays: .allDisplays,
-                                                     mode: .icon))
+                                                     mode: .icon,
+                                                     disableWhenFull: false))
     static var battery: Battery
 
     // Updates

@@ -9,15 +9,15 @@
 import Cocoa
 
 class InfoBatteryView: NSView {
-
-    @IBOutlet var modePopup: NSPopUpButton!
+    @IBOutlet var hideWhenFull: NSButton!
 
     // Init(ish)
     func setStates() {
-        modePopup.selectItem(at: PrefsInfo.battery.mode.rawValue)
+        hideWhenFull.state = PrefsInfo.battery.disableWhenFull ? .on : .off
     }
 
-    @IBAction func modePopupChange(_ sender: NSPopUpButton) {
-        PrefsInfo.battery.mode = InfoIconText(rawValue: sender.indexOfSelectedItem)!
+    @IBAction func hideWhenFullCheck(_ sender: NSButton) {
+        let onState = sender.state == .on
+        PrefsInfo.battery.disableWhenFull = onState
     }
 }
