@@ -68,30 +68,15 @@ extension PreferencesWindowController {
         PrefsCache.cacheLimit = sender.doubleValue
     }
 
-    // TODO : Move to model, and this spectacularly fails in AppMode ;)
     func updateCacheSize() {
-        // get your directory url, we now use App support
-        let documentsDirectoryURL = URL(fileURLWithPath: VideoCache.appSupportDirectory!)
+        let size = VideoCache.cacheSizeString()
 
-        // FileManager.default.urls(for: VideoCache.cacheDirectory, in: .userDomainMask).first!
+        // Old one
+        cacheSizeTextField.stringValue = "Cache all videos (Current cache size \(size))"
+        // New one
+        currentCacheLabel.stringValue = "(Currently \(size))"
 
-        // check if the url is a directory
-        if (try? documentsDirectoryURL.resourceValues(forKeys: [.isDirectoryKey]))?.isDirectory == true {
-            var folderSize = 0
-            (FileManager.default.enumerator(at: documentsDirectoryURL, includingPropertiesForKeys: nil)?.allObjects as? [URL])?.lazy.forEach {
-                folderSize += (try? $0.resourceValues(forKeys: [.totalFileAllocatedSizeKey]))?.totalFileAllocatedSize ?? 0
-            }
-            let byteCountFormatter =  ByteCountFormatter()
-            byteCountFormatter.allowedUnits = .useGB
-            byteCountFormatter.countStyle = .file
-            let sizeToDisplay = byteCountFormatter.string(for: folderSize) ?? ""
-            debugLog("Cache size : \(sizeToDisplay)")
-
-            // Old one
-            cacheSizeTextField.stringValue = "Cache all videos (Current cache size \(sizeToDisplay))"
-            // New one
-            currentCacheLabel.stringValue = "(Currently \(sizeToDisplay))"
-        }
+        print("Is full : \(VideoCache.isFull())")
     }
 
     @IBAction func cacheAerialsAsTheyPlayClick(_ button: NSButton!) {

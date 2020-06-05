@@ -198,6 +198,11 @@ class ManifestLoader {
                 }
             }
 
+            // Is the video cached, and if not, are we full ?
+            if !video.isAvailableOffline && VideoCache.isFull() {
+                continue
+            }
+
             // All good ? Add to playlist
             playlist.append(video)
         }

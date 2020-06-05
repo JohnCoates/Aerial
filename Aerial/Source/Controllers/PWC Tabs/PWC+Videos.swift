@@ -185,7 +185,9 @@ extension PreferencesWindowController {
         if let video = sender.representedObject as? AerialVideo {
             let videoManager = VideoManager.sharedInstance
             if !videoManager.isVideoQueued(id: video.id) {
-                videoManager.queueDownload(video)
+                ensureDownload {
+                    videoManager.queueDownload(video)
+                }
             }
         }
     }
@@ -196,6 +198,33 @@ extension PreferencesWindowController {
             let videoManager = VideoManager.sharedInstance
             videoManager.updateAllCheckCellView()
         }
+    }
+
+    // MARK: UI for overriding/declining a download when cache is full
+    func ensureDownload(action: @escaping () -> Void) {
+        if !VideoCache.isFull() {
+            action()
+        } else {
+            if showAlert(question: "Your cache is full",
+                         text: "Do you want to proceed with the download anyway ?",
+                         button1: "Download Anyway",
+                         button2: "Cancel") {
+                action()
+            } else {
+                print("Download cancelled")
+            }
+        }
+    }
+
+    func showAlert(question: String, text: String, button1: String = "OK", button2: String = "Cancel") -> Bool {
+        let alert = NSAlert()
+        alert.messageText = question
+        alert.informativeText = text
+        alert.alertStyle = .warning
+        alert.icon = NSImage(named: NSImage.cautionName)
+        alert.addButton(withTitle: button1)
+        alert.addButton(withTitle: button2)
+        return alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn
     }
 
     // MARK: Wikipedia popup link
@@ -347,10 +376,12 @@ extension PreferencesWindowController {
         }
         let videoManager = VideoManager.sharedInstance
 
-        for video in videos {
-            if preferences.videoIsInRotation(videoID: video.id) && !video.isAvailableOffline {
-                if !videoManager.isVideoQueued(id: video.id) {
-                    videoManager.queueDownload(video)
+        ensureDownload {
+            for video in videos {
+                if self.preferences.videoIsInRotation(videoID: video.id) && !video.isAvailableOffline {
+                    if !videoManager.isVideoQueued(id: video.id) {
+                        videoManager.queueDownload(video)
+                    }
                 }
             }
         }
@@ -362,15 +393,17 @@ extension PreferencesWindowController {
 
     func downloadAllVideos() {
         let videoManager = VideoManager.sharedInstance
-        for city in cities {
-            for video in city.day.videos where !video.isAvailableOffline {
-                if !videoManager.isVideoQueued(id: video.id) {
-                    videoManager.queueDownload(video)
+        ensureDownload {
+            for city in self.cities {
+                for video in city.day.videos where !video.isAvailableOffline {
+                    if !videoManager.isVideoQueued(id: video.id) {
+                        videoManager.queueDownload(video)
+                    }
                 }
-            }
-            for video in city.night.videos where !video.isAvailableOffline {
-                if !videoManager.isVideoQueued(id: video.id) {
-                    videoManager.queueDownload(video)
+                for video in city.night.videos where !video.isAvailableOffline {
+                    if !videoManager.isVideoQueued(id: video.id) {
+                        videoManager.queueDownload(video)
+                    }
                 }
             }
         }

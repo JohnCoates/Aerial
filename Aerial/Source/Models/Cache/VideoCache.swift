@@ -166,6 +166,50 @@ final class VideoCache {
         }
     }
 
+    static func cacheSizeString() -> String {
+        let documentsDirectoryURL = Foundation.URL(fileURLWithPath: appSupportDirectory!)
+
+        // check if the url is a directory
+        if (try? documentsDirectoryURL.resourceValues(forKeys: [.isDirectoryKey]))?.isDirectory == true {
+            var folderSize = 0
+            (FileManager.default.enumerator(at: documentsDirectoryURL, includingPropertiesForKeys: nil)?.allObjects as? [URL])?.lazy.forEach {
+                folderSize += (try? $0.resourceValues(forKeys: [.totalFileAllocatedSizeKey]))?.totalFileAllocatedSize ?? 0
+            }
+            let byteCountFormatter =  ByteCountFormatter()
+            byteCountFormatter.allowedUnits = .useGB
+            byteCountFormatter.countStyle = .file
+            print("folderSize : \(folderSize)")
+            let sizeToDisplay = byteCountFormatter.string(for: folderSize) ?? ""
+            debugLog("Cache size : \(sizeToDisplay)")
+            return sizeToDisplay
+        }
+
+        // In case it fails somehow
+        return "No cache found"
+    }
+
+    // Returns cache size in GB
+    static func cacheSize() -> Double {
+        let documentsDirectoryURL = Foundation.URL(fileURLWithPath: appSupportDirectory!)
+
+        // check if the url is a directory
+        if (try? documentsDirectoryURL.resourceValues(forKeys: [.isDirectoryKey]))?.isDirectory == true {
+            var folderSize = 0
+            (FileManager.default.enumerator(at: documentsDirectoryURL, includingPropertiesForKeys: nil)?.allObjects as? [URL])?.lazy.forEach {
+                folderSize += (try? $0.resourceValues(forKeys: [.totalFileAllocatedSizeKey]))?.totalFileAllocatedSize ?? 0
+            }
+
+            return Double(folderSize) / 1000000000
+        }
+
+        return 0
+    }
+
+    // Is our cache full or not ? 
+    static func isFull() -> Bool {
+        return PrefsCache.cacheLimit < cacheSize()
+    }
+
     static func cachePath(forVideo video: AerialVideo) -> String? {
         if video.url.absoluteString.starts(with: "file") {
             return video.url.path
