@@ -2,6 +2,22 @@
 <channel>
 <title>Aerial</title>
 <item>
+<title>1.9.1</title>
+  <description>
+          <![CDATA[
+<ul>
+<li>Add an option to hide battery indicator when it's full</li>
+<li>Fix the position of the weather info</li>
+<li>Fix a crash with some settings</li>
+</ul>
+          ]]>
+  </description>
+<pubDate>mer., 5 jui. 2020 15:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v1.9.1/Aerial.saver.zip" sparkle:version="1.9.1" 
+sparkle:edSignature="/u+5SrUpJCSVbTGMygyzGdbolaQ5t4IyFzf4sEZH1J/GDi+Eftu336HhRFmO9hP6zvDIDfRd8J1wGkLSkHQsDA==" length="6425841" type="application/octet-stream"/>
+</item>
+<item>
 <title>1.9.1beta1</title>
   <description>
           <![CDATA[
