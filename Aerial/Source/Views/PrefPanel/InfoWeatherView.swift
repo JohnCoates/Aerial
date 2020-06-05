@@ -81,7 +81,8 @@ class InfoWeatherView: NSView {
                 self.locationLabel.stringValue = "Latiture: \(lat) Longitude: \(lon)"
 
                 Weather.fetch(failure: { (error) in
-                    print(error.localizedDescription)
+                    errorLog(error.localizedDescription)
+                    self.locationLabel.stringValue = error.localizedDescription
                 }, success: { (_) in
                     let pwc = self.window!.windowController as! PreferencesWindowController
                     pwc.openWeatherPreview()

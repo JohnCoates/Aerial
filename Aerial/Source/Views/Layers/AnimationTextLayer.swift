@@ -86,16 +86,7 @@ class AnimationTextLayer: CATextLayer, AnimatableLayer {
         var oppoMargin: CGFloat
 
         if self is LocationLayer {
-            switch newCorner {
-            case .topLeft:
-                oppoMargin = offsets.maxWidth[.topRight]!
-            case .topRight:
-                oppoMargin = offsets.maxWidth[.topLeft]!
-            case .bottomLeft:
-                oppoMargin = offsets.maxWidth[.bottomRight]!
-            default: // .bottomRight, we only allow the 4 corners for random
-                oppoMargin = offsets.maxWidth[.bottomLeft]!
-            }
+            oppoMargin = getOppoMargin(corner: newCorner)
         } else {
             oppoMargin = 0
         }
@@ -118,6 +109,29 @@ class AnimationTextLayer: CATextLayer, AnimatableLayer {
 
         // Last line won't appear if we don't adjust a bit (why!?)
         return CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width+10, height: rect.height + 10)
+    }
+
+    func getOppoMargin(corner: InfoCorner) -> CGFloat {
+        print("oppo for \(corner) offsets \(offsets.maxWidth[.topCenter]!) \(offsets.maxWidth[.bottomCenter]!)")
+        // Handle the special cases of having something in the center
+        if offsets.maxWidth[.topCenter]! > 0 && (corner == .topLeft || corner == .topRight) {
+            return (baseLayer.visibleRect.size.width - offsets.maxWidth[.topCenter]!) / 2
+        }
+        if offsets.maxWidth[.bottomCenter]! > 0 && (corner == .bottomLeft || corner == .bottomRight) {
+            return (baseLayer.visibleRect.size.width - offsets.maxWidth[.bottomCenter]!) / 2
+        }
+
+        // Then the regular cases
+        switch corner {
+        case .topLeft:
+            return offsets.maxWidth[.topRight]!
+        case .topRight:
+            return offsets.maxWidth[.topLeft]!
+        case .bottomLeft:
+            return offsets.maxWidth[.bottomRight]!
+        default: // .bottomRight, we only allow the 4 corners for random
+            return offsets.maxWidth[.bottomLeft]!
+        }
     }
 
     // Get the font and font size

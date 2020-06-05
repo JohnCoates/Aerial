@@ -172,6 +172,14 @@ class LayerManager {
     func isCornerAcceptable(corner: Int) -> Bool {
         // Not the prettiest helper, this is a bit of a hack
 
+        // If we have something in both topCenter and bottomCenter, we could infinite loop
+        // So as a precaution we allow whatever was picked
+        for layer in additionalLayers where layer.corner == .topCenter {
+            for layer2 in additionalLayers where layer2.corner == .bottomCenter {
+                return true
+            }
+        }
+
         // If we have something topCenter, never allow random on top left/right
         if corner == 0 || corner == 2 {
             for layer in additionalLayers where layer.corner == .topCenter {
