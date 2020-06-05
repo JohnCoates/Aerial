@@ -1,5 +1,21 @@
 # Troubleshooting
 
+**Are you using Little Snitch or another firewall ?** Aerial requires network access for it to work, and default Little Snitch settings may impair some or all of it's features. Usually, downloading videos will be ok with default settings but you may see issues with :
+
+- Updates/auto-updates : Aerial does periodically check for new versions using Sparkle. The feed is hosted in this github repository, but access is usually denied. You may need to explicitely allow access to "raw.githubusercontent.com". For Catalina, you'll need to create the following rule : 
+
+![Screen Shot 2020-06-05 at 12 11 52 PM](https://user-images.githubusercontent.com/28914268/83914406-056f5680-a726-11ea-905d-821ccabd0469.png)
+
+- Weather : Aerial uses Yahoo Weather's API, and requires access to it. You may need to explicitely create the following rule to get it working:
+
+![Screen Shot 2020-06-05 at 11 49 58 AM](https://user-images.githubusercontent.com/28914268/83912708-2a15ff00-a723-11ea-844d-9f6b9b18fbe8.png)
+
+If you want to use "Color icons", you will need to setup this additional rule: 
+
+![Screen Shot 2020-06-05 at 12 12 00 PM](https://user-images.githubusercontent.com/28914268/83914411-06a08380-a726-11ea-8f03-58400ce5a4a7.png)
+
+In Catalina, Aerial (like all third party screensavers) is hosted by "legacyScreenSaver.appex". In older macOS versions, it can be hosted either by System Preferences (for the control panel) or "ScreenSaverEngine.app". 
+
 ## macOS Catalina specific issues
 
 - The sandboxing restrictions make it impossible, as far as we understand, for a screensaver file to auto-update itself, as Aerial did in the past through Sparkle. Technically speaking, you will still be prompted to install new updates, and the updates will look like they install, except the installation will silently fail. You can in the meantime either :
