@@ -147,7 +147,7 @@ extension AnimatableLayer {
         // Find a new corner, different from the previous one
         var newCorner = getRandomCorner()
 
-        while newCorner == lastCorner || !layerManager.isCornerAcceptable(corner: newCorner) {
+        while newCorner == lastCorner {
             newCorner = getRandomCorner()
         }
 

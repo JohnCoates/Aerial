@@ -115,10 +115,10 @@ class AnimationTextLayer: CATextLayer, AnimatableLayer {
         print("oppo for \(corner) offsets \(offsets.maxWidth[.topCenter]!) \(offsets.maxWidth[.bottomCenter]!)")
         // Handle the special cases of having something in the center
         if offsets.maxWidth[.topCenter]! > 0 && (corner == .topLeft || corner == .topRight) {
-            return (baseLayer.visibleRect.size.width - offsets.maxWidth[.topCenter]!) / 2
+            return (baseLayer.visibleRect.size.width + offsets.maxWidth[.topCenter]!) / 2
         }
         if offsets.maxWidth[.bottomCenter]! > 0 && (corner == .bottomLeft || corner == .bottomRight) {
-            return (baseLayer.visibleRect.size.width - offsets.maxWidth[.bottomCenter]!) / 2
+            return (baseLayer.visibleRect.size.width + offsets.maxWidth[.bottomCenter]!) / 2
         }
 
         // Then the regular cases
