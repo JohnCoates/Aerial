@@ -12,6 +12,18 @@ import Cocoa
 extension PreferencesWindowController {
     func setupCacheTab() {
         // Cache panel
+        cacheLimitTextField.doubleValue = PrefsCache.cacheLimit
+        cacheManagementMode.selectItem(at: PrefsCache.cacheMode.rawValue)
+        cacheRotation.selectItem(at: PrefsCache.cachePeriodicity.rawValue)
+        //currentCacheLabel.stringValue = "(Currently 0 GiB)"
+
+        // Make sure to hide/show the periodicity pref
+        updateCacheRotation()
+
+        // And update the size of the cache
+        updateCacheSize()
+
+        // (old stuff)
         if preferences.neverStreamVideos {
             neverStreamVideosCheckbox.state = .on
         }
@@ -29,6 +41,34 @@ extension PreferencesWindowController {
         }
     }
 
+    // Cache management mode
+    @IBAction func cacheModeChange(_ sender: NSPopUpButton) {
+        PrefsCache.cacheMode = CacheMode(rawValue: sender.indexOfSelectedItem)!
+        updateCacheRotation()
+    }
+
+    // The cache refresh periodicity should be hidden when in manual mode
+    func updateCacheRotation() {
+        if PrefsCache.cacheMode == .manual {
+            cacheRotation.isHidden = true
+            cacheRotationLabel.isHidden = true
+        } else {
+            cacheRotation.isHidden = false
+            cacheRotationLabel.isHidden = false
+        }
+    }
+
+    // Cache refresh periodicity
+    @IBAction func cacheRotationChange(_ sender: NSPopUpButton) {
+        PrefsCache.cachePeriodicity = CachePeriodicity(rawValue: sender.indexOfSelectedItem)!
+    }
+
+    // Cache limit
+    @IBAction func cacheLimitChange(_ sender: NSTextField) {
+        PrefsCache.cacheLimit = sender.doubleValue
+    }
+
+    // TODO : Move to model, and this spectacularly fails in AppMode ;)
     func updateCacheSize() {
         // get your directory url, we now use App support
         let documentsDirectoryURL = URL(fileURLWithPath: VideoCache.appSupportDirectory!)
@@ -46,7 +86,11 @@ extension PreferencesWindowController {
             byteCountFormatter.countStyle = .file
             let sizeToDisplay = byteCountFormatter.string(for: folderSize) ?? ""
             debugLog("Cache size : \(sizeToDisplay)")
+
+            // Old one
             cacheSizeTextField.stringValue = "Cache all videos (Current cache size \(sizeToDisplay))"
+            // New one
+            currentCacheLabel.stringValue = "(Currently \(sizeToDisplay))"
         }
     }
 

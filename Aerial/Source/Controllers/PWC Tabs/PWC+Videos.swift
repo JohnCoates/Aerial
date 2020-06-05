@@ -85,7 +85,6 @@ extension PreferencesWindowController {
             playerView.videoGravity = .resizeAspectFill
         }
 
-        updateCacheSize()
         outlineView.floatsGroupRows = false
         outlineView.menu = videoMenu
         videoMenu.delegate = self

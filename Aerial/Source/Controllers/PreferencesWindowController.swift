@@ -158,6 +158,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet weak var downloadNowButton: NSButton!
     @IBOutlet weak var cacheSizeTextField: NSTextField!
 
+    @IBOutlet var cacheLimitTextField: NSTextField!
+    @IBOutlet var currentCacheLabel: NSTextField!
+    @IBOutlet var cacheManagementMode: NSPopUpButton!
+    @IBOutlet var cacheRotation: NSPopUpButton!
+    @IBOutlet var cacheRotationLabel: NSTextField!
+
     // Updates Tab
     @IBOutlet var newVideosModePopup: NSPopUpButton!
     @IBOutlet var checkNowButton: NSButton!
