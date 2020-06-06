@@ -267,6 +267,8 @@
 		03D3DAC5221F286D00BDA52F /* pl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D3DAC3221F286700BDA52F /* pl.json */; };
 		03DAD470229EAC66000DA6D1 /* Installation.md in Resources */ = {isa = PBXBuildFile; fileRef = 03DAD46F229EAC66000DA6D1 /* Installation.md */; };
 		03DAD473229EC031000DA6D1 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 03DAD472229EC031000DA6D1 /* Readme.md */; };
+		03DC004E248BC5A4005DB0F4 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC004D248BC5A4005DB0F4 /* Cache.swift */; };
+		03DC0065248BC60D005DB0F4 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC004D248BC5A4005DB0F4 /* Cache.swift */; };
 		03E289D5239A79C400C06EC5 /* AutoUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB892E239A758B005D1F64 /* AutoUpdates.swift */; };
 		03E4B20D22DC7F8800C22EBE /* zh_TW.json in Resources */ = {isa = PBXBuildFile; fileRef = 03E4B20C22DC7F8700C22EBE /* zh_TW.json */; };
 		03E4B20E22DC7FE200C22EBE /* zh_TW.json in Resources */ = {isa = PBXBuildFile; fileRef = 03E4B20C22DC7F8700C22EBE /* zh_TW.json */; };
@@ -634,6 +636,7 @@
 		03DAD475229EC544000DA6D1 /* HardwareDecoding.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = HardwareDecoding.md; sourceTree = "<group>"; };
 		03DAD476229EC64D000DA6D1 /* Troubleshooting.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Troubleshooting.md; sourceTree = "<group>"; };
 		03DAD477229ECAAA000DA6D1 /* CustomVideos.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CustomVideos.md; sourceTree = "<group>"; };
+		03DC004D248BC5A4005DB0F4 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		03E4B20C22DC7F8700C22EBE /* zh_TW.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zh_TW.json; sourceTree = "<group>"; };
 		03E8730B2165013C002B469B /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		03E8730E216501ED002B469B /* AsynchronousOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousOperation.swift; sourceTree = "<group>"; };
@@ -1068,6 +1071,7 @@
 				FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */,
 				03A2CB9B216BA9AF0061E8E8 /* VideoManager.swift */,
 				03233B67217272640077D3F9 /* PoiStringProvider.swift */,
+				03DC004D248BC5A4005DB0F4 /* Cache.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -1620,6 +1624,7 @@
 				03D2A43F24476117003ABD30 /* WeatherAPI.swift in Sources */,
 				03D1E7882284367200D10CF7 /* DisplayView.swift in Sources */,
 				038D2EDF23B0FB0D00CD91F7 /* PrefsVideos.swift in Sources */,
+				03DC0065248BC60D005DB0F4 /* Cache.swift in Sources */,
 				03608A2122A55BC2008F08A2 /* PWC+Cache.swift in Sources */,
 				038D2EE523B6565900CD91F7 /* InfoBatteryView.swift in Sources */,
 				030D9B7C21551A8D00961E95 /* AerialPlayerItem.swift in Sources */,
@@ -1724,6 +1729,7 @@
 				030A0F29245C7C7D009E1D97 /* BatteryIconLayer.swift in Sources */,
 				0361B9A823D732A300B6252D /* PrefsDisplays.swift in Sources */,
 				03D2A43424474304003ABD30 /* YahooWeatherAPI.swift in Sources */,
+				03DC004E248BC5A4005DB0F4 /* Cache.swift in Sources */,
 				03D2A43E24476117003ABD30 /* WeatherAPI.swift in Sources */,
 				0306336E23A15FA900046A59 /* AnimationTextLayer.swift in Sources */,
 				0385FC5D242B9F6E007E6513 /* InfoWeatherView.swift in Sources */,

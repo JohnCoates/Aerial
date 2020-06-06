@@ -125,11 +125,10 @@ final class CheckCellView: NSTableCellView {
         }
     }
 
-    
     // TODO: Duplicate but that whole thing will get refactored soon
     // MARK: UI for overriding/declining a download when cache is full
     func ensureDownload(action: @escaping () -> Void) {
-        if !VideoCache.isFull() {
+        if !Cache.isFull() {
             action()
         } else {
             if showAlert(question: "Your cache is full",

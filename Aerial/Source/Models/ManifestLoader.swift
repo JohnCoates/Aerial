@@ -199,7 +199,7 @@ class ManifestLoader {
             }
 
             // Is the video cached, and if not, are we full ?
-            if !video.isAvailableOffline && VideoCache.isFull() {
+            if !video.isAvailableOffline && Cache.isFull() {
                 continue
             }
 

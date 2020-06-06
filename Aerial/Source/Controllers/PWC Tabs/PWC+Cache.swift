@@ -69,14 +69,14 @@ extension PreferencesWindowController {
     }
 
     func updateCacheSize() {
-        let size = VideoCache.cacheSizeString()
+        let size = Cache.sizeString()
 
         // Old one
         cacheSizeTextField.stringValue = "Cache all videos (Current cache size \(size))"
         // New one
         currentCacheLabel.stringValue = "(Currently \(size))"
 
-        print("Is full : \(VideoCache.isFull())")
+        print("Is full : \(Cache.isFull())")
     }
 
     @IBAction func cacheAerialsAsTheyPlayClick(_ button: NSButton!) {
