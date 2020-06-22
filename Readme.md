@@ -28,7 +28,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 ## Installation
 
-**Please note :** Starting with Catalina, Aerial will only notify you of new versions, but won't be able to automatically update itself. This is a limitation of macOS Catalina.
+**Please note :** Starting with Catalina, Aerial will only notify you of new versions, but won't be able to automatically update itself. This is a limitation of macOS Catalina. 
 
 Installation instructions (latest versions require macOS 10.12 or above) :
 
@@ -40,6 +40,8 @@ Installation instructions (latest versions require macOS 10.12 or above) :
 Need more information on install, setup, or uninstall ? Or want to install via homebrew ? Check our extended [instructions here](Documentation/Installation.md). Curious about auto-updates ? [Have a look here](Documentation/AutoUpdates.md).
 
 ## What's new in Aerial 1.9.0 (May 25, 2020)?
+
+**At first glance, the current versions of Aerial seems to work correctly with macOS Big Sur 11. Check here for more details (and information on the upcoming 2.0.0) : https://github.com/JohnCoates/Aerial/issues/1006#issuecomment-647808068 
 
 ![Capture d’écran 2020-05-25 à 15 46 42](https://user-images.githubusercontent.com/37544189/82818568-338ba580-9e9f-11ea-8f26-90b23958f587.jpg)
 
