@@ -120,43 +120,14 @@ final class CheckCellView: NSTableCellView {
 
     func queueVideo() {
         let videoManager = VideoManager.sharedInstance
-        ensureDownload {
+        Cache.ensureDownload {
             videoManager.queueDownload(self.video!)
         }
-    }
-
-    // TODO: Duplicate but that whole thing will get refactored soon
-    // MARK: UI for overriding/declining a download when cache is full
-    func ensureDownload(action: @escaping () -> Void) {
-        if !Cache.isFull() {
-            action()
-        } else {
-            if showAlert(question: "Your cache is full",
-                         text: "Do you want to proceed with the download anyway ?",
-                         button1: "Download Anyway",
-                         button2: "Cancel") {
-                action()
-            } else {
-                print("Download cancelled")
-            }
-        }
-    }
-
-    func showAlert(question: String, text: String, button1: String = "OK", button2: String = "Cancel") -> Bool {
-        let alert = NSAlert()
-        alert.messageText = question
-        alert.informativeText = text
-        alert.alertStyle = .warning
-        alert.icon = NSImage(named: NSImage.cautionName)
-        alert.addButton(withTitle: button1)
-        alert.addButton(withTitle: button2)
-        return alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn
     }
 
     @IBAction func addClick(_ button: NSButton?) {
         queueVideo()
     }
-
 }
 
 final class VerticallyAlignedTextFieldCell: NSTextFieldCell {

@@ -185,7 +185,7 @@ extension PreferencesWindowController {
         if let video = sender.representedObject as? AerialVideo {
             let videoManager = VideoManager.sharedInstance
             if !videoManager.isVideoQueued(id: video.id) {
-                ensureDownload {
+                Cache.ensureDownload {
                     videoManager.queueDownload(video)
                 }
             }
@@ -198,33 +198,6 @@ extension PreferencesWindowController {
             let videoManager = VideoManager.sharedInstance
             videoManager.updateAllCheckCellView()
         }
-    }
-
-    // MARK: UI for overriding/declining a download when cache is full
-    func ensureDownload(action: @escaping () -> Void) {
-        if !Cache.isFull() {
-            action()
-        } else {
-            if showAlert(question: "Your cache is full",
-                         text: "Do you want to proceed with the download anyway ?",
-                         button1: "Download Anyway",
-                         button2: "Cancel") {
-                action()
-            } else {
-                print("Download cancelled")
-            }
-        }
-    }
-
-    func showAlert(question: String, text: String, button1: String = "OK", button2: String = "Cancel") -> Bool {
-        let alert = NSAlert()
-        alert.messageText = question
-        alert.informativeText = text
-        alert.alertStyle = .warning
-        alert.icon = NSImage(named: NSImage.cautionName)
-        alert.addButton(withTitle: button1)
-        alert.addButton(withTitle: button2)
-        return alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn
     }
 
     // MARK: Wikipedia popup link
@@ -376,7 +349,7 @@ extension PreferencesWindowController {
         }
         let videoManager = VideoManager.sharedInstance
 
-        ensureDownload {
+        Cache.ensureDownload {
             for video in videos {
                 if self.preferences.videoIsInRotation(videoID: video.id) && !video.isAvailableOffline {
                     if !videoManager.isVideoQueued(id: video.id) {
@@ -393,7 +366,7 @@ extension PreferencesWindowController {
 
     func downloadAllVideos() {
         let videoManager = VideoManager.sharedInstance
-        ensureDownload {
+        Cache.ensureDownload {
             for city in self.cities {
                 for video in city.day.videos where !video.isAvailableOffline {
                     if !videoManager.isVideoQueued(id: video.id) {
@@ -735,7 +708,7 @@ extension PreferencesWindowController {
                 let localitem = AVPlayerItem(url: localurl)
                 player.replaceCurrentItem(with: localitem)
                 player.play()
-            } else if !preferences.neverStreamPreviews {
+            } else if Cache.canNetwork() {
                 previewDisabledTextfield.isHidden = true
                 let asset = cachedOrCachingAsset(video.url)
                 let item = AVPlayerItem(asset: asset)

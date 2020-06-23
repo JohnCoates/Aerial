@@ -17,6 +17,9 @@ enum CachePeriodicity: Int, Codable {
 }
 
 struct PrefsCache {
+    @SimpleStorage(key: "enableManagement", defaultValue: true)
+    static var enableManagement: Bool
+
     // Cache limit (in GiB)
     @SimpleStorage(key: "cacheLimit", defaultValue: 5)
     static var cacheLimit: Double
@@ -50,4 +53,12 @@ struct PrefsCache {
             intCachePeriodicity = value.rawValue
         }
     }
+
+    // Do we restrict network traffic on Wi-Fi
+    @SimpleStorage(key: "restrictOnWiFi", defaultValue: false)
+    static var restrictOnWiFi: Bool
+
+    // List of allowed networks (using SSID)
+    @SimpleStorage(key: "allowedNetworks", defaultValue: [])
+    static var allowedNetworks: [String]
 }

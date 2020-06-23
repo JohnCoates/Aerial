@@ -151,18 +151,31 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var dimOnlyOnBattery: NSButton!
 
     // Caches tab
-    @IBOutlet var cacheAerialsAsTheyPlayCheckbox: NSButton!
-    @IBOutlet var neverStreamVideosCheckbox: NSButton!
-    @IBOutlet var neverStreamPreviewsCheckbox: NSButton!
     @IBOutlet var cacheLocation: NSPathControl!
     @IBOutlet weak var downloadNowButton: NSButton!
     @IBOutlet weak var cacheSizeTextField: NSTextField!
 
+    @IBOutlet var cacheLimitContainerView: NSView!
+    @IBOutlet var cacheDisabledSizeLabel: NSTextField!
+    @IBOutlet var cacheDisabledContainerView: NSView!
+    @IBOutlet var enableCacheManagementCheckbox: NSButton!
+    @IBOutlet var cacheContainerView: NSView!
     @IBOutlet var cacheLimitTextField: NSTextField!
+    @IBOutlet var cacheLimitSlider: NSSlider!
+    @IBOutlet var cacheLimitUnitLabel: NSTextField!
+
     @IBOutlet var currentCacheLabel: NSTextField!
     @IBOutlet var cacheManagementMode: NSPopUpButton!
     @IBOutlet var cacheRotation: NSPopUpButton!
     @IBOutlet var cacheRotationLabel: NSTextField!
+
+    @IBOutlet var restrictWiFiCheckbox: NSButton!
+
+    @IBOutlet var connectedToLabel: NSTextField!
+    @IBOutlet var networkIcon: NSButton!
+    @IBOutlet var addCurrentNetworkButton: NSButton!
+    @IBOutlet var resetNetworkListButton: NSButton!
+    @IBOutlet var allowedNetworksLabel: NSTextField!
 
     // Updates Tab
     @IBOutlet var newVideosModePopup: NSPopUpButton!

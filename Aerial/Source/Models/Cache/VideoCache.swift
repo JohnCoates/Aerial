@@ -203,11 +203,14 @@ final class VideoCache {
             // File doesn't have to exist, this is also used to compute the save location
             // So now with Catalina, considering containerization we need to use appSupport
             // Pre catalina we return cache folder instead (no change for users)
+            return cacheVideoPath
+            /*
             if #available(OSX 10.15, *) {
                 return appSupportVideoPath
             } else {
                 return cacheVideoPath
             }
+             */
         }
     }
 
@@ -264,13 +267,6 @@ final class VideoCache {
     }
 
     func saveCachedVideo() {
-        let preferences = Preferences.sharedInstance
-
-        guard preferences.cacheAerials else {
-            debugLog("Cache disabled, not saving video")
-            return
-        }
-
         let fileManager = FileManager.default
 
         guard let videoCachePath = videoCachePath else {
@@ -288,10 +284,6 @@ final class VideoCache {
             errorLog("Missing video data for save.")
             return
         }
-        /* guard var mutableVideoData = mutableVideoData else {
-            errorLog("Missing video data for save.")
-            return
-        }*/
 
         do {
             try mutableVideoData!.write(toFile: videoCachePath, options: .atomicWrite)

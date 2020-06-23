@@ -6,7 +6,8 @@
 //  Copyright © 2020 Guillaume Louel. All rights reserved.
 //
 
-import Foundation
+import Cocoa
+import CoreWLAN
 
 /**
  Aerial's new Cache management
@@ -27,6 +28,14 @@ import Foundation
  - Attention: Shared by multiple users writable locations are no longer possible, because sandboxing is awesome !
  */
 struct Cache {
+    /**
+     Returns the SSID of the Wi-Fi network the user is currently connected to.
+     - Note: Returns an empty string if not connected to Wi-Fi
+     */
+    static var ssid: String {
+        return CWWiFiClient.shared().interface(withName: nil)?.ssid() ?? ""
+    }
+
     /**
      Returns Aerial's Application Support path.
      
@@ -201,4 +210,75 @@ struct Cache {
         return 0
     }
 
+    // swiftlint:disable line_length
+    // MARK: UI for overriding/declining a download when cache is full
+    /**
+     Can we download a file ?
+     
+     Depending on user's settings, the cache may be full or the user may not be on a trusted network.
+     - Note: If a user disabled cache management (full manual mode), this will always be true.
+     - parameter action: A closure with the action to be accomplished should the conditions be met.
+     */
+    static func ensureDownload(action: @escaping () -> Void) {
+        // Do we manage the cache or not ?
+        if PrefsCache.enableManagement {
+            // Check network first
+            if !canNetwork() {
+                if !showAlert(question: "You are on a restricted WiFi network",
+                             text: "Your current settings restrict downloads when not connected to a trusted network. Do you wish to proceed?\n\nReminder: You can change this setting in the Cache tab.",
+                             button1: "Download Anyway",
+                             button2: "Cancel") {
+                    return
+                }
+            }
+
+            // Then cache status
+            if isFull() {
+                if !showAlert(question: "Your cache is full",
+                             text: "Do you want to proceed with the download ?\n\nReminder: You can change this setting in the Cache tab.",
+                             button1: "Download Anyway",
+                             button2: "Cancel") {
+                    return
+                }
+            }
+        }
+
+        // If all is fine then proceed
+        action()
+    }
+
+    /**
+    Can we safely use network ?
+    
+    Depending on user's settings, they may not be on a trusted network.
+    - Note: If a user disabled cache management (full manual mode), this will always be true.
+    */
+    static func canNetwork() -> Bool {
+        if !PrefsCache.enableManagement {
+            return true
+        }
+
+        if PrefsCache.restrictOnWiFi {
+            // If we are not connected to WiFi we allow
+            if Cache.ssid == "" || PrefsCache.allowedNetworks.contains(ssid) {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return true
+        }
+    }
+
+    // TODO: this should probably be somewhere else
+    private static func showAlert(question: String, text: String, button1: String = "OK", button2: String = "Cancel") -> Bool {
+        let alert = NSAlert()
+        alert.messageText = question
+        alert.informativeText = text
+        alert.alertStyle = .warning
+        alert.icon = NSImage(named: NSImage.cautionName)
+        alert.addButton(withTitle: button1)
+        alert.addButton(withTitle: button2)
+        return alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn
+    }
 }

@@ -121,22 +121,22 @@ extension DownloadOperation: URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         do {
             let manager = FileManager.default
-            var destinationURL = URL(fileURLWithPath: VideoCache.appSupportDirectory!)
+            var supportURL = URL(fileURLWithPath: Cache.supportPath)
 
             // tvOS11 and tvOS10 JSONs are named entries.json, so we rename them here
             if downloadTask.originalRequest!.url!.absoluteString.contains("2x/entries.json") {
                 debugLog("Caching tvos11.json")
-                destinationURL.appendPathComponent("tvos11.json")
+                supportURL.appendPathComponent("tvos11.json")
             } else if downloadTask.originalRequest!.url!.absoluteString.contains("Autumn") {
                 debugLog("Caching tvos10.json")
-                destinationURL.appendPathComponent("tvos10.json")
+                supportURL.appendPathComponent("tvos10.json")
             } else {
-                debugLog("Caching \(downloadTask.originalRequest!.url!.lastPathComponent)")
-                destinationURL.appendPathComponent(downloadTask.originalRequest!.url!.lastPathComponent)
+                debugLog("cCaching \(downloadTask.originalRequest!.url!.lastPathComponent)")
+                supportURL.appendPathComponent(downloadTask.originalRequest!.url!.lastPathComponent)
             }
 
-            try? manager.removeItem(at: destinationURL)
-            try manager.moveItem(at: location, to: destinationURL)
+            try? manager.removeItem(at: supportURL)
+            try manager.moveItem(at: location, to: supportURL)
         } catch {
             errorLog("\(error)")
         }
@@ -172,7 +172,7 @@ extension DownloadOperation: URLSessionTaskDelegate {
 
             // Extract json
             let process: Process = Process()
-            let cacheDirectory = VideoCache.appSupportDirectory!
+            let cacheDirectory = Cache.supportPath
 
             var cacheResourcesString = cacheDirectory
             cacheResourcesString.append(contentsOf: "/resources.tar")
@@ -209,7 +209,7 @@ extension DownloadOperation: URLSessionTaskDelegate {
 
             // Extract json
             let process: Process = Process()
-            let cacheDirectory = VideoCache.appSupportDirectory!
+            let cacheDirectory = Cache.supportPath
 
             var cacheResourcesString = cacheDirectory
             cacheResourcesString.append(contentsOf: "/resources-13.tar")

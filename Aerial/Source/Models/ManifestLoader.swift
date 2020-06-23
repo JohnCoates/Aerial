@@ -191,15 +191,18 @@ class ManifestLoader {
                 }
             }
 
-            // We may not want to stream
-            if preferences.neverStreamVideos == true {
-                if video.isAvailableOffline == false {
-                    continue
-                }
+            // Are we in full manual mode ?? This replace the old never stream setting
+            if !video.isAvailableOffline && !PrefsCache.enableManagement {
+                continue
             }
 
             // Is the video cached, and if not, are we full ?
             if !video.isAvailableOffline && Cache.isFull() {
+                continue
+            }
+
+            // If the video isn't cached, can we network ?
+            if !video.isAvailableOffline && !Cache.canNetwork() {
                 continue
             }
 
