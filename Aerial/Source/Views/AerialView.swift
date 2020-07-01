@@ -181,21 +181,25 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         // First thing, we may need to migrate the cache !
         Cache.migrate()
 
-        let preferences = Preferences.sharedInstance
+        #if NOSPARKLE
+            print("Sparkle was disabled in build settings")
+        #else
+            let preferences = Preferences.sharedInstance
 
-        let au = AutoUpdates.sharedInstance
-        // Run Sparkle updater if enabled, but never as a preview
-        if !isPreview {
-            if preferences.updateWhileSaverMode {
-                if PrefsUpdates.sparkleUpdateMode == .notify {
-                    // Run the probing check
-                    au.doProbingCheck()
-                } else {
-                    // Run the forced update
-                    au.doForcedUpdate()
+            let au = AutoUpdates.sharedInstance
+            // Run Sparkle updater if enabled, but never as a preview
+            if !isPreview {
+                if preferences.updateWhileSaverMode {
+                    if PrefsUpdates.sparkleUpdateMode == .notify {
+                        // Run the probing check
+                        au.doProbingCheck()
+                    } else {
+                        // Run the forced update
+                        au.doForcedUpdate()
+                    }
                 }
             }
-        }
+        #endif
 
         // Check early if we need to enable power saver mode,
         // black screen with minimal brightness
@@ -304,17 +308,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             // And our additional layers
             layerManager.setContentScale(scale: (self.window?.backingScaleFactor) ?? 1.0)
         }
-/*
-        // TMP TEST
-        if self.window?.backingScaleFactor == 1.0 {
-            debugLog("*** Forcing retina 2.0")
-            self.layer!.contentsScale = 2.0
-            self.playerLayer.contentsScale = 2.0
-
-            // And our additional layers
-            layerManager.setContentScale(scale: 2.0)
-        }
-*/
     }
 
     // On previews, it's possible that our shared player was stopped and is not reusable
@@ -391,7 +384,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     // MARK: - playNextVideo()
     func playNextVideo() {
-        print("-/-/-/ PNV")
         let notificationCenter = NotificationCenter.default
         // Clear everything
         layerManager.clearLayerAnimations(player: self.player!)

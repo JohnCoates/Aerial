@@ -26,6 +26,8 @@ class UpdateReleaseController: NSWindowController {
     func show(sender: NSButton, controller: PreferencesWindowController) {
         self.controller = controller
 
+        #if NOSPARKLE
+        #else
         if !updateWindow.isVisible {
             let autoUpdates = AutoUpdates.sharedInstance
 
@@ -36,9 +38,12 @@ class UpdateReleaseController: NSWindowController {
             let html = "<html><head><style>body { font-family: -apple-system }</style></head><body>\(autoUpdates.getReleaseNotes())</body></html>"
             releaseNotesWKWebView.loadHTMLString(html, baseURL: nil)
         }
+        #endif
     }
 
     @IBAction func visitReleasePageClick(_ sender: NSButton) {
+        #if NOSPARKLE
+        #else
         let workspace = NSWorkspace.shared
         let autoUpdates = AutoUpdates.sharedInstance
 
@@ -47,6 +52,7 @@ class UpdateReleaseController: NSWindowController {
         workspace.open(url)
 
         updateWindow.close()
+        #endif
     }
 
     @IBAction func helpButtonClick(_ sender: NSButton) {

@@ -48,6 +48,8 @@ class UpdatesLayer: AnimationTextLayer {
 
     // Setup the layer, but give some time for the probe to complete
     func setupUpdateLayer() {
+        #if NOSPARKLE
+        #else
         let autoupd = AutoUpdates.sharedInstance
 
         if autoupd.didProbeForUpdate {
@@ -65,5 +67,6 @@ class UpdatesLayer: AnimationTextLayer {
                 })
             }
         }
+        #endif
     }
 }

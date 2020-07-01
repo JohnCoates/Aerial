@@ -11,7 +11,10 @@ import AVKit
 import AVFoundation
 import ScreenSaver
 import CoreLocation
+#if NOSPARKLE
+#else
 import Sparkle
+#endif
 
 @objc(PreferencesWindowController)
 // swiftlint:disable:next type_body_length
@@ -247,7 +250,10 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     var savedBrightness: Float?
 
     var locationManager: CLLocationManager?
+    #if NOSPARKLE
+    #else
     var sparkleUpdater: SUUpdater?
+    #endif
 
     // Info tab
     var infoSource: InfoTableSource?
@@ -297,6 +303,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        #if NOSPARKLE
+        #else
         // We register for the notification just before Sparkle tries to terminate Aerial
         NotificationCenter.default.addObserver(
             self,
@@ -336,6 +344,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
             sparkleUpdater = SUUpdater.init(for: Bundle(for: PreferencesWindowController.self))
             sparkleUpdater!.automaticallyChecksForUpdates = false
         }
+        #endif
 
         // Setup the updates for the Logs
         let logger = Logger.sharedInstance

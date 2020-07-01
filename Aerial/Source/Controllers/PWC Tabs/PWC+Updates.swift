@@ -17,6 +17,9 @@ extension PreferencesWindowController {
 
         lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
 
+        #if NOSPARKLE
+        lastCheckedSparkle.stringValue = "Sparkle is disabled"
+        #else
         // Format date
         if sparkleUpdater!.lastUpdateCheckDate != nil {
             let dateFormatter = DateFormatter()
@@ -26,6 +29,7 @@ extension PreferencesWindowController {
         } else {
             lastCheckedSparkle.stringValue = "Never checked for update"
         }
+        #endif
 
         if PrefsUpdates.checkForUpdates {
             automaticallyCheckForUpdatesCheckbox.state = .on
@@ -84,6 +88,8 @@ extension PreferencesWindowController {
         preferences.allowBetas = onState
         debugLog("UI allowBetasChange: \(onState)")
 
+        #if NOSPARKLE
+        #else
         // We also update the feed url so subsequent checks go to the right feed
         if preferences.allowBetas {
             betaCheckFrequencyPopup.isEnabled = true
@@ -92,9 +98,13 @@ extension PreferencesWindowController {
             betaCheckFrequencyPopup.isEnabled = false
             sparkleUpdater?.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/appcast.xml")
         }
+        #endif
     }
 
     @IBAction func checkForUpdatesButton(_ sender: NSButton) {
+        #if NOSPARKLE
+        debugLog("Sparkle is disabled in build settings")
+        #else
         if #available(OSX 10.15, *) {
             debugLog("check for updates (using Catalina probe)")
 
@@ -118,9 +128,13 @@ extension PreferencesWindowController {
 
             lastCheckedSparkle.stringValue = "Last checked today"
         }
+        #endif
     }
 
     func checkForProbeResults(silent: Bool) {
+        #if NOSPARKLE
+        debugLog("Sparkle is disabled in build settings")
+        #else
         let autoUpdates = AutoUpdates.sharedInstance
 
         if !autoUpdates.didProbeForUpdate {
@@ -142,6 +156,7 @@ extension PreferencesWindowController {
                 }
             }
         }
+        #endif
     }
 
     // Json updates
