@@ -512,9 +512,12 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         }
         PreferencesWindowController.loadedJSON = true
 
-        ManifestLoader.instance.addCallback { manifestVideos in
-            self.loaded(manifestVideos: manifestVideos)
+        VideoList.instance.addCallback {
+            self.loaded(manifestVideos: VideoList.instance.videos)
         }
+ /*       ManifestLoader.instance.addCallback { manifestVideos in
+            self.loaded(manifestVideos: manifestVideos)
+        }*/
     }
 
     func reloadJson() {
@@ -526,12 +529,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         var videos = [AerialVideo]()
         var cities = [String: City]()
 
-        // Grab a fresh version, because our callback can be feeding us wrong data in CVC
-        let freshManifestVideos = ManifestLoader.instance.loadedManifest
-        //debugLog("freshManifestVideos count : \(freshManifestVideos.count)")
-
         // First day, then night
-        for video in freshManifestVideos {
+        for video in VideoList.instance.videos {
             let name = video.name
 
             if cities.keys.contains(name) == false {

@@ -350,7 +350,7 @@ class ManifestLoader {
                 }
 
                 for url in urls {
-                    let operation = downloadManager.queueDownload(url)
+                    let operation = downloadManager.queueDownload(url, folder: "")
                     completion.addDependency(operation)
                 }
 
@@ -398,7 +398,7 @@ class ManifestLoader {
             self.loadCachedManifests()
         }
         for url in urls {
-            let operation = downloadManager.queueDownload(url)
+            let operation = downloadManager.queueDownload(url, folder: "")
             completion.addDependency(operation)
         }
         OperationQueue.main.addOperation(completion)

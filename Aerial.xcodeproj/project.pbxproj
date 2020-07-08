@@ -60,6 +60,10 @@
 		034587322449D8EB00C97D1B /* AnimationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034587312449D8EB00C97D1B /* AnimationLayer.swift */; };
 		034587332449E22000C97D1B /* AnimationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034587312449D8EB00C97D1B /* AnimationLayer.swift */; };
 		0345A24B24532E4600DD47CD /* ConditionSymbolLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D68802453080C0016F837 /* ConditionSymbolLayer.swift */; };
+		034A6DC224ACC7C800D62129 /* SourceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034A6DC124ACC7C800D62129 /* SourceList.swift */; };
+		034A6DC424ACC80200D62129 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034A6DC324ACC80200D62129 /* Source.swift */; };
+		034A6DC524ACC80B00D62129 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034A6DC324ACC80200D62129 /* Source.swift */; };
+		034A6DC624AF3EC600D62129 /* SourceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034A6DC124ACC7C800D62129 /* SourceList.swift */; };
 		034F29B423A7A79B004B34D5 /* PWC+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F29B323A7A79B004B34D5 /* PWC+Info.swift */; };
 		034F29B723A7A93D004B34D5 /* InfoTableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F29B623A7A93D004B34D5 /* InfoTableSource.swift */; };
 		034F29B823A7A9B3004B34D5 /* InfoTableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F29B623A7A93D004B34D5 /* InfoTableSource.swift */; };
@@ -239,6 +243,12 @@
 		03BF51C023A275D9008AD373 /* MessageLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF51BE23A274CA008AD373 /* MessageLayer.swift */; };
 		03BF51C223A2978B008AD373 /* ClockLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF51C123A2978B008AD373 /* ClockLayer.swift */; };
 		03BF51C323A29E1D008AD373 /* ClockLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF51C123A2978B008AD373 /* ClockLayer.swift */; };
+		03C97BA724B5F74900739CED /* VideoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C97BA624B5F74900739CED /* VideoList.swift */; };
+		03C97BA824B5F74900739CED /* VideoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C97BA624B5F74900739CED /* VideoList.swift */; };
+		03C97BC024B60E2F00739CED /* FileHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C97BBF24B60E2F00739CED /* FileHelpers.swift */; };
+		03C97BC124B60E2F00739CED /* FileHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C97BBF24B60E2F00739CED /* FileHelpers.swift */; };
+		03C97BC324B6210500739CED /* SourceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C97BC224B6210500739CED /* SourceInfo.swift */; };
+		03C97BC424B6210500739CED /* SourceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C97BC224B6210500739CED /* SourceInfo.swift */; };
 		03CB892F239A758B005D1F64 /* AutoUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB892E239A758B005D1F64 /* AutoUpdates.swift */; };
 		03D1E78722842FB300D10CF7 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1E78622842FB300D10CF7 /* DisplayView.swift */; };
 		03D1E7882284367200D10CF7 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1E78622842FB300D10CF7 /* DisplayView.swift */; };
@@ -527,6 +537,8 @@
 		034116DB23FADEDA00CD7674 /* UpdateReleaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateReleaseController.swift; sourceTree = "<group>"; };
 		0345872C2449C52F00C97D1B /* AnimatableLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableLayer.swift; sourceTree = "<group>"; };
 		034587312449D8EB00C97D1B /* AnimationLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationLayer.swift; sourceTree = "<group>"; };
+		034A6DC124ACC7C800D62129 /* SourceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceList.swift; sourceTree = "<group>"; };
+		034A6DC324ACC80200D62129 /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		034F29B323A7A79B004B34D5 /* PWC+Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PWC+Info.swift"; sourceTree = "<group>"; };
 		034F29B623A7A93D004B34D5 /* InfoTableSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableSource.swift; sourceTree = "<group>"; };
 		034F29BE23A7E28E004B34D5 /* PrefsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsInfo.swift; sourceTree = "<group>"; };
@@ -616,6 +628,9 @@
 		03BF51BB23A2643C008AD373 /* LayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerManager.swift; sourceTree = "<group>"; };
 		03BF51BE23A274CA008AD373 /* MessageLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageLayer.swift; sourceTree = "<group>"; };
 		03BF51C123A2978B008AD373 /* ClockLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockLayer.swift; sourceTree = "<group>"; };
+		03C97BA624B5F74900739CED /* VideoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoList.swift; sourceTree = "<group>"; };
+		03C97BBF24B60E2F00739CED /* FileHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileHelpers.swift; path = Downloads/FileHelpers.swift; sourceTree = "<group>"; };
+		03C97BC224B6210500739CED /* SourceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceInfo.swift; sourceTree = "<group>"; };
 		03CB892E239A758B005D1F64 /* AutoUpdates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoUpdates.swift; sourceTree = "<group>"; };
 		03D1E78622842FB300D10CF7 /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DisplayView.swift; path = Aerial/Source/Views/PrefPanel/DisplayView.swift; sourceTree = SOURCE_ROOT; };
 		03D1E7892284471A00D10CF7 /* DisplayDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDetection.swift; sourceTree = "<group>"; };
@@ -805,6 +820,17 @@
 				0387CA42245DE138000A7095 /* wrench.pdf */,
 			);
 			path = Weather;
+			sourceTree = "<group>";
+		};
+		034A6DAA24ACC7BC00D62129 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				03C97BA624B5F74900739CED /* VideoList.swift */,
+				034A6DC124ACC7C800D62129 /* SourceList.swift */,
+				034A6DC324ACC80200D62129 /* Source.swift */,
+				03C97BC224B6210500739CED /* SourceInfo.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		034F29B523A7A8E1004B34D5 /* PrefPanel */ = {
@@ -1043,6 +1069,7 @@
 		FAC36F3F1BE1756D007F2A20 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				034A6DAA24ACC7BC00D62129 /* Sources */,
 				0385FC57242B9A9B007E6513 /* API */,
 				F008DAFB23AADC8E00739DE1 /* Hardware */,
 				034F29BA23A7D516004B34D5 /* Prefs */,
@@ -1058,6 +1085,7 @@
 				0313F9EE22955F3B00B074BB /* CustomVideoFolders.swift */,
 				03AD45FE22981B0C00261325 /* CustomVideoFolders+helpers.swift */,
 				03CB892E239A758B005D1F64 /* AutoUpdates.swift */,
+				03C97BBF24B60E2F00739CED /* FileHelpers.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1600,10 +1628,12 @@
 			files = (
 				031FB7A2248A873C0054BAFD /* PrefsCache.swift in Sources */,
 				F00864B523AAE7F0003210EF /* DarkMode.swift in Sources */,
+				034A6DC624AF3EC600D62129 /* SourceList.swift in Sources */,
 				03FA49B82428F84500863AF6 /* DateLayer.swift in Sources */,
 				0361B9AC23D73D4500B6252D /* PrefsTime.swift in Sources */,
 				032D1162239A7E03007E7756 /* Battery.swift in Sources */,
 				03893CB4217753AC008E7125 /* ErrorLog.swift in Sources */,
+				03C97BC124B60E2F00739CED /* FileHelpers.swift in Sources */,
 				03233B692172762C0077D3F9 /* PoiStringProvider.swift in Sources */,
 				03BF51C323A29E1D008AD373 /* ClockLayer.swift in Sources */,
 				0306336C23A143D900046A59 /* LayerOffsets.swift in Sources */,
@@ -1634,7 +1664,9 @@
 				03FA49A22423DA1F00863AF6 /* TimerLayer.swift in Sources */,
 				03608A2D22A56465008F08A2 /* HardwareDetection.swift in Sources */,
 				036A57D923F4747D0009DC02 /* InfoCountdownView.swift in Sources */,
+				03C97BC424B6210500739CED /* SourceInfo.swift in Sources */,
 				FAC36F5E1BE1756D007F2A20 /* CheckCellView.swift in Sources */,
+				034A6DC524ACC80B00D62129 /* Source.swift in Sources */,
 				FAC36F5C1BE1756D007F2A20 /* AerialView.swift in Sources */,
 				FAC36F681BE1778C007F2A20 /* ManifestLoader.swift in Sources */,
 				03608A1722A55B44008F08A2 /* PWC+Displays.swift in Sources */,
@@ -1652,6 +1684,7 @@
 				0395834A217F442A008E8F9C /* Solar.swift in Sources */,
 				FAB22A7F1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */,
 				FAC36F601BE175CF007F2A20 /* AppDelegate.swift in Sources */,
+				03C97BA824B5F74900739CED /* VideoList.swift in Sources */,
 				03AD460022981B1C00261325 /* CustomVideoFolders+helpers.swift in Sources */,
 				0361B9A923D732A300B6252D /* PrefsDisplays.swift in Sources */,
 				032D1165239A7F17007E7756 /* AerialView+Brightness.swift in Sources */,
@@ -1738,6 +1771,7 @@
 				03FA49B42428EE3300863AF6 /* InfoDateView.swift in Sources */,
 				FAC36F671BE1778C007F2A20 /* ManifestLoader.swift in Sources */,
 				03FA49A12423DA1F00863AF6 /* TimerLayer.swift in Sources */,
+				034A6DC424ACC80200D62129 /* Source.swift in Sources */,
 				034F29BF23A7E28E004B34D5 /* PrefsInfo.swift in Sources */,
 				03BF51C223A2978B008AD373 /* ClockLayer.swift in Sources */,
 				FAC36F591BE1756D007F2A20 /* AerialVideo.swift in Sources */,
@@ -1745,6 +1779,7 @@
 				0354D0EC23F6CB7B00D86F9E /* InfoSettingsView.swift in Sources */,
 				03A4A80B2451CE2C00A1F7A3 /* NSImage+trim.swift in Sources */,
 				032D1161239A7D82007E7756 /* Battery.swift in Sources */,
+				03C97BA724B5F74900739CED /* VideoList.swift in Sources */,
 				038D2EE423B6565900CD91F7 /* InfoBatteryView.swift in Sources */,
 				03608A2322A55BF1008F08A2 /* PWC+Updates.swift in Sources */,
 				03FA49B72428F84500863AF6 /* DateLayer.swift in Sources */,
@@ -1765,6 +1800,7 @@
 				03E8731321675FE0002B469B /* TimeManagement.swift in Sources */,
 				036A57D523F30DD00009DC02 /* UpdatesLayer.swift in Sources */,
 				036A57DB23F5820A0009DC02 /* CountdownLayer.swift in Sources */,
+				034A6DC224ACC7C800D62129 /* SourceList.swift in Sources */,
 				03D1E78722842FB300D10CF7 /* DisplayView.swift in Sources */,
 				03A596D923AB8F000097EA66 /* InfoLocationView.swift in Sources */,
 				FAB22A7E1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */,
@@ -1774,11 +1810,13 @@
 				034F29B723A7A93D004B34D5 /* InfoTableSource.swift in Sources */,
 				03958349217F4416008E8F9C /* Solar.swift in Sources */,
 				F008DAFD23AADCFB00739DE1 /* Brightness.swift in Sources */,
+				03C97BC324B6210500739CED /* SourceInfo.swift in Sources */,
 				0361B9AB23D73D4500B6252D /* PrefsTime.swift in Sources */,
 				03233B68217272640077D3F9 /* PoiStringProvider.swift in Sources */,
 				03A4A80E2451D04C00A1F7A3 /* PrefsAdvanced.swift in Sources */,
 				033842E124489D7300A2C523 /* WeatherLayer.swift in Sources */,
 				FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */,
+				03C97BC024B60E2F00739CED /* FileHelpers.swift in Sources */,
 				0354D0E923F6C31800D86F9E /* InfoSettingsTableSource.swift in Sources */,
 				03E8730C2165013C002B469B /* DownloadManager.swift in Sources */,
 				03608A2622A55C03008F08A2 /* PWC+Advanced.swift in Sources */,
@@ -1820,13 +1858,13 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.9.5alpha3;
+				CURRENT_PROJECT_VERSION = 1.9.5alpha5;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Aerial/App/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.9.5alpha3;
+				MARKETING_VERSION = 1.9.5alpha5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1843,13 +1881,13 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.9.5alpha3;
+				CURRENT_PROJECT_VERSION = 1.9.5alpha5;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Aerial/App/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.9.5alpha3;
+				MARKETING_VERSION = 1.9.5alpha5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

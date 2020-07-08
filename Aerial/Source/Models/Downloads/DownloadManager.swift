@@ -34,12 +34,13 @@ final class DownloadManager: NSObject {
     /// Add download
     ///
     /// - parameter URL:  The URL of the file to be downloaded
+    ///          folder:  The name of the subfolder where the file will be stored
     ///
     /// - returns:        The DownloadOperation of the operation that was queued
 
     @discardableResult
-    func queueDownload(_ url: URL) -> DownloadOperation {
-        let operation = DownloadOperation(session: session, url: url)
+    func queueDownload(_ url: URL, folder: String) -> DownloadOperation {
+        let operation = DownloadOperation(session: session, url: url, folder: folder)
         operations[operation.task.taskIdentifier] = operation
         queue.addOperation(operation)
         return operation
@@ -98,8 +99,10 @@ extension DownloadManager: URLSessionTaskDelegate {
 
 final class DownloadOperation: AsynchronousOperation {
     let task: URLSessionTask
+    let folder: String
 
-    init(session: URLSession, url: URL) {
+    init(session: URLSession, url: URL, folder: String) {
+        self.folder = folder
         task = session.downloadTask(with: url)
         super.init()
     }
@@ -117,26 +120,25 @@ final class DownloadOperation: AsynchronousOperation {
 // MARK: NSURLSessionDownloadDelegate methods
 //       Customized for our usage
 extension DownloadOperation: URLSessionDownloadDelegate {
-
+    // This is where we save the file to its location
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         do {
+            // We may need to create our destination
+            let destinationDirectory = Cache.supportPath.appending("/" + folder)
+            FileHelpers.createDirectory(atPath: destinationDirectory)
+
             let manager = FileManager.default
-            var supportURL = URL(fileURLWithPath: Cache.supportPath)
+            let supportURL = URL(fileURLWithPath: Cache.supportPath.appending("/" + folder))
 
-            // tvOS11 and tvOS10 JSONs are named entries.json, so we rename them here
-            if downloadTask.originalRequest!.url!.absoluteString.contains("2x/entries.json") {
-                debugLog("Caching tvos11.json")
-                supportURL.appendPathComponent("tvos11.json")
-            } else if downloadTask.originalRequest!.url!.absoluteString.contains("Autumn") {
-                debugLog("Caching tvos10.json")
-                supportURL.appendPathComponent("tvos10.json")
-            } else {
-                debugLog("cCaching \(downloadTask.originalRequest!.url!.lastPathComponent)")
-                supportURL.appendPathComponent(downloadTask.originalRequest!.url!.lastPathComponent)
-            }
+            debugLog("Caching \(downloadTask.originalRequest!.url!.lastPathComponent) at \(folder)")
 
-            try? manager.removeItem(at: supportURL)
-            try manager.moveItem(at: location, to: supportURL)
+            // The file may exist, remove it
+            try? manager.removeItem(at: supportURL.appendingPathComponent(
+                                        downloadTask.originalRequest!.url!.lastPathComponent))
+
+            // Finally move the file
+            try manager.moveItem(at: location, to: supportURL.appendingPathComponent(
+                                    downloadTask.originalRequest!.url!.lastPathComponent))
         } catch {
             errorLog("\(error)")
         }
@@ -166,80 +168,13 @@ extension DownloadOperation: URLSessionTaskDelegate {
             return
         }
 
-        // We need to untar the resources.tar
-        if task.originalRequest!.url!.absoluteString.contains("resources.tar") {
-            debugLog("untaring resources.tar")
+        let destinationDirectory = Cache.supportPath.appending("/" + folder)
 
-            // Extract json
-            let process: Process = Process()
-            let cacheDirectory = Cache.supportPath
-
-            var cacheResourcesString = cacheDirectory
-            cacheResourcesString.append(contentsOf: "/resources.tar")
-
-            process.currentDirectoryPath = cacheDirectory
-            process.launchPath = "/usr/bin/tar"
-            process.arguments = ["-xvf", cacheResourcesString]
-
-            process.launch()
-
-            process.waitUntilExit()
-
-            let fileManager = FileManager.default
-            let src = VideoCache.appSupportDirectory!.appending("/entries.json")
-            let dest = VideoCache.appSupportDirectory!.appending("/tvos12.json")
-
-            do {
-                try fileManager.moveItem(atPath: src, toPath: dest)
-            } catch let error as NSError {
-                debugLog("Error renaming tvos12.json: \(error)")
-            }
-
-            let bsrc = VideoCache.appSupportDirectory!.appending("/TVIdleScreenStrings.bundle")
-            let bdest = VideoCache.appSupportDirectory!.appending("/TVIdleScreenStrings12.bundle")
-
-            do {
-                try fileManager.moveItem(atPath: bsrc, toPath: bdest)
-            } catch let error as NSError {
-                debugLog("Error renaming TVIdleScreenStrings12.bundle: \(error)")
-            }
-
-        } else if task.originalRequest!.url!.absoluteString.contains("resources-13.tar") {
-            debugLog("untaring resources-13.tar")
-
-            // Extract json
-            let process: Process = Process()
-            let cacheDirectory = Cache.supportPath
-
-            var cacheResourcesString = cacheDirectory
-            cacheResourcesString.append(contentsOf: "/resources-13.tar")
-
-            process.currentDirectoryPath = cacheDirectory
-            process.launchPath = "/usr/bin/tar"
-            process.arguments = ["-xvf", cacheResourcesString]
-
-            process.launch()
-
-            process.waitUntilExit()
-
-            let fileManager = FileManager.default
-            let src = VideoCache.appSupportDirectory!.appending("/entries.json")
-            let dest = VideoCache.appSupportDirectory!.appending("/tvos13.json")
-
-            do {
-                try fileManager.moveItem(atPath: src, toPath: dest)
-            } catch let error as NSError {
-                debugLog("Error renaming tvos13.json: \(error)")
-            }
-
-            let bsrc = VideoCache.appSupportDirectory!.appending("/TVIdleScreenStrings.bundle")
-            let bdest = VideoCache.appSupportDirectory!.appending("/TVIdleScreenStrings13.bundle")
-
-            do {
-                try fileManager.moveItem(atPath: bsrc, toPath: bdest)
-            } catch let error as NSError {
-                debugLog("Error renaming TVIdleScreenStrings13.bundle: \(error)")
-            }
+        // Some manifests come in tar form, in that case untar them here
+        if folder == "tvOS 13" {
+            FileHelpers.unTar(file: destinationDirectory.appending("/resources-13.tar"), atPath: destinationDirectory)
+        } else if folder == "tvOS 12" {
+            FileHelpers.unTar(file: destinationDirectory.appending("/resources.tar"), atPath: destinationDirectory)
         }
 
         debugLog("Finished downloading \(task.originalRequest!.url!.absoluteString)")

@@ -286,7 +286,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             AerialView.sharedPlayerIndex = AerialView.instanciatedViews.count-1
         }
 
-        ManifestLoader.instance.addCallback { _ in
+        VideoList.instance.addCallback {
             self.playNextVideo()
         }
     }
@@ -428,7 +428,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             (player.currentItem as? AerialPlayerItem)?.video
         }
 
-        let (randomVideo, pshouldLoop) = ManifestLoader.instance.randomVideo(excluding: currentVideos)
+        let (randomVideo, pshouldLoop) = VideoList.instance.randomVideo(excluding: currentVideos)
 
         // If we only have one video in the playlist, we can rewind it for seamless transitions
         self.shouldLoop = pshouldLoop
