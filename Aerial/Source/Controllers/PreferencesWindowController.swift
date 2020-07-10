@@ -514,6 +514,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         VideoList.instance.addCallback {
             self.loaded(manifestVideos: VideoList.instance.videos)
         }
+
+        VideoList.instance.reloadSources()  // We need to make sure we call this here so the ui updates
     }
 
     // This is the main callback to redraw everything
