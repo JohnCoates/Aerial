@@ -22,6 +22,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     lazy var customVideosController: CustomVideoController = CustomVideoController()
     lazy var updateReleaseController: UpdateReleaseController = UpdateReleaseController()
+    lazy var sourcesListController: SourcesListController = SourcesListController()
 
     // Main UI
     @IBOutlet weak var prefTabView: NSTabView!
@@ -154,11 +155,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var dimOnlyOnBattery: NSButton!
 
     // Caches tab
-    @IBOutlet var cacheLocation: NSPathControl!
-    @IBOutlet weak var downloadNowButton: NSButton!
-    @IBOutlet weak var cacheSizeTextField: NSTextField!
-
-    @IBOutlet var cacheLimitContainerView: NSView!
     @IBOutlet var cacheDisabledSizeLabel: NSTextField!
     @IBOutlet var cacheDisabledContainerView: NSView!
     @IBOutlet var enableCacheManagementCheckbox: NSButton!
@@ -168,7 +164,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var cacheLimitUnitLabel: NSTextField!
 
     @IBOutlet var currentCacheLabel: NSTextField!
-    @IBOutlet var cacheManagementMode: NSPopUpButton!
     @IBOutlet var cacheRotation: NSPopUpButton!
     @IBOutlet var cacheRotationLabel: NSTextField!
 
@@ -196,13 +191,9 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     // Advanced Tab
     @IBOutlet weak var debugModeCheckbox: NSButton!
     @IBOutlet weak var showLogBottomClick: NSButton!
-    @IBOutlet weak var logToDiskCheckbox: NSButton!
 
     @IBOutlet var muteSoundCheckbox: NSButton!
 
-    @IBOutlet var videoVersionsLabel: NSTextField!
-    @IBOutlet var moveOldVideosButton: NSButton!
-    @IBOutlet var trashOldVideosButton: NSButton!
     @IBOutlet var languagePopup: NSPopUpButton!
     @IBOutlet var currentLocaleLabel: NSTextField!
 
@@ -224,10 +215,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     // Quit confirmation Panel
     @IBOutlet var quitConfirmationPanel: NSPanel!
-
-    // Change cache folder Panel
-    @IBOutlet var changeCacheFolderPanel: NSPanel!
-    @IBOutlet var cacheFolderTextField: NSTextField!
 
     @IBOutlet var displayMarginAdvancedPanel: NSPanel!
     @IBOutlet var displayMarginAdvancedTextfield: NSTextField!
@@ -274,6 +261,10 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         formatter.timeStyle = .medium
         return formatter
     }()
+
+    @IBAction func sourcesClick(_ sender: Any) {
+        sourcesListController.show()
+    }
 
     required init?(coder decoder: NSCoder) {
         self.fontManager = NSFontManager.shared
@@ -403,12 +394,20 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
             errorLog("Could not load nib for CustomVideos, please report")
         }
 
-        // And our new, hopefully temporary, updater
+        // Our new, hopefully temporary, updater
         topLevelObjects = NSArray()
         if !bundle.loadNibNamed(NSNib.Name("UpdateReleaseWindow"),
                             owner: updateReleaseController,
                             topLevelObjects: &topLevelObjects) {
             errorLog("Could not load nib for UpdateReleaseWindow, please report")
+        }
+
+        // And our sources list controller
+        topLevelObjects = NSArray()
+        if !bundle.loadNibNamed(NSNib.Name("SourcesList"),
+                            owner: sourcesListController,
+                            topLevelObjects: &topLevelObjects) {
+            errorLog("Could not load nib for SourcesList, please report")
         }
     }
 
@@ -515,17 +514,11 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         VideoList.instance.addCallback {
             self.loaded(manifestVideos: VideoList.instance.videos)
         }
- /*       ManifestLoader.instance.addCallback { manifestVideos in
-            self.loaded(manifestVideos: manifestVideos)
-        }*/
     }
 
-    func reloadJson() {
-        ManifestLoader.instance.reloadFiles()
-    }
-
+    // This is the main callback to redraw everything
     func loaded(manifestVideos: [AerialVideo]) {
-        debugLog("Callback after manifest loading")
+        debugLog("Callback after VideoList loading")
         var videos = [AerialVideo]()
         var cities = [String: City]()
 
@@ -555,17 +548,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         DispatchQueue.main.async {
             self.outlineView.reloadData()
             self.outlineView.expandItem(nil, expandChildren: true)
-        }
-
-        // We update the info in the advanced tab
-        let (description, total) = ManifestLoader.instance.getOldFilesEstimation()
-        videoVersionsLabel.stringValue = description
-        if total > 0 {
-            moveOldVideosButton.isEnabled = true
-            trashOldVideosButton.isEnabled = true
-        } else {
-            moveOldVideosButton.isEnabled = false
-            trashOldVideosButton.isEnabled = false
         }
     }
 }

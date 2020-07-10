@@ -16,27 +16,17 @@ extension PreferencesWindowController {
 
         cacheLimitTextField.doubleValue = PrefsCache.cacheLimit
         cacheLimitSlider.doubleValue = PrefsCache.cacheLimit
-        cacheManagementMode.selectItem(at: PrefsCache.cacheMode.rawValue)
         cacheRotation.selectItem(at: PrefsCache.cachePeriodicity.rawValue)
 
-        // Make sure to hide/show the periodicity pref
-        updateCacheRotation()
-
-        // And update the size of the cache
+        // Update the size of the cache and associated controls
         updateCacheSize()
 
-        // Wi-Fi restrictions
+        // Wi-Fi restrictions?
         restrictWiFiCheckbox.state = PrefsCache.restrictOnWiFi ? .on : .off
         updateNetworkStatus()
 
-        // And the master switch
+        // And the master switch!
         updateCacheVisibility()
-
-        if let cacheDirectory = VideoCache.cacheDirectory {
-            cacheLocation.url = URL(fileURLWithPath: cacheDirectory as String)
-        } else {
-            cacheLocation.url = nil
-        }
     }
 
     func updateNetworkStatus() {
@@ -88,23 +78,6 @@ extension PreferencesWindowController {
         }
     }
 
-    // Cache management mode
-    @IBAction func cacheModeChange(_ sender: NSPopUpButton) {
-        PrefsCache.cacheMode = CacheMode(rawValue: sender.indexOfSelectedItem)!
-        updateCacheRotation()
-    }
-
-    // The cache refresh periodicity should be hidden when in manual mode
-    func updateCacheRotation() {
-        if PrefsCache.cacheMode == .manual {
-            cacheRotation.isHidden = true
-            cacheRotationLabel.isHidden = true
-        } else {
-            cacheRotation.isHidden = false
-            cacheRotationLabel.isHidden = false
-        }
-    }
-
     // Cache refresh periodicity
     @IBAction func cacheRotationChange(_ sender: NSPopUpButton) {
         PrefsCache.cachePeriodicity = CachePeriodicity(rawValue: sender.indexOfSelectedItem)!
@@ -128,76 +101,21 @@ extension PreferencesWindowController {
         if PrefsCache.cacheLimit == 61 {
             cacheLimitTextField.isHidden = true
             cacheLimitUnitLabel.isHidden = true
-            cacheLimitContainerView.isHidden = true
+            cacheRotation.isEnabled = false
+            cacheRotationLabel.isEnabled = false
         } else {
             cacheLimitTextField.isHidden = false
             cacheLimitUnitLabel.isHidden = false
-            cacheLimitContainerView.isHidden = false
+            cacheRotation.isEnabled = true
+            cacheRotationLabel.isEnabled = true
         }
 
-        // Old one
-        cacheSizeTextField.stringValue = "Cache all videos (Current cache size \(size))"
-        // New one
         currentCacheLabel.stringValue = "(Currently \(size))"
         cacheDisabledSizeLabel.stringValue = "Your videos take \(size) of disk space"
     }
 
     @IBAction func showInFinder(_ button: NSButton!) {
         NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: VideoCache.cacheDirectory!)
-    }
-
-    @IBAction func showAppSupportInFinder(_ sender: Any) {
-        NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: VideoCache.appSupportDirectory!)
-    }
-
-    @IBAction func userSetCacheLocation(_ button: NSButton?) {
-        if #available(OSX 10.15, *) {
-            // On Catalina, we can't use NSOpenPanel right now
-            cacheFolderTextField.stringValue = VideoCache.cacheDirectory!
-            changeCacheFolderPanel.makeKeyAndOrderFront(self)
-        } else {
-            let openPanel = NSOpenPanel()
-
-            openPanel.canChooseDirectories = true
-            openPanel.canChooseFiles = false
-            openPanel.canCreateDirectories = true
-            openPanel.allowsMultipleSelection = false
-            openPanel.title = "Choose Aerial Cache Directory"
-            openPanel.prompt = "Choose"
-            openPanel.directoryURL = cacheLocation.url
-
-            openPanel.begin { result in
-                guard result.rawValue == NSFileHandlingPanelOKButton, !openPanel.urls.isEmpty else {
-                    return
-                }
-
-                let cacheDirectory = openPanel.urls[0]
-                self.preferences.customCacheDirectory = cacheDirectory.path
-                self.cacheLocation.url = cacheDirectory
-            }
-        }
-    }
-
-    // This is part of the Catalina workaround of showing a Panel
-    @IBAction func validateChangeFolderButton(_ sender: Any) {
-        debugLog("Changed cache Folder to : \(cacheFolderTextField.stringValue)")
-        self.preferences.customCacheDirectory = cacheFolderTextField.stringValue
-        self.cacheLocation.url = URL(fileURLWithPath: cacheFolderTextField.stringValue)
-        changeCacheFolderPanel.close()
-    }
-
-    @IBAction func resetCacheLocation(_ button: NSButton?) {
-        preferences.customCacheDirectory = nil
-        if let cacheDirectory = VideoCache.appSupportDirectory {
-            preferences.customCacheDirectory = cacheDirectory
-            cacheLocation.url = URL(fileURLWithPath: cacheDirectory as String)
-        }
-    }
-
-    @IBAction func downloadNowButton(_ sender: Any) {
-        downloadNowButton.isEnabled = false
-        prefTabView.selectTabViewItem(at: 0)
-        downloadAllVideos()
     }
 
     // Wi-Fi restrictions

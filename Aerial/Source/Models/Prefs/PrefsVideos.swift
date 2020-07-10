@@ -70,4 +70,11 @@ struct PrefsVideos {
     // Allow video skips with right arrow key (on supporting OSes)
     @SimpleStorage(key: "allowSkips", defaultValue: true)
     static var allowSkips: Bool
+
+    @SimpleStorage(key: "sourcesEnabled", defaultValue: ["tvOS 13": true,
+                                                         "tvOS 12": false,
+                                                         "tvOS 11": false,
+                                                         "tvOS 10": false, ])
+    static var enabledSources: [String: Bool]
+
 }

@@ -286,7 +286,10 @@ class ManifestLoader {
     // MARK: - Lifecycle
 
     init() {
+
         debugLog("Manifest init")
+        // 2.0 remove everything here
+/*
         // tmp
         loadCustomVideos()
         // We try to load our video manifests in 3 steps :
@@ -356,7 +359,7 @@ class ManifestLoader {
 
                 OperationQueue.main.addOperation(completion)
             }
-        }
+        }*/
     }
 
     // MARK: - This will refetch the manifests online

@@ -48,29 +48,29 @@ final class PoiStringProvider {
     private func loadBundle() {
         // Idle string bundle
         let preferences = Preferences.sharedInstance
-        var bundlePath = VideoCache.appSupportDirectory!
+        var bundlePath = VideoCache.appSupportDirectory!.appending("/tvOS 13")
         if preferences.ciOverrideLanguage == "" {
             debugLog("Preferred languages : \(Locale.preferredLanguages)")
 
             let bestMatchedLanguage = Bundle.preferredLocalizations(from: getBundleLanguages(), forPreferences: Locale.preferredLanguages).first
             if let match = bestMatchedLanguage {
                 debugLog("Best matched language : \(match)")
-                bundlePath.append(contentsOf: "/TVIdleScreenStrings13.bundle/" + match + ".lproj/")
+                bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle/" + match + ".lproj/")
             } else {
                 debugLog("No match, reverting to english")
                 // We load the bundle and let system grab the closest available preferred language
                 // This no longer works in Catalina and defaults back to english
                 // as legacyScreenSaver.appex, our new "mainbundle" is english only
-                bundlePath.append(contentsOf: "/TVIdleScreenStrings13.bundle")
+                bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle")
             }
         } else {
             debugLog("Language overriden to \(String(describing: preferences.ciOverrideLanguage))")
             // Or we load the overriden one
-            bundlePath.append(contentsOf: "/TVIdleScreenStrings13.bundle/" + preferences.ciOverrideLanguage! + ".lproj/")
+            bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle/" + preferences.ciOverrideLanguage! + ".lproj/")
         }
 
         if let sb = Bundle.init(path: bundlePath) {
-            let dictPath = VideoCache.appSupportDirectory!.appending("/TVIdleScreenStrings13.bundle/en.lproj/Localizable.nocache.strings")
+            let dictPath = VideoCache.appSupportDirectory!.appending("/tvOS 13/TVIdleScreenStrings.bundle/en.lproj/Localizable.nocache.strings")
 
             // We could probably only work with that...
             if let sd = NSDictionary(contentsOfFile: dictPath) as? [String: String] {
@@ -80,7 +80,7 @@ final class PoiStringProvider {
             self.stringBundle = sb
             self.loadedDescriptions = true
         } else {
-            errorLog("TVIdleScreenStrings13.bundle is missing, please remove entries.json in Cache folder to fix the issue")
+            errorLog("TVIdleScreenStrings.bundle is missing, please remove entries.json in Cache folder to fix the issue")
         }
     }
 

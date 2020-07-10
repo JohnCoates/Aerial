@@ -156,9 +156,7 @@ extension PreferencesWindowController {
         if total == 0 {
             downloadProgressIndicator.isHidden = true
             downloadStopButton.isHidden = true
-            downloadNowButton.isEnabled = true
         } else if progress == 0 {
-            downloadNowButton.isEnabled = false
             downloadProgressIndicator.isHidden = false
             downloadStopButton.isHidden = false
             downloadProgressIndicator.doubleValue = Double(done)

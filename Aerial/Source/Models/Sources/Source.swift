@@ -10,9 +10,13 @@ import Foundation
 
 // 10 has a different format
 // 11 is similar to 12+, but does not include pointsOfInterests
-// 12/13 share a same format, and we use that format for custom too
+// 12/13 share a same format, and we use that format for local videos too
 enum SourceType: Int, Codable {
-    case custom, tvOS10, tvOS11, tvOS12
+    case local, tvOS10, tvOS11, tvOS12
+}
+
+enum SourceScene: Int, Codable {
+    case landscape, city, space, sea
 }
 
 struct Source: Codable {
@@ -20,17 +24,44 @@ struct Source: Codable {
     var description: String
     var manifestUrl: String
     var type: SourceType
+    var scenes: [SourceScene]
 
     // TODO
     func isEnabled() -> Bool {
-        //return name == "tvOS 11"
+        if PrefsVideos.enabledSources.keys.contains(name) {
+            return PrefsVideos.enabledSources[name]!
+        }
+
+        // Unknown sources are enabled
         return true
+    }
+
+    func setEnabled(_ enabled: Bool) {
+        print("\(name) \(enabled)")
+        PrefsVideos.enabledSources[name] = enabled
+        VideoList.instance.reloadSources()
     }
 
     // Is the source already cached or not ?
     func isCached() -> Bool {
         let fileManager = FileManager.default
         return fileManager.fileExists(atPath: Cache.supportPath.appending("/" + name + "/entries.json"))
+    }
+
+    func lastUpdated() -> String {
+        if isCached() {
+            let date = (try? FileManager.default.attributesOfItem(atPath:
+                Cache.supportPath.appending("/" + name + "/entries.json")))?[.creationDate] as? Date
+
+            if date != nil {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                return dateFormatter.string(from: date!)
+            } else {
+                return ""
+            }
+        }
+        return ""
     }
 
     func getVideos() -> [AerialVideo] {
@@ -41,6 +72,8 @@ struct Source: Codable {
 
                 if name == "tvOS 10" {
                     return readOldJSONFromData(jsondata)
+                } else if name.starts(with: "tvOS") {
+                    return readJSONFromData(jsondata) + getMissingVideos()  // Oh, Victoria Harbour 2...
                 } else {
                     return readJSONFromData(jsondata)
                 }
@@ -52,6 +85,20 @@ struct Source: Codable {
             debugLog("\(name) is not cached")
             return []
         }
+    }
+
+    // The things we do for one single missing video (for now) ;)
+    func getMissingVideos() -> [AerialVideo] {
+        // We also need to add the missing videos
+        let bundlePath = Bundle(for: PreferencesWindowController.self).path(forResource: "missingvideos", ofType: "json")!
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: bundlePath), options: .mappedIfSafe)
+            return readJSONFromData(data)
+        } catch {
+            errorLog("missingvideos.json was not found in the bundle")
+        }
+
+        return []
     }
 
     // MARK: - JSON processing
@@ -137,6 +184,7 @@ struct Source: Codable {
 
             for batch: NSDictionary in batches {
                 let assets = batch["assets"] as! [NSDictionary]
+                //rawCount = assets.count
 
                 for item in assets {
                     let url = item["url"] as! String

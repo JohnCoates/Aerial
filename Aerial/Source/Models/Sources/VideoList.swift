@@ -23,7 +23,21 @@ class VideoList {
     var lastPluckedFromPlaylist: AerialVideo?
 
     init() {
-        debugLog("Parsing sources")
+        downloadManifestsIfNeeded()
+    }
+
+    func addCallback(_ callback:@escaping VideoListRefreshCallback) {
+        callbacks.append(callback)
+    }
+
+    // This is how we force a source refresh, it will trigger various callbacks when done
+    // (e.g. to refresh video list in the ui)
+    func reloadSources() {
+        videos = []
+        downloadManifestsIfNeeded()
+    }
+
+    private func downloadManifestsIfNeeded() {
         let downloadManager = DownloadManager()
 
         var sourceQueue: [Source] = []
@@ -56,12 +70,8 @@ class VideoList {
         OperationQueue.main.addOperation(completion)
     }
 
-    func addCallback(_ callback:@escaping VideoListRefreshCallback) {
-        callbacks.append(callback)
-    }
-
     // This is called when all our files are downloaded
-    func refreshVideoList() {
+    private func refreshVideoList() {
         debugLog("Refreshing video list")
 
         for source in SourceList.list {

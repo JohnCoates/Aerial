@@ -15,9 +15,6 @@ extension PreferencesWindowController {
         if preferences.debugMode {
             debugModeCheckbox.state = .on
         }
-        if preferences.logToDisk {
-            logToDiskCheckbox.state = .on
-        }
 
         muteSoundCheckbox.state = PrefsAdvanced.muteSound ? .on : .off
 
@@ -112,8 +109,9 @@ extension PreferencesWindowController {
         debugLog("UI muteSound : \(onState)")
     }
 
+    // 2.0 This is moving away
     @IBAction func moveOldVideosClick(_ sender: Any) {
-        ManifestLoader.instance.moveOldVideos()
+        /*ManifestLoader.instance.moveOldVideos()
 
         let (description, total) = ManifestLoader.instance.getOldFilesEstimation()
         videoVersionsLabel.stringValue = description
@@ -124,10 +122,12 @@ extension PreferencesWindowController {
             moveOldVideosButton.isEnabled = false
             trashOldVideosButton.isEnabled = false
         }
-
+         */
     }
 
+    // 2.0 This is moving away
     @IBAction func trashOldVideosClick(_ sender: Any) {
+        /*
         ManifestLoader.instance.trashOldVideos()
 
         let (description, total) = ManifestLoader.instance.getOldFilesEstimation()
@@ -139,7 +139,7 @@ extension PreferencesWindowController {
             moveOldVideosButton.isEnabled = false
             trashOldVideosButton.isEnabled = false
         }
-
+        */
     }
 
     // MARK: - Language picker

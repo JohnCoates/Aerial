@@ -243,6 +243,14 @@
 		03BF51C023A275D9008AD373 /* MessageLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF51BE23A274CA008AD373 /* MessageLayer.swift */; };
 		03BF51C223A2978B008AD373 /* ClockLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF51C123A2978B008AD373 /* ClockLayer.swift */; };
 		03BF51C323A29E1D008AD373 /* ClockLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF51C123A2978B008AD373 /* ClockLayer.swift */; };
+		03C344DF24B7716C00906EA6 /* SourcesList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03C344DE24B7716C00906EA6 /* SourcesList.xib */; };
+		03C344E024B7716C00906EA6 /* SourcesList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03C344DE24B7716C00906EA6 /* SourcesList.xib */; };
+		03C344F824B7718500906EA6 /* SourcesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C344F724B7718500906EA6 /* SourcesListController.swift */; };
+		03C344F924B7718500906EA6 /* SourcesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C344F724B7718500906EA6 /* SourcesListController.swift */; };
+		03C344FC24B778EE00906EA6 /* CheckboxCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C344FB24B778EE00906EA6 /* CheckboxCellView.swift */; };
+		03C344FD24B778EE00906EA6 /* CheckboxCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C344FB24B778EE00906EA6 /* CheckboxCellView.swift */; };
+		03C344FF24B7A22300906EA6 /* DescriptionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C344FE24B7A22300906EA6 /* DescriptionCellView.swift */; };
+		03C3450024B7A22300906EA6 /* DescriptionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C344FE24B7A22300906EA6 /* DescriptionCellView.swift */; };
 		03C97BA724B5F74900739CED /* VideoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C97BA624B5F74900739CED /* VideoList.swift */; };
 		03C97BA824B5F74900739CED /* VideoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C97BA624B5F74900739CED /* VideoList.swift */; };
 		03C97BC024B60E2F00739CED /* FileHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C97BBF24B60E2F00739CED /* FileHelpers.swift */; };
@@ -628,6 +636,10 @@
 		03BF51BB23A2643C008AD373 /* LayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerManager.swift; sourceTree = "<group>"; };
 		03BF51BE23A274CA008AD373 /* MessageLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageLayer.swift; sourceTree = "<group>"; };
 		03BF51C123A2978B008AD373 /* ClockLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockLayer.swift; sourceTree = "<group>"; };
+		03C344DE24B7716C00906EA6 /* SourcesList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SourcesList.xib; sourceTree = "<group>"; };
+		03C344F724B7718500906EA6 /* SourcesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesListController.swift; sourceTree = "<group>"; };
+		03C344FB24B778EE00906EA6 /* CheckboxCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxCellView.swift; sourceTree = "<group>"; };
+		03C344FE24B7A22300906EA6 /* DescriptionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCellView.swift; sourceTree = "<group>"; };
 		03C97BA624B5F74900739CED /* VideoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoList.swift; sourceTree = "<group>"; };
 		03C97BBF24B60E2F00739CED /* FileHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileHelpers.swift; path = Downloads/FileHelpers.swift; sourceTree = "<group>"; };
 		03C97BC224B6210500739CED /* SourceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceInfo.swift; sourceTree = "<group>"; };
@@ -918,6 +930,15 @@
 			path = Weather;
 			sourceTree = "<group>";
 		};
+		03C344FA24B778D500906EA6 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				03C344FB24B778EE00906EA6 /* CheckboxCellView.swift */,
+				03C344FE24B7A22300906EA6 /* DescriptionCellView.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		03D1E78D22848F6D00D10CF7 /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
@@ -1040,6 +1061,7 @@
 				FAC36F3A1BE1756D007F2A20 /* PreferencesWindow.xib */,
 				0313F9E522942AA500B074BB /* CustomVideos.xib */,
 				034116D823FADE3600CD7674 /* UpdateReleaseWindow.xib */,
+				03C344DE24B7716C00906EA6 /* SourcesList.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1062,6 +1084,7 @@
 				FAC36F3E1BE1756D007F2A20 /* PreferencesWindowController.swift */,
 				0313F9E722942B4500B074BB /* CustomVideoController.swift */,
 				034116DB23FADEDA00CD7674 /* UpdateReleaseController.swift */,
+				03C344F724B7718500906EA6 /* SourcesListController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1107,6 +1130,7 @@
 		FAC36F421BE1756D007F2A20 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				03C344FA24B778D500906EA6 /* Sources */,
 				034F29B523A7A8E1004B34D5 /* PrefPanel */,
 				0306336623A1010800046A59 /* Layers */,
 				FAC36F431BE1756D007F2A20 /* AerialView.swift */,
@@ -1423,6 +1447,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03C344E024B7716C00906EA6 /* SourcesList.xib in Resources */,
 				0387CA9F245DE13A000A7095 /* cloud.sleet.pdf in Resources */,
 				0387CA85245DE13A000A7095 /* cloud.moon.pdf in Resources */,
 				0387CAA1245DE13A000A7095 /* cloud.snow.pdf in Resources */,
@@ -1529,6 +1554,7 @@
 				0387CA82245DE13A000A7095 /* cloud.drizzle.pdf in Resources */,
 				0387CA40245DC7A5000A7095 /* bolt.fill.pdf in Resources */,
 				0387CA7A245DE13A000A7095 /* cloud.heavyrain.pdf in Resources */,
+				03C344DF24B7716C00906EA6 /* SourcesList.xib in Resources */,
 				0387CA6A245DE13A000A7095 /* cloud.bolt.rain.pdf in Resources */,
 				03D3DAC4221F286700BDA52F /* pl.json in Resources */,
 				030A0F23245C7924009E1D97 /* battery.0.pdf in Resources */,
@@ -1652,6 +1678,7 @@
 				F00864B823AAE8E9003210EF /* NightShift.swift in Sources */,
 				03608A2422A55BF1008F08A2 /* PWC+Updates.swift in Sources */,
 				03D2A43F24476117003ABD30 /* WeatherAPI.swift in Sources */,
+				03C344F924B7718500906EA6 /* SourcesListController.swift in Sources */,
 				03D1E7882284367200D10CF7 /* DisplayView.swift in Sources */,
 				038D2EDF23B0FB0D00CD91F7 /* PrefsVideos.swift in Sources */,
 				03DC0065248BC60D005DB0F4 /* Cache.swift in Sources */,
@@ -1665,6 +1692,7 @@
 				03608A2D22A56465008F08A2 /* HardwareDetection.swift in Sources */,
 				036A57D923F4747D0009DC02 /* InfoCountdownView.swift in Sources */,
 				03C97BC424B6210500739CED /* SourceInfo.swift in Sources */,
+				03C344FD24B778EE00906EA6 /* CheckboxCellView.swift in Sources */,
 				FAC36F5E1BE1756D007F2A20 /* CheckCellView.swift in Sources */,
 				034A6DC524ACC80B00D62129 /* Source.swift in Sources */,
 				FAC36F5C1BE1756D007F2A20 /* AerialView.swift in Sources */,
@@ -1675,6 +1703,7 @@
 				FAC36F581BE1756D007F2A20 /* PreferencesWindowController.swift in Sources */,
 				034F29C023A7E58C004B34D5 /* PrefsInfo.swift in Sources */,
 				0385FC6D242BA097007E6513 /* InfoWeatherView.swift in Sources */,
+				03C3450024B7A22300906EA6 /* DescriptionCellView.swift in Sources */,
 				034F29B923A7B0FC004B34D5 /* PWC+Info.swift in Sources */,
 				03BF51C023A275D9008AD373 /* MessageLayer.swift in Sources */,
 				035D5250239AA31A00DC29DC /* AerialView+Player.swift in Sources */,
@@ -1801,6 +1830,7 @@
 				036A57D523F30DD00009DC02 /* UpdatesLayer.swift in Sources */,
 				036A57DB23F5820A0009DC02 /* CountdownLayer.swift in Sources */,
 				034A6DC224ACC7C800D62129 /* SourceList.swift in Sources */,
+				03C344FF24B7A22300906EA6 /* DescriptionCellView.swift in Sources */,
 				03D1E78722842FB300D10CF7 /* DisplayView.swift in Sources */,
 				03A596D923AB8F000097EA66 /* InfoLocationView.swift in Sources */,
 				FAB22A7E1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */,
@@ -1811,6 +1841,7 @@
 				03958349217F4416008E8F9C /* Solar.swift in Sources */,
 				F008DAFD23AADCFB00739DE1 /* Brightness.swift in Sources */,
 				03C97BC324B6210500739CED /* SourceInfo.swift in Sources */,
+				03C344F824B7718500906EA6 /* SourcesListController.swift in Sources */,
 				0361B9AB23D73D4500B6252D /* PrefsTime.swift in Sources */,
 				03233B68217272640077D3F9 /* PoiStringProvider.swift in Sources */,
 				03A4A80E2451D04C00A1F7A3 /* PrefsAdvanced.swift in Sources */,
@@ -1822,6 +1853,7 @@
 				03608A2622A55C03008F08A2 /* PWC+Advanced.swift in Sources */,
 				036A57D823F470940009DC02 /* InfoCountdownView.swift in Sources */,
 				033D68812453080C0016F837 /* ConditionSymbolLayer.swift in Sources */,
+				03C344FC24B778EE00906EA6 /* CheckboxCellView.swift in Sources */,
 				034587322449D8EB00C97D1B /* AnimationLayer.swift in Sources */,
 				0345872D2449C52F00C97D1B /* AnimatableLayer.swift in Sources */,
 				03A596D523AA752F0097EA66 /* InfoClockView.swift in Sources */,

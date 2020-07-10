@@ -161,13 +161,13 @@ extension PreferencesWindowController {
 
     // Json updates
     @IBAction func checkNowButtonClick(_ sender: NSButton) {
-        checkNowButton.isEnabled = false
+        /*checkNowButton.isEnabled = false
         ManifestLoader.instance.addCallback(reloadJSONCallback)
-        ManifestLoader.instance.reloadFiles()
+        ManifestLoader.instance.reloadFiles()*/
     }
 
     func reloadJSONCallback(manifestVideos: [AerialVideo]) {
-        checkNowButton.isEnabled = true
-        lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
+        /*checkNowButton.isEnabled = true
+        lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!*/
     }
 }
