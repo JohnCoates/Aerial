@@ -69,7 +69,11 @@ struct SourceList {
         do {
             let jsonData = try Data(contentsOf: url.appendingPathComponent("manifest.json"))
             if let manifest = try? newJSONDecoder().decode(Manifest.self, from: jsonData) {
-                return Source(name: manifest.name, description: manifest.manifestDescription, manifestUrl: "local", type: .local, scenes: [.landscape])
+                return Source(name: manifest.name,
+                              description: manifest.manifestDescription,
+                              manifestUrl: "local",
+                              type: .local,
+                              scenes: [.landscape])
             }
         } catch {
             errorLog("Could not open manifest for source at \(url)")

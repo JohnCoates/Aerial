@@ -60,12 +60,6 @@ extension PreferencesWindowController {
         debugLog("UI debugMode: \(onState)")
     }
 
-    @IBAction func logToDiskClick(_ button: NSButton) {
-        let onState = button.state == .on
-        preferences.logToDisk = onState
-        debugLog("UI logToDisk: \(onState)")
-    }
-
     @IBAction func showLogInFinder(_ button: NSButton!) {
         let logfile = VideoCache.appSupportDirectory!.appending("/AerialLog.txt")
 

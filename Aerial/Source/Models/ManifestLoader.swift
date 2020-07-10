@@ -964,7 +964,7 @@ class ManifestLoader {
         debugLog("\(foundOldFiles) old files found")
         return ("\(foundOldFiles) old files found", foundOldFiles)
     }
-
+/*
     func moveOldVideos() {
         debugLog("move old videos")
         let cacheDirectory = VideoCache.appSupportDirectory!
@@ -1087,6 +1087,6 @@ class ManifestLoader {
         } catch {
             errorLog("Error while enumerating files \(cacheDirectoryUrl.path): \(error.localizedDescription)")
         }
-    }
+    }*/
 
 } //swiftlint:disable:this file_length

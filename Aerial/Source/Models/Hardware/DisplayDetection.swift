@@ -54,7 +54,7 @@ final class DisplayDetection: NSObject {
     override init() {
         super.init()
         debugLog("Display Detection initialized")
-        _ = detectDisplays()
+        detectDisplays()
     }
 
     // MARK: - Detection

@@ -23,7 +23,6 @@ final class Preferences {
         case descriptionCorner = "descriptionCorner"
 
         case debugMode = "debugMode"
-        case logToDisk = "logToDisk"
         case versionCheck = "versionCheck"
         case alsoVersionCheckBeta = "alsoVersionCheckBeta"
 
@@ -103,7 +102,6 @@ final class Preferences {
         defaultValues[.multiMonitorMode] = MultiMonitorMode.mainOnly
         defaultValues[.descriptionCorner] = DescriptionCorner.bottomLeft
         defaultValues[.debugMode] = true
-        defaultValues[.logToDisk] = true
         defaultValues[.versionCheck] = VersionCheck.weekly
         defaultValues[.alsoVersionCheckBeta] = false
         defaultValues[.dimBrightness] = false
@@ -265,15 +263,6 @@ final class Preferences {
         }
     }
 
-    var logToDisk: Bool {
-        get {
-            return value(forIdentifier: .logToDisk)
-        }
-        set {
-            setValue(forIdentifier: .logToDisk, value: newValue)
-        }
-    }
-
     var alsoVersionCheckBeta: Bool {
         get {
             return value(forIdentifier: .alsoVersionCheckBeta)
@@ -426,4 +415,4 @@ final class Preferences {
     func synchronize() {
         userDefaults.synchronize()
     }
-} //swiftlint:disable:this file_length
+}

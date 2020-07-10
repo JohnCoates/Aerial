@@ -74,7 +74,7 @@ func Log(level: ErrorLevel, message: String) {
     }
 
     // Log to disk
-    if preferences.logToDisk {
+    if preferences.debugMode {
         logToDisk(message)
     }
 }
