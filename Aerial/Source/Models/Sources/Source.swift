@@ -87,6 +87,18 @@ struct Source: Codable {
         }
     }
 
+    func localizePath(_ path: String?) -> String {
+        if let tpath = path {
+            if manifestUrl.starts(with: "file://") {
+                return manifestUrl + tpath
+            }
+
+            return tpath
+        } else {
+            return ""
+        }
+    }
+
     // The things we do for one single missing video (for now) ;)
     func getMissingVideos() -> [AerialVideo] {
         // We also need to add the missing videos
@@ -127,11 +139,13 @@ struct Source: Codable {
                 let url4KHDR = item["url-4K-HDR"] as? String
                 let name = item["accessibilityLabel"] as! String
 
-                let urls: [VideoFormat: String] = [.v1080pH264: url1080pH264 ?? "",
-                                                   .v1080pHEVC: url1080pHEVC ?? "",
-                                                   .v1080pHDR: url1080pHDR ?? "",
-                                                   .v4KHEVC: url4KHEVC ?? "",
-                                                   .v4KHDR: url4KHDR ?? "", ]
+                let urls: [VideoFormat: String] =
+                  [.v1080pH264: localizePath(url1080pH264),
+                   .v1080pHEVC: localizePath(url1080pHEVC),
+                   .v1080pHDR: localizePath(url1080pHDR),
+                   .v4KHEVC: localizePath(url4KHEVC),
+                   .v4KHDR: localizePath(url4KHDR), ]
+
                 var secondaryName = ""
                 // We may have a secondary name
                 if let mergename = poiStringProvider.getCommunityName(id: id) {

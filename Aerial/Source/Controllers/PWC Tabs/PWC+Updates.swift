@@ -11,11 +11,11 @@ import Cocoa
 
 extension PreferencesWindowController {
     func setupUpdatesTab() {
-        newVideosModePopup.selectItem(at: preferences.newVideosMode!)
+        //newVideosModePopup.selectItem(at: preferences.newVideosMode!)
 
         betaCheckFrequencyPopup.selectItem(at: preferences.betaCheckFrequency!)
 
-        lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
+        //lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
 
         #if NOSPARKLE
         lastCheckedSparkle.stringValue = "Sparkle is disabled"

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		030473CB24BCA9A40094A1A6 /* VideoViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030473C924BCA9A40094A1A6 /* VideoViewItem.swift */; };
+		030473CC24BCA9A40094A1A6 /* VideoViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030473C924BCA9A40094A1A6 /* VideoViewItem.swift */; };
+		030473CD24BCA9A40094A1A6 /* VideoViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030473C924BCA9A40094A1A6 /* VideoViewItem.swift */; };
+		030473CE24BCA9A40094A1A6 /* VideoViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030473CA24BCA9A40094A1A6 /* VideoViewItem.xib */; };
+		030473CF24BCA9A40094A1A6 /* VideoViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030473CA24BCA9A40094A1A6 /* VideoViewItem.xib */; };
+		030473D024BCA9A40094A1A6 /* VideoViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030473CA24BCA9A40094A1A6 /* VideoViewItem.xib */; };
 		0306336823A1012200046A59 /* LocationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306336723A1012200046A59 /* LocationLayer.swift */; };
 		0306336923A1026800046A59 /* LocationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306336723A1012200046A59 /* LocationLayer.swift */; };
 		0306336B23A142FA00046A59 /* LayerOffsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306336A23A142FA00046A59 /* LayerOffsets.swift */; };
@@ -26,6 +32,9 @@
 		0313F9ED2294468600B074BB /* SeededGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313F9EB2294468600B074BB /* SeededGenerator.swift */; };
 		0313F9EF22955F3B00B074BB /* CustomVideoFolders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313F9EE22955F3B00B074BB /* CustomVideoFolders.swift */; };
 		0313F9F022955F3B00B074BB /* CustomVideoFolders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313F9EE22955F3B00B074BB /* CustomVideoFolders.swift */; };
+		0317FA2E24BA07BC00745A90 /* PWC+About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0317FA2D24BA07BC00745A90 /* PWC+About.swift */; };
+		0317FA2F24BA07BC00745A90 /* PWC+About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0317FA2D24BA07BC00745A90 /* PWC+About.swift */; };
+		0317FA3024BA07BC00745A90 /* PWC+About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0317FA2D24BA07BC00745A90 /* PWC+About.swift */; };
 		031FB78B248A87330054BAFD /* PrefsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FB78A248A87330054BAFD /* PrefsCache.swift */; };
 		031FB7A2248A873C0054BAFD /* PrefsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FB78A248A87330054BAFD /* PrefsCache.swift */; };
 		03233B68217272640077D3F9 /* PoiStringProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03233B67217272640077D3F9 /* PoiStringProvider.swift */; };
@@ -122,6 +131,9 @@
 		036A57DC23F5828E0009DC02 /* CountdownLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57DA23F5820A0009DC02 /* CountdownLayer.swift */; };
 		0374C9FE247AC5BC002F29D3 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374C9FD247AC5BC002F29D3 /* Locations.swift */; };
 		0374C9FF247AC5BC002F29D3 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374C9FD247AC5BC002F29D3 /* Locations.swift */; };
+		0377BF8624BA15E700C33F9F /* btn_donate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0377BF6F24BA15E600C33F9F /* btn_donate.png */; };
+		0377BF8724BA15E700C33F9F /* btn_donate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0377BF6F24BA15E600C33F9F /* btn_donate.png */; };
+		0377BF8824BA15E700C33F9F /* btn_donate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0377BF6F24BA15E600C33F9F /* btn_donate.png */; };
 		0385FC59242B9AE1007E6513 /* APISecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0385FC58242B9AE1007E6513 /* APISecrets.swift */; };
 		0385FC5A242B9AE1007E6513 /* APISecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0385FC58242B9AE1007E6513 /* APISecrets.swift */; };
 		0385FC5D242B9F6E007E6513 /* InfoWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0385FC5C242B9F6E007E6513 /* InfoWeatherView.swift */; };
@@ -688,6 +700,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		030473C924BCA9A40094A1A6 /* VideoViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewItem.swift; sourceTree = "<group>"; };
+		030473CA24BCA9A40094A1A6 /* VideoViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoViewItem.xib; sourceTree = "<group>"; };
 		0306336723A1012200046A59 /* LocationLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLayer.swift; sourceTree = "<group>"; };
 		0306336A23A142FA00046A59 /* LayerOffsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerOffsets.swift; sourceTree = "<group>"; };
 		0306336D23A15FA900046A59 /* AnimationTextLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTextLayer.swift; sourceTree = "<group>"; };
@@ -699,6 +713,7 @@
 		0313F9E722942B4500B074BB /* CustomVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVideoController.swift; sourceTree = "<group>"; };
 		0313F9EB2294468600B074BB /* SeededGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeededGenerator.swift; sourceTree = "<group>"; };
 		0313F9EE22955F3B00B074BB /* CustomVideoFolders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVideoFolders.swift; sourceTree = "<group>"; };
+		0317FA2D24BA07BC00745A90 /* PWC+About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PWC+About.swift"; sourceTree = "<group>"; };
 		031FB78A248A87330054BAFD /* PrefsCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsCache.swift; sourceTree = "<group>"; };
 		03233B67217272640077D3F9 /* PoiStringProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoiStringProvider.swift; sourceTree = "<group>"; };
 		032D1160239A7D82007E7756 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
@@ -746,6 +761,7 @@
 		036A57D723F470940009DC02 /* InfoCountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCountdownView.swift; sourceTree = "<group>"; };
 		036A57DA23F5820A0009DC02 /* CountdownLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownLayer.swift; sourceTree = "<group>"; };
 		0374C9FD247AC5BC002F29D3 /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
+		0377BF6F24BA15E600C33F9F /* btn_donate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_donate.png; sourceTree = "<group>"; };
 		0385FC58242B9AE1007E6513 /* APISecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISecrets.swift; sourceTree = "<group>"; };
 		0385FC5C242B9F6E007E6513 /* InfoWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoWeatherView.swift; sourceTree = "<group>"; };
 		0387CA3F245DC7A4000A7095 /* bolt.fill.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = bolt.fill.pdf; sourceTree = "<group>"; };
@@ -941,6 +957,7 @@
 		033192DF217B77E90073B580 /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				0377BF6F24BA15E600C33F9F /* btn_donate.png */,
 				03E4B20C22DC7F8700C22EBE /* zh_TW.json */,
 				038EBE9322D0AA3D00C7AD02 /* nl.json */,
 				036A34B4227309FB00A49135 /* zh_CN.json */,
@@ -1029,6 +1046,7 @@
 		034F29B523A7A8E1004B34D5 /* PrefPanel */ = {
 			isa = PBXGroup;
 			children = (
+				030473C924BCA9A40094A1A6 /* VideoViewItem.swift */,
 				FAC36F441BE1756D007F2A20 /* CheckCellView.swift */,
 				03D1E78622842FB300D10CF7 /* DisplayView.swift */,
 				034F29B623A7A93D004B34D5 /* InfoTableSource.swift */,
@@ -1074,6 +1092,7 @@
 				03608A1F22A55BC2008F08A2 /* PWC+Cache.swift */,
 				03608A2222A55BF1008F08A2 /* PWC+Updates.swift */,
 				03608A2522A55C03008F08A2 /* PWC+Advanced.swift */,
+				0317FA2D24BA07BC00745A90 /* PWC+About.swift */,
 				03608A2822A56094008F08A2 /* PWC+LogPanel.swift */,
 			);
 			path = "PWC Tabs";
@@ -1240,6 +1259,7 @@
 				0395835221807D1F008E8F9C /* thumbnail.png */,
 				0395835121807D1F008E8F9C /* thumbnail@2x.png */,
 				FAC36F3A1BE1756D007F2A20 /* PreferencesWindow.xib */,
+				030473CA24BCA9A40094A1A6 /* VideoViewItem.xib */,
 				0313F9E522942AA500B074BB /* CustomVideos.xib */,
 				034116D823FADE3600CD7674 /* UpdateReleaseWindow.xib */,
 				03C344DE24B7716C00906EA6 /* SourcesList.xib */,
@@ -1679,6 +1699,7 @@
 				0396D57D24B8B7ED00CC021B /* cloud.pdf in Resources */,
 				0396D57E24B8B7ED00CC021B /* cloud.hail.pdf in Resources */,
 				0396D57F24B8B7ED00CC021B /* cloud.snow.pdf in Resources */,
+				030473CF24BCA9A40094A1A6 /* VideoViewItem.xib in Resources */,
 				0396D58024B8B7ED00CC021B /* he.json in Resources */,
 				0396D58124B8B7ED00CC021B /* moon.stars.pdf in Resources */,
 				0396D58224B8B7ED00CC021B /* smoke.pdf in Resources */,
@@ -1687,6 +1708,7 @@
 				0396D58524B8B7ED00CC021B /* cloud.heavyrain.pdf in Resources */,
 				0396D58624B8B7ED00CC021B /* SourcesList.xib in Resources */,
 				0396D58724B8B7ED00CC021B /* cloud.bolt.rain.pdf in Resources */,
+				0377BF8724BA15E700C33F9F /* btn_donate.png in Resources */,
 				0396D58824B8B7ED00CC021B /* pl.json in Resources */,
 				0396D58924B8B7ED00CC021B /* battery.0.pdf in Resources */,
 				0396D58A24B8B7ED00CC021B /* icon-day-dark.pdf in Resources */,
@@ -1777,6 +1799,7 @@
 				03D1E79222848F7F00D10CF7 /* screen2.jpg in Resources */,
 				0387CA77245DE13A000A7095 /* tropicalstorm.pdf in Resources */,
 				FAC36F4A1BE1756D007F2A20 /* MainMenu.xib in Resources */,
+				0377BF8824BA15E700C33F9F /* btn_donate.png in Resources */,
 				FAC36F501BE1756D007F2A20 /* icon-night.pdf in Resources */,
 				0387CA71245DE13A000A7095 /* thermometer.sun.pdf in Resources */,
 				0387CA6F245DE13A000A7095 /* cloud.fog.pdf in Resources */,
@@ -1789,6 +1812,7 @@
 				035A92A9225F8C480095AB85 /* he.json in Resources */,
 				0387CA8D245DE13A000A7095 /* smoke.pdf in Resources */,
 				0387CA9B245DE13A000A7095 /* cloud.hail.pdf in Resources */,
+				030473D024BCA9A40094A1A6 /* VideoViewItem.xib in Resources */,
 				035A92A7225F8C480095AB85 /* de.json in Resources */,
 				0395835421807D1F008E8F9C /* thumbnail@2x.png in Resources */,
 				03A42A9A2449F5EA003B3012 /* white_retina.png in Resources */,
@@ -1833,6 +1857,7 @@
 				0387CA9C245DE13A000A7095 /* cloud.pdf in Resources */,
 				0387CA9A245DE13A000A7095 /* cloud.hail.pdf in Resources */,
 				0387CAA0245DE13A000A7095 /* cloud.snow.pdf in Resources */,
+				030473CE24BCA9A40094A1A6 /* VideoViewItem.xib in Resources */,
 				035A92A8225F8C480095AB85 /* he.json in Resources */,
 				0387CA68245DE13A000A7095 /* moon.stars.pdf in Resources */,
 				0387CA8C245DE13A000A7095 /* smoke.pdf in Resources */,
@@ -1841,6 +1866,7 @@
 				0387CA7A245DE13A000A7095 /* cloud.heavyrain.pdf in Resources */,
 				03C344DF24B7716C00906EA6 /* SourcesList.xib in Resources */,
 				0387CA6A245DE13A000A7095 /* cloud.bolt.rain.pdf in Resources */,
+				0377BF8624BA15E700C33F9F /* btn_donate.png in Resources */,
 				03D3DAC4221F286700BDA52F /* pl.json in Resources */,
 				030A0F23245C7924009E1D97 /* battery.0.pdf in Resources */,
 				033D62AB216CADCD00F3AF83 /* icon-day-dark.pdf in Resources */,
@@ -1973,10 +1999,12 @@
 				0396D51D24B8B7ED00CC021B /* MessageLayer.swift in Sources */,
 				0396D51E24B8B7ED00CC021B /* InfoCommonView.swift in Sources */,
 				0396D51F24B8B7ED00CC021B /* AerialView+Brightness.swift in Sources */,
+				030473CC24BCA9A40094A1A6 /* VideoViewItem.swift in Sources */,
 				0396D52024B8B7ED00CC021B /* Preferences.swift in Sources */,
 				0396D52124B8B7ED00CC021B /* Locations.swift in Sources */,
 				0396D52224B8B7ED00CC021B /* VideoCache.swift in Sources */,
 				0396D52324B8B7ED00CC021B /* BatteryIconLayer.swift in Sources */,
+				0317FA2F24BA07BC00745A90 /* PWC+About.swift in Sources */,
 				0396D52424B8B7ED00CC021B /* PrefsDisplays.swift in Sources */,
 				0396D52524B8B7ED00CC021B /* YahooWeatherAPI.swift in Sources */,
 				0396D52624B8B7ED00CC021B /* Cache.swift in Sources */,
@@ -2068,6 +2096,7 @@
 				03608A2A22A56094008F08A2 /* PWC+LogPanel.swift in Sources */,
 				03E289D5239A79C400C06EC5 /* AutoUpdates.swift in Sources */,
 				0354D0ED23F6CB7B00D86F9E /* InfoSettingsView.swift in Sources */,
+				0317FA3024BA07BC00745A90 /* PWC+About.swift in Sources */,
 				03608A2722A55C03008F08A2 /* PWC+Advanced.swift in Sources */,
 				03E87314216760B7002B469B /* TimeManagement.swift in Sources */,
 				038C584B23A9394000224630 /* InfoCommonView.swift in Sources */,
@@ -2093,6 +2122,7 @@
 				03608A2D22A56465008F08A2 /* HardwareDetection.swift in Sources */,
 				036A57D923F4747D0009DC02 /* InfoCountdownView.swift in Sources */,
 				03C97BC424B6210500739CED /* SourceInfo.swift in Sources */,
+				030473CD24BCA9A40094A1A6 /* VideoViewItem.swift in Sources */,
 				03C344FD24B778EE00906EA6 /* CheckboxCellView.swift in Sources */,
 				FAC36F5E1BE1756D007F2A20 /* CheckCellView.swift in Sources */,
 				034A6DC524ACC80B00D62129 /* Source.swift in Sources */,
@@ -2186,10 +2216,12 @@
 				03BF51BF23A274CA008AD373 /* MessageLayer.swift in Sources */,
 				038C584A23A9394000224630 /* InfoCommonView.swift in Sources */,
 				032D1164239A7F0C007E7756 /* AerialView+Brightness.swift in Sources */,
+				030473CB24BCA9A40094A1A6 /* VideoViewItem.swift in Sources */,
 				FA6F81DC1D939455007975FE /* Preferences.swift in Sources */,
 				0374C9FE247AC5BC002F29D3 /* Locations.swift in Sources */,
 				FAF450241BE2D2FD00C1F98A /* VideoCache.swift in Sources */,
 				030A0F29245C7C7D009E1D97 /* BatteryIconLayer.swift in Sources */,
+				0317FA2E24BA07BC00745A90 /* PWC+About.swift in Sources */,
 				0361B9A823D732A300B6252D /* PrefsDisplays.swift in Sources */,
 				03D2A43424474304003ABD30 /* YahooWeatherAPI.swift in Sources */,
 				03DC004E248BC5A4005DB0F4 /* Cache.swift in Sources */,

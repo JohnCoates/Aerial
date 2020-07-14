@@ -77,14 +77,14 @@ extension PreferencesWindowController {
             popoverH264Label.stringValue = "macOS 10.13 or above required"
             popoverHEVCLabel.stringValue = "Hardware acceleration status unknown"
         }
-
+/*
         // Preview video
         playerView.player = player
         playerView.controlsStyle = .none
         if #available(OSX 10.10, *) {
             playerView.videoGravity = .resizeAspectFill
         }
-
+*/
         outlineView.floatsGroupRows = false
         outlineView.menu = videoMenu
         videoMenu.delegate = self
@@ -119,6 +119,15 @@ extension PreferencesWindowController {
             menu1080pHDR.isHidden = true
             menu4KHDR.isHidden = true
         }
+
+        let flowLayout = NSCollectionViewFlowLayout()
+        flowLayout.itemSize = NSSize(width: 160.0, height: 140.0)
+        flowLayout.sectionInset = NSEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+        flowLayout.minimumInteritemSpacing = 0.0
+        flowLayout.minimumLineSpacing = 0.0
+        videoCollectionView.collectionViewLayout = flowLayout
+        // view.wantsLayer = true
+
     }
 
     @IBAction func rightArrowKeyPlaysNextClick(_ sender: NSButton) {
@@ -694,7 +703,7 @@ extension PreferencesWindowController {
     func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
         switch item {
         case let video as AerialVideo:
-            player = AVPlayer()
+           /* player = AVPlayer()
             playerView.player = player
             player.isMuted = PrefsAdvanced.muteSound
 
@@ -714,7 +723,7 @@ extension PreferencesWindowController {
                 player.play()
             } else {
                 previewDisabledTextfield.isHidden = false
-            }
+            }*/
 
             return true
         case is TimeOfDay:

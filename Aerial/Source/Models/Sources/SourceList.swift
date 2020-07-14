@@ -71,7 +71,7 @@ struct SourceList {
             if let manifest = try? newJSONDecoder().decode(Manifest.self, from: jsonData) {
                 return Source(name: manifest.name,
                               description: manifest.manifestDescription,
-                              manifestUrl: "local",
+                              manifestUrl: url.absoluteString,
                               type: .local,
                               scenes: [.landscape])
             }

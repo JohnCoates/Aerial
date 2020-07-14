@@ -47,6 +47,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var popoverWeather: NSPopover!
 
     // Videos tab
+    @IBOutlet var videoCollectionView: NSCollectionView!
     @IBOutlet var outlineView: NSOutlineView!
     @IBOutlet var outlineViewSettings: NSButton!
 
@@ -57,8 +58,8 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var videoSetsButton: NSButton!
 
-    @IBOutlet var playerView: AVPlayerView!
-    @IBOutlet var previewDisabledTextfield: NSTextField!
+//    @IBOutlet var playerView: AVPlayerView!
+//    @IBOutlet var previewDisabledTextfield: NSTextField!
 
     @IBOutlet var fadeInOutModePopup: NSPopUpButton!
     @IBOutlet var popupVideoFormat: NSPopUpButton!
@@ -70,7 +71,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var rightArrowKeyPlaysNextCheckbox: NSButton!
     //@IBOutlet var synchronizedModeCheckbox: NSButton!
-    @IBOutlet var projectPageLink: NSButton!
+//    @IBOutlet var projectPageLink: NSButton!
 
     // Displays tab
     @IBOutlet var displayInstructionLabel: NSTextField!
@@ -176,9 +177,9 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     @IBOutlet var allowedNetworksLabel: NSTextField!
 
     // Updates Tab
-    @IBOutlet var newVideosModePopup: NSPopUpButton!
-    @IBOutlet var checkNowButton: NSButton!
-    @IBOutlet var lastCheckedVideosLabel: NSTextField!
+//    @IBOutlet var newVideosModePopup: NSPopUpButton!
+//    @IBOutlet var checkNowButton: NSButton!
+//    @IBOutlet var lastCheckedVideosLabel: NSTextField!
 
     @IBOutlet var automaticallyCheckForUpdatesCheckbox: NSButton!
     @IBOutlet var allowScreenSaverModeUpdateCheckbox: NSButton!
@@ -196,6 +197,9 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBOutlet var languagePopup: NSPopUpButton!
     @IBOutlet var currentLocaleLabel: NSTextField!
+
+    // About tab
+    @IBOutlet var aboutVersionLabel: NSTextField!
 
     // Video sets panel
     @IBOutlet var addVideoSetPanel: NSPanel!
@@ -373,6 +377,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         setupCacheTab()
         setupUpdatesTab()
         setupAdvancedTab()
+        setupAboutTab()
 
         colorizeProjectPageLinks()
 
@@ -457,14 +462,14 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     fileprivate func colorizeProjectPageLinks() {
         let color = NSColor(calibratedRed: 0.18, green: 0.39, blue: 0.76, alpha: 1)
-        var coloredLink = NSMutableAttributedString(attributedString: projectPageLink.attributedTitle)
+/*        var coloredLink = NSMutableAttributedString(attributedString: projectPageLink.attributedTitle)
         var fullRange = NSRange(location: 0, length: coloredLink.length)
         coloredLink.addAttribute(.foregroundColor, value: color, range: fullRange)
-        projectPageLink.attributedTitle = coloredLink
+        //projectPageLink.attributedTitle = coloredLink*/
 
         // We have an extra project link on the video format popover, color it too
-        coloredLink = NSMutableAttributedString(attributedString: secondProjectPageLink.attributedTitle)
-        fullRange = NSRange(location: 0, length: coloredLink.length)
+        var coloredLink = NSMutableAttributedString(attributedString: secondProjectPageLink.attributedTitle)
+        var fullRange = NSRange(location: 0, length: coloredLink.length)
         coloredLink.addAttribute(.foregroundColor, value: color, range: fullRange)
         secondProjectPageLink.attributedTitle = coloredLink
 
@@ -499,7 +504,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     @IBAction func pageProjectClick(_ button: NSButton?) {
         let workspace = NSWorkspace.shared
-        let url = URL(string: "http://github.com/JohnCoates/Aerial")!
+        let url = URL(string: "https://github.com/JohnCoates/Aerial")!
         workspace.open(url)
     }
 
