@@ -553,6 +553,7 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         self.cities = sortedCities
 
         DispatchQueue.main.async {
+            self.videoCollectionView.reloadData()
             self.outlineView.reloadData()
             self.outlineView.expandItem(nil, expandChildren: true)
         }

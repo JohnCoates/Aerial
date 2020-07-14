@@ -42,7 +42,6 @@ final class City {
 }
 
 extension PreferencesWindowController {
-    // swiftlint:disable:next cyclomatic_complexity
     func setupVideosTab() {
         // Help popover, GVA detection requires 10.13
         if #available(OSX 10.13, *) {
@@ -121,11 +120,13 @@ extension PreferencesWindowController {
         }
 
         let flowLayout = NSCollectionViewFlowLayout()
-        flowLayout.itemSize = NSSize(width: 160.0, height: 140.0)
+        flowLayout.itemSize = NSSize(width: 100.0, height: 70.0)
         flowLayout.sectionInset = NSEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
         flowLayout.minimumInteritemSpacing = 0.0
         flowLayout.minimumLineSpacing = 0.0
         videoCollectionView.collectionViewLayout = flowLayout
+        videoCollectionView.dataSource = self
+        videoCollectionView.delegate = self
         // view.wantsLayer = true
 
     }
@@ -783,4 +784,53 @@ extension PreferencesWindowController: NSMenuDelegate {
     }
 }
 
+// MARK: Collection view
+
+extension PreferencesWindowController: NSCollectionViewDataSource {
+
+    // Number of sections
+    func numberOfSections(in collectionView: NSCollectionView) -> Int {
+        return VideoList.instance.getSectionsCount(mode: .location)
+    }
+
+    // Number of videos for a section
+    func collectionView(_ collectionView: NSCollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        return VideoList.instance.getVideosCountForSection(section, mode: .location)
+    }
+
+    // View for each video
+    func collectionView(_ itemForRepresentedObjectAtcollectionView: NSCollectionView,
+                        itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
+
+        let item = videoCollectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "VideoViewItem"), for: indexPath)
+        guard let collectionViewItem = item as? VideoViewItem else {return item}
+
+        //print(indexPath.
+        // let imageFile = imageDirectoryLoader.imageFileForIndexPath(indexPath)
+        collectionViewItem.video = VideoList.instance.videos[indexPath.item]
+        collectionViewItem.video = VideoList.instance.getVideoForSection(indexPath.section, item: indexPath.item, mode: .location)
+        return item
+    }
+
+    // View for each section header
+    func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> NSView {
+        let view = videoCollectionView.makeSupplementaryView(
+            ofKind: NSCollectionView.elementKindSectionHeader,
+            withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "VideoHeaderView"),
+            for: indexPath) as! VideoHeaderView
+
+        view.sectionTitle.stringValue = VideoList.instance.getSectionName(indexPath.section, mode: .location)
+        return view
+    }
+
+}
+
+extension PreferencesWindowController: NSCollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: NSCollectionView,
+                        layout collectionViewLayout: NSCollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> NSSize {
+        return NSSize(width: 1000, height: 22)
+    }
+}
 // swiftlint:disable:this file_length

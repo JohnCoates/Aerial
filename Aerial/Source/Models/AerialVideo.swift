@@ -6,7 +6,7 @@
 //  Copyright © 2015 John Coates. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 import AVFoundation
 
 enum Manifests: String {
@@ -267,4 +267,49 @@ final class AerialVideo: CustomStringConvertible, Equatable {
         urls=\(urls)
         """
     }
+
+    // Get Thumbnail
+    func getThumbnail(_ completion: @escaping ((_ image: NSImage?) -> Void)) {
+        if url.absoluteString.starts(with: "file://") {
+            DispatchQueue.main.async {
+                let asset = AVAsset(url: self.url)
+                let assetImgGenerate = AVAssetImageGenerator(asset: asset)
+                assetImgGenerate.appliesPreferredTrackTransform = true
+
+                let time = CMTimeMake(value: 2, timescale: 1)
+                do {
+                    let img = try assetImgGenerate.copyCGImage(at: time, actualTime: nil)
+                    let thumbnail = NSImage(cgImage: img, size: .init(width: 192, height: 108))
+                    completion(thumbnail)
+                } catch {
+                    print("Error :: ", error.localizedDescription)
+                    completion(nil)
+                }
+            }
+        } else {
+            if isAvailableOffline {
+                let path = VideoCache.cachePath(forVideo: self)!
+
+                DispatchQueue.main.async {
+                    let asset = AVAsset(url: URL(fileURLWithPath: path))
+                    let assetImgGenerate = AVAssetImageGenerator(asset: asset)
+                    assetImgGenerate.appliesPreferredTrackTransform = true
+
+                    let time = CMTimeMake(value: 2, timescale: 1)
+                    do {
+                        let img = try assetImgGenerate.copyCGImage(at: time, actualTime: nil)
+                        let thumbnail = NSImage(cgImage: img, size: .init(width: 192, height: 108))
+                        completion(thumbnail)
+                    } catch {
+                        print("Error :: ", error.localizedDescription)
+                        completion(nil)
+                    }
+                }
+            } else {
+                completion(nil)
+            }
+        }
+
+    }
+
 }

@@ -458,6 +458,12 @@
 		03DAD473229EC031000DA6D1 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 03DAD472229EC031000DA6D1 /* Readme.md */; };
 		03DC004E248BC5A4005DB0F4 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC004D248BC5A4005DB0F4 /* Cache.swift */; };
 		03DC0065248BC60D005DB0F4 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC004D248BC5A4005DB0F4 /* Cache.swift */; };
+		03E2235724BE02A200CD8ED4 /* VideoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03E2235624BE02A200CD8ED4 /* VideoHeaderView.xib */; };
+		03E2235824BE02A200CD8ED4 /* VideoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03E2235624BE02A200CD8ED4 /* VideoHeaderView.xib */; };
+		03E2235924BE02A200CD8ED4 /* VideoHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03E2235624BE02A200CD8ED4 /* VideoHeaderView.xib */; };
+		03E2237124BE048900CD8ED4 /* VideoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */; };
+		03E2237224BE048900CD8ED4 /* VideoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */; };
+		03E2237324BE048900CD8ED4 /* VideoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */; };
 		03E289D5239A79C400C06EC5 /* AutoUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB892E239A758B005D1F64 /* AutoUpdates.swift */; };
 		03E4B20D22DC7F8800C22EBE /* zh_TW.json in Resources */ = {isa = PBXBuildFile; fileRef = 03E4B20C22DC7F8700C22EBE /* zh_TW.json */; };
 		03E4B20E22DC7FE200C22EBE /* zh_TW.json in Resources */ = {isa = PBXBuildFile; fileRef = 03E4B20C22DC7F8700C22EBE /* zh_TW.json */; };
@@ -852,6 +858,8 @@
 		03DAD476229EC64D000DA6D1 /* Troubleshooting.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Troubleshooting.md; sourceTree = "<group>"; };
 		03DAD477229ECAAA000DA6D1 /* CustomVideos.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CustomVideos.md; sourceTree = "<group>"; };
 		03DC004D248BC5A4005DB0F4 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		03E2235624BE02A200CD8ED4 /* VideoHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoHeaderView.xib; sourceTree = "<group>"; };
+		03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoHeaderView.swift; sourceTree = "<group>"; };
 		03E4B20C22DC7F8700C22EBE /* zh_TW.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zh_TW.json; sourceTree = "<group>"; };
 		03E8730B2165013C002B469B /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		03E8730E216501ED002B469B /* AsynchronousOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousOperation.swift; sourceTree = "<group>"; };
@@ -1047,6 +1055,7 @@
 			isa = PBXGroup;
 			children = (
 				030473C924BCA9A40094A1A6 /* VideoViewItem.swift */,
+				03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */,
 				FAC36F441BE1756D007F2A20 /* CheckCellView.swift */,
 				03D1E78622842FB300D10CF7 /* DisplayView.swift */,
 				034F29B623A7A93D004B34D5 /* InfoTableSource.swift */,
@@ -1260,6 +1269,7 @@
 				0395835121807D1F008E8F9C /* thumbnail@2x.png */,
 				FAC36F3A1BE1756D007F2A20 /* PreferencesWindow.xib */,
 				030473CA24BCA9A40094A1A6 /* VideoViewItem.xib */,
+				03E2235624BE02A200CD8ED4 /* VideoHeaderView.xib */,
 				0313F9E522942AA500B074BB /* CustomVideos.xib */,
 				034116D823FADE3600CD7674 /* UpdateReleaseWindow.xib */,
 				03C344DE24B7716C00906EA6 /* SourcesList.xib */,
@@ -1715,6 +1725,7 @@
 				0396D58B24B8B7ED00CC021B /* screen0.jpg in Resources */,
 				0396D58C24B8B7ED00CC021B /* cloud.moon.pdf in Resources */,
 				0396D58D24B8B7ED00CC021B /* thumbnail@2x.png in Resources */,
+				03E2235824BE02A200CD8ED4 /* VideoHeaderView.xib in Resources */,
 				0396D58E24B8B7ED00CC021B /* thumbnail.png in Resources */,
 				0396D58F24B8B7ED00CC021B /* it.json in Resources */,
 				0396D59024B8B7ED00CC021B /* cloud.moon.bolt.pdf in Resources */,
@@ -1777,6 +1788,7 @@
 				030A0F24245C7924009E1D97 /* battery.0.pdf in Resources */,
 				038EBE9522D0AA3D00C7AD02 /* nl.json in Resources */,
 				033D62B0216CAE2C00F3AF83 /* icon-night-dark.pdf in Resources */,
+				03E2235924BE02A200CD8ED4 /* VideoHeaderView.xib in Resources */,
 				0387CA7D245DE13A000A7095 /* wind.snow.pdf in Resources */,
 				0387CA89245DE13A000A7095 /* moon.pdf in Resources */,
 				0395835621807D1F008E8F9C /* thumbnail.png in Resources */,
@@ -1873,6 +1885,7 @@
 				03D1E79722848F7F00D10CF7 /* screen0.jpg in Resources */,
 				0387CA84245DE13A000A7095 /* cloud.moon.pdf in Resources */,
 				0395835321807D1F008E8F9C /* thumbnail@2x.png in Resources */,
+				03E2235724BE02A200CD8ED4 /* VideoHeaderView.xib in Resources */,
 				0395835521807D1F008E8F9C /* thumbnail.png in Resources */,
 				03F8FF1D244B54E600813C96 /* it.json in Resources */,
 				0387CA8E245DE13A000A7095 /* cloud.moon.bolt.pdf in Resources */,
@@ -2074,6 +2087,7 @@
 				0396D56624B8B7ED00CC021B /* AnimatableLayer.swift in Sources */,
 				0396D56724B8B7ED00CC021B /* InfoClockView.swift in Sources */,
 				0396D56824B8B7ED00CC021B /* CustomVideoController.swift in Sources */,
+				03E2237224BE048900CD8ED4 /* VideoHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2104,6 +2118,7 @@
 				03D1E78B22844AFD00D10CF7 /* DisplayDetection.swift in Sources */,
 				03E8731021662AEB002B469B /* DownloadManager.swift in Sources */,
 				03E8731121662AEB002B469B /* AsynchronousOperation.swift in Sources */,
+				03E2237324BE048900CD8ED4 /* VideoHeaderView.swift in Sources */,
 				03510C7121834FC7008F74F2 /* IOBridge.m in Sources */,
 				F00864B823AAE8E9003210EF /* NightShift.swift in Sources */,
 				03608A2422A55BF1008F08A2 /* PWC+Updates.swift in Sources */,
@@ -2291,6 +2306,7 @@
 				0345872D2449C52F00C97D1B /* AnimatableLayer.swift in Sources */,
 				03A596D523AA752F0097EA66 /* InfoClockView.swift in Sources */,
 				0313F9E822942B4500B074BB /* CustomVideoController.swift in Sources */,
+				03E2237124BE048900CD8ED4 /* VideoHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

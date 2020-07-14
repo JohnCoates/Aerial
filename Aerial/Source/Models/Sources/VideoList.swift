@@ -9,8 +9,20 @@
 import Foundation
 
 typealias VideoListRefreshCallback = () -> Void
+extension RangeReplaceableCollection {
+    /// Returns a collection containing, in order, the first instances of
+    /// elements of the sequence that compare equally for the keyPath.
+    func unique<T: Hashable>(for keyPath: KeyPath<Element, T>) -> Self {
+        var unique = Set<T>()
+        return filter { unique.insert($0[keyPath: keyPath]).inserted }
+    }
+}
 
 class VideoList {
+    enum FilterMode {
+        case location
+    }
+
     static let instance: VideoList = VideoList()
     var callbacks = [VideoListRefreshCallback]()
 
@@ -24,6 +36,36 @@ class VideoList {
 
     init() {
         downloadManifestsIfNeeded()
+    }
+
+    func getSectionsCount(mode: FilterMode) -> Int {
+        switch mode {
+        case .location:
+            return videos.map { $0.name }.unique(for: \.self).count
+        }
+    }
+
+    func getSectionName(_ section: Int, mode: FilterMode) -> String {
+        switch mode {
+        case .location:
+            return videos.map { $0.name }.unique(for: \.self)[section]
+        }
+    }
+
+    func getVideosCountForSection(_ section: Int, mode: FilterMode) -> Int {
+        switch mode {
+        case .location:
+            let sectionKey = videos.map { $0.name }.unique(for: \.self)[section]
+            return videos.filter { $0.name == sectionKey }.count
+        }
+    }
+
+    func getVideoForSection(_ section: Int, item: Int, mode: FilterMode) -> AerialVideo {
+        switch mode {
+        case .location:
+            let sectionKey = videos.map { $0.name }.unique(for: \.self)[section]
+            return videos.filter { $0.name == sectionKey }[item]
+        }
     }
 
     func addCallback(_ callback:@escaping VideoListRefreshCallback) {
@@ -84,6 +126,8 @@ class VideoList {
                 }
             }
         }
+
+        videos = videos.sorted { $0.name < $1.name }
 
         // Let everyone who wants to know that our list is updated
         for callback in callbacks {
