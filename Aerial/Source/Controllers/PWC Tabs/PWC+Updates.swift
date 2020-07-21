@@ -149,7 +149,7 @@ extension PreferencesWindowController {
             }
         } else {
             if autoUpdates.isAnUpdateAvailable() {
-                updateReleaseController.show(sender: self.versionButton, controller: self)
+                //updateReleaseController.show(sender: self.versionButton, controller: self)
             } else {
                 if !silent {
                     updateReleaseController.showNoUpdate()

@@ -9,7 +9,7 @@
 import Foundation
 
 enum TimeMode: Int {
-    case disabled, nightShift, manual, lightDarkMode, coordinates
+    case disabled, nightShift, manual, lightDarkMode, coordinates, locationService
 }
 
 enum SolarMode: Int {

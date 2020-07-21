@@ -790,13 +790,13 @@ extension PreferencesWindowController: NSCollectionViewDataSource {
 
     // Number of sections
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
-        return VideoList.instance.getSectionsCount(mode: .location)
+        return 0 //VideoList.instance.getSectionsCount(mode: .location)
     }
 
     // Number of videos for a section
     func collectionView(_ collectionView: NSCollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return VideoList.instance.getVideosCountForSection(section, mode: .location)
+        return VideoList.instance.getVideosCountForSource(section, mode: .location)
     }
 
     // View for each video
@@ -809,7 +809,7 @@ extension PreferencesWindowController: NSCollectionViewDataSource {
         //print(indexPath.
         // let imageFile = imageDirectoryLoader.imageFileForIndexPath(indexPath)
         collectionViewItem.video = VideoList.instance.videos[indexPath.item]
-        collectionViewItem.video = VideoList.instance.getVideoForSection(indexPath.section, item: indexPath.item, mode: .location)
+        collectionViewItem.video = VideoList.instance.getVideoForSource(indexPath.section, item: indexPath.item, mode: .location)
         return item
     }
 
@@ -820,7 +820,7 @@ extension PreferencesWindowController: NSCollectionViewDataSource {
             withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "VideoHeaderView"),
             for: indexPath) as! VideoHeaderView
 
-        view.sectionTitle.stringValue = VideoList.instance.getSectionName(indexPath.section, mode: .location)
+        view.sectionTitle.stringValue = VideoList.instance.getSourceName(indexPath.section, mode: .location)
         return view
     }
 

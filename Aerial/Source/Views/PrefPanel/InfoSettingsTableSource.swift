@@ -9,9 +9,9 @@
 import Cocoa
 
 class InfoSettingsTableSource: NSTableView, NSTableViewDataSource, NSTableViewDelegate {
-    var controller: PreferencesWindowController?
+    var controller: OverlaysViewController?
 
-    func setController(_ controller: PreferencesWindowController) {
+    func setController(_ controller: OverlaysViewController) {
         self.controller = controller
     }
 

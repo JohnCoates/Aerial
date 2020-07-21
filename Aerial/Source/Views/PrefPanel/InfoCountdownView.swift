@@ -41,6 +41,7 @@ class InfoCountdownView: NSView {
             // TODO hide day
         }
     }
+
     // UI Actions
     @IBAction func timeModePopupChange(_ sender: NSPopUpButton) {
         PrefsInfo.countdown.mode = InfoCountdownMode(rawValue: sender.indexOfSelectedItem)!

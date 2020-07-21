@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -31,7 +31,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="68" headerView="bM0-KJ-xQN" viewBased="YES" indentationPerLevel="13" outlineTableColumn="ass-Xf-WEw" id="q1E-eU-gsT">
-                                    <rect key="frame" x="0.0" y="0.0" width="752" height="331"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="757" height="331"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <size key="intercellSpacing" width="17" height="0.0"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -50,7 +50,7 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView identifier="isSelectedCell" id="aaD-ef-8Jr" customClass="CheckboxCellView" customModule="Aerial" customModuleProvider="target">
-                                                    <rect key="frame" x="18" y="0.0" width="38" height="68"/>
+                                                    <rect key="frame" x="8" y="0.0" width="40" height="68"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EoZ-AR-OUU">
@@ -81,14 +81,14 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView identifier="valueColumnCell" id="MXB-JY-6ec" customClass="DescriptionCellView" customModule="Aerial" customModuleProvider="target">
-                                                    <rect key="frame" x="73" y="0.0" width="602" height="68"/>
+                                                    <rect key="frame" x="65" y="0.0" width="602" height="68"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="3ZF-I8-ZQf">
                                                             <rect key="frame" x="0.0" y="46" width="602" height="19"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Wwh-XD-njq">
-                                                                <font key="font" textStyle="title3" name=".SFNS-Regular"/>
+                                                                <font key="font" usesAppearanceFont="YES"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -97,7 +97,7 @@
                                                             <rect key="frame" x="0.0" y="19" width="602" height="26"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" selectable="YES" id="ION-se-gd8">
-                                                                <font key="font" textStyle="footnote" name=".SFNS-Regular"/>
+                                                                <font key="font" usesAppearanceFont="YES"/>
                                                                 <string key="title">Multiline Label
 line2</string>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -107,13 +107,13 @@ line2</string>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ycC-BW-IDr">
                                                             <rect key="frame" x="1" y="2" width="16" height="19"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="film" catalog="system" id="ynr-0I-z83"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="ynr-0I-z83"/>
                                                         </imageView>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FlZ-d2-DiM">
                                                             <rect key="frame" x="412" y="4" width="189" height="13"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Last updated: " id="Y19-y0-BhN">
-                                                                <font key="font" textStyle="footnote" name=".SFNS-Regular"/>
+                                                                <font key="font" usesAppearanceFont="YES"/>
                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -130,22 +130,22 @@ line2</string>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fiy-Mu-eHH">
                                                             <rect key="frame" x="575" y="41" width="24" height="28"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="leaf" catalog="system" id="ZRS-PB-Puc"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="ZRS-PB-Puc"/>
                                                         </imageView>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RVZ-J1-p9o">
                                                             <rect key="frame" x="551" y="41" width="24" height="30"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="building" catalog="system" id="ugh-wN-OAq"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="ugh-wN-OAq"/>
                                                         </imageView>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2vY-bo-WDj">
                                                             <rect key="frame" x="527" y="41" width="24" height="29"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="sparkles" catalog="system" id="BIt-8i-rUX"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="BIt-8i-rUX"/>
                                                         </imageView>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jra-q4-YKX">
                                                             <rect key="frame" x="503" y="42" width="24" height="27"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="drop" catalog="system" id="Fqe-Vl-OAn"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Fqe-Vl-OAn"/>
                                                         </imageView>
                                                     </subviews>
                                                     <connections>
@@ -174,7 +174,7 @@ line2</string>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView id="MaL-J5-IFh">
-                                                    <rect key="frame" x="692" y="0.0" width="61" height="68"/>
+                                                    <rect key="frame" x="684" y="0.0" width="64" height="68"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <button id="MJZ-6b-VaQ">
@@ -202,7 +202,7 @@ line2</string>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <tableHeaderView key="headerView" wantsLayer="YES" id="bM0-KJ-xQN">
-                            <rect key="frame" x="0.0" y="0.0" width="752" height="25"/>
+                            <rect key="frame" x="0.0" y="0.0" width="757" height="25"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
@@ -229,11 +229,6 @@ line2</string>
         </window>
     </objects>
     <resources>
-        <image name="NSTouchBarDownloadTemplate" width="15" height="13"/>
-        <image name="building" catalog="system" width="15" height="14"/>
-        <image name="drop" catalog="system" width="11" height="13"/>
-        <image name="film" catalog="system" width="19" height="12"/>
-        <image name="leaf" catalog="system" width="16" height="12"/>
-        <image name="sparkles" catalog="system" width="14" height="15"/>
+        <image name="NSTouchBarDownloadTemplate" width="18" height="30"/>
     </resources>
 </document>

@@ -16,9 +16,9 @@ import CoreWLAN
  
  - Note: Where is our cache ?
  
- Starting with 2.0, Aerial is splitting its files in two locations :
- - `~/Library/Application Support/Aerial/` : Contains manifests files and strings bundles
- - `~/Library/Caches/Aerial/` : Contains (only) videos, may be wiped by system
+ Starting with 2.0, Aerial is putting its files in two locations :
+ - `~/Library/Application Support/Aerial/` : Contains manifests files and strings bundles for each source, in their own directory
+ - `~/Library/Application Support/Aerial/Cache/` : Contains (only) the cached videos
  
  Users of version 1.x.x will automatically see their video files migrated to the correct location.
  
@@ -27,6 +27,7 @@ import CoreWLAN
  
  - Attention: Shared by multiple users writable locations are no longer possible, because sandboxing is awesome !
  */
+
 struct Cache {
     /**
      Returns the SSID of the Wi-Fi network the user is currently connected to.
@@ -81,8 +82,8 @@ struct Cache {
     /**
      Returns Aerial's Caches path.
      
-     + On macOS 10.14 and earlier : `~/Library/Caches/Aerial/`
-     + Starting with 10.15 : `~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Caches/Aerial/`
+     + On macOS 10.14 and earlier : `~/Library/Application Support/Aerial/Cache/`
+     + Starting with 10.15 : `~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Application Support/Aerial/Cache/`
      
      - Note: Returns `/` on failure.
      
@@ -91,7 +92,56 @@ struct Cache {
      Also note that the shared `Caches` folder, `/Library/Caches/Aerial/`, is no longer user writable in Catalina and will be ignored.
      */
     static var path: String = {
-        print("svp")
+        let path = Cache.supportPath.appending("/Cache")
+
+        if FileManager.default.fileExists(atPath: path as String) {
+            return path
+        } else {
+            do {
+                try FileManager.default.createDirectory(atPath: path,
+                                                withIntermediateDirectories: false, attributes: nil)
+                return path
+            } catch let error {
+                errorLog("FATAL : Couldn't create Cache directory in Aerial's AppSupport directory: \(error)")
+                return "/"
+            }
+        }
+    }()
+
+    /**
+     Returns Aerial's thumbnail cache path, creating it if needed.
+     + On macOS 10.14 and earlier : `~/Library/Application Support/Aerial/Thumbnails/`
+     + Starting with 10.15 : `~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Application Support/Aerial/Thumbnails/`
+
+     - Note: Returns `/` on failure.
+
+     */
+    static var thumbnailsPath: String = {
+        let path = Cache.supportPath.appending("/Thumbnails")
+
+        if FileManager.default.fileExists(atPath: path as String) {
+            return path
+        } else {
+            do {
+                try FileManager.default.createDirectory(atPath: path,
+                                                withIntermediateDirectories: false, attributes: nil)
+                return path
+            } catch let error {
+                errorLog("FATAL : Couldn't create Thumbnails directory in Aerial's AppSupport directory: \(error)")
+                return "/"
+            }
+        }
+    }()
+
+    /**
+     Returns Aerial's former cache path, if it exists.
+     
+     + On macOS 10.14 and earlier : `~/Library/Caches/Aerial/`
+     + Starting with 10.15 : `~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Caches/Aerial/`
+     
+     - Note: Returns `nil` on failure.
+    */
+    static private var formerCachePath: String? = {
         // Grab an array of Cache paths
         let cacheSupportPaths = NSSearchPathForDirectoriesInDomains(
             .cachesDirectory,
@@ -100,25 +150,14 @@ struct Cache {
 
         if cacheSupportPaths.isEmpty {
             errorLog("Couldn't find Caches paths!")
-            return "/"
+            return nil
         }
 
         let cacheSupportDirectory = cacheSupportPaths[0] as NSString
         if aerialFolderExists(at: cacheSupportDirectory) {
             return cacheSupportDirectory.appendingPathComponent("Aerial")
         } else {
-            debugLog("creating Caches directory")
-            let cPath = cacheSupportDirectory.appendingPathComponent("Aerial")
-
-            let fileManager = FileManager.default
-            do {
-                try fileManager.createDirectory(atPath: cPath,
-                                                withIntermediateDirectories: false, attributes: nil)
-                return cPath
-            } catch let error {
-                errorLog("FATAL : Couldn't create Caches directory in User directory: \(error)")
-                return "/"
-            }
+            return nil
         }
     }()
 
@@ -126,16 +165,25 @@ struct Cache {
     /**
      Migrate files from previous versions of Aerial to the 2.x.x structure.
      
-     Moves the video files from Application Support to the Caches directory.
+     - Moves the video files from Application Support to the `Application Support/Aerial/Cache` sub directory.
+     - Moves the video files from Caches to the `Application Support/Aerial/Cache` sub directory
      */
     static func migrate() {
+        migrateAppSupport()
+        migrateOldCache()
+    }
+
+    /**
+     Migrate video that may be at the root of /Application Support/Aerial/
+     */
+    static private func migrateAppSupport() {
         let supportURL = URL(fileURLWithPath: supportPath as String)
         do {
             let directoryContent = try FileManager.default.contentsOfDirectory(at: supportURL, includingPropertiesForKeys: nil)
             let videoURLs = directoryContent.filter { $0.pathExtension == "mov" }
 
             if !videoURLs.isEmpty {
-                debugLog("Starting migration of your video files from Application Support to Caches")
+                debugLog("Starting migration of your video files from Application Support to the /Cache subfolder")
                 for videoURL in videoURLs {
                     debugLog("moving \(videoURL.lastPathComponent)")
                     let newURL = URL(fileURLWithPath: path.appending("/\(videoURL.lastPathComponent)"))
@@ -149,7 +197,33 @@ struct Cache {
         }
     }
 
-    //
+    /**
+     Migrate video that may be at the root of a user's /Caches/Aerial/
+     */
+    static private func migrateOldCache() {
+        if let formerCachePath = formerCachePath {
+            do {
+                let formerCacheURL = URL(fileURLWithPath: formerCachePath as String)
+
+                let directoryContent = try FileManager.default.contentsOfDirectory(at: formerCacheURL, includingPropertiesForKeys: nil)
+                let videoURLs = directoryContent.filter { $0.pathExtension == "mov" }
+
+                if !videoURLs.isEmpty {
+                    debugLog("Starting migration of your video files from Caches to the /Cache subfolder of Application Support")
+                    for videoURL in videoURLs {
+                        debugLog("moving \(videoURL.lastPathComponent)")
+                        let newURL = URL(fileURLWithPath: path.appending("/\(videoURL.lastPathComponent)"))
+                        try FileManager.default.moveItem(at: videoURL, to: newURL)
+                    }
+                    debugLog("Migration done.")
+                }
+            } catch {
+                errorLog("Error during migration, please report")
+                errorLog(error.localizedDescription)
+            }
+        }
+    }
+    // MARK: - About the cache
     /**
      Is our cache full ?
      */
@@ -211,7 +285,7 @@ struct Cache {
     }
 
     // swiftlint:disable line_length
-    // MARK: UI for overriding/declining a download when cache is full
+    // MARK: Networking restrictions for cache
     /**
      Can we download a file ?
      
@@ -224,7 +298,7 @@ struct Cache {
         if PrefsCache.enableManagement {
             // Check network first
             if !canNetwork() {
-                if !showAlert(question: "You are on a restricted WiFi network",
+                if !Aerial.showAlert(question: "You are on a restricted WiFi network",
                              text: "Your current settings restrict downloads when not connected to a trusted network. Do you wish to proceed?\n\nReminder: You can change this setting in the Cache tab.",
                              button1: "Download Anyway",
                              button2: "Cancel") {
@@ -234,7 +308,7 @@ struct Cache {
 
             // Then cache status
             if isFull() {
-                if !showAlert(question: "Your cache is full",
+                if !Aerial.showAlert(question: "Your cache is full",
                              text: "Do you want to proceed with the download ?\n\nReminder: You can change this setting in the Cache tab.",
                              button1: "Download Anyway",
                              button2: "Cancel") {
@@ -270,15 +344,4 @@ struct Cache {
         }
     }
 
-    // TODO: this should probably be somewhere else
-    private static func showAlert(question: String, text: String, button1: String = "OK", button2: String = "Cancel") -> Bool {
-        let alert = NSAlert()
-        alert.messageText = question
-        alert.informativeText = text
-        alert.alertStyle = .warning
-        alert.icon = NSImage(named: NSImage.cautionName)
-        alert.addButton(withTitle: button1)
-        alert.addButton(withTitle: button2)
-        return alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn
-    }
 }

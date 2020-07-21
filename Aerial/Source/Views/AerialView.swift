@@ -24,7 +24,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     var player: AVPlayer?
     var currentVideo: AerialVideo?
 
-    var preferencesController: PreferencesWindowController?
+    //var preferencesController: PreferencesWindowController?
+    var preferencesController: PanelWindowController?
 
     var observerWasSet = false
     var hasStartedPlaying = false
@@ -578,7 +579,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             return controller.window
         }
 
-        let controller = PreferencesWindowController(windowNibName: "PreferencesWindow")
+//        let controller = PreferencesWindowController(windowNibName: "PreferencesWindow")
+        let controller = PanelWindowController()
         preferencesController = controller
         return controller.window
     }

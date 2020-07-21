@@ -99,4 +99,5 @@ extension NSImage {
             return true
         }
     }
+
 }

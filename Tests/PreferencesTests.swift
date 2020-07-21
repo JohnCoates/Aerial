@@ -5,7 +5,7 @@
 //  Created by John Coates on 9/22/16.
 //  Copyright © 2016 John Coates. All rights reserved.
 //
-
+/*
 import XCTest
 @testable import AerialApp
 
@@ -27,3 +27,4 @@ class PreferencesTests: XCTestCase {
         XCTAssertFalse(newPreferences.cacheAerials, "Property write verified")
     }
 }
+*/

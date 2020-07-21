@@ -20,7 +20,7 @@ extension RangeReplaceableCollection {
 
 class VideoList {
     enum FilterMode {
-        case location
+        case location, cache, time, scene, rotation
     }
 
     static let instance: VideoList = VideoList()
@@ -28,44 +28,88 @@ class VideoList {
 
     var videos: [AerialVideo] = []
 
-    // Playlist management
+    // OLD Playlist management
     var playlistIsRestricted = false
     var playlistRestrictedTo = ""
     var playlist = [AerialVideo]()
     var lastPluckedFromPlaylist: AerialVideo?
 
+    let cacheDownloaded = "Downloaded"
+    let cacheOnline = "Online"
     init() {
         downloadManifestsIfNeeded()
     }
 
-    func getSectionsCount(mode: FilterMode) -> Int {
+    // Helpers for cache mode
+    private func cacheSources() -> [String] {
+        var cache: [String] = []
+
+        if !videos.filter({ $0.isAvailableOffline }).isEmpty {
+            cache.append(cacheDownloaded)
+        }
+        if !videos.filter({ !$0.isAvailableOffline }).isEmpty {
+            cache.append(cacheOnline)
+        }
+
+        return cache
+    }
+
+    private func sourcesFor(_ mode: FilterMode) -> [String] {
         switch mode {
         case .location:
-            return videos.map { $0.name }.unique(for: \.self).count
+            return  videos.map { $0.name }.unique(for: \.self)
+        case .time:
+            return videos.map { $0.timeOfDay }.unique(for: \.self)
+        case .scene:
+            return videos.map { $0.scene.rawValue }.unique(for: \.self)
+        case .cache:
+            return cacheSources()
+        case .rotation:
+            return ["On Rotation"]
         }
     }
 
-    func getSectionName(_ section: Int, mode: FilterMode) -> String {
+    private func filteredVideosFor(_ mode: FilterMode, section: Int) -> [AerialVideo] {
         switch mode {
         case .location:
-            return videos.map { $0.name }.unique(for: \.self)[section]
+            let filter = sourcesFor(mode)[section]
+            return videos.filter { $0.name == filter }
+        case .time:
+            let filter = sourcesFor(mode)[section]
+            return videos.filter { $0.timeOfDay == filter }
+        case .scene:
+            let filter = sourcesFor(mode)[section]
+            return videos.filter { $0.scene.rawValue == filter }
+        case .cache:
+            if cacheSources()[section] == cacheDownloaded {
+                return videos.filter({ $0.isAvailableOffline })
+            } else {
+                return videos.filter({ !$0.isAvailableOffline })
+            }
+        case .rotation:
+            return currentRotation()
         }
     }
 
-    func getVideosCountForSection(_ section: Int, mode: FilterMode) -> Int {
-        switch mode {
-        case .location:
-            let sectionKey = videos.map { $0.name }.unique(for: \.self)[section]
-            return videos.filter { $0.name == sectionKey }.count
-        }
+    // Those are the public getters used to get the various videos for various filtered modes
+    func getSources(mode: FilterMode) -> [String] {
+        return sourcesFor(mode)
     }
 
-    func getVideoForSection(_ section: Int, item: Int, mode: FilterMode) -> AerialVideo {
-        switch mode {
-        case .location:
-            let sectionKey = videos.map { $0.name }.unique(for: \.self)[section]
-            return videos.filter { $0.name == sectionKey }[item]
-        }
+    func getSourcesCount(mode: FilterMode) -> Int {
+        return sourcesFor(mode).count
+    }
+
+    func getSourceName(_ section: Int, mode: FilterMode) -> String {
+        return sourcesFor(mode)[section]
+    }
+
+    func getVideosCountForSource(_ section: Int, mode: FilterMode) -> Int {
+        return filteredVideosFor(mode, section: section).count
+    }
+
+    func getVideoForSource(_ section: Int, item: Int, mode: FilterMode) -> AerialVideo {
+        return filteredVideosFor(mode, section: section)[item]
     }
 
     func addCallback(_ callback:@escaping VideoListRefreshCallback) {
@@ -135,7 +179,13 @@ class VideoList {
         }
     }
 
-    // MARK: - Playlist management
+    // MARK: - New rotation management
+    func currentRotation() -> [AerialVideo] {
+        // Right now the current rotation will always be what's available offline
+        return videos.filter({ $0.isAvailableOffline })
+    }
+
+    // MARK: - OLD Playlist management
     func generatePlaylist(isRestricted: Bool, restrictedTo: String) {
         // Start fresh
         playlist = [AerialVideo]()
@@ -144,7 +194,7 @@ class VideoList {
 
         // Start with a shuffled list, we may have synchronized seed shuffle
         var shuffled: [AerialVideo]
-        let preferences = Preferences.sharedInstance
+
         /*if preferences.synchronizedMode {
             if #available(OSX 10.11, *) {
                 let date = Date()
@@ -166,9 +216,12 @@ class VideoList {
 
         for video in shuffled {
             // We exclude videos not in rotation
-            let inRotation = preferences.videoIsInRotation(videoID: video.id)
+            /*let inRotation = preferences.videoIsInRotation(videoID: video.id)
 
             if !inRotation {
+                continue
+            }*/
+            if !currentRotation().contains(video) {
                 continue
             }
 
@@ -178,6 +231,8 @@ class VideoList {
                     continue
                 }
             }
+
+            // TODO, all of this is probably moot now
 
             // Are we in full manual mode ?? This replace the old never stream setting
             if !video.isAvailableOffline && !PrefsCache.enableManagement {

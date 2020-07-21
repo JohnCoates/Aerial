@@ -15,15 +15,33 @@ final class TimeManagement: NSObject {
     static let sharedInstance = TimeManagement()
 
     var solar: Solar?
+    var lsLatitude: Double?
+    var lsLongitude: Double?
 
     // MARK: - Lifecycle
     override init() {
         super.init()
         debugLog("Time Management initialized")
-        _ = calculateFromCoordinates()
+        if PrefsTime.timeMode == .locationService {
+            // This is racy... I think we're ok because time/location gets inited first, but still...
+            let location = Locations.sharedInstance
+
+            location.getCoordinates(failure: { (_) in
+                //swiftlint:disable:next line_length
+                errorLog("Location services denied access to your location. Please make sure you allowed ScreenSaverEngine, Aerial, or legacyScreenSaver to access your location in System Preferences > Security and Privacy > Privacy")
+            }, success: { (coordinates) in
+                self.lsLatitude = coordinates.latitude
+                self.lsLongitude = coordinates.longitude
+                _ = self.calculateFrom(latitude: self.lsLatitude!, longitude: self.lsLongitude!)
+            })
+        } else {
+            _ = calculateFromCoordinates()
+        }
+
     }
 
     // MARK: - What should we play ?
+    // swiftlint:disable:next cyclomatic_complexity
     func shouldRestrictPlaybackToDayNightVideo() -> (Bool, String) {
         // We override everything on dark mode if we need to
         if PrefsTime.darkModeNightOverride && DarkMode.isEnabled() {
@@ -31,7 +49,23 @@ final class TimeManagement: NSObject {
         }
 
         // If not we check the modes
-        if PrefsTime.timeMode == .lightDarkMode {
+        if PrefsTime.timeMode == .locationService {
+            if let lat = lsLatitude, let lon = lsLongitude {
+                _ = calculateFrom(latitude: lat, longitude: lon)
+
+                if solar != nil {
+                    let zenith = getZenith(PrefsTime.solarMode)
+
+                    if (solar?.isDaytime(zenith: zenith))! {
+                        return (true, "day")
+                    } else {
+                        return (true, "night")
+                    }
+                }
+            }
+
+            return (false, "")
+        } else if PrefsTime.timeMode == .lightDarkMode {
             return (true, DarkMode.isEnabled() ? "night" : "day")
         } else if PrefsTime.timeMode == .coordinates {
             _ = calculateFromCoordinates()
@@ -143,28 +177,34 @@ final class TimeManagement: NSObject {
     // MARK: Calculate using Solar
     func calculateFromCoordinates() -> (Bool, String) {
         if PrefsTime.latitude != "" && PrefsTime.longitude != "" {
-            solar = Solar.init(coordinate: CLLocationCoordinate2D(
-                latitude: Double(PrefsTime.latitude) ?? 0,
-                longitude: Double(PrefsTime.longitude) ?? 0))
+            return calculateFrom(latitude: Double(PrefsTime.latitude) ?? 0, longitude: Double(PrefsTime.longitude) ?? 0)
+        }
 
-            if solar != nil {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
+        return (false, "Can't process your coordinates, please verify")
+    }
 
-                let (sunrise, sunset) = getSunriseSunsetForMode(PrefsTime.solarMode)
+    private func calculateFrom(latitude: Double, longitude: Double) -> (Bool, String) {
+        solar = Solar.init(coordinate: CLLocationCoordinate2D(
+            latitude: latitude,
+            longitude: longitude))
 
-                if sunrise == nil || sunset == nil {
-                   return (false, "Can't process your coordinates, please verify")
-                }
+        if solar != nil {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "j:mm:ss", options: 0, locale: Locale.current)
 
-                let sunriseString = dateFormatter.string(from: sunrise!)
-                let sunsetString = dateFormatter.string(from: sunset!)
+            let (sunrise, sunset) = getSunriseSunsetForMode(PrefsTime.solarMode)
 
-                if PrefsTime.solarMode == .official || PrefsTime.solarMode == .strict {
-                    return(true, "Today’s sunrise: " + sunriseString + "  Today’s sunset: " + sunsetString)
-                } else {
-                    return(true, "Today’s dawn: " + sunriseString + "  Today’s dusk: " + sunsetString)
-                }
+            if sunrise == nil || sunset == nil {
+               return (false, "Can't process your coordinates, please verify")
+            }
+
+            let sunriseString = dateFormatter.string(from: sunrise!)
+            let sunsetString = dateFormatter.string(from: sunset!)
+
+            if PrefsTime.solarMode == .official || PrefsTime.solarMode == .strict {
+                return(true, "Today’s sunrise: " + sunriseString + "  Today’s sunset: " + sunsetString)
+            } else {
+                return(true, "Today’s dawn: " + sunriseString + "  Today’s dusk: " + sunsetString)
             }
         }
 
@@ -236,7 +276,7 @@ final class TimeManagement: NSObject {
 
         return 0
     }
-
+/*
     // MARK: - Location detection
     func startLocationDetection() {
         let locationManager = CLLocationManager()
@@ -254,10 +294,10 @@ final class TimeManagement: NSObject {
         } else {
             // Fallback on earlier versions
         }
-    }
+    }*/
 
 }
-
+/*
 // MARK: - Core Location Delegates
 extension TimeManagement: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -267,4 +307,4 @@ extension TimeManagement: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         errorLog("Location Manager error : \(error)")
     }
-}
+}*/

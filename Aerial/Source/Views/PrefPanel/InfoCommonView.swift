@@ -10,7 +10,7 @@ import Cocoa
 
 class InfoCommonView: NSView {
     var forType: InfoType = .location
-    var controller: PreferencesWindowController?
+    var controller: OverlaysViewController?
 
     @IBOutlet var enabledButton: NSButton!
     @IBOutlet var fontLabel: NSTextField!
@@ -28,7 +28,7 @@ class InfoCommonView: NSView {
 
     // MARK: - init(ish)
     // This is what tells us what we are editing exactly
-    func setType(_ forType: InfoType, controller: PreferencesWindowController) {
+    func setType(_ forType: InfoType, controller: OverlaysViewController) {
         // We need the controller for callbacks, when we update the isEnabled state,
         // we need to update the list view on the left too
         self.controller = controller

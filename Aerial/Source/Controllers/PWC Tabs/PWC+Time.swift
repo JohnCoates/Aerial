@@ -79,6 +79,8 @@ extension PreferencesWindowController {
             timeCalculateRadio.state = .on
         case .disabled:
             timeDisabledRadio.state = .on
+        default:
+            ()
         }
 
         let sleepTime = timeManagement.getCurrentSleepTime()

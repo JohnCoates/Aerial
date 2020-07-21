@@ -439,6 +439,35 @@ struct PrefsInfo {
             timer.displays = mode
         }
     }
+
+    // This may be a temp workaround, will depend on where it goes
+    // We periodically add new types so we must add them
+    func updateLayerList() {
+        if !PrefsInfo.layers.contains(.battery) {
+            PrefsInfo.layers.append(.battery)
+        }
+
+        if !PrefsInfo.layers.contains(.countdown) {
+            PrefsInfo.layers.append(.countdown)
+        }
+
+        if !PrefsInfo.layers.contains(.timer) {
+            PrefsInfo.layers.append(.timer)
+        }
+
+        if !PrefsInfo.layers.contains(.date) {
+            PrefsInfo.layers.append(.date)
+        }
+
+        if !PrefsInfo.layers.contains(.weather) {
+            PrefsInfo.layers.append(.weather)
+        }
+
+        // Annnd for backward compatibility with 1.7.2 betas, remove the updates that was once here ;)
+        if PrefsInfo.layers.contains(.updates) {
+            PrefsInfo.layers.remove(at: PrefsInfo.layers.firstIndex(of: .updates)!)
+        }
+    }
 }
 
 // This retrieves/store any type of property in our plist

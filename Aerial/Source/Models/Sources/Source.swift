@@ -15,8 +15,8 @@ enum SourceType: Int, Codable {
     case local, tvOS10, tvOS11, tvOS12
 }
 
-enum SourceScene: Int, Codable {
-    case landscape, city, space, sea
+enum SourceScene: String, Codable {
+    case landscape = "Landscape", city = "City", space = "Space", sea = "Sea"
 }
 
 struct Source: Codable {
@@ -131,6 +131,7 @@ struct Source: Codable {
             let assets = batch["assets"] as! [NSDictionary]
 
             for item in assets {
+
                 let id = item["id"] as! String
                 let url1080pH264 = item["url-1080-H264"] as? String
                 let url1080pHEVC = item["url-1080-SDR"] as? String
@@ -138,6 +139,9 @@ struct Source: Codable {
                 let url4KHEVC = item["url-4K-SDR"] as? String
                 let url4KHDR = item["url-4K-HDR"] as? String
                 let name = item["accessibilityLabel"] as! String
+                var secondaryName = item["title"] as? String ?? ""
+                let timeOfDay = item["timeOfDay"] as? String ?? "day"
+                var scene = item["scene"] as? String ?? "landscape"
 
                 let urls: [VideoFormat: String] =
                   [.v1080pH264: localizePath(url1080pH264),
@@ -146,13 +150,15 @@ struct Source: Codable {
                    .v4KHEVC: localizePath(url4KHEVC),
                    .v4KHDR: localizePath(url4KHDR), ]
 
-                var secondaryName = ""
                 // We may have a secondary name
                 if let mergename = poiStringProvider.getCommunityName(id: id) {
                     secondaryName = mergename
                 }
 
-                let timeOfDay = "day"   // TODO, this is hardcoded as it's no longer available in the modern JSONs
+                if let updatedScene = SourceInfo.getSceneForVideo(id: id) {
+                    scene = updatedScene.rawValue.lowercased()
+                }
+
                 let type = "video"
                 var poi: [String: String]?
 
@@ -160,7 +166,7 @@ struct Source: Codable {
 
                 let communityPoi = poiStringProvider.getCommunityPoi(id: id)
 
-                let (isDupe, foundDupe) = SourceInfo.findDuplicate(id: id, url1080pH264: url1080pH264 ?? "")
+                let (isDupe, _) = SourceInfo.findDuplicate(id: id, url1080pH264: url1080pH264 ?? "")
                 if isDupe {
                     // foundDupe!.sources.append(manifest)
                 } else {
@@ -169,8 +175,9 @@ struct Source: Codable {
                         secondaryName: secondaryName,           // Optional
                         type: type,                             // Not sure the point of this one ?
                         timeOfDay: timeOfDay,
+                        scene: scene,
                         urls: urls,
-                        manifest: .tvOS13,
+                        source: self,
                         poi: poi ?? [:],
                         communityPoi: communityPoi)
 
@@ -262,8 +269,9 @@ struct Source: Codable {
                             secondaryName: secondaryName,
                             type: type,         // Not sure the point of this one ?
                             timeOfDay: timeOfDay,
+                            scene: "landscape",
                             urls: urls,
-                            manifest: .tvOS10,
+                            source: self,
                             poi: [:],
                             communityPoi: communityPoi)
 

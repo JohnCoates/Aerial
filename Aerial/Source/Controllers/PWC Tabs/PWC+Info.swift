@@ -39,13 +39,13 @@ extension PreferencesWindowController {
         }
 
         infoSource = InfoTableSource()
-        infoSource?.setController(self)
+        //infoSource?.setController(self)
         infoTableView.dataSource = infoSource
         infoTableView.delegate = infoSource
         infoTableView.registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: "private.table-row")])
 
         infoSettingsSource = InfoSettingsTableSource()
-        infoSettingsSource?.setController(self)
+        //infoSettingsSource?.setController(self)
         infoSettingsTableView.dataSource = infoSettingsSource
         infoSettingsTableView.delegate = infoSettingsSource
     }
@@ -65,7 +65,7 @@ extension PreferencesWindowController {
 
         // Add the common block of features (enabled, font, position, screen)
         infoContainerView.addSubview(infoCommonView)
-        infoCommonView.setType(forType, controller: self)
+        //infoCommonView.setType(forType, controller: self)
 
         // Then the per-type blocks if any
         switch forType {

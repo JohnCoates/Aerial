@@ -11,7 +11,7 @@ import AppKit
 import WebKit
 
 class UpdateReleaseController: NSWindowController {
-    var controller: PreferencesWindowController?
+    var controller: UpdatesViewController?
 
     @IBOutlet var updateWindow: NSWindow!
 
@@ -23,7 +23,7 @@ class UpdateReleaseController: NSWindowController {
     @IBOutlet var helpPopover: NSPopover!
 
     // MARK: - Update available
-    func show(sender: NSButton, controller: PreferencesWindowController) {
+    func show(sender: NSButton, controller: UpdatesViewController) {
         self.controller = controller
 
         #if NOSPARKLE

@@ -294,7 +294,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
         }
     }
 
-    // sawiftlint:disable:next cyclomatic_complexity
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -414,6 +413,18 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
                             topLevelObjects: &topLevelObjects) {
             errorLog("Could not load nib for SourcesList, please report")
         }
+
+        /*var panelWindowController = PanelWindowController()
+        topLevelObjects = NSArray()
+        if !bundle.loadNibNamed(NSNib.Name("PanelWindowController"),
+                            owner: panelWindowController,
+                            topLevelObjects: &topLevelObjects) {
+            errorLog("Could not load nib for Panel, please report")
+        }
+        // TMP NEW UI
+        panelWindowController.windowDidLoad()
+        panelWindowController.showWindow(nil)*/
+
     }
 
     override func windowDidLoad() {
