@@ -21,7 +21,26 @@ enum FadeMode: Int {
     case disabled, t0_5, t1, t2
 }
 
+enum ShouldPlay: Int {
+    case everything, favorites, collection
+}
+
 struct PrefsVideos {
+    // Main playback mode
+    @SimpleStorage(key: "intShouldPlay", defaultValue: ShouldPlay.everything.rawValue)
+    static var intShouldPlay: Int
+
+    // We wrap in a separate value, as we can't store an enum as a Codable in
+    // macOS < 10.15
+    static var shouldPlay: ShouldPlay {
+        get {
+            return ShouldPlay(rawValue: intShouldPlay)!
+        }
+        set(value) {
+            intShouldPlay = value.rawValue
+        }
+    }
+
     // What do we do on battery ?
     @SimpleStorage(key: "intOnBatteryMode", defaultValue: OnBatteryMode.keepEnabled.rawValue)
     static var intOnBatteryMode: Int

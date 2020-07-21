@@ -14,6 +14,11 @@ class VideosViewController: NSViewController {
     @IBOutlet var rotationView: NSView!
     @IBOutlet var rotationPopup: NSPopUpButton!
 
+    @IBOutlet var locationMenu: NSMenu!
+    @IBOutlet var timeMenu: NSMenu!
+    @IBOutlet var sceneMenu: NSMenu!
+    @IBOutlet var setMenu: NSMenu!
+
     @IBOutlet var videoListTableView: NSTableView!
 
     @IBOutlet var heroPlayerView: AVPlayerView!
@@ -76,6 +81,7 @@ class VideosViewController: NSViewController {
         }*/
 
         updateVideoView()
+        updateRotationMenu()
     }
 
     func reloadFor(path: String) {
@@ -85,6 +91,9 @@ class VideosViewController: NSViewController {
 
         // We show/hide the top panel to pick the playing mode
         rotationView.isHidden = !path.starts(with: "rotation")
+        if path.starts(with: "rotation") {
+            updateRotationMenu()
+        }
 
         if videoListTableView != nil {
             videoListTableView.reloadData()
@@ -165,6 +174,26 @@ class VideosViewController: NSViewController {
             sourceLabel.isHidden = true
             formatLabel.isHidden = true
         }
+    }
+
+    func updateRotationMenu() {
+
+        //locationMenu.removeAllItems()
+        for location in VideoList.instance.getSources(mode: .location) {
+            print(location.string)
+
+            let item = NSMenuItem(title: location.string, action: #selector(self.setRotationToLocation(menuItem:)), keyEquivalent: "")
+                                    //#selector(VideosViewController.setRotationToLocation(menuItem:)), keyEquivalent: "")
+            item.isEnabled = true
+            locationMenu.addItem(item)
+        }
+
+    }
+
+    //
+    @objc func setRotationToLocation(menuItem: NSMenuItem) {
+        print("menuitem")
+        print(menuItem)
     }
 
     // Helper
@@ -265,8 +294,11 @@ class VideosViewController: NSViewController {
             videoListTableView.reloadData()
             videoListTableView.selectRowIndexes([row], byExtendingSelection: false)
         }
-
     }
+
+    @IBAction func rotationPopup(_ sender: NSPopUpButton) {
+    }
+
 }
 
 extension VideosViewController: NSTableViewDataSource {

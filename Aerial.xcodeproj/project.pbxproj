@@ -558,6 +558,12 @@
 		03D3A11324C5FC770091FE99 /* AspectFillNSImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3A11224C5FC770091FE99 /* AspectFillNSImageView.swift */; };
 		03D3A11424C5FC770091FE99 /* AspectFillNSImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3A11224C5FC770091FE99 /* AspectFillNSImageView.swift */; };
 		03D3A11524C5FC770091FE99 /* AspectFillNSImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3A11224C5FC770091FE99 /* AspectFillNSImageView.swift */; };
+		03D3A14624C72E0D0091FE99 /* star.fill.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03D3A12E24C72E0C0091FE99 /* star.fill.pdf */; };
+		03D3A14724C72E0D0091FE99 /* star.fill.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03D3A12E24C72E0C0091FE99 /* star.fill.pdf */; };
+		03D3A14824C72E0D0091FE99 /* star.fill.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03D3A12E24C72E0C0091FE99 /* star.fill.pdf */; };
+		03D3A14924C72E0D0091FE99 /* star.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03D3A14524C72E0D0091FE99 /* star.pdf */; };
+		03D3A14A24C72E0D0091FE99 /* star.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03D3A14524C72E0D0091FE99 /* star.pdf */; };
+		03D3A14B24C72E0D0091FE99 /* star.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03D3A14524C72E0D0091FE99 /* star.pdf */; };
 		03D3DAC4221F286700BDA52F /* pl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D3DAC3221F286700BDA52F /* pl.json */; };
 		03D3DAC5221F286D00BDA52F /* pl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D3DAC3221F286700BDA52F /* pl.json */; };
 		03DAD470229EAC66000DA6D1 /* Installation.md in Resources */ = {isa = PBXBuildFile; fileRef = 03DAD46F229EAC66000DA6D1 /* Installation.md */; };
@@ -1002,6 +1008,8 @@
 		03D3A10524C4CA260091FE99 /* gear.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = gear.pdf; sourceTree = "<group>"; };
 		03D3A10C24C5D7CC0091FE99 /* Thumbnails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnails.swift; sourceTree = "<group>"; };
 		03D3A11224C5FC770091FE99 /* AspectFillNSImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectFillNSImageView.swift; sourceTree = "<group>"; };
+		03D3A12E24C72E0C0091FE99 /* star.fill.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = star.fill.pdf; sourceTree = "<group>"; };
+		03D3A14524C72E0D0091FE99 /* star.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = star.pdf; sourceTree = "<group>"; };
 		03D3DAC3221F286700BDA52F /* pl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pl.json; sourceTree = "<group>"; };
 		03D6C78922A0384F00DE830B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		03DAD46F229EAC66000DA6D1 /* Installation.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Installation.md; sourceTree = "<group>"; };
@@ -1203,6 +1211,8 @@
 		0345D01524C0A2F60001045C /* UI Icons */ = {
 			isa = PBXGroup;
 			children = (
+				03D3A12E24C72E0C0091FE99 /* star.fill.pdf */,
+				03D3A14524C72E0D0091FE99 /* star.pdf */,
 				0345EDCB24C2159000C73038 /* arrow.down.circle.fill.pdf */,
 				03334D1024C0BFD700856D71 /* checkmark.circle.fill.pdf */,
 				03334D0D24C0BFD600856D71 /* circle.pdf */,
@@ -1950,12 +1960,14 @@
 				032E09A224C3897E00387230 /* AdvancedViewController.xib in Resources */,
 				03334D2524C0BFD700856D71 /* square.and.arrow.down.pdf in Resources */,
 				03334D6E24C0C00800856D71 /* cloud.pdf in Resources */,
+				03D3A14A24C72E0D0091FE99 /* star.pdf in Resources */,
 				0396D57624B8B7ED00CC021B /* white_retina.png in Resources */,
 				03334D4A24C0C00800856D71 /* tornado.pdf in Resources */,
 				03EED2D624C3A47700F0C3D4 /* UpdatesViewController.xib in Resources */,
 				03334D8624C0C00800856D71 /* cloud.moon.rain.pdf in Resources */,
 				03334D1924C0BFD700856D71 /* circle.pdf in Resources */,
 				03334DAA24C0C00900856D71 /* moon.pdf in Resources */,
+				03D3A14724C72E0D0091FE99 /* star.fill.pdf in Resources */,
 				03334DA724C0C00900856D71 /* sun.min.pdf in Resources */,
 				0396D57724B8B7ED00CC021B /* ar.json in Resources */,
 				0396D57824B8B7ED00CC021B /* zh_CN.json in Resources */,
@@ -2056,7 +2068,9 @@
 				033811B524C1E243002E23E0 /* InfoViewController.xib in Resources */,
 				03334DAB24C0C00900856D71 /* moon.pdf in Resources */,
 				03A42A9D2449F602003B3012 /* purple_retina.png in Resources */,
+				03D3A14B24C72E0D0091FE99 /* star.pdf in Resources */,
 				03334D9F24C0C00900856D71 /* wind.pdf in Resources */,
+				03D3A14824C72E0D0091FE99 /* star.fill.pdf in Resources */,
 				03D1E79522848F7F00D10CF7 /* screen1.jpg in Resources */,
 				03334DA824C0C00900856D71 /* sun.min.pdf in Resources */,
 				03334D2024C0BFD700856D71 /* film.pdf in Resources */,
@@ -2155,12 +2169,14 @@
 				032E09A124C3897E00387230 /* AdvancedViewController.xib in Resources */,
 				03334D2424C0BFD700856D71 /* square.and.arrow.down.pdf in Resources */,
 				03334D6D24C0C00800856D71 /* cloud.pdf in Resources */,
+				03D3A14924C72E0D0091FE99 /* star.pdf in Resources */,
 				03A42A992449F5EA003B3012 /* white_retina.png in Resources */,
 				03334D4924C0C00800856D71 /* tornado.pdf in Resources */,
 				03EED2D524C3A47700F0C3D4 /* UpdatesViewController.xib in Resources */,
 				03334D8524C0C00800856D71 /* cloud.moon.rain.pdf in Resources */,
 				03334D1824C0BFD700856D71 /* circle.pdf in Resources */,
 				03334DA924C0C00900856D71 /* moon.pdf in Resources */,
+				03D3A14624C72E0D0091FE99 /* star.fill.pdf in Resources */,
 				03334DA624C0C00900856D71 /* sun.min.pdf in Resources */,
 				035A92AC226754760095AB85 /* ar.json in Resources */,
 				036A34B5227309FB00A49135 /* zh_CN.json in Resources */,
