@@ -22,7 +22,7 @@ enum FadeMode: Int {
 }
 
 enum ShouldPlay: Int {
-    case everything, favorites, collection
+    case everything, favorites, location, time, scene, source, collection
 }
 
 struct PrefsVideos {
@@ -40,6 +40,9 @@ struct PrefsVideos {
             intShouldPlay = value.rawValue
         }
     }
+
+    @SimpleStorage(key: "shouldPlayString", defaultValue: "")
+    static var shouldPlayString: String
 
     // What do we do on battery ?
     @SimpleStorage(key: "intOnBatteryMode", defaultValue: OnBatteryMode.keepEnabled.rawValue)
@@ -95,5 +98,13 @@ struct PrefsVideos {
                                                          "tvOS 11": false,
                                                          "tvOS 10": false, ])
     static var enabledSources: [String: Bool]
+
+    // Favorites (we use the video ID)
+    @SimpleStorage(key: "favorites", defaultValue: [])
+    static var favorites: [String]
+
+    // Hidden list (same)
+    @SimpleStorage(key: "hidden", defaultValue: [])
+    static var hidden: [String]
 
 }

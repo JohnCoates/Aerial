@@ -77,6 +77,7 @@ class PanelWindowController: NSWindowController {
         splitVC!.addSplitViewItem(videoViewItem!)
 
         window?.contentViewController = splitVC
+
         debugLog("/PWC2 wdl")
     }
 
@@ -92,6 +93,8 @@ class PanelWindowController: NSWindowController {
             return
         }
 
+        splitVC.removeChild(at: 1)
+        /*
         // Remove old
         switch from {
         case .videos:
@@ -100,7 +103,7 @@ class PanelWindowController: NSWindowController {
             splitVC.removeSplitViewItem(sourcesViewItem)
         case.infos:
             splitVC.removeSplitViewItem(infoViewItem)
-        }
+        }*/
 
         // Put new
         switch to {

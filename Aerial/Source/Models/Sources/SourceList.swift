@@ -46,8 +46,9 @@ struct SourceList {
 
         for folder in URL(fileURLWithPath: Cache.supportPath).subDirectories {
             if !folder.lastPathComponent.starts(with: "tvOS")
-                && !folder.lastPathComponent.starts(with: "backups") {
-                print("\(folder)")
+                && !folder.lastPathComponent.starts(with: "backups")
+                && !folder.lastPathComponent.starts(with: "Thumbnails")
+                && !folder.lastPathComponent.starts(with: "Cache") {
 
                 // If it's valid, let's add !
                 if let source = loadManifest(url: folder) {
@@ -62,7 +63,6 @@ struct SourceList {
     static func loadManifest(url: URL) -> Source? {
         // Let's make sure we have the required files
         if !areManifestPresent(url: url) {
-            debugLog("manifests not present")
             return nil
         }
 

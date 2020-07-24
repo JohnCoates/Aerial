@@ -11,6 +11,23 @@ import AVKit
 
 struct Thumbnails {
     static let thumbSize = CGSize.init(width: 192, height: 108)
+
+    /**
+     Generate thumbnails for the videos
+     
+     When a video is not available offline, it will also save a larger version
+     of the first frame of the video, to be used later in the UI as a placeholder
+     */
+    static func generateAllThumbnails(forVideos videos: [AerialVideo]) {
+        print("starting thumb generation")
+        for video in videos {
+            if cached(forVideo: video) == nil {
+                generate(forVideo: video)
+            }
+        }
+        print("/thumb generation")
+    }
+
     /**
      Generate a thumbnail for the video
      
@@ -21,10 +38,40 @@ struct Thumbnails {
         do {
             var asset: AVURLAsset
             if video.isAvailableOffline {
-                let path = VideoCache.cachePath(forVideo: video)!
-                asset = AVURLAsset(url: URL(fileURLWithPath: path))
+                // If a video is already cached, we may still need to use an online fetch as there's a bug
+                // with AVAssetImageGenerator and Dolby Vision files
+                if (PrefsVideos.videoFormat == .v1080pHDR || PrefsVideos.videoFormat == .v4KHDR) && video.source.name.starts(with: "tvOS") {
+                    // We workaround here by grabbing online a 1080 SDR instead
+                    let urlHEVC = video.urls[.v1080pHEVC]
+                    let url264 = video.urls[.v1080pH264]
+                    if urlHEVC != nil && urlHEVC != "" {
+                        asset = AVURLAsset(url: URL(string: urlHEVC!)!)
+                    } else if url264 != nil && url264 != "" {
+                        asset = AVURLAsset(url: URL(string: url264!)!)
+                    } else {
+                        // Well...
+                        asset = AVURLAsset(url: video.url)
+                    }
+                } else {
+                    let path = VideoCache.cachePath(forVideo: video)!
+                    asset = AVURLAsset(url: URL(fileURLWithPath: path))
+                }
             } else {
-                asset = AVURLAsset(url: video.url)
+                if (PrefsVideos.videoFormat == .v1080pHDR || PrefsVideos.videoFormat == .v4KHDR) && video.source.name.starts(with: "tvOS") {
+                    // We workaround here by grabbing online a 1080 SDR instead
+                    let urlHEVC = video.urls[.v1080pHEVC]
+                    let url264 = video.urls[.v1080pH264]
+                    if urlHEVC != nil && urlHEVC != "" {
+                        asset = AVURLAsset(url: URL(string: urlHEVC!)!)
+                    } else if url264 != nil && url264 != "" {
+                        asset = AVURLAsset(url: URL(string: url264!)!)
+                    } else {
+                        // Well...
+                        asset = AVURLAsset(url: video.url)
+                    }
+                } else {
+                    asset = AVURLAsset(url: video.url)
+                }
             }
 
             // maybe that doesn't work great with HDR, or a Big Sur thing ?

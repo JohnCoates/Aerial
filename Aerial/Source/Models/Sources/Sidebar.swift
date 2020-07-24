@@ -30,6 +30,7 @@ class Sidebar {
         refreshVideos()
     }
 
+    // Settings are static
     func makeSettings() {
         settings = [MenuEntry(name: "Sources", path: "settings:sources"),
                     MenuEntry(name: "Time", path: "settings:time"),
@@ -42,6 +43,7 @@ class Sidebar {
                     ]
     }
 
+    // So is infos
     func makeInfos() {
         infos = [MenuEntry(name: "About", path: "infos:about")]
     }
@@ -51,6 +53,9 @@ class Sidebar {
     func refreshVideos() {
         // At the very top, the current rotation
         let onRotation = MenuEntry(name: "On Rotation", path: "videos:rotation:0")
+
+        // Favs
+        let fav = MenuEntry(name: "Favorites", path: "videos:favorites:0")
 
         // All videos
         let all = MenuEntry(name: "All videos", path: "videos:all")
@@ -74,7 +79,15 @@ class Sidebar {
                            entries: makeEntriesFor(sources: VideoList.instance.getSources(mode: .scene),
                            path: "videos:scene"))
 
-        videos = [onRotation, all, cache, locations, time, scene]
+        // Sources
+        let source = Header(name: "Source",
+                           entries: makeEntriesFor(sources: VideoList.instance.getSources(mode: .source),
+                           path: "videos:source"))
+
+        // Hidden
+        let hidden = MenuEntry(name: "Hidden", path: "videos:hidden:0")
+
+        videos = [onRotation, fav, all, cache, locations, time, scene, source, hidden]
     }
 
     func makeEntriesFor(sources: [String], path: String) -> [MenuEntry] {
@@ -82,7 +95,7 @@ class Sidebar {
         var index = 0
 
         for source in sources {
-            entries.append(MenuEntry(name: source.capitalizeFirstLetter(), path: path + ":\(index)"))
+            entries.append(MenuEntry(name: source, path: path + ":\(index)"))
             index += 1
         }
 
@@ -120,6 +133,15 @@ class Sidebar {
 
             } else if path.starts(with: "videos:rotation") {
                 return NSImage(systemSymbolName: "dial.min", accessibilityDescription: "")
+
+            } else if path.starts(with: "videos:favorite") {
+                return NSImage(systemSymbolName: "star", accessibilityDescription: "")
+
+            } else if path.starts(with: "videos:hidden") {
+                return NSImage(systemSymbolName: "eye.slash", accessibilityDescription: "")
+
+            } else if path.starts(with: "videos:source") {
+                return NSImage(systemSymbolName: "video.badge.plus", accessibilityDescription: "")
 
             } else if path.starts(with: "videos:") {
                 return NSImage(systemSymbolName: "film", accessibilityDescription: "")

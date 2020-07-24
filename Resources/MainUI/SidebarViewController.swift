@@ -231,8 +231,14 @@ extension SidebarViewController: NSOutlineViewDelegate {
         }
     }
 
-//    @available(OSX 10.16, *)
-//    func outlineView(_ outlineView: NSOutlineView, tintConfigurationForItem item: Any) -> NSTintConfiguration? {
-//        return NSTintConfiguration(fixedColor: .purple)
-//    }
+    @available(OSX 10.16, *)
+    func outlineView(_ outlineView: NSOutlineView, tintConfigurationForItem item: Any) -> NSTintConfiguration? {
+        if let entry = item as? Sidebar.MenuEntry {
+            if entry.name == "Favorites" {
+                return NSTintConfiguration(fixedColor: .init(red: 0.996, green: 0.741, blue: 0.066, alpha: 1.0))
+            }
+        }
+
+        return nil
+    }
 }

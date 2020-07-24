@@ -20,7 +20,7 @@ extension RangeReplaceableCollection {
 
 class VideoList {
     enum FilterMode {
-        case location, cache, time, scene, rotation
+        case location, cache, time, scene, source, rotation, favorite, hidden
     }
 
     static let instance: VideoList = VideoList()
@@ -40,14 +40,14 @@ class VideoList {
         downloadManifestsIfNeeded()
     }
 
-    // Helpers for cache mode
+    // MARK: - Helpers for the various filterings
     private func cacheSources() -> [String] {
         var cache: [String] = []
 
-        if !videos.filter({ $0.isAvailableOffline }).isEmpty {
+        if !videos.filter({ $0.isAvailableOffline && !PrefsVideos.hidden.contains($0.id) }).isEmpty {
             cache.append(cacheDownloaded)
         }
-        if !videos.filter({ !$0.isAvailableOffline }).isEmpty {
+        if !videos.filter({ !$0.isAvailableOffline && !PrefsVideos.hidden.contains($0.id) }).isEmpty {
             cache.append(cacheOnline)
         }
 
@@ -57,41 +57,105 @@ class VideoList {
     private func sourcesFor(_ mode: FilterMode) -> [String] {
         switch mode {
         case .location:
-            return  videos.map { $0.name }.unique(for: \.self)
+            return videos.filter { !PrefsVideos.hidden.contains($0.id) }.map { $0.name }.unique(for: \.self)
         case .time:
-            return videos.map { $0.timeOfDay }.unique(for: \.self)
+            return videos.filter { !PrefsVideos.hidden.contains($0.id) }.map { $0.timeOfDay.capitalizeFirstLetter() }.unique(for: \.self)
         case .scene:
-            return videos.map { $0.scene.rawValue }.unique(for: \.self)
+            return videos.filter { !PrefsVideos.hidden.contains($0.id) }.map { $0.scene.rawValue.capitalizeFirstLetter() }.unique(for: \.self)
+        case .source:
+            return videos.filter { !PrefsVideos.hidden.contains($0.id) }.map { $0.source.name }.unique(for: \.self)
         case .cache:
             return cacheSources()
         case .rotation:
             return ["On Rotation"]
+        case .favorite:
+            return ["Favorites"]
+        case .hidden:
+            return ["Hidden"]
         }
     }
 
     private func filteredVideosFor(_ mode: FilterMode, section: Int) -> [AerialVideo] {
         switch mode {
         case .location:
-            let filter = sourcesFor(mode)[section]
-            return videos.filter { $0.name == filter }
+            let filter = sourcesFor(mode)[section].lowercased()
+            return videos
+                .filter { $0.name.lowercased() == filter && !PrefsVideos.hidden.contains($0.id) }
+                .sorted { $0.secondaryName < $1.secondaryName }
         case .time:
-            let filter = sourcesFor(mode)[section]
-            return videos.filter { $0.timeOfDay == filter }
+            let filter = sourcesFor(mode)[section].lowercased()
+            return videos
+                .filter { $0.timeOfDay.lowercased() == filter && !PrefsVideos.hidden.contains($0.id) }
+                .sorted { $0.secondaryName < $1.secondaryName }
         case .scene:
-            let filter = sourcesFor(mode)[section]
-            return videos.filter { $0.scene.rawValue == filter }
+            let filter = sourcesFor(mode)[section].lowercased()
+            return videos
+                .filter { $0.scene.rawValue.lowercased() == filter && !PrefsVideos.hidden.contains($0.id) }
+                .sorted { $0.secondaryName < $1.secondaryName }
+        case .source:
+            let filter = sourcesFor(mode)[section].lowercased()
+            return videos
+                .filter { $0.source.name.lowercased() == filter && !PrefsVideos.hidden.contains($0.id) }
+                .sorted { $0.secondaryName < $1.secondaryName }
         case .cache:
             if cacheSources()[section] == cacheDownloaded {
-                return videos.filter({ $0.isAvailableOffline })
+                return videos
+                    .filter({ $0.isAvailableOffline && !PrefsVideos.hidden.contains($0.id) })
+                    .sorted { $0.secondaryName < $1.secondaryName }
             } else {
-                return videos.filter({ !$0.isAvailableOffline })
+                return videos
+                    .filter({ !$0.isAvailableOffline && !PrefsVideos.hidden.contains($0.id) })
+                    .sorted { $0.secondaryName < $1.secondaryName }
             }
         case .rotation:
-            return currentRotation()
+            return currentRotation()    // Result is already sorted there
+        case .favorite:
+            return videos
+                .filter { PrefsVideos.favorites.contains($0.id) && !PrefsVideos.hidden.contains($0.id)}
+                .sorted { $0.secondaryName < $1.secondaryName }
+        case .hidden:
+            return videos
+                .filter { PrefsVideos.hidden.contains($0.id) }
+                .sorted { $0.secondaryName < $1.secondaryName }
+        }
+
+    }
+
+    private func filteredVideosFor(_ mode: FilterMode, filter: String) -> [AerialVideo] {
+        let lfilter = filter.lowercased()
+        switch mode {
+        case .location:
+            return videos
+                .filter { $0.name.lowercased() == lfilter && !PrefsVideos.hidden.contains($0.id) }
+                .sorted { $0.secondaryName < $1.secondaryName }
+        case .time:
+            return videos
+                .filter { $0.timeOfDay.lowercased() == lfilter && !PrefsVideos.hidden.contains($0.id) }
+                .sorted { $0.secondaryName < $1.secondaryName }
+        case .scene:
+            return videos
+                .filter { $0.scene.rawValue.lowercased() == lfilter && !PrefsVideos.hidden.contains($0.id) }
+                .sorted { $0.secondaryName < $1.secondaryName }
+        case .source:
+            return videos
+                .filter { $0.source.name.lowercased() == lfilter && !PrefsVideos.hidden.contains($0.id) }
+                .sorted { $0.secondaryName < $1.secondaryName }
+        case .favorite:
+            return videos
+                .filter { PrefsVideos.favorites.contains($0.id) && !PrefsVideos.hidden.contains($0.id) }
+                .sorted { $0.secondaryName < $1.secondaryName }
+        case .hidden:
+            return videos
+                .filter { PrefsVideos.hidden.contains($0.id) }
+                .sorted { $0.secondaryName < $1.secondaryName }
+        default:
+            return videos
+                .filter({ $0.isAvailableOffline })
+                .sorted { $0.secondaryName < $1.secondaryName }
         }
     }
 
-    // Those are the public getters used to get the various videos for various filtered modes
+    // MARK: - Public getters to filter the list
     func getSources(mode: FilterMode) -> [String] {
         return sourcesFor(mode)
     }
@@ -112,6 +176,7 @@ class VideoList {
         return filteredVideosFor(mode, section: section)[item]
     }
 
+    // MARK: - Callbacks
     func addCallback(_ callback:@escaping VideoListRefreshCallback) {
         callbacks.append(callback)
     }
@@ -173,6 +238,7 @@ class VideoList {
 
         videos = videos.sorted { $0.name < $1.name }
 
+        Thumbnails.generateAllThumbnails(forVideos: videos)
         // Let everyone who wants to know that our list is updated
         for callback in callbacks {
             callback()
@@ -181,50 +247,44 @@ class VideoList {
 
     // MARK: - New rotation management
     func currentRotation() -> [AerialVideo] {
-        // Right now the current rotation will always be what's available offline
-        return videos.filter({ $0.isAvailableOffline })
+        var mode: FilterMode
+        switch PrefsVideos.shouldPlay {
+        case .location:
+            mode = .location
+        case .time:
+            mode = .time
+        case .scene:
+            mode = .scene
+        case .source:
+            mode = .source
+        default:
+            mode = .cache
+        }
+
+        switch PrefsVideos.shouldPlay {
+        case .everything:
+            return videos
+                .filter({ $0.isAvailableOffline && !PrefsVideos.hidden.contains($0.id) })
+                .sorted { $0.secondaryName < $1.secondaryName }
+        case .favorites:
+            return videos
+                .filter({ PrefsVideos.favorites.contains($0.id) && !PrefsVideos.hidden.contains($0.id) })
+                .sorted { $0.secondaryName < $1.secondaryName }
+        default:
+            return filteredVideosFor(mode, filter: PrefsVideos.shouldPlayString)
+        }
     }
 
-    // MARK: - OLD Playlist management
+    // MARK: - Playlist management
     func generatePlaylist(isRestricted: Bool, restrictedTo: String) {
         // Start fresh
         playlist = [AerialVideo]()
         playlistIsRestricted = isRestricted
         playlistRestrictedTo = restrictedTo
 
-        // Start with a shuffled list, we may have synchronized seed shuffle
-        var shuffled: [AerialVideo]
-
-        /*if preferences.synchronizedMode {
-            if #available(OSX 10.11, *) {
-                let date = Date()
-                let calendar = NSCalendar.current
-                let minutes = calendar.component(.minute, from: date)
-                debugLog("seed : \(minutes)")
-
-                var generator = SeededGenerator(seed: UInt64(minutes))
-                shuffled = loadedManifest.shuffled(using: &generator)
-            } else {
-                // Fallback on earlier versions
-                shuffled = loadedManifest.shuffled()
-            }
-        } else {
-            shuffled = loadedManifest.shuffled()
-        }*/
-        // Somehow code above doesn't work anymore, force disabling it for everyone for now
-        shuffled = videos.shuffled()
+        let shuffled = currentRotation().shuffled()
 
         for video in shuffled {
-            // We exclude videos not in rotation
-            /*let inRotation = preferences.videoIsInRotation(videoID: video.id)
-
-            if !inRotation {
-                continue
-            }*/
-            if !currentRotation().contains(video) {
-                continue
-            }
-
             // Do we restrict video types by day/night ?
             if isRestricted {
                 if video.timeOfDay != restrictedTo {
@@ -232,20 +292,7 @@ class VideoList {
                 }
             }
 
-            // TODO, all of this is probably moot now
-
-            // Are we in full manual mode ?? This replace the old never stream setting
-            if !video.isAvailableOffline && !PrefsCache.enableManagement {
-                continue
-            }
-
-            // Is the video cached, and if not, are we full ?
-            if !video.isAvailableOffline && Cache.isFull() {
-                continue
-            }
-
-            // If the video isn't cached, can we network ?
-            if !video.isAvailableOffline && !Cache.canNetwork() {
+            if !video.isAvailableOffline {
                 continue
             }
 
@@ -311,17 +358,13 @@ class VideoList {
             }
 
             for video in shuffled {
-                // We exclude videos not in rotation
-                let preferences = Preferences.sharedInstance
-
-                let inRotation = preferences.videoIsInRotation(videoID: video.id)
-
                 // If we find anything cached and in rotation, we send that back
-                if video.isAvailableOffline && inRotation {
+                if video.isAvailableOffline && currentRotation().contains(video) {
                     warnLog("returning random cached in rotation video after condition change not met !")
                     return video
                 }
             }
+
             // Nothing ? Sorry but you'll get a non cached file
             warnLog("returning random video after condition change not met !")
             return shuffled.first!

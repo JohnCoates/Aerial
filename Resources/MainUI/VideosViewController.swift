@@ -14,12 +14,11 @@ class VideosViewController: NSViewController {
     @IBOutlet var rotationView: NSView!
     @IBOutlet var rotationPopup: NSPopUpButton!
 
-    @IBOutlet var locationMenu: NSMenu!
-    @IBOutlet var timeMenu: NSMenu!
-    @IBOutlet var sceneMenu: NSMenu!
-    @IBOutlet var setMenu: NSMenu!
+    @IBOutlet var rotationSecondaryPopup: NSPopUpButton!
+    @IBOutlet var rotationSecondaryMenu: NSMenu!
 
     @IBOutlet var videoListTableView: NSTableView!
+    @IBOutlet var videoListRuntimeLabel: NSTextField!
 
     @IBOutlet var heroPlayerView: AVPlayerView!
     @IBOutlet var heroImageView: NSImageView!
@@ -35,6 +34,10 @@ class VideosViewController: NSViewController {
     @IBOutlet var sceneTypeImageView: NSImageView!
 
     @IBOutlet var downloadButton: NSButton!
+    @IBOutlet var hideButton: NSButton!
+    @IBOutlet var showButton: NSButton!
+
+    @IBOutlet var isCachedImageView: NSImageView!
 
     var path: String?
 
@@ -42,6 +45,7 @@ class VideosViewController: NSViewController {
         super.viewDidLoad()
 
         rotationView.isHidden = true
+
         // Our video list
         videoListTableView.delegate = self
         videoListTableView.dataSource = self
@@ -60,25 +64,18 @@ class VideosViewController: NSViewController {
         titleLabel.shadow = shadow
         locationLabel.shadow = shadow
         durationLabel.shadow = shadow
+        hideButton.shadow = shadow
+        showButton.shadow = shadow
+        downloadButton.shadow = shadow
         timeImageView.shadow = imgShadow
         sceneTypeImageView.shadow = imgShadow
+        isCachedImageView.shadow = imgShadow
 
         heroPlayerView.player = AVPlayer()
         heroPlayerView.controlsStyle = .none
         if #available(OSX 10.10, *) {
             heroPlayerView.videoGravity = .resizeAspectFill
         }
-        // tmp
-        /*largeImageView.imageScaling = .scaleAxesIndependently
-        let imagePath = Bundle(for: PreferencesWindowController.self).path(
-            forResource: "previewtest",
-            ofType: "jpg")
-
-        if let imagePath = imagePath {
-            largeImageView.image = NSImage(contentsOfFile: imagePath)
-        } else {
-            print("bla no img")
-        }*/
 
         updateVideoView()
         updateRotationMenu()
@@ -92,6 +89,8 @@ class VideosViewController: NSViewController {
         // We show/hide the top panel to pick the playing mode
         rotationView.isHidden = !path.starts(with: "rotation")
         if path.starts(with: "rotation") {
+            print("Current rotation: \(VideoList.instance.currentRotation().count)")
+
             updateRotationMenu()
         }
 
@@ -102,6 +101,82 @@ class VideosViewController: NSViewController {
         }
     }
 
+    // MARK: - Rotation menu
+    @IBAction func rotationPopupChange(_ sender: NSPopUpButton) {
+        PrefsVideos.shouldPlay = ShouldPlay(rawValue: sender.indexOfSelectedItem)!
+
+        // Cascade to a secondary popup for the various filters
+        if PrefsVideos.shouldPlay == .everything || PrefsVideos.shouldPlay == .favorites {
+            rotationSecondaryPopup.isHidden = true
+            reloadFor(path: path!)
+        } else {
+            rotationSecondaryPopup.isHidden = false
+            updateRotationSecondaryMenu()
+            reloadFor(path: path!)
+        }
+
+    }
+
+    @IBAction func rotationSecondaryPopupChange(_ sender: NSPopUpButton) {
+        PrefsVideos.shouldPlayString = sender.selectedItem!.title
+
+        reloadFor(path: path!)
+    }
+
+    func updateRotationMenu() {
+        rotationPopup.selectItem(at: PrefsVideos.intShouldPlay)
+
+        // Cascade to a secondary popup for the various filters
+        if PrefsVideos.shouldPlay == .everything || PrefsVideos.shouldPlay == .favorites {
+            rotationSecondaryPopup.isHidden = true
+        } else {
+            rotationSecondaryPopup.isHidden = false
+            updateRotationSecondaryMenu()
+        }
+    }
+
+    func updateRotationSecondaryMenu() {
+        var filter: VideoList.FilterMode
+
+        // ...
+        switch PrefsVideos.shouldPlay {
+        case .location:
+            filter = .location
+        case .scene:
+            filter = .scene
+        case .time:
+            filter = .time
+        case .source:
+            filter = .source
+        default:
+            filter = .location // ...
+        }
+
+        rotationSecondaryPopup.removeAllItems()
+
+        // Very unswift
+        var index = 0
+        var foundIndex = -1
+        for item in VideoList.instance.getSources(mode: filter) {
+            rotationSecondaryPopup.addItem(withTitle: item.string)
+            if item.string == PrefsVideos.shouldPlayString {
+                foundIndex = index
+            }
+
+            index += 1
+        }
+        if foundIndex > -1 {
+            rotationSecondaryPopup.selectItem(at: foundIndex)
+        } else {
+            // We select the first one if nothing was found
+            if rotationSecondaryPopup.numberOfItems > 0 {
+                PrefsVideos.shouldPlayString = rotationSecondaryPopup.itemTitle(at: 0)
+                rotationSecondaryPopup.selectItem(at: 0)
+            }
+        }
+    }
+
+    // MARK: - Video view
     func updateVideoView() {
         if let video = getSelectedVideo() {
             titleLabel.isHidden = false
@@ -110,21 +185,30 @@ class VideosViewController: NSViewController {
             formatLabel.isHidden = false
 
             titleLabel.stringValue = video.secondaryName
-            titleLabel.sizeToFit()
+            //titleLabel.sizeToFit()
 
             locationLabel.stringValue = video.name
-            locationLabel.sizeToFit()
+            //locationLabel.sizeToFit()
 
             sourceLabel.stringValue = video.source.name
-            sourceLabel.sizeToFit()
+            //sourceLabel.sizeToFit()
 
             formatLabel.stringValue = video.getBestFormat()
-            formatLabel.sizeToFit()
+            //formatLabel.sizeToFit()
+
+            if PrefsVideos.hidden.contains(video.id) {
+                hideButton.isHidden = true
+                showButton.isHidden = false
+            } else {
+                hideButton.isHidden = false
+                showButton.isHidden = true
+            }
 
             if video.isAvailableOffline {
                 // Show player
                 heroPlayerView.isHidden = false
                 heroImageView.isHidden = true
+                isCachedImageView.isHidden = false
 
                 durationLabel.isHidden = false
                 durationLabel.stringValue = "Duration: " + timeString(video.duration)
@@ -143,9 +227,14 @@ class VideosViewController: NSViewController {
                 // Show image
                 heroPlayerView.isHidden = true
                 heroImageView.isHidden = false
+                isCachedImageView.isHidden = true
 
                 durationLabel.isHidden = true
-                downloadButton.isHidden = false
+                if PrefsCache.enableManagement {
+                    downloadButton.isHidden = true  // Always hide in managed mode
+                } else {
+                    downloadButton.isHidden = false
+                }
 
                 // Clear up any playing video
                 if let player = heroPlayerView.player {
@@ -176,27 +265,7 @@ class VideosViewController: NSViewController {
         }
     }
 
-    func updateRotationMenu() {
-
-        //locationMenu.removeAllItems()
-        for location in VideoList.instance.getSources(mode: .location) {
-            print(location.string)
-
-            let item = NSMenuItem(title: location.string, action: #selector(self.setRotationToLocation(menuItem:)), keyEquivalent: "")
-                                    //#selector(VideosViewController.setRotationToLocation(menuItem:)), keyEquivalent: "")
-            item.isEnabled = true
-            locationMenu.addItem(item)
-        }
-
-    }
-
-    //
-    @objc func setRotationToLocation(menuItem: NSMenuItem) {
-        print("menuitem")
-        print(menuItem)
-    }
-
-    // Helper
+    // MARK: - Helpers
     func timeString(_ double: Double) -> String {
         let intValue = Int(double)
         if intValue % 60 < 10 {
@@ -211,7 +280,9 @@ class VideosViewController: NSViewController {
             print(path)
             if let mode = modeFromPath(path) {
                 let index = Int(path.split(separator: ":")[1])!
-                return VideoList.instance.getVideoForSource(index, item: videoListTableView.selectedRow, mode: mode)
+                if index >= 0 {
+                    return VideoList.instance.getVideoForSource(index, item: videoListTableView.selectedRow, mode: mode)
+                }
             } else {
                 // all
                 return VideoList.instance.videos[videoListTableView.selectedRow]
@@ -271,17 +342,46 @@ class VideosViewController: NSViewController {
             return .scene
         } else if path.starts(with: "rotation:") {
             return .rotation
+        } else if path.starts(with: "source:") {
+            return .source
+        } else if path.starts(with: "favorites") {
+            return .favorite
+        } else if path.starts(with: "hidden") {
+            return .hidden
         } else {
             return nil
         }
     }
 
+    // MARK: - Buttons
     @IBAction func downloadButton(_ sender: Any) {
         downloadButton.isHidden = true
         if let video = getSelectedVideo() {
             let videoManager = VideoManager.sharedInstance
             Cache.ensureDownload {
                 videoManager.queueDownload(video)
+            }
+        }
+    }
+
+    @IBAction func hideButtonClick(_ sender: Any) {
+        if let video = getSelectedVideo() {
+            PrefsVideos.hidden.append(video.id)
+            hideButton.isHidden = true
+            showButton.isHidden = false
+            updateInPlace()
+        }
+    }
+
+    @IBAction func showButtonClick(_ sender: Any) {
+        if let video = getSelectedVideo() {
+            if let index = PrefsVideos.hidden.firstIndex(of: video.id) {
+                PrefsVideos.hidden.remove(at: index)
+                hideButton.isHidden = false
+                showButton.isHidden = true
+                updateInPlace()
+            } else {
+                errorLog("Can't find video when unhiding, please report")
             }
         }
     }
@@ -329,18 +429,26 @@ extension VideosViewController: NSTableViewDelegate {
             video = VideoList.instance.getVideoForSource(index, item: row, mode: mode)
         } else {
             // all
-            video = VideoList.instance.videos[row]
+            video = VideoList.instance.videos.sorted { $0.secondaryName < $1.secondaryName }[row]
         }
 
         if let cell = tableView.makeView(withIdentifier:
             NSUserInterfaceItemIdentifier(rawValue: "ImageCellID"), owner: nil) as? VideoCellView {
             cell.video = video
             cell.label.stringValue = video.secondaryName
+            cell.checkButton.state = PrefsVideos.favorites.contains(video.id) ? .on : .off
 
-            let preferences = Preferences.sharedInstance
-            cell.checkButton.state = preferences.videoIsInRotation(videoID: video.id) ? .on : .off
+            if PrefsVideos.hidden.contains(video.id) {
+                cell.checkButton.isHidden = true
+            } else {
+                cell.checkButton.isHidden = false
+            }
 
-            cell.downloadButton.isHidden = video.isAvailableOffline
+            if PrefsCache.enableManagement {
+                cell.downloadButton.isHidden = true
+            } else {
+                cell.downloadButton.isHidden = video.isAvailableOffline
+            }
 
             Thumbnails.get(forVideo: video) { [weak self] (img) in
                 guard let _ = self else { return }

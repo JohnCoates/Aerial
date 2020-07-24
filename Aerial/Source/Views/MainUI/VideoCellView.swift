@@ -37,10 +37,18 @@ class VideoCellView: NSTableCellView {
 
     // Notify the delegate that the checkbox's state has changed
     @objc private func didChangeState(_ sender: NSObject) {
-        print("check")
-
-        let preferences = Preferences.sharedInstance
-        preferences.setVideo(videoID: video!.id, inRotation: checkButton.state == .on)
+        if PrefsVideos.favorites.contains(video!.id) {
+            PrefsVideos.favorites.remove(at: PrefsVideos.favorites.firstIndex(of: video!.id)!)
+        } else {
+            if !video!.isAvailableOffline {
+                Cache.ensureDownload {
+                    PrefsVideos.favorites.append(self.video!.id)
+                    VideoManager.sharedInstance.queueDownload(self.video!)
+                }
+            } else {
+                PrefsVideos.favorites.append(self.video!.id)
+            }
+        }
     }
 
     @IBAction func downloadButtonClick(_ sender: NSButton) {
