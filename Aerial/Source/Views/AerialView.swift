@@ -182,26 +182,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         // First thing, we may need to migrate the cache !
         Cache.migrate()
 
-        #if NOSPARKLE
-            print("Sparkle was disabled in build settings")
-        #else
-            let preferences = Preferences.sharedInstance
-
-            let au = AutoUpdates.sharedInstance
-            // Run Sparkle updater if enabled, but never as a preview
-            if !isPreview {
-                if preferences.updateWhileSaverMode {
-                    if PrefsUpdates.sparkleUpdateMode == .notify {
-                        // Run the probing check
-                        au.doProbingCheck()
-                    } else {
-                        // Run the forced update
-                        au.doForcedUpdate()
-                    }
-                }
-            }
-        #endif
-
         // Check early if we need to enable power saver mode,
         // black screen with minimal brightness
         if !isPreview {

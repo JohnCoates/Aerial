@@ -26,33 +26,9 @@ class UpdateReleaseController: NSWindowController {
     func show(sender: NSButton, controller: UpdatesViewController) {
         self.controller = controller
 
-        #if NOSPARKLE
-        #else
-        if !updateWindow.isVisible {
-            let autoUpdates = AutoUpdates.sharedInstance
-
-            updateWindow.makeKeyAndOrderFront(nil)
-            versionTextField.stringValue = autoUpdates.getVersion()
-
-            releaseNotesWKWebView.configuration.preferences.javaScriptEnabled = false
-            let html = "<html><head><style>body { font-family: -apple-system }</style></head><body>\(autoUpdates.getReleaseNotes())</body></html>"
-            releaseNotesWKWebView.loadHTMLString(html, baseURL: nil)
-        }
-        #endif
     }
 
     @IBAction func visitReleasePageClick(_ sender: NSButton) {
-        #if NOSPARKLE
-        #else
-        let workspace = NSWorkspace.shared
-        let autoUpdates = AutoUpdates.sharedInstance
-
-        // We construct the URL this way... This is not great !
-        let url = URL(string: "https://github.com/JohnCoates/Aerial/releases/tag/v\(autoUpdates.getVersion())")!
-        workspace.open(url)
-
-        updateWindow.close()
-        #endif
     }
 
     @IBAction func helpButtonClick(_ sender: NSButton) {

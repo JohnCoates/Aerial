@@ -1,7 +1,3 @@
-[submodule "Extern/Sparkle"]
-	path = Extern/Sparkle
-	url = https://github.com/sparkle-project/Sparkle.git
-	ignore = dirty
 [submodule "Extern/OAuthSwift"]
 	path = Extern/OAuthSwift
 	url = https://github.com/OAuthSwift/OAuthSwift.git

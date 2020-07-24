@@ -48,25 +48,5 @@ class UpdatesLayer: AnimationTextLayer {
 
     // Setup the layer, but give some time for the probe to complete
     func setupUpdateLayer() {
-        #if NOSPARKLE
-        #else
-        let autoupd = AutoUpdates.sharedInstance
-
-        if autoupd.didProbeForUpdate {
-            wasSetup = true
-
-            update(string: autoupd.getUpdateString())
-
-            let fadeAnimation = self.createFadeInAnimation()
-            add(fadeAnimation, forKey: "textfade")
-        } else {
-            // Ok, let's try again in 10 seconds
-            if #available(OSX 10.12, *) {
-                updateTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: false, block: { (_) in
-                    self.setupUpdateLayer()
-                })
-            }
-        }
-        #endif
     }
 }

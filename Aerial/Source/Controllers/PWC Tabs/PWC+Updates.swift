@@ -17,20 +17,6 @@ extension PreferencesWindowController {
 
         //lastCheckedVideosLabel.stringValue = "Last checked on " + preferences.lastVideoCheck!
 
-        #if NOSPARKLE
-        lastCheckedSparkle.stringValue = "Sparkle is disabled"
-        #else
-        // Format date
-        if sparkleUpdater!.lastUpdateCheckDate != nil {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd 'at' HH:mm"
-            let sparkleDate = dateFormatter.string(from: sparkleUpdater!.lastUpdateCheckDate)
-            lastCheckedSparkle.stringValue = "Last checked on " + sparkleDate
-        } else {
-            lastCheckedSparkle.stringValue = "Never checked for update"
-        }
-        #endif
-
         if PrefsUpdates.checkForUpdates {
             automaticallyCheckForUpdatesCheckbox.state = .on
         }
@@ -88,76 +74,14 @@ extension PreferencesWindowController {
         preferences.allowBetas = onState
         debugLog("UI allowBetasChange: \(onState)")
 
-        #if NOSPARKLE
-        #else
-        // We also update the feed url so subsequent checks go to the right feed
-        if preferences.allowBetas {
-            betaCheckFrequencyPopup.isEnabled = true
-            sparkleUpdater?.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/beta-appcast.xml")
-        } else {
-            betaCheckFrequencyPopup.isEnabled = false
-            sparkleUpdater?.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/appcast.xml")
-        }
-        #endif
     }
 
     @IBAction func checkForUpdatesButton(_ sender: NSButton) {
-        #if NOSPARKLE
-        debugLog("Sparkle is disabled in build settings")
-        #else
-        if #available(OSX 10.15, *) {
-            debugLog("check for updates (using Catalina probe)")
 
-            let autoUpdates = AutoUpdates.sharedInstance
-
-            if !autoUpdates.didProbeForUpdate {
-                // Let's probe
-                autoUpdates.doProbingCheck()
-
-                _ = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (_) in
-                    self.checkForProbeResults(silent: false)
-                })
-            } else {
-                // If we already probed, show the results !
-                checkForProbeResults(silent: false)
-            }
-
-        } else {
-            debugLog("check for updates (using Sparkle's auto)")
-            sparkleUpdater!.checkForUpdates(self)
-
-            lastCheckedSparkle.stringValue = "Last checked today"
-        }
-        #endif
     }
 
     func checkForProbeResults(silent: Bool) {
-        #if NOSPARKLE
-        debugLog("Sparkle is disabled in build settings")
-        #else
-        let autoUpdates = AutoUpdates.sharedInstance
-
-        if !autoUpdates.didProbeForUpdate {
-            // Try again in 2s
-            if #available(OSX 10.12, *) {
-                _ = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (_) in
-                    self.checkForProbeResults(silent: silent)
-                })
-            } else {
-                // We should only come here in Catalina anyway
-                errorLog("checkForProbeResults called in macOS < 10.12")
-            }
-        } else {
-            if autoUpdates.isAnUpdateAvailable() {
-                //updateReleaseController.show(sender: self.versionButton, controller: self)
-            } else {
-                if !silent {
-                    updateReleaseController.showNoUpdate()
-                }
-            }
-        }
-        #endif
-    }
+     }
 
     // Json updates
     @IBAction func checkNowButtonClick(_ sender: NSButton) {

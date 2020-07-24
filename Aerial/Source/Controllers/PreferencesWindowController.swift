@@ -11,10 +11,6 @@ import AVKit
 import AVFoundation
 import ScreenSaver
 import CoreLocation
-#if NOSPARKLE
-#else
-import Sparkle
-#endif
 
 @objc(PreferencesWindowController)
 // swiftlint:disable:next type_body_length
@@ -241,10 +237,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
     var savedBrightness: Float?
 
     var locationManager: CLLocationManager?
-    #if NOSPARKLE
-    #else
-    var sparkleUpdater: SUUpdater?
-    #endif
 
     // Info tab
     var infoSource: InfoTableSource?
@@ -296,49 +288,6 @@ final class PreferencesWindowController: NSWindowController, NSOutlineViewDataSo
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        #if NOSPARKLE
-        #else
-        // We register for the notification just before Sparkle tries to terminate Aerial
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(self.sparkleWillRestart),
-            name: Notification.Name.SUUpdaterWillRestart,
-            object: nil)
-
-        if PrefsUpdates.checkForUpdates {
-            // Starting the Sparkle update system
-            sparkleUpdater = SUUpdater.init(for: Bundle(for: PreferencesWindowController.self))
-
-            // We override the feeds for betas
-            if preferences.allowBetas {
-                sparkleUpdater?.feedURL = URL(string: "https://raw.githubusercontent.com/JohnCoates/Aerial/master/beta-appcast.xml")
-            }
-
-            // On macOS 10.15, we simply disable the auto update check
-            if #available(OSX 10.15, *) {
-                sparkleUpdater!.automaticallyChecksForUpdates = false
-
-                // And we start our own probe thing
-                let autoUpdates = AutoUpdates.sharedInstance
-
-                // We make sure the required delay has elapsed
-                if autoUpdates.shouldCheckForUpdates(sparkleUpdater!) {
-                    autoUpdates.doProbingCheck()
-
-                    _ = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (_) in
-                        self.checkForProbeResults(silent: true)
-                    })
-                }
-
-            } else {
-                sparkleUpdater!.automaticallyChecksForUpdates = true
-            }
-        } else {
-            sparkleUpdater = SUUpdater.init(for: Bundle(for: PreferencesWindowController.self))
-            sparkleUpdater!.automaticallyChecksForUpdates = false
-        }
-        #endif
 
         // Setup the updates for the Logs
         let logger = Logger.sharedInstance
