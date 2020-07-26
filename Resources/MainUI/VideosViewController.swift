@@ -94,10 +94,53 @@ class VideosViewController: NSViewController {
             updateRotationMenu()
         }
 
+        updateRuntimeLabel()
+
         if videoListTableView != nil {
             videoListTableView.reloadData()
             videoListTableView.selectRowIndexes([0], byExtendingSelection: false)
             videoListTableView.scrollRowToVisible(0)
+        }
+    }
+
+    func updateRuntimeLabel() {
+        guard let path = self.path else {
+            videoListRuntimeLabel.stringValue = ""
+            return
+        }
+
+        // Grab all videos in the path
+        var videos: [AerialVideo]
+        if let mode = modeFromPath(path) {
+            let index = Int(path.split(separator: ":")[1])!
+            videos = VideoList.instance.getVideosForSource(index, mode: mode)
+        } else {
+            // all
+            videos = VideoList.instance.videos.sorted { $0.secondaryName < $1.secondaryName }
+        }
+
+        // Calculate their duration in minutes
+        var duration: Double = 0
+        for video in videos {
+            duration += video.duration
+        }
+
+        let minutes: Int = Int(duration) / 60
+
+        var minutesString: String
+        if minutes < 2 {
+            minutesString = "1 minute"
+        } else {
+            minutesString = "\(minutes) minutes"
+        }
+
+        // Update the label
+        if videos.isEmpty {
+            videoListRuntimeLabel.stringValue = ""
+        } else if videos.count == 1 {
+            videoListRuntimeLabel.stringValue = "1 video, \(minutesString)"
+        } else {
+            videoListRuntimeLabel.stringValue = "\(videos.count) videos, \(minutesString)"
         }
     }
 
@@ -306,7 +349,7 @@ class VideosViewController: NSViewController {
             name = "sun.max"
         }
 
-        if let imagePath = Bundle(for: PreferencesWindowController.self).path(
+        if let imagePath = Bundle(for: PanelWindowController.self).path(
             forResource: name,
             ofType: "pdf") {
             timeImageView.image = NSImage(contentsOfFile: imagePath)

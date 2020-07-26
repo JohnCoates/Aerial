@@ -51,7 +51,7 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
 
     var hasAwokenAlready = false
     var sw: NSWindow?
-    var controller: PreferencesWindowController?
+    var controller: PanelWindowController?
 
     // MARK: - Lifecycle
     required init?(coder: NSCoder) {
@@ -116,7 +116,7 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
     }
 
     // This is the public function to make this visible
-    func show(sender: NSButton, controller: PreferencesWindowController) {
+    func show(sender: NSButton, controller: PanelWindowController) {
         self.controller = controller
         if !mainPanel.isVisible {
             mainPanel.makeKeyAndOrderFront(sender)

@@ -102,7 +102,7 @@ struct Source: Codable {
     // The things we do for one single missing video (for now) ;)
     func getMissingVideos() -> [AerialVideo] {
         // We also need to add the missing videos
-        let bundlePath = Bundle(for: PreferencesWindowController.self).path(forResource: "missingvideos", ofType: "json")!
+        let bundlePath = Bundle(for: PanelWindowController.self).path(forResource: "missingvideos", ofType: "json")!
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: bundlePath), options: .mappedIfSafe)
             return readJSONFromData(data)

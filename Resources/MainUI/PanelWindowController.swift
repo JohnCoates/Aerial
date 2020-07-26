@@ -13,7 +13,10 @@ class PanelWindowController: NSWindowController {
     var videosVC: VideosViewController?
 
     var videoViewItem: NSSplitViewItem?             // Main video view
-    var infoViewItem: NSSplitViewItem?              // Info
+    // Infos
+    var infoViewItem: NSSplitViewItem?
+    var creditsViewItem: NSSplitViewItem?
+    var helpViewItem: NSSplitViewItem?
 
     // Settings
     var sourcesViewItem: NSSplitViewItem?
@@ -44,7 +47,11 @@ class PanelWindowController: NSWindowController {
         let bundle = Bundle(for: PanelWindowController.self)
 
         videosVC = VideosViewController(nibName: .init("VideosViewController"), bundle: bundle)
+
+        // Infos
         let infoVC = InfoViewController(nibName: .init("InfoViewController"), bundle: bundle)
+        let creditsVC = CreditsViewController(nibName: .init("CreditsViewController"), bundle: bundle)
+        let helpVC = HelpViewController(nibName: .init("HelpViewController"), bundle: bundle)
 
         // Various settings
         let sourcesVC = SourcesViewController(nibName: .init("SourcesViewController"), bundle: bundle)
@@ -62,7 +69,10 @@ class PanelWindowController: NSWindowController {
 
         // Create all the view items for the right panel
         videoViewItem = NSSplitViewItem(viewController: videosVC!)
+        // Infos
         infoViewItem = NSSplitViewItem(viewController: infoVC)
+        creditsViewItem = NSSplitViewItem(viewController: creditsVC)
+        helpViewItem = NSSplitViewItem(viewController: helpVC)
         // All the settings have individual controllers
         sourcesViewItem = NSSplitViewItem(viewController: sourcesVC)
         timeViewItem = NSSplitViewItem(viewController: timeVC)
@@ -94,16 +104,6 @@ class PanelWindowController: NSWindowController {
         }
 
         splitVC.removeChild(at: 1)
-        /*
-        // Remove old
-        switch from {
-        case .videos:
-            splitVC.removeSplitViewItem(videoViewItem)
-        case.settings:
-            splitVC.removeSplitViewItem(sourcesViewItem)
-        case.infos:
-            splitVC.removeSplitViewItem(infoViewItem)
-        }*/
 
         // Put new
         switch to {
@@ -130,6 +130,11 @@ class PanelWindowController: NSWindowController {
         }
 
         if path.starts(with: "settings:") {
+            let idx = path.firstIndex(of: ":")
+            switchViewItemTo(String(path[idx!...].dropFirst())) // Oh Swift...
+        }
+
+        if path.starts(with: "infos:") {
             let idx = path.firstIndex(of: ":")
             switchViewItemTo(String(path[idx!...].dropFirst())) // Oh Swift...
         }
@@ -161,6 +166,13 @@ class PanelWindowController: NSWindowController {
             splitVC.addSplitViewItem(updatesViewItem!)
         } else if path == "advanced" {
             splitVC.addSplitViewItem(advancedViewItem!)
+        // Infos
+        } else if path == "about" {
+            splitVC.addSplitViewItem(infoViewItem!)
+        } else if path == "credits" {
+            splitVC.addSplitViewItem(creditsViewItem!)
+        } else if path == "help" {
+            splitVC.addSplitViewItem(helpViewItem!)
         }
     }
 

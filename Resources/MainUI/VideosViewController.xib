@@ -447,8 +447,8 @@
         <image name="leaf" catalog="system" width="16" height="14"/>
         <image name="location" catalog="system" width="15" height="15"/>
         <image name="previewtest" width="1891" height="1054"/>
-        <image name="star" width="154" height="166"/>
         <image name="star" catalog="system" width="17" height="16"/>
+        <image name="star" width="154" height="166"/>
         <image name="star.fill" width="154" height="166"/>
         <image name="sun.max" width="147" height="168"/>
         <image name="video.badge.plus" catalog="system" width="20" height="15"/>

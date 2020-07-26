@@ -13,7 +13,7 @@ import AVKit
 class YahooLayer: CALayer {
     override init() {
         super.init()
-        let imagePath = Bundle(for: PreferencesWindowController.self).path(
+        let imagePath = Bundle(for: PanelWindowController.self).path(
             forResource: "white_retina",
             ofType: "png")
 

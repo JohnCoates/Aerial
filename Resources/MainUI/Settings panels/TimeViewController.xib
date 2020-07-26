@@ -125,15 +125,15 @@
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SzV-m9-ZFE">
-                    <rect key="frame" x="59" y="184" width="17" height="15"/>
+                    <rect key="frame" x="61" y="184" width="15" height="15"/>
                     <imageCell key="cell" controlSize="large" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="h5X-E8-d3J"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SZ1-xU-U63">
-                    <rect key="frame" x="61" y="124" width="15" height="11"/>
+                    <rect key="frame" x="62" y="123.5" width="14.5" height="13"/>
                     <imageCell key="cell" controlSize="large" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStopProgressTemplate" id="wdI-Hq-Nfg"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Q8-32-Le7">
-                    <rect key="frame" x="65" y="252" width="11" height="12"/>
+                    <rect key="frame" x="66" y="251" width="10" height="14"/>
                     <imageCell key="cell" controlSize="large" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSRightFacingTriangleTemplate" id="9sa-v9-Pk2"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a5F-p8-bk1">
@@ -188,7 +188,7 @@
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q3x-Xt-OgV">
-                    <rect key="frame" x="57" y="378" width="19" height="13"/>
+                    <rect key="frame" x="58" y="377.5" width="18.5" height="15"/>
                     <imageCell key="cell" controlSize="large" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSBookmarksTemplate" id="O0Y-zN-2P4"/>
                 </imageView>
                 <textField toolTip="Longitude in degrees" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cVA-B0-e3H">
@@ -225,7 +225,7 @@
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3kY-Bn-bBw">
-                    <rect key="frame" x="56" y="313" width="20" height="14"/>
+                    <rect key="frame" x="57" y="312" width="19.5" height="16"/>
                     <imageCell key="cell" controlSize="large" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSHomeTemplate" id="3SE-5N-cO0"/>
                 </imageView>
                 <button toolTip="This will override the time settings to always show night videos if you have enabled dark mode" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1xw-2R-kTW">
@@ -239,7 +239,7 @@
                     </connections>
                 </button>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Q7-5H-Koj">
-                    <rect key="frame" x="60" y="424" width="16" height="13"/>
+                    <rect key="frame" x="61" y="423" width="15" height="15"/>
                     <imageCell key="cell" controlSize="large" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="location" catalog="system" id="hiP-2o-HMf"/>
                 </imageView>
                 <popUpButton toolTip="Pick your favorite dawn/dusk sunrise/sunset calculation method, see help for more" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sy9-yG-Mb4">
@@ -329,7 +329,6 @@
                 <constraint firstItem="DZk-c9-gIR" firstAttribute="top" secondItem="pnz-hK-s4M" secondAttribute="bottom" constant="14" id="V6f-vm-8Wf"/>
                 <constraint firstItem="zCA-xo-Kh1" firstAttribute="top" secondItem="DZk-c9-gIR" secondAttribute="bottom" constant="16" id="VbH-eM-3It"/>
                 <constraint firstItem="7kV-Ca-cPz" firstAttribute="leading" secondItem="cvF-Ft-Pca" secondAttribute="trailing" constant="8" symbolic="YES" id="VqG-hF-2h8"/>
-                <constraint firstAttribute="bottom" secondItem="1xw-2R-kTW" secondAttribute="bottom" constant="11" id="YBo-Iv-ED2"/>
                 <constraint firstAttribute="trailing" secondItem="XEl-58-TYp" secondAttribute="trailing" constant="24" id="YGt-Q5-krQ"/>
                 <constraint firstItem="XEl-58-TYp" firstAttribute="leading" secondItem="6Q8-32-Le7" secondAttribute="trailing" constant="24" id="ZEi-CJ-nj9"/>
                 <constraint firstItem="XEl-58-TYp" firstAttribute="centerY" secondItem="6Q8-32-Le7" secondAttribute="centerY" id="Zc1-5z-xn7"/>
@@ -359,11 +358,11 @@
         </customView>
     </objects>
     <resources>
-        <image name="NSActionTemplate" width="17" height="15"/>
-        <image name="NSBookmarksTemplate" width="19" height="13"/>
-        <image name="NSHomeTemplate" width="20" height="14"/>
-        <image name="NSRightFacingTriangleTemplate" width="11" height="12"/>
-        <image name="NSStopProgressTemplate" width="15" height="11"/>
-        <image name="location" catalog="system" width="16" height="13"/>
+        <image name="NSActionTemplate" width="15" height="15"/>
+        <image name="NSBookmarksTemplate" width="18" height="15"/>
+        <image name="NSHomeTemplate" width="19" height="16"/>
+        <image name="NSRightFacingTriangleTemplate" width="10" height="14"/>
+        <image name="NSStopProgressTemplate" width="14" height="13"/>
+        <image name="location" catalog="system" width="15" height="15"/>
     </resources>
 </document>

@@ -22,7 +22,9 @@ struct Thumbnails {
         print("starting thumb generation")
         for video in videos {
             if cached(forVideo: video) == nil {
-                generate(forVideo: video)
+                DispatchQueue.global().async {
+                    generate(forVideo: video)
+                }
             }
         }
         print("/thumb generation")
@@ -167,15 +169,22 @@ struct Thumbnails {
         if let thumb = cached(forVideo: video) {
             completion(thumb)
         } else if video.isAvailableOffline {
-            DispatchQueue.main.async {
+            DispatchQueue.global().async {
                 generate(forVideo: video)
-                completion(cached(forVideo: video))
+
+                // Completion on the main queue
+                DispatchQueue.main.async {
+                    completion(cached(forVideo: video))
+                }
             }
         } else {
             if Cache.canNetwork() {
-                DispatchQueue.main.async {
+                DispatchQueue.global().async {
                     generate(forVideo: video)
-                    completion(cached(forVideo: video))
+
+                    DispatchQueue.main.async {
+                        completion(cached(forVideo: video))
+                    }
                 }
             } else {
                 completion(nil)

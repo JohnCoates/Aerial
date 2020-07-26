@@ -45,7 +45,10 @@ class Sidebar {
 
     // So is infos
     func makeInfos() {
-        infos = [MenuEntry(name: "About", path: "infos:about")]
+        infos = [MenuEntry(name: "About", path: "infos:about"),
+                 MenuEntry(name: "Credits", path: "infos:credits"),
+                 MenuEntry(name: "Help", path: "infos:help"),
+                ]
     }
 
     // This is where we maintain the list of the Sidebar content, this will need to be
@@ -162,7 +165,11 @@ class Sidebar {
                 return NSImage(systemSymbolName: "square.and.arrow.down", accessibilityDescription: "")
             } else if path.starts(with: "settings:advanced") {
                 return NSImage(systemSymbolName: "wrench.and.screwdriver", accessibilityDescription: "")
-            } else if path.starts(with: "info") {
+            } else if path.starts(with: "infos:help") {
+                return NSImage(systemSymbolName: "bubble.left.and.bubble.right", accessibilityDescription: "")
+            } else if path.starts(with: "infos:credits") {
+                return NSImage(systemSymbolName: "person.3", accessibilityDescription: "")
+            } else if path.starts(with: "infos:about") {
                 return NSImage(systemSymbolName: "info.circle", accessibilityDescription: "")
             } else {
                 // For the WIP

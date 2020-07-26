@@ -50,7 +50,7 @@ class Aerial: NSObject {
     }
 
     static func getSymbol(_ named: String) -> NSImage? {
-        if let imagePath = Bundle(for: PreferencesWindowController.self).path(
+        if let imagePath = Bundle(for: PanelWindowController.self).path(
             forResource: named,
             ofType: "pdf") {
             return NSImage(contentsOfFile: imagePath)

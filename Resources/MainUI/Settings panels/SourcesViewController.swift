@@ -28,9 +28,7 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         if item == nil {
             return SourceList.list[index]
-        } /*else if let item = item as? String, item == "hobbies" {
-            return ("hobbies", index)
-        } */ else {
+        } else {
             return 0
         }
     }
@@ -39,9 +37,7 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         if item == nil {
             return SourceList.list.count
-        } /*else if let item = item as? String, item == "hobbies" {
-            return person.hobbies.count
-        } */else {
+        } else {
             return 0
         }
     }

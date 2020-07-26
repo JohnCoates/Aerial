@@ -50,7 +50,7 @@ class BatteryIconLayer: AnimationLayer {
     }
 
     func setup() {
-        let imagePath = Bundle(for: PreferencesWindowController.self).path(
+        let imagePath = Bundle(for: PanelWindowController.self).path(
             forResource: "battery.0",
             ofType: "pdf")
 
@@ -85,7 +85,7 @@ class BatteryIconLayer: AnimationLayer {
         self.addSublayer(iconLayer!)
         self.addSublayer(textLayer!)
 
-        let chargingPath = Bundle(for: PreferencesWindowController.self).path(
+        let chargingPath = Bundle(for: PanelWindowController.self).path(
             forResource: "bolt.fill",
             ofType: "pdf")
 

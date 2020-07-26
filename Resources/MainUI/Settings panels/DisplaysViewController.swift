@@ -112,7 +112,6 @@ class DisplaysViewController: NSViewController {
 
     // Advanced margins panel
     @IBAction func advancedModeEditClick(_ sender: Any) {
-
         if advancedEditPanel.isVisible {
             advancedEditPanel.close()
         } else {

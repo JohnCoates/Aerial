@@ -176,6 +176,10 @@ class VideoList {
         return filteredVideosFor(mode, section: section)[item]
     }
 
+    func getVideosForSource(_ section: Int, mode: FilterMode) -> [AerialVideo] {
+        return filteredVideosFor(mode, section: section)
+    }
+
     // MARK: - Callbacks
     func addCallback(_ callback:@escaping VideoListRefreshCallback) {
         callbacks.append(callback)
@@ -238,7 +242,7 @@ class VideoList {
 
         videos = videos.sorted { $0.name < $1.name }
 
-        Thumbnails.generateAllThumbnails(forVideos: videos)
+        //Thumbnails.generateAllThumbnails(forVideos: videos)
         // Let everyone who wants to know that our list is updated
         for callback in callbacks {
             callback()

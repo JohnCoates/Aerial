@@ -77,13 +77,13 @@ Gw
                     </constraints>
                 </visualEffectView>
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="30" horizontalPageScroll="10" verticalLineScroll="30" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2J-Hc-39v">
-                    <rect key="frame" x="0.0" y="60" width="185" height="306"/>
+                    <rect key="frame" x="0.0" y="60" width="185" height="304"/>
                     <clipView key="contentView" drawsBackground="NO" id="8uE-tR-c23">
-                        <rect key="frame" x="0.0" y="0.0" width="185" height="306"/>
+                        <rect key="frame" x="0.0" y="0.0" width="185" height="304"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <outlineView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="13" outlineTableColumn="axa-le-hBc" id="ciZ-oy-meK">
-                                <rect key="frame" x="0.0" y="0.0" width="185" height="306"/>
+                                <rect key="frame" x="0.0" y="0.0" width="185" height="304"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="3" height="0.0"/>
                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -160,12 +160,15 @@ Gw
                     </scroller>
                 </scrollView>
                 <visualEffectView blendingMode="behindWindow" material="sidebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Twm-j9-xLA">
-                    <rect key="frame" x="0.0" y="366" width="185" height="34"/>
+                    <rect key="frame" x="0.0" y="364" width="185" height="36"/>
                     <subviews>
-                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Sr-MZ-cSJ">
-                            <rect key="frame" x="80" y="1" width="24" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="gear" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="6Ub-Uu-Nzk">
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="3Sr-MZ-cSJ">
+                            <rect key="frame" x="80" y="6" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="HYU-Rz-WIR"/>
+                                <constraint firstAttribute="width" constant="25" id="KJN-4H-wDq"/>
+                            </constraints>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="gear" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="6Ub-Uu-Nzk">
                                 <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -173,10 +176,13 @@ Gw
                                 <action selector="menuButtonClick:" target="-2" id="Fk8-Hv-hiB"/>
                             </connections>
                         </button>
-                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I2Z-h4-5te">
-                            <rect key="frame" x="120" y="2" width="24" height="28"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="info.circle" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Qpt-L8-i5Z">
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="I2Z-h4-5te">
+                            <rect key="frame" x="121" y="6" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="6lb-NO-dSc"/>
+                                <constraint firstAttribute="height" constant="25" id="eey-od-MLy"/>
+                            </constraints>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="info.circle" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Qpt-L8-i5Z">
                                 <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -184,10 +190,13 @@ Gw
                                 <action selector="menuButtonClick:" target="-2" id="pTx-eq-4TM"/>
                             </connections>
                         </button>
-                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GuT-iZ-IKo">
-                            <rect key="frame" x="36" y="0.0" width="28" height="31"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="film" catalog="system" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="hox-OX-QHg">
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="GuT-iZ-IKo">
+                            <rect key="frame" x="39" y="6" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="7o7-hI-ve5"/>
+                                <constraint firstAttribute="height" constant="25" id="V1e-fw-3Ui"/>
+                            </constraints>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="film" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="hox-OX-QHg">
                                 <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -197,7 +206,13 @@ Gw
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="34" id="Iy3-cg-rYN"/>
+                        <constraint firstItem="I2Z-h4-5te" firstAttribute="leading" secondItem="3Sr-MZ-cSJ" secondAttribute="trailing" constant="16" id="18x-4M-OJ6"/>
+                        <constraint firstItem="3Sr-MZ-cSJ" firstAttribute="centerY" secondItem="GuT-iZ-IKo" secondAttribute="centerY" id="4cX-p7-HNb"/>
+                        <constraint firstItem="3Sr-MZ-cSJ" firstAttribute="centerX" secondItem="Twm-j9-xLA" secondAttribute="centerX" id="96A-7d-2Xc"/>
+                        <constraint firstItem="3Sr-MZ-cSJ" firstAttribute="centerY" secondItem="Twm-j9-xLA" secondAttribute="centerY" id="AbE-Bo-hHm"/>
+                        <constraint firstAttribute="height" constant="36" id="Iy3-cg-rYN"/>
+                        <constraint firstItem="3Sr-MZ-cSJ" firstAttribute="leading" secondItem="GuT-iZ-IKo" secondAttribute="trailing" constant="16" id="Xxo-06-Ped"/>
+                        <constraint firstItem="I2Z-h4-5te" firstAttribute="centerY" secondItem="GuT-iZ-IKo" secondAttribute="centerY" id="d9d-Xr-dhE"/>
                     </constraints>
                 </visualEffectView>
             </subviews>
@@ -220,10 +235,10 @@ Gw
         </customView>
     </objects>
     <resources>
-        <image name="film" catalog="system" width="19" height="12"/>
-        <image name="gear" catalog="system" width="17" height="15"/>
-        <image name="info.circle" catalog="system" width="15" height="13"/>
-        <image name="leaf" catalog="system" width="16" height="12"/>
-        <image name="xmark.circle" catalog="system" width="15" height="13"/>
+        <image name="film" width="168" height="132"/>
+        <image name="gear" width="153" height="177"/>
+        <image name="info.circle" width="141" height="155"/>
+        <image name="leaf" catalog="system" width="16" height="14"/>
+        <image name="xmark.circle" catalog="system" width="15" height="15"/>
     </resources>
 </document>
