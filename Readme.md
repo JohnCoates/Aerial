@@ -26,6 +26,8 @@ Starting with version 1.4, Aerial is maintained by [Guillaume Louel](https://git
 
 You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/graphs/contributors).
 
+**Have a question ? Check our troobleshooting section below, or hop on our [Discord server](https://discord.gg/TPuA5WG).**
+
 ## Installation
 
 **Please note :** Starting with Catalina, Aerial will only notify you of new versions, but won't be able to automatically update itself. This is a limitation of macOS Catalina. 
