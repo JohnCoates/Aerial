@@ -9,6 +9,8 @@
 import Cocoa
 
 class PanelWindowController: NSWindowController {
+    lazy var firstSetupWindowController: FirstSetupWindowController = FirstSetupWindowController()
+
     var splitVC: NSSplitViewController?
     var videosVC: VideosViewController?
 
@@ -89,6 +91,21 @@ class PanelWindowController: NSWindowController {
         window?.contentViewController = splitVC
 
         debugLog("/PWC2 wdl")
+        /*
+        if PrefsAdvanced.firstTimeSetup == false {
+            // We also load our CustomVideos nib here
+
+            var topLevelObjects: NSArray? = NSArray()
+            if !bundle.loadNibNamed(NSNib.Name("FirstSetupWindowController"),
+                                owner: firstSetupWindowController,
+                                topLevelObjects: &topLevelObjects) {
+                errorLog("Could not load nib for CustomVideos, please report")
+            }
+            firstSetupWindowController.windowDidLoad()
+            firstSetupWindowController.showWindow(self)
+            firstSetupWindowController.window?.makeKeyAndOrderFront(nil)
+
+        }*/
     }
 
     // Switch from one menu list to another

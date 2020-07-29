@@ -25,6 +25,7 @@ struct Source: Codable {
     var manifestUrl: String
     var type: SourceType
     var scenes: [SourceScene]
+    var isCachable: Bool
 
     // TODO
     func isEnabled() -> Bool {

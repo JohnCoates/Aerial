@@ -41,7 +41,7 @@ Enjoying Aerial and want to buy me a coffee ? </string>
                                 <constraint firstAttribute="width" constant="320" id="hRR-xq-21J"/>
                                 <constraint firstAttribute="height" constant="320" id="ulF-hQ-vYE"/>
                             </constraints>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-1024" id="2e6-aG-RVX"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-320" id="2e6-aG-RVX"/>
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ceu-gu-KNt">
                             <rect key="frame" x="358" y="296" width="118" height="15"/>
@@ -52,8 +52,8 @@ Enjoying Aerial and want to buy me a coffee ? </string>
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="42t-wb-whP">
-                            <rect key="frame" x="358" y="319" width="101" height="35"/>
-                            <textFieldCell key="cell" lineBreakMode="clipping" title="Aerial2" id="yQI-eW-wVq">
+                            <rect key="frame" x="358" y="319" width="83" height="35"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="Aerial" id="yQI-eW-wVq">
                                 <font key="font" metaFont="systemSemibold" size="30"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -111,6 +111,6 @@ Enjoying Aerial and want to buy me a coffee ? </string>
     </objects>
     <resources>
         <image name="btn_donate" width="74" height="21"/>
-        <image name="icon-1024" width="1024" height="1024"/>
+        <image name="icon-320" width="320" height="320"/>
     </resources>
 </document>

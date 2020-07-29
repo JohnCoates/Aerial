@@ -45,19 +45,14 @@ class SidebarViewController: NSViewController {
             self.updateDownloads(done: done, total: total, progress: progress)
         }
 
-        if #available(OSX 10.14, *) {
-            videosButton.image = Aerial.getSymbol("film")?.tinting(with: NSColor.secondaryLabelColor)
-            videosButton.alternateImage = Aerial.getSymbol("film")?.tinting(with: NSColor.controlAccentColor)
+        videosButton.image = Aerial.getSymbol("film")?.tinting(with: NSColor.secondaryLabelColor)
+        videosButton.alternateImage = Aerial.getAccentedSymbol("film")
 
-            settingsButton.image = Aerial.getSymbol("gear")?.tinting(with: NSColor.secondaryLabelColor)
-            settingsButton.alternateImage = Aerial.getSymbol("gear")?.tinting(with: NSColor.controlAccentColor)
+        settingsButton.image = Aerial.getSymbol("gear")?.tinting(with: NSColor.secondaryLabelColor)
+        settingsButton.alternateImage = Aerial.getAccentedSymbol("gear")
 
-            infoButton.image = Aerial.getSymbol("info.circle")?.tinting(with: NSColor.secondaryLabelColor)
-            infoButton.alternateImage = Aerial.getSymbol("info.circle")?.tinting(with: NSColor.controlAccentColor)
-        } else {
-            // Fallback on earlier versions
-        }
-
+        infoButton.image = Aerial.getSymbol("info.circle")?.tinting(with: NSColor.secondaryLabelColor)
+        infoButton.alternateImage = Aerial.getAccentedSymbol("info.circle")
     }
 
     override func viewDidAppear() {
@@ -236,6 +231,8 @@ extension SidebarViewController: NSOutlineViewDelegate {
         if let entry = item as? Sidebar.MenuEntry {
             if entry.name == "Favorites" {
                 return NSTintConfiguration(fixedColor: .init(red: 0.996, green: 0.741, blue: 0.066, alpha: 1.0))
+            } else {
+                return NSTintConfiguration.default
             }
         }
 

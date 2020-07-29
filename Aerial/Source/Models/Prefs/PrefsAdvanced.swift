@@ -12,4 +12,8 @@ struct PrefsAdvanced {
     // Display margins
     @SimpleStorage(key: "muteSound", defaultValue: true)
     static var muteSound: Bool
+
+    @SimpleStorage(key: "firstTimeSetup", defaultValue: false)
+    static var firstTimeSetup: Bool
+
 }

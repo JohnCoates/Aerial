@@ -108,77 +108,72 @@ class Sidebar {
     // Helper to get the various icons for the sidebar
     //swiftlint:disable:next cyclomatic_complexity
     static func iconFor(_ path: String, name: String) -> NSImage? {
-        if #available(OSX 10.16, *) {
-            if path.starts(with: "videos:location") {
-                return NSImage(systemSymbolName: "location", accessibilityDescription: "")
-            } else if path.starts(with: "videos:cache") && name == VideoList.instance.cacheDownloaded {
-                return NSImage(systemSymbolName: "internaldrive", accessibilityDescription: "")
-            } else if path.starts(with: "videos:cache") && name == VideoList.instance.cacheOnline {
-                return NSImage(systemSymbolName: "cloud", accessibilityDescription: "")
+        if path.starts(with: "videos:location") {
+            return Aerial.getAccentedSymbol("mappin.and.ellipse")
+        } else if path.starts(with: "videos:cache") && name == VideoList.instance.cacheDownloaded {
+            return Aerial.getAccentedSymbol("internaldrive")
+        } else if path.starts(with: "videos:cache") && name == VideoList.instance.cacheOnline {
+            return Aerial.getAccentedSymbol("cloud")
 
-            } else if path.starts(with: "videos:time") && name == "Day" {
-                return NSImage(systemSymbolName: "sun.max", accessibilityDescription: "")
-            } else if path.starts(with: "videos:time") && name == "Night" {
-                return NSImage(systemSymbolName: "moon.stars", accessibilityDescription: "")
-            } else if path.starts(with: "videos:time") && name == "Sunrise" {
-                return NSImage(systemSymbolName: "sunrise", accessibilityDescription: "")
-            } else if path.starts(with: "videos:time") && name == "Sunset" {
-                return NSImage(systemSymbolName: "sunset", accessibilityDescription: "")
+        } else if path.starts(with: "videos:time") && name == "Day" {
+            return Aerial.getAccentedSymbol("sun.max")
+        } else if path.starts(with: "videos:time") && name == "Night" {
+            return Aerial.getAccentedSymbol("moon.stars")
+        } else if path.starts(with: "videos:time") && name == "Sunrise" {
+            return Aerial.getAccentedSymbol("sunrise")
+        } else if path.starts(with: "videos:time") && name == "Sunset" {
+            return Aerial.getAccentedSymbol("sunset")
 
-            } else if path.starts(with: "videos:scene") && name == "Landscape" {
-                return NSImage(systemSymbolName: "leaf", accessibilityDescription: "")
-            } else if path.starts(with: "videos:scene") && name == "City" {
-                return NSImage(systemSymbolName: "building", accessibilityDescription: "")
-            } else if path.starts(with: "videos:scene") && name == "Space" {
-                return NSImage(systemSymbolName: "sparkles", accessibilityDescription: "")
-            } else if path.starts(with: "videos:scene") && name == "Sea" {
-                return NSImage(systemSymbolName: "drop", accessibilityDescription: "")
+        } else if path.starts(with: "videos:scene") && name == "Landscape" {
+            return Aerial.getAccentedSymbol("leaf")
+        } else if path.starts(with: "videos:scene") && name == "City" {
+            return Aerial.getAccentedSymbol("tram.fill")
+        } else if path.starts(with: "videos:scene") && name == "Space" {
+            return Aerial.getAccentedSymbol("sparkles")
+        } else if path.starts(with: "videos:scene") && name == "Sea" {
+            return Aerial.getAccentedSymbol("helm")
 
-            } else if path.starts(with: "videos:rotation") {
-                return NSImage(systemSymbolName: "dial.min", accessibilityDescription: "")
+        } else if path.starts(with: "videos:rotation") {
+            return Aerial.getAccentedSymbol("dial.min")
 
-            } else if path.starts(with: "videos:favorite") {
-                return NSImage(systemSymbolName: "star", accessibilityDescription: "")
+        } else if path.starts(with: "videos:favorite") {
+            return Aerial.getSymbol("star")
 
-            } else if path.starts(with: "videos:hidden") {
-                return NSImage(systemSymbolName: "eye.slash", accessibilityDescription: "")
+        } else if path.starts(with: "videos:hidden") {
+            return Aerial.getAccentedSymbol("eye.slash")
 
-            } else if path.starts(with: "videos:source") {
-                return NSImage(systemSymbolName: "video.badge.plus", accessibilityDescription: "")
+        } else if path.starts(with: "videos:source") {
+            return Aerial.getAccentedSymbol("antenna.radiowaves.left.and.right")
 
-            } else if path.starts(with: "videos:") {
-                return NSImage(systemSymbolName: "film", accessibilityDescription: "")
+        } else if path.starts(with: "videos:") {
+            return Aerial.getAccentedSymbol("film")
 
-            } else if path.starts(with: "settings:sources") {
-                return NSImage(systemSymbolName: "video.badge.plus", accessibilityDescription: "")
-            } else if path.starts(with: "settings:time") {
-                return NSImage(systemSymbolName: "clock", accessibilityDescription: "")
-            } else if path.starts(with: "settings:displays") {
-                return NSImage(systemSymbolName: "display.2", accessibilityDescription: "")
-            } else if path.starts(with: "settings:brightness") {
-                return NSImage(systemSymbolName: "sun.min", accessibilityDescription: "")
-            } else if path.starts(with: "settings:cache") {
-                return NSImage(systemSymbolName: "internaldrive", accessibilityDescription: "")
-            } else if path.starts(with: "settings:overlays") {
-                return NSImage(systemSymbolName: "text.bubble", accessibilityDescription: "")
-            } else if path.starts(with: "settings:updates") {
-                return NSImage(systemSymbolName: "square.and.arrow.down", accessibilityDescription: "")
-            } else if path.starts(with: "settings:advanced") {
-                return NSImage(systemSymbolName: "wrench.and.screwdriver", accessibilityDescription: "")
-            } else if path.starts(with: "infos:help") {
-                return NSImage(systemSymbolName: "bubble.left.and.bubble.right", accessibilityDescription: "")
-            } else if path.starts(with: "infos:credits") {
-                return NSImage(systemSymbolName: "person.3", accessibilityDescription: "")
-            } else if path.starts(with: "infos:about") {
-                return NSImage(systemSymbolName: "info.circle", accessibilityDescription: "")
-            } else {
-                // For the WIP
-                return NSImage(systemSymbolName: "exclamationmark.triangle.fill", accessibilityDescription: "")
-            }
+        } else if path.starts(with: "settings:sources") {
+            return Aerial.getAccentedSymbol("antenna.radiowaves.left.and.right")
+        } else if path.starts(with: "settings:time") {
+            return Aerial.getAccentedSymbol("clock")
+        } else if path.starts(with: "settings:displays") {
+            return Aerial.getAccentedSymbol("display.2")
+        } else if path.starts(with: "settings:brightness") {
+            return Aerial.getAccentedSymbol("sun.min")
+        } else if path.starts(with: "settings:cache") {
+            return Aerial.getAccentedSymbol("internaldrive")
+        } else if path.starts(with: "settings:overlays") {
+            return Aerial.getAccentedSymbol("text.bubble")
+        } else if path.starts(with: "settings:updates") {
+            return Aerial.getAccentedSymbol("arrow.down.circle")
+        } else if path.starts(with: "settings:advanced") {
+            return Aerial.getAccentedSymbol("wrench.and.screwdriver")
 
+        } else if path.starts(with: "infos:help") {
+            return Aerial.getAccentedSymbol("bubble.left.and.bubble.right")
+        } else if path.starts(with: "infos:credits") {
+            return Aerial.getAccentedSymbol("person.3")
+        } else if path.starts(with: "infos:about") {
+            return Aerial.getAccentedSymbol("info.circle")
         } else {
-            return nil
+            // For the WIP
+            return Aerial.getSymbol("wrench")
         }
-
     }
 }

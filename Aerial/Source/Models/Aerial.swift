@@ -51,11 +51,50 @@ class Aerial: NSObject {
 
     static func getSymbol(_ named: String) -> NSImage? {
         if let imagePath = Bundle(for: PanelWindowController.self).path(
-            forResource: named,
+            forResource: fallbackSymbol(named),
             ofType: "pdf") {
             return NSImage(contentsOfFile: imagePath)
         }
 
         return nil
+    }
+
+    // ?.tinting(with: NSColor.controlAccentColor)
+
+    static func getAccentedSymbol(_ named: String) -> NSImage? {
+        if #available(OSX 10.14, *) {
+            return getSymbol(named)?.tinting(with: .controlAccentColor)
+        } else {
+            // Fallback on earlier versions
+            return getSymbol(named)?.tinting(with: .systemBlue)
+        }
+    }
+
+    // This is a list of fallback symbols, until we can use those from SF Symbols 2,
+    // we export from SF Symbols 1...
+    private static func fallbackSymbol(_ forName: String) -> String {
+        switch forName {
+        case "cloud":
+            return "regular.cloud"
+        case "sun.max":
+            return "regular.sun.max"
+        case "sun.min":
+            return "regular.sun.min"
+        case "moon.stars":
+            return "regular.moon.stars"
+        case "leaf":
+            return "flame"
+        case "dial.min":
+            return "dial"
+        case "internaldrive":
+            return "arrow.down.circle"
+        case "display.2":
+            return "tv"
+        case "wrench.and.screwdriver":
+            return "wrench"
+        default:
+            return forName
+        }
+
     }
 }

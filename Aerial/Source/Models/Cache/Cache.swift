@@ -232,6 +232,13 @@ struct Cache {
     }
 
     /**
+     Do we still have a bit of free space (0.5 GB)
+     */
+    static func hasSomeFreeSpace() -> Bool {
+        return size() < PrefsCache.cacheLimit - 0.5
+    }
+
+    /**
      Returns the cache size in GB as a string (eg. 5.1 GB)
      */
     static func sizeString() -> String {
@@ -342,6 +349,115 @@ struct Cache {
         } else {
             return true
         }
+    }
+
+    static func outdatedVideos() -> [AerialVideo] {
+        guard PrefsCache.enableManagement else {
+            return []
+        }
+
+        var cutoffDate = Date()
+        switch PrefsCache.cachePeriodicity {
+        case .weekly:
+            cutoffDate = Calendar.current.date(byAdding: .day, value: -7, to: cutoffDate)!
+        case .monthly:
+            cutoffDate = Calendar.current.date(byAdding: .month, value: -1, to: cutoffDate)!
+        case .never:
+            return []
+        }
+
+        // Get a list of cached videos that are not favorites, and are from a cacheable source (not a pack)
+        // Yes this is getting a bit complicated
+        var evictable: [Date: AerialVideo] = [:]
+        let currentlyCached = VideoList.instance.videos.filter({ $0.isAvailableOffline && $0.source.isCachable && !PrefsVideos.favorites.contains($0.id)})
+
+        for video in currentlyCached {
+            let path = VideoCache.cachePath(forVideo: video)!
+
+            // swiftlint:disable:next force_try
+            let attributes = try! FileManager.default.attributesOfItem(atPath: path)
+            let creationDate = attributes[.creationDate] as! Date
+
+            if creationDate < cutoffDate {
+                evictable[creationDate] = video
+            }
+        }
+
+        return  evictable.sorted { $0.key < $1.key }.map({ $0.value })
+    }
+
+    static func freeCache() {
+        guard PrefsCache.enableManagement else {
+            return
+        }
+
+        debugLog("Cleaning up some free space in cache")
+
+        for video in VideoList.instance.videos.filter({ PrefsVideos.hidden.contains($0.id) && $0.isAvailableOffline }) {
+            debugLog("Deleting hidden video \(video.secondaryName)")
+            do {
+                try FileManager.default.removeItem(atPath: VideoCache.cachePath(forVideo: video)!)
+            } catch {
+                errorLog("Could not delete video : \(video.secondaryName)")
+            }
+        }
+
+        // We may be good ?
+        if hasSomeFreeSpace() {
+            return
+        }
+
+        let evictables = outdatedVideos()
+
+        outerLoop: for video in evictables {
+            if VideoList.instance.currentRotation().contains(video) {
+                // Outdated but in rotation, so keep it !
+                debugLog("outdated but in rotation \(video.secondaryName)")
+            } else {
+                debugLog("Removing outdated video not in rotation \(video.secondaryName)")
+                do {
+                    try FileManager.default.removeItem(atPath: VideoCache.cachePath(forVideo: video)!)
+                } catch {
+                    errorLog("Could not delete video : \(video.secondaryName)")
+                }
+
+                if hasSomeFreeSpace() {
+                    // Removed enough
+                    break outerLoop
+                }
+            }
+        }
+    }
+
+    static func fillOrRollCache() {
+        guard PrefsCache.enableManagement else {
+            return
+        }
+
+        debugLog("> Fill or roll cache")
+        // Do we have some space to download at least a video (by default .5 GB) ?
+        if !hasSomeFreeSpace() {
+            freeCache()
+
+            if !hasSomeFreeSpace() {
+                debugLog("Could not free space, maybe you have too many favorites ?")
+                return
+            }
+        }
+
+        // Grab a list of uncached in rotation videos
+        let rotation = VideoList.instance.currentRotation().filter { !$0.isAvailableOffline }
+
+        debugLog("Uncached videos in rotation : \(rotation.count)")
+
+        // We may be satisfied already
+        if rotation.isEmpty {
+            return
+        }
+
+        // Queue the first video on the list
+        debugLog("Queuing video : \(rotation.first!.secondaryName)")
+        VideoManager.sharedInstance.queueDownload(rotation.first!)
     }
 
 }

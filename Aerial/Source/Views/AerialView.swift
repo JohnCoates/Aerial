@@ -462,6 +462,12 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                                        name: NSNotification.Name.AVPlayerItemPlaybackStalled,
                                        object: currentItem)
         player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
+
+        // Let's never download stuff in preview...
+        if !isPreview {
+            Cache.fillOrRollCache()
+        }
+
     }
 
     override func keyDown(with event: NSEvent) {

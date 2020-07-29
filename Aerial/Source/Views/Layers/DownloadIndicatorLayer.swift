@@ -9,7 +9,7 @@
 import Foundation
 import AVKit
 
-class UpdatesLayer: AnimationTextLayer {
+class DownloadIndicatorLayer: AnimationTextLayer {
     var config: PrefsInfo.Updates?
     var wasSetup = false
     var updateTimer: Timer?
@@ -42,11 +42,29 @@ class UpdatesLayer: AnimationTextLayer {
 
     override func setupForVideo(video: AerialVideo, player: AVPlayer) {
         if !wasSetup {
-            setupUpdateLayer()
+            update(string: "")
+            setupDownloadIndicatorLayer()
         }
     }
 
-    // Setup the layer, but give some time for the probe to complete
-    func setupUpdateLayer() {
+    // Setup the callbacks
+    func setupDownloadIndicatorLayer() {
+        // Setup the updates for the download status
+        let videoManager = VideoManager.sharedInstance
+        videoManager.addCallback { done, total in
+            self.updateDownloads(done: done, total: total, progress: 0)
+        }
+        videoManager.addProgressCallback { done, total, progress in
+            self.updateDownloads(done: done, total: total, progress: progress)
+        }
+    }
+
+    func updateDownloads(done: Int, total: Int, progress: Double) {
+        if total == 0 {
+            update(string: "")
+        } else {
+            let progInt = Int(progress * 100)
+            update(string: "Downloading: \(progInt) %")
+        }
     }
 }

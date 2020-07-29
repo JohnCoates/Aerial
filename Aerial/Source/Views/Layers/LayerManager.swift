@@ -78,7 +78,7 @@ class LayerManager {
             case .battery:
                 newLayer = BatteryIconLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.battery)
             case .updates:
-                newLayer = UpdatesLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.updates)
+                newLayer = DownloadIndicatorLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.updates)
             case .weather:
                 newLayer = WeatherLayer(withLayer: layer, isPreview: isPreview, offsets: offsets, manager: self, config: PrefsInfo.weather)
             case .countdown:

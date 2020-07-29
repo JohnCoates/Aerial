@@ -14,26 +14,30 @@ struct SourceList {
                         description: "Apple TV screensavers from tvOS 13",
                         manifestUrl: "https://sylvan.apple.com/Aerials/resources-13.tar",
                         type: .tvOS12,
-                        scenes: [.landscape, .city, .space, .sea])
+                        scenes: [.landscape, .city, .space, .sea],
+                        isCachable: true)
 
     // Legacy sources
     static let tvOS12 = Source(name: "tvOS 12",
                         description: "Apple TV screensavers from tvOS 12",
                         manifestUrl: "https://sylvan.apple.com/Aerials/resources.tar",
                         type: .tvOS12,
-                        scenes: [.landscape, .city, .space])
+                        scenes: [.landscape, .city, .space],
+                        isCachable: true)
 
     static let tvOS11 = Source(name: "tvOS 11",
                         description: "Apple TV screensavers from tvOS 11",
                         manifestUrl: "https://sylvan.apple.com/Aerials/2x/entries.json",
                         type: .tvOS11,
-                        scenes: [.landscape, .city])
+                        scenes: [.landscape, .city],
+                        isCachable: true)
 
     static let tvOS10 = Source(name: "tvOS 10",
                         description: "Apple TV screensavers from tvOS 10",
                         manifestUrl: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json",
                         type: .tvOS10,
-                        scenes: [.landscape, .city])
+                        scenes: [.landscape, .city],
+                        isCachable: true)
 
     static var list: [Source] {
         return [tvOS13, tvOS12, tvOS11, tvOS10] + foundSources
@@ -73,7 +77,8 @@ struct SourceList {
                               description: manifest.manifestDescription,
                               manifestUrl: url.absoluteString,
                               type: .local,
-                              scenes: [.landscape])
+                              scenes: [.landscape],
+                              isCachable: false)    // TODO
             }
         } catch {
             errorLog("Could not open manifest for source at \(url)")
