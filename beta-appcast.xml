@@ -1,7 +1,39 @@
 <?xml version="1.0" standalone="yes"?><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
 <channel>
 <title>Aerial</title>
-<item>
+
+  <item>
+<title>2.0.0beta1</title>
+  <description>
+          <![CDATA[
+
+<p>Please quit System Preferences before installing ! If you want auto updates, please give a try to Aerial's new installer/updater here : https://github.com/glouel/AerialUpdater</p>
+
+<p>This beta changes a lot of things, you will need to reconfigure your cache settings ! If you want more details on what's new, check this issue : https://github.com/JohnCoates/Aerial/issues/1006</p>
+
+<p>New features:</p>
+<ul><li>A completely new UI, with thumbnails and a large preview, so you never have to guess again which video is which. It's even resizable !</li>
+<li>You can now favorite and hide videos</li>
+<li>New "On rotation" setting, so you can quickly change from playing one category to another</li>
+<li>Completely new cache management, you can now limit the size of your cache, and optionnally decide to periodically replace old videos with newer ones. If you'd rather download everything, or manage things yourself, no worries, you still can</li>
+<li>If you enabled cache management, Aerial will now download videos in the background while its running when needed</li>
+<li>You can now restrict downloads to only an approved list of WiFi networks</li>
+<li>Sparkle has been removed from Aerial, it's replaced by a new AerialUpdater</li></ul>
+
+<p>Fixes:</p>
+<ul><li>Fix no longer could exit the screensaver</li></ul>
+
+<p>Note: Big Sur Beta 3 users, there's an issue currently with that beta of macOS regarding 3rd party screen savers, check this post on how to get back your settings and cache : https://github.com/JohnCoates/Aerial/issues/1006#issuecomment-664290581</p>
+
+<p>This macOS bug affects not only all versions of Aerial, but all 3rd party screen savers.</p>
+          ]]>
+  </description>
+<pubDate>mer., 29 jui. 2020 15:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v2.0.0beta1/Aerial.saver.zip" sparkle:version="2.0.0beta1" 
+sparkle:edSignature="g5cQ4yNKQfXnRnL9h5yztmG/1/c4xcVinQox1RNDLqonH1t+Jw3uPeTHkupcMuILhXH8hMJReS/QwuSlPeHrAA==" length="5278193" type="application/octet-stream"/>
+</item>
+  <item>
 <title>1.9.1</title>
   <description>
           <![CDATA[
