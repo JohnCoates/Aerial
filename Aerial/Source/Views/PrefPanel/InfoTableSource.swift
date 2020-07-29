@@ -10,9 +10,9 @@ import Cocoa
 
 class InfoTableSource: NSTableView, NSTableViewDataSource, NSTableViewDelegate {
     private var dragDropType = NSPasteboard.PasteboardType(rawValue: "private.table-row")
-    var controller: PreferencesWindowController?
+    var controller: OverlaysViewController?
 
-    func setController(_ controller: PreferencesWindowController) {
+    func setController(_ controller: OverlaysViewController) {
         self.controller = controller
     }
 

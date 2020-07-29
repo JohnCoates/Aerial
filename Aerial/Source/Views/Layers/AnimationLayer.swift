@@ -65,11 +65,14 @@ class AnimationLayer: CALayer, AnimatableLayer {
     }
 
     // Update and move to a corner
-    func update() {
-         // This is the rect resized to our string
-         let newCorner = getCorner()
+    func update(redraw: Bool = false) {
+        // This is the rect resized to our string
+        let newCorner = getCorner()
 
-         //frame = calculateRect(string: string, font: font as! NSFont, newCorner: newCorner)
-         move(toCorner: newCorner, fullRedraw: false)
-     }
+        // For non text layer, we need to do this here, this is done in calculateRect for text layers...
+        if frame.size.width+10 > offsets.maxWidth[corner]! {
+            offsets.maxWidth[corner] = frame.size.width+10
+        }
+        move(toCorner: newCorner, fullRedraw: false)
+    }
 }

@@ -39,13 +39,6 @@ class InfoWeatherView: NSView {
         } else {
             locationString.isHidden = true
             locationLabel.isHidden = false
-
-            /*
-            if PrefsInfo.weather.locationCoords != "" {
-                locationLabel.stringValue = PrefsInfo.weather.locationCoords
-            } else {
-                locationLabel.stringValue = "No cached location"
-            }*/
         }
     }
 
@@ -66,8 +59,8 @@ class InfoWeatherView: NSView {
             Weather.fetch(failure: { (error) in
                 print(error.localizedDescription)
             }, success: { (_) in
-                let pwc = self.window!.windowController as! PreferencesWindowController
-                pwc.openWeatherPreview()
+                let ovc = self.parentViewController as! OverlaysViewController
+                ovc.openWeatherPreview()
             })
         } else {
             // Get the location
@@ -81,10 +74,11 @@ class InfoWeatherView: NSView {
                 self.locationLabel.stringValue = "Latiture: \(lat) Longitude: \(lon)"
 
                 Weather.fetch(failure: { (error) in
-                    print(error.localizedDescription)
+                    errorLog(error.localizedDescription)
+                    self.locationLabel.stringValue = error.localizedDescription
                 }, success: { (_) in
-                    let pwc = self.window!.windowController as! PreferencesWindowController
-                    pwc.openWeatherPreview()
+                    let ovc = self.parentViewController as! OverlaysViewController
+                    ovc.openWeatherPreview()
                 })
             })
         }
@@ -106,5 +100,13 @@ extension InfoWeatherView: NSTextFieldDelegate {
             print(textField.stringValue)
             PrefsInfo.weather.locationString = textField.stringValue
         }
+    }
+}
+
+extension NSView {
+    var parentViewController: NSViewController? {
+        sequence(first: self) { $0.nextResponder }
+            .first(where: { $0 is NSViewController })
+            .flatMap { $0 as? NSViewController }
     }
 }

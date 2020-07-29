@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="BrightnessViewController" customModule="Aerial" customModuleProvider="target">
+            <connections>
+                <outlet property="fadeToSlider" destination="gQf-ZQ-hsb" id="i0H-fe-ouq"/>
+                <outlet property="lowerBrightness" destination="rTv-ct-a72" id="Hzb-cQ-Bvl"/>
+                <outlet property="onlyDimAtNight" destination="MXe-aq-z27" id="SkY-Ha-6ha"/>
+                <outlet property="onlyDimOnBattery" destination="E0D-Qf-cW9" id="ZMC-Zn-v1k"/>
+                <outlet property="sleepAfterLabel" destination="NR2-tO-ywP" id="4vP-XJ-5Un"/>
+                <outlet property="startFromSlider" destination="Zjp-n9-q99" id="Hdc-nI-R1U"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="800" height="500"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rTv-ct-a72">
+                    <rect key="frame" x="197" y="459" width="259" height="22"/>
+                    <string key="toolTip">If enabled, Aerial will lower your screen brightness to your desired setting, and fade it progressively until your Mac goes to sleep</string>
+                    <buttonCell key="cell" type="check" title="Lower brightness while playing videos" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="kxF-VJ-OEL">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="lowerBrightnessClick:" target="-2" id="6aT-m2-P6M"/>
+                    </connections>
+                </button>
+                <button toolTip="Check if you only want to enable the brightness dimming at night" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MXe-aq-z27">
+                    <rect key="frame" x="197" y="304" width="200" height="22"/>
+                    <buttonCell key="cell" type="check" title="Only dim brightness at night" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="G4I-F0-Kzd">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="onlyDimAtNightClick:" target="-2" id="AvP-48-tp5"/>
+                    </connections>
+                </button>
+                <button toolTip="Check if you only want to enable the brightness dimming when on battery" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E0D-Qf-cW9">
+                    <rect key="frame" x="197" y="266" width="217" height="22"/>
+                    <buttonCell key="cell" type="check" title="Only dim brightness on battery" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="SLW-yU-xBg">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="onlyDimOnBatteryClick:" target="-2" id="18Y-1W-f3K"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NR2-tO-ywP">
+                    <rect key="frame" x="198" y="345" width="247" height="16"/>
+                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Your Mac currently goes to sleeep after:" id="Mjm-0D-ERr">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zjp-n9-q99">
+                    <rect key="frame" x="192" y="415" width="266" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="36E-yk-7Ut"/>
+                    </constraints>
+                    <sliderCell key="cell" controlSize="large" continuous="YES" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="above" numberOfTickMarks="5" sliderType="linear" id="lrx-Nh-yVE"/>
+                    <connections>
+                        <action selector="startFromSliderChange:" target="-2" id="CMb-p5-yWb"/>
+                    </connections>
+                </slider>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ek8-ut-oUM">
+                    <rect key="frame" x="124" y="424" width="70" height="16"/>
+                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Start from:" id="rv9-0q-qqD">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gQf-ZQ-hsb">
+                    <rect key="frame" x="192" y="377" width="266" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="pzV-rb-8Bf"/>
+                    </constraints>
+                    <sliderCell key="cell" controlSize="large" continuous="YES" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="above" numberOfTickMarks="5" sliderType="linear" id="PEJ-J7-U1S"/>
+                    <connections>
+                        <action selector="fadeToSliderChange:" target="-2" id="WIo-7i-wcv"/>
+                    </connections>
+                </slider>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eei-VX-faK">
+                    <rect key="frame" x="141" y="386" width="53" height="16"/>
+                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Fade to:" id="uHK-Ny-zuZ">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="rTv-ct-a72" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="200" id="BNx-o2-9C2"/>
+                <constraint firstItem="NR2-tO-ywP" firstAttribute="top" secondItem="gQf-ZQ-hsb" secondAttribute="bottom" constant="22" id="CPh-k4-TCP"/>
+                <constraint firstItem="MXe-aq-z27" firstAttribute="leading" secondItem="rTv-ct-a72" secondAttribute="leading" id="Ix6-zz-1ID"/>
+                <constraint firstItem="gQf-ZQ-hsb" firstAttribute="firstBaseline" secondItem="eei-VX-faK" secondAttribute="firstBaseline" id="PKu-cX-kOM"/>
+                <constraint firstItem="MXe-aq-z27" firstAttribute="top" secondItem="NR2-tO-ywP" secondAttribute="bottom" constant="22" id="ROm-s0-lZ4"/>
+                <constraint firstItem="E0D-Qf-cW9" firstAttribute="top" secondItem="MXe-aq-z27" secondAttribute="bottom" constant="22" id="bpJ-kA-ASb"/>
+                <constraint firstItem="Zjp-n9-q99" firstAttribute="leading" secondItem="ek8-ut-oUM" secondAttribute="trailing" constant="8" symbolic="YES" id="eLX-Fd-iZi"/>
+                <constraint firstItem="Zjp-n9-q99" firstAttribute="firstBaseline" secondItem="ek8-ut-oUM" secondAttribute="firstBaseline" id="g2a-t0-dpw"/>
+                <constraint firstItem="NR2-tO-ywP" firstAttribute="leading" secondItem="rTv-ct-a72" secondAttribute="leading" id="gza-i6-CJX"/>
+                <constraint firstItem="gQf-ZQ-hsb" firstAttribute="leading" secondItem="rTv-ct-a72" secondAttribute="leading" id="nhC-wQ-I6y"/>
+                <constraint firstItem="eei-VX-faK" firstAttribute="top" secondItem="ek8-ut-oUM" secondAttribute="bottom" constant="22" id="q0c-nT-Hig"/>
+                <constraint firstItem="rTv-ct-a72" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="22" id="sDp-Dj-7MD"/>
+                <constraint firstItem="ek8-ut-oUM" firstAttribute="top" secondItem="rTv-ct-a72" secondAttribute="bottom" constant="22" id="sGA-HQ-2K0"/>
+                <constraint firstItem="gQf-ZQ-hsb" firstAttribute="leading" secondItem="eei-VX-faK" secondAttribute="trailing" constant="8" symbolic="YES" id="sVL-X4-ZJj"/>
+                <constraint firstItem="E0D-Qf-cW9" firstAttribute="leading" secondItem="rTv-ct-a72" secondAttribute="leading" id="vUM-qu-2Ql"/>
+                <constraint firstItem="Zjp-n9-q99" firstAttribute="leading" secondItem="rTv-ct-a72" secondAttribute="leading" id="viO-g4-mvt"/>
+            </constraints>
+            <point key="canvasLocation" x="-172" y="154"/>
+        </customView>
+    </objects>
+</document>

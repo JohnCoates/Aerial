@@ -24,7 +24,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     var player: AVPlayer?
     var currentVideo: AerialVideo?
 
-    var preferencesController: PreferencesWindowController?
+    //var preferencesController: PreferencesWindowController?
+    var preferencesController: PanelWindowController?
 
     var observerWasSet = false
     var hasStartedPlaying = false
@@ -178,21 +179,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             debugLog("\(self.description) AerialView setup init (V\(version)) preview: \(self.isPreview)")
         }
 
-        let preferences = Preferences.sharedInstance
-
-        let au = AutoUpdates.sharedInstance
-        // Run Sparkle updater if enabled
-        if !isPreview {
-            if preferences.updateWhileSaverMode {
-                if PrefsUpdates.sparkleUpdateMode == .notify {
-                    // Run the probing check
-                    au.doProbingCheck()
-                } else {
-                    // Run the forced update
-                    au.doForcedUpdate()
-                }
-            }
-        }
+        // First thing, we may need to migrate the cache !
+        Cache.migrate()
 
         // Check early if we need to enable power saver mode,
         // black screen with minimal brightness
@@ -279,7 +267,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             AerialView.sharedPlayerIndex = AerialView.instanciatedViews.count-1
         }
 
-        ManifestLoader.instance.addCallback { _ in
+        VideoList.instance.addCallback {
             self.playNextVideo()
         }
     }
@@ -301,17 +289,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             // And our additional layers
             layerManager.setContentScale(scale: (self.window?.backingScaleFactor) ?? 1.0)
         }
-/*
-        // TMP TEST
-        if self.window?.backingScaleFactor == 1.0 {
-            debugLog("*** Forcing retina 2.0")
-            self.layer!.contentsScale = 2.0
-            self.playerLayer.contentsScale = 2.0
-
-            // And our additional layers
-            layerManager.setContentScale(scale: 2.0)
-        }
-*/
     }
 
     // On previews, it's possible that our shared player was stopped and is not reusable
@@ -388,7 +365,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     // MARK: - playNextVideo()
     func playNextVideo() {
-        print("-/-/-/ PNV")
         let notificationCenter = NotificationCenter.default
         // Clear everything
         layerManager.clearLayerAnimations(player: self.player!)
@@ -433,7 +409,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             (player.currentItem as? AerialPlayerItem)?.video
         }
 
-        let (randomVideo, pshouldLoop) = ManifestLoader.instance.randomVideo(excluding: currentVideos)
+        let (randomVideo, pshouldLoop) = VideoList.instance.randomVideo(excluding: currentVideos)
 
         // If we only have one video in the playlist, we can rewind it for seamless transitions
         self.shouldLoop = pshouldLoop
@@ -486,6 +462,12 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                                        name: NSNotification.Name.AVPlayerItemPlaybackStalled,
                                        object: currentItem)
         player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
+
+        // Let's never download stuff in preview...
+        if !isPreview {
+            Cache.fillOrRollCache()
+        }
+
     }
 
     override func keyDown(with event: NSEvent) {
@@ -583,7 +565,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             return controller.window
         }
 
-        let controller = PreferencesWindowController(windowNibName: "PreferencesWindow")
+//        let controller = PreferencesWindowController(windowNibName: "PreferencesWindow")
+        let controller = PanelWindowController()
         preferencesController = controller
         return controller.window
     }

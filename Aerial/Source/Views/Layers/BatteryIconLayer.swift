@@ -18,6 +18,8 @@ class BatteryIconLayer: AnimationLayer {
     var textLayer: CATextLayer?
     var charging: CALayer?
 
+    var backupHeight: CGFloat?
+
     override init(layer: Any) {
         super.init(layer: layer)
     }
@@ -48,7 +50,7 @@ class BatteryIconLayer: AnimationLayer {
     }
 
     func setup() {
-        let imagePath = Bundle(for: PreferencesWindowController.self).path(
+        let imagePath = Bundle(for: PanelWindowController.self).path(
             forResource: "battery.0",
             ofType: "pdf")
 
@@ -65,6 +67,9 @@ class BatteryIconLayer: AnimationLayer {
         frame.size.height = iconLayer!.frame.size.height + 10
         frame.size.width = iconLayer!.frame.size.width + 20
 
+        // We need that for later
+        backupHeight = frame.size.height
+
         iconLayer!.position.x = frame.size.width
         iconLayer!.position.y = frame.size.height
 
@@ -80,7 +85,7 @@ class BatteryIconLayer: AnimationLayer {
         self.addSublayer(iconLayer!)
         self.addSublayer(textLayer!)
 
-        let chargingPath = Bundle(for: PreferencesWindowController.self).path(
+        let chargingPath = Bundle(for: PanelWindowController.self).path(
             forResource: "bolt.fill",
             ofType: "pdf")
 
@@ -130,6 +135,16 @@ class BatteryIconLayer: AnimationLayer {
 
     func updateStatus() {
         let percent = Battery.getRemainingPercent()
+
+        if PrefsInfo.battery.disableWhenFull {
+            if percent == 100 {
+                opacity = 0
+                frame.size.height = 1
+            } else {
+                opacity = 1
+                frame.size.height = backupHeight!
+            }
+        }
 
         // Should we put the bolt or not
         if !Battery.isUnplugged() {

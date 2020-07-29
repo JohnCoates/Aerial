@@ -63,6 +63,8 @@ class WeatherLayer: AnimationLayer {
         // Only run this once
         if !wasSetup {
             wasSetup = true
+            frame.size = CGSize(width: 100, height: 1)
+            update()
 
             if Weather.info != nil {
                 displayWeatherBlock()
@@ -85,18 +87,21 @@ class WeatherLayer: AnimationLayer {
         if cscale != nil {
             todayCond.contentsScale = cscale!
         }
+        todayCond.anchorPoint = CGPoint(x: 0, y: 0)
+        todayCond.position = CGPoint(x: 0, y: 10)
         addSublayer(todayCond)
-        self.frame.size = CGSize(width: todayCond.frame.width, height: 85)
+
+        self.frame.size = CGSize(width: todayCond.frame.width, height: 95)
 
         let logo = YahooLayer()
         logo.anchorPoint = CGPoint(x: 1, y: 0)
-        logo.position = CGPoint(x: frame.size.width-10, y: 0)
+        logo.position = CGPoint(x: frame.size.width-10, y: 10)
         if cscale != nil {
             logo.contentsScale = cscale!
         }
         addSublayer(logo)
 
-        update()
+        update(redraw: true)
         let fadeAnimation = self.createFadeInAnimation()
         add(fadeAnimation, forKey: "weatherfade")
     }

@@ -50,6 +50,10 @@ var errorMessages = [LogMessage]()
 
 // swiftlint:disable:next identifier_name
 func Log(level: ErrorLevel, message: String) {
+    #if DEBUG
+    print("\(message)\n")
+    #endif
+
     errorMessages.append(LogMessage(level: level, message: message))
 
     // We report errors to Console.app
@@ -70,7 +74,7 @@ func Log(level: ErrorLevel, message: String) {
     }
 
     // Log to disk
-    if preferences.logToDisk {
+    if preferences.debugMode {
         logToDisk(message)
     }
 }
@@ -111,10 +115,6 @@ func logToDisk(_ message: String) {
 }
 
 func debugLog(_ message: String) {
-    #if DEBUG
-    print("\(message)\n")
-    #endif
-
     // Comment the condition to always log debug mode
     let preferences = Preferences.sharedInstance
     if preferences.debugMode {

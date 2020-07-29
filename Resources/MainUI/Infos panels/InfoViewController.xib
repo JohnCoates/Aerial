@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="InfoViewController" customModule="Aerial" customModuleProvider="target">
+            <connections>
+                <outlet property="versionLabel" destination="ceu-gu-KNt" id="W5n-Yd-PJM"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="811" height="530"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="wIm-3a-mSi">
+                    <rect key="frame" x="36" y="96" width="740" height="394"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mef-02-T9r">
+                            <rect key="frame" x="358" y="216" width="304" height="64"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="300" id="Hw7-YP-zzd"/>
+                            </constraints>
+                            <textFieldCell key="cell" id="GBy-sg-YND">
+                                <font key="font" metaFont="system"/>
+                                <string key="title">A free, open source, macOS Screen Saver developped and maintained by Guillaume Louel. 
+
+Enjoying Aerial and want to buy me a coffee ? </string>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T8n-jN-Ee4">
+                            <rect key="frame" x="20" y="54" width="320" height="320"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="320" id="hRR-xq-21J"/>
+                                <constraint firstAttribute="height" constant="320" id="ulF-hQ-vYE"/>
+                            </constraints>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-320" id="2e6-aG-RVX"/>
+                        </imageView>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ceu-gu-KNt">
+                            <rect key="frame" x="358" y="296" width="118" height="15"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="Version 123456789" id="3BT-Co-yYW">
+                                <font key="font" metaFont="systemMedium" size="12"/>
+                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="42t-wb-whP">
+                            <rect key="frame" x="358" y="319" width="83" height="35"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="Aerial" id="yQI-eW-wVq">
+                                <font key="font" metaFont="systemSemibold" size="30"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="Se0-cG-8jI">
+                            <rect key="frame" x="360" y="179" width="74" height="21"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="btn_donate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="xyx-wf-mwp">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="donateButton:" target="-2" id="Qdf-Yf-w2H"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="740" id="2zV-E4-Wa6"/>
+                        <constraint firstAttribute="height" constant="394" id="45p-zl-xFg"/>
+                        <constraint firstItem="Se0-cG-8jI" firstAttribute="leading" secondItem="mef-02-T9r" secondAttribute="leading" id="RNF-l1-dLv"/>
+                        <constraint firstItem="T8n-jN-Ee4" firstAttribute="leading" secondItem="wIm-3a-mSi" secondAttribute="leading" constant="20" id="SFW-Dl-MLg"/>
+                        <constraint firstItem="T8n-jN-Ee4" firstAttribute="top" secondItem="wIm-3a-mSi" secondAttribute="top" constant="20" id="bLk-yy-evl"/>
+                        <constraint firstItem="mef-02-T9r" firstAttribute="leading" secondItem="42t-wb-whP" secondAttribute="leading" id="c7e-Ls-aKb"/>
+                        <constraint firstItem="ceu-gu-KNt" firstAttribute="leading" secondItem="42t-wb-whP" secondAttribute="leading" id="eGo-aw-Dvi"/>
+                        <constraint firstItem="mef-02-T9r" firstAttribute="top" secondItem="ceu-gu-KNt" secondAttribute="bottom" constant="16" id="ege-Tu-444"/>
+                        <constraint firstItem="Se0-cG-8jI" firstAttribute="top" secondItem="mef-02-T9r" secondAttribute="bottom" constant="16" id="iFh-2s-NRY"/>
+                        <constraint firstItem="ceu-gu-KNt" firstAttribute="top" secondItem="42t-wb-whP" secondAttribute="bottom" constant="8" id="lNf-ed-2ne"/>
+                        <constraint firstItem="42t-wb-whP" firstAttribute="top" secondItem="wIm-3a-mSi" secondAttribute="top" constant="40" id="wPb-Uz-1zt"/>
+                        <constraint firstItem="42t-wb-whP" firstAttribute="leading" secondItem="T8n-jN-Ee4" secondAttribute="trailing" constant="20" id="xWn-Yo-X0G"/>
+                    </constraints>
+                </customView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1H8-uB-MG3">
+                    <rect key="frame" x="255" y="30" width="302" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Apple TV and tvOS are trademarks of Apple Inc. " id="J9M-tH-MlW">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="1H8-uB-MG3" secondAttribute="bottom" constant="30" id="KTe-3H-4DL"/>
+                <constraint firstItem="wIm-3a-mSi" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="Q9B-84-Whr"/>
+                <constraint firstItem="1H8-uB-MG3" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="jQ5-G3-md3"/>
+                <constraint firstItem="wIm-3a-mSi" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="40" id="wc8-8H-2BZ"/>
+            </constraints>
+            <point key="canvasLocation" x="-58.5" y="48"/>
+        </customView>
+        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="bHt-IO-dEN">
+            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="LDu-29-p5l"/>
+            <point key="canvasLocation" x="-163" y="-288"/>
+        </imageView>
+    </objects>
+    <resources>
+        <image name="btn_donate" width="74" height="21"/>
+        <image name="icon-320" width="320" height="320"/>
+    </resources>
+</document>

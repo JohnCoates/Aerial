@@ -51,7 +51,7 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
 
     var hasAwokenAlready = false
     var sw: NSWindow?
-    var controller: PreferencesWindowController?
+    var controller: PanelWindowController?
 
     // MARK: - Lifecycle
     required init?(coder: NSCoder) {
@@ -100,6 +100,8 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
         if let wobj = notification.object as? NSPanel {
             if wobj.title == "Manage Custom Videos" {
                 debugLog("Closing cvc")
+                // TODO 2.0
+                /*
                 let manifestInstance = ManifestLoader.instance
                 manifestInstance.saveCustomVideos()
 
@@ -108,13 +110,13 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
                         contr.loaded(manifestVideos: [])
                     }
                 }
-                manifestInstance.loadManifestsFromLoadedFiles()
+                manifestInstance.loadManifestsFromLoadedFiles() */
             }
         }
     }
 
     // This is the public function to make this visible
-    func show(sender: NSButton, controller: PreferencesWindowController) {
+    func show(sender: NSButton, controller: PanelWindowController) {
         self.controller = controller
         if !mainPanel.isVisible {
             mainPanel.makeKeyAndOrderFront(sender)
@@ -466,11 +468,9 @@ extension CustomVideoController: NSOutlineViewDelegate {
                     if let str = item.string(forType: .fileURL) {
                         let surl = URL(fileURLWithPath: str).standardized
                         debugLog("received drop \(surl)")
-                        if let isDir = surl.isDirectory {
-                            if isDir {
-                                debugLog("processing dir")
-                                self.processPathForVideos(url: surl)
-                            }
+                        if surl.isDirectory {
+                            debugLog("processing dir")
+                            self.processPathForVideos(url: surl)
                         }
                     }
                 } else {
@@ -542,13 +542,23 @@ extension Dictionary {
 }
 
 extension URL {
-    var isDirectory: Bool? {
+    /*var isDirectory: Bool? {
         do {
             let values = try self.resourceValues(
                 forKeys: Set([URLResourceKey.isDirectoryKey])
             )
             return values.isDirectory
         } catch { return nil }
+    }*/
+
+    var isDirectory: Bool {
+        return (try? resourceValues(forKeys: [.isDirectoryKey]))?.isDirectory == true
+    }
+    var subDirectories: [URL] {
+        guard isDirectory else { return [] }
+        return (try? FileManager.default.contentsOfDirectory(at: self,
+                    includingPropertiesForKeys: nil,
+                    options: [.skipsHiddenFiles]).filter(\.isDirectory)) ?? []
     }
 }
 

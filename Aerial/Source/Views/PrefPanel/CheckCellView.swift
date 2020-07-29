@@ -120,13 +120,14 @@ final class CheckCellView: NSTableCellView {
 
     func queueVideo() {
         let videoManager = VideoManager.sharedInstance
-        videoManager.queueDownload(video!)
+        Cache.ensureDownload {
+            videoManager.queueDownload(self.video!)
+        }
     }
 
     @IBAction func addClick(_ button: NSButton?) {
         queueVideo()
     }
-
 }
 
 final class VerticallyAlignedTextFieldCell: NSTextFieldCell {

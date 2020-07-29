@@ -191,11 +191,19 @@ class ManifestLoader {
                 }
             }
 
-            // We may not want to stream
-            if preferences.neverStreamVideos == true {
-                if video.isAvailableOffline == false {
-                    continue
-                }
+            // Are we in full manual mode ?? This replace the old never stream setting
+            if !video.isAvailableOffline && !PrefsCache.enableManagement {
+                continue
+            }
+
+            // Is the video cached, and if not, are we full ?
+            if !video.isAvailableOffline && Cache.isFull() {
+                continue
+            }
+
+            // If the video isn't cached, can we network ?
+            if !video.isAvailableOffline && !Cache.canNetwork() {
+                continue
             }
 
             // All good ? Add to playlist
@@ -278,7 +286,10 @@ class ManifestLoader {
     // MARK: - Lifecycle
 
     init() {
+
         debugLog("Manifest init")
+        // 2.0 remove everything here
+/*
         // tmp
         loadCustomVideos()
         // We try to load our video manifests in 3 steps :
@@ -342,13 +353,13 @@ class ManifestLoader {
                 }
 
                 for url in urls {
-                    let operation = downloadManager.queueDownload(url)
+                    let operation = downloadManager.queueDownload(url, folder: "")
                     completion.addDependency(operation)
                 }
 
                 OperationQueue.main.addOperation(completion)
             }
-        }
+        }*/
     }
 
     // MARK: - This will refetch the manifests online
@@ -390,7 +401,7 @@ class ManifestLoader {
             self.loadCachedManifests()
         }
         for url in urls {
-            let operation = downloadManager.queueDownload(url)
+            let operation = downloadManager.queueDownload(url, folder: "")
             completion.addDependency(operation)
         }
         OperationQueue.main.addOperation(completion)
@@ -443,6 +454,7 @@ class ManifestLoader {
 
     // This is where we merge with the processed list
     func mergeCustomVideos() {
+        /*
         if let cvf = customVideoFolders {
             for folder in cvf.folders {
                 for asset in folder.assets {
@@ -466,14 +478,16 @@ class ManifestLoader {
                                                 secondaryName: asset.accessibilityLabel,
                                                 type: "video",
                                                 timeOfDay: asset.time,
+                                                scene: "landscape",
                                                 urls: urls,
-                                                manifest: .customVideos,
+                                                source: nil,
                                                 poi: [:],
                                                 communityPoi: asset.pointsOfInterest)
                     processedVideos.append(video)
                 }
             }
         }
+         */
     }
 
     func getResolution(asset: AVAsset) -> CGSize {
@@ -711,6 +725,7 @@ class ManifestLoader {
 
     // MARK: - JSON
     func readJSONFromData(_ data: Data, manifest: Manifests) {
+        /*
         do {
             let poiStringProvider = PoiStringProvider.sharedInstance
 
@@ -757,15 +772,16 @@ class ManifestLoader {
 
                 let (isDupe, foundDupe) = findDuplicate(id: id, url1080pH264: url1080pH264 ?? "")
                 if isDupe {
-                    foundDupe!.sources.append(manifest)
+                    //foundDupe!.sources.append(manifest)
                 } else {
                     let video = AerialVideo(id: id,             // Must have
                         name: name,                             // Must have
                         secondaryName: secondaryName,           // Optional
                         type: type,                             // Not sure the point of this one ?
                         timeOfDay: timeOfDay,
+                        scene: "landscape",
                         urls: urls,
-                        manifest: manifest,
+                        source: nil,
                         poi: poi ?? [:],
                         communityPoi: communityPoi)
 
@@ -775,10 +791,11 @@ class ManifestLoader {
         } catch {
             errorLog("Error retrieving content listing (new)")
             return
-        }
+        }*/
     }
 
     func readOldJSONFromData(_ data: Data, manifest: Manifests) {
+        /*
         do {
             let poiStringProvider = PoiStringProvider.sharedInstance
 
@@ -819,7 +836,7 @@ class ManifestLoader {
                     let (isDupe, foundDupe) = findDuplicate(id: id, url1080pH264: url)
                     if isDupe {
                         if foundDupe != nil {
-                            foundDupe!.sources.append(manifest)
+                            //foundDupe!.sources.append(manifest)
 
                             if foundDupe?.urls[.v1080pH264] == "" {
                                 foundDupe?.urls[.v1080pH264] = url
@@ -851,8 +868,9 @@ class ManifestLoader {
                             secondaryName: secondaryName,
                             type: type,         // Not sure the point of this one ?
                             timeOfDay: timeOfDay,
+                            scene: "landscape",
                             urls: urls,
-                            manifest: manifest,
+                            source: Source(),
                             poi: poi ?? [:],
                             communityPoi: communityPoi)
 
@@ -863,7 +881,7 @@ class ManifestLoader {
         } catch {
             errorLog("Error retrieving content listing (old)")
             return
-        }
+        }*/
     }
 
     // Look for a previously processed similar video
@@ -953,7 +971,7 @@ class ManifestLoader {
         debugLog("\(foundOldFiles) old files found")
         return ("\(foundOldFiles) old files found", foundOldFiles)
     }
-
+/*
     func moveOldVideos() {
         debugLog("move old videos")
         let cacheDirectory = VideoCache.appSupportDirectory!
@@ -1076,6 +1094,6 @@ class ManifestLoader {
         } catch {
             errorLog("Error while enumerating files \(cacheDirectoryUrl.path): \(error.localizedDescription)")
         }
-    }
+    }*/
 
 } //swiftlint:disable:this file_length

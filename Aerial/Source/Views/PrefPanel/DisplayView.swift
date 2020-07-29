@@ -111,7 +111,7 @@ class DisplayView: NSView {
                                width: activeRect.width/scaleFactor,
                                height: activeRect.height/scaleFactor)
 
-            let bundle = Bundle(for: PreferencesWindowController.self)
+            let bundle = Bundle(for: PanelWindowController.self)
             if let imagePath = bundle.path(forResource: "screen0", ofType: "jpg") {
                 let image = NSImage(contentsOfFile: imagePath)
                 image!.draw(in: activeSRect, from: calcScreenshotRect(src: activeSRect), operation: NSCompositingOperation.copy, fraction: 0.1)
@@ -137,7 +137,7 @@ class DisplayView: NSView {
 
             if PrefsDisplays.viewingMode != .spanned {
                 if displayDetection.isScreenActive(id: screen.id) {
-                    let bundle = Bundle(for: PreferencesWindowController.self)
+                    let bundle = Bundle(for: PanelWindowController.self)
                     if let imagePath = bundle.path(forResource: "screen"+String(idx), ofType: "jpg") {
                         var image = NSImage(contentsOfFile: imagePath)
 
@@ -185,7 +185,7 @@ class DisplayView: NSView {
                                         width: sInRect.width*xFactor,
                                         height: sInRect.height*yFactor)
 
-                    let bundle = Bundle(for: PreferencesWindowController.self)
+                    let bundle = Bundle(for: PanelWindowController.self)
                     if let imagePath = bundle.path(forResource: "screen0", ofType: "jpg") {
                         let image = NSImage(contentsOfFile: imagePath)
                         //image!.draw(in: sInRect)
