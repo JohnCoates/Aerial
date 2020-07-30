@@ -183,6 +183,11 @@ class VideoList {
     // MARK: - Callbacks
     func addCallback(_ callback:@escaping VideoListRefreshCallback) {
         callbacks.append(callback)
+
+        // We may need to insta callback if we were already inited
+        if !videos.isEmpty {
+            callback()
+        }
     }
 
     // This is how we force a source refresh, it will trigger various callbacks when done
