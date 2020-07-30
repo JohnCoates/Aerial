@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SidebarViewController" customModule="Aerial" customModuleProvider="target">
             <connections>
+                <outlet property="closeButton" destination="iG6-m2-MeH" id="OMi-5P-xSx"/>
                 <outlet property="downloadCancelButton" destination="RHI-PX-xtL" id="mbQ-uJ-uAR"/>
                 <outlet property="downloadIndicatorLabel" destination="K2f-cj-rKz" id="cWX-Zq-hvz"/>
                 <outlet property="downloadIndicatorProgress" destination="JMH-1C-Qj3" id="TpN-hW-IhO"/>

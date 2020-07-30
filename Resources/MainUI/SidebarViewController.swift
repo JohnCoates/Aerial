@@ -30,9 +30,12 @@ class SidebarViewController: NSViewController {
     // Always start with the videos panel selected
     var menuSelection: SidebarMenus = .videos
 
+    @IBOutlet var closeButton: NSButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        closeButton.isHighlighted = true
         sidebarOutlineView.delegate = self
         sidebarOutlineView.dataSource = self
 

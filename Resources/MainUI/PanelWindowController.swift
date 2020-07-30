@@ -9,7 +9,7 @@
 import Cocoa
 
 class PanelWindowController: NSWindowController {
-    lazy var firstSetupWindowController: FirstSetupWindowController = FirstSetupWindowController()
+    var firstSetupWindowController: FirstSetupWindowController?
 
     var splitVC: NSSplitViewController?
     var videosVC: VideosViewController?
@@ -33,12 +33,11 @@ class PanelWindowController: NSWindowController {
     var currentPath: String?
 
     convenience init() {
-        debugLog("PWC2 init")
         self.init(windowNibName: "PanelWindowController")
     }
 
     override func windowDidLoad() {
-        debugLog("PWC2 wdl")
+        debugLog("PWC2 wdl: Aerial version \(String(describing: Aerial.version))")
         super.windowDidLoad()
         currentPath = "location:all"
 
@@ -91,21 +90,24 @@ class PanelWindowController: NSWindowController {
         window?.contentViewController = splitVC
 
         debugLog("/PWC2 wdl")
-        /*
-        if PrefsAdvanced.firstTimeSetup == false {
+    }
+
+    func doFirstTimeSetup() {
+        if PrefsAdvanced.firstTimeSetup == false && firstSetupWindowController == nil {
+            let bundle = Bundle(for: PanelWindowController.self)
             // We also load our CustomVideos nib here
 
+            firstSetupWindowController = FirstSetupWindowController()
             var topLevelObjects: NSArray? = NSArray()
             if !bundle.loadNibNamed(NSNib.Name("FirstSetupWindowController"),
                                 owner: firstSetupWindowController,
                                 topLevelObjects: &topLevelObjects) {
                 errorLog("Could not load nib for CustomVideos, please report")
             }
-            firstSetupWindowController.windowDidLoad()
-            firstSetupWindowController.showWindow(self)
-            firstSetupWindowController.window?.makeKeyAndOrderFront(nil)
-
-        }*/
+            firstSetupWindowController!.windowDidLoad()
+            firstSetupWindowController!.showWindow(self)
+            firstSetupWindowController!.window!.makeKeyAndOrderFront(self)
+        }
     }
 
     // Switch from one menu list to another
@@ -167,29 +169,33 @@ class PanelWindowController: NSWindowController {
         // Remove the old one
         splitVC.removeChild(at: 1)
 
-        if path == "sources" {
+        switch path {
+        case "sources":
             splitVC.addSplitViewItem(sourcesViewItem!)
-        } else if path == "time" {
+        case "time":
             splitVC.addSplitViewItem(timeViewItem!)
-        } else if path == "displays" {
+        case "displays":
             splitVC.addSplitViewItem(displaysViewItem!)
-        } else if path == "brightness" {
+        case "brightness":
             splitVC.addSplitViewItem(brightnessViewItem!)
-        } else if path == "cache" {
+        case "cache":
             splitVC.addSplitViewItem(cacheViewItem!)
-        } else if path == "overlays" {
+        case "overlays":
             splitVC.addSplitViewItem(overlaysViewItem!)
-        } else if path == "updates" {
+        case "updates":
             splitVC.addSplitViewItem(updatesViewItem!)
-        } else if path == "advanced" {
+        case "advanced":
             splitVC.addSplitViewItem(advancedViewItem!)
         // Infos
-        } else if path == "about" {
+        case "about":
             splitVC.addSplitViewItem(infoViewItem!)
-        } else if path == "credits" {
+        case "credits":
             splitVC.addSplitViewItem(creditsViewItem!)
-        } else if path == "help" {
+        case "help":
             splitVC.addSplitViewItem(helpViewItem!)
+        default:
+            errorLog("Unknown path in panel")
+            splitVC.addSplitViewItem(infoViewItem!)
         }
     }
 
@@ -201,4 +207,15 @@ class PanelWindowController: NSWindowController {
         }
     }
 
+}
+
+extension PanelWindowController: NSWindowDelegate {
+    func windowDidBecomeKey(_ notification: Notification) {
+        debugLog("didbecomekey")
+
+        if (notification.object as? NSWindow) == self.window {
+            debugLog("wedidbecomekey")
+            doFirstTimeSetup()
+        }
+    }
 }

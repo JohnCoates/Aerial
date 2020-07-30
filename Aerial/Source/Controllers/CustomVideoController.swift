@@ -51,7 +51,7 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
 
     var hasAwokenAlready = false
     var sw: NSWindow?
-    var controller: PanelWindowController?
+    var controller: SourcesViewController?
 
     // MARK: - Lifecycle
     required init?(coder: NSCoder) {
@@ -116,7 +116,7 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
     }
 
     // This is the public function to make this visible
-    func show(sender: NSButton, controller: PanelWindowController) {
+    func show(sender: NSButton, controller: SourcesViewController) {
         self.controller = controller
         if !mainPanel.isVisible {
             mainPanel.makeKeyAndOrderFront(sender)
@@ -138,6 +138,7 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
 
     // MARK: - Add a new folder of videos to parse
     @IBAction func addFolderButton(_ sender: NSButton) {
+        debugLog("addFolder")
         if #available(OSX 10.15, *) {
             // On Catalina, we can't use NSOpenPanel right now
             addFolderTextField.stringValue = ""

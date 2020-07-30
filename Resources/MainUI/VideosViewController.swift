@@ -337,7 +337,7 @@ class VideosViewController: NSViewController {
             print(path)
             if let mode = modeFromPath(path) {
                 let index = Int(path.split(separator: ":")[1])!
-                if index >= 0 {
+                if index >= 0 && videoListTableView.selectedRow >= 0 {
                     return VideoList.instance.getVideoForSource(index, item: videoListTableView.selectedRow, mode: mode)
                 }
             } else {

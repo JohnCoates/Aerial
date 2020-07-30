@@ -18,8 +18,9 @@ class SourcesViewController: NSViewController {
         sourceOutlineView.delegate = self
     }
 
-    @IBAction func downloadAllClick(_ sender: Any) {
+    @IBAction func downloadAllClick(_ sender: NSButton) {
         print("download All from sources")
+
     }
 }
 

@@ -20,6 +20,7 @@ class FirstSetupWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
 
+        splitVC.splitView.isVertical = false
         print("*** fswc vdl")
         // We always need to specify a bundle manually, auto loading from bundle
         // does not work for screen savers when compiled as plugins
@@ -39,6 +40,7 @@ class FirstSetupWindowController: NSWindowController {
     }
 
     func nextAction() {
+        window?.close()
 
     }
 }
