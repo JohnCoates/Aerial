@@ -73,7 +73,7 @@
                                                     <attributedString key="attributedTitle"/>
                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                 </menuItem>
-                                                <menuItem title="Set" image="book" catalog="system" id="GkJ-Xg-Qmh">
+                                                <menuItem title="Set" image="book" catalog="system" hidden="YES" id="GkJ-Xg-Qmh">
                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                 </menuItem>
                                             </items>

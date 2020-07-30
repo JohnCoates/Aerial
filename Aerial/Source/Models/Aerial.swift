@@ -59,7 +59,24 @@ class Aerial: NSObject {
         return nil
     }
 
-    // ?.tinting(with: NSColor.controlAccentColor)
+    static func getMiniSymbol(_ named: String) -> NSImage? {
+        if let symbol = getSymbol(named) {
+            return resize(image: symbol, w: Int(symbol.size.width)/10, h: Int(symbol.size.height)/10).tinting(with: .labelColor)
+        } else {
+            return nil
+        }
+    }
+
+    // TODO: move to extension of NSImage...
+    static func resize(image: NSImage, w: Int, h: Int) -> NSImage {
+        let destSize = NSSize(width: CGFloat(w), height: CGFloat(h))
+        let newImage = NSImage(size: destSize)
+        newImage.lockFocus()
+        image.draw(in: NSRect(x: 0, y: 0, width: destSize.width, height: destSize.height), from: NSRect(x: 0, y: 0, width: image.size.width, height: image.size.height), operation: NSCompositingOperation.sourceOver, fraction: CGFloat(1))
+        newImage.unlockFocus()
+        newImage.size = destSize
+        return NSImage(data: newImage.tiffRepresentation!)!
+    }
 
     static func getAccentedSymbol(_ named: String) -> NSImage? {
         if #available(OSX 10.14, *) {

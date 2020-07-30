@@ -430,7 +430,7 @@ struct Cache {
     }
 
     static func fillOrRollCache() {
-        guard PrefsCache.enableManagement else {
+        guard PrefsCache.enableManagement && canNetwork() else {
             return
         }
 

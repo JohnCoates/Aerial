@@ -77,6 +77,13 @@ class VideosViewController: NSViewController {
             heroPlayerView.videoGravity = .resizeAspectFill
         }
 
+        rotationPopup.item(at: 0)?.image = Aerial.getMiniSymbol("film")
+        rotationPopup.item(at: 1)?.image = Aerial.getMiniSymbol("star")
+        rotationPopup.item(at: 2)?.image = Aerial.getMiniSymbol("mappin.and.ellipse")
+        rotationPopup.item(at: 3)?.image = Aerial.getMiniSymbol("clock")
+        rotationPopup.item(at: 4)?.image = Aerial.getMiniSymbol("tram.fill")
+        rotationPopup.item(at: 5)?.image = Aerial.getMiniSymbol("antenna.radiowaves.left.and.right")
+
         updateVideoView()
         updateRotationMenu()
     }
