@@ -13,6 +13,7 @@ class VideosViewController: NSViewController {
     // Top rotation view
     @IBOutlet var rotationView: NSView!
     @IBOutlet var rotationPopup: NSPopUpButton!
+    @IBOutlet var rotationImage: NSImageView!
 
     @IBOutlet var rotationSecondaryPopup: NSPopUpButton!
     @IBOutlet var rotationSecondaryMenu: NSMenu!
@@ -77,15 +78,21 @@ class VideosViewController: NSViewController {
             heroPlayerView.videoGravity = .resizeAspectFill
         }
 
-        rotationPopup.item(at: 0)?.image = Aerial.getMiniSymbol("film")
-        rotationPopup.item(at: 1)?.image = Aerial.getMiniSymbol("star")
-        rotationPopup.item(at: 2)?.image = Aerial.getMiniSymbol("mappin.and.ellipse")
-        rotationPopup.item(at: 3)?.image = Aerial.getMiniSymbol("clock")
-        rotationPopup.item(at: 4)?.image = Aerial.getMiniSymbol("tram.fill")
-        rotationPopup.item(at: 5)?.image = Aerial.getMiniSymbol("antenna.radiowaves.left.and.right")
+        fixIcons()
 
         updateVideoView()
         updateRotationMenu()
+    }
+
+    // Since we can't directly use SF Symbols...
+    func fixIcons() {
+        rotationPopup.item(at: 0)?.setIcons("film")
+        rotationPopup.item(at: 1)?.setIcons("star")
+        rotationPopup.item(at: 2)?.setIcons("mappin.and.ellipse")
+        rotationPopup.item(at: 3)?.setIcons("clock")
+        rotationPopup.item(at: 4)?.setIcons("tram.fill")
+        rotationPopup.item(at: 5)?.setIcons("antenna.radiowaves.left.and.right")
+        rotationImage.image = Aerial.getAccentedSymbol("dial.min")
     }
 
     func reloadFor(path: String) {

@@ -207,6 +207,7 @@ extension SidebarViewController: NSOutlineViewDelegate {
             }
             if let imageView = view?.imageView {
                 imageView.image = Sidebar.iconFor(entry.path, name: entry.name)
+                imageView.image?.isTemplate = true
                 imageView.sizeThatFits(CGSize(width: 24, height: 24))   // Hmm
             }
         }

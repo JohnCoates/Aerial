@@ -59,20 +59,25 @@ class Aerial: NSObject {
         return nil
     }
 
-    static func getMiniSymbol(_ named: String) -> NSImage? {
+    static func getMiniSymbol(_ named: String, tint: NSColor = .labelColor) -> NSImage? {
         if let symbol = getSymbol(named) {
-            return resize(image: symbol, w: Int(symbol.size.width)/10, h: Int(symbol.size.height)/10).tinting(with: .labelColor)
+            return resize(image: symbol, w: Int(symbol.size.width)/10, h: Int(symbol.size.height)/10).tinting(with: tint)
         } else {
             return nil
         }
     }
 
     // TODO: move to extension of NSImage...
+    // swiftlint:disable:next identifier_name
     static func resize(image: NSImage, w: Int, h: Int) -> NSImage {
         let destSize = NSSize(width: CGFloat(w), height: CGFloat(h))
         let newImage = NSImage(size: destSize)
         newImage.lockFocus()
-        image.draw(in: NSRect(x: 0, y: 0, width: destSize.width, height: destSize.height), from: NSRect(x: 0, y: 0, width: image.size.width, height: image.size.height), operation: NSCompositingOperation.sourceOver, fraction: CGFloat(1))
+        image.draw(in: NSRect(x: 0, y: 0,
+                              width: destSize.width,
+                              height: destSize.height),
+                   from: NSRect(x: 0, y: 0, width: image.size.width, height: image.size.height),
+                   operation: NSCompositingOperation.sourceOver, fraction: CGFloat(1))
         newImage.unlockFocus()
         newImage.size = destSize
         return NSImage(data: newImage.tiffRepresentation!)!

@@ -17,6 +17,7 @@
                 <outlet property="hideButton" destination="dZn-gm-IU9" id="y01-F6-ODn"/>
                 <outlet property="isCachedImageView" destination="EdU-Jl-WkG" id="guj-Ae-dU8"/>
                 <outlet property="locationLabel" destination="dMl-IM-mBU" id="KAk-Ul-NCl"/>
+                <outlet property="rotationImage" destination="Asf-6o-WdI" id="tfa-oa-3jL"/>
                 <outlet property="rotationPopup" destination="zPp-ce-Ue7" id="kgG-cM-Mdg"/>
                 <outlet property="rotationSecondaryMenu" destination="srx-t1-C7i" id="Us8-xB-URN"/>
                 <outlet property="rotationSecondaryPopup" destination="pot-N7-9D4" id="adk-k3-fPC"/>
@@ -43,8 +44,8 @@
                         <customView verticalCompressionResistancePriority="680" translatesAutoresizingMaskIntoConstraints="NO" id="ABO-qg-tKy">
                             <rect key="frame" x="0.0" y="473" width="853" height="44"/>
                             <subviews>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k3W-6B-7ra">
-                                    <rect key="frame" x="40" y="14" width="135" height="16"/>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k3W-6B-7ra">
+                                    <rect key="frame" x="50" y="14" width="135" height="16"/>
                                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Aerial currently plays:" id="qwA-3F-bfS">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -52,7 +53,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zPp-ce-Ue7">
-                                    <rect key="frame" x="176" y="2" width="151" height="40"/>
+                                    <rect key="frame" x="186" y="2" width="151" height="40"/>
                                     <popUpButtonCell key="cell" type="push" title="Everything" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="jkn-QZ-30T" id="D8b-BN-FEa">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="menu"/>
@@ -83,12 +84,16 @@
                                         <action selector="rotationPopupChange:" target="-2" id="1uw-wE-kPg"/>
                                     </connections>
                                 </popUpButton>
-                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Asf-6o-WdI">
-                                    <rect key="frame" x="16" y="14.5" width="18.5" height="16"/>
-                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="dial.min" catalog="system" id="02X-YM-lFe"/>
+                                <imageView horizontalHuggingPriority="25" verticalHuggingPriority="25" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" translatesAutoresizingMaskIntoConstraints="NO" id="Asf-6o-WdI">
+                                    <rect key="frame" x="16" y="8" width="28" height="28"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="28" id="4XK-VT-sn4"/>
+                                    </constraints>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="dial" id="02X-YM-lFe"/>
+                                    <color key="contentTintColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 </imageView>
-                                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pot-N7-9D4">
-                                    <rect key="frame" x="333" y="1" width="44" height="40"/>
+                                <popUpButton verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pot-N7-9D4">
+                                    <rect key="frame" x="343" y="1" width="44" height="40"/>
                                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="1Qe-dD-9QB">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="menu"/>
@@ -100,13 +105,12 @@
                                 </popUpButton>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="pot-N7-9D4" firstAttribute="firstBaseline" secondItem="Asf-6o-WdI" secondAttribute="firstBaseline" id="13Z-kf-8wD"/>
+                                <constraint firstItem="Asf-6o-WdI" firstAttribute="top" secondItem="ABO-qg-tKy" secondAttribute="top" constant="8" id="0n3-H1-cuA"/>
+                                <constraint firstAttribute="bottom" secondItem="Asf-6o-WdI" secondAttribute="bottom" constant="8" id="2sN-ga-tWN"/>
                                 <constraint firstItem="k3W-6B-7ra" firstAttribute="leading" secondItem="Asf-6o-WdI" secondAttribute="trailing" constant="8" symbolic="YES" id="MtG-Rw-fTG"/>
                                 <constraint firstItem="zPp-ce-Ue7" firstAttribute="leading" secondItem="k3W-6B-7ra" secondAttribute="trailing" constant="8" symbolic="YES" id="OW2-kF-Khu"/>
-                                <constraint firstItem="zPp-ce-Ue7" firstAttribute="firstBaseline" secondItem="Asf-6o-WdI" secondAttribute="firstBaseline" id="Pb6-fU-wN0"/>
                                 <constraint firstItem="zPp-ce-Ue7" firstAttribute="top" secondItem="ABO-qg-tKy" secondAttribute="top" constant="8" id="QNf-TX-cz9"/>
                                 <constraint firstItem="pot-N7-9D4" firstAttribute="leading" secondItem="zPp-ce-Ue7" secondAttribute="trailing" constant="16" id="UsM-mn-8cu"/>
-                                <constraint firstItem="k3W-6B-7ra" firstAttribute="firstBaseline" secondItem="Asf-6o-WdI" secondAttribute="firstBaseline" id="Zpi-Bm-Agz"/>
                                 <constraint firstItem="Asf-6o-WdI" firstAttribute="leading" secondItem="ABO-qg-tKy" secondAttribute="leading" constant="16" id="kyL-FZ-qwS"/>
                                 <constraint firstAttribute="bottom" secondItem="zPp-ce-Ue7" secondAttribute="bottom" constant="8" id="rjQ-NE-uv6"/>
                             </constraints>
@@ -439,7 +443,7 @@
         <image name="arrow.down.circle.fill" width="141" height="155"/>
         <image name="book" catalog="system" width="18" height="15"/>
         <image name="clock" catalog="system" width="15" height="15"/>
-        <image name="dial.min" catalog="system" width="18" height="16"/>
+        <image name="dial" width="163" height="152"/>
         <image name="eye" catalog="system" width="21" height="13"/>
         <image name="eye.slash" catalog="system" width="21" height="14"/>
         <image name="film" catalog="system" width="18" height="14"/>
