@@ -15,6 +15,7 @@
                 <outlet property="lightDarkModeLabel" destination="a5F-p8-bk1" id="DNr-aK-h5r"/>
                 <outlet property="longitudeFormatter" destination="OYy-Oc-cy9" id="qYc-C7-BfJ"/>
                 <outlet property="longitudeTextField" destination="cVA-B0-e3H" id="E7Y-O0-po1"/>
+                <outlet property="myLocationImageView" destination="5Q7-5H-Koj" id="eKk-cq-OiL"/>
                 <outlet property="nightShiftLabel" destination="R2Z-La-EL1" id="uio-Xk-d68"/>
                 <outlet property="solarModePopup" destination="Sy9-yG-Mb4" id="ng6-6R-EsQ"/>
                 <outlet property="sunriseTime" destination="YLj-jJ-de5" id="4fH-Ra-yJe"/>
@@ -239,8 +240,12 @@
                     </connections>
                 </button>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Q7-5H-Koj">
-                    <rect key="frame" x="61" y="423" width="15" height="15"/>
-                    <imageCell key="cell" controlSize="large" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="location" catalog="system" id="hiP-2o-HMf"/>
+                    <rect key="frame" x="56" y="420" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="Uh6-lT-zdL"/>
+                        <constraint firstAttribute="height" constant="20" id="pvR-Cn-vNJ"/>
+                    </constraints>
+                    <imageCell key="cell" controlSize="large" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="mappin.and.ellipse" id="hiP-2o-HMf"/>
                 </imageView>
                 <popUpButton toolTip="Pick your favorite dawn/dusk sunrise/sunset calculation method, see help for more" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sy9-yG-Mb4">
                     <rect key="frame" x="195" y="42" width="157" height="40"/>
@@ -363,6 +368,6 @@
         <image name="NSHomeTemplate" width="19" height="16"/>
         <image name="NSRightFacingTriangleTemplate" width="10" height="14"/>
         <image name="NSStopProgressTemplate" width="14" height="13"/>
-        <image name="location" catalog="system" width="15" height="15"/>
+        <image name="mappin.and.ellipse" width="133" height="173"/>
     </resources>
 </document>

@@ -39,6 +39,8 @@ class TimeViewController: NSViewController {
     @IBOutlet var solarModePopup: NSPopUpButton!
     @IBOutlet var darkModeNightOverride: NSButton!
 
+    @IBOutlet var myLocationImageView: NSImageView!
+
     lazy var timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
@@ -83,6 +85,7 @@ class TimeViewController: NSViewController {
             timeLocationRadio.state = .on
         }
 
+        myLocationImageView.image = Aerial.getSymbol("mappin.and.ellipse")?.tinting(with: .labelColor)
         solarModePopup.selectItem(at: PrefsTime.solarMode.rawValue)
     }
 
