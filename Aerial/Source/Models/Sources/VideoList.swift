@@ -273,7 +273,7 @@ class VideoList {
         switch PrefsVideos.shouldPlay {
         case .everything:
             return videos
-                .filter({ $0.isAvailableOffline && !PrefsVideos.hidden.contains($0.id) })
+                .filter({ !PrefsVideos.hidden.contains($0.id) })
                 .sorted { $0.secondaryName < $1.secondaryName }
         case .favorites:
             return videos

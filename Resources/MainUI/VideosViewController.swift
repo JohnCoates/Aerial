@@ -372,7 +372,6 @@ class VideosViewController: NSViewController {
 
             setTimeIcon(nil)
             setSceneIcon(nil)
-
         }
     }
 
