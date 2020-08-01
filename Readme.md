@@ -32,7 +32,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 **Please note :** Starting with Catalina, Aerial will only notify you of new versions, but won't be able to automatically update itself. This is a limitation of macOS Catalina. 
 
-**Trying Apple Silicon and missing Aerial ?** See [the end of this comment](https://github.com/JohnCoates/Aerial/issues/1006#issuecomment-656750594) on how to get Aerial working there. 
+**Trying Apple Silicon and missing Aerial ?** See [the end of this comment](https://github.com/JohnCoates/Aerial/issues/1006#issuecomment-656750594) on how to get Aerial working there. But please be aware that screen savers are broken on Apple Silicon with Big Sur beta 3 !
 
 Installation instructions (latest versions require macOS 10.12 or above) :
 
