@@ -170,6 +170,9 @@
 		0321A53E24D4515B004F1975 /* folder.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0321A53D24D4515B004F1975 /* folder.pdf */; };
 		0321A53F24D4515B004F1975 /* folder.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0321A53D24D4515B004F1975 /* folder.pdf */; };
 		0321A54024D4515B004F1975 /* folder.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0321A53D24D4515B004F1975 /* folder.pdf */; };
+		0321A54424D5C863004F1975 /* NSButton+icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321A54324D5C863004F1975 /* NSButton+icons.swift */; };
+		0321A54524D5C863004F1975 /* NSButton+icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321A54324D5C863004F1975 /* NSButton+icons.swift */; };
+		0321A54624D5C863004F1975 /* NSButton+icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321A54324D5C863004F1975 /* NSButton+icons.swift */; };
 		03233B68217272640077D3F9 /* PoiStringProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03233B67217272640077D3F9 /* PoiStringProvider.swift */; };
 		03233B692172762C0077D3F9 /* PoiStringProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03233B67217272640077D3F9 /* PoiStringProvider.swift */; };
 		032D1161239A7D82007E7756 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032D1160239A7D82007E7756 /* Battery.swift */; };
@@ -829,6 +832,7 @@
 		031FB78A248A87330054BAFD /* PrefsCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsCache.swift; sourceTree = "<group>"; };
 		0321A53224D44E80004F1975 /* ActionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCellView.swift; sourceTree = "<group>"; };
 		0321A53D24D4515B004F1975 /* folder.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = folder.pdf; sourceTree = "<group>"; };
+		0321A54324D5C863004F1975 /* NSButton+icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+icons.swift"; sourceTree = "<group>"; };
 		03233B67217272640077D3F9 /* PoiStringProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoiStringProvider.swift; sourceTree = "<group>"; };
 		032D1160239A7D82007E7756 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 		032D1163239A7F0C007E7756 /* AerialView+Brightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AerialView+Brightness.swift"; sourceTree = "<group>"; };
@@ -1557,6 +1561,7 @@
 				039385792175D4B80040B850 /* AVPlayerViewExtension.swift */,
 				03A4A80A2451CE2C00A1F7A3 /* NSImage+trim.swift */,
 				03047A5324D2DD8E000EFE62 /* NSMenuItem+icons.swift */,
+				0321A54324D5C863004F1975 /* NSButton+icons.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2256,6 +2261,7 @@
 				0396D53524B8B7ED00CC021B /* NSImage+trim.swift in Sources */,
 				0396D53624B8B7ED00CC021B /* Battery.swift in Sources */,
 				0396D53724B8B7ED00CC021B /* VideoList.swift in Sources */,
+				0321A54524D5C863004F1975 /* NSButton+icons.swift in Sources */,
 				0396D53824B8B7ED00CC021B /* InfoBatteryView.swift in Sources */,
 				032E099F24C3897E00387230 /* AdvancedViewController.swift in Sources */,
 				0396D53A24B8B7ED00CC021B /* DateLayer.swift in Sources */,
@@ -2399,6 +2405,7 @@
 				03BF51BD23A26522008AD373 /* LayerManager.swift in Sources */,
 				FA6F81DD1D939455007975FE /* Preferences.swift in Sources */,
 				03933B8D24C3986800A98D94 /* SourcesViewController.swift in Sources */,
+				0321A54624D5C863004F1975 /* NSButton+icons.swift in Sources */,
 				0300B86324D2052B006132E5 /* WelcomeViewController.swift in Sources */,
 				034116D423F9BD3100CD7674 /* PrefsUpdates.swift in Sources */,
 				0345EDEA24C3239400C73038 /* DisplaysViewController.swift in Sources */,
@@ -2495,6 +2502,7 @@
 				03A4A80B2451CE2C00A1F7A3 /* NSImage+trim.swift in Sources */,
 				032D1161239A7D82007E7756 /* Battery.swift in Sources */,
 				03C97BA724B5F74900739CED /* VideoList.swift in Sources */,
+				0321A54424D5C863004F1975 /* NSButton+icons.swift in Sources */,
 				038D2EE423B6565900CD91F7 /* InfoBatteryView.swift in Sources */,
 				032E099E24C3897E00387230 /* AdvancedViewController.swift in Sources */,
 				03FA49B72428F84500863AF6 /* DateLayer.swift in Sources */,

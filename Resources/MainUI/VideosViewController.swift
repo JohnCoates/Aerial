@@ -14,6 +14,7 @@ class VideosViewController: NSViewController {
     @IBOutlet var rotationView: NSView!
     @IBOutlet var rotationPopup: NSPopUpButton!
     @IBOutlet var rotationImage: NSImageView!
+    @IBOutlet var rotationCacheNow: NSButton!
 
     @IBOutlet var rotationSecondaryPopup: NSPopUpButton!
     @IBOutlet var rotationSecondaryMenu: NSMenu!
@@ -90,7 +91,7 @@ class VideosViewController: NSViewController {
         isCachedImageView.shadow = imgShadow
     }
 
-    /// Since we can't directly use SF Symbols, we
+    /// Since we can't directly use SF Symbols, we use our own icon wrappers
     func fixIcons() {
         rotationPopup.item(at: 0)?.setIcons("film")
         rotationPopup.item(at: 1)?.setIcons("star")
@@ -99,6 +100,7 @@ class VideosViewController: NSViewController {
         rotationPopup.item(at: 4)?.setIcons("tram.fill")
         rotationPopup.item(at: 5)?.setIcons("antenna.radiowaves.left.and.right")
         rotationImage.image = Aerial.getAccentedSymbol("dial.min")
+        rotationCacheNow.setIcons("arrow.down.circle")
     }
 
     /// Reload the video view for a given path
@@ -168,6 +170,16 @@ class VideosViewController: NSViewController {
     }
 
     // MARK: - Rotation menu
+
+    /// Cache missing rotation now !
+    @IBAction func rotationCacheNowClick(_ sender: NSButton) {
+        Cache.ensureDownload {
+            for video in VideoList.instance.currentRotation().filter({ !$0.isAvailableOffline }) {
+                VideoManager.sharedInstance.queueDownload(video)
+            }
+        }
+    }
+
     /// Main popup change event
     @IBAction func rotationPopupChange(_ sender: NSPopUpButton) {
         PrefsVideos.shouldPlay = ShouldPlay(rawValue: sender.indexOfSelectedItem)!
@@ -199,6 +211,12 @@ class VideosViewController: NSViewController {
         } else {
             rotationSecondaryPopup.isHidden = false
             updateRotationSecondaryMenu()
+        }
+
+        if VideoList.instance.currentRotation().filter({ !$0.isAvailableOffline }).isEmpty {
+            rotationCacheNow.isHidden = true
+        } else {
+            rotationCacheNow.isHidden = false
         }
     }
 
@@ -484,9 +502,8 @@ class VideosViewController: NSViewController {
             videoListTableView.reloadData()
             videoListTableView.selectRowIndexes([row], byExtendingSelection: false)
         }
-    }
 
-    @IBAction func rotationPopup(_ sender: NSPopUpButton) {
+        updateRotationMenu()
     }
 
 }
