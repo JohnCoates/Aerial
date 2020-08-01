@@ -19,8 +19,11 @@ class SourcesViewController: NSViewController {
     }
 
     @IBAction func downloadAllClick(_ sender: NSButton) {
-        print("download All from sources")
-
+        Cache.ensureDownload {
+            for video in VideoList.instance.videos.filter({ !$0.isAvailableOffline }) {
+                VideoManager.sharedInstance.queueDownload(video)
+            }
+        }
     }
 }
 
