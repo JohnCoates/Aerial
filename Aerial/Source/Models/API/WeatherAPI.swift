@@ -88,11 +88,8 @@ struct Weather {
             let jsonData = testJson.data(using: .utf8)!
             info = try? newJSONDecoder().decode(Welcome.self, from: jsonData)
             if info != nil {
-                print("=== DECODING SUCCESSFUL")
                 let response = OAuthSwiftResponse.init(data: Data(), response: .init(), request: nil)
                 success(response)   // Then the callback
-            } else {
-                print("=== DECODING FAILED")
             }
 
             return
@@ -173,7 +170,6 @@ struct Weather {
         }
 
         let currentTime = Date()
-        print("\(sunrise!) \(currentTime) \(sunset!)")
 
         if currentTime > sunrise! && currentTime < sunset! {
             debugLog("=== YW: daytime")

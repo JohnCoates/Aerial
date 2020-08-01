@@ -90,7 +90,6 @@ class SidebarViewController: NSViewController {
     }
 
     private func updateSidebarMenu(_ menu: SidebarMenus) {
-        print("usm from:\(menuSelection) to:\(menu)")
         if menu != menuSelection {
             windowController?.switchFrom(menuSelection, to: menu)
 
@@ -101,7 +100,6 @@ class SidebarViewController: NSViewController {
             self.sidebarOutlineView.expandItem(nil, expandChildren: true)
             self.sidebarOutlineView.selectRowIndexes([0], byExtendingSelection: false)
         }
-
     }
 
     @IBAction func closeButton(_ sender: Any) {

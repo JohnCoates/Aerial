@@ -404,8 +404,7 @@ final class DisplayDetection: NSObject {
                 return jsonString
             }
         } catch {
-            print("error encoding")
-            return ""
+            errorLog(error.localizedDescription)
         }
 
         return ""
@@ -432,7 +431,7 @@ final class DisplayDetection: NSObject {
                     let adv = try decoder.decode(AdvancedMargin.self, from: jsonData)
                     return adv
                 } catch {
-                    print(error.localizedDescription)
+                    errorLog(error.localizedDescription)
                 }
             }
             return AdvancedMargin(displays: [DisplayAdvancedMargin]())
@@ -447,7 +446,7 @@ final class DisplayDetection: NSObject {
                     PrefsDisplays.advancedMargins = jsonString
                 }
             } catch {
-                print("error encoding")
+                errorLog(error.localizedDescription)
             }
         }
     }

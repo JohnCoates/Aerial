@@ -51,6 +51,23 @@ class VideosViewController: NSViewController {
         videoListTableView.delegate = self
         videoListTableView.dataSource = self
 
+        // Our large player view
+        heroPlayerView.player = AVPlayer()
+        heroPlayerView.controlsStyle = .none
+        if #available(OSX 10.10, *) {
+            heroPlayerView.videoGravity = .resizeAspectFill
+        }
+
+        setShadows()
+        fixIcons()
+
+        updateVideoView()
+        updateRotationMenu()
+    }
+
+    // MARK: - UI init
+    /// Set the shadows for the various UI elements that needs them
+    func setShadows() {
         // Drop shadow we use on the overlayed items
         let shadow: NSShadow = NSShadow()
         shadow.shadowBlurRadius = 2
@@ -71,20 +88,9 @@ class VideosViewController: NSViewController {
         timeImageView.shadow = imgShadow
         sceneTypeImageView.shadow = imgShadow
         isCachedImageView.shadow = imgShadow
-
-        heroPlayerView.player = AVPlayer()
-        heroPlayerView.controlsStyle = .none
-        if #available(OSX 10.10, *) {
-            heroPlayerView.videoGravity = .resizeAspectFill
-        }
-
-        fixIcons()
-
-        updateVideoView()
-        updateRotationMenu()
     }
 
-    // Since we can't directly use SF Symbols...
+    /// Since we can't directly use SF Symbols, we
     func fixIcons() {
         rotationPopup.item(at: 0)?.setIcons("film")
         rotationPopup.item(at: 1)?.setIcons("star")
@@ -95,28 +101,31 @@ class VideosViewController: NSViewController {
         rotationImage.image = Aerial.getAccentedSymbol("dial.min")
     }
 
+    /// Reload the video view for a given path
     func reloadFor(path: String) {
-        print("reload for : \(path)")
-
         self.path = path
 
         // We show/hide the top panel to pick the playing mode
         rotationView.isHidden = !path.starts(with: "rotation")
         if path.starts(with: "rotation") {
-            print("Current rotation: \(VideoList.instance.currentRotation().count)")
-
             updateRotationMenu()
         }
 
         updateRuntimeLabel()
 
+        // Reload data and scroll back up
         if videoListTableView != nil {
             videoListTableView.reloadData()
             videoListTableView.selectRowIndexes([0], byExtendingSelection: false)
             videoListTableView.scrollRowToVisible(0)
+
+            if videoListTableView.numberOfRows == 0 {
+                updateVideoView()
+            }
         }
     }
 
+    /// Update the total runtime for the current view
     func updateRuntimeLabel() {
         guard let path = self.path else {
             videoListRuntimeLabel.stringValue = ""
@@ -159,6 +168,7 @@ class VideosViewController: NSViewController {
     }
 
     // MARK: - Rotation menu
+    /// Main popup change event
     @IBAction func rotationPopupChange(_ sender: NSPopUpButton) {
         PrefsVideos.shouldPlay = ShouldPlay(rawValue: sender.indexOfSelectedItem)!
 
@@ -171,9 +181,9 @@ class VideosViewController: NSViewController {
             updateRotationSecondaryMenu()
             reloadFor(path: path!)
         }
-
     }
 
+    /// Secondary popup change event
     @IBAction func rotationSecondaryPopupChange(_ sender: NSPopUpButton) {
         PrefsVideos.shouldPlayString = sender.selectedItem!.title
 
@@ -242,16 +252,9 @@ class VideosViewController: NSViewController {
             formatLabel.isHidden = false
 
             titleLabel.stringValue = video.secondaryName
-            //titleLabel.sizeToFit()
-
             locationLabel.stringValue = video.name
-            //locationLabel.sizeToFit()
-
             sourceLabel.stringValue = video.source.name
-            //sourceLabel.sizeToFit()
-
             formatLabel.stringValue = video.getBestFormat()
-            //formatLabel.sizeToFit()
 
             if PrefsVideos.hidden.contains(video.id) {
                 hideButton.isHidden = true
@@ -275,7 +278,21 @@ class VideosViewController: NSViewController {
                     let path = VideoCache.cachePath(forVideo: video)!
                     debugLog("heropath : \(path)")
 
-                    let localitem = AVPlayerItem(url: URL(fileURLWithPath: path))
+                    // let filter = CIFilter(name: "CIVibrance")!
+                    let asset = AVAsset(url: URL(fileURLWithPath: path))
+                    let localitem = AVPlayerItem(asset: asset)
+                    /*localitem.videoComposition = AVVideoComposition(asset: asset, applyingCIFiltersWithHandler: { request in
+                        let source = request.sourceImage.clampedToExtent()
+                        filter.setValue(source, forKey: kCIInputImageKey)
+                        if #available(OSX 10.14, *) {
+                            filter.setValue(0.3, forKey: kCIInputAmountKey)
+                        } else {
+                            // Fallback on earlier versions
+                        }
+                        let output = filter.outputImage
+
+                        request.finish(with: output!, context: nil)
+                    })*/
 
                     player.replaceCurrentItem(with: localitem)
                     player.play()
@@ -314,11 +331,30 @@ class VideosViewController: NSViewController {
             setTimeIcon(video)
             setSceneIcon(video)
         } else {
+            // Hide everything !
             titleLabel.isHidden = true
             locationLabel.isHidden = true
             durationLabel.isHidden = true
             sourceLabel.isHidden = true
             formatLabel.isHidden = true
+
+            heroPlayerView.isHidden = true
+            heroImageView.isHidden = true
+            isCachedImageView.isHidden = true
+
+            downloadButton.isHidden = true
+            hideButton.isHidden = true
+            showButton.isHidden = true
+
+            // Clear up any playing video
+            if let player = heroPlayerView.player {
+                player.replaceCurrentItem(with: nil)
+                player.pause()
+            }
+
+            setTimeIcon(nil)
+            setSceneIcon(nil)
+
         }
     }
 
@@ -334,7 +370,6 @@ class VideosViewController: NSViewController {
 
     func getSelectedVideo() -> AerialVideo? {
         if let path = path {
-            print(path)
             if let mode = modeFromPath(path) {
                 let index = Int(path.split(separator: ":")[1])!
                 if index >= 0 && videoListTableView.selectedRow >= 0 {
@@ -350,41 +385,40 @@ class VideosViewController: NSViewController {
     }
 
     // Set the time icon
-    func setTimeIcon(_ video: AerialVideo) {
-        var name = ""
-        switch video.timeOfDay {
-        case "sunset":
-            name = "sunset"
-        case "sunrise":
-            name = "sunrise"
-        case "night":
-            name = "moon.stars"
-        default:    // day
-            name = "sun.max"
+    func setTimeIcon(_ video: AerialVideo?) {
+        guard let tvideo = video else {
+            timeImageView.image = nil
+            return
         }
 
-        if let imagePath = Bundle(for: PanelWindowController.self).path(
-            forResource: name,
-            ofType: "pdf") {
-            timeImageView.image = NSImage(contentsOfFile: imagePath)
+        switch tvideo.timeOfDay {
+        case "sunset":
+            timeImageView.image = Aerial.getSymbol("sunset")
+        case "sunrise":
+            timeImageView.image = Aerial.getSymbol("sunrise")
+        case "night":
+            timeImageView.image = Aerial.getSymbol("moon.stars")
+        default:    // day
+            timeImageView.image = Aerial.getSymbol("sun.max")
         }
     }
 
     // Set the scene icon (landscape...)
-    func setSceneIcon(_ video: AerialVideo) {
-        if #available(OSX 10.16, *) {
-            switch video.scene {
-            case .landscape:
-                sceneTypeImageView.image = NSImage(systemSymbolName: "leaf", accessibilityDescription: "Landscape")?.tinting(with: .white)
-            case .city:
-                sceneTypeImageView.image = NSImage(systemSymbolName: "building", accessibilityDescription: "City")?.tinting(with: .white)
-            case .space:
-                sceneTypeImageView.image = NSImage(systemSymbolName: "sparkles", accessibilityDescription: "Space")?.tinting(with: .white)
-            case .sea:
-                sceneTypeImageView.image = NSImage(systemSymbolName: "drop", accessibilityDescription: "Sea")?.tinting(with: .white)
-            }
-        } else {
-            // Fallback on earlier versions
+    func setSceneIcon(_ video: AerialVideo?) {
+        guard let tvideo = video else {
+            sceneTypeImageView.image = nil
+            return
+        }
+
+        switch tvideo.scene {
+        case .landscape:
+            sceneTypeImageView.image = Aerial.getSymbol("leaf")
+        case .city:
+            sceneTypeImageView.image = Aerial.getSymbol("tram.fill")
+        case .space:
+            sceneTypeImageView.image = Aerial.getSymbol("sparkles")
+        case .sea:
+            sceneTypeImageView.image = Aerial.getSymbol("helm")
         }
     }
 
@@ -444,7 +478,6 @@ class VideosViewController: NSViewController {
     }
 
     func updateInPlace() {
-        print("UPDATE IN PLACE")
         let row = videoListTableView.selectedRow
 
         if videoListTableView != nil {

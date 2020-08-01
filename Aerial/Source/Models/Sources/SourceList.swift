@@ -45,7 +45,6 @@ struct SourceList {
 
     // This is where the magic happens
     static var foundSources: [Source] {
-        print("foundSources")
         var sources: [Source] = []
 
         for folder in URL(fileURLWithPath: Cache.supportPath).subDirectories {
@@ -77,7 +76,7 @@ struct SourceList {
                               description: manifest.manifestDescription,
                               manifestUrl: url.absoluteString,
                               type: .local,
-                              scenes: [.landscape],
+                              scenes: jsonToSceneArray(array: manifest.scenes ?? []),
                               isCachable: false)    // TODO
             }
         } catch {
@@ -86,6 +85,27 @@ struct SourceList {
         }
 
         return nil
+    }
+
+    /// Helper to convert an array of strings to an array of sources
+    ///
+    /// ["landscape"] -> [.landscape]
+    static func jsonToSceneArray(array: [String]) -> [SourceScene] {
+        var output: [SourceScene] = []
+        for scene in array {
+            switch scene {
+            case "sea":
+                output.append(.sea)
+            case "space":
+                output.append(.space)
+            case "city":
+                output.append(.city)
+            default:
+                output.append(.landscape)
+            }
+        }
+
+        return output
     }
 
     static func areManifestPresent(url: URL) -> Bool {
@@ -98,12 +118,14 @@ struct SourceList {
 
 }
 
-// MARK: - Manifest JSON
+// MARK: - Manifest
 struct Manifest: Codable {
     let name, manifestDescription: String
+    let scenes: [String]?
 
     enum CodingKeys: String, CodingKey {
         case name
         case manifestDescription = "description"
+        case scenes
     }
 }

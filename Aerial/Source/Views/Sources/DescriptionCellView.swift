@@ -6,14 +6,7 @@
 //  Copyright © 2020 Guillaume Louel. All rights reserved.
 //
 
-import Foundation
-
 import Cocoa
-/*
-/// A set of methods that `CheckboxCelView` use to communicate changes to another object
-protocol CheckboxCellViewDelegate {
-    func checkboxCellView(_ cell: CheckboxCellView, didChangeState state: NSControl.StateValue)
-}*/
 
 class DescriptionCellView: NSTableCellView {
 

@@ -55,13 +55,13 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
             return nil
         }
 
-        let srcitem = item as! Source
+        let source = item as! Source
 
         switch columnIdentifier {
         case "isSelected":
             let cell = outlineView.makeView(withIdentifier:
                                                 NSUserInterfaceItemIdentifier(rawValue: "isSelectedCell"), owner: self) as! CheckboxCellView
-            cell.checkboxButton.state = srcitem.isEnabled() ? .on : .off
+            cell.checkboxButton.state = source.isEnabled() ? .on : .off
             cell.delegate = self
             cell.item = item
             return cell
@@ -69,15 +69,25 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
         case "valueColumn":
             let cell = outlineView.makeView(withIdentifier:
                                                 NSUserInterfaceItemIdentifier(rawValue: "valueColumnCell"), owner: self) as! DescriptionCellView
-            cell.titleLabel.stringValue = srcitem.name
-            cell.descriptionLabel.stringValue = srcitem.description
-            cell.lastUpdatedLabel.stringValue = "Last updated: " + srcitem.lastUpdated()
-            cell.imageScene1.isHidden = !srcitem.scenes.contains(.sea)
-            cell.imageScene2.isHidden = !srcitem.scenes.contains(.space)
-            cell.imageScene3.isHidden = !srcitem.scenes.contains(.city)
-            cell.imageScene4.isHidden = !srcitem.scenes.contains(.landscape)
+            cell.titleLabel.stringValue = source.name
+            cell.descriptionLabel.stringValue = source.description
+            cell.lastUpdatedLabel.stringValue = "Last updated: " + source.lastUpdated()
+            cell.imageScene1.isHidden = !source.scenes.contains(.landscape)
+            cell.imageScene2.isHidden = !source.scenes.contains(.city)
+            cell.imageScene3.isHidden = !source.scenes.contains(.space)
+            cell.imageScene4.isHidden = !source.scenes.contains(.sea)
 
             return cell
+        case "actionColumn":
+            let cell = outlineView.makeView(withIdentifier:
+                        NSUserInterfaceItemIdentifier(rawValue: columnIdentifier), owner: self) as! ActionCellView
+            if source.type == .local {
+                cell.actionButton.image = Aerial.getSymbol("folder")
+            } else {
+                cell.actionButton.image = Aerial.getSymbol("arrow.down.circle")
+            }
+            return cell
+
         default:
             let cell = outlineView.makeView(withIdentifier:
                         NSUserInterfaceItemIdentifier(rawValue: columnIdentifier), owner: self) as! NSTableCellView

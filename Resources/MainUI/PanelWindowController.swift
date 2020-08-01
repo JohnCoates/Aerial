@@ -150,25 +150,25 @@ class PanelWindowController: NSWindowController {
 
         if path.starts(with: "settings:") {
             let idx = path.firstIndex(of: ":")
-            switchViewItemTo(String(path[idx!...].dropFirst())) // Oh Swift...
+            switchToSettings(String(path[idx!...].dropFirst())) // Oh Swift...
         }
 
         if path.starts(with: "infos:") {
             let idx = path.firstIndex(of: ":")
-            switchViewItemTo(String(path[idx!...].dropFirst())) // Oh Swift...
+            switchToInfos(String(path[idx!...].dropFirst())) // Oh Swift...
         }
 
         // Save the new path
         self.currentPath = path
     }
 
-    func switchViewItemTo(_ path: String) {
+    func switchToSettings(_ path: String) {
         guard let splitVC = splitVC else {
             return
         }
+
         // Remove the old one
         splitVC.removeChild(at: 1)
-
         switch path {
         case "sources":
             splitVC.addSplitViewItem(sourcesViewItem!)
@@ -184,18 +184,26 @@ class PanelWindowController: NSWindowController {
             splitVC.addSplitViewItem(overlaysViewItem!)
         case "updates":
             splitVC.addSplitViewItem(updatesViewItem!)
-        case "advanced":
+        default: //case "advanced":
             splitVC.addSplitViewItem(advancedViewItem!)
+        }
+    }
+
+    func switchToInfos(_ path: String) {
+        guard let splitVC = splitVC else {
+            return
+        }
+        // Remove the old one
+        splitVC.removeChild(at: 1)
+
+        switch path {
         // Infos
         case "about":
             splitVC.addSplitViewItem(infoViewItem!)
         case "credits":
             splitVC.addSplitViewItem(creditsViewItem!)
-        case "help":
+        default: // case "help":
             splitVC.addSplitViewItem(helpViewItem!)
-        default:
-            errorLog("Unknown path in panel")
-            splitVC.addSplitViewItem(infoViewItem!)
         }
     }
 
@@ -211,11 +219,8 @@ class PanelWindowController: NSWindowController {
 
 extension PanelWindowController: NSWindowDelegate {
     func windowDidBecomeKey(_ notification: Notification) {
-        debugLog("didbecomekey")
-
         if (notification.object as? NSWindow) == self.window {
-            debugLog("wedidbecomekey")
-            doFirstTimeSetup()
+            //doFirstTimeSetup()
         }
     }
 }

@@ -163,7 +163,7 @@ Gw
                 <visualEffectView blendingMode="behindWindow" material="sidebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Twm-j9-xLA">
                     <rect key="frame" x="0.0" y="364" width="185" height="36"/>
                     <subviews>
-                        <button translatesAutoresizingMaskIntoConstraints="NO" id="3Sr-MZ-cSJ">
+                        <button toolTip="Settings" translatesAutoresizingMaskIntoConstraints="NO" id="3Sr-MZ-cSJ">
                             <rect key="frame" x="80" y="6" width="25" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="HYU-Rz-WIR"/>
@@ -177,7 +177,7 @@ Gw
                                 <action selector="menuButtonClick:" target="-2" id="Fk8-Hv-hiB"/>
                             </connections>
                         </button>
-                        <button translatesAutoresizingMaskIntoConstraints="NO" id="I2Z-h4-5te">
+                        <button toolTip="Infos" translatesAutoresizingMaskIntoConstraints="NO" id="I2Z-h4-5te">
                             <rect key="frame" x="121" y="6" width="25" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="25" id="6lb-NO-dSc"/>
@@ -191,7 +191,7 @@ Gw
                                 <action selector="menuButtonClick:" target="-2" id="pTx-eq-4TM"/>
                             </connections>
                         </button>
-                        <button translatesAutoresizingMaskIntoConstraints="NO" id="GuT-iZ-IKo">
+                        <button toolTip="Videos" translatesAutoresizingMaskIntoConstraints="NO" id="GuT-iZ-IKo">
                             <rect key="frame" x="39" y="6" width="25" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="25" id="7o7-hI-ve5"/>

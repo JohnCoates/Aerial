@@ -85,7 +85,7 @@ class TimeViewController: NSViewController {
             timeLocationRadio.state = .on
         }
 
-        myLocationImageView.image = Aerial.getSymbol("mappin.and.ellipse")?.tinting(with: .labelColor)
+        myLocationImageView.image = Aerial.getSymbol("mappin.and.ellipse")?.tinting(with: .secondaryLabelColor)
         solarModePopup.selectItem(at: PrefsTime.solarMode.rawValue)
     }
 
