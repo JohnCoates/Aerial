@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0300109724D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300109624D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift */; };
+		0300109824D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300109624D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift */; };
+		0300109924D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300109624D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift */; };
 		0300B7E924D1B536006132E5 /* person.3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0300B7CA24D1B531006132E5 /* person.3.pdf */; };
 		0300B7EA24D1B536006132E5 /* person.3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0300B7CA24D1B531006132E5 /* person.3.pdf */; };
 		0300B7EB24D1B536006132E5 /* person.3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0300B7CA24D1B531006132E5 /* person.3.pdf */; };
@@ -773,6 +776,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0300109624D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayerItem+vibrance.swift"; sourceTree = "<group>"; };
 		0300B7CA24D1B531006132E5 /* person.3.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = person.3.pdf; sourceTree = "<group>"; };
 		0300B7CB24D1B531006132E5 /* bubble.left.and.bubble.right.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = bubble.left.and.bubble.right.pdf; sourceTree = "<group>"; };
 		0300B7CC24D1B531006132E5 /* helm.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = helm.pdf; sourceTree = "<group>"; };
@@ -1562,6 +1566,7 @@
 				03A4A80A2451CE2C00A1F7A3 /* NSImage+trim.swift */,
 				03047A5324D2DD8E000EFE62 /* NSMenuItem+icons.swift */,
 				0321A54324D5C863004F1975 /* NSButton+icons.swift */,
+				0300109624D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2226,6 +2231,7 @@
 				0396D51824B8B7ED00CC021B /* IOBridge.m in Sources */,
 				0396D51924B8B7ED00CC021B /* DarkMode.swift in Sources */,
 				03047A5524D2DD8E000EFE62 /* NSMenuItem+icons.swift in Sources */,
+				0300109824D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift in Sources */,
 				0396D51A24B8B7ED00CC021B /* CustomVideoFolders.swift in Sources */,
 				0396D51B24B8B7ED00CC021B /* InfoTimerView.swift in Sources */,
 				0396D51D24B8B7ED00CC021B /* MessageLayer.swift in Sources */,
@@ -2431,6 +2437,7 @@
 				03A42AA4244A0E5F003B3012 /* ConditionLayer.swift in Sources */,
 				03BDBEA424C467EC00BBD5E9 /* BrightnessViewController.swift in Sources */,
 				036A57D623F30F490009DC02 /* DownloadIndicatorLayer.swift in Sources */,
+				0300109924D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift in Sources */,
 				03A596D623AA752F0097EA66 /* InfoClockView.swift in Sources */,
 				03047A5624D2DD8E000EFE62 /* NSMenuItem+icons.swift in Sources */,
 				03D2A4352447438D003ABD30 /* YahooWeatherAPI.swift in Sources */,
@@ -2467,6 +2474,7 @@
 				03510C6F21834F38008F74F2 /* IOBridge.m in Sources */,
 				F00864B423AAE7F0003210EF /* DarkMode.swift in Sources */,
 				03047A5424D2DD8E000EFE62 /* NSMenuItem+icons.swift in Sources */,
+				0300109724D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift in Sources */,
 				0313F9EF22955F3B00B074BB /* CustomVideoFolders.swift in Sources */,
 				030DDA902423C3BE0072D5C9 /* InfoTimerView.swift in Sources */,
 				03BF51BF23A274CA008AD373 /* MessageLayer.swift in Sources */,
@@ -2843,7 +2851,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.0beta2;
+				CURRENT_PROJECT_VERSION = 2.0.0beta3;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2851,7 +2859,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0.0beta2;
+				MARKETING_VERSION = 2.0.0beta3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2871,7 +2879,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.0beta2;
+				CURRENT_PROJECT_VERSION = 2.0.0beta3;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2879,7 +2887,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0.0beta2;
+				MARKETING_VERSION = 2.0.0beta3;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

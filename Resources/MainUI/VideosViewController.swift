@@ -9,6 +9,7 @@
 import Cocoa
 import AVKit
 
+// swiftlint:disable:next type_body_length
 class VideosViewController: NSViewController {
     // Top rotation view
     @IBOutlet var rotationView: NSView!
@@ -41,7 +42,12 @@ class VideosViewController: NSViewController {
 
     @IBOutlet var isCachedImageView: NSImageView!
 
+    @IBOutlet var vibrancyLabel: NSTextField!
+    @IBOutlet var vibrancySlider: NSSlider!
+
     var path: String?
+
+    var currentVibrancy: Double = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +72,17 @@ class VideosViewController: NSViewController {
         updateRotationMenu()
     }
 
+    @objc func playerItemDidReachEnd(_ aNotification: Notification) {
+        debugLog("\(self.description) played did reach end")
+        debugLog("\(self.description) notification: \(aNotification)")
+
+        debugLog("Rewinding video!")
+        if let playerItem = aNotification.object as? AVPlayerItem {
+            playerItem.seek(to: CMTime.zero, completionHandler: nil)
+            heroPlayerView.player?.play()
+        }
+    }
+
     // MARK: - UI init
     /// Set the shadows for the various UI elements that needs them
     func setShadows() {
@@ -86,6 +103,9 @@ class VideosViewController: NSViewController {
         hideButton.shadow = shadow
         showButton.shadow = shadow
         downloadButton.shadow = shadow
+        vibrancyLabel.shadow = shadow
+        vibrancySlider.shadow = shadow
+
         timeImageView.shadow = imgShadow
         sceneTypeImageView.shadow = imgShadow
         isCachedImageView.shadow = imgShadow
@@ -272,7 +292,7 @@ class VideosViewController: NSViewController {
             titleLabel.stringValue = video.secondaryName
             locationLabel.stringValue = video.name
             sourceLabel.stringValue = video.source.name
-            formatLabel.stringValue = video.getBestFormat()
+            formatLabel.stringValue = video.getCurrentFormat()
 
             if PrefsVideos.hidden.contains(video.id) {
                 hideButton.isHidden = true
@@ -283,96 +303,138 @@ class VideosViewController: NSViewController {
             }
 
             if video.isAvailableOffline {
-                // Show player
-                heroPlayerView.isHidden = false
-                heroImageView.isHidden = true
-                isCachedImageView.isHidden = false
+                showVideo(video)
 
-                durationLabel.isHidden = false
-                durationLabel.stringValue = "Duration: " + timeString(video.duration)
-
-                downloadButton.isHidden = true
-                if let player = heroPlayerView.player {
-                    let path = VideoCache.cachePath(forVideo: video)!
-                    debugLog("heropath : \(path)")
-
-                    // let filter = CIFilter(name: "CIVibrance")!
-                    let asset = AVAsset(url: URL(fileURLWithPath: path))
-                    let localitem = AVPlayerItem(asset: asset)
-                    /*localitem.videoComposition = AVVideoComposition(asset: asset, applyingCIFiltersWithHandler: { request in
-                        let source = request.sourceImage.clampedToExtent()
-                        filter.setValue(source, forKey: kCIInputImageKey)
-                        if #available(OSX 10.14, *) {
-                            filter.setValue(0.3, forKey: kCIInputAmountKey)
-                        } else {
-                            // Fallback on earlier versions
-                        }
-                        let output = filter.outputImage
-
-                        request.finish(with: output!, context: nil)
-                    })*/
-
-                    player.replaceCurrentItem(with: localitem)
-                    player.play()
-                }
             } else {
-                // Show image
-                heroPlayerView.isHidden = true
-                heroImageView.isHidden = false
-                isCachedImageView.isHidden = true
-
-                durationLabel.isHidden = true
-                if PrefsCache.enableManagement {
-                    downloadButton.isHidden = true  // Always hide in managed mode
-                } else {
-                    downloadButton.isHidden = false
-                }
-
-                // Clear up any playing video
-                if let player = heroPlayerView.player {
-                    player.replaceCurrentItem(with: nil)
-                    player.pause()
-                }
-
-                heroImageView.imageScaling = .scaleProportionallyDown
-
-                Thumbnails.getLarge(forVideo: video) { [weak self] (img) in
-                    guard let _ = self else { return }
-                    if let img = img {
-                        self!.heroImageView.image = img
-                    } else {
-                        self!.heroImageView.image = nil
-                    }
-                }
+                showImage(video)
             }
 
             setTimeIcon(video)
             setSceneIcon(video)
         } else {
-            // Hide everything !
-            titleLabel.isHidden = true
-            locationLabel.isHidden = true
-            durationLabel.isHidden = true
-            sourceLabel.isHidden = true
-            formatLabel.isHidden = true
+            hideEverything()
+        }
+    }
 
-            heroPlayerView.isHidden = true
-            heroImageView.isHidden = true
-            isCachedImageView.isHidden = true
+    /// Show video player
+    func showVideo(_ video: AerialVideo) {
+        heroPlayerView.isHidden = false
+        heroImageView.isHidden = true
+        isCachedImageView.isHidden = false
 
-            downloadButton.isHidden = true
-            hideButton.isHidden = true
-            showButton.isHidden = true
+        durationLabel.isHidden = false
+        durationLabel.stringValue = "Duration: " + timeString(video.duration)
+        downloadButton.isHidden = true
 
-            // Clear up any playing video
-            if let player = heroPlayerView.player {
-                player.replaceCurrentItem(with: nil)
-                player.pause()
+        if let player = heroPlayerView.player {
+            let path = VideoCache.cachePath(forVideo: video)!
+            debugLog("heropath : \(path)")
+
+            let asset = AVAsset(url: URL(fileURLWithPath: path))
+            let localitem = AVPlayerItem(asset: asset)
+
+            // Vibrancy filter requires 10.14, and doesn't work on HDR content
+            if #available(OSX 10.14, *), !video.isHDR() {
+                vibrancyLabel.isHidden = false
+                vibrancySlider.isHidden = false
+                if let value = PrefsVideos.vibrance[video.id] {
+                    vibrancySlider.doubleValue = value
+                } else {
+                    vibrancySlider.doubleValue = 0.0
+                }
+                currentVibrancy = vibrancySlider.doubleValue
+
+                let filter = CIFilter(name: "CIVibrance")!
+                localitem.videoComposition = AVVideoComposition(asset: asset, applyingCIFiltersWithHandler: { request in
+                    let source = request.sourceImage.clampedToExtent()
+                    filter.setValue(source, forKey: kCIInputImageKey)
+                    filter.setValue(self.currentVibrancy, forKey: kCIInputAmountKey)
+                    let output = filter.outputImage
+
+                    request.finish(with: output!, context: nil)
+                })
+            } else {
+                vibrancyLabel.isHidden = true
+                vibrancySlider.isHidden = true
             }
 
-            setTimeIcon(nil)
-            setSceneIcon(nil)
+            player.replaceCurrentItem(with: localitem)
+            player.play()
+
+            // Set notification...
+            NotificationCenter.default.addObserver(self,
+                                           selector: #selector(playerItemDidReachEnd(_:)),
+                                           name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
+                                           object: localitem)
         }
+    }
+
+    /// Show image
+    func showImage(_ video: AerialVideo) {
+        heroPlayerView.isHidden = true
+        heroImageView.isHidden = false
+        isCachedImageView.isHidden = true
+
+        vibrancyLabel.isHidden = true
+        vibrancySlider.isHidden = true
+
+        durationLabel.isHidden = true
+        if PrefsCache.enableManagement {
+            downloadButton.isHidden = true  // Always hide in managed mode
+        } else {
+            downloadButton.isHidden = false
+        }
+
+        // Clear up any playing video
+        if let player = heroPlayerView.player {
+            player.replaceCurrentItem(with: nil)
+            player.pause()
+        }
+
+        heroImageView.imageScaling = .scaleProportionallyDown
+
+        Thumbnails.getLarge(forVideo: video) { [weak self] (img) in
+            guard let _ = self else { return }
+            if let img = img {
+                self!.heroImageView.image = img
+            } else {
+                self!.heroImageView.image = nil
+            }
+        }
+    }
+
+    /// Hide everything !
+    func hideEverything() {
+        titleLabel.isHidden = true
+        locationLabel.isHidden = true
+        durationLabel.isHidden = true
+        sourceLabel.isHidden = true
+        formatLabel.isHidden = true
+
+        heroPlayerView.isHidden = true
+        heroImageView.isHidden = true
+        isCachedImageView.isHidden = true
+
+        downloadButton.isHidden = true
+        hideButton.isHidden = true
+        showButton.isHidden = true
+
+        vibrancyLabel.isHidden = true
+        vibrancySlider.isHidden = true
+
+        // Clear up any playing video
+        if let player = heroPlayerView.player {
+            player.replaceCurrentItem(with: nil)
+            player.pause()
+        }
+
+        setTimeIcon(nil)
+        setSceneIcon(nil)
+    }
+
+    @IBAction func vibrancySliderChange(_ sender: NSSlider) {
+        currentVibrancy = vibrancySlider.doubleValue
+        PrefsVideos.vibrance[getSelectedVideo()!.id] = vibrancySlider.doubleValue
     }
 
     // MARK: - Helpers
@@ -501,10 +563,8 @@ class VideosViewController: NSViewController {
             videoListTableView.reloadData()
             videoListTableView.selectRowIndexes([row], byExtendingSelection: false)
         }
-
         updateRotationMenu()
     }
-
 }
 
 extension VideosViewController: NSTableViewDataSource {

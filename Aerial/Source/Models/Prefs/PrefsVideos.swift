@@ -107,4 +107,7 @@ struct PrefsVideos {
     @SimpleStorage(key: "hidden", defaultValue: [])
     static var hidden: [String]
 
+    @SimpleStorage(key: "vibrance", defaultValue: [:])
+    static var vibrance: [String: Double]
+
 }

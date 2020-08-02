@@ -28,6 +28,8 @@
                 <outlet property="sourceLabel" destination="A1l-aS-ndR" id="5bg-CG-JnQ"/>
                 <outlet property="timeImageView" destination="Y3a-EY-5S3" id="uPd-b3-Xti"/>
                 <outlet property="titleLabel" destination="ewl-dK-yIY" id="27E-tx-Zie"/>
+                <outlet property="vibrancyLabel" destination="Ikp-a0-d9g" id="dFS-ld-lEV"/>
+                <outlet property="vibrancySlider" destination="9Um-fB-kbb" id="WTH-86-IVF"/>
                 <outlet property="videoListRuntimeLabel" destination="BhB-s9-Rxu" id="pjq-ZN-m24"/>
                 <outlet property="videoListTableView" destination="ezT-3u-Nqh" id="eML-TR-SW0"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -330,15 +332,6 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                         </button>
-                                        <imageView toolTip="Video is in cache" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EdU-Jl-WkG">
-                                            <rect key="frame" x="649" y="18" width="24" height="28"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="24" id="Izn-e7-R3T"/>
-                                                <constraint firstAttribute="height" constant="24" id="OGP-4R-fSd"/>
-                                            </constraints>
-                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="internaldrive" catalog="system" id="eJT-Xr-JIs"/>
-                                            <color key="contentTintColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </imageView>
                                         <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="95z-4q-gHF">
                                             <rect key="frame" x="535" y="289" width="138" height="100"/>
                                             <subviews>
@@ -388,24 +381,54 @@
                                                 <real value="3.4028234663852886e+38"/>
                                             </customSpacing>
                                         </stackView>
+                                        <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Um-fB-kbb">
+                                            <rect key="frame" x="500" y="17" width="181" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="165" id="H8q-HT-m60"/>
+                                            </constraints>
+                                            <sliderCell key="cell" controlSize="large" continuous="YES" state="on" alignment="left" minValue="-1" maxValue="1" tickMarkPosition="above" numberOfTickMarks="3" sliderType="linear" id="mfW-mT-Kre"/>
+                                            <connections>
+                                                <action selector="vibrancySliderChange:" target="-2" id="oqY-zh-99e"/>
+                                            </connections>
+                                        </slider>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ikp-a0-d9g">
+                                            <rect key="frame" x="422" y="20" width="72" height="19"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Vibrance:" id="VSx-3A-4eo">
+                                                <font key="font" metaFont="systemMedium" size="15"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <imageView toolTip="Video is in cache" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EdU-Jl-WkG">
+                                            <rect key="frame" x="152" y="350" width="22" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="22" id="Izn-e7-R3T"/>
+                                                <constraint firstAttribute="height" constant="22" id="OGP-4R-fSd"/>
+                                            </constraints>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="internaldrive" catalog="system" id="eJT-Xr-JIs"/>
+                                            <color key="contentTintColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="QbZ-qp-Ypz" firstAttribute="leading" secondItem="FJa-0G-94n" secondAttribute="leading" constant="20" id="08s-nn-r71"/>
                                         <constraint firstItem="QbZ-qp-Ypz" firstAttribute="leading" secondItem="ewl-dK-yIY" secondAttribute="leading" id="0aW-N9-7XK"/>
+                                        <constraint firstAttribute="bottom" secondItem="9Um-fB-kbb" secondAttribute="bottom" constant="21" id="5Fv-xC-CFM"/>
                                         <constraint firstItem="Y3a-EY-5S3" firstAttribute="top" secondItem="FJa-0G-94n" secondAttribute="top" constant="20" symbolic="YES" id="Agw-zF-nfa"/>
                                         <constraint firstItem="A1l-aS-ndR" firstAttribute="top" secondItem="dMl-IM-mBU" secondAttribute="bottom" constant="8" symbolic="YES" id="BvK-8W-P2S"/>
                                         <constraint firstItem="dMl-IM-mBU" firstAttribute="leading" secondItem="ewl-dK-yIY" secondAttribute="leading" id="DJg-ke-ta0"/>
+                                        <constraint firstItem="EdU-Jl-WkG" firstAttribute="leading" secondItem="lFd-fP-vmN" secondAttribute="trailing" constant="4" id="DfP-zH-5yp"/>
                                         <constraint firstItem="dMl-IM-mBU" firstAttribute="top" secondItem="ewl-dK-yIY" secondAttribute="bottom" constant="8" symbolic="YES" id="Dze-AI-cnq"/>
                                         <constraint firstAttribute="bottom" secondItem="U7m-tf-k3c" secondAttribute="bottom" id="H0t-ga-exi"/>
-                                        <constraint firstAttribute="bottom" secondItem="EdU-Jl-WkG" secondAttribute="bottom" constant="20" id="Iz2-0q-b2f"/>
+                                        <constraint firstItem="EdU-Jl-WkG" firstAttribute="top" secondItem="lFd-fP-vmN" secondAttribute="top" id="HMw-10-Joy"/>
                                         <constraint firstItem="LOU-p1-jXB" firstAttribute="leading" secondItem="Y3a-EY-5S3" secondAttribute="trailing" constant="8" symbolic="YES" id="L63-x4-B2U"/>
                                         <constraint firstAttribute="trailing" secondItem="dtD-fV-1tE" secondAttribute="trailing" id="LYT-TO-Qe8"/>
                                         <constraint firstItem="LOU-p1-jXB" firstAttribute="top" secondItem="FJa-0G-94n" secondAttribute="top" constant="20" symbolic="YES" id="RCb-cg-dTt"/>
                                         <constraint firstItem="U7m-tf-k3c" firstAttribute="top" secondItem="FJa-0G-94n" secondAttribute="top" id="RIs-R4-xN6"/>
+                                        <constraint firstAttribute="trailing" secondItem="9Um-fB-kbb" secondAttribute="trailing" constant="20" symbolic="YES" id="VfQ-7v-MYD"/>
                                         <constraint firstItem="A1l-aS-ndR" firstAttribute="leading" secondItem="ewl-dK-yIY" secondAttribute="leading" id="WIn-8v-0HC"/>
                                         <constraint firstItem="dtD-fV-1tE" firstAttribute="top" secondItem="FJa-0G-94n" secondAttribute="top" id="ZQV-NU-0CO"/>
                                         <constraint firstAttribute="trailing" secondItem="U7m-tf-k3c" secondAttribute="trailing" id="auT-pj-IxH"/>
-                                        <constraint firstAttribute="trailing" secondItem="EdU-Jl-WkG" secondAttribute="trailing" constant="20" id="bTA-Zt-su2"/>
+                                        <constraint firstItem="9Um-fB-kbb" firstAttribute="leading" secondItem="Ikp-a0-d9g" secondAttribute="trailing" constant="16" id="b8g-PY-Hwg"/>
                                         <constraint firstItem="dtD-fV-1tE" firstAttribute="leading" secondItem="FJa-0G-94n" secondAttribute="leading" id="cMR-pK-wfJ"/>
                                         <constraint firstItem="lFd-fP-vmN" firstAttribute="leading" secondItem="A1l-aS-ndR" secondAttribute="trailing" constant="8" symbolic="YES" id="dh8-3c-vh9"/>
                                         <constraint firstItem="U7m-tf-k3c" firstAttribute="leading" secondItem="FJa-0G-94n" secondAttribute="leading" id="dtS-xW-6Ee"/>
@@ -415,6 +438,7 @@
                                         <constraint firstAttribute="trailing" secondItem="LOU-p1-jXB" secondAttribute="trailing" constant="20" symbolic="YES" id="nmx-aE-7RB"/>
                                         <constraint firstItem="95z-4q-gHF" firstAttribute="top" secondItem="Y3a-EY-5S3" secondAttribute="bottom" constant="16" id="qZ6-ge-ugK"/>
                                         <constraint firstAttribute="bottom" secondItem="dtD-fV-1tE" secondAttribute="bottom" id="ttd-Gi-9bg"/>
+                                        <constraint firstItem="Ikp-a0-d9g" firstAttribute="firstBaseline" secondItem="QbZ-qp-Ypz" secondAttribute="firstBaseline" id="uVC-WE-Q9f"/>
                                         <constraint firstAttribute="bottom" secondItem="QbZ-qp-Ypz" secondAttribute="bottom" constant="20" id="vxb-jb-kGM"/>
                                         <constraint firstItem="lFd-fP-vmN" firstAttribute="firstBaseline" secondItem="A1l-aS-ndR" secondAttribute="firstBaseline" id="yHJ-dL-aFu"/>
                                     </constraints>
@@ -469,8 +493,8 @@
         <image name="leaf" catalog="system" width="16" height="14"/>
         <image name="location" catalog="system" width="15" height="15"/>
         <image name="previewtest" width="1891" height="1054"/>
-        <image name="star" catalog="system" width="17" height="16"/>
         <image name="star" width="154" height="166"/>
+        <image name="star" catalog="system" width="17" height="16"/>
         <image name="star.fill" width="154" height="166"/>
         <image name="sun.max" width="147" height="168"/>
         <image name="video.badge.plus" catalog="system" width="20" height="15"/>

@@ -363,32 +363,59 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         }
     }
 
-    // MARK: - playNextVideo()
-    func playNextVideo() {
-        debugLog("\(self) pnv")
-        let notificationCenter = NotificationCenter.default
+    // Remove all the layer animations on all shared views
+    func clearAllLayerAnimations() {
         // Clear everything
         layerManager.clearLayerAnimations(player: self.player!)
         for view in AerialView.sharedViews {
             view.layerManager.clearLayerAnimations(player: self.player!)
         }
+    }
 
-        // remove old entries
+    func clearNotifications() {
+        let notificationCenter = NotificationCenter.default
+
         notificationCenter.removeObserver(self)
+    }
 
-        let player = AVPlayer()
+    func setNotifications(_ currentItem: AVPlayerItem) {
+        let notificationCenter = NotificationCenter.default
+
+        notificationCenter.addObserver(self,
+                                       selector: #selector(AerialView.playerItemDidReachEnd(_:)),
+                                       name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
+                                       object: currentItem)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(AerialView.playerItemNewErrorLogEntryNotification(_:)),
+                                       name: NSNotification.Name.AVPlayerItemNewErrorLogEntry,
+                                       object: currentItem)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(AerialView.playerItemFailedtoPlayToEnd(_:)),
+                                       name: NSNotification.Name.AVPlayerItemFailedToPlayToEndTime,
+                                       object: currentItem)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(AerialView.playerItemPlaybackStalledNotification(_:)),
+                                       name: NSNotification.Name.AVPlayerItemPlaybackStalled,
+                                       object: currentItem)
+
+    }
+
+    // MARK: - playNextVideo()
+    func playNextVideo() {
+        debugLog("\(self) pnv")
+
+        clearAllLayerAnimations()
+
+        clearNotifications()
+
         // play another video
+        let player = AVPlayer()
         let oldPlayer = self.player
         self.player = player
         player.isMuted = PrefsAdvanced.muteSound
-        // player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
 
         self.playerLayer.player = self.player
-        if AerialView.shouldFade {
-            self.playerLayer.opacity = 0
-        } else {
-            self.playerLayer.opacity = 1.0
-        }
+        self.playerLayer.opacity = AerialView.shouldFade ? 0 : 1.0
         if self.isPreview {
             AerialView.previewPlayer = player
         }
@@ -424,11 +451,18 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         // Workaround to avoid local playback making network calls
         let item = AerialPlayerItem(video: video)
         if !video.isAvailableOffline {
+            if let value = PrefsVideos.vibrance[video.id], !video.isHDR() {
+                item.setVibrance(value)
+            }
+
             player.replaceCurrentItem(with: item)
             debugLog("\(self.description) streaming video (not fully available offline) : \(video.url)")
         } else {
             let localurl = URL(fileURLWithPath: VideoCache.cachePath(forVideo: video)!)
             let localitem = AVPlayerItem(url: localurl)
+            if let value = PrefsVideos.vibrance[video.id], !video.isHDR() {
+                localitem.setVibrance(value)
+            }
             player.replaceCurrentItem(with: localitem)
             debugLog("\(self.description) playing video (OFFLINE MODE) : \(localurl)")
         }
@@ -446,22 +480,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             playerLayer.addObserver(self, forKeyPath: "readyForDisplay", options: .initial, context: nil)
         }
 
-        notificationCenter.addObserver(self,
-                                       selector: #selector(AerialView.playerItemDidReachEnd(_:)),
-                                       name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
-                                       object: currentItem)
-        notificationCenter.addObserver(self,
-                                       selector: #selector(AerialView.playerItemNewErrorLogEntryNotification(_:)),
-                                       name: NSNotification.Name.AVPlayerItemNewErrorLogEntry,
-                                       object: currentItem)
-        notificationCenter.addObserver(self,
-                                       selector: #selector(AerialView.playerItemFailedtoPlayToEnd(_:)),
-                                       name: NSNotification.Name.AVPlayerItemFailedToPlayToEndTime,
-                                       object: currentItem)
-        notificationCenter.addObserver(self,
-                                       selector: #selector(AerialView.playerItemPlaybackStalledNotification(_:)),
-                                       name: NSNotification.Name.AVPlayerItemPlaybackStalled,
-                                       object: currentItem)
+        setNotifications(currentItem)
+
         player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
 
         // Let's never download stuff in preview...

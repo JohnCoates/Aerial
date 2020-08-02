@@ -73,7 +73,7 @@ final class CheckCellView: NSTableCellView {
             queuedImage.isHidden = true
         }
 
-        formatLabel.isHidden = !(video!.has4KVersion())
+        //formatLabel.isHidden = !(video!.has4KVersion())
     }
 
     func updateProgressIndicator(progress: Double) {

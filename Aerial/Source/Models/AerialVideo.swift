@@ -172,11 +172,44 @@ final class AerialVideo: CustomStringConvertible, Equatable {
         }
     }
 
-    func has4KVersion() -> Bool {
-        return urls[.v4KHEVC] != ""
+    /// Check if what we are playing is HDR or not
+    func isHDR() -> Bool {
+        if urls[.v1080pHDR] != "" {
+            if url == URL(string: urls[.v1080pHDR]!) {
+                return true
+            }
+        }
+
+        if urls[.v4KHDR] != "" {
+            if url == URL(string: urls[.v4KHDR]!) {
+                return true
+            }
+        }
+
+        return false
     }
 
-    func getBestFormat() -> String {
+    func getCurrentFormat() -> String {
+        let wanted = PrefsVideos.videoFormat
+        if urls[wanted] != "" {
+            switch wanted {
+            case .v4KHDR:
+                return "4K HDR"
+            case .v1080pH264:
+                return "1080p"
+            case .v1080pHEVC:
+                return "1080p"
+            case .v1080pHDR:
+                return "1080p HDR"
+            case .v4KHEVC:
+                return "4K"
+            }
+        } else {
+            return getBestFormat()
+        }
+    }
+
+    private func getBestFormat() -> String {
         if urls[.v4KHDR] != "" {
             return "4K HDR"
         } else if urls[.v4KHEVC] != "" {
