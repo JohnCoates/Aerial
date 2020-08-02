@@ -172,7 +172,7 @@
                                                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hsn-bp-Gft">
                                                                                 <rect key="frame" x="1" y="16" width="144" height="81"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="previewtest" id="Tt5-fI-GZN"/>
+                                                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Tt5-fI-GZN"/>
                                                                             </imageView>
                                                                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZzB-8p-JVZ">
                                                                                 <rect key="frame" x="2" y="15" width="25" height="30"/>
@@ -492,7 +492,6 @@
         <image name="internaldrive" catalog="system" width="18" height="13"/>
         <image name="leaf" catalog="system" width="16" height="14"/>
         <image name="location" catalog="system" width="15" height="15"/>
-        <image name="previewtest" width="1891" height="1054"/>
         <image name="star" width="154" height="166"/>
         <image name="star" catalog="system" width="17" height="16"/>
         <image name="star.fill" width="154" height="166"/>

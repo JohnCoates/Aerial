@@ -10,16 +10,24 @@ import AVKit
 
 extension AVPlayerItem {
     func setVibrance(_ value: Double) {
-        guard value != 0 else {
+        var useValue = PrefsVideos.globalVibrance
+
+        print("SETVIBRANCE \(useValue)")
+        if value != 0 {
+            useValue = value
+        }
+
+        guard useValue != 0 else {
             return
         }
 
+        print(useValue)
         if #available(OSX 10.14, *) {
             let filter = CIFilter(name: "CIVibrance")!
             self.videoComposition = AVVideoComposition(asset: asset, applyingCIFiltersWithHandler: { request in
                 let source = request.sourceImage.clampedToExtent()
                 filter.setValue(source, forKey: kCIInputImageKey)
-                    filter.setValue(value, forKey: kCIInputAmountKey)
+                filter.setValue(useValue, forKey: kCIInputAmountKey)
                 let output = filter.outputImage
 
                 request.finish(with: output!, context: nil)

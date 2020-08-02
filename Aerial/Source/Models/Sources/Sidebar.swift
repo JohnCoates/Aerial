@@ -38,6 +38,7 @@ class Sidebar {
                     MenuEntry(name: "Brightness", path: "settings:brightness"),
                     MenuEntry(name: "Cache", path: "settings:cache"),
                     MenuEntry(name: "Overlays", path: "settings:overlays"),
+                    MenuEntry(name: "Filters", path: "settings:filters"),
                     MenuEntry(name: "Auto Updates", path: "settings:updates"),
                     MenuEntry(name: "Advanced", path: "settings:advanced"),
                     ]
@@ -160,6 +161,8 @@ class Sidebar {
             return Aerial.getAccentedSymbol("internaldrive")
         } else if path.starts(with: "settings:overlays") {
             return Aerial.getAccentedSymbol("text.bubble")
+        } else if path.starts(with: "settings:filters") {
+            return Aerial.getAccentedSymbol("slider.horizontal.3")
         } else if path.starts(with: "settings:updates") {
             return Aerial.getAccentedSymbol("arrow.down.circle")
         } else if path.starts(with: "settings:advanced") {

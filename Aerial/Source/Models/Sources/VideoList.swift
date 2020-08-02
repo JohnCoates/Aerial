@@ -180,6 +180,39 @@ class VideoList {
         return filteredVideosFor(mode, section: section)
     }
 
+    // MARK: - Public getter for a video list from paths
+    func getVideosForPath(_ path: String) -> [AerialVideo] {
+        if let mode = VideoList.instance.modeFromPath(path) {
+            let index = Int(path.split(separator: ":")[1])!
+            return VideoList.instance.getVideosForSource(index, mode: mode)
+        } else {
+            // all
+            return VideoList.instance.videos.sorted { $0.secondaryName < $1.secondaryName }
+        }
+    }
+
+    func modeFromPath(_ path: String) -> FilterMode? {
+        if path.starts(with: "location:") {
+            return .location
+        } else if path.starts(with: "cache:") {
+            return .cache
+        } else if path.starts(with: "time:") {
+            return .time
+        } else if path.starts(with: "scene:") {
+            return .scene
+        } else if path.starts(with: "rotation:") {
+            return .rotation
+        } else if path.starts(with: "source:") {
+            return .source
+        } else if path.starts(with: "favorites") {
+            return .favorite
+        } else if path.starts(with: "hidden") {
+            return .hidden
+        } else {
+            return nil
+        }
+    }
+
     // MARK: - Callbacks
     func addCallback(_ callback:@escaping VideoListRefreshCallback) {
         callbacks.append(callback)

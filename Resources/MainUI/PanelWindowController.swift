@@ -27,6 +27,7 @@ class PanelWindowController: NSWindowController {
     var brightnessViewItem: NSSplitViewItem?
     var cacheViewItem: NSSplitViewItem?
     var overlaysViewItem: NSSplitViewItem?
+    var filtersViewItem: NSSplitViewItem?
     var updatesViewItem: NSSplitViewItem?
     var advancedViewItem: NSSplitViewItem?
 
@@ -61,6 +62,7 @@ class PanelWindowController: NSWindowController {
         let brightnessVC = BrightnessViewController(nibName: .init("BrightnessViewController"), bundle: bundle)
         let cacheVC = CacheViewController(nibName: .init("CacheViewController"), bundle: bundle)
         let overlaysVC = OverlaysViewController(nibName: .init("OverlaysViewController"), bundle: bundle)
+        let filtersVC = FiltersViewController(nibName: .init("FiltersViewController"), bundle: bundle)
         let updatesVC = UpdatesViewController(nibName: .init("UpdatesViewController"), bundle: bundle)
         let advancedVC = AdvancedViewController(nibName: .init("AdvancedViewController"), bundle: bundle)
 
@@ -81,6 +83,7 @@ class PanelWindowController: NSWindowController {
         brightnessViewItem = NSSplitViewItem(viewController: brightnessVC)
         cacheViewItem = NSSplitViewItem(viewController: cacheVC)
         overlaysViewItem = NSSplitViewItem(viewController: overlaysVC)
+        filtersViewItem = NSSplitViewItem(viewController: filtersVC)
         updatesViewItem = NSSplitViewItem(viewController: updatesVC)
         advancedViewItem = NSSplitViewItem(viewController: advancedVC)
 
@@ -182,6 +185,8 @@ class PanelWindowController: NSWindowController {
             splitVC.addSplitViewItem(cacheViewItem!)
         case "overlays":
             splitVC.addSplitViewItem(overlaysViewItem!)
+        case "filters":
+            splitVC.addSplitViewItem(filtersViewItem!)
         case "updates":
             splitVC.addSplitViewItem(updatesViewItem!)
         default: //case "advanced":

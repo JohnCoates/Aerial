@@ -110,4 +110,6 @@ struct PrefsVideos {
     @SimpleStorage(key: "vibrance", defaultValue: [:])
     static var vibrance: [String: Double]
 
+    @SimpleStorage(key: "globalVibrance", defaultValue: 0)
+    static var globalVibrance: Double
 }

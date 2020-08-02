@@ -460,7 +460,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         } else {
             let localurl = URL(fileURLWithPath: VideoCache.cachePath(forVideo: video)!)
             let localitem = AVPlayerItem(url: localurl)
-            if let value = PrefsVideos.vibrance[video.id], !video.isHDR() {
+            if !video.isHDR() {
+                let value = PrefsVideos.vibrance[video.id] ?? 0
                 localitem.setVibrance(value)
             }
             player.replaceCurrentItem(with: localitem)

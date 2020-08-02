@@ -156,7 +156,7 @@ class VideosViewController: NSViewController {
 
         // Grab all videos in the path
         var videos: [AerialVideo]
-        if let mode = modeFromPath(path) {
+        if let mode = VideoList.instance.modeFromPath(path) {
             let index = Int(path.split(separator: ":")[1])!
             videos = VideoList.instance.getVideosForSource(index, mode: mode)
         } else {
@@ -342,7 +342,11 @@ class VideosViewController: NSViewController {
                 } else {
                     vibrancySlider.doubleValue = 0.0
                 }
-                currentVibrancy = vibrancySlider.doubleValue
+                if vibrancySlider.doubleValue == 0 {
+                    currentVibrancy = PrefsVideos.globalVibrance
+                } else {
+                    currentVibrancy = vibrancySlider.doubleValue
+                }
 
                 let filter = CIFilter(name: "CIVibrance")!
                 localitem.videoComposition = AVVideoComposition(asset: asset, applyingCIFiltersWithHandler: { request in
@@ -449,7 +453,7 @@ class VideosViewController: NSViewController {
 
     func getSelectedVideo() -> AerialVideo? {
         if let path = path {
-            if let mode = modeFromPath(path) {
+            if let mode = VideoList.instance.modeFromPath(path) {
                 let index = Int(path.split(separator: ":")[1])!
                 if index >= 0 && videoListTableView.selectedRow >= 0 {
                     return VideoList.instance.getVideoForSource(index, item: videoListTableView.selectedRow, mode: mode)
@@ -498,28 +502,6 @@ class VideosViewController: NSViewController {
             sceneTypeImageView.image = Aerial.getSymbol("sparkles")
         case .sea:
             sceneTypeImageView.image = Aerial.getSymbol("helm")
-        }
-    }
-
-    func modeFromPath(_ path: String) -> VideoList.FilterMode? {
-        if path.starts(with: "location:") {
-            return .location
-        } else if path.starts(with: "cache:") {
-            return .cache
-        } else if path.starts(with: "time:") {
-            return .time
-        } else if path.starts(with: "scene:") {
-            return .scene
-        } else if path.starts(with: "rotation:") {
-            return .rotation
-        } else if path.starts(with: "source:") {
-            return .source
-        } else if path.starts(with: "favorites") {
-            return .favorite
-        } else if path.starts(with: "hidden") {
-            return .hidden
-        } else {
-            return nil
         }
     }
 
@@ -573,7 +555,7 @@ extension VideosViewController: NSTableViewDataSource {
             return 0
         }
 
-        if let mode = modeFromPath(path) {
+        if let mode = VideoList.instance.modeFromPath(path) {
             let index = Int(path.split(separator: ":")[1])!
             return VideoList.instance.getVideosCountForSource(index, mode: mode)
         } else {
@@ -590,7 +572,7 @@ extension VideosViewController: NSTableViewDelegate {
         }
 
         var video: AerialVideo
-        if let mode = modeFromPath(path) {
+        if let mode = VideoList.instance.modeFromPath(path) {
             let index = Int(path.split(separator: ":")[1])!
             video = VideoList.instance.getVideoForSource(index, item: row, mode: mode)
         } else {

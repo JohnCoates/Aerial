@@ -14,7 +14,7 @@ enum SidebarMenus {
 
 class SidebarViewController: NSViewController {
 
-    @IBOutlet var sidebarOutlineView: NSOutlineView!
+    @IBOutlet var sidebarOutlineView: SidebarOutlineView!
 
     @IBOutlet var videosButton: NSButton!
     @IBOutlet var settingsButton: NSButton!
@@ -31,6 +31,8 @@ class SidebarViewController: NSViewController {
     var menuSelection: SidebarMenus = .videos
 
     @IBOutlet var closeButton: NSButton!
+
+    var menuPath = ""   // eh...
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,8 +99,8 @@ class SidebarViewController: NSViewController {
             menuSelection = menu
 
             sidebarOutlineView.reloadData()
-            self.sidebarOutlineView.expandItem(nil, expandChildren: true)
-            self.sidebarOutlineView.selectRowIndexes([0], byExtendingSelection: false)
+            sidebarOutlineView.expandItem(nil, expandChildren: true)
+            sidebarOutlineView.selectRowIndexes([0], byExtendingSelection: false)
         }
     }
 
@@ -239,5 +241,164 @@ extension SidebarViewController: NSOutlineViewDelegate {
         }
 
         return nil
+    }
+
+}
+
+// Right click menu
+extension SidebarViewController: SidebarOutlineViewDelegate {
+
+    func outlineView(outlineView: NSOutlineView, menuForItem item: Any) -> NSMenu? {
+        print("menu")
+        // Make sure we're right clicking a menu entry
+        if let entry = item as? Sidebar.MenuEntry {
+            if entry.path.starts(with: "videos:") {
+                let idx = entry.path.firstIndex(of: ":")
+                let path = String(entry.path[idx!...].dropFirst()) // Oh Swift...
+
+                menuPath = path         // Store it for later use in selectors, it's ugly I know
+
+                // Grab all the videos
+                var videos: [AerialVideo]
+
+                if let mode = VideoList.instance.modeFromPath(path) {
+                    if mode == .hidden {
+                        // No menu for hidden mode
+                        return nil
+                    }
+
+                    let index = Int(path.split(separator: ":")[1])!
+                    videos = VideoList.instance.getVideosForSource(index, mode: mode)
+                } else {
+                    // all
+                    videos = VideoList.instance.videos.sorted { $0.secondaryName < $1.secondaryName }
+                }
+
+                guard !videos.isEmpty else {
+                    return nil
+                }
+
+                let menu = NSMenu()
+
+                var hasUnfavs = false
+                var hasFavs = false
+
+                // Add/remove favorites
+                if !videos.filter({ !PrefsVideos.favorites.contains($0.id) }).isEmpty {
+                    let item = NSMenuItem(title: "Favorite videos", action: #selector(favoriteVideos(_:)), keyEquivalent: "")
+                    item.setIcons("star.fill")
+                    menu.addItem(item)
+                    hasUnfavs = true
+                }
+
+                if !videos.filter({ PrefsVideos.favorites.contains($0.id) }).isEmpty {
+                    let item = NSMenuItem(title: "Unfavorite videos", action: #selector(unfavoriteVideos(_:)), keyEquivalent: "")
+                    item.setIcons("star")
+                    menu.addItem(item)
+                    hasFavs = true
+                }
+
+                // Don't show the hide videos option if we only have favs in that list
+                if !(hasFavs && !hasUnfavs) {
+                    menu.addItem(NSMenuItem.separator())
+
+                    let item = NSMenuItem(title: "Hide videos", action: #selector(hideVideos(_:)), keyEquivalent: "")
+                    item.setIcons("eye.slash")
+                    menu.addItem(item)
+                }
+
+                // Do we have uncached videos in here ?
+                if !videos.filter({!$0.isAvailableOffline}).isEmpty {
+                    menu.addItem(NSMenuItem.separator())
+                    let item = NSMenuItem(title: "Cache missing videos", action: #selector(cacheMissingVideos(_:)), keyEquivalent: "")
+                    item.setIcons("arrow.down.circle")
+                    menu.addItem(item)
+                }
+
+                if !videos.filter({ PrefsVideos.vibrance.keys.contains($0.id) }).isEmpty {
+                    let item = NSMenuItem(title: "Reset vibrance", action: #selector(resetVibrance(_:)), keyEquivalent: "")
+                    item.setIcons("slider.horizontal.3")
+                    menu.addItem(item)
+                    hasFavs = true
+                }
+
+                return menu
+            }
+        }
+
+        return nil
+    }
+
+    @objc func cacheMissingVideos(_ sender: Any) {
+        if menuPath == "" {
+            errorLog("Right click cache missing with no menu")
+            return
+        }
+
+        Cache.ensureDownload {
+            let videos = VideoList.instance.getVideosForPath(self.menuPath)
+
+            for video in videos.filter({ !$0.isAvailableOffline }) {
+                VideoManager.sharedInstance.queueDownload(video)
+            }
+        }
+    }
+
+    @objc func favoriteVideos(_ sender: Any) {
+        if menuPath == "" {
+            errorLog("Right click missing path")
+            return
+        }
+        let videos = VideoList.instance.getVideosForPath(self.menuPath)
+
+        for video in videos.filter({ !PrefsVideos.favorites.contains($0.id) }) {
+            PrefsVideos.favorites.append(video.id)
+        }
+        windowController!.updateViewInPlace()
+    }
+
+    @objc func unfavoriteVideos(_ sender: Any) {
+        if menuPath == "" {
+            errorLog("Right click missing path")
+            return
+        }
+        let videos = VideoList.instance.getVideosForPath(self.menuPath)
+
+        for video in videos.filter({ PrefsVideos.favorites.contains($0.id) }) {
+            PrefsVideos.favorites.remove(at: PrefsVideos.favorites.firstIndex(of: video.id)!)
+        }
+        windowController!.updateViewInPlace()
+    }
+
+    @objc func hideVideos(_ sender: Any) {
+        if menuPath == "" {
+            errorLog("Right click missing path")
+            return
+        }
+        let videos = VideoList.instance.getVideosForPath(self.menuPath)
+
+        for video in videos.filter({ !PrefsVideos.hidden.contains($0.id) }) {
+            PrefsVideos.hidden.append(video.id)
+        }
+
+        // We need to reload our sidebar
+        Sidebar.instance.refreshVideos()
+        sidebarOutlineView.reloadData()
+        sidebarOutlineView.expandItem(nil, expandChildren: true)
+        sidebarOutlineView.selectRowIndexes([0], byExtendingSelection: false)
+    }
+
+    @objc func resetVibrance(_ sender: Any) {
+        if menuPath == "" {
+            errorLog("Right click missing path")
+            return
+        }
+        let videos = VideoList.instance.getVideosForPath(self.menuPath)
+
+        for video in videos.filter({ PrefsVideos.vibrance.keys.contains($0.id) }) {
+            PrefsVideos.vibrance.removeValue(forKey: video.id)
+        }
+
+        windowController!.updateViewInPlace()
     }
 }

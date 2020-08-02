@@ -10,6 +10,18 @@
 		0300109724D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300109624D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift */; };
 		0300109824D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300109624D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift */; };
 		0300109924D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300109624D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift */; };
+		030010A224D706DB0092AE68 /* SidebarOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030010A124D706DB0092AE68 /* SidebarOutlineView.swift */; };
+		030010A324D706DB0092AE68 /* SidebarOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030010A124D706DB0092AE68 /* SidebarOutlineView.swift */; };
+		030010A424D706DB0092AE68 /* SidebarOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030010A124D706DB0092AE68 /* SidebarOutlineView.swift */; };
+		030010A624D718D30092AE68 /* slider.horizontal.3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 030010A524D718D30092AE68 /* slider.horizontal.3.pdf */; };
+		030010A724D718D30092AE68 /* slider.horizontal.3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 030010A524D718D30092AE68 /* slider.horizontal.3.pdf */; };
+		030010A824D718D30092AE68 /* slider.horizontal.3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 030010A524D718D30092AE68 /* slider.horizontal.3.pdf */; };
+		030010AB24D71EB20092AE68 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030010A924D71EB20092AE68 /* FiltersViewController.swift */; };
+		030010AC24D71EB20092AE68 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030010A924D71EB20092AE68 /* FiltersViewController.swift */; };
+		030010AD24D71EB20092AE68 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030010A924D71EB20092AE68 /* FiltersViewController.swift */; };
+		030010AE24D71EB20092AE68 /* FiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030010AA24D71EB20092AE68 /* FiltersViewController.xib */; };
+		030010AF24D71EB20092AE68 /* FiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030010AA24D71EB20092AE68 /* FiltersViewController.xib */; };
+		030010B024D71EB20092AE68 /* FiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030010AA24D71EB20092AE68 /* FiltersViewController.xib */; };
 		0300B7E924D1B536006132E5 /* person.3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0300B7CA24D1B531006132E5 /* person.3.pdf */; };
 		0300B7EA24D1B536006132E5 /* person.3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0300B7CA24D1B531006132E5 /* person.3.pdf */; };
 		0300B7EB24D1B536006132E5 /* person.3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0300B7CA24D1B531006132E5 /* person.3.pdf */; };
@@ -777,6 +789,10 @@
 
 /* Begin PBXFileReference section */
 		0300109624D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayerItem+vibrance.swift"; sourceTree = "<group>"; };
+		030010A124D706DB0092AE68 /* SidebarOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarOutlineView.swift; sourceTree = "<group>"; };
+		030010A524D718D30092AE68 /* slider.horizontal.3.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = slider.horizontal.3.pdf; sourceTree = "<group>"; };
+		030010A924D71EB20092AE68 /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		030010AA24D71EB20092AE68 /* FiltersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FiltersViewController.xib; sourceTree = "<group>"; };
 		0300B7CA24D1B531006132E5 /* person.3.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = person.3.pdf; sourceTree = "<group>"; };
 		0300B7CB24D1B531006132E5 /* bubble.left.and.bubble.right.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = bubble.left.and.bubble.right.pdf; sourceTree = "<group>"; };
 		0300B7CC24D1B531006132E5 /* helm.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = helm.pdf; sourceTree = "<group>"; };
@@ -1196,6 +1212,7 @@
 				0300B7D724D1B533006132E5 /* regular.moon.stars.pdf */,
 				0300B7E524D1B535006132E5 /* regular.sun.max.pdf */,
 				0300B7DD24D1B534006132E5 /* regular.sun.min.pdf */,
+				030010A524D718D30092AE68 /* slider.horizontal.3.pdf */,
 				0300B7D324D1B532006132E5 /* sparkles.pdf */,
 				0300B7E824D1B536006132E5 /* square.and.arrow.down.pdf */,
 				0300B7E324D1B535006132E5 /* star.fill.pdf */,
@@ -1228,6 +1245,8 @@
 				032E099C24C3897E00387230 /* AdvancedViewController.swift */,
 				03EED2EF24C44A7900F0C3D4 /* OverlaysViewController.xib */,
 				03EED2EE24C44A7900F0C3D4 /* OverlaysViewController.swift */,
+				030010AA24D71EB20092AE68 /* FiltersViewController.xib */,
+				030010A924D71EB20092AE68 /* FiltersViewController.swift */,
 			);
 			path = "Settings panels";
 			sourceTree = "<group>";
@@ -1278,6 +1297,7 @@
 			children = (
 				0345D00D24C07CC70001045C /* VideoCellView.swift */,
 				03D3A11224C5FC770091FE99 /* AspectFillNSImageView.swift */,
+				030010A124D706DB0092AE68 /* SidebarOutlineView.swift */,
 			);
 			path = MainUI;
 			sourceTree = "<group>";
@@ -1840,6 +1860,7 @@
 				03AA7AA624C84C6300A47970 /* cloud.rain.pdf in Resources */,
 				03AA7A9724C84C6300A47970 /* smoke.pdf in Resources */,
 				03AA7A8824C84C6300A47970 /* cloud.fog.pdf in Resources */,
+				030010A724D718D30092AE68 /* slider.horizontal.3.pdf in Resources */,
 				0300B82C24D1B536006132E5 /* location.pdf in Resources */,
 				0300B84D24D1FD24006132E5 /* FirstSetupWindowController.xib in Resources */,
 				03AA7A6D24C84C6300A47970 /* battery.0.pdf in Resources */,
@@ -1869,6 +1890,7 @@
 				03AA7AB824C84C6400A47970 /* bolt.fill.pdf in Resources */,
 				03AA7A9D24C84C6300A47970 /* cloud.moon.rain.pdf in Resources */,
 				0378986224C35F8A009B9418 /* CacheViewController.xib in Resources */,
+				030010AF24D71EB20092AE68 /* FiltersViewController.xib in Resources */,
 				03AA7A7324C84C6300A47970 /* cloud.sun.rain.pdf in Resources */,
 				0396D58D24B8B7ED00CC021B /* thumbnail@2x.png in Resources */,
 				0396D58E24B8B7ED00CC021B /* thumbnail.png in Resources */,
@@ -1992,6 +2014,7 @@
 				03AA7AAD24C84C6300A47970 /* tornado.pdf in Resources */,
 				03DAD473229EC031000DA6D1 /* Readme.md in Resources */,
 				0300B83C24D1B536006132E5 /* regular.sun.max.pdf in Resources */,
+				030010A824D718D30092AE68 /* slider.horizontal.3.pdf in Resources */,
 				03AA7A8624C84C6300A47970 /* hurricane.pdf in Resources */,
 				0300B80924D1B536006132E5 /* film.pdf in Resources */,
 				0300B80324D1B536006132E5 /* clock.pdf in Resources */,
@@ -2002,6 +2025,7 @@
 				03D1E79222848F7F00D10CF7 /* screen2.jpg in Resources */,
 				FAC36F4A1BE1756D007F2A20 /* MainMenu.xib in Resources */,
 				0300B81224D1B536006132E5 /* regular.moon.stars.pdf in Resources */,
+				030010B024D71EB20092AE68 /* FiltersViewController.xib in Resources */,
 				0377BF8824BA15E700C33F9F /* btn_donate.png in Resources */,
 				0300B7FD24D1B536006132E5 /* circle.pdf in Resources */,
 				0300B7FA24D1B536006132E5 /* text.bubble.pdf in Resources */,
@@ -2080,6 +2104,7 @@
 				03AA7AA524C84C6300A47970 /* cloud.rain.pdf in Resources */,
 				03AA7A9624C84C6300A47970 /* smoke.pdf in Resources */,
 				03AA7A8724C84C6300A47970 /* cloud.fog.pdf in Resources */,
+				030010A624D718D30092AE68 /* slider.horizontal.3.pdf in Resources */,
 				0300B82B24D1B536006132E5 /* location.pdf in Resources */,
 				0300B84C24D1FD24006132E5 /* FirstSetupWindowController.xib in Resources */,
 				03AA7A6C24C84C6300A47970 /* battery.0.pdf in Resources */,
@@ -2109,6 +2134,7 @@
 				03AA7AB724C84C6400A47970 /* bolt.fill.pdf in Resources */,
 				03AA7A9C24C84C6300A47970 /* cloud.moon.rain.pdf in Resources */,
 				0378986124C35F8A009B9418 /* CacheViewController.xib in Resources */,
+				030010AE24D71EB20092AE68 /* FiltersViewController.xib in Resources */,
 				03AA7A7224C84C6300A47970 /* cloud.sun.rain.pdf in Resources */,
 				0395835321807D1F008E8F9C /* thumbnail@2x.png in Resources */,
 				0395835521807D1F008E8F9C /* thumbnail.png in Resources */,
@@ -2245,6 +2271,7 @@
 				0396D52124B8B7ED00CC021B /* Locations.swift in Sources */,
 				0396D52224B8B7ED00CC021B /* VideoCache.swift in Sources */,
 				0396D52324B8B7ED00CC021B /* BatteryIconLayer.swift in Sources */,
+				030010AC24D71EB20092AE68 /* FiltersViewController.swift in Sources */,
 				0396D52424B8B7ED00CC021B /* PrefsDisplays.swift in Sources */,
 				0396D52524B8B7ED00CC021B /* YahooWeatherAPI.swift in Sources */,
 				0396D52624B8B7ED00CC021B /* Cache.swift in Sources */,
@@ -2304,6 +2331,7 @@
 				0300B84A24D1FD24006132E5 /* FirstSetupWindowController.swift in Sources */,
 				0396D55724B8B7ED00CC021B /* SourceInfo.swift in Sources */,
 				0338119624C1D15B002E23E0 /* Aerial.swift in Sources */,
+				030010A324D706DB0092AE68 /* SidebarOutlineView.swift in Sources */,
 				0396D55924B8B7ED00CC021B /* PrefsTime.swift in Sources */,
 				0396D55A24B8B7ED00CC021B /* PoiStringProvider.swift in Sources */,
 				03EED2D324C3A47700F0C3D4 /* UpdatesViewController.swift in Sources */,
@@ -2340,6 +2368,7 @@
 				03FA49B82428F84500863AF6 /* DateLayer.swift in Sources */,
 				0361B9AC23D73D4500B6252D /* PrefsTime.swift in Sources */,
 				0345D00C24BF4E8C0001045C /* Sidebar.swift in Sources */,
+				030010A424D706DB0092AE68 /* SidebarOutlineView.swift in Sources */,
 				032D1162239A7E03007E7756 /* Battery.swift in Sources */,
 				03893CB4217753AC008E7125 /* ErrorLog.swift in Sources */,
 				03C97BC124B60E2F00739CED /* FileHelpers.swift in Sources */,
@@ -2399,6 +2428,7 @@
 				0345872E2449C59900C97D1B /* AnimatableLayer.swift in Sources */,
 				0395834A217F442A008E8F9C /* Solar.swift in Sources */,
 				FAB22A7F1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */,
+				030010AD24D71EB20092AE68 /* FiltersViewController.swift in Sources */,
 				FAC36F601BE175CF007F2A20 /* AppDelegate.swift in Sources */,
 				03C97BA824B5F74900739CED /* VideoList.swift in Sources */,
 				0345CFEF24BF43280001045C /* VideosViewController.swift in Sources */,
@@ -2488,6 +2518,7 @@
 				0374C9FE247AC5BC002F29D3 /* Locations.swift in Sources */,
 				FAF450241BE2D2FD00C1F98A /* VideoCache.swift in Sources */,
 				030A0F29245C7C7D009E1D97 /* BatteryIconLayer.swift in Sources */,
+				030010AB24D71EB20092AE68 /* FiltersViewController.swift in Sources */,
 				0361B9A823D732A300B6252D /* PrefsDisplays.swift in Sources */,
 				03D2A43424474304003ABD30 /* YahooWeatherAPI.swift in Sources */,
 				03DC004E248BC5A4005DB0F4 /* Cache.swift in Sources */,
@@ -2547,6 +2578,7 @@
 				0300B84924D1FD24006132E5 /* FirstSetupWindowController.swift in Sources */,
 				03C97BC324B6210500739CED /* SourceInfo.swift in Sources */,
 				0338119524C1D15B002E23E0 /* Aerial.swift in Sources */,
+				030010A224D706DB0092AE68 /* SidebarOutlineView.swift in Sources */,
 				0361B9AB23D73D4500B6252D /* PrefsTime.swift in Sources */,
 				03233B68217272640077D3F9 /* PoiStringProvider.swift in Sources */,
 				03EED2D224C3A47700F0C3D4 /* UpdatesViewController.swift in Sources */,

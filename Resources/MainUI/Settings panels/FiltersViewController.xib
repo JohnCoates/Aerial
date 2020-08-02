@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="FiltersViewController" customModule="Aerial" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView1" destination="7LV-8e-x1j" id="zgu-CN-Hhr"/>
+                <outlet property="imageView2" destination="8AX-SO-qGe" id="aZc-Wr-YkL"/>
+                <outlet property="imageView3" destination="oJZ-sY-UYv" id="RoH-Mv-Tip"/>
+                <outlet property="imageView4" destination="AvL-Xc-gaf" id="rwE-4P-bkU"/>
+                <outlet property="imageViewTest" destination="RU7-r4-f4h" id="7iW-lV-xik"/>
+                <outlet property="vibranceSlider" destination="oaK-yX-Fb3" id="OKF-IO-d22"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="848" height="557"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oaK-yX-Fb3">
+                    <rect key="frame" x="232" y="514" width="276" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="260" id="590-ll-J2f"/>
+                    </constraints>
+                    <sliderCell key="cell" controlSize="large" continuous="YES" state="on" alignment="left" minValue="-1" maxValue="1" tickMarkPosition="above" numberOfTickMarks="3" sliderType="linear" id="bm8-i4-7iS"/>
+                    <connections>
+                        <action selector="vibranceSliderChange:" target="-2" id="MTm-nT-NgR"/>
+                    </connections>
+                </slider>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0GU-RH-zJp">
+                    <rect key="frame" x="95" y="521" width="139" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Apply global vibrance:" id="EXk-cA-wlS">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Lkf-KS-VPB">
+                    <rect key="frame" x="60" y="78" width="728" height="409"/>
+                    <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" translatesAutoresizingMaskIntoConstraints="NO" id="7LV-8e-x1j">
+                            <rect key="frame" x="0.0" y="204" width="364" height="205"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="H9g-WZ-jAw"/>
+                        </imageView>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" translatesAutoresizingMaskIntoConstraints="NO" id="8AX-SO-qGe">
+                            <rect key="frame" x="364" y="204" width="364" height="205"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="KIl-bl-it3"/>
+                        </imageView>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" translatesAutoresizingMaskIntoConstraints="NO" id="oJZ-sY-UYv">
+                            <rect key="frame" x="0.0" y="0.0" width="364" height="204"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="wAg-gs-Ch2"/>
+                        </imageView>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" translatesAutoresizingMaskIntoConstraints="NO" id="AvL-Xc-gaf">
+                            <rect key="frame" x="364" y="0.0" width="364" height="204"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="NNt-qy-ZNc"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="7LV-8e-x1j" secondAttribute="trailing" id="5vZ-qE-uak"/>
+                        <constraint firstItem="AvL-Xc-gaf" firstAttribute="top" secondItem="Lkf-KS-VPB" secondAttribute="centerY" id="8Ff-6Y-7XW"/>
+                        <constraint firstAttribute="trailing" secondItem="8AX-SO-qGe" secondAttribute="trailing" id="BZ5-Dm-01Q"/>
+                        <constraint firstItem="AvL-Xc-gaf" firstAttribute="leading" secondItem="Lkf-KS-VPB" secondAttribute="centerX" id="CLR-zn-OZN"/>
+                        <constraint firstItem="7LV-8e-x1j" firstAttribute="leading" secondItem="Lkf-KS-VPB" secondAttribute="leading" id="EK9-SX-yPM"/>
+                        <constraint firstItem="8AX-SO-qGe" firstAttribute="leading" secondItem="Lkf-KS-VPB" secondAttribute="centerX" id="FDP-sY-Hel"/>
+                        <constraint firstItem="oJZ-sY-UYv" firstAttribute="top" secondItem="Lkf-KS-VPB" secondAttribute="centerY" id="Lgj-rm-fzx"/>
+                        <constraint firstAttribute="centerY" secondItem="7LV-8e-x1j" secondAttribute="bottom" id="Mw0-ho-cQ2"/>
+                        <constraint firstAttribute="centerX" secondItem="oJZ-sY-UYv" secondAttribute="trailing" id="MzR-JW-qaQ"/>
+                        <constraint firstAttribute="centerY" secondItem="8AX-SO-qGe" secondAttribute="bottom" id="XA7-1d-YGn"/>
+                        <constraint firstAttribute="bottom" secondItem="oJZ-sY-UYv" secondAttribute="bottom" id="a6G-B1-Emd"/>
+                        <constraint firstItem="8AX-SO-qGe" firstAttribute="top" secondItem="Lkf-KS-VPB" secondAttribute="top" id="cFp-Xo-Llk"/>
+                        <constraint firstItem="7LV-8e-x1j" firstAttribute="top" secondItem="Lkf-KS-VPB" secondAttribute="top" id="cbc-i1-Ac8"/>
+                        <constraint firstAttribute="trailing" secondItem="AvL-Xc-gaf" secondAttribute="trailing" id="dLG-vS-XQP"/>
+                        <constraint firstAttribute="width" secondItem="Lkf-KS-VPB" secondAttribute="height" multiplier="16:9" id="djB-ab-xGq"/>
+                        <constraint firstItem="oJZ-sY-UYv" firstAttribute="leading" secondItem="Lkf-KS-VPB" secondAttribute="leading" id="gok-QH-Fv3"/>
+                        <constraint firstAttribute="bottom" secondItem="AvL-Xc-gaf" secondAttribute="bottom" id="vzz-kL-8jN"/>
+                    </constraints>
+                </customView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RU7-r4-f4h">
+                    <rect key="frame" x="642" y="420" width="186" height="131"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="186" id="Shi-KW-TIE"/>
+                        <constraint firstAttribute="height" constant="131" id="v3t-Pc-BBU"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="b3e-gO-xC0"/>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Lkf-KS-VPB" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="70" id="9iW-YK-N19"/>
+                <constraint firstItem="oaK-yX-Fb3" firstAttribute="leading" secondItem="0GU-RH-zJp" secondAttribute="trailing" constant="8" id="GCR-JE-7tQ"/>
+                <constraint firstAttribute="trailing" secondItem="RU7-r4-f4h" secondAttribute="trailing" constant="20" symbolic="YES" id="ID9-lr-jnr"/>
+                <constraint firstItem="RU7-r4-f4h" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="6" id="JZG-oJ-aos"/>
+                <constraint firstItem="Lkf-KS-VPB" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="60" id="MFl-gR-4Cv"/>
+                <constraint firstItem="oaK-yX-Fb3" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="22" id="WVf-Pi-IAW"/>
+                <constraint firstItem="oaK-yX-Fb3" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="240" id="bIs-qY-CO3"/>
+                <constraint firstAttribute="trailing" secondItem="Lkf-KS-VPB" secondAttribute="trailing" constant="60" id="dux-Td-5U0"/>
+                <constraint firstItem="0GU-RH-zJp" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="sju-ce-g1L"/>
+            </constraints>
+            <point key="canvasLocation" x="-1591" y="296.5"/>
+        </customView>
+    </objects>
+</document>

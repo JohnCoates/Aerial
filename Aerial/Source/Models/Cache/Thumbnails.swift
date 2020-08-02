@@ -90,15 +90,13 @@ struct Thumbnails {
                            withSizeInPixels: thumbSize,
                            to: saveURL)
 
-            if !video.isAvailableOffline {
-                let largeURL = URL(fileURLWithPath: getLargePath(forVideo: video))
-                let fullSize = CGSize.init(width: cgImage.width, height: cgImage.height)
+            let largeURL = URL(fileURLWithPath: getLargePath(forVideo: video))
+            let fullSize = CGSize.init(width: cgImage.width, height: cgImage.height)
 
-                try writeImage(image: NSImage(cgImage: cgImage, size: fullSize),
-                               usingType: .jpeg,
-                               withSizeInPixels: fullSize,
-                               to: largeURL)
-            }
+            try writeImage(image: NSImage(cgImage: cgImage, size: fullSize),
+                           usingType: .jpeg,
+                           withSizeInPixels: fullSize,
+                           to: largeURL)
         } catch {
             errorLog(error.localizedDescription)
         }
@@ -138,7 +136,7 @@ struct Thumbnails {
         }
         let rep = unscaledBitmapImageRep(forImage: image)
 
-        guard let data = rep.representation(using: type, properties: [.compressionFactor: 1.0]) else {
+        guard let data = rep.representation(using: type, properties: [.compressionFactor: 0.8]) else {
             preconditionFailure()
         }
 
@@ -201,4 +199,17 @@ struct Thumbnails {
             return completion(nil)
         }
     }
+
+    static func getLargeURL(forVideo video: AerialVideo) -> URL? {
+        let candidateLarge = getLargePath(forVideo: video)
+
+        if FileManager.default.fileExists(atPath: candidateLarge) {
+            return URL(fileURLWithPath: candidateLarge)
+        } else {
+            // This may happen in a race...
+            return nil
+        }
+
+    }
+
 }
