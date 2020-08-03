@@ -67,7 +67,7 @@ You can find more about [version changes here](Documentation/ChangeLog.md).
 
 ## Compatibility
 
-Aerial is written in Swift, which requires OS X Sierra (10.12) or above. Aerial 1.7.1 is the last version that supports macOS 10.9. 
+Aerial is written in Swift, which requires OS X Mavericks (10.9) or above. Please understand that not every feature will work as intended below OS X Sierra (10.12).
 
 ## Community
 
