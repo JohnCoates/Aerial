@@ -122,7 +122,7 @@ line2</string>
                                                         </textFieldCell>
                                                     </textField>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qTw-Wg-fqd">
-                                                        <rect key="frame" x="516" y="46" width="84" height="20"/>
+                                                        <rect key="frame" x="468" y="46" width="132" height="20"/>
                                                         <subviews>
                                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gCH-fr-qvu">
                                                                 <rect key="frame" x="0.0" y="1" width="20" height="18"/>
@@ -156,6 +156,22 @@ line2</string>
                                                                 </constraints>
                                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="helm" id="awM-JR-hZe"/>
                                                             </imageView>
+                                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3hx-vw-BFg">
+                                                                <rect key="frame" x="84" y="0.0" width="24" height="20"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="24" id="9y1-zA-8yo"/>
+                                                                    <constraint firstAttribute="height" constant="20" id="L1e-cW-4V2"/>
+                                                                </constraints>
+                                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="helm" id="MRm-4P-OX2"/>
+                                                            </imageView>
+                                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="63F-uv-Hra">
+                                                                <rect key="frame" x="108" y="0.0" width="24" height="20"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="24" id="CYU-d8-SkW"/>
+                                                                    <constraint firstAttribute="height" constant="20" id="X5y-Tz-Kut"/>
+                                                                </constraints>
+                                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="helm" id="DJ7-Xa-ls9"/>
+                                                            </imageView>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstItem="gCH-fr-qvu" firstAttribute="top" secondItem="qTw-Wg-fqd" secondAttribute="top" constant="1" id="Qc6-Ze-xLb"/>
@@ -165,8 +181,12 @@ line2</string>
                                                             <integer value="1000"/>
                                                             <integer value="1000"/>
                                                             <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
                                                         </visibilityPriorities>
                                                         <customSpacing>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
                                                             <real value="3.4028234663852886e+38"/>
                                                             <real value="3.4028234663852886e+38"/>
                                                             <real value="3.4028234663852886e+38"/>
@@ -193,6 +213,8 @@ line2</string>
                                                     <outlet property="imageScene2" destination="fnJ-n1-Vw6" id="J4i-Xq-IjR"/>
                                                     <outlet property="imageScene3" destination="tUg-uk-dHW" id="0qe-8p-UQi"/>
                                                     <outlet property="imageScene4" destination="kZQ-Pd-nPL" id="GO5-eb-MkI"/>
+                                                    <outlet property="imageScene5" destination="3hx-vw-BFg" id="UIt-07-H9i"/>
+                                                    <outlet property="imageScene6" destination="63F-uv-Hra" id="bkU-Ua-LGh"/>
                                                     <outlet property="lastUpdatedLabel" destination="kAu-1v-NWK" id="88h-wu-ytq"/>
                                                     <outlet property="titleLabel" destination="k0S-C5-p57" id="fne-gL-EWM"/>
                                                     <outlet property="videoCount" destination="Ral-81-onK" id="dV6-Uj-t2s"/>

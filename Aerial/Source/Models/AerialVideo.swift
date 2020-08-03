@@ -122,8 +122,12 @@ final class AerialVideo: CustomStringConvertible, Equatable {
             self.scene = .space
         case "city":
             self.scene = .city
+        case "countryside":
+            self.scene = .countryside
+        case "beach":
+            self.scene = .beach
         default:
-            self.scene = .landscape
+            self.scene = .nature
         }
 
         self.urls = urls

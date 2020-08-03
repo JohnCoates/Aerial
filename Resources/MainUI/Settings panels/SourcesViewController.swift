@@ -75,10 +75,12 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
             cell.titleLabel.stringValue = source.name
             cell.descriptionLabel.stringValue = source.description
             cell.lastUpdatedLabel.stringValue = "Last updated: " + source.lastUpdated()
-            cell.imageScene1.isHidden = !source.scenes.contains(.landscape)
+            cell.imageScene1.isHidden = !source.scenes.contains(.nature)
             cell.imageScene2.isHidden = !source.scenes.contains(.city)
             cell.imageScene3.isHidden = !source.scenes.contains(.space)
             cell.imageScene4.isHidden = !source.scenes.contains(.sea)
+            cell.imageScene5.isHidden = !source.scenes.contains(.beach)
+            cell.imageScene6.isHidden = !source.scenes.contains(.countryside)
 
             return cell
         case "actionColumn":

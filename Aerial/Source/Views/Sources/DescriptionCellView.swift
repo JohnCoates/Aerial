@@ -18,6 +18,8 @@ class DescriptionCellView: NSTableCellView {
     @IBOutlet weak var imageScene2: NSImageView!
     @IBOutlet weak var imageScene3: NSImageView!
     @IBOutlet weak var imageScene4: NSImageView!
+    @IBOutlet weak var imageScene5: NSImageView!
+    @IBOutlet weak var imageScene6: NSImageView!
 
     /// The item that represent the row in the outline view
     /// We may potentially use this cell for multiple outline views so let's make it generic

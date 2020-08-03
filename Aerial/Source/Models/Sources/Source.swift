@@ -16,7 +16,7 @@ enum SourceType: Int, Codable {
 }
 
 enum SourceScene: String, Codable {
-    case landscape = "Landscape", city = "City", space = "Space", sea = "Sea"
+    case nature = "Nature", city = "City", space = "Space", sea = "Sea", beach = "Beach", countryside = "Countryside"
 }
 
 struct Source: Codable {

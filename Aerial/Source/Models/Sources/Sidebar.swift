@@ -125,13 +125,17 @@ class Sidebar {
         } else if path.starts(with: "videos:time") && name == "Sunset" {
             return Aerial.getAccentedSymbol("sunset")
 
-        } else if path.starts(with: "videos:scene") && name == "Landscape" {
+        } else if path.starts(with: "videos:scene") && name == "Nature" {
             return Aerial.getAccentedSymbol("leaf")
         } else if path.starts(with: "videos:scene") && name == "City" {
             return Aerial.getAccentedSymbol("tram.fill")
         } else if path.starts(with: "videos:scene") && name == "Space" {
             return Aerial.getAccentedSymbol("sparkles")
         } else if path.starts(with: "videos:scene") && name == "Sea" {
+            return Aerial.getAccentedSymbol("helm")
+        } else if path.starts(with: "videos:scene") && name == "Beach" {
+            return Aerial.getAccentedSymbol("helm")
+        } else if path.starts(with: "videos:scene") && name == "Countryside" {
             return Aerial.getAccentedSymbol("helm")
 
         } else if path.starts(with: "videos:rotation") {

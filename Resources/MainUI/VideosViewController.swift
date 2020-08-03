@@ -494,7 +494,11 @@ class VideosViewController: NSViewController {
         }
 
         switch tvideo.scene {
-        case .landscape:
+        case .nature:
+            sceneTypeImageView.image = Aerial.getSymbol("leaf")
+        case .beach:
+            sceneTypeImageView.image = Aerial.getSymbol("leaf")
+        case .countryside:
             sceneTypeImageView.image = Aerial.getSymbol("leaf")
         case .city:
             sceneTypeImageView.image = Aerial.getSymbol("tram.fill")
