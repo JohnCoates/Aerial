@@ -2,8 +2,10 @@
 <channel>
 <title>Aerial</title>
 
+
+
   <item>
-<title>2.0.0beta2</title>
+<title>2.0.0beta4</title>
   <description>
           <![CDATA[
 
@@ -11,23 +13,21 @@
 
 <p>This beta changes a lot of things (including the UI !), you will need to reconfigure your cache settings ! If you want more details on what's new, check this issue : https://github.com/JohnCoates/Aerial/issues/1006</p>
 
+
 <p>Fixes:</p>
-<ul><li>Independent mode on multiple screens no longer working</li>
-<li>Many, many icons looking wrong when selected, or just plain wrong</li>
-<li>Sidebar not being loaded correctly at startup</li>
-<li>And many crashes related to sidebar and video loading</li>
-<li>Fix no longer could exit the screensaver</li></ul>
+<ul><li>Weather</li></ul>
 
 <p>Note: Big Sur Beta 3 users, there's an issue currently with that beta of macOS regarding 3rd party screen savers, check this post on how to get back your settings and cache : https://github.com/JohnCoates/Aerial/issues/1006#issuecomment-664290581</p>
 
 <p>This macOS bug affects not only all versions of Aerial, but all 3rd party screen savers.</p>
           ]]>
   </description>
-<pubDate>ven., 31 jui. 2020 15:00:00 +0100</pubDate>
+<pubDate>ven., 3 aug. 2020 15:00:00 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v2.0.0beta2/Aerial.saver.zip" sparkle:version="2.0.0beta2" 
-sparkle:edSignature="QO6muiuP8p5QAr/9brDOrbi7ADri6WQbgTrI4VZgCXyBEXHy2fNSemjS/hLOClVbHCAPWWTs+4paRC5u0fpLBA==" length="5275826" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v2.0.0beta4/Aerial.saver.zip" sparkle:version="2.0.0beta4" 
+sparkle:edSignature="z534eVjHm1k2eo+HPcvGC5va1o4NbpKWYPEFnAkV+/CvGBIISNmlJBbdzUwFDwHSaVqyZ5F6uibEXXMMBfiiBA==" length="5336056" type="application/octet-stream"/>
 </item>
+  
   <item>
 <title>1.9.1</title>
   <description>
