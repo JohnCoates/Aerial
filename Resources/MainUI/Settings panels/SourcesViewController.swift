@@ -87,9 +87,9 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
             let cell = outlineView.makeView(withIdentifier:
                         NSUserInterfaceItemIdentifier(rawValue: columnIdentifier), owner: self) as! ActionCellView
             if source.type == .local {
-                cell.actionButton.image = Aerial.getSymbol("folder")
+                cell.actionButton.setIcons("folder")
             } else {
-                cell.actionButton.image = Aerial.getSymbol("arrow.down.circle")
+                cell.actionButton.setIcons("arrow.down.circle")
             }
             return cell
 

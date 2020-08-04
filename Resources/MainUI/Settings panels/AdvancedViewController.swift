@@ -27,6 +27,8 @@ class AdvancedViewController: NSViewController {
 
     @IBOutlet var debugCheckbox: NSButton!
 
+    @IBOutlet var showLogButton: NSButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -68,6 +70,7 @@ class AdvancedViewController: NSViewController {
         // Grab preferred language as proper string
         languageLabel.stringValue = getPreferredLanguage()
 
+        showLogButton.setIcons("folder")
     }
     @IBAction func videoFormatPopupChange(_ sender: NSPopUpButton) {
         PrefsVideos.videoFormat = VideoFormat(rawValue: sender.indexOfSelectedItem)!

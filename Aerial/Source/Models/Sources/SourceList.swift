@@ -39,6 +39,8 @@ struct SourceList {
                         scenes: [.nature, .city],
                         isCachable: true)
 
+    //
+
     static var list: [Source] {
         return [tvOS13, tvOS12, tvOS11, tvOS10] + foundSources
     }
@@ -72,12 +74,17 @@ struct SourceList {
         do {
             let jsonData = try Data(contentsOf: url.appendingPathComponent("manifest.json"))
             if let manifest = try? newJSONDecoder().decode(Manifest.self, from: jsonData) {
+                var local = true
+                if let isLocal = manifest.local {
+                    local = isLocal
+                }
+
                 return Source(name: manifest.name,
                               description: manifest.manifestDescription,
-                              manifestUrl: url.absoluteString,
-                              type: .local,
+                              manifestUrl: local ? url.absoluteString : manifest.manifestUrl ?? "",
+                              type: local ? .local : .tvOS12,
                               scenes: jsonToSceneArray(array: manifest.scenes ?? []),
-                              isCachable: false)    // TODO
+                              isCachable: !local)    //
             }
         } catch {
             errorLog("Could not open manifest for source at \(url)")
@@ -116,7 +123,7 @@ struct SourceList {
         // For a source to be valid we at the very least need two things
         // manifest.json    <- a description of the source
         // entries.json     <- the classic video manifest
-        return FileManager.default.fileExists(atPath: url.path.appending("/entries.json")) &&
+        return FileManager.default.fileExists(atPath: url.path.appending("/entries.json")) ||
            FileManager.default.fileExists(atPath: url.path.appending("/manifest.json"))
     }
 
@@ -126,10 +133,14 @@ struct SourceList {
 struct Manifest: Codable {
     let name, manifestDescription: String
     let scenes: [String]?
+    let local: Bool?
+    let manifestUrl: String?
 
     enum CodingKeys: String, CodingKey {
         case name
         case manifestDescription = "description"
         case scenes
+        case local
+        case manifestUrl
     }
 }

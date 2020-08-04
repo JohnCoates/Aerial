@@ -382,7 +382,7 @@
                                             </customSpacing>
                                         </stackView>
                                         <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Um-fB-kbb">
-                                            <rect key="frame" x="500" y="17" width="181" height="24"/>
+                                            <rect key="frame" x="500" y="18" width="181" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="165" id="H8q-HT-m60"/>
                                             </constraints>
@@ -395,7 +395,7 @@
                                             <rect key="frame" x="422" y="20" width="72" height="19"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Vibrance:" id="VSx-3A-4eo">
                                                 <font key="font" metaFont="systemMedium" size="15"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>

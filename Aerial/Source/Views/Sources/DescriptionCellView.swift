@@ -29,6 +29,7 @@ class DescriptionCellView: NSTableCellView {
     // var delegate: CheckboxCellViewDelegate?
 
     override func awakeFromNib() {
+        //imageScene1.
         //checkboxButton.target = self
         //checkboxButton.action = #selector(self.didChangeState(_:))
     }

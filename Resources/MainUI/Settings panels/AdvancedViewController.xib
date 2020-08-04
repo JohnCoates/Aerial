@@ -16,6 +16,7 @@
                 <outlet property="muteSoundCheckbox" destination="c2Y-BQ-Mg9" id="mFh-GY-ea4"/>
                 <outlet property="onBatteryPopup" destination="ueZ-L1-tKm" id="Uh5-No-e50"/>
                 <outlet property="rightArrowSkipCheckbox" destination="4zW-Lf-b41" id="4zo-2D-C0S"/>
+                <outlet property="showLogButton" destination="Dka-WL-c4U" id="hrx-cM-lP4"/>
                 <outlet property="videoFadesPopup" destination="2PZ-3t-5f8" id="I6x-56-bNY"/>
                 <outlet property="videoFormatPopup" destination="tVO-Se-9Jo" id="SRl-pM-qxB"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -165,7 +166,7 @@
                     </connections>
                 </button>
                 <button toolTip="Show AerialLog.txt in finder" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dka-WL-c4U">
-                    <rect key="frame" x="516" y="96" width="181" height="40"/>
+                    <rect key="frame" x="516" y="96" width="180" height="40"/>
                     <buttonCell key="cell" type="push" title="Show Log in Finder" bezelStyle="rounded" image="folder" catalog="system" imagePosition="leading" alignment="center" alternateImage="NSFolder" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8fV-Kb-hfT">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -275,6 +276,6 @@
     </objects>
     <resources>
         <image name="NSFolder" width="32" height="32"/>
-        <image name="folder" catalog="system" width="19" height="12"/>
+        <image name="folder" catalog="system" width="18" height="14"/>
     </resources>
 </document>
