@@ -12,6 +12,9 @@ class SourcesViewController: NSViewController {
 
     @IBOutlet var sourceOutlineView: NSOutlineView!
 
+    @IBOutlet var addOnlineWindow: NSWindow!
+    @IBOutlet var addOnlineTextField: NSTextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         sourceOutlineView.dataSource = self
@@ -25,6 +28,26 @@ class SourcesViewController: NSViewController {
             }
         }
     }
+
+    @IBAction func addOnlineClick(_ sender: Any) {
+        addOnlineWindow.makeKeyAndOrderFront(self)
+    }
+
+    @IBAction func addOnlineDownload(_ sender: Any) {
+        addOnlineWindow.close()
+
+        if let url = URL(string: addOnlineTextField.stringValue) {
+            SourceList.fetchOnlineManifest(url: url)
+        } else {
+            // TODO ALERT
+        }
+
+    }
+
+    @IBAction func addOnlineCancel(_ sender: Any) {
+        addOnlineWindow.close()
+    }
+
 }
 
 extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate {

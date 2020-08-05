@@ -156,11 +156,22 @@ final class VideoDownload: NSObject, NSURLConnectionDataDelegate {
     }
 
     func finishedDownload() {
-        guard let videoCachePath = VideoCache.cachePath(forVideo: video) else {
+        var tentativeCachePath: String?
+
+        print("cacheable \(video.source.isCachable)")
+        if video.source.isCachable {
+            tentativeCachePath = VideoCache.cachePath(forVideo: video)
+        } else {
+            tentativeCachePath = VideoCache.sourcePathFor(video)
+        }
+
+        guard let videoCachePath = tentativeCachePath else {
             errorLog("Couldn't save video because couldn't get cache path\n")
             failedDownload("Couldn't get cache path")
             return
         }
+
+        print("write path : \(videoCachePath)")
 
         if self.data == nil {
             errorLog("video data missing!\n")

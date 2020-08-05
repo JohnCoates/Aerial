@@ -65,9 +65,20 @@ struct SourceList {
         return sources
     }
 
+    static func fetchOnlineManifest(url: URL) {
+        if let source = loadManifest(url: url) {
+            debugLog("Source loaded")
+            // Then save !
+            let downloadManager = DownloadManager()
+            downloadManager.queueDownload(url.appendingPathComponent("manifest.json"), folder: source.name)
+
+            downloadManager.queueDownload(URL(string: source.manifestUrl)!, folder: source.name)
+        }
+    }
+
     static func loadManifest(url: URL) -> Source? {
         // Let's make sure we have the required files
-        if !areManifestPresent(url: url) {
+        if !areManifestPresent(url: url) && !url.absoluteString.starts(with: "http") {
             return nil
         }
 
@@ -79,12 +90,14 @@ struct SourceList {
                     local = isLocal
                 }
 
+                let cacheable: Bool = manifest.cacheable ?? !local
+
                 return Source(name: manifest.name,
                               description: manifest.manifestDescription,
                               manifestUrl: local ? url.absoluteString : manifest.manifestUrl ?? "",
                               type: local ? .local : .tvOS12,
                               scenes: jsonToSceneArray(array: manifest.scenes ?? []),
-                              isCachable: !local)    //
+                              isCachable: cacheable)
             }
         } catch {
             errorLog("Could not open manifest for source at \(url)")
@@ -123,7 +136,7 @@ struct SourceList {
         // For a source to be valid we at the very least need two things
         // manifest.json    <- a description of the source
         // entries.json     <- the classic video manifest
-        return FileManager.default.fileExists(atPath: url.path.appending("/entries.json")) ||
+        return FileManager.default.fileExists(atPath: url.path.appending("/entries.json")) &&
            FileManager.default.fileExists(atPath: url.path.appending("/manifest.json"))
     }
 
@@ -134,6 +147,7 @@ struct Manifest: Codable {
     let name, manifestDescription: String
     let scenes: [String]?
     let local: Bool?
+    let cacheable: Bool?
     let manifestUrl: String?
 
     enum CodingKeys: String, CodingKey {
@@ -141,6 +155,7 @@ struct Manifest: Codable {
         case manifestDescription = "description"
         case scenes
         case local
+        case cacheable
         case manifestUrl
     }
 }

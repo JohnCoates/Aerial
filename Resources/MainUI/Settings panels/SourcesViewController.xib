@@ -8,6 +8,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SourcesViewController" customModule="Aerial" customModuleProvider="target">
             <connections>
+                <outlet property="addOnlineTextField" destination="gxJ-4P-fMD" id="Gmf-Aa-0Bd"/>
+                <outlet property="addOnlineWindow" destination="iB7-4m-6mH" id="v0k-ql-rIf"/>
                 <outlet property="sourceOutlineView" destination="vzM-Kh-6SV" id="4vs-WJ-2Ar"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -300,6 +302,9 @@ line2</string>
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="addOnlineClick:" target="-2" id="Xre-aK-0mV"/>
+                    </connections>
                 </button>
                 <textField horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8Bi-xK-lN6">
                     <rect key="frame" x="87" y="393" width="637" height="16"/>
@@ -325,6 +330,73 @@ line2</string>
             </constraints>
             <point key="canvasLocation" x="-183" y="802"/>
         </customView>
+        <window title="Add an Online Source" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="iB7-4m-6mH">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="283" y="305" width="753" height="182"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+            <view key="contentView" misplaced="YES" id="Ek0-xw-cVO">
+                <rect key="frame" x="0.0" y="0.0" width="753" height="182"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oit-Js-Fye">
+                        <rect key="frame" x="18" y="109" width="314" height="16"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Please paste the URL of your json manifest below : " id="iQW-jI-Mm5">
+                            <font key="font" usesAppearanceFont="YES"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gxJ-4P-fMD">
+                        <rect key="frame" x="20" y="68" width="713" height="21"/>
+                        <textFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="https://example.com/manifest.json" drawsBackground="YES" id="itG-OB-VSe">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sxx-N6-QgG">
+                        <rect key="frame" x="540" y="14" width="105" height="40"/>
+                        <buttonCell key="cell" type="push" title="Download" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Q0Q-DA-siQ">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="addOnlineDownload:" target="-2" id="4Oe-ld-UIO"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b1p-kF-lsq">
+                        <rect key="frame" x="653" y="14" width="86" height="40"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RQq-xj-vRk">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="addOnlineCancel:" target="-2" id="w3I-Gu-58Y"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Sxx-N6-QgG" secondAttribute="bottom" constant="20" id="6Kb-JM-27i"/>
+                    <constraint firstItem="oit-Js-Fye" firstAttribute="leading" secondItem="Ek0-xw-cVO" secondAttribute="leading" constant="20" id="8Cq-2C-1jT"/>
+                    <constraint firstAttribute="bottom" secondItem="b1p-kF-lsq" secondAttribute="bottom" constant="20" id="Q9y-4K-a5P"/>
+                    <constraint firstItem="b1p-kF-lsq" firstAttribute="top" secondItem="gxJ-4P-fMD" secondAttribute="bottom" constant="20" id="UMi-0E-fSu"/>
+                    <constraint firstItem="oit-Js-Fye" firstAttribute="top" secondItem="Ek0-xw-cVO" secondAttribute="top" constant="20" id="Vbh-h9-kFk"/>
+                    <constraint firstAttribute="trailing" secondItem="b1p-kF-lsq" secondAttribute="trailing" constant="20" id="Z1b-tI-ZTF"/>
+                    <constraint firstAttribute="trailing" secondItem="gxJ-4P-fMD" secondAttribute="trailing" constant="20" id="bGK-vs-zFN"/>
+                    <constraint firstItem="b1p-kF-lsq" firstAttribute="leading" secondItem="Sxx-N6-QgG" secondAttribute="trailing" constant="20" id="qmD-nw-k8h"/>
+                    <constraint firstItem="gxJ-4P-fMD" firstAttribute="leading" secondItem="Ek0-xw-cVO" secondAttribute="leading" constant="20" id="rOV-LN-K3u"/>
+                    <constraint firstItem="gxJ-4P-fMD" firstAttribute="top" secondItem="oit-Js-Fye" secondAttribute="bottom" constant="20" id="yZO-Sz-Rpq"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="-221.5" y="1234"/>
+        </window>
     </objects>
     <resources>
         <image name="NSTouchBarDownloadTemplate" width="15" height="15"/>

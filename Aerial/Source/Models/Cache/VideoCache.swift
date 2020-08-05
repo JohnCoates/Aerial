@@ -213,6 +213,14 @@ final class VideoCache {
         }
     }
 
+    static func sourcePathFor(_ video: AerialVideo) -> String {
+        return Cache.supportPath.appending("/" + video.source.name + "/" + video.url.lastPathComponent)
+    }
+
+    static func sourcePathFor(_ filename: String, video: AerialVideo) -> String {
+        return Cache.supportPath.appending("/" + video.source.name + "/" + filename)
+    }
+
     init(URL: Foundation.URL) {
         debugLog("initvideocache")
         videoData = Data()
@@ -262,6 +270,17 @@ final class VideoCache {
 
     var videoCachePath: String? {
         let filename = URL.lastPathComponent
+
+        if let video = VideoList.instance.videoForFilename(filename) {
+            print("found video")
+            if !video.source.isCachable {
+                print("not cacheable")
+                return VideoCache.sourcePathFor(filename, video: video)
+            }
+
+            print("cacheable")
+        }
+
         return VideoCache.cachePath(forFilename: filename)
     }
 

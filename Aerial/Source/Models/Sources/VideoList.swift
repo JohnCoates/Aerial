@@ -40,6 +40,17 @@ class VideoList {
         downloadManifestsIfNeeded()
     }
 
+    func videoForFilename(_ name: String) -> AerialVideo? {
+        for video in videos {
+            if video.url.lastPathComponent == name {
+                return video
+            }
+        }
+
+        errorLog("vFF unknown video filename")
+        return nil
+    }
+
     // MARK: - Helpers for the various filterings
     private func cacheSources() -> [String] {
         var cache: [String] = []
