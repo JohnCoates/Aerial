@@ -26,6 +26,8 @@ Starting with version 1.4, Aerial is maintained by [Guillaume Louel](https://git
 
 You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/graphs/contributors).
 
+**Trying Big Sur public beta 1 ? Very bold of you, please [read this to get your settings and videos back](https://github.com/JohnCoates/Aerial/issues/1036).**
+
 **Have a question ? Check our troobleshooting section below, or hop on our [Discord server](https://discord.gg/TPuA5WG).**
 
 ## Installation
