@@ -26,6 +26,8 @@ Starting with version 1.4, Aerial is maintained by [Guillaume Louel](https://git
 
 You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/graphs/contributors).
 
+**Trying Big Sur public beta 1 ? Very bold of you, please [read this to get your settings and videos back](https://github.com/JohnCoates/Aerial/issues/1036).**
+
 **Have a question ? Check our troobleshooting section below, or hop on our [Discord server](https://discord.gg/TPuA5WG).**
 
 ## Installation
@@ -44,8 +46,6 @@ Installation instructions (latest versions require macOS 10.12 or above) :
 Need more information on install, setup, or uninstall ? Or want to install via homebrew ? Check our extended [instructions here](Documentation/Installation.md). Curious about auto-updates ? [Have a look here](Documentation/AutoUpdates.md).
 
 ## What's new in Aerial 1.9.0 (May 25, 2020)?
-
-**At first glance, the current versions of Aerial seems to work correctly with macOS Big Sur 11. [Check here for more details](https://github.com/JohnCoates/Aerial/issues/1006#issuecomment-647808068 ) (and information on the upcoming 2.0.0).**
 
 ![Capture d’écran 2020-05-25 à 15 46 42](https://user-images.githubusercontent.com/37544189/82818568-338ba580-9e9f-11ea-8f26-90b23958f587.jpg)
 
