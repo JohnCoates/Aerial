@@ -458,7 +458,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             player.replaceCurrentItem(with: item)
             debugLog("\(self.description) streaming video (not fully available offline) : \(video.url)")
         } else {
-            let localurl = URL(fileURLWithPath: VideoCache.cachePath(forVideo: video)!)
+            // The new localpath getter
+            let localPath = VideoList.instance.localPathFor(video: video)
+
+            // let localurl = URL(fileURLWithPath: VideoCache.cachePath(forVideo: video)!)
+            let localurl = URL(fileURLWithPath: localPath)
             let localitem = AVPlayerItem(url: localurl)
             if !video.isHDR() {
                 let value = PrefsVideos.vibrance[video.id] ?? 0

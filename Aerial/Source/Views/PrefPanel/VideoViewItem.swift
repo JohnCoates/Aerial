@@ -19,7 +19,7 @@ class VideoViewItem: NSCollectionViewItem {
         didSet {
             guard isViewLoaded else { return }
             if let video = video {
-                video.getThumbnail() { [weak self] (img) in
+                Thumbnails.get(forVideo: video) { [weak self] (img) in
                     guard let _ = self else { return }
                     if let img = img {
                         self!.imageView?.image = img

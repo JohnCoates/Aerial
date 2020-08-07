@@ -147,17 +147,24 @@ final class VideoCache {
         if video.url.absoluteString.starts(with: "file") {
             return fileManager.fileExists(atPath: video.url.path)
         } else {
-            guard let videoCachePath = cachePath(forVideo: video) else {
-                errorLog("Couldn't get video cache path!")
-                return false
-            }
+            if video.source.isCachable {
+                guard let videoCachePath = cachePath(forVideo: video) else {
+                    errorLog("Couldn't get video cache path!")
+                    return false
+                }
 
-            return fileManager.fileExists(atPath: videoCachePath)
+                return fileManager.fileExists(atPath: videoCachePath)
+            } else {
+                let path = sourcePathFor(video)
+                return fileManager.fileExists(atPath: path)
+            }
         }
     }
 
     static func moveToTrash(video: AerialVideo) {
-        guard let videoCachePath = cachePath(forVideo: video) else {
+        let videoCachePath = VideoList.instance.localPathFor(video: video)
+
+        guard videoCachePath != "" else {
             errorLog("Couldn't get video cache path to trash!")
             return
         }

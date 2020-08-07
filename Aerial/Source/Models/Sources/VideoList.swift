@@ -51,6 +51,15 @@ class VideoList {
         return nil
     }
 
+    // This is used to grab the correct path depending on whether a source is cacheable or not
+    func localPathFor(video: AerialVideo) -> String {
+        if video.source.isCachable {
+            return VideoCache.cachePath(forVideo: video) ?? ""
+        } else {
+            return VideoCache.sourcePathFor(video)
+        }
+    }
+
     // MARK: - Helpers for the various filterings
     private func cacheSources() -> [String] {
         var cache: [String] = []

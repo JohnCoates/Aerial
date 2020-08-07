@@ -327,7 +327,7 @@ class VideosViewController: NSViewController {
         downloadButton.isHidden = true
 
         if let player = heroPlayerView.player {
-            let path = VideoCache.cachePath(forVideo: video)!
+            let path = VideoList.instance.localPathFor(video: video)
             debugLog("heropath : \(path)")
 
             let asset = AVAsset(url: URL(fileURLWithPath: path))

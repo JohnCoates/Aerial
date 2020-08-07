@@ -18,6 +18,8 @@ struct Thumbnails {
      When a video is not available offline, it will also save a larger version
      of the first frame of the video, to be used later in the UI as a placeholder
      */
+
+    /*
     static func generateAllThumbnails(forVideos videos: [AerialVideo]) {
         print("starting thumb generation")
         for video in videos {
@@ -28,7 +30,7 @@ struct Thumbnails {
             }
         }
         print("/thumb generation")
-    }
+    }*/
 
     /**
      Generate a thumbnail for the video
@@ -55,7 +57,8 @@ struct Thumbnails {
                         asset = AVURLAsset(url: video.url)
                     }
                 } else {
-                    let path = VideoCache.cachePath(forVideo: video)!
+                    // let path = VideoCache.cachePath(forVideo: video)!
+                    let path = VideoList.instance.localPathFor(video: video)
                     asset = AVURLAsset(url: URL(fileURLWithPath: path))
                 }
             } else {

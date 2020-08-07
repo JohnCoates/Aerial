@@ -163,7 +163,11 @@ final class AerialVideo: CustomStringConvertible, Equatable {
             for format in VideoFormat.allCases {
                 // swiftlint:disable:next for_where
                 if urls[format] != "" {
-                    let path = VideoCache.cachePath(forFilename: (URL(string: urls[format]!)!.lastPathComponent))!
+                    //let path = VideoCache.cachePath(forFilename: (URL(string: urls[format]!)!.lastPathComponent))!
+
+                    let path = VideoList.instance.localPathFor(video: self)
+
+                    // VideoCache.cachePath(forFilename: (URL(string: urls[format]!)!.lastPathComponent))!
 
                     if fileManager.fileExists(atPath: path) {
                         let asset = AVAsset(url: URL(fileURLWithPath: path))
@@ -233,6 +237,7 @@ final class AerialVideo: CustomStringConvertible, Equatable {
         """
     }
 
+    /*
     func generateThumbnail() -> NSImage? {
         do {
             let path = VideoCache.cachePath(forVideo: self)!
@@ -250,8 +255,8 @@ final class AerialVideo: CustomStringConvertible, Equatable {
 
             return nil
         }
-    }
-
+    }*/
+/*
     func getThumbnail(_ completion: @escaping ((_ image: NSImage?) -> Void)) {
 
     }
@@ -299,5 +304,5 @@ final class AerialVideo: CustomStringConvertible, Equatable {
         }
 
     }
-
+*/
 }

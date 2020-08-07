@@ -111,7 +111,7 @@ final class VideoDownload: NSObject, NSURLConnectionDataDelegate {
         data = NSMutableData(length: contentLength)
 
         // start 4 streams for maximum throughput
-        let streamCount = 4
+        let streamCount = 1 // TODO
         let pace = 0.2; // pace stream creation a little bit
         let streamPiece = Int(floor(Double(contentLength) / Double(streamCount)))
         debugLog("Starting \(streamCount) streams with \(streamPiece) each, for content length of \(contentLength)")
