@@ -41,10 +41,8 @@ class VideoList {
     }
 
     func videoForFilename(_ name: String) -> AerialVideo? {
-        for video in videos {
-            if video.url.lastPathComponent == name {
-                return video
-            }
+        for video in videos where video.url.lastPathComponent == name {
+            return video
         }
 
         errorLog("vFF unknown video filename")

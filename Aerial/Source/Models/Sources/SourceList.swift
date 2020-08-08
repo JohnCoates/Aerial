@@ -39,11 +39,7 @@ struct SourceList {
                         scenes: [.nature, .city],
                         isCachable: true)
 
-    //
-
-    static var list: [Source] {
-        return [tvOS13, tvOS12, tvOS11, tvOS10] + foundSources
-    }
+    static var list: [Source] = [tvOS13, tvOS12, tvOS11, tvOS10] + foundSources
 
     // This is where the magic happens
     static var foundSources: [Source] {
@@ -57,7 +53,11 @@ struct SourceList {
 
                 // If it's valid, let's add !
                 if let source = loadManifest(url: folder) {
+                    print("source")
                     sources.append(source)
+                } else if let newsources = loadMetaManifest(url: folder) {
+                    print("sources")
+                    sources.append(contentsOf: newsources)
                 }
             }
         }
@@ -73,7 +73,60 @@ struct SourceList {
             downloadManager.queueDownload(url.appendingPathComponent("manifest.json"), folder: source.name)
 
             downloadManager.queueDownload(URL(string: source.manifestUrl)!, folder: source.name)
+            list.append(source)
+
+            source.setEnabled(true) // This will reload the main video list
+        } else if let sources = loadMetaManifest(url: url) {
+            debugLog("Sources loaded")
+
+            for source in sources {
+                // Then save !
+                saveSource(source)
+
+                let downloadManager = DownloadManager()
+                downloadManager.queueDownload(URL(string: source.manifestUrl)!, folder: source.name)
+                list.append(source)
+
+                source.setEnabled(true) // This will reload the main video list
+            }
+        } else {
+            Aerial.showErrorAlert(question: "No videos found", text: "Could not find any video at the URL you provided, please try again.")
         }
+    }
+
+    static func saveSource(_ source: Source) {
+        let json = try? JSONEncoder().encode(source)
+
+        do {
+            try json!.write(to: URL(fileURLWithPath: Cache.supportPath.appending(source.name)))
+        } catch {
+            errorLog("Can't save local source : \(error.localizedDescription)")
+        }
+    }
+
+    static func loadMetaManifest(url: URL) -> [Source]? {
+        // Let's make sure we have the required files
+        if !areManifestPresent(url: url) && !url.absoluteString.starts(with: "http") {
+            return nil
+        }
+
+        do {
+            let jsonData = try Data(contentsOf: url.appendingPathComponent("manifest.json"))
+            if let metamanifest = try? newJSONDecoder().decode(MetaManifest.self, from: jsonData) {
+                var sources: [Source] = []
+
+                for manifest in metamanifest.sources {
+                    sources.append(parseSourceFromManifest(manifest, url: url))
+                }
+
+                return sources
+            }
+        } catch {
+            errorLog("Could not open manifest for source at \(url)")
+            return nil
+        }
+
+        return nil
     }
 
     static func loadManifest(url: URL) -> Source? {
@@ -85,19 +138,7 @@ struct SourceList {
         do {
             let jsonData = try Data(contentsOf: url.appendingPathComponent("manifest.json"))
             if let manifest = try? newJSONDecoder().decode(Manifest.self, from: jsonData) {
-                var local = true
-                if let isLocal = manifest.local {
-                    local = isLocal
-                }
-
-                let cacheable: Bool = manifest.cacheable ?? !local
-
-                return Source(name: manifest.name,
-                              description: manifest.manifestDescription,
-                              manifestUrl: local ? url.absoluteString : manifest.manifestUrl ?? "",
-                              type: local ? .local : .tvOS12,
-                              scenes: jsonToSceneArray(array: manifest.scenes ?? []),
-                              isCachable: cacheable)
+                return parseSourceFromManifest(manifest, url: nil)
             }
         } catch {
             errorLog("Could not open manifest for source at \(url)")
@@ -105,6 +146,29 @@ struct SourceList {
         }
 
         return nil
+    }
+
+    static private func parseSourceFromManifest(_ manifest: Manifest, url: URL?) -> Source {
+        var local = true
+        var mURL: String
+        if let isLocal = manifest.local {
+            local = isLocal
+        }
+
+        if local {
+            mURL = (url != nil) ? url!.absoluteString : manifest.manifestUrl ?? ""
+        } else {
+            mURL = manifest.manifestUrl ?? ""
+        }
+
+        let cacheable: Bool = manifest.cacheable ?? !local
+
+        return Source(name: manifest.name,
+                      description: manifest.manifestDescription,
+                      manifestUrl: mURL,
+                      type: local ? .local : .tvOS12,
+                      scenes: jsonToSceneArray(array: manifest.scenes ?? []),
+                      isCachable: cacheable)
     }
 
     /// Helper to convert an array of strings to an array of sources
@@ -136,10 +200,15 @@ struct SourceList {
         // For a source to be valid we at the very least need two things
         // manifest.json    <- a description of the source
         // entries.json     <- the classic video manifest
-        return FileManager.default.fileExists(atPath: url.path.appending("/entries.json")) &&
+        return FileManager.default.fileExists(atPath: url.path.appending("/entries.json")) ||
            FileManager.default.fileExists(atPath: url.path.appending("/manifest.json"))
     }
 
+}
+
+// MARK: - MetaManifest
+struct MetaManifest: Codable {
+    let sources: [Manifest]
 }
 
 // MARK: - Manifest

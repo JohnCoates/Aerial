@@ -38,7 +38,7 @@ class PanelWindowController: NSWindowController {
     }
 
     override func windowDidLoad() {
-        debugLog("PWC2 wdl: Aerial version \(String(describing: Aerial.version))")
+        debugLog("PWC2 wdl: Aerial version \(Aerial.version)")
         super.windowDidLoad()
         currentPath = "location:all"
 

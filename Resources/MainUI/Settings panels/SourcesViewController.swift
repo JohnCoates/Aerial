@@ -34,14 +34,12 @@ class SourcesViewController: NSViewController {
     }
 
     @IBAction func addOnlineDownload(_ sender: Any) {
-        addOnlineWindow.close()
-
         if let url = URL(string: addOnlineTextField.stringValue) {
             SourceList.fetchOnlineManifest(url: url)
-        } else {
-            // TODO ALERT
-        }
+            addOnlineWindow.close()
 
+            sourceOutlineView.reloadData()
+        }
     }
 
     @IBAction func addOnlineCancel(_ sender: Any) {

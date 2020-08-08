@@ -291,7 +291,7 @@ line2</string>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YCA-Kf-OqL">
                     <rect key="frame" x="24" y="14" width="116" height="40"/>
-                    <buttonCell key="cell" type="push" title="Add Local..." bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="M9G-4n-Orj">
+                    <buttonCell key="cell" type="push" title="Add Local..." bezelStyle="rounded" alignment="center" controlSize="large" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="M9G-4n-Orj">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -333,22 +333,24 @@ line2</string>
         <window title="Add an Online Source" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="iB7-4m-6mH">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="283" y="305" width="753" height="182"/>
+            <rect key="contentRect" x="283" y="305" width="753" height="157"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
-            <view key="contentView" misplaced="YES" id="Ek0-xw-cVO">
-                <rect key="frame" x="0.0" y="0.0" width="753" height="182"/>
-                <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ek0-xw-cVO">
+                <rect key="frame" x="0.0" y="0.0" width="740" height="145"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oit-Js-Fye">
-                        <rect key="frame" x="18" y="109" width="314" height="16"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="Please paste the URL of your json manifest below : " id="iQW-jI-Mm5">
+                        <rect key="frame" x="18" y="109" width="315" height="16"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Please paste the URL of your online source below : " id="iQW-jI-Mm5">
                             <font key="font" usesAppearanceFont="YES"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gxJ-4P-fMD">
-                        <rect key="frame" x="20" y="68" width="713" height="21"/>
+                        <rect key="frame" x="20" y="68" width="700" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="700" id="V73-Uq-dkJ"/>
+                        </constraints>
                         <textFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="https://example.com/manifest.json" drawsBackground="YES" usesSingleLineMode="YES" id="itG-OB-VSe">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -356,7 +358,7 @@ line2</string>
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sxx-N6-QgG">
-                        <rect key="frame" x="540" y="14" width="105" height="40"/>
+                        <rect key="frame" x="527" y="14" width="105" height="40"/>
                         <buttonCell key="cell" type="push" title="Download" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Q0Q-DA-siQ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -366,7 +368,7 @@ line2</string>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b1p-kF-lsq">
-                        <rect key="frame" x="653" y="14" width="86" height="40"/>
+                        <rect key="frame" x="640" y="14" width="86" height="40"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RQq-xj-vRk">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -389,7 +391,7 @@ line2</string>
                     <constraint firstItem="gxJ-4P-fMD" firstAttribute="top" secondItem="oit-Js-Fye" secondAttribute="bottom" constant="20" id="yZO-Sz-Rpq"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="-221.5" y="1234"/>
+            <point key="canvasLocation" x="-221.5" y="1221.5"/>
         </window>
     </objects>
     <resources>

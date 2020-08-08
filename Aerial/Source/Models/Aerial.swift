@@ -9,10 +9,15 @@
 import Cocoa
 
 class Aerial: NSObject {
+    // TODO : Uh, better check that's required some day
     static let instance = Aerial()
 
     // We use this to track whether we run as a screen saver or an app
     var appMode = false
+
+    static var version: String = {
+        return getVersionString()
+    }()
 
     static func getVersionString() -> String {
         if let version = Bundle(identifier: "com.johncoates.Aerial-Test")?.infoDictionary?["CFBundleShortVersionString"] as? String {
@@ -22,6 +27,16 @@ class Aerial: NSObject {
         }
 
         return "Version ?"
+    }
+
+    static func showErrorAlert(question: String, text: String, button: String = "OK") {
+        let alert = NSAlert()
+        alert.messageText = question
+        alert.informativeText = text
+        alert.alertStyle = .critical
+        alert.icon = NSImage(named: NSImage.cautionName)
+        alert.addButton(withTitle: button)
+        alert.runModal()
     }
 
     static func showAlert(question: String, text: String, button1: String = "OK", button2: String = "Cancel") -> Bool {
