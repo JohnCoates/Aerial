@@ -42,10 +42,7 @@
         "name": "Avvicinamento al Burj Khalifa"
     },
     "2F11E857-4F77-4476-8033-4A1E4610AFCC": {
-        "name": "Strada dello Sceicco",
-        "pointsOfInterest": {
-            "0": "In viaggio lungo la Strada dello Sceicco (Sheikh Zayed Road) a Dubai, Emirati Arabi Uniti"
-        }
+        "name": "Strada dello Sceicco"
     },
     "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
         "name": "Penisola di Nuussuaq"
@@ -96,84 +93,22 @@
         "name": "Oasi di Liwa 2"
     },
     "58754319-8709-4AB0-8674-B34F04E7FFE2": {
-        "name": "Il Tamigi",
-        "pointsOfInterest": {
-            "0": "Avvicinamento al Tower Bridge sul Tamigi a Londra",
-            "40": "Passando il Gherkin nella City di Londra, sulla destra",
-            "70": "Attraversando il Tower Bridge sul Tamigi, con il City Hall alle spalle e la Torre di Londra a destra",
-            "85": "In avvicinamento alla HMS Belfast sul Tamigi, lasciando il Walkie-Talkie sulla destra",
-            "115": "Risalendo il Tamigi verso ovest, con The Shard a sinistra e la Cattedrale di San Paolo a destra",
-            "135": "Passando sopra la Cattedrale di Southwark, con la Cattedrale di San Paolo sulla destra",
-            "175": "Passando il Globo di Shakespeare a Southwark (primo piano a destra)",
-            "230": "Superando la stazione di Waterloo sulla sinistra, con il Palazzo di Westminster (Palazzo del Parlamento) sul Tamigi alle spalle",
-            "260": "Superando il BFI IMAX in primo piano a sinistra, con il London Eye alle spalle",
-            "280": "In direzione di Westminster sul Tamigi",
-            "300": "Avvicinamento alla stazione di Charing Cross in primo piano a destra",
-            "312": "Avvicinamento alla Horse Guards Parade e al Saint James's Park sulla sinistra",
-            "324": "Passando Saint Martin-in-the-Fields sulla destra, con l'Arco dell'Ammiragliato, la Colonna di Nelson e Trafalgar Square alla sua sinistra"
-        }
+        "name": "Il Tamigi"
     },
     "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
-        "name": "Buckingham Palace",
-        "pointsOfInterest": {
-            "0": "Superando l'Arco di Wellington a Londra sulla sinistra",
-            "12": "Sorvolando i giardini di Buckingham Palace, con Green Park sulla sinistra",
-            "24": "Sorvolando Buckingham Palace a Londra",
-            "40": "Sorvolando il Victoria Memorial, superando la caserma di Wellington sulla destra",
-            "55": "Seguendo Birdcage Walk lungo il parco di Saint James",
-            "90": "Passando sopra il Foreign & Commonwealth Office a Whitehall, con Horse Guards Parade a sinistra e il Tesoto di Sua Maestà a destra",
-            "102": "Superando il Cenotafio, con il Ministero della Difesa a sinistra e il Big Ben e il Palazzo di Westminster (Palazzo del Parlamento) a destra",
-            "125": "Attraversando il Tamigi, sorvolando il London Eye",
-            "160": "Superando la stazione di Waterloo a sud di Londra, con BFI IMAX sulla sinistra",
-            "270": "Superando la Cattedrale di Southwark sulla sinistra",
-            "285": "Superando The Shard sulla destra",
-            "305": "Superando l'incrociatore HMS Belfast sul Tamigi",
-            "330": "Attraversamento del Tamigi sul Tower Bridge, con la City Hall a destra e la Torre di Londra a sinistra"
-        }
+        "name": "Buckingham Palace"
     },
     "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
-        "name": "Fiume Tamigi al tramonto",
-        "pointsOfInterest": {
-            "0": "Risalendo il Tamigi verso il Tower Bridge, con la Torre di Londra a destra",
-            "25": "Attraversando il Tamigi e superando il Municipio",
-            "35": "Superando l'incrociatore HMS Belfast sul Tamigi",
-            "60": "Avvicinandosi al The Shard",
-            "92": "Volando verso ovest su Southwark verso Lambeth nel sud di Londra",
-            "200": "Lasciando il Lambeth Palace a sinistra e la stazione di Waterloo a destra",
-            "245": "Attraversando il Tamigi verso il Palazzo di Westminster (Palazzo del Parlamento)",
-            "265": "Passando davanti al Palazzo di Westminster (Palazzo del Parlamento), con l'Abbazia di Westminster alle spalle"
-        }
+        "name": "Fiume Tamigi al tramonto"
     },
     "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
-        "name": "Il Tamigi al crepuscolo",
-        "pointsOfInterest": {
-            "0": "Risalendo il Tamigi verso il Tower Bridge, con la Torre di Londra a destra",
-            "28": "Viaggiando verso ovest sul Tamigi, superato il Municipio sulla sinistra",
-            "40": "Passando la HMS Belfast nel Tamigi, con The Shard a sinistra e il Walkie-Talkie a destra",
-            "75": "Passando la Cattedrale di Southwark sulla sinistra",
-            "110": "Passando la Cattedrale di San Paolo sulla destra",
-            "130": "Passando il Globo di Shakespeare in primo piano a sinistra",
-            "210": "Proseguendo lungo il Tamigi verso Westminster",
-            "300": "Passando il London Eye sul Tamigi",
-            "315": "Avvicinandosi al Big Ben e al Parlamento, con l'Abbazia di Westminster sulla destra"
-        }
+        "name": "Il Tamigi al crepuscolo"
     },
     "CE279831-1CA7-4A83-A97B-FF1E20234396": {
-        "name": "Aeroporto Internazionale di Los Angeles",
-        "pointsOfInterest": {
-            "0": "Dirigendosi a ovest sopra l'aeroporto internazionale di Los Angeles",
-            "80": "Sorvolando il Theme Building",
-            "210": "Sorvolando il terminal internazionale Tom Bradley"
-        }
+        "name": "Aeroporto Internazionale di Los Angeles"
     },
     "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
-        "name": "Harbor Freeway",
-        "pointsOfInterest": {
-            "0": "Seguendo la Harbor Freeway (Interstatale 110) a nord attraverso Los Angeles",
-            "50": "Attraversando la Century Freeway (Interstatale 105)",
-            "65": "Passando sopra la Harbor Freeway Station sulla Metro Green Line, che corre lungo la Century Freeway",
-            "170": "Attraversando l'Imperial Highway"
-        }
+        "name": "Harbor Freeway"
     },
     "92E48DE9-13A1-4172-B560-29B4668A87EE": {
         "name": "Spiaggia di Santa Monica"
@@ -182,31 +117,10 @@
         "name": "L'Osservatorio Griffith"
     },
     "EC67726A-8212-4C5E-83CF-8412932740D2": {
-        "name": "Colline Di Hollywood",
-        "pointsOfInterest": {
-            "0": "Viaggiando verso nord lungo Beachwood Drive attraverso le colline di Hollywood a Los Angeles",
-            "60": "Proseguendo verso nord attraverso Beachwood Canyon",
-            "250": "Passando il Mount Lee Communications Center, dirigendosi verso Burbank, California"
-        }
+        "name": "Colline Di Hollywood"
     },
     "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
-        "name": "Centro città",
-        "pointsOfInterest": {
-            "0": "In avvicinamento al centro di Los Angeles, con l'edificio MTA (in giallo) e Union Station (in rosa) sulla sinistra",
-            "35": "Passando davanti alla Cattedrale di Nostra Signora degli Angeli (in centro)",
-            "55": "Superando il Los Angeles County Music Center (in centro)",
-            "65": "Attraversando la Hollywood Freeway, viaggiando verso sud attraverso il Downtown lungo la Harbor Freeway",
-            "105": "Superando per la Walt Disney Concert Hall (al centro)",
-            "120": "Superando il Municipio (in azzurro pallido, sulla sinistra)",
-            "180": "Superando la Torre della Biblioteca (in centro)",
-            "200": "Superando il Bonaventure Hotel (in centro)",
-            "230": "La Biblioteca Centrale di Los Angeles, illuminata, appare da dietro il Bonaventure Hotel",
-            "275": "Superando del Wilshire Grand Center (in costruzione)",
-            "365": "Superando L.A. in diretta",
-            "395": "Superando il Ritz-Carlton Hotel e lo Staples Center",
-            "425": "Superando il Los Angeles Convention Center",
-            "495": "In avvicinamento all'autostrada di Santa Monica"
-        }
+        "name": "Centro città"
     },
     "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
         "name": "Central Park"
@@ -227,80 +141,37 @@
         "name": "Marin Headlands"
     },
     "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
-        "name": "Marin Headlands nella nebbia",
-        "pointsOfInterest": {
-            "0": "Sorvolando il Marin Headlands lungo l'Highway 101 verso il Golden Gate Bridge",
-            "20": "Horseshoe Cove che appare sulla sinistra",
-            "105": "Passando Battery Spencer sulla destra",
-            "155": "Attraversando il Golden Gate Bridge verso San Francisco"
-        }
+        "name": "Marin Headlands nella nebbia"
     },
     "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
         "name": "Baia e Golden Gate"
     },
     "b8-3": {
-        "name": "Alamo Square",
-        "pointsOfInterest": {
-            "0": "Signore dipinte di fronte ad Alamo Square a San Francisco",
-            "35": "Cattedrale di Santa Maria sulla sinistra, con il centro di San Francisco sullo sfondo",
-            "70": "La cupola del municipio appare sulla destra",
-            "210": "La cupola del municipio sulla destra"
-        }
+        "name": "Alamo Square"
     },
     "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
-        "name": "Embarcadero, Market Street",
-        "pointsOfInterest": {
-            "0": "In direzione sud-ovest sulla baia di San Francisco verso il San Francisco Ferry Building",
-            "150": "In avvicinamento vero il San Francisco Ferry Building e l'Embarcadero",
-            "210": "In direzione sud-ovest lungo Market Street nel centro di San Francisco"
-        }
+        "name": "Embarcadero, Market Street"
     },
     "b4-3": {
-        "name": "Dal Presidio al Golden Gate",
-        "pointsOfInterest": {
-            "0": "In viaggio lungo il Presidio di San Francisco verso il Golden Gate Bridge",
-            "190": "Attraversando il Golden Gate Bridge verso il promontorio di Marin"
-        }
+        "name": "Dal Presidio al Golden Gate"
     },
     "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
         "name": "Golden Gate da San Francisco"
     },
     "b6-4": {
-        "name": "Centro città e Coit Tower",
-        "pointsOfInterest": {
-            "0": "Il centro di San Francisco con la Transamerica Pyramid al centro",
-            "100": "Il centro di San Francisco con la Coit Tower in vista"
-        }
+        "name": "Centro città e Coit Tower"
     },
     "29BDF297-EB43-403A-8719-A78DA11A2948": {
-        "name": "Fisherman's Wharf",
-        "pointsOfInterest": {
-            "0": "In direzione sud-est sul Fisherman's Wharf a San Francisco",
-            "27": "Sorvolando la nave Liberty SS Jeremiah O'Brien",
-            "47": "Sorvolando il sottomarino USS Pampanito",
-            "80": "Sorvolando North Beach a San Francisco",
-            "115": "Avvicinandosi alla Coit Tower sulla Telegraph Hill, con il Bay Bridge e il centro di San Francisco sullo sfondo",
-            "135": "Avvicinandosi alla Coit Tower sulla Telegraph Hill, con la Chiesa dei santi Pietro e Paolo sulla destra"
-        }
+        "name": "Fisherman's Wharf"
     },
     "b5-3": {
-        "name": "Embarcadero, Market Street",
-        "pointsOfInterest": {
-            "0": "In direzione sud-ovest sulla baia di San Francisco verso il San Francisco Ferry Building",
-            "150": "In avvicinamento vero il San Francisco Ferry Building e l'Embarcadero",
-            "210": "Verso sud-ovest lungo Market Street a San Francisco"
-        }
+        "name": "Embarcadero, Market Street"
     },
     "3E94AE98-EAF2-4B09-96E3-452F46BC114E": {
         "name": "Bay Bridge"
     },
     "b2-4": {
-        "name": "Centro città e Torre Sutro",
-        "pointsOfInterest": {
-            "0": "Verso il Financial District di San Francisco, con la Sutro Tower sullo sfondo",
-            "10": "Superando la piramide della Transamerica",
-            "50": "L'ex sede della Bank of America che oscura il sole"
-        }
+        "name": "Centro città e Torre Sutro"
     },
     "4AD99907-9E76-408D-A7FC-8429FF014201": {
         "name": "Baia e Embarcadero"

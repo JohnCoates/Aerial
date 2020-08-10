@@ -200,8 +200,6 @@
 		032E09A124C3897E00387230 /* AdvancedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 032E099D24C3897E00387230 /* AdvancedViewController.xib */; };
 		032E09A224C3897E00387230 /* AdvancedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 032E099D24C3897E00387230 /* AdvancedViewController.xib */; };
 		032E09A324C3897E00387230 /* AdvancedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 032E099D24C3897E00387230 /* AdvancedViewController.xib */; };
-		033192E1217B78240073B580 /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = 033192E0217B78240073B580 /* en.json */; };
-		033192E2217B78240073B580 /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = 033192E0217B78240073B580 /* en.json */; };
 		0338119524C1D15B002E23E0 /* Aerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0338119424C1D15B002E23E0 /* Aerial.swift */; };
 		0338119624C1D15B002E23E0 /* Aerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0338119424C1D15B002E23E0 /* Aerial.swift */; };
 		0338119724C1D15B002E23E0 /* Aerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0338119424C1D15B002E23E0 /* Aerial.swift */; };
@@ -264,12 +262,6 @@
 		0354D0EA23F6C3EE00D86F9E /* InfoSettingsTableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D0E823F6C31800D86F9E /* InfoSettingsTableSource.swift */; };
 		0354D0EC23F6CB7B00D86F9E /* InfoSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D0EB23F6CB7B00D86F9E /* InfoSettingsView.swift */; };
 		0354D0ED23F6CB7B00D86F9E /* InfoSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354D0EB23F6CB7B00D86F9E /* InfoSettingsView.swift */; };
-		035A92A6225F8C480095AB85 /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92A4225F8C480095AB85 /* de.json */; };
-		035A92A7225F8C480095AB85 /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92A4225F8C480095AB85 /* de.json */; };
-		035A92A8225F8C480095AB85 /* he.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92A5225F8C480095AB85 /* he.json */; };
-		035A92A9225F8C480095AB85 /* he.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92A5225F8C480095AB85 /* he.json */; };
-		035A92AC226754760095AB85 /* ar.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92AB226754760095AB85 /* ar.json */; };
-		035A92AD226754760095AB85 /* ar.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92AB226754760095AB85 /* ar.json */; };
 		035D524F239AA31A00DC29DC /* AerialView+Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035D524E239AA31A00DC29DC /* AerialView+Player.swift */; };
 		035D5250239AA31A00DC29DC /* AerialView+Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035D524E239AA31A00DC29DC /* AerialView+Player.swift */; };
 		03608A2C22A56465008F08A2 /* HardwareDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03608A2B22A56465008F08A2 /* HardwareDetection.swift */; };
@@ -280,9 +272,6 @@
 		0361B9AC23D73D4500B6252D /* PrefsTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361B9AA23D73D4500B6252D /* PrefsTime.swift */; };
 		0369985D2196103300E359D3 /* missingvideos.json in Resources */ = {isa = PBXBuildFile; fileRef = 0369985C2196103300E359D3 /* missingvideos.json */; };
 		0369985E2196129C00E359D3 /* missingvideos.json in Resources */ = {isa = PBXBuildFile; fileRef = 0369985C2196103300E359D3 /* missingvideos.json */; };
-		036A34B5227309FB00A49135 /* zh_CN.json in Resources */ = {isa = PBXBuildFile; fileRef = 036A34B4227309FB00A49135 /* zh_CN.json */; };
-		036A34B622730A0700A49135 /* zh_CN.json in Resources */ = {isa = PBXBuildFile; fileRef = 036A34B4227309FB00A49135 /* zh_CN.json */; };
-		036A34B722730A0700A49135 /* zh_CN.json in Resources */ = {isa = PBXBuildFile; fileRef = 036A34B4227309FB00A49135 /* zh_CN.json */; };
 		036A57D523F30DD00009DC02 /* DownloadIndicatorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57D423F30DD00009DC02 /* DownloadIndicatorLayer.swift */; };
 		036A57D623F30F490009DC02 /* DownloadIndicatorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57D423F30DD00009DC02 /* DownloadIndicatorLayer.swift */; };
 		036A57D823F470940009DC02 /* InfoCountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57D723F470940009DC02 /* InfoCountdownView.swift */; };
@@ -315,8 +304,6 @@
 		038D2EDF23B0FB0D00CD91F7 /* PrefsVideos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D2EDD23B0FB0D00CD91F7 /* PrefsVideos.swift */; };
 		038D2EE423B6565900CD91F7 /* InfoBatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D2EE323B6565900CD91F7 /* InfoBatteryView.swift */; };
 		038D2EE523B6565900CD91F7 /* InfoBatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D2EE323B6565900CD91F7 /* InfoBatteryView.swift */; };
-		038EBE9422D0AA3D00C7AD02 /* nl.json in Resources */ = {isa = PBXBuildFile; fileRef = 038EBE9322D0AA3D00C7AD02 /* nl.json */; };
-		038EBE9522D0AA3D00C7AD02 /* nl.json in Resources */ = {isa = PBXBuildFile; fileRef = 038EBE9322D0AA3D00C7AD02 /* nl.json */; };
 		03933B8B24C3986800A98D94 /* SourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03933B8924C3986800A98D94 /* SourcesViewController.swift */; };
 		03933B8C24C3986800A98D94 /* SourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03933B8924C3986800A98D94 /* SourcesViewController.swift */; };
 		03933B8D24C3986800A98D94 /* SourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03933B8924C3986800A98D94 /* SourcesViewController.swift */; };
@@ -417,25 +404,14 @@
 		0396D56C24B8B7ED00CC021B /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; };
 		0396D56D24B8B7ED00CC021B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03510C6A21834EB2008F74F2 /* IOKit.framework */; };
 		0396D56F24B8B7ED00CC021B /* Aerial-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 03510C6D21834F38008F74F2 /* Aerial-Bridging-Header.h */; };
-		0396D57224B8B7ED00CC021B /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92A4225F8C480095AB85 /* de.json */; };
-		0396D57524B8B7ED00CC021B /* fr.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D37FD822145487005A146F /* fr.json */; };
 		0396D57624B8B7ED00CC021B /* white_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A42A822449F5EA003B3012 /* white_retina.png */; };
-		0396D57724B8B7ED00CC021B /* ar.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92AB226754760095AB85 /* ar.json */; };
-		0396D57824B8B7ED00CC021B /* zh_CN.json in Resources */ = {isa = PBXBuildFile; fileRef = 036A34B4227309FB00A49135 /* zh_CN.json */; };
 		0396D57924B8B7ED00CC021B /* screen2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03D1E78E22848F7F00D10CF7 /* screen2.jpg */; };
-		0396D58024B8B7ED00CC021B /* he.json in Resources */ = {isa = PBXBuildFile; fileRef = 035A92A5225F8C480095AB85 /* he.json */; };
-		0396D58824B8B7ED00CC021B /* pl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D3DAC3221F286700BDA52F /* pl.json */; };
 		0396D58B24B8B7ED00CC021B /* screen0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03D1E79022848F7F00D10CF7 /* screen0.jpg */; };
 		0396D58D24B8B7ED00CC021B /* thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0395835121807D1F008E8F9C /* thumbnail@2x.png */; };
 		0396D58E24B8B7ED00CC021B /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 0395835221807D1F008E8F9C /* thumbnail.png */; };
-		0396D58F24B8B7ED00CC021B /* it.json in Resources */ = {isa = PBXBuildFile; fileRef = 03F8FF06244B54E600813C96 /* it.json */; };
-		0396D59124B8B7ED00CC021B /* es.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D37FD722145487005A146F /* es.json */; };
 		0396D59224B8B7ED00CC021B /* screen1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03D1E78F22848F7F00D10CF7 /* screen1.jpg */; };
-		0396D59624B8B7ED00CC021B /* nl.json in Resources */ = {isa = PBXBuildFile; fileRef = 038EBE9322D0AA3D00C7AD02 /* nl.json */; };
 		0396D59D24B8B7ED00CC021B /* missingvideos.json in Resources */ = {isa = PBXBuildFile; fileRef = 0369985C2196103300E359D3 /* missingvideos.json */; };
-		0396D5A524B8B7ED00CC021B /* zh_TW.json in Resources */ = {isa = PBXBuildFile; fileRef = 03E4B20C22DC7F8700C22EBE /* zh_TW.json */; };
 		0396D5A824B8B7ED00CC021B /* CustomVideos.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0313F9E522942AA500B074BB /* CustomVideos.xib */; };
-		0396D5A924B8B7ED00CC021B /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = 033192E0217B78240073B580 /* en.json */; };
 		0396D5AB24B8B7ED00CC021B /* purple_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A42A9B2449F601003B3012 /* purple_retina.png */; };
 		0396D5AF24B8B7ED00CC021B /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03A2CB9C216BA9AF0061E8E8 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A2CB9B216BA9AF0061E8E8 /* VideoManager.swift */; };
@@ -609,18 +585,51 @@
 		03D2A43924474C38003ABD30 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03D2A43E24476117003ABD30 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2A43D24476117003ABD30 /* WeatherAPI.swift */; };
 		03D2A43F24476117003ABD30 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2A43D24476117003ABD30 /* WeatherAPI.swift */; };
-		03D37FD922145487005A146F /* es.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D37FD722145487005A146F /* es.json */; };
-		03D37FDA22145487005A146F /* es.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D37FD722145487005A146F /* es.json */; };
-		03D37FDB22145487005A146F /* fr.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D37FD822145487005A146F /* fr.json */; };
-		03D37FDC22145487005A146F /* fr.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D37FD822145487005A146F /* fr.json */; };
+		03D2B8EA24E1E3BF00692B4D /* he.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8DD24E1E3BE00692B4D /* he.json */; };
+		03D2B8EB24E1E3BF00692B4D /* he.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8DD24E1E3BE00692B4D /* he.json */; };
+		03D2B8EC24E1E3BF00692B4D /* he.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8DD24E1E3BE00692B4D /* he.json */; };
+		03D2B8ED24E1E3BF00692B4D /* zh_TW.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8DE24E1E3BE00692B4D /* zh_TW.json */; };
+		03D2B8EE24E1E3BF00692B4D /* zh_TW.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8DE24E1E3BE00692B4D /* zh_TW.json */; };
+		03D2B8EF24E1E3BF00692B4D /* zh_TW.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8DE24E1E3BE00692B4D /* zh_TW.json */; };
+		03D2B8F024E1E3BF00692B4D /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8DF24E1E3BE00692B4D /* en.json */; };
+		03D2B8F124E1E3BF00692B4D /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8DF24E1E3BE00692B4D /* en.json */; };
+		03D2B8F224E1E3BF00692B4D /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8DF24E1E3BE00692B4D /* en.json */; };
+		03D2B8F324E1E3BF00692B4D /* it.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E024E1E3BE00692B4D /* it.json */; };
+		03D2B8F424E1E3BF00692B4D /* it.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E024E1E3BE00692B4D /* it.json */; };
+		03D2B8F524E1E3BF00692B4D /* it.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E024E1E3BE00692B4D /* it.json */; };
+		03D2B8F624E1E3BF00692B4D /* ja.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E124E1E3BE00692B4D /* ja.json */; };
+		03D2B8F724E1E3BF00692B4D /* ja.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E124E1E3BE00692B4D /* ja.json */; };
+		03D2B8F824E1E3BF00692B4D /* ja.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E124E1E3BE00692B4D /* ja.json */; };
+		03D2B8F924E1E3BF00692B4D /* sv.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E224E1E3BE00692B4D /* sv.json */; };
+		03D2B8FA24E1E3BF00692B4D /* sv.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E224E1E3BE00692B4D /* sv.json */; };
+		03D2B8FB24E1E3BF00692B4D /* sv.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E224E1E3BE00692B4D /* sv.json */; };
+		03D2B8FC24E1E3BF00692B4D /* nl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E324E1E3BE00692B4D /* nl.json */; };
+		03D2B8FD24E1E3BF00692B4D /* nl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E324E1E3BE00692B4D /* nl.json */; };
+		03D2B8FE24E1E3BF00692B4D /* nl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E324E1E3BE00692B4D /* nl.json */; };
+		03D2B8FF24E1E3BF00692B4D /* zh_CN.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E424E1E3BE00692B4D /* zh_CN.json */; };
+		03D2B90024E1E3BF00692B4D /* zh_CN.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E424E1E3BE00692B4D /* zh_CN.json */; };
+		03D2B90124E1E3BF00692B4D /* zh_CN.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E424E1E3BE00692B4D /* zh_CN.json */; };
+		03D2B90224E1E3BF00692B4D /* ar.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E524E1E3BE00692B4D /* ar.json */; };
+		03D2B90324E1E3BF00692B4D /* ar.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E524E1E3BE00692B4D /* ar.json */; };
+		03D2B90424E1E3BF00692B4D /* ar.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E524E1E3BE00692B4D /* ar.json */; };
+		03D2B90524E1E3BF00692B4D /* es.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E624E1E3BE00692B4D /* es.json */; };
+		03D2B90624E1E3BF00692B4D /* es.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E624E1E3BE00692B4D /* es.json */; };
+		03D2B90724E1E3BF00692B4D /* es.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E624E1E3BE00692B4D /* es.json */; };
+		03D2B90824E1E3BF00692B4D /* fr.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E724E1E3BF00692B4D /* fr.json */; };
+		03D2B90924E1E3BF00692B4D /* fr.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E724E1E3BF00692B4D /* fr.json */; };
+		03D2B90A24E1E3BF00692B4D /* fr.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E724E1E3BF00692B4D /* fr.json */; };
+		03D2B90B24E1E3BF00692B4D /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E824E1E3BF00692B4D /* de.json */; };
+		03D2B90C24E1E3BF00692B4D /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E824E1E3BF00692B4D /* de.json */; };
+		03D2B90D24E1E3BF00692B4D /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E824E1E3BF00692B4D /* de.json */; };
+		03D2B90E24E1E3BF00692B4D /* pl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E924E1E3BF00692B4D /* pl.json */; };
+		03D2B90F24E1E3BF00692B4D /* pl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E924E1E3BF00692B4D /* pl.json */; };
+		03D2B91024E1E3BF00692B4D /* pl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E924E1E3BF00692B4D /* pl.json */; };
 		03D3A10D24C5D7CC0091FE99 /* Thumbnails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3A10C24C5D7CC0091FE99 /* Thumbnails.swift */; };
 		03D3A10E24C5D7CC0091FE99 /* Thumbnails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3A10C24C5D7CC0091FE99 /* Thumbnails.swift */; };
 		03D3A10F24C5D7CC0091FE99 /* Thumbnails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3A10C24C5D7CC0091FE99 /* Thumbnails.swift */; };
 		03D3A11324C5FC770091FE99 /* AspectFillNSImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3A11224C5FC770091FE99 /* AspectFillNSImageView.swift */; };
 		03D3A11424C5FC770091FE99 /* AspectFillNSImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3A11224C5FC770091FE99 /* AspectFillNSImageView.swift */; };
 		03D3A11524C5FC770091FE99 /* AspectFillNSImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3A11224C5FC770091FE99 /* AspectFillNSImageView.swift */; };
-		03D3DAC4221F286700BDA52F /* pl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D3DAC3221F286700BDA52F /* pl.json */; };
-		03D3DAC5221F286D00BDA52F /* pl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D3DAC3221F286700BDA52F /* pl.json */; };
 		03DAD470229EAC66000DA6D1 /* Installation.md in Resources */ = {isa = PBXBuildFile; fileRef = 03DAD46F229EAC66000DA6D1 /* Installation.md */; };
 		03DAD473229EC031000DA6D1 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 03DAD472229EC031000DA6D1 /* Readme.md */; };
 		03DC004E248BC5A4005DB0F4 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC004D248BC5A4005DB0F4 /* Cache.swift */; };
@@ -628,9 +637,6 @@
 		03E2237124BE048900CD8ED4 /* VideoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */; };
 		03E2237224BE048900CD8ED4 /* VideoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */; };
 		03E2237324BE048900CD8ED4 /* VideoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */; };
-		03E4B20D22DC7F8800C22EBE /* zh_TW.json in Resources */ = {isa = PBXBuildFile; fileRef = 03E4B20C22DC7F8700C22EBE /* zh_TW.json */; };
-		03E4B20E22DC7FE200C22EBE /* zh_TW.json in Resources */ = {isa = PBXBuildFile; fileRef = 03E4B20C22DC7F8700C22EBE /* zh_TW.json */; };
-		03E4B20F22DC7FE600C22EBE /* zh_TW.json in Resources */ = {isa = PBXBuildFile; fileRef = 03E4B20C22DC7F8700C22EBE /* zh_TW.json */; };
 		03E8730C2165013C002B469B /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8730B2165013C002B469B /* DownloadManager.swift */; };
 		03E8730F216501ED002B469B /* AsynchronousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8730E216501ED002B469B /* AsynchronousOperation.swift */; };
 		03E8731021662AEB002B469B /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8730B2165013C002B469B /* DownloadManager.swift */; };
@@ -649,8 +655,6 @@
 		03EED2F324C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03EED2EF24C44A7900F0C3D4 /* OverlaysViewController.xib */; };
 		03EED2F424C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03EED2EF24C44A7900F0C3D4 /* OverlaysViewController.xib */; };
 		03EED2F524C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03EED2EF24C44A7900F0C3D4 /* OverlaysViewController.xib */; };
-		03F8FF1D244B54E600813C96 /* it.json in Resources */ = {isa = PBXBuildFile; fileRef = 03F8FF06244B54E600813C96 /* it.json */; };
-		03F8FF1E244B54E600813C96 /* it.json in Resources */ = {isa = PBXBuildFile; fileRef = 03F8FF06244B54E600813C96 /* it.json */; };
 		03F8FF1F244B67D200813C96 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; };
 		03F8FF20244B67D200813C96 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03FA49A12423DA1F00863AF6 /* TimerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA49A02423DA1F00863AF6 /* TimerLayer.swift */; };
@@ -858,7 +862,6 @@
 		032D1163239A7F0C007E7756 /* AerialView+Brightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AerialView+Brightness.swift"; sourceTree = "<group>"; };
 		032E099C24C3897E00387230 /* AdvancedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedViewController.swift; sourceTree = "<group>"; };
 		032E099D24C3897E00387230 /* AdvancedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedViewController.xib; sourceTree = "<group>"; };
-		033192E0217B78240073B580 /* en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = en.json; sourceTree = "<group>"; };
 		0338119424C1D15B002E23E0 /* Aerial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aerial.swift; sourceTree = "<group>"; };
 		033811AE24C1E243002E23E0 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		033811AF24C1E243002E23E0 /* InfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
@@ -885,15 +888,11 @@
 		03510C722185EF76008F74F2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0354D0E823F6C31800D86F9E /* InfoSettingsTableSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSettingsTableSource.swift; sourceTree = "<group>"; };
 		0354D0EB23F6CB7B00D86F9E /* InfoSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSettingsView.swift; sourceTree = "<group>"; };
-		035A92A4225F8C480095AB85 /* de.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = de.json; sourceTree = "<group>"; };
-		035A92A5225F8C480095AB85 /* he.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = he.json; sourceTree = "<group>"; };
-		035A92AB226754760095AB85 /* ar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ar.json; sourceTree = "<group>"; };
 		035D524E239AA31A00DC29DC /* AerialView+Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AerialView+Player.swift"; sourceTree = "<group>"; };
 		03608A2B22A56465008F08A2 /* HardwareDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareDetection.swift; sourceTree = "<group>"; };
 		0361B9A723D732A300B6252D /* PrefsDisplays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsDisplays.swift; sourceTree = "<group>"; };
 		0361B9AA23D73D4500B6252D /* PrefsTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsTime.swift; sourceTree = "<group>"; };
 		0369985C2196103300E359D3 /* missingvideos.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = missingvideos.json; sourceTree = "<group>"; };
-		036A34B4227309FB00A49135 /* zh_CN.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zh_CN.json; sourceTree = "<group>"; };
 		036A57D423F30DD00009DC02 /* DownloadIndicatorLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadIndicatorLayer.swift; sourceTree = "<group>"; };
 		036A57D723F470940009DC02 /* InfoCountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCountdownView.swift; sourceTree = "<group>"; };
 		036A57DA23F5820A0009DC02 /* CountdownLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownLayer.swift; sourceTree = "<group>"; };
@@ -908,7 +907,6 @@
 		038C584923A9394000224630 /* InfoCommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCommonView.swift; sourceTree = "<group>"; };
 		038D2EDD23B0FB0D00CD91F7 /* PrefsVideos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsVideos.swift; sourceTree = "<group>"; };
 		038D2EE323B6565900CD91F7 /* InfoBatteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBatteryView.swift; sourceTree = "<group>"; };
-		038EBE9322D0AA3D00C7AD02 /* nl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nl.json; sourceTree = "<group>"; };
 		03933B8924C3986800A98D94 /* SourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesViewController.swift; sourceTree = "<group>"; };
 		03933B8A24C3986800A98D94 /* SourcesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SourcesViewController.xib; sourceTree = "<group>"; };
 		039385792175D4B80040B850 /* AVPlayerViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerViewExtension.swift; sourceTree = "<group>"; };
@@ -983,11 +981,21 @@
 		03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuthSwift.xcodeproj; path = Extern/OAuthSwift/OAuthSwift.xcodeproj; sourceTree = "<group>"; };
 		03D2A43324474304003ABD30 /* YahooWeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooWeatherAPI.swift; sourceTree = "<group>"; };
 		03D2A43D24476117003ABD30 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
-		03D37FD722145487005A146F /* es.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = es.json; sourceTree = "<group>"; };
-		03D37FD822145487005A146F /* fr.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fr.json; sourceTree = "<group>"; };
+		03D2B8DD24E1E3BE00692B4D /* he.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = he.json; sourceTree = "<group>"; };
+		03D2B8DE24E1E3BE00692B4D /* zh_TW.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zh_TW.json; sourceTree = "<group>"; };
+		03D2B8DF24E1E3BE00692B4D /* en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = en.json; sourceTree = "<group>"; };
+		03D2B8E024E1E3BE00692B4D /* it.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = it.json; sourceTree = "<group>"; };
+		03D2B8E124E1E3BE00692B4D /* ja.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ja.json; sourceTree = "<group>"; };
+		03D2B8E224E1E3BE00692B4D /* sv.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sv.json; sourceTree = "<group>"; };
+		03D2B8E324E1E3BE00692B4D /* nl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nl.json; sourceTree = "<group>"; };
+		03D2B8E424E1E3BE00692B4D /* zh_CN.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zh_CN.json; sourceTree = "<group>"; };
+		03D2B8E524E1E3BE00692B4D /* ar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ar.json; sourceTree = "<group>"; };
+		03D2B8E624E1E3BE00692B4D /* es.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = es.json; sourceTree = "<group>"; };
+		03D2B8E724E1E3BF00692B4D /* fr.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fr.json; sourceTree = "<group>"; };
+		03D2B8E824E1E3BF00692B4D /* de.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = de.json; sourceTree = "<group>"; };
+		03D2B8E924E1E3BF00692B4D /* pl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pl.json; sourceTree = "<group>"; };
 		03D3A10C24C5D7CC0091FE99 /* Thumbnails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnails.swift; sourceTree = "<group>"; };
 		03D3A11224C5FC770091FE99 /* AspectFillNSImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectFillNSImageView.swift; sourceTree = "<group>"; };
-		03D3DAC3221F286700BDA52F /* pl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pl.json; sourceTree = "<group>"; };
 		03D6C78922A0384F00DE830B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		03DAD46F229EAC66000DA6D1 /* Installation.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Installation.md; sourceTree = "<group>"; };
 		03DAD471229EB1E9000DA6D1 /* ChangeLog.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ChangeLog.md; sourceTree = "<group>"; };
@@ -998,7 +1006,6 @@
 		03DAD477229ECAAA000DA6D1 /* CustomVideos.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CustomVideos.md; sourceTree = "<group>"; };
 		03DC004D248BC5A4005DB0F4 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoHeaderView.swift; sourceTree = "<group>"; };
-		03E4B20C22DC7F8700C22EBE /* zh_TW.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zh_TW.json; sourceTree = "<group>"; };
 		03E8730B2165013C002B469B /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		03E8730E216501ED002B469B /* AsynchronousOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousOperation.swift; sourceTree = "<group>"; };
 		03E8731221675FE0002B469B /* TimeManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManagement.swift; sourceTree = "<group>"; };
@@ -1006,7 +1013,6 @@
 		03EED2D124C3A47700F0C3D4 /* UpdatesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatesViewController.xib; sourceTree = "<group>"; };
 		03EED2EE24C44A7900F0C3D4 /* OverlaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaysViewController.swift; sourceTree = "<group>"; };
 		03EED2EF24C44A7900F0C3D4 /* OverlaysViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverlaysViewController.xib; sourceTree = "<group>"; };
-		03F8FF06244B54E600813C96 /* it.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = it.json; sourceTree = "<group>"; };
 		03FA49A02423DA1F00863AF6 /* TimerLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLayer.swift; sourceTree = "<group>"; };
 		03FA49B32428EE3300863AF6 /* InfoDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDateView.swift; sourceTree = "<group>"; };
 		03FA49B62428F84500863AF6 /* DateLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLayer.swift; sourceTree = "<group>"; };
@@ -1128,18 +1134,20 @@
 		033192DF217B77E90073B580 /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				03D2B8E524E1E3BE00692B4D /* ar.json */,
+				03D2B8E824E1E3BF00692B4D /* de.json */,
+				03D2B8DF24E1E3BE00692B4D /* en.json */,
+				03D2B8E624E1E3BE00692B4D /* es.json */,
+				03D2B8E724E1E3BF00692B4D /* fr.json */,
+				03D2B8DD24E1E3BE00692B4D /* he.json */,
+				03D2B8E024E1E3BE00692B4D /* it.json */,
+				03D2B8E124E1E3BE00692B4D /* ja.json */,
+				03D2B8E324E1E3BE00692B4D /* nl.json */,
+				03D2B8E924E1E3BF00692B4D /* pl.json */,
+				03D2B8E224E1E3BE00692B4D /* sv.json */,
+				03D2B8E424E1E3BE00692B4D /* zh_CN.json */,
+				03D2B8DE24E1E3BE00692B4D /* zh_TW.json */,
 				0377BF6F24BA15E600C33F9F /* btn_donate.png */,
-				03E4B20C22DC7F8700C22EBE /* zh_TW.json */,
-				038EBE9322D0AA3D00C7AD02 /* nl.json */,
-				036A34B4227309FB00A49135 /* zh_CN.json */,
-				035A92AB226754760095AB85 /* ar.json */,
-				035A92A4225F8C480095AB85 /* de.json */,
-				035A92A5225F8C480095AB85 /* he.json */,
-				03F8FF06244B54E600813C96 /* it.json */,
-				03D3DAC3221F286700BDA52F /* pl.json */,
-				03D37FD722145487005A146F /* es.json */,
-				03D37FD822145487005A146F /* fr.json */,
-				033192E0217B78240073B580 /* en.json */,
 				0369985C2196103300E359D3 /* missingvideos.json */,
 			);
 			path = Community;
@@ -1837,16 +1845,16 @@
 			files = (
 				03AA7A9424C84C6300A47970 /* sun.min.pdf in Resources */,
 				03AA7A7F24C84C6300A47970 /* cloud.sun.bolt.pdf in Resources */,
+				03D2B8FD24E1E3BF00692B4D /* nl.json in Resources */,
 				03AA7AB524C84C6400A47970 /* cloud.bolt.pdf in Resources */,
 				03AA7A7C24C84C6300A47970 /* cloud.pdf in Resources */,
 				0300B83524D1B536006132E5 /* star.fill.pdf in Resources */,
 				0300B86D24D20B12006132E5 /* NextViewController.xib in Resources */,
-				0396D57224B8B7ED00CC021B /* de.json in Resources */,
+				03D2B8FA24E1E3BF00692B4D /* sv.json in Resources */,
 				0345CFF124BF43280001045C /* VideosViewController.xib in Resources */,
 				0300B81D24D1B536006132E5 /* arrow.down.circle.pdf in Resources */,
 				0300B81724D1B536006132E5 /* sunset.pdf in Resources */,
 				0300B7F924D1B536006132E5 /* text.bubble.pdf in Resources */,
-				0396D57524B8B7ED00CC021B /* fr.json in Resources */,
 				032E09A224C3897E00387230 /* AdvancedViewController.xib in Resources */,
 				0300B82324D1B536006132E5 /* regular.sun.min.pdf in Resources */,
 				0321A53F24D4515B004F1975 /* folder.pdf in Resources */,
@@ -1859,23 +1867,25 @@
 				0300B81124D1B536006132E5 /* regular.moon.stars.pdf in Resources */,
 				03AA7AA624C84C6300A47970 /* cloud.rain.pdf in Resources */,
 				03AA7A9724C84C6300A47970 /* smoke.pdf in Resources */,
+				03D2B90C24E1E3BF00692B4D /* de.json in Resources */,
 				03AA7A8824C84C6300A47970 /* cloud.fog.pdf in Resources */,
 				030010A724D718D30092AE68 /* slider.horizontal.3.pdf in Resources */,
 				0300B82C24D1B536006132E5 /* location.pdf in Resources */,
 				0300B84D24D1FD24006132E5 /* FirstSetupWindowController.xib in Resources */,
 				03AA7A6D24C84C6300A47970 /* battery.0.pdf in Resources */,
-				0396D57724B8B7ED00CC021B /* ar.json in Resources */,
 				0300B82624D1B536006132E5 /* mappin.and.ellipse.pdf in Resources */,
 				0300B80B24D1B536006132E5 /* eye.slash.pdf in Resources */,
-				0396D57824B8B7ED00CC021B /* zh_CN.json in Resources */,
 				0396D57924B8B7ED00CC021B /* screen2.jpg in Resources */,
+				03D2B8EE24E1E3BF00692B4D /* zh_TW.json in Resources */,
 				0319461124D1A09F00F37B35 /* icon-320@2x.png in Resources */,
 				03AA7ABE24C84C6400A47970 /* cloud.sleet.pdf in Resources */,
 				03BDBEC424C4727C00BBD5E9 /* TimeViewController.xib in Resources */,
-				0396D58024B8B7ED00CC021B /* he.json in Resources */,
 				03AA7A8B24C84C6300A47970 /* thermometer.sun.pdf in Resources */,
 				0300B83E24D1B536006132E5 /* dial.pdf in Resources */,
+				03D2B8F124E1E3BF00692B4D /* en.json in Resources */,
+				03D2B90624E1E3BF00692B4D /* es.json in Resources */,
 				0300B83224D1B536006132E5 /* sunrise.pdf in Resources */,
+				03D2B8EB24E1E3BF00692B4D /* he.json in Resources */,
 				0300B80824D1B536006132E5 /* film.pdf in Resources */,
 				0300B83B24D1B536006132E5 /* regular.sun.max.pdf in Resources */,
 				0300B7FF24D1B536006132E5 /* star.pdf in Resources */,
@@ -1883,36 +1893,36 @@
 				0377BF8724BA15E700C33F9F /* btn_donate.png in Resources */,
 				0300B82F24D1B536006132E5 /* tv.pdf in Resources */,
 				0300B81424D1B536006132E5 /* antenna.radiowaves.left.and.right.pdf in Resources */,
-				0396D58824B8B7ED00CC021B /* pl.json in Resources */,
 				03AA7ABB24C84C6400A47970 /* cloud.sun.pdf in Resources */,
 				0396D58B24B8B7ED00CC021B /* screen0.jpg in Resources */,
 				0300B7F624D1B536006132E5 /* eye.pdf in Resources */,
 				03AA7AB824C84C6400A47970 /* bolt.fill.pdf in Resources */,
 				03AA7A9D24C84C6300A47970 /* cloud.moon.rain.pdf in Resources */,
 				0378986224C35F8A009B9418 /* CacheViewController.xib in Resources */,
+				03D2B8F424E1E3BF00692B4D /* it.json in Resources */,
 				030010AF24D71EB20092AE68 /* FiltersViewController.xib in Resources */,
 				03AA7A7324C84C6300A47970 /* cloud.sun.rain.pdf in Resources */,
 				0396D58D24B8B7ED00CC021B /* thumbnail@2x.png in Resources */,
 				0396D58E24B8B7ED00CC021B /* thumbnail.png in Resources */,
 				0300B86524D2052B006132E5 /* WelcomeViewController.xib in Resources */,
+				03D2B90F24E1E3BF00692B4D /* pl.json in Resources */,
 				03AA7A6A24C84C6300A47970 /* cloud.heavyrain.pdf in Resources */,
 				03AA7A9A24C84C6300A47970 /* cloud.snow.pdf in Resources */,
 				0300B80224D1B536006132E5 /* clock.pdf in Resources */,
-				0396D58F24B8B7ED00CC021B /* it.json in Resources */,
 				0300B81A24D1B536006132E5 /* tram.fill.pdf in Resources */,
 				0300B82024D1B536006132E5 /* flame.pdf in Resources */,
 				03AA7AA924C84C6300A47970 /* sun.haze.pdf in Resources */,
 				0300B7EA24D1B536006132E5 /* person.3.pdf in Resources */,
 				031332A024BF3FA700C84A05 /* SidebarViewController.xib in Resources */,
 				031945FF24CCC52600F37B35 /* HelpViewController.xib in Resources */,
-				0396D59124B8B7ED00CC021B /* es.json in Resources */,
 				0300B7F024D1B536006132E5 /* helm.pdf in Resources */,
 				03AA7A8E24C84C6300A47970 /* tropicalstorm.pdf in Resources */,
 				0345EDEC24C3239400C73038 /* DisplaysViewController.xib in Resources */,
+				03D2B8F724E1E3BF00692B4D /* ja.json in Resources */,
 				0396D59224B8B7ED00CC021B /* screen1.jpg in Resources */,
-				0396D59624B8B7ED00CC021B /* nl.json in Resources */,
 				0300B7ED24D1B536006132E5 /* bubble.left.and.bubble.right.pdf in Resources */,
 				03AA7AA324C84C6300A47970 /* cloud.drizzle.pdf in Resources */,
+				03D2B90024E1E3BF00692B4D /* zh_CN.json in Resources */,
 				03AA7AB224C84C6400A47970 /* cloud.moon.bolt.pdf in Resources */,
 				0300B7FC24D1B536006132E5 /* circle.pdf in Resources */,
 				0300B80524D1B536006132E5 /* sparkles.pdf in Resources */,
@@ -1924,14 +1934,14 @@
 				0300B7F324D1B536006132E5 /* gear.pdf in Resources */,
 				03AA7A5E24C84C6300A47970 /* cloud.bolt.rain.pdf in Resources */,
 				0300B83824D1B536006132E5 /* regular.cloud.pdf in Resources */,
+				03D2B90924E1E3BF00692B4D /* fr.json in Resources */,
 				03AA7A8524C84C6300A47970 /* hurricane.pdf in Resources */,
-				0396D5A524B8B7ED00CC021B /* zh_TW.json in Resources */,
 				0300B80E24D1B536006132E5 /* info.circle.pdf in Resources */,
 				03AA7A6424C84C6300A47970 /* snow.pdf in Resources */,
 				0396D5A824B8B7ED00CC021B /* CustomVideos.xib in Resources */,
 				03AA7AA024C84C6300A47970 /* cloud.hail.pdf in Resources */,
+				03D2B90324E1E3BF00692B4D /* ar.json in Resources */,
 				03EED2F424C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */,
-				0396D5A924B8B7ED00CC021B /* en.json in Resources */,
 				0300B84124D1B536006132E5 /* checkmark.circle.fill.pdf in Resources */,
 				031945F724CCC48C00F37B35 /* CreditsViewController.xib in Resources */,
 				03AA7AAF24C84C6400A47970 /* cloud.moon.pdf in Resources */,
@@ -1949,10 +1959,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03D2B90424E1E3BF00692B4D /* ar.json in Resources */,
 				0300B7F724D1B536006132E5 /* eye.pdf in Resources */,
-				036A34B622730A0700A49135 /* zh_CN.json in Resources */,
 				03BDBEC524C4727C00BBD5E9 /* TimeViewController.xib in Resources */,
-				033192E2217B78240073B580 /* en.json in Resources */,
 				0300B80024D1B536006132E5 /* star.pdf in Resources */,
 				03DAD470229EAC66000DA6D1 /* Installation.md in Resources */,
 				03AA7A6B24C84C6300A47970 /* cloud.heavyrain.pdf in Resources */,
@@ -1975,12 +1984,10 @@
 				03AA7A8324C84C6300A47970 /* thermometer.snowflake.pdf in Resources */,
 				0300B81824D1B536006132E5 /* sunset.pdf in Resources */,
 				03AA7A7124C84C6300A47970 /* wrench.pdf in Resources */,
-				03D37FDA22145487005A146F /* es.json in Resources */,
 				0369985E2196129C00E359D3 /* missingvideos.json in Resources */,
 				0300B83024D1B536006132E5 /* tv.pdf in Resources */,
 				03AA7A9824C84C6300A47970 /* smoke.pdf in Resources */,
 				0300B84E24D1FD24006132E5 /* FirstSetupWindowController.xib in Resources */,
-				038EBE9522D0AA3D00C7AD02 /* nl.json in Resources */,
 				0319461224D1A09F00F37B35 /* icon-320@2x.png in Resources */,
 				03AA7ABF24C84C6400A47970 /* cloud.sleet.pdf in Resources */,
 				031945F824CCC48C00F37B35 /* CreditsViewController.xib in Resources */,
@@ -1991,8 +1998,6 @@
 				0395835621807D1F008E8F9C /* thumbnail.png in Resources */,
 				0300B84224D1B536006132E5 /* checkmark.circle.fill.pdf in Resources */,
 				0300B83F24D1B536006132E5 /* dial.pdf in Resources */,
-				03F8FF1E244B54E600813C96 /* it.json in Resources */,
-				035A92AD226754760095AB85 /* ar.json in Resources */,
 				0313F9E92294337F00B074BB /* CustomVideos.xib in Resources */,
 				0378986324C35F8A009B9418 /* CacheViewController.xib in Resources */,
 				0321A54024D4515B004F1975 /* folder.pdf in Resources */,
@@ -2000,23 +2005,27 @@
 				0300B80F24D1B536006132E5 /* info.circle.pdf in Resources */,
 				03AA7A6E24C84C6300A47970 /* battery.0.pdf in Resources */,
 				0300B7F424D1B536006132E5 /* gear.pdf in Resources */,
+				03D2B8F224E1E3BF00692B4D /* en.json in Resources */,
 				0319460024CCC52600F37B35 /* HelpViewController.xib in Resources */,
 				03AA7AAA24C84C6300A47970 /* sun.haze.pdf in Resources */,
-				03D3DAC5221F286D00BDA52F /* pl.json in Resources */,
 				03AA7A9224C84C6300A47970 /* moon.pdf in Resources */,
 				0300B83924D1B536006132E5 /* regular.cloud.pdf in Resources */,
 				034DEE3324BF1BC700A2D3CD /* PanelWindowController.xib in Resources */,
+				03D2B8F824E1E3BF00692B4D /* ja.json in Resources */,
 				0300B84524D1B536006132E5 /* square.and.arrow.down.pdf in Resources */,
 				03AA7A8924C84C6300A47970 /* cloud.fog.pdf in Resources */,
 				03AA7A8024C84C6300A47970 /* cloud.sun.bolt.pdf in Resources */,
 				0300B83324D1B536006132E5 /* sunrise.pdf in Resources */,
+				03D2B8EF24E1E3BF00692B4D /* zh_TW.json in Resources */,
 				FAC36F481BE1756D007F2A20 /* Assets.xcassets in Resources */,
 				03AA7AAD24C84C6300A47970 /* tornado.pdf in Resources */,
 				03DAD473229EC031000DA6D1 /* Readme.md in Resources */,
 				0300B83C24D1B536006132E5 /* regular.sun.max.pdf in Resources */,
 				030010A824D718D30092AE68 /* slider.horizontal.3.pdf in Resources */,
+				03D2B90A24E1E3BF00692B4D /* fr.json in Resources */,
 				03AA7A8624C84C6300A47970 /* hurricane.pdf in Resources */,
 				0300B80924D1B536006132E5 /* film.pdf in Resources */,
+				03D2B90724E1E3BF00692B4D /* es.json in Resources */,
 				0300B80324D1B536006132E5 /* clock.pdf in Resources */,
 				031332A124BF3FA700C84A05 /* SidebarViewController.xib in Resources */,
 				03AA7A7724C84C6300A47970 /* sun.dust.pdf in Resources */,
@@ -2025,6 +2034,7 @@
 				03D1E79222848F7F00D10CF7 /* screen2.jpg in Resources */,
 				FAC36F4A1BE1756D007F2A20 /* MainMenu.xib in Resources */,
 				0300B81224D1B536006132E5 /* regular.moon.stars.pdf in Resources */,
+				03D2B90124E1E3BF00692B4D /* zh_CN.json in Resources */,
 				030010B024D71EB20092AE68 /* FiltersViewController.xib in Resources */,
 				0377BF8824BA15E700C33F9F /* btn_donate.png in Resources */,
 				0300B7FD24D1B536006132E5 /* circle.pdf in Resources */,
@@ -2032,6 +2042,8 @@
 				03AA7A6224C84C6300A47970 /* wind.snow.pdf in Resources */,
 				03EED2F524C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */,
 				0300B82424D1B536006132E5 /* regular.sun.min.pdf in Resources */,
+				03D2B91024E1E3BF00692B4D /* pl.json in Resources */,
+				03D2B8EC24E1E3BF00692B4D /* he.json in Resources */,
 				0300B81B24D1B536006132E5 /* tram.fill.pdf in Resources */,
 				03AA7AB324C84C6400A47970 /* cloud.moon.bolt.pdf in Resources */,
 				0300B80624D1B536006132E5 /* sparkles.pdf in Resources */,
@@ -2039,27 +2051,27 @@
 				03AA7A5F24C84C6300A47970 /* cloud.bolt.rain.pdf in Resources */,
 				03AA7A7A24C84C6300A47970 /* sun.max.pdf in Resources */,
 				0300B7EE24D1B536006132E5 /* bubble.left.and.bubble.right.pdf in Resources */,
-				03E4B20E22DC7FE200C22EBE /* zh_TW.json in Resources */,
-				035A92A9225F8C480095AB85 /* he.json in Resources */,
 				03AA7A8C24C84C6300A47970 /* thermometer.sun.pdf in Resources */,
-				035A92A7225F8C480095AB85 /* de.json in Resources */,
 				03AA7AA724C84C6300A47970 /* cloud.rain.pdf in Resources */,
 				03AA7A9E24C84C6300A47970 /* cloud.moon.rain.pdf in Resources */,
 				03AA7ABC24C84C6400A47970 /* cloud.sun.pdf in Resources */,
 				0395835421807D1F008E8F9C /* thumbnail@2x.png in Resources */,
 				03AA7A6524C84C6300A47970 /* snow.pdf in Resources */,
+				03D2B8F524E1E3BF00692B4D /* it.json in Resources */,
 				03EED2D724C3A47700F0C3D4 /* UpdatesViewController.xib in Resources */,
 				0300B86624D2052B006132E5 /* WelcomeViewController.xib in Resources */,
 				03A42A9A2449F5EA003B3012 /* white_retina.png in Resources */,
 				0345CFF224BF43280001045C /* VideosViewController.xib in Resources */,
 				032E09A324C3897E00387230 /* AdvancedViewController.xib in Resources */,
 				03AA7AA424C84C6300A47970 /* cloud.drizzle.pdf in Resources */,
+				03D2B90D24E1E3BF00692B4D /* de.json in Resources */,
 				03BDBEA724C467EC00BBD5E9 /* BrightnessViewController.xib in Resources */,
 				03AA7AB624C84C6400A47970 /* cloud.bolt.pdf in Resources */,
 				03D1E79822848F7F00D10CF7 /* screen0.jpg in Resources */,
 				0300B82124D1B536006132E5 /* flame.pdf in Resources */,
-				03D37FDC22145487005A146F /* fr.json in Resources */,
+				03D2B8FB24E1E3BF00692B4D /* sv.json in Resources */,
 				03AA7A9524C84C6300A47970 /* sun.min.pdf in Resources */,
+				03D2B8FE24E1E3BF00692B4D /* nl.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2068,8 +2080,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				03D1E79322848F7F00D10CF7 /* screen2.jpg in Resources */,
-				036A34B722730A0700A49135 /* zh_CN.json in Resources */,
-				03E4B20F22DC7FE600C22EBE /* zh_TW.json in Resources */,
 				03D1E79622848F7F00D10CF7 /* screen1.jpg in Resources */,
 				03D1E79922848F7F00D10CF7 /* screen0.jpg in Resources */,
 			);
@@ -2081,16 +2091,16 @@
 			files = (
 				03AA7A9324C84C6300A47970 /* sun.min.pdf in Resources */,
 				03AA7A7E24C84C6300A47970 /* cloud.sun.bolt.pdf in Resources */,
+				03D2B8FC24E1E3BF00692B4D /* nl.json in Resources */,
 				03AA7AB424C84C6400A47970 /* cloud.bolt.pdf in Resources */,
 				03AA7A7B24C84C6300A47970 /* cloud.pdf in Resources */,
 				0300B83424D1B536006132E5 /* star.fill.pdf in Resources */,
 				0300B86C24D20B12006132E5 /* NextViewController.xib in Resources */,
-				035A92A6225F8C480095AB85 /* de.json in Resources */,
+				03D2B8F924E1E3BF00692B4D /* sv.json in Resources */,
 				0345CFF024BF43280001045C /* VideosViewController.xib in Resources */,
 				0300B81C24D1B536006132E5 /* arrow.down.circle.pdf in Resources */,
 				0300B81624D1B536006132E5 /* sunset.pdf in Resources */,
 				0300B7F824D1B536006132E5 /* text.bubble.pdf in Resources */,
-				03D37FDB22145487005A146F /* fr.json in Resources */,
 				032E09A124C3897E00387230 /* AdvancedViewController.xib in Resources */,
 				0300B82224D1B536006132E5 /* regular.sun.min.pdf in Resources */,
 				0321A53E24D4515B004F1975 /* folder.pdf in Resources */,
@@ -2103,23 +2113,25 @@
 				0300B81024D1B536006132E5 /* regular.moon.stars.pdf in Resources */,
 				03AA7AA524C84C6300A47970 /* cloud.rain.pdf in Resources */,
 				03AA7A9624C84C6300A47970 /* smoke.pdf in Resources */,
+				03D2B90B24E1E3BF00692B4D /* de.json in Resources */,
 				03AA7A8724C84C6300A47970 /* cloud.fog.pdf in Resources */,
 				030010A624D718D30092AE68 /* slider.horizontal.3.pdf in Resources */,
 				0300B82B24D1B536006132E5 /* location.pdf in Resources */,
 				0300B84C24D1FD24006132E5 /* FirstSetupWindowController.xib in Resources */,
 				03AA7A6C24C84C6300A47970 /* battery.0.pdf in Resources */,
-				035A92AC226754760095AB85 /* ar.json in Resources */,
 				0300B82524D1B536006132E5 /* mappin.and.ellipse.pdf in Resources */,
 				0300B80A24D1B536006132E5 /* eye.slash.pdf in Resources */,
-				036A34B5227309FB00A49135 /* zh_CN.json in Resources */,
 				03D1E79122848F7F00D10CF7 /* screen2.jpg in Resources */,
+				03D2B8ED24E1E3BF00692B4D /* zh_TW.json in Resources */,
 				0319461024D1A09F00F37B35 /* icon-320@2x.png in Resources */,
 				03AA7ABD24C84C6400A47970 /* cloud.sleet.pdf in Resources */,
 				03BDBEC324C4727C00BBD5E9 /* TimeViewController.xib in Resources */,
-				035A92A8225F8C480095AB85 /* he.json in Resources */,
 				03AA7A8A24C84C6300A47970 /* thermometer.sun.pdf in Resources */,
 				0300B83D24D1B536006132E5 /* dial.pdf in Resources */,
+				03D2B8F024E1E3BF00692B4D /* en.json in Resources */,
+				03D2B90524E1E3BF00692B4D /* es.json in Resources */,
 				0300B83124D1B536006132E5 /* sunrise.pdf in Resources */,
+				03D2B8EA24E1E3BF00692B4D /* he.json in Resources */,
 				0300B80724D1B536006132E5 /* film.pdf in Resources */,
 				0300B83A24D1B536006132E5 /* regular.sun.max.pdf in Resources */,
 				0300B7FE24D1B536006132E5 /* star.pdf in Resources */,
@@ -2127,36 +2139,36 @@
 				0377BF8624BA15E700C33F9F /* btn_donate.png in Resources */,
 				0300B82E24D1B536006132E5 /* tv.pdf in Resources */,
 				0300B81324D1B536006132E5 /* antenna.radiowaves.left.and.right.pdf in Resources */,
-				03D3DAC4221F286700BDA52F /* pl.json in Resources */,
 				03AA7ABA24C84C6400A47970 /* cloud.sun.pdf in Resources */,
 				03D1E79722848F7F00D10CF7 /* screen0.jpg in Resources */,
 				0300B7F524D1B536006132E5 /* eye.pdf in Resources */,
 				03AA7AB724C84C6400A47970 /* bolt.fill.pdf in Resources */,
 				03AA7A9C24C84C6300A47970 /* cloud.moon.rain.pdf in Resources */,
 				0378986124C35F8A009B9418 /* CacheViewController.xib in Resources */,
+				03D2B8F324E1E3BF00692B4D /* it.json in Resources */,
 				030010AE24D71EB20092AE68 /* FiltersViewController.xib in Resources */,
 				03AA7A7224C84C6300A47970 /* cloud.sun.rain.pdf in Resources */,
 				0395835321807D1F008E8F9C /* thumbnail@2x.png in Resources */,
 				0395835521807D1F008E8F9C /* thumbnail.png in Resources */,
 				0300B86424D2052B006132E5 /* WelcomeViewController.xib in Resources */,
+				03D2B90E24E1E3BF00692B4D /* pl.json in Resources */,
 				03AA7A6924C84C6300A47970 /* cloud.heavyrain.pdf in Resources */,
 				03AA7A9924C84C6300A47970 /* cloud.snow.pdf in Resources */,
 				0300B80124D1B536006132E5 /* clock.pdf in Resources */,
-				03F8FF1D244B54E600813C96 /* it.json in Resources */,
 				0300B81924D1B536006132E5 /* tram.fill.pdf in Resources */,
 				0300B81F24D1B536006132E5 /* flame.pdf in Resources */,
 				03AA7AA824C84C6300A47970 /* sun.haze.pdf in Resources */,
 				0300B7E924D1B536006132E5 /* person.3.pdf in Resources */,
 				0313329F24BF3FA700C84A05 /* SidebarViewController.xib in Resources */,
 				031945FE24CCC52600F37B35 /* HelpViewController.xib in Resources */,
-				03D37FD922145487005A146F /* es.json in Resources */,
 				0300B7EF24D1B536006132E5 /* helm.pdf in Resources */,
 				03AA7A8D24C84C6300A47970 /* tropicalstorm.pdf in Resources */,
 				0345EDEB24C3239400C73038 /* DisplaysViewController.xib in Resources */,
+				03D2B8F624E1E3BF00692B4D /* ja.json in Resources */,
 				03D1E79422848F7F00D10CF7 /* screen1.jpg in Resources */,
-				038EBE9422D0AA3D00C7AD02 /* nl.json in Resources */,
 				0300B7EC24D1B536006132E5 /* bubble.left.and.bubble.right.pdf in Resources */,
 				03AA7AA224C84C6300A47970 /* cloud.drizzle.pdf in Resources */,
+				03D2B8FF24E1E3BF00692B4D /* zh_CN.json in Resources */,
 				03AA7AB124C84C6400A47970 /* cloud.moon.bolt.pdf in Resources */,
 				0300B7FB24D1B536006132E5 /* circle.pdf in Resources */,
 				0300B80424D1B536006132E5 /* sparkles.pdf in Resources */,
@@ -2168,14 +2180,14 @@
 				0300B7F224D1B536006132E5 /* gear.pdf in Resources */,
 				03AA7A5D24C84C6300A47970 /* cloud.bolt.rain.pdf in Resources */,
 				0300B83724D1B536006132E5 /* regular.cloud.pdf in Resources */,
+				03D2B90824E1E3BF00692B4D /* fr.json in Resources */,
 				03AA7A8424C84C6300A47970 /* hurricane.pdf in Resources */,
-				03E4B20D22DC7F8800C22EBE /* zh_TW.json in Resources */,
 				0300B80D24D1B536006132E5 /* info.circle.pdf in Resources */,
 				03AA7A6324C84C6300A47970 /* snow.pdf in Resources */,
 				0313F9E622942AA500B074BB /* CustomVideos.xib in Resources */,
 				03AA7A9F24C84C6300A47970 /* cloud.hail.pdf in Resources */,
+				03D2B90224E1E3BF00692B4D /* ar.json in Resources */,
 				03EED2F324C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */,
-				033192E1217B78240073B580 /* en.json in Resources */,
 				0300B84024D1B536006132E5 /* checkmark.circle.fill.pdf in Resources */,
 				031945F624CCC48C00F37B35 /* CreditsViewController.xib in Resources */,
 				03AA7AAE24C84C6300A47970 /* cloud.moon.pdf in Resources */,

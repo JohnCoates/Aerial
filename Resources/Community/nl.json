@@ -42,10 +42,7 @@
         "name": "Het naderen van Burj Khalifa"
     },
     "2F11E857-4F77-4476-8033-4A1E4610AFCC": {
-        "name": "Sheikh Zayed Road",
-        "pointsOfInterest": {
-            "0": "Reizend langs de Sheikh Zayed Road in Dubai, Verenigde Arabische Emiraten"
-        }
+        "name": "Sheikh Zayed Road"
     },
     "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": {
         "name": "Nuussuaq Peninsula"
@@ -96,84 +93,22 @@
         "name": "Liwa Oasis 2"
     },
     "58754319-8709-4AB0-8674-B34F04E7FFE2": {
-        "name": "Rivier de Theems",
-        "pointsOfInterest": {
-            "0": "Het naderen van de Tower Bridge over de Rivier de Theems in Londen",
-            "40": "Het passeren van de Gherkin in de stad Londen, aan de rechterkant",
-            "70": "Over de Tower Bridge over de Theems, met het stadhuis erachter en de Tower of London aan de rechterkant.",
-            "85": "Het naderen van de HMS Belfast in de Rivier de Theems en het passeren van de Walkie-Talkie aan de rechterkant",
-            "115": "Reizend in westelijke richting de rivier de Theems op, met The Shard aan de linkerkant en Saint Paul's Cathedral aan de rechterkant",
-            "135": "Langs de Southwark Kathedraal, met rechts de Sint-Pauluskathedraal.",
-            "175": "Het passeren van Shakespeare's Globe in Southwark (rechts op de voorgrond)",
-            "230": "Voorbij Waterloo Station aan de linkerkant, met het Paleis van Westminster (Houses of Parliament) over de Thames erachter",
-            "260": "Het passeren van BFI IMAX links op de voorgrond, met de London Eye erachter",
-            "280": "In de richting van Westminster over de Rivier de Theems",
-            "300": "Het naderen van Charing Cross Station op de rechter voorgrond",
-            "312": "Het naderen van Horse Guards Parade en Saint James’s Park op links",
-            "324": "Voorbij Saint Martin-in-the-Fields aan de rechterkant, met Admiralty Arch, Nelson's Column en Trafalgar Square aan zijn linkerkant"
-        }
+        "name": "Rivier de Theems"
     },
     "A5AAFF5D-8887-42BB-8AFD-867EF557ED85": {
-        "name": "Buckingham Palace",
-        "pointsOfInterest": {
-            "0": "Voorbij Wellington Arch in Londen aan de linkerkant",
-            "12": "Vliegend over de Buckingham Palace Gardens, met Green Park aan de linkerkant",
-            "24": "Vliegend over Buckingham Palace in Londen",
-            "40": "Vliegend over het Victoria Memorial, voorbij Wellington Barracks aan de rechterkant",
-            "55": "Volgend van Birdcage Walk langs het park van Saint James",
-            "90": "Langs het Foreign & Commonwealth Office in Whitehall, met links de Horse Guards Parade en rechts Hare Majesteit's Treasury.",
-            "102": "Langs de Cenotaaf, met links het ministerie van Defensie en rechts de Big Ben en het paleis van Westminster (parlementsgebouwen).",
-            "125": "Het oversteken van de Rivier de Theems, vliegend over het London Eye",
-            "160": "Over Waterloo Station in Zuid-Londen, met BFI IMAX aan de linkerkant",
-            "270": "Voorbij de Southwark Kathedraal aan de linkerkant",
-            "285": "Het passeren van De Shard aan de rechterkant",
-            "305": "Het passeren van de kruiser HMS Belfast in de Rivier de Theems",
-            "330": "De rivier de Theems overstekend bij Tower Bridge, met het stadhuis aan de rechterkant en de Tower of London aan de linkerkant"
-        }
+        "name": "Buckingham Palace"
     },
     "F604AF56-EA77-4960-AEF7-82533CC1A8B3": {
-        "name": "Rivier de Theems bij zonsondergang",
-        "pointsOfInterest": {
-            "0": "Richting de Tower Bridge via de rivier de Theems, met de Tower of London Tower aan de rechterkant.",
-            "25": "De rivier de Theems overstekend en het stadhuis passerend",
-            "35": "Het passeren van de kruiser HMS Belfast in de Rivier de Theems",
-            "60": "Het naderen van De Shard",
-            "92": "Vliegend naar het westen over Southwark richting Lambeth in Zuid-Londen",
-            "200": "Voorbij Lambeth Palace aan de linkerkant en Waterloo Station aan de rechterkant",
-            "245": "Het oversteken van de Rivier de Theems, in de richting van het Paleis van Westminster (de Huizen van het Parlement)",
-            "265": "Voorbij het Palace of Westminster (Houses of Parliament), met Westminster Abbey erachter"
-        }
+        "name": "Rivier de Theems bij zonsondergang"
     },
     "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": {
-        "name": "Rivier de Theems in de schemering",
-        "pointsOfInterest": {
-            "0": "Richting de rivier de Theems naar de Tower Bridge, met de Tower of London Tower aan de rechterkant.",
-            "28": "Reizend naar het westen over de rivier de Theems, langs het stadhuis aan de linkerkant.",
-            "40": "Voorbij HMS Belfast in de rivier de Theems, met The Shard aan de linkerkant en de Walkie-Talkie aan de rechterkant",
-            "75": "Langs Southwark Cathedral links",
-            "110": "Voorbij Saint Paul's Cathedral aan de rechterkant",
-            "130": "Voorbij Shakespeare's Globe op de linker voorgrond",
-            "210": "Verder op de rivier de Theems richting Westminster",
-            "300": "Het passeren van de London Eye op de Rivier de Theems",
-            "315": "Het naderen van de Big Ben en de Houses of Parliament, met Westminster Abbey op rechts"
-        }
+        "name": "Rivier de Theems in de schemering"
     },
     "CE279831-1CA7-4A83-A97B-FF1E20234396": {
-        "name": "Los Angeles Int'l Airport",
-        "pointsOfInterest": {
-            "0": "Richting het westen over Los Angeles International Airport",
-            "80": "Het passeren van het Theme Building",
-            "210": "Het passeren van de Tom Bradley International Terminal"
-        }
+        "name": "Los Angeles Int'l Airport"
     },
     "35693AEA-F8C4-4A80-B77D-C94B20A68956": {
-        "name": "Harbor Freeway",
-        "pointsOfInterest": {
-            "0": "Het volgen van de Harbor Freeway (Interstate 110) noordwaarts door South Los Angeles",
-            "50": "Het oversteken van de Century Freeway (Interstate 105)",
-            "65": "Het passeren van het Harbor Freeway Station op de Metro Green Line, die langs de Century Freeway loopt.",
-            "170": "Het oversteken van Imperial Highway"
-        }
+        "name": "Harbor Freeway"
     },
     "92E48DE9-13A1-4172-B560-29B4668A87EE": {
         "name": "Santa Monica Beach"
@@ -182,31 +117,10 @@
         "name": "Griffith Observatory"
     },
     "EC67726A-8212-4C5E-83CF-8412932740D2": {
-        "name": "Hollywood Hills",
-        "pointsOfInterest": {
-            "0": "Reizend naar het noorden langs Beachwood Drive door de Hollywood Hills in Los Angeles",
-            "60": "Verder noordwaarts via Beachwood Canyon",
-            "250": "Het passeren van de Mount Lee Communications Center, richting Burbank, Californië"
-        }
+        "name": "Hollywood Hills"
     },
     "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": {
-        "name": "Het centrum",
-        "pointsOfInterest": {
-            "0": "Het naderen van Downtown Los Angeles, met het MTA-gebouw (in geel) en Union Station (in roze) op links",
-            "35": "Voorbij de Cathedral of Our Lady of the Angels (in het midden)",
-            "55": "Langs het Los Angeles County Music Center (in het midden)",
-            "65": "De Hollywood Freeway overstekend, zuidwaarts reizend door Downtown langs de Harbor Freeway.",
-            "105": "Voorbij de Walt Disney Concert Hall (in het midden)",
-            "120": "Voorbij het stadhuis (in lichtblauw, op links)",
-            "180": "Voorbij de Library Tower (in het midden)",
-            "200": "Voorbij het Bonaventure Hotel (in het midden)",
-            "230": "De Los Angeles Central Library, helder verlicht, verschijnt van achter het Bonaventure Hotel",
-            "275": "Voorbij het Wilshire Grand Centre (in aanbouw)",
-            "365": "Het Passeren Van L.A. Live",
-            "395": "Voorbij het Ritz-Carlton Hotel en het Staples Center",
-            "425": "Het passeren van het Los Angeles Convention Center",
-            "495": "Het naderen van de Santa Monica Freeway"
-        }
+        "name": "Het centrum"
     },
     "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89": {
         "name": "Central Park"
@@ -227,80 +141,37 @@
         "name": "Marin Headlands"
     },
     "EE533FBD-90AE-419A-AD13-D7A60E2015D6": {
-        "name": "Marin Headlands in Fog",
-        "pointsOfInterest": {
-            "0": "Bewegend over de Marin Headlands langs Highway 101 naar de Golden Gate Bridge",
-            "20": "Horseshoe Cove die aan de linkerkant verschijnt",
-            "105": "Batterij Spencer passerend op rechts",
-            "155": "Het oversteken van de Golden Gate Bridge naar San Francisco"
-        }
+        "name": "Marin Headlands in Fog"
     },
     "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51": {
         "name": "De baai en de Golden Gate"
     },
     "b8-3": {
-        "name": "Alamo Square",
-        "pointsOfInterest": {
-            "0": "Painted Ladies via Alamo Square in San Francisco",
-            "35": "Saint Mary's Cathedral op links, met het centrum van SF op de achtergrond",
-            "70": "De koepel van het stadhuis verschijnt op rechts",
-            "210": "De koepel van het stadhuis duidelijk op rechts"
-        }
+        "name": "Alamo Square"
     },
     "85CE77BF-3413-4A7B-9B0F-732E96229A73": {
-        "name": "Embarcadero, Market Street",
-        "pointsOfInterest": {
-            "0": "Richting het zuidwesten over de San Francisco Bay naar het San Francisco Ferry Building",
-            "150": "Het naderen van de haven van San Francisco Ferry Building en de Embarcadero",
-            "210": "Richting het zuidwesten langs Market Street in het centrum van San Francisco"
-        }
+        "name": "Embarcadero, Market Street"
     },
     "b4-3": {
-        "name": "Presidio naar Golden Gate",
-        "pointsOfInterest": {
-            "0": "Langs het presidium van San Francisco naar de Golden Gate Bridge",
-            "190": "Het oversteken van de Golden Gate Bridge richting de Marin Headlands"
-        }
+        "name": "Presidio naar Golden Gate"
     },
     "72B4390D-DF1D-4D51-B179-229BBAEFFF2C": {
         "name": "Golden Gate van SF"
     },
     "b6-4": {
-        "name": "Het centrum en de Coit Tower",
-        "pointsOfInterest": {
-            "0": "In het centrum van San Francisco met de Transamerica Pyramid in het midden",
-            "100": "Het centrum van San Francisco met Coit Tower die in het zicht komt"
-        }
+        "name": "Het centrum en de Coit Tower"
     },
     "29BDF297-EB43-403A-8719-A78DA11A2948": {
-        "name": "Fisherman's Wharf",
-        "pointsOfInterest": {
-            "0": "Richting het zuidoosten over Fisherman's Wharf in San Francisco",
-            "27": "Voorbij het Liberty-schip SS Jeremia O'Brien",
-            "47": "Passerend over de onderzeeër USS Pampanito",
-            "80": "Passerend over North Beach in San Francisco",
-            "115": "Het naderen van Coit Tower op Telegraph Hill, met de Bay Bridge en het centrum van SF op de achtergrond",
-            "135": "Het naderen van Coit Tower nadert op Telegraph Hill, met Saints Peter en Paul Church op rechts"
-        }
+        "name": "Fisherman's Wharf"
     },
     "b5-3": {
-        "name": "Embarcadero, Market Street",
-        "pointsOfInterest": {
-            "0": "Richting het zuidwesten over de San Francisco Bay naar het San Francisco Ferry Building",
-            "150": "Het naderen van de haven van San Francisco Ferry Building en de Embarcadero",
-            "210": "Richting het zuidwesten langs Market Street in San Francisco"
-        }
+        "name": "Embarcadero, Market Street"
     },
     "3E94AE98-EAF2-4B09-96E3-452F46BC114E": {
         "name": "Bay Bridge"
     },
     "b2-4": {
-        "name": "Het centrum en de Sutro Tower",
-        "pointsOfInterest": {
-            "0": "Op weg naar San Francisco's Financial District, met de Sutro Tower op de achtergrond",
-            "10": "Langs de Transamerica Pyramid",
-            "50": "Voormalig hoofdkantoor van de Bank of America die de zon verduistert"
-        }
+        "name": "Het centrum en de Sutro Tower"
     },
     "4AD99907-9E76-408D-A7FC-8429FF014201": {
         "name": "Bay en Embarcadero"
@@ -346,5 +217,83 @@
     },
     "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": {
         "name": "Sahara en Italië"
+    },
+    "64D11DAB-3B57-4F14-AD2F-E59A9282FA44": {
+        "name": "Atlantic Ocean to Spain and France"
+    },
+    "81337355-E156-4242-AAF4-711768D30A54": {
+        "name": "Australia"
+    },
+    "1088217C-1410-4CF7-BDE9-8F573A4DBCD9": {
+        "name": "Caribbean to Central America"
+    },
+    "3C4678E4-4D3D-4A40-8817-77752AEA62EB": {
+        "name": "Nile Delta"
+    },
+    "87060EC2-D006-4102-98CC-3005C68BB343": {
+        "name": "South Africa to North Asia"
+    },
+    "F07CC61B-30FC-4614-BDAD-3240B61F6793": {
+        "name": "Palau Coral"
+    },
+    "6143116D-03BB-485E-864E-A8CF58ACF6F1": {
+        "name": "South African Kelp"
+    },
+    "2B30E324-E4FF-4CC1-BA45-A958C2D2B2EC": {
+        "name": "Barracuda"
+    },
+    "581A4F1A-2B6D-468C-A1BE-6F473F06D10B": {
+        "name": "Sea Stars"
+    },
+    "687D03A2-18A5-4181-8E85-38F3A13409B9": {
+        "name": "Bumpheads"
+    },
+    "537A4DAB-83B0-4B66-BCD1-05E5DBB4A268": {
+        "name": "Jacks"
+    },
+    "27A37B0F-738D-4644-A7A4-E33E7A6C1175": {
+        "name": "California Dolphins"
+    },
+    "EB3F48E7-D30F-4079-858F-1A61331D5026": {
+        "name": "California Kelp Forest"
+    },
+    "CE9B5D5B-B6E7-47C5-8C04-59BF182E98FB": {
+        "name": "Costa Rica Dolphins"
+    },
+    "58C75C62-3290-47B8-849C-56A583173570": {
+        "name": "Cownose Rays"
+    },
+    "3716DD4B-01C0-4F5B-8DD6-DB771EC472FB": {
+        "name": "Gray Reef Sharks"
+    },
+    "DD47D8E1-CB66-4C12-BFEA-2ADB0D8D1E2E": {
+        "name": "Humpback Whale"
+    },
+    "82175C1F-153C-4EC8-AE37-2860EA828004": {
+        "name": "Red Sea Coral"
+    },
+    "391BDF6E-3279-4CE1-9CA5-0F82811452D7": {
+        "name": "Seals"
+    },
+    "BA4ECA11-592F-4727-9221-D2A32A16EB28": {
+        "name": "Palau Jellies 1"
+    },
+    "E580E5A5-0888-4BE8-A4CA-F74A18A643C3": {
+        "name": "Palau Jellies 2"
+    },
+    "EC3DC957-D4C2-4732-AACE-7D0C0F390EC8": {
+        "name": "Palau Jellies 3"
+    },
+    "C7AD3D0A-7EDF-412C-A237-B3C9D27381A1": {
+        "name": "Alaskan Jellies 1"
+    },
+    "C6DC4E54-1130-44F8-AF6F-A551D8E8A181": {
+        "name": "Alaskan Jellies 2"
+    },
+    "149E7795-DBDA-4F5D-B39A-14712F841118": {
+        "name": "Tahiti Waves 1"
+    },
+    "8C31B06F-91A4-4F7C-93ED-56146D7F48B9": {
+        "name": "Tahiti Waves 2"
     }
 }
