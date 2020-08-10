@@ -182,6 +182,42 @@ struct SourceInfo {
         "737E9E24-49BE-4104-9B72-F352DE1AD2BF": "night",    // North America Aurora
     ]
 
+    // Extra POI
+    static let mergePOI = [
+            "b6-1": "C001_C005_",    // China day 4
+            "b2-1": "C004_C003_",    // China day 5
+            "b5-1": "C003_C003_",    // China day 6
+            "7D4710EB-5BA4-42E6-AA60-68D77F67D9B9": "GL_G010_C006_",             // Greenland night 1
+            "b7-1": "H007_C003",                                                 // Hawaii day 1
+            "b1-1": "H005_C012_",                                                // Hawaii day 2
+            "b2-2": "H010_C006_",                                                // Hawaii day 3
+            "b4-1": "H004_C007_",                                                // Hawaii day 4
+            "b6-2": "H012_C009_",                                                // Hawaii night 1
+            "b8-1": "H004_C009_",                                                // Hawaii night 2
+            "6E2FC8AC-832D-46CF-B306-BB2A05030C17": "LW_L001_C006_",             // Liwa day 1 LW_L001_C006_0
+            "b6-3": "L010_C006_",                                                // London day 1
+            "b5-2": "L007_C007_",                                                // London day 2
+            "b1-2": "L012_C002_",                                                // London night 1
+            "b3-1": "L004_C011_",                                                // London night 2
+            "A284F0BF-E690-4C13-92E2-4672D93E8DE5": "LA_A011_C003_",             // Los Angeles night 3
+            "b7-2": "N008_C009_",                                                // New York day 1
+            "b1-3": "N006_C003_",                                                // New York day 2
+            "b3-2": "N003_C006_",                                                // New York day 3
+            "b2-3": "N013_C004_",                                                // New York night 1
+            "b4-2": "N008_C003_",                                                // New York night 2
+            "b8-2": "A008_C007_",                                                // San Francisco day 1
+            // "b10-3": ,                                               // San Francisco day 2
+            "b9-3": "A006_C003_",                                                // San Francisco day 3
+            //"b8-3":"",     San Francisco day 4 (no extra poi ?)
+            "b3-3": "A012_C014_",                                                // San Francisco day 5
+                                                                                //   maybe A013_C004 ?
+            "b4-3": "A013_C005_",                                                // San Francisco day 6
+            "b6-4": "A004_C012_",                                                // San Francisco night 1
+            "b7-3": "A007_C017_",                                                // San Francisco night 2
+            "b5-3": "A015_C014_",                                                // San Francisco night 3
+            "b1-4": "A015_C018_",                                                // San Francisco night 4
+            "b2-4": "A018_C014_",                                                 // San Francisco night 5
+        ]
     // Look for a previously processed similar video
     //
     // tvOS11 and 12 JSON are using the same ID (and tvOS12 JSON always has better data,

@@ -148,7 +148,7 @@ struct Source: Codable {
 
                     // We may have POIs to merge
                     /*var poi: [String: String]?
-                    if let mergeId = mergePOI[id] {
+                    if let mergeId = SourceInfo.mergePOI[id] {
                         let poiStringProvider = PoiStringProvider.sharedInstance
                         poi = poiStringProvider.fetchExtraPoiForId(id: mergeId)
                     }*/
@@ -272,6 +272,12 @@ struct Source: Codable {
                             }
                         }
                     } else {
+                        var poi: [String: String]?
+                        if let mergeId = SourceInfo.mergePOI[asset.id] {
+                            let poiStringProvider = PoiStringProvider.sharedInstance
+                            poi = poiStringProvider.fetchExtraPoiForId(id: mergeId)
+                        }
+
                         let video = AerialVideo(id: asset.id,
                             name: asset.accessibilityLabel,
                             secondaryName: getSecondaryNameFor(asset),
@@ -280,7 +286,7 @@ struct Source: Codable {
                             scene: getSceneFor(asset),
                             urls: oldUrlsFor(asset),
                             source: self,
-                            poi: asset.pointsOfInterest ?? [:],
+                            poi: poi ?? [:],
                             communityPoi: PoiStringProvider.sharedInstance.getCommunityPoi(id: asset.id))
 
                         processedVideos.append(video)
