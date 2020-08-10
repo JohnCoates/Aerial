@@ -15,8 +15,6 @@ _Rather install from Terminal? Look at the Brew Cask section below!_
 
 If you see an error message saying "This app is damaged and can't be opened, you should move it to the trash", we suggest that **you download the file with Safari**, to prevent macOS Gatekeeper from throwing that error. Note that some outdated unzip software may cause that issue too.
 
-On very recent releases (less than a day), Chrome may complain that the file is uncommon and potentially dangerous. This warning will go away after a few hours/days, more information in our [troubleshooting section](Troubleshooting.md).
-
 **Important**: If you haven't quit System Preferences before installation, you will need to quit and reopen System Preferences after installation for Aerial to work correcly. This is a macOS bug. 
 
 ### Brew Cask Support
