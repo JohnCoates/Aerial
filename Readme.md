@@ -34,7 +34,7 @@ You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/g
 
 **Please note :** Starting with Catalina, Aerial will only notify you of new versions, but won't be able to automatically update itself. This is a limitation of macOS Catalina. 
 
-**Trying Apple Silicon and missing Aerial ?** The latest betas now work as is on both Intel and Apple Silicon ! Enjoy !
+**Trying Apple Silicon and missing Aerial ?** The [latest betas](https://github.com/JohnCoates/Aerial/releases) now work as is on both Intel and Apple Silicon ! Enjoy !
 
 Installation instructions (latest versions require macOS 10.12 or above) :
 
