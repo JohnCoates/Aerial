@@ -217,6 +217,7 @@ struct SourceInfo {
             "b5-3": "A015_C014_",                                                // San Francisco night 3
             "b1-4": "A015_C018_",                                                // San Francisco night 4
             "b2-4": "A018_C014_",                                                 // San Francisco night 5
+            "2F11E857-4F77-4476-8033-4A1E4610AFCC": "DB_D008_C010_",        // Stealing the day description for the night one
         ]
     // Look for a previously processed similar video
     //

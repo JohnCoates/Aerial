@@ -95,10 +95,15 @@ struct SourceList {
     }
 
     static func saveSource(_ source: Source) {
+        // First make the folder
+        FileHelpers.createDirectory(atPath: Cache.supportPath.appending("/"+source.name))
+
         let json = try? JSONEncoder().encode(source)
 
         do {
-            try json!.write(to: URL(fileURLWithPath: Cache.supportPath.appending(source.name)))
+            print(Cache.supportPath.appending("/"+source.name+"/manifest.json"))
+            try json!.write(to: URL(fileURLWithPath:
+                                    Cache.supportPath.appending("/"+source.name+"/manifest.json")))
         } catch {
             errorLog("Can't save local source : \(error.localizedDescription)")
         }
@@ -112,6 +117,7 @@ struct SourceList {
 
         do {
             let jsonData = try Data(contentsOf: url.appendingPathComponent("manifest.json"))
+
             if let metamanifest = try? newJSONDecoder().decode(MetaManifest.self, from: jsonData) {
                 var sources: [Source] = []
 
