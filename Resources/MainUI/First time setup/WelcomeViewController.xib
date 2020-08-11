@@ -1,52 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="WelcomeViewController" customModule="Aerial" customModuleProvider="target">
             <connections>
+                <outlet property="bigTitle" destination="3Ht-yo-ckm" id="eVi-Sx-RcC"/>
+                <outlet property="textBelow" destination="AiK-TD-2Qt" id="Xon-55-eXK"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="360"/>
+            <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <box boxType="custom" borderType="none" cornerRadius="4" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="eVB-C0-e5X">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="360"/>
-                    <view key="contentView" id="klP-MJ-bdd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="360"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                    <view key="contentView" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="klP-MJ-bdd">
+                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ht-yo-ckm">
-                                <rect key="frame" x="269" y="201" width="257" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Ht-yo-ckm">
+                                <rect key="frame" x="243" y="221" width="257" height="35"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Welcome to Aerial" id="zIs-lv-iOt">
                                     <font key="font" metaFont="systemBold" size="30"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AiK-TD-2Qt">
-                                <rect key="frame" x="269" y="140" width="253" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AiK-TD-2Qt">
+                                <rect key="frame" x="243" y="160" width="253" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Before you start, let's setup a few things!" id="Uez-be-ewR">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8XI-B4-VMv">
-                                <rect key="frame" x="76" y="100" width="160" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8XI-B4-VMv">
+                                <rect key="frame" x="50" y="120" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="O7k-f1-D6F"/>
+                                    <constraint firstAttribute="height" constant="160" id="lXd-nw-nR6"/>
+                                </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-320" id="2ck-4q-RCI"/>
                             </imageView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="3Ht-yo-ckm" firstAttribute="leading" secondItem="8XI-B4-VMv" secondAttribute="trailing" constant="35" id="60c-zc-5tT"/>
+                            <constraint firstItem="3Ht-yo-ckm" firstAttribute="top" secondItem="klP-MJ-bdd" secondAttribute="top" constant="124" id="Noc-Ex-zPW"/>
+                            <constraint firstItem="8XI-B4-VMv" firstAttribute="top" secondItem="klP-MJ-bdd" secondAttribute="top" constant="100" id="Q1m-VA-TqP"/>
+                            <constraint firstItem="AiK-TD-2Qt" firstAttribute="top" secondItem="3Ht-yo-ckm" secondAttribute="bottom" constant="45" id="Ztj-gP-0XW"/>
+                            <constraint firstItem="AiK-TD-2Qt" firstAttribute="leading" secondItem="8XI-B4-VMv" secondAttribute="trailing" constant="35" id="svs-LT-Wz4"/>
+                            <constraint firstItem="8XI-B4-VMv" firstAttribute="leading" secondItem="klP-MJ-bdd" secondAttribute="leading" constant="50" id="tfr-9F-7Ba"/>
+                            <constraint firstAttribute="bottom" secondItem="8XI-B4-VMv" secondAttribute="bottom" constant="120" id="uiu-Gi-krf"/>
+                        </constraints>
                     </view>
                     <color key="fillColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                 </box>
@@ -57,7 +68,7 @@
                 <constraint firstAttribute="trailing" secondItem="eVB-C0-e5X" secondAttribute="trailing" id="hSq-0U-2DM"/>
                 <constraint firstItem="eVB-C0-e5X" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="xl7-vj-1Ap"/>
             </constraints>
-            <point key="canvasLocation" x="-77.5" y="207.5"/>
+            <point key="canvasLocation" x="-58.5" y="217"/>
         </customView>
     </objects>
     <resources>

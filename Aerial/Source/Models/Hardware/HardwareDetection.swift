@@ -40,6 +40,48 @@ final class HardwareDetection: NSObject {
         return formatter.number(from: str)?.doubleValue ?? 0.0
     }
 
+    // Get best suggestion
+    func getSuggestedFormat() -> VideoFormat {
+        switch isHEVCMain10HWDecodingAvailable() {
+        case .supported:
+            return .v4KHDR
+        case .notsupported:
+            return .v1080pH264
+        case .partial:
+            // This is tricky
+            let macModel = getMacModel()
+
+            if macModel.starts(with: "iMac") {
+                // iMacs, as far as we know, partial 17+, full 18+
+                let ver = extractMacVersion(macModel: macModel, macSubmodel: "iMac")
+                if ver >= 17.0 {
+                    return .v4KHEVC
+                } else {
+                    return .v1080pH264
+                }
+            } else if macModel.starts(with: "MacBookPro") {
+                let ver = extractMacVersion(macModel: macModel, macSubmodel: "MacBookPro")
+                // MacBookPro full 14+
+                if ver >= 17.0 {
+                    return .v1080pHEVC
+                } else {
+                    return .v1080pH264
+                }
+            } else if macModel.starts(with: "MacBookAir") {
+                // Retina 8+, I *think* they handle main10
+                return .v1080pH264
+            } else if macModel.starts(with: "MacBook") {
+                // MacBook 10+
+                return .v1080pH264
+            }
+
+            return .v1080pH264
+        case .unsure:
+            // Eh
+            return .v1080pH264
+        }
+    }
+
     // MARK: - HEVC Main10 detection
 
     func isHEVCMain10HWDecodingAvailable() -> HEVCMain10Support {

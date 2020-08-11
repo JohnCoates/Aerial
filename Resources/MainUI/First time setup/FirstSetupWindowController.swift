@@ -14,9 +14,14 @@ enum Actions {
 
 class FirstSetupWindowController: NSWindowController {
     var welcomeViewItem: NSSplitViewItem?
+    var videoFormatViewItem: NSSplitViewItem?
+
     var nextViewItem: NSSplitViewItem?
 
     lazy var splitVC = NSSplitViewController()
+
+    var currentStep = 0
+
     override func windowDidLoad() {
         super.windowDidLoad()
 
@@ -27,11 +32,13 @@ class FirstSetupWindowController: NSWindowController {
         let bundle = Bundle(for: PanelWindowController.self)
 
         let welcomeVC = WelcomeViewController(nibName: .init("WelcomeViewController"), bundle: bundle)
+        let videoVC = VideoFormatViewController(nibName: .init("VideoFormatViewController"), bundle: bundle)
 
         let nextVC = NextViewController(nibName: .init("NextViewController"), bundle: bundle)
         nextVC.windowController = self
 
         welcomeViewItem = NSSplitViewItem(viewController: welcomeVC)
+        videoFormatViewItem = NSSplitViewItem(viewController: videoVC)
         nextViewItem = NSSplitViewItem(viewController: nextVC)
 
         splitVC.addSplitViewItem(welcomeViewItem!)
@@ -40,7 +47,16 @@ class FirstSetupWindowController: NSWindowController {
     }
 
     func nextAction() {
-        window?.close()
+        currentStep += 1
+        splitVC.removeChild(at: 1)
+        splitVC.removeChild(at: 0)
 
+        switch currentStep {
+        case 1:
+            splitVC.addSplitViewItem(videoFormatViewItem!)
+            splitVC.addSplitViewItem(nextViewItem!)
+        default:
+            window?.close()
+        }
     }
 }

@@ -21,6 +21,7 @@ class DescriptionCellView: NSTableCellView {
     @IBOutlet weak var imageScene5: NSImageView!
     @IBOutlet weak var imageScene6: NSImageView!
     @IBOutlet weak var imageFilm: NSImageView!
+
     /// The item that represent the row in the outline view
     /// We may potentially use this cell for multiple outline views so let's make it generic
     var item: Any?
@@ -36,6 +37,7 @@ class DescriptionCellView: NSTableCellView {
         imageScene5.image = Aerial.getMiniSymbol("helm")
         imageScene6.image = Aerial.getMiniSymbol("helm")
         imageFilm.image = Aerial.getMiniSymbol("film")
+
         //imageScene1.
         //checkboxButton.target = self
         //checkboxButton.action = #selector(self.didChangeState(_:))

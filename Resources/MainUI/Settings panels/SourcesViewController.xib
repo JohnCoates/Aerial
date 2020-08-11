@@ -220,7 +220,7 @@ line2</string>
                                                     <outlet property="imageScene6" destination="63F-uv-Hra" id="bkU-Ua-LGh"/>
                                                     <outlet property="lastUpdatedLabel" destination="kAu-1v-NWK" id="88h-wu-ytq"/>
                                                     <outlet property="titleLabel" destination="k0S-C5-p57" id="fne-gL-EWM"/>
-                                                    <outlet property="videoCount" destination="Ral-81-onK" id="dV6-Uj-t2s"/>
+                                                    <outlet property="videoCount" destination="Ral-81-onK" id="yhA-Kk-fpg"/>
                                                 </connections>
                                             </tableCellView>
                                         </prototypeCellViews>

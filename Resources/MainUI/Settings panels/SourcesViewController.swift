@@ -52,7 +52,7 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
     // item == nil means it's the "root" row of the outline view, which is not visible
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         if item == nil {
-            return SourceList.list[index]
+            return SourceList.list.filter({ !$0.name.starts(with: "tvOS")})[index]
         } else {
             return 0
         }
@@ -61,7 +61,7 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
     // Tell how many children each row has:
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         if item == nil {
-            return SourceList.list.count
+            return SourceList.list.filter({ !$0.name.starts(with: "tvOS")}).count
         } else {
             return 0
         }
@@ -102,16 +102,24 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
             cell.imageScene4.isHidden = !source.scenes.contains(.sea)
             cell.imageScene5.isHidden = !source.scenes.contains(.beach)
             cell.imageScene6.isHidden = !source.scenes.contains(.countryside)
+            cell.videoCount.stringValue = String(VideoList.instance.videos.filter({ $0.source.name == source.name }).count) + " videos"
 
             return cell
         case "actionColumn":
             let cell = outlineView.makeView(withIdentifier:
                         NSUserInterfaceItemIdentifier(rawValue: columnIdentifier), owner: self) as! ActionCellView
-            print(source)
+            cell.source = source
             if source.type == .local {
                 cell.actionButton.setIcons("folder")
+                cell.actionButton.isEnabled = true
             } else {
-                cell.actionButton.setIcons("arrow.down.circle")
+                if VideoList.instance.videos.filter({ $0.source.name == source.name && !$0.isAvailableOffline }).isEmpty {
+                    cell.actionButton.image = Aerial.getMiniSymbol("checkmark.circle.fill", tint: .systemGreen)
+                    cell.actionButton.isEnabled = false
+                } else {
+                    cell.actionButton.setIcons("arrow.down.circle")
+                    cell.actionButton.isEnabled = true
+                }
             }
             return cell
 

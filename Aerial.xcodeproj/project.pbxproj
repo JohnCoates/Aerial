@@ -549,6 +549,12 @@
 		03BDBEC324C4727C00BBD5E9 /* TimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03BDBEBF24C4727C00BBD5E9 /* TimeViewController.xib */; };
 		03BDBEC424C4727C00BBD5E9 /* TimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03BDBEBF24C4727C00BBD5E9 /* TimeViewController.xib */; };
 		03BDBEC524C4727C00BBD5E9 /* TimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03BDBEBF24C4727C00BBD5E9 /* TimeViewController.xib */; };
+		03BF179F24E2F29C0080EF34 /* VideoFormatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF179D24E2F29C0080EF34 /* VideoFormatViewController.swift */; };
+		03BF17A024E2F29C0080EF34 /* VideoFormatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF179D24E2F29C0080EF34 /* VideoFormatViewController.swift */; };
+		03BF17A124E2F29C0080EF34 /* VideoFormatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF179D24E2F29C0080EF34 /* VideoFormatViewController.swift */; };
+		03BF17A224E2F29C0080EF34 /* VideoFormatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03BF179E24E2F29C0080EF34 /* VideoFormatViewController.xib */; };
+		03BF17A324E2F29C0080EF34 /* VideoFormatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03BF179E24E2F29C0080EF34 /* VideoFormatViewController.xib */; };
+		03BF17A424E2F29C0080EF34 /* VideoFormatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03BF179E24E2F29C0080EF34 /* VideoFormatViewController.xib */; };
 		03BF51BA23A24B40008AD373 /* AnimationTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306336D23A15FA900046A59 /* AnimationTextLayer.swift */; };
 		03BF51BC23A2643C008AD373 /* LayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF51BB23A2643C008AD373 /* LayerManager.swift */; };
 		03BF51BD23A26522008AD373 /* LayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF51BB23A2643C008AD373 /* LayerManager.swift */; };
@@ -965,6 +971,8 @@
 		03BDBEA124C467EC00BBD5E9 /* BrightnessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrightnessViewController.xib; sourceTree = "<group>"; };
 		03BDBEBE24C4727C00BBD5E9 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
 		03BDBEBF24C4727C00BBD5E9 /* TimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeViewController.xib; sourceTree = "<group>"; };
+		03BF179D24E2F29C0080EF34 /* VideoFormatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFormatViewController.swift; sourceTree = "<group>"; };
+		03BF179E24E2F29C0080EF34 /* VideoFormatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoFormatViewController.xib; sourceTree = "<group>"; };
 		03BF51BB23A2643C008AD373 /* LayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerManager.swift; sourceTree = "<group>"; };
 		03BF51BE23A274CA008AD373 /* MessageLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageLayer.swift; sourceTree = "<group>"; };
 		03BF51C123A2978B008AD373 /* ClockLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockLayer.swift; sourceTree = "<group>"; };
@@ -1091,6 +1099,8 @@
 				0300B84724D1FD24006132E5 /* FirstSetupWindowController.swift */,
 				0300B86024D2052B006132E5 /* WelcomeViewController.xib */,
 				0300B85F24D2052B006132E5 /* WelcomeViewController.swift */,
+				03BF179E24E2F29C0080EF34 /* VideoFormatViewController.xib */,
+				03BF179D24E2F29C0080EF34 /* VideoFormatViewController.swift */,
 				0300B86824D20B12006132E5 /* NextViewController.xib */,
 				0300B86724D20B12006132E5 /* NextViewController.swift */,
 			);
@@ -1940,6 +1950,7 @@
 				03AA7A6424C84C6300A47970 /* snow.pdf in Resources */,
 				0396D5A824B8B7ED00CC021B /* CustomVideos.xib in Resources */,
 				03AA7AA024C84C6300A47970 /* cloud.hail.pdf in Resources */,
+				03BF17A324E2F29C0080EF34 /* VideoFormatViewController.xib in Resources */,
 				03D2B90324E1E3BF00692B4D /* ar.json in Resources */,
 				03EED2F424C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */,
 				0300B84124D1B536006132E5 /* checkmark.circle.fill.pdf in Resources */,
@@ -2038,6 +2049,7 @@
 				030010B024D71EB20092AE68 /* FiltersViewController.xib in Resources */,
 				0377BF8824BA15E700C33F9F /* btn_donate.png in Resources */,
 				0300B7FD24D1B536006132E5 /* circle.pdf in Resources */,
+				03BF17A424E2F29C0080EF34 /* VideoFormatViewController.xib in Resources */,
 				0300B7FA24D1B536006132E5 /* text.bubble.pdf in Resources */,
 				03AA7A6224C84C6300A47970 /* wind.snow.pdf in Resources */,
 				03EED2F524C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */,
@@ -2186,6 +2198,7 @@
 				03AA7A6324C84C6300A47970 /* snow.pdf in Resources */,
 				0313F9E622942AA500B074BB /* CustomVideos.xib in Resources */,
 				03AA7A9F24C84C6300A47970 /* cloud.hail.pdf in Resources */,
+				03BF17A224E2F29C0080EF34 /* VideoFormatViewController.xib in Resources */,
 				03D2B90224E1E3BF00692B4D /* ar.json in Resources */,
 				03EED2F324C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */,
 				0300B84024D1B536006132E5 /* checkmark.circle.fill.pdf in Resources */,
@@ -2262,6 +2275,7 @@
 				0300B86224D2052B006132E5 /* WelcomeViewController.swift in Sources */,
 				03D3A10E24C5D7CC0091FE99 /* Thumbnails.swift in Sources */,
 				0396D51224B8B7ED00CC021B /* AerialView.swift in Sources */,
+				03BF17A024E2F29C0080EF34 /* VideoFormatViewController.swift in Sources */,
 				0396D51324B8B7ED00CC021B /* PrefsCache.swift in Sources */,
 				0396D51424B8B7ED00CC021B /* AVPlayerViewExtension.swift in Sources */,
 				0396D51524B8B7ED00CC021B /* AsynchronousOperation.swift in Sources */,
@@ -2389,6 +2403,7 @@
 				03EED2F224C44A7900F0C3D4 /* OverlaysViewController.swift in Sources */,
 				0306336C23A143D900046A59 /* LayerOffsets.swift in Sources */,
 				03A2CB9D216BB1490061E8E8 /* VideoManager.swift in Sources */,
+				03BF17A124E2F29C0080EF34 /* VideoFormatViewController.swift in Sources */,
 				033811B224C1E243002E23E0 /* InfoViewController.swift in Sources */,
 				0354D0ED23F6CB7B00D86F9E /* InfoSettingsView.swift in Sources */,
 				0321A53524D44E80004F1975 /* ActionCellView.swift in Sources */,
@@ -2509,6 +2524,7 @@
 				0300B86124D2052B006132E5 /* WelcomeViewController.swift in Sources */,
 				03D3A10D24C5D7CC0091FE99 /* Thumbnails.swift in Sources */,
 				FAC36F5B1BE1756D007F2A20 /* AerialView.swift in Sources */,
+				03BF179F24E2F29C0080EF34 /* VideoFormatViewController.swift in Sources */,
 				031FB78B248A87330054BAFD /* PrefsCache.swift in Sources */,
 				0393857A2175D4B80040B850 /* AVPlayerViewExtension.swift in Sources */,
 				03E8730F216501ED002B469B /* AsynchronousOperation.swift in Sources */,
@@ -2895,7 +2911,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.0beta8;
+				CURRENT_PROJECT_VERSION = 2.0.0beta9;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2903,7 +2919,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0.0beta8;
+				MARKETING_VERSION = 2.0.0beta9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2923,7 +2939,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.0beta8;
+				CURRENT_PROJECT_VERSION = 2.0.0beta9;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2931,7 +2947,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0.0beta8;
+				MARKETING_VERSION = 2.0.0beta9;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

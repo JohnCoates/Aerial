@@ -92,6 +92,8 @@ class PanelWindowController: NSWindowController {
 
         window?.contentViewController = splitVC
 
+        //doFirstTimeSetup()
+
         debugLog("/PWC2 wdl")
     }
 
@@ -107,9 +109,11 @@ class PanelWindowController: NSWindowController {
                                 topLevelObjects: &topLevelObjects) {
                 errorLog("Could not load nib for CustomVideos, please report")
             }
-            firstSetupWindowController!.windowDidLoad()
-            firstSetupWindowController!.showWindow(self)
-            firstSetupWindowController!.window!.makeKeyAndOrderFront(self)
+            DispatchQueue.main.async {
+                self.firstSetupWindowController!.windowDidLoad()
+                self.firstSetupWindowController!.showWindow(self)
+                self.firstSetupWindowController!.window!.makeKeyAndOrderFront(self)
+            }
         }
     }
 
