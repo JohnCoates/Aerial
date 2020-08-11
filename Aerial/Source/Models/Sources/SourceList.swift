@@ -95,10 +95,13 @@ struct SourceList {
     }
 
     static func saveSource(_ source: Source) {
+
+        let manifest = Manifest.init(name: source.name, manifestDescription: source.description, scenes: source.scenes.map({ $0.rawValue }), local: source.type == .local, cacheable: source.isCachable, manifestUrl: source.manifestUrl)
+
         // First make the folder
         FileHelpers.createDirectory(atPath: Cache.supportPath.appending("/"+source.name))
 
-        let json = try? JSONEncoder().encode(source)
+        let json = try? JSONEncoder().encode(manifest)
 
         do {
             print(Cache.supportPath.appending("/"+source.name+"/manifest.json"))

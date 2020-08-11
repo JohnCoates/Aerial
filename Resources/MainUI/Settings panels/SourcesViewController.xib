@@ -211,6 +211,7 @@ line2</string>
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="descriptionLabel" destination="PiP-K7-e2O" id="tsz-p2-uFp"/>
+                                                    <outlet property="imageFilm" destination="OZC-3S-Mp4" id="mua-iD-edL"/>
                                                     <outlet property="imageScene1" destination="gCH-fr-qvu" id="FPG-kt-mMD"/>
                                                     <outlet property="imageScene2" destination="fnJ-n1-Vw6" id="J4i-Xq-IjR"/>
                                                     <outlet property="imageScene3" destination="tUg-uk-dHW" id="0qe-8p-UQi"/>
@@ -248,7 +249,7 @@ line2</string>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="actionButton:" target="-1" id="5Lc-Yl-EF5"/>
+                                                            <action selector="actionButton:" target="TlS-Vu-nlh" id="kdr-tI-Urk"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

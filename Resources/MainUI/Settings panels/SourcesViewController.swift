@@ -107,6 +107,7 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
         case "actionColumn":
             let cell = outlineView.makeView(withIdentifier:
                         NSUserInterfaceItemIdentifier(rawValue: columnIdentifier), owner: self) as! ActionCellView
+            print(source)
             if source.type == .local {
                 cell.actionButton.setIcons("folder")
             } else {
