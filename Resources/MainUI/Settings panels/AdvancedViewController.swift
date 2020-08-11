@@ -7,10 +7,19 @@
 //
 
 import Cocoa
-
-// TODO HELP BUBBLE PANELS
+import AVFoundation
+import VideoToolbox
 
 class AdvancedViewController: NSViewController {
+
+    @IBOutlet var popoverVideoFormat: NSPopover!
+
+    @IBOutlet var popoverH264Indicator: NSButton!
+    @IBOutlet var popoverHEVCIndicator: NSButton!
+    @IBOutlet var popoverH264Label: NSTextField!
+    @IBOutlet var popoverHEVCLabel: NSTextField!
+
+    @IBOutlet var popoverOnBattery: NSPopover!
 
     @IBOutlet var videoFormatPopup: NSPopUpButton!
     // We need to hide HDR pre-Catalina
@@ -72,6 +81,43 @@ class AdvancedViewController: NSViewController {
 
         showLogButton.setIcons("folder")
     }
+
+    func setupPopover() {
+        // Help popover, GVA detection requires 10.13
+        if #available(OSX 10.13, *) {
+            if !VTIsHardwareDecodeSupported(kCMVideoCodecType_H264) {
+                popoverH264Label.stringValue = "H264 acceleration not supported"
+                popoverH264Indicator.image = NSImage(named: NSImage.statusUnavailableName)
+            }
+            if !VTIsHardwareDecodeSupported(kCMVideoCodecType_HEVC) {
+                popoverHEVCLabel.stringValue = "HEVC Main10 acceleration not supported"
+                popoverHEVCIndicator.image = NSImage(named: NSImage.statusUnavailableName)
+            } else {
+                let hardwareDetection = HardwareDetection.sharedInstance
+                switch hardwareDetection.isHEVCMain10HWDecodingAvailable() {
+                case .supported:
+                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration is supported"
+                    popoverHEVCIndicator.image = NSImage(named: NSImage.statusAvailableName)
+                case .notsupported:
+                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration is not supported"
+                    popoverHEVCIndicator.image = NSImage(named: NSImage.statusUnavailableName)
+                case .partial:
+                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration is partially supported"
+                    popoverHEVCIndicator.image = NSImage(named: NSImage.statusPartiallyAvailableName)
+                default:
+                    popoverHEVCLabel.stringValue = "HEVC Main10 acceleration status unknown"
+                    popoverHEVCIndicator.image = NSImage(named: NSImage.cautionName)
+                }
+            }
+        } else {
+            // Fallback on earlier versions
+            popoverHEVCIndicator.isHidden = true
+            popoverH264Indicator.image = NSImage(named: NSImage.cautionName)
+            popoverH264Label.stringValue = "macOS 10.13 or above required"
+            popoverHEVCLabel.stringValue = "Hardware acceleration status unknown"
+        }
+    }
+
     @IBAction func videoFormatPopupChange(_ sender: NSPopUpButton) {
         PrefsVideos.videoFormat = VideoFormat(rawValue: sender.indexOfSelectedItem)!
     }
@@ -126,4 +172,23 @@ class AdvancedViewController: NSViewController {
         }
     }
 
+    @IBAction func helpVideoFormat(_ sender: NSButton) {
+        popoverVideoFormat.show(relativeTo: sender.preparedContentRect, of: sender, preferredEdge: .maxY)
+    }
+
+    @IBAction func helpOnBattery(_ sender: NSButton) {
+        popoverOnBattery.show(relativeTo: sender.preparedContentRect, of: sender, preferredEdge: .maxY)
+    }
+
+    @IBAction func dolbyVisionClick(_ sender: Any) {
+        let workspace = NSWorkspace.shared
+        let url = URL(string: "https://en.wikipedia.org/wiki/Dolby_Laboratories#Video_processing")!
+        workspace.open(url)
+    }
+
+    @IBAction func projectPageClick(_ sender: Any) {
+        let workspace = NSWorkspace.shared
+        let url = URL(string: "https://github.com/JohnCoates/Aerial/blob/master/Documentation/HardwareDecoding.md")!
+        workspace.open(url)
+    }
 }

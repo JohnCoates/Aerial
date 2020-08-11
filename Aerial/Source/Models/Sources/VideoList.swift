@@ -337,12 +337,15 @@ class VideoList {
 
     // MARK: - Playlist management
     func generatePlaylist(isRestricted: Bool, restrictedTo: String) {
+        debugLog("generate playlist")
         // Start fresh
         playlist = [AerialVideo]()
         playlistIsRestricted = isRestricted
         playlistRestrictedTo = restrictedTo
 
         let shuffled = currentRotation().shuffled()
+
+        debugLog("playlist count: \(shuffled.count)")
 
         for video in shuffled {
             // Do we restrict video types by day/night ?
@@ -360,6 +363,7 @@ class VideoList {
             playlist.append(video)
         }
 
+        debugLog("Final count : \(playlist.count)")
         // On regenerating a new playlist, we try to avoid repeating the last thing we played!
         while playlist.count > 1 && lastPluckedFromPlaylist == playlist.first {
             playlist.shuffle()
@@ -371,6 +375,7 @@ class VideoList {
         let timeManagement = TimeManagement.sharedInstance
         let (shouldRestrictByDayNight, restrictTo) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
 
+        debugLog("remaining in plist : \(playlist.count)")
         // We may need to regenerate a playlist!
         if playlist.isEmpty || restrictTo != playlistRestrictedTo || shouldRestrictByDayNight != playlistIsRestricted {
             generatePlaylist(isRestricted: shouldRestrictByDayNight, restrictedTo: restrictTo)

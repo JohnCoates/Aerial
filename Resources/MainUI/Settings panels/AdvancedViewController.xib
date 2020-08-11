@@ -15,6 +15,12 @@
                 <outlet property="menu4KHDR" destination="D9e-ji-I4Y" id="Pcs-n5-1zI"/>
                 <outlet property="muteSoundCheckbox" destination="c2Y-BQ-Mg9" id="mFh-GY-ea4"/>
                 <outlet property="onBatteryPopup" destination="ueZ-L1-tKm" id="Uh5-No-e50"/>
+                <outlet property="popoverH264Indicator" destination="a0S-Jv-7q3" id="QNK-Fq-cRs"/>
+                <outlet property="popoverH264Label" destination="Txl-g4-G2k" id="aLG-Wv-vf9"/>
+                <outlet property="popoverHEVCIndicator" destination="Suq-Wx-2D8" id="yLE-1T-EU4"/>
+                <outlet property="popoverHEVCLabel" destination="nz2-xT-PMG" id="G94-a3-cHn"/>
+                <outlet property="popoverOnBattery" destination="r9v-NK-gTh" id="EFa-81-wtw"/>
+                <outlet property="popoverVideoFormat" destination="Tj3-h3-vJZ" id="gyC-Rd-Wyw"/>
                 <outlet property="rightArrowSkipCheckbox" destination="4zW-Lf-b41" id="4zo-2D-C0S"/>
                 <outlet property="showLogButton" destination="Dka-WL-c4U" id="hrx-cM-lP4"/>
                 <outlet property="videoFadesPopup" destination="2PZ-3t-5f8" id="I6x-56-bNY"/>
@@ -139,6 +145,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="helpOnBattery:" target="-2" id="dX2-Vd-se0"/>
+                    </connections>
                 </button>
                 <button toolTip="Debug mode will enable extra debug information messages to be logged. " verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jfm-Hl-4bN">
                     <rect key="frame" x="315" y="106" width="107" height="22"/>
@@ -223,6 +232,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="helpVideoFormat:" target="-2" id="hYL-8G-pcH"/>
+                    </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TWt-lq-74o">
                     <rect key="frame" x="244" y="207" width="68" height="16"/>
@@ -276,9 +288,153 @@
             </constraints>
             <point key="canvasLocation" x="21" y="283"/>
         </customView>
+        <viewController id="d0b-m7-AaQ" userLabel="Popover View Controller">
+            <connections>
+                <outlet property="view" destination="QA9-SA-hku" id="jEX-Qf-FNO"/>
+            </connections>
+        </viewController>
+        <popover behavior="t" id="Tj3-h3-vJZ">
+            <connections>
+                <outlet property="contentViewController" destination="d0b-m7-AaQ" id="9Bw-pn-ei4"/>
+            </connections>
+        </popover>
+        <viewController id="8DR-c7-V3C" userLabel="Popover View Controller">
+            <connections>
+                <outlet property="view" destination="idy-Zq-5gl" id="d9i-xF-SC8"/>
+            </connections>
+        </viewController>
+        <popover behavior="t" id="r9v-NK-gTh">
+            <connections>
+                <outlet property="contentViewController" destination="8DR-c7-V3C" id="ts8-Na-Evf"/>
+            </connections>
+        </popover>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="idy-Zq-5gl" userLabel="Power saving popover">
+            <rect key="frame" x="0.0" y="0.0" width="334" height="211"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="265" translatesAutoresizingMaskIntoConstraints="NO" id="sau-H8-etT">
+                    <rect key="frame" x="18" y="29" width="298" height="154"/>
+                    <textFieldCell key="cell" selectable="YES" id="tDx-U1-0Sz">
+                        <font key="font" metaFont="message" size="11"/>
+                        <string key="title">Aerial uses GPU hardware acceleration to reduce power consumption.
+
+You can still decide to disable Aerial when running on battery, or if your battery is low (&lt;20%). If you enable one of those settings, Aerial will show a black screen and reduce your screen brightness to maximize power savings. 
+
+Your screen brightness will be automatically restored on waking up. </string>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="sau-H8-etT" firstAttribute="leading" secondItem="idy-Zq-5gl" secondAttribute="leading" constant="20" symbolic="YES" id="BkA-t8-UQR"/>
+                <constraint firstItem="sau-H8-etT" firstAttribute="top" secondItem="idy-Zq-5gl" secondAttribute="top" constant="28" id="NU4-Mk-bGk"/>
+                <constraint firstAttribute="trailing" secondItem="sau-H8-etT" secondAttribute="trailing" constant="20" symbolic="YES" id="TVs-Be-54V"/>
+                <constraint firstAttribute="bottom" secondItem="sau-H8-etT" secondAttribute="bottom" constant="29" id="urV-jC-VKG"/>
+            </constraints>
+            <point key="canvasLocation" x="684" y="105.5"/>
+        </customView>
+        <customView id="QA9-SA-hku" userLabel="HW Acceleration popover">
+            <rect key="frame" x="0.0" y="0.0" width="452" height="405"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="334" translatesAutoresizingMaskIntoConstraints="NO" id="fhD-YW-5Jq">
+                    <rect key="frame" x="18" y="189" width="416" height="196"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" selectable="YES" refusesFirstResponder="YES" id="pBv-Hh-hGu">
+                        <font key="font" metaFont="message" size="11"/>
+                        <string key="title">The most appropriate format depends on your Mac. Video playback on macOS can be accelerated by your GPU.
+
+- Macs older than late 2015 should prefer 1080p H264 as they may lack HEVC hardware decoding support.
+
+- Late 2015/2016 Macs may only partially support hardware accelerated HEVC decoding. You may see higher CPU usage with these formats.
+
+- Macs 2017 and up should either use 1080p HEVC or 4K HEVC.
+
+HDR videos are encoded using Dolby Vision to represent a Higher Dynamic range of colors and lighting. These videos have wilder colors that may look unrealistic to some. HDR is only available starting with macOS Catalina.</string>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a0S-Jv-7q3">
+                    <rect key="frame" x="28" y="33" width="16" height="18"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusAvailable" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="caN-8Q-Cfo">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Suq-Wx-2D8">
+                    <rect key="frame" x="28" y="13" width="16" height="18"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusPartiallyAvailable" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="kM4-Rc-Xiy">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nz2-xT-PMG">
+                    <rect key="frame" x="50" y="15" width="314" height="14"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" title="HEVC acceleration may be supported" id="Tiu-80-XDP">
+                        <font key="font" metaFont="message" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Txl-g4-G2k">
+                    <rect key="frame" x="50" y="35" width="314" height="14"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" title="H.264 acceleration is supported" id="XzM-zr-fcM">
+                        <font key="font" metaFont="message" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WRc-cq-5rf">
+                    <rect key="frame" x="20" y="123" width="24" height="24"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSCaution" id="Tjk-u2-njs"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="319" translatesAutoresizingMaskIntoConstraints="NO" id="4zF-9T-BaK">
+                    <rect key="frame" x="50" y="87" width="384" height="61"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" refusesFirstResponder="YES" id="vza-qo-Tcb">
+                        <font key="font" metaFont="message" size="11"/>
+                        <string key="title">Please note that not every video is available in every format. Older videos may not be available in 4K, and some newer videos are not available in 1080 H.264. Aerial will try to play the best format available based on your choice.</string>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lF6-k7-1O1">
+                    <rect key="frame" x="59" y="57" width="334" height="25"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <buttonCell key="cell" type="bevel" title="More information is available on our project page" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" inset="2" id="tEp-LQ-x5Y">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="message" size="11"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="projectPageClick:" target="-2" id="VZw-dh-IWt"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6TF-Ix-bNE">
+                    <rect key="frame" x="59" y="156" width="334" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="bevel" title="More information about Dolby Vision on Wikipedia" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" inset="2" id="xIY-HN-Ee0">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="message" size="11"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="dolbyVisionClick:" target="-2" id="SEr-ln-9bJ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="743" y="540"/>
+        </customView>
     </objects>
     <resources>
+        <image name="NSCaution" width="32" height="32"/>
         <image name="NSFolder" width="32" height="32"/>
+        <image name="NSStatusAvailable" width="16" height="16"/>
+        <image name="NSStatusPartiallyAvailable" width="16" height="16"/>
         <image name="folder" catalog="system" width="18" height="14"/>
     </resources>
 </document>

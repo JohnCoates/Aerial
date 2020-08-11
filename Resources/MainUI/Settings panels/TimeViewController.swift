@@ -41,6 +41,8 @@ class TimeViewController: NSViewController {
 
     @IBOutlet var myLocationImageView: NSImageView!
 
+    @IBOutlet var popoverCalcMode: NSPopover!
+
     lazy var timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
@@ -198,4 +200,7 @@ class TimeViewController: NSViewController {
         })
     }
 
+    @IBAction func helpCalcModeClick(_ sender: NSButton) {
+        popoverCalcMode.show(relativeTo: sender.preparedContentRect, of: sender, preferredEdge: .maxY)
+    }
 }

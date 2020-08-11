@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,6 +17,7 @@
                 <outlet property="longitudeTextField" destination="cVA-B0-e3H" id="E7Y-O0-po1"/>
                 <outlet property="myLocationImageView" destination="5Q7-5H-Koj" id="eKk-cq-OiL"/>
                 <outlet property="nightShiftLabel" destination="R2Z-La-EL1" id="uio-Xk-d68"/>
+                <outlet property="popoverCalcMode" destination="haq-ht-9ck" id="rtx-h8-byw"/>
                 <outlet property="solarModePopup" destination="Sy9-yG-Mb4" id="ng6-6R-EsQ"/>
                 <outlet property="sunriseTime" destination="YLj-jJ-de5" id="4fH-Ra-yJe"/>
                 <outlet property="sunsetTime" destination="7kV-Ca-cPz" id="db8-UR-q9c"/>
@@ -276,6 +277,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="helpCalcModeClick:" target="-2" id="XO1-LO-nXE"/>
+                    </connections>
                 </button>
                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="rhV-9j-1sD">
                     <rect key="frame" x="20" y="96" width="760" height="5"/>
@@ -360,6 +364,67 @@
                 <constraint firstItem="YLj-jJ-de5" firstAttribute="firstBaseline" secondItem="l0v-PM-J5T" secondAttribute="firstBaseline" id="vw9-cv-59f"/>
             </constraints>
             <point key="canvasLocation" x="-90" y="258"/>
+        </customView>
+        <viewController id="T2g-tH-hja" userLabel="Popover View Controller">
+            <connections>
+                <outlet property="view" destination="80v-lr-J8L" id="h2m-Be-U48"/>
+            </connections>
+        </viewController>
+        <popover behavior="t" id="haq-ht-9ck">
+            <connections>
+                <outlet property="contentViewController" destination="T2g-tH-hja" id="moa-Ap-KMU"/>
+            </connections>
+        </popover>
+        <customView id="80v-lr-J8L" userLabel="Time calculation popover">
+            <rect key="frame" x="0.0" y="0.0" width="374" height="457"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="334" translatesAutoresizingMaskIntoConstraints="NO" id="jyx-HG-COw">
+                    <rect key="frame" x="18" y="50" width="338" height="259"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" selectable="YES" refusesFirstResponder="YES" id="Vgk-5b-0X9">
+                        <font key="font" metaFont="message" size="11"/>
+                        <string key="title">There are two ways to calculate the sunset and sunrise time:
+
+- Strict (0°): Calculate when the center of the Sun crosses the horizon
+
+- Official (0.83°): Calculate when the Sun completely crosses the horizon
+
+Or instead of sunrise and sunset, you can pick from three options for the time of dawn and dusk:
+
+- Civil (6°): Calculate when the natural sunlight stops/starts requiring artificial light compensation
+
+- Nautical (12°): Calculate when stars stop/start being seen
+
+- Astronomical (18°): Calculate the point when the sun no longer interferes with astronomical observations</string>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="334" translatesAutoresizingMaskIntoConstraints="NO" id="T3E-mU-IQr">
+                    <rect key="frame" x="18" y="339" width="338" height="98"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" selectable="YES" refusesFirstResponder="YES" id="9lO-Zu-OSD">
+                        <font key="font" metaFont="message" size="11"/>
+                        <string key="title">Coordinates are expressed in degrees, e.g.:
+- Latitude : 48.85837
+- Longitude : 2.294483
+
+You can either enter those manually or try to use Location Services on your Mac by clicking the icon next to the longitude button. You may be asked for permission.</string>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CPC-0g-CgG">
+                    <rect key="frame" x="20" y="20" width="334" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="bevel" title="You can find more information on Wikipedia" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" inset="2" id="LBg-ct-tm3">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="message" size="11"/>
+                    </buttonCell>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="1243" y="28"/>
         </customView>
     </objects>
     <resources>

@@ -29,6 +29,12 @@ class DescriptionCellView: NSTableCellView {
     // var delegate: CheckboxCellViewDelegate?
 
     override func awakeFromNib() {
+        imageScene1.image = Aerial.getMiniSymbol("flame")
+        imageScene2.image = Aerial.getMiniSymbol("tram.fill")
+        imageScene3.image = Aerial.getMiniSymbol("sparkles")
+        imageScene4.image = Aerial.getMiniSymbol("helm")
+        imageScene5.image = Aerial.getMiniSymbol("helm")
+        imageScene6.image = Aerial.getMiniSymbol("helm")
         //imageScene1.
         //checkboxButton.target = self
         //checkboxButton.action = #selector(self.didChangeState(_:))

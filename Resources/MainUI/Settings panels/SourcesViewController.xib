@@ -126,7 +126,7 @@ line2</string>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qTw-Wg-fqd">
                                                         <rect key="frame" x="468" y="46" width="132" height="20"/>
                                                         <subviews>
-                                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gCH-fr-qvu">
+                                                            <imageView toolTip="Nature" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gCH-fr-qvu">
                                                                 <rect key="frame" x="0.0" y="1" width="20" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="18" id="Mzw-vZ-mzz"/>
@@ -134,7 +134,7 @@ line2</string>
                                                                 </constraints>
                                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="flame" id="PiW-qG-Zd3"/>
                                                             </imageView>
-                                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fnJ-n1-Vw6">
+                                                            <imageView toolTip="City" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fnJ-n1-Vw6">
                                                                 <rect key="frame" x="20" y="0.0" width="20" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="20" id="81x-IA-q6S"/>
@@ -142,7 +142,7 @@ line2</string>
                                                                 </constraints>
                                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="tram.fill" id="jx0-o7-kDW"/>
                                                             </imageView>
-                                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tUg-uk-dHW">
+                                                            <imageView toolTip="Space" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tUg-uk-dHW">
                                                                 <rect key="frame" x="40" y="0.0" width="20" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="20" id="3fi-bF-EQS"/>
@@ -150,7 +150,7 @@ line2</string>
                                                                 </constraints>
                                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="sparkles" id="yRH-Fz-X4f"/>
                                                             </imageView>
-                                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kZQ-Pd-nPL">
+                                                            <imageView toolTip="Sea" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kZQ-Pd-nPL">
                                                                 <rect key="frame" x="60" y="0.0" width="24" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="jAe-Oj-jwm"/>
@@ -158,7 +158,7 @@ line2</string>
                                                                 </constraints>
                                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="helm" id="awM-JR-hZe"/>
                                                             </imageView>
-                                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3hx-vw-BFg">
+                                                            <imageView toolTip="Beach" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3hx-vw-BFg">
                                                                 <rect key="frame" x="84" y="0.0" width="24" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="24" id="9y1-zA-8yo"/>
@@ -166,7 +166,7 @@ line2</string>
                                                                 </constraints>
                                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="helm" id="MRm-4P-OX2"/>
                                                             </imageView>
-                                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="63F-uv-Hra">
+                                                            <imageView toolTip="Countryside" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="63F-uv-Hra">
                                                                 <rect key="frame" x="108" y="0.0" width="24" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="24" id="CYU-d8-SkW"/>
