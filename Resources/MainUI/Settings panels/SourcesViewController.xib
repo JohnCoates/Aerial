@@ -12,6 +12,7 @@
                 <outlet property="addOnlineButton" destination="H7z-UB-Yzx" id="WLY-sV-uAH"/>
                 <outlet property="addOnlineTextField" destination="gxJ-4P-fMD" id="Gmf-Aa-0Bd"/>
                 <outlet property="addOnlineWindow" destination="iB7-4m-6mH" id="v0k-ql-rIf"/>
+                <outlet property="allSpinner" destination="heQ-Ra-4Qf" id="Ni3-FG-fCS"/>
                 <outlet property="downloadAllVideosButton" destination="P2e-fe-Js2" id="E5g-St-pCy"/>
                 <outlet property="getMoreVideosButton" destination="hJ0-L4-qoE" id="GoK-d5-Kxa"/>
                 <outlet property="sourceOutlineView" destination="vzM-Kh-6SV" id="4vs-WJ-2Ar"/>
@@ -25,11 +26,11 @@
             <subviews>
                 <scrollView horizontalHuggingPriority="500" verticalHuggingPriority="500" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" autohidesScrollers="YES" horizontalLineScroll="70" horizontalPageScroll="10" verticalLineScroll="70" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBq-pn-VQA">
                     <rect key="frame" x="30" y="68" width="751" height="326"/>
-                    <clipView key="contentView" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sZp-jW-Eya">
+                    <clipView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="sZp-jW-Eya">
                         <rect key="frame" x="1" y="1" width="749" height="324"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <outlineView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="70" headerView="b1V-rc-xZQ" viewBased="YES" indentationPerLevel="13" outlineTableColumn="Ssk-cL-P6o" id="vzM-Kh-6SV" customClass="SourceOutlineView" customModule="Aerial" customModuleProvider="target">
+                            <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="70" headerView="b1V-rc-xZQ" viewBased="YES" indentationPerLevel="13" outlineTableColumn="Ssk-cL-P6o" id="vzM-Kh-6SV" customClass="SourceOutlineView" customModule="Aerial" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="757" height="299"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="17" height="0.0"/>
@@ -352,14 +353,19 @@ line2</string>
                         <action selector="downloadAllClick:" target="-2" id="Yfd-DG-sxX"/>
                     </connections>
                 </button>
+                <progressIndicator maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="heQ-Ra-4Qf">
+                    <rect key="frame" x="581" y="26" width="16" height="16"/>
+                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstItem="bBq-pn-VQA" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="57" id="AxL-RL-dl4"/>
                 <constraint firstAttribute="trailing" secondItem="bBq-pn-VQA" secondAttribute="trailing" constant="30" id="CEW-pk-n39"/>
                 <constraint firstItem="bBq-pn-VQA" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="30" id="JDq-eI-FdT"/>
+                <constraint firstItem="P2e-fe-Js2" firstAttribute="leading" secondItem="heQ-Ra-4Qf" secondAttribute="trailing" constant="8" symbolic="YES" id="OCb-b9-Dor"/>
                 <constraint firstItem="hJ0-L4-qoE" firstAttribute="leading" secondItem="H7z-UB-Yzx" secondAttribute="trailing" constant="20" id="OZp-Te-bft"/>
                 <constraint firstItem="hJ0-L4-qoE" firstAttribute="firstBaseline" secondItem="H7z-UB-Yzx" secondAttribute="firstBaseline" id="PUI-mu-CC0"/>
                 <constraint firstAttribute="bottom" secondItem="bBq-pn-VQA" secondAttribute="bottom" constant="68" id="VCk-gB-2eO"/>
+                <constraint firstItem="P2e-fe-Js2" firstAttribute="centerY" secondItem="heQ-Ra-4Qf" secondAttribute="centerY" id="VcU-vI-t0W"/>
                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="451" id="W4O-8Q-5Ss"/>
                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="811" id="WEp-mk-3VN"/>
                 <constraint firstAttribute="bottom" secondItem="H7z-UB-Yzx" secondAttribute="bottom" constant="20" id="ZvC-kw-2bu"/>

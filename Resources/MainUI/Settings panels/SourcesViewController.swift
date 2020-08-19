@@ -20,10 +20,12 @@ class SourcesViewController: NSViewController {
     @IBOutlet var getMoreVideosButton: NSButton!
     @IBOutlet var downloadAllVideosButton: NSButton!
 
+    @IBOutlet var allSpinner: NSProgressIndicator!
     var selectedSource: Source?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        allSpinner.isHidden = true
         sourceOutlineView.dataSource = self
         sourceOutlineView.delegate = self
 
@@ -32,10 +34,16 @@ class SourcesViewController: NSViewController {
         getMoreVideosButton.setIcons("cloud")
         downloadAllVideosButton.setIcons("arrow.down.circle")
 
+
+
+        
         VideoManager.sharedInstance.addCallback { done, total in
             debugLog("vmsourcecallback \(done) \(total) ")
             if total == 0 {
                 self.sourceOutlineView.reloadData()
+                self.allSpinner.stopAnimation(self)
+                self.allSpinner.isHidden = true
+                self.downloadAllVideosButton.isEnabled = true
             }
         }
 
@@ -54,6 +62,10 @@ class SourcesViewController: NSViewController {
 
     @IBAction func downloadAllClick(_ sender: NSButton) {
         Cache.ensureDownload {
+            self.allSpinner.startAnimation(self)
+            self.allSpinner.isHidden = false
+            self.downloadAllVideosButton.isEnabled = false
+
             for video in VideoList.instance.videos.filter({ !$0.isAvailableOffline && !PrefsVideos.hidden.contains($0.id) }) {
                 VideoManager.sharedInstance.queueDownload(video)
             }
