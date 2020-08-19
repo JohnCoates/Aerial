@@ -26,6 +26,8 @@ Includes 50 Aerial Cityscape videos 20-60 seconds in length each in full 4K reso
 
 Locations include London, Brighton, Miami, Orlando, Los Angeles, Santa Monica, San Francisco, Birmingham, Flagstaff, Tuscon, Oklahoma City, Tulsa, Portland, Memphis, El Paso, Houston, and San Antonio.
 
+<hr>
+
 ### Countryside Air
 <p align="center">
   <a href="">
@@ -37,6 +39,8 @@ Includes 50 Aerial Countryside videos 20-60 seconds in length each in full 4K re
 
 Locations include Montgomery, Glenburn, Mendocino, Gaps Crown VIneyard, Sierra Mar Vineyard, Chesterfield, Lancashire, Monsal Head, Haworth, Leeming, Wycoller, Yorkshire, Haworth, Herford, Besalu, Castellfullit, Fortia, Oberhofen, Pecos, Cocking, Little Linford, Oxenhope, Peak District, Grassington, Genola, and Chewelah.
 
+<hr>
+
 ### Naturescapes Air
 <p align="center">
   <a href="">
@@ -47,6 +51,8 @@ Locations include Montgomery, Glenburn, Mendocino, Gaps Crown VIneyard, Sierra M
 Includes 50 Aerial Naturescape videos 20-60 seconds in length at full 4K resolution.
 
 Locations include Big Sur, Catalina Island, Monument Valley, Alabama Hills, Angeles Crest, Gold Lake, Lake Shasta, Shelter Cove, Sonoma, Sonora Pass, Berthound Pass, Wolf Creek Pass, Babcock Reserve & Groves, Greyton Beach, Florida Savannas & Glades, Pascagoula River, Kootenai River, Cape Lookout, Hose Rock, Lone Ranch Beach, Interlaken, Oberhofen, Bryce Canyon, Castle Valley, Eagle Canyon, Grand Staircase Escalante, Stevens Pass, and Zion.
+
+<hr>
 
 #### Note
 A bundle including Cityscapes Air, Countryside Air, and Naturescapes Air is also [available here]()
