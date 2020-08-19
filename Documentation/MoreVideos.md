@@ -14,7 +14,7 @@ Includes 20 free Aerial videos in full 4K resolution, from the author of Citysca
 
 # 3rd party Sources
 
-### Cityscapes Air
+## Cityscapes Air
 <p align="center">
   <a href="">
   <img src="https://user-images.githubusercontent.com/37544189/90627411-2d962e00-e21c-11ea-8b65-433e558711ad.jpg">
@@ -28,7 +28,7 @@ Locations include London, Brighton, Miami, Orlando, Los Angeles, Santa Monica, S
 
 <hr>
 
-### Countryside Air
+## Countryside Air
 <p align="center">
   <a href="">
   <img src="https://user-images.githubusercontent.com/37544189/90627401-2bcc6a80-e21c-11ea-9703-19ddafd71716.jpg">
@@ -41,7 +41,7 @@ Locations include Montgomery, Glenburn, Mendocino, Gaps Crown VIneyard, Sierra M
 
 <hr>
 
-### Naturescapes Air
+## Naturescapes Air
 <p align="center">
   <a href="">
   <img src="https://user-images.githubusercontent.com/37544189/90627408-2cfd9780-e21c-11ea-9c3f-36416e5308d9.jpg">
@@ -54,5 +54,5 @@ Locations include Big Sur, Catalina Island, Monument Valley, Alabama Hills, Ange
 
 <hr>
 
-#### Note
+### Note
 A bundle including Cityscapes Air, Countryside Air, and Naturescapes Air is also [available here]()
