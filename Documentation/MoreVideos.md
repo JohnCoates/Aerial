@@ -28,13 +28,13 @@ The videos below can be purchased as a way to expand your Aerial collection and 
 
 ### Note
 
-A bundle including the packs listed below is [available here]() at a discounted price.
+A bundle including the packs listed below is [available here](https://www.jetsoncreative.com/aerial-expansions/bundle) at a discounted price.
 
 <hr>
 
 ### Cityscapes Air
 <p align="center">
-  <a href="">
+  <a href="https://www.jetsoncreative.com/aerial-expansions/cityscapes">
   <img src="https://user-images.githubusercontent.com/37544189/90627411-2d962e00-e21c-11ea-8b65-433e558711ad.jpg">
   </a>
 </p>
@@ -48,7 +48,7 @@ Locations include London, Brighton, Miami, Orlando, Los Angeles, Santa Monica, S
 
 ### Countryside Air
 <p align="center">
-  <a href="">
+  <a href="https://www.jetsoncreative.com/aerial-expansions/countryside">
   <img src="https://user-images.githubusercontent.com/37544189/90627401-2bcc6a80-e21c-11ea-9703-19ddafd71716.jpg">
   </a>
 </p>
@@ -61,7 +61,7 @@ Locations include Montgomery, Glenburn, Mendocino, Gaps Crown VIneyard, Sierra M
 
 ### Naturescapes Air
 <p align="center">
-  <a href="">
+  <a href="https://www.jetsoncreative.com/aerial-expansions/naturescapes">
   <img src="https://user-images.githubusercontent.com/37544189/90627408-2cfd9780-e21c-11ea-9c3f-36416e5308d9.jpg">
   </a>
 </p>
