@@ -14,7 +14,7 @@ Includes 20 free Aerial videos in full 4K resolution, from the author of Citysca
 
 # 3rd party Sources
 
-The videos below can be purchased as a way to expand your Aerial Collection and support the artists that created them.
+The videos below can be purchased as a way to expand your Aerial collection and support the artists that created them.
 
 ## Cityscapes Air
 <p align="center">
