@@ -44,12 +44,29 @@ Need more information on install, setup, or uninstall ? Or want to install via h
 
 ![newui](https://user-images.githubusercontent.com/37544189/90673393-f6de0900-e257-11ea-8e00-4357aca4214e.jpg)
 
-A whole new UI, that feels just right at home on macOS Big Sur. It still looks great on other macOS versions, don't worry! It includes large live previews of videos, and new easy ways to found the videos you like, and don't like! It's even resizable!
+- A whole new UI, that feels just right at home on macOS Big Sur. It still looks great on other macOS versions, don't worry! It includes large live previews of videos, and new easy ways to found the videos you like, and don't like! It's even resizable!
 
 ![Capture d’écran 2020-08-19 à 21 53 20](https://user-images.githubusercontent.com/37544189/90683362-b639bc00-e266-11ea-9edb-b97a656a8fc3.png)
 
+- New cache options! You can *finally* set a cache size limit, so Aerial will not fill up your disk. Aerial can also periodically replace videos in your cache, say after a week, so things stay fresh. 
 
-(updating in progress)
+You can still opt to manually download your videos, or simply grab them all. All up to you. If you allow automatic downloads, you can even specify a list of trusted WiFi networks!
+
+- 20 new videos! Starting with version 2.0, Aerial includes videos outside of the classical Apple TV ones. You can get a preview in the video below:
+
+<p align="center">
+  <a href="https://vimeo.com/449330833/36becf3668">
+  <img src="https://user-images.githubusercontent.com/37544189/90661757-d7d77b00-e247-11ea-8b92-7301c39bfced.jpg">
+  </a>
+</p>
+
+- A new "On rotation" feature, so you can quickly switch from watching Space videos, to only Sunset videos: 
+
+![Capture d’écran 2020-08-19 à 22 12 03](https://user-images.githubusercontent.com/37544189/90685367-f8b0c800-e269-11ea-85f2-fcd27428aeb7.jpg)
+
+You can also favorite and hide videos now, based on your preferences. 
+
+There are many other new options, including vibrance control if you want to make your non HDR videos pop a bit more, sunset and sunrise video at appropriate time, and more!
 
 You can find more about [version changes here](Documentation/ChangeLog.md).
 
