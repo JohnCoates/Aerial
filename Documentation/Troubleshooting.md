@@ -26,6 +26,22 @@ Another solution would be to have a separate updater app, which is something tha
 - Settings aren't saved : Some users (using MDM management software and/or Homebrew) seem to have run into an issue where macOS Catalina didn't create the folder where Aerial saves its preferences. You may need to create this folder manually : `~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/ByHost/`
 - Some current (or wanted/upcoming) features that require specific privileges are no longer working/impossible because of restrictions, this includes `Right arrow key to skip`.
 
+## Issues on macOS 10.14 and earlier
+
+- If you enable Weather, or Adapting videos that shows based on time, you may encounter, when exiting the screen saver, this nagging panel that doesn't disappear despite clicking Allow :
+
+![Messages_Image3499576739](https://user-images.githubusercontent.com/37544189/90182726-b6dbd980-ddb2-11ea-9a09-c5ed3efb1b48.png)
+
+If that is the case, you can simply fix it following these instructions : 
+
++ Open System Preferences and go into Security & Privacy: 
+![Capture d’écran 2020-08-13 à 20 51 31](https://user-images.githubusercontent.com/37544189/90182715-b4797f80-ddb2-11ea-9174-a02471505876.jpg)
+
++ Then click on the `Privacy` tab and in order, click the green, orange and red circles :
+![Capture d’écran 2020-08-13 à 20 52 46](https://user-images.githubusercontent.com/37544189/90182721-b5aaac80-ddb2-11ea-9edc-b0a400159dd1.jpg)
+
+This will allow Aerial to use your location to calculate sunset and sunrise times, and if you enabled it, provide your current weather conditions.
+
 ## Very common issues/macOS bugs
 
 - "You cannot use the Aerial screen saver with this version of macOS." error, or you don't see a preview and the prefererences button is greyed out: Select Aerial, close `System Preferences` with Aerial still selected, re-open System Preferences and Aerial should now work. This is a known bug with Swift screen savers in macOS/OS X reported (a long time ago...) to Apple as [rdar://25569037](http://www.openradar.me/25569037).
