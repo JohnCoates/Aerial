@@ -10,7 +10,7 @@ On top of the classic Apple TV screen savers, Aerial can display videos from oth
 # Community Videos 
 
 ### Magic Window (Series 1)
-Includes 20 free Aerial videos in full 4K resolution, from the author of Cityscapes Air, Countryside Air and Naturescapes Air. 
+Includes 20 free Aerial videos in full 4K resolution, from the authors of Cityscapes Air, Countryside Air and Naturescapes Air. 
 
 # 3rd party Sources
 
