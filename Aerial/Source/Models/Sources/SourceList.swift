@@ -15,7 +15,9 @@ struct SourceList {
                         manifestUrl: "https://sylvan.apple.com/Aerials/resources-13.tar",
                         type: .tvOS12,
                         scenes: [.nature, .city, .space, .sea],
-                        isCachable: true)
+                        isCachable: true,
+                        license: "",
+                        more: "")
 
     // Legacy sources
     static let tvOS12 = Source(name: "tvOS 12",
@@ -23,27 +25,34 @@ struct SourceList {
                         manifestUrl: "https://sylvan.apple.com/Aerials/resources.tar",
                         type: .tvOS12,
                         scenes: [.nature, .city, .space],
-                        isCachable: true)
+                        isCachable: true,
+                        license: "",
+                        more: "")
 
     static let tvOS11 = Source(name: "tvOS 11",
                         description: "Apple TV screensavers from tvOS 11",
                         manifestUrl: "https://sylvan.apple.com/Aerials/2x/entries.json",
                         type: .tvOS11,
                         scenes: [.nature, .city],
-                        isCachable: true)
+                        isCachable: true,
+                        license: "",
+                        more: "")
 
     static let tvOS10 = Source(name: "tvOS 10",
                         description: "Apple TV screensavers from tvOS 10",
                         manifestUrl: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json",
                         type: .tvOS10,
                         scenes: [.nature, .city],
-                        isCachable: true)
+                        isCachable: true,
+                        license: "",
+                        more: "")
 
     static var list: [Source] = [tvOS13, tvOS12, tvOS11, tvOS10] + foundSources
 
     // This is where the magic happens
     static var foundSources: [Source] {
         var sources: [Source] = []
+        var foundCommunity = false
 
         for folder in URL(fileURLWithPath: Cache.supportPath).subDirectories {
             if !folder.lastPathComponent.starts(with: "tvOS")
@@ -51,14 +60,22 @@ struct SourceList {
                 && !folder.lastPathComponent.starts(with: "Thumbnails")
                 && !folder.lastPathComponent.starts(with: "Cache") {
 
+                if folder.lastPathComponent.starts(with: "Community") {
+                    foundCommunity = true
+                }
+
                 // If it's valid, let's add !
                 if let source = loadManifest(url: folder) {
-                    print("source")
                     sources.append(source)
                 } else if let newsources = loadMetaManifest(url: folder) {
-                    print("sources")
                     sources.append(contentsOf: newsources)
                 }
+            }
+        }
+
+        if !foundCommunity {
+            DispatchQueue.main.async {
+                fetchOnlineManifest(url: URL(string: "https://raw.githubusercontent.com/glouel/AerialCommunity/master/")!)
             }
         }
 
@@ -90,13 +107,50 @@ struct SourceList {
                 source.setEnabled(true) // This will reload the main video list
             }
         } else {
-            Aerial.showErrorAlert(question: "No videos found", text: "Could not find any video at the URL you provided, please try again.")
+            let task = URLSession.shared.dataTask(with: url) { _, response, error in
+
+                if let error = error {
+                    DispatchQueue.main.async {
+                        Aerial.showErrorAlert(question: "An error occured loading the file",
+                            text: "Please check your network connection, firewall, and try again. \n\nError : \(error.localizedDescription)")
+                    }
+                    return
+                }
+                guard let response = response as? HTTPURLResponse else {
+                    DispatchQueue.main.async {
+                        Aerial.showErrorAlert(question: "No HTTP Response",
+                                              text: "Please check your network connection, firewall, and try again.")
+                    }
+                    return
+                }
+
+                if response.statusCode != 200 {
+                    DispatchQueue.main.async {
+                        Aerial.showErrorAlert(question: "HTTP Error",
+                            text: "Please verify the URL (and check your network connexion and firewall). HTTP error: \(response.statusCode)")
+                    }
+                    return
+                } else {
+                    DispatchQueue.main.async {
+                        Aerial.showErrorAlert(question: "Incorrect JSON Format",
+                                              text: "Your URL was valid, but the file is not in the correct format. Please check the URL.")
+                    }
+                    return
+                }
+            }
+            task.resume()
         }
     }
 
     static func saveSource(_ source: Source) {
-
-        let manifest = Manifest.init(name: source.name, manifestDescription: source.description, scenes: source.scenes.map({ $0.rawValue }), local: source.type == .local, cacheable: source.isCachable, manifestUrl: source.manifestUrl)
+        let manifest = Manifest.init(name: source.name,
+                                     manifestDescription: source.description,
+                                     scenes: source.scenes.map({ $0.rawValue }),
+                                     local: source.type == .local,
+                                     cacheable: source.isCachable,
+                                     manifestUrl: source.manifestUrl,
+                                     license: source.license,
+                                     more: source.more)
 
         // First make the folder
         FileHelpers.createDirectory(atPath: Cache.supportPath.appending("/"+source.name))
@@ -104,7 +158,6 @@ struct SourceList {
         let json = try? JSONEncoder().encode(manifest)
 
         do {
-            print(Cache.supportPath.appending("/"+source.name+"/manifest.json"))
             try json!.write(to: URL(fileURLWithPath:
                                     Cache.supportPath.appending("/"+source.name+"/manifest.json")))
         } catch {
@@ -177,7 +230,9 @@ struct SourceList {
                       manifestUrl: mURL,
                       type: local ? .local : .tvOS12,
                       scenes: jsonToSceneArray(array: manifest.scenes ?? []),
-                      isCachable: cacheable)
+                      isCachable: cacheable,
+                      license: manifest.license ?? "",
+                      more: manifest.more ?? "")
     }
 
     /// Helper to convert an array of strings to an array of sources
@@ -227,6 +282,8 @@ struct Manifest: Codable {
     let local: Bool?
     let cacheable: Bool?
     let manifestUrl: String?
+    let license: String?
+    let more: String?
 
     enum CodingKeys: String, CodingKey {
         case name
@@ -235,5 +292,7 @@ struct Manifest: Codable {
         case local
         case cacheable
         case manifestUrl
+        case license
+        case more
     }
 }

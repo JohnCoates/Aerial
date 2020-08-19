@@ -12,7 +12,6 @@ extension AVPlayerItem {
     func setVibrance(_ value: Double) {
         var useValue = PrefsVideos.globalVibrance
 
-        print("SETVIBRANCE \(useValue)")
         if value != 0 {
             useValue = value
         }
@@ -21,7 +20,6 @@ extension AVPlayerItem {
             return
         }
 
-        print(useValue)
         if #available(OSX 10.14, *) {
             let filter = CIFilter(name: "CIVibrance")!
             self.videoComposition = AVVideoComposition(asset: asset, applyingCIFiltersWithHandler: { request in

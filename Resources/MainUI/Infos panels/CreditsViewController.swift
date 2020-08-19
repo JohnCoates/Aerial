@@ -27,4 +27,9 @@ class CreditsViewController: NSViewController {
         workspace.open(url)
     }
 
+    @IBAction func discordButton(_ sender: Any) {
+        let workspace = NSWorkspace.shared
+        let url = URL(string: "https://discord.gg/TPuA5WG")!
+        workspace.open(url)
+    }
 }

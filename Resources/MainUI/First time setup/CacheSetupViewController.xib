@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="CacheSetupViewController" customModule="Aerial" customModuleProvider="target">
+            <connections>
+                <outlet property="choice1" destination="XcL-S1-kOB" id="Voq-Js-ymX"/>
+                <outlet property="choice2" destination="1Me-rs-0he" id="7Ax-Sm-735"/>
+                <outlet property="choice3" destination="w2W-ub-vS9" id="QmT-vG-hde"/>
+                <outlet property="imageView1" destination="hMc-pg-oOv" id="HkM-xa-cnQ"/>
+                <outlet property="imageView2" destination="l8t-Tl-qQy" id="qjK-kw-Ddd"/>
+                <outlet property="imageView3" destination="Fpj-oX-yMI" id="Ihe-dX-BYw"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="hsq-fR-kZy">
+                    <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                    <view key="contentView" id="BwA-rS-hk4">
+                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xYV-5e-0ED">
+                                <rect key="frame" x="237" y="545" width="327" height="35"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Video Storage &amp; Cache" id="Nib-Bq-x5T">
+                                    <font key="font" metaFont="systemBold" size="30"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="srx-jV-F0B">
+                                <rect key="frame" x="38" y="483" width="724" height="32"/>
+                                <textFieldCell key="cell" selectable="YES" id="cvh-2z-RAA">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">Aerial offers several ways to download videos, from automatically managed to completely manual. Pick what suits you best (you can modify this later, no pressure):</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XcL-S1-kOB">
+                                <rect key="frame" x="105" y="408.5" width="423" height="22"/>
+                                <buttonCell key="cell" type="radio" title="Manage everything for me and don't use all my disk space!" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="large" inset="2" id="FGS-cY-RDE">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="systemSemibold" size="14"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="radioChange:" target="-2" id="4aK-HD-ITb"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Me-rs-0he">
+                                <rect key="frame" x="105" y="290.5" width="379" height="22"/>
+                                <buttonCell key="cell" type="radio" title="Automatically download videos and keep everything" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="large" inset="2" id="ILy-5P-oiN">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="systemSemibold" size="14"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="radioChange:" target="-2" id="D2w-0W-tsT"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w2W-ub-vS9">
+                                <rect key="frame" x="105" y="172.5" width="170" height="22"/>
+                                <buttonCell key="cell" type="radio" title="Let me handle things" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="large" state="on" inset="2" id="h0I-qk-88h">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="systemSemibold" size="14"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="radioChange:" target="-2" id="Q7v-gu-Kfq"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ghM-dG-rUj">
+                                <rect key="frame" x="128" y="371" width="634" height="32"/>
+                                <textFieldCell key="cell" selectable="YES" id="3vz-2r-56Q">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <string key="title">New videos will automatically download as needed. They will be replaced periodically to keep things fresh. If you really like a video, you can favorite it so it's never replaced by another one. </string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="A4o-so-B26">
+                                <rect key="frame" x="128" y="253" width="634" height="32"/>
+                                <textFieldCell key="cell" selectable="YES" id="Jhl-bS-PXQ">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <string key="title">New videos will automatically download as needed. Nothing gets deleted unless you say so (by hiding a video). You can still set a cache limit to prevent filling up your disk. </string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="pgs-xX-pMJ">
+                                <rect key="frame" x="128" y="151" width="634" height="16"/>
+                                <textFieldCell key="cell" selectable="YES" title="Select and download the videos you like, and nothing else. Save or remove as many videos as you want. " id="6Oh-N7-gOc">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="hMc-pg-oOv">
+                                <rect key="frame" x="40" y="380" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="U6S-MV-CpC"/>
+                                    <constraint firstAttribute="height" constant="48" id="zZs-zY-Rcj"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="wand.and.stars" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="ZjP-qA-nUv">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="l8t-Tl-qQy">
+                                <rect key="frame" x="40" y="262" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="WAc-Ma-CLw"/>
+                                    <constraint firstAttribute="width" constant="48" id="d40-TP-hw8"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="wand.and.rays" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="uZ3-cn-fBF">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="Fpj-oX-yMI">
+                                <rect key="frame" x="40" y="144" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="YEO-cS-jMe"/>
+                                    <constraint firstAttribute="height" constant="48" id="hxm-4h-HcP"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="hand.raised" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="CYm-dg-CIQ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="SkW-In-rev">
+                                <rect key="frame" x="22" y="30" width="757" height="16"/>
+                                <textFieldCell key="cell" selectable="YES" title="You can change this setting, set your cache size limit, and restrict downloads to approved WiFi networks in Settings &gt; Cache" id="CBq-Bc-fCd">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="XcL-S1-kOB" firstAttribute="top" secondItem="hMc-pg-oOv" secondAttribute="top" id="0s5-sX-NtI"/>
+                            <constraint firstItem="Fpj-oX-yMI" firstAttribute="top" secondItem="l8t-Tl-qQy" secondAttribute="bottom" constant="70" id="10F-qU-yCm"/>
+                            <constraint firstAttribute="trailing" secondItem="A4o-so-B26" secondAttribute="trailing" constant="40" id="1hn-BW-e5j"/>
+                            <constraint firstItem="SkW-In-rev" firstAttribute="centerX" secondItem="BwA-rS-hk4" secondAttribute="centerX" id="1ta-gE-dg9"/>
+                            <constraint firstItem="hMc-pg-oOv" firstAttribute="leading" secondItem="BwA-rS-hk4" secondAttribute="leading" constant="40" id="8Oq-LA-LyW"/>
+                            <constraint firstItem="pgs-xX-pMJ" firstAttribute="top" secondItem="w2W-ub-vS9" secondAttribute="bottom" constant="8" symbolic="YES" id="DI4-ba-XiX"/>
+                            <constraint firstItem="A4o-so-B26" firstAttribute="leading" secondItem="BwA-rS-hk4" secondAttribute="leading" constant="130" id="IyZ-YB-jRr"/>
+                            <constraint firstItem="ghM-dG-rUj" firstAttribute="top" secondItem="XcL-S1-kOB" secondAttribute="bottom" constant="8" symbolic="YES" id="LJh-Yg-N5h"/>
+                            <constraint firstItem="XcL-S1-kOB" firstAttribute="leading" secondItem="hMc-pg-oOv" secondAttribute="trailing" constant="20" id="P8G-ZR-T6W"/>
+                            <constraint firstItem="w2W-ub-vS9" firstAttribute="top" secondItem="Fpj-oX-yMI" secondAttribute="top" id="PGS-h1-Wd4"/>
+                            <constraint firstItem="XcL-S1-kOB" firstAttribute="top" secondItem="srx-jV-F0B" secondAttribute="bottom" constant="55" id="QBp-QA-Gge"/>
+                            <constraint firstItem="srx-jV-F0B" firstAttribute="leading" secondItem="BwA-rS-hk4" secondAttribute="leading" constant="40" id="QpB-mM-gup"/>
+                            <constraint firstItem="l8t-Tl-qQy" firstAttribute="leading" secondItem="BwA-rS-hk4" secondAttribute="leading" constant="40" id="WFj-7u-C5c"/>
+                            <constraint firstItem="Fpj-oX-yMI" firstAttribute="leading" secondItem="BwA-rS-hk4" secondAttribute="leading" constant="40" id="YrV-bK-7q1"/>
+                            <constraint firstItem="xYV-5e-0ED" firstAttribute="centerX" secondItem="BwA-rS-hk4" secondAttribute="centerX" id="bhz-SN-x5U"/>
+                            <constraint firstItem="xYV-5e-0ED" firstAttribute="top" secondItem="BwA-rS-hk4" secondAttribute="top" constant="20" id="coH-JR-xwq"/>
+                            <constraint firstItem="1Me-rs-0he" firstAttribute="leading" secondItem="l8t-Tl-qQy" secondAttribute="trailing" constant="20" id="gvl-kb-2yj"/>
+                            <constraint firstItem="srx-jV-F0B" firstAttribute="top" secondItem="xYV-5e-0ED" secondAttribute="bottom" constant="30" id="hbC-7T-jHA"/>
+                            <constraint firstItem="ghM-dG-rUj" firstAttribute="leading" secondItem="BwA-rS-hk4" secondAttribute="leading" constant="130" id="iIT-KR-g8a"/>
+                            <constraint firstAttribute="trailing" secondItem="ghM-dG-rUj" secondAttribute="trailing" constant="40" id="ioO-V0-9uH"/>
+                            <constraint firstAttribute="trailing" secondItem="pgs-xX-pMJ" secondAttribute="trailing" constant="40" id="kC4-w7-rAV"/>
+                            <constraint firstItem="w2W-ub-vS9" firstAttribute="leading" secondItem="Fpj-oX-yMI" secondAttribute="trailing" constant="20" id="m8Z-xC-ocI"/>
+                            <constraint firstItem="pgs-xX-pMJ" firstAttribute="leading" secondItem="BwA-rS-hk4" secondAttribute="leading" constant="130" id="n0s-ku-M94"/>
+                            <constraint firstItem="A4o-so-B26" firstAttribute="top" secondItem="1Me-rs-0he" secondAttribute="bottom" constant="8" symbolic="YES" id="p1h-Yj-cHi"/>
+                            <constraint firstAttribute="bottom" secondItem="SkW-In-rev" secondAttribute="bottom" constant="30" id="p9m-J3-71M"/>
+                            <constraint firstItem="1Me-rs-0he" firstAttribute="top" secondItem="l8t-Tl-qQy" secondAttribute="top" id="ssf-xZ-PfP"/>
+                            <constraint firstItem="l8t-Tl-qQy" firstAttribute="top" secondItem="hMc-pg-oOv" secondAttribute="bottom" constant="70" id="xVV-if-ueQ"/>
+                            <constraint firstAttribute="trailing" secondItem="srx-jV-F0B" secondAttribute="trailing" constant="40" id="xeY-l1-WBo"/>
+                        </constraints>
+                    </view>
+                    <color key="fillColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                </box>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="hsq-fR-kZy" secondAttribute="bottom" id="7EG-SV-dEu"/>
+                <constraint firstItem="hsq-fR-kZy" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="JLz-sn-r5j"/>
+                <constraint firstItem="hsq-fR-kZy" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="aog-Qt-lH9"/>
+                <constraint firstAttribute="trailing" secondItem="hsq-fR-kZy" secondAttribute="trailing" id="bpU-UJ-dJk"/>
+            </constraints>
+            <point key="canvasLocation" x="-169" y="149"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="hand.raised" width="153" height="164"/>
+        <image name="wand.and.rays" width="146" height="165"/>
+        <image name="wand.and.stars" width="149" height="152"/>
+    </resources>
+</document>

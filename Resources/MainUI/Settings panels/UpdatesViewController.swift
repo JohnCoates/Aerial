@@ -16,7 +16,7 @@ class UpdatesViewController: NSViewController {
 
     @IBAction func goToAerialUpdater(_ sender: Any) {
         let workspace = NSWorkspace.shared
-        let url = URL(string: "https://github.com/glouel/AerialUpdater")!
+        let url = URL(string: "https://github.com/glouel/AerialCompanion")!
         workspace.open(url)
     }
 

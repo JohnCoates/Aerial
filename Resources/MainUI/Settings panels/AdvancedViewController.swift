@@ -38,6 +38,7 @@ class AdvancedViewController: NSViewController {
 
     @IBOutlet var showLogButton: NSButton!
 
+    var originalFormat: VideoFormat?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,6 +51,9 @@ class AdvancedViewController: NSViewController {
             videoFormatPopup.selectItem(at: PrefsVideos.videoFormat.rawValue)
             videoFormatPopup.isEnabled = false
         }
+
+        // Save this for future use
+        originalFormat = PrefsVideos.videoFormat
 
         videoFadesPopup.selectItem(at: PrefsVideos.fadeMode.rawValue)
 
@@ -119,7 +123,22 @@ class AdvancedViewController: NSViewController {
     }
 
     @IBAction func videoFormatPopupChange(_ sender: NSPopUpButton) {
-        PrefsVideos.videoFormat = VideoFormat(rawValue: sender.indexOfSelectedItem)!
+        let candidateFormat = VideoFormat(rawValue: sender.indexOfSelectedItem)!
+
+        if candidateFormat != originalFormat {
+            if Aerial.showAlert(question: "Changing format will delete all videos", text: "Changing format will delete your downloaded videos. They will be re-downloaded based on your preferences. \n\nYou can also manually redownload videos in Custom Sources.", button1: "Change Format and Delete Videos", button2: "Cancel") {
+                PrefsVideos.videoFormat = candidateFormat
+                originalFormat = candidateFormat
+
+                Cache.clearCache()
+                Cache.clearNonCacheableSources()
+                Sidebar.instance.refreshVideos()
+            } else {
+                videoFormatPopup.selectItem(at: PrefsVideos.videoFormat.rawValue)
+            }
+        } else {
+            PrefsVideos.videoFormat = candidateFormat
+        }
     }
 
     @IBAction func videoFadesPopupChange(_ sender: NSPopUpButton) {
@@ -155,6 +174,29 @@ class AdvancedViewController: NSViewController {
             NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: VideoCache.appSupportDirectory!)
         } else {
             NSWorkspace.shared.selectFile(logfile, inFileViewerRootedAtPath: VideoCache.appSupportDirectory!)
+        }
+    }
+
+    @IBAction func resetAllSettings(_ sender: NSButton) {
+        let plistURL = URL(fileURLWithPath: Cache.supportPath)
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+            .appendingPathComponent("Preferences")
+            .appendingPathComponent("ByHost")
+
+        if let fileURLs = FileManager.default.enumerator(at: plistURL, includingPropertiesForKeys: nil)?.allObjects as? [URL] {
+            let candidates = fileURLs.filter({ $0.absoluteString.contains("com.JohnCoates.Aerial")})
+
+            if candidates.count == 1 {
+                let path = candidates[0].path
+                if FileManager.default.fileExists(atPath: path) {
+                    debugLog("Removing settings")
+                    try? FileManager.default.removeItem(at: candidates[0])
+
+                    // swiftlint:disable:next line_length
+                    Aerial.showInfoAlert(title: "Settings reset to defaults", text: "Your settings were reset to defaults. \n\nPlease close Aerial and System Preferences in order to reload them.")
+                }
+            }
         }
     }
 

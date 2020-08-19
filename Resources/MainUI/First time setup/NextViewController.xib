@@ -8,7 +8,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NextViewController" customModule="Aerial" customModuleProvider="target">
             <connections>
-                <outlet property="nextButton" destination="2M9-G4-wjG" id="wU4-S7-gyE"/>
+                <outlet property="nextButton" destination="zUs-7A-vzy" id="Vqs-FR-DkH"/>
+                <outlet property="previousButton" destination="2M9-G4-wjG" id="gHO-uv-6hX"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -18,23 +19,49 @@
             <rect key="frame" x="0.0" y="0.0" width="800" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2M9-G4-wjG">
-                    <rect key="frame" x="364" y="0.0" width="73" height="40"/>
-                    <buttonCell key="cell" type="push" title="Next" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2WC-JX-7q9">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                        <string key="keyEquivalent" base64-UTF8="YES">
+                <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zp7-qK-00A">
+                    <rect key="frame" x="321" y="6" width="158" height="28"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2M9-G4-wjG">
+                            <rect key="frame" x="-6" y="-6" width="97" height="40"/>
+                            <buttonCell key="cell" type="push" title="Previous" bezelStyle="rounded" alignment="center" controlSize="large" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2WC-JX-7q9">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                                <string key="keyEquivalent" base64-UTF8="YES">
 DQ
 </string>
-                    </buttonCell>
-                    <connections>
-                        <action selector="nextButtonClick:" target="-2" id="UAk-2t-99p"/>
-                    </connections>
-                </button>
+                            </buttonCell>
+                            <connections>
+                                <action selector="previousButtonClick:" target="-2" id="G1t-TB-mJi"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zUs-7A-vzy">
+                            <rect key="frame" x="91" y="-6" width="73" height="40"/>
+                            <buttonCell key="cell" type="push" title="Next" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wCa-ti-Bnl">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                                <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                            </buttonCell>
+                            <connections>
+                                <action selector="nextButtonClick:" target="-2" id="fCj-Nm-FZT"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
             </subviews>
             <constraints>
-                <constraint firstItem="2M9-G4-wjG" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="Cb7-Tv-opC"/>
-                <constraint firstItem="2M9-G4-wjG" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="d18-xF-CDj"/>
+                <constraint firstItem="Zp7-qK-00A" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="cOl-Mk-Mxr"/>
+                <constraint firstItem="Zp7-qK-00A" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="rLx-cH-zYP"/>
             </constraints>
             <point key="canvasLocation" x="-168" y="154"/>
         </customView>

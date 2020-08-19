@@ -437,6 +437,9 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             (player.currentItem as? AerialPlayerItem)?.video
         }
 
+        // Now we need to check if we should remove lingering stuff from the cache !
+        Cache.removeCruft()
+
         let (randomVideo, pshouldLoop) = VideoList.instance.randomVideo(excluding: currentVideos)
 
         // If we only have one video in the playlist, we can rewind it for seamless transitions

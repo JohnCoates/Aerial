@@ -65,11 +65,15 @@ class VideosViewController: NSViewController {
             heroPlayerView.videoGravity = .resizeAspectFill
         }
 
+        downloadButton.setIcons("arrow.down.circle")
+        hideButton.setIcons("eye.slash")
+        showButton.setIcons("eye")
         setShadows()
         fixIcons()
 
         updateVideoView()
         updateRotationMenu()
+
     }
 
     @objc func playerItemDidReachEnd(_ aNotification: Notification) {
@@ -161,7 +165,7 @@ class VideosViewController: NSViewController {
             videos = VideoList.instance.getVideosForSource(index, mode: mode)
         } else {
             // all
-            videos = VideoList.instance.videos.sorted { $0.secondaryName < $1.secondaryName }
+            videos = VideoList.instance.videos.filter({ !PrefsVideos.hidden.contains($0.id) }).sorted { $0.secondaryName < $1.secondaryName }
         }
 
         // Calculate their duration in minutes
@@ -284,6 +288,10 @@ class VideosViewController: NSViewController {
     // MARK: - Video view
     func updateVideoView() {
         if let video = getSelectedVideo() {
+            debugLog("\"\(video.id)\": \"sunrise\", // \(video.name) - \(video.secondaryName)")
+            debugLog("\"\(video.id)\": \"sunset\", // \(video.name) - \(video.secondaryName)")
+            debugLog("\"\(video.id)\": \"night\", // \(video.name) - \(video.secondaryName)")
+
             titleLabel.isHidden = false
             locationLabel.isHidden = false
             sourceLabel.isHidden = false
@@ -316,6 +324,13 @@ class VideosViewController: NSViewController {
         }
     }
 
+    func stopVideo() {
+        if let player = heroPlayerView.player {
+            debugLog("Stopping player")
+            player.pause()
+        }
+    }
+
     /// Show video player
     func showVideo(_ video: AerialVideo) {
         heroPlayerView.isHidden = false
@@ -335,17 +350,22 @@ class VideosViewController: NSViewController {
 
             // Vibrancy filter requires 10.14, and doesn't work on HDR content
             if #available(OSX 10.14, *), !video.isHDR() {
-                vibrancyLabel.isHidden = false
-                vibrancySlider.isHidden = false
-                if let value = PrefsVideos.vibrance[video.id] {
-                    vibrancySlider.doubleValue = value
+                if PrefsVideos.allowPerVideoVibrance {
+                    vibrancyLabel.isHidden = false
+                    vibrancySlider.isHidden = false
+                    if let value = PrefsVideos.vibrance[video.id] {
+                        vibrancySlider.doubleValue = value
+                    } else {
+                        vibrancySlider.doubleValue = 0.0
+                    }
+                    if vibrancySlider.doubleValue == 0 {
+                        currentVibrancy = PrefsVideos.globalVibrance
+                    } else {
+                        currentVibrancy = vibrancySlider.doubleValue
+                    }
                 } else {
-                    vibrancySlider.doubleValue = 0.0
-                }
-                if vibrancySlider.doubleValue == 0 {
-                    currentVibrancy = PrefsVideos.globalVibrance
-                } else {
-                    currentVibrancy = vibrancySlider.doubleValue
+                    vibrancyLabel.isHidden = true
+                    vibrancySlider.isHidden = true
                 }
 
                 let filter = CIFilter(name: "CIVibrance")!
@@ -460,7 +480,7 @@ class VideosViewController: NSViewController {
                 }
             } else {
                 // all
-                return VideoList.instance.videos[videoListTableView.selectedRow]
+                return VideoList.instance.videos.filter({ !PrefsVideos.hidden.contains($0.id) }).sorted { $0.secondaryName < $1.secondaryName }[videoListTableView.selectedRow]
             }
         }
 
@@ -564,7 +584,7 @@ extension VideosViewController: NSTableViewDataSource {
             return VideoList.instance.getVideosCountForSource(index, mode: mode)
         } else {
             // all
-            return VideoList.instance.videos.count
+            return VideoList.instance.videos.filter({ !PrefsVideos.hidden.contains($0.id) }).count
         }
     }
 }
@@ -581,7 +601,7 @@ extension VideosViewController: NSTableViewDelegate {
             video = VideoList.instance.getVideoForSource(index, item: row, mode: mode)
         } else {
             // all
-            video = VideoList.instance.videos.sorted { $0.secondaryName < $1.secondaryName }[row]
+            video = VideoList.instance.videos.filter({ !PrefsVideos.hidden.contains($0.id) }).sorted { $0.secondaryName < $1.secondaryName }[row]
         }
 
         if let cell = tableView.makeView(withIdentifier:
@@ -619,5 +639,4 @@ extension VideosViewController: NSTableViewDelegate {
     func tableViewSelectionDidChange(_ notification: Notification) {
         updateVideoView()
     }
-
 }

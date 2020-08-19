@@ -32,7 +32,7 @@ class Sidebar {
 
     // Settings are static
     func makeSettings() {
-        settings = [MenuEntry(name: "Sources", path: "settings:sources"),
+        settings = [MenuEntry(name: "Custom Sources", path: "settings:sources"),
                     MenuEntry(name: "Time", path: "settings:time"),
                     MenuEntry(name: "Displays", path: "settings:displays"),
                     MenuEntry(name: "Brightness", path: "settings:brightness"),

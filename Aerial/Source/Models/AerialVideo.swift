@@ -50,8 +50,6 @@ final class AerialVideo: CustomStringConvertible, Equatable {
     // Returns the closest video we have in the manifests
     private func getClosestAvailable(wanted: VideoFormat) -> URL {
         if urls[wanted] != "" {
-            //print(urls[wanted])
-            //return URL(fileURLWithPath: urls[wanted]!)
             return URL(string: urls[wanted]!)!
         } else {
             // Fallback
@@ -172,12 +170,21 @@ final class AerialVideo: CustomStringConvertible, Equatable {
                     if fileManager.fileExists(atPath: path) {
                         let asset = AVAsset(url: URL(fileURLWithPath: path))
                         self.duration = CMTimeGetSeconds(asset.duration)
-                        //print("duration found \(self.duration)")
                         return
                     }
                 }
             }
         }
+    }
+
+    /// Check if a video has HDR files or not
+    func hasHDR() -> Bool {
+        if urls[.v1080pHDR] != "" || urls[.v4KHDR] != "" {
+            return true
+        } else {
+            return false
+        }
+
     }
 
     /// Check if what we are playing is HDR or not
@@ -236,73 +243,4 @@ final class AerialVideo: CustomStringConvertible, Equatable {
         urls=\(urls)
         """
     }
-
-    /*
-    func generateThumbnail() -> NSImage? {
-        do {
-            let path = VideoCache.cachePath(forVideo: self)!
-            let asset = AVURLAsset(url: URL(fileURLWithPath: path))
-            let imageGenerator = AVAssetImageGenerator(asset: asset)
-            imageGenerator.appliesPreferredTrackTransform = true
-            // Select the right one based on which version you are using
-            // Swift 4.2
-            let cgImage = try imageGenerator.copyCGImage(at: .zero,
-                                                         actualTime: nil)
-
-            return NSImage(cgImage: cgImage, size: .init(width: 192, height: 108))
-        } catch {
-            print(error.localizedDescription)
-
-            return nil
-        }
-    }*/
-/*
-    func getThumbnail(_ completion: @escaping ((_ image: NSImage?) -> Void)) {
-
-    }
-
-    // Get Thumbnail
-    func gdetThumbnail(_ completion: @escaping ((_ image: NSImage?) -> Void)) {
-        if url.absoluteString.starts(with: "file://") {
-            DispatchQueue.main.async {
-                let asset = AVAsset(url: self.url)
-                let assetImgGenerate = AVAssetImageGenerator(asset: asset)
-                assetImgGenerate.appliesPreferredTrackTransform = true
-
-                let time = CMTimeMake(value: 2, timescale: 1)
-                do {
-                    let img = try assetImgGenerate.copyCGImage(at: time, actualTime: nil)
-                    let thumbnail = NSImage(cgImage: img, size: .init(width: 192, height: 108))
-                    completion(thumbnail)
-                } catch {
-                    print("Error :: ", error.localizedDescription)
-                    completion(nil)
-                }
-            }
-        } else {
-            if isAvailableOffline {
-                let path = VideoCache.cachePath(forVideo: self)!
-
-                DispatchQueue.main.async {
-                    let asset = AVAsset(url: URL(fileURLWithPath: path))
-                    let assetImgGenerate = AVAssetImageGenerator(asset: asset)
-                    assetImgGenerate.appliesPreferredTrackTransform = true
-
-                    let time = CMTimeMake(value: 2, timescale: 1)
-                    do {
-                        let img = try assetImgGenerate.copyCGImage(at: time, actualTime: nil)
-                        let thumbnail = NSImage(cgImage: img, size: .init(width: 192, height: 108))
-                        completion(thumbnail)
-                    } catch {
-                        print("Error :: ", error.localizedDescription)
-                        completion(nil)
-                    }
-                }
-            } else {
-                completion(nil)
-            }
-        }
-
-    }
-*/
 }

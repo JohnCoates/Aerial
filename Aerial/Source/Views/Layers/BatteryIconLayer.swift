@@ -103,7 +103,6 @@ class BatteryIconLayer: AnimationLayer {
     }
 
     override func setContentScale(scale: CGFloat) {
-        print("sCS ovInner \(scale)")
         self.contentsScale = scale
         iconLayer!.contentsScale = scale
         textLayer!.contentsScale = scale

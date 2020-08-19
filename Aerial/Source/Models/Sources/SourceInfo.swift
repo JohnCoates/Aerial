@@ -84,6 +84,57 @@ struct SourceInfo {
              "url-4K-HDR": "https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_HDR_HEVC.mov", ],    // Dubai night 2
     ]
 
+    static let cityVideos = [
+        "b8-3", // San Francisco - Alamo Square
+        "9680B8EB-CE2A-4395-AF41-402801F4D6A6", // Dubai - Approaching Burj Khalifa
+        "3E94AE98-EAF2-4B09-96E3-452F46BC114E", // San Francisco - Bay Bridge
+        "4AD99907-9E76-408D-A7FC-8429FF014201", // San Francisco - Bay and Embarcadero
+        "A5AAFF5D-8887-42BB-8AFD-867EF557ED85", // London - Buckingham Palace
+        "3BA0CFC7-E460-4B59-A817-B97F9EBB9B89", // New York - Central Park
+        "00BA71CD-2C54-415A-A68A-8358E677D750", // Dubai - Downtown
+        "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9", // Los Angeles - Downtown
+        "b6-4", // San Francisco - Downtown and Coit Tower
+        "b2-4", // San Francisco - Downtown and Sutro Tower
+        "85CE77BF-3413-4A7B-9B0F-732E96229A73", // San Francisco - Embarcadero, Market Street
+        "b5-3", // San Francisco - Embarcadero, Market Street
+        "29BDF297-EB43-403A-8719-A78DA11A2948", // San Francisco - Fisherman’s Wharf
+        "35693AEA-F8C4-4A80-B77D-C94B20A68956", // Los Angeles - Harbor Freeway
+        "CE279831-1CA7-4A83-A97B-FF1E20234396", // Los Angeles - Los Angeles Int’l Airport
+        "640DFB00-FBB9-45DA-9444-9F663859F4BC", // New York - Lower Manhattan
+        "b1-3", // New York - Lower Manhattan
+        "E991AC0C-F272-44D8-88F3-05F44EDFE3AE", // Dubai - Marina 1
+        "3FFA2A97-7D28-49EA-AA39-5BC9051B2745", // Dubai - Marina 2
+        "58754319-8709-4AB0-8674-B34F04E7FFE2", // London - River Thames
+        "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97", // London - River Thames at Dusk
+        "F604AF56-EA77-4960-AEF7-82533CC1A8B3", // London - River Thames near Sunset
+        "44166C39-8566-4ECA-BD16-43159429B52F", // New York - Seventh Avenue
+        "876D51F4-3D78-4221-8AD2-F9E78C0FD9B9", // Dubai - Sheikh Zayed Road
+        "2F11E857-4F77-4476-8033-4A1E4610AFCC", // Dubai - Sheikh Zayed Road
+        "840FE8E4-D952-4680-B1A7-AC5BACA2C1F8", // New York - Upper East Side
+        "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A", // Hong Kong - Victoria Harbour
+        "FE8E1F9D-59BA-4207-B626-28E34D810D0A", // Hong Kong - Victoria Harbour 1
+        "64EA30BD-C4B5-4CDD-86D7-DFE47E9CB9AA", // Hong Kong - Victoria Harbour 2
+        "C8559883-6F3E-4AF2-8960-903710CD47B7", // Hong Kong - Victoria Peak
+        "024891DE-B7F6-4187-BFE0-E6D237702EF0", // Hong Kong - Wan Chai
+    ]
+
+    static let countrySideVideos = [
+        "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51", // San Francisco - Bay and Golden Gate
+        "72B4390D-DF1D-4D51-B179-229BBAEFFF2C", // San Francisco - Golden Gate from SF
+        "b8-2", // San Francisco - Marin Headlands
+        "EE533FBD-90AE-419A-AD13-D7A60E2015D6", // San Francisco - Marin Headlands in Fog
+        "89B1643B-06DD-4DEC-B1B0-774493B0F7B7", // Los Angeles - Griffith Observatory
+        "EC67726A-8212-4C5E-83CF-8412932740D2", // Los Angeles - Hollywood Hills
+        "b4-3", // San Francisco - Presidio to Golden Gate
+    ]
+
+    static let beachVideos = [
+        "b2-2", // Hawaii - Honopū Valley
+        "3D729CFC-9000-48D3-A052-C5BD5B7A6842", // Hawaii - Kohala Coastline
+        "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7", // Hawaii - Laupāhoehoe Nui
+        "92E48DE9-13A1-4172-B560-29B4668A87EE", // Los Angeles - Santa Monica Beach
+    ]
+
     static let spaceVideos = [
         "A837FA8C-C643-4705-AE92-074EFDD067F7",
         "2F72BC1E-3D76-456C-81EB-842EBA488C27",
@@ -142,44 +193,61 @@ struct SourceInfo {
 
     static let timeInformation = [
         "A837FA8C-C643-4705-AE92-074EFDD067F7": "night",    // Africa Night
-        "2F72BC1E-3D76-456C-81EB-842EBA488C27": "day",      // Africa and the Middle East
+        "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": "sunrise", // Space - Antartica
+        "64D11DAB-3B57-4F14-AD2F-E59A9282FA44": "sunset", // Space - Atlantic Ocean to Spain and France
+        "81337355-E156-4242-AAF4-711768D30A54": "night", // Space - Australia
         "A2BE2E4A-AD4B-428A-9C41-BDAE1E78E816": "night",    // California to Vegas (v7)
         "12318CCB-3F78-43B7-A854-EFDCCE5312CD": "night",    // California to Vegas (v8)
-        "D5CFB2FF-5F8C-4637-816B-3E42FC1229B8": "day",      // Carribean
-        "4F881F8B-A7D9-4FDB-A917-17BF6AC5A589": "day",      // Carribean day
         "6A74D52E-2447-4B84-AE45-0DEF2836C3CC": "night",    // China
         "7825C73A-658F-48EE-B14C-EC56673094AC": "night",    // China (new id)
+
         "E5DB138A-F04E-4619-B896-DE5CB538C534": "night",    // Italy to Asia
-        "F439B0A7-D18C-4B14-9681-6520E6A74FE9": "night",    // Iran and Afghanistan
+        "F439B0A7-D18C-4B14-9681-6520E6A74FE9": "sunset",    // Iran and Afghanistan
         "62A926BE-AA0B-4A34-9653-78C4F130543F": "night",    // Ireland to Asia
         "7C643A39-C0B2-4BA0-8BC2-2EAA47CC580E": "night",    // Ireland to Asia
         "6C3D54AE-0871-498A-81D0-56ED24E5FE9F": "night",    // Korean and Japan Night (v17)
         "009BA758-7060-4479-8EE8-FB9B40C8FB97": "night",    // Korean and Japan Night (v18)
-        "78911B7E-3C69-47AD-B635-9C2486F6301D": "day",      // New Zealand (sunrise...)
-        "D60B4DDA-69EB-4841-9690-E8BAE7BC4F80": "day",      // Sahara and Italy
-        "E556BBC5-D0A0-4DB1-AC77-BC76E4A526F4": "day",      // Sahara and Italy
-        "7719B48A-2005-4011-9280-2F64EEC6FD91": "day",      // Southern California to Baja
-        "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": "day",      // Western Africa to the Alps (sunset...)
-        "BAF76353-3475-4855-B7E1-CE96CC9BC3A7": "night",    // Dubai
-        "30313BC1-BF20-45EB-A7B1-5A6FFDBD2488": "night",    // Hong Kong
-        "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": "night",    // Los Angeles
-        "EC67726A-8212-4C5E-83CF-8412932740D2": "night",    // Los Angeles
-        "A284F0BF-E690-4C13-92E2-4672D93E8DE5": "night",    // Los Angeles
-        "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": "night",    // New York night
+        "B1B5DDC5-73C8-4920-8133-BACCE38A08DE": "night", // Space - Mexico City to New York
+        "78911B7E-3C69-47AD-B635-9C2486F6301D": "sunrise", // Space - New Zealand
+        "737E9E24-49BE-4104-9B72-F352DE1AD2BF": "sunrise", // Space - North America Aurora
+        "87060EC2-D006-4102-98CC-3005C68BB343": "sunset", // Space - South Africa to North Asia
+        "63C042F0-90EF-4A95-B7CC-CC9A64BF8421": "sunset", // Space - West Africa to the Alps
+
+        "044AD56C-A107-41B2-90CC-E60CCACFBCF5": "sunset", // China - Great Wall 3
+        "EE01F02D-1413-436C-AB05-410F224A5B7B": "sunset", // Greenland - Ilulissat Icefjord
+        "B8F204CE-6024-49AB-85F9-7CA2F6DCD226": "sunrise", // Greenland - Nuussuaq Peninsula
+        "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": "sunset", // Hawaii - Pu‘u O ‘Umi
+
         "9680B8EB-CE2A-4395-AF41-402801F4D6A6": "night",    // Approaching Burj Khalifa
-        "EE01F02D-1413-436C-AB05-410F224A5B7B": "night",    // Ilulissat Icefjord
-        "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": "night",    // Hong Kong Victoria Harbour
-        "3E94AE98-EAF2-4B09-96E3-452F46BC114E": "night",    // Bay Bridge
-        "29BDF297-EB43-403A-8719-A78DA11A2948": "night",    // Fisherman's Wharf
-        "82BD33C9-B6D2-47E7-9C42-AA3B7758921A": "night",    // Pu'u O 'Umi Night
-        "3D729CFC-9000-48D3-A052-C5BD5B7A6842": "night",    // Kohala Coastline
-        "F604AF56-EA77-4960-AEF7-82533CC1A8B3": "night",    // River Thames near sunset
-        "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": "night",    // River Thames at dusk
-        "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": "night",    // Downtown (LA)
-        "640DFB00-FBB9-45DA-9444-9F663859F4BC": "night",    // Lower Manhattan
-        "44166C39-8566-4ECA-BD16-43159429B52F": "night",    // Seventh Avenue
-        "03EC0F5E-CCA8-4E0A-9FEC-5BD1CE151182": "night",    // Antartica Aurora
-        "737E9E24-49BE-4104-9B72-F352DE1AD2BF": "night",    // North America Aurora
+        "3E94AE98-EAF2-4B09-96E3-452F46BC114E": "night", // San Francisco - Bay Bridge
+        "4AD99907-9E76-408D-A7FC-8429FF014201": "sunset", // San Francisco - Bay and Embarcadero
+        "00BA71CD-2C54-415A-A68A-8358E677D750": "sunrise", // Dubai - Downtown
+        "F5804DD6-5963-40DA-9FA0-39C0C6E6DEF9": "night", // Los Angeles - Downtown
+
+        "b6-4": "sunset", // San Francisco - Downtown and Coit Tower
+        "b2-4": "sunset", // San Francisco - Downtown and Sutro Tower
+        "85CE77BF-3413-4A7B-9B0F-732E96229A73": "sunrise", // San Francisco - Embarcadero, Market Street
+        "b5-3": "sunset", // San Francisco - Embarcadero, Market Street
+        "29BDF297-EB43-403A-8719-A78DA11A2948": "sunrise", // San Francisco - Fisherman’s Wharf
+        "640DFB00-FBB9-45DA-9444-9F663859F4BC": "sunset", // New York - Lower Manhattan
+        "7F4C26C2-67C2-4C3A-8F07-8A7BF6148C97": "sunset", // London - River Thames at Dusk
+        "F604AF56-EA77-4960-AEF7-82533CC1A8B3": "sunset", // London - River Thames near Sunset
+        "44166C39-8566-4ECA-BD16-43159429B52F": "night", // New York - Seventh Avenue
+        "2F11E857-4F77-4476-8033-4A1E4610AFCC": "night", // Dubai - Sheikh Zayed Road
+        "E99FA658-A59A-4A2D-9F3B-58E7BDC71A9A": "sunset", // Hong Kong - Victoria Harbour
+
+        "3D729CFC-9000-48D3-A052-C5BD5B7A6842": "sunset", // Hawaii - Kohala Coastline
+
+        "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": "sunset", // Los Angeles - Griffith Observatory
+        "EC67726A-8212-4C5E-83CF-8412932740D2": "sunset", // Los Angeles - Hollywood Hills
+        "EE533FBD-90AE-419A-AD13-D7A60E2015D6": "sunrise", // San Francisco - Marin Headlands in Fog
+        "b4-3": "sunrise", // San Francisco - Presidio to Golden Gate
+
+        //"BAF76353-3475-4855-B7E1-CE96CC9BC3A7": "night",    // Dubai
+        //"30313BC1-BF20-45EB-A7B1-5A6FFDBD2488": "night",    // Hong Kong
+        //"A284F0BF-E690-4C13-92E2-4672D93E8DE5": "night",    // Los Angeles (old ?)
+
+        //"44166C39-8566-4ECA-BD16-43159429B52F": "night",    // Seventh Avenue
     ]
 
     // Extra POI
@@ -260,6 +328,12 @@ struct SourceInfo {
             return .sea
         } else if spaceVideos.contains(id) {
             return .space
+        } else if cityVideos.contains(id) {
+            return .city
+        } else if countrySideVideos.contains(id) {
+            return .countryside
+        } else if beachVideos.contains(id) {
+            return .beach
         }
 
         return nil

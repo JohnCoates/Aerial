@@ -46,7 +46,6 @@ class LocationLayer: AnimationTextLayer {
 
     // Called at each new video
     override func setupForVideo(video: AerialVideo, player: AVPlayer) {
-        print("sfv location")
         let poiStringProvider = PoiStringProvider.sharedInstance
         // We need to make sure we actually have descriptions to show.
         // Custom videos, and earlier tvOS videos may not
@@ -55,7 +54,13 @@ class LocationLayer: AnimationTextLayer {
             let (keys, times) = getKeysAndTimestamps(video: video)
 
             // Animate the very first one on it's own
-            let str = poiStringProvider.getString(key: keys["0"]!, video: video)
+            var initialKey = keys["0"]!
+            // Oh Apple... This is a temporary fix for Coit Tower Night where a key was reused
+            if initialKey == "A004_C012_0" && video.id == "b6-4" {
+                initialKey = "A004_C012_100"
+            }
+
+            let str = poiStringProvider.getString(key: initialKey, video: video)
 
             let duration = calculateAnimationDuration(times: times, current: times[0], video: video)
             let fadeAnimation = createFadeInOutAnimation(duration: duration)

@@ -95,7 +95,7 @@ class ConditionLayer: CALayer {
     func downloadImage(from url: URL) {
         getData(from: url) { data, _, error in
             guard let data = data, error == nil else { return }
-            //print(response?.suggestedFilename ?? url.lastPathComponent)
+
             DispatchQueue.main.async() {
                 let imgs = NSImage(data: data)
 

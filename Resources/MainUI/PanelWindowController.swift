@@ -91,10 +91,14 @@ class PanelWindowController: NSWindowController {
         splitVC!.addSplitViewItem(videoViewItem!)
 
         window?.contentViewController = splitVC
-
-        //doFirstTimeSetup()
+        //PrefsAdvanced.firstTimeSetup = false
+        doFirstTimeSetup()
 
         debugLog("/PWC2 wdl")
+    }
+
+    func stopVideo() {
+        videosVC?.stopVideo()
     }
 
     func doFirstTimeSetup() {
@@ -149,7 +153,7 @@ class PanelWindowController: NSWindowController {
               path != currentPath else {
             return
         }
-        print("switch to : \(path)")
+
         if path.starts(with: "videos:") {
             let idx = path.firstIndex(of: ":")
             videosVC.reloadFor(path: String(path[idx!...].dropFirst())) // Oh Swift...

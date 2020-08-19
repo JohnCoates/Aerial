@@ -70,12 +70,9 @@ final class VideoManager: NSObject {
 
     @discardableResult
     func queueDownload(_ video: AerialVideo) -> VideoDownloadOperation {
-        print(queue.isSuspended)
         if stopAll {
             stopAll = false
         }
-
-        print(queue.operations)
 
         let operation = VideoDownloadOperation(video: video, delegate: self)
         operations[video.id] = operation
@@ -159,7 +156,6 @@ final class VideoDownloadOperation: AsynchronousOperation {
     override func main() {
         let videoManager = VideoManager.sharedInstance
         if videoManager.stopAll {
-            print("was cancelled and mained")
             return
         }
 

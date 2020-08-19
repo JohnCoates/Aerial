@@ -15,9 +15,9 @@ class FiltersViewController: NSViewController {
     @IBOutlet var imageView3: NSImageView!
     @IBOutlet var imageView4: NSImageView!
 
-    @IBOutlet var imageViewTest: NSImageView!
     @IBOutlet var vibranceSlider: NSSlider!
 
+    @IBOutlet var allowPerVideo: NSButton!
     var images: [NSImageView: CIImage] = [:]
 
     override func viewDidLoad() {
@@ -27,6 +27,8 @@ class FiltersViewController: NSViewController {
 
         setupImages()
         redrawFilteredImages()
+
+        allowPerVideo.state = PrefsVideos.allowPerVideoVibrance ? .on : .off
     }
 
     func setupImages() {
@@ -50,6 +52,7 @@ class FiltersViewController: NSViewController {
         }
 
     }
+
     func redrawFilteredImages() {
         for (view, image) in images {
             setupImage(for: view, ciImage: image)
@@ -73,7 +76,7 @@ class FiltersViewController: NSViewController {
                 nsImage.addRepresentation(rep)
                 imageView.image = nsImage
             } else {
-                print("ERROR")
+                errorLog("Couldn't apply vibrance filter, please report")
             }
         } else {
             // Fallback on earlier versions
@@ -86,4 +89,9 @@ class FiltersViewController: NSViewController {
         PrefsVideos.globalVibrance = sender.doubleValue
         redrawFilteredImages()
     }
+
+    @IBAction func allowPerVideoChange(_ sender: NSButton) {
+        PrefsVideos.allowPerVideoVibrance = sender.state == .on
+    }
+
 }

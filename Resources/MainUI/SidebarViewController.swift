@@ -21,6 +21,7 @@ class SidebarViewController: NSViewController {
     @IBOutlet var infoButton: NSButton!
 
     // For the download indicator
+    @IBOutlet var downloadIndicator: NSView!
     @IBOutlet var downloadIndicatorProgress: NSProgressIndicator!
     @IBOutlet var downloadIndicatorLabel: NSTextField!
     @IBOutlet var downloadCancelButton: NSButton!
@@ -37,7 +38,10 @@ class SidebarViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        closeButton.isHighlighted = true
+        if #available(OSX 10.16, *) {
+            closeButton.isHighlighted = true
+        }
+
         sidebarOutlineView.delegate = self
         sidebarOutlineView.dataSource = self
 
@@ -58,6 +62,15 @@ class SidebarViewController: NSViewController {
 
         infoButton.image = Aerial.getSymbol("info.circle")?.tinting(with: NSColor.secondaryLabelColor)
         infoButton.alternateImage = Aerial.getAccentedSymbol("info.circle")
+
+        downloadIndicator.isHidden = true
+        downloadIndicatorProgress.doubleValue = 0
+
+        /*let shadow: NSShadow = NSShadow()
+        shadow.shadowBlurRadius = 2
+        shadow.shadowOffset = NSSize(width: 0, height: -3)
+        shadow.shadowColor = NSColor.black */
+        //downloadIndicator.shadow = shadow
     }
 
     override func viewDidAppear() {
@@ -110,6 +123,15 @@ class SidebarViewController: NSViewController {
         // and our settings won't get saved as they should be
         Preferences.sharedInstance.synchronize()
 
+        windowController!.stopVideo()
+
+        if !downloadIndicator.isHidden {
+            //swiftlint:disable:next line_length
+            if !Aerial.showAlert(question: "Downloads still in progress", text: "Your video downloads are still in progress. Are you sure you want to quit ? This will abandon your current downloads.", button1: "Quit and Abandon Downloads", button2: "Cancel") {
+                return
+            }
+        }
+
         if Aerial.instance.appMode {
             NSApplication.shared.terminate(nil)
         } else {
@@ -121,19 +143,23 @@ class SidebarViewController: NSViewController {
     // Update the status of the download bar at the bottom of the sidebar
     func updateDownloads(done: Int, total: Int, progress: Double) {
         if total == 0 {
-            downloadIndicatorProgress.isHidden = true
-            downloadIndicatorLabel.isHidden = true
-            downloadCancelButton.isHidden = true
+            downloadIndicator.isHidden = true
+            downloadIndicatorProgress.doubleValue = 0
+
             windowController!.updateViewInPlace()
+            Sidebar.instance.refreshVideos()
+            sidebarOutlineView.reloadData()
+            sidebarOutlineView.expandItem(nil, expandChildren: true)
+            sidebarOutlineView.selectRowIndexes([0], byExtendingSelection: false)
+
         } else if progress == 0 {
-            downloadIndicatorProgress.isHidden = false
-            downloadIndicatorLabel.isHidden = false
-            downloadCancelButton.isHidden = false
+            downloadIndicator.isHidden = false
             downloadIndicatorProgress.doubleValue = Double(done)
             downloadIndicatorProgress.maxValue = Double(total)
-            downloadIndicatorProgress.toolTip = "\(done) / \(total) queued"
-            downloadIndicatorLabel.stringValue = "\(done) / \(total) queued"
+            downloadIndicatorProgress.toolTip = "Downloading \(done) / \(total)"
+            downloadIndicatorLabel.stringValue = "Downloading \(done) / \(total)"
         } else {
+            downloadIndicator.isHidden = false
             downloadIndicatorProgress.doubleValue = Double(done) + progress
         }
     }
@@ -249,7 +275,6 @@ extension SidebarViewController: NSOutlineViewDelegate {
 extension SidebarViewController: SidebarOutlineViewDelegate {
 
     func outlineView(outlineView: NSOutlineView, menuForItem item: Any) -> NSMenu? {
-        print("menu")
         // Make sure we're right clicking a menu entry
         if let entry = item as? Sidebar.MenuEntry {
             if entry.path.starts(with: "videos:") {
@@ -262,11 +287,6 @@ extension SidebarViewController: SidebarOutlineViewDelegate {
                 var videos: [AerialVideo]
 
                 if let mode = VideoList.instance.modeFromPath(path) {
-                    if mode == .hidden {
-                        // No menu for hidden mode
-                        return nil
-                    }
-
                     let index = Int(path.split(separator: ":")[1])!
                     videos = VideoList.instance.getVideosForSource(index, mode: mode)
                 } else {
@@ -282,6 +302,17 @@ extension SidebarViewController: SidebarOutlineViewDelegate {
 
                 var hasUnfavs = false
                 var hasFavs = false
+
+                // Add a unhide menu just for the hidden category
+                if let mode = VideoList.instance.modeFromPath(path) {
+                    if mode == .hidden {
+                        let item = NSMenuItem(title: "Show videos", action: #selector(showVideos(_:)), keyEquivalent: "")
+                        item.setIcons("eye")
+                        menu.addItem(item)
+
+                        return menu
+                    }
+                }
 
                 // Add/remove favorites
                 if !videos.filter({ !PrefsVideos.favorites.contains($0.id) }).isEmpty {
@@ -370,6 +401,24 @@ extension SidebarViewController: SidebarOutlineViewDelegate {
         windowController!.updateViewInPlace()
     }
 
+    @objc func showVideos(_ sender: Any) {
+        if menuPath == "" {
+            errorLog("Right click missing path")
+            return
+        }
+        let videos = VideoList.instance.getVideosForPath(self.menuPath)
+
+        for video in videos.filter({ PrefsVideos.hidden.contains($0.id) }) {
+            PrefsVideos.hidden.remove(at: PrefsVideos.hidden.firstIndex(of: video.id)!)
+        }
+
+        // We need to reload our sidebar
+        Sidebar.instance.refreshVideos()
+        sidebarOutlineView.reloadData()
+        sidebarOutlineView.expandItem(nil, expandChildren: true)
+        sidebarOutlineView.selectRowIndexes([0], byExtendingSelection: false)
+    }
+
     @objc func hideVideos(_ sender: Any) {
         if menuPath == "" {
             errorLog("Right click missing path")
@@ -381,6 +430,14 @@ extension SidebarViewController: SidebarOutlineViewDelegate {
             PrefsVideos.hidden.append(video.id)
         }
 
+        // We need to reload our sidebar
+        Sidebar.instance.refreshVideos()
+        sidebarOutlineView.reloadData()
+        sidebarOutlineView.expandItem(nil, expandChildren: true)
+        sidebarOutlineView.selectRowIndexes([0], byExtendingSelection: false)
+    }
+
+    func reloadSidebar() {
         // We need to reload our sidebar
         Sidebar.instance.refreshVideos()
         sidebarOutlineView.reloadData()

@@ -24,16 +24,8 @@
                     <view key="contentView" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="klP-MJ-bdd">
                         <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Ht-yo-ckm">
-                                <rect key="frame" x="243" y="221" width="257" height="35"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Welcome to Aerial" id="zIs-lv-iOt">
-                                    <font key="font" metaFont="systemBold" size="30"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AiK-TD-2Qt">
-                                <rect key="frame" x="243" y="160" width="253" height="16"/>
+                                <rect key="frame" x="408" y="292" width="253" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Before you start, let's setup a few things!" id="Uez-be-ewR">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -41,32 +33,44 @@
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8XI-B4-VMv">
-                                <rect key="frame" x="50" y="120" width="160" height="160"/>
+                                <rect key="frame" x="50" y="140" width="320" height="320"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="O7k-f1-D6F"/>
-                                    <constraint firstAttribute="height" constant="160" id="lXd-nw-nR6"/>
+                                    <constraint firstAttribute="height" constant="320" id="CDx-dH-VPg"/>
+                                    <constraint firstAttribute="width" constant="320" id="Psv-Kd-WJ3"/>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-320" id="2ck-4q-RCI"/>
                             </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Ht-yo-ckm">
+                                <rect key="frame" x="408" y="353" width="257" height="35"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Welcome to Aerial" id="zIs-lv-iOt">
+                                    <font key="font" metaFont="systemBold" size="30"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="3Ht-yo-ckm" firstAttribute="leading" secondItem="8XI-B4-VMv" secondAttribute="trailing" constant="35" id="60c-zc-5tT"/>
-                            <constraint firstItem="3Ht-yo-ckm" firstAttribute="top" secondItem="klP-MJ-bdd" secondAttribute="top" constant="124" id="Noc-Ex-zPW"/>
-                            <constraint firstItem="8XI-B4-VMv" firstAttribute="top" secondItem="klP-MJ-bdd" secondAttribute="top" constant="100" id="Q1m-VA-TqP"/>
-                            <constraint firstItem="AiK-TD-2Qt" firstAttribute="top" secondItem="3Ht-yo-ckm" secondAttribute="bottom" constant="45" id="Ztj-gP-0XW"/>
-                            <constraint firstItem="AiK-TD-2Qt" firstAttribute="leading" secondItem="8XI-B4-VMv" secondAttribute="trailing" constant="35" id="svs-LT-Wz4"/>
-                            <constraint firstItem="8XI-B4-VMv" firstAttribute="leading" secondItem="klP-MJ-bdd" secondAttribute="leading" constant="50" id="tfr-9F-7Ba"/>
-                            <constraint firstAttribute="bottom" secondItem="8XI-B4-VMv" secondAttribute="bottom" constant="120" id="uiu-Gi-krf"/>
+                            <constraint firstItem="AiK-TD-2Qt" firstAttribute="top" secondItem="3Ht-yo-ckm" secondAttribute="bottom" constant="45" id="1fX-AF-tm6"/>
+                            <constraint firstItem="AiK-TD-2Qt" firstAttribute="leading" secondItem="8XI-B4-VMv" secondAttribute="trailing" constant="40" id="C3Q-re-Cml"/>
+                            <constraint firstItem="AiK-TD-2Qt" firstAttribute="leading" secondItem="3Ht-yo-ckm" secondAttribute="leading" id="FvT-4Y-TsK"/>
+                            <constraint firstItem="8XI-B4-VMv" firstAttribute="leading" secondItem="klP-MJ-bdd" secondAttribute="leading" constant="50" id="MWY-6A-waf"/>
+                            <constraint firstItem="AiK-TD-2Qt" firstAttribute="centerY" secondItem="8XI-B4-VMv" secondAttribute="centerY" id="nwE-R8-59k"/>
+                            <constraint firstItem="8XI-B4-VMv" firstAttribute="top" secondItem="klP-MJ-bdd" secondAttribute="top" constant="140" id="shL-Ik-nPZ"/>
+                            <constraint firstAttribute="bottom" secondItem="8XI-B4-VMv" secondAttribute="bottom" constant="140" id="ygI-A6-tmh"/>
                         </constraints>
                     </view>
-                    <color key="fillColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="600" id="gvD-my-C0q"/>
+                        <constraint firstAttribute="width" constant="800" id="qUw-Iy-I2s"/>
+                    </constraints>
+                    <color key="fillColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                 </box>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="eVB-C0-e5X" secondAttribute="bottom" id="IFa-7V-kvV"/>
-                <constraint firstItem="eVB-C0-e5X" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="RJh-gz-onN"/>
-                <constraint firstAttribute="trailing" secondItem="eVB-C0-e5X" secondAttribute="trailing" id="hSq-0U-2DM"/>
-                <constraint firstItem="eVB-C0-e5X" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="xl7-vj-1Ap"/>
+                <constraint firstItem="eVB-C0-e5X" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="ILN-w6-Tat"/>
+                <constraint firstItem="eVB-C0-e5X" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="RAC-tQ-WOy"/>
+                <constraint firstAttribute="bottom" secondItem="eVB-C0-e5X" secondAttribute="bottom" id="Rre-uU-kCL"/>
+                <constraint firstAttribute="trailing" secondItem="eVB-C0-e5X" secondAttribute="trailing" id="wXz-Pu-QKI"/>
             </constraints>
             <point key="canvasLocation" x="-58.5" y="217"/>
         </customView>

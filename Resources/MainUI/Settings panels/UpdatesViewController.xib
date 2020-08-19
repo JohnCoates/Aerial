@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,14 +21,14 @@
                     <rect key="frame" x="198" y="344" width="539" height="48"/>
                     <textFieldCell key="cell" controlSize="large" selectable="YES" id="SEq-HA-Ija">
                         <font key="font" metaFont="system"/>
-                        <string key="title">Starting with version 2.0, Aerial no longer includes Sparkle for auto updates as it created many stability issues with recent versions of macOS. If you want automatic updates, please use our separate AerialUpdater.app that you can find below: </string>
+                        <string key="title">Starting with version 2.0, Aerial no longer includes Sparkle for auto updates as it created many stability issues with recent versions of macOS. If you want automatic updates, please use our separate companion app that you can find below: </string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4M6-xX-Wfr">
-                    <rect key="frame" x="194" y="294" width="244" height="40"/>
-                    <buttonCell key="cell" type="push" title="Go to AerialUpdater project page" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ILN-1M-2Lt">
+                    <rect key="frame" x="194" y="294" width="264" height="40"/>
+                    <buttonCell key="cell" type="push" title="Go to AerialCompanion project page" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ILN-1M-2Lt">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -38,7 +38,7 @@
                 </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="gC6-yV-GGg">
                     <rect key="frame" x="198" y="247" width="539" height="32"/>
-                    <textFieldCell key="cell" controlSize="large" selectable="YES" title="Alternatively, you can also use homebrew to install Aerial. Assuming you already have homebrew installed, you can type :" id="tH1-aD-x7P">
+                    <textFieldCell key="cell" controlSize="large" selectable="YES" title="Alternatively, you can also use homebrew to install Aerial. Assuming you already have homebrew installed, you can type:" id="tH1-aD-x7P">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

@@ -280,6 +280,24 @@
 		036A57DC23F5828E0009DC02 /* CountdownLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57DA23F5820A0009DC02 /* CountdownLayer.swift */; };
 		0374C9FE247AC5BC002F29D3 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374C9FD247AC5BC002F29D3 /* Locations.swift */; };
 		0374C9FF247AC5BC002F29D3 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374C9FD247AC5BC002F29D3 /* Locations.swift */; };
+		037772E124E43AF300D81EEA /* TimeSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037772DF24E43AF300D81EEA /* TimeSetupViewController.swift */; };
+		037772E224E43AF300D81EEA /* TimeSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037772DF24E43AF300D81EEA /* TimeSetupViewController.swift */; };
+		037772E324E43AF300D81EEA /* TimeSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037772DF24E43AF300D81EEA /* TimeSetupViewController.swift */; };
+		037772E424E43AF300D81EEA /* TimeSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037772E024E43AF300D81EEA /* TimeSetupViewController.xib */; };
+		037772E524E43AF300D81EEA /* TimeSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037772E024E43AF300D81EEA /* TimeSetupViewController.xib */; };
+		037772E624E43AF300D81EEA /* TimeSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037772E024E43AF300D81EEA /* TimeSetupViewController.xib */; };
+		037772E824E44BB100D81EEA /* xmark.circle.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 037772E724E44BB100D81EEA /* xmark.circle.pdf */; };
+		037772E924E44BB100D81EEA /* xmark.circle.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 037772E724E44BB100D81EEA /* xmark.circle.pdf */; };
+		037772EA24E44BB100D81EEA /* xmark.circle.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 037772E724E44BB100D81EEA /* xmark.circle.pdf */; };
+		037772ED24E44CE100D81EEA /* RecapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037772EB24E44CE100D81EEA /* RecapViewController.swift */; };
+		037772EE24E44CE100D81EEA /* RecapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037772EB24E44CE100D81EEA /* RecapViewController.swift */; };
+		037772EF24E44CE100D81EEA /* RecapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037772EB24E44CE100D81EEA /* RecapViewController.swift */; };
+		037772F024E44CE100D81EEA /* RecapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037772EC24E44CE100D81EEA /* RecapViewController.xib */; };
+		037772F124E44CE100D81EEA /* RecapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037772EC24E44CE100D81EEA /* RecapViewController.xib */; };
+		037772F224E44CE100D81EEA /* RecapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037772EC24E44CE100D81EEA /* RecapViewController.xib */; };
+		037772FC24E4668600D81EEA /* aspectratio.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 037772F424E4668600D81EEA /* aspectratio.pdf */; };
+		037772FD24E4668600D81EEA /* aspectratio.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 037772F424E4668600D81EEA /* aspectratio.pdf */; };
+		037772FE24E4668600D81EEA /* aspectratio.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 037772F424E4668600D81EEA /* aspectratio.pdf */; };
 		0377BF8624BA15E700C33F9F /* btn_donate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0377BF6F24BA15E600C33F9F /* btn_donate.png */; };
 		0377BF8724BA15E700C33F9F /* btn_donate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0377BF6F24BA15E600C33F9F /* btn_donate.png */; };
 		0377BF8824BA15E700C33F9F /* btn_donate.png in Resources */ = {isa = PBXBuildFile; fileRef = 0377BF6F24BA15E600C33F9F /* btn_donate.png */; };
@@ -537,6 +555,21 @@
 		03AA7AC224C84C6400A47970 /* wind.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03AA7A5C24C84C6300A47970 /* wind.pdf */; };
 		03AD45FF22981B0C00261325 /* CustomVideoFolders+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AD45FE22981B0C00261325 /* CustomVideoFolders+helpers.swift */; };
 		03AD460022981B1C00261325 /* CustomVideoFolders+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AD45FE22981B0C00261325 /* CustomVideoFolders+helpers.swift */; };
+		03B8742224E41CF8008E3D1B /* CacheSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8742024E41CF8008E3D1B /* CacheSetupViewController.swift */; };
+		03B8742324E41CF8008E3D1B /* CacheSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8742024E41CF8008E3D1B /* CacheSetupViewController.swift */; };
+		03B8742424E41CF8008E3D1B /* CacheSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8742024E41CF8008E3D1B /* CacheSetupViewController.swift */; };
+		03B8742524E41CF8008E3D1B /* CacheSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B8742124E41CF8008E3D1B /* CacheSetupViewController.xib */; };
+		03B8742624E41CF8008E3D1B /* CacheSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B8742124E41CF8008E3D1B /* CacheSetupViewController.xib */; };
+		03B8742724E41CF8008E3D1B /* CacheSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B8742124E41CF8008E3D1B /* CacheSetupViewController.xib */; };
+		03B8743224E42675008E3D1B /* wand.and.rays.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03B8742F24E42675008E3D1B /* wand.and.rays.pdf */; };
+		03B8743324E42675008E3D1B /* wand.and.rays.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03B8742F24E42675008E3D1B /* wand.and.rays.pdf */; };
+		03B8743424E42675008E3D1B /* wand.and.rays.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03B8742F24E42675008E3D1B /* wand.and.rays.pdf */; };
+		03B8743524E42675008E3D1B /* wand.and.stars.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03B8743024E42675008E3D1B /* wand.and.stars.pdf */; };
+		03B8743624E42675008E3D1B /* wand.and.stars.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03B8743024E42675008E3D1B /* wand.and.stars.pdf */; };
+		03B8743724E42675008E3D1B /* wand.and.stars.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03B8743024E42675008E3D1B /* wand.and.stars.pdf */; };
+		03B8743824E42675008E3D1B /* hand.raised.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03B8743124E42675008E3D1B /* hand.raised.pdf */; };
+		03B8743924E42675008E3D1B /* hand.raised.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03B8743124E42675008E3D1B /* hand.raised.pdf */; };
+		03B8743A24E42675008E3D1B /* hand.raised.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03B8743124E42675008E3D1B /* hand.raised.pdf */; };
 		03BDBEA224C467EC00BBD5E9 /* BrightnessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BDBEA024C467EC00BBD5E9 /* BrightnessViewController.swift */; };
 		03BDBEA324C467EC00BBD5E9 /* BrightnessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BDBEA024C467EC00BBD5E9 /* BrightnessViewController.swift */; };
 		03BDBEA424C467EC00BBD5E9 /* BrightnessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BDBEA024C467EC00BBD5E9 /* BrightnessViewController.swift */; };
@@ -661,6 +694,9 @@
 		03EED2F324C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03EED2EF24C44A7900F0C3D4 /* OverlaysViewController.xib */; };
 		03EED2F424C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03EED2EF24C44A7900F0C3D4 /* OverlaysViewController.xib */; };
 		03EED2F524C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03EED2EF24C44A7900F0C3D4 /* OverlaysViewController.xib */; };
+		03F5551B24E9C091003AAD0B /* SourceOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5551A24E9C091003AAD0B /* SourceOutlineView.swift */; };
+		03F5551C24E9C091003AAD0B /* SourceOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5551A24E9C091003AAD0B /* SourceOutlineView.swift */; };
+		03F5551D24E9C091003AAD0B /* SourceOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5551A24E9C091003AAD0B /* SourceOutlineView.swift */; };
 		03F8FF1F244B67D200813C96 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; };
 		03F8FF20244B67D200813C96 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03FA49A12423DA1F00863AF6 /* TimerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA49A02423DA1F00863AF6 /* TimerLayer.swift */; };
@@ -903,6 +939,12 @@
 		036A57D723F470940009DC02 /* InfoCountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCountdownView.swift; sourceTree = "<group>"; };
 		036A57DA23F5820A0009DC02 /* CountdownLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownLayer.swift; sourceTree = "<group>"; };
 		0374C9FD247AC5BC002F29D3 /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
+		037772DF24E43AF300D81EEA /* TimeSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSetupViewController.swift; sourceTree = "<group>"; };
+		037772E024E43AF300D81EEA /* TimeSetupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeSetupViewController.xib; sourceTree = "<group>"; };
+		037772E724E44BB100D81EEA /* xmark.circle.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = xmark.circle.pdf; sourceTree = "<group>"; };
+		037772EB24E44CE100D81EEA /* RecapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecapViewController.swift; sourceTree = "<group>"; };
+		037772EC24E44CE100D81EEA /* RecapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecapViewController.xib; sourceTree = "<group>"; };
+		037772F424E4668600D81EEA /* aspectratio.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = aspectratio.pdf; sourceTree = "<group>"; };
 		0377BF6F24BA15E600C33F9F /* btn_donate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_donate.png; sourceTree = "<group>"; };
 		0378985C24C35F8A009B9418 /* CacheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheViewController.swift; sourceTree = "<group>"; };
 		0378985D24C35F8A009B9418 /* CacheViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CacheViewController.xib; sourceTree = "<group>"; };
@@ -967,6 +1009,11 @@
 		03AA7A5B24C84C6300A47970 /* cloud.sleet.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = cloud.sleet.pdf; sourceTree = "<group>"; };
 		03AA7A5C24C84C6300A47970 /* wind.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = wind.pdf; sourceTree = "<group>"; };
 		03AD45FE22981B0C00261325 /* CustomVideoFolders+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomVideoFolders+helpers.swift"; sourceTree = "<group>"; };
+		03B8742024E41CF8008E3D1B /* CacheSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheSetupViewController.swift; sourceTree = "<group>"; };
+		03B8742124E41CF8008E3D1B /* CacheSetupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CacheSetupViewController.xib; sourceTree = "<group>"; };
+		03B8742F24E42675008E3D1B /* wand.and.rays.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = wand.and.rays.pdf; sourceTree = "<group>"; };
+		03B8743024E42675008E3D1B /* wand.and.stars.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = wand.and.stars.pdf; sourceTree = "<group>"; };
+		03B8743124E42675008E3D1B /* hand.raised.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = hand.raised.pdf; sourceTree = "<group>"; };
 		03BDBEA024C467EC00BBD5E9 /* BrightnessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessViewController.swift; sourceTree = "<group>"; };
 		03BDBEA124C467EC00BBD5E9 /* BrightnessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrightnessViewController.xib; sourceTree = "<group>"; };
 		03BDBEBE24C4727C00BBD5E9 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
@@ -1021,6 +1068,7 @@
 		03EED2D124C3A47700F0C3D4 /* UpdatesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatesViewController.xib; sourceTree = "<group>"; };
 		03EED2EE24C44A7900F0C3D4 /* OverlaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaysViewController.swift; sourceTree = "<group>"; };
 		03EED2EF24C44A7900F0C3D4 /* OverlaysViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverlaysViewController.xib; sourceTree = "<group>"; };
+		03F5551A24E9C091003AAD0B /* SourceOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOutlineView.swift; sourceTree = "<group>"; };
 		03FA49A02423DA1F00863AF6 /* TimerLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLayer.swift; sourceTree = "<group>"; };
 		03FA49B32428EE3300863AF6 /* InfoDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDateView.swift; sourceTree = "<group>"; };
 		03FA49B62428F84500863AF6 /* DateLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLayer.swift; sourceTree = "<group>"; };
@@ -1101,6 +1149,12 @@
 				0300B85F24D2052B006132E5 /* WelcomeViewController.swift */,
 				03BF179E24E2F29C0080EF34 /* VideoFormatViewController.xib */,
 				03BF179D24E2F29C0080EF34 /* VideoFormatViewController.swift */,
+				03B8742124E41CF8008E3D1B /* CacheSetupViewController.xib */,
+				03B8742024E41CF8008E3D1B /* CacheSetupViewController.swift */,
+				037772E024E43AF300D81EEA /* TimeSetupViewController.xib */,
+				037772DF24E43AF300D81EEA /* TimeSetupViewController.swift */,
+				037772EC24E44CE100D81EEA /* RecapViewController.xib */,
+				037772EB24E44CE100D81EEA /* RecapViewController.swift */,
 				0300B86824D20B12006132E5 /* NextViewController.xib */,
 				0300B86724D20B12006132E5 /* NextViewController.swift */,
 			);
@@ -1207,6 +1261,9 @@
 		0345D01524C0A2F60001045C /* UI Icons */ = {
 			isa = PBXGroup;
 			children = (
+				03B8743124E42675008E3D1B /* hand.raised.pdf */,
+				03B8742F24E42675008E3D1B /* wand.and.rays.pdf */,
+				03B8743024E42675008E3D1B /* wand.and.stars.pdf */,
 				0300B7D824D1B533006132E5 /* antenna.radiowaves.left.and.right.pdf */,
 				0300B7DF24D1B534006132E5 /* arrow.down.circle.fill.pdf */,
 				0300B7DB24D1B534006132E5 /* arrow.down.circle.pdf */,
@@ -1240,6 +1297,8 @@
 				0300B7CF24D1B532006132E5 /* text.bubble.pdf */,
 				0300B7DA24D1B534006132E5 /* tram.fill.pdf */,
 				0300B7E124D1B535006132E5 /* tv.pdf */,
+				037772E724E44BB100D81EEA /* xmark.circle.pdf */,
+				037772F424E4668600D81EEA /* aspectratio.pdf */,
 			);
 			path = "UI Icons";
 			sourceTree = "<group>";
@@ -1401,6 +1460,7 @@
 		03C344FA24B778D500906EA6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				03F5551A24E9C091003AAD0B /* SourceOutlineView.swift */,
 				03C344FB24B778EE00906EA6 /* CheckboxCellView.swift */,
 				03C344FE24B7A22300906EA6 /* DescriptionCellView.swift */,
 				0321A53224D44E80004F1975 /* ActionCellView.swift */,
@@ -1869,7 +1929,9 @@
 				0300B82324D1B536006132E5 /* regular.sun.min.pdf in Resources */,
 				0321A53F24D4515B004F1975 /* folder.pdf in Resources */,
 				0300B82924D1B536006132E5 /* arrow.down.circle.fill.pdf in Resources */,
+				037772F124E44CE100D81EEA /* RecapViewController.xib in Resources */,
 				0396D57624B8B7ED00CC021B /* white_retina.png in Resources */,
+				037772FD24E4668600D81EEA /* aspectratio.pdf in Resources */,
 				03AA7A8224C84C6300A47970 /* thermometer.snowflake.pdf in Resources */,
 				03EED2D624C3A47700F0C3D4 /* UpdatesViewController.xib in Resources */,
 				03AA7A7024C84C6300A47970 /* wrench.pdf in Resources */,
@@ -1886,6 +1948,7 @@
 				0300B82624D1B536006132E5 /* mappin.and.ellipse.pdf in Resources */,
 				0300B80B24D1B536006132E5 /* eye.slash.pdf in Resources */,
 				0396D57924B8B7ED00CC021B /* screen2.jpg in Resources */,
+				03B8743324E42675008E3D1B /* wand.and.rays.pdf in Resources */,
 				03D2B8EE24E1E3BF00692B4D /* zh_TW.json in Resources */,
 				0319461124D1A09F00F37B35 /* icon-320@2x.png in Resources */,
 				03AA7ABE24C84C6400A47970 /* cloud.sleet.pdf in Resources */,
@@ -1900,7 +1963,10 @@
 				0300B83B24D1B536006132E5 /* regular.sun.max.pdf in Resources */,
 				0300B7FF24D1B536006132E5 /* star.pdf in Resources */,
 				03AA7A7624C84C6300A47970 /* sun.dust.pdf in Resources */,
+				03B8742624E41CF8008E3D1B /* CacheSetupViewController.xib in Resources */,
 				0377BF8724BA15E700C33F9F /* btn_donate.png in Resources */,
+				037772E524E43AF300D81EEA /* TimeSetupViewController.xib in Resources */,
+				037772E924E44BB100D81EEA /* xmark.circle.pdf in Resources */,
 				0300B82F24D1B536006132E5 /* tv.pdf in Resources */,
 				0300B81424D1B536006132E5 /* antenna.radiowaves.left.and.right.pdf in Resources */,
 				03AA7ABB24C84C6400A47970 /* cloud.sun.pdf in Resources */,
@@ -1921,6 +1987,7 @@
 				0300B80224D1B536006132E5 /* clock.pdf in Resources */,
 				0300B81A24D1B536006132E5 /* tram.fill.pdf in Resources */,
 				0300B82024D1B536006132E5 /* flame.pdf in Resources */,
+				03B8743924E42675008E3D1B /* hand.raised.pdf in Resources */,
 				03AA7AA924C84C6300A47970 /* sun.haze.pdf in Resources */,
 				0300B7EA24D1B536006132E5 /* person.3.pdf in Resources */,
 				031332A024BF3FA700C84A05 /* SidebarViewController.xib in Resources */,
@@ -1936,6 +2003,7 @@
 				03AA7AB224C84C6400A47970 /* cloud.moon.bolt.pdf in Resources */,
 				0300B7FC24D1B536006132E5 /* circle.pdf in Resources */,
 				0300B80524D1B536006132E5 /* sparkles.pdf in Resources */,
+				03B8743624E42675008E3D1B /* wand.and.stars.pdf in Resources */,
 				03BDBEA624C467EC00BBD5E9 /* BrightnessViewController.xib in Resources */,
 				03AA7AC124C84C6400A47970 /* wind.pdf in Resources */,
 				0396D59D24B8B7ED00CC021B /* missingvideos.json in Resources */,
@@ -1979,6 +2047,7 @@
 				033811B524C1E243002E23E0 /* InfoViewController.xib in Resources */,
 				03A42A9D2449F602003B3012 /* purple_retina.png in Resources */,
 				03AA7A7D24C84C6300A47970 /* cloud.pdf in Resources */,
+				037772F224E44CE100D81EEA /* RecapViewController.xib in Resources */,
 				0300B81E24D1B536006132E5 /* arrow.down.circle.pdf in Resources */,
 				0300B82724D1B536006132E5 /* mappin.and.ellipse.pdf in Resources */,
 				0300B7EB24D1B536006132E5 /* person.3.pdf in Resources */,
@@ -1992,6 +2061,7 @@
 				03AA7AC224C84C6400A47970 /* wind.pdf in Resources */,
 				03AA7A8F24C84C6300A47970 /* tropicalstorm.pdf in Resources */,
 				03AA7A6824C84C6300A47970 /* moon.stars.pdf in Resources */,
+				03B8743A24E42675008E3D1B /* hand.raised.pdf in Resources */,
 				03AA7A8324C84C6300A47970 /* thermometer.snowflake.pdf in Resources */,
 				0300B81824D1B536006132E5 /* sunset.pdf in Resources */,
 				03AA7A7124C84C6300A47970 /* wrench.pdf in Resources */,
@@ -2004,6 +2074,7 @@
 				031945F824CCC48C00F37B35 /* CreditsViewController.xib in Resources */,
 				03933B9024C3986800A98D94 /* SourcesViewController.xib in Resources */,
 				0300B82D24D1B536006132E5 /* location.pdf in Resources */,
+				037772EA24E44BB100D81EEA /* xmark.circle.pdf in Resources */,
 				0300B83624D1B536006132E5 /* star.fill.pdf in Resources */,
 				03AA7A9B24C84C6300A47970 /* cloud.snow.pdf in Resources */,
 				0395835621807D1F008E8F9C /* thumbnail.png in Resources */,
@@ -2013,6 +2084,7 @@
 				0378986324C35F8A009B9418 /* CacheViewController.xib in Resources */,
 				0321A54024D4515B004F1975 /* folder.pdf in Resources */,
 				0300B7F124D1B536006132E5 /* helm.pdf in Resources */,
+				037772FE24E4668600D81EEA /* aspectratio.pdf in Resources */,
 				0300B80F24D1B536006132E5 /* info.circle.pdf in Resources */,
 				03AA7A6E24C84C6300A47970 /* battery.0.pdf in Resources */,
 				0300B7F424D1B536006132E5 /* gear.pdf in Resources */,
@@ -2020,6 +2092,7 @@
 				0319460024CCC52600F37B35 /* HelpViewController.xib in Resources */,
 				03AA7AAA24C84C6300A47970 /* sun.haze.pdf in Resources */,
 				03AA7A9224C84C6300A47970 /* moon.pdf in Resources */,
+				03B8743724E42675008E3D1B /* wand.and.stars.pdf in Resources */,
 				0300B83924D1B536006132E5 /* regular.cloud.pdf in Resources */,
 				034DEE3324BF1BC700A2D3CD /* PanelWindowController.xib in Resources */,
 				03D2B8F824E1E3BF00692B4D /* ja.json in Resources */,
@@ -2043,6 +2116,7 @@
 				0300B86E24D20B12006132E5 /* NextViewController.xib in Resources */,
 				03AA7AB924C84C6400A47970 /* bolt.fill.pdf in Resources */,
 				03D1E79222848F7F00D10CF7 /* screen2.jpg in Resources */,
+				03B8743424E42675008E3D1B /* wand.and.rays.pdf in Resources */,
 				FAC36F4A1BE1756D007F2A20 /* MainMenu.xib in Resources */,
 				0300B81224D1B536006132E5 /* regular.moon.stars.pdf in Resources */,
 				03D2B90124E1E3BF00692B4D /* zh_CN.json in Resources */,
@@ -2065,6 +2139,7 @@
 				0300B7EE24D1B536006132E5 /* bubble.left.and.bubble.right.pdf in Resources */,
 				03AA7A8C24C84C6300A47970 /* thermometer.sun.pdf in Resources */,
 				03AA7AA724C84C6300A47970 /* cloud.rain.pdf in Resources */,
+				03B8742724E41CF8008E3D1B /* CacheSetupViewController.xib in Resources */,
 				03AA7A9E24C84C6300A47970 /* cloud.moon.rain.pdf in Resources */,
 				03AA7ABC24C84C6400A47970 /* cloud.sun.pdf in Resources */,
 				0395835421807D1F008E8F9C /* thumbnail@2x.png in Resources */,
@@ -2081,6 +2156,7 @@
 				03AA7AB624C84C6400A47970 /* cloud.bolt.pdf in Resources */,
 				03D1E79822848F7F00D10CF7 /* screen0.jpg in Resources */,
 				0300B82124D1B536006132E5 /* flame.pdf in Resources */,
+				037772E624E43AF300D81EEA /* TimeSetupViewController.xib in Resources */,
 				03D2B8FB24E1E3BF00692B4D /* sv.json in Resources */,
 				03AA7A9524C84C6300A47970 /* sun.min.pdf in Resources */,
 				03D2B8FE24E1E3BF00692B4D /* nl.json in Resources */,
@@ -2117,7 +2193,9 @@
 				0300B82224D1B536006132E5 /* regular.sun.min.pdf in Resources */,
 				0321A53E24D4515B004F1975 /* folder.pdf in Resources */,
 				0300B82824D1B536006132E5 /* arrow.down.circle.fill.pdf in Resources */,
+				037772F024E44CE100D81EEA /* RecapViewController.xib in Resources */,
 				03A42A992449F5EA003B3012 /* white_retina.png in Resources */,
+				037772FC24E4668600D81EEA /* aspectratio.pdf in Resources */,
 				03AA7A8124C84C6300A47970 /* thermometer.snowflake.pdf in Resources */,
 				03EED2D524C3A47700F0C3D4 /* UpdatesViewController.xib in Resources */,
 				03AA7A6F24C84C6300A47970 /* wrench.pdf in Resources */,
@@ -2134,6 +2212,7 @@
 				0300B82524D1B536006132E5 /* mappin.and.ellipse.pdf in Resources */,
 				0300B80A24D1B536006132E5 /* eye.slash.pdf in Resources */,
 				03D1E79122848F7F00D10CF7 /* screen2.jpg in Resources */,
+				03B8743224E42675008E3D1B /* wand.and.rays.pdf in Resources */,
 				03D2B8ED24E1E3BF00692B4D /* zh_TW.json in Resources */,
 				0319461024D1A09F00F37B35 /* icon-320@2x.png in Resources */,
 				03AA7ABD24C84C6400A47970 /* cloud.sleet.pdf in Resources */,
@@ -2148,7 +2227,10 @@
 				0300B83A24D1B536006132E5 /* regular.sun.max.pdf in Resources */,
 				0300B7FE24D1B536006132E5 /* star.pdf in Resources */,
 				03AA7A7524C84C6300A47970 /* sun.dust.pdf in Resources */,
+				03B8742524E41CF8008E3D1B /* CacheSetupViewController.xib in Resources */,
 				0377BF8624BA15E700C33F9F /* btn_donate.png in Resources */,
+				037772E424E43AF300D81EEA /* TimeSetupViewController.xib in Resources */,
+				037772E824E44BB100D81EEA /* xmark.circle.pdf in Resources */,
 				0300B82E24D1B536006132E5 /* tv.pdf in Resources */,
 				0300B81324D1B536006132E5 /* antenna.radiowaves.left.and.right.pdf in Resources */,
 				03AA7ABA24C84C6400A47970 /* cloud.sun.pdf in Resources */,
@@ -2169,6 +2251,7 @@
 				0300B80124D1B536006132E5 /* clock.pdf in Resources */,
 				0300B81924D1B536006132E5 /* tram.fill.pdf in Resources */,
 				0300B81F24D1B536006132E5 /* flame.pdf in Resources */,
+				03B8743824E42675008E3D1B /* hand.raised.pdf in Resources */,
 				03AA7AA824C84C6300A47970 /* sun.haze.pdf in Resources */,
 				0300B7E924D1B536006132E5 /* person.3.pdf in Resources */,
 				0313329F24BF3FA700C84A05 /* SidebarViewController.xib in Resources */,
@@ -2184,6 +2267,7 @@
 				03AA7AB124C84C6400A47970 /* cloud.moon.bolt.pdf in Resources */,
 				0300B7FB24D1B536006132E5 /* circle.pdf in Resources */,
 				0300B80424D1B536006132E5 /* sparkles.pdf in Resources */,
+				03B8743524E42675008E3D1B /* wand.and.stars.pdf in Resources */,
 				03BDBEA524C467EC00BBD5E9 /* BrightnessViewController.xib in Resources */,
 				03AA7AC024C84C6400A47970 /* wind.pdf in Resources */,
 				0369985D2196103300E359D3 /* missingvideos.json in Resources */,
@@ -2310,6 +2394,7 @@
 				0396D52C24B8B7ED00CC021B /* InfoDateView.swift in Sources */,
 				0345EDE924C3239400C73038 /* DisplaysViewController.swift in Sources */,
 				0396D52D24B8B7ED00CC021B /* ManifestLoader.swift in Sources */,
+				037772E224E43AF300D81EEA /* TimeSetupViewController.swift in Sources */,
 				0396D52E24B8B7ED00CC021B /* TimerLayer.swift in Sources */,
 				0396D52F24B8B7ED00CC021B /* Source.swift in Sources */,
 				0396D53024B8B7ED00CC021B /* PrefsInfo.swift in Sources */,
@@ -2323,6 +2408,7 @@
 				0321A54524D5C863004F1975 /* NSButton+icons.swift in Sources */,
 				0396D53824B8B7ED00CC021B /* InfoBatteryView.swift in Sources */,
 				032E099F24C3897E00387230 /* AdvancedViewController.swift in Sources */,
+				037772EE24E44CE100D81EEA /* RecapViewController.swift in Sources */,
 				0396D53A24B8B7ED00CC021B /* DateLayer.swift in Sources */,
 				0396D53B24B8B7ED00CC021B /* AerialPlayerItem.swift in Sources */,
 				0396D53C24B8B7ED00CC021B /* HardwareDetection.swift in Sources */,
@@ -2345,6 +2431,7 @@
 				0396D54A24B8B7ED00CC021B /* DownloadIndicatorLayer.swift in Sources */,
 				0396D54B24B8B7ED00CC021B /* CountdownLayer.swift in Sources */,
 				0396D54C24B8B7ED00CC021B /* SourceList.swift in Sources */,
+				03B8742324E41CF8008E3D1B /* CacheSetupViewController.swift in Sources */,
 				0396D54D24B8B7ED00CC021B /* DescriptionCellView.swift in Sources */,
 				0396D54E24B8B7ED00CC021B /* DisplayView.swift in Sources */,
 				0396D54F24B8B7ED00CC021B /* InfoLocationView.swift in Sources */,
@@ -2366,6 +2453,7 @@
 				0396D55D24B8B7ED00CC021B /* VideoDownload.swift in Sources */,
 				0396D55E24B8B7ED00CC021B /* FileHelpers.swift in Sources */,
 				0396D55F24B8B7ED00CC021B /* InfoSettingsTableSource.swift in Sources */,
+				03F5551C24E9C091003AAD0B /* SourceOutlineView.swift in Sources */,
 				0396D56024B8B7ED00CC021B /* DownloadManager.swift in Sources */,
 				033811B124C1E243002E23E0 /* InfoViewController.swift in Sources */,
 				031945F424CCC48C00F37B35 /* CreditsViewController.swift in Sources */,
@@ -2386,6 +2474,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03B8742424E41CF8008E3D1B /* CacheSetupViewController.swift in Sources */,
 				03D3A11524C5FC770091FE99 /* AspectFillNSImageView.swift in Sources */,
 				031FB7A2248A873C0054BAFD /* PrefsCache.swift in Sources */,
 				F00864B523AAE7F0003210EF /* DarkMode.swift in Sources */,
@@ -2393,6 +2482,7 @@
 				034A6DC624AF3EC600D62129 /* SourceList.swift in Sources */,
 				03FA49B82428F84500863AF6 /* DateLayer.swift in Sources */,
 				0361B9AC23D73D4500B6252D /* PrefsTime.swift in Sources */,
+				037772EF24E44CE100D81EEA /* RecapViewController.swift in Sources */,
 				0345D00C24BF4E8C0001045C /* Sidebar.swift in Sources */,
 				030010A424D706DB0092AE68 /* SidebarOutlineView.swift in Sources */,
 				032D1162239A7E03007E7756 /* Battery.swift in Sources */,
@@ -2412,6 +2502,7 @@
 				03E87314216760B7002B469B /* TimeManagement.swift in Sources */,
 				038C584B23A9394000224630 /* InfoCommonView.swift in Sources */,
 				03A596D723AA75490097EA66 /* InfoMessageView.swift in Sources */,
+				03F5551D24E9C091003AAD0B /* SourceOutlineView.swift in Sources */,
 				03D1E78B22844AFD00D10CF7 /* DisplayDetection.swift in Sources */,
 				03E8731021662AEB002B469B /* DownloadManager.swift in Sources */,
 				03E8731121662AEB002B469B /* AsynchronousOperation.swift in Sources */,
@@ -2496,6 +2587,7 @@
 				036A57D623F30F490009DC02 /* DownloadIndicatorLayer.swift in Sources */,
 				0300109924D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift in Sources */,
 				03A596D623AA752F0097EA66 /* InfoClockView.swift in Sources */,
+				037772E324E43AF300D81EEA /* TimeSetupViewController.swift in Sources */,
 				03047A5624D2DD8E000EFE62 /* NSMenuItem+icons.swift in Sources */,
 				03D2A4352447438D003ABD30 /* YahooWeatherAPI.swift in Sources */,
 				0345A24B24532E4600DD47CD /* ConditionSymbolLayer.swift in Sources */,
@@ -2559,6 +2651,7 @@
 				03FA49B42428EE3300863AF6 /* InfoDateView.swift in Sources */,
 				0345EDE824C3239400C73038 /* DisplaysViewController.swift in Sources */,
 				FAC36F671BE1778C007F2A20 /* ManifestLoader.swift in Sources */,
+				037772E124E43AF300D81EEA /* TimeSetupViewController.swift in Sources */,
 				03FA49A12423DA1F00863AF6 /* TimerLayer.swift in Sources */,
 				034A6DC424ACC80200D62129 /* Source.swift in Sources */,
 				034F29BF23A7E28E004B34D5 /* PrefsInfo.swift in Sources */,
@@ -2572,6 +2665,7 @@
 				0321A54424D5C863004F1975 /* NSButton+icons.swift in Sources */,
 				038D2EE423B6565900CD91F7 /* InfoBatteryView.swift in Sources */,
 				032E099E24C3897E00387230 /* AdvancedViewController.swift in Sources */,
+				037772ED24E44CE100D81EEA /* RecapViewController.swift in Sources */,
 				03FA49B72428F84500863AF6 /* DateLayer.swift in Sources */,
 				AA7E2E5E1FC62E8B00E5F320 /* AerialPlayerItem.swift in Sources */,
 				03608A2C22A56465008F08A2 /* HardwareDetection.swift in Sources */,
@@ -2594,6 +2688,7 @@
 				036A57D523F30DD00009DC02 /* DownloadIndicatorLayer.swift in Sources */,
 				036A57DB23F5820A0009DC02 /* CountdownLayer.swift in Sources */,
 				034A6DC224ACC7C800D62129 /* SourceList.swift in Sources */,
+				03B8742224E41CF8008E3D1B /* CacheSetupViewController.swift in Sources */,
 				03C344FF24B7A22300906EA6 /* DescriptionCellView.swift in Sources */,
 				03D1E78722842FB300D10CF7 /* DisplayView.swift in Sources */,
 				03A596D923AB8F000097EA66 /* InfoLocationView.swift in Sources */,
@@ -2615,6 +2710,7 @@
 				FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */,
 				03C97BC024B60E2F00739CED /* FileHelpers.swift in Sources */,
 				0354D0E923F6C31800D86F9E /* InfoSettingsTableSource.swift in Sources */,
+				03F5551B24E9C091003AAD0B /* SourceOutlineView.swift in Sources */,
 				03E8730C2165013C002B469B /* DownloadManager.swift in Sources */,
 				033811B024C1E243002E23E0 /* InfoViewController.swift in Sources */,
 				031945F324CCC48C00F37B35 /* CreditsViewController.swift in Sources */,
@@ -2911,7 +3007,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.0beta9;
+				CURRENT_PROJECT_VERSION = 2.0.0beta15;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2919,7 +3015,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0.0beta9;
+				MARKETING_VERSION = 2.0.0beta15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2939,7 +3035,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.0beta9;
+				CURRENT_PROJECT_VERSION = 2.0.0beta15;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2947,7 +3043,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0.0beta9;
+				MARKETING_VERSION = 2.0.0beta15;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

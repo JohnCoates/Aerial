@@ -223,6 +223,84 @@ struct Cache {
             }
         }
     }
+
+    // Remove files in bad format
+    static func removeCruft() {
+        // TODO: kind of a temporary safety
+        if VideoList.instance.videos.count > 90 {
+            // First let's look at the cache
+
+            let pathURL = URL(fileURLWithPath: path)
+            do {
+                let directoryContent = try FileManager.default.contentsOfDirectory(at: pathURL, includingPropertiesForKeys: nil)
+                let videoURLs = directoryContent.filter { $0.pathExtension == "mov" }
+
+                for video in videoURLs {
+                    let filename = video.lastPathComponent
+                    var found = false
+
+                    for candidate in VideoList.instance.videos {
+                        if candidate.url.lastPathComponent == filename {
+                            found = true
+                        }
+                    }
+
+                    if !found {
+                        debugLog("This file is not in the correct format, removing : \(video)")
+
+                        try? FileManager.default.removeItem(at: video)
+                    }
+
+                }
+            } catch {
+                errorLog("Error during removing of videos in wrong format, please report")
+                errorLog(error.localizedDescription)
+            }
+        }
+    }
+
+    /// This clears the whole cache. User beware !
+    static func clearCache() {
+        let pathURL = URL(fileURLWithPath: path)
+        do {
+            let directoryContent = try FileManager.default.contentsOfDirectory(at: pathURL, includingPropertiesForKeys: nil)
+            let videoURLs = directoryContent.filter { $0.pathExtension == "mov" }
+
+            for video in videoURLs {
+                try? FileManager.default.removeItem(at: video)
+            }
+        } catch {
+            errorLog("Error during removing of videos in wrong format, please report")
+            errorLog(error.localizedDescription)
+        }
+    }
+
+    static func clearNonCacheableSources() {
+        // Then we need to look at individual online sources
+        //let onlineVideos = VideoList.instance.videos.filter({ !$0.source.isCachable })
+
+        for source in SourceList.foundSources.filter({!$0.isCachable}) {
+            let pathSource = URL(fileURLWithPath: supportPath).appendingPathComponent(source.name)
+            if FileManager.default.fileExists(atPath: pathSource.path) {
+                do {
+                    let directoryContent = try FileManager.default.contentsOfDirectory(at: pathSource, includingPropertiesForKeys: nil)
+
+                    let videoURLs = directoryContent.filter { $0.pathExtension == "mov" }
+
+                    for video in videoURLs {
+                        debugLog("Removing file : \(video)")
+                        try? FileManager.default.removeItem(at: video)
+                    }
+
+                } catch {
+                    errorLog("Error during removing of videos in wrong format, please report")
+                    errorLog(error.localizedDescription)
+                }
+            }
+        }
+
+    }
+
     // MARK: - About the cache
     /**
      Is our cache full ?

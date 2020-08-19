@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TimeSetupViewController" customModule="Aerial" customModuleProvider="target">
+            <connections>
+                <outlet property="choice1" destination="22t-gd-Abd" id="GOL-et-7K0"/>
+                <outlet property="choice2" destination="3Nc-Pl-qMy" id="uFJ-zc-KvZ"/>
+                <outlet property="choice3" destination="jHI-px-D0M" id="l12-F4-uDM"/>
+                <outlet property="imageClock" destination="bGh-sP-GO3" id="V7M-VN-IxG"/>
+                <outlet property="imageDay" destination="Kg7-RC-BKS" id="ur1-1b-YTT"/>
+                <outlet property="imageLocation" destination="eZG-Mf-Rud" id="7F9-I0-hk6"/>
+                <outlet property="imageNight" destination="T24-un-ptU" id="9EX-Ha-9FT"/>
+                <outlet property="imageSunrise" destination="8Gn-K5-OVb" id="5NB-0U-cpW"/>
+                <outlet property="imageSunset" destination="TcC-uv-cSc" id="clb-uX-vKQ"/>
+                <outlet property="imageXmark" destination="uzu-Lk-YXP" id="75W-Q8-TGB"/>
+                <outlet property="locationLabel" destination="oA4-ui-9wq" id="nfu-Ki-2Ko"/>
+                <outlet property="locationServicesLink" destination="6mZ-LV-nEO" id="iO2-QP-ArA"/>
+                <outlet property="sunriseTime" destination="FMY-kx-tOP" id="ttM-rg-lOi"/>
+                <outlet property="sunsetTime" destination="utR-AS-8Il" id="HEh-Y8-Ybj"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="KeN-Yr-ChJ">
+                    <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                    <view key="contentView" id="Qil-A7-nRJ">
+                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U3I-0O-JPu">
+                                <rect key="frame" x="205" y="545" width="391" height="35"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Adapt videos based on time" id="HlA-RS-Oa5">
+                                    <font key="font" metaFont="systemBold" size="30"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="fZE-lx-nSW">
+                                <rect key="frame" x="38" y="467" width="724" height="48"/>
+                                <textFieldCell key="cell" selectable="YES" id="2BM-mL-IKm">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">Aerial can use your local time to display a more immersive experience that only shows certain videos during a given time of day. For example, nighttime videos are only shown at night. Your location can be used to precisely calculate your local sunrise and sunset time. Your location isn't shared with anyone.</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MX3-T8-nNh">
+                                <rect key="frame" x="292" y="389" width="216" height="48"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Gn-K5-OVb">
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="ehk-TK-mKO"/>
+                                            <constraint firstAttribute="height" constant="48" id="qPd-a6-qRE"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="sunrise" id="8Yx-rb-eNx"/>
+                                    </imageView>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kg7-RC-BKS">
+                                        <rect key="frame" x="56" y="0.0" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="5NA-cG-JtC"/>
+                                            <constraint firstAttribute="width" constant="48" id="qaS-Jp-jti"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="sun.max" id="jcB-w8-DdZ"/>
+                                    </imageView>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TcC-uv-cSc">
+                                        <rect key="frame" x="112" y="0.0" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="Iim-hl-uBK"/>
+                                            <constraint firstAttribute="width" constant="48" id="Oh1-5S-oOP"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="sunset" id="0dg-bt-afc"/>
+                                    </imageView>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T24-un-ptU">
+                                        <rect key="frame" x="168" y="0.0" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="7ZK-Uu-feV"/>
+                                            <constraint firstAttribute="height" constant="48" id="hhv-Ti-krv"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="moon.stars" id="SME-gf-lY7"/>
+                                    </imageView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="22t-gd-Abd">
+                                <rect key="frame" x="125" y="329.5" width="349" height="22"/>
+                                <buttonCell key="cell" type="radio" title="Use my location to calculate sunrise and sunset" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="large" inset="2" id="wah-Hv-bQN">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="systemSemibold" size="14"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="choiceChange:" target="-2" id="ut8-HW-YAu"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jHI-px-D0M">
+                                <rect key="frame" x="125" y="142.5" width="164" height="22"/>
+                                <buttonCell key="cell" type="radio" title="Do not adapt videos" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="large" state="on" inset="2" id="TVP-xh-4qx">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="systemSemibold" size="14"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="choiceChange:" target="-2" id="UeF-Yc-EnJ"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Nc-Pl-qMy">
+                                <rect key="frame" x="125" y="236.5" width="226" height="22"/>
+                                <buttonCell key="cell" type="radio" title="Use manually specified times" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="large" inset="2" id="FMW-zb-neL">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="systemSemibold" size="14"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="choiceChange:" target="-2" id="y7b-lg-bOM"/>
+                                </connections>
+                            </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eZG-Mf-Rud">
+                                <rect key="frame" x="40" y="301" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="Q8K-YN-gwP"/>
+                                    <constraint firstAttribute="width" constant="48" id="wjY-4F-ESh"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="mappin.and.ellipse" id="Nd0-z7-SqD"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bGh-sP-GO3">
+                                <rect key="frame" x="40" y="208" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="l63-uT-F8a"/>
+                                    <constraint firstAttribute="width" constant="48" id="nUJ-Ar-G4P"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="clock" id="AJa-jB-rF7"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uzu-Lk-YXP">
+                                <rect key="frame" x="40" y="114" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="CCE-NS-WPI"/>
+                                    <constraint firstAttribute="height" constant="48" id="kLn-pH-UYg"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="xmark.circle" id="lGF-hn-GgW"/>
+                            </imageView>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="l3V-Qj-BKa">
+                                <rect key="frame" x="150" y="308" width="362" height="16"/>
+                                <textFieldCell key="cell" selectable="YES" title="This requires Location Services to be enabled on your Mac." id="DQp-Vt-8zr">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oA4-ui-9wq">
+                                <rect key="frame" x="150" y="276" width="37" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="2b8-hX-G9x">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="utR-AS-8Il">
+                                <rect key="frame" x="383" y="202" width="42" height="21"/>
+                                <datePickerCell key="cell" controlSize="large" borderStyle="bezel" alignment="left" id="ubf-2V-peM">
+                                    <font key="font" metaFont="system"/>
+                                    <date key="date" timeIntervalSinceReferenceDate="618948000.78890002">
+                                        <!--2020-08-12 18:00:00 +0000-->
+                                    </date>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
+                                </datePickerCell>
+                            </datePicker>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8VH-do-LRN">
+                                <rect key="frame" x="150" y="206" width="54" height="16"/>
+                                <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Sunrise:" id="nhn-KG-MPz">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FMY-kx-tOP">
+                                <rect key="frame" x="210" y="202" width="42" height="21"/>
+                                <datePickerCell key="cell" controlSize="large" borderStyle="bezel" alignment="left" id="SSx-nM-n4a">
+                                    <font key="font" metaFont="system"/>
+                                    <date key="date" timeIntervalSinceReferenceDate="618901200.77973998">
+                                        <!--2020-08-12 05:00:00 +0000-->
+                                    </date>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
+                                </datePickerCell>
+                            </datePicker>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NHk-hd-Q4a">
+                                <rect key="frame" x="327" y="206" width="50" height="16"/>
+                                <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Sunset:" id="Rye-iX-Uy7">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ohd-3z-kec">
+                                <rect key="frame" x="150" y="121" width="612" height="16"/>
+                                <textFieldCell key="cell" selectable="YES" title="Videos do not change based on the time of day. They will be played at random." id="Tv9-4o-QiS">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6mZ-LV-nEO">
+                                <rect key="frame" x="511" y="298" width="248" height="32"/>
+                                <buttonCell key="cell" type="push" title="How to enable Location Services " bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hFU-Be-EiQ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="locationServicesClick:" target="-2" id="DVi-ua-b4q"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="8VH-do-LRN" firstAttribute="leading" secondItem="oA4-ui-9wq" secondAttribute="leading" id="413-D5-8Np"/>
+                            <constraint firstAttribute="trailing" secondItem="ohd-3z-kec" secondAttribute="trailing" constant="40" id="7ej-m2-cSx"/>
+                            <constraint firstItem="22t-gd-Abd" firstAttribute="top" secondItem="eZG-Mf-Rud" secondAttribute="top" id="9vH-Wt-cEp"/>
+                            <constraint firstItem="3Nc-Pl-qMy" firstAttribute="top" secondItem="oA4-ui-9wq" secondAttribute="bottom" constant="20" id="9wy-bM-HTA"/>
+                            <constraint firstItem="6mZ-LV-nEO" firstAttribute="leading" secondItem="l3V-Qj-BKa" secondAttribute="trailing" constant="8" symbolic="YES" id="Gkv-n7-ebN"/>
+                            <constraint firstItem="l3V-Qj-BKa" firstAttribute="top" secondItem="22t-gd-Abd" secondAttribute="bottom" constant="8" symbolic="YES" id="HQM-ai-fc8"/>
+                            <constraint firstItem="fZE-lx-nSW" firstAttribute="leading" secondItem="Qil-A7-nRJ" secondAttribute="leading" constant="40" id="Jbo-wF-Eci"/>
+                            <constraint firstItem="utR-AS-8Il" firstAttribute="leading" secondItem="NHk-hd-Q4a" secondAttribute="trailing" constant="8" symbolic="YES" id="K9c-pr-uzR"/>
+                            <constraint firstItem="6mZ-LV-nEO" firstAttribute="firstBaseline" secondItem="l3V-Qj-BKa" secondAttribute="firstBaseline" id="KFR-Sc-NI0"/>
+                            <constraint firstItem="ohd-3z-kec" firstAttribute="leading" secondItem="uzu-Lk-YXP" secondAttribute="trailing" constant="64" id="Q3P-OO-cvC"/>
+                            <constraint firstItem="l3V-Qj-BKa" firstAttribute="leading" secondItem="eZG-Mf-Rud" secondAttribute="trailing" constant="64" id="Rea-cF-U65"/>
+                            <constraint firstItem="22t-gd-Abd" firstAttribute="leading" secondItem="eZG-Mf-Rud" secondAttribute="trailing" constant="40" id="TJK-el-9qQ"/>
+                            <constraint firstItem="FMY-kx-tOP" firstAttribute="leading" secondItem="8VH-do-LRN" secondAttribute="trailing" constant="8" symbolic="YES" id="VFy-bb-D5D"/>
+                            <constraint firstItem="jHI-px-D0M" firstAttribute="top" secondItem="uzu-Lk-YXP" secondAttribute="top" id="VVz-MO-gAw"/>
+                            <constraint firstItem="MX3-T8-nNh" firstAttribute="top" secondItem="fZE-lx-nSW" secondAttribute="bottom" constant="30" id="WnF-mP-Lqb"/>
+                            <constraint firstItem="FMY-kx-tOP" firstAttribute="top" secondItem="3Nc-Pl-qMy" secondAttribute="bottom" constant="20" id="X2h-Xc-CGO"/>
+                            <constraint firstItem="bGh-sP-GO3" firstAttribute="leading" secondItem="Qil-A7-nRJ" secondAttribute="leading" constant="40" id="Zci-vr-UVD"/>
+                            <constraint firstItem="uzu-Lk-YXP" firstAttribute="leading" secondItem="Qil-A7-nRJ" secondAttribute="leading" constant="40" id="aAx-cw-aTr"/>
+                            <constraint firstItem="fZE-lx-nSW" firstAttribute="top" secondItem="U3I-0O-JPu" secondAttribute="bottom" constant="30" id="b30-Ic-o7O"/>
+                            <constraint firstItem="ohd-3z-kec" firstAttribute="top" secondItem="jHI-px-D0M" secondAttribute="bottom" constant="8" symbolic="YES" id="bfh-FN-0G6"/>
+                            <constraint firstItem="utR-AS-8Il" firstAttribute="firstBaseline" secondItem="8VH-do-LRN" secondAttribute="firstBaseline" id="bly-Yo-1dg"/>
+                            <constraint firstItem="NHk-hd-Q4a" firstAttribute="firstBaseline" secondItem="8VH-do-LRN" secondAttribute="firstBaseline" id="cfa-Ao-7vK"/>
+                            <constraint firstItem="3Nc-Pl-qMy" firstAttribute="top" secondItem="bGh-sP-GO3" secondAttribute="top" id="dF8-m6-vpl"/>
+                            <constraint firstItem="U3I-0O-JPu" firstAttribute="centerX" secondItem="Qil-A7-nRJ" secondAttribute="centerX" id="dwG-AD-ldb"/>
+                            <constraint firstItem="3Nc-Pl-qMy" firstAttribute="leading" secondItem="bGh-sP-GO3" secondAttribute="trailing" constant="40" id="fOz-tS-Svd"/>
+                            <constraint firstItem="NHk-hd-Q4a" firstAttribute="leading" secondItem="FMY-kx-tOP" secondAttribute="trailing" constant="80" id="g0X-2G-wJt"/>
+                            <constraint firstItem="oA4-ui-9wq" firstAttribute="top" secondItem="l3V-Qj-BKa" secondAttribute="bottom" constant="16" id="iC8-Ko-pwO"/>
+                            <constraint firstItem="jHI-px-D0M" firstAttribute="top" secondItem="FMY-kx-tOP" secondAttribute="bottom" constant="40" id="lJO-5L-Pth"/>
+                            <constraint firstItem="22t-gd-Abd" firstAttribute="top" secondItem="MX3-T8-nNh" secondAttribute="bottom" constant="40" id="mtb-2q-eUB"/>
+                            <constraint firstItem="eZG-Mf-Rud" firstAttribute="leading" secondItem="Qil-A7-nRJ" secondAttribute="leading" constant="40" id="nCH-ee-RF1"/>
+                            <constraint firstItem="MX3-T8-nNh" firstAttribute="centerX" secondItem="Qil-A7-nRJ" secondAttribute="centerX" id="qPz-gG-LLV"/>
+                            <constraint firstAttribute="trailing" secondItem="fZE-lx-nSW" secondAttribute="trailing" constant="40" id="qcp-L3-2U4"/>
+                            <constraint firstItem="U3I-0O-JPu" firstAttribute="top" secondItem="Qil-A7-nRJ" secondAttribute="top" constant="20" id="u0Z-8v-vkg"/>
+                            <constraint firstItem="jHI-px-D0M" firstAttribute="leading" secondItem="uzu-Lk-YXP" secondAttribute="trailing" constant="40" id="upN-4h-zUp"/>
+                            <constraint firstItem="FMY-kx-tOP" firstAttribute="firstBaseline" secondItem="8VH-do-LRN" secondAttribute="firstBaseline" id="vF3-9z-Dcv"/>
+                            <constraint firstItem="oA4-ui-9wq" firstAttribute="leading" secondItem="l3V-Qj-BKa" secondAttribute="leading" id="ySW-uS-7w0"/>
+                        </constraints>
+                    </view>
+                    <color key="borderColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                    <color key="fillColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                </box>
+            </subviews>
+            <constraints>
+                <constraint firstItem="KeN-Yr-ChJ" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="AUY-E7-QuR"/>
+                <constraint firstItem="KeN-Yr-ChJ" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="nSu-W0-e9R"/>
+                <constraint firstAttribute="bottom" secondItem="KeN-Yr-ChJ" secondAttribute="bottom" id="qI3-CB-ljB"/>
+                <constraint firstAttribute="trailing" secondItem="KeN-Yr-ChJ" secondAttribute="trailing" id="yRX-WN-7eK"/>
+            </constraints>
+            <point key="canvasLocation" x="-169" y="154"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="clock" width="141" height="155"/>
+        <image name="mappin.and.ellipse" width="133" height="173"/>
+        <image name="moon.stars" width="136" height="136"/>
+        <image name="sun.max" width="147" height="168"/>
+        <image name="sunrise" width="180" height="133"/>
+        <image name="sunset" width="180" height="133"/>
+        <image name="xmark.circle" width="141" height="155"/>
+    </resources>
+</document>

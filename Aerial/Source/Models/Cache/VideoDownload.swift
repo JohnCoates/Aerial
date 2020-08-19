@@ -158,7 +158,6 @@ final class VideoDownload: NSObject, NSURLConnectionDataDelegate {
     func finishedDownload() {
         var tentativeCachePath: String?
 
-        print("cacheable \(video.source.isCachable)")
         if video.source.isCachable {
             tentativeCachePath = VideoCache.cachePath(forVideo: video)
         } else {
@@ -170,8 +169,6 @@ final class VideoDownload: NSObject, NSURLConnectionDataDelegate {
             failedDownload("Couldn't get cache path")
             return
         }
-
-        print("write path : \(videoCachePath)")
 
         if self.data == nil {
             errorLog("video data missing!\n")

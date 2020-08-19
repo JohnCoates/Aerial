@@ -23,10 +23,12 @@ class VideoCellView: NSTableCellView {
 
         checkButton.target = self
         checkButton.action = #selector(self.didChangeState(_:))
+        checkButton.image = Aerial.getSymbol("star")!.tinting(with: .white)
+        checkButton.alternateImage = Aerial.getSymbol("star.fill")!.tinting(with: .white)
 
         let shadow: NSShadow = NSShadow()
         shadow.shadowBlurRadius = 2
-        shadow.shadowOffset = NSSize(width: 0, height: 1)
+        shadow.shadowOffset = NSSize(width: 0, height: 2)
         shadow.shadowColor = NSColor.black
 
         checkButton.shadow = shadow
@@ -52,7 +54,6 @@ class VideoCellView: NSTableCellView {
     }
 
     @IBAction func downloadButtonClick(_ sender: NSButton) {
-        print("download")
         let videoManager = VideoManager.sharedInstance
         Cache.ensureDownload {
             videoManager.queueDownload(self.video!)

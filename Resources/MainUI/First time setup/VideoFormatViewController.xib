@@ -9,6 +9,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="VideoFormatViewController" customModule="Aerial" customModuleProvider="target">
             <connections>
+                <outlet property="labelBelow" destination="6kN-6G-HaO" id="vlK-5K-lhL"/>
                 <outlet property="menu1080pHDR" destination="Idp-Kd-bOv" id="diD-tN-SmL"/>
                 <outlet property="menu4KHDR" destination="qIp-VJ-XaI" id="b4a-TD-otf"/>
                 <outlet property="previewView" destination="GSb-Cu-pqq" id="WCe-p2-0Pb"/>
@@ -22,14 +23,14 @@
             <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="Jpp-Xv-BLW">
+                <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="Jpp-Xv-BLW">
                     <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                     <view key="contentView" id="C0g-r8-O2P">
-                        <rect key="frame" x="1" y="1" width="798" height="598"/>
+                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Ev-9E-map">
-                                <rect key="frame" x="304" y="543" width="191" height="35"/>
+                                <rect key="frame" x="305" y="545" width="191" height="35"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Video Format" id="LQR-oP-PgL">
                                     <font key="font" metaFont="systemBold" size="30"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -37,13 +38,13 @@
                                 </textFieldCell>
                             </textField>
                             <avPlayerView controlsStyle="inline" translatesAutoresizingMaskIntoConstraints="NO" id="GSb-Cu-pqq">
-                                <rect key="frame" x="40" y="119" width="718" height="404"/>
+                                <rect key="frame" x="40" y="120" width="720" height="405"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="GSb-Cu-pqq" secondAttribute="height" multiplier="16:9" id="iTr-TX-whH"/>
                                 </constraints>
                             </avPlayerView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6kN-6G-HaO">
-                                <rect key="frame" x="38" y="55" width="364" height="48"/>
+                                <rect key="frame" x="38" y="45" width="364" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="360" id="c2X-yS-kur"/>
                                 </constraints>
@@ -86,7 +87,7 @@
                                 <imageCell key="cell" controlSize="large" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSInfo" id="xnH-Pg-mTd"/>
                             </imageView>
                             <button toolTip="Get another video" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8u2-wX-Sf9">
-                                <rect key="frame" x="710" y="59" width="54" height="40"/>
+                                <rect key="frame" x="712" y="59" width="54" height="40"/>
                                 <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="only" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4Jd-Sf-wLD">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -96,8 +97,8 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YqF-HA-cLA">
-                                <rect key="frame" x="444" y="34" width="219" height="16"/>
-                                <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="HDR versions may have wild colors." id="Z5K-mZ-raw">
+                                <rect key="frame" x="444" y="34" width="314" height="16"/>
+                                <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Try the fullscreen control, bottom right of the video" id="Z5K-mZ-raw">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -105,19 +106,19 @@
                             </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="bCn-bE-tfP" firstAttribute="top" secondItem="GSb-Cu-pqq" secondAttribute="bottom" constant="26" id="9T7-Dm-qVa"/>
                             <constraint firstItem="YqF-HA-cLA" firstAttribute="leading" secondItem="lfi-rH-g5d" secondAttribute="trailing" constant="8" symbolic="YES" id="Bx0-bW-E5z"/>
+                            <constraint firstItem="6kN-6G-HaO" firstAttribute="leading" secondItem="C0g-r8-O2P" secondAttribute="leading" constant="40" id="CJY-zL-H9e"/>
                             <constraint firstItem="lfi-rH-g5d" firstAttribute="top" secondItem="bCn-bE-tfP" secondAttribute="bottom" constant="12" id="EXJ-fv-V7w"/>
                             <constraint firstItem="bCn-bE-tfP" firstAttribute="leading" secondItem="6kN-6G-HaO" secondAttribute="trailing" constant="16" id="GbB-Z2-vHi"/>
+                            <constraint firstItem="bCn-bE-tfP" firstAttribute="top" secondItem="6kN-6G-HaO" secondAttribute="top" id="KGY-NW-vye"/>
                             <constraint firstItem="YqF-HA-cLA" firstAttribute="centerY" secondItem="lfi-rH-g5d" secondAttribute="centerY" id="Lg2-G0-7Xk"/>
                             <constraint firstItem="8u2-wX-Sf9" firstAttribute="top" secondItem="bCn-bE-tfP" secondAttribute="top" id="XCE-Y9-a5K"/>
                             <constraint firstItem="lfi-rH-g5d" firstAttribute="leading" secondItem="bCn-bE-tfP" secondAttribute="leading" id="YM5-aG-e8b"/>
-                            <constraint firstItem="6kN-6G-HaO" firstAttribute="leading" secondItem="GSb-Cu-pqq" secondAttribute="leading" id="Zmk-o9-ImK"/>
                             <constraint firstItem="GSb-Cu-pqq" firstAttribute="leading" secondItem="C0g-r8-O2P" secondAttribute="leading" constant="40" id="Zyx-96-OQ3"/>
                             <constraint firstItem="GSb-Cu-pqq" firstAttribute="top" secondItem="4Ev-9E-map" secondAttribute="bottom" constant="20" id="api-sN-cka"/>
+                            <constraint firstAttribute="bottom" secondItem="6kN-6G-HaO" secondAttribute="bottom" constant="45" id="h2F-Fi-fwf"/>
                             <constraint firstItem="4Ev-9E-map" firstAttribute="top" secondItem="C0g-r8-O2P" secondAttribute="top" constant="20" id="mZW-JF-UWh"/>
                             <constraint firstItem="4Ev-9E-map" firstAttribute="centerX" secondItem="C0g-r8-O2P" secondAttribute="centerX" id="olh-56-nDR"/>
-                            <constraint firstItem="6kN-6G-HaO" firstAttribute="top" secondItem="GSb-Cu-pqq" secondAttribute="bottom" constant="16" id="r0q-xB-YZZ"/>
                             <constraint firstItem="8u2-wX-Sf9" firstAttribute="trailing" secondItem="GSb-Cu-pqq" secondAttribute="trailing" id="y99-F7-38s"/>
                             <constraint firstAttribute="trailing" secondItem="GSb-Cu-pqq" secondAttribute="trailing" constant="40" id="zyU-nm-Ip5"/>
                         </constraints>
@@ -127,7 +128,7 @@
                         <constraint firstAttribute="height" constant="600" id="xHY-By-Xsz"/>
                     </constraints>
                     <color key="borderColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="fillColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="fillColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                 </box>
             </subviews>
             <constraints>
@@ -136,7 +137,7 @@
                 <constraint firstItem="Jpp-Xv-BLW" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="UUv-ug-hg2"/>
                 <constraint firstAttribute="trailing" secondItem="Jpp-Xv-BLW" secondAttribute="trailing" id="YnB-p0-gm7"/>
             </constraints>
-            <point key="canvasLocation" x="-2" y="135"/>
+            <point key="canvasLocation" x="3" y="137"/>
         </customView>
     </objects>
     <resources>

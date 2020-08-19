@@ -17,7 +17,10 @@ class VideoFormatViewController: NSViewController {
     @IBOutlet var menu1080pHDR: NSMenuItem!
     @IBOutlet var menu4KHDR: NSMenuItem!
 
+    @IBOutlet var labelBelow: NSTextField!
     var currentVideo: AerialVideo?
+
+    var originalFormat: VideoFormat?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,11 +30,20 @@ class VideoFormatViewController: NSViewController {
             menu1080pHDR.isHidden = true
             menu4KHDR.isHidden = true
         }
-        PrefsVideos.videoFormat = HardwareDetection.sharedInstance.getSuggestedFormat()
+
+        // Only detect if we have the default basic format, don't override people's settings
+        if PrefsVideos.videoFormat == .v1080pH264 {
+            PrefsVideos.videoFormat = HardwareDetection.sharedInstance.getSuggestedFormat()
+        } else {
+            // swiftlint:ignore:next line_length
+            labelBelow.stringValue = "Videos are usually available in multiple formats. Your current format is preselected, but you can pick another one."
+            originalFormat = PrefsVideos.videoFormat
+        }
         videoFormatPopup.selectItem(at: PrefsVideos.videoFormat.rawValue)
 
         previewView.player = AVPlayer()
-        previewView.controlsStyle = .none
+        previewView.showsFullScreenToggleButton = true
+        //previewView.controlsStyle = .none
         if #available(OSX 10.10, *) {
             previewView.videoGravity = .resizeAspectFill
         }
@@ -45,6 +57,17 @@ class VideoFormatViewController: NSViewController {
         setupPlayer()
     }
     @IBAction func formatChange(_ sender: NSPopUpButton) {
+        if let original = originalFormat {
+            let candidateFormat = VideoFormat(rawValue: sender.indexOfSelectedItem)!
+
+            if candidateFormat != original {
+                if !Aerial.showAlert(question: "Changing format will delete all videos", text: "Changing format will delete your downloaded videos. They will be re-downloaded based on your preferences. \n\nYou can manually redownload videos in Custom Sources.", button1: "Change Format and Delete Videos", button2: "Cancel") {
+                    videoFormatPopup.selectItem(at: PrefsVideos.videoFormat.rawValue)
+                    return
+                }
+            }
+        }
+
         PrefsVideos.videoFormat = VideoFormat(rawValue: sender.indexOfSelectedItem)!
         setupPlayer()
     }
@@ -53,7 +76,6 @@ class VideoFormatViewController: NSViewController {
         if let player = previewView.player {
             if let video = currentVideo {
                 player.pause()
-                print("replacing")
 
                 if let onlineUrl = URL(string: (video.urls[PrefsVideos.videoFormat])!) {
                     let asset = AVAsset(url: onlineUrl)
@@ -67,9 +89,6 @@ class VideoFormatViewController: NSViewController {
 
     // Get a random video available in all format
     func getNewVideo() {
-        print(VideoList.instance.videos.count)
-        currentVideo = VideoList.instance.videos.shuffled().first
-        //currentVideo = VideoList.instance.videos.filter({ $0. }).shuffled().first
-        print(currentVideo)
+        currentVideo = VideoList.instance.videos.filter({ $0.hasHDR() == true }).shuffled().first
     }
 }

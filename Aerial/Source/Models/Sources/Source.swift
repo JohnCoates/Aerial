@@ -26,9 +26,16 @@ struct Source: Codable {
     var type: SourceType
     var scenes: [SourceScene]
     var isCachable: Bool
+    var license: String
+    var more: String
 
     // TODO
     func isEnabled() -> Bool {
+        // tvOS is always enabled
+        if name.starts(with: "tvOS") {
+            return true
+        }
+
         if PrefsVideos.enabledSources.keys.contains(name) {
             return PrefsVideos.enabledSources[name]!
         }
@@ -37,8 +44,15 @@ struct Source: Codable {
         return true
     }
 
+    func wipeFromDisk() {
+        let path = Cache.supportPath.appending("/" + name)
+
+        if FileManager.default.fileExists(atPath: path) {
+            try? FileManager.default.removeItem(atPath: path)
+        }
+    }
+
     func setEnabled(_ enabled: Bool) {
-        print("\(name) \(enabled)")
         PrefsVideos.enabledSources[name] = enabled
         VideoList.instance.reloadSources()
     }

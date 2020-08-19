@@ -57,7 +57,7 @@ class InfoWeatherView: NSView {
     @IBAction func testLocationButtonClick(_ sender: NSButton) {
         if PrefsInfo.weather.locationMode == .manuallySpecify {
             Weather.fetch(failure: { (error) in
-                print(error.localizedDescription)
+                errorLog(error.localizedDescription)
             }, success: { (_) in
                 let ovc = self.parentViewController as! OverlaysViewController
                 ovc.openWeatherPreview()
@@ -97,7 +97,7 @@ extension InfoWeatherView: NSTextFieldDelegate {
         let textField = obj.object as! NSTextField
         // Just in case...
         if textField == locationString {
-            print(textField.stringValue)
+            //print(textField.stringValue)
             PrefsInfo.weather.locationString = textField.stringValue
         }
     }

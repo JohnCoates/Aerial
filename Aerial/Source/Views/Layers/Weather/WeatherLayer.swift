@@ -44,13 +44,10 @@ class WeatherLayer: AnimationLayer {
     }
 
     override func setContentScale(scale: CGFloat) {
-        print("sCS wov : \(scale)")
         if todayCond != nil {
-            debugLog("SCS WL todayCond")
             todayCond?.contentsScale = scale
         }
         if logo != nil {
-            debugLog("SCS WL logo")
             logo?.contentsScale = scale
         }
 
@@ -70,7 +67,7 @@ class WeatherLayer: AnimationLayer {
                 displayWeatherBlock()
             } else {
                 Weather.fetch(failure: { (error) in
-                    print(error.localizedDescription)
+                    errorLog(error.localizedDescription)
                 }, success: { (_) in
                     self.displayWeatherBlock()
                 })

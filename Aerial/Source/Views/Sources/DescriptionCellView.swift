@@ -21,6 +21,8 @@ class DescriptionCellView: NSTableCellView {
     @IBOutlet weak var imageScene5: NSImageView!
     @IBOutlet weak var imageScene6: NSImageView!
     @IBOutlet weak var imageFilm: NSImageView!
+    @IBOutlet weak var licenseButton: NSButton!
+    @IBOutlet weak var moreButton: NSButton!
 
     /// The item that represent the row in the outline view
     /// We may potentially use this cell for multiple outline views so let's make it generic
@@ -46,5 +48,21 @@ class DescriptionCellView: NSTableCellView {
     /// Notify the delegate that the checkbox's state has changed
     @objc private func didChangeState(_ sender: NSObject) {
         //delegate?.checkboxCellView(self, didChangeState: checkboxButton.state)
+    }
+
+    @IBAction func licenseButtonClick(_ sender: NSButton) {
+        if let source = item as? Source {
+            let workspace = NSWorkspace.shared
+            let url = URL(string: source.license)!
+            workspace.open(url)
+        }
+    }
+
+    @IBAction func moreButtonClick(_ sender: NSButton) {
+        if let source = item as? Source {
+            let workspace = NSWorkspace.shared
+            let url = URL(string: source.more)!
+            workspace.open(url)
+        }
     }
 }

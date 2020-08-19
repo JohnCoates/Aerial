@@ -176,8 +176,22 @@ final class TimeManagement: NSObject {
 
     // MARK: Calculate using Solar
     func calculateFromCoordinates() -> (Bool, String) {
-        if PrefsTime.latitude != "" && PrefsTime.longitude != "" {
-            return calculateFrom(latitude: Double(PrefsTime.latitude) ?? 0, longitude: Double(PrefsTime.longitude) ?? 0)
+        if PrefsTime.timeMode == .locationService {
+            // This is racy... I think we're ok because time/location gets inited first, but still...
+            let location = Locations.sharedInstance
+
+            location.getCoordinates(failure: { (_) in
+                //swiftlint:disable:next line_length
+                errorLog("Location services denied access to your location. Please make sure you allowed ScreenSaverEngine, Aerial, or legacyScreenSaver to access your location in System Preferences > Security and Privacy > Privacy")
+            }, success: { (coordinates) in
+                self.lsLatitude = coordinates.latitude
+                self.lsLongitude = coordinates.longitude
+                _ = self.calculateFrom(latitude: self.lsLatitude!, longitude: self.lsLongitude!)
+            })
+        } else {
+            if PrefsTime.latitude != "" && PrefsTime.longitude != "" {
+                return calculateFrom(latitude: Double(PrefsTime.latitude) ?? 0, longitude: Double(PrefsTime.longitude) ?? 0)
+            }
         }
 
         return (false, "Can't process your coordinates, please verify")

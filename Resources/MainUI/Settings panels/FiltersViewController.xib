@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="FiltersViewController" customModule="Aerial" customModuleProvider="target">
             <connections>
+                <outlet property="allowPerVideo" destination="iob-wn-Pqt" id="6Ju-KF-swU"/>
                 <outlet property="imageView1" destination="7LV-8e-x1j" id="zgu-CN-Hhr"/>
                 <outlet property="imageView2" destination="8AX-SO-qGe" id="aZc-Wr-YkL"/>
                 <outlet property="imageView3" destination="oJZ-sY-UYv" id="RoH-Mv-Tip"/>
                 <outlet property="imageView4" destination="AvL-Xc-gaf" id="rwE-4P-bkU"/>
-                <outlet property="imageViewTest" destination="RU7-r4-f4h" id="7iW-lV-xik"/>
                 <outlet property="vibranceSlider" destination="oaK-yX-Fb3" id="OKF-IO-d22"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oaK-yX-Fb3">
-                    <rect key="frame" x="232" y="514" width="276" height="24"/>
+                    <rect key="frame" x="232" y="513" width="276" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="260" id="590-ll-J2f"/>
                     </constraints>
@@ -81,20 +81,21 @@
                         <constraint firstAttribute="bottom" secondItem="AvL-Xc-gaf" secondAttribute="bottom" id="vzz-kL-8jN"/>
                     </constraints>
                 </customView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RU7-r4-f4h">
-                    <rect key="frame" x="642" y="420" width="186" height="131"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="186" id="Shi-KW-TIE"/>
-                        <constraint firstAttribute="height" constant="131" id="v3t-Pc-BBU"/>
-                    </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="b3e-gO-xC0"/>
-                </imageView>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iob-wn-Pqt">
+                    <rect key="frame" x="517" y="520" width="175" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Allow per video vibrance" bezelStyle="regularSquare" imagePosition="left" inset="2" id="CxY-Zt-3Oi">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="allowPerVideoChange:" target="-2" id="dbZ-6n-ct2"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="Lkf-KS-VPB" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="70" id="9iW-YK-N19"/>
                 <constraint firstItem="oaK-yX-Fb3" firstAttribute="leading" secondItem="0GU-RH-zJp" secondAttribute="trailing" constant="8" id="GCR-JE-7tQ"/>
-                <constraint firstAttribute="trailing" secondItem="RU7-r4-f4h" secondAttribute="trailing" constant="20" symbolic="YES" id="ID9-lr-jnr"/>
-                <constraint firstItem="RU7-r4-f4h" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="6" id="JZG-oJ-aos"/>
                 <constraint firstItem="Lkf-KS-VPB" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="60" id="MFl-gR-4Cv"/>
                 <constraint firstItem="oaK-yX-Fb3" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="22" id="WVf-Pi-IAW"/>
                 <constraint firstItem="oaK-yX-Fb3" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="240" id="bIs-qY-CO3"/>

@@ -116,6 +116,8 @@ class VideoList {
                 .filter { $0.source.name.lowercased() == filter && !PrefsVideos.hidden.contains($0.id) }
                 .sorted { $0.secondaryName < $1.secondaryName }
         case .cache:
+            // TODO FIX THIS IT CRASHES WHEN YOU FAV FROM ONLINE
+            // if let cacheSources().
             if cacheSources()[section] == cacheDownloaded {
                 return videos
                     .filter({ $0.isAvailableOffline && !PrefsVideos.hidden.contains($0.id) })
@@ -205,7 +207,7 @@ class VideoList {
             return VideoList.instance.getVideosForSource(index, mode: mode)
         } else {
             // all
-            return VideoList.instance.videos.sorted { $0.secondaryName < $1.secondaryName }
+            return VideoList.instance.videos.filter({ !PrefsVideos.hidden.contains($0.id) }).sorted { $0.secondaryName < $1.secondaryName }
         }
     }
 

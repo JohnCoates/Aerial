@@ -15,7 +15,6 @@ class WelcomeViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        print("*********** WVC")
         if PrefsVideos.videoFormat != .v1080pH264 {
             bigTitle.stringValue = "Welcome back to Aerial"
             textBelow.stringValue = "We've changed a thing or two, so let's go over that!"

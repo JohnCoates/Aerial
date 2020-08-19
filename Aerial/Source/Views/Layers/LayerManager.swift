@@ -50,7 +50,6 @@ class LayerManager {
         let preferences = Preferences.sharedInstance
 
         if preferences.updateWhileSaverMode && PrefsUpdates.sparkleUpdateMode == .notify {
-            print(">>> add update layer")
             addLayerForType(.updates, layer: layer)
         }
 

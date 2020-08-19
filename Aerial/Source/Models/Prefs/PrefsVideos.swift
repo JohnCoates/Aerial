@@ -112,4 +112,7 @@ struct PrefsVideos {
 
     @SimpleStorage(key: "globalVibrance", defaultValue: 0)
     static var globalVibrance: Double
+
+    @SimpleStorage(key: "allowPerVideoVibrance", defaultValue: false)
+    static var allowPerVideoVibrance: Bool
 }
