@@ -2,7 +2,35 @@
 <channel>
 <title>Aerial</title>
 
+  <item>
+<title>2.0.0</title>
+  <description>
+          <![CDATA[
 
+<p>If you want automatic updates, please install the Aerial Companion app, as Sparkle updates are now deprecated: https://github.com/glouel/AerialCompanion</p>
+
+<p>What's new:</p>
+
+<ul><li>A lot!</li>
+<li>Whole new UI with previews, that feels right at home on macOS Big Sur, it's even resizable!</li>
+<li>New cache options, you can finally set a limit to your cache size, and ask Aerial to periodically grab new videos, so it never ever again fills up your disk.</li>
+<li>New videos : 20 videos that were donated by a 3rd party artist, please check out the Settings > Custom Sources to know more about them.</li>
+<li>A whole new rotation concept: you can quickly switch from watching Space videos, to only Night videos with a couple of clicks</li>
+<li>You can now favorite videos (so Aerial will never delete them) or hide them (so they won't bother you again)</li>
+<li>Sunset and Sunrise videos show at the appropriate time now if you enable time adaptation</li>
+<li>And so much more</li></ul>
+
+<p>Note: Big Sur Beta users, there's an issue currently regarding 3rd party screen savers, check this post on how to get back your settings and cache : #1036 This macOS bug affects not only all versions of Aerial, but all 3rd party screen savers.</p>
+
+<p>Note : this build works on both Intel and Apple Silicon</p>
+
+          ]]>
+  </description>
+<pubDate>mer., 19 aug. 2020 21:00:00 +0100</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v2.0.0/Aerial.saver.zip" sparkle:version="2.0.0" 
+sparkle:edSignature="smEI5sjvJzOXPF+qngZvUvbq2HJOvIDmGTiWTntebmmL5VnbyBTGyKCEumA9XQShqsWCNyJXIVSpSkCP2ZjBBA==" length="6195502" type="application/octet-stream"/>
+</item>
 
   <item>
 <title>2.0.0beta4</title>
