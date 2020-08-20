@@ -28,7 +28,7 @@ Starting with version 1.4, Aerial is maintained by [Guillaume Louel](https://git
 
 You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/graphs/contributors).
 
-**Trying Big Sur public beta 1 ? Very bold of you, please [read this to get your settings and videos back](https://github.com/JohnCoates/Aerial/issues/1036).**
+**Trying Big Sur public beta 1? Very bold of you!** Please *[read this to get your settings and videos back](https://github.com/JohnCoates/Aerial/issues/1036).*
 
 **Have a question? Check our troobleshooting section below, or hop on our [Discord server](https://discord.gg/TPuA5WG).**
 
@@ -43,7 +43,7 @@ With changes in Catalina and Big Sur, a screen saver can no longer update itself
 
 Need more information on install, setup, or uninstall? Or want to install via homebrew or manually? Check our extended [instructions here](Documentation/Installation.md). 
 
-## What's new in Aerial 2.0.0 (Aug 19, 2020)?
+## What's New in Aerial 2.0.0 (Aug 19, 2020)?
 
 ![newui](https://user-images.githubusercontent.com/37544189/90673393-f6de0900-e257-11ea-8e00-4357aca4214e.jpg)
 
@@ -97,7 +97,7 @@ Video descriptions are available in many languages (Spanish, French, Polish… [
 
 If you want to collaborate, please [read the details here](Resources/Community/Readme.md).
 
-## More documentation
+## More Documentation
 
 Looking for more information?
 
