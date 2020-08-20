@@ -280,6 +280,42 @@ extension Solar {
 
         return isSunriseOrLater && isBeforeSunset
     }
+
+    public func getTimeSlice() -> String {
+        guard
+            let _ = sunrise,
+            let _ = sunset
+            else {
+                return ""
+        }
+
+        // We use
+        var lsunrise, lsunset: Date
+        lsunrise = astronomicalSunrise!
+        lsunset = astronomicalSunset!
+
+        debugLog("lsunrise \(lsunrise) lsunriseEnd \(lsunrise.addingTimeInterval(TimeInterval(PrefsTime.sunEventWindow)))")
+        debugLog("psunset \(lsunset.addingTimeInterval(TimeInterval(-PrefsTime.sunEventWindow))) lsunset \(lsunset)")
+        debugLog("current \(self.date)")
+
+        if self.date < lsunrise || self.date > lsunset {
+            // So this is night, before sunrise, after sunset
+            debugLog("night")
+            return "night"
+        } else if self.date > lsunrise && self.date < lsunrise.addingTimeInterval(TimeInterval(PrefsTime.sunEventWindow)) {
+            // Sunrise-period is a 3hr period after astro sunrise
+            debugLog("sunrise")
+            return "sunrise"
+        } else if self.date > lsunset.addingTimeInterval(TimeInterval(-PrefsTime.sunEventWindow)) && self.date < lsunset {
+            // Sunset-period is a 3hr period prior astro sunset
+            debugLog("sunset")
+            return "sunset"
+        } else {
+            // Let's say this is day
+            debugLog("day")
+            return "day"
+        }
+    }
 }
 
 // MARK: - Helper extensions

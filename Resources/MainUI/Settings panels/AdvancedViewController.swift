@@ -11,6 +11,7 @@ import AVFoundation
 import VideoToolbox
 
 class AdvancedViewController: NSViewController {
+    var firstSetupWindowController: FirstSetupWindowController?
 
     @IBOutlet var popoverVideoFormat: NSPopover!
 
@@ -38,6 +39,7 @@ class AdvancedViewController: NSViewController {
 
     @IBOutlet var showLogButton: NSButton!
 
+    @IBOutlet var launchSetupAgain: NSButton!
     var originalFormat: VideoFormat?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +86,7 @@ class AdvancedViewController: NSViewController {
         languageLabel.stringValue = getPreferredLanguage()
 
         showLogButton.setIcons("folder")
+        launchSetupAgain.setIcons("aspectratio")
     }
 
     func setupPopover() {
@@ -122,10 +125,32 @@ class AdvancedViewController: NSViewController {
         }
     }
 
+    @IBAction func launchSetupAgainClick(_ sender: NSButton) {
+        if firstSetupWindowController == nil {
+            let bundle = Bundle(for: PanelWindowController.self)
+            // We also load our CustomVideos nib here
+
+            firstSetupWindowController = FirstSetupWindowController()
+            var topLevelObjects: NSArray? = NSArray()
+            if !bundle.loadNibNamed(NSNib.Name("FirstSetupWindowController"),
+                                owner: firstSetupWindowController,
+                                topLevelObjects: &topLevelObjects) {
+                errorLog("Could not load nib for FirstSetupWindowController, please report")
+            }
+        }
+
+        DispatchQueue.main.async {
+            self.firstSetupWindowController!.windowDidLoad()
+            self.firstSetupWindowController!.showWindow(self)
+            self.firstSetupWindowController!.window!.makeKeyAndOrderFront(self)
+        }
+    }
+
     @IBAction func videoFormatPopupChange(_ sender: NSPopUpButton) {
         let candidateFormat = VideoFormat(rawValue: sender.indexOfSelectedItem)!
 
         if candidateFormat != originalFormat {
+            //swiftlint:disable:next line_length
             if Aerial.showAlert(question: "Changing format will delete all videos", text: "Changing format will delete your downloaded videos. They will be re-downloaded based on your preferences. \n\nYou can also manually redownload videos in Custom Sources.", button1: "Change Format and Delete Videos", button2: "Cancel") {
                 PrefsVideos.videoFormat = candidateFormat
                 originalFormat = candidateFormat

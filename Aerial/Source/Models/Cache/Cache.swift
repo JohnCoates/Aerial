@@ -394,7 +394,7 @@ struct Cache {
             // Then cache status
             if isFull() {
                 if !Aerial.showAlert(question: "Your cache is full",
-                             text: "Do you want to proceed with the download ?\n\nReminder: You can change this setting in the Cache tab.",
+                             text: "Do you want to proceed with the download anyway?\n\nYou can increase your cache size in the Cache tab.",
                              button1: "Download Anyway",
                              button2: "Cancel") {
                     return

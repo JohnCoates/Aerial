@@ -42,6 +42,8 @@ class CacheViewController: NSViewController {
     @IBOutlet var resetListButton: NSButton!
     @IBOutlet var allowedListLabel: NSTextField!
 
+    @IBOutlet var showDownloadIndicator: NSButton!
+
     // Manual mode
     @IBOutlet var cacheSize: NSTextField!
 
@@ -64,8 +66,13 @@ class CacheViewController: NSViewController {
 
         // And the master switch!
         updateCacheVisibility()
+
+        showDownloadIndicator.state = PrefsCache.showBackgroundDownloads ? .on : .off
     }
 
+    @IBAction func showDownloadIndicatorChange(_ sender: NSButton) {
+        PrefsCache.showBackgroundDownloads = sender.state == .on
+    }
     @IBAction func automaticallyDownloadClick(_ sender: NSButton) {
         PrefsCache.enableManagement = sender.state == .on
         updateCacheVisibility()

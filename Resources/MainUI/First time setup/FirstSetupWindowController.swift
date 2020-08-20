@@ -12,7 +12,7 @@ enum Actions {
     case welcome, videoFormat, cache
 }
 
-class FirstSetupWindowController: NSWindowController {
+class FirstSetupWindowController: NSWindowController, NSWindowDelegate {
     var welcomeViewItem: NSSplitViewItem?
     var videoFormatViewItem: NSSplitViewItem?
     var cacheSetupViewItem: NSSplitViewItem?
@@ -33,6 +33,10 @@ class FirstSetupWindowController: NSWindowController {
         super.windowDidLoad()
 
         splitVC.splitView.isVertical = false
+        if splitVC.splitViewItems.count == 2 {
+            splitVC.removeChild(at: 0)
+            splitVC.removeChild(at: 0)
+        }
         // We always need to specify a bundle manually, auto loading from bundle
         // does not work for screen savers when compiled as plugins
         let bundle = Bundle(for: PanelWindowController.self)
@@ -57,6 +61,11 @@ class FirstSetupWindowController: NSWindowController {
         splitVC.addSplitViewItem(welcomeViewItem!)
         splitVC.addSplitViewItem(nextViewItem!)
         window?.contentViewController = splitVC
+    }
+
+    func windowWillClose(_ notification: Notification) {
+        print("cloooose")
+        PrefsAdvanced.firstTimeSetup = true
     }
 
     func nextAction() {

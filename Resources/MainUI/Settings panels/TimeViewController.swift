@@ -11,19 +11,10 @@ import Cocoa
 class TimeViewController: NSViewController {
     // All the radios
     @IBOutlet var timeLocationRadio: NSButton!
-    @IBOutlet var timeCalculateRadio: NSButton!
     @IBOutlet var timeNightShiftRadio: NSButton!
     @IBOutlet var timeManualRadio: NSButton!
     @IBOutlet var timeLightDarkModeRadio: NSButton!
     @IBOutlet var timeDisabledRadio: NSButton!
-
-    // Calculate mode
-    @IBOutlet var latitudeTextField: NSTextField!
-    @IBOutlet var longitudeTextField: NSTextField!
-    @IBOutlet var latitudeFormatter: NumberFormatter!
-    @IBOutlet var longitudeFormatter: NumberFormatter!
-
-    @IBOutlet var calculateCoordinatesLabel: NSTextField!
 
     // Night Shift
     @IBOutlet var nightShiftLabel: NSTextField!
@@ -32,16 +23,28 @@ class TimeViewController: NSViewController {
     @IBOutlet var sunriseTime: NSDatePicker!
     @IBOutlet var sunsetTime: NSDatePicker!
 
-    // Light/dark
-    @IBOutlet var lightDarkModeLabel: NSTextField!
-
     // Advanced
-    @IBOutlet var solarModePopup: NSPopUpButton!
     @IBOutlet var darkModeNightOverride: NSButton!
 
     @IBOutlet var myLocationImageView: NSImageView!
 
+    @IBOutlet var nightShiftImageView: NSImageView!
+
+    @IBOutlet var manualImageView: NSImageView!
+
+    @IBOutlet var lightModeImageView: NSImageView!
+
+    @IBOutlet var noAdaptImageView: NSImageView!
     @IBOutlet var popoverCalcMode: NSPopover!
+
+    @IBOutlet var oSunrise: NSTextField!
+    @IBOutlet var eSunrise: NSTextField!
+    @IBOutlet var eSunset: NSTextField!
+    @IBOutlet var oSunset: NSTextField!
+
+    @IBOutlet var timeBarView: NSView!
+
+    @IBOutlet var sunsetWindowPopup: NSPopUpButton!
 
     lazy var timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -52,15 +55,8 @@ class TimeViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let timeManagement = TimeManagement.sharedInstance
-        latitudeFormatter.maximumSignificantDigits = 10
-        longitudeFormatter.maximumSignificantDigits = 10
-
         setupDarkMode()
         setupNightShift()
-
-        let (_, reason) = timeManagement.calculateFromCoordinates()
-        calculateCoordinatesLabel.stringValue = reason
 
         if let dateSunrise = timeFormatter.date(from: PrefsTime.manualSunrise) {
             sunriseTime.dateValue = dateSunrise
@@ -68,8 +64,6 @@ class TimeViewController: NSViewController {
         if let dateSunset = timeFormatter.date(from: PrefsTime.manualSunset) {
             sunsetTime.dateValue = dateSunset
         }
-        latitudeTextField.stringValue = PrefsTime.latitude
-        longitudeTextField.stringValue = PrefsTime.longitude
 
         // Handle the time radios
         switch PrefsTime.timeMode {
@@ -79,16 +73,39 @@ class TimeViewController: NSViewController {
             timeManualRadio.state = .on
         case .lightDarkMode:
             timeLightDarkModeRadio.state = .on
-        case .coordinates:
-            timeCalculateRadio.state = .on
         case .disabled:
             timeDisabledRadio.state = .on
-        case .locationService:
+        default:
             timeLocationRadio.state = .on
         }
 
         myLocationImageView.image = Aerial.getSymbol("mappin.and.ellipse")?.tinting(with: .secondaryLabelColor)
-        solarModePopup.selectItem(at: PrefsTime.solarMode.rawValue)
+
+        nightShiftImageView.image = Aerial.getSymbol("house")?.tinting(with: .secondaryLabelColor)
+
+        manualImageView.image = Aerial.getSymbol("clock")?.tinting(with: .secondaryLabelColor)
+
+        lightModeImageView.image = Aerial.getSymbol("gear")?.tinting(with: .secondaryLabelColor)
+
+        noAdaptImageView.image = Aerial.getSymbol("xmark.circle")?.tinting(with: .secondaryLabelColor)
+        updateTimeView()
+
+        switch PrefsTime.sunEventWindow {
+        case 60*60:
+            sunsetWindowPopup.selectItem(at: 0)
+        case 60*90:
+            sunsetWindowPopup.selectItem(at: 1)
+        case 60*120:
+            sunsetWindowPopup.selectItem(at: 2)
+        case 60*150:
+            sunsetWindowPopup.selectItem(at: 3)
+        case 60*180:
+            sunsetWindowPopup.selectItem(at: 4)
+        case 60*210:
+            sunsetWindowPopup.selectItem(at: 5)
+        default:
+            sunsetWindowPopup.selectItem(at: 6)
+        }
     }
 
     func setupDarkMode() {
@@ -106,11 +123,10 @@ class TimeViewController: NSViewController {
         }
 
         // Light/Dark mode only available on Mojave+
-        let (isLDMCapable, reason: LDMReason) = DarkMode.isAvailable()
+        let (isLDMCapable, reason: _) = DarkMode.isAvailable()
         if !isLDMCapable {
             timeLightDarkModeRadio.isEnabled = false
         }
-        lightDarkModeLabel.stringValue = LDMReason
     }
 
     func setupNightShift() {
@@ -120,6 +136,48 @@ class TimeViewController: NSViewController {
             timeNightShiftRadio.isEnabled = false
         }
         nightShiftLabel.stringValue = NSReason
+    }
+
+    @IBAction func sunsetSunriseWindowChange(_ sender: NSPopUpButton) {
+        PrefsTime.sunEventWindow = 60 * ((2 + sender.indexOfSelectedItem) * 30)
+
+        updateTimeView()
+    }
+
+    func updateTimeView() {
+        switch PrefsTime.timeMode {
+        case .disabled:
+            timeBarView.isHidden = true
+            return
+        case .lightDarkMode:
+            timeBarView.isHidden = true
+            return
+        case .nightShift:
+            timeBarView.isHidden = false
+        case .manual:
+            timeBarView.isHidden = false
+        case .coordinates:
+            timeBarView.isHidden = true
+            return
+        case .locationService:
+            timeBarView.isHidden = false
+        }
+
+        let (sunrise, sunset) = TimeManagement.sharedInstance.getSunriseSunset()
+
+        if let lsunrise = sunrise, let lsunset = sunset {
+            let esunrise = lsunrise.addingTimeInterval(TimeInterval(PrefsTime.sunEventWindow))
+            let psunset = lsunset.addingTimeInterval(TimeInterval(-PrefsTime.sunEventWindow))
+
+            oSunrise.stringValue = timeFormatter.string(from: lsunrise)
+            oSunrise.sizeToFit()
+            eSunrise.stringValue = timeFormatter.string(from: esunrise)
+            eSunrise.sizeToFit()
+            eSunset.stringValue = timeFormatter.string(from: psunset)
+            eSunset.sizeToFit()
+            oSunset.stringValue = timeFormatter.string(from: lsunset)
+            oSunset.sizeToFit()
+        }
     }
 
     @IBAction func timeModeChange(_ sender: NSButton) {
@@ -140,44 +198,24 @@ class TimeViewController: NSViewController {
             PrefsTime.timeMode = .manual
         case timeLightDarkModeRadio:
             PrefsTime.timeMode = .lightDarkMode
-        case timeCalculateRadio:
-            PrefsTime.timeMode = .coordinates
         case timeLocationRadio:
             PrefsTime.timeMode = .locationService
         default:
             ()
         }
-    }
-
-    @IBAction func latitudeChange(_ sender: NSTextField) {
-        PrefsTime.latitude = sender.stringValue
-        updateLatitudeLongitude()
-    }
-
-    @IBAction func longitudeChange(_ sender: NSTextField) {
-        PrefsTime.longitude = sender.stringValue
-        updateLatitudeLongitude()
-    }
-
-    func updateLatitudeLongitude() {
-        let timeManagement = TimeManagement.sharedInstance
-        let (_, reason) = timeManagement.calculateFromCoordinates()
-        calculateCoordinatesLabel.stringValue = reason
+        updateTimeView()
     }
 
     @IBAction func sunriseChange(_ sender: NSDatePicker?) {
         guard let date = sender?.dateValue else { return }
         PrefsTime.manualSunrise = timeFormatter.string(from: date)
+        updateTimeView()
     }
 
     @IBAction func sunsetChange(_ sender: NSDatePicker?) {
         guard let date = sender?.dateValue else { return }
         PrefsTime.manualSunset = timeFormatter.string(from: date)
-    }
-
-    @IBAction func solarPopupChange(_ sender: NSPopUpButton) {
-        PrefsTime.solarMode = SolarMode(rawValue: sender.indexOfSelectedItem)!
-        updateLatitudeLongitude()
+        updateTimeView()
     }
 
     @IBAction func darkModeNightOverrideClick(_ sender: NSButton) {
@@ -197,10 +235,8 @@ class TimeViewController: NSViewController {
 
             // swiftlint:disable:next line_length
             Aerial.showInfoAlert(title: "Success", text: "Aerial can access your location (latitude: \(lat), longitude: \(lon)) and will use it to show you the correct videos.")
-        })
-    }
 
-    @IBAction func helpCalcModeClick(_ sender: NSButton) {
-        popoverCalcMode.show(relativeTo: sender.preparedContentRect, of: sender, preferredEdge: .maxY)
+            self.updateTimeView()
+        })
     }
 }

@@ -17,6 +17,7 @@ class FiltersViewController: NSViewController {
 
     @IBOutlet var vibranceSlider: NSSlider!
 
+    @IBOutlet var infoIcon: NSButton!
     @IBOutlet var allowPerVideo: NSButton!
     var images: [NSImageView: CIImage] = [:]
 
@@ -27,6 +28,8 @@ class FiltersViewController: NSViewController {
 
         setupImages()
         redrawFilteredImages()
+
+        infoIcon.setIcons("info.circle")
 
         allowPerVideo.state = PrefsVideos.allowPerVideoVibrance ? .on : .off
     }

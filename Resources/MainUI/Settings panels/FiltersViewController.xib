@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,6 +13,7 @@
                 <outlet property="imageView2" destination="8AX-SO-qGe" id="aZc-Wr-YkL"/>
                 <outlet property="imageView3" destination="oJZ-sY-UYv" id="RoH-Mv-Tip"/>
                 <outlet property="imageView4" destination="AvL-Xc-gaf" id="rwE-4P-bkU"/>
+                <outlet property="infoIcon" destination="NWx-XD-ael" id="Vwt-gN-n0u"/>
                 <outlet property="vibranceSlider" destination="oaK-yX-Fb3" id="OKF-IO-d22"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -24,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oaK-yX-Fb3">
-                    <rect key="frame" x="232" y="513" width="276" height="24"/>
+                    <rect key="frame" x="232" y="509" width="276" height="28"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="260" id="590-ll-J2f"/>
                     </constraints>
@@ -42,7 +43,7 @@
                     </textFieldCell>
                 </textField>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="Lkf-KS-VPB">
-                    <rect key="frame" x="60" y="78" width="728" height="409"/>
+                    <rect key="frame" x="60" y="48" width="728" height="409"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" translatesAutoresizingMaskIntoConstraints="NO" id="7LV-8e-x1j">
                             <rect key="frame" x="0.0" y="204" width="364" height="205"/>
@@ -92,17 +93,43 @@
                         <action selector="allowPerVideoChange:" target="-2" id="dbZ-6n-ct2"/>
                     </connections>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JZe-5t-O4C">
+                    <rect key="frame" x="127" y="479" width="644" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Vibrance lets you adjust the colors of videos to make them pop more. This is not available for HDR videos." id="SB0-6z-9YD">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="NWx-XD-ael">
+                    <rect key="frame" x="97" y="475" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="DfM-Cy-mvh"/>
+                        <constraint firstAttribute="width" constant="24" id="qKd-mm-nDx"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="info.circle" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="qrp-00-xdz">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstItem="Lkf-KS-VPB" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="70" id="9iW-YK-N19"/>
+                <constraint firstItem="JZe-5t-O4C" firstAttribute="centerY" secondItem="NWx-XD-ael" secondAttribute="centerY" id="2gk-tU-yp0"/>
+                <constraint firstItem="JZe-5t-O4C" firstAttribute="leading" secondItem="NWx-XD-ael" secondAttribute="trailing" constant="8" symbolic="YES" id="8Hn-KI-4jF"/>
+                <constraint firstItem="Lkf-KS-VPB" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="100" id="9iW-YK-N19"/>
+                <constraint firstItem="NWx-XD-ael" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="97" id="Egc-rM-AaO"/>
                 <constraint firstItem="oaK-yX-Fb3" firstAttribute="leading" secondItem="0GU-RH-zJp" secondAttribute="trailing" constant="8" id="GCR-JE-7tQ"/>
                 <constraint firstItem="Lkf-KS-VPB" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="60" id="MFl-gR-4Cv"/>
                 <constraint firstItem="oaK-yX-Fb3" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="22" id="WVf-Pi-IAW"/>
                 <constraint firstItem="oaK-yX-Fb3" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="240" id="bIs-qY-CO3"/>
                 <constraint firstAttribute="trailing" secondItem="Lkf-KS-VPB" secondAttribute="trailing" constant="60" id="dux-Td-5U0"/>
+                <constraint firstItem="JZe-5t-O4C" firstAttribute="top" secondItem="oaK-yX-Fb3" secondAttribute="bottom" constant="20" id="hFr-sk-O7a"/>
                 <constraint firstItem="0GU-RH-zJp" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="sju-ce-g1L"/>
             </constraints>
             <point key="canvasLocation" x="-1591" y="296.5"/>
         </customView>
     </objects>
+    <resources>
+        <image name="info.circle" width="141" height="155"/>
+    </resources>
 </document>

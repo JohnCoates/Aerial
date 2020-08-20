@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,6 +24,7 @@
                 <outlet property="restrictWiFiCheckbox" destination="eO9-gC-aqe" id="atJ-yQ-S9U"/>
                 <outlet property="rotateFrequencyLabel" destination="hTY-9R-NMo" id="uep-h0-RBE"/>
                 <outlet property="rotateFrequencyPopup" destination="Fx0-Ue-MbY" id="s1o-IX-lWh"/>
+                <outlet property="showDownloadIndicator" destination="HHE-WL-n3w" id="yE4-GY-Zlj"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -47,7 +48,7 @@
                     <rect key="frame" x="40" y="466" width="703" height="126"/>
                     <subviews>
                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="k6x-vV-geU">
-                            <rect key="frame" x="198" y="102" width="427" height="16"/>
+                            <rect key="frame" x="198" y="102" width="426" height="16"/>
                             <textFieldCell key="cell" selectable="YES" title="You can manually download or manage your cache from the video list." id="XE8-MB-KvC">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -101,7 +102,7 @@
                     <rect key="frame" x="40" y="258" width="704" height="333"/>
                     <subviews>
                         <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="qCm-Xg-sGD">
-                            <rect key="frame" x="12" y="208" width="680" height="5"/>
+                            <rect key="frame" x="12" y="170" width="680" height="5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="680" id="cZr-hN-ROe"/>
                             </constraints>
@@ -149,7 +150,7 @@
                             </textFieldCell>
                         </textField>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eO9-gC-aqe">
-                            <rect key="frame" x="197" y="169" width="303" height="22"/>
+                            <rect key="frame" x="197" y="131" width="303" height="22"/>
                             <buttonCell key="cell" type="check" title="Restrict downloads to trusted Wi-Fi networks" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="7lW-xd-wEA">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -159,7 +160,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kpn-Oc-zFD">
-                            <rect key="frame" x="194" y="78" width="168" height="40"/>
+                            <rect key="frame" x="194" y="40" width="168" height="40"/>
                             <buttonCell key="cell" type="push" title="Add current network" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jY1-rg-JFf">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -169,7 +170,7 @@
                             </connections>
                         </button>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l6E-tF-sRt">
-                            <rect key="frame" x="198" y="46" width="59" height="16"/>
+                            <rect key="frame" x="198" y="8" width="59" height="16"/>
                             <textFieldCell key="cell" controlSize="large" title="Allowed: " id="HwM-ON-Dvy">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -177,14 +178,14 @@
                             </textFieldCell>
                         </textField>
                         <button translatesAutoresizingMaskIntoConstraints="NO" id="mFt-fb-1OS">
-                            <rect key="frame" x="200" y="134" width="16" height="16"/>
+                            <rect key="frame" x="200" y="96" width="16" height="16"/>
                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusAvailable" imagePosition="only" alignment="center" controlSize="large" imageScaling="proportionallyUpOrDown" inset="2" id="hz1-x9-iK0">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                         </button>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="agU-a4-AzS">
-                            <rect key="frame" x="219" y="134" width="94" height="16"/>
+                            <rect key="frame" x="219" y="96" width="94" height="16"/>
                             <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Connected to: " id="GbJ-ZN-k25">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -226,7 +227,7 @@
                             </textFieldCell>
                         </textField>
                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fx0-Ue-MbY">
-                            <rect key="frame" x="195" y="227" width="93" height="40"/>
+                            <rect key="frame" x="195" y="227" width="97" height="40"/>
                             <popUpButtonCell key="cell" type="push" title="Weekly" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="2oT-7A-P9y" id="EuB-mx-EcZ">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
@@ -245,13 +246,23 @@
                             </connections>
                         </popUpButton>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="frC-4B-UNN">
-                            <rect key="frame" x="362" y="78" width="100" height="40"/>
+                            <rect key="frame" x="362" y="40" width="100" height="40"/>
                             <buttonCell key="cell" type="push" title="Reset list" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JAx-l1-U4r">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
                                 <action selector="resetListClick:" target="-2" id="7sH-5V-n1R"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HHE-WL-n3w">
+                            <rect key="frame" x="197" y="192" width="318" height="22"/>
+                            <buttonCell key="cell" type="check" title="Show download progression in the screen saver" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="EcB-oi-vVw">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="showDownloadIndicatorChange:" target="-2" id="e6b-oJ-MSH"/>
                             </connections>
                         </button>
                     </subviews>
@@ -278,18 +289,20 @@
                         <constraint firstItem="Fx0-Ue-MbY" firstAttribute="firstBaseline" secondItem="hTY-9R-NMo" secondAttribute="firstBaseline" id="WTl-Ze-cN1"/>
                         <constraint firstItem="frC-4B-UNN" firstAttribute="leading" secondItem="Kpn-Oc-zFD" secondAttribute="trailing" constant="12" symbolic="YES" id="abx-eM-MBu"/>
                         <constraint firstItem="RaB-PR-zBP" firstAttribute="leading" secondItem="u4o-WA-mfN" secondAttribute="leading" constant="210" id="dfy-XE-CeH"/>
+                        <constraint firstItem="HHE-WL-n3w" firstAttribute="leading" secondItem="Fx0-Ue-MbY" secondAttribute="leading" id="dzN-Xd-hLN"/>
                         <constraint firstItem="agU-a4-AzS" firstAttribute="firstBaseline" secondItem="mFt-fb-1OS" secondAttribute="firstBaseline" id="iFe-sg-dzO"/>
                         <constraint firstAttribute="width" constant="704" id="jVz-49-ccH"/>
                         <constraint firstItem="uaY-f5-FSu" firstAttribute="firstBaseline" secondItem="cW8-Ta-PzR" secondAttribute="firstBaseline" id="kPO-cI-s9f"/>
                         <constraint firstItem="Fx0-Ue-MbY" firstAttribute="top" secondItem="I6n-yR-diw" secondAttribute="bottom" constant="22" id="nsb-h8-1Bz"/>
-                        <constraint firstItem="qCm-Xg-sGD" firstAttribute="top" secondItem="Fx0-Ue-MbY" secondAttribute="bottom" constant="22" id="oHQ-48-sNe"/>
                         <constraint firstItem="Fx0-Ue-MbY" firstAttribute="leading" secondItem="hTY-9R-NMo" secondAttribute="trailing" constant="8" symbolic="YES" id="oaw-RX-zje"/>
                         <constraint firstItem="RaB-PR-zBP" firstAttribute="top" secondItem="u4o-WA-mfN" secondAttribute="top" constant="12" id="ofl-kK-NVN"/>
                         <constraint firstItem="Kpn-Oc-zFD" firstAttribute="top" secondItem="mFt-fb-1OS" secondAttribute="bottom" constant="22" id="ow4-Vd-Ysz"/>
+                        <constraint firstItem="HHE-WL-n3w" firstAttribute="top" secondItem="Fx0-Ue-MbY" secondAttribute="bottom" constant="22" id="pbO-nT-YvP"/>
                         <constraint firstItem="eO9-gC-aqe" firstAttribute="leading" secondItem="u4o-WA-mfN" secondAttribute="leading" constant="200" id="qLH-I6-SYA"/>
                         <constraint firstItem="1wh-wp-MNi" firstAttribute="firstBaseline" secondItem="cW8-Ta-PzR" secondAttribute="firstBaseline" id="rxk-jB-yi3"/>
                         <constraint firstItem="IrX-JD-reU" firstAttribute="firstBaseline" secondItem="cW8-Ta-PzR" secondAttribute="firstBaseline" id="s3g-7f-U2a"/>
                         <constraint firstItem="YDt-7V-EeW" firstAttribute="leading" secondItem="I6n-yR-diw" secondAttribute="trailing" constant="167" id="wiM-sM-THR"/>
+                        <constraint firstItem="qCm-Xg-sGD" firstAttribute="top" secondItem="HHE-WL-n3w" secondAttribute="bottom" constant="22" id="ywc-z9-hLZ"/>
                     </constraints>
                 </customView>
             </subviews>

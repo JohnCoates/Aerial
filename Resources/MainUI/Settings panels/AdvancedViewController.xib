@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,6 +11,7 @@
                 <outlet property="debugCheckbox" destination="Jfm-Hl-4bN" id="XiF-WF-NLg"/>
                 <outlet property="languageLabel" destination="xFh-dw-fup" id="ng0-cZ-hbk"/>
                 <outlet property="languagePopup" destination="39U-7I-fEm" id="X38-8k-EEi"/>
+                <outlet property="launchSetupAgain" destination="vYi-Hf-cI5" id="yqJ-SP-aSk"/>
                 <outlet property="menu1080pHDR" destination="rbr-AX-Qap" id="CFs-wI-4me"/>
                 <outlet property="menu4KHDR" destination="D9e-ji-I4Y" id="Pcs-n5-1zI"/>
                 <outlet property="muteSoundCheckbox" destination="c2Y-BQ-Mg9" id="mFh-GY-ea4"/>
@@ -53,7 +54,7 @@
                     </connections>
                 </button>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ueZ-L1-tKm">
-                    <rect key="frame" x="313" y="268" width="144" height="40"/>
+                    <rect key="frame" x="313" y="268" width="148" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="Keep enabled" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="IpW-J3-24s" id="iVm-OE-7YZ">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -70,7 +71,7 @@
                     </connections>
                 </popUpButton>
                 <popUpButton toolTip="The duration of the fades at the beginning and the end of each video" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2PZ-3t-5f8">
-                    <rect key="frame" x="313" y="394" width="111" height="40"/>
+                    <rect key="frame" x="313" y="394" width="115" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="1 second" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="VtY-HK-i7p" id="2Je-DA-thk">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -93,7 +94,7 @@
                     <rect key="frame" x="20" y="249" width="749" height="5"/>
                 </box>
                 <popUpButton verticalHuggingPriority="750" verifyAmbiguity="off" translatesAutoresizingMaskIntoConstraints="NO" id="39U-7I-fEm">
-                    <rect key="frame" x="313" y="195" width="160" height="40"/>
+                    <rect key="frame" x="313" y="195" width="164" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="Preferred" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="eac-0Y-vKj" id="TWx-zF-jAK">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -140,7 +141,7 @@
                     </connections>
                 </popUpButton>
                 <button toolTip="Click for more information on Power Saving" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="geu-ZX-2ke">
-                    <rect key="frame" x="460" y="267" width="35" height="35"/>
+                    <rect key="frame" x="464" y="267" width="35" height="35"/>
                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Pe4-WV-Mm2">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -196,7 +197,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton toolTip="Pick your preferred video format, see help for more information" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tVO-Se-9Jo">
-                    <rect key="frame" x="313" y="444" width="121" height="40"/>
+                    <rect key="frame" x="313" y="444" width="125" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="1080p H264" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="F41-ky-Eg7" id="bjl-nz-Him">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -227,7 +228,7 @@
                     </textFieldCell>
                 </textField>
                 <button toolTip="Click for more information on Video Formats" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8lj-ap-GSr">
-                    <rect key="frame" x="437" y="443" width="35" height="35"/>
+                    <rect key="frame" x="441" y="443" width="35" height="35"/>
                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ihk-vz-2UX">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -248,13 +249,23 @@
                     <rect key="frame" x="20" y="145" width="749" height="5"/>
                 </box>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lzR-yN-m5b">
-                    <rect key="frame" x="312" y="55" width="167" height="40"/>
+                    <rect key="frame" x="312" y="55" width="164" height="40"/>
                     <buttonCell key="cell" type="push" title="Reset All Settings" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="leading" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="T6y-Do-kQ7">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
                         <action selector="resetAllSettings:" target="-2" id="hnc-p1-Gd0"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vYi-Hf-cI5">
+                    <rect key="frame" x="476" y="55" width="185" height="40"/>
+                    <buttonCell key="cell" type="push" title="Launch Setup Again" bezelStyle="rounded" image="aspectratio" catalog="system" imagePosition="left" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Bde-5x-OV2">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="launchSetupAgainClick:" target="-2" id="ezf-Eb-gEI"/>
                     </connections>
                 </button>
             </subviews>
@@ -276,6 +287,8 @@
                 <constraint firstItem="ueZ-L1-tKm" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="318" id="IRP-3P-JM6"/>
                 <constraint firstItem="LK9-Dp-4je" firstAttribute="top" secondItem="ueZ-L1-tKm" secondAttribute="bottom" constant="22" id="Ieb-8f-gfk"/>
                 <constraint firstItem="xFh-dw-fup" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="318" id="KPc-G2-3vx"/>
+                <constraint firstItem="vYi-Hf-cI5" firstAttribute="leading" secondItem="lzR-yN-m5b" secondAttribute="trailing" constant="12" symbolic="YES" id="KhA-uu-phQ"/>
+                <constraint firstItem="vYi-Hf-cI5" firstAttribute="firstBaseline" secondItem="lzR-yN-m5b" secondAttribute="firstBaseline" id="M0J-PM-meY"/>
                 <constraint firstItem="Dka-WL-c4U" firstAttribute="leading" secondItem="Jfm-Hl-4bN" secondAttribute="trailing" constant="100" id="T0G-nv-quE"/>
                 <constraint firstItem="vm9-LJ-GN6" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="TQf-vz-A5T"/>
                 <constraint firstItem="4zW-Lf-b41" firstAttribute="top" secondItem="2PZ-3t-5f8" secondAttribute="bottom" constant="22" id="Uvu-gA-bOG"/>
@@ -445,9 +458,10 @@ HDR videos are encoded using Dolby Vision to represent a Higher Dynamic range of
     <resources>
         <image name="NSCaution" width="32" height="32"/>
         <image name="NSFolder" width="32" height="32"/>
-        <image name="NSRefreshTemplate" width="14" height="16"/>
+        <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
         <image name="NSStatusPartiallyAvailable" width="16" height="16"/>
+        <image name="aspectratio" catalog="system" width="18" height="14"/>
         <image name="folder" catalog="system" width="18" height="14"/>
     </resources>
 </document>

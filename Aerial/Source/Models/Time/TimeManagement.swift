@@ -54,13 +54,7 @@ final class TimeManagement: NSObject {
                 _ = calculateFrom(latitude: lat, longitude: lon)
 
                 if solar != nil {
-                    let zenith = getZenith(PrefsTime.solarMode)
-
-                    if (solar?.isDaytime(zenith: zenith))! {
-                        return (true, "day")
-                    } else {
-                        return (true, "night")
-                    }
+                    return (true, solar!.getTimeSlice())
                 }
             }
 
@@ -71,13 +65,7 @@ final class TimeManagement: NSObject {
             _ = calculateFromCoordinates()
 
             if solar != nil {
-                let zenith = getZenith(PrefsTime.solarMode)
-
-                if (solar?.isDaytime(zenith: zenith))! {
-                    return (true, "day")
-                } else {
-                    return (true, "night")
-                }
+                return (true, solar!.getTimeSlice())
             } else {
                 errorLog("You need to input latitude and longitude for calculations to work")
                 return (false, "")
@@ -109,6 +97,40 @@ final class TimeManagement: NSObject {
 
         // default is show anything
         return (false, "")
+    }
+
+    public func getSunriseSunset() -> (Date?, Date?) {
+        switch PrefsTime.timeMode {
+        case .disabled:
+            return (nil, nil)
+        case .nightShift:
+            let (_, sunrise, sunset, _) = NightShift.getInformation()
+            return (sunrise, sunset)
+        case .manual:
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm"
+
+            guard let dateSunrise = dateFormatter.date(from: PrefsTime.manualSunrise) else {
+                errorLog("Invalid sunrise time in preferences")
+                return(nil, nil)
+            }
+            guard let dateSunset = dateFormatter.date(from: PrefsTime.manualSunset) else {
+                errorLog("Invalid sunset time in preferences")
+                return(nil, nil)
+            }
+            return (dateSunrise, dateSunset)
+        case .lightDarkMode:
+            return (nil, nil)
+        case .coordinates:
+            return (nil, nil)
+        case .locationService:
+            if let lat = lsLatitude, let lon = lsLongitude {
+                _ = calculateFrom(latitude: lat, longitude: lon)
+
+                return (solar?.astronomicalSunrise, solar?.astronomicalSunset)
+            }
+            return(nil, nil)
+        }
     }
 
     // Get the correct Zenith value for our pref
@@ -145,11 +167,22 @@ final class TimeManagement: NSObject {
             nsunset = todayizeDate(date: sunset)!
         }
 
-        // Then comparison is trivial !
-        if nsunrise < now && now < nsunset {
-            return "day"
-        } else {
+        if now < nsunrise || now > nsunset {
+            // So this is night, before sunrise, after sunset
+            debugLog("night")
             return "night"
+        } else if now > nsunrise && now < nsunrise.addingTimeInterval(TimeInterval(PrefsTime.sunEventWindow)) {
+            // Sunrise-period is a 3hr period after astro sunrise
+            debugLog("sunrise")
+            return "sunrise"
+        } else if now > nsunset.addingTimeInterval(TimeInterval(-PrefsTime.sunEventWindow)) && now < nsunset {
+            // Sunset-period is a 3hr period prior astro sunset
+            debugLog("sunset")
+            return "sunset"
+        } else {
+            // Let's say this is day
+            debugLog("day")
+            return "day"
         }
     }
 

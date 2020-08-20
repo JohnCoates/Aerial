@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,9 +28,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Jk-A0-3Qs">
-                                <rect key="frame" x="126" y="488" width="525" height="16"/>
+                                <rect key="frame" x="126" y="487" width="592" height="19"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="You can quickly change which videos are playing using the new &quot;On Rotation&quot; feature." id="oVm-P8-xlE">
-                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <font key="font" metaFont="system" size="15"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -52,7 +52,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="dial" id="6uo-Js-kCL"/>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FE0-j2-Pzu">
-                                <rect key="frame" x="40" y="384" width="48" height="48"/>
+                                <rect key="frame" x="40" y="404" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Kz7-oY-E99"/>
                                     <constraint firstAttribute="width" constant="48" id="Ymc-c9-KDX"/>
@@ -60,15 +60,15 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="star" id="WQk-aW-YMN"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hs3-Sq-hk9">
-                                <rect key="frame" x="126" y="400" width="292" height="16"/>
+                                <rect key="frame" x="126" y="419" width="329" height="19"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Enjoying a video? Favorite it so it keeps playing." id="mQv-cf-25R">
-                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <font key="font" metaFont="system" size="15"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DDz-TZ-oBe">
-                                <rect key="frame" x="40" y="296" width="48" height="48"/>
+                                <rect key="frame" x="40" y="336" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="FMg-VJ-UQ8"/>
                                     <constraint firstAttribute="width" constant="48" id="zbI-vv-lYx"/>
@@ -76,15 +76,15 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="eye.slash" id="h1b-o0-7vP"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mj3-l6-dr7">
-                                <rect key="frame" x="126" y="312" width="513" height="16"/>
+                                <rect key="frame" x="126" y="351" width="578" height="19"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Not liking one? Just hide it, Aerial won't display it again (you can change your mind)." id="nu0-MS-den">
-                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <font key="font" metaFont="system" size="15"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gpF-mO-bgQ">
-                                <rect key="frame" x="40" y="208" width="48" height="48"/>
+                                <rect key="frame" x="40" y="268" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="9Zd-jX-k8d"/>
                                     <constraint firstAttribute="width" constant="48" id="CwG-zE-v0z"/>
@@ -92,44 +92,94 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="aspectratio" id="QNJ-r6-Iru"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7pM-QI-jkf">
-                                <rect key="frame" x="126" y="224" width="626" height="16"/>
+                                <rect key="frame" x="126" y="283" width="626" height="19"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="There's a whole new user interface by the way. You can even resize it!" id="flM-0s-wDt">
-                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <font key="font" metaFont="system" size="15"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xfz-Dg-MZj">
-                                <rect key="frame" x="126" y="103" width="626" height="57"/>
+                                <rect key="frame" x="48" y="143" width="704" height="60"/>
                                 <textFieldCell key="cell" id="ymw-Ut-XBe">
-                                    <font key="font" metaFont="systemSemibold" size="15"/>
-                                    <string key="title">And yes, there are new videos! You can now enjoy some free videos provided by third party artists on top of the classical Aerials, check the Custom Sources in Settings for more details.  </string>
+                                    <font key="font" metaFont="systemSemibold" size="17"/>
+                                    <string key="title">And yes, there are new videos! You can now enjoy some free videos provided by third party artists on top of the classical Aerials, check the Custom Sources in Settings for more details, and how to support them for their work.  </string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ogO-Fy-XFK">
+                                <rect key="frame" x="160" y="0.0" width="160" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="FDz-cd-SR8"/>
+                                    <constraint firstAttribute="width" constant="160" id="wdc-VQ-8NO"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="video_inspire_alabama_montgomery_countryside_00007" id="CMp-Kk-rqd"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KAl-O1-TRH">
+                                <rect key="frame" x="320" y="0.0" width="160" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="IYk-jq-8HM"/>
+                                    <constraint firstAttribute="height" constant="90" id="hR0-gb-wSq"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="video_inspire_california_catalina_00005" id="L7v-f8-arz"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DYj-Iq-o0X">
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="10M-Lo-h0C"/>
+                                    <constraint firstAttribute="height" constant="90" id="Z7a-YQ-Rmg"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="video_inspire_california_big-sur_2020_00001" id="3vh-QH-u2m"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iZ3-vX-hQ2">
+                                <rect key="frame" x="640" y="0.0" width="160" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="3sC-gY-yUL"/>
+                                    <constraint firstAttribute="width" constant="160" id="qhO-ks-LM8"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="video_inspire_california_vineyard_sierra-mar_sunrise_110" id="vM8-X1-ael"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IQW-cL-eH7">
+                                <rect key="frame" x="480" y="0.0" width="160" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="gWL-K9-0lh"/>
+                                    <constraint firstAttribute="width" constant="160" id="xsY-qL-JKc"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="video_inspire_italy_como_cerano-dintelvi_006" id="EbO-Ei-Jj4"/>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="gpF-mO-bgQ" firstAttribute="leading" secondItem="FNC-l3-JV2" secondAttribute="leading" constant="40" id="0aT-u8-FAj"/>
-                            <constraint firstItem="FE0-j2-Pzu" firstAttribute="top" secondItem="c1U-K9-TU3" secondAttribute="bottom" constant="40" id="1NG-ay-c4o"/>
+                            <constraint firstItem="FE0-j2-Pzu" firstAttribute="top" secondItem="c1U-K9-TU3" secondAttribute="bottom" constant="20" id="1NG-ay-c4o"/>
                             <constraint firstItem="Sxo-rP-7e6" firstAttribute="centerX" secondItem="FNC-l3-JV2" secondAttribute="centerX" id="3OS-1v-K1W"/>
+                            <constraint firstItem="iZ3-vX-hQ2" firstAttribute="leading" secondItem="IQW-cL-eH7" secondAttribute="trailing" id="3oF-uK-OXK"/>
+                            <constraint firstAttribute="bottom" secondItem="IQW-cL-eH7" secondAttribute="bottom" id="5LI-M7-eP0"/>
                             <constraint firstItem="DDz-TZ-oBe" firstAttribute="leading" secondItem="FNC-l3-JV2" secondAttribute="leading" constant="40" id="8SP-Ic-tqj"/>
+                            <constraint firstItem="ogO-Fy-XFK" firstAttribute="leading" secondItem="DYj-Iq-o0X" secondAttribute="trailing" id="DFJ-X6-2J5"/>
+                            <constraint firstItem="KAl-O1-TRH" firstAttribute="leading" secondItem="ogO-Fy-XFK" secondAttribute="trailing" id="DZ2-Vk-K1H"/>
                             <constraint firstAttribute="trailing" secondItem="7pM-QI-jkf" secondAttribute="trailing" constant="50" id="IY7-F9-OT8"/>
                             <constraint firstItem="Mj3-l6-dr7" firstAttribute="leading" secondItem="DDz-TZ-oBe" secondAttribute="trailing" constant="40" id="LPf-HF-hRt"/>
+                            <constraint firstItem="KAl-O1-TRH" firstAttribute="centerX" secondItem="FNC-l3-JV2" secondAttribute="centerX" id="T1K-qX-qqs"/>
                             <constraint firstItem="7pM-QI-jkf" firstAttribute="centerY" secondItem="gpF-mO-bgQ" secondAttribute="centerY" id="TdW-8v-Mr5"/>
                             <constraint firstItem="c1U-K9-TU3" firstAttribute="top" secondItem="FNC-l3-JV2" secondAttribute="top" constant="80" id="XPg-kM-pks"/>
                             <constraint firstItem="2Jk-A0-3Qs" firstAttribute="leading" secondItem="c1U-K9-TU3" secondAttribute="trailing" constant="40" id="YN2-bj-7UH"/>
+                            <constraint firstAttribute="bottom" secondItem="ogO-Fy-XFK" secondAttribute="bottom" id="bU6-CZ-aGm"/>
                             <constraint firstItem="FE0-j2-Pzu" firstAttribute="leading" secondItem="FNC-l3-JV2" secondAttribute="leading" constant="40" id="c27-Nr-3Lr"/>
                             <constraint firstItem="c1U-K9-TU3" firstAttribute="leading" secondItem="FNC-l3-JV2" secondAttribute="leading" constant="40" id="cd6-1R-4nL"/>
-                            <constraint firstItem="xfz-Dg-MZj" firstAttribute="top" secondItem="7pM-QI-jkf" secondAttribute="bottom" constant="64" id="dWR-sg-mON"/>
+                            <constraint firstAttribute="bottom" secondItem="KAl-O1-TRH" secondAttribute="bottom" id="dBc-uF-r1J"/>
+                            <constraint firstItem="xfz-Dg-MZj" firstAttribute="top" secondItem="7pM-QI-jkf" secondAttribute="bottom" constant="80" id="dWR-sg-mON"/>
+                            <constraint firstAttribute="bottom" secondItem="iZ3-vX-hQ2" secondAttribute="bottom" id="e8g-t2-LMv"/>
                             <constraint firstItem="7pM-QI-jkf" firstAttribute="leading" secondItem="gpF-mO-bgQ" secondAttribute="trailing" constant="40" id="eU9-DS-XiI"/>
-                            <constraint firstItem="xfz-Dg-MZj" firstAttribute="leading" secondItem="7pM-QI-jkf" secondAttribute="leading" id="f3x-PR-G02"/>
+                            <constraint firstItem="IQW-cL-eH7" firstAttribute="leading" secondItem="KAl-O1-TRH" secondAttribute="trailing" id="fHL-sc-yDg"/>
                             <constraint firstAttribute="trailing" secondItem="xfz-Dg-MZj" secondAttribute="trailing" constant="50" id="kB6-3N-dyB"/>
                             <constraint firstItem="Sxo-rP-7e6" firstAttribute="top" secondItem="FNC-l3-JV2" secondAttribute="top" constant="20" id="mKo-yl-9oB"/>
-                            <constraint firstItem="DDz-TZ-oBe" firstAttribute="top" secondItem="FE0-j2-Pzu" secondAttribute="bottom" constant="40" id="mhi-UN-my6"/>
+                            <constraint firstItem="DDz-TZ-oBe" firstAttribute="top" secondItem="FE0-j2-Pzu" secondAttribute="bottom" constant="20" id="mhi-UN-my6"/>
                             <constraint firstItem="Hs3-Sq-hk9" firstAttribute="leading" secondItem="FE0-j2-Pzu" secondAttribute="trailing" constant="40" id="pot-Jw-XjM"/>
-                            <constraint firstItem="gpF-mO-bgQ" firstAttribute="top" secondItem="DDz-TZ-oBe" secondAttribute="bottom" constant="40" id="tcv-tH-f7B"/>
+                            <constraint firstItem="xfz-Dg-MZj" firstAttribute="leading" secondItem="FNC-l3-JV2" secondAttribute="leading" constant="50" id="qGN-6R-sFX"/>
+                            <constraint firstItem="gpF-mO-bgQ" firstAttribute="top" secondItem="DDz-TZ-oBe" secondAttribute="bottom" constant="20" id="tcv-tH-f7B"/>
                             <constraint firstItem="Hs3-Sq-hk9" firstAttribute="centerY" secondItem="FE0-j2-Pzu" secondAttribute="centerY" id="xDC-nb-BJK"/>
+                            <constraint firstAttribute="bottom" secondItem="DYj-Iq-o0X" secondAttribute="bottom" id="xw6-Sp-obt"/>
                             <constraint firstItem="Mj3-l6-dr7" firstAttribute="centerY" secondItem="DDz-TZ-oBe" secondAttribute="centerY" id="y67-wq-D9Z"/>
                             <constraint firstItem="2Jk-A0-3Qs" firstAttribute="centerY" secondItem="c1U-K9-TU3" secondAttribute="centerY" id="zD9-nF-Uge"/>
                         </constraints>
@@ -154,5 +204,10 @@
         <image name="dial" width="163" height="152"/>
         <image name="eye.slash" width="184" height="129"/>
         <image name="star" width="154" height="166"/>
+        <image name="video_inspire_alabama_montgomery_countryside_00007" width="192" height="108"/>
+        <image name="video_inspire_california_big-sur_2020_00001" width="192" height="108"/>
+        <image name="video_inspire_california_catalina_00005" width="192" height="108"/>
+        <image name="video_inspire_california_vineyard_sierra-mar_sunrise_110" width="192" height="108"/>
+        <image name="video_inspire_italy_como_cerano-dintelvi_006" width="192" height="108"/>
     </resources>
 </document>
