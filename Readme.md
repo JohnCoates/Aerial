@@ -15,7 +15,9 @@ Aerial is completely open source, so feel free to contribute to its development.
 [![Code Climate](https://codeclimate.com/github/JohnCoates/Aerial/badges/gpa.svg)](https://codeclimate.com/github/JohnCoates/Aerial)
 [![codecov](https://codecov.io/gh/JohnCoates/Aerial/branch/master/graph/badge.svg)](https://codecov.io/gh/JohnCoates/Aerial)
 
-###### Windows user? Try [OrangeJedi/Aerial](https://github.com/OrangeJedi/Aerial) Linux user? Try [graysky2/xscreensaver-aerial](https://github.com/graysky2/xscreensaver-aerial/)
+###### Windows user? Try [OrangeJedi/Aerial](https://github.com/OrangeJedi/Aerial) | Linux user? Try [graysky2/xscreensaver-aerial](https://github.com/graysky2/xscreensaver-aerial/)
+
+## About Aerial 
 
 Aerial was started in 2015 by John Coates ([Twitter](https://twitter.com/JohnCoatesDev), [Email](mailto:john@johncoates.me))
 
@@ -26,21 +28,22 @@ Starting with version 1.4, Aerial is maintained by [Guillaume Louel](https://git
 
 You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/graphs/contributors).
 
-**Trying Big Sur public beta 1 ? Very bold of you, please [read this to get your settings and videos back](https://github.com/JohnCoates/Aerial/issues/1036).**
+**Trying Big Sur public beta 1? Very bold of you!** Please *[read this to get your settings and videos back](https://github.com/JohnCoates/Aerial/issues/1036).*
 
-**Have a question ? Check our troobleshooting section below, or hop on our [Discord server](https://discord.gg/TPuA5WG).**
+**Have a question? Check our troobleshooting section below, or hop on our [Discord server](https://discord.gg/TPuA5WG).**
 
 ## Installation
 
-With changes in Catalina and Big Sur, a screen saver can no longer update itself, so I've made a separate companion app that can update Aerial in the background. This is the preferred way to install Aerial now!
+With changes in Catalina and Big Sur, a screen saver can no longer update itself, so I've made a separate companion app that can update Aerial in the background or when you manually choose to update it. This is the preferred way to install and keep Aerial up to date!
 
-Installation instructions:
+**Installation instructions:**
 - Download AerialInstaller.dmg [from here](https://github.com/glouel/AerialCompanion/releases/latest) 
-- Open the dmg and follow the instructions, and you're done. 
+- Open the .dmg and follow the instructions
+- This will install both the companion app and the screen saver (or update you to the current version if you already have it installed)
 
-Need more information on install, setup, or uninstall ? Or want to install via homebrew or manually ? Check our extended [instructions here](Documentation/Installation.md). 
+Need more information on install, setup, or uninstall? Or want to install via homebrew or manually? Check our extended [instructions here](Documentation/Installation.md). 
 
-## What's new in Aerial 2.0.0 (Aug 19, 2020)?
+## What's New in Aerial 2.0.0 (Aug 19, 2020)?
 
 ![newui](https://user-images.githubusercontent.com/37544189/90673393-f6de0900-e257-11ea-8e00-4357aca4214e.jpg)
 
@@ -52,7 +55,7 @@ Need more information on install, setup, or uninstall ? Or want to install via h
 
 You can still opt to manually download your videos, or simply grab them all. All up to you. If you allow automatic downloads, you can even specify a list of trusted WiFi networks!
 
-- 20 new videos! Starting with version 2.0, Aerial includes videos outside of the classical Apple TV ones. You can get a preview in the video below:
+- 20 new videos! Starting with version 2.0, Aerial includes similarly styled third party videos. You can get a preview in the video below:
 
 <p align="center">
   <a href="https://vimeo.com/449330833/36becf3668">
@@ -60,19 +63,21 @@ You can still opt to manually download your videos, or simply grab them all. All
   </a>
 </p>
 
-- A new "On rotation" feature, so you can quickly switch from watching Space videos, to only Sunset videos: 
+- A new "On rotation" feature, so you can quickly switch from watching space videos, to only sunset videos: 
 
 ![Capture d’écran 2020-08-19 à 22 12 03](https://user-images.githubusercontent.com/37544189/90685367-f8b0c800-e269-11ea-85f2-fcd27428aeb7.jpg)
 
-You can also favorite and hide videos now, based on your preferences. 
+- You can also favorite and hide videos now, based on your preferences. 
 
-There are many other new options, including vibrance control if you want to make your non HDR videos pop a bit more, sunset and sunrise video at appropriate time, and more!
+- There are many other new options, including vibrance control if you want to make your non HDR videos pop a bit more, sunset and sunrise video at appropriate time, and more!
 
 You can find more about [version changes here](Documentation/ChangeLog.md).
 
 ## Compatibility
 
-Aerial is written in Swift, which requires OS X Mavericks (10.9) or above. Please understand that not every feature will work as intended below OS X Sierra (10.12).
+- Minimum OS X Mavericks (10.9) - Some features will not work below OS X Sierra (10.12)
+- Aerial 2 is optimized for macOS Big Sur (macOS 11.x) and macOS Catalina (macOS 10.15)
+- Aerial 2 has been tested and supports Apple Silicon
 
 ## Community
 
@@ -82,24 +87,24 @@ Aerial is written in Swift, which requires OS X Mavericks (10.9) or above. Pleas
 - **Have a feature request?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Tell us why it would be useful, and why you and others would want it.
 - **Curious about the videos and on a slow connection?** Check [this guide](https://paper.dropbox.com/doc/Aerial-macOS-screen-saver-list-with-version-1.4.6-HvOeL0gNhLpqpIFgmLHaS) by [Hidehiro Nagaoka](https://github.com/hidehiro98).
 - **Just want to see the videos?** [A complete list of available wallpapers  is available online](https://aerial-screensavers.netlify.com). From [TawfiqH](https://github.com/Tawfiqh/aerialWallpapers).
+- **Join our [Community Discord server](https://discord.gg/TPuA5WG)** for technical support, feature requests, and a fun time!
 
-
-## Multilanguage support
+## Multilingual Support
 
 Aerial features overlay descriptions of the main geographical features displayed in the videos.
 
 ![Community Strings example](https://user-images.githubusercontent.com/4295/52958947-75bd6180-3395-11e9-947f-3c77d9f41928.jpg)
 
-These descriptions are available in many languages (Spanish, French, Polish… [check the complete list here](Resources/Community/Readme.md)) and that is only possible thanks to the collaboration and uninterested work of many. To best serve the international community we've defined a translation workflow that allows any person, even with **no technical background** to help translating these descriptions.
+Video descriptions are available in many languages (Spanish, French, Polish… [check the complete list here](Resources/Community/Readme.md)) and that is only possible thanks to the collaboration and interested work of many volunteers. To best serve the international community we've defined a translation workflow that allows any person, even with **no technical background** to help translate the descriptions.
 
 If you want to collaborate, please [read the details here](Resources/Community/Readme.md).
 
-## More documentation
+## More Documentation
 
-Looking for more information ?
+Looking for more information?
 
-- [Having an issue ? Check our list of common issues right here, including workaround for common macOS bugs (like "You cannot use the Aerial screen saver with this version of macOS.") !](Documentation/Troubleshooting.md)
-- [Learn more about configuring and running Aerial in offline mode with no network access.](Documentation/OfflineMode.md)
+- [Having an issue? Check our list of common issues right here, including workaround for common macOS bugs (like "You cannot use the Aerial screen saver with this version of macOS.")!](Documentation/Troubleshooting.md)
+- [Learn more about configuring and running Aerial in offline mode with no network access](Documentation/OfflineMode.md)
 - [Information about HEVC, HDR and hardware decoding](Documentation/HardwareDecoding.md) 
 - [How to add your own videos to Aerial](Documentation/CustomVideos.md)
 - [More details than you need on the auto-update mechanisms](Documentation/AutoUpdates.md)
