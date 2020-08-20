@@ -39,7 +39,7 @@ With changes in Catalina and Big Sur, a screen saver can no longer update itself
 **Installation instructions:**
 - Download AerialInstaller.dmg [from here](https://github.com/glouel/AerialCompanion/releases/latest) 
 - Open the .dmg and follow the instructions
-- This will install both the companion app and then prompt you to install the screen saver (if this is your first time!)
+- This will install both the companion app and the screen saver (or update you to the current version if you already have it installed)
 
 Need more information on install, setup, or uninstall? Or want to install via homebrew or manually? Check our extended [instructions here](Documentation/Installation.md). 
 
@@ -77,7 +77,7 @@ You can find more about [version changes here](Documentation/ChangeLog.md).
 
 - Minimum OS X Mavericks (10.9) - Some features will not work below OS X Sierra (10.12)
 - Aerial 2 is optimized for macOS Big Sur (macOS 11.x) and macOS Catalina (macOS 10.15)
-- Aerial 2 has been tested and supports Apple Silicone
+- Aerial 2 has been tested and supports Apple Silicon
 
 ## Community
 
