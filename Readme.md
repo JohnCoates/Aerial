@@ -75,7 +75,9 @@ You can find more about [version changes here](Documentation/ChangeLog.md).
 
 ## Compatibility
 
-Aerial is written in Swift, which requires OS X Mavericks (10.9) or above. Please understand that not every feature will work as intended below OS X Sierra (10.12).
+- Minimum OS X Mavericks (10.9) - Some features will not work below OS X Sierra (10.12)
+- Aerial 2 is optimized for macOS Big Sur (macOS 11.x) and macOS Catalina (macOS 10.15)
+- Aerial 2 has been tested and supports Apple Silicone
 
 ## Community
 
