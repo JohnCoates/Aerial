@@ -9,7 +9,7 @@ On top of the classic Apple TV screen savers, Aerial can display videos from oth
 
 # Community Videos 
 
-## From Magic Window Air / Jetson Creative
+## From Joshua Michaels & Hal Bergman
 
 ### Series 1
 <p align="center">
@@ -18,13 +18,11 @@ On top of the classic Apple TV screen savers, Aerial can display videos from oth
   </a>
 </p>
 
-Includes 20 free Aerial videos in full 4K resolution, from the authors of Cityscapes Air, Countryside Air and Naturescapes Air. 
+Twenty videos kindly shared by Joshua Michaels & Hal Bergman. If you enjoyed them and want to support them, please check out the packs they created specifically for Aerial below. 
 
 # 3rd party Sources
 
-The videos below can be purchased as a way to expand your Aerial collection and support the artists that created them.
-
-## From Magic Window Air / Jetson Creative
+## From Joshua Michaels & Hal Bergman
 
 ### Note
 
