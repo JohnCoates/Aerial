@@ -72,7 +72,7 @@ When caching is set to **manual** you will need to download and manage your cach
 3. Click on `Cache` on the sidebar
 4. Check 'Automatically download videos` 
 <img width="400" alt="Automatic management" src="https://user-images.githubusercontent.com/18543749/90852209-e35c9c00-e344-11ea-9505-481789a581d7.png">
-5. Set your cache limit size -- This is the MAXIMUM size you want your cache. If you don't want to set a maximum, set the slider all the way to the right.
+5. Set your **cache limit size** -- This is the MAXIMUM size you want your cache. If you don't want to set a maximum, move the slider all the way to the right.
 6. Select how often you want to rotate your videos in your cache 
-7. **NOTE:** if you have fewer videos selected than your cache size limit, videos will not rotate. If your cache is larger than your limit, then over the course of the selected time period your cache will be automatically pruned until you are under your cache limit and then videos will periodically rotate)
 <img width="200" alt="Rotate videos" src="https://user-images.githubusercontent.com/18543749/90852283-14d56780-e345-11ea-9ec5-7817cefc1d04.png">
+7. **NOTE:** if you have fewer videos selected than your cache size limit, videos will not rotate. If your cache is larger than your limit, then over the course of the selected time period your cache will be automatically pruned until you are under your cache limit and then videos will periodically rotate)
