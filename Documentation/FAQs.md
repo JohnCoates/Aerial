@@ -17,7 +17,6 @@ If you have a selection of videos you want to play, but they aren't playing chec
 - *Have you selected the videos you want to play?*
 - *Have you cached the videos you want to play?* 
 
-
 #### Have you selected the videos you want to play?
 
 You can do this in two different ways. Either *favorite* the videos and then choose to play only your favorites, or *limit the selection* of videos that you play. 
