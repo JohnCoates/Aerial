@@ -46,17 +46,7 @@ With changes in Catalina and Big Sur, a screen saver can no longer update itself
 
 Need more information on install, setup, or uninstall? Or want to install via homebrew or manually? Check our extended [instructions here](Documentation/Installation.md). 
 
-## What's New in Aerial 2.0.0 (Aug 19, 2020)?
-
-![newui](https://user-images.githubusercontent.com/37544189/90673393-f6de0900-e257-11ea-8e00-4357aca4214e.jpg)
-
-- A whole new UI, that feels just right at home on macOS Big Sur. It still looks great on other macOS versions, don't worry! It includes large live previews of videos, and new easy ways to found the videos you like, and don't like! It's even resizable!
-
-![Capture d’écran 2020-08-19 à 21 53 20](https://user-images.githubusercontent.com/37544189/90683362-b639bc00-e266-11ea-9edb-b97a656a8fc3.png)
-
-- New cache options! You can *finally* set a cache size limit, so Aerial will not fill up your disk. Aerial can also periodically replace videos in your cache, say after a week, so things stay fresh. 
-
-You can still opt to manually download your videos, or simply grab them all. All up to you. If you allow automatic downloads, you can even specify a list of trusted WiFi networks!
+## What's New in Aerial 2.0.0+ (Aug 19, 2020)?
 
 - 20 new videos! Starting with version 2.0, Aerial includes new videos kindly shared by Joshua Michaels & Hal Bergman: 
 
@@ -67,6 +57,16 @@ You can still opt to manually download your videos, or simply grab them all. All
 </p>
 
 If you enjoy those videos, please consider supporting them by checking the video packs they have [created especially for Aerial on their website](https://www.jetsoncreative.com/aerial). 
+
+![newui](https://user-images.githubusercontent.com/37544189/90673393-f6de0900-e257-11ea-8e00-4357aca4214e.jpg)
+
+- A whole new UI, that feels just right at home on macOS Big Sur. It still looks great on other macOS versions, don't worry! It includes large live previews of videos, and new easy ways to found the videos you like, and don't like! It's even resizable!
+
+![Capture d’écran 2020-08-19 à 21 53 20](https://user-images.githubusercontent.com/37544189/90683362-b639bc00-e266-11ea-9edb-b97a656a8fc3.png)
+
+- New cache options! You can *finally* set a cache size limit, so Aerial will not fill up your disk. Aerial can also periodically replace videos in your cache, say after a week, so things stay fresh. 
+
+You can still opt to manually download your videos, or simply grab them all. All up to you. If you allow automatic downloads, you can even specify a list of trusted WiFi networks!
 
 - A new "On rotation" feature, so you can quickly switch from watching space videos, to only sunset videos: 
 
