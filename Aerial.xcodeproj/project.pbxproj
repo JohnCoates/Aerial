@@ -154,6 +154,12 @@
 		030A0F2A245C7C7D009E1D97 /* BatteryIconLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030A0F28245C7C7D009E1D97 /* BatteryIconLayer.swift */; };
 		030D9B7C21551A8D00961E95 /* AerialPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */; };
 		030DDA902423C3BE0072D5C9 /* InfoTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DDA8F2423C3BE0072D5C9 /* InfoTimerView.swift */; };
+		0312945A24F0606B00B90A12 /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 0312945824F0606B00B90A12 /* de.json */; };
+		0312945B24F0606B00B90A12 /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 0312945824F0606B00B90A12 /* de.json */; };
+		0312945C24F0606B00B90A12 /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 0312945824F0606B00B90A12 /* de.json */; };
+		0312945D24F0606B00B90A12 /* ja.json in Resources */ = {isa = PBXBuildFile; fileRef = 0312945924F0606B00B90A12 /* ja.json */; };
+		0312945E24F0606B00B90A12 /* ja.json in Resources */ = {isa = PBXBuildFile; fileRef = 0312945924F0606B00B90A12 /* ja.json */; };
+		0312945F24F0606B00B90A12 /* ja.json in Resources */ = {isa = PBXBuildFile; fileRef = 0312945924F0606B00B90A12 /* ja.json */; };
 		0313329C24BF3FA700C84A05 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313329A24BF3FA700C84A05 /* SidebarViewController.swift */; };
 		0313329D24BF3FA700C84A05 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313329A24BF3FA700C84A05 /* SidebarViewController.swift */; };
 		0313329E24BF3FA700C84A05 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313329A24BF3FA700C84A05 /* SidebarViewController.swift */; };
@@ -642,9 +648,6 @@
 		03D2B8F324E1E3BF00692B4D /* it.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E024E1E3BE00692B4D /* it.json */; };
 		03D2B8F424E1E3BF00692B4D /* it.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E024E1E3BE00692B4D /* it.json */; };
 		03D2B8F524E1E3BF00692B4D /* it.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E024E1E3BE00692B4D /* it.json */; };
-		03D2B8F624E1E3BF00692B4D /* ja.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E124E1E3BE00692B4D /* ja.json */; };
-		03D2B8F724E1E3BF00692B4D /* ja.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E124E1E3BE00692B4D /* ja.json */; };
-		03D2B8F824E1E3BF00692B4D /* ja.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E124E1E3BE00692B4D /* ja.json */; };
 		03D2B8F924E1E3BF00692B4D /* sv.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E224E1E3BE00692B4D /* sv.json */; };
 		03D2B8FA24E1E3BF00692B4D /* sv.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E224E1E3BE00692B4D /* sv.json */; };
 		03D2B8FB24E1E3BF00692B4D /* sv.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E224E1E3BE00692B4D /* sv.json */; };
@@ -663,9 +666,6 @@
 		03D2B90824E1E3BF00692B4D /* fr.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E724E1E3BF00692B4D /* fr.json */; };
 		03D2B90924E1E3BF00692B4D /* fr.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E724E1E3BF00692B4D /* fr.json */; };
 		03D2B90A24E1E3BF00692B4D /* fr.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E724E1E3BF00692B4D /* fr.json */; };
-		03D2B90B24E1E3BF00692B4D /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E824E1E3BF00692B4D /* de.json */; };
-		03D2B90C24E1E3BF00692B4D /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E824E1E3BF00692B4D /* de.json */; };
-		03D2B90D24E1E3BF00692B4D /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E824E1E3BF00692B4D /* de.json */; };
 		03D2B90E24E1E3BF00692B4D /* pl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E924E1E3BF00692B4D /* pl.json */; };
 		03D2B90F24E1E3BF00692B4D /* pl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E924E1E3BF00692B4D /* pl.json */; };
 		03D2B91024E1E3BF00692B4D /* pl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03D2B8E924E1E3BF00692B4D /* pl.json */; };
@@ -920,6 +920,8 @@
 		030A0F28245C7C7D009E1D97 /* BatteryIconLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryIconLayer.swift; sourceTree = "<group>"; };
 		030B5E32229FDD26008F2910 /* AutoUpdates.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AutoUpdates.md; sourceTree = "<group>"; };
 		030DDA8F2423C3BE0072D5C9 /* InfoTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimerView.swift; sourceTree = "<group>"; };
+		0312945824F0606B00B90A12 /* de.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = de.json; sourceTree = "<group>"; };
+		0312945924F0606B00B90A12 /* ja.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ja.json; sourceTree = "<group>"; };
 		0313329A24BF3FA700C84A05 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		0313329B24BF3FA700C84A05 /* SidebarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SidebarViewController.xib; sourceTree = "<group>"; };
 		0313F9E522942AA500B074BB /* CustomVideos.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomVideos.xib; sourceTree = "<group>"; };
@@ -1076,14 +1078,12 @@
 		03D2B8DE24E1E3BE00692B4D /* zh_TW.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zh_TW.json; sourceTree = "<group>"; };
 		03D2B8DF24E1E3BE00692B4D /* en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = en.json; sourceTree = "<group>"; };
 		03D2B8E024E1E3BE00692B4D /* it.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = it.json; sourceTree = "<group>"; };
-		03D2B8E124E1E3BE00692B4D /* ja.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ja.json; sourceTree = "<group>"; };
 		03D2B8E224E1E3BE00692B4D /* sv.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sv.json; sourceTree = "<group>"; };
 		03D2B8E324E1E3BE00692B4D /* nl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nl.json; sourceTree = "<group>"; };
 		03D2B8E424E1E3BE00692B4D /* zh_CN.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zh_CN.json; sourceTree = "<group>"; };
 		03D2B8E524E1E3BE00692B4D /* ar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ar.json; sourceTree = "<group>"; };
 		03D2B8E624E1E3BE00692B4D /* es.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = es.json; sourceTree = "<group>"; };
 		03D2B8E724E1E3BF00692B4D /* fr.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fr.json; sourceTree = "<group>"; };
-		03D2B8E824E1E3BF00692B4D /* de.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = de.json; sourceTree = "<group>"; };
 		03D2B8E924E1E3BF00692B4D /* pl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pl.json; sourceTree = "<group>"; };
 		03D3A10C24C5D7CC0091FE99 /* Thumbnails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnails.swift; sourceTree = "<group>"; };
 		03D3A11224C5FC770091FE99 /* AspectFillNSImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectFillNSImageView.swift; sourceTree = "<group>"; };
@@ -1241,14 +1241,14 @@
 		033192DF217B77E90073B580 /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				0312945824F0606B00B90A12 /* de.json */,
+				0312945924F0606B00B90A12 /* ja.json */,
 				03D2B8E524E1E3BE00692B4D /* ar.json */,
-				03D2B8E824E1E3BF00692B4D /* de.json */,
 				03D2B8DF24E1E3BE00692B4D /* en.json */,
 				03D2B8E624E1E3BE00692B4D /* es.json */,
 				03D2B8E724E1E3BF00692B4D /* fr.json */,
 				03D2B8DD24E1E3BE00692B4D /* he.json */,
 				03D2B8E024E1E3BE00692B4D /* it.json */,
-				03D2B8E124E1E3BE00692B4D /* ja.json */,
 				03D2B8E324E1E3BE00692B4D /* nl.json */,
 				03D2B8E924E1E3BF00692B4D /* pl.json */,
 				03D2B8E224E1E3BE00692B4D /* sv.json */,
@@ -1971,6 +1971,7 @@
 				03AA7AB524C84C6400A47970 /* cloud.bolt.pdf in Resources */,
 				03AA7A7C24C84C6300A47970 /* cloud.pdf in Resources */,
 				0300B83524D1B536006132E5 /* star.fill.pdf in Resources */,
+				0312945B24F0606B00B90A12 /* de.json in Resources */,
 				0300B86D24D20B12006132E5 /* NextViewController.xib in Resources */,
 				03D2B8FA24E1E3BF00692B4D /* sv.json in Resources */,
 				0345CFF124BF43280001045C /* VideosViewController.xib in Resources */,
@@ -1993,7 +1994,6 @@
 				03AA7AA624C84C6300A47970 /* cloud.rain.pdf in Resources */,
 				03F752E024EED19C00945B1D /* video_inspire_california_catalina_00005.png in Resources */,
 				03AA7A9724C84C6300A47970 /* smoke.pdf in Resources */,
-				03D2B90C24E1E3BF00692B4D /* de.json in Resources */,
 				03AA7A8824C84C6300A47970 /* cloud.fog.pdf in Resources */,
 				030010A724D718D30092AE68 /* slider.horizontal.3.pdf in Resources */,
 				0300B82C24D1B536006132E5 /* location.pdf in Resources */,
@@ -2041,6 +2041,7 @@
 				03D2B90F24E1E3BF00692B4D /* pl.json in Resources */,
 				03AA7A6A24C84C6300A47970 /* cloud.heavyrain.pdf in Resources */,
 				03AA7A9A24C84C6300A47970 /* cloud.snow.pdf in Resources */,
+				0312945E24F0606B00B90A12 /* ja.json in Resources */,
 				0300B80224D1B536006132E5 /* clock.pdf in Resources */,
 				0300B81A24D1B536006132E5 /* tram.fill.pdf in Resources */,
 				0300B82024D1B536006132E5 /* flame.pdf in Resources */,
@@ -2053,7 +2054,6 @@
 				0300B7F024D1B536006132E5 /* helm.pdf in Resources */,
 				03AA7A8E24C84C6300A47970 /* tropicalstorm.pdf in Resources */,
 				0345EDEC24C3239400C73038 /* DisplaysViewController.xib in Resources */,
-				03D2B8F724E1E3BF00692B4D /* ja.json in Resources */,
 				0396D59224B8B7ED00CC021B /* screen1.jpg in Resources */,
 				0300B7ED24D1B536006132E5 /* bubble.left.and.bubble.right.pdf in Resources */,
 				03AA7AA324C84C6300A47970 /* cloud.drizzle.pdf in Resources */,
@@ -2115,6 +2115,7 @@
 				0300B7EB24D1B536006132E5 /* person.3.pdf in Resources */,
 				03AA7AB024C84C6400A47970 /* cloud.moon.pdf in Resources */,
 				0300B81524D1B536006132E5 /* antenna.radiowaves.left.and.right.pdf in Resources */,
+				0312945F24F0606B00B90A12 /* ja.json in Resources */,
 				03D1E79522848F7F00D10CF7 /* screen1.jpg in Resources */,
 				0300B80C24D1B536006132E5 /* eye.slash.pdf in Resources */,
 				03AA7AA124C84C6300A47970 /* cloud.hail.pdf in Resources */,
@@ -2157,7 +2158,6 @@
 				03B8743724E42675008E3D1B /* wand.and.stars.pdf in Resources */,
 				0300B83924D1B536006132E5 /* regular.cloud.pdf in Resources */,
 				034DEE3324BF1BC700A2D3CD /* PanelWindowController.xib in Resources */,
-				03D2B8F824E1E3BF00692B4D /* ja.json in Resources */,
 				0300B84524D1B536006132E5 /* square.and.arrow.down.pdf in Resources */,
 				03AA7A8924C84C6300A47970 /* cloud.fog.pdf in Resources */,
 				03AA7A8024C84C6300A47970 /* cloud.sun.bolt.pdf in Resources */,
@@ -2192,6 +2192,7 @@
 				03AA7A6224C84C6300A47970 /* wind.snow.pdf in Resources */,
 				03EED2F524C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */,
 				0300B82424D1B536006132E5 /* regular.sun.min.pdf in Resources */,
+				0312945C24F0606B00B90A12 /* de.json in Resources */,
 				03D2B91024E1E3BF00692B4D /* pl.json in Resources */,
 				03D2B8EC24E1E3BF00692B4D /* he.json in Resources */,
 				0300B81B24D1B536006132E5 /* tram.fill.pdf in Resources */,
@@ -2221,7 +2222,6 @@
 				03AA7AA424C84C6300A47970 /* cloud.drizzle.pdf in Resources */,
 				03F752E124EED19C00945B1D /* video_inspire_california_catalina_00005.png in Resources */,
 				03075EB324ED794F00FDBE48 /* trash.pdf in Resources */,
-				03D2B90D24E1E3BF00692B4D /* de.json in Resources */,
 				03BDBEA724C467EC00BBD5E9 /* BrightnessViewController.xib in Resources */,
 				03AA7AB624C84C6400A47970 /* cloud.bolt.pdf in Resources */,
 				03D1E79822848F7F00D10CF7 /* screen0.jpg in Resources */,
@@ -2260,6 +2260,7 @@
 				03AA7AB424C84C6400A47970 /* cloud.bolt.pdf in Resources */,
 				03AA7A7B24C84C6300A47970 /* cloud.pdf in Resources */,
 				0300B83424D1B536006132E5 /* star.fill.pdf in Resources */,
+				0312945A24F0606B00B90A12 /* de.json in Resources */,
 				0300B86C24D20B12006132E5 /* NextViewController.xib in Resources */,
 				03D2B8F924E1E3BF00692B4D /* sv.json in Resources */,
 				0345CFF024BF43280001045C /* VideosViewController.xib in Resources */,
@@ -2282,7 +2283,6 @@
 				03AA7AA524C84C6300A47970 /* cloud.rain.pdf in Resources */,
 				03F752DF24EED19C00945B1D /* video_inspire_california_catalina_00005.png in Resources */,
 				03AA7A9624C84C6300A47970 /* smoke.pdf in Resources */,
-				03D2B90B24E1E3BF00692B4D /* de.json in Resources */,
 				03AA7A8724C84C6300A47970 /* cloud.fog.pdf in Resources */,
 				030010A624D718D30092AE68 /* slider.horizontal.3.pdf in Resources */,
 				0300B82B24D1B536006132E5 /* location.pdf in Resources */,
@@ -2330,6 +2330,7 @@
 				03D2B90E24E1E3BF00692B4D /* pl.json in Resources */,
 				03AA7A6924C84C6300A47970 /* cloud.heavyrain.pdf in Resources */,
 				03AA7A9924C84C6300A47970 /* cloud.snow.pdf in Resources */,
+				0312945D24F0606B00B90A12 /* ja.json in Resources */,
 				0300B80124D1B536006132E5 /* clock.pdf in Resources */,
 				0300B81924D1B536006132E5 /* tram.fill.pdf in Resources */,
 				0300B81F24D1B536006132E5 /* flame.pdf in Resources */,
@@ -2342,7 +2343,6 @@
 				0300B7EF24D1B536006132E5 /* helm.pdf in Resources */,
 				03AA7A8D24C84C6300A47970 /* tropicalstorm.pdf in Resources */,
 				0345EDEB24C3239400C73038 /* DisplaysViewController.xib in Resources */,
-				03D2B8F624E1E3BF00692B4D /* ja.json in Resources */,
 				03D1E79422848F7F00D10CF7 /* screen1.jpg in Resources */,
 				0300B7EC24D1B536006132E5 /* bubble.left.and.bubble.right.pdf in Resources */,
 				03AA7AA224C84C6300A47970 /* cloud.drizzle.pdf in Resources */,
@@ -3093,7 +3093,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.1;
+				CURRENT_PROJECT_VERSION = 2.0.1a;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3101,7 +3101,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0.1;
+				MARKETING_VERSION = 2.0.1a;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3121,7 +3121,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.1;
+				CURRENT_PROJECT_VERSION = 2.0.1a;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3129,7 +3129,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0.1;
+				MARKETING_VERSION = 2.0.1a;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

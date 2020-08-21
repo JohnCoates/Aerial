@@ -40,6 +40,8 @@ class OverlaysViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        PrefsInfo.updateLayerList()
+
         // Do view setup here.
         fontButton.setIcons("textformat.alt")
         trashButton.setIcons("trash")

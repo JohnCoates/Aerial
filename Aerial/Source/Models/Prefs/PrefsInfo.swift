@@ -442,7 +442,7 @@ struct PrefsInfo {
 
     // This may be a temp workaround, will depend on where it goes
     // We periodically add new types so we must add them
-    func updateLayerList() {
+    static func updateLayerList() {
         if !PrefsInfo.layers.contains(.battery) {
             PrefsInfo.layers.append(.battery)
         }
