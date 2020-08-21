@@ -16,7 +16,7 @@ Twenty videos kindly shared by Joshua Michaels & Hal Bergman. If you enjoyed the
 ##### Note
 If you are an artist or a tourism association that want to share videos, check out this page here for more information : https://github.com/glouel/AerialCommunity
 
-# 3rd party Sources
+# Online Sources
 
 ## From Joshua Michaels & Hal Bergman
 
