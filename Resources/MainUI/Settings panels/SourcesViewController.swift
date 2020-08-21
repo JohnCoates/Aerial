@@ -34,9 +34,6 @@ class SourcesViewController: NSViewController {
         getMoreVideosButton.setIcons("cloud")
         downloadAllVideosButton.setIcons("arrow.down.circle")
 
-
-
-        
         VideoManager.sharedInstance.addCallback { done, total in
             debugLog("vmsourcecallback \(done) \(total) ")
             if total == 0 {

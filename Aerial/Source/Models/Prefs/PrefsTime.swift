@@ -50,6 +50,10 @@ struct PrefsTime {
     @SimpleStorage(key: "solarMode", defaultValue: SolarMode.official.rawValue)
     static var intSolarMode: Int
 
+    // Prefs sunrise/sunset duration
+    @SimpleStorage(key: "sunEventWindow", defaultValue: 60*180)
+    static var sunEventWindow: Int
+
     // We wrap in a separate value, as we can't store an enum as a Codable in
     // macOS < 10.15
     static var solarMode: SolarMode {

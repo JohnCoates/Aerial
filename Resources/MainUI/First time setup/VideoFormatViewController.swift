@@ -20,6 +20,8 @@ class VideoFormatViewController: NSViewController {
     @IBOutlet var labelBelow: NSTextField!
     var currentVideo: AerialVideo?
 
+    @IBOutlet var warnImage: NSImageView!
+    @IBOutlet var warnLabel: NSTextField!
     var originalFormat: VideoFormat?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,9 @@ class VideoFormatViewController: NSViewController {
             menu1080pHDR.isHidden = true
             menu4KHDR.isHidden = true
         }
+
+        warnLabel.isHidden = true
+        warnImage.isHidden = true
 
         // Only detect if we have the default basic format, don't override people's settings
         if PrefsVideos.videoFormat == .v1080pH264 {
@@ -52,19 +57,27 @@ class VideoFormatViewController: NSViewController {
         setupPlayer()
     }
 
+    @IBAction func moreInfoFormats(_ sender: Any) {
+        let workspace = NSWorkspace.shared
+        let url = URL(string: "https://github.com/JohnCoates/Aerial/blob/master/Documentation/HardwareDecoding.md")!
+        workspace.open(url)
+    }
+
     @IBAction func newVideoClick(_ sender: Any) {
         getNewVideo()
         setupPlayer()
     }
+
     @IBAction func formatChange(_ sender: NSPopUpButton) {
         if let original = originalFormat {
             let candidateFormat = VideoFormat(rawValue: sender.indexOfSelectedItem)!
 
             if candidateFormat != original {
-                if !Aerial.showAlert(question: "Changing format will delete all videos", text: "Changing format will delete your downloaded videos. They will be re-downloaded based on your preferences. \n\nYou can manually redownload videos in Custom Sources.", button1: "Change Format and Delete Videos", button2: "Cancel") {
-                    videoFormatPopup.selectItem(at: PrefsVideos.videoFormat.rawValue)
-                    return
-                }
+                warnLabel.isHidden = false
+                warnImage.isHidden = false
+            } else {
+                warnLabel.isHidden = true
+                warnImage.isHidden = true
             }
         }
 

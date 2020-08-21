@@ -2,7 +2,7 @@
 <channel>
 <title>Aerial</title>
   <item>
-<title>2.0.0</title>
+<title>2.0.1</title>
   <description>
           <![CDATA[
 
@@ -27,9 +27,10 @@
   </description>
 <pubDate>mer., 19 aug. 2020 21:00:00 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v2.0.0/Aerial.saver.zip" sparkle:version="2.0.0" 
-sparkle:edSignature="smEI5sjvJzOXPF+qngZvUvbq2HJOvIDmGTiWTntebmmL5VnbyBTGyKCEumA9XQShqsWCNyJXIVSpSkCP2ZjBBA==" length="6195502" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v2.0.1/Aerial.saver.zip" sparkle:version="2.0.1" 
+sparkle:edSignature="ZtdgF5bljQke3elg7bB2Zs2FTiUtg/vsCqvLSKA1i8yeVyfK0QBOMQkyzFTKtVl+ix8k9V0/x3qF5GulY1k2AQ==" length="6428353" type="application/octet-stream"/>
 </item>
+  
   <item>
 <title>1.9.1</title>
   <description>

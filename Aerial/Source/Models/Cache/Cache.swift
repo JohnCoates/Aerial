@@ -394,7 +394,7 @@ struct Cache {
             // Then cache status
             if isFull() {
                 if !Aerial.showAlert(question: "Your cache is full",
-                             text: "Do you want to proceed with the download ?\n\nReminder: You can change this setting in the Cache tab.",
+                                     text: "Your cache limit is currently set to \(PrefsCache.cacheLimit.rounded(toPlaces: 1)) GB, and currently contains \(Cache.sizeString()) of files.\n\n Do you want to proceed with the download anyway?\n\nYou can manually increase or decrease your cache size in Settings > Cache.",
                              button1: "Download Anyway",
                              button2: "Cancel") {
                     return

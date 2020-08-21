@@ -42,4 +42,9 @@ struct PrefsCache {
     // List of allowed networks (using SSID)
     @SimpleStorage(key: "allowedNetworks", defaultValue: [])
     static var allowedNetworks: [String]
+
+    // Should we show the download indicator or not
+    @SimpleStorage(key: "showBackgroundDownloads", defaultValue: false)
+    static var showBackgroundDownloads: Bool
+
 }

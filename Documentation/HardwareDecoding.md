@@ -1,3 +1,9 @@
+# Which format should I pick ? 
+
+You have a choice of video formats, which you can set as a preference in Settings/Advanced: 1080p H264; 1080p HEVC; 1080p HDR; 4K HEVC; or 4K HDR. At install, Aerial will suggest what it thinks is the best choice for your machine, but you can override it.
+
+They're listed in rough order of increasing quality, and you can check below about any constraints your set-up may present (just in general, if you see stuttering - non-smooth videos - choose a lower format). Some users dislike HDR, and find its colors unrealistic, so it's probably safer to choose HEVC, but, if you're curious, or are the lucky owner of a Pro Display XDR, choose HDR and see what you think!
+
 # About HEVC and hardware decoding, and HDR
 
 Aerial uses Apple's [AVFoundation framework](https://developer.apple.com/documentation/avfoundation) to play the videos as your screen saver. When available, AVFoundation will use hardware decoding (from your CPU or your graphics card) to minimize the resources needed for video playback. You can find guidelines in the help button next to the `Preferred video format` setting. By default, Aerial uses 1080p H.264 videos which is the most compatible format. Please note that all 4K HEVC videos are encoded with the `Main10` profile, which may not be hardware accelerated by your machine, while some other HEVC videos (encoded in `Main` profile) will be.

@@ -144,6 +144,12 @@
 		0306336B23A142FA00046A59 /* LayerOffsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306336A23A142FA00046A59 /* LayerOffsets.swift */; };
 		0306336C23A143D900046A59 /* LayerOffsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306336A23A142FA00046A59 /* LayerOffsets.swift */; };
 		0306336E23A15FA900046A59 /* AnimationTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306336D23A15FA900046A59 /* AnimationTextLayer.swift */; };
+		03075EB124ED794F00FDBE48 /* trash.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03075EA824ED794F00FDBE48 /* trash.pdf */; };
+		03075EB224ED794F00FDBE48 /* trash.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03075EA824ED794F00FDBE48 /* trash.pdf */; };
+		03075EB324ED794F00FDBE48 /* trash.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03075EA824ED794F00FDBE48 /* trash.pdf */; };
+		03075EB424ED794F00FDBE48 /* textformat.alt.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03075EB024ED794F00FDBE48 /* textformat.alt.pdf */; };
+		03075EB524ED794F00FDBE48 /* textformat.alt.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03075EB024ED794F00FDBE48 /* textformat.alt.pdf */; };
+		03075EB624ED794F00FDBE48 /* textformat.alt.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03075EB024ED794F00FDBE48 /* textformat.alt.pdf */; };
 		030A0F29245C7C7D009E1D97 /* BatteryIconLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030A0F28245C7C7D009E1D97 /* BatteryIconLayer.swift */; };
 		030A0F2A245C7C7D009E1D97 /* BatteryIconLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030A0F28245C7C7D009E1D97 /* BatteryIconLayer.swift */; };
 		030D9B7C21551A8D00961E95 /* AerialPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */; };
@@ -697,6 +703,34 @@
 		03F5551B24E9C091003AAD0B /* SourceOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5551A24E9C091003AAD0B /* SourceOutlineView.swift */; };
 		03F5551C24E9C091003AAD0B /* SourceOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5551A24E9C091003AAD0B /* SourceOutlineView.swift */; };
 		03F5551D24E9C091003AAD0B /* SourceOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5551A24E9C091003AAD0B /* SourceOutlineView.swift */; };
+		03F752D324EED19C00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752CF24EED19B00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png */; };
+		03F752D424EED19C00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752CF24EED19B00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png */; };
+		03F752D524EED19C00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752CF24EED19B00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png */; };
+		03F752D624EED19C00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752CF24EED19B00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png */; };
+		03F752D724EED19C00945B1D /* video_inspire_california_big-sur_2020_00001.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752D024EED19C00945B1D /* video_inspire_california_big-sur_2020_00001.png */; };
+		03F752D824EED19C00945B1D /* video_inspire_california_big-sur_2020_00001.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752D024EED19C00945B1D /* video_inspire_california_big-sur_2020_00001.png */; };
+		03F752D924EED19C00945B1D /* video_inspire_california_big-sur_2020_00001.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752D024EED19C00945B1D /* video_inspire_california_big-sur_2020_00001.png */; };
+		03F752DA24EED19C00945B1D /* video_inspire_california_big-sur_2020_00001.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752D024EED19C00945B1D /* video_inspire_california_big-sur_2020_00001.png */; };
+		03F752DB24EED19C00945B1D /* video_inspire_italy_como_cerano-dintelvi_006.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752D124EED19C00945B1D /* video_inspire_italy_como_cerano-dintelvi_006.png */; };
+		03F752DC24EED19C00945B1D /* video_inspire_italy_como_cerano-dintelvi_006.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752D124EED19C00945B1D /* video_inspire_italy_como_cerano-dintelvi_006.png */; };
+		03F752DD24EED19C00945B1D /* video_inspire_italy_como_cerano-dintelvi_006.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752D124EED19C00945B1D /* video_inspire_italy_como_cerano-dintelvi_006.png */; };
+		03F752DE24EED19C00945B1D /* video_inspire_italy_como_cerano-dintelvi_006.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752D124EED19C00945B1D /* video_inspire_italy_como_cerano-dintelvi_006.png */; };
+		03F752DF24EED19C00945B1D /* video_inspire_california_catalina_00005.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752D224EED19C00945B1D /* video_inspire_california_catalina_00005.png */; };
+		03F752E024EED19C00945B1D /* video_inspire_california_catalina_00005.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752D224EED19C00945B1D /* video_inspire_california_catalina_00005.png */; };
+		03F752E124EED19C00945B1D /* video_inspire_california_catalina_00005.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752D224EED19C00945B1D /* video_inspire_california_catalina_00005.png */; };
+		03F752E224EED19C00945B1D /* video_inspire_california_catalina_00005.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752D224EED19C00945B1D /* video_inspire_california_catalina_00005.png */; };
+		03F752E424EED21100945B1D /* video_inspire_california_vineyard_sierra-mar_sunrise_110.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752E324EED21100945B1D /* video_inspire_california_vineyard_sierra-mar_sunrise_110.png */; };
+		03F752E524EED21100945B1D /* video_inspire_california_vineyard_sierra-mar_sunrise_110.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752E324EED21100945B1D /* video_inspire_california_vineyard_sierra-mar_sunrise_110.png */; };
+		03F752E624EED21100945B1D /* video_inspire_california_vineyard_sierra-mar_sunrise_110.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752E324EED21100945B1D /* video_inspire_california_vineyard_sierra-mar_sunrise_110.png */; };
+		03F752E724EED21100945B1D /* video_inspire_california_vineyard_sierra-mar_sunrise_110.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F752E324EED21100945B1D /* video_inspire_california_vineyard_sierra-mar_sunrise_110.png */; };
+		03F752E924EEFC3100945B1D /* text.cursor.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03F752E824EEFC3100945B1D /* text.cursor.pdf */; };
+		03F752EA24EEFC3100945B1D /* text.cursor.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03F752E824EEFC3100945B1D /* text.cursor.pdf */; };
+		03F752EB24EEFC3100945B1D /* text.cursor.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03F752E824EEFC3100945B1D /* text.cursor.pdf */; };
+		03F752EC24EEFC3100945B1D /* text.cursor.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03F752E824EEFC3100945B1D /* text.cursor.pdf */; };
+		03F752EE24EEFC8500945B1D /* house.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03F752ED24EEFC8500945B1D /* house.pdf */; };
+		03F752EF24EEFC8500945B1D /* house.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03F752ED24EEFC8500945B1D /* house.pdf */; };
+		03F752F024EEFC8500945B1D /* house.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03F752ED24EEFC8500945B1D /* house.pdf */; };
+		03F752F124EEFC8500945B1D /* house.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03F752ED24EEFC8500945B1D /* house.pdf */; };
 		03F8FF1F244B67D200813C96 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; };
 		03F8FF20244B67D200813C96 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03FA49A12423DA1F00863AF6 /* TimerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA49A02423DA1F00863AF6 /* TimerLayer.swift */; };
@@ -881,6 +915,8 @@
 		0306336723A1012200046A59 /* LocationLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLayer.swift; sourceTree = "<group>"; };
 		0306336A23A142FA00046A59 /* LayerOffsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerOffsets.swift; sourceTree = "<group>"; };
 		0306336D23A15FA900046A59 /* AnimationTextLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTextLayer.swift; sourceTree = "<group>"; };
+		03075EA824ED794F00FDBE48 /* trash.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = trash.pdf; sourceTree = "<group>"; };
+		03075EB024ED794F00FDBE48 /* textformat.alt.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = textformat.alt.pdf; sourceTree = "<group>"; };
 		030A0F28245C7C7D009E1D97 /* BatteryIconLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryIconLayer.swift; sourceTree = "<group>"; };
 		030B5E32229FDD26008F2910 /* AutoUpdates.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AutoUpdates.md; sourceTree = "<group>"; };
 		030DDA8F2423C3BE0072D5C9 /* InfoTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimerView.swift; sourceTree = "<group>"; };
@@ -1069,6 +1105,13 @@
 		03EED2EE24C44A7900F0C3D4 /* OverlaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaysViewController.swift; sourceTree = "<group>"; };
 		03EED2EF24C44A7900F0C3D4 /* OverlaysViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverlaysViewController.xib; sourceTree = "<group>"; };
 		03F5551A24E9C091003AAD0B /* SourceOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOutlineView.swift; sourceTree = "<group>"; };
+		03F752CF24EED19B00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_inspire_alabama_montgomery_countryside_00007.png; sourceTree = "<group>"; };
+		03F752D024EED19C00945B1D /* video_inspire_california_big-sur_2020_00001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video_inspire_california_big-sur_2020_00001.png"; sourceTree = "<group>"; };
+		03F752D124EED19C00945B1D /* video_inspire_italy_como_cerano-dintelvi_006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video_inspire_italy_como_cerano-dintelvi_006.png"; sourceTree = "<group>"; };
+		03F752D224EED19C00945B1D /* video_inspire_california_catalina_00005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_inspire_california_catalina_00005.png; sourceTree = "<group>"; };
+		03F752E324EED21100945B1D /* video_inspire_california_vineyard_sierra-mar_sunrise_110.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video_inspire_california_vineyard_sierra-mar_sunrise_110.png"; sourceTree = "<group>"; };
+		03F752E824EEFC3100945B1D /* text.cursor.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = text.cursor.pdf; sourceTree = "<group>"; };
+		03F752ED24EEFC8500945B1D /* house.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = house.pdf; sourceTree = "<group>"; };
 		03FA49A02423DA1F00863AF6 /* TimerLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLayer.swift; sourceTree = "<group>"; };
 		03FA49B32428EE3300863AF6 /* InfoDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDateView.swift; sourceTree = "<group>"; };
 		03FA49B62428F84500863AF6 /* DateLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLayer.swift; sourceTree = "<group>"; };
@@ -1261,6 +1304,8 @@
 		0345D01524C0A2F60001045C /* UI Icons */ = {
 			isa = PBXGroup;
 			children = (
+				03F752ED24EEFC8500945B1D /* house.pdf */,
+				03F752E824EEFC3100945B1D /* text.cursor.pdf */,
 				03B8743124E42675008E3D1B /* hand.raised.pdf */,
 				03B8742F24E42675008E3D1B /* wand.and.rays.pdf */,
 				03B8743024E42675008E3D1B /* wand.and.stars.pdf */,
@@ -1294,6 +1339,8 @@
 				0300B7D124D1B532006132E5 /* star.pdf */,
 				0300B7E224D1B535006132E5 /* sunrise.pdf */,
 				0300B7D924D1B533006132E5 /* sunset.pdf */,
+				03075EB024ED794F00FDBE48 /* textformat.alt.pdf */,
+				03075EA824ED794F00FDBE48 /* trash.pdf */,
 				0300B7CF24D1B532006132E5 /* text.bubble.pdf */,
 				0300B7DA24D1B534006132E5 /* tram.fill.pdf */,
 				0300B7E124D1B535006132E5 /* tv.pdf */,
@@ -1471,6 +1518,11 @@
 		03D1E78D22848F6D00D10CF7 /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
+				03F752CF24EED19B00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png */,
+				03F752D024EED19C00945B1D /* video_inspire_california_big-sur_2020_00001.png */,
+				03F752D224EED19C00945B1D /* video_inspire_california_catalina_00005.png */,
+				03F752D124EED19C00945B1D /* video_inspire_italy_como_cerano-dintelvi_006.png */,
+				03F752E324EED21100945B1D /* video_inspire_california_vineyard_sierra-mar_sunrise_110.png */,
 				03D1E79022848F7F00D10CF7 /* screen0.jpg */,
 				03D1E78F22848F7F00D10CF7 /* screen1.jpg */,
 				03D1E78E22848F7F00D10CF7 /* screen2.jpg */,
@@ -1924,6 +1976,7 @@
 				0345CFF124BF43280001045C /* VideosViewController.xib in Resources */,
 				0300B81D24D1B536006132E5 /* arrow.down.circle.pdf in Resources */,
 				0300B81724D1B536006132E5 /* sunset.pdf in Resources */,
+				03F752EF24EEFC8500945B1D /* house.pdf in Resources */,
 				0300B7F924D1B536006132E5 /* text.bubble.pdf in Resources */,
 				032E09A224C3897E00387230 /* AdvancedViewController.xib in Resources */,
 				0300B82324D1B536006132E5 /* regular.sun.min.pdf in Resources */,
@@ -1938,6 +1991,7 @@
 				03AA7A9124C84C6300A47970 /* moon.pdf in Resources */,
 				0300B81124D1B536006132E5 /* regular.moon.stars.pdf in Resources */,
 				03AA7AA624C84C6300A47970 /* cloud.rain.pdf in Resources */,
+				03F752E024EED19C00945B1D /* video_inspire_california_catalina_00005.png in Resources */,
 				03AA7A9724C84C6300A47970 /* smoke.pdf in Resources */,
 				03D2B90C24E1E3BF00692B4D /* de.json in Resources */,
 				03AA7A8824C84C6300A47970 /* cloud.fog.pdf in Resources */,
@@ -1958,6 +2012,7 @@
 				03D2B8F124E1E3BF00692B4D /* en.json in Resources */,
 				03D2B90624E1E3BF00692B4D /* es.json in Resources */,
 				0300B83224D1B536006132E5 /* sunrise.pdf in Resources */,
+				03F752E524EED21100945B1D /* video_inspire_california_vineyard_sierra-mar_sunrise_110.png in Resources */,
 				03D2B8EB24E1E3BF00692B4D /* he.json in Resources */,
 				0300B80824D1B536006132E5 /* film.pdf in Resources */,
 				0300B83B24D1B536006132E5 /* regular.sun.max.pdf in Resources */,
@@ -1969,6 +2024,7 @@
 				037772E924E44BB100D81EEA /* xmark.circle.pdf in Resources */,
 				0300B82F24D1B536006132E5 /* tv.pdf in Resources */,
 				0300B81424D1B536006132E5 /* antenna.radiowaves.left.and.right.pdf in Resources */,
+				03075EB224ED794F00FDBE48 /* trash.pdf in Resources */,
 				03AA7ABB24C84C6400A47970 /* cloud.sun.pdf in Resources */,
 				0396D58B24B8B7ED00CC021B /* screen0.jpg in Resources */,
 				0300B7F624D1B536006132E5 /* eye.pdf in Resources */,
@@ -1980,6 +2036,7 @@
 				03AA7A7324C84C6300A47970 /* cloud.sun.rain.pdf in Resources */,
 				0396D58D24B8B7ED00CC021B /* thumbnail@2x.png in Resources */,
 				0396D58E24B8B7ED00CC021B /* thumbnail.png in Resources */,
+				03F752D824EED19C00945B1D /* video_inspire_california_big-sur_2020_00001.png in Resources */,
 				0300B86524D2052B006132E5 /* WelcomeViewController.xib in Resources */,
 				03D2B90F24E1E3BF00692B4D /* pl.json in Resources */,
 				03AA7A6A24C84C6300A47970 /* cloud.heavyrain.pdf in Resources */,
@@ -1990,6 +2047,7 @@
 				03B8743924E42675008E3D1B /* hand.raised.pdf in Resources */,
 				03AA7AA924C84C6300A47970 /* sun.haze.pdf in Resources */,
 				0300B7EA24D1B536006132E5 /* person.3.pdf in Resources */,
+				03F752DC24EED19C00945B1D /* video_inspire_italy_como_cerano-dintelvi_006.png in Resources */,
 				031332A024BF3FA700C84A05 /* SidebarViewController.xib in Resources */,
 				031945FF24CCC52600F37B35 /* HelpViewController.xib in Resources */,
 				0300B7F024D1B536006132E5 /* helm.pdf in Resources */,
@@ -2020,9 +2078,11 @@
 				03AA7AA024C84C6300A47970 /* cloud.hail.pdf in Resources */,
 				03BF17A324E2F29C0080EF34 /* VideoFormatViewController.xib in Resources */,
 				03D2B90324E1E3BF00692B4D /* ar.json in Resources */,
+				03F752D424EED19C00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png in Resources */,
 				03EED2F424C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */,
 				0300B84124D1B536006132E5 /* checkmark.circle.fill.pdf in Resources */,
 				031945F724CCC48C00F37B35 /* CreditsViewController.xib in Resources */,
+				03075EB524ED794F00FDBE48 /* textformat.alt.pdf in Resources */,
 				03AA7AAF24C84C6400A47970 /* cloud.moon.pdf in Resources */,
 				0396D5AB24B8B7ED00CC021B /* purple_retina.png in Resources */,
 				03AA7A6124C84C6300A47970 /* wind.snow.pdf in Resources */,
@@ -2030,6 +2090,7 @@
 				0300B84424D1B536006132E5 /* square.and.arrow.down.pdf in Resources */,
 				03AA7A7924C84C6300A47970 /* sun.max.pdf in Resources */,
 				03933B8F24C3986800A98D94 /* SourcesViewController.xib in Resources */,
+				03F752EA24EEFC3100945B1D /* text.cursor.pdf in Resources */,
 				033811B424C1E243002E23E0 /* InfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2048,6 +2109,7 @@
 				03A42A9D2449F602003B3012 /* purple_retina.png in Resources */,
 				03AA7A7D24C84C6300A47970 /* cloud.pdf in Resources */,
 				037772F224E44CE100D81EEA /* RecapViewController.xib in Resources */,
+				03F752EB24EEFC3100945B1D /* text.cursor.pdf in Resources */,
 				0300B81E24D1B536006132E5 /* arrow.down.circle.pdf in Resources */,
 				0300B82724D1B536006132E5 /* mappin.and.ellipse.pdf in Resources */,
 				0300B7EB24D1B536006132E5 /* person.3.pdf in Resources */,
@@ -2108,6 +2170,7 @@
 				030010A824D718D30092AE68 /* slider.horizontal.3.pdf in Resources */,
 				03D2B90A24E1E3BF00692B4D /* fr.json in Resources */,
 				03AA7A8624C84C6300A47970 /* hurricane.pdf in Resources */,
+				03F752F024EEFC8500945B1D /* house.pdf in Resources */,
 				0300B80924D1B536006132E5 /* film.pdf in Resources */,
 				03D2B90724E1E3BF00692B4D /* es.json in Resources */,
 				0300B80324D1B536006132E5 /* clock.pdf in Resources */,
@@ -2115,6 +2178,7 @@
 				03AA7A7724C84C6300A47970 /* sun.dust.pdf in Resources */,
 				0300B86E24D20B12006132E5 /* NextViewController.xib in Resources */,
 				03AA7AB924C84C6400A47970 /* bolt.fill.pdf in Resources */,
+				03F752DD24EED19C00945B1D /* video_inspire_italy_como_cerano-dintelvi_006.png in Resources */,
 				03D1E79222848F7F00D10CF7 /* screen2.jpg in Resources */,
 				03B8743424E42675008E3D1B /* wand.and.rays.pdf in Resources */,
 				FAC36F4A1BE1756D007F2A20 /* MainMenu.xib in Resources */,
@@ -2133,7 +2197,10 @@
 				0300B81B24D1B536006132E5 /* tram.fill.pdf in Resources */,
 				03AA7AB324C84C6400A47970 /* cloud.moon.bolt.pdf in Resources */,
 				0300B80624D1B536006132E5 /* sparkles.pdf in Resources */,
+				03075EB624ED794F00FDBE48 /* textformat.alt.pdf in Resources */,
+				03F752D924EED19C00945B1D /* video_inspire_california_big-sur_2020_00001.png in Resources */,
 				0300B82A24D1B536006132E5 /* arrow.down.circle.fill.pdf in Resources */,
+				03F752E624EED21100945B1D /* video_inspire_california_vineyard_sierra-mar_sunrise_110.png in Resources */,
 				03AA7A5F24C84C6300A47970 /* cloud.bolt.rain.pdf in Resources */,
 				03AA7A7A24C84C6300A47970 /* sun.max.pdf in Resources */,
 				0300B7EE24D1B536006132E5 /* bubble.left.and.bubble.right.pdf in Resources */,
@@ -2150,7 +2217,10 @@
 				03A42A9A2449F5EA003B3012 /* white_retina.png in Resources */,
 				0345CFF224BF43280001045C /* VideosViewController.xib in Resources */,
 				032E09A324C3897E00387230 /* AdvancedViewController.xib in Resources */,
+				03F752D524EED19C00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png in Resources */,
 				03AA7AA424C84C6300A47970 /* cloud.drizzle.pdf in Resources */,
+				03F752E124EED19C00945B1D /* video_inspire_california_catalina_00005.png in Resources */,
+				03075EB324ED794F00FDBE48 /* trash.pdf in Resources */,
 				03D2B90D24E1E3BF00692B4D /* de.json in Resources */,
 				03BDBEA724C467EC00BBD5E9 /* BrightnessViewController.xib in Resources */,
 				03AA7AB624C84C6400A47970 /* cloud.bolt.pdf in Resources */,
@@ -2167,9 +2237,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03F752DA24EED19C00945B1D /* video_inspire_california_big-sur_2020_00001.png in Resources */,
 				03D1E79322848F7F00D10CF7 /* screen2.jpg in Resources */,
+				03F752E724EED21100945B1D /* video_inspire_california_vineyard_sierra-mar_sunrise_110.png in Resources */,
+				03F752D624EED19C00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png in Resources */,
+				03F752E224EED19C00945B1D /* video_inspire_california_catalina_00005.png in Resources */,
 				03D1E79622848F7F00D10CF7 /* screen1.jpg in Resources */,
+				03F752DE24EED19C00945B1D /* video_inspire_italy_como_cerano-dintelvi_006.png in Resources */,
+				03F752EC24EEFC3100945B1D /* text.cursor.pdf in Resources */,
 				03D1E79922848F7F00D10CF7 /* screen0.jpg in Resources */,
+				03F752F124EEFC8500945B1D /* house.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2188,6 +2265,7 @@
 				0345CFF024BF43280001045C /* VideosViewController.xib in Resources */,
 				0300B81C24D1B536006132E5 /* arrow.down.circle.pdf in Resources */,
 				0300B81624D1B536006132E5 /* sunset.pdf in Resources */,
+				03F752EE24EEFC8500945B1D /* house.pdf in Resources */,
 				0300B7F824D1B536006132E5 /* text.bubble.pdf in Resources */,
 				032E09A124C3897E00387230 /* AdvancedViewController.xib in Resources */,
 				0300B82224D1B536006132E5 /* regular.sun.min.pdf in Resources */,
@@ -2202,6 +2280,7 @@
 				03AA7A9024C84C6300A47970 /* moon.pdf in Resources */,
 				0300B81024D1B536006132E5 /* regular.moon.stars.pdf in Resources */,
 				03AA7AA524C84C6300A47970 /* cloud.rain.pdf in Resources */,
+				03F752DF24EED19C00945B1D /* video_inspire_california_catalina_00005.png in Resources */,
 				03AA7A9624C84C6300A47970 /* smoke.pdf in Resources */,
 				03D2B90B24E1E3BF00692B4D /* de.json in Resources */,
 				03AA7A8724C84C6300A47970 /* cloud.fog.pdf in Resources */,
@@ -2222,6 +2301,7 @@
 				03D2B8F024E1E3BF00692B4D /* en.json in Resources */,
 				03D2B90524E1E3BF00692B4D /* es.json in Resources */,
 				0300B83124D1B536006132E5 /* sunrise.pdf in Resources */,
+				03F752E424EED21100945B1D /* video_inspire_california_vineyard_sierra-mar_sunrise_110.png in Resources */,
 				03D2B8EA24E1E3BF00692B4D /* he.json in Resources */,
 				0300B80724D1B536006132E5 /* film.pdf in Resources */,
 				0300B83A24D1B536006132E5 /* regular.sun.max.pdf in Resources */,
@@ -2233,6 +2313,7 @@
 				037772E824E44BB100D81EEA /* xmark.circle.pdf in Resources */,
 				0300B82E24D1B536006132E5 /* tv.pdf in Resources */,
 				0300B81324D1B536006132E5 /* antenna.radiowaves.left.and.right.pdf in Resources */,
+				03075EB124ED794F00FDBE48 /* trash.pdf in Resources */,
 				03AA7ABA24C84C6400A47970 /* cloud.sun.pdf in Resources */,
 				03D1E79722848F7F00D10CF7 /* screen0.jpg in Resources */,
 				0300B7F524D1B536006132E5 /* eye.pdf in Resources */,
@@ -2244,6 +2325,7 @@
 				03AA7A7224C84C6300A47970 /* cloud.sun.rain.pdf in Resources */,
 				0395835321807D1F008E8F9C /* thumbnail@2x.png in Resources */,
 				0395835521807D1F008E8F9C /* thumbnail.png in Resources */,
+				03F752D724EED19C00945B1D /* video_inspire_california_big-sur_2020_00001.png in Resources */,
 				0300B86424D2052B006132E5 /* WelcomeViewController.xib in Resources */,
 				03D2B90E24E1E3BF00692B4D /* pl.json in Resources */,
 				03AA7A6924C84C6300A47970 /* cloud.heavyrain.pdf in Resources */,
@@ -2254,6 +2336,7 @@
 				03B8743824E42675008E3D1B /* hand.raised.pdf in Resources */,
 				03AA7AA824C84C6300A47970 /* sun.haze.pdf in Resources */,
 				0300B7E924D1B536006132E5 /* person.3.pdf in Resources */,
+				03F752DB24EED19C00945B1D /* video_inspire_italy_como_cerano-dintelvi_006.png in Resources */,
 				0313329F24BF3FA700C84A05 /* SidebarViewController.xib in Resources */,
 				031945FE24CCC52600F37B35 /* HelpViewController.xib in Resources */,
 				0300B7EF24D1B536006132E5 /* helm.pdf in Resources */,
@@ -2284,9 +2367,11 @@
 				03AA7A9F24C84C6300A47970 /* cloud.hail.pdf in Resources */,
 				03BF17A224E2F29C0080EF34 /* VideoFormatViewController.xib in Resources */,
 				03D2B90224E1E3BF00692B4D /* ar.json in Resources */,
+				03F752D324EED19C00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png in Resources */,
 				03EED2F324C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */,
 				0300B84024D1B536006132E5 /* checkmark.circle.fill.pdf in Resources */,
 				031945F624CCC48C00F37B35 /* CreditsViewController.xib in Resources */,
+				03075EB424ED794F00FDBE48 /* textformat.alt.pdf in Resources */,
 				03AA7AAE24C84C6300A47970 /* cloud.moon.pdf in Resources */,
 				03A42A9C2449F602003B3012 /* purple_retina.png in Resources */,
 				03AA7A6024C84C6300A47970 /* wind.snow.pdf in Resources */,
@@ -2294,6 +2379,7 @@
 				0300B84324D1B536006132E5 /* square.and.arrow.down.pdf in Resources */,
 				03AA7A7824C84C6300A47970 /* sun.max.pdf in Resources */,
 				03933B8E24C3986800A98D94 /* SourcesViewController.xib in Resources */,
+				03F752E924EEFC3100945B1D /* text.cursor.pdf in Resources */,
 				033811B324C1E243002E23E0 /* InfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3007,7 +3093,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.0beta15;
+				CURRENT_PROJECT_VERSION = 2.0.1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3015,7 +3101,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0.0beta15;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3035,7 +3121,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.0beta15;
+				CURRENT_PROJECT_VERSION = 2.0.1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3043,7 +3129,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0.0beta15;
+				MARKETING_VERSION = 2.0.1;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

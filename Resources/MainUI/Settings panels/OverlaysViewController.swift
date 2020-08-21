@@ -27,6 +27,8 @@ class OverlaysViewController: NSViewController {
     @IBOutlet var infoDateView: InfoDateView!
     @IBOutlet var infoWeatherView: InfoWeatherView!
 
+    @IBOutlet var fontButton: NSButton!
+    @IBOutlet var trashButton: NSButton!
     // And our weather panel
 
     @IBOutlet var weatherPanel: NSPanel!
@@ -39,7 +41,8 @@ class OverlaysViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-
+        fontButton.setIcons("textformat.alt")
+        trashButton.setIcons("trash")
         infoSource.setController(self)
         infoTableView.dataSource = infoSource
         infoTableView.delegate = infoSource

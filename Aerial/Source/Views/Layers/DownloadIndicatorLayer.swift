@@ -41,7 +41,7 @@ class DownloadIndicatorLayer: AnimationTextLayer {
     }
 
     override func setupForVideo(video: AerialVideo, player: AVPlayer) {
-        if !wasSetup {
+        if !wasSetup && PrefsCache.showBackgroundDownloads {
             update(string: "")
             setupDownloadIndicatorLayer()
         }
