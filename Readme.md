@@ -8,14 +8,12 @@ Aerial is a Mac screensaver based on the new Apple TV screensaver that displays 
 
 Aerial is completely open source, so feel free to contribute to its development.
 
-![Github All Releases](https://img.shields.io/github/downloads/johncoates/aerial/total.svg?maxAge=86400)
-![GitHub contributors](https://img.shields.io/github/contributors/johncoates/aerial.svg?maxAge=2592000)
-[![Build Status](https://travis-ci.org/JohnCoates/Aerial.svg?branch=master)](https://travis-ci.org/JohnCoates/Aerial)
-[![codebeat badge](https://codebeat.co/badges/cefd1672-5501-4b79-8d08-c2121cdbc9ed)](https://codebeat.co/projects/github-com-johncoates-aerial-e1c8873e-7a9f-4c74-9e50-0380add2478a)
-[![Code Climate](https://codeclimate.com/github/JohnCoates/Aerial/badges/gpa.svg)](https://codeclimate.com/github/JohnCoates/Aerial)
-[![codecov](https://codecov.io/gh/JohnCoates/Aerial/branch/master/graph/badge.svg)](https://codecov.io/gh/JohnCoates/Aerial)
+# [>> Download Now <<](https://github.com/glouel/AerialCompanion/releases) 
 
-###### Windows user? Try [OrangeJedi/Aerial](https://github.com/OrangeJedi/Aerial) | Linux user? Try [graysky2/xscreensaver-aerial](https://github.com/graysky2/xscreensaver-aerial/)
+> New to GitHub or Aerial? [Let us walk you through the installation!](https://github.com/JohnCoates/Aerial/blob/master/Documentation/FAQs.md#how-do-i-install-aerial) <br>
+> Don't want automatic updates? [Download Aerial without Aerial Companion](https://github.com/JohnCoates/Aerial/releases) <br>
+> Windows user? Try [OrangeJedi/Aerial](https://github.com/OrangeJedi/Aerial) <br>
+> Linux user? Try [graysky2/xscreensaver-aerial](https://github.com/graysky2/xscreensaver-aerial/)
 
 ## About Aerial 
 
@@ -26,11 +24,16 @@ Starting with version 1.4, Aerial is maintained by [Guillaume Louel](https://git
 [paypal-button]: https://img.shields.io/badge/Donate-PayPal-green.svg
 [paypal-glouel]: https://www.paypal.me/glouel/
 
-You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/graphs/contributors).
+![Github All Releases](https://img.shields.io/github/downloads/johncoates/aerial/total.svg?maxAge=86400)
+![GitHub contributors](https://img.shields.io/github/contributors/johncoates/aerial.svg?maxAge=2592000)
 
-**Trying Big Sur public beta 1? Very bold of you!** Please *[read this to get your settings and videos back](https://github.com/JohnCoates/Aerial/issues/1036).*
+**Trying Big Sur? Very bold of you!** Please *[read this to get your settings and videos back](https://github.com/JohnCoates/Aerial/issues/1036).*
 
-**Have a question? Check our troobleshooting section below, or hop on our [Discord server](https://discord.gg/TPuA5WG).**
+## Have a question?
+
+- Check our [Frequently Asked Questions](https://github.com/JohnCoates/Aerial/blob/master/Documentation/FAQs.md)
+- Hop on our [Discord Server](https://discord.gg/TPuA5WG)
+- Check out [additional documentation](https://github.com/JohnCoates/Aerial#more-documentation)
 
 ## Installation
 
@@ -38,7 +41,7 @@ With changes in Catalina and Big Sur, a screen saver can no longer update itself
 
 **Installation instructions:**
 - Download AerialInstaller.dmg [from here](https://github.com/glouel/AerialCompanion/releases/latest) 
-- Open the .dmg and follow the instructions
+- Open the .dmg and follow the instructions (for more information, [click here](https://github.com/JohnCoates/Aerial/blob/master/Documentation/FAQs.md#how-do-i-install-aerial)
 - This will install both the companion app and the screen saver (or update you to the current version if you already have it installed)
 
 Need more information on install, setup, or uninstall? Or want to install via homebrew or manually? Check our extended [instructions here](Documentation/Installation.md). 
@@ -82,8 +85,8 @@ You can find more about [version changes here](Documentation/ChangeLog.md).
 ## Community
 
 - **Found a bug?** Sorry about that! Make sure you are running the latest version and please check our [troubleshooting page](Documentation/Troubleshooting.md) and [our issues](https://github.com/JohnCoates/Aerial/issues), as someone may already have reported it (a beta may be available with the fix you need). Feel free to [open an issue](https://github.com/JohnCoates/Aerial/issues/new), try to be as specific as possible.
-- **Have fixed a bug?** Or want to implement a feature ? Check instructions on how to compile Aerial and more on [contributing here](Documentation/Contribute.md).
-- **Can you translate videos names and their descriptions?**. Awesome! [Read here for details](Resources/Community/Readme.md) on how to help us.
+- **Have you fixed a bug?** Or want to implement a feature? Check instructions on how to compile Aerial and more on [contributing here](Documentation/Contribute.md).
+- **Can you translate videos names and their descriptions?** Awesome! [Read here for details](Resources/Community/Readme.md) on how to help us.
 - **Have a feature request?** [Open an issue](https://github.com/JohnCoates/Aerial/issues/new). Tell us why it would be useful, and why you and others would want it.
 - **Curious about the videos and on a slow connection?** Check [this guide](https://paper.dropbox.com/doc/Aerial-macOS-screen-saver-list-with-version-1.4.6-HvOeL0gNhLpqpIFgmLHaS) by [Hidehiro Nagaoka](https://github.com/hidehiro98).
 - **Just want to see the videos?** [A complete list of available wallpapers  is available online](https://aerial-screensavers.netlify.com). From [TawfiqH](https://github.com/Tawfiqh/aerialWallpapers).
@@ -103,6 +106,7 @@ If you want to collaborate, please [read the details here](Resources/Community/R
 
 Looking for more information?
 
+- [Frequently Asked Questions](https://github.com/JohnCoates/Aerial/blob/master/Documentation/FAQs.md)
 - [Having an issue? Check our list of common issues right here, including workaround for common macOS bugs (like "You cannot use the Aerial screen saver with this version of macOS.")!](Documentation/Troubleshooting.md)
 - [Learn more about configuring and running Aerial in offline mode with no network access](Documentation/OfflineMode.md)
 - [Information about HEVC, HDR and hardware decoding](Documentation/HardwareDecoding.md) 
