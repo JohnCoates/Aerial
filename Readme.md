@@ -58,13 +58,15 @@ Need more information on install, setup, or uninstall? Or want to install via ho
 
 You can still opt to manually download your videos, or simply grab them all. All up to you. If you allow automatic downloads, you can even specify a list of trusted WiFi networks!
 
-- 20 new videos! Starting with version 2.0, Aerial includes similarly styled third party videos. You can get a preview in the video below:
+- 20 new videos! Starting with version 2.0, Aerial includes new videos kindly shared by Joshua Michaels & Hal Bergman: 
 
 <p align="center">
   <a href="https://vimeo.com/449330833/36becf3668">
   <img src="https://user-images.githubusercontent.com/37544189/90661757-d7d77b00-e247-11ea-8b92-7301c39bfced.jpg">
   </a>
 </p>
+
+If you enjoy those videos, please consider supporting them by checking the video packs they have [created especially for Aerial on their website](https://www.jetsoncreative.com/aerial). 
 
 - A new "On rotation" feature, so you can quickly switch from watching space videos, to only sunset videos: 
 
