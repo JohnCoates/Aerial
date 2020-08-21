@@ -122,7 +122,11 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
     // item == nil means it's the "root" row of the outline view, which is not visible
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         if item == nil {
-            return SourceList.list.filter({ !$0.name.starts(with: "tvOS")})[index]
+            /*if index == 0 {
+                return "CommunityVideo"
+            } else {*/
+                return SourceList.list.filter({ !$0.name.starts(with: "tvOS")})[index]
+            //}
         } else {
             return 0
         }
@@ -148,6 +152,11 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
         guard let columnIdentifier = tableColumn?.identifier.rawValue else {
             return nil
         }
+
+        /*if let sourceHeader = item as? String {
+            print(sourceHeader)
+            return nil
+        }*/
 
         let source = item as! Source
 

@@ -262,12 +262,14 @@ final class PoiStringProvider {
             return 8
         case "it":  // Italian
             return 9
-        case "pl":  // Polish
+        case "ja":  // Japanese
             return 10
-        case "es":  // Spanish
+        case "pl":  // Polish
             return 11
-        case "sv":  // Swedish
+        case "es":  // Spanish
             return 12
+        case "sv":  // Swedish
+            return 13
         default:    // This is the default, preferred language
             return 0
         }
@@ -295,10 +297,12 @@ final class PoiStringProvider {
         case 9:
             return "it"
         case 10:
-            return "pl"
+            return "ja"
         case 11:
-            return "es"
+            return "pl"
         case 12:
+            return "es"
+        case 13:
             return "sv"
         default:
             return ""
