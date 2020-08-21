@@ -8,16 +8,9 @@ Aerial is a Mac screensaver based on the new Apple TV screensaver that displays 
 
 Aerial is completely open source, so feel free to contribute to its development.
 
-![Github All Releases](https://img.shields.io/github/downloads/johncoates/aerial/total.svg?maxAge=86400)
-![GitHub contributors](https://img.shields.io/github/contributors/johncoates/aerial.svg?maxAge=2592000)
-[![Build Status](https://travis-ci.org/JohnCoates/Aerial.svg?branch=master)](https://travis-ci.org/JohnCoates/Aerial)
-[![codebeat badge](https://codebeat.co/badges/cefd1672-5501-4b79-8d08-c2121cdbc9ed)](https://codebeat.co/projects/github-com-johncoates-aerial-e1c8873e-7a9f-4c74-9e50-0380add2478a)
-[![Code Climate](https://codeclimate.com/github/JohnCoates/Aerial/badges/gpa.svg)](https://codeclimate.com/github/JohnCoates/Aerial)
-[![codecov](https://codecov.io/gh/JohnCoates/Aerial/branch/master/graph/badge.svg)](https://codecov.io/gh/JohnCoates/Aerial)
-
-
 # [>> Download Now <<](https://github.com/glouel/AerialCompanion/releases) 
 
+> New to GitHub or Aerial? [Let us walk you through the installation!](https://github.com/JohnCoates/Aerial/blob/master/Documentation/FAQs.md#how-do-i-install-aerial) <br>
 > Don't want automatic updates? [Download Aerial without Aerial Companion](https://github.com/JohnCoates/Aerial/releases) <br>
 > Windows user? Try [OrangeJedi/Aerial](https://github.com/OrangeJedi/Aerial) <br>
 > Linux user? Try [graysky2/xscreensaver-aerial](https://github.com/graysky2/xscreensaver-aerial/)
@@ -31,7 +24,8 @@ Starting with version 1.4, Aerial is maintained by [Guillaume Louel](https://git
 [paypal-button]: https://img.shields.io/badge/Donate-PayPal-green.svg
 [paypal-glouel]: https://www.paypal.me/glouel/
 
-You can see a list of contributors [here](https://github.com/JohnCoates/Aerial/graphs/contributors).
+![Github All Releases](https://img.shields.io/github/downloads/johncoates/aerial/total.svg?maxAge=86400)
+![GitHub contributors](https://img.shields.io/github/contributors/johncoates/aerial.svg?maxAge=2592000)
 
 **Trying Big Sur? Very bold of you!** Please *[read this to get your settings and videos back](https://github.com/JohnCoates/Aerial/issues/1036).*
 
@@ -47,7 +41,7 @@ With changes in Catalina and Big Sur, a screen saver can no longer update itself
 
 **Installation instructions:**
 - Download AerialInstaller.dmg [from here](https://github.com/glouel/AerialCompanion/releases/latest) 
-- Open the .dmg and follow the instructions
+- Open the .dmg and follow the instructions (for more information, [click here](https://github.com/JohnCoates/Aerial/blob/master/Documentation/FAQs.md#how-do-i-install-aerial)
 - This will install both the companion app and the screen saver (or update you to the current version if you already have it installed)
 
 Need more information on install, setup, or uninstall? Or want to install via homebrew or manually? Check our extended [instructions here](Documentation/Installation.md). 
