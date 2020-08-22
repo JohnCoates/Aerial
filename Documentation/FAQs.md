@@ -173,6 +173,8 @@ In the event that you want to download videos from a specific category (for exam
 
 ## Where is tvOS 11 and 12?
 
+All the videos are still available in Aerial, don't worry!
+
 The screen savers generated in tvOS 11 and 12 used to be available in Aerial 1.8 (and earlier). Starting in Aerial 2.0, tvOS 11 and 12 were removed as they contain the same videos that are in the tvOS 13 collection. This simplification means that only tvOS 10 and tvOS 13 videos are shown in the selector. 
 
 <img width="150" alt="tvOS" src="https://user-images.githubusercontent.com/18543749/90963789-e2348780-e488-11ea-859f-8a01dfa8d3fb.png">
