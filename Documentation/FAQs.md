@@ -1,6 +1,6 @@
 # Frequently Asked Questions
 
-This guide is meant to help you get started and answer some of the most common questions. 
+This guide is meant to help you get started and answer some of the most common questions. If you wish to search for a specific term, please type `Command` + `F` and search for a single word such as "favorites".
 
 <hr> 
 
@@ -168,6 +168,14 @@ In the event that you want to download videos from a specific category (for exam
 > <b>NOTE:</b> If this option is not available, it is because you have already downloaded these videos!
 
 <img width="200" alt="Cache Missing Videos" src="https://user-images.githubusercontent.com/18543749/90961135-c32bfa80-e474-11ea-8cf1-dd2abcc2d817.png">
+
+<hr>
+
+## Where is tvOS 11 and 12?
+
+The screen savers generated in tvOS 11 and 12 used to be available in Aerial 1.8 (and earlier). Starting in Aerial 2.0, tvOS 11 and 12 were removed as they contain the same videos that are in the tvOS 13 collection. This simplification means that only tvOS 10 and tvOS 13 videos are shown in the selector. 
+
+<img width="150" alt="tvOS" src="https://user-images.githubusercontent.com/18543749/90963789-e2348780-e488-11ea-859f-8a01dfa8d3fb.png">
 
 <hr>
 
