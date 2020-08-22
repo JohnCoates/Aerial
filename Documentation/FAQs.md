@@ -109,7 +109,8 @@ When caching is set to **manual** you will need to download and manage your cach
 3. Click on `Cache` on the sidebar
 4. Check 'Automatically download videos` 
 <img width="400" alt="Automatic management" src="https://user-images.githubusercontent.com/18543749/90852209-e35c9c00-e344-11ea-9505-481789a581d7.png">
-5. Set your **cache limit size** -- This is the MAXIMUM size you want your cache. If you don't want to set a maximum, move the slider all the way to the right.
+
+5. Set your **cache limit size** - This is the *MAXIMUM* size you want your cache. If you don't want to set a maximum, move the slider all the way to the right.
 6. Select how often you want to rotate your videos in your cache 
 
 <img width="200" alt="Rotate videos" src="https://user-images.githubusercontent.com/18543749/90852283-14d56780-e345-11ea-9ec5-7817cefc1d04.png">
@@ -145,6 +146,30 @@ The short answer is:
 
 6. Close and relaunch System Preferences. 
 7. Open Aerial Settings again and select the videos you want. Then download (cache) these videos and they will download in the selected format.
+
+<hr>
+
+## What is "Download Rotation" and should I click it?
+
+The `Download Rotation` button is visible under the `On Rotation` tab on the left. 
+
+<img width="400" alt="Download Rotation" src="https://user-images.githubusercontent.com/18543749/90960980-962b1800-e473-11ea-8224-d9fe1907c14e.png">
+
+Videos in Aerial only play when they are cached on your computer. This allows them to play while you are not connected to the internet and always play immediately when your screen saver starts. 
+
+> Previous versions of Aerial could "stream" videos without downloading a cache, but this was replaced in 2.0 with the automatic cache management tool. 
+
+The download rotation button is synonomous with saying "Cache my rotation". In other words, any videos in the `On Rotation` category on the left hand panel will begin to download to your computer when you click `Download Rotation`. 
+
+> <b>NOTE:</b> Only videos that are cached AND that are shown in the `On rotation` tab will play when you start your screen saver. 
+
+In the event that you want to download videos from a specific category (for example if you want to select only certain videos to play) you can additionally right click on any category and select "Cache missing videos" 
+
+> <b>NOTE:</b> If this option is not available, it is because you have already downloaded these videos!
+
+<img width="200" alt="Cache Missing Videos" src="https://user-images.githubusercontent.com/18543749/90961135-c32bfa80-e474-11ea-8cf1-dd2abcc2d817.png">
+
+<hr>
 
 ## I have more technical questions...
 
