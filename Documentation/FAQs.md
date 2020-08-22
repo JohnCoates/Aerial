@@ -94,7 +94,8 @@ Aerial can cache videos in two different ways:
 
 When caching is set to **manual** you will need to download and manage your cache entirely manually. When set to **automatic**, you can set the size of your cache and Aerial will fill it with the videos you love! 
 
-### Manual Cache Management
+<h3> Manual Cache Management</h3>
+
 1. Open Aerial in System Preferneces 
 2. Click on the settings tab (gear at the top of the sidebar)
 3. Click on `Cache` on the sidebar
@@ -149,7 +150,7 @@ The short answer is:
 
 <hr>
 
-## What is "Download Rotation" and should I click it?
+<h2>What is "Download Rotation" and should I click it?</h2>
 
 The `Download Rotation` button is visible under the `On Rotation` tab on the left. 
 
@@ -161,7 +162,7 @@ Videos in Aerial only play when they are cached on your computer. This allows th
 
 The download rotation button is synonomous with saying "Cache my rotation". In other words, any videos in the `On Rotation` category on the left hand panel will begin to download to your computer when you click `Download Rotation`. 
 
-> <b>NOTE:</b> Only videos that are cached AND that are shown in the `On rotation` tab will play when you start your screen saver. 
+> <b>NOTE:</b> Only videos that are cached AND that are shown in the `On Rotation` tab will play when you start your screen saver. 
 
 In the event that you want to download videos from a specific category (for example if you want to select only certain videos to play) you can additionally right click on any category and select "Cache missing videos" 
 
@@ -171,17 +172,19 @@ In the event that you want to download videos from a specific category (for exam
 
 <hr>
 
-## Where is tvOS 11 and 12?
+<h2> Where is tvOS 11 and 12?</h2>
 
 All the videos are still available in Aerial, don't worry!
 
-The screen savers generated in tvOS 11 and 12 used to be available in Aerial 1.8 (and earlier). Starting in Aerial 2.0, tvOS 11 and 12 were removed as they contain the same videos that are in the tvOS 13 collection. This simplification means that only tvOS 10 and tvOS 13 videos are shown in the selector. 
+Aerial 2.0 takes advantage of the latest available videos from tvOS. tvOS 11 and 12 are not shown as tvOS 13 actually contains these videos! 
+
+tvOS 10 videos support <b>1080p</b> quality while tvOS 13 can support <b>4K</b> and <b>4K HDR</b> videos. You can still play videos from tvOS 13 in <b>1080p</b> as well. 
 
 <img width="150" alt="tvOS" src="https://user-images.githubusercontent.com/18543749/90963789-e2348780-e488-11ea-859f-8a01dfa8d3fb.png">
 
 <hr>
 
-## I have more technical questions...
+<h2> I have more technical questions...</h2>
 
-This FAQ was made largely to help those who are new to Aerial and GitHub. If you have more technical questions you need answered, please visit our Additional Documentation avaialble [here](https://github.com/JohnCoates/Aerial/tree/master/Documentation#welcome-to-aerials-documentation)
+This FAQ was made largely to help those who are new to Aerial and GitHub. If you have more technical questions you need answered, please visit our Additional Documentation avaialble <a href="https://github.com/JohnCoates/Aerial/tree/master/Documentation#welcome-to-aerials-documentation">here</a>
 
