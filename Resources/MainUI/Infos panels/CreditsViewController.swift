@@ -21,6 +21,12 @@ class CreditsViewController: NSViewController {
         workspace.open(url)
     }
 
+    @IBAction func websiteButton(_ sender: Any) {
+        let workspace = NSWorkspace.shared
+        let url = URL(string: "https://aerialscreensaver.github.io")!
+        workspace.open(url)
+    }
+
     @IBAction func projectButton(_ sender: Any) {
         let workspace = NSWorkspace.shared
         let url = URL(string: "https://github.com/JohnCoates/Aerial")!

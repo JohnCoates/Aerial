@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,17 +26,17 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UUX-vU-Iz9">
-                    <rect key="frame" x="194" y="321" width="135" height="40"/>
-                    <buttonCell key="cell" type="push" title="Check the FAQ" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sY3-LA-jwX">
+                    <rect key="frame" x="194" y="262" width="229" height="40"/>
+                    <buttonCell key="cell" type="push" title="Check the Troubleshooting list" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sY3-LA-jwX">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="faqButton:" target="-2" id="V28-Qc-HjD"/>
+                        <action selector="troubleshootButton:" target="-2" id="sxo-rj-tti"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ccg-Ld-deT">
-                    <rect key="frame" x="194" y="209" width="194" height="40"/>
+                    <rect key="frame" x="194" y="150" width="194" height="40"/>
                     <buttonCell key="cell" type="push" title="Check the GitHub issues" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SvK-VQ-O9q">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -46,7 +46,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PHe-ta-hg6">
-                    <rect key="frame" x="194" y="113" width="163" height="40"/>
+                    <rect key="frame" x="194" y="54" width="163" height="40"/>
                     <buttonCell key="cell" type="push" title="Join Discord Server" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nVz-89-CnO">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -56,19 +56,18 @@
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="XIB-RT-Gf7">
-                    <rect key="frame" x="198" y="371" width="504" height="48"/>
+                    <rect key="frame" x="198" y="312" width="504" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="500" id="o5p-sa-qMn"/>
                     </constraints>
-                    <textFieldCell key="cell" selectable="YES" id="dgy-jB-vBw">
+                    <textFieldCell key="cell" selectable="YES" title="More of a technical issue? We maintain a list of the most common issues with various versions of macOS here. And Little Snitch!" id="dgy-jB-vBw">
                         <font key="font" metaFont="system"/>
-                        <string key="title">There's a list of known issues with screen savers on macOS, depending on which version you are running. We keep a list of all the most common ones in our FAQ, so it's a good place to start.</string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="GP7-Rh-FNa">
-                    <rect key="frame" x="198" y="259" width="504" height="48"/>
+                    <rect key="frame" x="198" y="200" width="504" height="48"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="500" id="5Gh-XF-Wlz"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="500" id="q9B-PH-fUN"/>
@@ -81,7 +80,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="CG1-ie-zJE">
-                    <rect key="frame" x="198" y="163" width="504" height="32"/>
+                    <rect key="frame" x="198" y="104" width="504" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="500" id="qJT-Me-Vmz"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="500" id="tFJ-aD-Ehb"/>
@@ -92,17 +91,42 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gLI-ih-SCQ">
+                    <rect key="frame" x="194" y="358" width="135" height="40"/>
+                    <buttonCell key="cell" type="push" title="Check the FAQ" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AGy-2X-jvi">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="faqButton:" target="-2" id="EtM-Zt-UnJ"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="mu4-R7-C8J">
+                    <rect key="frame" x="198" y="408" width="504" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="500" id="3pd-sp-wiA"/>
+                    </constraints>
+                    <textFieldCell key="cell" selectable="YES" title="Not exactly sure how something works? We got you covered in our new FAQ." id="cY1-Jx-zNC">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstItem="CG1-ie-zJE" firstAttribute="top" secondItem="Ccg-Ld-deT" secondAttribute="bottom" constant="20" id="1Qr-yo-Omg"/>
+                <constraint firstItem="gLI-ih-SCQ" firstAttribute="top" secondItem="mu4-R7-C8J" secondAttribute="bottom" constant="16" id="28s-r0-Ykq"/>
+                <constraint firstItem="XIB-RT-Gf7" firstAttribute="top" secondItem="gLI-ih-SCQ" secondAttribute="bottom" constant="20" id="46J-7o-cLa"/>
                 <constraint firstItem="UUX-vU-Iz9" firstAttribute="top" secondItem="XIB-RT-Gf7" secondAttribute="bottom" constant="16" id="6Sz-Lr-dca"/>
                 <constraint firstItem="GP7-Rh-FNa" firstAttribute="leading" secondItem="UUX-vU-Iz9" secondAttribute="leading" id="7MI-sh-iLb"/>
                 <constraint firstItem="GP7-Rh-FNa" firstAttribute="top" secondItem="UUX-vU-Iz9" secondAttribute="bottom" constant="20" id="CUc-SD-fET"/>
+                <constraint firstItem="mu4-R7-C8J" firstAttribute="top" secondItem="fiN-Oe-faj" secondAttribute="bottom" constant="20" id="D22-Uw-hna"/>
                 <constraint firstItem="fiN-Oe-faj" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="200" id="FAF-fp-GRn"/>
                 <constraint firstItem="Ccg-Ld-deT" firstAttribute="top" secondItem="GP7-Rh-FNa" secondAttribute="bottom" constant="16" id="Lyo-pv-39x"/>
                 <constraint firstItem="PHe-ta-hg6" firstAttribute="leading" secondItem="Ccg-Ld-deT" secondAttribute="leading" id="MTA-xM-3TE"/>
                 <constraint firstItem="Ccg-Ld-deT" firstAttribute="leading" secondItem="UUX-vU-Iz9" secondAttribute="leading" id="Oep-xJ-s4B"/>
-                <constraint firstItem="XIB-RT-Gf7" firstAttribute="top" secondItem="fiN-Oe-faj" secondAttribute="bottom" constant="25" id="bvg-Jk-0Gn"/>
+                <constraint firstItem="gLI-ih-SCQ" firstAttribute="leading" secondItem="mu4-R7-C8J" secondAttribute="leading" id="Vot-qS-p4W"/>
+                <constraint firstItem="XIB-RT-Gf7" firstAttribute="leading" secondItem="mu4-R7-C8J" secondAttribute="leading" id="g0q-eb-iaJ"/>
                 <constraint firstItem="XIB-RT-Gf7" firstAttribute="leading" secondItem="fiN-Oe-faj" secondAttribute="leading" id="hjf-tl-Za5"/>
                 <constraint firstItem="PHe-ta-hg6" firstAttribute="top" secondItem="CG1-ie-zJE" secondAttribute="bottom" constant="16" id="qIx-97-UKf"/>
                 <constraint firstItem="CG1-ie-zJE" firstAttribute="leading" secondItem="Ccg-Ld-deT" secondAttribute="leading" id="tdH-Pa-Rap"/>

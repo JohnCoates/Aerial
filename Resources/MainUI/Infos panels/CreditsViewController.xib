@@ -26,7 +26,7 @@
                         <font key="font" metaFont="system"/>
                         <string key="title">Aerial was started in 2015 by John Coates. 
 
-Starting with version 1.4, Aerial is developed and maintained by Guillaume Louel.</string>
+Since version 1.4, Aerial is developed and maintained by Guillaume Louel.</string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -42,13 +42,13 @@ Starting with version 1.4, Aerial is developed and maintained by Guillaume Louel
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hEl-hg-Xq5">
-                    <rect key="frame" x="194" y="286" width="174" height="40"/>
-                    <buttonCell key="cell" type="push" title="Visit the project page" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8Qc-M5-TLV">
+                    <rect key="frame" x="194" y="286" width="147" height="40"/>
+                    <buttonCell key="cell" type="push" title="Visit our Website" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8Qc-M5-TLV">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="projectButton:" target="-2" id="EFt-Zw-KPX"/>
+                        <action selector="websiteButton:" target="-2" id="LGP-oT-yPC"/>
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wpw-1v-dic">
@@ -62,7 +62,7 @@ Starting with version 1.4, Aerial is developed and maintained by Guillaume Louel
 - German by Matthias Bauer &amp; Thomas W.
 - Hebrew by Bry Jacks
 - Italian by Angelo Marguglio 
-- Japanese by @DrMORO617
+- Japanese by Junji 'Dr.MORO' Morokuma
 - Polish by Aleksander Kasprzyk 
 - Simplified &amp; Traditional Chinese by Linkey Leo
 - Spanish by Aitor García Rey 
@@ -91,15 +91,27 @@ Want to help with translations?</string>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J7J-2w-Ik9">
+                    <rect key="frame" x="345" y="286" width="220" height="40"/>
+                    <buttonCell key="cell" type="push" title="Visit the GitHub Project Page" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HmR-fK-HDO">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="projectButton:" target="-2" id="Tcj-js-dfP"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="wpw-1v-dic" firstAttribute="leading" secondItem="hEl-hg-Xq5" secondAttribute="leading" id="4bf-F7-ckQ"/>
                 <constraint firstItem="ReU-xc-cMA" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="200" id="5cV-La-rSB"/>
                 <constraint firstItem="2zM-0X-9R0" firstAttribute="firstBaseline" secondItem="Gv6-y0-c1S" secondAttribute="firstBaseline" id="71J-wy-Kne"/>
                 <constraint firstItem="wpw-1v-dic" firstAttribute="top" secondItem="hEl-hg-Xq5" secondAttribute="bottom" constant="20" id="7Ec-w2-F9f"/>
+                <constraint firstItem="J7J-2w-Ik9" firstAttribute="firstBaseline" secondItem="hEl-hg-Xq5" secondAttribute="firstBaseline" id="BkZ-oe-jdm"/>
                 <constraint firstItem="2zM-0X-9R0" firstAttribute="leading" secondItem="ohW-uj-N2U" secondAttribute="trailing" constant="16" id="Dhh-tX-glQ"/>
                 <constraint firstItem="hEl-hg-Xq5" firstAttribute="top" secondItem="ReU-xc-cMA" secondAttribute="bottom" constant="20" id="M3k-Uo-Pfx"/>
                 <constraint firstItem="ohW-uj-N2U" firstAttribute="leading" secondItem="Gv6-y0-c1S" secondAttribute="trailing" constant="16" id="da0-nO-Qxa"/>
+                <constraint firstItem="J7J-2w-Ik9" firstAttribute="leading" secondItem="hEl-hg-Xq5" secondAttribute="trailing" constant="16" id="edG-iq-kGb"/>
                 <constraint firstItem="ohW-uj-N2U" firstAttribute="firstBaseline" secondItem="Gv6-y0-c1S" secondAttribute="firstBaseline" id="h8E-EP-N9K"/>
                 <constraint firstItem="Gv6-y0-c1S" firstAttribute="leading" secondItem="wpw-1v-dic" secondAttribute="leading" id="ncX-VD-x46"/>
                 <constraint firstItem="Gv6-y0-c1S" firstAttribute="top" secondItem="wpw-1v-dic" secondAttribute="bottom" constant="16" id="qdq-4X-sAY"/>

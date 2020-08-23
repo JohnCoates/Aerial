@@ -24,4 +24,15 @@ class RecapViewController: NSViewController {
 
     }
 
+    @IBAction func checkFAQ(_ sender: Any) {
+        let workspace = NSWorkspace.shared
+        let url = URL(string: "https://aerialscreensaver.github.io/faq.html")!
+        workspace.open(url)
+    }
+    
+    @IBAction func checkJoshHal(_ sender: Any) {
+        let workspace = NSWorkspace.shared
+        let url = URL(string: "https://www.jetsoncreative.com/aerial")!
+        workspace.open(url)
+    }
 }

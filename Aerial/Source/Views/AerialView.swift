@@ -177,6 +177,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     func setup() {
         if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
             debugLog("\(self.description) AerialView setup init (V\(version)) preview: \(self.isPreview)")
+            debugLog("Running \(ProcessInfo.processInfo.operatingSystemVersionString)")
         }
 
         // First thing, we may need to migrate the cache !

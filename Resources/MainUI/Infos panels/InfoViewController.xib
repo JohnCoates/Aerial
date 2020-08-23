@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,7 +30,7 @@
                                 <font key="font" metaFont="system"/>
                                 <string key="title">A free, open source, macOS Screen Saver developed and maintained by Guillaume Louel. 
 
-Enjoying Aerial and want to buy me a coffee? </string>
+Enjoying Aerial? </string>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -60,8 +60,8 @@ Enjoying Aerial and want to buy me a coffee? </string>
                             </textFieldCell>
                         </textField>
                         <button translatesAutoresizingMaskIntoConstraints="NO" id="Se0-cG-8jI">
-                            <rect key="frame" x="360" y="179" width="74" height="21"/>
-                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="btn_donate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="xyx-wf-mwp">
+                            <rect key="frame" x="360" y="164" width="143" height="36"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="kofi1" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="xyx-wf-mwp">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -110,7 +110,7 @@ Enjoying Aerial and want to buy me a coffee? </string>
         </imageView>
     </objects>
     <resources>
-        <image name="btn_donate" width="74" height="21"/>
         <image name="icon-320" width="320" height="320"/>
+        <image name="kofi1" width="142.5" height="36"/>
     </resources>
 </document>

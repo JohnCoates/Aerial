@@ -203,6 +203,9 @@ class AdvancedViewController: NSViewController {
     }
 
     @IBAction func resetAllSettings(_ sender: NSButton) {
+        if Aerial.showAlert(question: "Reset all settings?", text: "This will reset all your settings. After they are reset, Aerial will close System Preferences, you will have to reload it to access settings again.\n\nAre you sure you want to reset your settings?", button1: "Reset my settings", button2: "Cancel") {
+            NSApp.terminate(self)
+        }
         let plistURL = URL(fileURLWithPath: Cache.supportPath)
             .deletingLastPathComponent()
             .deletingLastPathComponent()

@@ -17,7 +17,13 @@ class HelpViewController: NSViewController {
 
     @IBAction func faqButton(_ sender: Any) {
         let workspace = NSWorkspace.shared
-        let url = URL(string: "https://github.com/JohnCoates/Aerial/blob/master/Documentation/Troubleshooting.md")!
+        let url = URL(string: "https://aerialscreensaver.github.io/faq.html")!
+        workspace.open(url)
+    }
+
+    @IBAction func troubleshootButton(_ sender: Any) {
+        let workspace = NSWorkspace.shared
+        let url = URL(string: "https://aerialscreensaver.github.io/troubleshooting.html")!
         workspace.open(url)
     }
 

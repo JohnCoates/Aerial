@@ -700,6 +700,9 @@
 		03EED2F324C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03EED2EF24C44A7900F0C3D4 /* OverlaysViewController.xib */; };
 		03EED2F424C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03EED2EF24C44A7900F0C3D4 /* OverlaysViewController.xib */; };
 		03EED2F524C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03EED2EF24C44A7900F0C3D4 /* OverlaysViewController.xib */; };
+		03F3C1BA24F2A923007733B5 /* kofi1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F3C1B924F2A923007733B5 /* kofi1@2x.png */; };
+		03F3C1BB24F2A923007733B5 /* kofi1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F3C1B924F2A923007733B5 /* kofi1@2x.png */; };
+		03F3C1BC24F2A923007733B5 /* kofi1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F3C1B924F2A923007733B5 /* kofi1@2x.png */; };
 		03F5551B24E9C091003AAD0B /* SourceOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5551A24E9C091003AAD0B /* SourceOutlineView.swift */; };
 		03F5551C24E9C091003AAD0B /* SourceOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5551A24E9C091003AAD0B /* SourceOutlineView.swift */; };
 		03F5551D24E9C091003AAD0B /* SourceOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5551A24E9C091003AAD0B /* SourceOutlineView.swift */; };
@@ -1104,6 +1107,7 @@
 		03EED2D124C3A47700F0C3D4 /* UpdatesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatesViewController.xib; sourceTree = "<group>"; };
 		03EED2EE24C44A7900F0C3D4 /* OverlaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaysViewController.swift; sourceTree = "<group>"; };
 		03EED2EF24C44A7900F0C3D4 /* OverlaysViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverlaysViewController.xib; sourceTree = "<group>"; };
+		03F3C1B924F2A923007733B5 /* kofi1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kofi1@2x.png"; sourceTree = "<group>"; };
 		03F5551A24E9C091003AAD0B /* SourceOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOutlineView.swift; sourceTree = "<group>"; };
 		03F752CF24EED19B00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_inspire_alabama_montgomery_countryside_00007.png; sourceTree = "<group>"; };
 		03F752D024EED19C00945B1D /* video_inspire_california_big-sur_2020_00001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video_inspire_california_big-sur_2020_00001.png"; sourceTree = "<group>"; };
@@ -1624,6 +1628,7 @@
 		FAC36F361BE1756D007F2A20 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				03F3C1B924F2A923007733B5 /* kofi1@2x.png */,
 				0319460824D1A09F00F37B35 /* icon-320@2x.png */,
 				0345EDF624C3462100C73038 /* Old stuff */,
 				0345D01524C0A2F60001045C /* UI Icons */,
@@ -2032,6 +2037,7 @@
 				03AA7A9D24C84C6300A47970 /* cloud.moon.rain.pdf in Resources */,
 				0378986224C35F8A009B9418 /* CacheViewController.xib in Resources */,
 				03D2B8F424E1E3BF00692B4D /* it.json in Resources */,
+				03F3C1BB24F2A923007733B5 /* kofi1@2x.png in Resources */,
 				030010AF24D71EB20092AE68 /* FiltersViewController.xib in Resources */,
 				03AA7A7324C84C6300A47970 /* cloud.sun.rain.pdf in Resources */,
 				0396D58D24B8B7ED00CC021B /* thumbnail@2x.png in Resources */,
@@ -2174,6 +2180,7 @@
 				0300B80924D1B536006132E5 /* film.pdf in Resources */,
 				03D2B90724E1E3BF00692B4D /* es.json in Resources */,
 				0300B80324D1B536006132E5 /* clock.pdf in Resources */,
+				03F3C1BC24F2A923007733B5 /* kofi1@2x.png in Resources */,
 				031332A124BF3FA700C84A05 /* SidebarViewController.xib in Resources */,
 				03AA7A7724C84C6300A47970 /* sun.dust.pdf in Resources */,
 				0300B86E24D20B12006132E5 /* NextViewController.xib in Resources */,
@@ -2321,6 +2328,7 @@
 				03AA7A9C24C84C6300A47970 /* cloud.moon.rain.pdf in Resources */,
 				0378986124C35F8A009B9418 /* CacheViewController.xib in Resources */,
 				03D2B8F324E1E3BF00692B4D /* it.json in Resources */,
+				03F3C1BA24F2A923007733B5 /* kofi1@2x.png in Resources */,
 				030010AE24D71EB20092AE68 /* FiltersViewController.xib in Resources */,
 				03AA7A7224C84C6300A47970 /* cloud.sun.rain.pdf in Resources */,
 				0395835321807D1F008E8F9C /* thumbnail@2x.png in Resources */,

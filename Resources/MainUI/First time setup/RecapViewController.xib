@@ -28,23 +28,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Jk-A0-3Qs">
-                                <rect key="frame" x="126" y="487" width="592" height="19"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="You can quickly change which videos are playing using the new &quot;On Rotation&quot; feature." id="oVm-P8-xlE">
+                                <rect key="frame" x="126" y="503" width="652" height="19"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Change what's playing using the new &quot;On Rotation&quot; feature, at the top of the preference panel." id="oVm-P8-xlE">
                                     <font key="font" metaFont="system" size="15"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sxo-rP-7e6">
-                                <rect key="frame" x="233" y="545" width="334" height="35"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="A few tips, just in case..." id="L5R-GJ-M5j">
+                                <rect key="frame" x="131" y="545" width="538" height="35"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="It's a lot to take in, here are some tips..." id="L5R-GJ-M5j">
                                     <font key="font" metaFont="systemBold" size="30"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c1U-K9-TU3">
-                                <rect key="frame" x="40" y="472" width="48" height="48"/>
+                                <rect key="frame" x="40" y="488" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="BI6-Ca-NPa"/>
                                     <constraint firstAttribute="height" constant="48" id="XoL-C6-s32"/>
@@ -52,7 +52,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="dial" id="6uo-Js-kCL"/>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FE0-j2-Pzu">
-                                <rect key="frame" x="40" y="404" width="48" height="48"/>
+                                <rect key="frame" x="40" y="420" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Kz7-oY-E99"/>
                                     <constraint firstAttribute="width" constant="48" id="Ymc-c9-KDX"/>
@@ -60,7 +60,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="star" id="WQk-aW-YMN"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hs3-Sq-hk9">
-                                <rect key="frame" x="126" y="419" width="329" height="19"/>
+                                <rect key="frame" x="126" y="435" width="329" height="19"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Enjoying a video? Favorite it so it keeps playing." id="mQv-cf-25R">
                                     <font key="font" metaFont="system" size="15"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -68,7 +68,7 @@
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DDz-TZ-oBe">
-                                <rect key="frame" x="40" y="336" width="48" height="48"/>
+                                <rect key="frame" x="40" y="352" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="FMg-VJ-UQ8"/>
                                     <constraint firstAttribute="width" constant="48" id="zbI-vv-lYx"/>
@@ -76,15 +76,15 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="eye.slash" id="h1b-o0-7vP"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mj3-l6-dr7">
-                                <rect key="frame" x="126" y="351" width="578" height="19"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Not liking one? Just hide it, Aerial won't display it again (you can change your mind)." id="nu0-MS-den">
+                                <rect key="frame" x="126" y="367" width="517" height="19"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Dislike a video? Tell Aerial not to play it (you can always change your mind)." id="nu0-MS-den">
                                     <font key="font" metaFont="system" size="15"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gpF-mO-bgQ">
-                                <rect key="frame" x="40" y="268" width="48" height="48"/>
+                                <rect key="frame" x="40" y="284" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="9Zd-jX-k8d"/>
                                     <constraint firstAttribute="width" constant="48" id="CwG-zE-v0z"/>
@@ -92,18 +92,18 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="aspectratio" id="QNJ-r6-Iru"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7pM-QI-jkf">
-                                <rect key="frame" x="126" y="283" width="626" height="19"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="There's a whole new user interface by the way. You can even resize it!" id="flM-0s-wDt">
+                                <rect key="frame" x="126" y="299" width="626" height="19"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Version 2 introduces a completely new user interface, by the way. You can even resize it!" id="flM-0s-wDt">
                                     <font key="font" metaFont="system" size="15"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xfz-Dg-MZj">
-                                <rect key="frame" x="48" y="143" width="704" height="60"/>
+                                <rect key="frame" x="48" y="161" width="704" height="60"/>
                                 <textFieldCell key="cell" id="ymw-Ut-XBe">
                                     <font key="font" metaFont="systemSemibold" size="17"/>
-                                    <string key="title">And yes, there are new videos! You can now enjoy some free videos provided by third party artists on top of the classical Aerials, check the Custom Sources in Settings for more details, and how to support them for their work.  </string>
+                                    <string key="title">And yes, there are 20 new videos kindly shared by Joshua Michaels &amp; Hal Bergman! If you enjoy them, consider supporting their work by checking out the additional packs of videos they have made especially for Aerial!</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -148,10 +148,31 @@
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="video_inspire_italy_como_cerano-dintelvi_006" id="EbO-Ei-Jj4"/>
                             </imageView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oDG-SG-2xE">
+                                <rect key="frame" x="300" y="107" width="201" height="40"/>
+                                <buttonCell key="cell" type="push" title="Check out their work here" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wxW-X8-vOa">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="checkJoshHal:" target="-2" id="soS-uz-t3f"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y8k-xe-ydC">
+                                <rect key="frame" x="240" y="240" width="320" height="40"/>
+                                <buttonCell key="cell" type="push" title="Want to know more? Check out our FAQ here!" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tEX-da-6YE">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="checkFAQ:" target="-2" id="seE-CX-2qs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="gpF-mO-bgQ" firstAttribute="leading" secondItem="FNC-l3-JV2" secondAttribute="leading" constant="40" id="0aT-u8-FAj"/>
                             <constraint firstItem="FE0-j2-Pzu" firstAttribute="top" secondItem="c1U-K9-TU3" secondAttribute="bottom" constant="20" id="1NG-ay-c4o"/>
+                            <constraint firstItem="oDG-SG-2xE" firstAttribute="top" secondItem="xfz-Dg-MZj" secondAttribute="bottom" constant="20" id="1TJ-pj-wVl"/>
                             <constraint firstItem="Sxo-rP-7e6" firstAttribute="centerX" secondItem="FNC-l3-JV2" secondAttribute="centerX" id="3OS-1v-K1W"/>
                             <constraint firstItem="iZ3-vX-hQ2" firstAttribute="leading" secondItem="IQW-cL-eH7" secondAttribute="trailing" id="3oF-uK-OXK"/>
                             <constraint firstAttribute="bottom" secondItem="IQW-cL-eH7" secondAttribute="bottom" id="5LI-M7-eP0"/>
@@ -162,21 +183,24 @@
                             <constraint firstItem="Mj3-l6-dr7" firstAttribute="leading" secondItem="DDz-TZ-oBe" secondAttribute="trailing" constant="40" id="LPf-HF-hRt"/>
                             <constraint firstItem="KAl-O1-TRH" firstAttribute="centerX" secondItem="FNC-l3-JV2" secondAttribute="centerX" id="T1K-qX-qqs"/>
                             <constraint firstItem="7pM-QI-jkf" firstAttribute="centerY" secondItem="gpF-mO-bgQ" secondAttribute="centerY" id="TdW-8v-Mr5"/>
-                            <constraint firstItem="c1U-K9-TU3" firstAttribute="top" secondItem="FNC-l3-JV2" secondAttribute="top" constant="80" id="XPg-kM-pks"/>
+                            <constraint firstItem="xfz-Dg-MZj" firstAttribute="top" secondItem="y8k-xe-ydC" secondAttribute="bottom" constant="25" id="WHF-JZ-VM2"/>
+                            <constraint firstItem="c1U-K9-TU3" firstAttribute="top" secondItem="FNC-l3-JV2" secondAttribute="top" constant="64" id="XPg-kM-pks"/>
                             <constraint firstItem="2Jk-A0-3Qs" firstAttribute="leading" secondItem="c1U-K9-TU3" secondAttribute="trailing" constant="40" id="YN2-bj-7UH"/>
                             <constraint firstAttribute="bottom" secondItem="ogO-Fy-XFK" secondAttribute="bottom" id="bU6-CZ-aGm"/>
+                            <constraint firstItem="y8k-xe-ydC" firstAttribute="centerX" secondItem="FNC-l3-JV2" secondAttribute="centerX" id="bvz-Da-kDR"/>
                             <constraint firstItem="FE0-j2-Pzu" firstAttribute="leading" secondItem="FNC-l3-JV2" secondAttribute="leading" constant="40" id="c27-Nr-3Lr"/>
                             <constraint firstItem="c1U-K9-TU3" firstAttribute="leading" secondItem="FNC-l3-JV2" secondAttribute="leading" constant="40" id="cd6-1R-4nL"/>
                             <constraint firstAttribute="bottom" secondItem="KAl-O1-TRH" secondAttribute="bottom" id="dBc-uF-r1J"/>
-                            <constraint firstItem="xfz-Dg-MZj" firstAttribute="top" secondItem="7pM-QI-jkf" secondAttribute="bottom" constant="80" id="dWR-sg-mON"/>
                             <constraint firstAttribute="bottom" secondItem="iZ3-vX-hQ2" secondAttribute="bottom" id="e8g-t2-LMv"/>
                             <constraint firstItem="7pM-QI-jkf" firstAttribute="leading" secondItem="gpF-mO-bgQ" secondAttribute="trailing" constant="40" id="eU9-DS-XiI"/>
                             <constraint firstItem="IQW-cL-eH7" firstAttribute="leading" secondItem="KAl-O1-TRH" secondAttribute="trailing" id="fHL-sc-yDg"/>
+                            <constraint firstItem="oDG-SG-2xE" firstAttribute="centerX" secondItem="FNC-l3-JV2" secondAttribute="centerX" id="hbe-qb-oml"/>
                             <constraint firstAttribute="trailing" secondItem="xfz-Dg-MZj" secondAttribute="trailing" constant="50" id="kB6-3N-dyB"/>
                             <constraint firstItem="Sxo-rP-7e6" firstAttribute="top" secondItem="FNC-l3-JV2" secondAttribute="top" constant="20" id="mKo-yl-9oB"/>
                             <constraint firstItem="DDz-TZ-oBe" firstAttribute="top" secondItem="FE0-j2-Pzu" secondAttribute="bottom" constant="20" id="mhi-UN-my6"/>
                             <constraint firstItem="Hs3-Sq-hk9" firstAttribute="leading" secondItem="FE0-j2-Pzu" secondAttribute="trailing" constant="40" id="pot-Jw-XjM"/>
                             <constraint firstItem="xfz-Dg-MZj" firstAttribute="leading" secondItem="FNC-l3-JV2" secondAttribute="leading" constant="50" id="qGN-6R-sFX"/>
+                            <constraint firstItem="y8k-xe-ydC" firstAttribute="top" secondItem="7pM-QI-jkf" secondAttribute="bottom" constant="25" id="sic-W9-TzA"/>
                             <constraint firstItem="gpF-mO-bgQ" firstAttribute="top" secondItem="DDz-TZ-oBe" secondAttribute="bottom" constant="20" id="tcv-tH-f7B"/>
                             <constraint firstItem="Hs3-Sq-hk9" firstAttribute="centerY" secondItem="FE0-j2-Pzu" secondAttribute="centerY" id="xDC-nb-BJK"/>
                             <constraint firstAttribute="bottom" secondItem="DYj-Iq-o0X" secondAttribute="bottom" id="xw6-Sp-obt"/>
