@@ -1,15 +1,8 @@
-# More Videos
-
-On top of the classic Apple TV screen savers, Aerial can display videos from other sources:
-- Local sources: Those are, quite simply, videos that are on your machine. Rule of thumb is, if QuickTime can play it, Aerial can. There are a few complexity surrounding Catalina and Big Sur, because of sandboxing changes and security improvements in macOS. As a result, you cannot add videos from the "likely" location you'd want to use (Downloads, Desktop, Documents) and it's highly recommended to use a "safe location" like `/Users/Shared/`. Local sources are not supported in the current 2.0.0 build but will be back soon. In the meantime, check [those instructions, for use in version 1.9.2](https://github.com/JohnCoates/Aerial/blob/master/Documentation/CustomVideos.md).
-
-- Community videos: Those are videos that have been donated to the project by artists so they can be enjoyed in Aerial by everyone. This is a curated list, as those videos will appear from everyone. You can enable and disable these individual sources in Settings > Custom Sources. If you are an artist or a tourism association that want to share videos, check out this page here for more information : https://github.com/glouel/AerialCommunity
-
-- 3rd party online sources: If you don't want to share the videos through the community, you can still make your own online source that can be imported by Aerial users. Check out [the instructions here](https://github.com/glouel/AerialCommunity/blob/master/CreatingASource.md) on how to create your own video sources. You can drop us a line there, so we feature your source here, if you wish. 
-
 # Community Videos 
+ 
+The videos below have been shared with the project by artists, so they can be enjoyed in Aerial by everyone. 
 
-## From Magic Window Air / Jetson Creative
+## From Joshua Michaels & Hal Bergman
 
 ### Series 1
 <p align="center">
@@ -18,13 +11,14 @@ On top of the classic Apple TV screen savers, Aerial can display videos from oth
   </a>
 </p>
 
-Includes 20 free Aerial videos in full 4K resolution, from the authors of Cityscapes Air, Countryside Air and Naturescapes Air. 
+Twenty videos kindly shared by Joshua Michaels & Hal Bergman. If you enjoyed them and want to support them, please check out the packs they created specifically for Aerial below. 
 
-# 3rd party Sources
+##### Note
+If you are an artist or a tourism association that want to share videos, check out this page here for more information : https://github.com/glouel/AerialCommunity
 
-The videos below can be purchased as a way to expand your Aerial collection and support the artists that created them.
+# Online Sources
 
-## From Magic Window Air / Jetson Creative
+## From Joshua Michaels & Hal Bergman
 
 ### Note
 
@@ -70,4 +64,10 @@ Includes 50 Aerial Naturescape videos 20-60 seconds in length at full 4K resolut
 
 Locations include Big Sur, Catalina Island, Monument Valley, Alabama Hills, Angeles Crest, Gold Lake, Lake Shasta, Shelter Cove, Sonoma, Sonora Pass, Berthound Pass, Wolf Creek Pass, Babcock Reserve & Groves, Greyton Beach, Florida Savannas & Glades, Pascagoula River, Kootenai River, Cape Lookout, Hose Rock, Lone Ranch Beach, Interlaken, Oberhofen, Bryce Canyon, Castle Valley, Eagle Canyon, Grand Staircase Escalante, Stevens Pass, and Zion.
 
+##### Note 
 
+Check out [the instructions here](https://github.com/glouel/AerialCommunity/blob/master/CreatingASource.md) on how to create your own video sources. And drop us a line if you want to be featured here!
+
+# Local sources
+
+Aerial can also play videos that are on your machine. Rule of thumb is, if QuickTime can play it, Aerial can. There are a few complexities surrounding Catalina and Big Sur, because of sandboxing changes and security improvements in macOS. As a result, you cannot add videos from the "likely" location you'd want to use (Downloads, Desktop, Documents) and it's highly recommended to use a "safe location" like `/Users/Shared/`. Local sources are not supported in the current 2.0.0 build but will be back soon. In the meantime, check [those instructions, for use in version 1.9.2](https://github.com/JohnCoates/Aerial/blob/master/Documentation/CustomVideos.md).

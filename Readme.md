@@ -4,7 +4,7 @@
 
 # Aerial - Apple TV Aerial Views Screen Saver
 
-Aerial is a Mac screensaver based on the new Apple TV screensaver that displays the Aerial movies Apple shot over New York, San Francisco, Hawaii, China, etc. Starting with version 2.0.0, it also includes 3rd party videos that were donated to the project!
+Aerial is a Mac screensaver based on the new Apple TV screensaver that displays the Aerial movies Apple shot over New York, San Francisco, Hawaii, China, etc. Starting with version 2.0.0, it also includes videos shared by Joshua Michaels & Hal Bergman!
 
 Aerial is completely open source, so feel free to contribute to its development.
 
@@ -46,7 +46,17 @@ With changes in Catalina and Big Sur, a screen saver can no longer update itself
 
 Need more information on install, setup, or uninstall? Or want to install via homebrew or manually? Check our extended [instructions here](Documentation/Installation.md). 
 
-## What's New in Aerial 2.0.0 (Aug 19, 2020)?
+## What's New in Aerial 2.0.0+ (Aug 19, 2020)?
+
+- 20 new videos! Starting with version 2.0, Aerial includes new videos kindly shared by Joshua Michaels & Hal Bergman: 
+
+<p align="center">
+  <a href="https://vimeo.com/449330833/36becf3668">
+  <img src="https://user-images.githubusercontent.com/37544189/90661757-d7d77b00-e247-11ea-8b92-7301c39bfced.jpg">
+  </a>
+</p>
+
+If you enjoy those videos, please consider supporting them by checking the video packs they have [created especially for Aerial on their website](https://www.jetsoncreative.com/aerial). 
 
 ![newui](https://user-images.githubusercontent.com/37544189/90673393-f6de0900-e257-11ea-8e00-4357aca4214e.jpg)
 
@@ -57,14 +67,6 @@ Need more information on install, setup, or uninstall? Or want to install via ho
 - New cache options! You can *finally* set a cache size limit, so Aerial will not fill up your disk. Aerial can also periodically replace videos in your cache, say after a week, so things stay fresh. 
 
 You can still opt to manually download your videos, or simply grab them all. All up to you. If you allow automatic downloads, you can even specify a list of trusted WiFi networks!
-
-- 20 new videos! Starting with version 2.0, Aerial includes similarly styled third party videos. You can get a preview in the video below:
-
-<p align="center">
-  <a href="https://vimeo.com/449330833/36becf3668">
-  <img src="https://user-images.githubusercontent.com/37544189/90661757-d7d77b00-e247-11ea-8b92-7301c39bfced.jpg">
-  </a>
-</p>
 
 - A new "On rotation" feature, so you can quickly switch from watching space videos, to only sunset videos: 
 

@@ -1,6 +1,6 @@
 # Frequently Asked Questions
 
-This guide is meant to help you get started and answer some of the most common questions. 
+This guide is meant to help you get started and answer some of the most common questions. If you wish to search for a specific term, please type `Command` + `F` and search for a single word such as "favorites".
 
 <hr> 
 
@@ -94,7 +94,8 @@ Aerial can cache videos in two different ways:
 
 When caching is set to **manual** you will need to download and manage your cache entirely manually. When set to **automatic**, you can set the size of your cache and Aerial will fill it with the videos you love! 
 
-### Manual Cache Management
+<h3> Manual Cache Management</h3>
+
 1. Open Aerial in System Preferneces 
 2. Click on the settings tab (gear at the top of the sidebar)
 3. Click on `Cache` on the sidebar
@@ -109,7 +110,8 @@ When caching is set to **manual** you will need to download and manage your cach
 3. Click on `Cache` on the sidebar
 4. Check 'Automatically download videos` 
 <img width="400" alt="Automatic management" src="https://user-images.githubusercontent.com/18543749/90852209-e35c9c00-e344-11ea-9505-481789a581d7.png">
-5. Set your **cache limit size** -- This is the MAXIMUM size you want your cache. If you don't want to set a maximum, move the slider all the way to the right.
+
+5. Set your **cache limit size** - This is the *MAXIMUM* size you want your cache. If you don't want to set a maximum, move the slider all the way to the right.
 6. Select how often you want to rotate your videos in your cache 
 
 <img width="200" alt="Rotate videos" src="https://user-images.githubusercontent.com/18543749/90852283-14d56780-e345-11ea-9ec5-7817cefc1d04.png">
@@ -146,7 +148,43 @@ The short answer is:
 6. Close and relaunch System Preferences. 
 7. Open Aerial Settings again and select the videos you want. Then download (cache) these videos and they will download in the selected format.
 
-## I have more technical questions...
+<hr>
 
-This FAQ was made largely to help those who are new to Aerial and GitHub. If you have more technical questions you need answered, please visit our Additional Documentation avaialble [here](https://github.com/JohnCoates/Aerial/tree/master/Documentation#welcome-to-aerials-documentation)
+<h2>What is "Download Rotation" and should I click it?</h2>
+
+The `Download Rotation` button is visible under the `On Rotation` tab on the left. 
+
+<img width="400" alt="Download Rotation" src="https://user-images.githubusercontent.com/18543749/90960980-962b1800-e473-11ea-8224-d9fe1907c14e.png">
+
+Videos in Aerial only play when they are cached on your computer. This allows them to play while you are not connected to the internet and always play immediately when your screen saver starts. 
+
+> Previous versions of Aerial could "stream" videos without downloading a cache, but this was replaced in 2.0 with the automatic cache management tool. 
+
+The download rotation button is synonomous with saying "Cache my rotation". In other words, any videos in the `On Rotation` category on the left hand panel will begin to download to your computer when you click `Download Rotation`. 
+
+> <b>NOTE:</b> Only videos that are cached AND that are shown in the `On Rotation` tab will play when you start your screen saver. 
+
+In the event that you want to download videos from a specific category (for example if you want to select only certain videos to play) you can additionally right click on any category and select "Cache missing videos" 
+
+> <b>NOTE:</b> If this option is not available, it is because you have already downloaded these videos!
+
+<img width="200" alt="Cache Missing Videos" src="https://user-images.githubusercontent.com/18543749/90961135-c32bfa80-e474-11ea-8cf1-dd2abcc2d817.png">
+
+<hr>
+
+<h2> Where is tvOS 11 and 12?</h2>
+
+All the videos are still available in Aerial, don't worry!
+
+Aerial 2.0 takes advantage of the latest available videos from tvOS. tvOS 11 and 12 are not shown as tvOS 13 actually contains these videos! 
+
+tvOS 10 videos support <b>1080p</b> quality while tvOS 13 can support <b>4K</b> and <b>4K HDR</b> videos. You can still play videos from tvOS 13 in <b>1080p</b> as well. 
+
+<img width="150" alt="tvOS" src="https://user-images.githubusercontent.com/18543749/90963789-e2348780-e488-11ea-859f-8a01dfa8d3fb.png">
+
+<hr>
+
+<h2> I have more technical questions...</h2>
+
+This FAQ was made largely to help those who are new to Aerial and GitHub. If you have more technical questions you need answered, please visit our Additional Documentation avaialble <a href="https://github.com/JohnCoates/Aerial/tree/master/Documentation#welcome-to-aerials-documentation">here</a>
 
