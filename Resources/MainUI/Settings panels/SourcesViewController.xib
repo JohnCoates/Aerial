@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,16 +22,16 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="811" height="451"/>
+            <rect key="frame" x="0.0" y="0.0" width="813" height="451"/>
             <subviews>
                 <scrollView horizontalHuggingPriority="500" verticalHuggingPriority="500" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" autohidesScrollers="YES" horizontalLineScroll="70" horizontalPageScroll="10" verticalLineScroll="70" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBq-pn-VQA">
-                    <rect key="frame" x="30" y="68" width="751" height="326"/>
+                    <rect key="frame" x="30" y="82" width="753" height="312"/>
                     <clipView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="sZp-jW-Eya">
-                        <rect key="frame" x="1" y="1" width="749" height="324"/>
+                        <rect key="frame" x="1" y="1" width="751" height="310"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="70" headerView="b1V-rc-xZQ" viewBased="YES" indentationPerLevel="13" outlineTableColumn="Ssk-cL-P6o" id="vzM-Kh-6SV" customClass="SourceOutlineView" customModule="Aerial" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="757" height="299"/>
+                                <rect key="frame" x="0.0" y="0.0" width="752" height="285"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="17" height="0.0"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -49,11 +49,11 @@
                                         </textFieldCell>
                                         <prototypeCellViews>
                                             <tableCellView identifier="isSelectedCell" id="Xuz-Uo-wO2" customClass="CheckboxCellView" customModule="Aerial" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="0.0" width="40" height="68"/>
+                                                <rect key="frame" x="8" y="0.0" width="38" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wGa-S6-kGM">
-                                                        <rect key="frame" x="11" y="25" width="18" height="18"/>
+                                                        <rect key="frame" x="10" y="25" width="18" height="18"/>
                                                         <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Q6G-xu-7Lu">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -83,7 +83,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="valueColumnCell" id="sPv-Lx-coN" customClass="DescriptionCellView" customModule="Aerial" customModuleProvider="target">
-                                                <rect key="frame" x="65" y="0.0" width="602" height="68"/>
+                                                <rect key="frame" x="63" y="0.0" width="602" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k0S-C5-p57">
@@ -270,7 +270,7 @@ line2</string>
                                         </textFieldCell>
                                         <prototypeCellViews>
                                             <tableCellView id="TlS-Vu-nlh" customClass="ActionCellView" customModule="Aerial" customModuleProvider="target">
-                                                <rect key="frame" x="684" y="0.0" width="64" height="68"/>
+                                                <rect key="frame" x="682" y="0.0" width="61" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button toolTip="Download videos from this source now" id="dhO-VP-Rzn">
@@ -284,9 +284,14 @@ line2</string>
                                                             <action selector="actionButton:" target="TlS-Vu-nlh" id="kdr-tI-Urk"/>
                                                         </connections>
                                                     </button>
+                                                    <progressIndicator fixedFrame="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="8fH-Cw-pf2">
+                                                        <rect key="frame" x="22" y="26" width="16" height="16"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    </progressIndicator>
                                                 </subviews>
                                                 <connections>
                                                     <outlet property="actionButton" destination="dhO-VP-Rzn" id="5gW-VN-T1M"/>
+                                                    <outlet property="spinner" destination="8fH-Cw-pf2" id="GlZ-He-jhS"/>
                                                 </connections>
                                             </tableCellView>
                                         </prototypeCellViews>
@@ -304,7 +309,7 @@ line2</string>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" wantsLayer="YES" id="b1V-rc-xZQ">
-                        <rect key="frame" x="0.0" y="0.0" width="757" height="25"/>
+                        <rect key="frame" x="0.0" y="0.0" width="752" height="25"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
@@ -336,7 +341,7 @@ line2</string>
                     </connections>
                 </button>
                 <textField horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8Bi-xK-lN6">
-                    <rect key="frame" x="138" y="415" width="535" height="16"/>
+                    <rect key="frame" x="140" y="415" width="534" height="16"/>
                     <textFieldCell key="cell" selectable="YES" title="Choose the video sources you would like to enable. Use the buttons below to add more." id="0AG-cL-NaN">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -344,7 +349,7 @@ line2</string>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="P2e-fe-Js2">
-                    <rect key="frame" x="599" y="14" width="188" height="40"/>
+                    <rect key="frame" x="601" y="14" width="188" height="40"/>
                     <buttonCell key="cell" type="push" title="Download All Videos" bezelStyle="rounded" image="book" catalog="system" imagePosition="leading" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dsu-LI-sTF">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -354,7 +359,7 @@ line2</string>
                     </connections>
                 </button>
                 <progressIndicator maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="heQ-Ra-4Qf">
-                    <rect key="frame" x="581" y="26" width="16" height="16"/>
+                    <rect key="frame" x="583" y="26" width="16" height="16"/>
                 </progressIndicator>
             </subviews>
             <constraints>
@@ -364,7 +369,7 @@ line2</string>
                 <constraint firstItem="P2e-fe-Js2" firstAttribute="leading" secondItem="heQ-Ra-4Qf" secondAttribute="trailing" constant="8" symbolic="YES" id="OCb-b9-Dor"/>
                 <constraint firstItem="hJ0-L4-qoE" firstAttribute="leading" secondItem="H7z-UB-Yzx" secondAttribute="trailing" constant="20" id="OZp-Te-bft"/>
                 <constraint firstItem="hJ0-L4-qoE" firstAttribute="firstBaseline" secondItem="H7z-UB-Yzx" secondAttribute="firstBaseline" id="PUI-mu-CC0"/>
-                <constraint firstAttribute="bottom" secondItem="bBq-pn-VQA" secondAttribute="bottom" constant="68" id="VCk-gB-2eO"/>
+                <constraint firstAttribute="bottom" secondItem="bBq-pn-VQA" secondAttribute="bottom" constant="82" id="VCk-gB-2eO"/>
                 <constraint firstItem="P2e-fe-Js2" firstAttribute="centerY" secondItem="heQ-Ra-4Qf" secondAttribute="centerY" id="VcU-vI-t0W"/>
                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="451" id="W4O-8Q-5Ss"/>
                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="811" id="WEp-mk-3VN"/>
@@ -459,7 +464,7 @@ line2</string>
     </objects>
     <resources>
         <image name="NSCaution" width="32" height="32"/>
-        <image name="NSTouchBarDownloadTemplate" width="15" height="15"/>
+        <image name="NSTouchBarDownloadTemplate" width="18" height="30"/>
         <image name="antenna.radiowaves.left.and.right" catalog="system" width="16" height="14"/>
         <image name="book" catalog="system" width="18" height="15"/>
         <image name="cloud" catalog="system" width="17" height="12"/>

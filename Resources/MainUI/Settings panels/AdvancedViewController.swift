@@ -11,6 +11,7 @@ import AVFoundation
 import VideoToolbox
 
 class AdvancedViewController: NSViewController {
+    var windowController: PanelWindowController?
     var firstSetupWindowController: FirstSetupWindowController?
 
     @IBOutlet var popoverVideoFormat: NSPopover!
@@ -204,8 +205,19 @@ class AdvancedViewController: NSViewController {
 
     @IBAction func resetAllSettings(_ sender: NSButton) {
         if Aerial.showAlert(question: "Reset all settings?", text: "This will reset all your settings. After they are reset, Aerial will close System Preferences, you will have to reload it to access settings again.\n\nAre you sure you want to reset your settings?", button1: "Reset my settings", button2: "Cancel") {
-            NSApp.terminate(self)
+
+            windowController!.window?.sheetParent?.endSheet(windowController!.window!)
+            let app = NSRunningApplication.current
+            debugLog("mine \(app.localizedName)")
+            app.terminate()
+
+/*                debugLog("try terminate")
+            self.windowController!.window?.sheetParent?.close()
+
+            NSRunningApplication.*/
         }
+
+        /*
         let plistURL = URL(fileURLWithPath: Cache.supportPath)
             .deletingLastPathComponent()
             .deletingLastPathComponent()
@@ -225,7 +237,7 @@ class AdvancedViewController: NSViewController {
                     Aerial.showInfoAlert(title: "Settings reset to defaults", text: "Your settings were reset to defaults. \n\nPlease close Aerial and System Preferences in order to reload them.")
                 }
             }
-        }
+        }*/
     }
 
     // Helpers, to move in a model when I have a sec

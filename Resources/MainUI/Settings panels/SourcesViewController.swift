@@ -52,7 +52,7 @@ class SourcesViewController: NSViewController {
 
     @IBAction func getMoreVideosClick(_ sender: NSButton) {
         let workspace = NSWorkspace.shared
-        let url = URL(string: "https://github.com/JohnCoates/Aerial/blob/master/Documentation/MoreVideos.md")!
+        let url = URL(string: "https://aerialscreensaver.github.io/morevideos.html")!
         workspace.open(url)
         //
     }
@@ -182,7 +182,24 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
             cell.imageScene4.isHidden = !source.scenes.contains(.sea)
             cell.imageScene5.isHidden = !source.scenes.contains(.beach)
             cell.imageScene6.isHidden = !source.scenes.contains(.countryside)
-            cell.videoCount.stringValue = String(VideoList.instance.videos.filter({ $0.source.name == source.name }).count) + " videos"
+
+            if source.isEnabled() {
+                let totalCount = VideoList.instance.videos.filter({ $0.source.name == source.name }).count
+                let downloadedCount = VideoList.instance.videos.filter({ $0.source.name == source.name && $0.isAvailableOffline }).count
+                let size = source.diskUsage().rounded(toPlaces: 1)
+
+                if totalCount == downloadedCount {
+                    cell.videoCount.stringValue = "\(totalCount) videos, \(size) GB on disk"
+                } else {
+                    cell.videoCount.stringValue = "\(downloadedCount) of \(totalCount) videos downloaded, \(size) GB on disk"
+                }
+
+                if !source.isCachable {
+                    cell.videoCount.stringValue.append(" (permanently saved)")
+                }
+            } else {
+                cell.videoCount.stringValue = ""
+            }
 
             cell.licenseButton.isHidden = (source.license == "")
             cell.moreButton.isHidden = (source.more == "")
@@ -192,6 +209,9 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
             let cell = outlineView.makeView(withIdentifier:
                         NSUserInterfaceItemIdentifier(rawValue: columnIdentifier), owner: self) as! ActionCellView
             cell.source = source
+            cell.spinner.stopAnimation(self)
+            cell.spinner.isHidden = true
+
             if source.type == .local {
                 cell.actionButton.setIcons("folder")
                 cell.actionButton.isEnabled = true

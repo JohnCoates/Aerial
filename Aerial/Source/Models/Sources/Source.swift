@@ -44,6 +44,12 @@ struct Source: Codable {
         return true
     }
 
+    func diskUsage() -> Double {
+        let path = Cache.supportPath.appending("/" + name)
+
+        return Cache.getDirectorySize(directory: path)
+    }
+
     func wipeFromDisk() {
         let path = Cache.supportPath.appending("/" + name)
 

@@ -12,7 +12,6 @@ class RecapViewController: NSViewController {
     @IBOutlet var imageDial: NSImageView!
     @IBOutlet var imageFav: NSImageView!
     @IBOutlet var imageHide: NSImageView!
-    @IBOutlet var imageResize: NSImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +19,6 @@ class RecapViewController: NSViewController {
         imageDial.image = Aerial.getSymbol("dial")?.tinting(with: .secondaryLabelColor)
         imageFav.image = Aerial.getSymbol("star")?.tinting(with: .secondaryLabelColor)
         imageHide.image = Aerial.getSymbol("eye.slash")?.tinting(with: .secondaryLabelColor)
-        imageResize.image = Aerial.getSymbol("aspectratio")?.tinting(with: .secondaryLabelColor)
-
     }
 
     @IBAction func checkFAQ(_ sender: Any) {
@@ -29,7 +26,7 @@ class RecapViewController: NSViewController {
         let url = URL(string: "https://aerialscreensaver.github.io/faq.html")!
         workspace.open(url)
     }
-    
+
     @IBAction func checkJoshHal(_ sender: Any) {
         let workspace = NSWorkspace.shared
         let url = URL(string: "https://www.jetsoncreative.com/aerial")!

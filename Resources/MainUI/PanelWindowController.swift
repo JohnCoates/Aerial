@@ -65,7 +65,7 @@ class PanelWindowController: NSWindowController {
         let filtersVC = FiltersViewController(nibName: .init("FiltersViewController"), bundle: bundle)
         let updatesVC = UpdatesViewController(nibName: .init("UpdatesViewController"), bundle: bundle)
         let advancedVC = AdvancedViewController(nibName: .init("AdvancedViewController"), bundle: bundle)
-
+        advancedVC.windowController = self
         // We do the sidebar last, as it bubble up events to the other ones
         let sidebarVC = SidebarViewController(nibName: .init("SidebarViewController"), bundle: bundle)
         sidebarVC.windowController = self

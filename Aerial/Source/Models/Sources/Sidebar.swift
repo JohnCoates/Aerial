@@ -56,7 +56,7 @@ class Sidebar {
     // updated periodically unlike the other sidebars that are static
     func refreshVideos() {
         // At the very top, the current rotation
-        let onRotation = MenuEntry(name: "On Rotation", path: "videos:rotation:0")
+        let onRotation = MenuEntry(name: "Currently playing", path: "videos:rotation:0")
 
         // Favs
         let fav = MenuEntry(name: "Favorites", path: "videos:favorites:0")

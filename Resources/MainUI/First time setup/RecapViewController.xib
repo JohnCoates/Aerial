@@ -11,7 +11,6 @@
                 <outlet property="imageDial" destination="c1U-K9-TU3" id="w0L-87-85a"/>
                 <outlet property="imageFav" destination="FE0-j2-Pzu" id="hKF-8T-Fd4"/>
                 <outlet property="imageHide" destination="DDz-TZ-oBe" id="cHF-9w-Ued"/>
-                <outlet property="imageResize" destination="gpF-mO-bgQ" id="NKu-Hn-Cy7"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -28,23 +27,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Jk-A0-3Qs">
-                                <rect key="frame" x="126" y="503" width="652" height="19"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Change what's playing using the new &quot;On Rotation&quot; feature, at the top of the preference panel." id="oVm-P8-xlE">
+                                <rect key="frame" x="126" y="477" width="636" height="38"/>
+                                <textFieldCell key="cell" id="oVm-P8-xlE">
                                     <font key="font" metaFont="system" size="15"/>
+                                    <string key="title">There are more than 100 different videos! You can select what you want to see at the top of the screen, after selecting "Currently playing" in the sidebar.</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sxo-rP-7e6">
-                                <rect key="frame" x="131" y="545" width="538" height="35"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="It's a lot to take in, here are some tips..." id="L5R-GJ-M5j">
+                                <rect key="frame" x="114" y="545" width="573" height="35"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Aerial is not your standard screensaver... " id="L5R-GJ-M5j">
                                     <font key="font" metaFont="systemBold" size="30"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c1U-K9-TU3">
-                                <rect key="frame" x="40" y="488" width="48" height="48"/>
+                                <rect key="frame" x="40" y="472" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="BI6-Ca-NPa"/>
                                     <constraint firstAttribute="height" constant="48" id="XoL-C6-s32"/>
@@ -52,7 +52,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="dial" id="6uo-Js-kCL"/>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FE0-j2-Pzu">
-                                <rect key="frame" x="40" y="420" width="48" height="48"/>
+                                <rect key="frame" x="40" y="394" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Kz7-oY-E99"/>
                                     <constraint firstAttribute="width" constant="48" id="Ymc-c9-KDX"/>
@@ -60,15 +60,15 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="star" id="WQk-aW-YMN"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hs3-Sq-hk9">
-                                <rect key="frame" x="126" y="435" width="329" height="19"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Enjoying a video? Favorite it so it keeps playing." id="mQv-cf-25R">
+                                <rect key="frame" x="126" y="399" width="636" height="38"/>
+                                <textFieldCell key="cell" title="Love outer space? We got you! Aerial let’s you choose your favorite videos so that these videos play more often." id="mQv-cf-25R">
                                     <font key="font" metaFont="system" size="15"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DDz-TZ-oBe">
-                                <rect key="frame" x="40" y="352" width="48" height="48"/>
+                                <rect key="frame" x="40" y="316" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="FMg-VJ-UQ8"/>
                                     <constraint firstAttribute="width" constant="48" id="zbI-vv-lYx"/>
@@ -76,34 +76,18 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="eye.slash" id="h1b-o0-7vP"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mj3-l6-dr7">
-                                <rect key="frame" x="126" y="367" width="517" height="19"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Dislike a video? Tell Aerial not to play it (you can always change your mind)." id="nu0-MS-den">
-                                    <font key="font" metaFont="system" size="15"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gpF-mO-bgQ">
-                                <rect key="frame" x="40" y="284" width="48" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="9Zd-jX-k8d"/>
-                                    <constraint firstAttribute="width" constant="48" id="CwG-zE-v0z"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="aspectratio" id="QNJ-r6-Iru"/>
-                            </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7pM-QI-jkf">
-                                <rect key="frame" x="126" y="299" width="626" height="19"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Version 2 introduces a completely new user interface, by the way. You can even resize it!" id="flM-0s-wDt">
+                                <rect key="frame" x="126" y="321" width="636" height="38"/>
+                                <textFieldCell key="cell" title="Too hot outside and don’t want to see the desert? That’s okay! Aerial let’s you hide videos you don’t like! " id="nu0-MS-den">
                                     <font key="font" metaFont="system" size="15"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xfz-Dg-MZj">
-                                <rect key="frame" x="48" y="161" width="704" height="60"/>
+                                <rect key="frame" x="48" y="168" width="704" height="60"/>
                                 <textFieldCell key="cell" id="ymw-Ut-XBe">
                                     <font key="font" metaFont="systemSemibold" size="17"/>
-                                    <string key="title">And yes, there are 20 new videos kindly shared by Joshua Michaels &amp; Hal Bergman! If you enjoy them, consider supporting their work by checking out the additional packs of videos they have made especially for Aerial!</string>
+                                    <string key="title">Aerial 2 introduced Community Videos. Joshua Michaels &amp; Hal Bergman kindly shared 20 videos at no charge for all users! If you enjoy these, consider supporting their work by checking out the additional packs they have made especially for Aerial!</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -149,7 +133,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="video_inspire_italy_como_cerano-dintelvi_006" id="EbO-Ei-Jj4"/>
                             </imageView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oDG-SG-2xE">
-                                <rect key="frame" x="300" y="107" width="201" height="40"/>
+                                <rect key="frame" x="300" y="114" width="201" height="40"/>
                                 <buttonCell key="cell" type="push" title="Check out their work here" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wxW-X8-vOa">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -159,7 +143,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y8k-xe-ydC">
-                                <rect key="frame" x="240" y="240" width="320" height="40"/>
+                                <rect key="frame" x="240" y="247" width="320" height="40"/>
                                 <buttonCell key="cell" type="push" title="Want to know more? Check out our FAQ here!" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tEX-da-6YE">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -170,21 +154,19 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="gpF-mO-bgQ" firstAttribute="leading" secondItem="FNC-l3-JV2" secondAttribute="leading" constant="40" id="0aT-u8-FAj"/>
-                            <constraint firstItem="FE0-j2-Pzu" firstAttribute="top" secondItem="c1U-K9-TU3" secondAttribute="bottom" constant="20" id="1NG-ay-c4o"/>
+                            <constraint firstItem="FE0-j2-Pzu" firstAttribute="top" secondItem="c1U-K9-TU3" secondAttribute="bottom" constant="30" id="1NG-ay-c4o"/>
                             <constraint firstItem="oDG-SG-2xE" firstAttribute="top" secondItem="xfz-Dg-MZj" secondAttribute="bottom" constant="20" id="1TJ-pj-wVl"/>
                             <constraint firstItem="Sxo-rP-7e6" firstAttribute="centerX" secondItem="FNC-l3-JV2" secondAttribute="centerX" id="3OS-1v-K1W"/>
                             <constraint firstItem="iZ3-vX-hQ2" firstAttribute="leading" secondItem="IQW-cL-eH7" secondAttribute="trailing" id="3oF-uK-OXK"/>
+                            <constraint firstAttribute="trailing" secondItem="Mj3-l6-dr7" secondAttribute="trailing" constant="40" id="534-07-LrM"/>
                             <constraint firstAttribute="bottom" secondItem="IQW-cL-eH7" secondAttribute="bottom" id="5LI-M7-eP0"/>
                             <constraint firstItem="DDz-TZ-oBe" firstAttribute="leading" secondItem="FNC-l3-JV2" secondAttribute="leading" constant="40" id="8SP-Ic-tqj"/>
                             <constraint firstItem="ogO-Fy-XFK" firstAttribute="leading" secondItem="DYj-Iq-o0X" secondAttribute="trailing" id="DFJ-X6-2J5"/>
                             <constraint firstItem="KAl-O1-TRH" firstAttribute="leading" secondItem="ogO-Fy-XFK" secondAttribute="trailing" id="DZ2-Vk-K1H"/>
-                            <constraint firstAttribute="trailing" secondItem="7pM-QI-jkf" secondAttribute="trailing" constant="50" id="IY7-F9-OT8"/>
                             <constraint firstItem="Mj3-l6-dr7" firstAttribute="leading" secondItem="DDz-TZ-oBe" secondAttribute="trailing" constant="40" id="LPf-HF-hRt"/>
                             <constraint firstItem="KAl-O1-TRH" firstAttribute="centerX" secondItem="FNC-l3-JV2" secondAttribute="centerX" id="T1K-qX-qqs"/>
-                            <constraint firstItem="7pM-QI-jkf" firstAttribute="centerY" secondItem="gpF-mO-bgQ" secondAttribute="centerY" id="TdW-8v-Mr5"/>
                             <constraint firstItem="xfz-Dg-MZj" firstAttribute="top" secondItem="y8k-xe-ydC" secondAttribute="bottom" constant="25" id="WHF-JZ-VM2"/>
-                            <constraint firstItem="c1U-K9-TU3" firstAttribute="top" secondItem="FNC-l3-JV2" secondAttribute="top" constant="64" id="XPg-kM-pks"/>
+                            <constraint firstItem="c1U-K9-TU3" firstAttribute="top" secondItem="FNC-l3-JV2" secondAttribute="top" constant="80" id="XPg-kM-pks"/>
                             <constraint firstItem="2Jk-A0-3Qs" firstAttribute="leading" secondItem="c1U-K9-TU3" secondAttribute="trailing" constant="40" id="YN2-bj-7UH"/>
                             <constraint firstAttribute="bottom" secondItem="ogO-Fy-XFK" secondAttribute="bottom" id="bU6-CZ-aGm"/>
                             <constraint firstItem="y8k-xe-ydC" firstAttribute="centerX" secondItem="FNC-l3-JV2" secondAttribute="centerX" id="bvz-Da-kDR"/>
@@ -192,16 +174,16 @@
                             <constraint firstItem="c1U-K9-TU3" firstAttribute="leading" secondItem="FNC-l3-JV2" secondAttribute="leading" constant="40" id="cd6-1R-4nL"/>
                             <constraint firstAttribute="bottom" secondItem="KAl-O1-TRH" secondAttribute="bottom" id="dBc-uF-r1J"/>
                             <constraint firstAttribute="bottom" secondItem="iZ3-vX-hQ2" secondAttribute="bottom" id="e8g-t2-LMv"/>
-                            <constraint firstItem="7pM-QI-jkf" firstAttribute="leading" secondItem="gpF-mO-bgQ" secondAttribute="trailing" constant="40" id="eU9-DS-XiI"/>
                             <constraint firstItem="IQW-cL-eH7" firstAttribute="leading" secondItem="KAl-O1-TRH" secondAttribute="trailing" id="fHL-sc-yDg"/>
                             <constraint firstItem="oDG-SG-2xE" firstAttribute="centerX" secondItem="FNC-l3-JV2" secondAttribute="centerX" id="hbe-qb-oml"/>
                             <constraint firstAttribute="trailing" secondItem="xfz-Dg-MZj" secondAttribute="trailing" constant="50" id="kB6-3N-dyB"/>
                             <constraint firstItem="Sxo-rP-7e6" firstAttribute="top" secondItem="FNC-l3-JV2" secondAttribute="top" constant="20" id="mKo-yl-9oB"/>
-                            <constraint firstItem="DDz-TZ-oBe" firstAttribute="top" secondItem="FE0-j2-Pzu" secondAttribute="bottom" constant="20" id="mhi-UN-my6"/>
+                            <constraint firstItem="DDz-TZ-oBe" firstAttribute="top" secondItem="FE0-j2-Pzu" secondAttribute="bottom" constant="30" id="mhi-UN-my6"/>
+                            <constraint firstAttribute="trailing" secondItem="Hs3-Sq-hk9" secondAttribute="trailing" constant="40" id="ocD-QR-yWO"/>
+                            <constraint firstItem="y8k-xe-ydC" firstAttribute="top" secondItem="Mj3-l6-dr7" secondAttribute="bottom" constant="40" id="pCI-dk-mGL"/>
                             <constraint firstItem="Hs3-Sq-hk9" firstAttribute="leading" secondItem="FE0-j2-Pzu" secondAttribute="trailing" constant="40" id="pot-Jw-XjM"/>
                             <constraint firstItem="xfz-Dg-MZj" firstAttribute="leading" secondItem="FNC-l3-JV2" secondAttribute="leading" constant="50" id="qGN-6R-sFX"/>
-                            <constraint firstItem="y8k-xe-ydC" firstAttribute="top" secondItem="7pM-QI-jkf" secondAttribute="bottom" constant="25" id="sic-W9-TzA"/>
-                            <constraint firstItem="gpF-mO-bgQ" firstAttribute="top" secondItem="DDz-TZ-oBe" secondAttribute="bottom" constant="20" id="tcv-tH-f7B"/>
+                            <constraint firstAttribute="trailing" secondItem="2Jk-A0-3Qs" secondAttribute="trailing" constant="40" id="wy1-RN-zpQ"/>
                             <constraint firstItem="Hs3-Sq-hk9" firstAttribute="centerY" secondItem="FE0-j2-Pzu" secondAttribute="centerY" id="xDC-nb-BJK"/>
                             <constraint firstAttribute="bottom" secondItem="DYj-Iq-o0X" secondAttribute="bottom" id="xw6-Sp-obt"/>
                             <constraint firstItem="Mj3-l6-dr7" firstAttribute="centerY" secondItem="DDz-TZ-oBe" secondAttribute="centerY" id="y67-wq-D9Z"/>
@@ -224,7 +206,6 @@
         </customView>
     </objects>
     <resources>
-        <image name="aspectratio" width="168" height="132"/>
         <image name="dial" width="163" height="152"/>
         <image name="eye.slash" width="184" height="129"/>
         <image name="star" width="154" height="166"/>

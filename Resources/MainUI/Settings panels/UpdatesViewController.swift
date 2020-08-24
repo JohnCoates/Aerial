@@ -16,13 +16,13 @@ class UpdatesViewController: NSViewController {
 
     @IBAction func goToAerialUpdater(_ sender: Any) {
         let workspace = NSWorkspace.shared
-        let url = URL(string: "https://github.com/glouel/AerialCompanion")!
+        let url = URL(string: "https://aerialscreensaver.github.io")!
         workspace.open(url)
     }
 
     @IBAction func goToExtendedInstructions(_ sender: Any) {
         let workspace = NSWorkspace.shared
-        let url = URL(string: "https://github.com/JohnCoates/Aerial/blob/master/Documentation/Installation.md")!
+        let url = URL(string: "https://aerialscreensaver.github.io/installation.html")!
         workspace.open(url)
     }
 }

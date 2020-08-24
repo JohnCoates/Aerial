@@ -92,7 +92,14 @@ struct Cache {
      Also note that the shared `Caches` folder, `/Library/Caches/Aerial/`, is no longer user writable in Catalina and will be ignored.
      */
     static var path: String = {
-        let path = Cache.supportPath.appending("/Cache")
+        var path = ""
+        if PrefsCache.overrideCache {
+            path = Preferences.sharedInstance.customCacheDirectory!
+        } else if PrefsCache.hideFromTimeMachine {
+            path = Cache.formerCachePath!
+        } else {
+            path = Cache.supportPath.appending("/Cache")
+        }
 
         if FileManager.default.fileExists(atPath: path as String) {
             return path
@@ -197,6 +204,30 @@ struct Cache {
         }
     }
 
+    static func migrateToCaches() {
+        if let formerCachePath = formerCachePath {
+            do {
+                let formerCacheURL = URL(fileURLWithPath: formerCachePath as String)
+                let cachePathURL = URL(fileURLWithPath: supportPath).appendingPathComponent("Cache")
+
+                let directoryContent = try FileManager.default.contentsOfDirectory(at: cachePathURL, includingPropertiesForKeys: nil)
+                let videoURLs = directoryContent.filter { $0.pathExtension == "mov" }
+
+                if !videoURLs.isEmpty {
+                    debugLog("Starting migration of your video files from Cache to the /Caches folder")
+                    for videoURL in videoURLs {
+                        debugLog("moving \(videoURL.lastPathComponent)")
+                        let newURL = URL(fileURLWithPath: formerCachePath.appending("/\(videoURL.lastPathComponent)"))
+                        try FileManager.default.moveItem(at: videoURL, to: newURL)
+                    }
+                    debugLog("Migration done.")
+                }
+            } catch {
+                errorLog("Error during migration, please report")
+                errorLog(error.localizedDescription)
+            }
+        }
+    }
     /**
      Migrate video that may be at the root of a user's /Caches/Aerial/
      */
@@ -353,7 +384,7 @@ struct Cache {
     /**
      Returns cache size in GB
      */
-    private static func size() -> Double {
+    static func size() -> Double {
         let pathURL = URL(fileURLWithPath: path)
 
         // check if the url is a directory
@@ -367,6 +398,36 @@ struct Cache {
         }
 
         return 0
+    }
+
+    static func getDirectorySize(directory: String) -> Double {
+        if FileManager.default.fileExists(atPath: directory) {
+            let pathURL = URL(fileURLWithPath: directory)
+
+            // check if the url is a directory
+            if (try? pathURL.resourceValues(forKeys: [.isDirectoryKey]))?.isDirectory == true {
+                var folderSize = 0
+                (FileManager.default.enumerator(at: pathURL, includingPropertiesForKeys: nil)?.allObjects as? [URL])?.lazy.forEach {
+                    folderSize += (try? $0.resourceValues(forKeys: [.totalFileAllocatedSizeKey]))?.totalFileAllocatedSize ?? 0
+                }
+
+                return Double(folderSize) / 1000000000
+            }
+
+            return 0
+        } else {
+            return 0
+        }
+    }
+
+    static func packsSize() -> Double {
+        var totalSize: Double = 0
+        for source in SourceList.foundSources where !source.isCachable {
+            let sourcePath = supportPath.appending("/" + source.name)
+            totalSize += getDirectorySize(directory: sourcePath)
+        }
+
+        return totalSize
     }
 
     // swiftlint:disable line_length
@@ -436,6 +497,8 @@ struct Cache {
 
         var cutoffDate = Date()
         switch PrefsCache.cachePeriodicity {
+        case .daily:
+            cutoffDate = Calendar.current.date(byAdding: .day, value: -1, to: cutoffDate)!
         case .weekly:
             cutoffDate = Calendar.current.date(byAdding: .day, value: -7, to: cutoffDate)!
         case .monthly:

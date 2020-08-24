@@ -9,7 +9,7 @@
 import Foundation
 
 enum CachePeriodicity: Int, Codable {
-    case weekly, monthly, never
+    case daily, weekly, monthly, never
 }
 
 struct PrefsCache {
@@ -47,4 +47,11 @@ struct PrefsCache {
     @SimpleStorage(key: "showBackgroundDownloads", defaultValue: false)
     static var showBackgroundDownloads: Bool
 
+    // Should we use Caches instead of Application Support
+    @SimpleStorage(key: "hideFromTimeMachine", defaultValue: false)
+    static var hideFromTimeMachine: Bool
+
+    // Should we override the cache
+    @SimpleStorage(key: "overrideCache", defaultValue: false)
+    static var overrideCache: Bool
 }
