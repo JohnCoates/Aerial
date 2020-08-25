@@ -2,22 +2,16 @@
 <channel>
 <title>Aerial</title>
   <item>
-<title>2.0.1</title>
+<title>2.0.4</title>
   <description>
           <![CDATA[
 
-<p>If you want automatic updates, please install the Aerial Companion app, as Sparkle updates are now deprecated: https://github.com/glouel/AerialCompanion</p>
+<p>If you want automatic updates, please install the Aerial Companion app, as Sparkle updates are now deprecated: https://aerialscreensaver.github.io</p>
 
 <p>What's new:</p>
 
-<ul><li>A lot!</li>
-<li>Whole new UI with previews, that feels right at home on macOS Big Sur, it's even resizable!</li>
-<li>New cache options, you can finally set a limit to your cache size, and ask Aerial to periodically grab new videos, so it never ever again fills up your disk.</li>
-<li>New videos : 20 videos that were donated by a 3rd party artist, please check out the Settings > Custom Sources to know more about them.</li>
-<li>A whole new rotation concept: you can quickly switch from watching Space videos, to only Night videos with a couple of clicks</li>
-<li>You can now favorite videos (so Aerial will never delete them) or hide them (so they won't bother you again)</li>
-<li>Sunset and Sunrise videos show at the appropriate time now if you enable time adaptation</li>
-<li>And so much more</li></ul>
+<ul><li>A lot! If you are upgrading from 1.9.X or older, check out our new site for more https://aerialscreensaver.github.io</li>
+<li>Fix a crash in some systems introduced in 2.0.3 when you set your video cache to be ignored by Time Machine</li></ul>
 
 <p>Note: Big Sur Beta users, there's an issue currently regarding 3rd party screen savers, check this post on how to get back your settings and cache : #1036 This macOS bug affects not only all versions of Aerial, but all 3rd party screen savers.</p>
 
@@ -25,10 +19,10 @@
 
           ]]>
   </description>
-<pubDate>mer., 19 aug. 2020 21:00:00 +0100</pubDate>
+<pubDate>mar., 25 aug. 2020 21:00:00 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v2.0.1/Aerial.saver.zip" sparkle:version="2.0.1" 
-sparkle:edSignature="ZtdgF5bljQke3elg7bB2Zs2FTiUtg/vsCqvLSKA1i8yeVyfK0QBOMQkyzFTKtVl+ix8k9V0/x3qF5GulY1k2AQ==" length="6428353" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v2.0.4/Aerial.saver.zip" sparkle:version="2.0.4" 
+sparkle:edSignature="cWJT9+DFr0owfOo+lbQ7M68cq3Orz1gLOOK2z1xbosx5LUjLKuVJM91jT2mrXDgd8Uf3IQe4bLz5UaYKXhgbAQ==" length="6564293" type="application/octet-stream"/>
 </item>
   
   <item>
