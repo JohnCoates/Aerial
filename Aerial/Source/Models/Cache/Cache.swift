@@ -94,9 +94,23 @@ struct Cache {
     static var path: String = {
         var path = ""
         if PrefsCache.overrideCache {
-            path = Preferences.sharedInstance.customCacheDirectory!
+            if FileManager.default.fileExists(atPath: Preferences.sharedInstance.customCacheDirectory!) {
+                path = Preferences.sharedInstance.customCacheDirectory!
+            } else {
+                errorLog("Could not create your Caches path, reverting to default settings")
+                PrefsCache.overrideCache = false
+                path = Cache.supportPath.appending("/Cache")
+
+            }
         } else if PrefsCache.hideFromTimeMachine {
-            path = Cache.formerCachePath!
+            var tpath = Cache.formerCachePath
+            if tpath != nil {
+                path = tpath!
+            } else {
+                errorLog("Could not create your Caches path, reverting to default settings")
+                PrefsCache.hideFromTimeMachine = false
+                path = Cache.supportPath.appending("/Cache")
+            }
         } else {
             path = Cache.supportPath.appending("/Cache")
         }
@@ -164,6 +178,14 @@ struct Cache {
         if aerialFolderExists(at: cacheSupportDirectory) {
             return cacheSupportDirectory.appendingPathComponent("Aerial")
         } else {
+            do {
+                debugLog("trying to create \(cacheSupportDirectory.appendingPathComponent("Aerial"))")
+                try FileManager.default.createDirectory(atPath: cacheSupportDirectory.appendingPathComponent("Aerial"),
+                                                withIntermediateDirectories: false, attributes: nil)
+                return path
+            } catch {
+                errorLog("Could not create Aerial's Caches path")
+            }
             return nil
         }
     }()
@@ -216,8 +238,9 @@ struct Cache {
                 if !videoURLs.isEmpty {
                     debugLog("Starting migration of your video files from Cache to the /Caches folder")
                     for videoURL in videoURLs {
-                        debugLog("moving \(videoURL.lastPathComponent)")
-                        let newURL = URL(fileURLWithPath: formerCachePath.appending("/\(videoURL.lastPathComponent)"))
+                        debugLog("moving : \(videoURL)")
+                        let newURL = URL(fileURLWithPath: formerCachePath).appendingPathComponent(videoURL.lastPathComponent)
+                        debugLog("to : \(newURL)")
                         try FileManager.default.moveItem(at: videoURL, to: newURL)
                     }
                     debugLog("Migration done.")
