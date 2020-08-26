@@ -198,8 +198,10 @@ struct Cache {
      - Moves the video files from Caches to the `Application Support/Aerial/Cache` sub directory
      */
     static func migrate() {
-        migrateAppSupport()
-        migrateOldCache()
+        if !PrefsCache.hideFromTimeMachine && !PrefsCache.overrideCache {
+            migrateAppSupport()
+            migrateOldCache()
+        }
     }
 
     /**

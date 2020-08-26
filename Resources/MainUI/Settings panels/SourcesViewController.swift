@@ -189,13 +189,13 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
                 let size = source.diskUsage().rounded(toPlaces: 1)
 
                 if totalCount == downloadedCount {
-                    cell.videoCount.stringValue = "\(totalCount) videos, \(size) GB on disk"
+                    cell.videoCount.stringValue = "\(totalCount) videos"
                 } else {
-                    cell.videoCount.stringValue = "\(downloadedCount) of \(totalCount) videos downloaded, \(size) GB on disk"
+                    cell.videoCount.stringValue = "\(downloadedCount) of \(totalCount) videos downloaded"
                 }
 
                 if !source.isCachable {
-                    cell.videoCount.stringValue.append(" (permanently saved)")
+                    cell.videoCount.stringValue.append(", \(size) GB on disk (permanently saved)")
                 }
             } else {
                 cell.videoCount.stringValue = ""
