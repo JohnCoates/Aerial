@@ -161,6 +161,7 @@ class TimeViewController: NSViewController {
             return
         case .locationService:
             timeBarView.isHidden = false
+            TimeManagement.sharedInstance.calculateFromCoordinates()
         }
 
         let (sunrise, sunset) = TimeManagement.sharedInstance.getSunriseSunset()

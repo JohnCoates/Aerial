@@ -34,9 +34,8 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="800" height="506"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="750" height="506"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XEl-58-TYp">
                     <rect key="frame" x="97" y="339" width="278" height="22"/>
@@ -155,7 +154,7 @@
                     <imageCell key="cell" controlSize="large" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="mappin.and.ellipse" id="hiP-2o-HMf"/>
                 </imageView>
                 <box horizontalHuggingPriority="20" verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="rhV-9j-1sD">
-                    <rect key="frame" x="20" y="195" width="760" height="5"/>
+                    <rect key="frame" x="20" y="195" width="710" height="5"/>
                 </box>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jUR-yB-Nrf">
                     <rect key="frame" x="600" y="409" width="70" height="40"/>
@@ -214,7 +213,7 @@
                     </textFieldCell>
                 </textField>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="vdz-xw-hgB">
-                    <rect key="frame" x="34" y="57" width="732" height="90"/>
+                    <rect key="frame" x="9" y="57" width="732" height="90"/>
                     <subviews>
                         <box boxType="custom" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="Zp0-GE-dK9">
                             <rect key="frame" x="12" y="67" width="152" height="23"/>
@@ -469,6 +468,7 @@
                 <constraint firstItem="jUR-yB-Nrf" firstAttribute="firstBaseline" secondItem="LqU-wn-EaP" secondAttribute="firstBaseline" id="G7i-MT-1b6"/>
                 <constraint firstItem="1xw-2R-kTW" firstAttribute="top" secondItem="jal-bK-WHc" secondAttribute="bottom" constant="24" id="HOQ-s7-PQo"/>
                 <constraint firstItem="rhV-9j-1sD" firstAttribute="top" secondItem="1xw-2R-kTW" secondAttribute="bottom" constant="24" id="Is8-P5-jAv"/>
+                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="750" id="LGP-vn-TAh"/>
                 <constraint firstItem="XEl-58-TYp" firstAttribute="leading" secondItem="LqU-wn-EaP" secondAttribute="leading" id="Mj4-ED-9dl"/>
                 <constraint firstItem="YLj-jJ-de5" firstAttribute="leading" secondItem="l0v-PM-J5T" secondAttribute="trailing" constant="8" symbolic="YES" id="OZk-ZB-CPQ"/>
                 <constraint firstItem="T3w-0V-R7q" firstAttribute="leading" secondItem="LqU-wn-EaP" secondAttribute="leading" id="PeE-G6-1f5"/>
