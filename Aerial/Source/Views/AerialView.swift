@@ -24,7 +24,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     var player: AVPlayer?
     var currentVideo: AerialVideo?
 
-    //var preferencesController: PreferencesWindowController?
     var preferencesController: PanelWindowController?
 
     var observerWasSet = false
@@ -277,7 +276,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         //swiftlint:disable:next line_length
         debugLog("\(self.description) backing change \((self.window?.backingScaleFactor) ?? 1.0) isDisabled: \(isDisabled) frame: \(self.frame) preview: \(self.isPreview)")
 
-        // Tentative workaround for a Catalina bug
+        // Tentative workaround for a Catalina+ bug
         if self.frame.width < 300 && !isPreview {
             debugLog("*** Frame size bug, trying to override to \(originalWidth)x\(originalHeight)!")
             self.frame = CGRect(x: 0, y: 0, width: originalWidth, height: originalHeight)
@@ -430,6 +429,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             AerialView.previewView?.playerLayer.player = self.player
         }
 
+        playerLayer.drawsAsynchronously = true
+
         // get a list of current videos that should be excluded from the candidate selection
         // for the next video. This prevents the same video from being shown twice in a row
         // as well as the same video being shown on two different monitors even when sharingPlayers
@@ -472,30 +473,31 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                 let value = PrefsVideos.vibrance[video.id] ?? 0
                 localitem.setVibrance(value)
             }
-            player.replaceCurrentItem(with: localitem)
-            debugLog("\(self.description) playing video (OFFLINE MODE) : \(localurl)")
-        }
+            DispatchQueue.global(qos: .default).async { [self] in
+                player.replaceCurrentItem(with: localitem)
+                debugLog("\(self.description) playing video (OFFLINE MODE) : \(localurl)")
+                guard let currentItem = player.currentItem else {
+                    errorLog("\(self.description) No current item!")
+                    return
+                }
 
-        guard let currentItem = player.currentItem else {
-            errorLog("\(self.description) No current item!")
-            return
-        }
+                debugLog("\(self.description) observing current item \(currentItem)")
 
-        debugLog("\(self.description) observing current item \(currentItem)")
+                // Descriptions and fades are set when we begin playback
+                if !self.observerWasSet {
+                    observerWasSet = true
+                    playerLayer.addObserver(self, forKeyPath: "readyForDisplay", options: .initial, context: nil)
+                }
 
-        // Descriptions and fades are set when we begin playback
-        if !observerWasSet {
-            observerWasSet = true
-            playerLayer.addObserver(self, forKeyPath: "readyForDisplay", options: .initial, context: nil)
-        }
+                setNotifications(currentItem)
 
-        setNotifications(currentItem)
+                player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
 
-        player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
-
-        // Let's never download stuff in preview...
-        if !isPreview {
-            Cache.fillOrRollCache()
+                // Let's never download stuff in preview...
+                if !isPreview {
+                    Cache.fillOrRollCache()
+                }
+            }
         }
 
     }

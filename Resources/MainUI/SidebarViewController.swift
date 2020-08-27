@@ -21,7 +21,7 @@ class SidebarViewController: NSViewController {
     @IBOutlet var infoButton: NSButton!
 
     // For the download indicator
-    @IBOutlet var downloadIndicator: NSView!
+    @IBOutlet var downloadIndicator: NSVisualEffectView!
     @IBOutlet var downloadIndicatorProgress: NSProgressIndicator!
     @IBOutlet var downloadIndicatorLabel: NSTextField!
     @IBOutlet var downloadCancelButton: NSButton!

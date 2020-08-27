@@ -54,4 +54,5 @@ struct PrefsCache {
     // Should we override the cache
     @SimpleStorage(key: "overrideCache", defaultValue: false)
     static var overrideCache: Bool
+
 }

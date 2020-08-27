@@ -21,6 +21,7 @@ extension AVPlayerItem {
         }
 
         if #available(OSX 10.14, *) {
+            debugLog("Applying vibrance of \(useValue)")
             let filter = CIFilter(name: "CIVibrance")!
             self.videoComposition = AVVideoComposition(asset: asset, applyingCIFiltersWithHandler: { request in
                 let source = request.sourceImage.clampedToExtent()

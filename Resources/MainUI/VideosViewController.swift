@@ -383,7 +383,7 @@ class VideosViewController: NSViewController {
             }
 
             player.replaceCurrentItem(with: localitem)
-            player.play()
+            //player.play()
 
             // Set notification...
             NotificationCenter.default.addObserver(self,

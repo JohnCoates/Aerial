@@ -68,4 +68,13 @@ struct PrefsTime {
     // Override on macOS dark mode
     @SimpleStorage(key: "darkModeNightOverride", defaultValue: false)
     static var darkModeNightOverride: Bool
+
+    // Last successful coordinates, we're going to save those so we can reuse them if we can't get
+    // Anything from Location Services (laptop plugged on ethernet with wifi off is the scenario)
+    @SimpleStorage(key: "cachedLatitude", defaultValue: 0)
+    static var cachedLatitude: Double
+
+    @SimpleStorage(key: "cachedLongitude", defaultValue: 0)
+    static var cachedLongitude: Double
+
 }

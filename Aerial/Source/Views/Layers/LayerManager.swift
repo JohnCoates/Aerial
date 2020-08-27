@@ -88,6 +88,9 @@ class LayerManager {
         }
 
         if let nLayer = newLayer {
+            nLayer.drawsAsynchronously = true
+            nLayer.shouldRasterize = true
+            print(nLayer.drawsAsynchronously)
             additionalLayers.append(nLayer)
             layer.addSublayer(nLayer)
         }

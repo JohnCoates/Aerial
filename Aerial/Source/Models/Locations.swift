@@ -16,11 +16,13 @@ class Locations: NSObject {
     var failures: [(String) -> Void] = []
     var successes: [(CLLocationCoordinate2D) -> Void] = []
 
+    var inFlight = false
+    
     // MARK: - Lifecycle
     override init() {
         super.init()
         locationManager.delegate = self
-        debugLog("Location initialized")
+        debugLog("Starting Location initialization")
     }
 
     func getCoordinates(failure: @escaping (_ error: String) -> Void,
@@ -35,6 +37,7 @@ class Locations: NSObject {
         // Check for access & start
         if CLLocationManager.locationServicesEnabled() {
             debugLog("Location services enabled")
+            inFlight = true
             locationManager.startUpdatingLocation()
         } else {
             failure("Location services disabled")
@@ -54,12 +57,21 @@ class Locations: NSObject {
 }
 
 extension Locations: CLLocationManagerDelegate {
-
+    // Auth status callback
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        debugLog("LMauth status change : \(status.rawValue)")
+    }
+    
+    // Location fetch Success callback
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let currentLocation = locations[locations.count - 1]
         coordinates = currentLocation.coordinate    // Wondering, why singular?
         debugLog("Location coordinate : \(currentLocation.coordinate)")
         locationManager.stopUpdatingLocation()      // We only want them once
+        
+        // We cache for next time if we are WiFi-less
+        PrefsTime.cachedLatitude = coordinates?.latitude ?? 0
+        PrefsTime.cachedLongitude = coordinates?.longitude ?? 0
 
         for success in successes {
             success(currentLocation.coordinate)
@@ -68,14 +80,27 @@ extension Locations: CLLocationManagerDelegate {
         failures.removeAll()
     }
 
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        debugLog("LMauth status change : \(status.rawValue)")
-    }
 
+    // Location fetch Failure callback
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        for failure in failures {
-            failure("Unable to fetch location")
+        // So we failed, but maybe we have something cached to pretent we didn't fail
+        if PrefsTime.cachedLatitude != 0 {
+            debugLog("Couldn't retrieve your location: \(error.localizedDescription), using latest cached coordinates instead")
+            // Store them
+            coordinates = CLLocationCoordinate2DMake(PrefsTime.cachedLatitude as CLLocationDegrees, PrefsTime.cachedLongitude as CLLocationDegrees)
+           
+            // Pretend we didn't fail
+            for success in successes {
+                success(coordinates!)
+            }
+        } else {
+            // This is a total failure
+            for failure in failures {
+                failure("Unable to fetch location")
+            }
         }
+
+        // Then cleanup
         successes.removeAll()
         failures.removeAll()
     }
