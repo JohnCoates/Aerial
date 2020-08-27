@@ -375,6 +375,7 @@ class VideoList {
     func randomVideo(excluding: [AerialVideo]) -> (AerialVideo?, Bool) {
         var shouldLoop = false
         let timeManagement = TimeManagement.sharedInstance
+
         let (shouldRestrictByDayNight, restrictTo) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
 
         debugLog("remaining in plist : \(playlist.count)")

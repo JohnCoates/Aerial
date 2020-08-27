@@ -174,6 +174,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     // swiftlint:disable:next cyclomatic_complexity
     func setup() {
+        _ = TimeManagement.sharedInstance
+
         if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
             debugLog("\(self.description) AerialView setup init (V\(version)) preview: \(self.isPreview)")
             debugLog("Running \(ProcessInfo.processInfo.operatingSystemVersionString)")
@@ -267,8 +269,18 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             AerialView.sharedPlayerIndex = AerialView.instanciatedViews.count-1
         }
 
+        // So first we wait for our list to be ready
         VideoList.instance.addCallback {
-            self.playNextVideo()
+            // Then we may need to delay things a bit if we haven't gathered the coordinates yet
+            if PrefsTime.timeMode == .locationService && Locations.sharedInstance.coordinates == nil {
+                debugLog("No coordinates yet, delaying a bit...")
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
+                    self.playNextVideo()
+                }
+            } else {
+                self.playNextVideo()
+            }
+
         }
     }
 
@@ -342,7 +354,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     internal override func observeValue(forKeyPath keyPath: String?,
                                         of object: Any?, change: [NSKeyValueChangeKey: Any]?,
                                         context: UnsafeMutableRawPointer?) {
-        debugLog("\(self.description) observeValue \(String(describing: keyPath)) \(self.playerLayer.isReadyForDisplay) \(self.frame)")
+        debugLog("\(self.description) observeValue \(String(describing: keyPath)) \(self.playerLayer.isReadyForDisplay)")
 
         if self.playerLayer.isReadyForDisplay {
             self.player!.play()
