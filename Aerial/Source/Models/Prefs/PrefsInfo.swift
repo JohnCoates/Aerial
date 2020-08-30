@@ -279,6 +279,10 @@ struct PrefsInfo {
         }
     }
 
+    // Fast rendering mode
+    @SimpleStorage(key: "highQualityTextRendering", defaultValue: false)
+    static var highQualityTextRendering: Bool
+
     // Override margins
     @SimpleStorage(key: "overrideMargins", defaultValue: false)
     static var overrideMargins: Bool

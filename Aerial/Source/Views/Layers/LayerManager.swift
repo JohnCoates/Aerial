@@ -89,7 +89,12 @@ class LayerManager {
 
         if let nLayer = newLayer {
             nLayer.drawsAsynchronously = true
-            //nLayer.shouldRasterize = true // TODO maybe this could be made optional for low end macs?
+
+            if !PrefsInfo.highQualityTextRendering {
+                // This seems to help on some configurations
+                // It has no impact on others and wrecks retina fonts though...
+                nLayer.shouldRasterize = true
+            }
             additionalLayers.append(nLayer)
             layer.addSublayer(nLayer)
         }

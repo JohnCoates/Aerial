@@ -11,6 +11,7 @@ import Cocoa
 class InfoSettingsView: NSView {
     @IBOutlet weak var fadeInOutTextModePopup: NSPopUpButton!
 
+    @IBOutlet var highQualityTextRendering: NSButton!
     @IBOutlet var changeCornerMargins: NSButton!
     @IBOutlet var marginHorizontalTextfield: NSTextField!
     @IBOutlet var marginVerticalTextfield: NSTextField!
@@ -33,6 +34,8 @@ class InfoSettingsView: NSView {
             marginVerticalTextfield.isEnabled = true
         }
 
+        highQualityTextRendering.state = PrefsInfo.highQualityTextRendering ? .on : .off
+
         marginHorizontalTextfield.stringValue = String(PrefsInfo.marginX)
         marginVerticalTextfield.stringValue = String(PrefsInfo.marginY)
 
@@ -47,6 +50,10 @@ class InfoSettingsView: NSView {
     }
 
     // MARK: - Shadows
+    @IBAction func highQualityTextRenderingChange(_ sender: NSButton) {
+        PrefsInfo.highQualityTextRendering = sender.state == .on
+    }
+
     @IBAction func shadowRadiusChange(_ sender: NSTextField) {
         PrefsInfo.shadowRadius = Int(sender.intValue)
     }
