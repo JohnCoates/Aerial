@@ -2,7 +2,7 @@
 <channel>
 <title>Aerial</title>
   <item>
-<title>2.0.4</title>
+<title>2.0.5</title>
   <description>
           <![CDATA[
 
@@ -11,7 +11,7 @@
 <p>What's new:</p>
 
 <ul><li>A lot! If you are upgrading from 1.9.X or older, check out our new site for more https://aerialscreensaver.github.io</li>
-<li>Fix a crash in some systems introduced in 2.0.3 when you set your video cache to be ignored by Time Machine</li></ul>
+<li>Fix a performance issue with previous 2.0.0s</li></ul>
 
 <p>Note: Big Sur Beta users, there's an issue currently regarding 3rd party screen savers, check this post on how to get back your settings and cache : #1036 This macOS bug affects not only all versions of Aerial, but all 3rd party screen savers.</p>
 
@@ -19,10 +19,10 @@
 
           ]]>
   </description>
-<pubDate>mar., 25 aug. 2020 21:00:00 +0100</pubDate>
+<pubDate>jeu., 27 aug. 2020 21:00:00 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v2.0.4/Aerial.saver.zip" sparkle:version="2.0.4" 
-sparkle:edSignature="cWJT9+DFr0owfOo+lbQ7M68cq3Orz1gLOOK2z1xbosx5LUjLKuVJM91jT2mrXDgd8Uf3IQe4bLz5UaYKXhgbAQ==" length="6564293" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v2.0.5/Aerial.saver.zip" sparkle:version="2.0.5" 
+sparkle:edSignature="poYn/WzoxvjfyN2zdzScUWiCyU1QU1v55iZW94IoPfAakGFliYv8UYqe99GDOdllAytIULCniRxRHp6LS9X/AQ==" length="6591303" type="application/octet-stream"/>
 </item>
   
   <item>
