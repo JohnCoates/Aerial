@@ -89,8 +89,7 @@ class LayerManager {
 
         if let nLayer = newLayer {
             nLayer.drawsAsynchronously = true
-            nLayer.shouldRasterize = true
-            print(nLayer.drawsAsynchronously)
+            //nLayer.shouldRasterize = true // TODO maybe this could be made optional for low end macs?
             additionalLayers.append(nLayer)
             layer.addSublayer(nLayer)
         }

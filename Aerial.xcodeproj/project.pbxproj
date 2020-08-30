@@ -157,9 +157,6 @@
 		0312945A24F0606B00B90A12 /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 0312945824F0606B00B90A12 /* de.json */; };
 		0312945B24F0606B00B90A12 /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 0312945824F0606B00B90A12 /* de.json */; };
 		0312945C24F0606B00B90A12 /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = 0312945824F0606B00B90A12 /* de.json */; };
-		0312945D24F0606B00B90A12 /* ja.json in Resources */ = {isa = PBXBuildFile; fileRef = 0312945924F0606B00B90A12 /* ja.json */; };
-		0312945E24F0606B00B90A12 /* ja.json in Resources */ = {isa = PBXBuildFile; fileRef = 0312945924F0606B00B90A12 /* ja.json */; };
-		0312945F24F0606B00B90A12 /* ja.json in Resources */ = {isa = PBXBuildFile; fileRef = 0312945924F0606B00B90A12 /* ja.json */; };
 		0313329C24BF3FA700C84A05 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313329A24BF3FA700C84A05 /* SidebarViewController.swift */; };
 		0313329D24BF3FA700C84A05 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313329A24BF3FA700C84A05 /* SidebarViewController.swift */; };
 		0313329E24BF3FA700C84A05 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313329A24BF3FA700C84A05 /* SidebarViewController.swift */; };
@@ -611,6 +608,9 @@
 		03C344FD24B778EE00906EA6 /* CheckboxCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C344FB24B778EE00906EA6 /* CheckboxCellView.swift */; };
 		03C344FF24B7A22300906EA6 /* DescriptionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C344FE24B7A22300906EA6 /* DescriptionCellView.swift */; };
 		03C3450024B7A22300906EA6 /* DescriptionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C344FE24B7A22300906EA6 /* DescriptionCellView.swift */; };
+		03C491B124FBB3390041D71C /* ja.json in Resources */ = {isa = PBXBuildFile; fileRef = 03C491B024FBB3380041D71C /* ja.json */; };
+		03C491B224FBB3390041D71C /* ja.json in Resources */ = {isa = PBXBuildFile; fileRef = 03C491B024FBB3380041D71C /* ja.json */; };
+		03C491B324FBB3390041D71C /* ja.json in Resources */ = {isa = PBXBuildFile; fileRef = 03C491B024FBB3380041D71C /* ja.json */; };
 		03C97BA724B5F74900739CED /* VideoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C97BA624B5F74900739CED /* VideoList.swift */; };
 		03C97BA824B5F74900739CED /* VideoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C97BA624B5F74900739CED /* VideoList.swift */; };
 		03C97BC024B60E2F00739CED /* FileHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C97BBF24B60E2F00739CED /* FileHelpers.swift */; };
@@ -924,7 +924,6 @@
 		030B5E32229FDD26008F2910 /* AutoUpdates.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AutoUpdates.md; sourceTree = "<group>"; };
 		030DDA8F2423C3BE0072D5C9 /* InfoTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimerView.swift; sourceTree = "<group>"; };
 		0312945824F0606B00B90A12 /* de.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = de.json; sourceTree = "<group>"; };
-		0312945924F0606B00B90A12 /* ja.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ja.json; sourceTree = "<group>"; };
 		0313329A24BF3FA700C84A05 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		0313329B24BF3FA700C84A05 /* SidebarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SidebarViewController.xib; sourceTree = "<group>"; };
 		0313F9E522942AA500B074BB /* CustomVideos.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomVideos.xib; sourceTree = "<group>"; };
@@ -1066,6 +1065,7 @@
 		03BF51C123A2978B008AD373 /* ClockLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockLayer.swift; sourceTree = "<group>"; };
 		03C344FB24B778EE00906EA6 /* CheckboxCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxCellView.swift; sourceTree = "<group>"; };
 		03C344FE24B7A22300906EA6 /* DescriptionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCellView.swift; sourceTree = "<group>"; };
+		03C491B024FBB3380041D71C /* ja.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ja.json; sourceTree = "<group>"; };
 		03C97BA624B5F74900739CED /* VideoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoList.swift; sourceTree = "<group>"; };
 		03C97BBF24B60E2F00739CED /* FileHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileHelpers.swift; path = Downloads/FileHelpers.swift; sourceTree = "<group>"; };
 		03C97BC224B6210500739CED /* SourceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceInfo.swift; sourceTree = "<group>"; };
@@ -1246,7 +1246,7 @@
 			isa = PBXGroup;
 			children = (
 				0312945824F0606B00B90A12 /* de.json */,
-				0312945924F0606B00B90A12 /* ja.json */,
+				03C491B024FBB3380041D71C /* ja.json */,
 				03D2B8E524E1E3BE00692B4D /* ar.json */,
 				03D2B8DF24E1E3BE00692B4D /* en.json */,
 				03D2B8E624E1E3BE00692B4D /* es.json */,
@@ -2028,6 +2028,7 @@
 				037772E524E43AF300D81EEA /* TimeSetupViewController.xib in Resources */,
 				037772E924E44BB100D81EEA /* xmark.circle.pdf in Resources */,
 				0300B82F24D1B536006132E5 /* tv.pdf in Resources */,
+				03C491B224FBB3390041D71C /* ja.json in Resources */,
 				0300B81424D1B536006132E5 /* antenna.radiowaves.left.and.right.pdf in Resources */,
 				03075EB224ED794F00FDBE48 /* trash.pdf in Resources */,
 				03AA7ABB24C84C6400A47970 /* cloud.sun.pdf in Resources */,
@@ -2047,7 +2048,6 @@
 				03D2B90F24E1E3BF00692B4D /* pl.json in Resources */,
 				03AA7A6A24C84C6300A47970 /* cloud.heavyrain.pdf in Resources */,
 				03AA7A9A24C84C6300A47970 /* cloud.snow.pdf in Resources */,
-				0312945E24F0606B00B90A12 /* ja.json in Resources */,
 				0300B80224D1B536006132E5 /* clock.pdf in Resources */,
 				0300B81A24D1B536006132E5 /* tram.fill.pdf in Resources */,
 				0300B82024D1B536006132E5 /* flame.pdf in Resources */,
@@ -2121,7 +2121,6 @@
 				0300B7EB24D1B536006132E5 /* person.3.pdf in Resources */,
 				03AA7AB024C84C6400A47970 /* cloud.moon.pdf in Resources */,
 				0300B81524D1B536006132E5 /* antenna.radiowaves.left.and.right.pdf in Resources */,
-				0312945F24F0606B00B90A12 /* ja.json in Resources */,
 				03D1E79522848F7F00D10CF7 /* screen1.jpg in Resources */,
 				0300B80C24D1B536006132E5 /* eye.slash.pdf in Resources */,
 				03AA7AA124C84C6300A47970 /* cloud.hail.pdf in Resources */,
@@ -2220,6 +2219,7 @@
 				0395835421807D1F008E8F9C /* thumbnail@2x.png in Resources */,
 				03AA7A6524C84C6300A47970 /* snow.pdf in Resources */,
 				03D2B8F524E1E3BF00692B4D /* it.json in Resources */,
+				03C491B324FBB3390041D71C /* ja.json in Resources */,
 				03EED2D724C3A47700F0C3D4 /* UpdatesViewController.xib in Resources */,
 				0300B86624D2052B006132E5 /* WelcomeViewController.xib in Resources */,
 				03A42A9A2449F5EA003B3012 /* white_retina.png in Resources */,
@@ -2319,6 +2319,7 @@
 				037772E424E43AF300D81EEA /* TimeSetupViewController.xib in Resources */,
 				037772E824E44BB100D81EEA /* xmark.circle.pdf in Resources */,
 				0300B82E24D1B536006132E5 /* tv.pdf in Resources */,
+				03C491B124FBB3390041D71C /* ja.json in Resources */,
 				0300B81324D1B536006132E5 /* antenna.radiowaves.left.and.right.pdf in Resources */,
 				03075EB124ED794F00FDBE48 /* trash.pdf in Resources */,
 				03AA7ABA24C84C6400A47970 /* cloud.sun.pdf in Resources */,
@@ -2338,7 +2339,6 @@
 				03D2B90E24E1E3BF00692B4D /* pl.json in Resources */,
 				03AA7A6924C84C6300A47970 /* cloud.heavyrain.pdf in Resources */,
 				03AA7A9924C84C6300A47970 /* cloud.snow.pdf in Resources */,
-				0312945D24F0606B00B90A12 /* ja.json in Resources */,
 				0300B80124D1B536006132E5 /* clock.pdf in Resources */,
 				0300B81924D1B536006132E5 /* tram.fill.pdf in Resources */,
 				0300B81F24D1B536006132E5 /* flame.pdf in Resources */,
@@ -3101,7 +3101,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.5;
+				CURRENT_PROJECT_VERSION = 2.0.6;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3109,7 +3109,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0.5;
+				MARKETING_VERSION = 2.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3129,7 +3129,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.5;
+				CURRENT_PROJECT_VERSION = 2.0.6;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3137,7 +3137,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0.5;
+				MARKETING_VERSION = 2.0.6;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

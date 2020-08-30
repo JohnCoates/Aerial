@@ -47,6 +47,7 @@ class SourcesViewController: NSViewController {
         VideoList.instance.addCallback {
             debugLog("sourcecallback")
             self.sourceOutlineView.reloadData()
+            self.sourceOutlineView.expandItem(nil, expandChildren: true)
         }
     }
 
@@ -122,28 +123,33 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
     // item == nil means it's the "root" row of the outline view, which is not visible
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         if item == nil {
-            /*if index == 0 {
-                return "CommunityVideo"
-            } else {*/
-                return SourceList.list.filter({ !$0.name.starts(with: "tvOS")})[index]
-            //}
+            return SourceList.categorizedSourceList()[index]
         } else {
-            return 0
+            if let item = item as? SourceHeader {
+                return item.sources[index]
+            } else {
+                return 0
+            }
         }
     }
 
     // Tell how many children each row has:
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         if item == nil {
-            return SourceList.list.filter({ !$0.name.starts(with: "tvOS")}).count
+            return SourceList.categorizedSourceList().count
         } else {
-            return 0
+            if let item = item as? SourceHeader {
+                return item.sources.count
+            } else {
+                return 1
+            }
         }
     }
 
     // Tell whether the row is expandable.
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        return false
+        guard let _ = item as? SourceHeader else { return false }
+        return true
     }
 
     // Set the content for each row/column element
@@ -153,10 +159,28 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
             return nil
         }
 
-        /*if let sourceHeader = item as? String {
-            print(sourceHeader)
-            return nil
-        }*/
+        if let sourceHeader = item as? SourceHeader {
+            if columnIdentifier == "valueColumn" {
+                let cell = outlineView.makeView(withIdentifier:
+                                                    NSUserInterfaceItemIdentifier(rawValue: "valueColumnCell"), owner: self) as! DescriptionCellView
+                cell.titleLabel.stringValue = sourceHeader.name
+                cell.descriptionLabel.stringValue = ""
+                cell.lastUpdatedLabel.stringValue = ""
+                cell.imageScene1.isHidden = true
+                cell.imageScene2.isHidden = true
+                cell.imageScene3.isHidden = true
+                cell.imageScene4.isHidden = true
+                cell.imageScene5.isHidden = true
+                cell.imageScene6.isHidden = true
+                cell.videoCount.stringValue = ""
+                cell.licenseButton.isHidden = true
+                cell.moreButton.isHidden = true
+                cell.imageFilm.isHidden = true
+                return cell
+            } else {
+                return nil
+            }
+        }
 
         let source = item as! Source
 
@@ -234,6 +258,23 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
         }
     }
 
+    func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
+        if let item = item as? SourceHeader {
+            return 24
+        } else {
+            return 70
+        }
+    }
+
+/*
+    func outlineView(_ outlineView: NSOutlineView, dataCellFor tableColumn: NSTableColumn?, item: Any) -> NSCell? {
+        print("dcf")
+        if let item = item as? SourceHeader {
+            return NSTextFieldCell(textCell: item.name)
+        }
+
+        return nil
+    }*/
 }
 
 extension SourcesViewController: CheckboxCellViewDelegate {

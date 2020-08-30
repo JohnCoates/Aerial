@@ -38,7 +38,7 @@
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
                                     <tableColumn identifier="isSelected" width="40" minWidth="40" maxWidth="40" id="Ssk-cL-P6o">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Load">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Show">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
@@ -49,7 +49,7 @@
                                         </textFieldCell>
                                         <prototypeCellViews>
                                             <tableCellView identifier="isSelectedCell" id="Xuz-Uo-wO2" customClass="CheckboxCellView" customModule="Aerial" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="0.0" width="38" height="68"/>
+                                                <rect key="frame" x="18" y="0.0" width="38" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wGa-S6-kGM">
@@ -83,7 +83,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="valueColumnCell" id="sPv-Lx-coN" customClass="DescriptionCellView" customModule="Aerial" customModuleProvider="target">
-                                                <rect key="frame" x="63" y="0.0" width="602" height="68"/>
+                                                <rect key="frame" x="73" y="0.0" width="602" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k0S-C5-p57">
@@ -270,7 +270,7 @@ line2</string>
                                         </textFieldCell>
                                         <prototypeCellViews>
                                             <tableCellView id="TlS-Vu-nlh" customClass="ActionCellView" customModule="Aerial" customModuleProvider="target">
-                                                <rect key="frame" x="682" y="0.0" width="61" height="68"/>
+                                                <rect key="frame" x="692" y="0.0" width="61" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button toolTip="Download videos from this source now" id="dhO-VP-Rzn">

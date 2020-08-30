@@ -8,6 +8,11 @@
 
 import Foundation
 
+struct SourceHeader {
+    let name: String
+    let sources: [Source]
+}
+
 struct SourceList {
     // This is the current one until next fall
     static let tvOS13 = Source(name: "tvOS 13",
@@ -60,7 +65,7 @@ struct SourceList {
                 && !folder.lastPathComponent.starts(with: "Thumbnails")
                 && !folder.lastPathComponent.starts(with: "Cache") {
 
-                if folder.lastPathComponent.starts(with: "Community") {
+                if folder.lastPathComponent.starts(with: "Community") || folder.lastPathComponent.starts(with: "Josh") {
                     foundCommunity = true
                 }
 
@@ -80,6 +85,42 @@ struct SourceList {
         }
 
         return sources
+    }
+
+    static func categorizedSourceList() -> [SourceHeader] {
+        var communities: [Source] = []
+        var online: [Source] = []
+        var local: [Source] = []
+
+        for source in list where !source.name.starts(with: "tvOS") {
+            if source.type == .local {
+                local.append(source)
+            } else {
+                // This may need to be changed in the future
+                if !source.isCachable {
+                    online.append(source)
+                } else {
+                    communities.append(source)
+                }
+            }
+        }
+
+        // Then we build our list
+        var output: [SourceHeader] = []
+
+        if !communities.isEmpty {
+            output.append(SourceHeader(name: "Community Videos", sources: communities))
+        }
+
+        if !online.isEmpty {
+            output.append(SourceHeader(name: "Online Sources", sources: online))
+        }
+
+        if !local.isEmpty {
+            output.append(SourceHeader(name: "Local Sources", sources: local))
+        }
+
+        return output
     }
 
     static func fetchOnlineManifest(url: URL) {
