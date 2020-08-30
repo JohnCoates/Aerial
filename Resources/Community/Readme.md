@@ -40,6 +40,7 @@ The following people has helped to improve Aerial by providing translations and 
 - Hebrew by [@kaaspad](https://github.com/kaaspad)
 - Arabic by [@kachikulu](https://github.com/kachikulu)
 - Simplified Chinese by [@LinkeyLeo](https://github.com/LinkeyLeo)
+- Japanese by [@DrMORO617](https://github.com/DrMORO617)
 
 ## Sponsorship
 
