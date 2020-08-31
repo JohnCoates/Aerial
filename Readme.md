@@ -51,7 +51,7 @@ Need more information on install, setup, or uninstall? Or want to install via ho
 - 20 new videos! Starting with version 2.0, Aerial includes new videos kindly shared by Joshua Michaels & Hal Bergman: 
 
 <p align="center">
-  <a href="https://vimeo.com/449330833/36becf3668">
+  <a href="https://vimeo.com/453430619">
   <img src="https://user-images.githubusercontent.com/37544189/90661757-d7d77b00-e247-11ea-8b92-7301c39bfced.jpg">
   </a>
 </p>
