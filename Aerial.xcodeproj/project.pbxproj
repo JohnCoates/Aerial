@@ -825,6 +825,13 @@
 			remoteGlobalIDString = C4D50DF71BFB693F0053B624;
 			remoteInfo = OAuthSwiftTests;
 		};
+		37F36D7524F416130076F3C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C48B28011AFA598D00C7DEF6;
+			remoteInfo = OAuthSwiftMacOS;
+		};
 		FA7199731D94EC5A00FBC99B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FACAF19C1BD9FC6000E539DC /* Project object */;
@@ -1846,6 +1853,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				37F36D7624F416130076F3C2 /* PBXTargetDependency */,
 			);
 			name = Aerial;
 			productName = Aerial;
@@ -2824,6 +2832,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		37F36D7624F416130076F3C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OAuthSwiftMacOS;
+			targetProxy = 37F36D7524F416130076F3C2 /* PBXContainerItemProxy */;
+		};
 		FA7199741D94EC5A00FBC99B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FA143CD51BDA3E880041A82B /* AerialApp */;
