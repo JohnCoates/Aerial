@@ -35,9 +35,8 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="Hz6-mo-xeY">
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
             <rect key="frame" x="0.0" y="0.0" width="800" height="642"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hc3-Qt-NLz">
                     <rect key="frame" x="237" y="547" width="217" height="22"/>
@@ -80,7 +79,7 @@
                             </textFieldCell>
                         </textField>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sol-3V-MU8">
-                            <rect key="frame" x="524" y="48" width="160" height="40"/>
+                            <rect key="frame" x="536" y="48" width="148" height="40"/>
                             <buttonCell key="cell" type="push" title="Show in Finder" bezelStyle="rounded" image="NSFolder" imagePosition="left" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cWi-3F-ufP">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -157,7 +156,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kpn-Oc-zFD">
-                            <rect key="frame" x="194" y="105" width="168" height="40"/>
+                            <rect key="frame" x="194" y="105" width="156" height="40"/>
                             <buttonCell key="cell" type="push" title="Add current network" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jY1-rg-JFf">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -246,7 +245,7 @@
                             </connections>
                         </popUpButton>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="frC-4B-UNN">
-                            <rect key="frame" x="362" y="105" width="100" height="40"/>
+                            <rect key="frame" x="350" y="105" width="88" height="40"/>
                             <buttonCell key="cell" type="push" title="Reset list" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JAx-l1-U4r">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -286,7 +285,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UgL-8O-Ljc">
-                            <rect key="frame" x="530" y="357" width="160" height="40"/>
+                            <rect key="frame" x="542" y="357" width="148" height="40"/>
                             <buttonCell key="cell" type="push" title="Show in Finder" bezelStyle="rounded" image="NSFolder" imagePosition="left" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NJy-ug-gBa">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -304,7 +303,7 @@
                             </textFieldCell>
                         </textField>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="opJ-yV-dsw">
-                            <rect key="frame" x="552" y="255" width="138" height="40"/>
+                            <rect key="frame" x="564" y="255" width="126" height="40"/>
                             <buttonCell key="cell" type="push" title="Pick Folder" bezelStyle="rounded" image="NSFolder" imagePosition="left" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="61J-7N-dOP">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -445,6 +444,7 @@
                 <constraint firstItem="u4o-WA-mfN" firstAttribute="top" secondItem="hc3-Qt-NLz" secondAttribute="bottom" constant="15" id="ctb-T0-4oy"/>
                 <constraint firstItem="Epz-1h-oTj" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="40" id="gf5-ra-CyY"/>
                 <constraint firstItem="hc3-Qt-NLz" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="76" id="hBz-lh-pLq"/>
+                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="800" id="v8T-gL-Hvs"/>
                 <constraint firstItem="g6L-Vy-rKN" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="34" id="zOd-v7-D30"/>
             </constraints>
             <point key="canvasLocation" x="-480" y="-707"/>

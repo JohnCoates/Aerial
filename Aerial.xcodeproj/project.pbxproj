@@ -483,6 +483,9 @@
 		03977F1B250E6918008FBAFD /* nl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03977EF0250E6918008FBAFD /* nl.json */; };
 		03977F1C250E6918008FBAFD /* nl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03977EF0250E6918008FBAFD /* nl.json */; };
 		03977F1D250E6918008FBAFD /* nl.json in Resources */ = {isa = PBXBuildFile; fileRef = 03977EF0250E6918008FBAFD /* nl.json */; };
+		03977F20250E7165008FBAFD /* TimeMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03977F1F250E7165008FBAFD /* TimeMachine.swift */; };
+		03977F21250E7165008FBAFD /* TimeMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03977F1F250E7165008FBAFD /* TimeMachine.swift */; };
+		03977F22250E7165008FBAFD /* TimeMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03977F1F250E7165008FBAFD /* TimeMachine.swift */; };
 		03A2CB9C216BA9AF0061E8E8 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A2CB9B216BA9AF0061E8E8 /* VideoManager.swift */; };
 		03A2CB9D216BB1490061E8E8 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A2CB9B216BA9AF0061E8E8 /* VideoManager.swift */; };
 		03A42A992449F5EA003B3012 /* white_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A42A822449F5EA003B3012 /* white_retina.png */; };
@@ -1031,6 +1034,7 @@
 		03977EEE250E6918008FBAFD /* zh_CN.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zh_CN.json; sourceTree = "<group>"; };
 		03977EEF250E6918008FBAFD /* ar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ar.json; sourceTree = "<group>"; };
 		03977EF0250E6918008FBAFD /* nl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nl.json; sourceTree = "<group>"; };
+		03977F1F250E7165008FBAFD /* TimeMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeMachine.swift; sourceTree = "<group>"; };
 		03A2CB9B216BA9AF0061E8E8 /* VideoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
 		03A42A822449F5EA003B3012 /* white_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_retina.png; sourceTree = "<group>"; };
 		03A42A9B2449F601003B3012 /* purple_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purple_retina.png; sourceTree = "<group>"; };
@@ -1712,6 +1716,7 @@
 				03233B67217272640077D3F9 /* PoiStringProvider.swift */,
 				03DC004D248BC5A4005DB0F4 /* Cache.swift */,
 				03D3A10C24C5D7CC0091FE99 /* Thumbnails.swift */,
+				03977F1F250E7165008FBAFD /* TimeMachine.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -2536,6 +2541,7 @@
 				0313329D24BF3FA700C84A05 /* SidebarViewController.swift in Sources */,
 				0345D00B24BF4E8C0001045C /* Sidebar.swift in Sources */,
 				0396D54024B8B7ED00CC021B /* InfoMessageView.swift in Sources */,
+				03977F21250E7165008FBAFD /* TimeMachine.swift in Sources */,
 				03BDBEA324C467EC00BBD5E9 /* BrightnessViewController.swift in Sources */,
 				0396D54224B8B7ED00CC021B /* ConditionLayer.swift in Sources */,
 				0396D54324B8B7ED00CC021B /* VideoManager.swift in Sources */,
@@ -2675,6 +2681,7 @@
 				FA36BD401BE57F8E00D5E03B /* VideoDownload.swift in Sources */,
 				0313F9F022955F3B00B074BB /* CustomVideoFolders.swift in Sources */,
 				03BF51BD23A26522008AD373 /* LayerManager.swift in Sources */,
+				03977F22250E7165008FBAFD /* TimeMachine.swift in Sources */,
 				FA6F81DD1D939455007975FE /* Preferences.swift in Sources */,
 				03933B8D24C3986800A98D94 /* SourcesViewController.swift in Sources */,
 				0321A54624D5C863004F1975 /* NSButton+icons.swift in Sources */,
@@ -2793,6 +2800,7 @@
 				0313329C24BF3FA700C84A05 /* SidebarViewController.swift in Sources */,
 				0345D00A24BF4E8C0001045C /* Sidebar.swift in Sources */,
 				03A596D323AA750F0097EA66 /* InfoMessageView.swift in Sources */,
+				03977F20250E7165008FBAFD /* TimeMachine.swift in Sources */,
 				03BDBEA224C467EC00BBD5E9 /* BrightnessViewController.swift in Sources */,
 				03A42AA3244A0E5F003B3012 /* ConditionLayer.swift in Sources */,
 				03A2CB9C216BA9AF0061E8E8 /* VideoManager.swift in Sources */,
@@ -3130,7 +3138,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.8a;
+				CURRENT_PROJECT_VERSION = 2.0.9;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3138,7 +3146,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0.8a;
+				MARKETING_VERSION = 2.0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3158,7 +3166,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.8a;
+				CURRENT_PROJECT_VERSION = 2.0.9;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3166,7 +3174,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0.8a;
+				MARKETING_VERSION = 2.0.9;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -57,7 +57,7 @@ class CacheViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //makeTimeMachineIgnore.state = PrefsCache.hideFromTimeMachine ? .on : .off
+        makeTimeMachineIgnore.state = TimeMachine.isExcluded() ? .on : .off
         manuallyPick.state = PrefsCache.overrideCache ? .on : .off
         if #available(OSX 10.15, *) {
             manuallyPick.isEnabled = false
@@ -66,6 +66,8 @@ class CacheViewController: NSViewController {
 
         // Cache panel
         automaticallyDownloadCheckbox.state = PrefsCache.enableManagement ? .on : .off
+
+        debugLog("tm : \(TimeMachine.isExcluded())")
 
         limitTextField.doubleValue = PrefsCache.cacheLimit
         limitSlider.doubleValue = PrefsCache.cacheLimit
@@ -98,8 +100,12 @@ class CacheViewController: NSViewController {
         }
 
         // This is the total max usage, used to draw the bar
-        let totalPotentialSize = max(maxCache, usedCache)
-        let totalUsage = usedCache
+        var totalPotentialSize = max(maxCache, usedCache)
+        if totalPotentialSize == 0 {
+            totalPotentialSize = 1
+        }
+        //let totalUsage = usedCache
+
         let cacheWidth = Int(usedCache * 486 / totalPotentialSize)
         let freeWidth = Int(freeCache * 486 / totalPotentialSize)
 
@@ -108,9 +114,10 @@ class CacheViewController: NSViewController {
         if usedCache > 0 {
             cacheString.append("\(usedCache.rounded(toPlaces: 1)) GB used by cached videos")
             cacheBox.isHidden = false
-            cacheBox.frame.origin.x = CGFloat(206 )   // We offset by 1px to make the borders overlap
+            cacheBox.frame.origin.x = CGFloat(206)   // We offset by 1px to make the borders overlap
             cacheBox.setFrameSize(NSSize(width: cacheWidth, height: 23))
         } else {
+            cacheString.append("No space used by cached videos")
             cacheBox.isHidden = true
         }
 
@@ -271,22 +278,10 @@ class CacheViewController: NSViewController {
 
     @IBAction func makeTimeMachineIgnore(_ sender: NSButton) {
         if sender.state == .on {
-            // swiftlint:disable:next line_length
-            if Aerial.showAlert(question: "Make Time Machine ignore your cache", text: "If you enable this setting, Aerial will move its cache to a Caches folder on your computer. This will have the effect to make Time Machine ignore it on backups\n\nPlease note however that Caches folder can and will be wiped at will by macOS, or other cleanup tools and your videos may disappear.", button1: "I understand the tradeoffs, do it!", button2: "Let me think it over a bit...") {
-                // Ok, well you asked for it, don't you dare open an issue about video disappearing :D
-                // Cache.migrateToCaches()
-                // swiftlint:disable:next line_length
-                Aerial.showInfoAlert(title: "Cache migration done", text: "Your cache was migrated. You need to close this panel and close System Preferences in order for your new cache settings to work")
-            } else {
-                sender.state = .off
-            }
+            TimeMachine.exclude()
         } else {
-            Cache.migrate()
-            // swiftlint:disable:next line_length
-            Aerial.showInfoAlert(title: "Cache migration done", text: "Your cache was migrated. You need to close this panel and close System Preferences in order for your new cache settings to work")
+            TimeMachine.reinclude()
         }
-
-        //PrefsCache.hideFromTimeMachine = sender.state == .on
     }
 
     @IBAction func manuallyPIckClick(_ sender: NSButton) {
