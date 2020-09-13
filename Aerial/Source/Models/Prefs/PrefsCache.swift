@@ -48,8 +48,8 @@ struct PrefsCache {
     static var showBackgroundDownloads: Bool
 
     // Should we use Caches instead of Application Support
-    @SimpleStorage(key: "hideFromTimeMachine", defaultValue: false)
-    static var hideFromTimeMachine: Bool
+    //@SimpleStorage(key: "hideFromTimeMachine", defaultValue: false)
+    //static var hideFromTimeMachine: Bool
 
     // Should we override the cache
     @SimpleStorage(key: "overrideCache", defaultValue: false)

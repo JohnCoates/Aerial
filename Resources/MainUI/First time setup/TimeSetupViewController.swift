@@ -91,10 +91,11 @@ class TimeSetupViewController: NSViewController {
             //let lat = String(format: "%.2f", coordinates.latitude)
             //let lon = String(format: "%.2f", coordinates.longitude)
 
-            TimeManagement.sharedInstance.calculateFromCoordinates()
+            _ = TimeManagement.sharedInstance.calculateFromCoordinates()
             let (sunrise, sunset) = TimeManagement.sharedInstance.getSunriseSunsetForMode(.official)
 
             if let vSunrise = sunrise, let vSunset = sunset {
+                // swiftlint:disable:next line_length
                 self.locationLabel.stringValue = "Next Sunrise : \(self.timeFormatter.string(from: vSunrise)) Next Sunset: \(self.timeFormatter.string(from: vSunset))"
             } else {
                 self.locationLabel.stringValue = "Cannot calculate sunset and sunrise"

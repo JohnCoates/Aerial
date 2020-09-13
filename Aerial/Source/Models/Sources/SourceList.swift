@@ -80,7 +80,7 @@ struct SourceList {
 
         if !foundCommunity {
             DispatchQueue.main.async {
-                fetchOnlineManifest(url: URL(string: "https://raw.githubusercontent.com/glouel/AerialCommunity/master/")!)
+                fetchOnlineManifest(url: URL(string: "https://aerialscreensaver.github.io/community/")!)
             }
         }
 

@@ -383,7 +383,10 @@ class VideosViewController: NSViewController {
             }
 
             player.replaceCurrentItem(with: localitem)
-            //player.play()
+            // We may not auto play the video
+            if PrefsAdvanced.autoPlayPreviews {
+                player.play()
+            }
 
             // Set notification...
             NotificationCenter.default.addObserver(self,
@@ -480,7 +483,9 @@ class VideosViewController: NSViewController {
                 }
             } else {
                 // all
-                return VideoList.instance.videos.filter({ !PrefsVideos.hidden.contains($0.id) }).sorted { $0.secondaryName < $1.secondaryName }[videoListTableView.selectedRow]
+                return VideoList.instance.videos
+                    .filter({ !PrefsVideos.hidden.contains($0.id) })
+                    .sorted { $0.secondaryName < $1.secondaryName }[videoListTableView.selectedRow]
             }
         }
 

@@ -97,19 +97,10 @@ struct Cache {
             if FileManager.default.fileExists(atPath: Preferences.sharedInstance.customCacheDirectory!) {
                 path = Preferences.sharedInstance.customCacheDirectory!
             } else {
-                errorLog("Could not create your Caches path, reverting to default settings")
+                errorLog("Could not find your custom Caches path, reverting to default settings")
                 PrefsCache.overrideCache = false
                 path = Cache.supportPath.appending("/Cache")
 
-            }
-        } else if PrefsCache.hideFromTimeMachine {
-            var tpath = Cache.formerCachePath
-            if tpath != nil {
-                path = tpath!
-            } else {
-                errorLog("Could not create your Caches path, reverting to default settings")
-                PrefsCache.hideFromTimeMachine = false
-                path = Cache.supportPath.appending("/Cache")
             }
         } else {
             path = Cache.supportPath.appending("/Cache")
@@ -198,7 +189,7 @@ struct Cache {
      - Moves the video files from Caches to the `Application Support/Aerial/Cache` sub directory
      */
     static func migrate() {
-        if !PrefsCache.hideFromTimeMachine && !PrefsCache.overrideCache {
+        if !PrefsCache.overrideCache {
             migrateAppSupport()
             migrateOldCache()
         }
@@ -228,31 +219,6 @@ struct Cache {
         }
     }
 
-    static func migrateToCaches() {
-        if let formerCachePath = formerCachePath {
-            do {
-                let formerCacheURL = URL(fileURLWithPath: formerCachePath as String)
-                let cachePathURL = URL(fileURLWithPath: supportPath).appendingPathComponent("Cache")
-
-                let directoryContent = try FileManager.default.contentsOfDirectory(at: cachePathURL, includingPropertiesForKeys: nil)
-                let videoURLs = directoryContent.filter { $0.pathExtension == "mov" }
-
-                if !videoURLs.isEmpty {
-                    debugLog("Starting migration of your video files from Cache to the /Caches folder")
-                    for videoURL in videoURLs {
-                        debugLog("moving : \(videoURL)")
-                        let newURL = URL(fileURLWithPath: formerCachePath).appendingPathComponent(videoURL.lastPathComponent)
-                        debugLog("to : \(newURL)")
-                        try FileManager.default.moveItem(at: videoURL, to: newURL)
-                    }
-                    debugLog("Migration done.")
-                }
-            } catch {
-                errorLog("Error during migration, please report")
-                errorLog(error.localizedDescription)
-            }
-        }
-    }
     /**
      Migrate video that may be at the root of a user's /Caches/Aerial/
      */
@@ -627,5 +593,4 @@ struct Cache {
         debugLog("Queuing video : \(rotation.first!.secondaryName)")
         VideoManager.sharedInstance.queueDownload(rotation.first!)
     }
-
 }

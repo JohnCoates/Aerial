@@ -378,7 +378,7 @@ class VideoList {
 
         let (shouldRestrictByDayNight, restrictTo) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
 
-        debugLog("remaining in plist : \(playlist.count)")
+        debugLog("remaining in playlist : \(playlist.count)")
         // We may need to regenerate a playlist!
         if playlist.isEmpty || restrictTo != playlistRestrictedTo || shouldRestrictByDayNight != playlistIsRestricted {
             generatePlaylist(isRestricted: shouldRestrictByDayNight, restrictedTo: restrictTo)

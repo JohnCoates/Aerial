@@ -57,7 +57,7 @@ class CacheViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        makeTimeMachineIgnore.state = PrefsCache.hideFromTimeMachine ? .on : .off
+        //makeTimeMachineIgnore.state = PrefsCache.hideFromTimeMachine ? .on : .off
         manuallyPick.state = PrefsCache.overrideCache ? .on : .off
         if #available(OSX 10.15, *) {
             manuallyPick.isEnabled = false
@@ -89,8 +89,13 @@ class CacheViewController: NSViewController {
     func updateCacheBox() {
         let usedCache = Cache.size()
 
-        let maxCache = PrefsCache.cacheLimit
-        let freeCache = usedCache > maxCache ? 0 : maxCache - usedCache
+        var maxCache = PrefsCache.cacheLimit
+        var freeCache = usedCache > maxCache ? 0 : maxCache - usedCache
+
+        if PrefsCache.cacheLimit == 61 || !PrefsCache.enableManagement {
+            freeCache = 0
+            maxCache = usedCache
+        }
 
         // This is the total max usage, used to draw the bar
         let totalPotentialSize = max(maxCache, usedCache)
@@ -101,7 +106,7 @@ class CacheViewController: NSViewController {
         var cacheString = ""
 
         if usedCache > 0 {
-            cacheString.append("\(usedCache.rounded(toPlaces: 1)) GB used by cached videos, ")
+            cacheString.append("\(usedCache.rounded(toPlaces: 1)) GB used by cached videos")
             cacheBox.isHidden = false
             cacheBox.frame.origin.x = CGFloat(206 )   // We offset by 1px to make the borders overlap
             cacheBox.setFrameSize(NSSize(width: cacheWidth, height: 23))
@@ -110,12 +115,14 @@ class CacheViewController: NSViewController {
         }
 
         if freeCache > 0 {
-            cacheString.append("\(freeCache.rounded(toPlaces: 1)) GB remaining in your cache limit")
+            cacheString.append(", \(freeCache.rounded(toPlaces: 1)) GB remaining in your cache limit")
             freeBox.isHidden = false
             freeBox.frame.origin.x = CGFloat(206 + cacheWidth - 1)   // We offset by 1px to make the borders overlap
             freeBox.setFrameSize(NSSize(width: freeWidth, height: 23))
         } else {
-            cacheString.append("your cache is full!")
+            if PrefsCache.cacheLimit != 61 && PrefsCache.enableManagement {
+                cacheString.append(", your cache is full!")
+            }
             freeBox.isHidden = true
         }
 
@@ -132,6 +139,7 @@ class CacheViewController: NSViewController {
     @IBAction func automaticallyDownloadClick(_ sender: NSButton) {
         PrefsCache.enableManagement = sender.state == .on
         updateCacheVisibility()
+        updateCacheBox()
     }
 
     @IBAction func limitSliderChange(_ sender: NSSlider) {
@@ -266,7 +274,7 @@ class CacheViewController: NSViewController {
             // swiftlint:disable:next line_length
             if Aerial.showAlert(question: "Make Time Machine ignore your cache", text: "If you enable this setting, Aerial will move its cache to a Caches folder on your computer. This will have the effect to make Time Machine ignore it on backups\n\nPlease note however that Caches folder can and will be wiped at will by macOS, or other cleanup tools and your videos may disappear.", button1: "I understand the tradeoffs, do it!", button2: "Let me think it over a bit...") {
                 // Ok, well you asked for it, don't you dare open an issue about video disappearing :D
-                Cache.migrateToCaches()
+                // Cache.migrateToCaches()
                 // swiftlint:disable:next line_length
                 Aerial.showInfoAlert(title: "Cache migration done", text: "Your cache was migrated. You need to close this panel and close System Preferences in order for your new cache settings to work")
             } else {
@@ -278,7 +286,7 @@ class CacheViewController: NSViewController {
             Aerial.showInfoAlert(title: "Cache migration done", text: "Your cache was migrated. You need to close this panel and close System Preferences in order for your new cache settings to work")
         }
 
-        PrefsCache.hideFromTimeMachine = sender.state == .on
+        //PrefsCache.hideFromTimeMachine = sender.state == .on
     }
 
     @IBAction func manuallyPIckClick(_ sender: NSButton) {

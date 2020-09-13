@@ -13,6 +13,9 @@ struct PrefsAdvanced {
     @SimpleStorage(key: "muteSound", defaultValue: true)
     static var muteSound: Bool
 
+    @SimpleStorage(key: "autoPlayPreviews", defaultValue: false)
+    static var autoPlayPreviews: Bool
+
     @SimpleStorage(key: "firstTimeSetup", defaultValue: false)
     static var firstTimeSetup: Bool
 

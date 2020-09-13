@@ -31,6 +31,9 @@ class AdvancedViewController: NSViewController {
     @IBOutlet var videoFadesPopup: NSPopUpButton!
     @IBOutlet var rightArrowSkipCheckbox: NSButton!
     @IBOutlet var muteSoundCheckbox: NSButton!
+
+    @IBOutlet var autoplayPreviews: NSButton!
+
     @IBOutlet var onBatteryPopup: NSPopUpButton!
 
     @IBOutlet var languagePopup: NSPopUpButton!
@@ -73,6 +76,7 @@ class AdvancedViewController: NSViewController {
         }
 
         muteSoundCheckbox.state = PrefsAdvanced.muteSound ? .on : .off
+        autoplayPreviews.state = PrefsAdvanced.autoPlayPreviews ? .on : .off
 
         onBatteryPopup.selectItem(at: PrefsVideos.onBatteryMode.rawValue)
 
@@ -179,6 +183,10 @@ class AdvancedViewController: NSViewController {
         PrefsAdvanced.muteSound = sender.state == .on
     }
 
+    @IBAction func autoPlaysPreviewsClick(_ sender: NSButton) {
+        PrefsAdvanced.autoPlayPreviews = sender.state == .on
+    }
+
     @IBAction func onBatteryPopupChange(_ sender: NSPopUpButton) {
         PrefsVideos.onBatteryMode = OnBatteryMode(rawValue: sender.indexOfSelectedItem)!
     }
@@ -204,7 +212,12 @@ class AdvancedViewController: NSViewController {
     }
 
     @IBAction func resetAllSettings(_ sender: NSButton) {
-        if Aerial.showAlert(question: "Reset all settings?", text: "This will reset all your settings. After they are reset, Aerial will close System Preferences, you will have to reload it to access settings again.\n\nAre you sure you want to reset your settings?", button1: "Reset my settings", button2: "Cancel") {
+        // swiftlint:disable line_length
+        if Aerial.showAlert(
+            question: "Reset all settings?",
+            text: "This will reset all your settings. After they are reset, Aerial will close System Preferences, you will have to reload it to access settings again.\n\nAre you sure you want to reset your settings?",
+            button1: "Reset my settings",
+            button2: "Cancel") {
 
 /*            windowController!.window?.sheetParent?.endSheet(windowController!.window!)
             let app = NSRunningApplication.current
