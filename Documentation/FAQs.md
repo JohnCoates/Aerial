@@ -34,7 +34,7 @@ If this is your first time on GitHub or you are not a "power user" we reccomend 
 ## How do I change my settings?
 
 1. Open System Preferences 
-2. Click on Desktop & Screen Saver in System Preferneces 
+2. Click on Desktop & Screen Saver in System Preferences 
 
 <img width="128" alt="Desktop and Screen Saver Prefs" src="https://user-images.githubusercontent.com/18543749/90852443-831a2a00-e345-11ea-81ce-48b7632cd537.png">
 
@@ -96,7 +96,7 @@ When caching is set to **manual** you will need to download and manage your cach
 
 <h3> Manual Cache Management</h3>
 
-1. Open Aerial in System Preferneces 
+1. Open Aerial in System Preferences 
 2. Click on the settings tab (gear at the top of the sidebar)
 3. Click on `Cache` on the sidebar
 4. Uncheck 'Automatically download videos` 
@@ -105,7 +105,7 @@ When caching is set to **manual** you will need to download and manage your cach
 6. Note that this may take up a significant amount of disk space. To delete or prune your cache, click the `Show in Finder` button and delete any videos you no longer want. 
 
 ### Automatic Cache Management
-1. Open Aerial in System Preferneces 
+1. Open Aerial in System Preferences 
 2. Click on the settings tab (gear at the top of the sidebar)
 3. Click on `Cache` on the sidebar
 4. Check 'Automatically download videos` 
