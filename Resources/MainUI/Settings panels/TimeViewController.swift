@@ -52,6 +52,7 @@ class TimeViewController: NSViewController {
         return formatter
     }()
 
+    // swiftlint:disable cyclomatic_complexity
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -161,7 +162,7 @@ class TimeViewController: NSViewController {
             return
         case .locationService:
             timeBarView.isHidden = false
-            TimeManagement.sharedInstance.calculateFromCoordinates()
+            _ = TimeManagement.sharedInstance.calculateFromCoordinates()
         }
 
         let (sunrise, sunset) = TimeManagement.sharedInstance.getSunriseSunset()

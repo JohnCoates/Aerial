@@ -9,6 +9,7 @@
 import Cocoa
 
 class SourcesViewController: NSViewController {
+    var customVideoController: CustomVideoController?
 
     @IBOutlet var sourceOutlineView: SourceOutlineView!
 
@@ -70,6 +71,23 @@ class SourcesViewController: NSViewController {
         }
     }
 
+    @IBAction func addLocalClick(_ sender: NSButton) {
+        // We also load our CustomVideos nib here
+        let bundle = Bundle(for: CustomVideoController.self)
+
+        customVideoController = CustomVideoController()
+        var topLevelObjects: NSArray? = NSArray()
+        if !bundle.loadNibNamed(NSNib.Name("CustomVideos"),
+                            owner: customVideoController,
+                            topLevelObjects: &topLevelObjects) {
+            errorLog("Could not load nib for CustomVideos, please report")
+        }
+        DispatchQueue.main.async {
+            self.customVideoController!.windowDidLoad()
+            self.customVideoController!.show(sender: sender, controller: self)
+            //self.customVideoController!.window!.makeKeyAndOrderFront(self)
+        }
+    }
     @IBAction func addOnlineClick(_ sender: Any) {
         addOnlineWindow.makeKeyAndOrderFront(self)
     }
@@ -153,6 +171,7 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
     }
 
     // Set the content for each row/column element
+    // swiftlint:disable cyclomatic_complexity
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
 
         guard let columnIdentifier = tableColumn?.identifier.rawValue else {
@@ -259,7 +278,7 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
     }
 
     func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
-        if let item = item as? SourceHeader {
+        if item is SourceHeader {
             return 24
         } else {
             return 70

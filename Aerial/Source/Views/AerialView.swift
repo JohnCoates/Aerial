@@ -176,6 +176,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     func setup() {
         _ = TimeManagement.sharedInstance
 
+        tryCompanion()
+
         if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
             debugLog("\(self.description) AerialView setup init (V\(version)) preview: \(self.isPreview)")
             debugLog("Running \(ProcessInfo.processInfo.operatingSystemVersionString)")
@@ -614,4 +616,18 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         preferencesController = controller
         return controller.window
     }
+
+    func tryCompanion() {
+        /*debugLog("trying companion")
+
+        do {
+
+            try NSWorkspace.shared.open(URL(fileURLWithPath: "/Applications/Aerial.app"),
+                                     options: [.default],
+                                     configuration: [NSWorkspace.LaunchConfigurationKey.arguments: ["--silent"]])
+        } catch {
+            errorLog("error \(error.localizedDescription)")
+        }*/
+    }
 }
+// swiftlint:disable:this file_length

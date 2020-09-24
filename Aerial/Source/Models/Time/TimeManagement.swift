@@ -32,7 +32,7 @@ final class TimeManagement: NSObject {
             }, success: { (coordinates) in
                 self.lsLatitude = coordinates.latitude
                 self.lsLongitude = coordinates.longitude
-                debugLog("Location found \(self.lsLatitude) \(self.lsLongitude)")
+                debugLog("Location found \(self.lsLatitude ?? 0) \(self.lsLongitude ?? 0)")
                 _ = self.calculateFrom(latitude: self.lsLatitude!, longitude: self.lsLongitude!)
             })
         } else {

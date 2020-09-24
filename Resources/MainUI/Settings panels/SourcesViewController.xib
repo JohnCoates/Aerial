@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17503.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17503.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -201,7 +201,7 @@ line2</string>
                                                         </customSpacing>
                                                     </stackView>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DR3-H7-D3b">
-                                                        <rect key="frame" x="432" y="2" width="84" height="17"/>
+                                                        <rect key="frame" x="434" y="2" width="82" height="18"/>
                                                         <buttonCell key="cell" type="inline" title="View License" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ev0-LD-rjW">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="smallSystemBold"/>
@@ -211,7 +211,7 @@ line2</string>
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fLV-KX-lp1">
-                                                        <rect key="frame" x="373" y="2" width="51" height="17"/>
+                                                        <rect key="frame" x="377" y="2" width="49" height="18"/>
                                                         <buttonCell key="cell" type="inline" title="More..." bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="9KC-Rc-HHK">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="smallSystemBold"/>
@@ -314,14 +314,17 @@ line2</string>
                     </tableHeaderView>
                 </scrollView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YCA-Kf-OqL">
-                    <rect key="frame" x="24" y="14" width="136" height="40"/>
+                    <rect key="frame" x="24" y="14" width="124" height="40"/>
                     <buttonCell key="cell" type="push" title="Add Local..." bezelStyle="rounded" image="folder" catalog="system" imagePosition="leading" alignment="center" controlSize="large" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="M9G-4n-Orj">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="addLocalClick:" target="-2" id="qwA-Tu-7E3"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H7z-UB-Yzx">
-                    <rect key="frame" x="168" y="14" width="140" height="40"/>
+                    <rect key="frame" x="156" y="14" width="128" height="40"/>
                     <buttonCell key="cell" type="push" title="Add Online..." bezelStyle="rounded" image="antenna.radiowaves.left.and.right" catalog="system" imagePosition="leading" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nc1-j7-Z9R">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -331,7 +334,7 @@ line2</string>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hJ0-L4-qoE">
-                    <rect key="frame" x="316" y="14" width="176" height="40"/>
+                    <rect key="frame" x="292" y="14" width="164" height="40"/>
                     <buttonCell key="cell" type="push" title="Get More Videos..." bezelStyle="rounded" image="cloud" catalog="system" imagePosition="leading" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Yg6-pt-6h6">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -349,7 +352,7 @@ line2</string>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="P2e-fe-Js2">
-                    <rect key="frame" x="601" y="14" width="188" height="40"/>
+                    <rect key="frame" x="613" y="14" width="176" height="40"/>
                     <buttonCell key="cell" type="push" title="Download All Videos" bezelStyle="rounded" image="book" catalog="system" imagePosition="leading" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dsu-LI-sTF">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -359,7 +362,7 @@ line2</string>
                     </connections>
                 </button>
                 <progressIndicator maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="heQ-Ra-4Qf">
-                    <rect key="frame" x="583" y="26" width="16" height="16"/>
+                    <rect key="frame" x="595" y="26" width="16" height="16"/>
                 </progressIndicator>
             </subviews>
             <constraints>
@@ -412,7 +415,7 @@ line2</string>
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b1p-kF-lsq">
-                        <rect key="frame" x="552" y="14" width="86" height="40"/>
+                        <rect key="frame" x="576" y="14" width="74" height="40"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RQq-xj-vRk">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -436,7 +439,7 @@ line2</string>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSCaution" id="V9e-KD-JHL"/>
                     </imageView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sxx-N6-QgG">
-                        <rect key="frame" x="646" y="14" width="80" height="40"/>
+                        <rect key="frame" x="658" y="14" width="68" height="40"/>
                         <buttonCell key="cell" type="push" title="Install" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Q0Q-DA-siQ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -464,7 +467,7 @@ line2</string>
     </objects>
     <resources>
         <image name="NSCaution" width="32" height="32"/>
-        <image name="NSTouchBarDownloadTemplate" width="18" height="30"/>
+        <image name="NSTouchBarDownloadTemplate" width="15" height="15"/>
         <image name="antenna.radiowaves.left.and.right" catalog="system" width="16" height="14"/>
         <image name="book" catalog="system" width="18" height="15"/>
         <image name="cloud" catalog="system" width="17" height="12"/>

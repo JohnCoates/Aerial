@@ -19,6 +19,7 @@ enum SourceScene: String, Codable {
     case nature = "Nature", city = "City", space = "Space", sea = "Sea", beach = "Beach", countryside = "Countryside"
 }
 
+// swiftlint:disable:next type_body_length
 struct Source: Codable {
     var name: String
     var description: String

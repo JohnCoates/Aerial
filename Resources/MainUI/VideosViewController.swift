@@ -645,3 +645,4 @@ extension VideosViewController: NSTableViewDelegate {
         updateVideoView()
     }
 }
+// swiftlint:disable:this file_length

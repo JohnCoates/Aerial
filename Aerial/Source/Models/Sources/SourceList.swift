@@ -65,7 +65,7 @@ struct SourceList {
                 && !folder.lastPathComponent.starts(with: "Thumbnails")
                 && !folder.lastPathComponent.starts(with: "Cache") {
 
-                if folder.lastPathComponent.starts(with: "Community") || folder.lastPathComponent.starts(with: "Josh") {
+                if folder.lastPathComponent.starts(with: "Community") || folder.lastPathComponent.starts(with: "From") {
                     foundCommunity = true
                 }
 
@@ -85,6 +85,17 @@ struct SourceList {
         }
 
         return sources
+    }
+
+    // swiftlint:disable for_where
+    static func hasNamed(name: String) -> Bool {
+        for source in list where source.type == .local {
+            if source.name == name {
+                return true
+            }
+        }
+
+        return false
     }
 
     static func categorizedSourceList() -> [SourceHeader] {

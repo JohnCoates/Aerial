@@ -18,6 +18,7 @@ extension RangeReplaceableCollection {
     }
 }
 
+// swiftlint:disable:next type_body_length
 class VideoList {
     enum FilterMode {
         case location, cache, time, scene, source, rotation, favorite, hidden

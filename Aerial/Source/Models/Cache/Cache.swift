@@ -28,6 +28,7 @@ import CoreWLAN
  - Attention: Shared by multiple users writable locations are no longer possible, because sandboxing is awesome !
  */
 
+// swiftlint:disable:next type_body_length
 struct Cache {
     /**
      Returns the SSID of the Wi-Fi network the user is currently connected to.
@@ -261,6 +262,7 @@ struct Cache {
                     let filename = video.lastPathComponent
                     var found = false
 
+                    // swiftlint:disable for_where
                     for candidate in VideoList.instance.videos {
                         if candidate.url.lastPathComponent == filename {
                             found = true

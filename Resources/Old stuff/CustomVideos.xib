@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.AVKitIBPlugin" version="17132"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="17154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -38,7 +38,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Manage Custom Videos" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="QvC-M9-y7g" customClass="NSPanel">
+        <window title="Manage Local Videos" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="QvC-M9-y7g" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="1163" height="630"/>
@@ -82,7 +82,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView identifier="folderCell" id="7Ix-SV-cB3">
-                                                                    <rect key="frame" x="1" y="1" width="208" height="17"/>
+                                                                    <rect key="frame" x="11" y="1" width="208" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pow-vD-4Sa">
@@ -121,10 +121,13 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="862" translatesAutoresizingMaskIntoConstraints="NO" id="zeW-AH-yaN">
-                                        <rect key="frame" x="37" y="307" width="866" height="17"/>
+                                        <rect key="frame" x="37" y="307" width="866" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <textFieldCell key="cell" selectable="YES" alignment="center" title="Click the &quot;+ Add Folder&quot; button on top of the window. You can also drag a folder into the left column." id="4j6-f0-YpW">
+                                        <textFieldCell key="cell" selectable="YES" alignment="center" id="4j6-f0-YpW">
                                             <font key="font" usesAppearanceFont="YES"/>
+                                            <string key="title">Click the "+ Add Folder" button on top of the window. You can also drag a folder into the left column.
+
+Starting with macOS 10.15, we highly recommend you put your videos in a folder in /Users/Shared/. Because of security restrictions that were introduced, locations such as Desktop, Documents, Downloads, or external drive are not possible. </string>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -420,9 +423,9 @@
                     <toolbarItem implicitItemIdentifier="49583858-EE1A-4634-AEB3-625DBF3AB8EC" label="Custom View" paletteLabel="Custom View" sizingBehavior="auto" id="X5T-B3-7hY">
                         <nil key="toolTip"/>
                         <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="BCy-1g-t5Q">
-                            <rect key="frame" x="0.0" y="14" width="152" height="17"/>
+                            <rect key="frame" x="0.0" y="14" width="137" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="center" title="Manage Custom Videos" id="lfp-Sp-ytQ">
+                            <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="center" title="Manage Local Videos" id="lfp-Sp-ytQ">
                                 <font key="font" usesAppearanceFont="YES"/>
                                 <color key="textColor" name="windowFrameTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -432,7 +435,7 @@
                     <toolbarItem implicitItemIdentifier="0D35C4F1-03BE-48E7-9411-6BE416D5D215" label="Custom View" paletteLabel="Custom View" image="NSAddTemplate" sizingBehavior="auto" id="MjR-Ti-gNi">
                         <nil key="toolTip"/>
                         <button key="view" verticalHuggingPriority="750" id="Mi6-Fv-bt4">
-                            <rect key="frame" x="0.0" y="14" width="134" height="32"/>
+                            <rect key="frame" x="0.0" y="14" width="127" height="32"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <buttonCell key="cell" type="push" title="Add Folder..." bezelStyle="rounded" image="NSAddTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AvU-Xw-Nxc">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -566,7 +569,7 @@ DQ
             </items>
             <point key="canvasLocation" x="-192" y="570"/>
         </menu>
-        <window title="Add a custom video folder" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Atl-SY-oen" customClass="NSPanel">
+        <window title="Add a local video folder" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Atl-SY-oen" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="272" y="172" width="588" height="131"/>
@@ -578,8 +581,8 @@ DQ
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="npi-Wy-4IZ">
                         <rect key="frame" x="20" y="58" width="548" height="21"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="WUt-Ke-j6t">
-                            <font key="font" usesAppearanceFont="YES"/>
+                        <textFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="WUt-Ke-j6t">
+                            <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -594,7 +597,7 @@ DQ
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UoE-IG-Sh3">
-                        <rect key="frame" x="20" y="23" width="307" height="16"/>
+                        <rect key="frame" x="20" y="21" width="307" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Tip : You can also drag a folder inside the textfield" id="l7O-bA-CcY">
                             <font key="font" metaFont="system"/>
@@ -605,7 +608,7 @@ DQ
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fQU-z6-oS0">
                         <rect key="frame" x="471" y="13" width="103" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Add folder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rve-fz-dG7">
+                        <buttonCell key="cell" type="push" title="Add folder" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rve-fz-dG7">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -619,7 +622,7 @@ DQ
         </window>
     </objects>
     <resources>
-        <image name="NSAddTemplate" width="15" height="11"/>
-        <image name="NSRemoveTemplate" width="15" height="2"/>
+        <image name="NSAddTemplate" width="14" height="13"/>
+        <image name="NSRemoveTemplate" width="14" height="4"/>
     </resources>
 </document>

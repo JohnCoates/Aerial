@@ -173,22 +173,53 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
     func processPathForVideos(url: URL) {
         debugLog("processing url for videos : \(url) ")
         let folderName = url.lastPathComponent
-        let manifestInstance = ManifestLoader.instance
+        // let manifestInstance = ManifestLoader.instance
 
         do {
             let urls = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
-            var assets = [Asset]()
+            var assets = [VideoAsset]()
 
             for lurl in urls {
                 if lurl.path.lowercased().hasSuffix(".mp4") || lurl.path.lowercased().hasSuffix(".mov") {
-                    assets.append(Asset(pointsOfInterest: [:],
-                                        url: lurl.path,
-                                        accessibilityLabel: lurl.lastPathComponent,
-                                        id: NSUUID().uuidString,
-                                        time: "day"))
+                    assets.append(VideoAsset(accessibilityLabel: folderName,
+                                             id: NSUUID().uuidString,
+                                             title: lurl.lastPathComponent,
+                                             timeOfDay: "day",
+                                             scene: "",
+                                             pointsOfInterest: [:],
+                                             url4KHDR: "",
+                                             url4KSDR: lurl.path,
+                                             url1080H264: "",
+                                             url1080HDR: "",
+                                             url1080SDR: "",
+                                             url: "",
+                                             type: "nature"))
                 }
             }
 
+            // ...
+            if SourceList.hasNamed(name: url.lastPathComponent) {
+                Aerial.showInfoAlert(title: "Source name mismatch",
+                                     text: "A source with this name already exists. Try renaming your folder and try again.")
+            } else {
+                debugLog("Creating source \(url.lastPathComponent)")
+
+                // Generate and save the Source
+                let source = Source(name: url.lastPathComponent,
+                                    description: "Local files from \(url.path)",
+                                    manifestUrl: "manifest.json",
+                                    type: .local,
+                                    scenes: [.nature],
+                                    isCachable: false,
+                                    license: "",
+                                    more: "")
+
+                SourceList.saveSource(source)
+
+                // Then the entries
+
+            }
+/*
             if let cvf = manifestInstance.customVideoFolders {
                 // check if we have this folder already ?
                 if !cvf.hasFolder(withUrl: url.path) && !assets.isEmpty {
@@ -205,7 +236,7 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
             } else {
                 // Create our initial CVF with the parsed folder
                 manifestInstance.customVideoFolders = CustomVideoFolders(folders: [Folder(url: url.path, label: folderName, assets: assets)])
-            }
+            }*/
 
             folderOutlineView.reloadData()
             folderOutlineView.expandItem(nil, expandChildren: true)
@@ -583,3 +614,4 @@ extension CustomVideoController: NSMenuDelegate {
         }
     }
 }
+// swiftlint:disable:this file_length

@@ -65,6 +65,7 @@ final class AerialVideo: CustomStringConvertible, Equatable {
         }
     }
 
+    // swiftlint:disable cyclomatic_complexity
     // MARK: - Init
     init(id: String,
          name: String,

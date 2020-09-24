@@ -273,7 +273,7 @@ extension SidebarViewController: NSOutlineViewDelegate {
 
 // Right click menu
 extension SidebarViewController: SidebarOutlineViewDelegate {
-
+    // swiftlint:disable cyclomatic_complexity
     func outlineView(outlineView: NSOutlineView, menuForItem item: Any) -> NSMenu? {
         // Make sure we're right clicking a menu entry
         if let entry = item as? Sidebar.MenuEntry {

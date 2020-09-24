@@ -8,6 +8,7 @@
 
 import Foundation
 
+// swiftlint:disable:next type_body_length
 struct SourceInfo {
     // Those videos will be ignored
     static let blacklist = ["b10-1.mov",           // Dupe of b1-1 (Hawaii, day)
