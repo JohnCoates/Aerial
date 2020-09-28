@@ -3,7 +3,7 @@
 <title>Aerial</title>
 
   <item>
-<title>2.0.5</title>
+<title>2.0.10</title>
   <description>
           <![CDATA[
 
@@ -11,8 +11,7 @@
 
 <p>What's new:</p>
 
-<ul><li>A lot! If you are upgrading from 1.9.X or older, check out our new site for more https://aerialscreensaver.github.io</li>
-<li>Fix a performance issue with previous 2.0.0s</li></ul>
+<ul><li>A lot! If you are upgrading from 1.9.X or older, check out our new site for more https://aerialscreensaver.github.io</li></ul>
 
 <p>Note: Big Sur Beta users, there's an issue currently regarding 3rd party screen savers, check this post on how to get back your settings and cache : #1036 This macOS bug affects not only all versions of Aerial, but all 3rd party screen savers.</p>
 
@@ -20,12 +19,12 @@
 
           ]]>
   </description>
-<pubDate>jeu., 27 aug. 2020 21:00:00 +0100</pubDate>
+<pubDate>jeu., 24 sep. 2020 21:00:00 +0100</pubDate>
 <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v2.0.5/Aerial.saver.zip" sparkle:version="2.0.5" 
-sparkle:edSignature="poYn/WzoxvjfyN2zdzScUWiCyU1QU1v55iZW94IoPfAakGFliYv8UYqe99GDOdllAytIULCniRxRHp6LS9X/AQ==" length="6591303" type="application/octet-stream"/>
+<enclosure url="https://github.com/JohnCoates/Aerial/releases/download/v2.0.10/Aerial.saver.zip" sparkle:version="2.0.10" 
+sparkle:edSignature="ik2c8p7tT24SA+tWKUma1yKP/vNrl6h3jBILpMCadzji/p/Doijf2rrwLG+3mpUx7q5OiHmUEzR6F3mTqNfGCQ==" length="6632455" type="application/octet-stream"/>
 </item>
-
+  
   <item>
 <title>2.0.0beta4</title>
   <description>
