@@ -54,7 +54,7 @@ struct SourceList {
 
     static var list: [Source] = [tvOS13, tvOS12, tvOS11, tvOS10] + foundSources
     // static var list: [Source] = foundSources
-    
+
     // This is where the magic happens
     static var foundSources: [Source] {
         var sources: [Source] = []
@@ -244,14 +244,14 @@ struct SourceList {
                 let videoManifest = VideoManifest(assets: assets, initialAssetCount: 1, version: 1)
 
                 SourceList.saveEntries(source: source, manifest: videoManifest)
-                
+
                 list.append(source)
             }
         } catch {
             errorLog("Could not process directory")
         }
     }
-    
+
     static func saveSource(_ source: Source) {
         let manifest = Manifest.init(name: source.name,
                                      manifestDescription: source.description,
