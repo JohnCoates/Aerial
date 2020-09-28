@@ -221,7 +221,11 @@ final class VideoCache {
     }
 
     static func sourcePathFor(_ video: AerialVideo) -> String {
-        return Cache.supportPath.appending("/" + video.source.name + "/" + video.url.lastPathComponent)
+        if video.url.isFileURL {
+            return video.url.path
+        } else {
+            return Cache.supportPath.appending("/" + video.source.name + "/" + video.url.lastPathComponent)
+        }
     }
 
     static func sourcePathFor(_ filename: String, video: AerialVideo) -> String {

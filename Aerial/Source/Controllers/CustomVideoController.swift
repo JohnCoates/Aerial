@@ -217,7 +217,9 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
                 SourceList.saveSource(source)
 
                 // Then the entries
+                let videoManifest = VideoManifest(assets: assets, initialAssetCount: 1, version: 1)
 
+                SourceList.saveEntries(source: source, manifest: videoManifest)
             }
 /*
             if let cvf = manifestInstance.customVideoFolders {
@@ -361,13 +363,12 @@ extension CustomVideoController: NSOutlineViewDataSource {
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         let manifestInstance = ManifestLoader.instance
 
-        // Return an asset from folder
-        if let folder = item as? Folder {
-            return folder.assets[index]
+        if let source = item as? Source {
+            return VideoList.instance.videos.filter({ $0.source.name == source.name })[index]
         }
 
-        // Return a folder
-        return manifestInstance.customVideoFolders!.folders[index]
+        // Return a source
+        return SourceList.foundSources.filter({ $0.type == .local })[index]
     }
 
     // Tell the view controller whether an item can be expanded (i.e. it has children) or not
@@ -387,17 +388,13 @@ extension CustomVideoController: NSOutlineViewDataSource {
         let manifestInstance = ManifestLoader.instance
 
         // A folder may have childs
-        if let folder = item as? Folder {
-            return folder.assets.count
+        if let source = item as? Source {
+            print("woo : \(VideoList.instance.videos.filter({ $0.source.name == source.name }).count)")
+            return VideoList.instance.videos.filter({ $0.source.name == source.name }).count
         }
 
-        // We return the number of folders here
-        if let cvf = manifestInstance.customVideoFolders {
-            return cvf.folders.count
-        } else {
-            return 0
-        }
-        //return manifestInstance.customVideoFolders!.folders.count
+        return SourceList.foundSources.filter({ $0.type == .local }).count
+
     }
 }
 
@@ -409,11 +406,10 @@ extension CustomVideoController: NSOutlineViewDelegate {
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         var text = ""
 
-        // Show either the folder label, or the asset label
-        if let folder = item as? Folder {
-            text = folder.label
-        } else {
-            text = (item as! Asset).accessibilityLabel
+        if let source = item as? Source {
+            text = source.name
+        } else if let video = item as? AerialVideo {
+            text = video.name
         }
 
         // Create our table cell -- note the reference to 'creatureCell' that we set when configuring the table cell
@@ -426,16 +422,16 @@ extension CustomVideoController: NSOutlineViewDelegate {
     func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
         debugLog("selected \(item)")
 
-        if let folder = item as? Folder {
+        if let source = item as? Source {
             topPathControl.isHidden = false
             folderView.isHidden = false
             fileView.isHidden = true
             onboardingLabel.isHidden = true
 
-            topPathControl.url = URL(fileURLWithPath: folder.url)
-            folderShortNameTextField.stringValue = folder.label
+            topPathControl.url = URL(fileURLWithPath: source.manifestUrl)
+            folderShortNameTextField.stringValue = source.description
             currentAsset = nil
-            currentFolder = folder
+            currentFolder = nil //folder
         } else if let file = item as? Asset {
             topPathControl.isHidden = false
             folderView.isHidden = true

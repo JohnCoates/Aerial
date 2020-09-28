@@ -16,6 +16,9 @@ class SourcesViewController: NSViewController {
     @IBOutlet var addOnlineWindow: NSWindow!
     @IBOutlet var addOnlineTextField: NSTextField!
 
+    @IBOutlet var addLocalWindow: NSWindow!
+    @IBOutlet var addLocalTextfield: NSTextField!
+
     @IBOutlet var addLocalButton: NSButton!
     @IBOutlet var addOnlineButton: NSButton!
     @IBOutlet var getMoreVideosButton: NSButton!
@@ -72,6 +75,8 @@ class SourcesViewController: NSViewController {
     }
 
     @IBAction func addLocalClick(_ sender: NSButton) {
+        addLocalWindow.makeKeyAndOrderFront(self)
+        /*
         // We also load our CustomVideos nib here
         let bundle = Bundle(for: CustomVideoController.self)
 
@@ -86,8 +91,23 @@ class SourcesViewController: NSViewController {
             self.customVideoController!.windowDidLoad()
             self.customVideoController!.show(sender: sender, controller: self)
             //self.customVideoController!.window!.makeKeyAndOrderFront(self)
-        }
+        }*/
     }
+
+    @IBAction func addLocalValidate(_ sender: Any) {
+        let url = URL(fileURLWithPath: addLocalTextfield.stringValue)
+
+        SourceList.processPathForVideos(url: url)
+        addLocalWindow.close()
+        addLocalTextfield.stringValue = ""
+        sourceOutlineView.reloadData()
+    }
+
+    @IBAction func addLocalCancel(_ sender: Any) {
+        addLocalWindow.close()
+        addLocalTextfield.stringValue = ""
+    }
+
     @IBAction func addOnlineClick(_ sender: Any) {
         addOnlineWindow.makeKeyAndOrderFront(self)
     }
@@ -237,7 +257,7 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
                     cell.videoCount.stringValue = "\(downloadedCount) of \(totalCount) videos downloaded"
                 }
 
-                if !source.isCachable {
+                if !source.isCachable && source.type != .local {
                     cell.videoCount.stringValue.append(", \(size) GB on disk (permanently saved)")
                 }
             } else {

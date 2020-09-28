@@ -53,7 +53,8 @@ struct SourceList {
                         more: "")
 
     static var list: [Source] = [tvOS13, tvOS12, tvOS11, tvOS10] + foundSources
-
+    // static var list: [Source] = foundSources
+    
     // This is where the magic happens
     static var foundSources: [Source] {
         var sources: [Source] = []
@@ -194,6 +195,63 @@ struct SourceList {
         }
     }
 
+    static func processPathForVideos(url: URL) {
+        debugLog("processing url for videos : \(url) ")
+        let folderName = url.lastPathComponent
+
+        do {
+            let urls = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
+            var assets = [VideoAsset]()
+
+            for lurl in urls {
+                if lurl.path.lowercased().hasSuffix(".mp4") || lurl.path.lowercased().hasSuffix(".mov") {
+                    assets.append(VideoAsset(accessibilityLabel: folderName,
+                                             id: NSUUID().uuidString,
+                                             title: lurl.lastPathComponent,
+                                             timeOfDay: "day",
+                                             scene: "",
+                                             pointsOfInterest: [:],
+                                             url4KHDR: "",
+                                             url4KSDR: lurl.path,
+                                             url1080H264: "",
+                                             url1080HDR: "",
+                                             url1080SDR: "",
+                                             url: "",
+                                             type: "nature"))
+                }
+            }
+
+            // ...
+            if SourceList.hasNamed(name: url.lastPathComponent) {
+                Aerial.showInfoAlert(title: "Source name mismatch",
+                                     text: "A source with this name already exists. Try renaming your folder and try again.")
+            } else {
+                debugLog("Creating source \(url.lastPathComponent)")
+
+                // Generate and save the Source
+                let source = Source(name: url.lastPathComponent,
+                                    description: "Local files from \(url.path)",
+                                    manifestUrl: "manifest.json",
+                                    type: .local,
+                                    scenes: [.nature],
+                                    isCachable: false,
+                                    license: "",
+                                    more: "")
+
+                SourceList.saveSource(source)
+
+                // Then the entries
+                let videoManifest = VideoManifest(assets: assets, initialAssetCount: 1, version: 1)
+
+                SourceList.saveEntries(source: source, manifest: videoManifest)
+                
+                list.append(source)
+            }
+        } catch {
+            errorLog("Could not process directory")
+        }
+    }
+    
     static func saveSource(_ source: Source) {
         let manifest = Manifest.init(name: source.name,
                                      manifestDescription: source.description,
@@ -217,6 +275,16 @@ struct SourceList {
         }
     }
 
+    static func saveEntries(source: Source, manifest: VideoManifest) {
+        let json = try? JSONEncoder().encode(manifest)
+
+        do {
+            try json!.write(to: URL(fileURLWithPath:
+                                    Cache.supportPath.appending("/"+source.name+"/entries.json")))
+        } catch {
+            errorLog("Can't save local entries : \(error.localizedDescription)")
+        }
+    }
     static func loadMetaManifest(url: URL) -> [Source]? {
         // Let's make sure we have the required files
         if !areManifestPresent(url: url) && !url.absoluteString.starts(with: "http") {

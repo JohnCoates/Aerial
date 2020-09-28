@@ -9,6 +9,8 @@
         <customObject id="-2" userLabel="File's Owner" customClass="SourcesViewController" customModule="Aerial" customModuleProvider="target">
             <connections>
                 <outlet property="addLocalButton" destination="YCA-Kf-OqL" id="E9C-sU-zkW"/>
+                <outlet property="addLocalTextfield" destination="oZ9-Ey-gbW" id="mcS-es-F6H"/>
+                <outlet property="addLocalWindow" destination="Pmx-QU-MSf" id="eYa-DN-kdF"/>
                 <outlet property="addOnlineButton" destination="H7z-UB-Yzx" id="WLY-sV-uAH"/>
                 <outlet property="addOnlineTextField" destination="gxJ-4P-fMD" id="Gmf-Aa-0Bd"/>
                 <outlet property="addOnlineWindow" destination="iB7-4m-6mH" id="v0k-ql-rIf"/>
@@ -315,7 +317,7 @@ line2</string>
                 </scrollView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YCA-Kf-OqL">
                     <rect key="frame" x="24" y="14" width="124" height="40"/>
-                    <buttonCell key="cell" type="push" title="Add Local..." bezelStyle="rounded" image="folder" catalog="system" imagePosition="leading" alignment="center" controlSize="large" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="M9G-4n-Orj">
+                    <buttonCell key="cell" type="push" title="Add Local..." bezelStyle="rounded" image="folder" catalog="system" imagePosition="leading" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="M9G-4n-Orj">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -463,6 +465,80 @@ line2</string>
                 </constraints>
             </view>
             <point key="canvasLocation" x="-221.5" y="1221.5"/>
+        </window>
+        <window title="Add a Local Source" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Pmx-QU-MSf">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <rect key="contentRect" x="283" y="305" width="665" height="250"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+            <view key="contentView" id="MCD-5K-sxg">
+                <rect key="frame" x="0.0" y="0.0" width="665" height="250"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oZ9-Ey-gbW">
+                        <rect key="frame" x="20" y="179" width="625" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="78y-xO-Nnp">
+                            <font key="font" usesAppearanceFont="YES"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wER-O8-qwH">
+                        <rect key="frame" x="20" y="214" width="504" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Please drag and drop your local directory containing videos, in the textfield below: " id="ExP-Ao-DcG">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4lw-11-KRp">
+                        <rect key="frame" x="22" y="137" width="24" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSCaution" id="wer-ay-XrD"/>
+                    </imageView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m5U-hR-2I7">
+                        <rect key="frame" x="52" y="56" width="595" height="102"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" id="wR2-WM-OqJ">
+                            <font key="font" metaFont="system"/>
+                            <string key="title">On macOS 10.15 and above (Catalina and Big Sur), there are several restrictions to be aware of:
+- Your folder must be on the main disk drive
+- It must be on a non protected user folder (so NOT Downloads, Desktop, Documents)
+
+We very highly recommend you put your video folders in /Users/shared/ as this is a "safe" location to use. </string>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zUN-Ew-hU8">
+                        <rect key="frame" x="552" y="14" width="99" height="40"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Add Folder" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Hf6-ae-YCJ">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="addLocalValidate:" target="-2" id="Mc7-lA-Wlz"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lpy-ZW-7Gu">
+                        <rect key="frame" x="470" y="14" width="74" height="40"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1Kd-gi-Gqe">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="addLocalCancel:" target="-2" id="Mv9-VR-nnl"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="-469.5" y="1565"/>
         </window>
     </objects>
     <resources>
