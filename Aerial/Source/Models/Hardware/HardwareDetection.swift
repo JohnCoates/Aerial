@@ -94,7 +94,7 @@ final class HardwareDetection: NSObject {
 
         // This is a manually compiled list based on CPU generations of each mac model line
 
-        if macModel.starts(with: "iMacPro") {
+        if macModel.starts(with: "iMacPro") || macModel.starts(with: "ADP") {
             // iMacPro - always
             return .supported
         } else if macModel.starts(with: "iMac") {

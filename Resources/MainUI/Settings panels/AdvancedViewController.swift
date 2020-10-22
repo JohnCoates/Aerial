@@ -92,6 +92,7 @@ class AdvancedViewController: NSViewController {
 
         showLogButton.setIcons("folder")
         launchSetupAgain.setIcons("aspectratio")
+        setupPopover()
     }
 
     func setupPopover() {
