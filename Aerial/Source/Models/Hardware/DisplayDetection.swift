@@ -128,6 +128,15 @@ final class DisplayDetection: NSObject {
         debugLog("***Display Detection Done***")
     }
 
+    func getScreenCount() -> Int {
+        var count = 0
+        for screen in screens where screen.height > 200 {
+            count += 1
+        }
+
+        return count
+    }
+
     // MARK: - Helpers
     // Regular calculation
     func calculateZeroedOrigins() {
@@ -336,9 +345,11 @@ final class DisplayDetection: NSObject {
             }
             return false
         case .secondaryOnly:
-            if let scr = screen {
-                if scr.isMain {
-                    return false
+            if getScreenCount() > 1 {
+                if let scr = screen {
+                    if scr.isMain {
+                        return false
+                    }
                 }
             }
             return true

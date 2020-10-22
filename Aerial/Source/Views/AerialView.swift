@@ -222,6 +222,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         // In case of preview or unknown screen result will be nil
         let displayDetection = DisplayDetection.sharedInstance
         let thisScreen = displayDetection.findScreenWith(frame: self.frame)
+        let screenCount = displayDetection.getScreenCount()
+        debugLog("Real screen count : \(screenCount)")
 
         var localPlayer: AVPlayer?
         debugLog("Using : \(String(describing: thisScreen))")
