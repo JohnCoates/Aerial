@@ -44,7 +44,12 @@ final class HardwareDetection: NSObject {
     func getSuggestedFormat() -> VideoFormat {
         switch isHEVCMain10HWDecodingAvailable() {
         case .supported:
-            return .v4KHDR
+            if #available(OSX 10.15, *) {
+                return .v4KHDR
+            } else {
+                // That was a fun one to track...
+                return .v4KHEVC
+            }
         case .notsupported:
             return .v1080pH264
         case .partial:

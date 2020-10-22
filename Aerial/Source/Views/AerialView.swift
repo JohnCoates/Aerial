@@ -172,11 +172,25 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         AerialView.players.remove(at: index)
     }
 
+    func ensureCorrectFormat() {
+        if #available(OSX 10.15, *) {
+        } else {
+            // No HDR allowed here
+            if PrefsVideos.videoFormat == .v4KHDR {
+                debugLog("Fixing 4K HDR not allowed prior to Catalina")
+                PrefsVideos.videoFormat = .v4KHEVC
+            } else if PrefsVideos.videoFormat == .v1080pHDR {
+                debugLog("Fixing 1080p HDR not allowed prior to Catalina")
+                PrefsVideos.videoFormat = .v1080pHEVC
+            }
+        }
+    }
+
     // swiftlint:disable:next cyclomatic_complexity
     func setup() {
         _ = TimeManagement.sharedInstance
 
-        tryCompanion()
+        ensureCorrectFormat()
 
         if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
             debugLog("\(self.description) AerialView setup init (V\(version)) preview: \(self.isPreview)")
