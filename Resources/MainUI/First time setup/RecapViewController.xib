@@ -61,7 +61,7 @@
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hs3-Sq-hk9">
                                 <rect key="frame" x="126" y="399" width="636" height="38"/>
-                                <textFieldCell key="cell" title="Love outer space? We got you! Aerial let’s you choose your favorite videos so that these videos play more often." id="mQv-cf-25R">
+                                <textFieldCell key="cell" title="Love outer space? We got you! Aerial lets you choose your favorite videos so that these videos play more often." id="mQv-cf-25R">
                                     <font key="font" metaFont="system" size="15"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -77,7 +77,7 @@
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mj3-l6-dr7">
                                 <rect key="frame" x="126" y="321" width="636" height="38"/>
-                                <textFieldCell key="cell" title="Too hot outside and don’t want to see the desert? That’s okay! Aerial let’s you hide videos you don’t like! " id="nu0-MS-den">
+                                <textFieldCell key="cell" title="Too hot outside and don’t want to see the desert? That’s okay! Aerial lets you hide videos you don’t like! " id="nu0-MS-den">
                                     <font key="font" metaFont="system" size="15"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
