@@ -588,11 +588,6 @@ struct Cache {
             }
         }
 
-        debugLog("playing on : \(AerialView.instanciatedViews.count)")
-        for video in currentVideos {
-            debugLog("Curently playing : \(video.secondaryName)")
-        }
-
         outerLoop2: for video in evictables {
             if currentVideos.contains(video) {
                 debugLog("\(video.secondaryName) is currently playing, trying another")
