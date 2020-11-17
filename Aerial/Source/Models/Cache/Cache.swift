@@ -8,6 +8,7 @@
 
 import Cocoa
 import CoreWLAN
+import AVKit
 
 /**
  Aerial's new Cache management
@@ -525,8 +526,8 @@ struct Cache {
             return
         }
 
-        debugLog("Cleaning up some free space in cache")
-
+        debugLog("Looking for hidden videos to delete...")
+        // Step 1 : Delete hidden videos
         for video in VideoList.instance.videos.filter({ PrefsVideos.hidden.contains($0.id) && $0.isAvailableOffline }) {
             debugLog("Deleting hidden video \(video.secondaryName)")
             do {
@@ -543,12 +544,20 @@ struct Cache {
             return
         }
 
+        // Step 2 : Delete videos that are out of rotation
         let evictables = outdatedVideos()
+
+        if evictables.isEmpty {
+            debugLog("No outdated videos, we won't delete anything")
+            return
+        }
+
+        debugLog("Looking for outdated videos that aren't in rotation (candidates : \(evictables.count)")
 
         outerLoop: for video in evictables {
             if VideoList.instance.currentRotation().contains(video) {
                 // Outdated but in rotation, so keep it !
-                debugLog("outdated but in rotation \(video.secondaryName)")
+                //debugLog("outdated but in rotation \(video.secondaryName)")
             } else {
                 debugLog("Removing outdated video not in rotation \(video.secondaryName)")
                 do {
@@ -563,10 +572,58 @@ struct Cache {
                 }
             }
         }
+
+        // Are we there yeeeet ?
+        if hasSomeFreeSpace() {
+            return
+        }
+
+        debugLog("Looking for outdated videos that may still be in rotation (candidates : \(evictables.count)")
+
+        var currentVideos = [AerialVideo]()
+
+        for view in AerialView.instanciatedViews {
+            if let video = view.currentVideo {
+                currentVideos.append(video)
+            }
+        }
+
+        debugLog("playing on : \(AerialView.instanciatedViews.count)")
+        for video in currentVideos {
+            debugLog("Curently playing : \(video.secondaryName)")
+        }
+
+        outerLoop2: for video in evictables {
+            if currentVideos.contains(video) {
+                debugLog("\(video.secondaryName) is currently playing, trying another")
+            } else {
+                debugLog("Removing outdated video that was in rotation \(video.secondaryName)")
+                do {
+                    try FileManager.default.removeItem(atPath: VideoCache.cachePath(forVideo: video)!)
+                } catch {
+                    errorLog("Could not delete video : \(video.secondaryName)")
+                }
+
+                if hasSomeFreeSpace() {
+                    // Removed enough
+                    break outerLoop2
+                }
+            }
+        }
+
+        // At this point we can't do more 
     }
 
     static func fillOrRollCache() {
         guard PrefsCache.enableManagement && canNetwork() else {
+            return
+        }
+
+        // Grab a list of uncached in rotation videos
+        let rotation = VideoList.instance.currentRotation().filter { !$0.isAvailableOffline }
+
+        if rotation.isEmpty {
+            debugLog("> Current playlist is already fully cached, no download/rotation needed")
             return
         }
 
@@ -576,13 +633,10 @@ struct Cache {
             freeCache()
 
             if !hasSomeFreeSpace() {
-                debugLog("Could not free space, maybe you have too many favorites ?")
+                debugLog("No free space to reclaim currently.")
                 return
             }
         }
-
-        // Grab a list of uncached in rotation videos
-        let rotation = VideoList.instance.currentRotation().filter { !$0.isAvailableOffline }
 
         debugLog("Uncached videos in rotation : \(rotation.count)")
 
