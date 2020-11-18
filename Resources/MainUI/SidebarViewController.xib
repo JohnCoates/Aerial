@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -121,7 +121,7 @@ Gw
                         <rect key="frame" x="0.0" y="0.0" width="185" height="382"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <outlineView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="13" outlineTableColumn="axa-le-hBc" id="ciZ-oy-meK" customClass="SidebarOutlineView" customModule="Aerial" customModuleProvider="target">
+                            <outlineView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="13" outlineTableColumn="axa-le-hBc" id="ciZ-oy-meK" customClass="SidebarOutlineView" customModule="Aerial" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="185" height="382"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="3" height="0.0"/>
@@ -141,11 +141,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="HeaderCell" id="nj3-9L-guH">
-                                                <rect key="frame" x="11" y="0.0" width="162" height="24"/>
+                                                <rect key="frame" x="11" y="0.0" width="182" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tvb-VO-ifT">
-                                                        <rect key="frame" x="0.0" y="6" width="162" height="16"/>
+                                                        <rect key="frame" x="0.0" y="6" width="182" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                         <textFieldCell key="cell" controlSize="large" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="HEADER CELL" id="IxU-vc-Rzz">
                                                             <font key="font" metaFont="system"/>
@@ -159,11 +159,11 @@ Gw
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="DataCell" id="g4S-ge-F2f">
-                                                <rect key="frame" x="11" y="24" width="162" height="30"/>
+                                                <rect key="frame" x="11" y="24" width="182" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iXR-Im-0Vq">
-                                                        <rect key="frame" x="21" y="8" width="141" height="17"/>
+                                                        <rect key="frame" x="21" y="8" width="161" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                         <textFieldCell key="cell" controlSize="large" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="aIc-4e-tVY">
                                                             <font key="font" metaFont="system"/>
@@ -190,7 +190,7 @@ Gw
                         <nil key="backgroundColor"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="xTi-ZQ-NDh">
-                        <rect key="frame" x="0.0" y="326" width="185" height="16"/>
+                        <rect key="frame" x="0.0" y="366" width="185" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="vrX-X6-xUy">
@@ -271,7 +271,7 @@ Gw
         </customView>
     </objects>
     <resources>
-        <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
+        <image name="NSStopProgressFreestandingTemplate" width="15" height="15"/>
         <image name="film" width="168" height="132"/>
         <image name="gear" width="153" height="177"/>
         <image name="info.circle" width="141" height="155"/>
