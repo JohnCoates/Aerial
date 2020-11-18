@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,7 +22,7 @@
                     <rect key="frame" x="36" y="96" width="740" height="394"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mef-02-T9r">
-                            <rect key="frame" x="358" y="216" width="304" height="64"/>
+                            <rect key="frame" x="358" y="201" width="304" height="64"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="300" id="Hw7-YP-zzd"/>
                             </constraints>
@@ -41,10 +41,10 @@ Enjoying Aerial? </string>
                                 <constraint firstAttribute="width" constant="320" id="hRR-xq-21J"/>
                                 <constraint firstAttribute="height" constant="320" id="ulF-hQ-vYE"/>
                             </constraints>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-320" id="2e6-aG-RVX"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-512" id="2e6-aG-RVX"/>
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ceu-gu-KNt">
-                            <rect key="frame" x="358" y="296" width="118" height="15"/>
+                            <rect key="frame" x="358" y="281" width="118" height="15"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Version 123456789" id="3BT-Co-yYW">
                                 <font key="font" metaFont="systemMedium" size="12"/>
                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -52,7 +52,7 @@ Enjoying Aerial? </string>
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="42t-wb-whP">
-                            <rect key="frame" x="358" y="319" width="83" height="35"/>
+                            <rect key="frame" x="358" y="304" width="83" height="35"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Aerial" id="yQI-eW-wVq">
                                 <font key="font" metaFont="systemSemibold" size="30"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -60,7 +60,7 @@ Enjoying Aerial? </string>
                             </textFieldCell>
                         </textField>
                         <button translatesAutoresizingMaskIntoConstraints="NO" id="Se0-cG-8jI">
-                            <rect key="frame" x="360" y="164" width="143" height="36"/>
+                            <rect key="frame" x="360" y="149" width="143" height="36"/>
                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="kofi1" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="xyx-wf-mwp">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -81,23 +81,36 @@ Enjoying Aerial? </string>
                         <constraint firstItem="mef-02-T9r" firstAttribute="top" secondItem="ceu-gu-KNt" secondAttribute="bottom" constant="16" id="ege-Tu-444"/>
                         <constraint firstItem="Se0-cG-8jI" firstAttribute="top" secondItem="mef-02-T9r" secondAttribute="bottom" constant="16" id="iFh-2s-NRY"/>
                         <constraint firstItem="ceu-gu-KNt" firstAttribute="top" secondItem="42t-wb-whP" secondAttribute="bottom" constant="8" id="lNf-ed-2ne"/>
-                        <constraint firstItem="42t-wb-whP" firstAttribute="top" secondItem="wIm-3a-mSi" secondAttribute="top" constant="40" id="wPb-Uz-1zt"/>
+                        <constraint firstItem="42t-wb-whP" firstAttribute="top" secondItem="wIm-3a-mSi" secondAttribute="top" constant="55" id="wPb-Uz-1zt"/>
                         <constraint firstItem="42t-wb-whP" firstAttribute="leading" secondItem="T8n-jN-Ee4" secondAttribute="trailing" constant="20" id="xWn-Yo-X0G"/>
                     </constraints>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1H8-uB-MG3">
-                    <rect key="frame" x="255" y="30" width="302" height="16"/>
+                    <rect key="frame" x="255" y="17" width="302" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Apple TV and tvOS are trademarks of Apple Inc. " id="J9M-tH-MlW">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kfe-gm-Zg6">
+                    <rect key="frame" x="4" y="4" width="196" height="40"/>
+                    <buttonCell key="cell" type="push" title=" Icon by Inferno Design" bezelStyle="rounded" image="LogoIcon-128px" imagePosition="leading" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NHO-vH-0M9">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="iconWebsiteButton:" target="-2" id="c3F-VO-QHa"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="1H8-uB-MG3" secondAttribute="bottom" constant="30" id="KTe-3H-4DL"/>
+                <constraint firstAttribute="bottom" secondItem="1H8-uB-MG3" secondAttribute="bottom" constant="17" id="KTe-3H-4DL"/>
                 <constraint firstItem="wIm-3a-mSi" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="Q9B-84-Whr"/>
+                <constraint firstItem="1H8-uB-MG3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Kfe-gm-Zg6" secondAttribute="trailing" constant="20" id="RIb-nL-c1c"/>
+                <constraint firstItem="Kfe-gm-Zg6" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="VLz-Ln-AdL"/>
                 <constraint firstItem="1H8-uB-MG3" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="jQ5-G3-md3"/>
+                <constraint firstAttribute="bottom" secondItem="Kfe-gm-Zg6" secondAttribute="bottom" constant="10" id="soO-ar-asL"/>
                 <constraint firstItem="wIm-3a-mSi" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="40" id="wc8-8H-2BZ"/>
             </constraints>
             <point key="canvasLocation" x="-58.5" y="48"/>
@@ -110,7 +123,8 @@ Enjoying Aerial? </string>
         </imageView>
     </objects>
     <resources>
-        <image name="icon-320" width="320" height="320"/>
+        <image name="LogoIcon-128px" width="128" height="143"/>
+        <image name="icon-512" width="512" height="512"/>
         <image name="kofi1" width="142.5" height="36"/>
     </resources>
 </document>

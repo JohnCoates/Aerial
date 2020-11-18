@@ -614,8 +614,8 @@ struct Cache {
             return
         }
 
-        // Grab a list of uncached in rotation videos
-        let rotation = VideoList.instance.currentRotation().filter { !$0.isAvailableOffline }
+        // Grab a *shuffled* list of uncached in rotation videos
+        let rotation = VideoList.instance.currentRotation().filter { !$0.isAvailableOffline }.shuffled()
 
         if rotation.isEmpty {
             debugLog("> Current playlist is already fully cached, no download/rotation needed")

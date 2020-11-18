@@ -24,4 +24,9 @@ class InfoViewController: NSViewController {
         workspace.open(url)
     }
 
+    @IBAction func iconWebsiteButton(_ sender: Any) {
+        let workspace = NSWorkspace.shared
+        let url = URL(string: "https://infernodesign.com")!
+        workspace.open(url)
+    }
 }

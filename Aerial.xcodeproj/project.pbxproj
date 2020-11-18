@@ -686,6 +686,12 @@
 		03D3A11524C5FC770091FE99 /* AspectFillNSImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3A11224C5FC770091FE99 /* AspectFillNSImageView.swift */; };
 		03DAD470229EAC66000DA6D1 /* Installation.md in Resources */ = {isa = PBXBuildFile; fileRef = 03DAD46F229EAC66000DA6D1 /* Installation.md */; };
 		03DAD473229EC031000DA6D1 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 03DAD472229EC031000DA6D1 /* Readme.md */; };
+		03DB9674256569F800BFCF20 /* icon-512@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03DB966D256569F800BFCF20 /* icon-512@2x.png */; };
+		03DB9675256569F800BFCF20 /* icon-512@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03DB966D256569F800BFCF20 /* icon-512@2x.png */; };
+		03DB9676256569F800BFCF20 /* icon-512@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03DB966D256569F800BFCF20 /* icon-512@2x.png */; };
+		03DB968425657AE600BFCF20 /* LogoIcon-128px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03DB968325657AE600BFCF20 /* LogoIcon-128px@2x.png */; };
+		03DB968525657AE600BFCF20 /* LogoIcon-128px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03DB968325657AE600BFCF20 /* LogoIcon-128px@2x.png */; };
+		03DB968625657AE600BFCF20 /* LogoIcon-128px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03DB968325657AE600BFCF20 /* LogoIcon-128px@2x.png */; };
 		03DC004E248BC5A4005DB0F4 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC004D248BC5A4005DB0F4 /* Cache.swift */; };
 		03DC0065248BC60D005DB0F4 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC004D248BC5A4005DB0F4 /* Cache.swift */; };
 		03E2237124BE048900CD8ED4 /* VideoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */; };
@@ -1117,6 +1123,8 @@
 		03DAD475229EC544000DA6D1 /* HardwareDecoding.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = HardwareDecoding.md; sourceTree = "<group>"; };
 		03DAD476229EC64D000DA6D1 /* Troubleshooting.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Troubleshooting.md; sourceTree = "<group>"; };
 		03DAD477229ECAAA000DA6D1 /* CustomVideos.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CustomVideos.md; sourceTree = "<group>"; };
+		03DB966D256569F800BFCF20 /* icon-512@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-512@2x.png"; sourceTree = "<group>"; };
+		03DB968325657AE600BFCF20 /* LogoIcon-128px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogoIcon-128px@2x.png"; sourceTree = "<group>"; };
 		03DC004D248BC5A4005DB0F4 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoHeaderView.swift; sourceTree = "<group>"; };
 		03E8730B2165013C002B469B /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
@@ -1643,6 +1651,8 @@
 			isa = PBXGroup;
 			children = (
 				03F3C1B924F2A923007733B5 /* kofi1@2x.png */,
+				03DB968325657AE600BFCF20 /* LogoIcon-128px@2x.png */,
+				03DB966D256569F800BFCF20 /* icon-512@2x.png */,
 				0319460824D1A09F00F37B35 /* icon-320@2x.png */,
 				0345EDF624C3462100C73038 /* Old stuff */,
 				0345D01524C0A2F60001045C /* UI Icons */,
@@ -2009,6 +2019,7 @@
 				037772FD24E4668600D81EEA /* aspectratio.pdf in Resources */,
 				03AA7A8224C84C6300A47970 /* thermometer.snowflake.pdf in Resources */,
 				03EED2D624C3A47700F0C3D4 /* UpdatesViewController.xib in Resources */,
+				03DB968525657AE600BFCF20 /* LogoIcon-128px@2x.png in Resources */,
 				03AA7A7024C84C6300A47970 /* wrench.pdf in Resources */,
 				03AA7A9124C84C6300A47970 /* moon.pdf in Resources */,
 				0300B81124D1B536006132E5 /* regular.moon.stars.pdf in Resources */,
@@ -2101,6 +2112,7 @@
 				03AA7AA024C84C6300A47970 /* cloud.hail.pdf in Resources */,
 				03BF17A324E2F29C0080EF34 /* VideoFormatViewController.xib in Resources */,
 				03F752D424EED19C00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png in Resources */,
+				03DB9675256569F800BFCF20 /* icon-512@2x.png in Resources */,
 				03EED2F424C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */,
 				0300B84124D1B536006132E5 /* checkmark.circle.fill.pdf in Resources */,
 				031945F724CCC48C00F37B35 /* CreditsViewController.xib in Resources */,
@@ -2189,6 +2201,7 @@
 				03B8743724E42675008E3D1B /* wand.and.stars.pdf in Resources */,
 				0300B83924D1B536006132E5 /* regular.cloud.pdf in Resources */,
 				034DEE3324BF1BC700A2D3CD /* PanelWindowController.xib in Resources */,
+				03DB9676256569F800BFCF20 /* icon-512@2x.png in Resources */,
 				0300B84524D1B536006132E5 /* square.and.arrow.down.pdf in Resources */,
 				03AA7A8924C84C6300A47970 /* cloud.fog.pdf in Resources */,
 				03AA7A8024C84C6300A47970 /* cloud.sun.bolt.pdf in Resources */,
@@ -2213,6 +2226,7 @@
 				03B8743424E42675008E3D1B /* wand.and.rays.pdf in Resources */,
 				FAC36F4A1BE1756D007F2A20 /* MainMenu.xib in Resources */,
 				0300B81224D1B536006132E5 /* regular.moon.stars.pdf in Resources */,
+				03DB968625657AE600BFCF20 /* LogoIcon-128px@2x.png in Resources */,
 				030010B024D71EB20092AE68 /* FiltersViewController.xib in Resources */,
 				0377BF8824BA15E700C33F9F /* btn_donate.png in Resources */,
 				0300B7FD24D1B536006132E5 /* circle.pdf in Resources */,
@@ -2304,6 +2318,7 @@
 				037772FC24E4668600D81EEA /* aspectratio.pdf in Resources */,
 				03AA7A8124C84C6300A47970 /* thermometer.snowflake.pdf in Resources */,
 				03EED2D524C3A47700F0C3D4 /* UpdatesViewController.xib in Resources */,
+				03DB968425657AE600BFCF20 /* LogoIcon-128px@2x.png in Resources */,
 				03AA7A6F24C84C6300A47970 /* wrench.pdf in Resources */,
 				03AA7A9024C84C6300A47970 /* moon.pdf in Resources */,
 				0300B81024D1B536006132E5 /* regular.moon.stars.pdf in Resources */,
@@ -2396,6 +2411,7 @@
 				03AA7A9F24C84C6300A47970 /* cloud.hail.pdf in Resources */,
 				03BF17A224E2F29C0080EF34 /* VideoFormatViewController.xib in Resources */,
 				03F752D324EED19C00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png in Resources */,
+				03DB9674256569F800BFCF20 /* icon-512@2x.png in Resources */,
 				03EED2F324C44A7900F0C3D4 /* OverlaysViewController.xib in Resources */,
 				0300B84024D1B536006132E5 /* checkmark.circle.fill.pdf in Resources */,
 				031945F624CCC48C00F37B35 /* CreditsViewController.xib in Resources */,
@@ -2935,13 +2951,13 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.10appmode;
+				CURRENT_PROJECT_VERSION = 2.1.4beta1.appmode;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Aerial/App/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0.10appmode;
+				MARKETING_VERSION = 2.1.4beta1.appmode;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2958,13 +2974,13 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.10appmode;
+				CURRENT_PROJECT_VERSION = 2.1.4beta1.appmode;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Aerial/App/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0.10appmode;
+				MARKETING_VERSION = 2.1.4beta1.appmode;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3130,7 +3146,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.1.3;
+				CURRENT_PROJECT_VERSION = 2.1.4beta1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3138,7 +3154,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.1.3;
+				MARKETING_VERSION = 2.1.4beta1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3158,7 +3174,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.1.3;
+				CURRENT_PROJECT_VERSION = 2.1.4beta1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3166,7 +3182,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.1.3;
+				MARKETING_VERSION = 2.1.4beta1;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
