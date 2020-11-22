@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -37,7 +37,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XOJ-kW-rZe">
-                    <rect key="frame" x="232" y="406" width="80" height="16"/>
+                    <rect key="frame" x="232" y="407" width="80" height="16"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Video fades:" id="pA2-Es-SqM">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -55,7 +55,7 @@
                     </connections>
                 </button>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ueZ-L1-tKm">
-                    <rect key="frame" x="313" y="236" width="148" height="40"/>
+                    <rect key="frame" x="313" y="236" width="150" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="Keep enabled" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="IpW-J3-24s" id="iVm-OE-7YZ">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -72,7 +72,7 @@
                     </connections>
                 </popUpButton>
                 <popUpButton toolTip="The duration of the fades at the beginning and the end of each video" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2PZ-3t-5f8">
-                    <rect key="frame" x="313" y="394" width="115" height="40"/>
+                    <rect key="frame" x="313" y="394" width="117" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="1 second" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="VtY-HK-i7p" id="2Je-DA-thk">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -95,7 +95,7 @@
                     <rect key="frame" x="20" y="217" width="749" height="5"/>
                 </box>
                 <popUpButton verticalHuggingPriority="750" verifyAmbiguity="off" translatesAutoresizingMaskIntoConstraints="NO" id="39U-7I-fEm">
-                    <rect key="frame" x="313" y="163" width="165" height="40"/>
+                    <rect key="frame" x="313" y="163" width="167" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="Preferred" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="eac-0Y-vKj" id="TWx-zF-jAK">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -137,6 +137,9 @@
                                 <menuItem title="Portuguese (Brazil)" id="JnZ-pc-ZlQ">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                 </menuItem>
+                                <menuItem title="Russian" id="D53-xA-9jE">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
                                 <menuItem title="Spanish" id="PhL-Od-K1y">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                 </menuItem>
@@ -151,7 +154,7 @@
                     </connections>
                 </popUpButton>
                 <button toolTip="Click for more information on Power Saving" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="geu-ZX-2ke">
-                    <rect key="frame" x="464" y="235" width="35" height="35"/>
+                    <rect key="frame" x="466" y="235" width="35" height="35"/>
                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Pe4-WV-Mm2">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -199,7 +202,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XVw-x2-MRK">
-                    <rect key="frame" x="203" y="248" width="109" height="16"/>
+                    <rect key="frame" x="203" y="249" width="109" height="16"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="When on battery:" id="NuA-Pp-M1N">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -207,7 +210,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton toolTip="Pick your preferred video format, see help for more information" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tVO-Se-9Jo">
-                    <rect key="frame" x="313" y="444" width="125" height="40"/>
+                    <rect key="frame" x="313" y="444" width="127" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="1080p H264" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="F41-ky-Eg7" id="bjl-nz-Him">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -230,7 +233,7 @@
                     </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="79" translatesAutoresizingMaskIntoConstraints="NO" id="iIR-49-5le">
-                    <rect key="frame" x="229" y="456" width="83" height="16"/>
+                    <rect key="frame" x="229" y="457" width="83" height="16"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Video format:" id="4pB-OE-3Z4">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -238,7 +241,7 @@
                     </textFieldCell>
                 </textField>
                 <button toolTip="Click for more information on Video Formats" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8lj-ap-GSr">
-                    <rect key="frame" x="441" y="443" width="35" height="35"/>
+                    <rect key="frame" x="443" y="443" width="35" height="35"/>
                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ihk-vz-2UX">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -248,7 +251,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TWt-lq-74o">
-                    <rect key="frame" x="244" y="175" width="68" height="16"/>
+                    <rect key="frame" x="244" y="176" width="68" height="16"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Language:" id="wbl-fa-ZtS">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>

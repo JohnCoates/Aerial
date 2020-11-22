@@ -96,13 +96,19 @@ struct Cache {
     static var path: String = {
         var path = ""
         if PrefsCache.overrideCache {
-            if FileManager.default.fileExists(atPath: Preferences.sharedInstance.customCacheDirectory!) {
-                path = Preferences.sharedInstance.customCacheDirectory!
+            if let customPath = Preferences.sharedInstance.customCacheDirectory {
+                debugLog("Trying \(customPath)")
+                if FileManager.default.fileExists(atPath: customPath) {
+                    path = customPath
+                } else {
+                    errorLog("Could not find your custom Caches path, reverting to default settings")
+                    PrefsCache.overrideCache = false
+                    path = Cache.supportPath.appending("/Cache")
+                }
             } else {
-                errorLog("Could not find your custom Caches path, reverting to default settings")
+                errorLog("Empty path, reverting to default settings")
                 PrefsCache.overrideCache = false
                 path = Cache.supportPath.appending("/Cache")
-
             }
         } else {
             path = Cache.supportPath.appending("/Cache")

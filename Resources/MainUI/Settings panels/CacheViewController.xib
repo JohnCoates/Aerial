@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,6 +24,7 @@
                 <outlet property="makeTimeMachineIgnore" destination="mGa-dk-kQF" id="Lfh-rc-e5P"/>
                 <outlet property="manualContainerView" destination="Epz-1h-oTj" id="m7f-t9-aRW"/>
                 <outlet property="manuallyPick" destination="nDP-xy-8Ig" id="Bkt-BF-Ija"/>
+                <outlet property="manuallyPickLabel" destination="nB4-bN-Nk2" id="PYK-wq-kOF"/>
                 <outlet property="pickFolder" destination="opJ-yV-dsw" id="i3c-11-o20"/>
                 <outlet property="resetListButton" destination="frC-4B-UNN" id="ggc-G3-rJZ"/>
                 <outlet property="restrictWiFiCheckbox" destination="eO9-gC-aqe" id="atJ-yQ-S9U"/>
@@ -156,7 +157,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kpn-Oc-zFD">
-                            <rect key="frame" x="194" y="105" width="156" height="40"/>
+                            <rect key="frame" x="194" y="108" width="156" height="40"/>
                             <buttonCell key="cell" type="push" title="Add current network" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jY1-rg-JFf">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -166,7 +167,7 @@
                             </connections>
                         </button>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l6E-tF-sRt">
-                            <rect key="frame" x="198" y="79" width="59" height="16"/>
+                            <rect key="frame" x="198" y="82" width="59" height="16"/>
                             <textFieldCell key="cell" controlSize="large" title="Allowed: " id="HwM-ON-Dvy">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -174,7 +175,7 @@
                             </textFieldCell>
                         </textField>
                         <button translatesAutoresizingMaskIntoConstraints="NO" id="mFt-fb-1OS">
-                            <rect key="frame" x="200" y="155" width="16" height="16"/>
+                            <rect key="frame" x="200" y="158" width="16" height="16"/>
                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusAvailable" imagePosition="only" alignment="center" controlSize="large" imageScaling="proportionallyUpOrDown" inset="2" id="hz1-x9-iK0">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -189,7 +190,7 @@
                             </textFieldCell>
                         </textField>
                         <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RaB-PR-zBP">
-                            <rect key="frame" x="202" y="420" width="233" height="28"/>
+                            <rect key="frame" x="208" y="420" width="221" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="217" id="ipz-RT-lRq"/>
                             </constraints>
@@ -215,7 +216,7 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hTY-9R-NMo">
-                            <rect key="frame" x="103" y="370" width="91" height="16"/>
+                            <rect key="frame" x="103" y="371" width="91" height="16"/>
                             <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Rotate videos:" id="HcU-b8-0LK">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -223,7 +224,7 @@
                             </textFieldCell>
                         </textField>
                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fx0-Ue-MbY">
-                            <rect key="frame" x="195" y="358" width="97" height="40"/>
+                            <rect key="frame" x="195" y="358" width="99" height="40"/>
                             <popUpButtonCell key="cell" type="push" title="Daily" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="PG0-fw-tgh" id="EuB-mx-EcZ">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
@@ -245,7 +246,7 @@
                             </connections>
                         </popUpButton>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="frC-4B-UNN">
-                            <rect key="frame" x="350" y="105" width="88" height="40"/>
+                            <rect key="frame" x="350" y="108" width="88" height="40"/>
                             <buttonCell key="cell" type="push" title="Reset list" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JAx-l1-U4r">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -285,7 +286,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UgL-8O-Ljc">
-                            <rect key="frame" x="542" y="357" width="148" height="40"/>
+                            <rect key="frame" x="542" y="358" width="148" height="40"/>
                             <buttonCell key="cell" type="push" title="Show in Finder" bezelStyle="rounded" image="NSFolder" imagePosition="left" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NJy-ug-gBa">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>

@@ -53,6 +53,7 @@ class CacheViewController: NSViewController {
 
     @IBOutlet var manuallyPick: NSButton!
     @IBOutlet var pickFolder: NSButton!
+    @IBOutlet var manuallyPickLabel: NSTextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +63,8 @@ class CacheViewController: NSViewController {
         if #available(OSX 10.15, *) {
             manuallyPick.isEnabled = false
             pickFolder.isHidden = true
+        } else {
+            updateCachePath()
         }
 
         // Cache panel
@@ -86,6 +89,19 @@ class CacheViewController: NSViewController {
         showDownloadIndicator.state = PrefsCache.showBackgroundDownloads ? .on : .off
 
         updateCacheBox()
+    }
+
+    func updateCachePath() {
+        if PrefsCache.overrideCache {
+            if let cachePath = Preferences.sharedInstance.customCacheDirectory {
+                manuallyPickLabel.stringValue = "Using \(cachePath)"
+            } else {
+                manuallyPickLabel.stringValue = "Select a path using the folder picker"
+            }
+
+        } else {
+            manuallyPickLabel.stringValue = "Using your Application Support directory"
+        }
     }
 
     func updateCacheBox() {
@@ -250,9 +266,9 @@ class CacheViewController: NSViewController {
     }
 
     @IBAction func pickFolderButton(_ sender: Any) {
-        if #available(OSX 10.15, *) {
+        /*if #available(OSX 10.15, *) {
             errorLog("How did you get in here?")
-        } else {
+        } else {*/
             let openPanel = NSOpenPanel()
 
             openPanel.canChooseDirectories = true
@@ -261,8 +277,11 @@ class CacheViewController: NSViewController {
             openPanel.allowsMultipleSelection = false
             openPanel.title = "Choose Aerial Cache Directory"
             openPanel.prompt = "Choose"
-            if Preferences.sharedInstance.customCacheDirectory != "" {
-                openPanel.directoryURL = URL(fileURLWithPath: Preferences.sharedInstance.customCacheDirectory!)
+            if let customPath = Preferences.sharedInstance.customCacheDirectory {
+                if customPath != "" {
+                    openPanel.directoryURL = URL(fileURLWithPath: customPath)
+
+                }
             }
 
             openPanel.begin { result in
@@ -272,8 +291,11 @@ class CacheViewController: NSViewController {
 
                 let cacheDirectory = openPanel.urls[0]
                 Preferences.sharedInstance.customCacheDirectory = cacheDirectory.path
+
+                Aerial.showInfoAlert(title: "Cache path changed",
+                                     text: "In order for your new cache path to take effect, please close this panel and System Preferences.")
             }
-        }
+        //}
     }
 
     @IBAction func makeTimeMachineIgnore(_ sender: NSButton) {
@@ -286,5 +308,6 @@ class CacheViewController: NSViewController {
 
     @IBAction func manuallyPIckClick(_ sender: NSButton) {
         PrefsCache.overrideCache = sender.state == .on
+        updateCachePath()
     }
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="ReU-xc-cMA">
-                    <rect key="frame" x="198" y="372" width="504" height="48"/>
+                    <rect key="frame" x="198" y="392" width="504" height="48"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="500" id="GtJ-bZ-C8o"/>
                     </constraints>
@@ -32,7 +32,7 @@ Since version 1.4, Aerial is developed and maintained by Guillaume Louel.</strin
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gv6-y0-c1S">
-                    <rect key="frame" x="194" y="14" width="129" height="40"/>
+                    <rect key="frame" x="194" y="18" width="129" height="40"/>
                     <buttonCell key="cell" type="push" title="Contact us here" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a1o-SL-FaN">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -42,7 +42,7 @@ Since version 1.4, Aerial is developed and maintained by Guillaume Louel.</strin
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hEl-hg-Xq5">
-                    <rect key="frame" x="194" y="318" width="135" height="40"/>
+                    <rect key="frame" x="194" y="338" width="135" height="40"/>
                     <buttonCell key="cell" type="push" title="Visit our Website" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8Qc-M5-TLV">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -52,7 +52,7 @@ Since version 1.4, Aerial is developed and maintained by Guillaume Louel.</strin
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wpw-1v-dic">
-                    <rect key="frame" x="198" y="64" width="292" height="240"/>
+                    <rect key="frame" x="198" y="68" width="292" height="256"/>
                     <textFieldCell key="cell" selectable="YES" id="sP2-o5-2MT">
                         <font key="font" usesAppearanceFont="YES"/>
                         <string key="title">Translations contributed by:
@@ -65,6 +65,7 @@ Since version 1.4, Aerial is developed and maintained by Guillaume Louel.</strin
 - Japanese by Junji 'Dr.MORO' Morokuma
 - Polish by Aleksander Kasprzyk 
 - Portuguese/Brazil by Renan Sigolo
+- Russian by \(null)
 - Simplified &amp; Traditional Chinese by Linkey Leo
 - Spanish by Aitor García Rey 
 - Swedish by Samuel Holm
@@ -75,7 +76,7 @@ Want to help with translations?</string>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2zM-0X-9R0">
-                    <rect key="frame" x="356" y="14" width="126" height="40"/>
+                    <rect key="frame" x="356" y="18" width="126" height="40"/>
                     <buttonCell key="cell" type="push" title="Hop on Discord" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KmS-rN-Kxf">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -85,7 +86,7 @@ Want to help with translations?</string>
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ohW-uj-N2U">
-                    <rect key="frame" x="331" y="27" width="17" height="16"/>
+                    <rect key="frame" x="331" y="31" width="17" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="or" id="PRg-cf-Ee8">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -93,7 +94,7 @@ Want to help with translations?</string>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J7J-2w-Ik9">
-                    <rect key="frame" x="333" y="318" width="208" height="40"/>
+                    <rect key="frame" x="333" y="338" width="208" height="40"/>
                     <buttonCell key="cell" type="push" title="Visit the GitHub Project Page" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HmR-fK-HDO">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -117,7 +118,7 @@ Want to help with translations?</string>
                 <constraint firstItem="Gv6-y0-c1S" firstAttribute="leading" secondItem="wpw-1v-dic" secondAttribute="leading" id="ncX-VD-x46"/>
                 <constraint firstItem="Gv6-y0-c1S" firstAttribute="top" secondItem="wpw-1v-dic" secondAttribute="bottom" constant="16" id="qdq-4X-sAY"/>
                 <constraint firstItem="hEl-hg-Xq5" firstAttribute="leading" secondItem="ReU-xc-cMA" secondAttribute="leading" id="r7W-8x-Tzc"/>
-                <constraint firstItem="ReU-xc-cMA" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="40" id="yGC-hB-d2c"/>
+                <constraint firstItem="ReU-xc-cMA" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="yGC-hB-d2c"/>
             </constraints>
             <point key="canvasLocation" x="29.5" y="137"/>
         </customView>

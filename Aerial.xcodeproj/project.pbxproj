@@ -697,6 +697,9 @@
 		03E2237124BE048900CD8ED4 /* VideoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */; };
 		03E2237224BE048900CD8ED4 /* VideoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */; };
 		03E2237324BE048900CD8ED4 /* VideoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */; };
+		03E3C1DE256AAAF6000A2A5B /* ru.json in Resources */ = {isa = PBXBuildFile; fileRef = 03E3C1D7256AAAF6000A2A5B /* ru.json */; };
+		03E3C1DF256AAAF6000A2A5B /* ru.json in Resources */ = {isa = PBXBuildFile; fileRef = 03E3C1D7256AAAF6000A2A5B /* ru.json */; };
+		03E3C1E0256AAAF6000A2A5B /* ru.json in Resources */ = {isa = PBXBuildFile; fileRef = 03E3C1D7256AAAF6000A2A5B /* ru.json */; };
 		03E8730C2165013C002B469B /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8730B2165013C002B469B /* DownloadManager.swift */; };
 		03E8730F216501ED002B469B /* AsynchronousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8730E216501ED002B469B /* AsynchronousOperation.swift */; };
 		03E8731021662AEB002B469B /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E8730B2165013C002B469B /* DownloadManager.swift */; };
@@ -1127,6 +1130,7 @@
 		03DB968325657AE600BFCF20 /* LogoIcon-128px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogoIcon-128px@2x.png"; sourceTree = "<group>"; };
 		03DC004D248BC5A4005DB0F4 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoHeaderView.swift; sourceTree = "<group>"; };
+		03E3C1D7256AAAF6000A2A5B /* ru.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ru.json; sourceTree = "<group>"; };
 		03E8730B2165013C002B469B /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		03E8730E216501ED002B469B /* AsynchronousOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousOperation.swift; sourceTree = "<group>"; };
 		03E8731221675FE0002B469B /* TimeManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManagement.swift; sourceTree = "<group>"; };
@@ -1284,6 +1288,7 @@
 				03977EE6250E6917008FBAFD /* pl.json */,
 				03977EEA250E6918008FBAFD /* pt_BR.json */,
 				03977EE4250E6917008FBAFD /* pt.json */,
+				03E3C1D7256AAAF6000A2A5B /* ru.json */,
 				03977EE2250E6917008FBAFD /* sv.json */,
 				03977EEE250E6918008FBAFD /* zh_CN.json */,
 				03977EE5250E6917008FBAFD /* zh_TW.json */,
@@ -2096,6 +2101,7 @@
 				03AA7AB224C84C6400A47970 /* cloud.moon.bolt.pdf in Resources */,
 				0300B7FC24D1B536006132E5 /* circle.pdf in Resources */,
 				0300B80524D1B536006132E5 /* sparkles.pdf in Resources */,
+				03E3C1DF256AAAF6000A2A5B /* ru.json in Resources */,
 				03B8743624E42675008E3D1B /* wand.and.stars.pdf in Resources */,
 				03BDBEA624C467EC00BBD5E9 /* BrightnessViewController.xib in Resources */,
 				03AA7AC124C84C6400A47970 /* wind.pdf in Resources */,
@@ -2183,6 +2189,7 @@
 				0395835621807D1F008E8F9C /* thumbnail.png in Resources */,
 				0300B84224D1B536006132E5 /* checkmark.circle.fill.pdf in Resources */,
 				0300B83F24D1B536006132E5 /* dial.pdf in Resources */,
+				03E3C1E0256AAAF6000A2A5B /* ru.json in Resources */,
 				0313F9E92294337F00B074BB /* CustomVideos.xib in Resources */,
 				03977F05250E6918008FBAFD /* fr.json in Resources */,
 				0378986324C35F8A009B9418 /* CacheViewController.xib in Resources */,
@@ -2395,6 +2402,7 @@
 				03AA7AB124C84C6400A47970 /* cloud.moon.bolt.pdf in Resources */,
 				0300B7FB24D1B536006132E5 /* circle.pdf in Resources */,
 				0300B80424D1B536006132E5 /* sparkles.pdf in Resources */,
+				03E3C1DE256AAAF6000A2A5B /* ru.json in Resources */,
 				03B8743524E42675008E3D1B /* wand.and.stars.pdf in Resources */,
 				03BDBEA524C467EC00BBD5E9 /* BrightnessViewController.xib in Resources */,
 				03AA7AC024C84C6400A47970 /* wind.pdf in Resources */,
@@ -3146,7 +3154,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.1.4beta1;
+				CURRENT_PROJECT_VERSION = 2.1.5;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3154,7 +3162,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.1.4beta1;
+				MARKETING_VERSION = 2.1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3174,7 +3182,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.1.4beta1;
+				CURRENT_PROJECT_VERSION = 2.1.5;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3182,7 +3190,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.1.4beta1;
+				MARKETING_VERSION = 2.1.5;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
