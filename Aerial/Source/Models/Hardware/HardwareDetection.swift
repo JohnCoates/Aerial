@@ -126,9 +126,9 @@ final class HardwareDetection: NSObject {
     private func getHEVCMain10Support(macModel: String, macSubmodel: String, partial: Double, full: Double) -> HEVCMain10Support {
         let ver = extractMacVersion(macModel: macModel, macSubmodel: macSubmodel)
 
-        if ver > full {
+        if ver >= full {
             return .supported
-        } else if ver > partial {
+        } else if ver >= partial {
             return .partial
         } else {
             return .notsupported
