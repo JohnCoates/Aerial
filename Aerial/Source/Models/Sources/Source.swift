@@ -72,8 +72,14 @@ struct Source: Codable {
 
     func lastUpdated() -> String {
         if isCached() {
-            let date = (try? FileManager.default.attributesOfItem(atPath:
+            var date: Date?
+            if !isCachable && type == .local {
+                date = (try? FileManager.default.attributesOfItem(atPath:
+                Cache.supportPath.appending("/" + name + "/entries.json")))?[.modificationDate] as? Date
+            } else {
+                date = (try? FileManager.default.attributesOfItem(atPath:
                 Cache.supportPath.appending("/" + name + "/entries.json")))?[.creationDate] as? Date
+            }
 
             if date != nil {
                 let dateFormatter = DateFormatter()
@@ -84,6 +90,23 @@ struct Source: Codable {
             }
         }
         return ""
+    }
+
+    func getUnprocessedVideos() -> [AerialVideo] {
+        if isCached() {
+            do {
+                let cacheFileUrl = URL(fileURLWithPath: Cache.supportPath.appending("/" + name + "/entries.json"))
+                let jsondata = try Data(contentsOf: cacheFileUrl)
+
+                return readVideoManifest(jsondata)
+            } catch {
+                errorLog("\(name) could not be opened")
+                return []
+            }
+        } else {
+            debugLog("\(name) is not cached")
+            return []
+        }
     }
 
     func getVideos() -> [AerialVideo] {
@@ -321,6 +344,32 @@ struct Source: Codable {
             errorLog("### Could not parse manifest data")
             return []
         }
+    }
+
+    func readVideoManifest(_ data: Data) -> [AerialVideo] {
+        if let videoManifest = try? newJSONDecoder().decode(VideoManifest.self, from: data) {
+            var processedVideos: [AerialVideo] = []
+
+            for asset in videoManifest.assets {
+                let video = AerialVideo(id: asset.id,
+                    name: asset.accessibilityLabel,
+                    secondaryName: getSecondaryNameFor(asset),
+                    type: "video",
+                    timeOfDay: asset.timeOfDay ?? "day",
+                    scene: getSceneFor(asset),
+                    urls: urlsFor(asset),
+                    source: self,
+                    poi: asset.pointsOfInterest ?? [:],
+                    communityPoi: PoiStringProvider.sharedInstance.getCommunityPoi(id: asset.id))
+
+                processedVideos.append(video)
+            }
+
+            return processedVideos
+        }
+
+        errorLog("### Could not parse manifest data")
+        return []
     }
 
     func parseVideoManifest(_ data: Data) -> [AerialVideo] {

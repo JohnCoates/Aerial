@@ -33,9 +33,8 @@ final class Preferences {
         case dimOnlyOnBattery = "dimOnlyOnBattery"
         case dimInMinutes = "dimInMinutes"
         case overrideDimInMinutes = "overrideDimInMinutes"
-
-        case newVideosMode = "newVideosMode"
         case lastVideoCheck = "lastVideoCheck"
+
         case ciOverrideLanguage = "ciOverrideLanguage"
         case videoSets = "videoSets"
 
@@ -49,10 +48,6 @@ final class Preferences {
 
     enum BetaCheckFrequency: Int {
         case hourly, bidaily, daily
-    }
-
-    enum NewVideosMode: Int {
-        case weekly, monthly, never
     }
 
     enum VersionCheck: Int {
@@ -111,7 +106,6 @@ final class Preferences {
         defaultValues[.dimOnlyOnBattery] = false
         defaultValues[.dimInMinutes] = 30
         defaultValues[.overrideDimInMinutes] = false
-        defaultValues[.newVideosMode] = NewVideosMode.weekly
         defaultValues[.ciOverrideLanguage] = ""
         defaultValues[.videoSets] = [String: [String]]()
         defaultValues[.updateWhileSaverMode] = true
@@ -122,7 +116,7 @@ final class Preferences {
 
         // Set today's date as default
         let dateFormatter = DateFormatter()
-        let current = Date()
+        let current = Date(timeIntervalSinceReferenceDate: -123456789.0)
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let today = dateFormatter.string(from: current)
         defaultValues[.lastVideoCheck] = today
@@ -170,15 +164,6 @@ final class Preferences {
         }
         set {
             setValue(forIdentifier: .betaCheckFrequency, value: newValue)
-        }
-    }
-
-    var newVideosMode: Int? {
-        get {
-            return optionalValue(forIdentifier: .newVideosMode)
-        }
-        set {
-            setValue(forIdentifier: .newVideosMode, value: newValue)
         }
     }
 

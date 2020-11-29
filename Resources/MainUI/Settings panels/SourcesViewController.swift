@@ -24,6 +24,8 @@ class SourcesViewController: NSViewController {
     @IBOutlet var getMoreVideosButton: NSButton!
     @IBOutlet var downloadAllVideosButton: NSButton!
 
+    @IBOutlet var refreshPeriodicity: NSPopUpButton!
+
     @IBOutlet var allSpinner: NSProgressIndicator!
     var selectedSource: Source?
 
@@ -53,6 +55,10 @@ class SourcesViewController: NSViewController {
             self.sourceOutlineView.reloadData()
             self.sourceOutlineView.expandItem(nil, expandChildren: true)
         }
+    }
+
+    @IBAction func refreshPeriodicityChange(_ sender: NSPopUpButton) {
+
     }
 
     @IBAction func getMoreVideosClick(_ sender: NSButton) {
@@ -215,6 +221,7 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
                 cell.licenseButton.isHidden = true
                 cell.moreButton.isHidden = true
                 cell.imageFilm.isHidden = true
+                cell.refreshNowButton.isHidden = true
                 return cell
             } else {
                 return nil
@@ -247,6 +254,8 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
             cell.imageScene6.isHidden = !source.scenes.contains(.countryside)
 
             if source.isEnabled() {
+                cell.imageFilm.isHidden = false
+
                 let totalCount = VideoList.instance.videos.filter({ $0.source.name == source.name }).count
                 let downloadedCount = VideoList.instance.videos.filter({ $0.source.name == source.name && $0.isAvailableOffline }).count
                 let size = source.diskUsage().rounded(toPlaces: 1)
@@ -261,11 +270,14 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
                     cell.videoCount.stringValue.append(", \(size) GB on disk (permanently saved)")
                 }
             } else {
+                cell.imageFilm.isHidden = true
+
                 cell.videoCount.stringValue = ""
             }
 
             cell.licenseButton.isHidden = (source.license == "")
             cell.moreButton.isHidden = (source.more == "")
+            cell.refreshNowButton.isHidden = false
 
             return cell
         case "actionColumn":

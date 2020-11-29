@@ -195,6 +195,53 @@ struct SourceList {
         }
     }
 
+    static func updateLocalSource(source: Source) {
+        // We need the raw manifest to find the path inside
+        let videos = source.getUnprocessedVideos()
+
+        if videos.count >= 1 {
+            let url = videos.first!.url.deletingLastPathComponent()
+            let folderName = url.lastPathComponent
+            debugLog("processing url for videos : \(url)")
+
+            do {
+                let urls = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
+                var assets = [VideoAsset]()
+
+                for lurl in urls {
+                    if lurl.path.lowercased().hasSuffix(".mp4") || lurl.path.lowercased().hasSuffix(".mov") {
+                        assets.append(VideoAsset(accessibilityLabel: folderName,
+                                                 id: NSUUID().uuidString,
+                                                 title: lurl.lastPathComponent,
+                                                 timeOfDay: "day",
+                                                 scene: "",
+                                                 pointsOfInterest: [:],
+                                                 url4KHDR: "",
+                                                 url4KSDR: lurl.path,
+                                                 url1080H264: "",
+                                                 url1080HDR: "",
+                                                 url1080SDR: "",
+                                                 url: "",
+                                                 type: "nature"))
+                    }
+                }
+
+                debugLog("Updating manifest \(url.lastPathComponent)")
+
+                let videoManifest = VideoManifest(assets: assets, initialAssetCount: 1, version: 1)
+
+                SourceList.saveEntries(source: source, manifest: videoManifest)
+
+                VideoList.instance.reloadSources()
+            } catch {
+                errorLog("Could not process directory")
+            }
+        } else {
+            debugLog("Cannot parse your directory, did you delete your videos ?")
+        }
+
+    }
+
     static func processPathForVideos(url: URL) {
         debugLog("processing url for videos : \(url) ")
         let folderName = url.lastPathComponent
@@ -246,6 +293,7 @@ struct SourceList {
                 SourceList.saveEntries(source: source, manifest: videoManifest)
 
                 list.append(source)
+                VideoList.instance.reloadSources()
             }
         } catch {
             errorLog("Could not process directory")

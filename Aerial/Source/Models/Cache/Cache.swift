@@ -254,7 +254,7 @@ struct Cache {
         }
     }
 
-    // Remove files in bad format
+    // Remove files in bad format or outdated
     static func removeCruft() {
         // TODO: kind of a temporary safety
         if VideoList.instance.videos.count > 90 {
@@ -277,14 +277,51 @@ struct Cache {
                     }
 
                     if !found {
-                        debugLog("This file is not in the correct format, removing : \(video)")
-
+                        debugLog("This file is not in the correct format or outdated, removing : \(video)")
                         try? FileManager.default.removeItem(at: video)
                     }
-
                 }
             } catch {
                 errorLog("Error during removing of videos in wrong format, please report")
+                errorLog(error.localizedDescription)
+            }
+
+            // Also remove uncached cruft
+            removeUncachedCruft()
+        }
+    }
+
+    static func removeUncachedCruft() {
+        for source in SourceList.foundSources where !source.isCachable && source.type != .local {
+            debugLog("Checking cruft in \(source.name)")
+
+            let pathURL = URL(fileURLWithPath: supportPath.appending("/" + source.name))
+
+            debugLog(pathURL.absoluteString)
+
+            do {
+                let directoryContent = try FileManager.default.contentsOfDirectory(at: pathURL, includingPropertiesForKeys: nil)
+                let videoURLs = directoryContent.filter { $0.pathExtension == "mov" }
+
+                for video in videoURLs {
+                    let filename = video.lastPathComponent
+                    var found = false
+
+                    // swiftlint:disable for_where
+
+                    for candidate in source.getUnprocessedVideos() {
+                        if candidate.url.lastPathComponent == filename {
+                            found = true
+                        }
+                    }
+
+                    if !found {
+                        debugLog("This file is not in the correct format or outdated, removing : \(video)")
+                        try? FileManager.default.removeItem(at: video)
+                    }
+                }
+            } catch {
+                errorLog("Error during removal of videos in wrong format, please report")
                 errorLog(error.localizedDescription)
             }
         }
@@ -301,7 +338,7 @@ struct Cache {
                 try? FileManager.default.removeItem(at: video)
             }
         } catch {
-            errorLog("Error during removing of videos in wrong format, please report")
+            errorLog("Error during removal of videos in wrong format, please report")
             errorLog(error.localizedDescription)
         }
     }

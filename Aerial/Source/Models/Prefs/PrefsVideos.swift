@@ -25,6 +25,10 @@ enum ShouldPlay: Int {
     case everything, favorites, location, time, scene, source, collection
 }
 
+enum RefreshPeriodicity: Int {
+    case weekly, monthly, never
+}
+
 struct PrefsVideos {
     // Main playback mode
     @SimpleStorage(key: "intShouldPlay", defaultValue: ShouldPlay.everything.rawValue)
@@ -89,6 +93,21 @@ struct PrefsVideos {
         }
     }
 
+    // How often should we look for new videos ?
+    @SimpleStorage(key: "intRefreshPeriodicity", defaultValue: RefreshPeriodicity.monthly.rawValue)
+    static var intRefreshPeriodicity: Int
+
+    // We wrap in a separate value, as we can't store an enum as a Codable in
+    // macOS < 10.15
+    static var refreshPeriodicity: RefreshPeriodicity {
+        get {
+            return RefreshPeriodicity(rawValue: intRefreshPeriodicity)!
+        }
+        set(value) {
+            intRefreshPeriodicity = value.rawValue
+        }
+    }
+
     // Allow video skips with right arrow key (on supporting OSes)
     @SimpleStorage(key: "allowSkips", defaultValue: true)
     static var allowSkips: Bool
@@ -115,4 +134,44 @@ struct PrefsVideos {
 
     @SimpleStorage(key: "allowPerVideoVibrance", defaultValue: false)
     static var allowPerVideoVibrance: Bool
+
+    static private func intervalSinceLastVideoCheck() -> TimeInterval {
+        let preferences = Preferences.sharedInstance
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale.init(identifier: "en_GB")
+        let dateObj = dateFormatter.date(from: preferences.lastVideoCheck!)!
+
+        debugLog("Last manifest check : \(dateObj)")
+
+        return dateObj.timeIntervalSinceNow
+    }
+
+    static func saveLastVideoCheck() {
+        let preferences = Preferences.sharedInstance
+        let dateFormatter = DateFormatter()
+        let current = Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        preferences.lastVideoCheck = dateFormatter.string(from: current)
+    }
+
+    static func shouldCheckForNewVideos() -> Bool {
+        if refreshPeriodicity == .never {
+            return false
+        }
+
+        var dayCheck = 7
+        if refreshPeriodicity == .monthly {
+            dayCheck = 30
+        }
+
+        //debugLog("Interval : \(intervalSinceLastVideoCheck())")
+        if Int(intervalSinceLastVideoCheck()) < -dayCheck * 86400 {
+            //debugLog("Checking for new videos")
+            return true
+        } else {
+            //debugLog("No need to check for new videos")
+            return false
+        }
+    }
 }

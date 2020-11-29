@@ -23,6 +23,7 @@ class DescriptionCellView: NSTableCellView {
     @IBOutlet weak var imageFilm: NSImageView!
     @IBOutlet weak var licenseButton: NSButton!
     @IBOutlet weak var moreButton: NSButton!
+    @IBOutlet weak var refreshNowButton: NSButton!
 
     /// The item that represent the row in the outline view
     /// We may potentially use this cell for multiple outline views so let's make it generic
@@ -63,6 +64,21 @@ class DescriptionCellView: NSTableCellView {
             let workspace = NSWorkspace.shared
             let url = URL(string: source.more)!
             workspace.open(url)
+        }
+    }
+
+    @IBAction func refreshNowButtonClick(_ sender: NSButton) {
+        if let source = item as? Source {
+            if source.isCachable {
+                debugLog("Refreshing cacheable source")
+                VideoList.instance.downloadSource(source: source)
+            } else if source.type == .local {
+                debugLog("Checking local directory")
+                SourceList.updateLocalSource(source: source)
+            } else {
+                debugLog("Refreshing non-cacheable source")
+                VideoList.instance.downloadSource(source: source)
+            }
         }
     }
 }

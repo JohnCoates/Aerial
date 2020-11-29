@@ -504,9 +504,16 @@ class ManifestLoader {
         let dateObj = dateFormatter.date(from: preferences.lastVideoCheck!)
 
         debugLog(preferences.lastVideoCheck!)
-        var dayCheck = 7
-        if preferences.newVideosMode == Preferences.NewVideosMode.monthly.rawValue {
+
+        var dayCheck: Int
+
+        switch PrefsVideos.refreshPeriodicity {
+        case .weekly:
+            dayCheck = 7
+        case .monthly:
             dayCheck = 30
+        case .never:
+            dayCheck = 9999
         }
 
         let cacheDirectory = VideoCache.appSupportDirectory!

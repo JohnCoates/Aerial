@@ -251,6 +251,23 @@ class VideoList {
         downloadManifestsIfNeeded()
     }
 
+    func downloadSource(source: Source) {
+        let downloadManager = DownloadManager()
+
+        let completion = BlockOperation {
+            self.refreshVideoList()
+        }
+
+        for src in SourceList.list where source.name == src.name {
+            debugLog("Marking \(source.name) for redownload")
+            // Then queue the download
+            let operation = downloadManager.queueDownload(URL(string: source.manifestUrl)!, folder: source.name)
+            completion.addDependency(operation)
+
+            OperationQueue.main.addOperation(completion)
+        }
+    }
+
     private func downloadManifestsIfNeeded() {
         let downloadManager = DownloadManager()
 
@@ -264,12 +281,15 @@ class VideoList {
         for source in SourceList.list {
             // But only the enabled ones
             if source.isEnabled() {
-                debugLog("\(source.name) is enabled")
-
                 // We may need to download it
                 if !source.isCached() {
                     debugLog("\(source.name) is not cached, downloading...")
                     sourceQueue.append(source)
+                } else if PrefsVideos.shouldCheckForNewVideos() && Cache.canNetwork() {
+                    debugLog("\(source.name) looking for updated manifest...")
+                    sourceQueue.append(source)
+                } else {
+                    debugLog("\(source.name) is enabled, cached and up to date")
                 }
             }
         }
@@ -279,6 +299,9 @@ class VideoList {
             // Then queue the download
             let operation = downloadManager.queueDownload(URL(string: source.manifestUrl)!, folder: source.name)
             completion.addDependency(operation)
+
+            // Mark that we updated our sources
+            PrefsVideos.saveLastVideoCheck()
         }
 
         OperationQueue.main.addOperation(completion)
@@ -301,7 +324,6 @@ class VideoList {
 
         videos = videos.sorted { $0.name < $1.name }
 
-        //Thumbnails.generateAllThumbnails(forVideos: videos)
         // Let everyone who wants to know that our list is updated
         for callback in callbacks {
             callback()

@@ -298,7 +298,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             } else {
                 self.playNextVideo()
             }
-
         }
     }
 
@@ -470,7 +469,9 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         }
 
         // Now we need to check if we should remove lingering stuff from the cache !
-        Cache.removeCruft()
+        if Cache.canNetwork() {
+            Cache.removeCruft()
+        }
 
         let (randomVideo, pshouldLoop) = VideoList.instance.randomVideo(excluding: currentVideos)
 
