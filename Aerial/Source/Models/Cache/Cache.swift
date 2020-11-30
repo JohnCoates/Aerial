@@ -297,6 +297,7 @@ struct Cache {
 
             let pathURL = URL(fileURLWithPath: supportPath.appending("/" + source.name))
 
+            let unprocessed = source.getUnprocessedVideos()
             debugLog(pathURL.absoluteString)
 
             do {
@@ -309,7 +310,7 @@ struct Cache {
 
                     // swiftlint:disable for_where
 
-                    for candidate in source.getUnprocessedVideos() {
+                    for candidate in unprocessed {
                         if candidate.url.lastPathComponent == filename {
                             found = true
                         }

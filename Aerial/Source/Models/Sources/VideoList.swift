@@ -256,6 +256,9 @@ class VideoList {
 
         let completion = BlockOperation {
             self.refreshVideoList()
+            if !PrefsCache.enableManagement {
+                Aerial.showInfoAlert(title: "Automatic downloads are disabled", text: "In order to watch the new videos, you will need to manually download them (for example by pressing the down arrow button on the right).")
+            }
         }
 
         for src in SourceList.list where source.name == src.name {
@@ -310,6 +313,8 @@ class VideoList {
     // This is called when all our files are downloaded
     private func refreshVideoList() {
         debugLog("Refreshing video list")
+
+        videos = []
 
         for source in SourceList.list {
             if source.isEnabled() {

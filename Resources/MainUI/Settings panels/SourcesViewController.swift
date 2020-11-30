@@ -288,14 +288,14 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
             cell.spinner.isHidden = true
 
             if source.type == .local {
-                cell.actionButton.setIcons("folder")
+                cell.actionButton.setLargeIcon("folder")
                 cell.actionButton.isEnabled = true
             } else {
                 if VideoList.instance.videos.filter({ $0.source.name == source.name && !$0.isAvailableOffline }).isEmpty {
                     cell.actionButton.image = Aerial.getMiniSymbol("checkmark.circle.fill", tint: .systemGreen)
                     cell.actionButton.isEnabled = false
                 } else {
-                    cell.actionButton.setIcons("arrow.down.circle")
+                    cell.actionButton.setLargeIcon("arrow.down.circle")
                     cell.actionButton.isEnabled = true
                 }
             }
