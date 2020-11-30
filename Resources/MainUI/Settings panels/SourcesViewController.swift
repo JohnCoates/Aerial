@@ -267,7 +267,7 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
                 }
 
                 if !source.isCachable && source.type != .local {
-                    cell.videoCount.stringValue.append(", \(size) GB on disk (permanently saved)")
+                    cell.videoCount.stringValue.append(", \(size) GB on disk")
                 }
             } else {
                 cell.imageFilm.isHidden = true

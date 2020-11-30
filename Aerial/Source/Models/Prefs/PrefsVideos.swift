@@ -94,7 +94,7 @@ struct PrefsVideos {
     }
 
     // How often should we look for new videos ?
-    @SimpleStorage(key: "intRefreshPeriodicity", defaultValue: RefreshPeriodicity.monthly.rawValue)
+    @SimpleStorage(key: "intRefreshPeriodicity", defaultValue: PrefsCache.enableManagement ? RefreshPeriodicity.monthly.rawValue : RefreshPeriodicity.never.rawValue)
     static var intRefreshPeriodicity: Int
 
     // We wrap in a separate value, as we can't store an enum as a Codable in
