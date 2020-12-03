@@ -81,14 +81,14 @@ final class AssetLoaderDelegate: NSObject, AVAssetResourceLoaderDelegate, VideoL
     func resourceLoader(_ resourceLoader: AVAssetResourceLoader,
                         shouldWaitForLoadingOfRequestedResource
         loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
-        /*
+
         // check if cache can fulfill this without a request
         if videoCache.canFulfillLoadingRequest(loadingRequest) {
             if videoCache.fulfillLoadingRequest(loadingRequest) {
-                debugLog("fullfilling loading request")
+                //debugLog("fullfilling loading request")
                 return true
             }
-        }*/
+        }
 
         // assign request to VideoLoader
         //debugLog("request to loader \(loadingRequest)")

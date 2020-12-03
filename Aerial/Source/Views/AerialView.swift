@@ -498,6 +498,28 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
             player.replaceCurrentItem(with: item)
             debugLog("\(self.description) streaming video (not fully available offline) : \(video.url)")
+
+            guard let currentItem = player.currentItem else {
+                errorLog("\(self.description) No current item!")
+                return
+            }
+
+            debugLog("\(self.description) observing current item \(currentItem)")
+
+            // Descriptions and fades are set when we begin playback
+            if !self.observerWasSet {
+                observerWasSet = true
+                playerLayer.addObserver(self, forKeyPath: "readyForDisplay", options: .initial, context: nil)
+            }
+
+            setNotifications(currentItem)
+
+            player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
+
+            // Let's never download stuff in preview...
+            if !isPreview {
+                Cache.fillOrRollCache()
+            }
         } else {
             // The new localpath getter
             let localPath = VideoList.instance.localPathFor(video: video)
