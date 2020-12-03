@@ -374,8 +374,9 @@ class VideoList {
         playlistRestrictedTo = restrictedTo
 
         let shuffled = currentRotation().shuffled()
+        let cachedShuffled = shuffled.filter({ $0.isAvailableOffline })
 
-        debugLog("playlist count: \(shuffled.count)")
+        debugLog("Playlist raw count: \(shuffled.count) raw cached count \(cachedShuffled.count) isRestricted: \(isRestricted) restrictedTo: \(restrictedTo)")
 
         for video in shuffled {
             // Do we restrict video types by day/night ?

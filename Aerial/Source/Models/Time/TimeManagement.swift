@@ -38,7 +38,6 @@ final class TimeManagement: NSObject {
         } else {
             _ = calculateFromCoordinates()
         }
-
     }
 
     // MARK: - What should we play ?
@@ -46,6 +45,7 @@ final class TimeManagement: NSObject {
     func shouldRestrictPlaybackToDayNightVideo() -> (Bool, String) {
         // We override everything on dark mode if we need to
         if PrefsTime.darkModeNightOverride && DarkMode.isEnabled() {
+            debugLog("Dark Mode override")
             return (true, "night")
         }
 
@@ -55,17 +55,20 @@ final class TimeManagement: NSObject {
                 _ = calculateFrom(latitude: lat, longitude: lon)
 
                 if solar != nil {
+                    debugLog("Location service : \(solar!.getTimeSlice())")
                     return (true, solar!.getTimeSlice())
                 }
             }
 
             return (false, "")
         } else if PrefsTime.timeMode == .lightDarkMode {
+            debugLog("Light/dark : \(DarkMode.isEnabled() ? "night" : "day")")
             return (true, DarkMode.isEnabled() ? "night" : "day")
         } else if PrefsTime.timeMode == .coordinates {
             _ = calculateFromCoordinates()
 
             if solar != nil {
+                debugLog("Coordinates : \(solar!.getTimeSlice())")
                 return (true, solar!.getTimeSlice())
             } else {
                 errorLog("You need to input latitude and longitude for calculations to work")
@@ -78,6 +81,7 @@ final class TimeManagement: NSObject {
                 return (false, "")
             }
 
+            debugLog("Night shift : \(dayNightCheck(sunrise: sunrise!, sunset: sunset!))")
             return (true, dayNightCheck(sunrise: sunrise!, sunset: sunset!))
         } else if PrefsTime.timeMode == .manual {
             // We get the manual values from our preferences, as string, and convert them to dates
@@ -93,6 +97,7 @@ final class TimeManagement: NSObject {
                 return(false, "")
             }
 
+            debugLog("Manual : \(dayNightCheck(sunrise: dateSunrise, sunset: dateSunset))")
             return (true, dayNightCheck(sunrise: dateSunrise, sunset: dateSunset))
         }
 

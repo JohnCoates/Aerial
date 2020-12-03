@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import Cocoa
 
 struct DarkMode {
     static func isAvailable() -> (Bool, reason: String) {
         if #available(OSX 10.14, *) {
-            if DarkMode.isEnabled() {
+            if Aerial.darkMode {
                 return (true, "Your Mac is currently in Dark Mode")
             } else {
                 return (true, "Your Mac is currently in Light Mode")
@@ -23,11 +24,6 @@ struct DarkMode {
     }
 
     static func isEnabled() -> Bool {
-        if #available(OSX 10.14, *) {
-            let modeString = UserDefaults.standard.string(forKey: "AppleInterfaceStyle")
-            return (modeString == "Dark")
-        } else {
-            return false
-        }
+        return Aerial.darkMode
     }
 }

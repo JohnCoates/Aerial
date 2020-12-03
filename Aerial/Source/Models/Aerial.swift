@@ -15,9 +15,22 @@ class Aerial: NSObject {
     // We use this to track whether we run as a screen saver or an app
     var appMode = false
 
+    // We also track darkmode here now
+    static var darkMode = false
+
     static var version: String = {
         return getVersionString()
     }()
+
+    static func computeDarkMode(view: NSView) {
+        if #available(OSX 10.14, *) {
+            debugLog("Best match appearance : \(view.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua]))")
+            debugLog("Effective Appearence : \(view.effectiveAppearance)")
+            darkMode =  view.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua
+        } else {
+            darkMode = false
+        }
+    }
 
     static func getVersionString() -> String {
         if let version = Bundle(identifier: "com.johncoates.Aerial-Test")?.infoDictionary?["CFBundleShortVersionString"] as? String {

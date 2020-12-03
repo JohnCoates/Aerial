@@ -188,6 +188,9 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     // swiftlint:disable:next cyclomatic_complexity
     func setup() {
+        // First we check the system appearance, as it relies on our view
+        Aerial.computeDarkMode(view: self)
+
         _ = TimeManagement.sharedInstance
 
         ensureCorrectFormat()
@@ -354,6 +357,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         debugLog("\(self.description) stopAnimation")
         if !isDisabled {
             player?.pause()
+            player?.rate = 0
+            player?.replaceCurrentItem(with: nil)
         }
 
         let preferences = Preferences.sharedInstance
