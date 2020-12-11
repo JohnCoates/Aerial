@@ -18,6 +18,9 @@ class Aerial: NSObject {
     // We also track darkmode here now
     static var darkMode = false
 
+    // And we track if we are running under companion
+    static var underCompanion = false
+
     static var version: String = {
         return getVersionString()
     }()
@@ -29,6 +32,17 @@ class Aerial: NSObject {
             darkMode =  view.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua
         } else {
             darkMode = false
+        }
+
+        // yeah we do that here...
+        for bundle in Bundle.allBundles {
+            if let bundleId = bundle.bundleIdentifier {
+                if bundleId.contains("AerialUpdater") {
+                    underCompanion = true
+                    debugLog("> Running under Aerial Companion!")
+                }
+
+            }
         }
     }
 

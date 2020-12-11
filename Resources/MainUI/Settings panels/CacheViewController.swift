@@ -50,6 +50,7 @@ class CacheViewController: NSViewController {
     // Manual mode
     @IBOutlet var cacheSize: NSTextField!
     @IBOutlet var makeTimeMachineIgnore: NSButton!
+    @IBOutlet var makeTimeMachineIgnore2: NSButton!
 
     @IBOutlet var manuallyPick: NSButton!
     @IBOutlet var pickFolder: NSButton!
@@ -59,6 +60,8 @@ class CacheViewController: NSViewController {
         super.viewDidLoad()
 
         makeTimeMachineIgnore.state = TimeMachine.isExcluded() ? .on : .off
+        makeTimeMachineIgnore2.state = makeTimeMachineIgnore.state
+
         manuallyPick.state = PrefsCache.overrideCache ? .on : .off
         if #available(OSX 10.15, *) {
             manuallyPick.isEnabled = false

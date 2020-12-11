@@ -794,6 +794,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		03625EE42583CF820034264F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C48B28011AFA598D00C7DEF6;
+			remoteInfo = OAuthSwiftMacOS;
+		};
+		03625EED2583D02C0034264F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F43502791A6791B200038A29;
+			remoteInfo = OAuthSwift;
+		};
 		03D2A4142447401D003ABD30 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */;
@@ -1837,6 +1851,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				03625EEE2583D02C0034264F /* PBXTargetDependency */,
+				03625EE52583CF820034264F /* PBXTargetDependency */,
 			);
 			name = AerialApp;
 			productName = "Aerial Test";
@@ -2872,6 +2888,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		03625EE52583CF820034264F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OAuthSwiftMacOS;
+			targetProxy = 03625EE42583CF820034264F /* PBXContainerItemProxy */;
+		};
+		03625EEE2583D02C0034264F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OAuthSwift;
+			targetProxy = 03625EED2583D02C0034264F /* PBXContainerItemProxy */;
+		};
 		37F36D7624F416130076F3C2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OAuthSwiftMacOS;
@@ -3154,7 +3180,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.2.2beta1;
+				CURRENT_PROJECT_VERSION = 2.2.4;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3162,7 +3188,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.2.2beta1;
+				MARKETING_VERSION = 2.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3182,7 +3208,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.2.2beta1;
+				CURRENT_PROJECT_VERSION = 2.2.4;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3190,7 +3216,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.2.2beta1;
+				MARKETING_VERSION = 2.2.4;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
