@@ -26,7 +26,7 @@
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AiK-TD-2Qt">
                                 <rect key="frame" x="408" y="292" width="253" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Before you start, let's setup a few things!" id="Uez-be-ewR">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Before you start, let's set up a few things!" id="Uez-be-ewR">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
