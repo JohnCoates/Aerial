@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17700" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17700"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -141,11 +141,11 @@ Gw
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="HeaderCell" id="nj3-9L-guH">
-                                                <rect key="frame" x="11" y="0.0" width="182" height="24"/>
+                                                <rect key="frame" x="11" y="0.0" width="162" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tvb-VO-ifT">
-                                                        <rect key="frame" x="0.0" y="6" width="182" height="16"/>
+                                                        <rect key="frame" x="0.0" y="6" width="162" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                         <textFieldCell key="cell" controlSize="large" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="HEADER CELL" id="IxU-vc-Rzz">
                                                             <font key="font" metaFont="system"/>
@@ -159,11 +159,11 @@ Gw
                                                 </connections>
                                             </tableCellView>
                                             <tableCellView identifier="DataCell" id="g4S-ge-F2f">
-                                                <rect key="frame" x="11" y="24" width="182" height="30"/>
+                                                <rect key="frame" x="11" y="24" width="162" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iXR-Im-0Vq">
-                                                        <rect key="frame" x="21" y="8" width="161" height="17"/>
+                                                        <rect key="frame" x="21" y="8" width="141" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                         <textFieldCell key="cell" controlSize="large" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="aIc-4e-tVY">
                                                             <font key="font" metaFont="system"/>
@@ -215,7 +215,7 @@ Gw
                                 <action selector="menuButtonClick:" target="-2" id="Fk8-Hv-hiB"/>
                             </connections>
                         </button>
-                        <button toolTip="Infos" translatesAutoresizingMaskIntoConstraints="NO" id="I2Z-h4-5te">
+                        <button toolTip="Info" translatesAutoresizingMaskIntoConstraints="NO" id="I2Z-h4-5te">
                             <rect key="frame" x="121" y="6" width="25" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="25" id="6lb-NO-dSc"/>
