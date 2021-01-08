@@ -24,13 +24,13 @@ If you're looking to install Aerial across many systems, remotely, or simply fro
 Simply issue the following Terminal command:
 
 ```sh
-brew cask install aerial
+brew install --cask aerial
 ```
 
 To upgrade Aerial, run the following Terminal command:
 
 ```sh
-brew cask upgrade aerial
+brew upgrade --cask aerial
 ```
 
 Please note that if you prefer using homebrew to update Aerial, we recommend you disable Sparkle auto updates in the `Updates`tab. 
@@ -55,7 +55,7 @@ There are three ways to uninstall Aerial from your Mac. However please first rea
 - If you installed Aerial using Brew Cask, then enter the following command in a Terminal window to uninstall:
 
 ```sh
-brew cask uninstall aerial
+brew uninstall --cask aerial
 ```
 
 # Removing the cache 
