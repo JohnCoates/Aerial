@@ -40,6 +40,10 @@ class SidebarViewController: NSViewController {
 
         if #available(OSX 10.16, *) {
             closeButton.isHighlighted = true
+        } else {
+            // For some reason we need this on 10.12/10.13, there's a bug that somehow inverts colors in the recent Big Sur SDK for those older OSes
+            sidebarOutlineView.backgroundColor = .clear
+            sidebarOutlineView.gridColor = .alternateSelectedControlColor
         }
 
         sidebarOutlineView.delegate = self
