@@ -58,6 +58,27 @@ extension Locations: CLLocationManagerDelegate {
     // Auth status callback
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         debugLog("LMauth status change : \(status.rawValue)")
+        if status == .denied {
+            if PrefsTime.cachedLatitude != 0 {
+                debugLog("Couldn't retrieve your location, using latest cached coordinates instead")
+                // Read them
+                coordinates = CLLocationCoordinate2DMake(
+                    PrefsTime.cachedLatitude as CLLocationDegrees,
+                    PrefsTime.cachedLongitude as CLLocationDegrees)
+
+                // Pretend we didn't fail
+                for success in successes {
+                    success(coordinates!)
+                }
+
+                // Then cleanup
+                successes.removeAll()
+                failures.removeAll()
+            } else {
+                // swiftlint:disable:next line_length
+                debugLog("Location services are either globally disabled, or disabled for Aerial. Please enable them at least once so Aerial can get your coordinates, or use another Time management mode.")
+            }
+        }
     }
 
     // Location fetch Success callback
