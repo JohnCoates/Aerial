@@ -139,7 +139,11 @@ class SidebarViewController: NSViewController {
         if Aerial.instance.appMode {
             NSApplication.shared.terminate(nil)
         } else {
-            windowController!.window?.sheetParent?.endSheet(windowController!.window!)
+            if Aerial.underCompanion {
+                windowController!.window?.close()
+            } else {
+                windowController!.window?.sheetParent?.endSheet(windowController!.window!)
+            }
         }
     }
 

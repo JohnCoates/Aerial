@@ -25,6 +25,17 @@ class Aerial: NSObject {
         return getVersionString()
     }()
 
+    static func checkCompanion() {
+        for bundle in Bundle.allBundles {
+            if let bundleId = bundle.bundleIdentifier {
+                if bundleId.contains("AerialUpdater") {
+                    underCompanion = true
+                    debugLog("> Running under Aerial Companion!")
+                }
+            }
+        }
+    }
+
     static func computeDarkMode(view: NSView) {
         if #available(OSX 10.14, *) {
             debugLog("Best match appearance : \(view.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua]))")
@@ -32,17 +43,6 @@ class Aerial: NSObject {
             darkMode =  view.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua
         } else {
             darkMode = false
-        }
-
-        // yeah we do that here...
-        for bundle in Bundle.allBundles {
-            if let bundleId = bundle.bundleIdentifier {
-                if bundleId.contains("AerialUpdater") {
-                    underCompanion = true
-                    debugLog("> Running under Aerial Companion!")
-                }
-
-            }
         }
     }
 

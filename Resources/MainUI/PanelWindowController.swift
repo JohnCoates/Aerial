@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PanelWindowController: NSWindowController {
+@objc class PanelWindowController: NSWindowController {
     var firstSetupWindowController: FirstSetupWindowController?
 
     var splitVC: NSSplitViewController?

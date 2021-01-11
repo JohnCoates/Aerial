@@ -122,6 +122,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             preview = true
         }
 
+        Aerial.checkCompanion()
+
         // This is where we manage our location info layers, clock, etc
         self.layerManager = LayerManager(isPreview: preview)
 
@@ -130,7 +132,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
         self.animationTimeInterval = 1.0 / 30.0
 
-        setup()
+        if Aerial.underCompanion && isPreview {
+            debugLog("Running under companion in preview mode, preventing setup")
+        } else {
+            setup()
+        }
     }
 
     // This is the one used by our App target used for debugging
