@@ -46,7 +46,7 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j4v-hG-UJN">
                     <rect key="frame" x="198" y="215" width="141" height="16"/>
-                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="brew cask install aerial" id="8LP-Oh-W4p">
+                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="brew install --cask aerial" id="8LP-Oh-W4p">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
