@@ -41,7 +41,7 @@ With changes in Catalina and Big Sur, a screen saver can no longer update itself
 
 **Installation instructions:**
 - Download AerialInstaller.dmg [from here](https://github.com/glouel/AerialCompanion/releases/latest) 
-- Open the .dmg and follow the instructions (for more information, [click here](https://github.com/JohnCoates/Aerial/blob/master/Documentation/FAQs.md#how-do-i-install-aerial)
+- Open the .dmg and follow the instructions (for more information, [click here](https://github.com/JohnCoates/Aerial/blob/master/Documentation/FAQs.md#how-do-i-install-aerial))
 - This will install both the companion app and the screen saver (or update you to the current version if you already have it installed)
 
 Need more information on install, setup, or uninstall? Or want to install via homebrew or manually? Check our extended [instructions here](Documentation/Installation.md). 
