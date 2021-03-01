@@ -43,6 +43,7 @@ final class TimeManagement: NSObject {
     // MARK: - What should we play ?
     // swiftlint:disable:next cyclomatic_complexity
     func shouldRestrictPlaybackToDayNightVideo() -> (Bool, String) {
+        debugLog("PrefsTime : \(PrefsTime.timeMode)")
         // We override everything on dark mode if we need to
         if PrefsTime.darkModeNightOverride && DarkMode.isEnabled() {
             debugLog("Dark Mode override")
@@ -58,6 +59,8 @@ final class TimeManagement: NSObject {
                     debugLog("Location service : \(solar!.getTimeSlice())")
                     return (true, solar!.getTimeSlice())
                 }
+            } else {
+                debugLog("No location available, failing timeMode")
             }
 
             return (false, "")

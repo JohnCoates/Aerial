@@ -37,7 +37,21 @@ class Locations: NSObject {
             debugLog("Location services enabled")
             locationManager.startUpdatingLocation()
         } else {
-            failure("Location services disabled")
+            debugLog("Location services disabled")
+
+            if PrefsTime.cachedLatitude != 0 {
+                debugLog("Couldn't retrieve your location, using latest cached coordinates instead")
+                // Read them
+                coordinates = CLLocationCoordinate2DMake(
+                    PrefsTime.cachedLatitude as CLLocationDegrees,
+                    PrefsTime.cachedLongitude as CLLocationDegrees)
+
+                // Pretend we didn't fail
+                success(coordinates!)
+            } else {
+                debugLog("No cached coordinates")
+                failure("Location services disabled")
+            }
         }
 
         // This seems super wrong...

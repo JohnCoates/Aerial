@@ -220,41 +220,27 @@ class AdvancedViewController: NSViewController {
             button1: "Reset my settings",
             button2: "Cancel") {
 
-/*            windowController!.window?.sheetParent?.endSheet(windowController!.window!)
-            let app = NSRunningApplication.current
-            debugLog("mine \(app.localizedName)")
-            app.terminate()*/
+            let process: Process = Process()
 
-/*                debugLog("try terminate")
-            self.windowController!.window?.sheetParent?.close()
+            debugLog("clearing defaults")
+            process.launchPath = "/usr/bin/defaults"
 
-            NSRunningApplication.*/
-
-            let plistURL = URL(fileURLWithPath: Cache.supportPath)
-                .deletingLastPathComponent()
-                .deletingLastPathComponent()
-                .appendingPathComponent("Preferences")
-                .appendingPathComponent("ByHost")
-
-            if let fileURLs = FileManager.default.enumerator(at: plistURL, includingPropertiesForKeys: nil)?.allObjects as? [URL] {
-                let candidates = fileURLs.filter({ $0.absoluteString.contains("com.JohnCoates.Aerial")})
-
-                if candidates.count == 1 {
-                    let path = candidates[0].path
-                    if FileManager.default.fileExists(atPath: path) {
-                        debugLog("Removing settings")
-                        try? FileManager.default.removeItem(at: candidates[0])
-
-                        // swiftlint:disable:next line_length
-                        Aerial.showInfoAlert(title: "Settings reset to defaults", text: "Your settings were reset to defaults. \n\nPlease close Aerial and System Preferences in order to reload them.")
-                    }
+            // Settings may be stored in a container... unless we run under companion ! What a mess...
+            if #available(OSX 10.15, *) {
+                if Aerial.underCompanion {
+                    process.arguments = ["-currentHost", "delete", "com.JohnCoates.Aerial"]
+                } else {
+                    process.arguments = ["-currentHost", "delete", "~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/ByHost/com.JohnCoates.Aerial"]
                 }
+            } else {
+                process.arguments = ["-currentHost", "delete", "com.JohnCoates.Aerial"]
             }
 
-        }
+            process.launch()
+            process.waitUntilExit()
 
-        /*
-*/
+            Aerial.showInfoAlert(title: "Settings reset to defaults", text: "Your settings were reset to defaults. \n\nPlease close Aerial and System Preferences in order to reload them.")
+        }
     }
 
     // Helpers, to move in a model when I have a sec
