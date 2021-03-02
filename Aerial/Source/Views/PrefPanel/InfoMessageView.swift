@@ -8,14 +8,18 @@
 
 import Cocoa
 
-class InfoMessageView: NSView {
-    @IBOutlet var messageTextField: NSTextField!
+class InfoMessageView: NSView, NSTextViewDelegate {
+    @IBOutlet var messageTextView: NSTextView!
 
     func setStates() {
-        messageTextField.stringValue = PrefsInfo.message.message
+        messageTextView.delegate = self
+
+        messageTextView.string = PrefsInfo.message.message
     }
 
-    @IBAction func messageChange(_ sender: NSTextField) {
-        PrefsInfo.message.message = sender.stringValue
+    func textDidChange(_ notification: Notification) {
+        guard let textView = notification.object as? NSTextView else { return }
+        print(textView.string)
+        PrefsInfo.message.message = textView.string
     }
 }

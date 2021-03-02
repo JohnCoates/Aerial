@@ -461,44 +461,55 @@ corner</string>
             </connections>
             <point key="canvasLocation" x="-840" y="-448"/>
         </customView>
-        <customView id="wFi-1P-F0m" userLabel="Message Extra View" customClass="InfoMessageView" customModule="Aerial" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="580" height="43"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="wFi-1P-F0m" userLabel="Message Extra View" customClass="InfoMessageView" customModule="Aerial" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="580" height="134"/>
             <subviews>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1sd-Al-x6a">
-                    <rect key="frame" x="150" y="11" width="247" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="247" id="GNd-Xp-bcL"/>
-                    </constraints>
-                    <textFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Type your message here" drawsBackground="YES" id="zav-P6-Lre">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <action selector="messageChange:" target="wFi-1P-F0m" id="msM-Ry-cZY"/>
-                    </connections>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HZB-E1-LF5">
-                    <rect key="frame" x="81" y="14" width="63" height="16"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HZB-E1-LF5">
+                    <rect key="frame" x="81" y="105" width="63" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Message:" id="MnS-Bc-nML">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vn-TO-wUI">
+                    <rect key="frame" x="150" y="13" width="410" height="108"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <clipView key="contentView" drawsBackground="NO" id="Ax6-3Y-Vnl">
+                        <rect key="frame" x="0.0" y="0.0" width="410" height="108"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="ehG-nq-Wse">
+                                <rect key="frame" x="0.0" y="0.0" width="410" height="108"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <size key="minSize" width="410" height="108"/>
+                                <size key="maxSize" width="420" height="10000000"/>
+                                <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            </textView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="slf-6d-QJ7">
+                        <rect key="frame" x="-100" y="-100" width="240" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="lvD-6u-5me">
+                        <rect key="frame" x="394" y="0.0" width="16" height="108"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
             </subviews>
             <constraints>
-                <constraint firstItem="1sd-Al-x6a" firstAttribute="top" secondItem="wFi-1P-F0m" secondAttribute="top" constant="11" id="7Qf-Xz-bDR"/>
-                <constraint firstItem="1sd-Al-x6a" firstAttribute="firstBaseline" secondItem="HZB-E1-LF5" secondAttribute="firstBaseline" id="G30-E2-UB5"/>
-                <constraint firstItem="1sd-Al-x6a" firstAttribute="leading" secondItem="wFi-1P-F0m" secondAttribute="leading" constant="150" id="Tmt-nH-CyP"/>
-                <constraint firstItem="1sd-Al-x6a" firstAttribute="leading" secondItem="HZB-E1-LF5" secondAttribute="trailing" constant="8" symbolic="YES" id="Xhl-bn-zhW"/>
-                <constraint firstAttribute="bottom" secondItem="1sd-Al-x6a" secondAttribute="bottom" constant="11" id="i8W-uS-j75"/>
+                <constraint firstAttribute="height" constant="134" id="Nes-Je-nqR"/>
+                <constraint firstAttribute="width" constant="580" id="Rhv-mX-c2W"/>
             </constraints>
             <connections>
-                <outlet property="messageTextField" destination="1sd-Al-x6a" id="0My-l4-QL7"/>
+                <outlet property="messageTextChange" destination="ehG-nq-Wse" id="cSX-Ia-QDw"/>
+                <outlet property="messageTextView" destination="ehG-nq-Wse" id="Zb3-Ju-MnL"/>
             </connections>
-            <point key="canvasLocation" x="-840" y="-233"/>
+            <point key="canvasLocation" x="-840" y="-160"/>
         </customView>
         <customView id="UAz-72-SHK" userLabel="Location Extra View" customClass="InfoLocationView" customModule="Aerial" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="580" height="50"/>
