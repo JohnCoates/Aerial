@@ -21,6 +21,12 @@ class OverlaysViewController: NSViewController {
     @IBOutlet var infoLocationView: InfoLocationView!
     @IBOutlet var infoClockView: InfoClockView!
     @IBOutlet var infoMessageView: InfoMessageView!
+
+    // Message sub panels
+    @IBOutlet var infoMessageTextView: NSView!
+    @IBOutlet var infoMessageShellView: NSView!
+    @IBOutlet var infoMessageTextFileView: NSView!
+
     @IBOutlet var infoBatteryView: InfoBatteryView!
     @IBOutlet var infoCountdownView: InfoCountdownView!
     @IBOutlet var infoTimerView: InfoTimerView!
@@ -29,14 +35,16 @@ class OverlaysViewController: NSViewController {
 
     @IBOutlet var fontButton: NSButton!
     @IBOutlet var trashButton: NSButton!
-    // And our weather panel
 
+    // And our weather panel
     @IBOutlet var weatherPanel: NSPanel!
     @IBOutlet var weatherCustomView: NSView!
     @IBOutlet var weatherLabel: NSTextField!
 
     var infoSource = InfoTableSource()
     var infoSettingsSource = InfoSettingsTableSource()
+
+    var currentSubMessage: NSView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +90,7 @@ class OverlaysViewController: NSViewController {
         case .message:
             infoContainerView.addSubview(infoMessageView)
             infoMessageView.frame.origin.y = infoCommonView.frame.height
+            addSubMessagePanel()
             infoMessageView.setStates()
         case .clock:
             infoContainerView.addSubview(infoClockView)
@@ -110,6 +119,34 @@ class OverlaysViewController: NSViewController {
             infoTimerView.frame.origin.y = infoCommonView.frame.height
             infoTimerView.setStates()
         }
+    }
+
+    func addSubMessagePanel() {
+        switch PrefsInfo.message.messageType {
+        case .text:
+            infoContainerView.addSubview(infoMessageTextView)
+            infoMessageTextView.frame.origin.y = infoCommonView.frame.height + infoMessageView.frame.height
+            currentSubMessage = infoMessageTextView
+        case .shell:
+            infoContainerView.addSubview(infoMessageShellView)
+            infoMessageShellView.frame.origin.y = infoCommonView.frame.height + infoMessageView.frame.height
+            currentSubMessage = infoMessageShellView
+        case .textfile:
+            infoContainerView.addSubview(infoMessageTextFileView)
+            infoMessageTextFileView.frame.origin.y = infoCommonView.frame.height + infoMessageView.frame.height
+            currentSubMessage = infoMessageTextFileView
+        }
+
+        infoMessageTextView.frame.origin.y = infoCommonView.frame.height + infoMessageView.frame.height
+    }
+
+    // We call this when we switch from one mode  to another
+    public func switchSubMessagePanel() {
+        if let cMessage = currentSubMessage {
+            cMessage.removeFromSuperview()
+        }
+
+        addSubMessagePanel()
     }
 
     // Clear the panel

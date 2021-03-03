@@ -12,6 +12,7 @@ import AVKit
 class MessageLayer: AnimationTextLayer {
     var config: PrefsInfo.Message?
     var wasSetup = false
+    var messageTimer: Timer?
 
     override init(layer: Any) {
         super.init(layer: layer)
@@ -40,14 +41,79 @@ class MessageLayer: AnimationTextLayer {
     }
 
     override func setupForVideo(video: AerialVideo, player: AVPlayer) {
+        guard let config = config else {
+            return
+        }
+
         // Only run this once, if enabled
-        if !wasSetup && config!.message != "" {
+        if !wasSetup {
             wasSetup = true
 
-            update(string: config!.message)
+            switch config.messageType {
+            case .text:
+                update(string: config.message)
+            case .shell:
+                let result = runShell()
+                update(string: result ?? "")
+                setupRefresh()
+            case .textfile:
+                //TODO
+                update(string: config.message)
+            }
 
             let fadeAnimation = self.createFadeInAnimation()
             add(fadeAnimation, forKey: "textfade")
         }
+    }
+
+    func setupRefresh() {
+        guard let config = config else {
+            return
+        }
+
+        guard config.refreshPeriodicity != .never else {
+            return
+        }
+
+        if #available(OSX 10.12, *) {
+            var interval = 0.0
+            switch config.refreshPeriodicity {
+            case .never:
+                interval = 1
+            case .tenseconds:
+                interval = 10
+            case .thirtyseconds:
+                interval = 30
+            case .oneminute:
+                interval = 60
+            case .fiveminutes:
+                interval = 300
+            case .tenminutes:
+                interval = 600
+            }
+
+            messageTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: { [self] (_) in
+                let result = runShell()
+                update(string: result ?? "")
+            })
+        }
+    }
+
+    func runShell() -> String? {
+        guard let config = config else {
+            return nil
+        }
+
+        if config.shellScript != "" {
+            if FileManager.default.fileExists(atPath: PrefsInfo.message.shellScript) {
+                let (result, _) = Aerial.shell(launchPath: PrefsInfo.message.shellScript)
+
+                if let res = result {
+                    return res
+                }
+            }
+        }
+
+        return nil
     }
 }

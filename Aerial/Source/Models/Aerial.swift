@@ -161,4 +161,33 @@ class Aerial: NSObject {
         }
 
     }
+
+    // Launch a process through shell and capture/return output
+    static func shell(launchPath: String, arguments: [String] = []) -> (String?, Int32) {
+        let task = Process()
+        task.launchPath = launchPath
+        task.arguments = arguments
+
+        let pipe = Pipe()
+        task.standardOutput = pipe
+        task.standardError = pipe
+
+        if #available(OSX 10.13, *) {
+            do {
+                try task.run()
+            } catch {
+                // handle errors
+                print("Error: \(error.localizedDescription)")
+            }
+        } else {
+            // A non existing command will crash 10.12
+            task.launch()
+        }
+
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        let output = String(data: data, encoding: .utf8)
+        task.waitUntilExit()
+
+        return (output, task.terminationStatus)
+    }
 }

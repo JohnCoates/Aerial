@@ -49,7 +49,7 @@ struct NightShift {
             cbdpath = "/usr/libexec/corebrightnessdiag"
         }
 
-        let (nsInfo, ts) = shell(launchPath: cbdpath, arguments: ["nightshift-internal"])
+        let (nsInfo, ts) = Aerial.shell(launchPath: cbdpath, arguments: ["nightshift-internal"])
 
         if ts != 0 {
             // Task didn't return correctly ? Abort
@@ -102,25 +102,6 @@ struct NightShift {
         }
 
         return nil
-    }
-
-    // Launch a process through shell and capture/return output
-    private static func shell(launchPath: String, arguments: [String] = []) -> (String?, Int32) {
-        let task = Process()
-        task.launchPath = launchPath
-        task.arguments = arguments
-
-        let pipe = Pipe()
-        task.standardOutput = pipe
-        task.standardError = pipe
-
-        task.launch()
-
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        let output = String(data: data, encoding: .utf8)
-        task.waitUntilExit()
-
-        return (output, task.terminationStatus)
     }
 
 }

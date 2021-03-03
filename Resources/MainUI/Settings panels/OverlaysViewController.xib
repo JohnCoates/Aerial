@@ -17,6 +17,9 @@
                 <outlet property="infoCountdownView" destination="OhT-fX-ti2" id="xUS-Gc-HhU"/>
                 <outlet property="infoDateView" destination="uc4-YQ-4ov" id="jmw-3I-Jdg"/>
                 <outlet property="infoLocationView" destination="UAz-72-SHK" id="oW2-oX-deu"/>
+                <outlet property="infoMessageShellView" destination="bXW-hw-1fP" id="uOb-VI-ClK"/>
+                <outlet property="infoMessageTextFileView" destination="dIH-yk-sga" id="s34-LA-6NG"/>
+                <outlet property="infoMessageTextView" destination="eaZ-HA-6Kx" id="f5W-Be-GRk"/>
                 <outlet property="infoMessageView" destination="wFi-1P-F0m" id="TSS-kq-QgP"/>
                 <outlet property="infoSettingsTableView" destination="d1q-xb-ZLa" id="11p-YY-Bgo"/>
                 <outlet property="infoSettingsView" destination="GtU-uK-2NN" id="Y8M-WL-3Be"/>
@@ -461,55 +464,53 @@ corner</string>
             </connections>
             <point key="canvasLocation" x="-840" y="-448"/>
         </customView>
-        <customView translatesAutoresizingMaskIntoConstraints="NO" id="wFi-1P-F0m" userLabel="Message Extra View" customClass="InfoMessageView" customModule="Aerial" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="580" height="134"/>
+        <customView id="wFi-1P-F0m" userLabel="Message Extra View" customClass="InfoMessageView" customModule="Aerial" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="580" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HZB-E1-LF5">
-                    <rect key="frame" x="81" y="105" width="63" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Message:" id="MnS-Bc-nML">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HZB-E1-LF5">
+                    <rect key="frame" x="51" y="20" width="93" height="16"/>
+                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Message type:" id="MnS-Bc-nML">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vn-TO-wUI">
-                    <rect key="frame" x="150" y="13" width="410" height="108"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                    <clipView key="contentView" drawsBackground="NO" id="Ax6-3Y-Vnl">
-                        <rect key="frame" x="0.0" y="0.0" width="410" height="108"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="ehG-nq-Wse">
-                                <rect key="frame" x="0.0" y="0.0" width="410" height="108"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="410" height="108"/>
-                                <size key="maxSize" width="420" height="10000000"/>
-                                <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            </textView>
-                        </subviews>
-                    </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="slf-6d-QJ7">
-                        <rect key="frame" x="-100" y="-100" width="240" height="16"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="lvD-6u-5me">
-                        <rect key="frame" x="394" y="0.0" width="16" height="108"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                </scrollView>
+                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Car-4i-fsE">
+                    <rect key="frame" x="145" y="7" width="118" height="40"/>
+                    <popUpButtonCell key="cell" type="push" title="Text" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="rgn-Kj-il5" id="g8I-Jt-FCO">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="3lb-e0-QOO">
+                            <items>
+                                <menuItem title="Text" state="on" id="rgn-Kj-il5"/>
+                                <menuItem title="Shell script" id="dl3-Ki-cEH"/>
+                                <menuItem title="Text File" hidden="YES" id="kQs-A5-Ody"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="messageTypeChange:" target="wFi-1P-F0m" id="1Tf-Kr-Qrc"/>
+                    </connections>
+                </popUpButton>
             </subviews>
             <constraints>
-                <constraint firstAttribute="height" constant="134" id="Nes-Je-nqR"/>
-                <constraint firstAttribute="width" constant="580" id="Rhv-mX-c2W"/>
+                <constraint firstAttribute="trailing" secondItem="Car-4i-fsE" secondAttribute="trailing" constant="322" id="9cp-AW-iTX"/>
+                <constraint firstItem="Car-4i-fsE" firstAttribute="leading" secondItem="HZB-E1-LF5" secondAttribute="trailing" constant="8" symbolic="YES" id="BI1-6j-OwM"/>
+                <constraint firstItem="Car-4i-fsE" firstAttribute="top" secondItem="wFi-1P-F0m" secondAttribute="top" constant="11" id="QS1-Ts-t2P"/>
+                <constraint firstItem="Car-4i-fsE" firstAttribute="firstBaseline" secondItem="HZB-E1-LF5" secondAttribute="firstBaseline" id="jyO-RY-EAV"/>
+                <constraint firstItem="Car-4i-fsE" firstAttribute="leading" secondItem="wFi-1P-F0m" secondAttribute="leading" constant="150" id="o28-vU-ZhI"/>
             </constraints>
             <connections>
                 <outlet property="messageTextChange" destination="ehG-nq-Wse" id="cSX-Ia-QDw"/>
                 <outlet property="messageTextView" destination="ehG-nq-Wse" id="Zb3-Ju-MnL"/>
+                <outlet property="messageType" destination="Car-4i-fsE" id="C9C-yE-nhj"/>
+                <outlet property="shellRefreshPeriodicity" destination="Ev7-MY-EGf" id="SFf-87-hkP"/>
+                <outlet property="shellScript" destination="mQk-nn-Wxa" id="Wqk-HN-UaD"/>
+                <outlet property="shellScriptLabel" destination="ZIt-5C-mn7" id="lOG-sF-6wt"/>
+                <outlet property="shellScriptTest" destination="7LK-MG-r8x" id="STF-OZ-nyD"/>
             </connections>
-            <point key="canvasLocation" x="-840" y="-160"/>
+            <point key="canvasLocation" x="-840" y="-385"/>
         </customView>
         <customView id="UAz-72-SHK" userLabel="Location Extra View" customClass="InfoLocationView" customModule="Aerial" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="580" height="50"/>
@@ -1445,6 +1446,184 @@ Independant of your choice, you can preview the results using the "Test" button 
                 <outlet property="withSecondsCheckbox" destination="cm5-HA-hKl" id="wpz-5P-IRg"/>
             </connections>
             <point key="canvasLocation" x="-840" y="7.5"/>
+        </customView>
+        <customView id="eaZ-HA-6Kx" userLabel="Message Text View">
+            <rect key="frame" x="0.0" y="0.0" width="580" height="135"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vn-TO-wUI">
+                    <rect key="frame" x="150" y="16" width="410" height="108"/>
+                    <clipView key="contentView" drawsBackground="NO" id="Ax6-3Y-Vnl">
+                        <rect key="frame" x="0.0" y="0.0" width="410" height="108"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="ehG-nq-Wse">
+                                <rect key="frame" x="0.0" y="0.0" width="410" height="108"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <size key="minSize" width="410" height="108"/>
+                                <size key="maxSize" width="420" height="10000000"/>
+                                <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            </textView>
+                        </subviews>
+                    </clipView>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="410" id="Een-XC-5iw"/>
+                        <constraint firstAttribute="height" constant="108" id="VFm-js-ere"/>
+                    </constraints>
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="slf-6d-QJ7">
+                        <rect key="frame" x="-100" y="-100" width="240" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="lvD-6u-5me">
+                        <rect key="frame" x="394" y="0.0" width="16" height="108"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VRB-LU-QAK">
+                    <rect key="frame" x="81" y="106" width="63" height="16"/>
+                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Message:" id="lPh-y5-xXN">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="2vn-TO-wUI" firstAttribute="leading" secondItem="eaZ-HA-6Kx" secondAttribute="leading" constant="150" id="Zyr-ZZ-Lmd"/>
+                <constraint firstItem="2vn-TO-wUI" firstAttribute="leading" secondItem="VRB-LU-QAK" secondAttribute="trailing" constant="8" symbolic="YES" id="oZW-7b-tSr"/>
+                <constraint firstItem="VRB-LU-QAK" firstAttribute="top" secondItem="eaZ-HA-6Kx" secondAttribute="top" constant="13" id="sVN-4k-BED"/>
+                <constraint firstItem="2vn-TO-wUI" firstAttribute="top" secondItem="eaZ-HA-6Kx" secondAttribute="top" constant="11" id="wps-8E-RLL"/>
+            </constraints>
+            <point key="canvasLocation" x="-161" y="-402"/>
+        </customView>
+        <customView id="bXW-hw-1fP" userLabel="Message Shell View">
+            <rect key="frame" x="0.0" y="0.0" width="580" height="225"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lrt-Xz-kJn">
+                    <rect key="frame" x="68" y="196" width="76" height="16"/>
+                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Shell script:" id="X4U-sg-Jpi">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mQk-nn-Wxa">
+                    <rect key="frame" x="150" y="193" width="330" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="330" id="ZnG-81-TuS"/>
+                    </constraints>
+                    <textFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Type your script location (eg : /Users/Shared/test.sh)" drawsBackground="YES" id="VA7-0j-0Eq">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <action selector="shellScriptChange:" target="wFi-1P-F0m" id="2pM-pU-Vyw"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ef6-UR-u2G">
+                    <rect key="frame" x="148" y="157" width="414" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="large" title="Your script must be on your main drive and not be in a priviledged location (Documents, Desktop, Downloads, etc...)." id="LF8-NS-AiD">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7LK-MG-r8x">
+                    <rect key="frame" x="482" y="183" width="58" height="40"/>
+                    <buttonCell key="cell" type="push" title="Test" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1gz-ev-zXn">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="shellScriptTestClick:" target="wFi-1P-F0m" id="z73-iN-VMf"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZIt-5C-mn7">
+                    <rect key="frame" x="148" y="18" width="412" height="83"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="large" selectable="YES" title="Multiline Label" id="JMD-Xw-Lba">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ev7-MY-EGf">
+                    <rect key="frame" x="145" y="109" width="134" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Never" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Ik1-ho-eWp" id="npc-Ft-VrB">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="wYJ-Uc-1IP">
+                            <items>
+                                <menuItem title="Never" state="on" id="Ik1-ho-eWp"/>
+                                <menuItem title="10 seconds" id="eJH-Hs-aC6"/>
+                                <menuItem title="30 seconds" id="z9m-Vt-o2f"/>
+                                <menuItem title="1 minute" id="V43-Vb-Szp"/>
+                                <menuItem title="5 minutes" id="fWW-7E-I3C"/>
+                                <menuItem title="10 minutes" id="VNx-C8-9Ic"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="shellRefreshPeriodicityChange:" target="wFi-1P-F0m" id="4Y0-hp-fLR"/>
+                    </connections>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IZw-Oc-MiR">
+                    <rect key="frame" x="52" y="122" width="92" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Refresh every:" id="ueo-cn-Kwt">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="mQk-nn-Wxa" firstAttribute="leading" secondItem="bXW-hw-1fP" secondAttribute="leading" constant="150" id="AKH-QP-SJl"/>
+                <constraint firstItem="mQk-nn-Wxa" firstAttribute="top" secondItem="bXW-hw-1fP" secondAttribute="top" constant="11" id="EFC-Qb-1eS"/>
+                <constraint firstItem="mQk-nn-Wxa" firstAttribute="firstBaseline" secondItem="Lrt-Xz-kJn" secondAttribute="firstBaseline" id="Ksj-FC-Efv"/>
+                <constraint firstItem="7LK-MG-r8x" firstAttribute="leading" secondItem="mQk-nn-Wxa" secondAttribute="trailing" constant="8" symbolic="YES" id="Mcf-wY-Ew9"/>
+                <constraint firstItem="7LK-MG-r8x" firstAttribute="firstBaseline" secondItem="mQk-nn-Wxa" secondAttribute="firstBaseline" id="QNZ-bW-Sv3"/>
+                <constraint firstItem="mQk-nn-Wxa" firstAttribute="leading" secondItem="Lrt-Xz-kJn" secondAttribute="trailing" constant="8" symbolic="YES" id="p7r-5c-eGP"/>
+            </constraints>
+            <point key="canvasLocation" x="-161" y="-118.5"/>
+        </customView>
+        <customView id="dIH-yk-sga" userLabel="Message Text File View">
+            <rect key="frame" x="0.0" y="0.0" width="580" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kiT-4Q-OO1">
+                    <rect key="frame" x="86" y="67" width="58" height="16"/>
+                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Text File:" id="Lnb-wW-Bds">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Urv-xq-s3M">
+                    <rect key="frame" x="150" y="64" width="330" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="330" id="M0Y-p7-XVc"/>
+                    </constraints>
+                    <textFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Type your script location (eg : /Users/Shared/test.sh)" drawsBackground="YES" id="qaC-Iq-3R6">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Urv-xq-s3M" firstAttribute="leading" secondItem="kiT-4Q-OO1" secondAttribute="trailing" constant="8" symbolic="YES" id="Q6t-6a-gPf"/>
+                <constraint firstItem="Urv-xq-s3M" firstAttribute="top" secondItem="dIH-yk-sga" secondAttribute="top" constant="11" id="UrG-ce-awO"/>
+                <constraint firstItem="Urv-xq-s3M" firstAttribute="firstBaseline" secondItem="kiT-4Q-OO1" secondAttribute="firstBaseline" id="lVg-vv-CdV"/>
+                <constraint firstItem="Urv-xq-s3M" firstAttribute="leading" secondItem="dIH-yk-sga" secondAttribute="leading" constant="150" id="zqM-tm-vHL"/>
+            </constraints>
+            <point key="canvasLocation" x="-161" y="124"/>
         </customView>
     </objects>
     <resources>

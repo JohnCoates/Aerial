@@ -63,6 +63,14 @@ enum InfoType: String, Codable {
     case location, message, clock, date, battery, updates, weather, countdown, timer
 }
 
+enum InfoMessageType: Int, Codable {
+    case text, shell, textfile
+}
+
+enum InfoRefreshPeriodicity: Int, Codable {
+    case never, tenseconds, thirtyseconds, oneminute, fiveminutes, tenminutes
+}
+
 // swiftlint:disable:next type_body_length
 struct PrefsInfo {
     struct Location: CommonInfo, Codable {
@@ -81,6 +89,10 @@ struct PrefsInfo {
         var corner: InfoCorner
         var displays: InfoDisplays
         var message: String
+        var shellScript: String
+        var textFile: String
+        var messageType: InfoMessageType
+        var refreshPeriodicity: InfoRefreshPeriodicity
     }
 
     struct Clock: CommonInfo, Codable {
@@ -180,7 +192,11 @@ struct PrefsInfo {
                                                          fontSize: 20,
                                                          corner: .topCenter,
                                                          displays: .allDisplays,
-                                                         message: "Hello there!"))
+                                                         message: "Hello there!",
+                                                         shellScript: "",
+                                                         textFile: "",
+                                                         messageType: .text,
+                                                         refreshPeriodicity: .tenminutes))
     static var message: Message
 
     // Clock
