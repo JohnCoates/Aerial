@@ -23,7 +23,7 @@ struct OWeather: Codable {
     let coord: OWCoord?
     let weather: [OWWeather]?
     let base: String?
-    let main: OWMain?
+    var main: OWMain?
     let visibility: Int?
     let wind: OWWind?
     let clouds: OWClouds?
@@ -32,6 +32,21 @@ struct OWeather: Codable {
     let timezone, id: Int?
     let name: String?
     let cod: Int?
+
+    // We round them down a bit as openweather provides up to two decimal point precision
+    mutating func processTemperatures() {
+        guard main != nil else {
+            return
+        }
+
+        if PrefsInfo.weather.degree == .celsius {
+            main!.temp = main!.temp.rounded(toPlaces: 1)
+            main!.feelsLike = main!.feelsLike.rounded(toPlaces: 1)
+        } else {
+            main!.temp = main!.temp.rounded()
+            main!.feelsLike = main!.feelsLike.rounded()
+        }
+    }
 }
 
 // MARK: - OWClouds
@@ -45,9 +60,9 @@ struct OWCoord: Codable {
 }
 // MARK: - OWMain
 struct OWMain: Codable {
-    let temp: Double
-    let feelsLike: Double
-    let tempMin, tempMax, pressure, humidity: Double
+    var temp: Double
+    var feelsLike: Double
+    var tempMin, tempMax, pressure, humidity: Double
 
     enum CodingKeys: String, CodingKey {
         case temp
@@ -84,6 +99,15 @@ struct OWWind: Codable {
 }
 
 struct OpenWeather {
+
+    static var testJson = ""
+
+/*
+     static var testJson =
+"""
+{"coord":{"lon":-0.1257,"lat":51.5085},"weather":[{"id":802,"main":"Clouds","description":"雲","icon":"03d"}],"base":"stations","main":{"temp":6.02,"feels_like":0.51,"temp_min":5,"temp_max":6.67,"pressure":1033,"humidity":56},"visibility":10000,"wind":{"speed":4.63,"deg":50},"clouds":{"all":40},"dt":1614960144,"sys":{"type":1,"id":1414,"country":"GB","sunrise":1614926218,"sunset":1614966438},"timezone":0,"id":2643743,"name":"ロンドン","cod":200}
+"""
+*/
 
     static func getUnits() -> String {
         if PrefsInfo.weather.degree == .celsius {
@@ -137,6 +161,20 @@ struct OpenWeather {
     }
 
     static func fetch(completion: @escaping(Result<OWeather, NetworkError>) -> Void) {
+        guard testJson == "" else {
+            let jsonData = testJson.data(using: .utf8)!
+
+            if var openWeather = try? newJSONDecoder().decode(OWeather.self, from: jsonData) {
+                openWeather.processTemperatures()
+
+                completion(.success(openWeather))
+            } else {
+                completion(.failure(.unknown))
+            }
+
+            return
+        }
+
         if PrefsInfo.weather.locationMode == .useCurrent {
             let location = Locations.sharedInstance
 
@@ -153,7 +191,9 @@ struct OpenWeather {
                         print(jsonString)
                         let jsonData = jsonString.data(using: .utf8)!
 
-                        if let openWeather = try? newJSONDecoder().decode(OWeather.self, from: jsonData) {
+                        if var openWeather = try? newJSONDecoder().decode(OWeather.self, from: jsonData) {
+                            openWeather.processTemperatures()
+
                             completion(.success(openWeather))
                         } else {
                             completion(.failure(.unknown))
@@ -178,7 +218,8 @@ struct OpenWeather {
                     print(jsonString)
                     let jsonData = jsonString.data(using: .utf8)!
                     do {
-                        let openWeather = try newJSONDecoder().decode(OWeather.self, from: jsonData)
+                        var openWeather = try newJSONDecoder().decode(OWeather.self, from: jsonData)
+                        openWeather.processTemperatures()
                         completion(.success(openWeather))
                     } catch {
                         print("error : \(error.localizedDescription)")

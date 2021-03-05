@@ -80,7 +80,7 @@ class TimerLayer: AnimationTextLayer {
 
             let dateComponentsFormatter = DateComponentsFormatter()
             dateComponentsFormatter.calendar = calendar
-            
+
             if config!.showSeconds {
                 dateComponentsFormatter.allowedUnits = [.hour, .minute, .second]
                 dateComponentsFormatter.maximumUnitCount = 3

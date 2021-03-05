@@ -508,6 +508,12 @@
 		03A6D14625F109B900960135 /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A6D14525F109B900960135 /* OpenWeather.swift */; };
 		03A6D14725F109B900960135 /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A6D14525F109B900960135 /* OpenWeather.swift */; };
 		03A6D14825F109B900960135 /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A6D14525F109B900960135 /* OpenWeather.swift */; };
+		03A6D14F25F294C900960135 /* location.north.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03A6D14E25F294C900960135 /* location.north.pdf */; };
+		03A6D15025F294C900960135 /* location.north.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03A6D14E25F294C900960135 /* location.north.pdf */; };
+		03A6D15125F294C900960135 /* location.north.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03A6D14E25F294C900960135 /* location.north.pdf */; };
+		03A6D15325F297CE00960135 /* WindDirectionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A6D15225F297CE00960135 /* WindDirectionLayer.swift */; };
+		03A6D15425F297CE00960135 /* WindDirectionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A6D15225F297CE00960135 /* WindDirectionLayer.swift */; };
+		03A6D15525F297CE00960135 /* WindDirectionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A6D15225F297CE00960135 /* WindDirectionLayer.swift */; };
 		03AA7A5D24C84C6300A47970 /* cloud.bolt.rain.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03AA7A2524C84C6200A47970 /* cloud.bolt.rain.pdf */; };
 		03AA7A5E24C84C6300A47970 /* cloud.bolt.rain.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03AA7A2524C84C6200A47970 /* cloud.bolt.rain.pdf */; };
 		03AA7A5F24C84C6300A47970 /* cloud.bolt.rain.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03AA7A2524C84C6200A47970 /* cloud.bolt.rain.pdf */; };
@@ -1072,6 +1078,8 @@
 		03A596D423AA752F0097EA66 /* InfoClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoClockView.swift; sourceTree = "<group>"; };
 		03A596D823AB8F000097EA66 /* InfoLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoLocationView.swift; sourceTree = "<group>"; };
 		03A6D14525F109B900960135 /* OpenWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeather.swift; sourceTree = "<group>"; };
+		03A6D14E25F294C900960135 /* location.north.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = location.north.pdf; sourceTree = "<group>"; };
+		03A6D15225F297CE00960135 /* WindDirectionLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindDirectionLayer.swift; sourceTree = "<group>"; };
 		03AA7A2524C84C6200A47970 /* cloud.bolt.rain.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = cloud.bolt.rain.pdf; sourceTree = "<group>"; };
 		03AA7A3C24C84C6200A47970 /* wind.snow.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = wind.snow.pdf; sourceTree = "<group>"; };
 		03AA7A3D24C84C6200A47970 /* snow.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = snow.pdf; sourceTree = "<group>"; };
@@ -1352,6 +1360,7 @@
 				03AA7A5C24C84C6300A47970 /* wind.pdf */,
 				03AA7A3C24C84C6200A47970 /* wind.snow.pdf */,
 				03AA7A4124C84C6200A47970 /* wrench.pdf */,
+				03A6D14E25F294C900960135 /* location.north.pdf */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -1550,6 +1559,7 @@
 				03A42A9F2449F959003B3012 /* YahooLogoLayer.swift */,
 				03A42AA2244A0E5F003B3012 /* ConditionLayer.swift */,
 				033D68802453080C0016F837 /* ConditionSymbolLayer.swift */,
+				03A6D15225F297CE00960135 /* WindDirectionLayer.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -2153,6 +2163,7 @@
 				03AA7A7924C84C6300A47970 /* sun.max.pdf in Resources */,
 				03933B8F24C3986800A98D94 /* SourcesViewController.xib in Resources */,
 				03F752EA24EEFC3100945B1D /* text.cursor.pdf in Resources */,
+				03A6D15025F294C900960135 /* location.north.pdf in Resources */,
 				033811B424C1E243002E23E0 /* InfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2273,6 +2284,7 @@
 				03F752E624EED21100945B1D /* video_inspire_california_vineyard_sierra-mar_sunrise_110.png in Resources */,
 				03AA7A5F24C84C6300A47970 /* cloud.bolt.rain.pdf in Resources */,
 				03AA7A7A24C84C6300A47970 /* sun.max.pdf in Resources */,
+				03A6D15125F294C900960135 /* location.north.pdf in Resources */,
 				0300B7EE24D1B536006132E5 /* bubble.left.and.bubble.right.pdf in Resources */,
 				03AA7A8C24C84C6300A47970 /* thermometer.sun.pdf in Resources */,
 				03977F02250E6918008FBAFD /* de.json in Resources */,
@@ -2454,6 +2466,7 @@
 				03AA7A7824C84C6300A47970 /* sun.max.pdf in Resources */,
 				03933B8E24C3986800A98D94 /* SourcesViewController.xib in Resources */,
 				03F752E924EEFC3100945B1D /* text.cursor.pdf in Resources */,
+				03A6D14F25F294C900960135 /* location.north.pdf in Resources */,
 				033811B324C1E243002E23E0 /* InfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2601,6 +2614,7 @@
 				0396D55224B8B7ED00CC021B /* LocationLayer.swift in Sources */,
 				0396D55424B8B7ED00CC021B /* InfoTableSource.swift in Sources */,
 				0396D55524B8B7ED00CC021B /* Solar.swift in Sources */,
+				03A6D15425F297CE00960135 /* WindDirectionLayer.swift in Sources */,
 				0396D55624B8B7ED00CC021B /* Brightness.swift in Sources */,
 				0300B84A24D1FD24006132E5 /* FirstSetupWindowController.swift in Sources */,
 				0396D55724B8B7ED00CC021B /* SourceInfo.swift in Sources */,
@@ -2678,6 +2692,7 @@
 				038D2EDF23B0FB0D00CD91F7 /* PrefsVideos.swift in Sources */,
 				03DC0065248BC60D005DB0F4 /* Cache.swift in Sources */,
 				038D2EE523B6565900CD91F7 /* InfoBatteryView.swift in Sources */,
+				03A6D15525F297CE00960135 /* WindDirectionLayer.swift in Sources */,
 				030D9B7C21551A8D00961E95 /* AerialPlayerItem.swift in Sources */,
 				030A0F2A245C7C7D009E1D97 /* BatteryIconLayer.swift in Sources */,
 				034587332449E22000C97D1B /* AnimationLayer.swift in Sources */,
@@ -2862,6 +2877,7 @@
 				0306336823A1012200046A59 /* LocationLayer.swift in Sources */,
 				034F29B723A7A93D004B34D5 /* InfoTableSource.swift in Sources */,
 				03958349217F4416008E8F9C /* Solar.swift in Sources */,
+				03A6D15325F297CE00960135 /* WindDirectionLayer.swift in Sources */,
 				F008DAFD23AADCFB00739DE1 /* Brightness.swift in Sources */,
 				0300B84924D1FD24006132E5 /* FirstSetupWindowController.swift in Sources */,
 				03C97BC324B6210500739CED /* SourceInfo.swift in Sources */,
