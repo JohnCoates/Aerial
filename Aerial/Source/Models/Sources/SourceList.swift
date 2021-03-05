@@ -13,6 +13,7 @@ struct SourceHeader {
     let sources: [Source]
 }
 
+// swiftlint:disable:next type_body_length
 struct SourceList {
     // This is the current one until next fall
     static let tvOS13 = Source(name: "tvOS 13",

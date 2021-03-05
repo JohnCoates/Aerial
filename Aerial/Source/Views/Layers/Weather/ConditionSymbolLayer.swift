@@ -9,79 +9,89 @@
 import Cocoa
 
 class ConditionSymbolLayer: CALayer {
-    let mainSymbols = [0: "tornado",
-                       1: "tropicalstorm",
-                       2: "hurricane",
-                       3: "cloud.bolt.rain",
-                       4: "cloud.bolt",
-                       5: "cloud.sleet",
-                       6: "cloud.sleet",
-                       7: "cloud.sleet",
-                       8: "cloud.drizzle",
-                       9: "cloud.drizzle",
-                       10: "cloud.heavyrain",
-                       11: "cloud.rain",
-                       12: "cloud.heavyrain",
-                       13: "snow",
-                       14: "snow",
-                       15: "wind.snow",
-                       16: "snow",
-                       17: "cloud.hail",
-                       18: "cloud.sleet",
-                       19: "sun.dust", //
-                       20: "cloud.fog",
-                       21: "sun.haze", //
-                       22: "smoke",
-                       23: "wind",
-                       24: "wind",
-                       25: "thermometer.snowflake",
-                       26: "cloud",
-                       27: "cloud.sun", //
-                       28: "cloud.sun", //
-                       29: "cloud.sun",
-                       30: "cloud.sun",
-                       31: "sun.max", //
-                       32: "sun.max", //
-                       33: "sun.min", //
-                       34: "sun.min", //
-                       35: "cloud.sleet",
-                       36: "thermometer.sun",
-                       37: "cloud.sun.bolt", //
-                       38: "cloud.sun.bolt", //
-                       39: "cloud.sun.rain", //
-                       40: "cloud.heavyrain",
-                       41: "cloud.snow",
-                       42: "snow",
-                       43: "snow",
-                       44: "wrench",
-                       45: "cloud.sun.rain", //
-                       46: "cloud.snow",
-                       47: "cloud.sun.bolt", ]//
+    let mainSymbols = [200: "cloud.bolt.rain",
+                       201: "cloud.bolt.rain",
+                       202: "cloud.bolt.rain",
+                       210: "cloud.sun.bolt",
+                       211: "cloud.bolt",
+                       212: "cloud.bolt",
+                       221: "cloud.bolt",
+                       230: "cloud.bolt.rain",
+                       231: "cloud.bolt.rain",
+                       232: "cloud.bolt.rain",
 
-    let nightSymbols = [19: "moon",
-                        21: "moon",
-                        27: "cloud.moon",
-                        28: "cloud.moon",
-                        29: "cloud.moon",
-                        30: "cloud.moon",
-                        31: "moon.stars",
-                        32: "moon.stars",
-                        33: "moon",
-                        34: "moon",
-                        37: "cloud.moon.bolt",
-                        38: "cloud.moon.bolt",
-                        39: "cloud.moon.rain",
-                        45: "cloud.moon.rain",
-                        47: "cloud.moon.bolt", ]
+                       300: "cloud.drizzle",
+                       301: "cloud.drizzle",
+                       302: "cloud.drizzle",
+                       310: "cloud.drizzle",
+                       311: "cloud.drizzle",
+                       312: "cloud.drizzle",
+                       313: "cloud.drizzle",
+                       314: "cloud.drizzle",
+                       321: "cloud.drizzle",
 
-    init(condition: Weather.Condition, isNight: Bool) {
+                       500: "cloud.sun.rain",
+                       501: "cloud.rain",
+                       502: "cloud.heavyrain",
+                       503: "cloud.heavyrain",
+                       504: "cloud.heavyrain",
+
+                       511: "cloud.sleet",
+
+                       520: "cloud.rain",
+                       521: "cloud.rain",
+                       522: "cloud.heavyrain",
+                       531: "cloud.rain",
+
+                       600: "snow",
+                       601: "snow",
+                       602: "cloud.snow",
+
+                       611: "cloud.sleet",
+                       612: "cloud.sleet",
+                       613: "cloud.sleet",
+                       615: "cloud.sleet",
+                       616: "cloud.sleet",
+
+                       620: "snow",
+                       621: "snow",
+                       622: "cloud.snow",
+
+                       701: "sun.haze",
+                       711: "smoke",
+                       721: "sun.haze",
+                       731: "sun.dust",
+                       741: "sun.haze",
+                       751: "sun.dust",
+                       761: "sun.dust",
+                       762: "sun.dust",
+                       781: "tornado",
+
+                       800: "sun.max",
+                       801: "sun.min",
+                       802: "cloud.sun",
+                       803: "cloud.sun",
+                       804: "cloud", ]//
+
+    let nightSymbols = [210: "cloud.moon.bolt",
+
+                        500: "cloud.moon.rain",
+
+                        800: "moon.stars",
+                        801: "moon",
+                        802: "cloud.moon",
+                        803: "cloud.moon", ]
+
+    init(condition: OWeather) {
         super.init()
 
         // In case icons are updated, it's important to test them !
-        // test()
+        //test()
+
+        let isNight = isNight(dt: condition.dt!, sys: condition.sys!)
 
         let imagePath = Bundle(for: PanelWindowController.self).path(
-            forResource: getSymbol(condition: condition.code, isNight: isNight),
+            forResource: getSymbol(condition: condition.weather![0].id, isNight: isNight ),
             ofType: "pdf")
 
         if imagePath != nil {
@@ -95,32 +105,31 @@ class ConditionSymbolLayer: CALayer {
             frame.size.width = 50
             backgroundColor = .init(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
         }
-
     }
 
     func test() {
-        for code in 0..<48 {
+        nightSymbols.forEach { (key: Int, value: String) in
             let imagePath = Bundle(for: PanelWindowController.self).path(
-            forResource: getSymbol(condition: code, isNight: true),
+            forResource: getSymbol(condition: key, isNight: true),
             ofType: "pdf")
             if imagePath == nil {
-                debugLog("ERROR night \(code)")
+                debugLog("ERROR night \(key) \(value)")
             } else {
-                debugLog("OK night \(code)")
+                debugLog("OK night \(key) \(value)")
             }
-
         }
 
-        for code in 0..<48 {
+        mainSymbols.forEach { (key: Int, value: String) in
             let imagePath = Bundle(for: PanelWindowController.self).path(
-            forResource: getSymbol(condition: code, isNight: true),
+            forResource: getSymbol(condition: key, isNight: true),
             ofType: "pdf")
             if imagePath == nil {
-                debugLog("ERROR day \(code)")
+                debugLog("ERROR day \(key) \(value)")
             } else {
-                debugLog("OK day \(code)")
+                debugLog("OK day \(key) \(value)")
             }
         }
+
     }
 
     required init?(coder: NSCoder) {
@@ -136,6 +145,14 @@ class ConditionSymbolLayer: CALayer {
             } else {
                 return "wrench"
             }
+        }
+    }
+
+    func isNight(dt: Int, sys: OWSys) -> Bool {
+        if dt < sys.sunrise || dt > sys.sunset {
+            return true
+        } else {
+            return false
         }
     }
 

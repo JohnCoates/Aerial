@@ -2,6 +2,8 @@
 //  Aerial.swift
 //  Aerial
 //
+//  Contains some common helpers used throughout the code
+//
 //  Created by Guillaume Louel on 17/07/2020.
 //  Copyright © 2020 Guillaume Louel. All rights reserved.
 //
@@ -9,11 +11,8 @@
 import Cocoa
 
 class Aerial: NSObject {
-    // TODO : Uh, better check that's required some day
-    static let instance = Aerial()
-
     // We use this to track whether we run as a screen saver or an app
-    var appMode = false
+    static var appMode = false
 
     // We also track darkmode here now
     static var darkMode = false
@@ -56,6 +55,21 @@ class Aerial: NSObject {
         return "Version ?"
     }
 
+    // Language detection
+    static func getPreferredLanguage() -> String {
+        let printOutputLocale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
+        if let deviceLanguageName: String = printOutputLocale.displayName(forKey: .identifier, value: Locale.preferredLanguages[0]) {
+            if #available(OSX 10.12, *) {
+                return "Preferred language: \(deviceLanguageName) [\(printOutputLocale.languageCode)]"
+            } else {
+                return "Preferred language: \(deviceLanguageName)"
+            }
+        } else {
+            return ""
+        }
+    }
+
+    // Alerts
     static func showErrorAlert(question: String, text: String, button: String = "OK") {
         let alert = NSAlert()
         alert.messageText = question
@@ -91,6 +105,7 @@ class Aerial: NSObject {
         alert.runModal()
     }
 
+    // Symbol/icon generation
     static func getSymbol(_ named: String) -> NSImage? {
         if let imagePath = Bundle(for: PanelWindowController.self).path(
             forResource: fallbackSymbol(named),

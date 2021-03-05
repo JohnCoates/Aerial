@@ -53,8 +53,10 @@ class MessageLayer: AnimationTextLayer {
             case .text:
                 update(string: config.message)
             case .shell:
-                let result = runShell()
-                update(string: result ?? "")
+                DispatchQueue.global().async {
+                    let result = self.runShell()
+                    self.update(string: result ?? "")
+                }
                 setupRefresh()
             case .textfile:
                 //TODO
@@ -92,9 +94,13 @@ class MessageLayer: AnimationTextLayer {
                 interval = 600
             }
 
+            // swiftlint:disable:next unused_capture_list
             messageTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: { [self] (_) in
-                let result = runShell()
-                update(string: result ?? "")
+
+                DispatchQueue.global().async {
+                    let result = runShell()
+                    update(string: result ?? "")
+                }
             })
         }
     }

@@ -41,6 +41,7 @@ final class HardwareDetection: NSObject {
     }
 
     // Get best suggestion
+    // swiftlint:disable:next cyclomatic_complexity
     func getSuggestedFormat() -> VideoFormat {
         switch isHEVCMain10HWDecodingAvailable() {
         case .supported:

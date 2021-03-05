@@ -55,32 +55,15 @@ class InfoWeatherView: NSView {
     }
 
     @IBAction func testLocationButtonClick(_ sender: NSButton) {
-        if PrefsInfo.weather.locationMode == .manuallySpecify {
-            Weather.fetch(failure: { (error) in
-                errorLog(error.localizedDescription)
-            }, success: { (_) in
+        OpenWeather.fetch { result in
+            switch result {
+            case .success(let openWeather):
+                print(openWeather)
                 let ovc = self.parentViewController as! OverlaysViewController
-                ovc.openWeatherPreview()
-            })
-        } else {
-            // Get the location
-            let location = Locations.sharedInstance
-
-            location.getCoordinates(failure: { (error) in
-                self.locationLabel.stringValue = error
-            }, success: { (coordinates) in
-                let lat = String(format: "%.2f", coordinates.latitude)
-                let lon = String(format: "%.2f", coordinates.longitude)
-                self.locationLabel.stringValue = "Latiture: \(lat) Longitude: \(lon)"
-
-                Weather.fetch(failure: { (error) in
-                    errorLog(error.localizedDescription)
-                    self.locationLabel.stringValue = error.localizedDescription
-                }, success: { (_) in
-                    let ovc = self.parentViewController as! OverlaysViewController
-                    ovc.openWeatherPreview()
-                })
-            })
+                ovc.openWeatherPreview(weather: openWeather)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
     }
 

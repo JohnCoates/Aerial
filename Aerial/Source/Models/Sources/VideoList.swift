@@ -257,6 +257,7 @@ class VideoList {
         let completion = BlockOperation {
             self.refreshVideoList()
             if !PrefsCache.enableManagement {
+                // swiftlint:disable:next line_length
                 Aerial.showInfoAlert(title: "Automatic downloads are disabled", text: "In order to watch the new videos, you will need to manually download them (for example by pressing the down arrow button on the right).")
             }
         }
@@ -376,6 +377,7 @@ class VideoList {
         let shuffled = currentRotation().shuffled()
         let cachedShuffled = shuffled.filter({ $0.isAvailableOffline })
 
+        // swiftlint:disable:next line_length
         debugLog("Playlist raw count: \(shuffled.count) raw cached count \(cachedShuffled.count) isRestricted: \(isRestricted) restrictedTo: \(restrictedTo)")
 
         for video in shuffled {

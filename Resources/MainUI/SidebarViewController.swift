@@ -136,7 +136,7 @@ class SidebarViewController: NSViewController {
             }
         }
 
-        if Aerial.instance.appMode {
+        if Aerial.appMode {
             NSApplication.shared.terminate(nil)
         } else {
             if Aerial.underCompanion {

@@ -13,9 +13,10 @@ class WeatherLayer: AnimationLayer {
     var config: PrefsInfo.Weather?
     var wasSetup = false
     var todayCond: ConditionLayer?
-    var logo: YahooLayer?
 
     var cscale: CGFloat?
+
+    var cachedWeather: OWeather?
 
     override init(layer: Any) {
         super.init(layer: layer)
@@ -44,11 +45,14 @@ class WeatherLayer: AnimationLayer {
     }
 
     override func setContentScale(scale: CGFloat) {
-        if todayCond != nil {
-            todayCond?.contentsScale = scale
-        }
-        if logo != nil {
-            logo?.contentsScale = scale
+        if let todayCond = todayCond {
+            todayCond.contentsScale = scale
+
+            if todayCond.sublayers != nil {
+                for layer in todayCond.sublayers! {
+                    layer.contentsScale = scale
+                }
+            }
         }
 
         // In case we haven't called displayWeatherBlock yet (should be all the time but hmm)
@@ -63,40 +67,38 @@ class WeatherLayer: AnimationLayer {
             frame.size = CGSize(width: 100, height: 1)
             update()
 
-            if Weather.info != nil {
+            if cachedWeather != nil {
                 displayWeatherBlock()
             } else {
-                Weather.fetch(failure: { (error) in
-                    errorLog(error.localizedDescription)
-                }, success: { (_) in
-                    self.displayWeatherBlock()
-                })
+                OpenWeather.fetch { result in
+                    switch result {
+                    case .success(let openWeather):
+                        print(openWeather)
+                        self.cachedWeather = openWeather
+                        self.displayWeatherBlock()
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
             }
         }
     }
 
     func displayWeatherBlock() {
-        if Weather.info == nil {
+        guard cachedWeather != nil else {
             errorLog("No weather info in dWB please report")
             return
         }
-        let todayCond = ConditionLayer(condition: Weather.info!.currentObservation.condition)
-        if cscale != nil {
-            todayCond.contentsScale = cscale!
-        }
-        todayCond.anchorPoint = CGPoint(x: 0, y: 0)
-        todayCond.position = CGPoint(x: 0, y: 10)
-        addSublayer(todayCond)
 
-        self.frame.size = CGSize(width: todayCond.frame.width, height: 95)
-
-        let logo = YahooLayer()
-        logo.anchorPoint = CGPoint(x: 1, y: 0)
-        logo.position = CGPoint(x: frame.size.width-10, y: 10)
+        todayCond = ConditionLayer(condition: cachedWeather!, scale: contentsScale)
         if cscale != nil {
-            logo.contentsScale = cscale!
+            todayCond!.contentsScale = cscale!
         }
-        addSublayer(logo)
+        todayCond!.anchorPoint = CGPoint(x: 0, y: 0)
+        todayCond!.position = CGPoint(x: 0, y: 10)
+        addSublayer(todayCond!)
+
+        self.frame.size = CGSize(width: todayCond!.frame.width, height: 95)
 
         update(redraw: true)
         let fadeAnimation = self.createFadeInAnimation()

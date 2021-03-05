@@ -565,6 +565,7 @@ struct Cache {
         return  evictable.sorted { $0.key < $1.key }.map({ $0.value })
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     static func freeCache() {
         guard PrefsCache.enableManagement else {
             return
@@ -689,3 +690,4 @@ struct Cache {
         VideoManager.sharedInstance.queueDownload(rotation.first!)
     }
 }
+// swiftlint:disable:this file_length

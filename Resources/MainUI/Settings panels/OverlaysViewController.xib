@@ -43,7 +43,7 @@
                     <rect key="frame" x="0.0" y="33" width="180" height="478"/>
                     <clipView key="contentView" drawsBackground="NO" id="3a0-nz-lxc">
                         <rect key="frame" x="1" y="1" width="178" height="476"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="gvl-yV-dFx">
                                 <rect key="frame" x="0.0" y="0.0" width="178" height="476"/>
@@ -157,7 +157,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="180" height="33"/>
                     <clipView key="contentView" id="cUU-VJ-Apk">
                         <rect key="frame" x="1" y="1" width="178" height="31"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="29" rowSizeStyle="automatic" viewBased="YES" id="d1q-xb-ZLa">
                                 <rect key="frame" x="0.0" y="0.0" width="178" height="31"/>
@@ -1159,20 +1159,6 @@ corner</string>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="osK-Ru-g6K">
-                    <rect key="frame" x="461" y="11" width="108" height="26"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="26" id="9AJ-1g-AT0"/>
-                        <constraint firstAttribute="width" constant="108" id="cGK-nV-QNM"/>
-                    </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="purple_retina" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="WbP-4t-l18">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="yahooWeatherButtonClick:" target="cmR-hZ-0Fe" id="avd-vw-gXq"/>
-                    </connections>
-                </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bjs-UA-NkK">
                     <rect key="frame" x="410" y="50" width="58" height="40"/>
                     <buttonCell key="cell" type="push" title="Test" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="R2U-fT-M9o">
@@ -1183,6 +1169,15 @@ corner</string>
                         <action selector="testLocationButtonClick:" target="cmR-hZ-0Fe" id="4FO-ev-kS6"/>
                     </connections>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kbv-ff-1GY">
+                    <rect key="frame" x="382" y="0.0" width="194" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Data provided by OpenWeather" id="Itg-10-M0R">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstItem="pj2-sU-RdG" firstAttribute="leading" secondItem="cmR-hZ-0Fe" secondAttribute="leading" constant="150" id="0Xb-xb-X37"/>
@@ -1200,12 +1195,10 @@ corner</string>
                 <constraint firstItem="mY1-Rf-ATP" firstAttribute="firstBaseline" secondItem="MMI-hf-gCZ" secondAttribute="firstBaseline" id="b32-yY-EYf"/>
                 <constraint firstItem="YAo-Tv-Uqc" firstAttribute="leading" secondItem="pj2-sU-RdG" secondAttribute="leading" id="dEX-ar-esy"/>
                 <constraint firstItem="mY1-Rf-ATP" firstAttribute="top" secondItem="pj2-sU-RdG" secondAttribute="bottom" constant="22" id="hAF-di-mQj"/>
-                <constraint firstAttribute="trailing" secondItem="osK-Ru-g6K" secondAttribute="trailing" constant="11" id="jw1-fL-KVM"/>
                 <constraint firstItem="mY1-Rf-ATP" firstAttribute="leading" secondItem="MMI-hf-gCZ" secondAttribute="trailing" constant="8" symbolic="YES" id="qnP-7u-9Q2"/>
                 <constraint firstItem="mY1-Rf-ATP" firstAttribute="leading" secondItem="pj2-sU-RdG" secondAttribute="leading" id="wRg-i3-SDF"/>
                 <constraint firstItem="Iha-a4-YZ0" firstAttribute="top" secondItem="mY1-Rf-ATP" secondAttribute="bottom" constant="22" id="wTP-Q2-JTQ"/>
                 <constraint firstItem="pj2-sU-RdG" firstAttribute="top" secondItem="cmR-hZ-0Fe" secondAttribute="top" constant="22" id="wpW-cL-JTR"/>
-                <constraint firstAttribute="bottom" secondItem="osK-Ru-g6K" secondAttribute="bottom" constant="11" id="xFg-Hv-rSi"/>
             </constraints>
             <connections>
                 <outlet property="degreePopup" destination="WWH-eQ-q01" id="B2k-uQ-E2L"/>
@@ -1631,7 +1624,6 @@ Independant of your choice, you can preview the results using the "Test" button 
         <image name="NSListViewTemplate" width="16" height="12"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
         <image name="NSTouchBarDeleteTemplate" width="15" height="17"/>
-        <image name="purple_retina" width="268" height="58"/>
         <image name="screen0" width="720" height="400"/>
     </resources>
 </document>

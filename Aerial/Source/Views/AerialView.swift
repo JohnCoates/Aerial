@@ -441,6 +441,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     }
 
     // MARK: - playNextVideo()
+    // swiftlint:disable:next cyclomatic_complexity
     func playNextVideo() {
         debugLog("\(self) pnv")
 

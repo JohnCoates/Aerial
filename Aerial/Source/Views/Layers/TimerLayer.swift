@@ -68,7 +68,19 @@ class TimerLayer: AnimationTextLayer {
 
     func getTimeString() -> String {
         if #available(OSX 10.12, *) {
+            // Handle locale
+            var locale = Locale(identifier: Locale.preferredLanguages[0])
+            let preferences = Preferences.sharedInstance
+            if preferences.ciOverrideLanguage != "" {
+                locale = Locale(identifier: preferences.ciOverrideLanguage!)
+            }
+
+            var calendar = Calendar.current
+            calendar.locale = locale
+
             let dateComponentsFormatter = DateComponentsFormatter()
+            dateComponentsFormatter.calendar = calendar
+            
             if config!.showSeconds {
                 dateComponentsFormatter.allowedUnits = [.hour, .minute, .second]
                 dateComponentsFormatter.maximumUnitCount = 3

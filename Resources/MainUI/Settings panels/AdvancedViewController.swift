@@ -88,7 +88,7 @@ class AdvancedViewController: NSViewController {
         languagePopup.selectItem(at: poisp.getLanguagePosition())
 
         // Grab preferred language as proper string
-        languageLabel.stringValue = getPreferredLanguage()
+        languageLabel.stringValue = Aerial.getPreferredLanguage()
 
         showLogButton.setIcons("folder")
         launchSetupAgain.setIcons("aspectratio")
@@ -244,18 +244,6 @@ class AdvancedViewController: NSViewController {
     }
 
     // Helpers, to move in a model when I have a sec
-    func getPreferredLanguage() -> String {
-        let printOutputLocale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
-        if let deviceLanguageName: String = printOutputLocale.displayName(forKey: .identifier, value: Locale.preferredLanguages[0]) {
-            if #available(OSX 10.12, *) {
-                return "Preferred language: \(deviceLanguageName) [\(printOutputLocale.languageCode)]"
-            } else {
-                return "Preferred language: \(deviceLanguageName)"
-            }
-        } else {
-            return ""
-        }
-    }
 
     @IBAction func helpVideoFormat(_ sender: NSButton) {
         popoverVideoFormat.show(relativeTo: sender.preparedContentRect, of: sender, preferredEdge: .maxY)

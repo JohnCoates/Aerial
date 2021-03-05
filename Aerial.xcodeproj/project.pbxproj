@@ -505,6 +505,9 @@
 		03A596D623AA752F0097EA66 /* InfoClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A596D423AA752F0097EA66 /* InfoClockView.swift */; };
 		03A596D723AA75490097EA66 /* InfoMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A596D223AA750F0097EA66 /* InfoMessageView.swift */; };
 		03A596D923AB8F000097EA66 /* InfoLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A596D823AB8F000097EA66 /* InfoLocationView.swift */; };
+		03A6D14625F109B900960135 /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A6D14525F109B900960135 /* OpenWeather.swift */; };
+		03A6D14725F109B900960135 /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A6D14525F109B900960135 /* OpenWeather.swift */; };
+		03A6D14825F109B900960135 /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A6D14525F109B900960135 /* OpenWeather.swift */; };
 		03AA7A5D24C84C6300A47970 /* cloud.bolt.rain.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03AA7A2524C84C6200A47970 /* cloud.bolt.rain.pdf */; };
 		03AA7A5E24C84C6300A47970 /* cloud.bolt.rain.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03AA7A2524C84C6200A47970 /* cloud.bolt.rain.pdf */; };
 		03AA7A5F24C84C6300A47970 /* cloud.bolt.rain.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03AA7A2524C84C6200A47970 /* cloud.bolt.rain.pdf */; };
@@ -1068,6 +1071,7 @@
 		03A596D223AA750F0097EA66 /* InfoMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMessageView.swift; sourceTree = "<group>"; };
 		03A596D423AA752F0097EA66 /* InfoClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoClockView.swift; sourceTree = "<group>"; };
 		03A596D823AB8F000097EA66 /* InfoLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoLocationView.swift; sourceTree = "<group>"; };
+		03A6D14525F109B900960135 /* OpenWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeather.swift; sourceTree = "<group>"; };
 		03AA7A2524C84C6200A47970 /* cloud.bolt.rain.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = cloud.bolt.rain.pdf; sourceTree = "<group>"; };
 		03AA7A3C24C84C6200A47970 /* wind.snow.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = wind.snow.pdf; sourceTree = "<group>"; };
 		03AA7A3D24C84C6200A47970 /* snow.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = snow.pdf; sourceTree = "<group>"; };
@@ -1523,6 +1527,7 @@
 				0385FC58242B9AE1007E6513 /* APISecrets.swift */,
 				03D2A43324474304003ABD30 /* YahooWeatherAPI.swift */,
 				03D2A43D24476117003ABD30 /* WeatherAPI.swift */,
+				03A6D14525F109B900960135 /* OpenWeather.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -2615,6 +2620,7 @@
 				031945F424CCC48C00F37B35 /* CreditsViewController.swift in Sources */,
 				0396D56224B8B7ED00CC021B /* InfoCountdownView.swift in Sources */,
 				0396D56324B8B7ED00CC021B /* ConditionSymbolLayer.swift in Sources */,
+				03A6D14725F109B900960135 /* OpenWeather.swift in Sources */,
 				0396D56424B8B7ED00CC021B /* CheckboxCellView.swift in Sources */,
 				03933B8C24C3986800A98D94 /* SourcesViewController.swift in Sources */,
 				034DEE2F24BF1BC700A2D3CD /* PanelWindowController.swift in Sources */,
@@ -2724,6 +2730,7 @@
 				0374C9FF247AC5BC002F29D3 /* Locations.swift in Sources */,
 				036A57DC23F5828E0009DC02 /* CountdownLayer.swift in Sources */,
 				0313F9EA2294338300B074BB /* CustomVideoController.swift in Sources */,
+				03A6D14825F109B900960135 /* OpenWeather.swift in Sources */,
 				FAC36F5A1BE1756D007F2A20 /* AerialVideo.swift in Sources */,
 				038D2EBD23AB91C300CD91F7 /* InfoLocationView.swift in Sources */,
 				034F29B823A7A9B3004B34D5 /* InfoTableSource.swift in Sources */,
@@ -2874,6 +2881,7 @@
 				031945F324CCC48C00F37B35 /* CreditsViewController.swift in Sources */,
 				036A57D823F470940009DC02 /* InfoCountdownView.swift in Sources */,
 				033D68812453080C0016F837 /* ConditionSymbolLayer.swift in Sources */,
+				03A6D14625F109B900960135 /* OpenWeather.swift in Sources */,
 				03C344FC24B778EE00906EA6 /* CheckboxCellView.swift in Sources */,
 				03933B8B24C3986800A98D94 /* SourcesViewController.swift in Sources */,
 				034DEE2E24BF1BC700A2D3CD /* PanelWindowController.swift in Sources */,
@@ -3180,7 +3188,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.2.8;
+				CURRENT_PROJECT_VERSION = 2.2.8beta2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3188,7 +3196,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.2.8;
+				MARKETING_VERSION = 2.2.8beta2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3208,7 +3216,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.2.8;
+				CURRENT_PROJECT_VERSION = 2.2.8beta2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3216,7 +3224,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.2.8;
+				MARKETING_VERSION = 2.2.8beta2;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

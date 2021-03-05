@@ -11,6 +11,7 @@ import Cocoa
 import CoreLocation
 import IOKit.ps
 
+// swiftlint:disable:next type_body_length
 final class TimeManagement: NSObject {
     static let sharedInstance = TimeManagement()
 

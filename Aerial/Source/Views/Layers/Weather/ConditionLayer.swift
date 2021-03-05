@@ -29,21 +29,23 @@ class CAVCTextLayer: CATextLayer {
 }
 
 class ConditionLayer: CALayer {
-    var condition: Weather.Condition?
+    var condition: OWeather?
 
-    init(condition: Weather.Condition) {
+    init(condition: OWeather, scale: CGFloat) {
         self.condition = condition
         super.init()
 
+        contentsScale = scale
         debugLog("Condition : \(condition)")
 
         if PrefsInfo.weather.icons == .flat {
-            let imglayer = ConditionSymbolLayer(condition: condition, isNight: Weather.isNight())
+            let imglayer = ConditionSymbolLayer(condition: condition)
             imglayer.anchorPoint = CGPoint(x: 0, y: 0.5)
             imglayer.position = CGPoint(x: 0, y: 50)
             self.addSublayer(imglayer)
 
             let tempWidth = addTemperature(at: imglayer.frame.width + 15)
+            addFeelsLike(at: imglayer.frame.width + 15 + (tempWidth / 2))
 
             // Set the final size of that block
             frame.size = CGSize(width: imglayer.frame.width + 15 + tempWidth, height: 75)
@@ -51,11 +53,9 @@ class ConditionLayer: CALayer {
             // This is a temporary size
             frame.size = CGSize(width: 160, height: 75)
 
-            if Weather.isNight() {
-                downloadImage(from: URL(string: "https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/\(condition.code)n.png")!)
-            } else {
-                downloadImage(from: URL(string: "https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/\(condition.code)d.png")!)
-            }
+            // http://openweathermap.org/img/wn/10d@2x.png
+
+            downloadImage(from: URL(string: "http://openweathermap.org/img/wn/\(condition.weather![0].icon)@4x.png")!)
         }
     }
 
@@ -74,15 +74,19 @@ class ConditionLayer: CALayer {
     func addTemperature(at: CGFloat) -> CGFloat {
         // Make a vertically centered layer for t°
         let temp = CAVCTextLayer()
-        temp.string = "\(self.condition!.temperature)°"
+        temp.string = "\(condition!.main!.temp)°"
 
         // Get something large first
-        temp.frame.size = CGSize(width: 100, height: 100)
+        temp.frame.size = CGSize(width: 100, height: 400)
         (temp.font, temp.fontSize) = temp.makeFont(name: PrefsInfo.weather.fontName, size: PrefsInfo.weather.fontSize)
 
         // ReRect the temperature
         let rect = temp.calculateRect(string: temp.string as! String, font: temp.font as! NSFont)
         temp.frame = rect
+
+        print("tcs \(self.contentsScale)")
+
+        temp.contentsScale = self.contentsScale
         self.addSublayer(temp)
 
         // We put the temperature at the right of the weather icon
@@ -90,6 +94,26 @@ class ConditionLayer: CALayer {
         temp.position = CGPoint(x: at, y: 50)
 
         return rect.size.width
+    }
+
+    func addFeelsLike(at: CGFloat) {
+        // Make a vertically centered layer for t°
+        let feel = CAVCTextLayer()
+        feel.string = "(\(condition!.main!.feelsLike)°)"
+
+        // Get something large first
+        feel.frame.size = CGSize(width: 100, height: 30)
+        (feel.font, feel.fontSize) = feel.makeFont(name: PrefsInfo.weather.fontName, size: PrefsInfo.weather.fontSize/2.5)
+
+        // ReRect the temperature
+        let rect2 = feel.calculateRect(string: feel.string as! String, font: feel.font as! NSFont)
+        feel.frame = rect2
+        feel.contentsScale = self.contentsScale
+        self.addSublayer(feel)
+
+        // We put the temperature at the right of the weather icon
+        feel.anchorPoint = CGPoint(x: 0.5, y: 0)
+        feel.position = CGPoint(x: at, y: 0)
     }
 
     func downloadImage(from url: URL) {
