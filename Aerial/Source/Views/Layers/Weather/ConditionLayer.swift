@@ -136,7 +136,7 @@ class ConditionLayer: CALayer {
         // Make a vertically centered layer for t°
         let wind = CAVCTextLayer()
         if PrefsInfo.weather.degree == .celsius {
-            wind.string = "\(owind.speed) km/s"
+            wind.string = "\(owind.speed) m/s"
         } else {
             wind.string = "\(owind.speed) mph"
         }
