@@ -161,7 +161,7 @@ class OverlaysViewController: NSViewController {
             weatherPanel.makeKeyAndOrderFront(self)
         }
 
-        weatherLabel.stringValue = "\(weather.name) \n\n \(weather)"
+        weatherLabel.stringValue = "\(String(describing: weather.name)) \n\n \(weather)"
         let cond = ConditionLayer(condition: weather, scale: 2.0)
 
         weatherCustomView.layer = cond

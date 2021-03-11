@@ -365,9 +365,7 @@
 		0396D52224B8B7ED00CC021B /* VideoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF450231BE2D2FD00C1F98A /* VideoCache.swift */; };
 		0396D52324B8B7ED00CC021B /* BatteryIconLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030A0F28245C7C7D009E1D97 /* BatteryIconLayer.swift */; };
 		0396D52424B8B7ED00CC021B /* PrefsDisplays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361B9A723D732A300B6252D /* PrefsDisplays.swift */; };
-		0396D52524B8B7ED00CC021B /* YahooWeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2A43324474304003ABD30 /* YahooWeatherAPI.swift */; };
 		0396D52624B8B7ED00CC021B /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC004D248BC5A4005DB0F4 /* Cache.swift */; };
-		0396D52724B8B7ED00CC021B /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2A43D24476117003ABD30 /* WeatherAPI.swift */; };
 		0396D52824B8B7ED00CC021B /* AnimationTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306336D23A15FA900046A59 /* AnimationTextLayer.swift */; };
 		0396D52924B8B7ED00CC021B /* InfoWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0385FC5C242B9F6E007E6513 /* InfoWeatherView.swift */; };
 		0396D52B24B8B7ED00CC021B /* SeededGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313F9EB2294468600B074BB /* SeededGenerator.swift */; };
@@ -425,7 +423,6 @@
 		0396D56724B8B7ED00CC021B /* InfoClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A596D423AA752F0097EA66 /* InfoClockView.swift */; };
 		0396D56824B8B7ED00CC021B /* CustomVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313F9E722942B4500B074BB /* CustomVideoController.swift */; };
 		0396D56A24B8B7ED00CC021B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03510C722185EF76008F74F2 /* CoreLocation.framework */; };
-		0396D56C24B8B7ED00CC021B /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; };
 		0396D56D24B8B7ED00CC021B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03510C6A21834EB2008F74F2 /* IOKit.framework */; };
 		0396D56F24B8B7ED00CC021B /* Aerial-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 03510C6D21834F38008F74F2 /* Aerial-Bridging-Header.h */; };
 		0396D57624B8B7ED00CC021B /* white_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A42A822449F5EA003B3012 /* white_retina.png */; };
@@ -437,7 +434,6 @@
 		0396D59D24B8B7ED00CC021B /* missingvideos.json in Resources */ = {isa = PBXBuildFile; fileRef = 0369985C2196103300E359D3 /* missingvideos.json */; };
 		0396D5A824B8B7ED00CC021B /* CustomVideos.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0313F9E522942AA500B074BB /* CustomVideos.xib */; };
 		0396D5AB24B8B7ED00CC021B /* purple_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A42A9B2449F601003B3012 /* purple_retina.png */; };
-		0396D5AF24B8B7ED00CC021B /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03977EF1250E6918008FBAFD /* sv.json in Resources */ = {isa = PBXBuildFile; fileRef = 03977EE2250E6917008FBAFD /* sv.json */; };
 		03977EF2250E6918008FBAFD /* sv.json in Resources */ = {isa = PBXBuildFile; fileRef = 03977EE2250E6917008FBAFD /* sv.json */; };
 		03977EF3250E6918008FBAFD /* sv.json in Resources */ = {isa = PBXBuildFile; fileRef = 03977EE2250E6917008FBAFD /* sv.json */; };
@@ -681,12 +677,6 @@
 		03D1E79722848F7F00D10CF7 /* screen0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03D1E79022848F7F00D10CF7 /* screen0.jpg */; };
 		03D1E79822848F7F00D10CF7 /* screen0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03D1E79022848F7F00D10CF7 /* screen0.jpg */; };
 		03D1E79922848F7F00D10CF7 /* screen0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03D1E79022848F7F00D10CF7 /* screen0.jpg */; };
-		03D2A43424474304003ABD30 /* YahooWeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2A43324474304003ABD30 /* YahooWeatherAPI.swift */; };
-		03D2A4352447438D003ABD30 /* YahooWeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2A43324474304003ABD30 /* YahooWeatherAPI.swift */; };
-		03D2A43824474C37003ABD30 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		03D2A43924474C38003ABD30 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		03D2A43E24476117003ABD30 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2A43D24476117003ABD30 /* WeatherAPI.swift */; };
-		03D2A43F24476117003ABD30 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2A43D24476117003ABD30 /* WeatherAPI.swift */; };
 		03D3A10D24C5D7CC0091FE99 /* Thumbnails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3A10C24C5D7CC0091FE99 /* Thumbnails.swift */; };
 		03D3A10E24C5D7CC0091FE99 /* Thumbnails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3A10C24C5D7CC0091FE99 /* Thumbnails.swift */; };
 		03D3A10F24C5D7CC0091FE99 /* Thumbnails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3A10C24C5D7CC0091FE99 /* Thumbnails.swift */; };
@@ -761,8 +751,6 @@
 		03F752EF24EEFC8500945B1D /* house.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03F752ED24EEFC8500945B1D /* house.pdf */; };
 		03F752F024EEFC8500945B1D /* house.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03F752ED24EEFC8500945B1D /* house.pdf */; };
 		03F752F124EEFC8500945B1D /* house.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 03F752ED24EEFC8500945B1D /* house.pdf */; };
-		03F8FF1F244B67D200813C96 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; };
-		03F8FF20244B67D200813C96 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D2A4172447401D003ABD30 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		03FA49A12423DA1F00863AF6 /* TimerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA49A02423DA1F00863AF6 /* TimerLayer.swift */; };
 		03FA49A22423DA1F00863AF6 /* TimerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA49A02423DA1F00863AF6 /* TimerLayer.swift */; };
 		03FA49B22423DA7D00863AF6 /* InfoTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030DDA8F2423C3BE0072D5C9 /* InfoTimerView.swift */; };
@@ -803,76 +791,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		03625EE42583CF820034264F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = C48B28011AFA598D00C7DEF6;
-			remoteInfo = OAuthSwiftMacOS;
-		};
-		03625EED2583D02C0034264F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = F43502791A6791B200038A29;
-			remoteInfo = OAuthSwift;
-		};
-		03D2A4142447401D003ABD30 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F435027A1A6791B200038A29;
-			remoteInfo = OAuthSwift;
-		};
-		03D2A4162447401D003ABD30 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C48B28021AFA598D00C7DEF6;
-			remoteInfo = OAuthSwiftMacOS;
-		};
-		03D2A4182447401D003ABD30 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C4B6EE1E1BF74CE300443596;
-			remoteInfo = OAuthSwiftTVOS;
-		};
-		03D2A41A2447401D003ABD30 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C40890C01C11B37000E3146A;
-			remoteInfo = OAuthSwiftWatchOS;
-		};
-		03D2A41C2447401D003ABD30 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F451E3C5195B8CD80051434C;
-			remoteInfo = OAuthSwiftDemo;
-		};
-		03D2A41E2447401D003ABD30 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C49FD5241AFB5DF500791E1A;
-			remoteInfo = OAuthSwiftMacOSDemo;
-		};
-		03D2A4202447401D003ABD30 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C4D50DF71BFB693F0053B624;
-			remoteInfo = OAuthSwiftTests;
-		};
-		37F36D7524F416130076F3C2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = C48B28011AFA598D00C7DEF6;
-			remoteInfo = OAuthSwiftMacOS;
-		};
 		FA7199731D94EC5A00FBC99B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FACAF19C1BD9FC6000E539DC /* Project object */;
@@ -889,7 +807,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				03F8FF20244B67D200813C96 /* OAuthSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -900,7 +817,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				03D2A43924474C38003ABD30 /* OAuthSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -911,7 +827,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0396D5AF24B8B7ED00CC021B /* OAuthSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1139,9 +1054,6 @@
 		03D1E78E22848F7F00D10CF7 /* screen2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screen2.jpg; sourceTree = "<group>"; };
 		03D1E78F22848F7F00D10CF7 /* screen1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screen1.jpg; sourceTree = "<group>"; };
 		03D1E79022848F7F00D10CF7 /* screen0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screen0.jpg; sourceTree = "<group>"; };
-		03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuthSwift.xcodeproj; path = Extern/OAuthSwift/OAuthSwift.xcodeproj; sourceTree = "<group>"; };
-		03D2A43324474304003ABD30 /* YahooWeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooWeatherAPI.swift; sourceTree = "<group>"; };
-		03D2A43D24476117003ABD30 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 		03D3A10C24C5D7CC0091FE99 /* Thumbnails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnails.swift; sourceTree = "<group>"; };
 		03D3A11224C5FC770091FE99 /* AspectFillNSImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectFillNSImageView.swift; sourceTree = "<group>"; };
 		03D6C78922A0384F00DE830B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -1208,7 +1120,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0396D56A24B8B7ED00CC021B /* CoreLocation.framework in Frameworks */,
-				0396D56C24B8B7ED00CC021B /* OAuthSwift.framework in Frameworks */,
 				0396D56D24B8B7ED00CC021B /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1220,7 +1131,6 @@
 				03510C772185EF8F008F74F2 /* CoreLocation.framework in Frameworks */,
 				03510C6B21834EB2008F74F2 /* IOKit.framework in Frameworks */,
 				FA143CE61BDA3EEF0041A82B /* AVKit.framework in Frameworks */,
-				03D2A43824474C37003ABD30 /* OAuthSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1236,7 +1146,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				03510C732185EF76008F74F2 /* CoreLocation.framework in Frameworks */,
-				03F8FF1F244B67D200813C96 /* OAuthSwift.framework in Frameworks */,
 				03510C6C21834EFF008F74F2 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1534,8 +1443,6 @@
 			isa = PBXGroup;
 			children = (
 				0385FC58242B9AE1007E6513 /* APISecrets.swift */,
-				03D2A43324474304003ABD30 /* YahooWeatherAPI.swift */,
-				03D2A43D24476117003ABD30 /* WeatherAPI.swift */,
 				03A6D14525F109B900960135 /* OpenWeather.swift */,
 			);
 			path = API;
@@ -1590,20 +1497,6 @@
 			path = Screenshots;
 			sourceTree = "<group>";
 		};
-		03D2A40B2447401D003ABD30 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				03D2A4152447401D003ABD30 /* OAuthSwift.framework */,
-				03D2A4172447401D003ABD30 /* OAuthSwift.framework */,
-				03D2A4192447401D003ABD30 /* OAuthSwift.framework */,
-				03D2A41B2447401D003ABD30 /* OAuthSwift.framework */,
-				03D2A41D2447401D003ABD30 /* OAuthSwiftDemo.app */,
-				03D2A41F2447401D003ABD30 /* OAuthSwiftMacOSDemo.app */,
-				03D2A4212447401D003ABD30 /* OAuthSwiftTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		03DAD46E229EAC66000DA6D1 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1644,7 +1537,6 @@
 		FA2D7AA01BDD849E009EA54C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */,
 				03510C722185EF76008F74F2 /* CoreLocation.framework */,
 				03510C6A21834EB2008F74F2 /* IOKit.framework */,
 				FA143CE51BDA3EEF0041A82B /* AVKit.framework */,
@@ -1866,8 +1758,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				03625EEE2583D02C0034264F /* PBXTargetDependency */,
-				03625EE52583CF820034264F /* PBXTargetDependency */,
 			);
 			name = AerialApp;
 			productName = "Aerial Test";
@@ -1906,7 +1796,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				37F36D7624F416130076F3C2 /* PBXTargetDependency */,
 			);
 			name = Aerial;
 			productName = Aerial;
@@ -1958,12 +1847,6 @@
 			mainGroup = FACAF19B1BD9FC6000E539DC;
 			productRefGroup = FACAF1A61BD9FC6000E539DC /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 03D2A40B2447401D003ABD30 /* Products */;
-					ProjectRef = 03D2A40A2447401D003ABD30 /* OAuthSwift.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				FACAF1A41BD9FC6000E539DC /* Aerial */,
@@ -1973,58 +1856,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		03D2A4152447401D003ABD30 /* OAuthSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuthSwift.framework;
-			remoteRef = 03D2A4142447401D003ABD30 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		03D2A4172447401D003ABD30 /* OAuthSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuthSwift.framework;
-			remoteRef = 03D2A4162447401D003ABD30 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		03D2A4192447401D003ABD30 /* OAuthSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuthSwift.framework;
-			remoteRef = 03D2A4182447401D003ABD30 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		03D2A41B2447401D003ABD30 /* OAuthSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuthSwift.framework;
-			remoteRef = 03D2A41A2447401D003ABD30 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		03D2A41D2447401D003ABD30 /* OAuthSwiftDemo.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = OAuthSwiftDemo.app;
-			remoteRef = 03D2A41C2447401D003ABD30 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		03D2A41F2447401D003ABD30 /* OAuthSwiftMacOSDemo.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = OAuthSwiftMacOSDemo.app;
-			remoteRef = 03D2A41E2447401D003ABD30 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		03D2A4212447401D003ABD30 /* OAuthSwiftTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = OAuthSwiftTests.xctest;
-			remoteRef = 03D2A4202447401D003ABD30 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		0396D57024B8B7ED00CC021B /* Resources */ = {
@@ -2556,9 +2387,7 @@
 				0396D52324B8B7ED00CC021B /* BatteryIconLayer.swift in Sources */,
 				030010AC24D71EB20092AE68 /* FiltersViewController.swift in Sources */,
 				0396D52424B8B7ED00CC021B /* PrefsDisplays.swift in Sources */,
-				0396D52524B8B7ED00CC021B /* YahooWeatherAPI.swift in Sources */,
 				0396D52624B8B7ED00CC021B /* Cache.swift in Sources */,
-				0396D52724B8B7ED00CC021B /* WeatherAPI.swift in Sources */,
 				0396D52824B8B7ED00CC021B /* AnimationTextLayer.swift in Sources */,
 				0345D00F24C07CC70001045C /* VideoCellView.swift in Sources */,
 				0345CFEE24BF43280001045C /* VideosViewController.swift in Sources */,
@@ -2687,7 +2516,6 @@
 				03510C7121834FC7008F74F2 /* IOBridge.m in Sources */,
 				032E09A024C3897E00387230 /* AdvancedViewController.swift in Sources */,
 				F00864B823AAE8E9003210EF /* NightShift.swift in Sources */,
-				03D2A43F24476117003ABD30 /* WeatherAPI.swift in Sources */,
 				03D1E7882284367200D10CF7 /* DisplayView.swift in Sources */,
 				038D2EDF23B0FB0D00CD91F7 /* PrefsVideos.swift in Sources */,
 				03DC0065248BC60D005DB0F4 /* Cache.swift in Sources */,
@@ -2768,7 +2596,6 @@
 				03A596D623AA752F0097EA66 /* InfoClockView.swift in Sources */,
 				037772E324E43AF300D81EEA /* TimeSetupViewController.swift in Sources */,
 				03047A5624D2DD8E000EFE62 /* NSMenuItem+icons.swift in Sources */,
-				03D2A4352447438D003ABD30 /* YahooWeatherAPI.swift in Sources */,
 				0345A24B24532E4600DD47CD /* ConditionSymbolLayer.swift in Sources */,
 				FAF450251BE2D2FD00C1F98A /* VideoCache.swift in Sources */,
 			);
@@ -2819,9 +2646,7 @@
 				030A0F29245C7C7D009E1D97 /* BatteryIconLayer.swift in Sources */,
 				030010AB24D71EB20092AE68 /* FiltersViewController.swift in Sources */,
 				0361B9A823D732A300B6252D /* PrefsDisplays.swift in Sources */,
-				03D2A43424474304003ABD30 /* YahooWeatherAPI.swift in Sources */,
 				03DC004E248BC5A4005DB0F4 /* Cache.swift in Sources */,
-				03D2A43E24476117003ABD30 /* WeatherAPI.swift in Sources */,
 				0306336E23A15FA900046A59 /* AnimationTextLayer.swift in Sources */,
 				0345D00E24C07CC70001045C /* VideoCellView.swift in Sources */,
 				0345CFED24BF43280001045C /* VideosViewController.swift in Sources */,
@@ -2912,21 +2737,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		03625EE52583CF820034264F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OAuthSwiftMacOS;
-			targetProxy = 03625EE42583CF820034264F /* PBXContainerItemProxy */;
-		};
-		03625EEE2583D02C0034264F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OAuthSwift;
-			targetProxy = 03625EED2583D02C0034264F /* PBXContainerItemProxy */;
-		};
-		37F36D7624F416130076F3C2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OAuthSwiftMacOS;
-			targetProxy = 37F36D7524F416130076F3C2 /* PBXContainerItemProxy */;
-		};
 		FA7199741D94EC5A00FBC99B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FA143CD51BDA3E880041A82B /* AerialApp */;

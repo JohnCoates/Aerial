@@ -267,11 +267,17 @@ class VideosViewController: NSViewController {
         var index = 0
         var foundIndex = -1
         for item in VideoList.instance.getSources(mode: filter) {
-            rotationSecondaryPopup.addItem(withTitle: item.string)
-            if item.string == PrefsVideos.shouldPlayString {
+            rotationSecondaryPopup.addItem(withTitle: item)
+            if item == PrefsVideos.shouldPlayString {
                 foundIndex = index
             }
+/*
+             rotationSecondaryPopup.addItem(withTitle: item.string)
+             if item.string == PrefsVideos.shouldPlayString {
+                 foundIndex = index
+             }
 
+             */
             index += 1
         }
         if foundIndex > -1 {
