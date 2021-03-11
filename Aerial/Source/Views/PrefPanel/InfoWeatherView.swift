@@ -21,6 +21,11 @@ class InfoWeatherView: NSView {
         degreePopup.selectItem(at: PrefsInfo.weather.degree.rawValue)
         iconsPopup.selectItem(at: PrefsInfo.weather.icons.rawValue)
 
+        // Hide the flat color icons pre Big Sur as those are not available
+        if #available(macOS 11.0, *) {
+        } else {
+            iconsPopup.item(at: 1)?.isHidden = true
+        }
         locationString.stringValue = PrefsInfo.weather.locationString
         locationLabel.stringValue = ""
         locationString.delegate = self

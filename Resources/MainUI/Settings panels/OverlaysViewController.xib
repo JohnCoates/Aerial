@@ -1091,7 +1091,7 @@ corner</string>
                     </connections>
                 </popUpButton>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WWH-eQ-q01">
-                    <rect key="frame" x="349" y="147" width="66" height="40"/>
+                    <rect key="frame" x="371" y="147" width="66" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="°C" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="kAT-Ix-Epe" id="xKQ-Sj-kNx">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -1107,14 +1107,15 @@ corner</string>
                     </connections>
                 </popUpButton>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pj2-sU-RdG">
-                    <rect key="frame" x="145" y="147" width="198" height="40"/>
-                    <popUpButtonCell key="cell" type="push" title="Flat symbols" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="SlK-mo-emo" id="Vwk-tz-NwH">
+                    <rect key="frame" x="145" y="147" width="220" height="40"/>
+                    <popUpButtonCell key="cell" type="push" title="Flat symbols (monochrome)" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="SlK-mo-emo" id="Vwk-tz-NwH">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" id="YeW-HB-a3b">
                             <items>
-                                <menuItem title="Flat symbols" state="on" id="SlK-mo-emo"/>
-                                <menuItem title="Color (requires network)" id="VID-WC-uqt"/>
+                                <menuItem title="Flat symbols (monochrome)" state="on" id="SlK-mo-emo"/>
+                                <menuItem title="Flat symbols (multicolor)" id="cFh-rG-ejh"/>
+                                <menuItem title="Color icons (low quality)" id="VID-WC-uqt"/>
                             </items>
                         </menu>
                     </popUpButtonCell>

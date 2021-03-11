@@ -102,13 +102,11 @@ struct OpenWeather {
 
     static var testJson = ""
 
-/*
-     static var testJson =
+/*     static var testJson =
 """
-{"coord":{"lon":-0.1257,"lat":51.5085},"weather":[{"id":802,"main":"Clouds","description":"雲","icon":"03d"}],"base":"stations","main":{"temp":6.02,"feels_like":0.51,"temp_min":5,"temp_max":6.67,"pressure":1033,"humidity":56},"visibility":10000,"wind":{"speed":4.63,"deg":50},"clouds":{"all":40},"dt":1614960144,"sys":{"type":1,"id":1414,"country":"GB","sunrise":1614926218,"sunset":1614966438},"timezone":0,"id":2643743,"name":"ロンドン","cod":200}
+{"coord":{"lon":-0.1257,"lat":51.5085},"weather":[{"id":801,"main":"Clouds","description":"雲","icon":"03d"}],"base":"stations","main":{"temp":6.02,"feels_like":0.51,"temp_min":5,"temp_max":6.67,"pressure":1033,"humidity":56},"visibility":10000,"wind":{"speed":4.63,"deg":50},"clouds":{"all":40},"dt":1614960144,"sys":{"type":1,"id":1414,"country":"GB","sunrise":1614926218,"sunset":1614966438},"timezone":0,"id":2643743,"name":"ロンドン","cod":200}
 """
 */
-
     static func getUnits() -> String {
         if PrefsInfo.weather.degree == .celsius {
             return "metric"

@@ -98,7 +98,9 @@ class WeatherLayer: AnimationLayer {
         todayCond!.position = CGPoint(x: 0, y: 10)
         addSublayer(todayCond!)
 
-        self.frame.size = CGSize(width: todayCond!.frame.width, height: 95)
+        self.frame.size = todayCond!.frame.size
+
+        //self.frame.size = CGSize(width: todayCond!.frame.width, height: 95)
 
         update(redraw: true)
         let fadeAnimation = self.createFadeInAnimation()

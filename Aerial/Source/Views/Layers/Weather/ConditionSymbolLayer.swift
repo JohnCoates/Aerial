@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Foundation
 
 class ConditionSymbolLayer: CALayer {
     let mainSymbols = [200: "cloud.bolt.rain",
@@ -68,7 +69,7 @@ class ConditionSymbolLayer: CALayer {
                        781: "tornado",
 
                        800: "sun.max",
-                       801: "sun.min",
+                       801: "sun.max",
                        802: "cloud.sun",
                        803: "cloud.sun",
                        804: "cloud", ]//
@@ -82,28 +83,130 @@ class ConditionSymbolLayer: CALayer {
                         802: "cloud.moon",
                         803: "cloud.moon", ]
 
-    init(condition: OWeather) {
+    init(condition: OWeather, size: Int) {
         super.init()
 
         // In case icons are updated, it's important to test them !
         //test()
 
         let isNight = isNight(dt: condition.dt!, sys: condition.sys!)
+        var img: NSImage?
 
+        switch PrefsInfo.weather.icons {
+        case .flat:
+            img = makeSymbol(name: getSymbol(condition: condition.weather![0].id,
+                                                 isNight: isNight), size: size)
+        case .colorflat:
+            img = makeColorSymbol(name: getColorSymbol(condition: condition.weather![0].id,
+                                                  isNight: isNight), size: size)
+        case .oweather:
+            downloadImage(from: URL(string: "http://openweathermap.org/img/wn/\(condition.weather![0].icon)@4x.png")!, size: size)
+            img = nil
+        }
+
+        if let img = img {
+            frame.size.height = CGFloat(size)
+            frame.size.width = CGFloat(size) * img.size.width / img.size.height
+
+            contents = img
+        }
+
+/*
         let imagePath = Bundle(for: PanelWindowController.self).path(
             forResource: getSymbol(condition: condition.weather![0].id, isNight: isNight ),
-            ofType: "pdf")
+            ofType: "pdf") ?? ""
 
-        if imagePath != nil {
-            let img = NSImage(contentsOfFile: imagePath!)
+        if let img = NSImage(contentsOfFile: imagePath) {
             /*img = img!.tinting(with: .white)*/
-            frame.size.height = img!.size.height*0.5
-            frame.size.width = img!.size.width*0.5
+            frame.size.height = img.size.height*2
+            frame.size.width = img.size.width*2
             contents = img
         } else {
             frame.size.height = 50
             frame.size.width = 50
             backgroundColor = .init(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
+        }*/
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func makeSymbol(name: String, size: Int) -> NSImage? {
+        if #available(macOS 11.0, *) {
+            if let image = NSImage(systemSymbolName: name, accessibilityDescription: name) {
+                image.isTemplate = true
+
+                // return image
+                let config = NSImage.SymbolConfiguration(pointSize: CGFloat(size), weight: .regular)
+                return image.withSymbolConfiguration(config)?.tinting(with: .white)
+            }
+        } else {
+            // We fallback on the pdf icons
+            let imagePath = Bundle(for: PanelWindowController.self).path(
+                forResource: name, ofType: "pdf") ?? ""
+
+            let img = NSImage(contentsOfFile: imagePath)
+
+            return img
+        }
+
+        return nil
+    }
+
+    func makeColorSymbol(name: String, size: Int) -> NSImage? {
+        if #available(macOS 11.0, *) {
+            if let image = NSImage(systemSymbolName: name, accessibilityDescription: name) {
+                image.isTemplate = false
+
+                // return image
+                let config = NSImage.SymbolConfiguration(pointSize: CGFloat(size), weight: .regular)
+                return image.withSymbolConfiguration(config) //?.tinting(with: .white)
+            }
+        }
+
+        return nil
+    }
+
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+
+    func downloadImage(from url: URL, size: Int) {
+        frame.size.height = CGFloat(size)
+        frame.size.width = CGFloat(size)
+
+        getData(from: url) { data, _, error in
+            guard let data = data, error == nil else { return }
+
+            DispatchQueue.main.async() {
+                let img = NSImage(data: data)
+                self.contents = img
+
+                /*
+                // If we have something, trim and put it up
+                if let img = imgs {
+                    // Get the trimmed image first, goes on the left
+                    let trimmedimg = img.trim()!
+
+                    let imglayer = CALayer()
+                    imglayer.frame.size.height = trimmedimg.size.height / 2
+                    imglayer.frame.size.width = trimmedimg.size.width / 2
+                    imglayer.contents = trimmedimg
+
+                    imglayer.anchorPoint = CGPoint(x: 0, y: 0.5)
+                    imglayer.position = CGPoint(x: 0, y: 50)
+                    self.addSublayer(imglayer)
+
+                    let tempWidth = self.addTemperature(at: imglayer.frame.width + 15)
+                    self.addFeelsLike(at: imglayer.frame.width + 15 + (tempWidth / 2))
+                    self.addWind(at: (imglayer.frame.width + 15 + tempWidth) / 2)
+
+                    // Set the final size
+                    self.frame.size = CGSize(width: imglayer.frame.width + 15 + tempWidth, height: 75)
+                }
+                 */
+            }
         }
     }
 
@@ -132,10 +235,6 @@ class ConditionSymbolLayer: CALayer {
 
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     func getSymbol(condition: Int, isNight: Bool) -> String {
         if isNight && nightSymbols[condition] != nil {
             return nightSymbols[condition]!
@@ -145,6 +244,16 @@ class ConditionSymbolLayer: CALayer {
             } else {
                 return "wrench"
             }
+        }
+    }
+
+    func getColorSymbol(condition: Int, isNight: Bool) -> String {
+        let regular = getSymbol(condition: condition, isNight: isNight)
+
+        if regular != "wrench" && regular != "snow" && regular != "tornado" {
+            return regular + ".fill"
+        } else {
+            return regular
         }
     }
 

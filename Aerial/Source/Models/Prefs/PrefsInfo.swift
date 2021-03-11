@@ -55,7 +55,7 @@ enum InfoDegree: Int, Codable {
 }
 
 enum InfoIconsWeather: Int, Codable {
-    case flat, yahoo
+    case flat, colorflat, oweather
 }
 
 // The various info types available
@@ -248,7 +248,7 @@ struct PrefsInfo {
                                                         locationMode: .manuallySpecify,
                                                         locationString: "",
                                                         degree: .celsius,
-                                                        icons: .flat))
+                                                        icons: isMacOS11() ? .colorflat : .flat))
     static var weather: Weather
 
     // Countdown
@@ -318,6 +318,14 @@ struct PrefsInfo {
     static var shadowOffsetX: CGFloat
     @SimpleStorage(key: "shadowOffsetY", defaultValue: -3.0)
     static var shadowOffsetY: CGFloat
+
+    static func isMacOS11() -> Bool {
+        if #available(macOS 11.0, *) {
+            return true
+        } else {
+            return false
+        }
+    }
 
     // MARK: - Helpers
     // Helper to quickly access a given struct (read-only as we return a copy of the struct)

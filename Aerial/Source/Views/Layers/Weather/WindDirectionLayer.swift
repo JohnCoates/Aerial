@@ -10,15 +10,15 @@ import Foundation
 import AVKit
 
 class WindDirectionLayer: CALayer {
-    init(direction: CGFloat) {
+    init(direction: CGFloat, size: CGFloat) {
         super.init()
         let imagePath = Bundle(for: PanelWindowController.self).path(
             forResource: "location.north",
             ofType: "pdf")
 
         let img = NSImage(contentsOfFile: imagePath!)
-        frame.size.height = img!.size.height / 8
-        frame.size.width = img!.size.width / 8
+        frame.size.height = size
+        frame.size.width = size
         contents = img
     }
 
