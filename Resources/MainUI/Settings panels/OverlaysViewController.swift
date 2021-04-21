@@ -155,7 +155,7 @@ class OverlaysViewController: NSViewController {
     }
 
     // MARK: Weather panel
-
+    // Simple current conditions
     func openWeatherPreview(weather: OWeather) {
         if !weatherPanel.isVisible {
             weatherPanel.makeKeyAndOrderFront(self)
@@ -163,6 +163,19 @@ class OverlaysViewController: NSViewController {
 
         weatherLabel.stringValue = "\(String(describing: weather.name)) \n\n \(weather)"
         let cond = ConditionLayer(condition: weather, scale: 2.0)
+
+        weatherCustomView.layer = cond
+        weatherCustomView.wantsLayer = true
+    }
+
+    // Forecasts
+    func openWeatherPreview(weather: OCOneCall) {
+        if !weatherPanel.isVisible {
+            weatherPanel.makeKeyAndOrderFront(self)
+        }
+
+        weatherLabel.stringValue = "\(weather)"
+        let cond = ForecastLayer(condition: weather, scale: 2.0)
 
         weatherCustomView.layer = cond
         weatherCustomView.wantsLayer = true

@@ -47,7 +47,12 @@ class ConditionLayer: CALayer {
         let combinedHeight = tempBlock.frame.height + feelsBlock.frame.height
 
         // Create a symbol that fits the size
-        let imglayer = ConditionSymbolLayer(condition: condition, size: Int(combinedHeight))
+        //let imglayer = ConditionSymbolLayer(condition: condition, size: Int(combinedHeight))
+        let imglayer = ConditionSymbolLayer(weather: condition.weather![0],
+                                            dt: condition.dt!,
+                                            sunrise: condition.sys!.sunrise,
+                                            sunset: condition.sys!.sunset,
+                                            size: Int(combinedHeight))
 
         // Add the Wind layer
         let windHeight = addWind(at: (imglayer.frame.width + combinedHeight/10 + tempBlock.frame.width) / 2)
@@ -146,7 +151,7 @@ class ConditionLayer: CALayer {
         // Make a vertically centered layer for t°
         let wind = CAVCTextLayer()
         if PrefsInfo.weather.degree == .celsius {
-            wind.string = "\(owind.speed) m/s"
+            wind.string = "\(owind.speed * 3.6) km/h"
         } else {
             wind.string = "\(owind.speed) mph"
         }

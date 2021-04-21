@@ -14,12 +14,14 @@ class InfoWeatherView: NSView {
     @IBOutlet var degreePopup: NSPopUpButton!
     @IBOutlet var iconsPopup: NSPopUpButton!
     @IBOutlet var locationLabel: NSTextField!
+    @IBOutlet var weatherModePopup: NSPopUpButton!
 
     // Init(ish)
     func setStates() {
         locationMode.selectItem(at: PrefsInfo.weather.locationMode.rawValue)
         degreePopup.selectItem(at: PrefsInfo.weather.degree.rawValue)
         iconsPopup.selectItem(at: PrefsInfo.weather.icons.rawValue)
+        weatherModePopup.selectItem(at: PrefsInfo.weather.mode.rawValue)
 
         // Hide the flat color icons pre Big Sur as those are not available
         if #available(macOS 11.0, *) {
@@ -30,6 +32,10 @@ class InfoWeatherView: NSView {
         locationLabel.stringValue = ""
         locationString.delegate = self
         updateLocationMode()
+    }
+
+    @IBAction func weatherModePopupChange(_ sender: NSPopUpButton) {
+        PrefsInfo.weather.mode = InfoWeatherMode(rawValue: sender.indexOfSelectedItem)!
     }
 
     @IBAction func locationModeChange(_ sender: NSPopUpButton) {
@@ -60,21 +66,35 @@ class InfoWeatherView: NSView {
     }
 
     @IBAction func testLocationButtonClick(_ sender: NSButton) {
-        OpenWeather.fetch { result in
-            switch result {
-            case .success(let openWeather):
-                print(openWeather)
-                let ovc = self.parentViewController as! OverlaysViewController
-                ovc.openWeatherPreview(weather: openWeather)
-            case .failure(let error):
-                print(error.localizedDescription)
+        if PrefsInfo.weather.mode == .current {
+            OpenWeather.fetch { result in
+                switch result {
+                case .success(let openWeather):
+                    print(openWeather)
+                    let ovc = self.parentViewController as! OverlaysViewController
+                    ovc.openWeatherPreview(weather: openWeather)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
             }
+        } else {
+            OneCall.fetch { result in
+                switch result {
+                case .success(let openWeather):
+                    print(openWeather)
+                    let ovc = self.parentViewController as! OverlaysViewController
+                    ovc.openWeatherPreview(weather: openWeather)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+
         }
+
     }
 
-    @IBAction func yahooWeatherButtonClick(_ sender: Any) {
-        // Logo must link here, per Yahoo!'s attribution guidelines
-        NSWorkspace.shared.open(URL(string: "https://www.yahoo.com/?ilc=401")!)
+    @IBAction func openWeatherLogoButton(_ sender: Any) {
+        NSWorkspace.shared.open(URL(string: "https://openweathermap.org/")!)
     }
 }
 

@@ -83,30 +83,40 @@ class ConditionSymbolLayer: CALayer {
                         802: "cloud.moon",
                         803: "cloud.moon", ]
 
-    init(condition: OWeather, size: Int) {
+    init(weather: OWWeather, dt: Int, sunrise: Int, sunset: Int, size: Int, square: Bool = false) {
         super.init()
 
         // In case icons are updated, it's important to test them !
         //test()
 
-        let isNight = isNight(dt: condition.dt!, sys: condition.sys!)
+        let isNight = isNight(dt: dt, sunrise: sunrise, sunset: sunset)
         var img: NSImage?
 
         switch PrefsInfo.weather.icons {
         case .flat:
-            img = makeSymbol(name: getSymbol(condition: condition.weather![0].id,
+            img = makeSymbol(name: getSymbol(condition: weather.id,
                                                  isNight: isNight), size: size)
         case .colorflat:
-            img = makeColorSymbol(name: getColorSymbol(condition: condition.weather![0].id,
+            img = makeColorSymbol(name: getColorSymbol(condition: weather.id,
                                                   isNight: isNight), size: size)
         case .oweather:
-            downloadImage(from: URL(string: "http://openweathermap.org/img/wn/\(condition.weather![0].icon)@4x.png")!, size: size)
+            downloadImage(from: URL(string: "http://openweathermap.org/img/wn/\(weather.icon)@4x.png")!, size: size)
             img = nil
         }
 
         if let img = img {
-            frame.size.height = CGFloat(size)
-            frame.size.width = CGFloat(size) * img.size.width / img.size.height
+            if !square {
+                frame.size.height = CGFloat(size)
+                frame.size.width = CGFloat(size) * img.size.width / img.size.height
+            } else {
+                if frame.size.height > frame.size.width {
+                    frame.size.height = CGFloat(size)
+                    frame.size.width = CGFloat(size) * img.size.width / img.size.height
+                } else {
+                    frame.size.width = CGFloat(size)
+                    frame.size.height = CGFloat(size) * img.size.height / img.size.width
+                }
+            }
 
             contents = img
         }
@@ -257,8 +267,8 @@ class ConditionSymbolLayer: CALayer {
         }
     }
 
-    func isNight(dt: Int, sys: OWSys) -> Bool {
-        if dt < sys.sunrise || dt > sys.sunset {
+    func isNight(dt: Int, sunrise: Int, sunset: Int) -> Bool {
+        if dt < sunrise || dt > sunset {
             return true
         } else {
             return false

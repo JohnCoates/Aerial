@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18121" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -900,7 +900,7 @@ corner</string>
                 <outlet property="shadowRadiusFormatter" destination="O4b-kP-liW" id="wI3-2h-OBD"/>
                 <outlet property="shadowRadiusTextField" destination="39A-Xd-EB7" id="YWj-xB-Rql"/>
             </connections>
-            <point key="canvasLocation" x="-840" y="1378"/>
+            <point key="canvasLocation" x="-840" y="1424"/>
         </customView>
         <customView id="VcD-4g-CvS" customClass="InfoTimerView" customModule="Aerial" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="580" height="158"/>
@@ -1063,7 +1063,7 @@ corner</string>
             <point key="canvasLocation" x="-840" y="735"/>
         </customView>
         <customView id="cmR-hZ-0Fe" customClass="InfoWeatherView" customModule="Aerial" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="580" height="203"/>
+            <rect key="frame" x="0.0" y="0.0" width="580" height="242"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MMI-hf-gCZ">
@@ -1146,7 +1146,7 @@ corner</string>
                     </textFieldCell>
                 </textField>
                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IcH-dE-weS">
-                    <rect key="frame" x="304" y="101" width="35" height="35"/>
+                    <rect key="frame" x="304" y="96" width="35" height="35"/>
                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3MQ-92-9m9">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -1170,36 +1170,75 @@ corner</string>
                         <action selector="testLocationButtonClick:" target="cmR-hZ-0Fe" id="4FO-ev-kS6"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kbv-ff-1GY">
-                    <rect key="frame" x="382" y="0.0" width="194" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Data provided by OpenWeather" id="Itg-10-M0R">
+                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bc1-t5-1U8">
+                    <rect key="frame" x="145" y="197" width="186" height="40"/>
+                    <popUpButtonCell key="cell" type="push" title="Current weather" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="n6w-I3-Hcd" id="RrM-1g-f4Q">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="HGB-L7-Fwj">
+                            <items>
+                                <menuItem title="Current weather" state="on" id="n6w-I3-Hcd"/>
+                                <menuItem title="Forecast (next hours)" id="i5W-wv-OE8"/>
+                                <menuItem title="Forecast (next 3 days)" id="ii0-qs-ebA"/>
+                                <menuItem title="Forecast (next 7 days)" id="0gs-le-Djn">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="weatherModePopupChange:" target="cmR-hZ-0Fe" id="6uf-Vf-l6Q"/>
+                    </connections>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HYQ-NB-LAH">
+                    <rect key="frame" x="92" y="210" width="52" height="16"/>
+                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Display:" id="tLN-Xk-TM4">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="Mkb-6F-RoA">
+                    <rect key="frame" x="342" y="197" width="90" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="90" id="Jv2-8G-WhZ"/>
+                        <constraint firstAttribute="height" constant="40" id="u2k-2r-QLb"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="openweather_logo" imagePosition="only" alignment="center" controlSize="large" imageScaling="proportionallyUpOrDown" inset="2" id="Yum-qo-4Cz">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="openWeatherLogoButton:" target="cmR-hZ-0Fe" id="Myl-q4-gGJ"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="pj2-sU-RdG" firstAttribute="leading" secondItem="cmR-hZ-0Fe" secondAttribute="leading" constant="150" id="0Xb-xb-X37"/>
-                <constraint firstItem="IcH-dE-weS" firstAttribute="firstBaseline" secondItem="mY1-Rf-ATP" secondAttribute="firstBaseline" id="CJN-US-JLG"/>
+                <constraint firstItem="bc1-t5-1U8" firstAttribute="firstBaseline" secondItem="HYQ-NB-LAH" secondAttribute="firstBaseline" id="6hW-15-kmK"/>
+                <constraint firstItem="IcH-dE-weS" firstAttribute="centerY" secondItem="mY1-Rf-ATP" secondAttribute="centerY" id="9wu-pE-9qR"/>
                 <constraint firstItem="YAo-Tv-Uqc" firstAttribute="top" secondItem="Iha-a4-YZ0" secondAttribute="bottom" constant="22" id="FSf-xy-kLq"/>
+                <constraint firstItem="Mkb-6F-RoA" firstAttribute="leading" secondItem="bc1-t5-1U8" secondAttribute="trailing" constant="16" id="HXm-HT-xwZ"/>
                 <constraint firstItem="IcH-dE-weS" firstAttribute="leading" secondItem="mY1-Rf-ATP" secondAttribute="trailing" constant="16" id="KVz-2F-Ywe"/>
                 <constraint firstItem="Bjs-UA-NkK" firstAttribute="firstBaseline" secondItem="Iha-a4-YZ0" secondAttribute="firstBaseline" id="NcH-eI-YXf"/>
                 <constraint firstAttribute="bottom" secondItem="YAo-Tv-Uqc" secondAttribute="bottom" constant="22" id="OQk-H9-hcb"/>
+                <constraint firstItem="Mkb-6F-RoA" firstAttribute="centerY" secondItem="bc1-t5-1U8" secondAttribute="centerY" id="Q7U-20-l6Q"/>
                 <constraint firstItem="pj2-sU-RdG" firstAttribute="leading" secondItem="2t2-hO-9s4" secondAttribute="trailing" constant="8" symbolic="YES" id="UoE-Qs-rDe"/>
+                <constraint firstItem="pj2-sU-RdG" firstAttribute="top" secondItem="bc1-t5-1U8" secondAttribute="bottom" constant="22" id="VFg-oP-Sko"/>
                 <constraint firstItem="Iha-a4-YZ0" firstAttribute="leading" secondItem="mY1-Rf-ATP" secondAttribute="leading" id="VpP-3w-IfX"/>
                 <constraint firstItem="pj2-sU-RdG" firstAttribute="firstBaseline" secondItem="2t2-hO-9s4" secondAttribute="firstBaseline" id="W0Z-0G-B4r"/>
                 <constraint firstItem="WWH-eQ-q01" firstAttribute="leading" secondItem="pj2-sU-RdG" secondAttribute="trailing" constant="16" id="Y0e-TM-gEL"/>
                 <constraint firstItem="Bjs-UA-NkK" firstAttribute="leading" secondItem="Iha-a4-YZ0" secondAttribute="trailing" constant="16" id="a8B-LT-Hyr"/>
                 <constraint firstItem="WWH-eQ-q01" firstAttribute="firstBaseline" secondItem="2t2-hO-9s4" secondAttribute="firstBaseline" id="ajl-lj-fIR"/>
                 <constraint firstItem="mY1-Rf-ATP" firstAttribute="firstBaseline" secondItem="MMI-hf-gCZ" secondAttribute="firstBaseline" id="b32-yY-EYf"/>
+                <constraint firstItem="bc1-t5-1U8" firstAttribute="leading" secondItem="HYQ-NB-LAH" secondAttribute="trailing" constant="8" symbolic="YES" id="d0e-AZ-pxL"/>
                 <constraint firstItem="YAo-Tv-Uqc" firstAttribute="leading" secondItem="pj2-sU-RdG" secondAttribute="leading" id="dEX-ar-esy"/>
+                <constraint firstItem="bc1-t5-1U8" firstAttribute="top" secondItem="cmR-hZ-0Fe" secondAttribute="top" constant="11" id="goN-cl-mTb"/>
                 <constraint firstItem="mY1-Rf-ATP" firstAttribute="top" secondItem="pj2-sU-RdG" secondAttribute="bottom" constant="22" id="hAF-di-mQj"/>
+                <constraint firstItem="bc1-t5-1U8" firstAttribute="leading" secondItem="cmR-hZ-0Fe" secondAttribute="leading" constant="150" id="pK0-iw-Xk1"/>
                 <constraint firstItem="mY1-Rf-ATP" firstAttribute="leading" secondItem="MMI-hf-gCZ" secondAttribute="trailing" constant="8" symbolic="YES" id="qnP-7u-9Q2"/>
                 <constraint firstItem="mY1-Rf-ATP" firstAttribute="leading" secondItem="pj2-sU-RdG" secondAttribute="leading" id="wRg-i3-SDF"/>
                 <constraint firstItem="Iha-a4-YZ0" firstAttribute="top" secondItem="mY1-Rf-ATP" secondAttribute="bottom" constant="22" id="wTP-Q2-JTQ"/>
-                <constraint firstItem="pj2-sU-RdG" firstAttribute="top" secondItem="cmR-hZ-0Fe" secondAttribute="top" constant="22" id="wpW-cL-JTR"/>
             </constraints>
             <connections>
                 <outlet property="degreePopup" destination="WWH-eQ-q01" id="B2k-uQ-E2L"/>
@@ -1207,34 +1246,35 @@ corner</string>
                 <outlet property="locationLabel" destination="YAo-Tv-Uqc" id="jJh-Rf-hes"/>
                 <outlet property="locationMode" destination="mY1-Rf-ATP" id="cyu-zj-MhQ"/>
                 <outlet property="locationString" destination="Iha-a4-YZ0" id="sPk-Q8-AeX"/>
+                <outlet property="weatherModePopup" destination="bc1-t5-1U8" id="fdu-1l-38L"/>
             </connections>
-            <point key="canvasLocation" x="-840" y="953.5"/>
+            <point key="canvasLocation" x="-840" y="1011"/>
         </customView>
         <window title="Weather preview" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="T1o-cz-8zC" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES" HUD="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES" utility="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="272" y="172" width="335" height="374"/>
+            <rect key="contentRect" x="272" y="172" width="673" height="487"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <view key="contentView" id="Raj-x7-cvl">
-                <rect key="frame" x="0.0" y="0.0" width="335" height="374"/>
+                <rect key="frame" x="0.0" y="0.0" width="673" height="487"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gfx-ZG-teS">
+                        <rect key="frame" x="0.0" y="177" width="673" height="310"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </customView>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Z6-oE-76I">
-                        <rect key="frame" x="0.0" y="0.0" width="335" height="285"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="0.0" y="0.0" width="673" height="169"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="7Bu-LI-roc">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gfx-ZG-teS">
-                        <rect key="frame" x="0.0" y="284" width="335" height="90"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    </customView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="726" y="-74"/>
+            <point key="canvasLocation" x="894.5" y="-17.5"/>
         </window>
         <customView id="go3-Lb-KNk">
             <rect key="frame" x="0.0" y="0.0" width="400" height="340"/>
@@ -1625,6 +1665,7 @@ Independant of your choice, you can preview the results using the "Test" button 
         <image name="NSListViewTemplate" width="16" height="12"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
         <image name="NSTouchBarDeleteTemplate" width="15" height="17"/>
+        <image name="openweather_logo" width="180" height="80"/>
         <image name="screen0" width="720" height="400"/>
     </resources>
 </document>

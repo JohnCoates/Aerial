@@ -13,10 +13,12 @@ class WeatherLayer: AnimationLayer {
     var config: PrefsInfo.Weather?
     var wasSetup = false
     var todayCond: ConditionLayer?
+    var forecastCond: ForecastLayer?
 
     var cscale: CGFloat?
 
     var cachedWeather: OWeather?
+    var cachedForecast: OCOneCall?
 
     override init(layer: Any) {
         super.init(layer: layer)
@@ -55,6 +57,9 @@ class WeatherLayer: AnimationLayer {
             }
         }
 
+        if let forecastCond = forecastCond {
+            forecastCond.contentsScale = scale
+        }
         // In case we haven't called displayWeatherBlock yet (should be all the time but hmm)
         cscale = scale
     }
@@ -66,18 +71,34 @@ class WeatherLayer: AnimationLayer {
             wasSetup = true
             frame.size = CGSize(width: 100, height: 1)
             update()
-
-            if cachedWeather != nil {
-                displayWeatherBlock()
+            if PrefsInfo.weather.mode == .current {
+                if cachedWeather != nil {
+                    displayWeatherBlock()
+                } else {
+                    OpenWeather.fetch { result in
+                        switch result {
+                        case .success(let openWeather):
+                            print(openWeather)
+                            self.cachedWeather = openWeather
+                            self.displayWeatherBlock()
+                        case .failure(let error):
+                            print(error.localizedDescription)
+                        }
+                    }
+                }
             } else {
-                OpenWeather.fetch { result in
-                    switch result {
-                    case .success(let openWeather):
-                        print(openWeather)
-                        self.cachedWeather = openWeather
-                        self.displayWeatherBlock()
-                    case .failure(let error):
-                        print(error.localizedDescription)
+                if cachedForecast != nil {
+                    displayWeatherBlock()
+                } else {
+                    OneCall.fetch { result in
+                        switch result {
+                        case .success(let openWeather):
+                            print(openWeather)
+                            self.cachedForecast = openWeather
+                            self.displayWeatherBlock()
+                        case .failure(let error):
+                            print(error.localizedDescription)
+                        }
                     }
                 }
             }
@@ -85,22 +106,32 @@ class WeatherLayer: AnimationLayer {
     }
 
     func displayWeatherBlock() {
-        guard cachedWeather != nil else {
+        guard cachedWeather != nil || cachedForecast != nil else {
             errorLog("No weather info in dWB please report")
             return
         }
 
-        todayCond = ConditionLayer(condition: cachedWeather!, scale: contentsScale)
-        if cscale != nil {
-            todayCond!.contentsScale = cscale!
+        if PrefsInfo.weather.mode == .current {
+            todayCond = ConditionLayer(condition: cachedWeather!, scale: contentsScale)
+            if cscale != nil {
+                todayCond!.contentsScale = cscale!
+            }
+            todayCond!.anchorPoint = CGPoint(x: 0, y: 0)
+            todayCond!.position = CGPoint(x: 0, y: 10)
+            addSublayer(todayCond!)
+
+            self.frame.size = todayCond!.frame.size
+        } else {
+            forecastCond = ForecastLayer(condition: cachedForecast!, scale: contentsScale)
+            if cscale != nil {
+                forecastCond!.contentsScale = cscale!
+            }
+            forecastCond!.anchorPoint = CGPoint(x: 0, y: 0)
+            forecastCond!.position = CGPoint(x: 0, y: 10)
+            addSublayer(forecastCond!)
+
+            self.frame.size = forecastCond!.frame.size
         }
-        todayCond!.anchorPoint = CGPoint(x: 0, y: 0)
-        todayCond!.position = CGPoint(x: 0, y: 10)
-        addSublayer(todayCond!)
-
-        self.frame.size = todayCond!.frame.size
-
-        //self.frame.size = CGSize(width: todayCond!.frame.width, height: 95)
 
         update(redraw: true)
         let fadeAnimation = self.createFadeInAnimation()
