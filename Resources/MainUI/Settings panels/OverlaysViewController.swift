@@ -9,6 +9,7 @@
 import Cocoa
 
 class OverlaysViewController: NSViewController {
+    @IBOutlet var popoverWeather: NSPopover!
     @IBOutlet var infoTableView: NSTableView!
     @IBOutlet var infoSettingsTableView: NSTableView!
     @IBOutlet var infoBox: NSBox!
@@ -181,8 +182,7 @@ class OverlaysViewController: NSViewController {
         weatherCustomView.wantsLayer = true
     }
 
-    /*
     @IBAction func helpWeatherButtonClick(_ button: NSButton) {
         popoverWeather.show(relativeTo: button.preparedContentRect, of: button, preferredEdge: .maxY)
-    }*/
+    }
 }

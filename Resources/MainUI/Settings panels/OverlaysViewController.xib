@@ -26,6 +26,7 @@
                 <outlet property="infoTableView" destination="gvl-yV-dFx" id="bUj-jT-0xJ"/>
                 <outlet property="infoTimerView" destination="VcD-4g-CvS" id="qj2-sX-DzL"/>
                 <outlet property="infoWeatherView" destination="cmR-hZ-0Fe" id="zIn-Z8-lfo"/>
+                <outlet property="popoverWeather" destination="mNc-DU-HEx" id="JaA-P6-Tgl"/>
                 <outlet property="trashButton" destination="JnO-I8-Uqt" id="K63-kl-sep"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
                 <outlet property="weatherCustomView" destination="gfx-ZG-teS" id="9O8-uI-GgY"/>
@@ -1062,12 +1063,12 @@ corner</string>
             </connections>
             <point key="canvasLocation" x="-840" y="735"/>
         </customView>
-        <customView id="cmR-hZ-0Fe" customClass="InfoWeatherView" customModule="Aerial" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="580" height="242"/>
+        <customView misplaced="YES" id="cmR-hZ-0Fe" customClass="InfoWeatherView" customModule="Aerial" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="580" height="236"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MMI-hf-gCZ">
-                    <rect key="frame" x="84" y="110" width="60" height="16"/>
+                    <rect key="frame" x="84" y="98" width="60" height="16"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Location:" id="MuN-Fd-8Hd">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1075,7 +1076,7 @@ corner</string>
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mY1-Rf-ATP">
-                    <rect key="frame" x="145" y="97" width="152" height="40"/>
+                    <rect key="frame" x="145" y="85" width="152" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="Use current" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="TyM-g1-qHE" id="79c-Qo-uSx">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -1091,7 +1092,7 @@ corner</string>
                     </connections>
                 </popUpButton>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WWH-eQ-q01">
-                    <rect key="frame" x="371" y="147" width="66" height="40"/>
+                    <rect key="frame" x="371" y="135" width="66" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="°C" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="kAT-Ix-Epe" id="xKQ-Sj-kNx">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -1107,7 +1108,7 @@ corner</string>
                     </connections>
                 </popUpButton>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pj2-sU-RdG">
-                    <rect key="frame" x="145" y="147" width="220" height="40"/>
+                    <rect key="frame" x="145" y="135" width="220" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="Flat symbols (monochrome)" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="SlK-mo-emo" id="Vwk-tz-NwH">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -1124,7 +1125,7 @@ corner</string>
                     </connections>
                 </popUpButton>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iha-a4-YZ0">
-                    <rect key="frame" x="150" y="60" width="250" height="21"/>
+                    <rect key="frame" x="150" y="48" width="250" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="R0K-YM-KCz"/>
                     </constraints>
@@ -1138,7 +1139,7 @@ corner</string>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2t2-hO-9s4">
-                    <rect key="frame" x="103" y="160" width="41" height="16"/>
+                    <rect key="frame" x="103" y="148" width="41" height="16"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Icons:" id="PAa-nv-nJu">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1146,14 +1147,17 @@ corner</string>
                     </textFieldCell>
                 </textField>
                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IcH-dE-weS">
-                    <rect key="frame" x="304" y="96" width="35" height="35"/>
+                    <rect key="frame" x="304" y="84" width="35" height="35"/>
                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3MQ-92-9m9">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="helpWeatherButtonClick:" target="-2" id="UOO-Ut-zBm"/>
+                    </connections>
                 </button>
                 <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YAo-Tv-Uqc">
-                    <rect key="frame" x="148" y="22" width="56" height="16"/>
+                    <rect key="frame" x="148" y="16" width="56" height="16"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Location" id="bJ3-TA-jEX">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -1161,7 +1165,7 @@ corner</string>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bjs-UA-NkK">
-                    <rect key="frame" x="410" y="50" width="58" height="40"/>
+                    <rect key="frame" x="410" y="38" width="58" height="40"/>
                     <buttonCell key="cell" type="push" title="Test" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="R2U-fT-M9o">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -1171,7 +1175,7 @@ corner</string>
                     </connections>
                 </button>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bc1-t5-1U8">
-                    <rect key="frame" x="145" y="197" width="186" height="40"/>
+                    <rect key="frame" x="145" y="185" width="186" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="Current weather" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="n6w-I3-Hcd" id="RrM-1g-f4Q">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -1191,7 +1195,7 @@ corner</string>
                     </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HYQ-NB-LAH">
-                    <rect key="frame" x="92" y="210" width="52" height="16"/>
+                    <rect key="frame" x="92" y="198" width="52" height="16"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Display:" id="tLN-Xk-TM4">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1199,7 +1203,7 @@ corner</string>
                     </textFieldCell>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="Mkb-6F-RoA">
-                    <rect key="frame" x="342" y="197" width="90" height="40"/>
+                    <rect key="frame" x="342" y="185" width="90" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="90" id="Jv2-8G-WhZ"/>
                         <constraint firstAttribute="height" constant="40" id="u2k-2r-QLb"/>
@@ -1217,11 +1221,11 @@ corner</string>
                 <constraint firstItem="pj2-sU-RdG" firstAttribute="leading" secondItem="cmR-hZ-0Fe" secondAttribute="leading" constant="150" id="0Xb-xb-X37"/>
                 <constraint firstItem="bc1-t5-1U8" firstAttribute="firstBaseline" secondItem="HYQ-NB-LAH" secondAttribute="firstBaseline" id="6hW-15-kmK"/>
                 <constraint firstItem="IcH-dE-weS" firstAttribute="centerY" secondItem="mY1-Rf-ATP" secondAttribute="centerY" id="9wu-pE-9qR"/>
-                <constraint firstItem="YAo-Tv-Uqc" firstAttribute="top" secondItem="Iha-a4-YZ0" secondAttribute="bottom" constant="22" id="FSf-xy-kLq"/>
+                <constraint firstItem="YAo-Tv-Uqc" firstAttribute="top" secondItem="Iha-a4-YZ0" secondAttribute="bottom" constant="16" id="FSf-xy-kLq"/>
                 <constraint firstItem="Mkb-6F-RoA" firstAttribute="leading" secondItem="bc1-t5-1U8" secondAttribute="trailing" constant="16" id="HXm-HT-xwZ"/>
                 <constraint firstItem="IcH-dE-weS" firstAttribute="leading" secondItem="mY1-Rf-ATP" secondAttribute="trailing" constant="16" id="KVz-2F-Ywe"/>
                 <constraint firstItem="Bjs-UA-NkK" firstAttribute="firstBaseline" secondItem="Iha-a4-YZ0" secondAttribute="firstBaseline" id="NcH-eI-YXf"/>
-                <constraint firstAttribute="bottom" secondItem="YAo-Tv-Uqc" secondAttribute="bottom" constant="22" id="OQk-H9-hcb"/>
+                <constraint firstAttribute="bottom" secondItem="YAo-Tv-Uqc" secondAttribute="bottom" constant="16" id="OQk-H9-hcb"/>
                 <constraint firstItem="Mkb-6F-RoA" firstAttribute="centerY" secondItem="bc1-t5-1U8" secondAttribute="centerY" id="Q7U-20-l6Q"/>
                 <constraint firstItem="pj2-sU-RdG" firstAttribute="leading" secondItem="2t2-hO-9s4" secondAttribute="trailing" constant="8" symbolic="YES" id="UoE-Qs-rDe"/>
                 <constraint firstItem="pj2-sU-RdG" firstAttribute="top" secondItem="bc1-t5-1U8" secondAttribute="bottom" constant="22" id="VFg-oP-Sko"/>
@@ -1281,19 +1285,19 @@ corner</string>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sPk-CL-T6p">
-                    <rect key="frame" x="18" y="20" width="364" height="300"/>
+                    <rect key="frame" x="18" y="20" width="364" height="308"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <textFieldCell key="cell" selectable="YES" id="yQd-AC-jyQ">
                         <font key="font" metaFont="message" size="11"/>
-                        <string key="title">Aerial uses Yahoo! Weather's API to retrieve and display the current conditions. In order for this to work, you will need to specify your location. There are two ways to do that :
+                        <mutableString key="title">Aerial uses OpenWeather's API to retrieve and display current conditions and forecasts. In order for this to work, you will need to specify your location. There are two ways to do that:
 
 - Manually specify : Simply enter your location (the name of your city, followed by a state abbreviation or country, such as "Paris, FR" or "Cupertino, CA".
 
-- Use current location : For this to work, Aerial will ask your mac for your current location, which is provided by macOS location services. This information is then sent to Yahoo's API to retrieve conditions to the city closest to the location specified. 
+- Use current location : For this to work, Aerial will ask your mac for your current location, which is provided by macOS location services. This information is then sent to OpenWeather's API to retrieve conditions to the city closest to the location specified. 
 
-For privacy reasons, the coordinates of your location are rounded to two decimals, leaving a precision of about 1 km. Please note that you will need to allow Aerial to use location services for this to work. In macOS Catalina, a prompt will ask you to allow "legacyScreenSaver" to access your location. 
+For privacy reasons, the coordinates of your location are rounded to two decimals, leaving a precision of about 1 km. Please note that you will need to allow Aerial to use location services for this to work. In macOS Big Sur, please navigate to System Preferences &gt; Security &amp; Privacy &gt; Privacy &gt; Location Services and enable "legacyScreenSaver"
 
-Independant of your choice, you can preview the results using the "Test" button below. </string>
+Independant of your choice, you can preview the results using the "Test" button below. </mutableString>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -1659,6 +1663,16 @@ Independant of your choice, you can preview the results using the "Test" button 
             </constraints>
             <point key="canvasLocation" x="-161" y="124"/>
         </customView>
+        <viewController id="Gwi-Sj-fW9" userLabel="Popover View Controller">
+            <connections>
+                <outlet property="view" destination="go3-Lb-KNk" id="U68-sO-Btm"/>
+            </connections>
+        </viewController>
+        <popover behavior="t" id="mNc-DU-HEx">
+            <connections>
+                <outlet property="contentViewController" destination="Gwi-Sj-fW9" id="9Oa-ay-Gx3"/>
+            </connections>
+        </popover>
     </objects>
     <resources>
         <image name="NSFontPanel" width="32" height="32"/>

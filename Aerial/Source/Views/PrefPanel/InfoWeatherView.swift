@@ -73,8 +73,13 @@ class InfoWeatherView: NSView {
                     print(openWeather)
                     let ovc = self.parentViewController as! OverlaysViewController
                     ovc.openWeatherPreview(weather: openWeather)
+                    //self.locationLabel.stringValue = "lat: " + openWeather.lat + "lon: " + openWeather.lon + " timezone: " + openWeather.timezone
+                    if let name = openWeather.name {
+                        self.locationLabel.stringValue = name
+                    }
                 case .failure(let error):
                     print(error.localizedDescription)
+                    self.locationLabel.stringValue = error.localizedDescription
                 }
             }
         } else {
@@ -84,13 +89,18 @@ class InfoWeatherView: NSView {
                     print(openWeather)
                     let ovc = self.parentViewController as! OverlaysViewController
                     ovc.openWeatherPreview(weather: openWeather)
+
+                    if let lat = openWeather.lat, let lon = openWeather.lon, let timezone = openWeather.timezone {
+                        self.locationLabel.stringValue = "lat: " + String(format: "%.2f", lat)
+                            + " lon: " + String(format: "%.2f", lon)
+                            + " timezone: " + timezone
+                    }
                 case .failure(let error):
                     print(error.localizedDescription)
+                    self.locationLabel.stringValue = error.localizedDescription
                 }
             }
-
         }
-
     }
 
     @IBAction func openWeatherLogoButton(_ sender: Any) {
