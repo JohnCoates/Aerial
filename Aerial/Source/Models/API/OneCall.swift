@@ -201,7 +201,7 @@ struct OneCall {
             let jsonData = testJson.data(using: .utf8)!
 
             do {
-                var openWeather = try newJSONDecoder().decode(OCOneCall.self, from: jsonData)
+                let openWeather = try newJSONDecoder().decode(OCOneCall.self, from: jsonData)
                 completion(.success(openWeather))
             } catch {
                 print("decoder failure")
@@ -220,12 +220,11 @@ struct OneCall {
             }, success: { (coordinates) in
                 let lat = String(format: "%.2f", coordinates.latitude)
                 let lon = String(format: "%.2f", coordinates.longitude)
-                debugLog("=== OW: Starting locationMode")
+                debugLog("=== OC: Starting locationMode")
 
                 fetchData(from: makeUrl(lat: lat, lon: lon)) { result in
                     switch result {
                     case .success(let jsonString):
-                        print(jsonString)
                         let jsonData = jsonString.data(using: .utf8)!
 
                         if var openWeather = try? newJSONDecoder().decode(OCOneCall.self, from: jsonData) {
@@ -242,33 +241,34 @@ struct OneCall {
                 }
             })
         } else {
-            /*
-            // Just in case, we add a failsafe
-            if PrefsInfo.weather.locationString == "" {
-                PrefsInfo.weather.locationString = "Paris, FR"
-            }
-            debugLog("=== OW: Starting manual mode")
+            // Urgh, please use location services...
+            debugLog("=== OC: Starting manual mode")
 
-            print(makeUrl(location: PrefsInfo.weather.locationString))
-            fetchData(from: makeUrl(location: PrefsInfo.weather.locationString)) { result in
+            GeoCoding.fetch { result in
                 switch result {
-                case .success(let jsonString):
-                    print(jsonString)
-                    let jsonData = jsonString.data(using: .utf8)!
-                    do {
-                        var openWeather = try newJSONDecoder().decode(OWeather.self, from: jsonData)
-                        openWeather.processTemperatures()
-                        completion(.success(openWeather))
-                    } catch {
-                        print("error : \(error.localizedDescription)")
-                        completion(.failure(.unknown))
+                case .success(let geoLocation):
+                    print(geoLocation)
+                    fetchData(from: makeUrl(lat: geoLocation.lat, lon: geoLocation.lon)) { result in
+                        switch result {
+                        case .success(let jsonString):
+                            let jsonData = jsonString.data(using: .utf8)!
+
+                            if var openWeather = try? newJSONDecoder().decode(OCOneCall.self, from: jsonData) {
+                                openWeather.processTemperatures()
+
+                                completion(.success(openWeather))
+                            } else {
+                                completion(.failure(.unknown))
+                            }
+                        case .failure(let error):
+                            completion(.failure(.unknown))
+                            print(error.localizedDescription)
+                        }
                     }
                 case .failure(let error):
-                    completion(.failure(.unknown))
                     print(error.localizedDescription)
                 }
             }
-            */
         }
     }
 

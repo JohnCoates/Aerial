@@ -77,4 +77,8 @@ struct PrefsTime {
     @SimpleStorage(key: "cachedLongitude", defaultValue: 0)
     static var cachedLongitude: Double
 
+    // Last geocoded string, the result is stored in cachedLatitude/cachedLongitude above
+    @SimpleStorage(key: "geocodedString", defaultValue: "")
+    static var geocodedString: String
+
 }

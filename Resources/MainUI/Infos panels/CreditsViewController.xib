@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -32,7 +32,7 @@ Since version 1.4, Aerial is developed and maintained by Guillaume Louel.</strin
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gv6-y0-c1S">
-                    <rect key="frame" x="194" y="18" width="129" height="40"/>
+                    <rect key="frame" x="194" y="2" width="129" height="40"/>
                     <buttonCell key="cell" type="push" title="Contact us here" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a1o-SL-FaN">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -52,7 +52,7 @@ Since version 1.4, Aerial is developed and maintained by Guillaume Louel.</strin
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wpw-1v-dic">
-                    <rect key="frame" x="198" y="68" width="292" height="256"/>
+                    <rect key="frame" x="198" y="52" width="292" height="272"/>
                     <textFieldCell key="cell" selectable="YES" id="sP2-o5-2MT">
                         <font key="font" usesAppearanceFont="YES"/>
                         <string key="title">Translations contributed by:
@@ -63,6 +63,7 @@ Since version 1.4, Aerial is developed and maintained by Guillaume Louel.</strin
 - Hebrew by Bry Jacks
 - Italian by Angelo Marguglio 
 - Japanese by Junji 'Dr.MORO' Morokuma
+- Korean by Howon Kim
 - Polish by Aleksander Kasprzyk 
 - Portuguese/Brazil by Renan Sigolo
 - Russian by Tema Sysoev
@@ -76,7 +77,7 @@ Want to help with translations?</string>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2zM-0X-9R0">
-                    <rect key="frame" x="356" y="18" width="126" height="40"/>
+                    <rect key="frame" x="356" y="2" width="126" height="40"/>
                     <buttonCell key="cell" type="push" title="Hop on Discord" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KmS-rN-Kxf">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -86,7 +87,7 @@ Want to help with translations?</string>
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ohW-uj-N2U">
-                    <rect key="frame" x="331" y="31" width="17" height="16"/>
+                    <rect key="frame" x="331" y="15" width="17" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="or" id="PRg-cf-Ee8">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
