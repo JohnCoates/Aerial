@@ -101,6 +101,7 @@ When caching is set to **manual** you will need to download and manage your cach
 3. Click on `Cache` on the sidebar
 4. Uncheck 'Automatically download videos` 
 <img width="400" alt="Manual management" src="https://user-images.githubusercontent.com/18543749/90852090-9678c580-e344-11ea-8f9f-7e6e3868778c.png">
+
 5. Now download any videos you want to cache manually. 
 6. Note that this may take up a significant amount of disk space. To delete or prune your cache, click the `Show in Finder` button and delete any videos you no longer want. 
 
