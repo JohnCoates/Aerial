@@ -11,9 +11,9 @@ import AVKit
 
 // swiftlint:disable:next type_body_length
 class ForecastLayer: CALayer {
-    var condition: OCOneCall?
+    var condition: ForecastElement?
 
-    init(condition: OCOneCall, scale: CGFloat) {
+    init(condition: ForecastElement, scale: CGFloat) {
         self.condition = condition
         super.init()
 
@@ -23,7 +23,7 @@ class ForecastLayer: CALayer {
         let size = PrefsInfo.weather.fontSize
 
         // We have daily forecasts, and hourly forecasts available (woo)
-        if PrefsInfo.weather.mode == .forecast3days || PrefsInfo.weather.mode == .forecast7days {
+        /* if PrefsInfo.weather.mode == .forecast3days || PrefsInfo.weather.mode == .forecast7days {
             // How many days to display, currently we do 3 and 7
             var days = 7
             if PrefsInfo.weather.mode == .forecast3days {
@@ -54,18 +54,16 @@ class ForecastLayer: CALayer {
                                             CGFloat(Double((days + 1)) * (size * 2)), height: height)
                 }
             }
-        } else {
+        } else { */
             // Hourly forecast, we do 6 hours
-            if let hourly = condition.hourly {
+        if let flist = condition.list {
                 // Just in case
-                if hourly.count > 5 {
+                if flist.count > 5 {
                     var height: CGFloat = 0
 
                     for houridx in 0 ..< 6 {
-                        let day = makeHourBlock(hour: hourly[houridx],
-                                                size: size*2,
-                                                sunset: condition.current!.sunset!,
-                                                sunrise: condition.current!.sunrise!)
+                        let day = makeHourBlock(hour: flist[houridx],
+                                                size: size*2)
                         day.anchorPoint = CGPoint(x: 0, y: 0)
                         day.position = CGPoint(x: Int(size * 2) * houridx, y: 0)
                         self.addSublayer(day)
@@ -84,7 +82,7 @@ class ForecastLayer: CALayer {
                                             CGFloat(7 * (size * 2)), height: height)
                 }
             }
-        }
+        //}
 
     }
 
@@ -174,21 +172,22 @@ class ForecastLayer: CALayer {
         return mainLayer
     }
 
-    func makeHourBlock(hour: OCCurrent, size: Double, sunset: Int, sunrise: Int) -> CALayer {
+    func makeHourBlock(hour: FList, size: Double) -> CALayer {
         let mainLayer = CALayer()
+
+        let isNight = hour.sys!.pod! == "n" ? true : false
 
         // First create the symbol
         let imglayer = ConditionSymbolLayer(weather: hour.weather![0],
                                             dt: hour.dt!,
-                                            sunrise: sunrise,
-                                            sunset: sunset,
+                                            isNight: isNight,
                                             size: Int(size),
                                             square: true)
 
-        let windLayer = makeWindBlock(speed: hour.windSpeed!, degree: hour.windDeg!, size: size/4)
+        let windLayer = makeWindBlock(speed: hour.wind!.speed!, degree: hour.wind!.deg!, size: size/4)
 
         let temp = CAVCTextLayer()
-        temp.string = "\(String(format: "%.0f", hour.temp!))°"
+        temp.string = "\(String(format: "%.0f", hour.main!.temp!))°"
 
         (temp.font, temp.fontSize) = temp.makeFont(name: PrefsInfo.weather.fontName, size: size/4)
 
@@ -199,7 +198,7 @@ class ForecastLayer: CALayer {
         temp.alignmentMode = .center
 
         let feelsLike = CAVCTextLayer()
-        feelsLike.string = "\(String(format: "%.0f", hour.feelsLike!))°"
+        feelsLike.string = "\(String(format: "%.0f", hour.main!.feelsLike!))°"
 
         (feelsLike.font, feelsLike.fontSize) = feelsLike.makeFont(name: PrefsInfo.weather.fontName, size: size/4)
 
@@ -208,6 +207,17 @@ class ForecastLayer: CALayer {
         feelsLike.frame = rect2
         feelsLike.contentsScale = self.contentsScale
         feelsLike.alignmentMode = .center
+
+        let humidity = CAVCTextLayer()
+        humidity.string = "\(hour.main!.humidity!)%"
+
+        (humidity.font, humidity.fontSize) = humidity.makeFont(name: PrefsInfo.weather.fontName, size: size/4)
+
+        // ReRect the temperature
+        let recth = humidity.calculateRect(string: humidity.string as! String, font: humidity.font as! NSFont)
+        humidity.frame = recth
+        humidity.contentsScale = self.contentsScale
+        humidity.alignmentMode = .center
 
         let dayi = CAVCTextLayer()
         dayi.string = hourStringFromTimeStamp(timeStamp: Double(hour.dt!))
@@ -230,6 +240,11 @@ class ForecastLayer: CALayer {
         windLayer.position = CGPoint(x: CGFloat(size)/2, y: offset)
         mainLayer.addSublayer(windLayer)
         offset += windLayer.frame.height
+
+        humidity.anchorPoint = CGPoint(x: 0.5, y: 0)
+        humidity.position = CGPoint(x: CGFloat(size)/2, y: offset)
+        mainLayer.addSublayer(humidity)
+        offset += humidity.frame.height
 
         feelsLike.anchorPoint = CGPoint(x: 0.5, y: 0)
         feelsLike.position = CGPoint(x: CGFloat(size)/2, y: offset)
@@ -304,11 +319,26 @@ class ForecastLayer: CALayer {
         min.contentsScale = self.contentsScale
         min.alignmentMode = .center
 
+        let humidity = CAVCTextLayer()
+        humidity.string = "Humidity"
+        (humidity.font, humidity.fontSize) = humidity.makeFont(name: PrefsInfo.weather.fontName, size: size/4)
+
+        // ReRect the temperature
+        let recth = humidity.calculateRect(string: humidity.string as! String, font: humidity.font as! NSFont)
+        humidity.frame = recth
+        humidity.contentsScale = self.contentsScale
+        humidity.alignmentMode = .center
+
         // Then we draw bottom to top
         windLayer.anchorPoint = CGPoint(x: 0.5, y: 0)
         windLayer.position = CGPoint(x: CGFloat(size)/2, y: windLayer.frame.height)
         mainLayer.addSublayer(windLayer)
         var offset = windLayer.frame.height*2
+
+        humidity.anchorPoint = CGPoint(x: 0.5, y: 0)
+        humidity.position = CGPoint(x: CGFloat(size)/2, y: offset)
+        mainLayer.addSublayer(humidity)
+        offset += humidity.frame.height
 
         min.anchorPoint = CGPoint(x: 0.5, y: 0)
         min.position = CGPoint(x: CGFloat(size)/2, y: offset)

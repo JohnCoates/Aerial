@@ -46,10 +46,10 @@ class InfoWeatherView: NSView {
     func updateLocationMode() {
         if PrefsInfo.weather.locationMode == .manuallySpecify {
             locationString.isHidden = false
-            locationLabel.isHidden = true
+            //locationLabel.isHidden = true
         } else {
             locationString.isHidden = true
-            locationLabel.isHidden = false
+            //locationLabel.isHidden = false
         }
     }
 
@@ -83,17 +83,19 @@ class InfoWeatherView: NSView {
                 }
             }
         } else {
-            OneCall.fetch { result in
+            Forecast.fetch { result in
                 switch result {
                 case .success(let openWeather):
                     print(openWeather)
                     let ovc = self.parentViewController as! OverlaysViewController
                     ovc.openWeatherPreview(weather: openWeather)
 
-                    if let lat = openWeather.lat, let lon = openWeather.lon, let timezone = openWeather.timezone {
-                        self.locationLabel.stringValue = "lat: " + String(format: "%.2f", lat)
+                    if let lat = openWeather.city?.coord?.lat,
+                       let lon = openWeather.city?.coord?.lon,
+                       let name = openWeather.city?.name {
+                        self.locationLabel.stringValue = name
+                            + " lat: " + String(format: "%.2f", lat)
                             + " lon: " + String(format: "%.2f", lon)
-                            + " timezone: " + timezone
                     }
                 case .failure(let error):
                     print(error.localizedDescription)

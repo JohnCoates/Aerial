@@ -18,7 +18,7 @@ class WeatherLayer: AnimationLayer {
     var cscale: CGFloat?
 
     var cachedWeather: OWeather?
-    var cachedForecast: OCOneCall?
+    var cachedForecast: ForecastElement?
 
     override init(layer: Any) {
         super.init(layer: layer)
@@ -90,7 +90,7 @@ class WeatherLayer: AnimationLayer {
                 if cachedForecast != nil {
                     displayWeatherBlock()
                 } else {
-                    OneCall.fetch { result in
+                    Forecast.fetch { result in
                         switch result {
                         case .success(let openWeather):
                             print(openWeather)

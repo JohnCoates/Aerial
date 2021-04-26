@@ -83,6 +83,41 @@ class ConditionSymbolLayer: CALayer {
                         802: "cloud.moon",
                         803: "cloud.moon", ]
 
+    init(weather: OWWeather, dt: Int, isNight: Bool, size: Int, square: Bool = false) {
+        super.init()
+
+        var img: NSImage?
+
+        switch PrefsInfo.weather.icons {
+        case .flat:
+            img = makeSymbol(name: getSymbol(condition: weather.id,
+                                                 isNight: isNight), size: size)
+        case .colorflat:
+            img = makeColorSymbol(name: getColorSymbol(condition: weather.id,
+                                                  isNight: isNight), size: size)
+        case .oweather:
+            downloadImage(from: URL(string: "http://openweathermap.org/img/wn/\(weather.icon)@4x.png")!, size: size)
+            img = nil
+        }
+
+        if let img = img {
+            if !square {
+                frame.size.height = CGFloat(size)
+                frame.size.width = CGFloat(size) * img.size.width / img.size.height
+            } else {
+                if frame.size.height > frame.size.width {
+                    frame.size.height = CGFloat(size)
+                    frame.size.width = CGFloat(size) * img.size.width / img.size.height
+                } else {
+                    frame.size.width = CGFloat(size)
+                    frame.size.height = CGFloat(size) * img.size.height / img.size.width
+                }
+            }
+
+            contents = img
+        }
+    }
+
     init(weather: OWWeather, dt: Int, sunrise: Int, sunset: Int, size: Int, square: Bool = false) {
         super.init()
 
@@ -120,22 +155,6 @@ class ConditionSymbolLayer: CALayer {
 
             contents = img
         }
-
-/*
-        let imagePath = Bundle(for: PanelWindowController.self).path(
-            forResource: getSymbol(condition: condition.weather![0].id, isNight: isNight ),
-            ofType: "pdf") ?? ""
-
-        if let img = NSImage(contentsOfFile: imagePath) {
-            /*img = img!.tinting(with: .white)*/
-            frame.size.height = img.size.height*2
-            frame.size.width = img.size.width*2
-            contents = img
-        } else {
-            frame.size.height = 50
-            frame.size.width = 50
-            backgroundColor = .init(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.5)
-        }*/
     }
 
     required init?(coder: NSCoder) {

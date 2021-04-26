@@ -170,7 +170,7 @@ class OverlaysViewController: NSViewController {
     }
 
     // Forecasts
-    func openWeatherPreview(weather: OCOneCall) {
+    func openWeatherPreview(weather: ForecastElement) {
         if !weatherPanel.isVisible {
             weatherPanel.makeKeyAndOrderFront(self)
         }

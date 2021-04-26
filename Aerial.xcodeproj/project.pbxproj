@@ -293,6 +293,9 @@
 		036A57D923F4747D0009DC02 /* InfoCountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57D723F470940009DC02 /* InfoCountdownView.swift */; };
 		036A57DB23F5820A0009DC02 /* CountdownLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57DA23F5820A0009DC02 /* CountdownLayer.swift */; };
 		036A57DC23F5828E0009DC02 /* CountdownLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A57DA23F5820A0009DC02 /* CountdownLayer.swift */; };
+		036A7E9B26370C260019186B /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A7E9A26370C260019186B /* Forecast.swift */; };
+		036A7E9C26370C260019186B /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A7E9A26370C260019186B /* Forecast.swift */; };
+		036A7E9D26370C260019186B /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A7E9A26370C260019186B /* Forecast.swift */; };
 		0374C9FE247AC5BC002F29D3 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374C9FD247AC5BC002F29D3 /* Locations.swift */; };
 		0374C9FF247AC5BC002F29D3 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0374C9FD247AC5BC002F29D3 /* Locations.swift */; };
 		037772E124E43AF300D81EEA /* TimeSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037772DF24E43AF300D81EEA /* TimeSetupViewController.swift */; };
@@ -958,6 +961,7 @@
 		036A57D423F30DD00009DC02 /* DownloadIndicatorLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadIndicatorLayer.swift; sourceTree = "<group>"; };
 		036A57D723F470940009DC02 /* InfoCountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCountdownView.swift; sourceTree = "<group>"; };
 		036A57DA23F5820A0009DC02 /* CountdownLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownLayer.swift; sourceTree = "<group>"; };
+		036A7E9A26370C260019186B /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		0374C9FD247AC5BC002F29D3 /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 		037772DF24E43AF300D81EEA /* TimeSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSetupViewController.swift; sourceTree = "<group>"; };
 		037772E024E43AF300D81EEA /* TimeSetupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeSetupViewController.xib; sourceTree = "<group>"; };
@@ -1467,6 +1471,7 @@
 				03A6D14525F109B900960135 /* OpenWeather.swift */,
 				032851F6260A4C2B00684A81 /* OneCall.swift */,
 				03AA32612631A8F2002198C3 /* GeoCoding.swift */,
+				036A7E9A26370C260019186B /* Forecast.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -2405,6 +2410,7 @@
 				03047A5524D2DD8E000EFE62 /* NSMenuItem+icons.swift in Sources */,
 				0300109824D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift in Sources */,
 				0396D51A24B8B7ED00CC021B /* CustomVideoFolders.swift in Sources */,
+				036A7E9C26370C260019186B /* Forecast.swift in Sources */,
 				0396D51B24B8B7ED00CC021B /* InfoTimerView.swift in Sources */,
 				0396D51D24B8B7ED00CC021B /* MessageLayer.swift in Sources */,
 				0396D51E24B8B7ED00CC021B /* InfoCommonView.swift in Sources */,
@@ -2607,6 +2613,7 @@
 				034116D423F9BD3100CD7674 /* PrefsUpdates.swift in Sources */,
 				0345EDEA24C3239400C73038 /* DisplaysViewController.swift in Sources */,
 				FAF450221BE2B45D00C1F98A /* VideoLoader.swift in Sources */,
+				036A7E9D26370C260019186B /* Forecast.swift in Sources */,
 				0374C9FF247AC5BC002F29D3 /* Locations.swift in Sources */,
 				036A57DC23F5828E0009DC02 /* CountdownLayer.swift in Sources */,
 				0313F9EA2294338300B074BB /* CustomVideoController.swift in Sources */,
@@ -2670,6 +2677,7 @@
 				03047A5424D2DD8E000EFE62 /* NSMenuItem+icons.swift in Sources */,
 				0300109724D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift in Sources */,
 				0313F9EF22955F3B00B074BB /* CustomVideoFolders.swift in Sources */,
+				036A7E9B26370C260019186B /* Forecast.swift in Sources */,
 				030DDA902423C3BE0072D5C9 /* InfoTimerView.swift in Sources */,
 				03BF51BF23A274CA008AD373 /* MessageLayer.swift in Sources */,
 				038C584A23A9394000224630 /* InfoCommonView.swift in Sources */,
