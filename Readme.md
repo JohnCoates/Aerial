@@ -10,10 +10,11 @@ Aerial is completely open source, so feel free to contribute to its development.
 
 This repository is used **solely** for development.
 
-Starting with version 2.3.0, Aerial can now display current weather information *and* forecasts to your location, thanks to OpenWeather. 
+Starting with version 2.3.0, Aerial can now display current weather information *and* forecasts to your location, thanks to [OpenWeather](https://openweathermap.org). 
 
+![openweather_logo](https://user-images.githubusercontent.com/37544189/115738975-d689bf80-a38d-11eb-809b-fbb019e6ed08.png)
 
-We thank OpenWeather for their support of Open Source projects. 
+We thank [OpenWeather](https://openweathermap.org) for their support of Open Source projects. 
 
 # For downloads and instructions, please go to our new website, hosted on GitHub Page: https://aerialscreensaver.github.io
 
