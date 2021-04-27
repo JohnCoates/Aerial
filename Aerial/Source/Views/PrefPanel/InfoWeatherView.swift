@@ -9,6 +9,8 @@
 import Cocoa
 
 class InfoWeatherView: NSView {
+    @IBOutlet var withWind: NSButton!
+    @IBOutlet var withHumidity: NSButton!
     @IBOutlet var locationMode: NSPopUpButton!
     @IBOutlet var locationString: NSTextField!
     @IBOutlet var degreePopup: NSPopUpButton!
@@ -22,6 +24,9 @@ class InfoWeatherView: NSView {
         degreePopup.selectItem(at: PrefsInfo.weather.degree.rawValue)
         iconsPopup.selectItem(at: PrefsInfo.weather.icons.rawValue)
         weatherModePopup.selectItem(at: PrefsInfo.weather.mode.rawValue)
+
+        withWind.state = PrefsInfo.weather.showWind ? .on : .off
+        withHumidity.state = PrefsInfo.weather.showHumidity ? .on : .off
 
         // Hide the flat color icons pre Big Sur as those are not available
         if #available(macOS 11.0, *) {
@@ -41,6 +46,16 @@ class InfoWeatherView: NSView {
     @IBAction func locationModeChange(_ sender: NSPopUpButton) {
         PrefsInfo.weather.locationMode = InfoLocationMode(rawValue: sender.indexOfSelectedItem)!
         updateLocationMode()
+    }
+
+    @IBAction func withWindChange(_ sender: NSButton) {
+        let onState = sender.state == .on
+        PrefsInfo.weather.showWind = onState
+    }
+
+    @IBAction func withHumidityChange(_ sender: NSButton) {
+        let onState = sender.state == .on
+        PrefsInfo.weather.showHumidity = onState
     }
 
     func updateLocationMode() {

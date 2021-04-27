@@ -78,7 +78,6 @@ class WeatherLayer: AnimationLayer {
                     OpenWeather.fetch { result in
                         switch result {
                         case .success(let openWeather):
-                            print(openWeather)
                             self.cachedWeather = openWeather
                             self.displayWeatherBlock()
                         case .failure(let error):
@@ -93,7 +92,6 @@ class WeatherLayer: AnimationLayer {
                     Forecast.fetch { result in
                         switch result {
                         case .success(let openWeather):
-                            print(openWeather)
                             self.cachedForecast = openWeather
                             self.displayWeatherBlock()
                         case .failure(let error):

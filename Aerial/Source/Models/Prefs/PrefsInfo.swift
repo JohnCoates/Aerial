@@ -72,7 +72,7 @@ enum InfoRefreshPeriodicity: Int, Codable {
 }
 
 enum InfoWeatherMode: Int, Codable {
-    case current, forecast6hours, forecast3days, forecast7days
+    case current, forecast6hours, forecast3days, forecast5days
 }
 
 // swiftlint:disable:next type_body_length
@@ -131,6 +131,8 @@ struct PrefsInfo {
         var degree: InfoDegree
         var icons: InfoIconsWeather
         var mode: InfoWeatherMode
+        var showHumidity: Bool
+        var showWind: Bool
     }
 
     struct Battery: CommonInfo, Codable {
@@ -254,7 +256,9 @@ struct PrefsInfo {
                                                         locationString: "",
                                                         degree: .celsius,
                                                         icons: isMacOS11() ? .colorflat : .flat,
-                                                        mode: .current))
+                                                        mode: .current,
+                                                        showHumidity: true,
+                                                        showWind: true))
     static var weather: Weather
 
     // Countdown
