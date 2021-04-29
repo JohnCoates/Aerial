@@ -291,8 +291,20 @@ extension Solar {
 
         // We use
         var lsunrise, lsunset: Date
-        lsunrise = astronomicalSunrise!
-        lsunset = astronomicalSunset!
+
+        if astronomicalSunset != nil && astronomicalSunrise != nil {
+            lsunrise = astronomicalSunrise!
+            lsunset = astronomicalSunset!
+        } else if nauticalSunset != nil && nauticalSunrise != nil {
+            lsunrise = nauticalSunrise!
+            lsunset = nauticalSunset!
+        } else if civilSunset != nil && civilSunrise != nil {
+            lsunrise = civilSunrise!
+            lsunset = civilSunset!
+        } else {
+            lsunrise = sunrise!
+            lsunset = sunset!
+        }
 
         debugLog("lsunrise \(lsunrise) lsunriseEnd \(lsunrise.addingTimeInterval(TimeInterval(PrefsTime.sunEventWindow)))")
         debugLog("psunset \(lsunset.addingTimeInterval(TimeInterval(-PrefsTime.sunEventWindow))) lsunset \(lsunset)")

@@ -85,23 +85,24 @@ class InfoWeatherView: NSView {
             OpenWeather.fetch { result in
                 switch result {
                 case .success(let openWeather):
-                    print(openWeather)
                     let ovc = self.parentViewController as! OverlaysViewController
                     ovc.openWeatherPreview(weather: openWeather)
-                    //self.locationLabel.stringValue = "lat: " + openWeather.lat + "lon: " + openWeather.lon + " timezone: " + openWeather.timezone
                     if let name = openWeather.name {
                         self.locationLabel.stringValue = name
                     }
                 case .failure(let error):
-                    print(error.localizedDescription)
-                    self.locationLabel.stringValue = error.localizedDescription
+                    if error == .cityNotFound {
+                        self.locationLabel.stringValue = "City not found, make sure you don't use state abbreviations"
+                    } else {
+                        print(error.localizedDescription)
+                        self.locationLabel.stringValue = error.localizedDescription
+                    }
                 }
             }
         } else {
             Forecast.fetch { result in
                 switch result {
                 case .success(let openWeather):
-                    print(openWeather)
                     let ovc = self.parentViewController as! OverlaysViewController
                     ovc.openWeatherPreview(weather: openWeather)
 
@@ -113,8 +114,12 @@ class InfoWeatherView: NSView {
                             + " lon: " + String(format: "%.2f", lon)
                     }
                 case .failure(let error):
-                    print(error.localizedDescription)
-                    self.locationLabel.stringValue = error.localizedDescription
+                    if error == .cityNotFound {
+                        self.locationLabel.stringValue = "City not found, make sure you don't use state abbreviations"
+                    } else {
+                        print(error.localizedDescription)
+                        self.locationLabel.stringValue = error.localizedDescription
+                    }
                 }
             }
         }

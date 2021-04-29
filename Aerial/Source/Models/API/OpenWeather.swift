@@ -16,6 +16,7 @@ enum NetworkError: Error {
     case badURL
     case requestFailed
     case unknown
+    case cityNotFound
 }
 
 // MARK: - OpenWeather
@@ -167,7 +168,7 @@ struct OpenWeather {
 
                 completion(.success(openWeather))
             } else {
-                completion(.failure(.unknown))
+                completion(.failure(.cityNotFound))
             }
 
             return
@@ -194,7 +195,7 @@ struct OpenWeather {
 
                             completion(.success(openWeather))
                         } else {
-                            completion(.failure(.unknown))
+                            completion(.failure(.cityNotFound))
                         }
                     case .failure(let error):
                         completion(.failure(.unknown))
@@ -221,7 +222,7 @@ struct OpenWeather {
                         completion(.success(openWeather))
                     } catch {
                         print("error : \(error.localizedDescription)")
-                        completion(.failure(.unknown))
+                        completion(.failure(.cityNotFound))
                     }
                 case .failure(let error):
                     completion(.failure(.unknown))

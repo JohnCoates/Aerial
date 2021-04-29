@@ -437,15 +437,35 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                                        selector: #selector(AerialView.playerItemPlaybackStalledNotification(_:)),
                                        name: NSNotification.Name.AVPlayerItemPlaybackStalled,
                                        object: currentItem)
-        DistributedNotificationCenter.default.addObserver(self, selector: #selector(AerialView.willStop(_:)), name: Notification.Name("com.apple.screensaver.willstop"), object: nil)
+        DistributedNotificationCenter.default.addObserver(self,
+            selector: #selector(AerialView.willStop(_:)),
+            name: Notification.Name("com.apple.screensaver.willstop"), object: nil)
 
-//        DistributedNotificationCenter.default.addObserver(self, selector: #selector(AerialView.playerInfo(_:)), name: NSNotification.Name("com.apple.Music.playerInfo"), object: nil)
+        DistributedNotificationCenter.default.addObserver(self,
+            selector: #selector(AerialView.playerInfo(_:)),
+            name: NSNotification.Name("com.apple.Music.playerInfo"), object: nil)
 
     }
 
     @objc func willStop(_ aNotification: Notification) {
         debugLog("############ willStop")
         self.stopAnimation()
+    }
+
+    @objc func playerInfo(_ aNotification: Notification) {
+        debugLog("############ playerInfo")
+        print(aNotification)
+        if let userInfo = aNotification.userInfo {
+            if userInfo.keys.contains("Album") {
+                print(userInfo["Album"])
+            }
+            if userInfo.keys.contains("Name") {
+                print(userInfo["Name"])
+            }
+            if userInfo.keys.contains("Artist") {
+                print(userInfo["Artist"])
+            }
+        }
     }
 
     // MARK: - playNextVideo()

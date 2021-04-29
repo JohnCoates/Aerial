@@ -92,20 +92,10 @@ struct Sys: Codable {
     let pod: String?
 }
 
-/*
-// MARK: - Weather
-struct Weather: Codable {
-    let id: Int?
-    let main: String?
-    let weatherDescription: String?
-    let icon: String?
-
-    enum CodingKeys: String, CodingKey {
-        case id, main
-        case weatherDescription = "description"
-        case icon
-    }
-}*/
+// MARK: - ForecastError
+struct ForecastError: Codable {
+    let cod, message: String?
+}
 
 // MARK: - Wind
 struct Wind: Codable {
@@ -205,6 +195,8 @@ struct Forecast {
 
                         if let forecast = try? newJSONDecoder().decode(ForecastElement.self, from: jsonData) {
                             completion(.success(forecast))
+                        } else if (try? newJSONDecoder().decode(ForecastError.self, from: jsonData)) != nil {
+                            completion(.failure(.cityNotFound))
                         } else {
                             completion(.failure(.unknown))
                         }
@@ -226,11 +218,12 @@ struct Forecast {
                 switch result {
                 case .success(let jsonString):
                     let jsonData = jsonString.data(using: .utf8)!
-                    do {
-                        let forecast = try newJSONDecoder().decode(ForecastElement.self, from: jsonData)
+
+                    if let forecast = try? newJSONDecoder().decode(ForecastElement.self, from: jsonData) {
                         completion(.success(forecast))
-                    } catch {
-                        print("error : \(error.localizedDescription)")
+                    } else if (try? newJSONDecoder().decode(ForecastError.self, from: jsonData)) != nil {
+                        completion(.failure(.cityNotFound))
+                    } else {
                         completion(.failure(.unknown))
                     }
                 case .failure(let error):

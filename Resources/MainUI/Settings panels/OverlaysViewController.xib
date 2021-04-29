@@ -1064,11 +1064,11 @@ corner</string>
             <point key="canvasLocation" x="-840" y="735"/>
         </customView>
         <customView id="cmR-hZ-0Fe" customClass="InfoWeatherView" customModule="Aerial" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="580" height="230"/>
+            <rect key="frame" x="0.0" y="0.0" width="580" height="236"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MMI-hf-gCZ">
-                    <rect key="frame" x="84" y="98" width="60" height="16"/>
+                    <rect key="frame" x="84" y="104" width="60" height="16"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Location:" id="MuN-Fd-8Hd">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1076,7 +1076,7 @@ corner</string>
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mY1-Rf-ATP">
-                    <rect key="frame" x="145" y="85" width="152" height="40"/>
+                    <rect key="frame" x="145" y="91" width="152" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="Use current" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="TyM-g1-qHE" id="79c-Qo-uSx">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -1092,7 +1092,7 @@ corner</string>
                     </connections>
                 </popUpButton>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WWH-eQ-q01">
-                    <rect key="frame" x="371" y="135" width="66" height="40"/>
+                    <rect key="frame" x="371" y="141" width="66" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="°C" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="kAT-Ix-Epe" id="xKQ-Sj-kNx">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -1108,7 +1108,7 @@ corner</string>
                     </connections>
                 </popUpButton>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pj2-sU-RdG">
-                    <rect key="frame" x="145" y="135" width="220" height="40"/>
+                    <rect key="frame" x="145" y="141" width="220" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="Flat symbols (monochrome)" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="SlK-mo-emo" id="Vwk-tz-NwH">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -1125,7 +1125,7 @@ corner</string>
                     </connections>
                 </popUpButton>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iha-a4-YZ0">
-                    <rect key="frame" x="150" y="48" width="250" height="21"/>
+                    <rect key="frame" x="150" y="54" width="250" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="R0K-YM-KCz"/>
                     </constraints>
@@ -1139,7 +1139,7 @@ corner</string>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2t2-hO-9s4">
-                    <rect key="frame" x="103" y="148" width="41" height="16"/>
+                    <rect key="frame" x="103" y="154" width="41" height="16"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Icons:" id="PAa-nv-nJu">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1147,7 +1147,7 @@ corner</string>
                     </textFieldCell>
                 </textField>
                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IcH-dE-weS">
-                    <rect key="frame" x="304" y="84" width="35" height="35"/>
+                    <rect key="frame" x="304" y="90" width="35" height="35"/>
                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3MQ-92-9m9">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -1157,7 +1157,7 @@ corner</string>
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YAo-Tv-Uqc">
-                    <rect key="frame" x="148" y="16" width="56" height="16"/>
+                    <rect key="frame" x="148" y="22" width="56" height="16"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Location" id="bJ3-TA-jEX">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -1165,7 +1165,7 @@ corner</string>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bjs-UA-NkK">
-                    <rect key="frame" x="410" y="38" width="58" height="40"/>
+                    <rect key="frame" x="410" y="44" width="58" height="40"/>
                     <buttonCell key="cell" type="push" title="Test" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="R2U-fT-M9o">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -1175,7 +1175,7 @@ corner</string>
                     </connections>
                 </button>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bc1-t5-1U8">
-                    <rect key="frame" x="145" y="185" width="186" height="40"/>
+                    <rect key="frame" x="145" y="191" width="186" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="Current weather" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="n6w-I3-Hcd" id="RrM-1g-f4Q">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -1195,7 +1195,7 @@ corner</string>
                     </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HYQ-NB-LAH">
-                    <rect key="frame" x="92" y="198" width="52" height="16"/>
+                    <rect key="frame" x="92" y="204" width="52" height="16"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Display:" id="tLN-Xk-TM4">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1203,7 +1203,7 @@ corner</string>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ebH-Dw-L7o">
-                    <rect key="frame" x="331" y="195" width="61" height="22"/>
+                    <rect key="frame" x="331" y="201" width="61" height="22"/>
                     <buttonCell key="cell" type="check" title="Wind" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="UkF-Co-r2Q">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -1213,7 +1213,7 @@ corner</string>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AwV-pQ-aIV">
-                    <rect key="frame" x="397" y="195" width="84" height="22"/>
+                    <rect key="frame" x="397" y="201" width="84" height="22"/>
                     <buttonCell key="cell" type="check" title="Humidity" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="ZMg-9E-Euc">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -1223,7 +1223,7 @@ corner</string>
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="Mkb-6F-RoA">
-                    <rect key="frame" x="346" y="85" width="90" height="40"/>
+                    <rect key="frame" x="346" y="91" width="90" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="90" id="Jv2-8G-WhZ"/>
                         <constraint firstAttribute="height" constant="40" id="u2k-2r-QLb"/>
@@ -1245,7 +1245,7 @@ corner</string>
                 <constraint firstItem="YAo-Tv-Uqc" firstAttribute="top" secondItem="Iha-a4-YZ0" secondAttribute="bottom" constant="16" id="FSf-xy-kLq"/>
                 <constraint firstItem="IcH-dE-weS" firstAttribute="leading" secondItem="mY1-Rf-ATP" secondAttribute="trailing" constant="16" id="KVz-2F-Ywe"/>
                 <constraint firstItem="Bjs-UA-NkK" firstAttribute="firstBaseline" secondItem="Iha-a4-YZ0" secondAttribute="firstBaseline" id="NcH-eI-YXf"/>
-                <constraint firstAttribute="bottom" secondItem="YAo-Tv-Uqc" secondAttribute="bottom" constant="16" id="OQk-H9-hcb"/>
+                <constraint firstAttribute="bottom" secondItem="YAo-Tv-Uqc" secondAttribute="bottom" constant="22" id="OQk-H9-hcb"/>
                 <constraint firstItem="pj2-sU-RdG" firstAttribute="leading" secondItem="2t2-hO-9s4" secondAttribute="trailing" constant="8" symbolic="YES" id="UoE-Qs-rDe"/>
                 <constraint firstItem="pj2-sU-RdG" firstAttribute="top" secondItem="bc1-t5-1U8" secondAttribute="bottom" constant="22" id="VFg-oP-Sko"/>
                 <constraint firstItem="Iha-a4-YZ0" firstAttribute="leading" secondItem="mY1-Rf-ATP" secondAttribute="leading" id="VpP-3w-IfX"/>
