@@ -419,14 +419,14 @@ class ForecastLayer: CALayer {
         humidity.contentsScale = self.contentsScale
         humidity.alignmentMode = .center
 
-        // Then we draw bottom to top
-        var offset: CGFloat = 0
+        // Then we draw bottom to top, we skip the first which shows the hour/day
+        var offset: CGFloat = min.frame.height
 
         if PrefsInfo.weather.showWind {
             windLayer.anchorPoint = CGPoint(x: 0.5, y: 0)
-            windLayer.position = CGPoint(x: CGFloat(size)/2, y: windLayer.frame.height)
+            windLayer.position = CGPoint(x: CGFloat(size)/2, y: offset)
             mainLayer.addSublayer(windLayer)
-            offset += windLayer.frame.height*2
+            offset += windLayer.frame.height
         }
 
         if PrefsInfo.weather.showHumidity {

@@ -1236,10 +1236,22 @@ corner</string>
                         <action selector="openWeatherLogoButton:" target="cmR-hZ-0Fe" id="Myl-q4-gGJ"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RHF-CV-kHu">
+                    <rect key="frame" x="486" y="201" width="90" height="22"/>
+                    <buttonCell key="cell" type="check" title="City name" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="Jpp-uy-v8A">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="withCityChange:" target="cmR-hZ-0Fe" id="qsr-XI-6JN"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="pj2-sU-RdG" firstAttribute="leading" secondItem="cmR-hZ-0Fe" secondAttribute="leading" constant="150" id="0Xb-xb-X37"/>
+                <constraint firstItem="RHF-CV-kHu" firstAttribute="firstBaseline" secondItem="AwV-pQ-aIV" secondAttribute="firstBaseline" id="0ke-ET-5TC"/>
                 <constraint firstItem="Mkb-6F-RoA" firstAttribute="centerY" secondItem="mY1-Rf-ATP" secondAttribute="centerY" id="1ma-7S-i3c"/>
+                <constraint firstItem="RHF-CV-kHu" firstAttribute="leading" secondItem="AwV-pQ-aIV" secondAttribute="trailing" constant="8" symbolic="YES" id="55P-58-zSr"/>
                 <constraint firstItem="bc1-t5-1U8" firstAttribute="firstBaseline" secondItem="HYQ-NB-LAH" secondAttribute="firstBaseline" id="6hW-15-kmK"/>
                 <constraint firstItem="IcH-dE-weS" firstAttribute="centerY" secondItem="mY1-Rf-ATP" secondAttribute="centerY" id="9wu-pE-9qR"/>
                 <constraint firstItem="YAo-Tv-Uqc" firstAttribute="top" secondItem="Iha-a4-YZ0" secondAttribute="bottom" constant="16" id="FSf-xy-kLq"/>
@@ -1275,6 +1287,7 @@ corner</string>
                 <outlet property="locationMode" destination="mY1-Rf-ATP" id="cyu-zj-MhQ"/>
                 <outlet property="locationString" destination="Iha-a4-YZ0" id="sPk-Q8-AeX"/>
                 <outlet property="weatherModePopup" destination="bc1-t5-1U8" id="fdu-1l-38L"/>
+                <outlet property="withCity" destination="RHF-CV-kHu" id="LEZ-uQ-BY2"/>
                 <outlet property="withHumidity" destination="AwV-pQ-aIV" id="oVr-Gy-RqA"/>
                 <outlet property="withWind" destination="ebH-Dw-L7o" id="YZW-Ts-hNB"/>
             </connections>

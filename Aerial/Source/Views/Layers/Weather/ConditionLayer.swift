@@ -42,12 +42,17 @@ class ConditionLayer: CALayer {
         // First we make the temperatures block (accurate and feels like)
         let tempBlock = makeTemperatureBlock()
         let feelsBlock = makeFeelsLikeBlock()
+        var cityNameBlock: CALayer
+        if PrefsInfo.weather.showCity {
+            cityNameBlock = makeCityNameBlock()
+        } else {
+            cityNameBlock = CALayer()
+        }
 
         // We make the symbol a square of the combined height of both blocks
         let combinedHeight = tempBlock.frame.height + feelsBlock.frame.height
 
         // Create a symbol that fits the size
-        //let imglayer = ConditionSymbolLayer(condition: condition, size: Int(combinedHeight))
         let imglayer = ConditionSymbolLayer(weather: condition.weather![0],
                                             dt: condition.dt!,
                                             sunrise: condition.sys!.sunrise,
@@ -55,44 +60,27 @@ class ConditionLayer: CALayer {
                                             size: Int(combinedHeight))
 
         // Add the Wind layer
-        let windHeight = addWind(at: (imglayer.frame.width + combinedHeight/10 + tempBlock.frame.width) / 2)
+        let windHeight = addWind(x: (imglayer.frame.width + combinedHeight/10 + tempBlock.frame.width) / 2, y: cityNameBlock.frame.height)
 
         imglayer.anchorPoint = CGPoint(x: 0, y: 0)
-        imglayer.position = CGPoint(x: 0, y: windHeight)
+        imglayer.position = CGPoint(x: 0, y: windHeight + cityNameBlock.frame.height)
         self.addSublayer(imglayer)
 
         frame.size = CGSize(width: imglayer.frame.width + combinedHeight/10 + tempBlock.frame.width,
-                            height: tempBlock.frame.height + feelsBlock.frame.height + windHeight)
+                            height: tempBlock.frame.height + feelsBlock.frame.height + windHeight + cityNameBlock.frame.height)
+
+        addSublayer(cityNameBlock)
+        cityNameBlock.anchorPoint = CGPoint(x: 0.5, y: 0)
+        cityNameBlock.position = CGPoint(x: frame.size.width/2, y: 0)
 
         addSublayer(tempBlock)
         tempBlock.anchorPoint = CGPoint(x: 1, y: 1)
-        tempBlock.position = CGPoint(x: frame.size.width, y: tempBlock.frame.height + feelsBlock.frame.height + windHeight)
+        tempBlock.position = CGPoint(x: frame.size.width, y: tempBlock.frame.height + feelsBlock.frame.height + windHeight + cityNameBlock.frame.height)
 
         addSublayer(feelsBlock)
         feelsBlock.anchorPoint = CGPoint(x: 0.5, y: 0)
-        feelsBlock.position = CGPoint(x: imglayer.frame.width + combinedHeight/10 + tempBlock.frame.width/2, y: windHeight)
+        feelsBlock.position = CGPoint(x: imglayer.frame.width + combinedHeight/10 + tempBlock.frame.width/2, y: windHeight + cityNameBlock.frame.height)
 
-        /*
-        if PrefsInfo.weather.icons == .flat {
-            let imglayer = ConditionSymbolLayer(condition: condition)
-            imglayer.anchorPoint = CGPoint(x: 0, y: 0.5)
-            imglayer.position = CGPoint(x: 0, y: 50)
-            self.addSublayer(imglayer)
-
-            let tempWidth = addTemperature(at: imglayer.frame.width + 15)
-            addFeelsLike(at: imglayer.frame.width + 15 + (tempWidth / 2))
-            addWind(at: (imglayer.frame.width + 15 + tempWidth) / 2)
-
-            // Set the final size of that block
-            frame.size = CGSize(width: imglayer.frame.width + 15 + tempWidth, height: 75)
-        } else {
-            // This is a temporary size
-            frame.size = CGSize(width: 160, height: 75)
-
-            // http://openweathermap.org/img/wn/10d@2x.png
-
-            downloadImage(from: URL(string: "http://openweathermap.org/img/wn/\(condition.weather![0].icon)@4x.png")!)
-        }*/
     }
 
     override init(layer: Any) {
@@ -101,6 +89,21 @@ class ConditionLayer: CALayer {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func makeCityNameBlock() -> CATextLayer {
+        let temp = CAVCTextLayer()
+
+        temp.string = condition!.name
+
+        (temp.font, temp.fontSize) = temp.makeFont(name: PrefsInfo.weather.fontName, size: PrefsInfo.weather.fontSize/1.5)
+
+        // ReRect the temperature
+        let rect = temp.calculateRect(string: temp.string as! String, font: temp.font as! NSFont)
+        temp.frame = rect
+        temp.contentsScale = self.contentsScale
+
+        return temp
     }
 
     func makeTemperatureBlock() -> CATextLayer {
@@ -143,7 +146,7 @@ class ConditionLayer: CALayer {
         return feel
     }
 
-    func addWind(at: CGFloat) -> CGFloat {
+    func addWind(x: CGFloat, y: CGFloat) -> CGFloat {
         guard let owind = condition?.wind else {
             return 0
         }
@@ -172,11 +175,11 @@ class ConditionLayer: CALayer {
 
         // We put the temperature at the right of the weather icon
         wind.anchorPoint = CGPoint(x: 0.5, y: 0)
-        wind.position = CGPoint(x: at + imglayer.frame.height/2, y: 0)
+        wind.position = CGPoint(x: x + imglayer.frame.height/2, y: y)
 
         imglayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        imglayer.position = CGPoint(x: at - (rect2.width/2) - imglayer.frame.height/2,
-                                    y: wind.frame.height/2)
+        imglayer.position = CGPoint(x: x - (rect2.width/2) - imglayer.frame.height/2,
+                                    y: y + wind.frame.height/2)
 
         imglayer.contentsScale = self.contentsScale
         imglayer.transform = CATransform3DMakeRotation(CGFloat((180 + owind.deg)) / 180.0 * .pi, 0.0, 0.0, -1.0)

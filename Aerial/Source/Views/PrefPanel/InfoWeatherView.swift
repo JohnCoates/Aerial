@@ -9,6 +9,7 @@
 import Cocoa
 
 class InfoWeatherView: NSView {
+    @IBOutlet var withCity: NSButton!
     @IBOutlet var withWind: NSButton!
     @IBOutlet var withHumidity: NSButton!
     @IBOutlet var locationMode: NSPopUpButton!
@@ -25,6 +26,7 @@ class InfoWeatherView: NSView {
         iconsPopup.selectItem(at: PrefsInfo.weather.icons.rawValue)
         weatherModePopup.selectItem(at: PrefsInfo.weather.mode.rawValue)
 
+        withCity.state = PrefsInfo.weather.showCity ? .on : .off
         withWind.state = PrefsInfo.weather.showWind ? .on : .off
         withHumidity.state = PrefsInfo.weather.showHumidity ? .on : .off
 
@@ -46,6 +48,11 @@ class InfoWeatherView: NSView {
     @IBAction func locationModeChange(_ sender: NSPopUpButton) {
         PrefsInfo.weather.locationMode = InfoLocationMode(rawValue: sender.indexOfSelectedItem)!
         updateLocationMode()
+    }
+
+    @IBAction func withCityChange(_ sender: NSButton) {
+        let onState = sender.state == .on
+        PrefsInfo.weather.showCity = onState
     }
 
     @IBAction func withWindChange(_ sender: NSButton) {

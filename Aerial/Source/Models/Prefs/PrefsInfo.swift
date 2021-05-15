@@ -133,6 +133,7 @@ struct PrefsInfo {
         var mode: InfoWeatherMode
         var showHumidity: Bool
         var showWind: Bool
+        var showCity: Bool
     }
 
     struct Battery: CommonInfo, Codable {
@@ -258,7 +259,8 @@ struct PrefsInfo {
                                                         icons: isMacOS11() ? .colorflat : .flat,
                                                         mode: .current,
                                                         showHumidity: true,
-                                                        showWind: true))
+                                                        showWind: true,
+                                                        showCity: true))
     static var weather: Weather
 
     // Countdown

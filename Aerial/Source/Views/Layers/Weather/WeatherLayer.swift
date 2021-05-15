@@ -93,7 +93,16 @@ class WeatherLayer: AnimationLayer {
                         switch result {
                         case .success(let openWeather):
                             self.cachedForecast = openWeather
-                            self.displayWeatherBlock()
+                            //self.displayWeatherBlock()
+                            OpenWeather.fetch { result in
+                                switch result {
+                                case .success(let openWeather):
+                                    self.cachedWeather = openWeather
+                                    self.displayWeatherBlock()
+                                case .failure(let error):
+                                    print(error.localizedDescription)
+                                }
+                            }
                         case .failure(let error):
                             print(error.localizedDescription)
                         }
@@ -120,15 +129,27 @@ class WeatherLayer: AnimationLayer {
 
             self.frame.size = todayCond!.frame.size
         } else {
+            todayCond = ConditionLayer(condition: cachedWeather!, scale: contentsScale)
+            if cscale != nil {
+                todayCond!.contentsScale = cscale!
+            }
+            todayCond!.anchorPoint = CGPoint(x: 0, y: 0)
+            addSublayer(todayCond!)
+
             forecastCond = ForecastLayer(condition: cachedForecast!, scale: contentsScale)
             if cscale != nil {
                 forecastCond!.contentsScale = cscale!
             }
             forecastCond!.anchorPoint = CGPoint(x: 0, y: 0)
-            forecastCond!.position = CGPoint(x: 0, y: 10)
+            forecastCond!.position = CGPoint(x: todayCond!.frame.width, y: 10)
             addSublayer(forecastCond!)
 
-            self.frame.size = forecastCond!.frame.size
+            todayCond!.position = CGPoint(x: 0, y: forecastCond!.frame.height
+                                                    - todayCond!.frame.height
+                                                    + 10)
+
+            self.frame.size = CGSize(width: todayCond!.frame.width + forecastCond!.frame.width, height: forecastCond!.frame.height)
+            //self.frame.size = forecastCond!.frame.size
         }
 
         update(redraw: true)
