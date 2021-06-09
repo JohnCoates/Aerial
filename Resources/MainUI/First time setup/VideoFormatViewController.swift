@@ -48,7 +48,7 @@ class VideoFormatViewController: NSViewController {
 
         previewView.player = AVPlayer()
         previewView.showsFullScreenToggleButton = true
-        //previewView.controlsStyle = .none
+        // previewView.controlsStyle = .none
         if #available(OSX 10.10, *) {
             previewView.videoGravity = .resizeAspectFill
         }

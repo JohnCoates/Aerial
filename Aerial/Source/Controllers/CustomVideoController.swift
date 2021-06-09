@@ -68,7 +68,7 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
     override func awakeFromNib() {
         if !hasAwokenAlready {
             debugLog("cvcawake")
-            //self.menu = cvcMenu
+            // self.menu = cvcMenu
 
             folderOutlineView.dataSource = self
             folderOutlineView.delegate = self
@@ -431,7 +431,7 @@ extension CustomVideoController: NSOutlineViewDelegate {
             topPathControl.url = URL(fileURLWithPath: source.manifestUrl)
             folderShortNameTextField.stringValue = source.description
             currentAsset = nil
-            currentFolder = nil //folder
+            currentFolder = nil // folder
         } else if let file = item as? Asset {
             topPathControl.isHidden = false
             folderView.isHidden = true

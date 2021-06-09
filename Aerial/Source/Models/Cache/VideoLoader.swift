@@ -28,7 +28,7 @@ final class VideoLoader: NSObject, NSURLConnectionDataDelegate {
     let queue = DispatchQueue.main
 
     init(url: URL, loadingRequest: AVAssetResourceLoadingRequest, delegate: VideoLoaderDelegate) {
-        //debugLog("videoloader init")
+        // debugLog("videoloader init")
         self.delegate = delegate
         self.loadingRequest = loadingRequest
 
@@ -52,8 +52,8 @@ final class VideoLoader: NSObject, NSURLConnectionDataDelegate {
                 request.setValue(requestRange, forHTTPHeaderField: "Range")
             }
         }
-        //debugLog("loadedRange \(loadedRange)")
-        //debugLog("requestedRange \(requestedRange)")
+        // debugLog("loadedRange \(loadedRange)")
+        // debugLog("requestedRange \(requestedRange)")
         super.init()
 
         connection = NSURLConnection(request: request as URLRequest, delegate: self, startImmediately: false)
@@ -67,7 +67,7 @@ final class VideoLoader: NSObject, NSURLConnectionDataDelegate {
         loadedRange = NSRange(location: requestedRange.location, length: 0)
 
         connection.start()
-        //debugLog("Starting request: \(request)")
+        // debugLog("Starting request: \(request)")
     }
 
     deinit {
@@ -116,7 +116,7 @@ final class VideoLoader: NSObject, NSURLConnectionDataDelegate {
                 let requestedEndOffset = Int(dataRequest.requestedOffset + Int64(dataRequest.requestedLength))
 
                 let pendingDataEndOffset = loadedLocation + data.count
-                //debugLog("r \(requestedEndOffset) p \(pendingDataEndOffset)")
+                // debugLog("r \(requestedEndOffset) p \(pendingDataEndOffset)")
 
                 if pendingDataEndOffset > requestedEndOffset {
                     let truncateDataLength = pendingDataEndOffset - requestedEndOffset
@@ -125,14 +125,14 @@ final class VideoLoader: NSObject, NSURLConnectionDataDelegate {
                     self.loadingRequest.finishLoading()
                     self.connection?.cancel()
                 } else {
-                    //debugLog("rr")
+                    // debugLog("rr")
                     dataRequest.respond(with: data)
                 }
-                //debugLog("Responding with data")
+                // debugLog("Responding with data")
             }
                 // check if we're at a point now where we can send content
             else if loadedLocation + data.count >= requestedRange.location {
-                //debugLog("case2")
+                // debugLog("case2")
                 // calculate how far along we need to be into the data before it's part of what
                 // was requested
                 let inset = requestedRange.location - loadedRange.location
@@ -154,7 +154,7 @@ final class VideoLoader: NSObject, NSURLConnectionDataDelegate {
 
             }
 
-            //debugLog("Received data with length: \(data.count)")
+            // debugLog("Received data with length: \(data.count)")
 
             self.loadedRange.length += data.count
 
@@ -234,7 +234,7 @@ final class VideoLoader: NSObject, NSURLConnectionDataDelegate {
 
         let offset = offsetString.longLongValue
 
-        //debugLog("content range: \(contentRange), start offset: \(offset)")
+        // debugLog("content range: \(contentRange), start offset: \(offset)")
 
         return Int(offset)
     }

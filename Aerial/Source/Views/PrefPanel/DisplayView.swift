@@ -54,7 +54,7 @@ class DisplayView: NSView {
     }
 
     // MARK: - Drawing
-    //swiftlint:disable:next cyclomatic_complexity
+    // swiftlint:disable:next cyclomatic_complexity
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
@@ -62,7 +62,7 @@ class DisplayView: NSView {
         var backgroundColor = NSColor.init(white: 0.9, alpha: 1.0)
         var borderColor = NSColor.init(white: 0.8, alpha: 1.0)
 
-        //let screenColor = NSColor.init(red: 0.38, green: 0.60, blue: 0.85, alpha: 1.0)
+        // let screenColor = NSColor.init(red: 0.38, green: 0.60, blue: 0.85, alpha: 1.0)
         let screenBorderColor = NSColor.black
 
         if DarkMode.isEnabled() {
@@ -188,7 +188,7 @@ class DisplayView: NSView {
                     let bundle = Bundle(for: PanelWindowController.self)
                     if let imagePath = bundle.path(forResource: "screen0", ofType: "jpg") {
                         let image = NSImage(contentsOfFile: imagePath)
-                        //image!.draw(in: sInRect)
+                        // image!.draw(in: sInRect)
                         image!.draw(in: sInRect, from: sFRect, operation: NSCompositingOperation.copy, fraction: 1.0)
                     } else {
                         errorLog("\(#file) screenshot is missing!!!")

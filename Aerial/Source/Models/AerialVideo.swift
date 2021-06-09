@@ -29,7 +29,7 @@ final class AerialVideo: CustomStringConvertible, Equatable {
     var urls: [VideoFormat: String]
 
     let source: Source
-    //var sources: [Manifests]
+    // var sources: [Manifests]
     let poi: [String: String]
     let communityPoi: [String: String]
     var duration: Double
@@ -138,7 +138,7 @@ final class AerialVideo: CustomStringConvertible, Equatable {
 
         self.urls = urls
         self.source = source
-        //self.sources = [manifest]
+        // self.sources = [manifest]
         self.poi = poi
         self.communityPoi = communityPoi
         self.duration = 0
@@ -169,7 +169,7 @@ final class AerialVideo: CustomStringConvertible, Equatable {
             for format in VideoFormat.allCases {
                 // swiftlint:disable:next for_where
                 if urls[format] != "" {
-                    //let path = VideoCache.cachePath(forFilename: (URL(string: urls[format]!)!.lastPathComponent))!
+                    // let path = VideoCache.cachePath(forFilename: (URL(string: urls[format]!)!.lastPathComponent))!
 
                     let path = VideoList.instance.localPathFor(video: self)
 

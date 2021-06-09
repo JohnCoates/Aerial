@@ -29,8 +29,8 @@ open class AspectFillNSImageView: NSImageView {
         super.init(frame: frameRect)
     }
 
-    //the image setter isn't called when loading from a storyboard
-    //manually set the image if it is already set
+    // the image setter isn't called when loading from a storyboard
+    // manually set the image if it is already set
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
 

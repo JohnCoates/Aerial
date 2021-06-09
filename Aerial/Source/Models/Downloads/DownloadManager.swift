@@ -151,8 +151,8 @@ extension DownloadOperation: URLSessionDownloadDelegate {
         totalBytesWritten: Int64,
         totalBytesExpectedToWrite: Int64
     ) {
-        //let progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
-        //print("\(downloadTask.originalRequest!.url!.absoluteString) \(progress)")
+        // let progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
+        // print("\(downloadTask.originalRequest!.url!.absoluteString) \(progress)")
     }
 }
 

@@ -444,7 +444,7 @@ class ForecastLayer: CALayer {
         max.anchorPoint = CGPoint(x: 0.5, y: 0)
         max.position = CGPoint(x: CGFloat(size) / 2, y: offset)
         mainLayer.addSublayer(max)
-        //offset += max.frame.height
+        // offset += max.frame.height
 
         return mainLayer
     }
@@ -455,7 +455,11 @@ class ForecastLayer: CALayer {
         // Make a vertically centered layer for t°
         let wind = CAVCTextLayer()
 
-        wind.string = String(format: "%.0f", speed * 3.6)
+        if PrefsInfo.weatherWindMode == .kph && PrefsInfo.weather.degree == .celsius {
+            wind.string = String(format: "%.0f", speed * 3.6)
+        } else {
+            wind.string = String(format: "%.0f", speed)
+        }
 
         // Get something large first
         (wind.font, wind.fontSize) = wind.makeFont(name: PrefsInfo.weather.fontName, size: size)

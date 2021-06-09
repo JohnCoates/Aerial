@@ -15,7 +15,7 @@ class VideoCellView: NSTableCellView {
     @IBOutlet var checkButton: NSButton!
     @IBOutlet var downloadButton: NSButton!
 
-    //var delegate: VideoCellViewDelegate?
+    // var delegate: VideoCellViewDelegate?
     var video: AerialVideo?
 
     override func draw(_ dirtyRect: NSRect) {

@@ -96,17 +96,37 @@ struct Cache {
     static var path: String = {
         var path = ""
         if PrefsCache.overrideCache {
-            if let customPath = Preferences.sharedInstance.customCacheDirectory {
-                debugLog("Trying \(customPath)")
-                if FileManager.default.fileExists(atPath: customPath) {
-                    path = customPath
+            if #available(macOS 12, *) {
+                if let bookmarkData = PrefsCache.cacheBookmarkData {
+                    do {
+                        var isStale = false
+                        let bookmarkUrl = try URL(resolvingBookmarkData: bookmarkData, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &isStale)
+
+                        debugLog("Bookmark is stale : \(isStale)")
+                        debugLog("\(bookmarkUrl)")
+                        path = bookmarkUrl.path
+                        debugLog("\(path)")
+                    } catch {
+                        errorLog("Can't process bookmark")
+                    }
                 } else {
-                    errorLog("Could not find your custom Caches path, reverting to default settings")
-                    PrefsCache.overrideCache = false
-                    path = Cache.supportPath.appending("/Cache")
+                    errorLog("Can't find cacheBookmarkData on macOS 12")
                 }
             } else {
-                errorLog("Empty path, reverting to default settings")
+                if let customPath = Preferences.sharedInstance.customCacheDirectory {
+                    debugLog("Trying \(customPath)")
+                    if FileManager.default.fileExists(atPath: customPath) {
+                        path = customPath
+                    } else {
+                        errorLog("Could not find your custom Caches path, reverting to default settings")
+                    }
+                } else {
+                    errorLog("Empty path, reverting to default settings")
+
+                }
+            }
+
+            if path == "" {
                 PrefsCache.overrideCache = false
                 path = Cache.supportPath.appending("/Cache")
             }
@@ -128,6 +148,25 @@ struct Cache {
         }
     }()
 
+    static var pathUrl: URL = {
+        if #available(macOS 12, *) {
+            if PrefsCache.overrideCache {
+                if let bookmarkData = PrefsCache.cacheBookmarkData {
+                    do {
+                        var isStale = false
+                        let bookmarkUrl = try URL(resolvingBookmarkData: bookmarkData, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &isStale)
+                        debugLog("Bookmark is stale : \(isStale)")
+                        debugLog("\(bookmarkUrl)")
+                        return bookmarkUrl
+                    } catch {
+                        errorLog("Can't process bookmark")
+                    }
+                }
+            }
+        }
+
+        return URL(fileURLWithPath: path)
+    }()
     /**
      Returns Aerial's thumbnail cache path, creating it if needed.
      + On macOS 10.14 and earlier : `~/Library/Application Support/Aerial/Thumbnails/`
@@ -260,13 +299,17 @@ struct Cache {
         if VideoList.instance.videos.count > 90 {
             // First let's look at the cache
 
-            let pathURL = URL(fileURLWithPath: path)
+            // let pathURL = URL(fileURLWithPath: path)
             do {
-                let directoryContent = try FileManager.default.contentsOfDirectory(at: pathURL, includingPropertiesForKeys: nil)
+                pathUrl.startAccessingSecurityScopedResource()
+
+                let directoryContent = try FileManager.default.contentsOfDirectory(at: pathUrl, includingPropertiesForKeys: nil)
+                debugLog("count : \(directoryContent.count)")
                 let videoURLs = directoryContent.filter { $0.pathExtension == "mov" }
 
                 for video in videoURLs {
                     let filename = video.lastPathComponent
+                    debugLog("\(filename)")
                     var found = false
 
                     // swiftlint:disable for_where
@@ -281,6 +324,8 @@ struct Cache {
                         try? FileManager.default.removeItem(at: video)
                     }
                 }
+
+                pathUrl.stopAccessingSecurityScopedResource()
             } catch {
                 errorLog("Error during removing of videos in wrong format, please report")
                 errorLog(error.localizedDescription)
@@ -346,7 +391,7 @@ struct Cache {
 
     static func clearNonCacheableSources() {
         // Then we need to look at individual online sources
-        //let onlineVideos = VideoList.instance.videos.filter({ !$0.source.isCachable })
+        // let onlineVideos = VideoList.instance.videos.filter({ !$0.source.isCachable })
 
         for source in SourceList.foundSources.filter({!$0.isCachable}) {
             let pathSource = URL(fileURLWithPath: supportPath).appendingPathComponent(source.name)
@@ -602,7 +647,7 @@ struct Cache {
         outerLoop: for video in evictables {
             if VideoList.instance.currentRotation().contains(video) {
                 // Outdated but in rotation, so keep it !
-                //debugLog("outdated but in rotation \(video.secondaryName)")
+                // debugLog("outdated but in rotation \(video.secondaryName)")
             } else {
                 debugLog("Removing outdated video not in rotation \(video.secondaryName)")
                 do {

@@ -75,6 +75,10 @@ enum InfoWeatherMode: Int, Codable {
     case current, forecast6hours, forecast3days, forecast5days
 }
 
+enum InfoWeatherWind: Int, Codable {
+    case kph, mps
+}
+
 // swiftlint:disable:next type_body_length
 struct PrefsInfo {
     struct Location: CommonInfo, Codable {
@@ -262,6 +266,21 @@ struct PrefsInfo {
                                                         showWind: true,
                                                         showCity: true))
     static var weather: Weather
+
+    // Text fade in/out mode
+    @SimpleStorage(key: "weatherWindMode", defaultValue: InfoWeatherWind.kph.rawValue)
+    static var intWeatherWindMode: Int
+
+    // We wrap in a separate value, as we can't store an enum as a Codable in
+    // macOS < 10.15
+    static var weatherWindMode: InfoWeatherWind {
+        get {
+            return InfoWeatherWind(rawValue: intWeatherWindMode)!
+        }
+        set(value) {
+            intWeatherWindMode = value.rawValue
+        }
+    }
 
     // Countdown
     @Storage(key: "LayerCountdown", defaultValue: Countdown(isEnabled: false,

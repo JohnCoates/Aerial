@@ -74,7 +74,7 @@ class SidebarViewController: NSViewController {
         shadow.shadowBlurRadius = 2
         shadow.shadowOffset = NSSize(width: 0, height: -3)
         shadow.shadowColor = NSColor.black */
-        //downloadIndicator.shadow = shadow
+        // downloadIndicator.shadow = shadow
     }
 
     override func viewDidAppear() {
@@ -130,7 +130,7 @@ class SidebarViewController: NSViewController {
         windowController!.stopVideo()
 
         if !downloadIndicator.isHidden {
-            //swiftlint:disable:next line_length
+            // swiftlint:disable:next line_length
             if !Aerial.showAlert(question: "Downloads still in progress", text: "Your video downloads are still in progress. Are you sure you want to quit ? This will abandon your current downloads.", button1: "Quit and Abandon Downloads", button2: "Cancel") {
                 return
             }

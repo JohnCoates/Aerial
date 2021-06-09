@@ -60,7 +60,7 @@ class InfoTableSource: NSTableView, NSTableViewDataSource, NSTableViewDelegate {
     func tableViewSelectionDidChange(_ notification: Notification) {
         let tableView = notification.object as! NSTableView
         if tableView.selectedRow < 0 {
-            //controller!.resetInfoPanel()
+            // controller!.resetInfoPanel()
         } else {
             controller!.drawInfoPanel(forType: PrefsInfo.layers[tableView.selectedRow])
             controller!.infoSettingsTableView.deselectAll(controller!)

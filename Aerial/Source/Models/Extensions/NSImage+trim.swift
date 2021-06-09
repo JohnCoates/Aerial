@@ -14,7 +14,7 @@ extension NSImage {
         let imageRef = self.cgImage(forProposedRect: &imageRect, context: nil, hints: nil)
 
         let trimTo = self.getTrimmedRect()
-        //let cutRef = imageRef?.cropping(to: trimTo)
+        // let cutRef = imageRef?.cropping(to: trimTo)
 
         guard let cutRef = imageRef?.cropping(to: trimTo) else {
             return nil

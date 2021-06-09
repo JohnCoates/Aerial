@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19115.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.AVKitIBPlugin" version="17506"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="19115.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19115.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -475,7 +475,7 @@
         <image name="NSTouchBarDownloadTemplate" width="15" height="15"/>
         <image name="arrow.down.circle" width="141" height="155"/>
         <image name="arrow.down.circle.fill" width="141" height="155"/>
-        <image name="book" catalog="system" width="18" height="15"/>
+        <image name="book" catalog="system" width="18" height="14"/>
         <image name="clock" catalog="system" width="15" height="15"/>
         <image name="dial" width="163" height="152"/>
         <image name="eye" catalog="system" width="21" height="13"/>
@@ -484,8 +484,8 @@
         <image name="internaldrive" catalog="system" width="18" height="13"/>
         <image name="leaf" catalog="system" width="16" height="14"/>
         <image name="location" catalog="system" width="15" height="15"/>
-        <image name="star" width="154" height="166"/>
         <image name="star" catalog="system" width="17" height="16"/>
+        <image name="star" width="154" height="166"/>
         <image name="star.fill" width="154" height="166"/>
         <image name="sun.max" width="147" height="168"/>
         <image name="video.badge.plus" catalog="system" width="20" height="15"/>

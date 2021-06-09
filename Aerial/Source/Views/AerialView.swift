@@ -311,7 +311,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     }
 
     override func viewDidChangeBackingProperties() {
-        //swiftlint:disable:next line_length
+        // swiftlint:disable:next line_length
         debugLog("\(self.description) backing change \((self.window?.backingScaleFactor) ?? 1.0) isDisabled: \(isDisabled) frame: \(self.frame) preview: \(self.isPreview)")
 
         // Tentative workaround for a Catalina+ bug
@@ -621,11 +621,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                 }
             } else {
                 self.nextResponder!.keyDown(with: event)
-                //super.keyDown(with: event)
+                // super.keyDown(with: event)
             }
         } else {
             self.nextResponder?.keyDown(with: event)
-            //super.keyDown(with: event)
+            // super.keyDown(with: event)
         }
     }
 

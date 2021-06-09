@@ -63,7 +63,9 @@ class CacheViewController: NSViewController {
         makeTimeMachineIgnore2.state = makeTimeMachineIgnore.state
 
         manuallyPick.state = PrefsCache.overrideCache ? .on : .off
-        if #available(OSX 10.15, *) {
+        if #available(OSX 12, *) {
+            updateCachePath()
+        } else if #available(OSX 10.15, *) {
             manuallyPick.isEnabled = false
             pickFolder.isHidden = true
         } else {
@@ -123,7 +125,7 @@ class CacheViewController: NSViewController {
         if totalPotentialSize == 0 {
             totalPotentialSize = 1
         }
-        //let totalUsage = usedCache
+        // let totalUsage = usedCache
 
         let cacheWidth = Int(usedCache * 486 / totalPotentialSize)
         let freeWidth = Int(freeCache * 486 / totalPotentialSize)
@@ -259,7 +261,7 @@ class CacheViewController: NSViewController {
             rotateFrequencyLabel.isEnabled = true
         }
 
-        //limitLabel.stringValue = "(Currently \(size))"
+        // limitLabel.stringValue = "(Currently \(size))"
         cacheSize.stringValue = "Your videos take \(size) of disk space"
     }
 
@@ -295,10 +297,23 @@ class CacheViewController: NSViewController {
                 let cacheDirectory = openPanel.urls[0]
                 Preferences.sharedInstance.customCacheDirectory = cacheDirectory.path
 
+                // On macOS 12 we save a security scoped bookmark
+                if #available(macOS 12, *) {
+                    do {
+                        let cacheBookmark = try cacheDirectory.bookmarkData(
+                            options: .withSecurityScope,
+                            includingResourceValuesForKeys: nil,
+                            relativeTo: nil)
+                        PrefsCache.cacheBookmarkData = cacheBookmark
+                    } catch {
+                        debugLog("Error saving the security scoped bookmark")
+                    }
+                }
+
                 Aerial.showInfoAlert(title: "Cache path changed",
                                      text: "In order for your new cache path to take effect, please close this panel and System Preferences.")
             }
-        //}
+        // }
     }
 
     @IBAction func makeTimeMachineIgnore(_ sender: NSButton) {

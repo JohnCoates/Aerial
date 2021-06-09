@@ -17,7 +17,7 @@ func cachedOrCachingAsset(_ URL: Foundation.URL) -> AVURLAsset {
     let queue = DispatchQueue.main
     asset.resourceLoader.setDelegate(assetLoader, queue: queue)
     objc_setAssociatedObject(asset, "assetLoader", assetLoader, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
-    //debugLog("\(asset)")
+    // debugLog("\(asset)")
     return asset
 }
 
@@ -85,13 +85,13 @@ final class AssetLoaderDelegate: NSObject, AVAssetResourceLoaderDelegate, VideoL
         // check if cache can fulfill this without a request
         if videoCache.canFulfillLoadingRequest(loadingRequest) {
             if videoCache.fulfillLoadingRequest(loadingRequest) {
-                //debugLog("fullfilling loading request")
+                // debugLog("fullfilling loading request")
                 return true
             }
         }
 
         // assign request to VideoLoader
-        //debugLog("request to loader \(loadingRequest)")
+        // debugLog("request to loader \(loadingRequest)")
         let videoLoader = VideoLoader(url: URL, loadingRequest: loadingRequest, delegate: self)
         videoLoaders.append(videoLoader)
 

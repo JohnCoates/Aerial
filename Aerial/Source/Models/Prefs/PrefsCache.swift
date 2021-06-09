@@ -51,4 +51,7 @@ struct PrefsCache {
     @SimpleStorage(key: "overrideCache", defaultValue: false)
     static var overrideCache: Bool
 
+    // App-scoped bookmark to cache, in NSData form
+    @SimpleStorage(key: "cacheBookmarkData", defaultValue: nil)
+    static var cacheBookmarkData: Data?
 }

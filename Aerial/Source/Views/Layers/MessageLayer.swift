@@ -59,7 +59,7 @@ class MessageLayer: AnimationTextLayer {
                 }
                 setupRefresh()
             case .textfile:
-                //TODO
+                // TODO
                 update(string: config.message)
             }
 

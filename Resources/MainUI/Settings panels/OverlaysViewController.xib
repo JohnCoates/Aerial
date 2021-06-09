@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19115.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19115.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -44,7 +44,7 @@
                     <rect key="frame" x="0.0" y="33" width="180" height="478"/>
                     <clipView key="contentView" drawsBackground="NO" id="3a0-nz-lxc">
                         <rect key="frame" x="1" y="1" width="178" height="476"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="gvl-yV-dFx">
                                 <rect key="frame" x="0.0" y="0.0" width="178" height="476"/>
@@ -158,7 +158,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="180" height="33"/>
                     <clipView key="contentView" id="cUU-VJ-Apk">
                         <rect key="frame" x="1" y="1" width="178" height="31"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="29" rowSizeStyle="automatic" viewBased="YES" id="d1q-xb-ZLa">
                                 <rect key="frame" x="0.0" y="0.0" width="178" height="31"/>
@@ -1170,6 +1170,7 @@ corner</string>
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <color key="bezelColor" red="1" green="0.2680177406" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <action selector="testLocationButtonClick:" target="cmR-hZ-0Fe" id="4FO-ev-kS6"/>
                     </connections>
@@ -1218,6 +1219,7 @@ corner</string>
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <color key="bezelColor" red="1" green="0.2680177406" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <action selector="withHumidityChange:" target="cmR-hZ-0Fe" id="1VJ-QS-Brf"/>
                     </connections>
@@ -1246,6 +1248,24 @@ corner</string>
                         <action selector="withCityChange:" target="cmR-hZ-0Fe" id="qsr-XI-6JN"/>
                     </connections>
                 </button>
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mol-HY-dqc">
+                    <rect key="frame" x="446" y="141" width="80" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="km/h" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="NiT-9X-V3O" id="SvT-oj-jpi">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="ToY-mP-HGD">
+                            <items>
+                                <menuItem title="km/h" state="on" id="NiT-9X-V3O"/>
+                                <menuItem title="m/s" id="ara-s8-6Iv"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <color key="bezelColor" red="1" green="0.2680177406" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="windModePopupChange:" target="cmR-hZ-0Fe" id="9L4-KH-j8G"/>
+                    </connections>
+                </popUpButton>
             </subviews>
             <constraints>
                 <constraint firstItem="pj2-sU-RdG" firstAttribute="leading" secondItem="cmR-hZ-0Fe" secondAttribute="leading" constant="150" id="0Xb-xb-X37"/>
@@ -1287,6 +1307,7 @@ corner</string>
                 <outlet property="locationMode" destination="mY1-Rf-ATP" id="cyu-zj-MhQ"/>
                 <outlet property="locationString" destination="Iha-a4-YZ0" id="sPk-Q8-AeX"/>
                 <outlet property="weatherModePopup" destination="bc1-t5-1U8" id="fdu-1l-38L"/>
+                <outlet property="windModePopup" destination="mol-HY-dqc" id="ayQ-ey-ltt"/>
                 <outlet property="withCity" destination="RHF-CV-kHu" id="LEZ-uQ-BY2"/>
                 <outlet property="withHumidity" destination="AwV-pQ-aIV" id="oVr-Gy-RqA"/>
                 <outlet property="withWind" destination="ebH-Dw-L7o" id="YZW-Ts-hNB"/>

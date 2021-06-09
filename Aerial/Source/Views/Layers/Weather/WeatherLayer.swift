@@ -93,7 +93,7 @@ class WeatherLayer: AnimationLayer {
                         switch result {
                         case .success(let openWeather):
                             self.cachedForecast = openWeather
-                            //self.displayWeatherBlock()
+                            // self.displayWeatherBlock()
                             OpenWeather.fetch { result in
                                 switch result {
                                 case .success(let openWeather):
@@ -149,7 +149,7 @@ class WeatherLayer: AnimationLayer {
                                                     + 10)
 
             self.frame.size = CGSize(width: todayCond!.frame.width + forecastCond!.frame.width, height: forecastCond!.frame.height)
-            //self.frame.size = forecastCond!.frame.size
+            // self.frame.size = forecastCond!.frame.size
         }
 
         update(redraw: true)

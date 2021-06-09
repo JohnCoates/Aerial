@@ -28,7 +28,7 @@ final class VideoManager: NSObject {
     private var totalQueued = 0
     var stopAll = false
 
-    //var downloadItems: [VideoDownloadItem]
+    // var downloadItems: [VideoDownloadItem]
     /// Serial OperationQueue for downloads
 
     private let queue: OperationQueue = {
@@ -177,7 +177,7 @@ final class VideoDownloadOperation: AsynchronousOperation {
         }
         self.download = nil
         super.cancel()
-        //finish()
+        // finish()
     }
 }
 

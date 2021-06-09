@@ -156,7 +156,7 @@ class AdvancedViewController: NSViewController {
         let candidateFormat = VideoFormat(rawValue: sender.indexOfSelectedItem)!
 
         if candidateFormat != originalFormat {
-            //swiftlint:disable:next line_length
+            // swiftlint:disable:next line_length
             if Aerial.showAlert(question: "Changing format will delete all videos", text: "Changing format will delete your downloaded videos. They will be re-downloaded based on your preferences. \n\nYou can also manually redownload videos in Custom Sources.", button1: "Change Format and Delete Videos", button2: "Cancel") {
                 PrefsVideos.videoFormat = candidateFormat
                 originalFormat = candidateFormat

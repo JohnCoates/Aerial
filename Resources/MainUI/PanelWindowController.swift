@@ -91,7 +91,7 @@ import Cocoa
         splitVC!.addSplitViewItem(videoViewItem!)
 
         window?.contentViewController = splitVC
-        //PrefsAdvanced.firstTimeSetup = false
+        // PrefsAdvanced.firstTimeSetup = false
         doFirstTimeSetup()
 
         debugLog("/PWC2 wdl")
@@ -197,7 +197,7 @@ import Cocoa
             splitVC.addSplitViewItem(filtersViewItem!)
         case "updates":
             splitVC.addSplitViewItem(updatesViewItem!)
-        default: //case "advanced":
+        default: // case "advanced":
             splitVC.addSplitViewItem(advancedViewItem!)
         }
     }
@@ -233,7 +233,7 @@ import Cocoa
 extension PanelWindowController: NSWindowDelegate {
     func windowDidBecomeKey(_ notification: Notification) {
         if (notification.object as? NSWindow) == self.window {
-            //doFirstTimeSetup()
+            // doFirstTimeSetup()
         }
     }
 }

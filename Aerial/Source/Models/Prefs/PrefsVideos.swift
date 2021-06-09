@@ -168,12 +168,12 @@ struct PrefsVideos {
             dayCheck = 30
         }
 
-        //debugLog("Interval : \(intervalSinceLastVideoCheck())")
+        // debugLog("Interval : \(intervalSinceLastVideoCheck())")
         if Int(intervalSinceLastVideoCheck()) < -dayCheck * 86400 {
-            //debugLog("Checking for new videos")
+            // debugLog("Checking for new videos")
             return true
         } else {
-            //debugLog("No need to check for new videos")
+            // debugLog("No need to check for new videos")
             return false
         }
     }

@@ -23,6 +23,10 @@ class SeededGenerator: RandomNumberGenerator {
         generator = GKMersenneTwisterRandomSource(seed: seed)
     }
 
+    func next() -> UInt64 {
+        return UInt64(abs(generator.nextInt()))
+    }
+
     func next<T>(upperBound: T) -> T where T: FixedWidthInteger, T: UnsignedInteger {
         return T(abs(generator.nextInt(upperBound: Int(upperBound))))
     }

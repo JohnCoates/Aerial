@@ -244,11 +244,11 @@ struct SourceInfo {
         "EE533FBD-90AE-419A-AD13-D7A60E2015D6": "sunrise", // San Francisco - Marin Headlands in Fog
         "b4-3": "sunrise", // San Francisco - Presidio to Golden Gate
 
-        //"BAF76353-3475-4855-B7E1-CE96CC9BC3A7": "night",    // Dubai
-        //"30313BC1-BF20-45EB-A7B1-5A6FFDBD2488": "night",    // Hong Kong
-        //"A284F0BF-E690-4C13-92E2-4672D93E8DE5": "night",    // Los Angeles (old ?)
+        // "BAF76353-3475-4855-B7E1-CE96CC9BC3A7": "night",    // Dubai
+        // "30313BC1-BF20-45EB-A7B1-5A6FFDBD2488": "night",    // Hong Kong
+        // "A284F0BF-E690-4C13-92E2-4672D93E8DE5": "night",    // Los Angeles (old ?)
 
-        //"44166C39-8566-4ECA-BD16-43159429B52F": "night",    // Seventh Avenue
+        // "44166C39-8566-4ECA-BD16-43159429B52F": "night",    // Seventh Avenue
     ]
 
     // Extra POI
@@ -277,7 +277,7 @@ struct SourceInfo {
             "b8-2": "A008_C007_",                                                // San Francisco day 1
             // "b10-3": ,                                               // San Francisco day 2
             "b9-3": "A006_C003_",                                                // San Francisco day 3
-            //"b8-3":"",     San Francisco day 4 (no extra poi ?)
+            // "b8-3":"",     San Francisco day 4 (no extra poi ?)
             "b3-3": "A012_C014_",                                                // San Francisco day 5
                                                                                 //   maybe A013_C004 ?
             "b4-3": "A013_C005_",                                                // San Francisco day 6

@@ -47,7 +47,7 @@ class FirstSetupWindowController: NSWindowController, NSWindowDelegate {
         let timeVC = TimeSetupViewController(nibName: .init("TimeSetupViewController"), bundle: bundle)
         let recapVC = RecapViewController(nibName: .init("RecapViewController"), bundle: bundle)
 
-        //let nextVC = NextViewController(nibName: .init("NextViewController"), bundle: bundle)
+        // let nextVC = NextViewController(nibName: .init("NextViewController"), bundle: bundle)
         nextVC.windowController = self
 
         welcomeViewItem = NSSplitViewItem(viewController: welcomeVC)

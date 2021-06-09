@@ -41,14 +41,14 @@ class DescriptionCellView: NSTableCellView {
         imageScene6.image = Aerial.getMiniSymbol("helm")
         imageFilm.image = Aerial.getMiniSymbol("film")
 
-        //imageScene1.
-        //checkboxButton.target = self
-        //checkboxButton.action = #selector(self.didChangeState(_:))
+        // imageScene1.
+        // checkboxButton.target = self
+        // checkboxButton.action = #selector(self.didChangeState(_:))
     }
 
     /// Notify the delegate that the checkbox's state has changed
     @objc private func didChangeState(_ sender: NSObject) {
-        //delegate?.checkboxCellView(self, didChangeState: checkboxButton.state)
+        // delegate?.checkboxCellView(self, didChangeState: checkboxButton.state)
     }
 
     @IBAction func licenseButtonClick(_ sender: NSButton) {

@@ -122,7 +122,7 @@ class ConditionSymbolLayer: CALayer {
         super.init()
 
         // In case icons are updated, it's important to test them !
-        //test()
+        // test()
 
         let isNight = isNight(dt: dt, sunrise: sunrise, sunset: sunset)
         var img: NSImage?
@@ -190,7 +190,7 @@ class ConditionSymbolLayer: CALayer {
 
                 // return image
                 let config = NSImage.SymbolConfiguration(pointSize: CGFloat(size), weight: .regular)
-                return image.withSymbolConfiguration(config) //?.tinting(with: .white)
+                return image.withSymbolConfiguration(config) // ?.tinting(with: .white)
             }
         }
 

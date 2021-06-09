@@ -88,8 +88,8 @@ class TimeSetupViewController: NSViewController {
             self.locationLabel.stringValue = "Check your Location Services settings on your mac"
 
         }, success: { (_) in
-            //let lat = String(format: "%.2f", coordinates.latitude)
-            //let lon = String(format: "%.2f", coordinates.longitude)
+            // let lat = String(format: "%.2f", coordinates.latitude)
+            // let lon = String(format: "%.2f", coordinates.longitude)
 
             _ = TimeManagement.sharedInstance.calculateFromCoordinates()
             let (sunrise, sunset) = TimeManagement.sharedInstance.getSunriseSunsetForMode(.official)

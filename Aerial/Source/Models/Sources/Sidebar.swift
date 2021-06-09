@@ -107,7 +107,7 @@ class Sidebar {
     }
 
     // Helper to get the various icons for the sidebar
-    //swiftlint:disable:next cyclomatic_complexity
+    // swiftlint:disable:next cyclomatic_complexity
     static func iconFor(_ path: String, name: String) -> NSImage? {
         if path.starts(with: "videos:location") {
             return Aerial.getAccentedSymbol("mappin.and.ellipse")

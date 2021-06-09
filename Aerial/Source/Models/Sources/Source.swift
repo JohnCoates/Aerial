@@ -171,7 +171,7 @@ struct Source: Codable {
 
             for batch: NSDictionary in batches {
                 let assets = batch["assets"] as! [NSDictionary]
-                //rawCount = assets.count
+                // rawCount = assets.count
 
                 for item in assets {
                     let url = item["url"] as! String
