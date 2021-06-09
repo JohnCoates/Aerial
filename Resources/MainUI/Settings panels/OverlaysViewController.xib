@@ -1170,7 +1170,6 @@ corner</string>
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
-                    <color key="bezelColor" red="1" green="0.2680177406" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <action selector="testLocationButtonClick:" target="cmR-hZ-0Fe" id="4FO-ev-kS6"/>
                     </connections>
@@ -1219,7 +1218,6 @@ corner</string>
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
-                    <color key="bezelColor" red="1" green="0.2680177406" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <action selector="withHumidityChange:" target="cmR-hZ-0Fe" id="1VJ-QS-Brf"/>
                     </connections>
@@ -1261,7 +1259,6 @@ corner</string>
                             </items>
                         </menu>
                     </popUpButtonCell>
-                    <color key="bezelColor" red="1" green="0.2680177406" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <action selector="windModePopupChange:" target="cmR-hZ-0Fe" id="9L4-KH-j8G"/>
                     </connections>

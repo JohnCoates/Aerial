@@ -260,6 +260,19 @@ extension CATextLayer {
         return CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width+10, height: rect.height + 10)
     }
 
+    func calculateRect(string: String, font: NSFont, maxWidth: Double) -> CGRect {
+        let boundingRect = CGSize(width: maxWidth, height: self.frame.size.height)
+
+        // We need an attributed string to take the font into account
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font as Any]
+        let str = NSAttributedString(string: string, attributes: attributes)
+
+        // Calculate bounding box
+        let rect = str.boundingRect(with: boundingRect, options: [.truncatesLastVisibleLine, .usesLineFragmentOrigin])
+
+        return CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width+10, height: rect.height + 10)
+    }
+
     // Get the font and font size
     func makeFont(name: String, size: Double) -> (NSFont, CGFloat) {
         let fontSize = CGFloat(size)    // Mayyybe some isPreview global somewhere

@@ -42,6 +42,7 @@ class ConditionLayer: CALayer {
         // First we make the temperatures block (accurate and feels like)
         let tempBlock = makeTemperatureBlock()
         let feelsBlock = makeFeelsLikeBlock()
+
         var cityNameBlock: CALayer
         if PrefsInfo.weather.showCity {
             cityNameBlock = makeCityNameBlock()
@@ -92,15 +93,16 @@ class ConditionLayer: CALayer {
     }
 
     func makeCityNameBlock() -> CATextLayer {
-        let temp = CAVCTextLayer()
-
+        let temp = CATextLayer()
+        temp.isWrapped = true
+        temp.backgroundColor = .black
         temp.string = condition!.name
-
         (temp.font, temp.fontSize) = temp.makeFont(name: PrefsInfo.weather.fontName, size: PrefsInfo.weather.fontSize/1.5)
-
+        temp.alignmentMode = .center
         // ReRect the temperature
-        let rect = temp.calculateRect(string: temp.string as! String, font: temp.font as! NSFont)
+        let rect = temp.calculateRect(string: temp.string as! String, font: temp.font as! NSFont, maxWidth: 220)
         temp.frame = rect
+
         temp.contentsScale = self.contentsScale
 
         return temp

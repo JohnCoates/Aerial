@@ -18,9 +18,9 @@ class InfoWeatherView: NSView {
     @IBOutlet var iconsPopup: NSPopUpButton!
     @IBOutlet var locationLabel: NSTextField!
     @IBOutlet var weatherModePopup: NSPopUpButton!
-    
+
     @IBOutlet var windModePopup: NSPopUpButton!
-    
+
     // Init(ish)
     func setStates() {
         locationMode.selectItem(at: PrefsInfo.weather.locationMode.rawValue)
@@ -28,7 +28,11 @@ class InfoWeatherView: NSView {
         iconsPopup.selectItem(at: PrefsInfo.weather.icons.rawValue)
         weatherModePopup.selectItem(at: PrefsInfo.weather.mode.rawValue)
         windModePopup.selectItem(at: PrefsInfo.weatherWindMode.rawValue)
-        
+
+        if PrefsInfo.weather.degree == .fahrenheit {
+            windModePopup.isHidden = true
+        }
+
         withCity.state = PrefsInfo.weather.showCity ? .on : .off
         withWind.state = PrefsInfo.weather.showWind ? .on : .off
         withHumidity.state = PrefsInfo.weather.showHumidity ? .on : .off
@@ -47,7 +51,7 @@ class InfoWeatherView: NSView {
     @IBAction func windModePopupChange(_ sender: NSPopUpButton) {
         PrefsInfo.weatherWindMode = InfoWeatherWind(rawValue: sender.indexOfSelectedItem)!
     }
-    
+
     @IBAction func weatherModePopupChange(_ sender: NSPopUpButton) {
         PrefsInfo.weather.mode = InfoWeatherMode(rawValue: sender.indexOfSelectedItem)!
     }
@@ -88,6 +92,12 @@ class InfoWeatherView: NSView {
 
     @IBAction func degreePopupChange(_ sender: NSPopUpButton) {
         PrefsInfo.weather.degree = InfoDegree(rawValue: sender.indexOfSelectedItem)!
+
+        if PrefsInfo.weather.degree == .fahrenheit {
+            windModePopup.isHidden = true
+        } else {
+            windModePopup.isHidden = false
+        }
     }
 
     @IBAction func locationStringChange(_ sender: NSTextField) {
