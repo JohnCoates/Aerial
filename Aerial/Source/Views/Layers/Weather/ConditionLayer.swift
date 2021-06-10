@@ -95,7 +95,6 @@ class ConditionLayer: CALayer {
     func makeCityNameBlock() -> CATextLayer {
         let temp = CATextLayer()
         temp.isWrapped = true
-        temp.backgroundColor = .black
         temp.string = condition!.name
         (temp.font, temp.fontSize) = temp.makeFont(name: PrefsInfo.weather.fontName, size: PrefsInfo.weather.fontSize/1.5)
         temp.alignmentMode = .center
