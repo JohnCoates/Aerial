@@ -15,7 +15,7 @@ class InfoViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        versionLabel.stringValue = Aerial.getVersionString()
+        versionLabel.stringValue = Aerial.version
     }
 
     @IBAction func donateButton(_ sender: Any) {

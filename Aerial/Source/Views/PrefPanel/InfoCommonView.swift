@@ -70,7 +70,9 @@ class InfoCommonView: NSView {
         case .timer:
             controller.infoBox.title = "Timer"
             posRandom.isHidden = true
-
+        case .music:
+            controller.infoBox.title = "Music"
+            posRandom.isHidden = true
         }
     }
 
@@ -192,6 +194,8 @@ class InfoCommonView: NSView {
             PrefsInfo.countdown.fontSize = 100
         case .timer:
             PrefsInfo.timer.fontSize = 100
+        case .music:
+            PrefsInfo.music.fontSize = 20
         }
 
         fontLabel.stringValue = PrefsInfo.ofType(forType).fontName + ", \(PrefsInfo.ofType(forType).fontSize) pt"

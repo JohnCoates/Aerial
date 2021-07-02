@@ -69,14 +69,18 @@ class ClockLayer: AnimationTextLayer {
         // Handle the manual override
         if PrefsInfo.clock.clockFormat == .t12hours {
             locale = Locale(identifier: "en_US")
-        } else {
+        } else if PrefsInfo.clock.clockFormat != .custom {
             locale = Locale(identifier: "fr_FR")
         }
 
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: config!.showSeconds
-            ? "j:mm:ss"
-            : "j:mm", options: 0, locale: locale)
+        if config!.clockFormat == .custom {
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: PrefsInfo.customTimeFormat, options: 0, locale: locale)
+        } else {
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: config!.showSeconds
+                ? "j:mm:ss"
+                : "j:mm", options: 0, locale: locale)
+        }
 
         if config!.hideAmPm {
             dateFormatter.amSymbol = ""

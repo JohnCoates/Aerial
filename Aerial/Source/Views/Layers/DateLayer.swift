@@ -74,13 +74,16 @@ class DateLayer: AnimationTextLayer {
             } else {
                 template = "EEEE, MMMM dd"
             }
-        } else {
+        } else if config!.format == .compact {
             if config!.withYear {
                 template = "MM/dd/yy"
             } else {
                 template = "MM/dd"
             }
+        } else {
+            template = PrefsInfo.customDateFormat
         }
+
         dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: template, options: 0, locale: locale)
         dateFormatter.locale = locale
         return dateFormatter.string(from: Date()).capitalizeFirstLetter()

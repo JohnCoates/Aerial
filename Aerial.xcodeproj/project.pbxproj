@@ -168,6 +168,9 @@
 		0313F9ED2294468600B074BB /* SeededGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313F9EB2294468600B074BB /* SeededGenerator.swift */; };
 		0313F9EF22955F3B00B074BB /* CustomVideoFolders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313F9EE22955F3B00B074BB /* CustomVideoFolders.swift */; };
 		0313F9F022955F3B00B074BB /* CustomVideoFolders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313F9EE22955F3B00B074BB /* CustomVideoFolders.swift */; };
+		0317C19C268B65D10082A40C /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0317C19B268B65D10082A40C /* Music.swift */; };
+		0317C19D268B65D10082A40C /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0317C19B268B65D10082A40C /* Music.swift */; };
+		0317C19E268B65D10082A40C /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0317C19B268B65D10082A40C /* Music.swift */; };
 		031945F324CCC48C00F37B35 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031945F124CCC48C00F37B35 /* CreditsViewController.swift */; };
 		031945F424CCC48C00F37B35 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031945F124CCC48C00F37B35 /* CreditsViewController.swift */; };
 		031945F524CCC48C00F37B35 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031945F124CCC48C00F37B35 /* CreditsViewController.swift */; };
@@ -183,6 +186,12 @@
 		0319461024D1A09F00F37B35 /* icon-320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0319460824D1A09F00F37B35 /* icon-320@2x.png */; };
 		0319461124D1A09F00F37B35 /* icon-320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0319460824D1A09F00F37B35 /* icon-320@2x.png */; };
 		0319461224D1A09F00F37B35 /* icon-320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0319460824D1A09F00F37B35 /* icon-320@2x.png */; };
+		031C5CB8268CA4E700CE35B4 /* ArtworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C5CB7268CA4E700CE35B4 /* ArtworkLayer.swift */; };
+		031C5CB9268CA4E700CE35B4 /* ArtworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C5CB7268CA4E700CE35B4 /* ArtworkLayer.swift */; };
+		031C5CBA268CA4E700CE35B4 /* ArtworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C5CB7268CA4E700CE35B4 /* ArtworkLayer.swift */; };
+		031C5CBD268CBF0400CE35B4 /* AppleMusicSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C5CBC268CBF0400CE35B4 /* AppleMusicSong.swift */; };
+		031C5CBE268CBF0400CE35B4 /* AppleMusicSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C5CBC268CBF0400CE35B4 /* AppleMusicSong.swift */; };
+		031C5CBF268CBF0400CE35B4 /* AppleMusicSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C5CBC268CBF0400CE35B4 /* AppleMusicSong.swift */; };
 		031FB78B248A87330054BAFD /* PrefsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FB78A248A87330054BAFD /* PrefsCache.swift */; };
 		031FB7A2248A873C0054BAFD /* PrefsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FB78A248A87330054BAFD /* PrefsCache.swift */; };
 		0321A53324D44E80004F1975 /* ActionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321A53224D44E80004F1975 /* ActionCellView.swift */; };
@@ -711,6 +720,15 @@
 		03DB968625657AE600BFCF20 /* LogoIcon-128px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03DB968325657AE600BFCF20 /* LogoIcon-128px@2x.png */; };
 		03DC004E248BC5A4005DB0F4 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC004D248BC5A4005DB0F4 /* Cache.swift */; };
 		03DC0065248BC60D005DB0F4 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC004D248BC5A4005DB0F4 /* Cache.swift */; };
+		03DDFCA5268F73080001A13E /* SpotifySong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DDFCA4268F73070001A13E /* SpotifySong.swift */; };
+		03DDFCA6268F73080001A13E /* SpotifySong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DDFCA4268F73070001A13E /* SpotifySong.swift */; };
+		03DDFCA7268F73080001A13E /* SpotifySong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DDFCA4268F73070001A13E /* SpotifySong.swift */; };
+		03E168162673A23900D7442D /* InfoMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E168152673A23900D7442D /* InfoMusicView.swift */; };
+		03E168172673A23900D7442D /* InfoMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E168152673A23900D7442D /* InfoMusicView.swift */; };
+		03E168182673A23900D7442D /* InfoMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E168152673A23900D7442D /* InfoMusicView.swift */; };
+		03E1681A2673A63F00D7442D /* MusicLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E168192673A63F00D7442D /* MusicLayer.swift */; };
+		03E1681B2673A63F00D7442D /* MusicLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E168192673A63F00D7442D /* MusicLayer.swift */; };
+		03E1681C2673A63F00D7442D /* MusicLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E168192673A63F00D7442D /* MusicLayer.swift */; };
 		03E2237124BE048900CD8ED4 /* VideoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */; };
 		03E2237224BE048900CD8ED4 /* VideoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */; };
 		03E2237324BE048900CD8ED4 /* VideoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */; };
@@ -910,11 +928,14 @@
 		0313F9E722942B4500B074BB /* CustomVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVideoController.swift; sourceTree = "<group>"; };
 		0313F9EB2294468600B074BB /* SeededGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeededGenerator.swift; sourceTree = "<group>"; };
 		0313F9EE22955F3B00B074BB /* CustomVideoFolders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVideoFolders.swift; sourceTree = "<group>"; };
+		0317C19B268B65D10082A40C /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		031945F124CCC48C00F37B35 /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		031945F224CCC48C00F37B35 /* CreditsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsViewController.xib; sourceTree = "<group>"; };
 		031945F924CCC52600F37B35 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		031945FA24CCC52600F37B35 /* HelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
 		0319460824D1A09F00F37B35 /* icon-320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-320@2x.png"; sourceTree = "<group>"; };
+		031C5CB7268CA4E700CE35B4 /* ArtworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkLayer.swift; sourceTree = "<group>"; };
+		031C5CBC268CBF0400CE35B4 /* AppleMusicSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicSong.swift; sourceTree = "<group>"; };
 		031FB78A248A87330054BAFD /* PrefsCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsCache.swift; sourceTree = "<group>"; };
 		0321A53224D44E80004F1975 /* ActionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCellView.swift; sourceTree = "<group>"; };
 		0321A53D24D4515B004F1975 /* folder.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = folder.pdf; sourceTree = "<group>"; };
@@ -1091,6 +1112,9 @@
 		03DB966D256569F800BFCF20 /* icon-512@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-512@2x.png"; sourceTree = "<group>"; };
 		03DB968325657AE600BFCF20 /* LogoIcon-128px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogoIcon-128px@2x.png"; sourceTree = "<group>"; };
 		03DC004D248BC5A4005DB0F4 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		03DDFCA4268F73070001A13E /* SpotifySong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifySong.swift; sourceTree = "<group>"; };
+		03E168152673A23900D7442D /* InfoMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMusicView.swift; sourceTree = "<group>"; };
+		03E168192673A63F00D7442D /* MusicLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLayer.swift; sourceTree = "<group>"; };
 		03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoHeaderView.swift; sourceTree = "<group>"; };
 		03E3C1D7256AAAF6000A2A5B /* ru.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ru.json; sourceTree = "<group>"; };
 		03E8730B2165013C002B469B /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
@@ -1201,6 +1225,7 @@
 		0306336623A1010800046A59 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				031C5CB6268CA4D100CE35B4 /* Music */,
 				03A42A9E2449F946003B3012 /* Weather */,
 				03BF51BB23A2643C008AD373 /* LayerManager.swift */,
 				0306336A23A142FA00046A59 /* LayerOffsets.swift */,
@@ -1230,6 +1255,25 @@
 				031945F924CCC52600F37B35 /* HelpViewController.swift */,
 			);
 			path = "Infos panels";
+			sourceTree = "<group>";
+		};
+		031C5CB6268CA4D100CE35B4 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				03E168192673A63F00D7442D /* MusicLayer.swift */,
+				031C5CB7268CA4E700CE35B4 /* ArtworkLayer.swift */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		031C5CBB268CBEDC00CE35B4 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				0317C19B268B65D10082A40C /* Music.swift */,
+				031C5CBC268CBF0400CE35B4 /* AppleMusicSong.swift */,
+				03DDFCA4268F73070001A13E /* SpotifySong.swift */,
+			);
+			path = Music;
 			sourceTree = "<group>";
 		};
 		033192DF217B77E90073B580 /* Community */ = {
@@ -1445,6 +1489,7 @@
 				030DDA8F2423C3BE0072D5C9 /* InfoTimerView.swift */,
 				03FA49B32428EE3300863AF6 /* InfoDateView.swift */,
 				0385FC5C242B9F6E007E6513 /* InfoWeatherView.swift */,
+				03E168152673A23900D7442D /* InfoMusicView.swift */,
 			);
 			path = PrefPanel;
 			sourceTree = "<group>";
@@ -1650,6 +1695,7 @@
 				03E8730D216501B3002B469B /* Downloads */,
 				FAC36F411BE1756D007F2A20 /* Cache */,
 				FAC36F621BE17701007F2A20 /* Extensions */,
+				031C5CBB268CBEDC00CE35B4 /* Music */,
 				0338119424C1D15B002E23E0 /* Aerial.swift */,
 				FAC36F401BE1756D007F2A20 /* AerialVideo.swift */,
 				0374C9FD247AC5BC002F29D3 /* Locations.swift */,
@@ -2409,6 +2455,7 @@
 				0396D51924B8B7ED00CC021B /* DarkMode.swift in Sources */,
 				03047A5524D2DD8E000EFE62 /* NSMenuItem+icons.swift in Sources */,
 				0300109824D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift in Sources */,
+				031C5CBE268CBF0400CE35B4 /* AppleMusicSong.swift in Sources */,
 				0396D51A24B8B7ED00CC021B /* CustomVideoFolders.swift in Sources */,
 				036A7E9C26370C260019186B /* Forecast.swift in Sources */,
 				0396D51B24B8B7ED00CC021B /* InfoTimerView.swift in Sources */,
@@ -2434,6 +2481,7 @@
 				0396D52C24B8B7ED00CC021B /* InfoDateView.swift in Sources */,
 				0345EDE924C3239400C73038 /* DisplaysViewController.swift in Sources */,
 				0396D52D24B8B7ED00CC021B /* ManifestLoader.swift in Sources */,
+				03E168172673A23900D7442D /* InfoMusicView.swift in Sources */,
 				037772E224E43AF300D81EEA /* TimeSetupViewController.swift in Sources */,
 				0396D52E24B8B7ED00CC021B /* TimerLayer.swift in Sources */,
 				0396D52F24B8B7ED00CC021B /* Source.swift in Sources */,
@@ -2471,6 +2519,7 @@
 				0396D54924B8B7ED00CC021B /* TimeManagement.swift in Sources */,
 				0396D54A24B8B7ED00CC021B /* DownloadIndicatorLayer.swift in Sources */,
 				0396D54B24B8B7ED00CC021B /* CountdownLayer.swift in Sources */,
+				031C5CB9268CA4E700CE35B4 /* ArtworkLayer.swift in Sources */,
 				0396D54C24B8B7ED00CC021B /* SourceList.swift in Sources */,
 				03B8742324E41CF8008E3D1B /* CacheSetupViewController.swift in Sources */,
 				0396D54D24B8B7ED00CC021B /* DescriptionCellView.swift in Sources */,
@@ -2482,6 +2531,7 @@
 				0396D55424B8B7ED00CC021B /* InfoTableSource.swift in Sources */,
 				0396D55524B8B7ED00CC021B /* Solar.swift in Sources */,
 				03A6D15425F297CE00960135 /* WindDirectionLayer.swift in Sources */,
+				03E1681B2673A63F00D7442D /* MusicLayer.swift in Sources */,
 				0396D55624B8B7ED00CC021B /* Brightness.swift in Sources */,
 				0300B84A24D1FD24006132E5 /* FirstSetupWindowController.swift in Sources */,
 				0396D55724B8B7ED00CC021B /* SourceInfo.swift in Sources */,
@@ -2499,12 +2549,14 @@
 				0396D56024B8B7ED00CC021B /* DownloadManager.swift in Sources */,
 				033811B124C1E243002E23E0 /* InfoViewController.swift in Sources */,
 				03AA32632631A8F2002198C3 /* GeoCoding.swift in Sources */,
+				03DDFCA6268F73080001A13E /* SpotifySong.swift in Sources */,
 				031945F424CCC48C00F37B35 /* CreditsViewController.swift in Sources */,
 				0396D56224B8B7ED00CC021B /* InfoCountdownView.swift in Sources */,
 				0396D56324B8B7ED00CC021B /* ConditionSymbolLayer.swift in Sources */,
 				03A6D14725F109B900960135 /* OpenWeather.swift in Sources */,
 				0396D56424B8B7ED00CC021B /* CheckboxCellView.swift in Sources */,
 				032851F8260A4C2C00684A81 /* OneCall.swift in Sources */,
+				0317C19D268B65D10082A40C /* Music.swift in Sources */,
 				03933B8C24C3986800A98D94 /* SourcesViewController.swift in Sources */,
 				034DEE2F24BF1BC700A2D3CD /* PanelWindowController.swift in Sources */,
 				0396D56524B8B7ED00CC021B /* AnimationLayer.swift in Sources */,
@@ -2557,6 +2609,7 @@
 				03E2237324BE048900CD8ED4 /* VideoHeaderView.swift in Sources */,
 				0313329E24BF3FA700C84A05 /* SidebarViewController.swift in Sources */,
 				03510C7121834FC7008F74F2 /* IOBridge.m in Sources */,
+				03E1681C2673A63F00D7442D /* MusicLayer.swift in Sources */,
 				032E09A024C3897E00387230 /* AdvancedViewController.swift in Sources */,
 				F00864B823AAE8E9003210EF /* NightShift.swift in Sources */,
 				03D1E7882284367200D10CF7 /* DisplayView.swift in Sources */,
@@ -2581,6 +2634,7 @@
 				034A6DC524ACC80B00D62129 /* Source.swift in Sources */,
 				0338119724C1D15B002E23E0 /* Aerial.swift in Sources */,
 				FAC36F5C1BE1756D007F2A20 /* AerialView.swift in Sources */,
+				031C5CBA268CA4E700CE35B4 /* ArtworkLayer.swift in Sources */,
 				FAC36F681BE1778C007F2A20 /* ManifestLoader.swift in Sources */,
 				03FA49B52428EE3300863AF6 /* InfoDateView.swift in Sources */,
 				0306336923A1026800046A59 /* LocationLayer.swift in Sources */,
@@ -2613,6 +2667,8 @@
 				034116D423F9BD3100CD7674 /* PrefsUpdates.swift in Sources */,
 				0345EDEA24C3239400C73038 /* DisplaysViewController.swift in Sources */,
 				FAF450221BE2B45D00C1F98A /* VideoLoader.swift in Sources */,
+				0317C19E268B65D10082A40C /* Music.swift in Sources */,
+				03E168182673A23900D7442D /* InfoMusicView.swift in Sources */,
 				036A7E9D26370C260019186B /* Forecast.swift in Sources */,
 				0374C9FF247AC5BC002F29D3 /* Locations.swift in Sources */,
 				036A57DC23F5828E0009DC02 /* CountdownLayer.swift in Sources */,
@@ -2621,6 +2677,7 @@
 				FAC36F5A1BE1756D007F2A20 /* AerialVideo.swift in Sources */,
 				038D2EBD23AB91C300CD91F7 /* InfoLocationView.swift in Sources */,
 				034F29B823A7A9B3004B34D5 /* InfoTableSource.swift in Sources */,
+				03DDFCA7268F73080001A13E /* SpotifySong.swift in Sources */,
 				0313F9ED2294468600B074BB /* SeededGenerator.swift in Sources */,
 				034DEE3024BF1BC700A2D3CD /* PanelWindowController.swift in Sources */,
 				03A4A80F2451D04C00A1F7A3 /* PrefsAdvanced.swift in Sources */,
@@ -2636,6 +2693,7 @@
 				03A42AA4244A0E5F003B3012 /* ConditionLayer.swift in Sources */,
 				03BDBEA424C467EC00BBD5E9 /* BrightnessViewController.swift in Sources */,
 				036A57D623F30F490009DC02 /* DownloadIndicatorLayer.swift in Sources */,
+				031C5CBF268CBF0400CE35B4 /* AppleMusicSong.swift in Sources */,
 				0300109924D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift in Sources */,
 				03A596D623AA752F0097EA66 /* InfoClockView.swift in Sources */,
 				037772E324E43AF300D81EEA /* TimeSetupViewController.swift in Sources */,
@@ -2676,6 +2734,7 @@
 				F00864B423AAE7F0003210EF /* DarkMode.swift in Sources */,
 				03047A5424D2DD8E000EFE62 /* NSMenuItem+icons.swift in Sources */,
 				0300109724D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift in Sources */,
+				031C5CBD268CBF0400CE35B4 /* AppleMusicSong.swift in Sources */,
 				0313F9EF22955F3B00B074BB /* CustomVideoFolders.swift in Sources */,
 				036A7E9B26370C260019186B /* Forecast.swift in Sources */,
 				030DDA902423C3BE0072D5C9 /* InfoTimerView.swift in Sources */,
@@ -2701,6 +2760,7 @@
 				03FA49B42428EE3300863AF6 /* InfoDateView.swift in Sources */,
 				0345EDE824C3239400C73038 /* DisplaysViewController.swift in Sources */,
 				FAC36F671BE1778C007F2A20 /* ManifestLoader.swift in Sources */,
+				03E168162673A23900D7442D /* InfoMusicView.swift in Sources */,
 				037772E124E43AF300D81EEA /* TimeSetupViewController.swift in Sources */,
 				03FA49A12423DA1F00863AF6 /* TimerLayer.swift in Sources */,
 				034A6DC424ACC80200D62129 /* Source.swift in Sources */,
@@ -2738,6 +2798,7 @@
 				03E8731321675FE0002B469B /* TimeManagement.swift in Sources */,
 				036A57D523F30DD00009DC02 /* DownloadIndicatorLayer.swift in Sources */,
 				036A57DB23F5820A0009DC02 /* CountdownLayer.swift in Sources */,
+				031C5CB8268CA4E700CE35B4 /* ArtworkLayer.swift in Sources */,
 				034A6DC224ACC7C800D62129 /* SourceList.swift in Sources */,
 				03B8742224E41CF8008E3D1B /* CacheSetupViewController.swift in Sources */,
 				03C344FF24B7A22300906EA6 /* DescriptionCellView.swift in Sources */,
@@ -2749,6 +2810,7 @@
 				034F29B723A7A93D004B34D5 /* InfoTableSource.swift in Sources */,
 				03958349217F4416008E8F9C /* Solar.swift in Sources */,
 				03A6D15325F297CE00960135 /* WindDirectionLayer.swift in Sources */,
+				03E1681A2673A63F00D7442D /* MusicLayer.swift in Sources */,
 				F008DAFD23AADCFB00739DE1 /* Brightness.swift in Sources */,
 				0300B84924D1FD24006132E5 /* FirstSetupWindowController.swift in Sources */,
 				03C97BC324B6210500739CED /* SourceInfo.swift in Sources */,
@@ -2766,12 +2828,14 @@
 				03E8730C2165013C002B469B /* DownloadManager.swift in Sources */,
 				033811B024C1E243002E23E0 /* InfoViewController.swift in Sources */,
 				03AA32622631A8F2002198C3 /* GeoCoding.swift in Sources */,
+				03DDFCA5268F73080001A13E /* SpotifySong.swift in Sources */,
 				031945F324CCC48C00F37B35 /* CreditsViewController.swift in Sources */,
 				036A57D823F470940009DC02 /* InfoCountdownView.swift in Sources */,
 				033D68812453080C0016F837 /* ConditionSymbolLayer.swift in Sources */,
 				03A6D14625F109B900960135 /* OpenWeather.swift in Sources */,
 				03C344FC24B778EE00906EA6 /* CheckboxCellView.swift in Sources */,
 				032851F7260A4C2C00684A81 /* OneCall.swift in Sources */,
+				0317C19C268B65D10082A40C /* Music.swift in Sources */,
 				03933B8B24C3986800A98D94 /* SourcesViewController.swift in Sources */,
 				034DEE2E24BF1BC700A2D3CD /* PanelWindowController.swift in Sources */,
 				034587322449D8EB00C97D1B /* AnimationLayer.swift in Sources */,
@@ -3062,7 +3126,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.3.4beta1;
+				CURRENT_PROJECT_VERSION = 2.3.4beta3;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3070,7 +3134,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.3.4beta1;
+				MARKETING_VERSION = 2.3.4beta3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3090,7 +3154,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.3.4beta1;
+				CURRENT_PROJECT_VERSION = 2.3.4beta3;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3098,7 +3162,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.3.4beta1;
+				MARKETING_VERSION = 2.3.4beta3;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

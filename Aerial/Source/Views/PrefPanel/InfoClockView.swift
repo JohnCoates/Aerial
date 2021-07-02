@@ -13,11 +13,15 @@ class InfoClockView: NSView {
     @IBOutlet var hideAmPmCheckbox: NSButton!
     @IBOutlet var clockFormat: NSPopUpButton!
 
+    @IBOutlet var customTimeFormatField: NSTextField!
+
     // Init(ish)
     func setStates() {
         secondsCheckbox.state = PrefsInfo.clock.showSeconds ? .on : .off
         hideAmPmCheckbox.state = PrefsInfo.clock.hideAmPm ? .on : .off
         clockFormat.selectItem(at: PrefsInfo.clock.clockFormat.rawValue)
+
+        customTimeFormatField.stringValue = PrefsInfo.customTimeFormat
         updateAmPmCheckbox()
     }
 
@@ -41,11 +45,22 @@ class InfoClockView: NSView {
         switch PrefsInfo.clock.clockFormat {
         case .tdefault:
             hideAmPmCheckbox.isHidden = false  // meh
+            secondsCheckbox.isHidden = false
         case .t12hours:
             hideAmPmCheckbox.isHidden = false
+            secondsCheckbox.isHidden = false
         case .t24hours:
             hideAmPmCheckbox.isHidden = true
+            secondsCheckbox.isHidden = false
+        case .custom:
+            hideAmPmCheckbox.isHidden = true
+            secondsCheckbox.isHidden = true
         }
+
+        customTimeFormatField.isHidden = !(PrefsInfo.clock.clockFormat == .custom)
     }
 
+    @IBAction func customTimeFormatFieldChange(_ sender: NSTextField) {
+        PrefsInfo.customTimeFormat = sender.stringValue
+    }
 }

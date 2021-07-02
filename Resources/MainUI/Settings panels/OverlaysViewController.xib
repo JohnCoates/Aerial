@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19115.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19115.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19115.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19115.3"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,6 +21,7 @@
                 <outlet property="infoMessageTextFileView" destination="dIH-yk-sga" id="s34-LA-6NG"/>
                 <outlet property="infoMessageTextView" destination="eaZ-HA-6Kx" id="f5W-Be-GRk"/>
                 <outlet property="infoMessageView" destination="wFi-1P-F0m" id="TSS-kq-QgP"/>
+                <outlet property="infoMusicView" destination="ixa-6o-Glt" id="Gqv-EY-bU1"/>
                 <outlet property="infoSettingsTableView" destination="d1q-xb-ZLa" id="11p-YY-Bgo"/>
                 <outlet property="infoSettingsView" destination="GtU-uK-2NN" id="Y8M-WL-3Be"/>
                 <outlet property="infoTableView" destination="gvl-yV-dFx" id="bUj-jT-0xJ"/>
@@ -176,7 +177,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="InfoSettingsCellID" id="oWo-vM-jes">
-                                                <rect key="frame" x="11" y="1" width="146" height="29"/>
+                                                <rect key="frame" x="1" y="1" width="146" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5da-Zj-6hn">
@@ -1010,11 +1011,11 @@ corner</string>
             <point key="canvasLocation" x="-840" y="210"/>
         </customView>
         <customView id="uc4-YQ-4ov" customClass="InfoDateView" customModule="Aerial" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="580" height="88"/>
+            <rect key="frame" x="0.0" y="0.0" width="580" height="102"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="12o-Uw-cyT">
-                    <rect key="frame" x="93" y="56" width="51" height="16"/>
+                    <rect key="frame" x="93" y="70" width="51" height="16"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Format:" id="T2G-IG-9XI">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1022,7 +1023,7 @@ corner</string>
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UQm-dH-dhe">
-                    <rect key="frame" x="145" y="43" width="266" height="40"/>
+                    <rect key="frame" x="145" y="57" width="266" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="Textual (Wednesday, December 25)" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="sZW-CJ-giC" id="4is-zP-075">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -1030,6 +1031,9 @@ corner</string>
                             <items>
                                 <menuItem title="Textual (Wednesday, December 25)" state="on" id="sZW-CJ-giC"/>
                                 <menuItem title="Compact (12/25)" id="uDW-mL-pdg"/>
+                                <menuItem title="Custom..." id="sOz-yR-Gco">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
                             </items>
                         </menu>
                     </popUpButtonCell>
@@ -1038,7 +1042,7 @@ corner</string>
                     </connections>
                 </popUpButton>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jQV-Kz-kEQ">
-                    <rect key="frame" x="147" y="8" width="87" height="22"/>
+                    <rect key="frame" x="411" y="67" width="87" height="22"/>
                     <buttonCell key="cell" type="check" title="With year" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="Ta8-2G-fXS">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -1047,21 +1051,35 @@ corner</string>
                         <action selector="withYearCheckboxChange:" target="uc4-YQ-4ov" id="Tgr-yG-ljB"/>
                     </connections>
                 </button>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6np-uU-8jk">
+                    <rect key="frame" x="150" y="20" width="256" height="21"/>
+                    <textFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Unicode format (eg EEEE, MMMM, d)" drawsBackground="YES" id="JRP-5s-tg7">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <action selector="customDateFormatFieldChange:" target="uc4-YQ-4ov" id="D9i-4X-GEO"/>
+                    </connections>
+                </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="jQV-Kz-kEQ" firstAttribute="leading" secondItem="UQm-dH-dhe" secondAttribute="leading" id="2lb-7J-yUn"/>
                 <constraint firstItem="UQm-dH-dhe" firstAttribute="firstBaseline" secondItem="12o-Uw-cyT" secondAttribute="firstBaseline" id="Al0-A3-Lcy"/>
-                <constraint firstItem="jQV-Kz-kEQ" firstAttribute="top" secondItem="UQm-dH-dhe" secondAttribute="bottom" constant="22" id="ISH-GG-A3Q"/>
+                <constraint firstItem="jQV-Kz-kEQ" firstAttribute="leading" secondItem="UQm-dH-dhe" secondAttribute="trailing" constant="8" symbolic="YES" id="Bvh-DJ-r8c"/>
                 <constraint firstItem="UQm-dH-dhe" firstAttribute="top" secondItem="uc4-YQ-4ov" secondAttribute="top" constant="11" id="Kug-T5-bFq"/>
+                <constraint firstItem="6np-uU-8jk" firstAttribute="leading" secondItem="UQm-dH-dhe" secondAttribute="leading" id="L82-a2-bwa"/>
                 <constraint firstItem="UQm-dH-dhe" firstAttribute="leading" secondItem="uc4-YQ-4ov" secondAttribute="leading" constant="150" id="Uwq-vK-IsO"/>
-                <constraint firstAttribute="bottom" secondItem="jQV-Kz-kEQ" secondAttribute="bottom" constant="11" id="afG-zO-BeZ"/>
+                <constraint firstItem="6np-uU-8jk" firstAttribute="top" secondItem="UQm-dH-dhe" secondAttribute="bottom" constant="22" id="ji9-ds-IqW"/>
                 <constraint firstItem="UQm-dH-dhe" firstAttribute="leading" secondItem="12o-Uw-cyT" secondAttribute="trailing" constant="8" symbolic="YES" id="kPb-Td-tqc"/>
+                <constraint firstItem="jQV-Kz-kEQ" firstAttribute="firstBaseline" secondItem="UQm-dH-dhe" secondAttribute="firstBaseline" id="whb-k5-f5e"/>
+                <constraint firstItem="6np-uU-8jk" firstAttribute="trailing" secondItem="UQm-dH-dhe" secondAttribute="trailing" id="x79-j0-KqA"/>
             </constraints>
             <connections>
+                <outlet property="customDateFormatField" destination="6np-uU-8jk" id="2QG-Qj-IOT"/>
                 <outlet property="dateFormatPopup" destination="UQm-dH-dhe" id="Zfp-6O-GBV"/>
                 <outlet property="withYearCheckbox" destination="jQV-Kz-kEQ" id="ae1-XA-gZS"/>
             </connections>
-            <point key="canvasLocation" x="-840" y="735"/>
+            <point key="canvasLocation" x="-840" y="950"/>
         </customView>
         <customView id="cmR-hZ-0Fe" customClass="InfoWeatherView" customModule="Aerial" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="580" height="236"/>
@@ -1363,11 +1381,11 @@ Independant of your choice, you can preview the results using the "Test" button 
             <point key="canvasLocation" x="426" y="-585"/>
         </customView>
         <customView id="OyK-gu-5yP" userLabel="Clock Extra View" customClass="InfoClockView" customModule="Aerial" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="580" height="126"/>
+            <rect key="frame" x="0.0" y="0.0" width="580" height="131"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q9j-r0-6Oe">
-                    <rect key="frame" x="147" y="96" width="112" height="22"/>
+                    <rect key="frame" x="147" y="101" width="112" height="22"/>
                     <buttonCell key="cell" type="check" title="With seconds" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="lJR-jf-K6g">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -1376,18 +1394,8 @@ Independant of your choice, you can preview the results using the "Test" button 
                         <action selector="secondsClick:" target="OyK-gu-5yP" id="CeD-r7-iEA"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hRK-bh-FN7">
-                    <rect key="frame" x="147" y="8" width="104" height="22"/>
-                    <buttonCell key="cell" type="check" title="Hide AM/PM" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="FLS-1J-0NL">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="hideAmPmCheckboxClick:" target="OyK-gu-5yP" id="euV-MY-4pe"/>
-                    </connections>
-                </button>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sMh-8c-gCl">
-                    <rect key="frame" x="145" y="43" width="104" height="40"/>
+                    <rect key="frame" x="145" y="48" width="109" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="Default" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="uaE-4p-KWC" id="gOW-Cb-Vbq">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -1396,6 +1404,9 @@ Independant of your choice, you can preview the results using the "Test" button 
                                 <menuItem title="Default" state="on" id="uaE-4p-KWC"/>
                                 <menuItem title="24 hours" id="R5b-Lg-1SE"/>
                                 <menuItem title="12 hours" id="ADR-DQ-Ujh"/>
+                                <menuItem title="Custom..." id="Xgh-Od-wWE">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
                             </items>
                         </menu>
                     </popUpButtonCell>
@@ -1404,31 +1415,57 @@ Independant of your choice, you can preview the results using the "Test" button 
                     </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wrp-j1-frU">
-                    <rect key="frame" x="93" y="56" width="51" height="16"/>
+                    <rect key="frame" x="93" y="61" width="51" height="16"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Format:" id="HfW-zW-MAZ">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2fJ-Nq-rVX">
+                    <rect key="frame" x="150" y="11" width="250" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="fnW-Hi-o1g"/>
+                    </constraints>
+                    <textFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Unicode format (eg h : mm)" drawsBackground="YES" id="FGl-h1-aNM">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <action selector="customTimeFormatFieldChange:" target="OyK-gu-5yP" id="Efu-xx-rjm"/>
+                    </connections>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hRK-bh-FN7">
+                    <rect key="frame" x="254" y="58" width="104" height="22"/>
+                    <buttonCell key="cell" type="check" title="Hide AM/PM" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="FLS-1J-0NL">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="hideAmPmCheckboxClick:" target="OyK-gu-5yP" id="euV-MY-4pe"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
+                <constraint firstItem="2fJ-Nq-rVX" firstAttribute="leading" secondItem="sMh-8c-gCl" secondAttribute="leading" id="2IA-mX-fkJ"/>
+                <constraint firstItem="hRK-bh-FN7" firstAttribute="firstBaseline" secondItem="sMh-8c-gCl" secondAttribute="firstBaseline" id="3Br-zA-NVe"/>
                 <constraint firstItem="sMh-8c-gCl" firstAttribute="top" secondItem="q9j-r0-6Oe" secondAttribute="bottom" constant="22" id="49g-bt-wBI"/>
-                <constraint firstItem="sMh-8c-gCl" firstAttribute="leading" secondItem="hRK-bh-FN7" secondAttribute="leading" id="G1o-nS-Qqg"/>
                 <constraint firstItem="q9j-r0-6Oe" firstAttribute="top" secondItem="OyK-gu-5yP" secondAttribute="top" constant="11" id="HF8-kJ-TKF"/>
-                <constraint firstAttribute="bottom" secondItem="hRK-bh-FN7" secondAttribute="bottom" constant="11" id="T6x-M3-VKc"/>
+                <constraint firstItem="hRK-bh-FN7" firstAttribute="leading" secondItem="sMh-8c-gCl" secondAttribute="trailing" constant="8" symbolic="YES" id="OSw-t3-M5p"/>
                 <constraint firstItem="sMh-8c-gCl" firstAttribute="leading" secondItem="wrp-j1-frU" secondAttribute="trailing" constant="8" symbolic="YES" id="UBK-LH-SSY"/>
+                <constraint firstItem="2fJ-Nq-rVX" firstAttribute="top" secondItem="sMh-8c-gCl" secondAttribute="bottom" constant="22" id="b9j-Fb-OAx"/>
                 <constraint firstItem="sMh-8c-gCl" firstAttribute="firstBaseline" secondItem="wrp-j1-frU" secondAttribute="firstBaseline" id="kEz-lm-caw"/>
                 <constraint firstItem="sMh-8c-gCl" firstAttribute="leading" secondItem="OyK-gu-5yP" secondAttribute="leading" constant="150" id="lka-S1-NLP"/>
-                <constraint firstItem="hRK-bh-FN7" firstAttribute="top" secondItem="sMh-8c-gCl" secondAttribute="bottom" constant="22" id="o8F-Al-Ysy"/>
                 <constraint firstItem="q9j-r0-6Oe" firstAttribute="leading" secondItem="OyK-gu-5yP" secondAttribute="leading" constant="150" id="zdF-CI-wo7"/>
             </constraints>
             <connections>
                 <outlet property="clockFormat" destination="sMh-8c-gCl" id="m5j-cy-Agx"/>
+                <outlet property="customTimeFormatField" destination="2fJ-Nq-rVX" id="F4L-wq-MqK"/>
                 <outlet property="hideAmPmCheckbox" destination="hRK-bh-FN7" id="35F-a5-e7j"/>
                 <outlet property="secondsCheckbox" destination="q9j-r0-6Oe" id="wqu-S1-GTH"/>
             </connections>
-            <point key="canvasLocation" x="-840" y="544.5"/>
+            <point key="canvasLocation" x="-840" y="546.5"/>
         </customView>
         <customView id="OhT-fX-ti2" userLabel="Countdown Extra View" customClass="InfoCountdownView" customModule="Aerial" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="580" height="131"/>
@@ -1730,6 +1767,69 @@ Independant of your choice, you can preview the results using the "Test" button 
                 <outlet property="contentViewController" destination="Gwi-Sj-fW9" id="9Oa-ay-Gx3"/>
             </connections>
         </popover>
+        <customView id="ixa-6o-Glt" customClass="InfoMusicView" customModule="Aerial" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="580" height="175"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rU3-h8-Voz">
+                    <rect key="frame" x="145" y="130" width="125" height="40"/>
+                    <popUpButtonCell key="cell" type="push" title="Apple Music" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Hom-56-EBd" id="dws-A6-Pn2">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="N9c-pv-iKb">
+                            <items>
+                                <menuItem title="Apple Music" state="on" id="Hom-56-EBd"/>
+                                <menuItem title="Spotify" enabled="NO" id="9cm-Hc-Wig"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="providerPopupChange:" target="ixa-6o-Glt" id="Kcg-TP-9S9"/>
+                    </connections>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="git-rZ-CbT">
+                    <rect key="frame" x="85" y="143" width="59" height="16"/>
+                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Provider:" id="v9T-mZ-tRd">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D8M-FA-5iy">
+                    <rect key="frame" x="145" y="92" width="226" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Jfd-Nk-4Ij">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="eFy-5o-7Ea"/>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="storefrontPopupChange:" target="ixa-6o-Glt" id="6K4-45-1hQ"/>
+                    </connections>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y3Y-AX-5pr">
+                    <rect key="frame" x="73" y="104" width="70" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Storefront:" id="B97-yw-XcE">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="rU3-h8-Voz" firstAttribute="leading" secondItem="ixa-6o-Glt" secondAttribute="leading" constant="150" id="46d-Xw-hgQ"/>
+                <constraint firstItem="rU3-h8-Voz" firstAttribute="top" secondItem="ixa-6o-Glt" secondAttribute="top" constant="11" id="H4o-KK-dgO"/>
+                <constraint firstItem="rU3-h8-Voz" firstAttribute="firstBaseline" secondItem="git-rZ-CbT" secondAttribute="firstBaseline" id="Je5-X8-g3A"/>
+                <constraint firstItem="rU3-h8-Voz" firstAttribute="leading" secondItem="git-rZ-CbT" secondAttribute="trailing" constant="8" symbolic="YES" id="Vvc-xe-mg0"/>
+            </constraints>
+            <connections>
+                <outlet property="providerPopup" destination="rU3-h8-Voz" id="KUh-pY-53Y"/>
+                <outlet property="storefrontLabel" destination="y3Y-AX-5pr" id="3Gj-eT-CPz"/>
+                <outlet property="storefrontPopup" destination="D8M-FA-5iy" id="lc7-Xx-Kb0"/>
+            </connections>
+            <point key="canvasLocation" x="-840" y="753.5"/>
+        </customView>
     </objects>
     <resources>
         <image name="NSFontPanel" width="32" height="32"/>

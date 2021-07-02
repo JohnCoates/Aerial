@@ -64,7 +64,6 @@ class FirstSetupWindowController: NSWindowController, NSWindowDelegate {
     }
 
     func windowWillClose(_ notification: Notification) {
-        print("cloooose")
         PrefsAdvanced.firstTimeSetup = true
     }
 

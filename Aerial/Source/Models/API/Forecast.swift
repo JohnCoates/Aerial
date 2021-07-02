@@ -213,7 +213,6 @@ struct Forecast {
             }
             debugLog("=== OF: Starting manual mode")
 
-            print(makeUrl(location: PrefsInfo.weather.locationString))
             fetchData(from: makeUrl(location: PrefsInfo.weather.locationString)) { result in
                 switch result {
                 case .success(let jsonString):
@@ -226,9 +225,8 @@ struct Forecast {
                     } else {
                         completion(.failure(.unknown))
                     }
-                case .failure(let error):
+                case .failure(_):
                     completion(.failure(.unknown))
-                    print(error.localizedDescription)
                 }
             }
         }

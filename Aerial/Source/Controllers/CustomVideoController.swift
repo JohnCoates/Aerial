@@ -389,7 +389,6 @@ extension CustomVideoController: NSOutlineViewDataSource {
 
         // A folder may have childs
         if let source = item as? Source {
-            print("woo : \(VideoList.instance.videos.filter({ $0.source.name == source.name }).count)")
             return VideoList.instance.videos.filter({ $0.source.name == source.name }).count
         }
 

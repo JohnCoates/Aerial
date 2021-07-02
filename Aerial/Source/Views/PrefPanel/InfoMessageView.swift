@@ -45,13 +45,11 @@ class InfoMessageView: NSView, NSTextViewDelegate {
     // Basic text
     func textDidChange(_ notification: Notification) {
         guard let textView = notification.object as? NSTextView else { return }
-        print(textView.string)
         PrefsInfo.message.message = textView.string
     }
 
     // Shell script
     @IBAction func shellScriptChange(_ sender: NSTextField) {
-        print("e")
         PrefsInfo.message.shellScript = sender.stringValue
     }
 

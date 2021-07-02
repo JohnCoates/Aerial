@@ -34,6 +34,7 @@ class OverlaysViewController: NSViewController {
     @IBOutlet var infoDateView: InfoDateView!
     @IBOutlet var infoWeatherView: InfoWeatherView!
 
+    @IBOutlet var infoMusicView: InfoMusicView!
     @IBOutlet var fontButton: NSButton!
     @IBOutlet var trashButton: NSButton!
 
@@ -119,6 +120,10 @@ class OverlaysViewController: NSViewController {
             infoContainerView.addSubview(infoTimerView)
             infoTimerView.frame.origin.y = infoCommonView.frame.height
             infoTimerView.setStates()
+        case .music:
+            infoContainerView.addSubview(infoMusicView)
+            infoMusicView.frame.origin.y = infoCommonView.frame.height
+            infoMusicView.setStates()
         }
     }
 

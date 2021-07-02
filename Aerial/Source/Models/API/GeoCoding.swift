@@ -46,7 +46,6 @@ struct GeoCoding {
             fetchData(from: makeUrl()) { result in
                 switch result {
                 case .success(let jsonString):
-                    print(jsonString)
                     let jsonData = jsonString.data(using: .utf8)!
 
                     if let geoEntity = try? newJSONDecoder().decode(GeoCodingArray.self, from: jsonData) {
@@ -67,9 +66,8 @@ struct GeoCoding {
                     } else {
                         completion(.failure(.unknown))
                     }
-                case .failure(let error):
+                case .failure(_):
                     completion(.failure(.unknown))
-                    print(error.localizedDescription)
                 }
             }
         }

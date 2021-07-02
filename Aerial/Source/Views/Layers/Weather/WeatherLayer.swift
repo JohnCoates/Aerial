@@ -81,7 +81,7 @@ class WeatherLayer: AnimationLayer {
                             self.cachedWeather = openWeather
                             self.displayWeatherBlock()
                         case .failure(let error):
-                            print(error.localizedDescription)
+                            debugLog(error.localizedDescription)
                         }
                     }
                 }
@@ -100,11 +100,11 @@ class WeatherLayer: AnimationLayer {
                                     self.cachedWeather = openWeather
                                     self.displayWeatherBlock()
                                 case .failure(let error):
-                                    print(error.localizedDescription)
+                                    debugLog(error.localizedDescription)
                                 }
                             }
                         case .failure(let error):
-                            print(error.localizedDescription)
+                            debugLog(error.localizedDescription)
                         }
                     }
                 }

@@ -187,7 +187,6 @@ struct OpenWeather {
                 fetchData(from: makeUrl(lat: lat, lon: lon)) { result in
                     switch result {
                     case .success(let jsonString):
-                        print(jsonString)
                         let jsonData = jsonString.data(using: .utf8)!
 
                         if var openWeather = try? newJSONDecoder().decode(OWeather.self, from: jsonData) {
@@ -199,7 +198,6 @@ struct OpenWeather {
                         }
                     case .failure(let error):
                         completion(.failure(.unknown))
-                        print(error.localizedDescription)
                     }
                 }
             })
@@ -210,23 +208,19 @@ struct OpenWeather {
             }
             debugLog("=== OW: Starting manual mode")
 
-            print(makeUrl(location: PrefsInfo.weather.locationString))
             fetchData(from: makeUrl(location: PrefsInfo.weather.locationString)) { result in
                 switch result {
                 case .success(let jsonString):
-                    print(jsonString)
                     let jsonData = jsonString.data(using: .utf8)!
                     do {
                         var openWeather = try newJSONDecoder().decode(OWeather.self, from: jsonData)
                         openWeather.processTemperatures()
                         completion(.success(openWeather))
                     } catch {
-                        print("error : \(error.localizedDescription)")
                         completion(.failure(.cityNotFound))
                     }
-                case .failure(let error):
+                case .failure(_):
                     completion(.failure(.unknown))
-                    print(error.localizedDescription)
                 }
             }
 

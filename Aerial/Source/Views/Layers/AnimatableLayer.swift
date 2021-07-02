@@ -114,7 +114,6 @@ extension AnimatableLayer {
 
         moveTo(point: newPos)
 
-        // print(frame.height)
         let offset = offsets.corner[toCorner] == 0
             ? my + frame.height
             : frame.height

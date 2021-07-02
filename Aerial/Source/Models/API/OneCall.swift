@@ -204,8 +204,6 @@ struct OneCall {
                 let openWeather = try newJSONDecoder().decode(OCOneCall.self, from: jsonData)
                 completion(.success(openWeather))
             } catch {
-                print("decoder failure")
-                // print(error)
                 completion(.failure(.unknown))
             }
 
@@ -234,9 +232,8 @@ struct OneCall {
                         } else {
                             completion(.failure(.unknown))
                         }
-                    case .failure(let error):
+                    case .failure(_):
                         completion(.failure(.unknown))
-                        print(error.localizedDescription)
                     }
                 }
             })
@@ -247,7 +244,6 @@ struct OneCall {
             GeoCoding.fetch { result in
                 switch result {
                 case .success(let geoLocation):
-                    print(geoLocation)
                     fetchData(from: makeUrl(lat: geoLocation.lat, lon: geoLocation.lon)) { result in
                         switch result {
                         case .success(let jsonString):
@@ -260,13 +256,13 @@ struct OneCall {
                             } else {
                                 completion(.failure(.unknown))
                             }
-                        case .failure(let error):
+                        case .failure(_):
                             completion(.failure(.unknown))
-                            print(error.localizedDescription)
                         }
                     }
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    debugLog(error.localizedDescription)
+                    completion(.failure(.unknown))
                 }
             }
         }

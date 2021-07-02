@@ -50,7 +50,7 @@ class ForecastLayer: CALayer {
                         day.anchorPoint = CGPoint(x: 0, y: 0)
                         day.position = CGPoint(x: Int(size * 2) * dayidx, y: 0)
                         self.addSublayer(day)
-                        print(day.frame.height)
+
                         if day.frame.height > height {
                             height = day.frame.height
                         }
@@ -78,7 +78,7 @@ class ForecastLayer: CALayer {
                         day.anchorPoint = CGPoint(x: 0, y: 0)
                         day.position = CGPoint(x: Int(size * 2) * houridx, y: 0)
                         self.addSublayer(day)
-                        print(day.frame.height)
+
                         if day.frame.height > height {
                             height = day.frame.height
                         }
@@ -100,9 +100,6 @@ class ForecastLayer: CALayer {
         var firstDay: String?
         var index = 0
         for day in list {
-            print(index)
-            print(dayStringFromTimeStamp(timeStamp: Double(day.dt!)))
-
             if firstDay == nil {
                 firstDay = dayStringFromTimeStamp(timeStamp: Double(day.dt!))
             } else {

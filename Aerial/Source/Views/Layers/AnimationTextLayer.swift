@@ -112,7 +112,6 @@ class AnimationTextLayer: CATextLayer, AnimatableLayer {
     }
 
     func getOppoMargin(corner: InfoCorner) -> CGFloat {
-        // print("oppo for \(corner) offsets \(offsets.maxWidth[.topCenter]!) \(offsets.maxWidth[.bottomCenter]!)")
         // Handle the special cases of having something in the center
         if offsets.maxWidth[.topCenter]! > 0 && (corner == .topLeft || corner == .topRight) {
             return (baseLayer.visibleRect.size.width + offsets.maxWidth[.topCenter]!) / 2

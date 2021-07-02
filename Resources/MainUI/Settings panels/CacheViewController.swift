@@ -155,10 +155,8 @@ class CacheViewController: NSViewController {
         }
 
         // (8 GB for packs, 32 GB for the cache, still 8 GB of free cache available for more videos)
-        print(cacheString)
 
         limitLabel.stringValue = cacheString
-        print(Cache.size())
     }
 
     @IBAction func showDownloadIndicatorChange(_ sender: NSButton) {

@@ -31,11 +31,11 @@ enum InfoTime: Int, Codable {
 }
 
 enum InfoClockFormat: Int, Codable {
-    case tdefault, t24hours, t12hours
+    case tdefault, t24hours, t12hours, custom
 }
 
 enum InfoDate: Int, Codable {
-    case textual, compact
+    case textual, compact, custom
 }
 
 enum InfoIconText: Int, Codable {
@@ -60,7 +60,7 @@ enum InfoIconsWeather: Int, Codable {
 
 // The various info types available
 enum InfoType: String, Codable {
-    case location, message, clock, date, battery, updates, weather, countdown, timer
+    case location, message, clock, date, battery, updates, weather, countdown, timer, music
 }
 
 enum InfoMessageType: Int, Codable {
@@ -185,6 +185,14 @@ struct PrefsInfo {
         var customMessage: String
     }
 
+    struct Music: CommonInfo, Codable {
+        var isEnabled: Bool
+        var fontName: String
+        var fontSize: Double
+        var corner: InfoCorner
+        var displays: InfoDisplays
+    }
+
     // Our array of Info layers. User can reorder the array, and we may periodically add new Info types
     @Storage(key: "layers", defaultValue: [ .message, .clock, .date, .location, .battery, .updates, .weather, .countdown, .timer])
     static var layers: [InfoType]
@@ -282,6 +290,22 @@ struct PrefsInfo {
         }
     }
 
+    // Music
+    @Storage(key: "LayerMusic", defaultValue: Music(isEnabled: true,
+                                                     fontName: "Helvetica Neue Medium",
+                                                     fontSize: 20,
+                                                     corner: .topRight,
+                                                     displays: .allDisplays))
+    static var music: Music
+
+    // Apple Music storefront to be used
+    @SimpleStorage(key: "appleMusicStoreFront", defaultValue: "United States")
+    static var appleMusicStoreFront: String
+
+    // Apple Music storefront to be used
+    @SimpleStorage(key: "musicProvider", defaultValue: "Apple Music")
+    static var musicProvider: String
+
     // Countdown
     @Storage(key: "LayerCountdown", defaultValue: Countdown(isEnabled: false,
                                                      fontName: "Helvetica Neue Medium",
@@ -308,6 +332,12 @@ struct PrefsInfo {
                                                     customMessage: ""))
 
     static var timer: Timer
+
+    @SimpleStorage(key: "customDateFormat", defaultValue: "")
+    static var customDateFormat: String
+
+    @SimpleStorage(key: "customTimeFormat", defaultValue: "")
+    static var customTimeFormat: String
 
     // MARK: - Advanced text settings
 
@@ -380,6 +410,8 @@ struct PrefsInfo {
             return countdown
         case .timer:
             return timer
+        case .music:
+            return music
         }
     }
 
@@ -404,6 +436,8 @@ struct PrefsInfo {
             countdown.isEnabled = value
         case .timer:
             timer.isEnabled = value
+        case .music:
+            music.isEnabled = value
         }
     }
 
@@ -427,6 +461,8 @@ struct PrefsInfo {
             countdown.fontName = name
         case .timer:
             timer.fontName = name
+        case .music:
+            music.fontName = name
         }
     }
 
@@ -450,6 +486,8 @@ struct PrefsInfo {
             countdown.fontSize = size
         case .timer:
             timer.fontSize = size
+        case .music:
+            music.fontSize = size
         }
     }
 
@@ -473,6 +511,8 @@ struct PrefsInfo {
             countdown.corner = corner
         case .timer:
             timer.corner = corner
+        case .music:
+            music.corner = corner
         }
 
     }
@@ -496,6 +536,8 @@ struct PrefsInfo {
             countdown.displays = mode
         case .timer:
             timer.displays = mode
+        case .music:
+            music.displays = mode
         }
     }
 
@@ -520,6 +562,10 @@ struct PrefsInfo {
 
         if !PrefsInfo.layers.contains(.weather) {
             PrefsInfo.layers.append(.weather)
+        }
+
+        if !PrefsInfo.layers.contains(.music) {
+            PrefsInfo.layers.append(.music)
         }
 
         // Annnd for backward compatibility with 1.7.2 betas, remove the updates that was once here ;)

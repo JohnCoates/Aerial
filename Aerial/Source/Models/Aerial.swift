@@ -17,11 +17,18 @@ class Aerial: NSObject {
     // We also track darkmode here now
     static var darkMode = false
 
-    // And we track if we are running under companion
+    // And we track if we are running under Aerial's Companion app
     static var underCompanion = false
 
+    // Track our version number for logs and stuff
     static var version: String = {
-        return getVersionString()
+        if let version = Bundle(identifier: "com.johncoates.Aerial-Test")?.infoDictionary?["CFBundleShortVersionString"] as? String {
+            return "Version " + version
+        } else if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
+            return "Version " + version
+        }
+
+        return "Version ?"
     }()
 
     static func checkCompanion() {
@@ -43,16 +50,6 @@ class Aerial: NSObject {
         } else {
             darkMode = false
         }
-    }
-
-    static func getVersionString() -> String {
-        if let version = Bundle(identifier: "com.johncoates.Aerial-Test")?.infoDictionary?["CFBundleShortVersionString"] as? String {
-            return "Version " + version
-        } else if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
-            return "Version " + version
-        }
-
-        return "Version ?"
     }
 
     // Language detection
@@ -192,7 +189,7 @@ class Aerial: NSObject {
                 try task.run()
             } catch {
                 // handle errors
-                print("Error: \(error.localizedDescription)")
+                debugLog("Error: \(error.localizedDescription)")
             }
         } else {
             // A non existing command will crash 10.12

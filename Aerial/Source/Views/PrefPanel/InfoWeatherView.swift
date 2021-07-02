@@ -118,7 +118,6 @@ class InfoWeatherView: NSView {
                     if error == .cityNotFound {
                         self.locationLabel.stringValue = "City not found, make sure you don't use state abbreviations"
                     } else {
-                        print(error.localizedDescription)
                         self.locationLabel.stringValue = error.localizedDescription
                     }
                 }
@@ -141,7 +140,6 @@ class InfoWeatherView: NSView {
                     if error == .cityNotFound {
                         self.locationLabel.stringValue = "City not found, make sure you don't use state abbreviations"
                     } else {
-                        print(error.localizedDescription)
                         self.locationLabel.stringValue = error.localizedDescription
                     }
                 }
