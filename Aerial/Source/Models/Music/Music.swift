@@ -233,6 +233,8 @@ class Music {
                 songId = fetchId(id: userInfo["Store URL"] as! String)
             }
 
+            print(userInfo)
+
             // Let everyone who wants to know that we have a new song playing !
             for callback in callbacks {
                 callback(SongInfo(name: name, artist: artist, album: album, id: songId))
@@ -310,40 +312,82 @@ class Music {
             return
         }
 
-        // First we need the URL for the song.
-        // We get it through Apple Music's API which requires a JWT token
-        // The storefront must be correctly configured for most songs to work
-        let searchUrl = URL(string: "https://api.music.apple.com/v1/catalog/"
-                            + (Music.instance.storefronts[PrefsInfo.appleMusicStoreFront] ?? "us")
-                            + "/songs/" + id)!
+        var searchUrl: URL
+        if Int(id) != nil {
+            // So if we have a valid ID (this seems to happen if the song is in user's library,
+            // we can use that to query Apple Music
+            //
+            // A JWT token is required for this
+            //
+            // The storefront must be correctly configured for most songs to work
+            searchUrl = URL(string: "https://api.music.apple.com/v1/catalog/"
+                                + (Music.instance.storefronts[PrefsInfo.appleMusicStoreFront] ?? "us")
+                                + "/songs/" + id)!
+            print(searchUrl)
+        } else {
+            // This likely happens when you play songs outside of your library (Explore tab, etc)
+            //
+            // A JWT token is required for this
+            //
+            // The storefront must be correctly configured for most songs to work
+            searchUrl = URL(string: "https://api.music.apple.com/v1/catalog/"
+                                + (Music.instance.storefronts[PrefsInfo.appleMusicStoreFront] ?? "us")
+                                + "/search?term=" + id + "&types=albums")!
+            print(searchUrl)
+        }
 
         var request = URLRequest(url: searchUrl)
         request.httpMethod = "GET"
         request.addValue("Bearer \(APISecrets.appleMusicToken)", forHTTPHeaderField: "Authorization")
 
         let dataTask = URLSession.shared.dataTask(with: request) { (data, _, _) in
+            if Int(id) != nil {
+                // This is the regular library path... This needs to be split up !
+                // Did we get a result ?
+                if let songData = data {
+                    guard let appleMusicSong = try? newJSONDecoder().decode(AppleMusicSong.self, from: songData) else {
+                        debugLog("Can't decode AppleMusicSong")
+                        completion(nil)
+                        return
+                    }
 
-            // Did we get a result ?
-            if let songData = data {
-                guard let appleMusicSong = try? newJSONDecoder().decode(AppleMusicSong.self, from: songData) else {
-                    debugLog("Can't decode AppleMusicSong")
-                    completion(nil)
+                    guard var artworkUrl = appleMusicSong.data?[0].attributes?.artwork?.url else {
+                        debugLog("No artwork in AppleMusicSong")
+                        print(appleMusicSong)
+                        completion(nil)
+                        return
+                    }
+
+                    // We make a 200x200 url
+                    artworkUrl = artworkUrl
+                        .replacingOccurrences(of: "{w}", with: "200")
+                        .replacingOccurrences(of: "{h}", with: "200")
+                    completion(artworkUrl)
                     return
                 }
+            } else {
+                // This is the out of library path, it reaaally need to be split up
+                if let songData = data {
+                    guard let appleMusicSearch = try? newJSONDecoder().decode(AppleMusicSearch.self, from: songData) else {
+                        debugLog("Can't decode AppleMusicSearch")
+                        completion(nil)
+                        return
+                    }
 
-                guard var artworkUrl = appleMusicSong.data?[0].attributes?.artwork?.url else {
-                    debugLog("No artwork in AppleMusicSong")
-                    print(appleMusicSong)
-                    completion(nil)
+                    guard var artworkUrl = appleMusicSearch.results?.albums?.data?[0].attributes?.artwork?.url else {
+                        debugLog("No artwork in AppleMusicSearch")
+                        print(appleMusicSearch)
+                        completion(nil)
+                        return
+                    }
+
+                    // We make a 200x200 url
+                    artworkUrl = artworkUrl
+                        .replacingOccurrences(of: "{w}", with: "200")
+                        .replacingOccurrences(of: "{h}", with: "200")
+                    completion(artworkUrl)
                     return
                 }
-
-                // We make a 200x200 url
-                artworkUrl = artworkUrl
-                    .replacingOccurrences(of: "{w}", with: "200")
-                    .replacingOccurrences(of: "{h}", with: "200")
-                completion(artworkUrl)
-                return
             }
 
             completion(nil)

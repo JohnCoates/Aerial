@@ -45,6 +45,10 @@ class VideosViewController: NSViewController {
     @IBOutlet var vibrancyLabel: NSTextField!
     @IBOutlet var vibrancySlider: NSSlider!
 
+    @IBOutlet var playbackSpeedLabel: NSTextField!
+
+    @IBOutlet var playbackSpeedSlider: NSSlider!
+
     var path: String?
 
     var currentVibrancy: Double = 0
@@ -109,6 +113,8 @@ class VideosViewController: NSViewController {
         downloadButton.shadow = shadow
         vibrancyLabel.shadow = shadow
         vibrancySlider.shadow = shadow
+        playbackSpeedLabel.shadow = shadow
+        playbackSpeedSlider.shadow = shadow
 
         timeImageView.shadow = imgShadow
         sceneTypeImageView.shadow = imgShadow
@@ -337,6 +343,17 @@ class VideosViewController: NSViewController {
         }
     }
 
+    func updateDurationLabel(_ video: AerialVideo) {
+        let speed = PlaybackSpeed.forVideo(video.id)
+        if speed == 1 {
+            durationLabel.stringValue = "Duration: " + timeString(video.duration)
+        } else if speed > 1 {
+            durationLabel.stringValue = "Duration(sped up): " + timeString(video.duration/Double(speed))
+        } else {
+            durationLabel.stringValue = "Duration(slowed down): " + timeString(video.duration/Double(speed))
+        }
+    }
+
     /// Show video player
     func showVideo(_ video: AerialVideo) {
         heroPlayerView.isHidden = false
@@ -344,7 +361,9 @@ class VideosViewController: NSViewController {
         isCachedImageView.isHidden = false
 
         durationLabel.isHidden = false
-        durationLabel.stringValue = "Duration: " + timeString(video.duration)
+
+        updateDurationLabel(video)
+
         downloadButton.isHidden = true
 
         if let player = heroPlayerView.player {
@@ -353,6 +372,9 @@ class VideosViewController: NSViewController {
 
             let asset = AVAsset(url: URL(fileURLWithPath: path))
             let localitem = AVPlayerItem(asset: asset)
+
+            // Set slider for the playback speed
+            playbackSpeedSlider.doubleValue = Double(PlaybackSpeed.forVideo(video.id))
 
             // Vibrancy filter requires 10.14, and doesn't work on HDR content
             if #available(OSX 10.14, *), !video.isHDR() {
@@ -392,6 +414,9 @@ class VideosViewController: NSViewController {
             // We may not auto play the video
             if PrefsAdvanced.autoPlayPreviews {
                 player.play()
+
+                // Set the playback speed if changed, it defaults to normal speed if not overriden
+                player.rate = PlaybackSpeed.forVideo(video.id)
             }
 
             // Set notification...
@@ -410,6 +435,9 @@ class VideosViewController: NSViewController {
 
         vibrancyLabel.isHidden = true
         vibrancySlider.isHidden = true
+
+        playbackSpeedLabel.isHidden = true
+        playbackSpeedSlider.isHidden = true
 
         durationLabel.isHidden = true
         if PrefsCache.enableManagement {
@@ -468,6 +496,19 @@ class VideosViewController: NSViewController {
     @IBAction func vibrancySliderChange(_ sender: NSSlider) {
         currentVibrancy = vibrancySlider.doubleValue
         PrefsVideos.vibrance[getSelectedVideo()!.id] = vibrancySlider.doubleValue
+    }
+
+    @IBAction func playbackSpeedSliderChange(_ sender: NSSlider) {
+        PlaybackSpeed.update(video: getSelectedVideo()!.id,
+                             value: playbackSpeedSlider.floatValue)
+
+        // Make sure we update the duration
+        updateDurationLabel(getSelectedVideo()!)
+        if PrefsAdvanced.autoPlayPreviews {
+            if heroPlayerView.player?.rate != 0 {
+                heroPlayerView.player?.rate = PlaybackSpeed.forVideo(getSelectedVideo()!.id)
+            }
+        }
     }
 
     // MARK: - Helpers

@@ -115,15 +115,23 @@ class SourcesViewController: NSViewController {
     }
 
     @IBAction func addOnlineClick(_ sender: Any) {
+        debugLog("Add online clicked")
         addOnlineWindow.makeKeyAndOrderFront(self)
     }
 
     @IBAction func addOnlineDownload(_ sender: Any) {
-        if let url = URL(string: addOnlineTextField.stringValue) {
+        debugLog("Add online validated")
+        let trimmedString = addOnlineTextField.stringValue.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        if let url = URL(string: trimmedString) {
+            debugLog("URL was parsed, fetching")
             SourceList.fetchOnlineManifest(url: url)
             addOnlineWindow.close()
             addOnlineTextField.stringValue = ""
             sourceOutlineView.reloadData()
+        } else {
+            debugLog("URL was NOT parsed")
+            Aerial.showErrorAlert(question: "Non valid URL", text: "Please type a valid URL to an Aerial source (see the more videos button), and make sure there are no trailing characters.")
         }
     }
 

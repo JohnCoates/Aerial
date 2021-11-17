@@ -11,7 +11,6 @@ import AVKit
 
 // Vertically centered CATextLayer
 class CAVCTextLayer: CATextLayer {
-
     // REF: http://lists.apple.com/archives/quartz-dev/2008/Aug/msg00016.html
     // CREDIT: David Hoerl - https://github.com/dhoerl
     // USAGE: To fix the vertical alignment issue that currently exists within the CATextLayer class. Change made to the yDiff calculation.
@@ -61,7 +60,10 @@ class ConditionLayer: CALayer {
                                             size: Int(combinedHeight))
 
         // Add the Wind layer
-        let windHeight = addWind(x: (imglayer.frame.width + combinedHeight/10 + tempBlock.frame.width) / 2, y: cityNameBlock.frame.height)
+        var windHeight: CGFloat = 0
+        if PrefsInfo.weather.showWind || PrefsInfo.weather.showHumidity {
+            windHeight = addWindAndHumidity(x: (imglayer.frame.width + combinedHeight/10 + tempBlock.frame.width) / 2, y: cityNameBlock.frame.height)
+        }
 
         imglayer.anchorPoint = CGPoint(x: 0, y: 0)
         imglayer.position = CGPoint(x: 0, y: windHeight + cityNameBlock.frame.height)
@@ -76,11 +78,13 @@ class ConditionLayer: CALayer {
 
         addSublayer(tempBlock)
         tempBlock.anchorPoint = CGPoint(x: 1, y: 1)
-        tempBlock.position = CGPoint(x: frame.size.width, y: tempBlock.frame.height + feelsBlock.frame.height + windHeight + cityNameBlock.frame.height)
+        tempBlock.position = CGPoint(x: frame.size.width,
+                                     y: tempBlock.frame.height + feelsBlock.frame.height + windHeight + cityNameBlock.frame.height)
 
         addSublayer(feelsBlock)
         feelsBlock.anchorPoint = CGPoint(x: 0.5, y: 0)
-        feelsBlock.position = CGPoint(x: imglayer.frame.width + combinedHeight/10 + tempBlock.frame.width/2, y: windHeight + cityNameBlock.frame.height)
+        feelsBlock.position = CGPoint(x: imglayer.frame.width + combinedHeight/10 + tempBlock.frame.width/2,
+                                      y: windHeight + cityNameBlock.frame.height)
 
     }
 
@@ -147,51 +151,155 @@ class ConditionLayer: CALayer {
         return feel
     }
 
-    func addWind(x: CGFloat, y: CGFloat) -> CGFloat {
-        guard let owind = condition?.wind else {
+    // swiftlint:disable:next identifier_name
+    func addWindAndHumidity(x: CGFloat, y: CGFloat) -> CGFloat {
+        // We need to make sure we have the data, and the options are selected
+        var addWind = false, addHumidity = false
+
+        let wind = condition?.wind
+        let humidity = condition?.main?.humidity
+
+        if PrefsInfo.weather.showWind && wind != nil {
+            addWind = true
+        }
+        if PrefsInfo.weather.showHumidity && humidity != nil {
+            addHumidity = true
+        }
+
+        // If we shouldn't display/should and don't have data
+        if !addWind && !addHumidity {
             return 0
         }
 
+        // Ughhhhh, this code is so ugly
+        var windBlock: CALayer?
+        var humidityBlock: CALayer?
+
+        if addWind {
+            windBlock = makeWindBlock(wind: wind!)
+            // windBlock!.anchorPoint = CGPoint(x: 0, y: 0)
+        }
+        if addHumidity {
+            humidityBlock = makeHumidityBlock(humidity: humidity!)
+            // humidityBlock!.anchorPoint = CGPoint(x: 0, y: 0)
+        }
+
+        // Haaaaaaaa I hate this
+        if addWind && addHumidity {
+            let halfTotalWidth = (windBlock!.frame.size.width
+                            + humidityBlock!.frame.size.width)/2
+
+            windBlock!.position = CGPoint(x: x - halfTotalWidth + windBlock!.frame.size.width/2, y: y)
+            humidityBlock!.position = CGPoint(x: x + halfTotalWidth - humidityBlock!.frame.size.width/2, y: y)
+
+            self.addSublayer(windBlock!)
+            self.addSublayer(humidityBlock!)
+
+            return windBlock!.frame.height
+        } else if addWind {
+            windBlock!.position = CGPoint(x: x, y: y)
+
+            self.addSublayer(windBlock!)
+
+            return windBlock!.frame.height
+        } else if addHumidity {
+            humidityBlock!.position = CGPoint(x: x, y: y)
+
+            self.addSublayer(humidityBlock!)
+
+            return humidityBlock!.frame.height
+        }
+
+        // tmp
+        return 0
+    }
+
+    func makeHumidityBlock(humidity: Double) -> CALayer {
+        let humidityBlock = CALayer()
+
         // Make a vertically centered layer for t°
-        let wind = CAVCTextLayer()
+        let textHumidity = CAVCTextLayer()
+        textHumidity.string = " \(Int(humidity))%"
+
+        // Get something large first
+        (textHumidity.font, textHumidity.fontSize) = textHumidity.makeFont(name: PrefsInfo.weather.fontName, size: PrefsInfo.weather.fontSize/2.2)
+
+        textHumidity.contentsScale = self.contentsScale
+
+        // ReRect the temperature
+        let rect2 = textHumidity.calculateRect(string: textHumidity.string as! String, font: textHumidity.font as! NSFont)
+        textHumidity.frame = rect2
+        textHumidity.contentsScale = self.contentsScale
+
+        humidityBlock.addSublayer(textHumidity)
+
+        let imglayer = Aerial.getSymbolLayer("humidity", size: CGFloat(PrefsInfo.weather.fontSize/2.8))
+
+        // We put the temperature at the right of the wind icon
+        textHumidity.anchorPoint = CGPoint(x: 0, y: 0)
+        textHumidity.position = CGPoint(x: imglayer.frame.height, y: 0)
+
+        imglayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        imglayer.position = CGPoint(x: imglayer.frame.height/2,
+                                    y: textHumidity.frame.height/2)
+
+        imglayer.contentsScale = self.contentsScale
+        humidityBlock.frame.size = CGSize(width: textHumidity.frame.width+imglayer.frame.width,
+                                          height: max(textHumidity.frame.height, imglayer.frame.height))
+
+        humidityBlock.anchorPoint = CGPoint(x: 0.5, y: 0)
+        humidityBlock.addSublayer(imglayer)
+        return humidityBlock
+    }
+
+    func makeWindBlock(wind: OWWind) -> CALayer {
+        let windBlock = CALayer()
+
+        // Make a vertically centered layer for t°
+        let textWind = CAVCTextLayer()
         if PrefsInfo.weather.degree == .celsius {
             if PrefsInfo.weatherWindMode == .kph {
-                wind.string = "\(Int(owind.speed * 3.6)) km/h"
+                textWind.string = "\(Int(wind.speed * 3.6)) km/h"
             } else {
-                wind.string = "\(Int(owind.speed)) m/s"
+                textWind.string = "\(Int(wind.speed)) m/s"
             }
         } else {
-            wind.string = "\(Int(owind.speed)) mph"
+            textWind.string = "\(Int(wind.speed)) mph"
         }
 
         // Get something large first
-        (wind.font, wind.fontSize) = wind.makeFont(name: PrefsInfo.weather.fontName, size: PrefsInfo.weather.fontSize/2.2)
+        (textWind.font, textWind.fontSize) = textWind.makeFont(name: PrefsInfo.weather.fontName, size: PrefsInfo.weather.fontSize/2.2)
 
-        wind.contentsScale = self.contentsScale
+        textWind.contentsScale = self.contentsScale
 
         // ReRect the temperature
-        let rect2 = wind.calculateRect(string: wind.string as! String, font: wind.font as! NSFont)
-        wind.frame = rect2
-        wind.contentsScale = self.contentsScale
-        self.addSublayer(wind)
+        let rect2 = textWind.calculateRect(string: textWind.string as! String, font: textWind.font as! NSFont)
+        textWind.frame = rect2
+        textWind.contentsScale = self.contentsScale
+
+        windBlock.addSublayer(textWind)
 
         // Create the wind indicator
         let imglayer = WindDirectionLayer(direction: 225, size: CGFloat(PrefsInfo.weather.fontSize/2.8))
 
-        // We put the temperature at the right of the weather icon
-        wind.anchorPoint = CGPoint(x: 0.5, y: 0)
-        wind.position = CGPoint(x: x + imglayer.frame.height/2, y: y)
+        textWind.anchorPoint = CGPoint(x: 0, y: 0)
+        textWind.position = CGPoint(x: imglayer.frame.height, y: 0)
 
+        // Rotation is relative to anchorpoint, so it has to be middle
         imglayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        imglayer.position = CGPoint(x: x - (rect2.width/2) - imglayer.frame.height/2,
-                                    y: y + wind.frame.height/2)
+        imglayer.position = CGPoint(x: imglayer.frame.height/2, y: textWind.frame.height/2)
+
+        // Rotation is done here
+        imglayer.transform = CATransform3DMakeRotation(CGFloat((180 + wind.deg)) / 180.0 * .pi, 0.0, 0.0, -1.0)
 
         imglayer.contentsScale = self.contentsScale
-        imglayer.transform = CATransform3DMakeRotation(CGFloat((180 + owind.deg)) / 180.0 * .pi, 0.0, 0.0, -1.0)
 
-        self.addSublayer(imglayer)
+        windBlock.frame.size = CGSize(width: textWind.frame.width+imglayer.frame.width,
+                                      height: max(textWind.frame.height, imglayer.frame.height))
+        windBlock.addSublayer(imglayer)
+        windBlock.anchorPoint = CGPoint(x: 0.5, y: 0)
 
-        return wind.frame.height
+        return windBlock
     }
 
 }

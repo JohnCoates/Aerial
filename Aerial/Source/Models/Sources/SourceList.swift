@@ -16,6 +16,16 @@ struct SourceHeader {
 // swiftlint:disable:next type_body_length
 struct SourceList {
     // This is the current one until next fall
+    static let tvOS15 = Source(name: "tvOS 15",
+                        description: "Apple TV screensavers from tvOS 15",
+                        manifestUrl: "https://sylvan.apple.com/Aerials/resources-15.tar",
+                        type: .tvOS12,
+                        scenes: [.nature, .city, .space, .sea],
+                        isCachable: true,
+                        license: "",
+                        more: "")
+
+    // Legacy sources
     static let tvOS13 = Source(name: "tvOS 13",
                         description: "Apple TV screensavers from tvOS 13",
                         manifestUrl: "https://sylvan.apple.com/Aerials/resources-13.tar",
@@ -25,7 +35,6 @@ struct SourceList {
                         license: "",
                         more: "")
 
-    // Legacy sources
     static let tvOS12 = Source(name: "tvOS 12",
                         description: "Apple TV screensavers from tvOS 12",
                         manifestUrl: "https://sylvan.apple.com/Aerials/resources.tar",
@@ -53,7 +62,7 @@ struct SourceList {
                         license: "",
                         more: "")
 
-    static var list: [Source] = [tvOS13, tvOS12, tvOS11, tvOS10] + foundSources
+    static var list: [Source] = [tvOS15, tvOS13, tvOS12, tvOS11, tvOS10] + foundSources
     // static var list: [Source] = foundSources
 
     // This is where the magic happens
@@ -161,9 +170,11 @@ struct SourceList {
                 source.setEnabled(true) // This will reload the main video list
             }
         } else {
+            debugLog("Something went wrong here")
             let task = URLSession.shared.dataTask(with: url) { _, response, error in
 
                 if let error = error {
+                    debugLog("Can't load file, possible firewall issue")
                     DispatchQueue.main.async {
                         Aerial.showErrorAlert(question: "An error occured loading the file",
                             text: "Please check your network connection, firewall, and try again. \n\nError : \(error.localizedDescription)")
@@ -171,6 +182,8 @@ struct SourceList {
                     return
                 }
                 guard let response = response as? HTTPURLResponse else {
+                    debugLog("No HTTP response")
+
                     DispatchQueue.main.async {
                         Aerial.showErrorAlert(question: "No HTTP Response",
                                               text: "Please check your network connection, firewall, and try again.")
@@ -180,12 +193,16 @@ struct SourceList {
 
                 if response.statusCode != 200 {
                     DispatchQueue.main.async {
+                        debugLog("HTTP error")
+
                         Aerial.showErrorAlert(question: "HTTP Error",
                             text: "Please verify the URL (and check your network connexion and firewall). HTTP error: \(response.statusCode)")
                     }
                     return
                 } else {
                     DispatchQueue.main.async {
+                        debugLog("Incorect JSON format")
+
                         Aerial.showErrorAlert(question: "Incorrect JSON Format",
                                               text: "Your URL was valid, but the file is not in the correct format. Please check the URL.")
                     }
@@ -369,6 +386,7 @@ struct SourceList {
         do {
             let jsonData = try Data(contentsOf: url.appendingPathComponent("manifest.json"))
             if let manifest = try? newJSONDecoder().decode(Manifest.self, from: jsonData) {
+                debugLog("Manifest opened, going to parsing")
                 return parseSourceFromManifest(manifest, url: nil)
             }
         } catch {
@@ -393,6 +411,8 @@ struct SourceList {
         }
 
         let cacheable: Bool = manifest.cacheable ?? !local
+
+        debugLog("Parsed \(manifest.name)")
 
         return Source(name: manifest.name,
                       description: manifest.manifestDescription,

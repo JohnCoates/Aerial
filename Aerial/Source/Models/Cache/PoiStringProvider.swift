@@ -48,7 +48,7 @@ final class PoiStringProvider {
     private func loadBundle() {
         // Idle string bundle
         let preferences = Preferences.sharedInstance
-        var bundlePath = VideoCache.appSupportDirectory!.appending("/tvOS 13")
+        var bundlePath = VideoCache.appSupportDirectory!.appending("/tvOS 15")
         if preferences.ciOverrideLanguage == "" {
             debugLog("Preferred languages : \(Locale.preferredLanguages)")
 

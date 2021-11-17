@@ -32,6 +32,7 @@ class AdvancedViewController: NSViewController {
     @IBOutlet var rightArrowSkipCheckbox: NSButton!
     @IBOutlet var muteSoundCheckbox: NSButton!
 
+    @IBOutlet var favorOrientationCheckbox: NSButton!
     @IBOutlet var autoplayPreviews: NSButton!
 
     @IBOutlet var onBatteryPopup: NSPopUpButton!
@@ -77,6 +78,7 @@ class AdvancedViewController: NSViewController {
 
         muteSoundCheckbox.state = PrefsAdvanced.muteSound ? .on : .off
         autoplayPreviews.state = PrefsAdvanced.autoPlayPreviews ? .on : .off
+        favorOrientationCheckbox.state = PrefsAdvanced.favorOrientation ? .on : .off
 
         onBatteryPopup.selectItem(at: PrefsVideos.onBatteryMode.rawValue)
 
@@ -186,6 +188,10 @@ class AdvancedViewController: NSViewController {
 
     @IBAction func autoPlaysPreviewsClick(_ sender: NSButton) {
         PrefsAdvanced.autoPlayPreviews = sender.state == .on
+    }
+
+    @IBAction func favorOrientationClick(_ sender: NSButton) {
+        PrefsAdvanced.favorOrientation = sender.state == .on
     }
 
     @IBAction func onBatteryPopupChange(_ sender: NSPopUpButton) {

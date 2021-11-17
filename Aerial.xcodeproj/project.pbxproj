@@ -221,6 +221,9 @@
 		032E09A124C3897E00387230 /* AdvancedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 032E099D24C3897E00387230 /* AdvancedViewController.xib */; };
 		032E09A224C3897E00387230 /* AdvancedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 032E099D24C3897E00387230 /* AdvancedViewController.xib */; };
 		032E09A324C3897E00387230 /* AdvancedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 032E099D24C3897E00387230 /* AdvancedViewController.xib */; };
+		0332076D26D7C355001F9837 /* AVAsset+VideoOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332076C26D7C355001F9837 /* AVAsset+VideoOrientation.swift */; };
+		0332076E26D7C355001F9837 /* AVAsset+VideoOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332076C26D7C355001F9837 /* AVAsset+VideoOrientation.swift */; };
+		0332076F26D7C355001F9837 /* AVAsset+VideoOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332076C26D7C355001F9837 /* AVAsset+VideoOrientation.swift */; };
 		0338119524C1D15B002E23E0 /* Aerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0338119424C1D15B002E23E0 /* Aerial.swift */; };
 		0338119624C1D15B002E23E0 /* Aerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0338119424C1D15B002E23E0 /* Aerial.swift */; };
 		0338119724C1D15B002E23E0 /* Aerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0338119424C1D15B002E23E0 /* Aerial.swift */; };
@@ -794,6 +797,12 @@
 		03FA49B52428EE3300863AF6 /* InfoDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA49B32428EE3300863AF6 /* InfoDateView.swift */; };
 		03FA49B72428F84500863AF6 /* DateLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA49B62428F84500863AF6 /* DateLayer.swift */; };
 		03FA49B82428F84500863AF6 /* DateLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA49B62428F84500863AF6 /* DateLayer.swift */; };
+		03FF1930269709AB00A0FA7F /* PlaybackSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF192F269709AB00A0FA7F /* PlaybackSpeed.swift */; };
+		03FF1931269709AB00A0FA7F /* PlaybackSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF192F269709AB00A0FA7F /* PlaybackSpeed.swift */; };
+		03FF1932269709AB00A0FA7F /* PlaybackSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF192F269709AB00A0FA7F /* PlaybackSpeed.swift */; };
+		03FF193426972C1200A0FA7F /* AppleMusicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF193326972C1200A0FA7F /* AppleMusicSearch.swift */; };
+		03FF193526972C1200A0FA7F /* AppleMusicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF193326972C1200A0FA7F /* AppleMusicSearch.swift */; };
+		03FF193626972C1200A0FA7F /* AppleMusicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF193326972C1200A0FA7F /* AppleMusicSearch.swift */; };
 		AA7E2E5E1FC62E8B00E5F320 /* AerialPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */; };
 		F00864B423AAE7F0003210EF /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00864B323AAE7F0003210EF /* DarkMode.swift */; };
 		F00864B523AAE7F0003210EF /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00864B323AAE7F0003210EF /* DarkMode.swift */; };
@@ -947,6 +956,7 @@
 		032D1163239A7F0C007E7756 /* AerialView+Brightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AerialView+Brightness.swift"; sourceTree = "<group>"; };
 		032E099C24C3897E00387230 /* AdvancedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedViewController.swift; sourceTree = "<group>"; };
 		032E099D24C3897E00387230 /* AdvancedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedViewController.xib; sourceTree = "<group>"; };
+		0332076C26D7C355001F9837 /* AVAsset+VideoOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAsset+VideoOrientation.swift"; sourceTree = "<group>"; };
 		0338119424C1D15B002E23E0 /* Aerial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aerial.swift; sourceTree = "<group>"; };
 		033811AE24C1E243002E23E0 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		033811AF24C1E243002E23E0 /* InfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
@@ -1136,6 +1146,8 @@
 		03FA49A02423DA1F00863AF6 /* TimerLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLayer.swift; sourceTree = "<group>"; };
 		03FA49B32428EE3300863AF6 /* InfoDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDateView.swift; sourceTree = "<group>"; };
 		03FA49B62428F84500863AF6 /* DateLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLayer.swift; sourceTree = "<group>"; };
+		03FF192F269709AB00A0FA7F /* PlaybackSpeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackSpeed.swift; sourceTree = "<group>"; };
+		03FF193326972C1200A0FA7F /* AppleMusicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicSearch.swift; sourceTree = "<group>"; };
 		AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialPlayerItem.swift; sourceTree = "<group>"; };
 		F00864B323AAE7F0003210EF /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
 		F00864B623AAE8E9003210EF /* NightShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightShift.swift; sourceTree = "<group>"; };
@@ -1271,6 +1283,7 @@
 			children = (
 				0317C19B268B65D10082A40C /* Music.swift */,
 				031C5CBC268CBF0400CE35B4 /* AppleMusicSong.swift */,
+				03FF193326972C1200A0FA7F /* AppleMusicSearch.swift */,
 				03DDFCA4268F73070001A13E /* SpotifySong.swift */,
 			);
 			path = Music;
@@ -1705,6 +1718,7 @@
 				0313F9EE22955F3B00B074BB /* CustomVideoFolders.swift */,
 				03AD45FE22981B0C00261325 /* CustomVideoFolders+helpers.swift */,
 				03C97BBF24B60E2F00739CED /* FileHelpers.swift */,
+				03FF192F269709AB00A0FA7F /* PlaybackSpeed.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1748,6 +1762,7 @@
 				03047A5324D2DD8E000EFE62 /* NSMenuItem+icons.swift */,
 				0321A54324D5C863004F1975 /* NSButton+icons.swift */,
 				0300109624D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift */,
+				0332076C26D7C355001F9837 /* AVAsset+VideoOrientation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2478,6 +2493,7 @@
 				0345CFEE24BF43280001045C /* VideosViewController.swift in Sources */,
 				0396D52924B8B7ED00CC021B /* InfoWeatherView.swift in Sources */,
 				0396D52B24B8B7ED00CC021B /* SeededGenerator.swift in Sources */,
+				03FF193526972C1200A0FA7F /* AppleMusicSearch.swift in Sources */,
 				0396D52C24B8B7ED00CC021B /* InfoDateView.swift in Sources */,
 				0345EDE924C3239400C73038 /* DisplaysViewController.swift in Sources */,
 				0396D52D24B8B7ED00CC021B /* ManifestLoader.swift in Sources */,
@@ -2493,6 +2509,7 @@
 				0396D53524B8B7ED00CC021B /* NSImage+trim.swift in Sources */,
 				0396D53624B8B7ED00CC021B /* Battery.swift in Sources */,
 				0396D53724B8B7ED00CC021B /* VideoList.swift in Sources */,
+				0332076E26D7C355001F9837 /* AVAsset+VideoOrientation.swift in Sources */,
 				0321A54524D5C863004F1975 /* NSButton+icons.swift in Sources */,
 				0396D53824B8B7ED00CC021B /* InfoBatteryView.swift in Sources */,
 				032E099F24C3897E00387230 /* AdvancedViewController.swift in Sources */,
@@ -2523,6 +2540,7 @@
 				0396D54C24B8B7ED00CC021B /* SourceList.swift in Sources */,
 				03B8742324E41CF8008E3D1B /* CacheSetupViewController.swift in Sources */,
 				0396D54D24B8B7ED00CC021B /* DescriptionCellView.swift in Sources */,
+				03FF1931269709AB00A0FA7F /* PlaybackSpeed.swift in Sources */,
 				0396D54E24B8B7ED00CC021B /* DisplayView.swift in Sources */,
 				0396D54F24B8B7ED00CC021B /* InfoLocationView.swift in Sources */,
 				0396D55024B8B7ED00CC021B /* AssetLoaderDelegate.swift in Sources */,
@@ -2581,6 +2599,7 @@
 				0361B9AC23D73D4500B6252D /* PrefsTime.swift in Sources */,
 				037772EF24E44CE100D81EEA /* RecapViewController.swift in Sources */,
 				0345D00C24BF4E8C0001045C /* Sidebar.swift in Sources */,
+				03FF193626972C1200A0FA7F /* AppleMusicSearch.swift in Sources */,
 				030010A424D706DB0092AE68 /* SidebarOutlineView.swift in Sources */,
 				032D1162239A7E03007E7756 /* Battery.swift in Sources */,
 				03893CB4217753AC008E7125 /* ErrorLog.swift in Sources */,
@@ -2648,6 +2667,7 @@
 				0345872E2449C59900C97D1B /* AnimatableLayer.swift in Sources */,
 				0395834A217F442A008E8F9C /* Solar.swift in Sources */,
 				FAB22A7F1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */,
+				0332076F26D7C355001F9837 /* AVAsset+VideoOrientation.swift in Sources */,
 				030010AD24D71EB20092AE68 /* FiltersViewController.swift in Sources */,
 				FAC36F601BE175CF007F2A20 /* AppDelegate.swift in Sources */,
 				03C97BA824B5F74900739CED /* VideoList.swift in Sources */,
@@ -2681,6 +2701,7 @@
 				0313F9ED2294468600B074BB /* SeededGenerator.swift in Sources */,
 				034DEE3024BF1BC700A2D3CD /* PanelWindowController.swift in Sources */,
 				03A4A80F2451D04C00A1F7A3 /* PrefsAdvanced.swift in Sources */,
+				03FF1932269709AB00A0FA7F /* PlaybackSpeed.swift in Sources */,
 				03A4A80C2451CE2C00A1F7A3 /* NSImage+trim.swift in Sources */,
 				03FA49B22423DA7D00863AF6 /* InfoTimerView.swift in Sources */,
 				0300B84B24D1FD24006132E5 /* FirstSetupWindowController.swift in Sources */,
@@ -2757,6 +2778,7 @@
 				0345CFED24BF43280001045C /* VideosViewController.swift in Sources */,
 				0385FC5D242B9F6E007E6513 /* InfoWeatherView.swift in Sources */,
 				0313F9EC2294468600B074BB /* SeededGenerator.swift in Sources */,
+				03FF193426972C1200A0FA7F /* AppleMusicSearch.swift in Sources */,
 				03FA49B42428EE3300863AF6 /* InfoDateView.swift in Sources */,
 				0345EDE824C3239400C73038 /* DisplaysViewController.swift in Sources */,
 				FAC36F671BE1778C007F2A20 /* ManifestLoader.swift in Sources */,
@@ -2772,6 +2794,7 @@
 				03A4A80B2451CE2C00A1F7A3 /* NSImage+trim.swift in Sources */,
 				032D1161239A7D82007E7756 /* Battery.swift in Sources */,
 				03C97BA724B5F74900739CED /* VideoList.swift in Sources */,
+				0332076D26D7C355001F9837 /* AVAsset+VideoOrientation.swift in Sources */,
 				0321A54424D5C863004F1975 /* NSButton+icons.swift in Sources */,
 				038D2EE423B6565900CD91F7 /* InfoBatteryView.swift in Sources */,
 				032E099E24C3897E00387230 /* AdvancedViewController.swift in Sources */,
@@ -2802,6 +2825,7 @@
 				034A6DC224ACC7C800D62129 /* SourceList.swift in Sources */,
 				03B8742224E41CF8008E3D1B /* CacheSetupViewController.swift in Sources */,
 				03C344FF24B7A22300906EA6 /* DescriptionCellView.swift in Sources */,
+				03FF1930269709AB00A0FA7F /* PlaybackSpeed.swift in Sources */,
 				03D1E78722842FB300D10CF7 /* DisplayView.swift in Sources */,
 				03A596D923AB8F000097EA66 /* InfoLocationView.swift in Sources */,
 				FAB22A7E1BE17D7D0065C0F5 /* AssetLoaderDelegate.swift in Sources */,
@@ -3126,7 +3150,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.3.4beta3;
+				CURRENT_PROJECT_VERSION = 2.3.4beta9;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3134,7 +3158,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.3.4beta3;
+				MARKETING_VERSION = 2.3.4beta9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3154,7 +3178,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Guillaume Louel (3L54M5L5KK)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.3.4beta3;
+				CURRENT_PROJECT_VERSION = 2.3.4beta9;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3162,7 +3186,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.3.4beta3;
+				MARKETING_VERSION = 2.3.4beta9;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

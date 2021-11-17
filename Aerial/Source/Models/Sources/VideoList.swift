@@ -32,6 +32,7 @@ class VideoList {
     // OLD Playlist management
     var playlistIsRestricted = false
     var playlistRestrictedTo = ""
+    var playlistHasVerticalVideos = false
     var playlist = [AerialVideo]()
     var lastPluckedFromPlaylist: AerialVideo?
 
@@ -298,17 +299,23 @@ class VideoList {
             }
         }
 
-        // Now queue and download
-        for source in sourceQueue {
-            // Then queue the download
-            let operation = downloadManager.queueDownload(URL(string: source.manifestUrl)!, folder: source.name)
-            completion.addDependency(operation)
+        if !sourceQueue.isEmpty {
+            // Now queue and download
+            for source in sourceQueue {
+                // Then queue the download
+                let operation = downloadManager.queueDownload(URL(string: source.manifestUrl)!, folder: source.name)
+                completion.addDependency(operation)
 
-            // Mark that we updated our sources
-            PrefsVideos.saveLastVideoCheck()
+                // Mark that we updated our sources
+                PrefsVideos.saveLastVideoCheck()
+            }
+
+            OperationQueue.main.addOperation(completion)
+        } else {
+            DispatchQueue.main.async {
+                self.refreshVideoList()
+            }
         }
-
-        OperationQueue.main.addOperation(completion)
     }
 
     // This is called when all our files are downloaded
@@ -367,12 +374,13 @@ class VideoList {
     }
 
     // MARK: - Playlist management
-    func generatePlaylist(isRestricted: Bool, restrictedTo: String) {
-        debugLog("generate playlist")
+    func generatePlaylist(isRestricted: Bool, restrictedTo: String, isVertical: Bool) {
+        debugLog("generate playlist (isVertical: \(isVertical)")
         // Start fresh
         playlist = [AerialVideo]()
         playlistIsRestricted = isRestricted
         playlistRestrictedTo = restrictedTo
+        playlistHasVerticalVideos = false
 
         let shuffled = currentRotation().shuffled()
         let cachedShuffled = shuffled.filter({ $0.isAvailableOffline })
@@ -380,7 +388,31 @@ class VideoList {
         // swiftlint:disable:next line_length
         debugLog("Playlist raw count: \(shuffled.count) raw cached count \(cachedShuffled.count) isRestricted: \(isRestricted) restrictedTo: \(restrictedTo)")
 
+        if PrefsDisplays.viewingMode == .independent && PrefsAdvanced.favorOrientation {
+            // We check cached videos only as those are the only ones for which we know the orientation
+            for video in cachedShuffled {
+                if video.isVertical {
+                    playlistHasVerticalVideos = true
+                    debugLog(">>> Playlist contains vertical videos (favoring ON)")
+                }
+            }
+        }
+
         for video in shuffled {
+            /*
+            // Do we restrict videos by screen orientation ?
+            if restrictOrientation {
+                print(video.url)
+                print(video.isVertical)
+                if !video.isVertical && isVertical {
+                    // Block landscape videos on vertical screens
+                    continue
+                } else if video.isVertical && !isVertical {
+                    // Block portrait videos on horizontal screens
+                    continue
+                }
+            }*/
+
             // Do we restrict video types by day/night ?
             if isRestricted {
                 if video.timeOfDay != restrictedTo {
@@ -403,16 +435,30 @@ class VideoList {
         }
     }
 
-    func randomVideo(excluding: [AerialVideo]) -> (AerialVideo?, Bool) {
+    func randomVideo(excluding: [AerialVideo], isVertical: Bool) -> (AerialVideo?, Bool) {
         var shouldLoop = false
         let timeManagement = TimeManagement.sharedInstance
 
         let (shouldRestrictByDayNight, restrictTo) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
 
-        debugLog("remaining in playlist : \(playlist.count)")
+        // Do we still have a video in the correct format in the playlist?
+        var needOrientedVideo = false
+        if playlistHasVerticalVideos && !playlist.isEmpty {
+            needOrientedVideo = true
+            for video in playlist {
+                if isVertical && video.isVertical {
+                    needOrientedVideo = false
+                } else if !isVertical && !video.isVertical {
+                    needOrientedVideo = false
+                }
+            }
+        }
+
+        debugLog("remaining in playlist : \(playlist.count) needOrientedVideo : \(needOrientedVideo)")
+
         // We may need to regenerate a playlist!
-        if playlist.isEmpty || restrictTo != playlistRestrictedTo || shouldRestrictByDayNight != playlistIsRestricted {
-            generatePlaylist(isRestricted: shouldRestrictByDayNight, restrictedTo: restrictTo)
+        if playlist.isEmpty || restrictTo != playlistRestrictedTo || shouldRestrictByDayNight != playlistIsRestricted || needOrientedVideo {
+            generatePlaylist(isRestricted: shouldRestrictByDayNight, restrictedTo: restrictTo, isVertical: isVertical)
             if playlist.count == 1 {
                 debugLog("playlist only has one element, looping!")
                 shouldLoop = true
@@ -421,12 +467,30 @@ class VideoList {
 
         // If not pluck one from current playlist and return that
         if !playlist.isEmpty {
-            lastPluckedFromPlaylist = playlist.removeFirst()
+            if playlistHasVerticalVideos {
+                lastPluckedFromPlaylist = pluckOrientedVideo(isVertical: isVertical)
+            } else {
+                lastPluckedFromPlaylist = playlist.removeFirst()
+            }
+
             return (lastPluckedFromPlaylist, shouldLoop)
         } else {
             // If we don't have any playlist, something's got awfully wrong so deal with that!
             return (findBestEffortVideo(), shouldLoop)
         }
+    }
+
+    func pluckOrientedVideo(isVertical: Bool) -> AerialVideo? {
+        // Grab first one corresponding to orientation
+        lastPluckedFromPlaylist = playlist.first(where: { $0.isVertical == isVertical })!
+        debugLog("lastplucked")
+
+        // And actually remove it
+        debugLog("pre pluck \(playlist.count)")
+        playlist = playlist.filter { $0 != lastPluckedFromPlaylist }
+        debugLog("post pluck \(playlist.count)")
+
+        return lastPluckedFromPlaylist
     }
 
     // Find a backup plan when conditions are not met

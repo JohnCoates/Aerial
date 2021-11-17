@@ -87,13 +87,13 @@ class MusicLayer: AnimationLayer {
         // ReRect the name & artist
         let rect = nameLayer.calculateRect(string: nameLayer.string as! String,
                         font: nameLayer.font as! NSFont,
-                        maxWidth: layerManager.frame!.size.width)
+                        maxWidth: Double(layerManager.frame!.size.width))
         nameLayer.frame = rect
         nameLayer.contentsScale = self.contentsScale
 
         let rect2 = artistLayer.calculateRect(string: artistLayer.string as! String,
                                               font: artistLayer.font as! NSFont,
-                                              maxWidth: layerManager.frame!.size.width)
+                                              maxWidth: Double(layerManager.frame!.size.width))
         artistLayer.frame = rect2
         artistLayer.contentsScale = self.contentsScale
 

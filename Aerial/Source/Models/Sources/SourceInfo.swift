@@ -74,6 +74,7 @@ struct SourceInfo {
         "b9-3": "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51",                                     // Bay and Golden Bridge
         "b7-3": "29BDF297-EB43-403A-8719-A78DA11A2948",                                     // Fisherman's Wharf
         "b3-3": "85CE77BF-3413-4A7B-9B0F-732E96229A73",                                     // Embarcadero, Market Street
+        "391BDF6E-3279-4CE1-9CA5-0F82811452D7": "83C65C90-270C-4490-9C69-F51FE03D7F06",  // Seals tvOS 15 is reusing an old id
     ]
 
     // Extra info to be merged for a given ID, as of right now only one known video
@@ -287,6 +288,7 @@ struct SourceInfo {
             "b1-4": "A015_C018_",                                                // San Francisco night 4
             "b2-4": "A018_C014_",                                                 // San Francisco night 5
             "2F11E857-4F77-4476-8033-4A1E4610AFCC": "DB_D008_C010_",        // Stealing the day description for the night one
+
         ]
     // Look for a previously processed similar video
     //

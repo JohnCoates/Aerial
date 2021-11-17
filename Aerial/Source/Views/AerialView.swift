@@ -209,6 +209,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         // First thing, we may need to migrate the cache !
         Cache.migrate()
 
+        // Now we need to check if we should remove lingering stuff from the cache !
+        if Cache.canNetwork() {
+            Cache.removeCruft()
+        }
+
         // Check early if we need to enable power saver mode,
         // black screen with minimal brightness
         if !isPreview {
@@ -221,11 +226,16 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             }
         }
 
+        debugLog("pre check brightness")
         // We may need to set timers to progressively dim the screen
         checkIfShouldSetBrightness()
 
+        debugLog("pre shared view")
+
         // Shared views can get stuck, we may need to clean them up here
         cleanupSharedViews()
+
+        debugLog("pre dd")
 
         // We look for the screen in our detected list.
         // In case of preview or unknown screen result will be nil
@@ -387,7 +397,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         if self.playerLayer.isReadyForDisplay {
             self.player!.play()
             hasStartedPlaying = true
-            debugLog("start playback: \(self.frame) \(self.bounds)")
+            player!.rate = PlaybackSpeed.forVideo(self.currentVideo!.id)
+            debugLog("start playback: \(self.frame) \(self.bounds) rate: \(player!.rate)")
 
             // If we share a player, we need to add the fades and the text to all the
             // instanciated views using it (eg: in mirrored mode)
@@ -490,11 +501,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         }
 
         // Now we need to check if we should remove lingering stuff from the cache !
-        if Cache.canNetwork() {
+        /*if Cache.canNetwork() {
             Cache.removeCruft()
-        }
+        }*/
 
-        let (randomVideo, pshouldLoop) = VideoList.instance.randomVideo(excluding: currentVideos)
+        let (randomVideo, pshouldLoop) = VideoList.instance.randomVideo(excluding: currentVideos, isVertical: isScreenVertical())
 
         // If we only have one video in the playlist, we can rewind it for seamless transitions
         self.shouldLoop = pshouldLoop
@@ -574,6 +585,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             }
         }
 
+    }
+
+    // Is the current screen vertical?
+    func isScreenVertical() -> Bool {
+        return self.frame.size.width < self.frame.size.height
     }
 
     override func keyDown(with event: NSEvent) {

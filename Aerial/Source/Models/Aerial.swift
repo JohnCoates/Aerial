@@ -103,7 +103,29 @@ class Aerial: NSObject {
     }
 
     // Symbol/icon generation
+
+    // Symbol as a CALayer
+    static func getSymbolLayer(_ named: String, size: CGFloat) -> CALayer {
+        let imglayer = CALayer()
+        imglayer.contents = Aerial.getSymbol(named)
+        imglayer.frame.size = CGSize(width: size,
+                                     height: size)
+        return imglayer
+    }
+
+    // Symbol as a NSImage
     static func getSymbol(_ named: String) -> NSImage? {
+        // Use SFSymbols if available
+        if #available(macOS 11.0, *) {
+            if let image = NSImage(systemSymbolName: named, accessibilityDescription: named) {
+                image.isTemplate = true
+
+                // return image
+                let config = NSImage.SymbolConfiguration(pointSize: 100, weight: .regular)
+                return image.withSymbolConfiguration(config)?.tinting(with: .white)
+            }
+        }
+
         if let imagePath = Bundle(for: PanelWindowController.self).path(
             forResource: fallbackSymbol(named),
             ofType: "pdf") {

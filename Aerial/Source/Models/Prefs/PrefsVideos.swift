@@ -132,6 +132,12 @@ struct PrefsVideos {
     @SimpleStorage(key: "vibrance", defaultValue: [:])
     static var vibrance: [String: Double]
 
+    @SimpleStorage(key: "durationCache", defaultValue: [:])
+    static var durationCache: [String: Double]
+
+    @SimpleStorage(key: "playbackSpeed", defaultValue: [:])
+    static var playbackSpeed: [String: Float]
+
     @SimpleStorage(key: "globalVibrance", defaultValue: 0)
     static var globalVibrance: Double
 
@@ -145,7 +151,7 @@ struct PrefsVideos {
         dateFormatter.locale = Locale.init(identifier: "en_GB")
         let dateObj = dateFormatter.date(from: preferences.lastVideoCheck!)!
 
-        debugLog("Last manifest check : \(dateObj)")
+        // debugLog("Last manifest check : \(dateObj)")
 
         return dateObj.timeIntervalSinceNow
     }

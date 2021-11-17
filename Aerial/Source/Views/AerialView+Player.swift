@@ -105,11 +105,16 @@ extension AerialView {
     func addPlayerFades(view: AerialView, player: AVPlayer, video: AerialVideo) {
         // We only fade in/out if we have duration
         if video.duration > 0 && AerialView.shouldFade && !shouldLoop {
+            let playbackSpeed = Double(PlaybackSpeed.forVideo(video.id))
+
             view.playerLayer.opacity = 0
             let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
             fadeAnimation.values = [0, 1, 1, 0] as [Int]
-            fadeAnimation.keyTimes = [0, AerialView.fadeDuration/video.duration, 1-(AerialView.fadeDuration/video.duration), 1] as [NSNumber]
-            fadeAnimation.duration = video.duration
+            fadeAnimation.keyTimes = [0,
+                                      AerialView.fadeDuration/(video.duration/playbackSpeed),
+                                      1-(AerialView.fadeDuration/(video.duration/playbackSpeed)), 1, ] as [NSNumber]
+
+            fadeAnimation.duration = video.duration/playbackSpeed
             fadeAnimation.calculationMode = CAAnimationCalculationMode.cubic
             view.playerLayer.add(fadeAnimation, forKey: "mainfade")
         } else {

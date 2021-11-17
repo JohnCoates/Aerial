@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19158" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19158"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="autoplayPreviews" destination="D6x-HI-azM" id="8K9-YC-6pd"/>
                 <outlet property="debugCheckbox" destination="Jfm-Hl-4bN" id="XiF-WF-NLg"/>
+                <outlet property="favorOrientationCheckbox" destination="oe5-rQ-KJu" id="P2e-TZ-j6f"/>
                 <outlet property="languageLabel" destination="xFh-dw-fup" id="ng0-cZ-hbk"/>
                 <outlet property="languagePopup" destination="39U-7I-fEm" id="X38-8k-EEi"/>
                 <outlet property="launchSetupAgain" destination="vYi-Hf-cI5" id="yqJ-SP-aSk"/>
@@ -292,6 +293,19 @@
                     </buttonCell>
                     <connections>
                         <action selector="autoPlaysPreviewsClick:" target="-2" id="sSe-40-4S5"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oe5-rQ-KJu">
+                    <rect key="frame" x="537" y="346" width="214" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="CBO-Vx-vdy">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <string key="title">Play vertical videos if available
+ on vertical screens</string>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="favorOrientationClick:" target="-2" id="FvZ-aY-Uqe"/>
                     </connections>
                 </button>
             </subviews>

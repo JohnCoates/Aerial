@@ -260,7 +260,7 @@ extension CATextLayer {
     }
 
     func calculateRect(string: String, font: NSFont, maxWidth: Double) -> CGRect {
-        let boundingRect = CGSize(width: maxWidth, height: self.frame.size.height)
+        let boundingRect = CGSize(width: maxWidth, height: Double(self.frame.size.height))
 
         // We need an attributed string to take the font into account
         let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font as Any]

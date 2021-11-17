@@ -19,4 +19,7 @@ struct PrefsAdvanced {
     @SimpleStorage(key: "firstTimeSetup", defaultValue: false)
     static var firstTimeSetup: Bool
 
+    @SimpleStorage(key: "favorOrientation", defaultValue: true)
+    static var favorOrientation: Bool
+
 }

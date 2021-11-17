@@ -173,6 +173,8 @@ extension DownloadOperation: URLSessionTaskDelegate {
         // Some manifests come in tar form, in that case untar them here
         if folder == "tvOS 13" {
             FileHelpers.unTar(file: destinationDirectory.appending("/resources-13.tar"), atPath: destinationDirectory)
+        } else if folder == "tvOS 15" {
+            FileHelpers.unTar(file: destinationDirectory.appending("/resources-15.tar"), atPath: destinationDirectory)
         } else if folder == "tvOS 12" {
             FileHelpers.unTar(file: destinationDirectory.appending("/resources.tar"), atPath: destinationDirectory)
         }

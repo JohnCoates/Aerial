@@ -38,6 +38,8 @@ final class AerialVideo: CustomStringConvertible, Equatable {
     var contentLength = 0
     var contentLengthChecked = false
 
+    var isVertical: Bool
+
     var isAvailableOffline: Bool {
         return VideoCache.isAvailableOffline(video: self)
     }
@@ -141,7 +143,10 @@ final class AerialVideo: CustomStringConvertible, Equatable {
         // self.sources = [manifest]
         self.poi = poi
         self.communityPoi = communityPoi
+
+        // Default stuff, we double check those below
         self.duration = 0
+        self.isVertical = false
 
         updateDuration()    // We need to have the video duration
     }
@@ -151,8 +156,16 @@ final class AerialVideo: CustomStringConvertible, Equatable {
         // This is a workaround as currently, the VideoCache infrastructure
         // relies on AVAsset with an external URL all the time, even when
         // working on a cached copy which makes the native duration retrieval fail
+        //
+        // And... we also check the orientation now too ;)
 
         let fileManager = FileManager.default
+
+        if let duration = PrefsVideos.durationCache[self.id] {
+            // debugLog("Using cache duration : \(duration)")
+            self.duration = duration
+            return
+        }
 
         // With custom videos, we may already store the local path
         // If so, check it
@@ -160,6 +173,7 @@ final class AerialVideo: CustomStringConvertible, Equatable {
             if fileManager.fileExists(atPath: self.url.path) {
                 let asset = AVAsset(url: self.url)
                 self.duration = CMTimeGetSeconds(asset.duration)
+                self.isVertical = asset.isVertical()
             } else {
                 errorLog("Custom video is missing : \(self.url.path)")
                 self.duration = 0
@@ -167,17 +181,17 @@ final class AerialVideo: CustomStringConvertible, Equatable {
         } else {
             // If not, iterate through all possible versions to see if any is cached
             for format in VideoFormat.allCases {
-                // swiftlint:disable:next for_where
                 if urls[format] != "" {
-                    // let path = VideoCache.cachePath(forFilename: (URL(string: urls[format]!)!.lastPathComponent))!
 
                     let path = VideoList.instance.localPathFor(video: self)
-
-                    // VideoCache.cachePath(forFilename: (URL(string: urls[format]!)!.lastPathComponent))!
 
                     if fileManager.fileExists(atPath: path) {
                         let asset = AVAsset(url: URL(fileURLWithPath: path))
                         self.duration = CMTimeGetSeconds(asset.duration)
+
+                        // debugLog("Caching video duration")
+                        PrefsVideos.durationCache[self.id] = self.duration
+
                         return
                     }
                 }
