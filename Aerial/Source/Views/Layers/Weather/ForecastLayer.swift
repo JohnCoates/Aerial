@@ -13,6 +13,7 @@ import AVKit
 class ForecastLayer: CALayer {
     var condition: ForecastElement?
 
+    // swiftlint:disable:next cyclomatic_complexity
     init(condition: ForecastElement, scale: CGFloat) {
         self.condition = condition
         super.init()

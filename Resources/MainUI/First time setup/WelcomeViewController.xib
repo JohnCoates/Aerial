@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,9 +25,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AiK-TD-2Qt">
-                                <rect key="frame" x="408" y="292" width="253" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Before you start, let's set up a few things!" id="Uez-be-ewR">
-                                    <font key="font" metaFont="system"/>
+                                <rect key="frame" x="408" y="283" width="313" height="34"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" id="Uez-be-ewR">
+                                    <font key="font" metaFont="system" size="14"/>
+                                    <string key="title">Just a couple questions to adjust your settings, 
+it will be quick!</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -38,12 +40,12 @@
                                     <constraint firstAttribute="height" constant="320" id="CDx-dH-VPg"/>
                                     <constraint firstAttribute="width" constant="320" id="Psv-Kd-WJ3"/>
                                 </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-320" id="2ck-4q-RCI"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-512" id="2ck-4q-RCI"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Ht-yo-ckm">
-                                <rect key="frame" x="408" y="353" width="257" height="35"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Welcome to Aerial" id="zIs-lv-iOt">
-                                    <font key="font" metaFont="systemBold" size="30"/>
+                                <rect key="frame" x="408" y="362" width="336" height="43"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Welcome to Aerial 3" id="zIs-lv-iOt">
+                                    <font key="font" metaFont="systemBold" size="36"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -76,6 +78,6 @@
         </customView>
     </objects>
     <resources>
-        <image name="icon-320" width="320" height="320"/>
+        <image name="icon-512" width="512" height="512"/>
     </resources>
 </document>

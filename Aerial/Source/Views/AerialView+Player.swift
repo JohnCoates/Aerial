@@ -112,7 +112,7 @@ extension AerialView {
             fadeAnimation.values = [0, 1, 1, 0] as [Int]
             fadeAnimation.keyTimes = [0,
                                       AerialView.fadeDuration/(video.duration/playbackSpeed),
-                                      1-(AerialView.fadeDuration/(video.duration/playbackSpeed)), 1, ] as [NSNumber]
+                                      1-(AerialView.fadeDuration/(video.duration/playbackSpeed)), 1 ] as [NSNumber]
 
             fadeAnimation.duration = video.duration/playbackSpeed
             fadeAnimation.calculationMode = CAAnimationCalculationMode.cubic

@@ -23,7 +23,8 @@ class CacheSetupViewController: NSViewController {
         imageView1.setLargeIcon("wand.and.stars")
         imageView2.setLargeIcon("wand.and.rays")
         imageView3.setLargeIcon("hand.raised")
-        PrefsCache.enableManagement = false
+        PrefsCache.enableManagement = true
+        PrefsCache.cachePeriodicity = .weekly
     }
 
     @IBAction func radioChange(_ sender: NSButton) {

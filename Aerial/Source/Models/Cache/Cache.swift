@@ -39,6 +39,8 @@ struct Cache {
         return CWWiFiClient.shared().interface(withName: nil)?.ssid() ?? ""
     }
 
+    static var processedSupportPath = ""
+
     /**
      Returns Aerial's Application Support path.
      
@@ -50,21 +52,66 @@ struct Cache {
      In some rare instances those system folders may not exist in the container, in this case Aerial can't work.
      */
     static var supportPath: String {
-        // Grab an array of Application Support paths
-        let appSupportPaths = NSSearchPathForDirectoriesInDomains(
-            .applicationSupportDirectory,
-            .userDomainMask,
-            true)
-
-        if appSupportPaths.isEmpty {
-            errorLog("FATAL : app support does not exist!")
-            return "/"
+        // Dont' redo the thing all the time
+        if processedSupportPath != "" {
+            return processedSupportPath
         }
 
-        let appSupportDirectory = appSupportPaths[0] as NSString
+        var appPath = ""
+
+        if PrefsCache.overrideCache {
+            debugLog("Cache Override")
+            if #available(macOS 12, *) {
+                if let bookmarkData = PrefsCache.supportBookmarkData {
+                    do {
+                        var isStale = false
+                        let bookmarkUrl = try URL(resolvingBookmarkData: bookmarkData, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &isStale)
+
+                        debugLog("Bookmark is stale : \(isStale)")
+                        debugLog("\(bookmarkUrl)")
+                        appPath = bookmarkUrl.path
+                        debugLog("\(appPath)")
+                    } catch {
+                        errorLog("Can't process bookmark")
+                    }
+                } else {
+                    errorLog("Can't find supportBookmarkData on macOS 12")
+                }
+            } else {
+                if let customPath = PrefsCache.supportPath {
+                    debugLog("Trying \(customPath)")
+                    if FileManager.default.fileExists(atPath: customPath) {
+                        appPath = customPath
+                    } else {
+                        errorLog("Could not find your custom Caches path, reverting to default settings")
+                    }
+                } else {
+                    errorLog("Empty path, reverting to default settings")
+                }
+            }
+        }
+
+        // This is the normal path
+        if appPath == "" {
+            // Grab an array of Application Support paths
+            let appSupportPaths = NSSearchPathForDirectoriesInDomains(
+                .applicationSupportDirectory,
+                .userDomainMask,
+                true)
+
+            if appSupportPaths.isEmpty {
+                errorLog("FATAL : app support does not exist!")
+                return "/"
+            }
+
+            appPath = appSupportPaths[0]
+        }
+
+        let appSupportDirectory = appPath as NSString
 
         if aerialFolderExists(at: appSupportDirectory) {
-            return appSupportDirectory.appendingPathComponent("Aerial")
+            processedSupportPath = appSupportDirectory.appendingPathComponent("Aerial")
+            return processedSupportPath
         } else {
             debugLog("Creating app support directory...")
             let asPath = appSupportDirectory.appendingPathComponent("Aerial")
@@ -72,7 +119,9 @@ struct Cache {
             let fileManager = FileManager.default
             do {
                 try fileManager.createDirectory(atPath: asPath,
-                                                withIntermediateDirectories: false, attributes: nil)
+                                                withIntermediateDirectories: true, attributes: nil)
+
+                processedSupportPath = asPath
                 return asPath
             } catch let error {
                 errorLog("FATAL : Couldn't create app support directory in User directory: \(error)")
@@ -95,7 +144,7 @@ struct Cache {
      */
     static var path: String = {
         var path = ""
-        if PrefsCache.overrideCache {
+        /*if PrefsCache.overrideCache {
             if #available(macOS 12, *) {
                 if let bookmarkData = PrefsCache.cacheBookmarkData {
                     do {
@@ -130,16 +179,17 @@ struct Cache {
                 PrefsCache.overrideCache = false
                 path = Cache.supportPath.appending("/Cache")
             }
-        } else {
-            path = Cache.supportPath.appending("/Cache")
-        }
+        } else {*/
+
+        path = Cache.supportPath.appending("/Cache")
+        // }
 
         if FileManager.default.fileExists(atPath: path as String) {
             return path
         } else {
             do {
                 try FileManager.default.createDirectory(atPath: path,
-                                                withIntermediateDirectories: false, attributes: nil)
+                                                withIntermediateDirectories: true, attributes: nil)
                 return path
             } catch let error {
                 errorLog("FATAL : Couldn't create Cache directory in Aerial's AppSupport directory: \(error)")
@@ -183,7 +233,7 @@ struct Cache {
         } else {
             do {
                 try FileManager.default.createDirectory(atPath: path,
-                                                withIntermediateDirectories: false, attributes: nil)
+                                                withIntermediateDirectories: true, attributes: nil)
                 return path
             } catch let error {
                 errorLog("FATAL : Couldn't create Thumbnails directory in Aerial's AppSupport directory: \(error)")
@@ -735,4 +785,3 @@ struct Cache {
         VideoManager.sharedInstance.queueDownload(rotation.first!)
     }
 }
-// swiftlint:disable:this file_length

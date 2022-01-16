@@ -33,7 +33,6 @@ class Screen: NSObject {
     }
 
     override var description: String {
-        // swiftlint:disable:next line_length
         return "[id=\(self.id), width=\(self.width), height=\(self.height), bottomLeftFrame=\(self.bottomLeftFrame), topRightCorner=\(self.topRightCorner), isMain=\(self.isMain), backingScaleFactor=\(self.backingScaleFactor)]"
     }
 }

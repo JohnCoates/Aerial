@@ -235,7 +235,6 @@ class TimeViewController: NSViewController {
             let lat = String(format: "%.2f", coordinates.latitude)
             let lon = String(format: "%.2f", coordinates.longitude)
 
-            // swiftlint:disable:next line_length
             Aerial.showInfoAlert(title: "Success", text: "Aerial can access your location (latitude: \(lat), longitude: \(lon)) and will use it to show you the correct videos.")
 
             self.updateTimeView()

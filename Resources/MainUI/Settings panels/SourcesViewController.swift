@@ -39,6 +39,7 @@ class SourcesViewController: NSViewController {
         addOnlineButton.setIcons("antenna.radiowaves.left.and.right")
         getMoreVideosButton.setIcons("cloud")
         downloadAllVideosButton.setIcons("arrow.down.circle")
+        refreshPeriodicity.selectItem(at: PrefsVideos.intRefreshPeriodicity)
 
         VideoManager.sharedInstance.addCallback { done, total in
             debugLog("vmsourcecallback \(done) \(total) ")
@@ -47,6 +48,7 @@ class SourcesViewController: NSViewController {
                 self.allSpinner.stopAnimation(self)
                 self.allSpinner.isHidden = true
                 self.downloadAllVideosButton.isEnabled = true
+                self.sourceOutlineView.expandItem(nil, expandChildren: true)
             }
         }
 
@@ -58,7 +60,7 @@ class SourcesViewController: NSViewController {
     }
 
     @IBAction func refreshPeriodicityChange(_ sender: NSPopUpButton) {
-
+        PrefsVideos.refreshPeriodicity = RefreshPeriodicity(rawValue: sender.indexOfSelectedItem)!
     }
 
     @IBAction func getMoreVideosClick(_ sender: NSButton) {
@@ -107,6 +109,14 @@ class SourcesViewController: NSViewController {
         addLocalWindow.close()
         addLocalTextfield.stringValue = ""
         sourceOutlineView.reloadData()
+        sourceOutlineView.expandItem(nil, expandChildren: true)
+
+    }
+
+    @IBAction func findMoreVideos(_ sender: Any) {
+        let workspace = NSWorkspace.shared
+        let url = URL(string: "https://aerialscreensaver.github.io/morevideos.html")!
+        workspace.open(url)
     }
 
     @IBAction func addLocalCancel(_ sender: Any) {
@@ -129,9 +139,11 @@ class SourcesViewController: NSViewController {
             addOnlineWindow.close()
             addOnlineTextField.stringValue = ""
             sourceOutlineView.reloadData()
+            sourceOutlineView.expandItem(nil, expandChildren: true)
         } else {
             debugLog("URL was NOT parsed")
-            Aerial.showErrorAlert(question: "Non valid URL", text: "Please type a valid URL to an Aerial source (see the more videos button), and make sure there are no trailing characters.")
+            Aerial.showErrorAlert(question: "Non valid URL",
+                                  text: "Please type a valid URL to an Aerial source (see the more videos button), and make sure there are no trailing characters.")
         }
     }
 
@@ -165,6 +177,8 @@ extension SourcesViewController: SourceOutlineViewDelegate {
             if Aerial.showAlert(question: "Remove a source", text: "This will remove all files and videos relating to this source. Are you sure you want to proceed? \n\nYou will need to restart System Preferences to complete the operation.", button1: "Remove Source", button2: "Cancel") {
                 source.wipeFromDisk()
                 sourceOutlineView.reloadData()
+                sourceOutlineView.expandItem(nil, expandChildren: true)
+
             }
         }
     }
@@ -346,6 +360,8 @@ extension SourcesViewController: CheckboxCellViewDelegate {
 
         // This is more efficient than calling reload on every child since collapsed children are
         // not reloaded. They will be reloaded when they become visible
-        sourceOutlineView.reloadItem(item, reloadChildren: true)
+        DispatchQueue.main.async {
+            self.sourceOutlineView.reloadItem(item, reloadChildren: true)
+        }
     }
 }

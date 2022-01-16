@@ -50,13 +50,14 @@ class VideosViewController: NSViewController {
     @IBOutlet var playbackSpeedSlider: NSSlider!
 
     var path: String?
+    var mode: String?
 
     var currentVibrancy: Double = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        rotationView.isHidden = true
+        rotationView.isHidden = false
 
         // Our video list
         videoListTableView.delegate = self
@@ -78,6 +79,9 @@ class VideosViewController: NSViewController {
         updateVideoView()
         updateRotationMenu()
 
+        // This needs cleanup someday
+        rotationSecondaryPopup.isHidden = true
+        rotationCacheNow.isHidden = true
     }
 
     @objc func playerItemDidReachEnd(_ aNotification: Notification) {
@@ -123,26 +127,65 @@ class VideosViewController: NSViewController {
 
     /// Since we can't directly use SF Symbols, we use our own icon wrappers
     func fixIcons() {
-        rotationPopup.item(at: 0)?.setIcons("film")
-        rotationPopup.item(at: 1)?.setIcons("star")
-        rotationPopup.item(at: 2)?.setIcons("mappin.and.ellipse")
-        rotationPopup.item(at: 3)?.setIcons("clock")
-        rotationPopup.item(at: 4)?.setIcons("tram.fill")
-        rotationPopup.item(at: 5)?.setIcons("antenna.radiowaves.left.and.right")
-        rotationImage.image = Aerial.getAccentedSymbol("dial.min")
+        // rotationPopup.item(at: 0)?.setIcons("film")
+        // rotationPopup.item(at: 1)?.setIcons("star")
+        // rotationPopup.item(at: 2)?.setIcons("mappin.and.ellipse")
+        // rotationPopup.item(at: 3)?.setIcons("clock")
+        // rotationPopup.item(at: 4)?.setIcons("tram.fill")
+        // rotationPopup.item(at: 5)?.setIcons("antenna.radiowaves.left.and.right")
+        rotationImage.image = Aerial.getAccentedSymbol("film")
         rotationCacheNow.setIcons("arrow.down.circle")
+    }
+
+    func switchMainTo(filter: VideoList.FilterMode) {
+        switch filter {
+        case .location:
+            rotationPopup.selectItem(at: 2)
+        case .time:
+            rotationPopup.selectItem(at: 3)
+        case .scene:
+            rotationPopup.selectItem(at: 4)
+        case .source:
+            rotationPopup.selectItem(at: 5)
+        case .favorite:
+            rotationPopup.selectItem(at: 1)
+        case .hidden:
+            rotationPopup.selectItem(at: 6)
+        default:
+            rotationPopup.selectItem(at: 1)
+        }
+    }
+    /// Reload with a named path
+    /// This is used by the
+    func reloadPath(path: String) {
+        if let foundMode = VideoList.instance.modeFromPath(path) {
+            switchMainTo(filter: foundMode)
+
+            rotationPopupChange(rotationPopup)
+
+            let subpath = path.split(separator: ":")[1]
+
+            print(subpath)
+
+            // Very unswift
+            var index = 0
+            for item in VideoList.instance.getSources(mode: foundMode) {
+                if subpath == item {
+                    print(index)
+                    rotationSecondaryPopup.selectItem(at: index)
+                    rotationSecondaryPopupChange(rotationSecondaryPopup)
+                }
+                index += 1
+            }
+        }
     }
 
     /// Reload the video view for a given path
     func reloadFor(path: String) {
         self.path = path
+        print("rf " + self.path!)
 
-        // We show/hide the top panel to pick the playing mode
-        rotationView.isHidden = !path.starts(with: "rotation")
-        if path.starts(with: "rotation") {
-            updateRotationMenu()
-        }
-
+        updateRotationMenu()
         updateRuntimeLabel()
 
         // Reload data and scroll back up
@@ -212,88 +255,89 @@ class VideosViewController: NSViewController {
 
     /// Main popup change event
     @IBAction func rotationPopupChange(_ sender: NSPopUpButton) {
-        PrefsVideos.shouldPlay = ShouldPlay(rawValue: sender.indexOfSelectedItem)!
+
+        switch sender.indexOfSelectedItem {
+        case 0:
+            mode = "all"
+        case 1:
+            mode = "favorites"
+        case 2:
+            mode = "location"
+        case 3:
+            mode = "time"
+        case 4:
+            mode = "scene"
+        case 5:
+            mode = "source"
+        case 6:
+            mode = "hidden"
+        default:
+            mode = "all"
+        }
+
+        print("rpc " + mode!)
 
         // Cascade to a secondary popup for the various filters
-        if PrefsVideos.shouldPlay == .everything || PrefsVideos.shouldPlay == .favorites {
+        if mode == "all" || mode == "favorites" || mode == "hidden" {
             rotationSecondaryPopup.isHidden = true
+            path = mode! + ":0"
             reloadFor(path: path!)
         } else {
             rotationSecondaryPopup.isHidden = false
             updateRotationSecondaryMenu()
-            reloadFor(path: path!)
         }
+
+        // print(path!)
     }
 
     /// Secondary popup change event
     @IBAction func rotationSecondaryPopupChange(_ sender: NSPopUpButton) {
-        PrefsVideos.shouldPlayString = sender.selectedItem!.title
-
+        // PrefsVideos.shouldPlayString = sender.selectedItem!.title
+        path = mode! + ":\(sender.indexOfSelectedItem)"
+        print(path!)
         reloadFor(path: path!)
     }
 
     func updateRotationMenu() {
-        rotationPopup.selectItem(at: PrefsVideos.intShouldPlay)
+        // rotationPopup.selectItem(at: PrefsVideos.intShouldPlay)
 
         // Cascade to a secondary popup for the various filters
-        if PrefsVideos.shouldPlay == .everything || PrefsVideos.shouldPlay == .favorites {
+       /* if PrefsVideos.shouldPlay == .everything || PrefsVideos.shouldPlay == .favorites {
             rotationSecondaryPopup.isHidden = true
         } else {
             rotationSecondaryPopup.isHidden = false
-            updateRotationSecondaryMenu()
-        }
-
+            // updateRotationSecondaryMenu()
+        }*/
+/*
         if VideoList.instance.currentRotation().filter({ !$0.isAvailableOffline }).isEmpty {
             rotationCacheNow.isHidden = true
         } else {
             rotationCacheNow.isHidden = false
-        }
+        }*/
     }
 
     func updateRotationSecondaryMenu() {
         var filter: VideoList.FilterMode
 
-        // ...
-        switch PrefsVideos.shouldPlay {
-        case .location:
-            filter = .location
-        case .scene:
-            filter = .scene
-        case .time:
-            filter = .time
-        case .source:
-            filter = .source
-        default:
-            filter = .location // ...
-        }
-
+        filter = VideoList.instance.modeFromPath(mode!) ?? .location
+        print("ursm : \(mode) \(filter)")
         rotationSecondaryPopup.removeAllItems()
 
         // Very unswift
         var index = 0
-        var foundIndex = -1
         for item in VideoList.instance.getSources(mode: filter) {
             rotationSecondaryPopup.addItem(withTitle: item)
-            if item == PrefsVideos.shouldPlayString {
-                foundIndex = index
-            }
-/*
-             rotationSecondaryPopup.addItem(withTitle: item.string)
-             if item.string == PrefsVideos.shouldPlayString {
-                 foundIndex = index
-             }
 
-             */
             index += 1
         }
-        if foundIndex > -1 {
-            rotationSecondaryPopup.selectItem(at: foundIndex)
-        } else {
-            // We select the first one if nothing was found
-            if rotationSecondaryPopup.numberOfItems > 0 {
-                PrefsVideos.shouldPlayString = rotationSecondaryPopup.itemTitle(at: 0)
-                rotationSecondaryPopup.selectItem(at: 0)
-            }
+
+        // We select the first one
+        if rotationSecondaryPopup.numberOfItems > 0 {
+            // PrefsVideos.shouldPlayString = rotationSecondaryPopup.itemTitle(at: 0)
+            rotationSecondaryPopup.selectItem(at: 0)
+            path = mode! + ":0"
+            print(path!)
+            reloadFor(path: path!)
         }
     }
 
@@ -631,6 +675,8 @@ extension VideosViewController: NSTableViewDataSource {
             return 0
         }
 
+        print("nor path : " + path)
+
         if let mode = VideoList.instance.modeFromPath(path) {
             let index = Int(path.split(separator: ":")[1])!
             return VideoList.instance.getVideosCountForSource(index, mode: mode)
@@ -646,6 +692,8 @@ extension VideosViewController: NSTableViewDelegate {
         guard let path = path else {
             return nil
         }
+
+        print("tv path : " + path)
 
         var video: AerialVideo
         if let mode = VideoList.instance.modeFromPath(path) {
@@ -692,4 +740,3 @@ extension VideosViewController: NSTableViewDelegate {
         updateVideoView()
     }
 }
-// swiftlint:disable:this file_length

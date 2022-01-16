@@ -89,7 +89,6 @@ extension Locations: CLLocationManagerDelegate {
                 successes.removeAll()
                 failures.removeAll()
             } else {
-                // swiftlint:disable:next line_length
                 debugLog("Location services are either globally disabled, or disabled for Aerial. Please enable them at least once so Aerial can get your coordinates, or use another Time management mode.")
             }
         }

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -38,45 +40,45 @@
             <rect key="frame" x="0.0" y="0.0" width="750" height="506"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XEl-58-TYp">
-                    <rect key="frame" x="97" y="339" width="278" height="22"/>
+                    <rect key="frame" x="97" y="341.5" width="295" height="22"/>
                     <buttonCell key="cell" type="radio" title="Manually specify sunrise and sunset time" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="large" inset="2" id="IP7-2f-mdT">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="timeModeChange:" target="-2" id="vH1-Sz-mSQ"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T3w-0V-R7q">
-                    <rect key="frame" x="97" y="299" width="513" height="22"/>
+                    <rect key="frame" x="97" y="300.5" width="545" height="22"/>
                     <buttonCell key="cell" type="radio" title="Change videos based on Light Mode/Dark Mode (macOS 10.14 Mojave required)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="large" inset="2" id="grD-eJ-n21">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="timeModeChange:" target="-2" id="0dD-WU-h4D"/>
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fXb-az-Lnm">
-                    <rect key="frame" x="28" y="468" width="714" height="16"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Aerial can adapt videos based on the time of day. For accurate results, it will need your location (which is not shared):" id="4vm-cP-mwk">
-                        <font key="font" metaFont="system"/>
+                    <rect key="frame" x="52" y="473" width="228" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Adapt videos based on time of day" id="4vm-cP-mwk">
+                        <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jal-bK-WHc">
-                    <rect key="frame" x="97" y="259" width="304" height="22"/>
+                    <rect key="frame" x="97" y="259.5" width="322" height="22"/>
                     <buttonCell key="cell" type="radio" title="Do not adapt videos, play anything at random" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="large" state="on" inset="2" id="Qsu-PJ-6Yt">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="timeModeChange:" target="-2" id="342-a6-oKr"/>
                     </connections>
                 </button>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SzV-m9-ZFE">
-                    <rect key="frame" x="52" y="298" width="24" height="24"/>
+                    <rect key="frame" x="52" y="300" width="24" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="24" id="ZuI-5i-0Ca"/>
                         <constraint firstAttribute="height" constant="24" id="pGx-JS-o5B"/>
@@ -84,7 +86,7 @@
                     <imageCell key="cell" controlSize="large" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="gear" id="h5X-E8-d3J"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SZ1-xU-U63">
-                    <rect key="frame" x="52" y="258" width="24" height="24"/>
+                    <rect key="frame" x="52" y="259" width="24" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="24" id="BBi-WG-rkj"/>
                         <constraint firstAttribute="height" constant="24" id="PwN-td-NBc"/>
@@ -92,7 +94,7 @@
                     <imageCell key="cell" controlSize="large" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="xmark.circle" id="wdI-Hq-Nfg"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Q8-32-Le7">
-                    <rect key="frame" x="52" y="338" width="24" height="24"/>
+                    <rect key="frame" x="52" y="341" width="24" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="9zv-VZ-sWn"/>
                         <constraint firstAttribute="width" constant="24" id="SX0-tc-aLa"/>
@@ -100,35 +102,35 @@
                     <imageCell key="cell" controlSize="large" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="text.cursor" id="9sa-v9-Pk2"/>
                 </imageView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LqU-wn-EaP">
-                    <rect key="frame" x="97" y="419" width="501" height="22"/>
+                    <rect key="frame" x="97" y="423.5" width="532" height="22"/>
                     <buttonCell key="cell" type="radio" title="Use my location (requires location services to be enabled for the screensaver)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="large" inset="2" id="iCc-tH-zjX">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="timeModeChange:" target="-2" id="fyv-he-5Q5"/>
                     </connections>
                 </button>
                 <button toolTip="Sunset/sunrise detection requires macOS 10.12.4, a compatible Mac, and location services enabled" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zCA-xo-Kh1">
-                    <rect key="frame" x="97" y="379" width="265" height="22"/>
+                    <rect key="frame" x="97" y="382.5" width="280" height="22"/>
                     <buttonCell key="cell" type="radio" title="Use macOS Night Shift for calculations" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="large" inset="2" id="rD2-zV-P26">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="timeModeChange:" target="-2" id="gCt-eg-XWd"/>
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="R2Z-La-EL1">
-                    <rect key="frame" x="380" y="382" width="81" height="16"/>
+                    <rect key="frame" x="395" y="385" width="87" height="17"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Next Sunrise" id="vcy-lb-T6r">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3kY-Bn-bBw">
-                    <rect key="frame" x="56" y="380" width="20" height="20"/>
+                    <rect key="frame" x="56" y="384" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="RQB-Vu-Fep"/>
                         <constraint firstAttribute="height" constant="20" id="o4Q-8Y-O3E"/>
@@ -136,17 +138,17 @@
                     <imageCell key="cell" controlSize="large" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="house" id="3SE-5N-cO0"/>
                 </imageView>
                 <button toolTip="This will override the time settings to always show night videos if you have enabled dark mode" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1xw-2R-kTW">
-                    <rect key="frame" x="197" y="219" width="253" height="22"/>
+                    <rect key="frame" x="197" y="218.5" width="268" height="22"/>
                     <buttonCell key="cell" type="check" title="Show only night videos in Dark Mode" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="kch-eD-7zN">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="darkModeNightOverrideClick:" target="-2" id="Aa4-FV-gmU"/>
                     </connections>
                 </button>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Q7-5H-Koj">
-                    <rect key="frame" x="56" y="420" width="20" height="20"/>
+                    <rect key="frame" x="56" y="425" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="Uh6-lT-zdL"/>
                         <constraint firstAttribute="height" constant="20" id="pvR-Cn-vNJ"/>
@@ -154,22 +156,22 @@
                     <imageCell key="cell" controlSize="large" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="mappin.and.ellipse" id="hiP-2o-HMf"/>
                 </imageView>
                 <box horizontalHuggingPriority="20" verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="rhV-9j-1sD">
-                    <rect key="frame" x="20" y="195" width="710" height="5"/>
+                    <rect key="frame" x="20" y="194" width="710" height="5"/>
                 </box>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jUR-yB-Nrf">
-                    <rect key="frame" x="600" y="409" width="70" height="40"/>
+                    <rect key="frame" x="631" y="413" width="60" height="40"/>
                     <buttonCell key="cell" type="push" title="Test" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QMM-O7-3uI">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="testLocationClick:" target="-2" id="sY8-ol-aWu"/>
                     </connections>
                 </button>
                 <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YLj-jJ-de5">
-                    <rect key="frame" x="453" y="338" width="42" height="21"/>
+                    <rect key="frame" x="473" y="340" width="44" height="22"/>
                     <datePickerCell key="cell" controlSize="large" borderStyle="bezel" alignment="left" id="o4w-Dn-pEi">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                         <date key="date" timeIntervalSinceReferenceDate="616854290.413427">
                             <!--2020-07-19 12:24:50 +0000-->
                         </date>
@@ -182,17 +184,17 @@
                     </connections>
                 </datePicker>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l0v-PM-J5T">
-                    <rect key="frame" x="393" y="342" width="54" height="16"/>
+                    <rect key="frame" x="410" y="344" width="57" height="17"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Sunrise:" id="6v8-Si-h4y">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7kV-Ca-cPz">
-                    <rect key="frame" x="566" y="338" width="42" height="21"/>
+                    <rect key="frame" x="591" y="340" width="44" height="22"/>
                     <datePickerCell key="cell" controlSize="large" borderStyle="bezel" alignment="left" id="JYg-42-kDw">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                         <date key="date" timeIntervalSinceReferenceDate="616854290.417768">
                             <!--2020-07-19 12:24:50 +0000-->
                         </date>
@@ -205,15 +207,15 @@
                     </connections>
                 </datePicker>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cvF-Ft-Pca">
-                    <rect key="frame" x="510" y="342" width="50" height="16"/>
+                    <rect key="frame" x="532" y="344" width="53" height="17"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Sunset:" id="Xij-lB-0vq">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="vdz-xw-hgB">
-                    <rect key="frame" x="9" y="57" width="732" height="90"/>
+                    <rect key="frame" x="9" y="56" width="732" height="90"/>
                     <subviews>
                         <box boxType="custom" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="Zp0-GE-dK9">
                             <rect key="frame" x="12" y="67" width="152" height="23"/>
@@ -404,7 +406,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <popUpButtonCell key="cell" type="push" title="1h00" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="amd-in-7o2" id="Git-gJ-WAB">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="menu"/>
+                                <font key="font" size="14" name="HelveticaNeue"/>
                                 <menu key="menu" id="HRT-dm-LqQ">
                                     <items>
                                         <menuItem title="1h00" state="on" id="amd-in-7o2"/>
@@ -430,10 +432,10 @@
                             </connections>
                         </popUpButton>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XcG-RN-UwO">
-                            <rect key="frame" x="18" y="12" width="149" height="16"/>
+                            <rect key="frame" x="8" y="12" width="159" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Sunset/Sunrise window:" id="EwB-Mo-5qO">
-                                <font key="font" usesAppearanceFont="YES"/>
+                                <font key="font" metaFont="system" size="14"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -454,6 +456,17 @@
                         <constraint firstItem="Zp0-GE-dK9" firstAttribute="top" secondItem="vdz-xw-hgB" secondAttribute="top" id="rrE-Ha-Su0"/>
                     </constraints>
                 </customView>
+                <imageView horizontalHuggingPriority="25" verticalHuggingPriority="25" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" translatesAutoresizingMaskIntoConstraints="NO" id="bBG-vS-GGt">
+                    <rect key="frame" x="16" y="457" width="28" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="1cK-Xg-IhY"/>
+                        <constraint firstAttribute="width" constant="28" id="Z2r-jQ-g3Y"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="StZ-e0-WcA">
+                        <imageReference key="image" image="clock" catalog="system" symbolScale="large"/>
+                    </imageCell>
+                    <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
+                </imageView>
             </subviews>
             <constraints>
                 <constraint firstItem="T3w-0V-R7q" firstAttribute="centerY" secondItem="SzV-m9-ZFE" secondAttribute="centerY" id="1C6-p4-PbP"/>
@@ -462,6 +475,7 @@
                 <constraint firstItem="l0v-PM-J5T" firstAttribute="leading" secondItem="XEl-58-TYp" secondAttribute="trailing" constant="20" id="7Xe-Gv-id2"/>
                 <constraint firstItem="zCA-xo-Kh1" firstAttribute="leading" secondItem="LqU-wn-EaP" secondAttribute="leading" id="AMm-2n-jdh"/>
                 <constraint firstItem="LqU-wn-EaP" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="100" id="CUP-VN-gIS"/>
+                <constraint firstItem="bBG-vS-GGt" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="10" id="Cqv-FR-TQh"/>
                 <constraint firstItem="vdz-xw-hgB" firstAttribute="top" secondItem="rhV-9j-1sD" secondAttribute="bottom" constant="50" id="DbC-Ao-aSf"/>
                 <constraint firstItem="T3w-0V-R7q" firstAttribute="leading" secondItem="SzV-m9-ZFE" secondAttribute="trailing" constant="24" id="E3o-tm-DiB"/>
                 <constraint firstItem="LqU-wn-EaP" firstAttribute="centerY" secondItem="5Q7-5H-Koj" secondAttribute="centerY" id="EKf-dc-uzH"/>
@@ -473,6 +487,7 @@
                 <constraint firstItem="YLj-jJ-de5" firstAttribute="leading" secondItem="l0v-PM-J5T" secondAttribute="trailing" constant="8" symbolic="YES" id="OZk-ZB-CPQ"/>
                 <constraint firstItem="T3w-0V-R7q" firstAttribute="leading" secondItem="LqU-wn-EaP" secondAttribute="leading" id="PeE-G6-1f5"/>
                 <constraint firstItem="cvF-Ft-Pca" firstAttribute="leading" secondItem="YLj-jJ-de5" secondAttribute="trailing" constant="20" id="Rez-W6-Vbi"/>
+                <constraint firstItem="bBG-vS-GGt" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="Rlu-UD-UtY"/>
                 <constraint firstItem="LqU-wn-EaP" firstAttribute="leading" secondItem="5Q7-5H-Koj" secondAttribute="trailing" constant="24" id="TEL-2p-XDa"/>
                 <constraint firstItem="R2Z-La-EL1" firstAttribute="leading" secondItem="zCA-xo-Kh1" secondAttribute="trailing" constant="20" id="UiX-kK-HcY"/>
                 <constraint firstItem="XEl-58-TYp" firstAttribute="top" secondItem="zCA-xo-Kh1" secondAttribute="bottom" constant="24" id="ZEG-tE-BAB"/>
@@ -486,7 +501,7 @@
                 <constraint firstItem="T3w-0V-R7q" firstAttribute="top" secondItem="YLj-jJ-de5" secondAttribute="bottom" constant="20" id="d7s-Eo-Jc6"/>
                 <constraint firstItem="zCA-xo-Kh1" firstAttribute="leading" secondItem="3kY-Bn-bBw" secondAttribute="trailing" constant="24" id="dS4-6a-TcH"/>
                 <constraint firstItem="zCA-xo-Kh1" firstAttribute="top" secondItem="LqU-wn-EaP" secondAttribute="bottom" constant="24" id="e0E-7q-0vG"/>
-                <constraint firstItem="fXb-az-Lnm" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="22" id="e1J-af-CbM"/>
+                <constraint firstItem="fXb-az-Lnm" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="16" id="e1J-af-CbM"/>
                 <constraint firstItem="cvF-Ft-Pca" firstAttribute="firstBaseline" secondItem="XEl-58-TYp" secondAttribute="firstBaseline" id="fAq-tn-aMU"/>
                 <constraint firstAttribute="trailing" secondItem="rhV-9j-1sD" secondAttribute="trailing" constant="20" id="fw1-oT-QgB"/>
                 <constraint firstItem="vdz-xw-hgB" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="h4u-EA-tX2"/>
@@ -494,7 +509,7 @@
                 <constraint firstItem="jUR-yB-Nrf" firstAttribute="leading" secondItem="LqU-wn-EaP" secondAttribute="trailing" constant="8" symbolic="YES" id="jMh-0B-OIF"/>
                 <constraint firstItem="7kV-Ca-cPz" firstAttribute="firstBaseline" secondItem="XEl-58-TYp" secondAttribute="firstBaseline" id="mRv-4q-kfe"/>
                 <constraint firstItem="rhV-9j-1sD" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="rDD-bc-Q8Q"/>
-                <constraint firstItem="fXb-az-Lnm" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="30" id="sNR-1K-TIJ"/>
+                <constraint firstItem="fXb-az-Lnm" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="54" id="sNR-1K-TIJ"/>
                 <constraint firstItem="jal-bK-WHc" firstAttribute="centerY" secondItem="SZ1-xU-U63" secondAttribute="centerY" id="soO-h3-yu5"/>
                 <constraint firstItem="l0v-PM-J5T" firstAttribute="firstBaseline" secondItem="XEl-58-TYp" secondAttribute="firstBaseline" id="str-Gx-yrV"/>
                 <constraint firstItem="jal-bK-WHc" firstAttribute="top" secondItem="T3w-0V-R7q" secondAttribute="bottom" constant="24" id="yOP-JQ-Rku"/>
@@ -564,6 +579,7 @@ You can either enter those manually or try to use Location Services on your Mac 
         </customView>
     </objects>
     <resources>
+        <image name="clock" catalog="system" width="20" height="20"/>
         <image name="gear" width="153" height="177"/>
         <image name="house" width="161" height="153"/>
         <image name="mappin.and.ellipse" width="133" height="173"/>

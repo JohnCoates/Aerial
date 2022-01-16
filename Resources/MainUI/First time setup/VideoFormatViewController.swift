@@ -40,7 +40,6 @@ class VideoFormatViewController: NSViewController {
         if PrefsVideos.videoFormat == .v1080pH264 {
             PrefsVideos.videoFormat = HardwareDetection.sharedInstance.getSuggestedFormat()
         } else {
-            // swiftlint:disable:next line_length
             labelBelow.stringValue = "Videos are usually available in multiple formats. Your current format is preselected, but you can pick another one."
             originalFormat = PrefsVideos.videoFormat
         }

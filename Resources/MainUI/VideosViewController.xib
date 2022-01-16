@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19158" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.AVKitIBPlugin" version="19158"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19158"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -40,32 +42,32 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="809" height="489"/>
+            <rect key="frame" x="0.0" y="0.0" width="809" height="497"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4AO-lJ-AL6">
-                    <rect key="frame" x="0.0" y="0.0" width="809" height="489"/>
+                    <rect key="frame" x="0.0" y="0.0" width="809" height="497"/>
                     <subviews>
                         <customView verticalCompressionResistancePriority="680" translatesAutoresizingMaskIntoConstraints="NO" id="ABO-qg-tKy">
-                            <rect key="frame" x="0.0" y="445" width="809" height="44"/>
+                            <rect key="frame" x="0.0" y="445" width="809" height="52"/>
                             <subviews>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k3W-6B-7ra">
-                                    <rect key="frame" x="40" y="15" width="135" height="16"/>
-                                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Aerial currently plays:" id="qwA-3F-bfS">
-                                        <font key="font" metaFont="system"/>
+                                    <rect key="frame" x="52" y="19" width="56" height="17"/>
+                                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Browse:" id="qwA-3F-bfS">
+                                        <font key="font" metaFont="system" size="14"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zPp-ce-Ue7">
-                                    <rect key="frame" x="178" y="2" width="156" height="40"/>
+                                    <rect key="frame" x="117" y="6" width="142" height="40"/>
                                     <popUpButtonCell key="cell" type="push" title="Everything" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="jkn-QZ-30T" id="D8b-BN-FEa">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="menu"/>
+                                        <font key="font" metaFont="system" size="14"/>
                                         <menu key="menu" id="nqE-Xg-5qQ">
                                             <items>
                                                 <menuItem title="Everything" state="on" image="film" catalog="system" id="jkn-QZ-30T"/>
-                                                <menuItem title="Only Favorites" image="star" catalog="system" id="3rE-n7-xns"/>
+                                                <menuItem title="Favorites" image="star" catalog="system" id="3rE-n7-xns"/>
                                                 <menuItem title="Location" image="location" catalog="system" id="szP-wR-xq3">
                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                 </menuItem>
@@ -76,6 +78,10 @@
                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                 </menuItem>
                                                 <menuItem title="Source" image="video.badge.plus" catalog="system" id="QHb-P6-22r">
+                                                    <attributedString key="attributedTitle"/>
+                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                </menuItem>
+                                                <menuItem title="Hidden" image="eye.slash" catalog="system" id="QOZ-LO-L8m">
                                                     <attributedString key="attributedTitle"/>
                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                 </menuItem>
@@ -90,18 +96,20 @@
                                     </connections>
                                 </popUpButton>
                                 <imageView horizontalHuggingPriority="25" verticalHuggingPriority="25" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" translatesAutoresizingMaskIntoConstraints="NO" id="Asf-6o-WdI">
-                                    <rect key="frame" x="10" y="10" width="24" height="24"/>
+                                    <rect key="frame" x="16" y="5.5" width="28.5" height="41"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="24" id="4XK-VT-sn4"/>
+                                        <constraint firstAttribute="width" constant="28" id="4XK-VT-sn4"/>
                                     </constraints>
-                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="dial" id="02X-YM-lFe"/>
-                                    <color key="contentTintColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="02X-YM-lFe">
+                                        <imageReference key="image" image="film" catalog="system" symbolScale="large"/>
+                                    </imageCell>
+                                    <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
                                 </imageView>
                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pot-N7-9D4">
-                                    <rect key="frame" x="340" y="2" width="50" height="40"/>
+                                    <rect key="frame" x="265" y="6" width="50" height="40"/>
                                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="1Qe-dD-9QB">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="menu"/>
+                                        <font key="font" metaFont="system" size="14"/>
                                         <menu key="menu" id="srx-t1-C7i"/>
                                     </popUpButtonCell>
                                     <connections>
@@ -109,10 +117,10 @@
                                     </connections>
                                 </popUpButton>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="maH-hx-nRE">
-                                    <rect key="frame" x="640" y="2" width="167" height="40"/>
+                                    <rect key="frame" x="633" y="6" width="174" height="40"/>
                                     <buttonCell key="cell" type="push" title="Download rotation" bezelStyle="rounded" image="arrow.down.circle" imagePosition="leading" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QFI-4w-0fn">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
+                                        <font key="font" metaFont="system" size="14"/>
                                     </buttonCell>
                                     <connections>
                                         <action selector="rotationCacheNowClick:" target="-2" id="LRC-FC-EOR"/>
@@ -123,17 +131,15 @@
                                 <constraint firstAttribute="trailing" secondItem="maH-hx-nRE" secondAttribute="trailing" constant="8" id="0XE-mE-TAS"/>
                                 <constraint firstItem="Asf-6o-WdI" firstAttribute="top" secondItem="ABO-qg-tKy" secondAttribute="top" constant="10" id="0n3-H1-cuA"/>
                                 <constraint firstAttribute="bottom" secondItem="Asf-6o-WdI" secondAttribute="bottom" constant="10" id="2sN-ga-tWN"/>
-                                <constraint firstAttribute="bottom" secondItem="maH-hx-nRE" secondAttribute="bottom" constant="8" id="D4U-TD-WTq"/>
-                                <constraint firstAttribute="bottom" secondItem="pot-N7-9D4" secondAttribute="bottom" constant="8" id="EHJ-Q4-SsJ"/>
-                                <constraint firstItem="k3W-6B-7ra" firstAttribute="leading" secondItem="Asf-6o-WdI" secondAttribute="trailing" constant="8" symbolic="YES" id="MtG-Rw-fTG"/>
-                                <constraint firstItem="zPp-ce-Ue7" firstAttribute="leading" secondItem="k3W-6B-7ra" secondAttribute="trailing" constant="10" id="OW2-kF-Khu"/>
-                                <constraint firstItem="zPp-ce-Ue7" firstAttribute="top" secondItem="ABO-qg-tKy" secondAttribute="top" constant="8" id="QNf-TX-cz9"/>
-                                <constraint firstItem="zPp-ce-Ue7" firstAttribute="firstBaseline" secondItem="k3W-6B-7ra" secondAttribute="firstBaseline" id="S0f-cD-cKP"/>
+                                <constraint firstItem="maH-hx-nRE" firstAttribute="firstBaseline" secondItem="zPp-ce-Ue7" secondAttribute="firstBaseline" id="8CD-CB-lia"/>
+                                <constraint firstItem="pot-N7-9D4" firstAttribute="firstBaseline" secondItem="zPp-ce-Ue7" secondAttribute="firstBaseline" id="Di7-3S-Xfk"/>
+                                <constraint firstItem="zPp-ce-Ue7" firstAttribute="leading" secondItem="k3W-6B-7ra" secondAttribute="trailing" constant="16" id="OW2-kF-Khu"/>
+                                <constraint firstItem="k3W-6B-7ra" firstAttribute="leading" secondItem="ABO-qg-tKy" secondAttribute="leading" constant="54" id="Or0-dC-MTu"/>
+                                <constraint firstItem="zPp-ce-Ue7" firstAttribute="top" secondItem="ABO-qg-tKy" secondAttribute="top" constant="12" id="QNf-TX-cz9"/>
                                 <constraint firstItem="pot-N7-9D4" firstAttribute="leading" secondItem="zPp-ce-Ue7" secondAttribute="trailing" constant="16" id="UsM-mn-8cu"/>
-                                <constraint firstItem="maH-hx-nRE" firstAttribute="top" secondItem="ABO-qg-tKy" secondAttribute="top" constant="8" id="e0d-bp-TXl"/>
-                                <constraint firstItem="Asf-6o-WdI" firstAttribute="leading" secondItem="ABO-qg-tKy" secondAttribute="leading" constant="10" id="kyL-FZ-qwS"/>
-                                <constraint firstAttribute="bottom" secondItem="zPp-ce-Ue7" secondAttribute="bottom" constant="8" id="rjQ-NE-uv6"/>
-                                <constraint firstItem="pot-N7-9D4" firstAttribute="top" secondItem="ABO-qg-tKy" secondAttribute="top" constant="8" id="zyv-dJ-qkM"/>
+                                <constraint firstItem="zPp-ce-Ue7" firstAttribute="firstBaseline" secondItem="k3W-6B-7ra" secondAttribute="firstBaseline" id="ZRH-9O-uPg"/>
+                                <constraint firstItem="Asf-6o-WdI" firstAttribute="leading" secondItem="ABO-qg-tKy" secondAttribute="leading" constant="16" id="kyL-FZ-qwS"/>
+                                <constraint firstAttribute="bottom" secondItem="zPp-ce-Ue7" secondAttribute="bottom" constant="12" id="rjQ-NE-uv6"/>
                             </constraints>
                         </customView>
                         <customView horizontalHuggingPriority="400" verticalHuggingPriority="150" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="10" translatesAutoresizingMaskIntoConstraints="NO" id="QjZ-f3-qUT">
@@ -146,7 +152,7 @@
                                             <rect key="frame" x="0.0" y="22" width="160" height="423"/>
                                             <clipView key="contentView" id="mgh-W3-r2c">
                                                 <rect key="frame" x="1" y="1" width="158" height="421"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <autoresizingMask key="autoresizingMask"/>
                                                 <subviews>
                                                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="plain" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="100" rowSizeStyle="automatic" viewBased="YES" id="ezT-3u-Nqh">
                                                         <rect key="frame" x="0.0" y="0.0" width="158" height="421"/>
@@ -176,7 +182,7 @@
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Tt5-fI-GZN"/>
                                                                             </imageView>
-                                                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZzB-8p-JVZ">
+                                                                            <button toolTip="Favorite videos will not be removed from your cache" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZzB-8p-JVZ">
                                                                                 <rect key="frame" x="2" y="15" width="25" height="30"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="star" imagePosition="only" alternateImage="star.fill" imageScaling="proportionallyDown" inset="2" id="oyr-84-Ais">
@@ -985,7 +991,6 @@
         <image name="arrow.down.circle.fill" width="141" height="155"/>
         <image name="book" catalog="system" width="18" height="14"/>
         <image name="clock" catalog="system" width="15" height="15"/>
-        <image name="dial" width="163" height="152"/>
         <image name="externaldrive" catalog="system" width="18" height="13"/>
         <image name="eye" catalog="system" width="21" height="13"/>
         <image name="eye.slash" catalog="system" width="21" height="14"/>
@@ -995,8 +1000,8 @@
         <image name="location" catalog="system" width="15" height="15"/>
         <image name="play" catalog="system" width="12" height="13"/>
         <image name="screen0" width="720" height="400"/>
-        <image name="star" width="154" height="166"/>
         <image name="star" catalog="system" width="17" height="16"/>
+        <image name="star" width="154" height="166"/>
         <image name="star.fill" width="154" height="166"/>
         <image name="sun.max" width="147" height="168"/>
         <image name="video.badge.plus" catalog="system" width="20" height="15"/>

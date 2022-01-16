@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,13 +30,13 @@
             <rect key="frame" x="0.0" y="0.0" width="813" height="451"/>
             <subviews>
                 <scrollView horizontalHuggingPriority="500" verticalHuggingPriority="500" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" autohidesScrollers="YES" horizontalLineScroll="70" horizontalPageScroll="10" verticalLineScroll="70" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBq-pn-VQA">
-                    <rect key="frame" x="30" y="68" width="753" height="326"/>
+                    <rect key="frame" x="16" y="68" width="781" height="329"/>
                     <clipView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="sZp-jW-Eya">
-                        <rect key="frame" x="1" y="1" width="751" height="324"/>
+                        <rect key="frame" x="1" y="1" width="779" height="327"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="70" headerView="b1V-rc-xZQ" viewBased="YES" indentationPerLevel="13" outlineTableColumn="Ssk-cL-P6o" id="vzM-Kh-6SV" customClass="SourceOutlineView" customModule="Aerial" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="752" height="299"/>
+                                <rect key="frame" x="0.0" y="0.0" width="779" height="302"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="17" height="0.0"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -56,8 +58,8 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wGa-S6-kGM">
-                                                        <rect key="frame" x="10" y="25" width="18" height="18"/>
-                                                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Q6G-xu-7Lu">
+                                                        <rect key="frame" x="8" y="23" width="22" height="22"/>
+                                                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="Q6G-xu-7Lu">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -73,7 +75,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="valueColumn" width="602" minWidth="40" maxWidth="1000" id="5DX-CP-hGY">
+                                    <tableColumn identifier="valueColumn" width="629" minWidth="40" maxWidth="1000" id="5DX-CP-hGY">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Description">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -86,7 +88,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="valueColumnCell" id="sPv-Lx-coN" customClass="DescriptionCellView" customModule="Aerial" customModuleProvider="target">
-                                                <rect key="frame" x="63" y="0.0" width="602" height="68"/>
+                                                <rect key="frame" x="63" y="0.0" width="629" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k0S-C5-p57">
@@ -98,7 +100,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PiP-K7-e2O">
-                                                        <rect key="frame" x="0.0" y="22" width="602" height="28"/>
+                                                        <rect key="frame" x="0.0" y="22" width="629" height="28"/>
                                                         <textFieldCell key="cell" id="FjG-vS-zA3">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <string key="title">Multiline Label
@@ -116,7 +118,7 @@ line2</string>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="film" id="1rB-mU-MYO"/>
                                                     </imageView>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kAu-1v-NWK">
-                                                        <rect key="frame" x="522" y="4" width="80" height="14"/>
+                                                        <rect key="frame" x="549" y="4" width="80" height="14"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Last updated: " id="q9w-ij-mAW">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -132,7 +134,7 @@ line2</string>
                                                         </textFieldCell>
                                                     </textField>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qTw-Wg-fqd">
-                                                        <rect key="frame" x="468" y="46" width="132" height="20"/>
+                                                        <rect key="frame" x="495" y="46" width="132" height="20"/>
                                                         <subviews>
                                                             <imageView toolTip="Nature" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gCH-fr-qvu">
                                                                 <rect key="frame" x="0.0" y="1" width="20" height="18"/>
@@ -204,7 +206,7 @@ line2</string>
                                                         </customSpacing>
                                                     </stackView>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DR3-H7-D3b">
-                                                        <rect key="frame" x="346" y="2" width="82" height="18"/>
+                                                        <rect key="frame" x="373" y="2" width="82" height="18"/>
                                                         <buttonCell key="cell" type="inline" title="View License" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ev0-LD-rjW">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="smallSystemBold"/>
@@ -214,7 +216,7 @@ line2</string>
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fLV-KX-lp1">
-                                                        <rect key="frame" x="289" y="2" width="49" height="18"/>
+                                                        <rect key="frame" x="316" y="2" width="49" height="18"/>
                                                         <buttonCell key="cell" type="inline" title="More..." bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="9KC-Rc-HHK">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="smallSystemBold"/>
@@ -224,7 +226,7 @@ line2</string>
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wbg-Ju-sA9">
-                                                        <rect key="frame" x="436" y="2" width="80" height="18"/>
+                                                        <rect key="frame" x="463" y="2" width="80" height="18"/>
                                                         <buttonCell key="cell" type="inline" title="Refresh Now" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="oT9-DN-3Gm">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="smallSystemBold"/>
@@ -287,7 +289,7 @@ line2</string>
                                         </textFieldCell>
                                         <prototypeCellViews>
                                             <tableCellView id="TlS-Vu-nlh" customClass="ActionCellView" customModule="Aerial" customModuleProvider="target">
-                                                <rect key="frame" x="682" y="0.0" width="61" height="68"/>
+                                                <rect key="frame" x="709" y="0.0" width="61" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button toolTip="Download videos from this source now" id="dhO-VP-Rzn">
@@ -326,66 +328,58 @@ line2</string>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" wantsLayer="YES" id="b1V-rc-xZQ">
-                        <rect key="frame" x="0.0" y="0.0" width="752" height="25"/>
+                        <rect key="frame" x="0.0" y="0.0" width="779" height="25"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YCA-Kf-OqL">
-                    <rect key="frame" x="24" y="14" width="124" height="40"/>
+                    <rect key="frame" x="10" y="14" width="129" height="40"/>
                     <buttonCell key="cell" type="push" title="Add Local..." bezelStyle="rounded" image="folder" catalog="system" imagePosition="leading" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="M9G-4n-Orj">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="addLocalClick:" target="-2" id="qwA-Tu-7E3"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H7z-UB-Yzx">
-                    <rect key="frame" x="156" y="14" width="128" height="40"/>
+                    <rect key="frame" x="147" y="14" width="134" height="40"/>
                     <buttonCell key="cell" type="push" title="Add Online..." bezelStyle="rounded" image="antenna.radiowaves.left.and.right" catalog="system" imagePosition="leading" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nc1-j7-Z9R">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="addOnlineClick:" target="-2" id="Xre-aK-0mV"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hJ0-L4-qoE">
-                    <rect key="frame" x="292" y="14" width="165" height="40"/>
+                    <rect key="frame" x="289" y="14" width="173" height="40"/>
                     <buttonCell key="cell" type="push" title="Get More Videos..." bezelStyle="rounded" image="cloud" catalog="system" imagePosition="leading" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Yg6-pt-6h6">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="getMoreVideosClick:" target="-2" id="OrA-Hw-xN8"/>
                     </connections>
                 </button>
-                <textField horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8Bi-xK-lN6">
-                    <rect key="frame" x="248" y="415" width="318" height="16"/>
-                    <textFieldCell key="cell" selectable="YES" title="Choose the video sources you would like to enable. " id="0AG-cL-NaN">
-                        <font key="font" usesAppearanceFont="YES"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="P2e-fe-Js2">
-                    <rect key="frame" x="613" y="14" width="176" height="40"/>
+                    <rect key="frame" x="618" y="14" width="185" height="40"/>
                     <buttonCell key="cell" type="push" title="Download All Videos" bezelStyle="rounded" image="book" catalog="system" imagePosition="leading" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dsu-LI-sTF">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="downloadAllClick:" target="-2" id="Yfd-DG-sxX"/>
                     </connections>
                 </button>
                 <progressIndicator maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="heQ-Ra-4Qf">
-                    <rect key="frame" x="595" y="26" width="16" height="16"/>
+                    <rect key="frame" x="600" y="26" width="16" height="16"/>
                 </progressIndicator>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FxS-MX-bfw">
-                    <rect key="frame" x="699" y="408" width="88" height="25"/>
-                    <popUpButtonCell key="cell" type="push" title="Weekly" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" toolTip="How often should Aerial looks for new content?" imageScaling="proportionallyDown" inset="2" selectedItem="TTP-0V-RTm" id="h9e-Et-eu5">
+                    <rect key="frame" x="699" y="405" width="103" height="40"/>
+                    <popUpButtonCell key="cell" type="push" title="Weekly" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" toolTip="How often should Aerial looks for new content?" imageScaling="proportionallyDown" inset="2" selectedItem="TTP-0V-RTm" id="h9e-Et-eu5">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
+                        <font key="font" metaFont="system" size="14"/>
                         <menu key="menu" id="PRc-jj-Fl7">
                             <items>
                                 <menuItem title="Weekly" state="on" id="TTP-0V-RTm" userLabel="Weekly"/>
@@ -399,37 +393,69 @@ line2</string>
                     </connections>
                 </popUpButton>
                 <textField toolTip="How often should Aerial looks for new content?" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HWL-LY-Ozg">
-                    <rect key="frame" x="641" y="415" width="55" height="16"/>
+                    <rect key="frame" x="640" y="418" width="58" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Refresh:" id="8uC-gE-Cn4">
-                        <font key="font" usesAppearanceFont="YES"/>
+                        <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <imageView horizontalHuggingPriority="25" verticalHuggingPriority="25" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" translatesAutoresizingMaskIntoConstraints="NO" id="cPn-il-E6e">
+                    <rect key="frame" x="16" y="408.5" width="28" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="28" id="NPY-Pt-yuk"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="VO6-l5-plS">
+                        <imageReference key="image" image="antenna.radiowaves.left.and.right" catalog="system" symbolScale="large"/>
+                    </imageCell>
+                    <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
+                </imageView>
+                <textField horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8Bi-xK-lN6">
+                    <rect key="frame" x="52" y="418" width="316" height="17"/>
+                    <textFieldCell key="cell" selectable="YES" title="You can add videos from your Mac, or check our" id="0AG-cL-NaN">
+                        <font key="font" metaFont="system" size="14"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5gs-GK-DV1">
+                    <rect key="frame" x="368" y="405" width="140" height="40"/>
+                    <buttonCell key="cell" type="push" title="online repository" bezelStyle="rounded" alignment="center" controlSize="large" state="on" borderStyle="border" inset="2" id="UHp-fo-X9a">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system" size="14"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="getMoreVideosClick:" target="-2" id="eg6-eU-5b8"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="FxS-MX-bfw" secondAttribute="trailing" constant="30" id="0n0-Ql-Jkr"/>
-                <constraint firstItem="bBq-pn-VQA" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="57" id="AxL-RL-dl4"/>
-                <constraint firstItem="HWL-LY-Ozg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8Bi-xK-lN6" secondAttribute="trailing" constant="10" id="C47-kK-Tcl"/>
-                <constraint firstAttribute="trailing" secondItem="bBq-pn-VQA" secondAttribute="trailing" constant="30" id="CEW-pk-n39"/>
+                <constraint firstAttribute="trailing" secondItem="FxS-MX-bfw" secondAttribute="trailing" constant="16" id="0n0-Ql-Jkr"/>
+                <constraint firstItem="cPn-il-E6e" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="3Nz-UK-Se0"/>
+                <constraint firstItem="bBq-pn-VQA" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="54" id="AxL-RL-dl4"/>
+                <constraint firstAttribute="trailing" secondItem="bBq-pn-VQA" secondAttribute="trailing" constant="16" id="CEW-pk-n39"/>
                 <constraint firstItem="FxS-MX-bfw" firstAttribute="leading" secondItem="HWL-LY-Ozg" secondAttribute="trailing" constant="8" symbolic="YES" id="Gdm-Os-9c9"/>
-                <constraint firstItem="bBq-pn-VQA" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="30" id="JDq-eI-FdT"/>
+                <constraint firstItem="bBq-pn-VQA" firstAttribute="top" secondItem="cPn-il-E6e" secondAttribute="bottom" constant="16" id="Hm7-kb-6ce"/>
+                <constraint firstItem="bBq-pn-VQA" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="JDq-eI-FdT"/>
+                <constraint firstItem="5gs-GK-DV1" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="12" id="LJC-ju-YML"/>
                 <constraint firstItem="P2e-fe-Js2" firstAttribute="leading" secondItem="heQ-Ra-4Qf" secondAttribute="trailing" constant="8" symbolic="YES" id="OCb-b9-Dor"/>
                 <constraint firstItem="hJ0-L4-qoE" firstAttribute="leading" secondItem="H7z-UB-Yzx" secondAttribute="trailing" constant="20" id="OZp-Te-bft"/>
                 <constraint firstItem="hJ0-L4-qoE" firstAttribute="firstBaseline" secondItem="H7z-UB-Yzx" secondAttribute="firstBaseline" id="PUI-mu-CC0"/>
+                <constraint firstItem="5gs-GK-DV1" firstAttribute="firstBaseline" secondItem="8Bi-xK-lN6" secondAttribute="firstBaseline" id="Umu-mo-HsS"/>
                 <constraint firstAttribute="bottom" secondItem="bBq-pn-VQA" secondAttribute="bottom" constant="68" id="VCk-gB-2eO"/>
                 <constraint firstItem="P2e-fe-Js2" firstAttribute="centerY" secondItem="heQ-Ra-4Qf" secondAttribute="centerY" id="VcU-vI-t0W"/>
                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="451" id="W4O-8Q-5Ss"/>
                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="811" id="WEp-mk-3VN"/>
                 <constraint firstAttribute="bottom" secondItem="H7z-UB-Yzx" secondAttribute="bottom" constant="20" id="ZvC-kw-2bu"/>
+                <constraint firstItem="FxS-MX-bfw" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="12" id="bhN-QM-UW3"/>
                 <constraint firstAttribute="bottom" secondItem="P2e-fe-Js2" secondAttribute="bottom" constant="20" symbolic="YES" id="gxV-PO-dFv"/>
-                <constraint firstItem="8Bi-xK-lN6" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="hen-WH-hKM"/>
-                <constraint firstItem="YCA-Kf-OqL" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="30" id="mgC-7f-Ojl"/>
-                <constraint firstAttribute="trailing" secondItem="P2e-fe-Js2" secondAttribute="trailing" constant="30" id="mqJ-bM-r51"/>
-                <constraint firstItem="FxS-MX-bfw" firstAttribute="firstBaseline" secondItem="8Bi-xK-lN6" secondAttribute="firstBaseline" id="nv0-zp-M6m"/>
+                <constraint firstItem="cPn-il-E6e" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="16" id="hxo-R2-4Rm"/>
+                <constraint firstItem="YCA-Kf-OqL" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="mgC-7f-Ojl"/>
+                <constraint firstItem="8Bi-xK-lN6" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="54" id="mm3-tA-48J"/>
+                <constraint firstAttribute="trailing" secondItem="P2e-fe-Js2" secondAttribute="trailing" constant="16" id="mqJ-bM-r51"/>
                 <constraint firstItem="bBq-pn-VQA" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="o3Q-R6-ddi"/>
                 <constraint firstItem="FxS-MX-bfw" firstAttribute="firstBaseline" secondItem="HWL-LY-Ozg" secondAttribute="firstBaseline" id="qeL-3X-smB"/>
-                <constraint firstItem="8Bi-xK-lN6" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="u5T-kK-ul0"/>
+                <constraint firstItem="5gs-GK-DV1" firstAttribute="leading" secondItem="8Bi-xK-lN6" secondAttribute="trailing" constant="8" id="t8d-m0-yFb"/>
                 <constraint firstItem="H7z-UB-Yzx" firstAttribute="leading" secondItem="YCA-Kf-OqL" secondAttribute="trailing" constant="20" id="vti-sF-9wr"/>
                 <constraint firstAttribute="bottom" secondItem="YCA-Kf-OqL" secondAttribute="bottom" constant="20" id="z1F-O9-1kK"/>
             </constraints>
@@ -462,10 +488,10 @@ line2</string>
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b1p-kF-lsq">
-                        <rect key="frame" x="576" y="14" width="74" height="40"/>
+                        <rect key="frame" x="570" y="14" width="77" height="40"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RQq-xj-vRk">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="system" size="14"/>
                         </buttonCell>
                         <connections>
                             <action selector="addOnlineCancel:" target="-2" id="w3I-Gu-58Y"/>
@@ -486,13 +512,24 @@ line2</string>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSCaution" id="V9e-KD-JHL"/>
                     </imageView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sxx-N6-QgG">
-                        <rect key="frame" x="658" y="14" width="68" height="40"/>
+                        <rect key="frame" x="655" y="14" width="71" height="40"/>
                         <buttonCell key="cell" type="push" title="Install" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Q0Q-DA-siQ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="system" size="14"/>
                         </buttonCell>
                         <connections>
                             <action selector="addOnlineDownload:" target="-2" id="4Oe-ld-UIO"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xfv-hg-zUZ">
+                        <rect key="frame" x="319" y="11" width="145" height="40"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Find More Videos" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vA5-Sg-TQe">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system" size="14"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="findMoreVideos:" target="-2" id="oTx-yp-BzV"/>
                         </connections>
                     </button>
                 </subviews>
@@ -589,7 +626,7 @@ Gw
     <resources>
         <image name="NSCaution" width="32" height="32"/>
         <image name="NSTouchBarDownloadTemplate" width="15" height="15"/>
-        <image name="antenna.radiowaves.left.and.right" catalog="system" width="16" height="14"/>
+        <image name="antenna.radiowaves.left.and.right" catalog="system" width="20" height="19"/>
         <image name="book" catalog="system" width="18" height="14"/>
         <image name="cloud" catalog="system" width="18" height="13"/>
         <image name="film" width="168" height="132"/>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,15 +30,15 @@
                                 <rect key="frame" x="126" y="477" width="636" height="38"/>
                                 <textFieldCell key="cell" id="oVm-P8-xlE">
                                     <font key="font" metaFont="system" size="15"/>
-                                    <string key="title">There are more than 100 different videos! You can select what you want to see at the top of the screen, after selecting "Currently playing" in the sidebar.</string>
+                                    <string key="title">There are more than 100 different videos! You can pick what you want to see in the Now Playing section. You can pick several locations now, or just play everything.</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sxo-rP-7e6">
-                                <rect key="frame" x="114" y="545" width="573" height="35"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Aerial is not your standard screensaver... " id="L5R-GJ-M5j">
-                                    <font key="font" metaFont="systemBold" size="30"/>
+                                <rect key="frame" x="76" y="537" width="648" height="43"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Thanks for installing Aerial, some tips..." id="L5R-GJ-M5j">
+                                    <font key="font" metaFont="systemBold" size="36"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -87,7 +87,7 @@
                                 <rect key="frame" x="48" y="168" width="704" height="60"/>
                                 <textFieldCell key="cell" id="ymw-Ut-XBe">
                                     <font key="font" metaFont="systemSemibold" size="17"/>
-                                    <string key="title">Aerial 2 introduced Community Videos. Joshua Michaels &amp; Hal Bergman kindly shared 20 videos at no charge for all users! If you enjoy these, consider supporting their work by checking out the additional packs they have made especially for Aerial!</string>
+                                    <string key="title">Aerial also includes videos shot by multiple contributors. Joshua Michaels &amp; Hal Bergman gifted 20 videos to Aerial. If you enjoy these, consider supporting their work by checking out the additional packs they have made especially for Aerial!</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -133,20 +133,20 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="video_inspire_italy_como_cerano-dintelvi_006" id="EbO-Ei-Jj4"/>
                             </imageView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oDG-SG-2xE">
-                                <rect key="frame" x="300" y="114" width="201" height="40"/>
+                                <rect key="frame" x="301" y="114" width="199" height="40"/>
                                 <buttonCell key="cell" type="push" title="Check out their work here" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wxW-X8-vOa">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="14"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="checkJoshHal:" target="-2" id="soS-uz-t3f"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y8k-xe-ydC">
-                                <rect key="frame" x="240" y="247" width="320" height="40"/>
+                                <rect key="frame" x="237" y="247" width="326" height="40"/>
                                 <buttonCell key="cell" type="push" title="Want to know more? Check out our FAQ here!" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tEX-da-6YE">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="14"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="checkFAQ:" target="-2" id="seE-CX-2qs"/>

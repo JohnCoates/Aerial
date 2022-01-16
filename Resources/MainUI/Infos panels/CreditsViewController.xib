@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,48 +14,57 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="739" height="460"/>
+            <rect key="frame" x="0.0" y="0.0" width="739" height="486"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="ReU-xc-cMA">
-                    <rect key="frame" x="198" y="392" width="504" height="48"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="500" id="GtJ-bZ-C8o"/>
-                    </constraints>
-                    <textFieldCell key="cell" id="PfR-gx-qhk">
-                        <font key="font" metaFont="system"/>
-                        <string key="title">Aerial was started in 2015 by John Coates. 
+                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTK-WM-mgr">
+                    <rect key="frame" x="0.0" y="0.0" width="739" height="486"/>
+                    <clipView key="contentView" id="Sz1-o4-35Y">
+                        <rect key="frame" x="1" y="1" width="737" height="484"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Y1q-aR-nvJ">
+                                <rect key="frame" x="0.0" y="-8" width="737" height="492"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="ReU-xc-cMA">
+                                        <rect key="frame" x="198" y="421" width="504" height="51"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="500" id="GtJ-bZ-C8o"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" id="PfR-gx-qhk">
+                                            <font key="font" metaFont="system" size="14"/>
+                                            <string key="title">Aerial was started in 2015 by John Coates. 
 
 Since version 1.4, Aerial is developed and maintained by Guillaume Louel.</string>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gv6-y0-c1S">
-                    <rect key="frame" x="194" y="2" width="129" height="40"/>
-                    <buttonCell key="cell" type="push" title="Contact us here" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a1o-SL-FaN">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="translationButton:" target="-2" id="7re-4c-oVR"/>
-                    </connections>
-                </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hEl-hg-Xq5">
-                    <rect key="frame" x="194" y="338" width="135" height="40"/>
-                    <buttonCell key="cell" type="push" title="Visit our Website" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8Qc-M5-TLV">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="websiteButton:" target="-2" id="LGP-oT-yPC"/>
-                    </connections>
-                </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wpw-1v-dic">
-                    <rect key="frame" x="198" y="52" width="292" height="272"/>
-                    <textFieldCell key="cell" selectable="YES" id="sP2-o5-2MT">
-                        <font key="font" usesAppearanceFont="YES"/>
-                        <string key="title">Translations contributed by:
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gv6-y0-c1S">
+                                        <rect key="frame" x="194" y="14" width="135" height="40"/>
+                                        <buttonCell key="cell" type="push" title="Contact us here" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a1o-SL-FaN">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system" size="14"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="translationButton:" target="-2" id="7re-4c-oVR"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hEl-hg-Xq5">
+                                        <rect key="frame" x="194" y="367" width="142" height="40"/>
+                                        <buttonCell key="cell" type="push" title="Visit our Website" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8Qc-M5-TLV">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system" size="14"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="websiteButton:" target="-2" id="LGP-oT-yPC"/>
+                                        </connections>
+                                    </button>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wpw-1v-dic">
+                                        <rect key="frame" x="198" y="64" width="311" height="289"/>
+                                        <textFieldCell key="cell" selectable="YES" id="sP2-o5-2MT">
+                                            <font key="font" metaFont="system" size="14"/>
+                                            <string key="title">Translations contributed by:
 - Arabic by Kachi Kulu
 - Dutch by Sebastiaan Speck
 - English by Sean M Smith
@@ -72,56 +81,81 @@ Since version 1.4, Aerial is developed and maintained by Guillaume Louel.</strin
 - Swedish by Samuel Holm
 
 Want to help with translations?</string>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2zM-0X-9R0">
-                    <rect key="frame" x="356" y="2" width="126" height="40"/>
-                    <buttonCell key="cell" type="push" title="Hop on Discord" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KmS-rN-Kxf">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="discordButton:" target="-2" id="lkL-pw-NPM"/>
-                    </connections>
-                </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ohW-uj-N2U">
-                    <rect key="frame" x="331" y="15" width="17" height="16"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="or" id="PRg-cf-Ee8">
-                        <font key="font" usesAppearanceFont="YES"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J7J-2w-Ik9">
-                    <rect key="frame" x="333" y="338" width="208" height="40"/>
-                    <buttonCell key="cell" type="push" title="Visit the GitHub Project Page" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HmR-fK-HDO">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="projectButton:" target="-2" id="Tcj-js-dfP"/>
-                    </connections>
-                </button>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2zM-0X-9R0">
+                                        <rect key="frame" x="363" y="14" width="133" height="40"/>
+                                        <buttonCell key="cell" type="push" title="Hop on Discord" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KmS-rN-Kxf">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system" size="14"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="discordButton:" target="-2" id="lkL-pw-NPM"/>
+                                        </connections>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ohW-uj-N2U">
+                                        <rect key="frame" x="337" y="27" width="18" height="17"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="or" id="PRg-cf-Ee8">
+                                            <font key="font" metaFont="system" size="14"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J7J-2w-Ik9">
+                                        <rect key="frame" x="340" y="367" width="220" height="40"/>
+                                        <buttonCell key="cell" type="push" title="Visit the GitHub Project Page" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HmR-fK-HDO">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system" size="14"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="projectButton:" target="-2" id="Tcj-js-dfP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ReU-xc-cMA" firstAttribute="top" secondItem="Y1q-aR-nvJ" secondAttribute="top" constant="20" id="0sG-76-mvU"/>
+                                    <constraint firstItem="hEl-hg-Xq5" firstAttribute="leading" secondItem="ReU-xc-cMA" secondAttribute="leading" id="2a3-G4-3pv"/>
+                                    <constraint firstItem="wpw-1v-dic" firstAttribute="top" secondItem="hEl-hg-Xq5" secondAttribute="bottom" constant="20" id="72h-2j-fjF"/>
+                                    <constraint firstItem="2zM-0X-9R0" firstAttribute="leading" secondItem="ohW-uj-N2U" secondAttribute="trailing" constant="16" id="8ng-v3-ogZ"/>
+                                    <constraint firstItem="ReU-xc-cMA" firstAttribute="leading" secondItem="Y1q-aR-nvJ" secondAttribute="leading" constant="200" id="CyR-CF-1w9"/>
+                                    <constraint firstItem="wpw-1v-dic" firstAttribute="leading" secondItem="hEl-hg-Xq5" secondAttribute="leading" id="EoY-Nm-Gma"/>
+                                    <constraint firstItem="ohW-uj-N2U" firstAttribute="leading" secondItem="Gv6-y0-c1S" secondAttribute="trailing" constant="16" id="GPY-ag-5sK"/>
+                                    <constraint firstItem="ohW-uj-N2U" firstAttribute="firstBaseline" secondItem="Gv6-y0-c1S" secondAttribute="firstBaseline" id="Ufh-Mp-YbB"/>
+                                    <constraint firstItem="2zM-0X-9R0" firstAttribute="firstBaseline" secondItem="Gv6-y0-c1S" secondAttribute="firstBaseline" id="UxQ-eg-aLW"/>
+                                    <constraint firstItem="Gv6-y0-c1S" firstAttribute="leading" secondItem="wpw-1v-dic" secondAttribute="leading" id="eZZ-wK-odk"/>
+                                    <constraint firstItem="J7J-2w-Ik9" firstAttribute="firstBaseline" secondItem="hEl-hg-Xq5" secondAttribute="firstBaseline" id="hIM-b9-aY1"/>
+                                    <constraint firstAttribute="height" constant="492" id="j93-s5-71V"/>
+                                    <constraint firstItem="J7J-2w-Ik9" firstAttribute="leading" secondItem="hEl-hg-Xq5" secondAttribute="trailing" constant="16" id="m9w-Gb-5AR"/>
+                                    <constraint firstItem="Gv6-y0-c1S" firstAttribute="top" secondItem="wpw-1v-dic" secondAttribute="bottom" constant="16" id="nFt-Zo-mMV"/>
+                                    <constraint firstItem="hEl-hg-Xq5" firstAttribute="top" secondItem="ReU-xc-cMA" secondAttribute="bottom" constant="20" id="yh4-bS-5yh"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Y1q-aR-nvJ" firstAttribute="leading" secondItem="Sz1-o4-35Y" secondAttribute="leading" id="cO0-Nh-6hM"/>
+                            <constraint firstAttribute="trailing" secondItem="Y1q-aR-nvJ" secondAttribute="trailing" id="rpr-Mm-fcN"/>
+                            <constraint firstItem="Y1q-aR-nvJ" firstAttribute="top" secondItem="Sz1-o4-35Y" secondAttribute="top" id="xrs-Vf-IF1"/>
+                        </constraints>
+                    </clipView>
+                    <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="uxu-lf-jvj">
+                        <rect key="frame" x="1" y="469" width="737" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.75" horizontal="NO" id="34h-Lz-aVs">
+                        <rect key="frame" x="722" y="1" width="16" height="484"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
             </subviews>
             <constraints>
-                <constraint firstItem="wpw-1v-dic" firstAttribute="leading" secondItem="hEl-hg-Xq5" secondAttribute="leading" id="4bf-F7-ckQ"/>
-                <constraint firstItem="ReU-xc-cMA" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="200" id="5cV-La-rSB"/>
-                <constraint firstItem="2zM-0X-9R0" firstAttribute="firstBaseline" secondItem="Gv6-y0-c1S" secondAttribute="firstBaseline" id="71J-wy-Kne"/>
-                <constraint firstItem="wpw-1v-dic" firstAttribute="top" secondItem="hEl-hg-Xq5" secondAttribute="bottom" constant="20" id="7Ec-w2-F9f"/>
-                <constraint firstItem="J7J-2w-Ik9" firstAttribute="firstBaseline" secondItem="hEl-hg-Xq5" secondAttribute="firstBaseline" id="BkZ-oe-jdm"/>
-                <constraint firstItem="2zM-0X-9R0" firstAttribute="leading" secondItem="ohW-uj-N2U" secondAttribute="trailing" constant="16" id="Dhh-tX-glQ"/>
-                <constraint firstItem="hEl-hg-Xq5" firstAttribute="top" secondItem="ReU-xc-cMA" secondAttribute="bottom" constant="20" id="M3k-Uo-Pfx"/>
-                <constraint firstItem="ohW-uj-N2U" firstAttribute="leading" secondItem="Gv6-y0-c1S" secondAttribute="trailing" constant="16" id="da0-nO-Qxa"/>
-                <constraint firstItem="J7J-2w-Ik9" firstAttribute="leading" secondItem="hEl-hg-Xq5" secondAttribute="trailing" constant="16" id="edG-iq-kGb"/>
-                <constraint firstItem="ohW-uj-N2U" firstAttribute="firstBaseline" secondItem="Gv6-y0-c1S" secondAttribute="firstBaseline" id="h8E-EP-N9K"/>
-                <constraint firstItem="Gv6-y0-c1S" firstAttribute="leading" secondItem="wpw-1v-dic" secondAttribute="leading" id="ncX-VD-x46"/>
-                <constraint firstItem="Gv6-y0-c1S" firstAttribute="top" secondItem="wpw-1v-dic" secondAttribute="bottom" constant="16" id="qdq-4X-sAY"/>
-                <constraint firstItem="hEl-hg-Xq5" firstAttribute="leading" secondItem="ReU-xc-cMA" secondAttribute="leading" id="r7W-8x-Tzc"/>
-                <constraint firstItem="ReU-xc-cMA" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="yGC-hB-d2c"/>
+                <constraint firstAttribute="bottom" secondItem="JTK-WM-mgr" secondAttribute="bottom" id="4Uo-Sh-hPI"/>
+                <constraint firstItem="JTK-WM-mgr" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="CfZ-E8-gg4"/>
+                <constraint firstItem="JTK-WM-mgr" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="j0S-Qf-RMg"/>
+                <constraint firstAttribute="trailing" secondItem="JTK-WM-mgr" secondAttribute="trailing" id="jCc-Px-UYb"/>
             </constraints>
-            <point key="canvasLocation" x="29.5" y="137"/>
+            <point key="canvasLocation" x="29.5" y="150"/>
         </customView>
     </objects>
 </document>

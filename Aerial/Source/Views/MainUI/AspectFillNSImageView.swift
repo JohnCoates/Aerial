@@ -11,6 +11,10 @@ import Cocoa
 open class AspectFillNSImageView: NSImageView {
 
     open override var image: NSImage? {
+        get {
+            return super.image
+        }
+
         set {
             self.layer = CALayer()
             self.layer?.contentsGravity = CALayerContentsGravity.resizeAspectFill
@@ -18,10 +22,6 @@ open class AspectFillNSImageView: NSImageView {
             self.wantsLayer = true
 
             super.image = newValue
-        }
-
-        get {
-            return super.image
         }
     }
 

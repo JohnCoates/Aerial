@@ -94,7 +94,6 @@ class MessageLayer: AnimationTextLayer {
                 interval = 600
             }
 
-            // swiftlint:disable:next unused_capture_list
             messageTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: { [self] (_) in
 
                 DispatchQueue.global().async {

@@ -25,12 +25,31 @@ enum ShouldPlay: Int {
     case everything, favorites, location, time, scene, source, collection
 }
 
+enum NewShouldPlay: Int {
+    case location, favorites, time, scene, source
+}
+
 enum RefreshPeriodicity: Int {
     case weekly, monthly, never
 }
 
 struct PrefsVideos {
-    // Main playback mode
+    // Main playback mode after v2.5
+    @SimpleStorage(key: "intNewShouldPlay", defaultValue: NewShouldPlay.location.rawValue)
+    static var intNewShouldPlay: Int
+
+    // We wrap in a separate value, as we can't store an enum as a Codable in
+    // macOS < 10.15
+    static var newShouldPlay: NewShouldPlay {
+        get {
+            return NewShouldPlay(rawValue: intNewShouldPlay)!
+        }
+        set(value) {
+            intNewShouldPlay = value.rawValue
+        }
+    }
+
+    // Main playback mode (deprecated in 2.5)
     @SimpleStorage(key: "intShouldPlay", defaultValue: ShouldPlay.everything.rawValue)
     static var intShouldPlay: Int
 
@@ -45,6 +64,11 @@ struct PrefsVideos {
         }
     }
 
+    // Starting with v2.5
+    @SimpleStorage(key: "newShouldPlayString", defaultValue: [])
+    static var newShouldPlayString: [String]
+
+    // Deprecated in v2.5
     @SimpleStorage(key: "shouldPlayString", defaultValue: "")
     static var shouldPlayString: String
 
@@ -115,10 +139,11 @@ struct PrefsVideos {
     @SimpleStorage(key: "allowSkips", defaultValue: true)
     static var allowSkips: Bool
 
-    @SimpleStorage(key: "sourcesEnabled", defaultValue: ["tvOS 13": true,
+    @SimpleStorage(key: "sourcesEnabled", defaultValue: ["tvOS 15": true,
+                                                         "tvOS 13": false,
                                                          "tvOS 12": false,
                                                          "tvOS 11": false,
-                                                         "tvOS 10": false, ])
+                                                         "tvOS 10": false ])
     static var enabledSources: [String: Bool]
 
     // Favorites (we use the video ID)

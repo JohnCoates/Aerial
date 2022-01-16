@@ -28,7 +28,6 @@ final class TimeManagement: NSObject {
             let location = Locations.sharedInstance
 
             location.getCoordinates(failure: { (_) in
-                // swiftlint:disable:next line_length
                 errorLog("Location services denied access to your location. Please make sure you allowed ScreenSaverEngine, Aerial, or legacyScreenSaver to access your location in System Preferences > Security and Privacy > Privacy")
             }, success: { (coordinates) in
                 self.lsLatitude = coordinates.latitude
@@ -224,7 +223,6 @@ final class TimeManagement: NSObject {
             let location = Locations.sharedInstance
 
             location.getCoordinates(failure: { (_) in
-                // swiftlint:disable:next line_length
                 errorLog("Location services denied access to your location. Please make sure you allowed ScreenSaverEngine, Aerial, or legacyScreenSaver to access your location in System Preferences > Security and Privacy > Privacy")
             }, success: { (coordinates) in
                 self.lsLatitude = coordinates.latitude

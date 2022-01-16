@@ -32,6 +32,8 @@ class AdvancedViewController: NSViewController {
     @IBOutlet var rightArrowSkipCheckbox: NSButton!
     @IBOutlet var muteSoundCheckbox: NSButton!
 
+    @IBOutlet var highQualityTextCheckbox: NSButton!
+
     @IBOutlet var favorOrientationCheckbox: NSButton!
     @IBOutlet var autoplayPreviews: NSButton!
 
@@ -75,6 +77,8 @@ class AdvancedViewController: NSViewController {
         if !PrefsVideos.allowSkips {
             rightArrowSkipCheckbox.state = .off
         }
+
+        highQualityTextCheckbox.state = PrefsInfo.highQualityTextRendering ? .on : .off
 
         muteSoundCheckbox.state = PrefsAdvanced.muteSound ? .on : .off
         autoplayPreviews.state = PrefsAdvanced.autoPlayPreviews ? .on : .off
@@ -165,7 +169,7 @@ class AdvancedViewController: NSViewController {
 
                 Cache.clearCache()
                 Cache.clearNonCacheableSources()
-                Sidebar.instance.refreshVideos()
+                // Sidebar.instance.refreshVideos()
             } else {
                 videoFormatPopup.selectItem(at: PrefsVideos.videoFormat.rawValue)
             }
@@ -178,6 +182,9 @@ class AdvancedViewController: NSViewController {
         PrefsVideos.fadeMode = FadeMode(rawValue: sender.indexOfSelectedItem)!
     }
 
+    @IBAction func highQualityTextClick(_ sender: NSButton) {
+        PrefsInfo.highQualityTextRendering = sender.state == .on
+    }
     @IBAction func rightArrowSkipClick(_ sender: NSButton) {
         PrefsVideos.allowSkips = sender.state == .on
     }
@@ -219,7 +226,6 @@ class AdvancedViewController: NSViewController {
     }
 
     @IBAction func resetAllSettings(_ sender: NSButton) {
-        // swiftlint:disable line_length
         if Aerial.showAlert(
             question: "Reset all settings?",
             text: "This will reset all your settings. After they are reset, Aerial will close System Preferences, you will have to reload it to access settings again.\n\nAre you sure you want to reset your settings?",

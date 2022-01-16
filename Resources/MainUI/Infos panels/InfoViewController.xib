@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18121" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,12 +22,12 @@
                     <rect key="frame" x="36" y="96" width="740" height="394"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mef-02-T9r">
-                            <rect key="frame" x="358" y="201" width="304" height="64"/>
+                            <rect key="frame" x="358" y="187" width="304" height="68"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="300" id="Hw7-YP-zzd"/>
                             </constraints>
                             <textFieldCell key="cell" id="GBy-sg-YND">
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="system" size="14"/>
                                 <string key="title">A free, open source, macOS Screen Saver developed and maintained by Guillaume Louel. 
 
 Enjoying Aerial? </string>
@@ -44,23 +44,23 @@ Enjoying Aerial? </string>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-512" id="2e6-aG-RVX"/>
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ceu-gu-KNt">
-                            <rect key="frame" x="358" y="281" width="118" height="15"/>
+                            <rect key="frame" x="358" y="271" width="134" height="17"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Version 123456789" id="3BT-Co-yYW">
-                                <font key="font" metaFont="systemMedium" size="12"/>
+                                <font key="font" metaFont="systemMedium" size="14"/>
                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="42t-wb-whP">
-                            <rect key="frame" x="358" y="304" width="83" height="35"/>
+                            <rect key="frame" x="358" y="296" width="98" height="43"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Aerial" id="yQI-eW-wVq">
-                                <font key="font" metaFont="systemSemibold" size="30"/>
+                                <font key="font" metaFont="systemSemibold" size="36"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
                         <button translatesAutoresizingMaskIntoConstraints="NO" id="Se0-cG-8jI">
-                            <rect key="frame" x="360" y="149" width="143" height="36"/>
+                            <rect key="frame" x="360" y="135" width="143" height="36"/>
                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="kofi1" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="xyx-wf-mwp">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -86,18 +86,18 @@ Enjoying Aerial? </string>
                     </constraints>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1H8-uB-MG3">
-                    <rect key="frame" x="255" y="17" width="302" height="16"/>
+                    <rect key="frame" x="245" y="17" width="321" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Apple TV and tvOS are trademarks of Apple Inc. " id="J9M-tH-MlW">
-                        <font key="font" usesAppearanceFont="YES"/>
+                        <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kfe-gm-Zg6">
-                    <rect key="frame" x="4" y="4" width="196" height="40"/>
+                    <rect key="frame" x="4" y="4" width="205" height="40"/>
                     <buttonCell key="cell" type="push" title=" Icon by Inferno Design" bezelStyle="rounded" image="LogoIcon-128px" imagePosition="leading" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NHO-vH-0M9">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="iconWebsiteButton:" target="-2" id="c3F-VO-QHa"/>

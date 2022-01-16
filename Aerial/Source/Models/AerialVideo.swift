@@ -10,7 +10,6 @@ import Cocoa
 import AVFoundation
 
 enum Manifests: String {
-    // swiftlint:disable:next line_length
     case tvOS10 = "tvos10.json", tvOS11 = "tvos11.json", tvOS12 = "tvos12.json", tvOS13 = "tvos13.json", tvOS13Strings = "TVIdleScreenStrings13.bundle", customVideos = "customvideos.json"
 }
 
@@ -181,6 +180,7 @@ final class AerialVideo: CustomStringConvertible, Equatable {
         } else {
             // If not, iterate through all possible versions to see if any is cached
             for format in VideoFormat.allCases {
+                // swiftlint:disable:next for_where
                 if urls[format] != "" {
 
                     let path = VideoList.instance.localPathFor(video: self)

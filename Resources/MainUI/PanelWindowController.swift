@@ -13,6 +13,9 @@ import Cocoa
 
     var splitVC: NSSplitViewController?
     var videosVC: VideosViewController?
+    var sidebarVC: SidebarViewController?
+
+    var nowPlayingItem: NSSplitViewItem?             // New main view
 
     var videoViewItem: NSSplitViewItem?             // Main video view
     // Infos
@@ -28,7 +31,6 @@ import Cocoa
     var cacheViewItem: NSSplitViewItem?
     var overlaysViewItem: NSSplitViewItem?
     var filtersViewItem: NSSplitViewItem?
-    var updatesViewItem: NSSplitViewItem?
     var advancedViewItem: NSSplitViewItem?
 
     var currentPath: String?
@@ -50,6 +52,8 @@ import Cocoa
 
         videosVC = VideosViewController(nibName: .init("VideosViewController"), bundle: bundle)
 
+        let nowPlayingVC = NowPlayingViewController(nibName: .init("NowPlayingViewController"), bundle: bundle)
+
         // Infos
         let infoVC = InfoViewController(nibName: .init("InfoViewController"), bundle: bundle)
         let creditsVC = CreditsViewController(nibName: .init("CreditsViewController"), bundle: bundle)
@@ -63,15 +67,21 @@ import Cocoa
         let cacheVC = CacheViewController(nibName: .init("CacheViewController"), bundle: bundle)
         let overlaysVC = OverlaysViewController(nibName: .init("OverlaysViewController"), bundle: bundle)
         let filtersVC = FiltersViewController(nibName: .init("FiltersViewController"), bundle: bundle)
-        let updatesVC = UpdatesViewController(nibName: .init("UpdatesViewController"), bundle: bundle)
         let advancedVC = AdvancedViewController(nibName: .init("AdvancedViewController"), bundle: bundle)
         advancedVC.windowController = self
+
         // We do the sidebar last, as it bubble up events to the other ones
-        let sidebarVC = SidebarViewController(nibName: .init("SidebarViewController"), bundle: bundle)
-        sidebarVC.windowController = self
+        sidebarVC = SidebarViewController(nibName: .init("SidebarViewController"), bundle: bundle)
+        sidebarVC!.windowController = self
+
+        // Also set the Aerial helper
+        Aerial.windowController = self
 
         // Create all the view items for the right panel
         videoViewItem = NSSplitViewItem(viewController: videosVC!)
+
+        nowPlayingItem = NSSplitViewItem(viewController: nowPlayingVC)
+
         // Infos
         infoViewItem = NSSplitViewItem(viewController: infoVC)
         creditsViewItem = NSSplitViewItem(viewController: creditsVC)
@@ -84,10 +94,9 @@ import Cocoa
         cacheViewItem = NSSplitViewItem(viewController: cacheVC)
         overlaysViewItem = NSSplitViewItem(viewController: overlaysVC)
         filtersViewItem = NSSplitViewItem(viewController: filtersVC)
-        updatesViewItem = NSSplitViewItem(viewController: updatesVC)
         advancedViewItem = NSSplitViewItem(viewController: advancedVC)
 
-        splitVC!.addSplitViewItem(NSSplitViewItem(sidebarWithViewController: sidebarVC))
+        splitVC!.addSplitViewItem(NSSplitViewItem(sidebarWithViewController: sidebarVC!))
         splitVC!.addSplitViewItem(videoViewItem!)
 
         window?.contentViewController = splitVC
@@ -125,6 +134,7 @@ import Cocoa
     func switchFrom(_ from: SidebarMenus, to: SidebarMenus) {
         // Ugh...
         guard let splitVC = splitVC,
+              let nowPlayingItem = nowPlayingItem,
               let videoViewItem = videoViewItem,
               let sourcesViewItem = sourcesViewItem,
               let infoViewItem = infoViewItem,
@@ -137,6 +147,8 @@ import Cocoa
 
         // Put new
         switch to {
+        case .modern:
+            splitVC.addSplitViewItem(nowPlayingItem)
         case .videos:
             splitVC.addSplitViewItem(videoViewItem)
         case.settings:
@@ -146,17 +158,42 @@ import Cocoa
         }
     }
 
+    //
+    func browseTo(_ path: String) {
+        guard let splitVC = splitVC,
+              let sidebarVC = sidebarVC,
+              let videosVC = videosVC else {
+                  return
+              }
+
+        // Remove the old one
+        splitVC.removeChild(at: 1)
+        // put up the video view
+        splitVC.addSplitViewItem(videoViewItem!)
+        sidebarVC.sidebarOutlineView.selectRowIndexes([2], byExtendingSelection: false)
+        videosVC.reloadPath(path: path)
+    }
+
     // Switch from one source to another
     func switchTo(_ path: String) {
+        print("switch to :" + path)
+
         guard let currentPath = currentPath,
               let videosVC = videosVC,
               path != currentPath else {
+            print("switch init issue")
             return
+        }
+
+        if path.starts(with: "modern:") {
+            let idx = path.firstIndex(of: ":")
+            switchToModern(String(path[idx!...].dropFirst())) // Oh Swift...
         }
 
         if path.starts(with: "videos:") {
             let idx = path.firstIndex(of: ":")
             videosVC.reloadFor(path: String(path[idx!...].dropFirst())) // Oh Swift...
+            switchToModern(String(path[idx!...].dropFirst())) // Oh Swift...
         }
 
         if path.starts(with: "settings:") {
@@ -171,6 +208,21 @@ import Cocoa
 
         // Save the new path
         self.currentPath = path
+    }
+
+    func switchToModern(_ path: String) {
+        guard let splitVC = splitVC else {
+            return
+        }
+
+        // Remove the old one
+        splitVC.removeChild(at: 1)
+        switch path {
+        case "nowplaying":
+            splitVC.addSplitViewItem(nowPlayingItem!)
+        default:
+            splitVC.addSplitViewItem(videoViewItem!)
+        }
     }
 
     func switchToSettings(_ path: String) {
@@ -195,8 +247,6 @@ import Cocoa
             splitVC.addSplitViewItem(overlaysViewItem!)
         case "filters":
             splitVC.addSplitViewItem(filtersViewItem!)
-        case "updates":
-            splitVC.addSplitViewItem(updatesViewItem!)
         default: // case "advanced":
             splitVC.addSplitViewItem(advancedViewItem!)
         }

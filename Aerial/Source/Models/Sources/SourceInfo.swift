@@ -17,7 +17,7 @@ struct SourceInfo {
                      "b9-1.mov",            // Dupe of b2-2 (Hawaii, day)
                      "b9-2.mov",            // Dupe of b3-1 (London, night)
                      "comp_LA_A005_C009_v05_t9_6M.mov",     // Low quality version of Los Angeles day 687B36CB-BA5D-4434-BA99-2F2B8B6EC163
-                     "comp_LA_A009_C009_t9_6M_tag0.mov",
+                     "comp_LA_A009_C009_t9_6M_tag0.mov"
                      ]    // Low quality version of Los Angeles night 89B1643B-06DD-4DEC-B1B0-774493B0F7B7
 
     // This is used for videos where URLs should be merged with different ID
@@ -26,6 +26,7 @@ struct SourceInfo {
     static let dupePairs = [
         "A2BE2E4A-AD4B-428A-9C41-BDAE1E78E816": "12318CCB-3F78-43B7-A854-EFDCCE5312CD",     // California to Vegas (v7 -> v8)
         "6A74D52E-2447-4B84-AE45-0DEF2836C3CC": "7825C73A-658F-48EE-B14C-EC56673094AC",     // China
+        "7825C73A-658F-48EE-B14C-EC56673094AC": "6324F6EB-E0F1-468F-AC2E-A983EBDDD53B",     // China again
         "6C3D54AE-0871-498A-81D0-56ED24E5FE9F": "009BA758-7060-4479-8EE8-FB9B40C8FB97",     // Korean and Japan night
         "b5-1": "044AD56C-A107-41B2-90CC-E60CCACFBCF5",                                     // Great Wall 3
         "b2-1": "22162A9B-DB90-4517-867C-C676BC3E8E95",                                     // Great wall 2
@@ -74,7 +75,7 @@ struct SourceInfo {
         "b9-3": "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51",                                     // Bay and Golden Bridge
         "b7-3": "29BDF297-EB43-403A-8719-A78DA11A2948",                                     // Fisherman's Wharf
         "b3-3": "85CE77BF-3413-4A7B-9B0F-732E96229A73",                                     // Embarcadero, Market Street
-        "391BDF6E-3279-4CE1-9CA5-0F82811452D7": "83C65C90-270C-4490-9C69-F51FE03D7F06",  // Seals tvOS 15 is reusing an old id
+        "391BDF6E-3279-4CE1-9CA5-0F82811452D7": "83C65C90-270C-4490-9C69-F51FE03D7F06"  // Seals tvOS 15 is reusing an old id
     ]
 
     // Extra info to be merged for a given ID, as of right now only one known video
@@ -83,7 +84,7 @@ struct SourceInfo {
             ["url-1080-SDR": "https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_2K_SDR_HEVC.mov",
              "url-1080-HDR": "https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_2K_HDR_HEVC.mov",
              "url-4K-SDR": "https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_SDR_HEVC.mov",
-             "url-4K-HDR": "https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_HDR_HEVC.mov", ],    // Dubai night 2
+             "url-4K-HDR": "https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_HDR_HEVC.mov" ]    // Dubai night 2
     ]
 
     static let cityVideos = [
@@ -117,7 +118,7 @@ struct SourceInfo {
         "FE8E1F9D-59BA-4207-B626-28E34D810D0A", // Hong Kong - Victoria Harbour 1
         "64EA30BD-C4B5-4CDD-86D7-DFE47E9CB9AA", // Hong Kong - Victoria Harbour 2
         "C8559883-6F3E-4AF2-8960-903710CD47B7", // Hong Kong - Victoria Peak
-        "024891DE-B7F6-4187-BFE0-E6D237702EF0", // Hong Kong - Wan Chai
+        "024891DE-B7F6-4187-BFE0-E6D237702EF0" // Hong Kong - Wan Chai
     ]
 
     static let countrySideVideos = [
@@ -127,14 +128,14 @@ struct SourceInfo {
         "EE533FBD-90AE-419A-AD13-D7A60E2015D6", // San Francisco - Marin Headlands in Fog
         "89B1643B-06DD-4DEC-B1B0-774493B0F7B7", // Los Angeles - Griffith Observatory
         "EC67726A-8212-4C5E-83CF-8412932740D2", // Los Angeles - Hollywood Hills
-        "b4-3", // San Francisco - Presidio to Golden Gate
+        "b4-3" // San Francisco - Presidio to Golden Gate
     ]
 
     static let beachVideos = [
         "b2-2", // Hawaii - Honopū Valley
         "3D729CFC-9000-48D3-A052-C5BD5B7A6842", // Hawaii - Kohala Coastline
         "12E0343D-2CD9-48EA-AB57-4D680FB6D0C7", // Hawaii - Laupāhoehoe Nui
-        "92E48DE9-13A1-4172-B560-29B4668A87EE", // Los Angeles - Santa Monica Beach
+        "92E48DE9-13A1-4172-B560-29B4668A87EE" // Los Angeles - Santa Monica Beach
     ]
 
     static let spaceVideos = [
@@ -164,7 +165,7 @@ struct SourceInfo {
         "81337355-E156-4242-AAF4-711768D30A54",             // Australia
         "1088217C-1410-4CF7-BDE9-8F573A4DBCD9",             // Caribbean
         "3C4678E4-4D3D-4A40-8817-77752AEA62EB",             // Nile Delta
-        "87060EC2-D006-4102-98CC-3005C68BB343",             // South Africa to North Asia
+        "87060EC2-D006-4102-98CC-3005C68BB343"             // South Africa to North Asia
 
     ]
 
@@ -190,7 +191,7 @@ struct SourceInfo {
         "82175C1F-153C-4EC8-AE37-2860EA828004", // Red Sea Coral
         "149E7795-DBDA-4F5D-B39A-14712F841118", // Tahiti Waves *
         "8C31B06F-91A4-4F7C-93ED-56146D7F48B9", // Tahiti Waves *
-        "391BDF6E-3279-4CE1-9CA5-0F82811452D7", // Seals (new version)
+        "391BDF6E-3279-4CE1-9CA5-0F82811452D7" // Seals (new version)
     ]
 
     static let timeInformation = [
@@ -243,7 +244,7 @@ struct SourceInfo {
         "89B1643B-06DD-4DEC-B1B0-774493B0F7B7": "sunset", // Los Angeles - Griffith Observatory
         "EC67726A-8212-4C5E-83CF-8412932740D2": "sunset", // Los Angeles - Hollywood Hills
         "EE533FBD-90AE-419A-AD13-D7A60E2015D6": "sunrise", // San Francisco - Marin Headlands in Fog
-        "b4-3": "sunrise", // San Francisco - Presidio to Golden Gate
+        "b4-3": "sunrise" // San Francisco - Presidio to Golden Gate
 
         // "BAF76353-3475-4855-B7E1-CE96CC9BC3A7": "night",    // Dubai
         // "30313BC1-BF20-45EB-A7B1-5A6FFDBD2488": "night",    // Hong Kong
@@ -287,7 +288,7 @@ struct SourceInfo {
             "b5-3": "A015_C014_",                                                // San Francisco night 3
             "b1-4": "A015_C018_",                                                // San Francisco night 4
             "b2-4": "A018_C014_",                                                 // San Francisco night 5
-            "2F11E857-4F77-4476-8033-4A1E4610AFCC": "DB_D008_C010_",        // Stealing the day description for the night one
+            "2F11E857-4F77-4476-8033-4A1E4610AFCC": "DB_D008_C010_"        // Stealing the day description for the night one
 
         ]
     // Look for a previously processed similar video

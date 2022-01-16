@@ -11,6 +11,9 @@
 import Cocoa
 
 class Aerial: NSObject {
+
+    static var windowController: PanelWindowController?
+
     // We use this to track whether we run as a screen saver or an app
     static var appMode = false
 

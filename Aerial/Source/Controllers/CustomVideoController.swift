@@ -482,7 +482,6 @@ extension CustomVideoController: NSOutlineViewDelegate {
         return CGSize(width: abs(size.width), height: abs(size.height))
     }
 
-    // swiftlint:disable:next line_length
     func outlineView(_ outlineView: NSOutlineView, validateDrop info: NSDraggingInfo, proposedItem item: Any?, proposedChildIndex index: Int) -> NSDragOperation {
         return NSDragOperation.copy
     }
@@ -609,4 +608,3 @@ extension CustomVideoController: NSMenuDelegate {
         }
     }
 }
-// swiftlint:disable:this file_length

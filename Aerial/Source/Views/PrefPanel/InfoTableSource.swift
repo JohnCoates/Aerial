@@ -75,7 +75,6 @@ class InfoTableSource: NSTableView, NSTableViewDataSource, NSTableViewDelegate {
         return item
     }
 
-    // swiftlint:disable:next line_length
     func tableView(_ tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
 
         if dropOperation == .above {

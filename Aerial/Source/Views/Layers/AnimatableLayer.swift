@@ -221,7 +221,7 @@ extension AnimatableLayer {
             Double(1 / duration ),
             Double((1 + AerialView.textFadeDuration) / duration),
             Double(1 - AerialView.textFadeDuration / duration),
-            1,
+            1
             ] as [NSNumber]
         fadeAnimation.duration = duration
         return fadeAnimation
@@ -235,7 +235,7 @@ extension AnimatableLayer {
         fadeAnimation.keyTimes = [
             0,
             Double(1 / (1 + AerialView.textFadeDuration)),
-            Double(1),
+            Double(1)
             ] as [NSNumber]
         fadeAnimation.duration = 1 + AerialView.textFadeDuration
         return fadeAnimation

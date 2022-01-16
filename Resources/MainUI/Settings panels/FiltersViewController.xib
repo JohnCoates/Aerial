@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,7 +27,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oaK-yX-Fb3">
-                    <rect key="frame" x="232" y="509" width="276" height="28"/>
+                    <rect key="frame" x="238" y="471" width="264" height="28"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="260" id="590-ll-J2f"/>
                     </constraints>
@@ -35,15 +37,15 @@
                     </connections>
                 </slider>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0GU-RH-zJp">
-                    <rect key="frame" x="95" y="521" width="139" height="16"/>
+                    <rect key="frame" x="86" y="480" width="148" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Apply global vibrance:" id="EXk-cA-wlS">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="Lkf-KS-VPB">
-                    <rect key="frame" x="60" y="48" width="728" height="409"/>
+                    <rect key="frame" x="60" y="-2" width="728" height="409"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" translatesAutoresizingMaskIntoConstraints="NO" id="7LV-8e-x1j">
                             <rect key="frame" x="0.0" y="204" width="364" height="205"/>
@@ -82,27 +84,16 @@
                         <constraint firstAttribute="bottom" secondItem="AvL-Xc-gaf" secondAttribute="bottom" id="vzz-kL-8jN"/>
                     </constraints>
                 </customView>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iob-wn-Pqt">
-                    <rect key="frame" x="517" y="520" width="175" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Allow per video vibrance" bezelStyle="regularSquare" imagePosition="left" inset="2" id="CxY-Zt-3Oi">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="allowPerVideoChange:" target="-2" id="dbZ-6n-ct2"/>
-                    </connections>
-                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JZe-5t-O4C">
-                    <rect key="frame" x="127" y="479" width="644" height="16"/>
+                    <rect key="frame" x="127" y="440" width="686" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Vibrance lets you adjust the colors of videos to make them pop more. This is not available for HDR videos." id="SB0-6z-9YD">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="NWx-XD-ael">
-                    <rect key="frame" x="97" y="475" width="24" height="24"/>
+                    <rect key="frame" x="97" y="437" width="24" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="DfM-Cy-mvh"/>
                         <constraint firstAttribute="width" constant="24" id="qKd-mm-nDx"/>
@@ -112,24 +103,59 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7rn-od-imW">
+                    <rect key="frame" x="52" y="524" width="363" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Select which information should be overlayed on videos" id="kZK-qe-87B">
+                        <font key="font" metaFont="system" size="14"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="25" verticalHuggingPriority="25" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" translatesAutoresizingMaskIntoConstraints="NO" id="gp8-EJ-ObO">
+                    <rect key="frame" x="16" y="509" width="28.5" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="28" id="Iky-aW-ddG"/>
+                        <constraint firstAttribute="height" constant="34" id="T7k-tP-81o"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="f3x-mP-8c0">
+                        <imageReference key="image" image="slider.horizontal.3" catalog="system" symbolScale="large"/>
+                    </imageCell>
+                    <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
+                </imageView>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iob-wn-Pqt">
+                    <rect key="frame" x="513" y="479.5" width="185" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Allow per video vibrance" bezelStyle="regularSquare" imagePosition="left" inset="2" id="CxY-Zt-3Oi">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system" size="14"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="allowPerVideoChange:" target="-2" id="dbZ-6n-ct2"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
+                <constraint firstItem="gp8-EJ-ObO" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="10" id="2Wi-0g-Dod"/>
                 <constraint firstItem="JZe-5t-O4C" firstAttribute="centerY" secondItem="NWx-XD-ael" secondAttribute="centerY" id="2gk-tU-yp0"/>
+                <constraint firstItem="gp8-EJ-ObO" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="6gz-Aq-vNN"/>
                 <constraint firstItem="JZe-5t-O4C" firstAttribute="leading" secondItem="NWx-XD-ael" secondAttribute="trailing" constant="8" symbolic="YES" id="8Hn-KI-4jF"/>
-                <constraint firstItem="Lkf-KS-VPB" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="100" id="9iW-YK-N19"/>
+                <constraint firstItem="Lkf-KS-VPB" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="150" id="9iW-YK-N19"/>
                 <constraint firstItem="NWx-XD-ael" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="97" id="Egc-rM-AaO"/>
                 <constraint firstItem="oaK-yX-Fb3" firstAttribute="leading" secondItem="0GU-RH-zJp" secondAttribute="trailing" constant="8" id="GCR-JE-7tQ"/>
                 <constraint firstItem="Lkf-KS-VPB" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="60" id="MFl-gR-4Cv"/>
-                <constraint firstItem="oaK-yX-Fb3" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="22" id="WVf-Pi-IAW"/>
+                <constraint firstItem="7rn-od-imW" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="16" id="UdV-Sj-pRV"/>
+                <constraint firstItem="oaK-yX-Fb3" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="60" id="WVf-Pi-IAW"/>
                 <constraint firstItem="oaK-yX-Fb3" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="240" id="bIs-qY-CO3"/>
                 <constraint firstAttribute="trailing" secondItem="Lkf-KS-VPB" secondAttribute="trailing" constant="60" id="dux-Td-5U0"/>
                 <constraint firstItem="JZe-5t-O4C" firstAttribute="top" secondItem="oaK-yX-Fb3" secondAttribute="bottom" constant="20" id="hFr-sk-O7a"/>
-                <constraint firstItem="0GU-RH-zJp" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="sju-ce-g1L"/>
+                <constraint firstItem="0GU-RH-zJp" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="60" id="sju-ce-g1L"/>
+                <constraint firstItem="7rn-od-imW" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="54" id="yFq-WC-sEf"/>
             </constraints>
             <point key="canvasLocation" x="-1591" y="296.5"/>
         </customView>
     </objects>
     <resources>
         <image name="info.circle" width="141" height="155"/>
+        <image name="slider.horizontal.3" catalog="system" width="21" height="17"/>
     </resources>
 </document>

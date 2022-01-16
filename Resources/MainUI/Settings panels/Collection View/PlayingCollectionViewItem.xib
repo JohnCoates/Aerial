@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PlayingCollectionViewItem" customModule="Aerial" customModuleProvider="target">
+            <connections>
+                <outlet property="browseImageButton" destination="V0d-fK-Vj1" id="hzA-yY-Mve"/>
+                <outlet property="checkImageButton" destination="LDl-ex-q45" id="Nb2-SB-JUn"/>
+                <outlet property="extraTextField" destination="bif-Gd-OGS" id="Ixc-Nx-oNH"/>
+                <outlet property="hiddenPath" destination="egl-P1-lot" id="EUQ-c0-rdQ"/>
+                <outlet property="mainImageButton" destination="Zi2-Qh-lVz" id="7Yz-dq-93J"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="192" height="149"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="Zi2-Qh-lVz">
+                    <rect key="frame" x="0.0" y="41" width="192" height="108"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="108" id="95D-IG-3Mq"/>
+                        <constraint firstAttribute="width" constant="192" id="Idf-82-Vvf"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="jtd-qB-G2G">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="mainImageClick:" target="-2" id="Bn8-8h-We2"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JBg-vZ-1fj">
+                    <rect key="frame" x="44" y="20" width="105" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" title="San Francisco" usesSingleLineMode="YES" id="p6s-Zl-5wN">
+                        <font key="font" metaFont="systemSemibold" size="15"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bif-Gd-OGS">
+                    <rect key="frame" x="28" y="2" width="137" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="15 videos, 40 minutes" id="vlq-XP-lln">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="egl-P1-lot">
+                    <rect key="frame" x="34" y="51" width="37" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" title="Label" id="vS9-I4-FHx">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button toolTip="Browse those videos..." verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0d-fK-Vj1">
+                    <rect key="frame" x="158" y="118.5" width="32.5" height="27"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="large" inset="2" id="JLr-Jm-3Im">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <imageReference key="image" image="arrowshape.turn.up.forward.fill" catalog="system" symbolScale="large"/>
+                    </buttonCell>
+                    <color key="bezelColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="contentTintColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="browseButton:" target="-2" id="5zI-eI-Yx5"/>
+                    </connections>
+                </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="LDl-ex-q45">
+                    <rect key="frame" x="8" y="47" width="20" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="9ts-Su-a27"/>
+                        <constraint firstAttribute="width" constant="20" id="jIj-Df-dul"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="checkmark.circle.fill" catalog="system" imagePosition="only" alignment="center" controlSize="large" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="8dZ-qN-YW6">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <color key="contentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <action selector="imageButtonClick:" target="-2" id="xEd-ji-0WU"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="JBg-vZ-1fj" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="GOk-Jj-rSQ"/>
+                <constraint firstItem="bif-Gd-OGS" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="KaV-Tu-j3N"/>
+                <constraint firstItem="Zi2-Qh-lVz" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="V5q-sN-dCg"/>
+                <constraint firstAttribute="trailing" secondItem="V0d-fK-Vj1" secondAttribute="trailing" constant="8" id="VMd-0O-066"/>
+                <constraint firstItem="JBg-vZ-1fj" firstAttribute="top" secondItem="Zi2-Qh-lVz" secondAttribute="bottom" constant="2" id="Xtq-9W-pP8"/>
+                <constraint firstItem="LDl-ex-q45" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="8" id="eii-cf-0Jf"/>
+                <constraint firstItem="V0d-fK-Vj1" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="8" id="hJy-tD-aGu"/>
+                <constraint firstAttribute="bottom" secondItem="LDl-ex-q45" secondAttribute="bottom" constant="50" id="izV-H6-PGl"/>
+                <constraint firstItem="bif-Gd-OGS" firstAttribute="top" secondItem="JBg-vZ-1fj" secondAttribute="bottom" constant="2" id="pAJ-oY-AjH"/>
+                <constraint firstItem="Zi2-Qh-lVz" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="r11-Li-PgF"/>
+            </constraints>
+            <point key="canvasLocation" x="233" y="115.5"/>
+        </customView>
+        <collectionViewItem id="3Ba-YT-RGC" customClass="PlayingCollectionViewItem" customModule="Aerial" customModuleProvider="target">
+            <connections>
+                <outlet property="browseImageButton" destination="V0d-fK-Vj1" id="dLn-ag-pb2"/>
+                <outlet property="checkImageButton" destination="LDl-ex-q45" id="uRT-GH-jzi"/>
+                <outlet property="extraTextField" destination="bif-Gd-OGS" id="pQc-9y-OGV"/>
+                <outlet property="hiddenPath" destination="egl-P1-lot" id="vqp-1L-Tfr"/>
+                <outlet property="mainImageButton" destination="Zi2-Qh-lVz" id="tCW-a9-IJA"/>
+                <outlet property="sourceItemView" destination="Zi2-Qh-lVz" id="A18-1N-VFR"/>
+                <outlet property="textField" destination="JBg-vZ-1fj" id="VvQ-u0-WQM"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="2XE-5s-UIH"/>
+            </connections>
+        </collectionViewItem>
+    </objects>
+    <resources>
+        <image name="arrowshape.turn.up.forward.fill" catalog="system" width="21" height="18"/>
+        <image name="checkmark.circle.fill" catalog="system" width="15" height="15"/>
+    </resources>
+</document>

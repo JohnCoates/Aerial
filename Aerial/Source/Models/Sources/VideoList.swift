@@ -143,24 +143,67 @@ class VideoList {
 
     }
 
-    private func filteredVideosFor(_ mode: FilterMode, filter: String) -> [AerialVideo] {
-        let lfilter = filter.lowercased()
+    // swiftlint:disable:next cyclomatic_complexity
+    private func filteredVideosFor(_ mode: FilterMode, filter: [String]) -> [AerialVideo] {
+        // Our preference filters contains ALL sorts of filters (location, time) that are
+        // saved for better user experience. So we need to filter the filters first !
+        var filters: [String] = []
+
+        for afilter in filter {
+            switch mode {
+            case .location:
+                if afilter.starts(with: "location") {
+                    filters.append(afilter.split(separator: ":")[1].lowercased())
+                }
+            case .cache:
+                filters.append(afilter.lowercased())
+            case .time:
+                if afilter.starts(with: "time") {
+                    filters.append(afilter.split(separator: ":")[1].lowercased())
+                }
+            case .scene:
+                if afilter.starts(with: "scene") {
+                    filters.append(afilter.split(separator: ":")[1].lowercased())
+                }
+            case .source:
+                if afilter.starts(with: "source") {
+                    filters.append(afilter.split(separator: ":")[1].lowercased())
+                }
+            case .rotation:
+                filters.append(afilter.lowercased())
+            case .favorite:
+                filters.append(afilter.lowercased())
+            case .hidden:
+                filters.append(afilter.lowercased())
+            }
+        }
+        print("Filters :")
+        for filter in filters {
+            print(filter)
+        }
+
+        /*print("Videos : ")
+        for video in videos {
+            print(video.name.lowercased())
+        }*/
+
         switch mode {
         case .location:
-            return videos
-                .filter { $0.name.lowercased() == lfilter && !PrefsVideos.hidden.contains($0.id) }
+            let vids = videos
+                .filter { filters.contains($0.name.lowercased()) && !PrefsVideos.hidden.contains($0.id) }
                 .sorted { $0.secondaryName < $1.secondaryName }
+            return vids
         case .time:
             return videos
-                .filter { $0.timeOfDay.lowercased() == lfilter && !PrefsVideos.hidden.contains($0.id) }
+                .filter { filters.contains($0.timeOfDay.lowercased()) && !PrefsVideos.hidden.contains($0.id) }
                 .sorted { $0.secondaryName < $1.secondaryName }
         case .scene:
             return videos
-                .filter { $0.scene.rawValue.lowercased() == lfilter && !PrefsVideos.hidden.contains($0.id) }
+                .filter { filters.contains($0.scene.rawValue.lowercased()) && !PrefsVideos.hidden.contains($0.id) }
                 .sorted { $0.secondaryName < $1.secondaryName }
         case .source:
             return videos
-                .filter { $0.source.name.lowercased() == lfilter && !PrefsVideos.hidden.contains($0.id) }
+                .filter { filters.contains($0.source.name.lowercased()) && !PrefsVideos.hidden.contains($0.id) }
                 .sorted { $0.secondaryName < $1.secondaryName }
         case .favorite:
             return videos
@@ -214,17 +257,17 @@ class VideoList {
     }
 
     func modeFromPath(_ path: String) -> FilterMode? {
-        if path.starts(with: "location:") {
+        if path.starts(with: "location") {
             return .location
-        } else if path.starts(with: "cache:") {
+        } else if path.starts(with: "cache") {
             return .cache
-        } else if path.starts(with: "time:") {
+        } else if path.starts(with: "time") {
             return .time
-        } else if path.starts(with: "scene:") {
+        } else if path.starts(with: "scene") {
             return .scene
-        } else if path.starts(with: "rotation:") {
+        } else if path.starts(with: "rotation") {
             return .rotation
-        } else if path.starts(with: "source:") {
+        } else if path.starts(with: "source") {
             return .source
         } else if path.starts(with: "favorites") {
             return .favorite
@@ -258,7 +301,6 @@ class VideoList {
         let completion = BlockOperation {
             self.refreshVideoList()
             if !PrefsCache.enableManagement {
-                // swiftlint:disable:next line_length
                 Aerial.showInfoAlert(title: "Automatic downloads are disabled", text: "In order to watch the new videos, you will need to manually download them (for example by pressing the down arrow button on the right).")
             }
         }
@@ -346,7 +388,7 @@ class VideoList {
     // MARK: - New rotation management
     func currentRotation() -> [AerialVideo] {
         var mode: FilterMode
-        switch PrefsVideos.shouldPlay {
+        switch PrefsVideos.newShouldPlay {
         case .location:
             mode = .location
         case .time:
@@ -359,17 +401,17 @@ class VideoList {
             mode = .cache
         }
 
-        switch PrefsVideos.shouldPlay {
-        case .everything:
+        switch PrefsVideos.newShouldPlay {
+/*        case .everything:
             return videos
                 .filter({ !PrefsVideos.hidden.contains($0.id) })
-                .sorted { $0.secondaryName < $1.secondaryName }
+                .sorted { $0.secondaryName < $1.secondaryName }*/
         case .favorites:
             return videos
                 .filter({ PrefsVideos.favorites.contains($0.id) && !PrefsVideos.hidden.contains($0.id) })
                 .sorted { $0.secondaryName < $1.secondaryName }
         default:
-            return filteredVideosFor(mode, filter: PrefsVideos.shouldPlayString)
+            return filteredVideosFor(mode, filter: PrefsVideos.newShouldPlayString)
         }
     }
 
@@ -385,12 +427,12 @@ class VideoList {
         let shuffled = currentRotation().shuffled()
         let cachedShuffled = shuffled.filter({ $0.isAvailableOffline })
 
-        // swiftlint:disable:next line_length
         debugLog("Playlist raw count: \(shuffled.count) raw cached count \(cachedShuffled.count) isRestricted: \(isRestricted) restrictedTo: \(restrictedTo)")
 
         if PrefsDisplays.viewingMode == .independent && PrefsAdvanced.favorOrientation {
             // We check cached videos only as those are the only ones for which we know the orientation
             for video in cachedShuffled {
+                // swiftlint:disable:next for_where
                 if video.isVertical {
                     playlistHasVerticalVideos = true
                     debugLog(">>> Playlist contains vertical videos (favoring ON)")
@@ -528,8 +570,14 @@ class VideoList {
                 }
             }
 
-            // Nothing ? Sorry but you'll get a non cached file
-            warnLog("returning random video after condition change not met !")
+            // We try to return something that's at least in the rotation, if there is one
+            if !currentRotation().isEmpty {
+                warnLog("returning random non cached BUT in rotation video after condition change not met !")
+                return currentRotation().shuffled().first
+            }
+
+            // Really nothing ? I can't even !
+            warnLog("returning truly random video after condition change not met !")
             return shuffled.first!
         }
     }

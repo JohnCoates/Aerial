@@ -52,8 +52,7 @@ final class VideoLoader: NSObject, NSURLConnectionDataDelegate {
                 request.setValue(requestRange, forHTTPHeaderField: "Range")
             }
         }
-        // debugLog("loadedRange \(loadedRange)")
-        // debugLog("requestedRange \(requestedRange)")
+
         super.init()
 
         connection = NSURLConnection(request: request as URLRequest, delegate: self, startImmediately: false)

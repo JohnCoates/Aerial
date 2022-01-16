@@ -29,7 +29,8 @@ extension AVAsset {
         }
     }
 
-    // This also checks for videos that may have their rotation baked in, and not provided as a metadata (so 1080x1920 instead of 1920x1080 with 90° rotation)
+    // This also checks for videos that may have their rotation baked in,
+    // and not provided as a metadata (so 1080x1920 instead of 1920x1080 with 90° rotation)
     func isVertical() -> Bool {
         if self.videoOrientation() == .right || self.videoOrientation() == .left {
             // So at this point this is the natural(ish) orientation, we need to check the width/height

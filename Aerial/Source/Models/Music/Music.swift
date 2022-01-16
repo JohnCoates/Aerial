@@ -18,6 +18,7 @@ struct SongInfo {
     let id: String
 }
 
+// swiftlint:disable:next type_body_length
 class Music {
     // Album arts are only available for many titles if you are using the same storefront as what
     // the user is using, so we need to have the user configure that.
@@ -189,7 +190,7 @@ class Music {
                        "Vietnam": "vn",
                        "Yemen": "ye",
                        "Zambia": "zm",
-                       "Zimbabwe": "zw", ]
+                       "Zimbabwe": "zw" ]
 
     static let instance: Music = Music()
     var callbacks = [MusicCallback]()
@@ -276,6 +277,7 @@ class Music {
     }
 
     // We can't use async/await before macOS 12... yay
+    // swiftlint:disable:next cyclomatic_complexity
     func getArtworkUrl(id: String, completion: @escaping (String?) -> Void) {
         // Spotify is a bit easier
         if PrefsInfo.musicProvider == "Spotify" {

@@ -9,6 +9,7 @@
 import Cocoa
 
 class Sidebar {
+    var modern: [Any] = []
     var videos: [Any] = []
     var settings: [Any] = []
     var infos: [Any] = []
@@ -25,36 +26,42 @@ class Sidebar {
     static let instance: Sidebar = Sidebar()
 
     init() {
-        makeSettings()
+        makeModern()
+        /*makeSettings()
         makeInfos()
-        refreshVideos()
+        refreshVideos()*/
     }
 
-    // Settings are static
-    func makeSettings() {
-        settings = [MenuEntry(name: "Custom Sources", path: "settings:sources"),
-                    MenuEntry(name: "Time", path: "settings:time"),
-                    MenuEntry(name: "Displays", path: "settings:displays"),
-                    MenuEntry(name: "Brightness", path: "settings:brightness"),
-                    MenuEntry(name: "Cache", path: "settings:cache"),
-                    MenuEntry(name: "Overlays", path: "settings:overlays"),
-                    MenuEntry(name: "Filters", path: "settings:filters"),
-                    MenuEntry(name: "Auto Updates", path: "settings:updates"),
-                    MenuEntry(name: "Advanced", path: "settings:advanced"),
-                    ]
-    }
+    // The new modern menu in 3.0
+    func makeModern() {
 
-    // So is infos
-    func makeInfos() {
-        infos = [MenuEntry(name: "About", path: "infos:about"),
-                 MenuEntry(name: "Credits", path: "infos:credits"),
-                 MenuEntry(name: "Help", path: "infos:help"),
-                ]
+        modern = [
+            Header(name: "Aerials", entries: [
+                MenuEntry(name: "Now Playing", path: "modern:nowplaying"),
+                MenuEntry(name: "Browse Videos", path: "videos:all"),
+                MenuEntry(name: "More Videos", path: "settings:sources")
+            ]),
+            Header(name: "Settings", entries: [
+                MenuEntry(name: "Time", path: "settings:time"),
+                MenuEntry(name: "Displays", path: "settings:displays"),
+                MenuEntry(name: "Brightness", path: "settings:brightness"),
+                MenuEntry(name: "Cache", path: "settings:cache"),
+                MenuEntry(name: "Overlays", path: "settings:overlays"),
+                MenuEntry(name: "Filters", path: "settings:filters"),
+                // MenuEntry(name: "Auto Updates", path: "settings:updates"),
+                MenuEntry(name: "Advanced", path: "settings:advanced")
+            ]),
+            Header(name: "Information", entries: [
+                MenuEntry(name: "About", path: "infos:about"),
+                MenuEntry(name: "Credits", path: "infos:credits"),
+                MenuEntry(name: "Help", path: "infos:help")
+            ])
+        ]
     }
 
     // This is where we maintain the list of the Sidebar content, this will need to be
     // updated periodically unlike the other sidebars that are static
-    func refreshVideos() {
+    /*func refreshVideos() {
         // At the very top, the current rotation
         let onRotation = MenuEntry(name: "Currently playing", path: "videos:rotation:0")
 
@@ -92,7 +99,7 @@ class Sidebar {
         let hidden = MenuEntry(name: "Hidden", path: "videos:hidden:0")
 
         videos = [onRotation, fav, all, cache, locations, time, scene, source, hidden]
-    }
+    }*/
 
     func makeEntriesFor(sources: [String], path: String) -> [MenuEntry] {
         var entries: [MenuEntry] = []
@@ -178,6 +185,10 @@ class Sidebar {
             return Aerial.getAccentedSymbol("person.3")
         } else if path.starts(with: "infos:about") {
             return Aerial.getAccentedSymbol("info.circle")
+
+        } else if path.starts(with: "modern:nowplaying") {
+            return Aerial.getAccentedSymbol("play.circle")
+
         } else {
             // For the WIP
             return Aerial.getSymbol("wrench")

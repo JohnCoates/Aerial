@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19158" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19158"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,6 +13,7 @@
                 <outlet property="autoplayPreviews" destination="D6x-HI-azM" id="8K9-YC-6pd"/>
                 <outlet property="debugCheckbox" destination="Jfm-Hl-4bN" id="XiF-WF-NLg"/>
                 <outlet property="favorOrientationCheckbox" destination="oe5-rQ-KJu" id="P2e-TZ-j6f"/>
+                <outlet property="highQualityTextCheckbox" destination="aZ7-cT-Z3Y" id="Oz0-Fk-ATM"/>
                 <outlet property="languageLabel" destination="xFh-dw-fup" id="ng0-cZ-hbk"/>
                 <outlet property="languagePopup" destination="39U-7I-fEm" id="X38-8k-EEi"/>
                 <outlet property="launchSetupAgain" destination="vYi-Hf-cI5" id="yqJ-SP-aSk"/>
@@ -34,326 +37,414 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="789" height="500"/>
+            <rect key="frame" x="0.0" y="0.0" width="791" height="626"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XOJ-kW-rZe">
-                    <rect key="frame" x="232" y="407" width="80" height="16"/>
-                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Video fades:" id="pA2-Es-SqM">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4zW-Lf-b41">
-                    <rect key="frame" x="315" y="359" width="204" height="22"/>
-                    <buttonCell key="cell" type="check" title="Right arrow key to skip video" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="Rgn-1F-wKS">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="rightArrowSkipClick:" target="-2" id="I8E-Rd-dOV"/>
-                    </connections>
-                </button>
-                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ueZ-L1-tKm">
-                    <rect key="frame" x="313" y="236" width="150" height="40"/>
-                    <popUpButtonCell key="cell" type="push" title="Keep enabled" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="IpW-J3-24s" id="iVm-OE-7YZ">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
-                        <menu key="menu" id="ju5-fz-KDO">
-                            <items>
-                                <menuItem title="Keep enabled" state="on" id="IpW-J3-24s"/>
-                                <menuItem title="Always disable" id="cPU-pi-EsJ"/>
-                                <menuItem title="Disable if &lt; 20%" id="w6p-h9-U35"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                    <connections>
-                        <action selector="onBatteryPopupChange:" target="-2" id="0Yo-oz-dDB"/>
-                    </connections>
-                </popUpButton>
-                <popUpButton toolTip="The duration of the fades at the beginning and the end of each video" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2PZ-3t-5f8">
-                    <rect key="frame" x="313" y="394" width="117" height="40"/>
-                    <popUpButtonCell key="cell" type="push" title="1 second" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="VtY-HK-i7p" id="2Je-DA-thk">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
-                        <menu key="menu" id="5xh-cq-dRg">
-                            <items>
-                                <menuItem title="None" id="ezK-ND-Xmn"/>
-                                <menuItem title="0.5 second" id="qLH-T3-AWz"/>
-                                <menuItem title="1 second" state="on" id="VtY-HK-i7p"/>
-                                <menuItem title="2 seconds" id="xfC-f4-RF9">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                    <connections>
-                        <action selector="videoFadesPopupChange:" target="-2" id="1eK-tM-QL1"/>
-                    </connections>
-                </popUpButton>
-                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="LK9-Dp-4je">
-                    <rect key="frame" x="20" y="217" width="749" height="5"/>
+                <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yjL-IP-0lB">
+                    <rect key="frame" x="0.0" y="572" width="791" height="54"/>
+                    <view key="contentView" id="dCt-bT-aI2">
+                        <rect key="frame" x="0.0" y="0.0" width="791" height="54"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nh1-WW-nno">
+                                <rect key="frame" x="52" y="21" width="201" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Advanced settings and tweaks" id="c2R-sQ-75h">
+                                    <font key="font" metaFont="system" size="14"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="25" verticalHuggingPriority="25" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" translatesAutoresizingMaskIntoConstraints="NO" id="DXq-Fc-PfV">
+                                <rect key="frame" x="16" y="3" width="28.5" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="ARg-Kb-f9i"/>
+                                    <constraint firstAttribute="width" constant="28" id="oGg-16-n2o"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="Sil-Pd-Bb1">
+                                    <imageReference key="image" image="wrench.and.screwdriver" catalog="system" symbolScale="large"/>
+                                </imageCell>
+                                <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="DXq-Fc-PfV" secondAttribute="bottom" constant="10" id="9Y8-0O-dXA"/>
+                            <constraint firstItem="nh1-WW-nno" firstAttribute="leading" secondItem="dCt-bT-aI2" secondAttribute="leading" constant="54" id="WoR-F7-YC8"/>
+                            <constraint firstItem="DXq-Fc-PfV" firstAttribute="top" secondItem="dCt-bT-aI2" secondAttribute="top" constant="10" id="XSC-hd-tH1"/>
+                            <constraint firstItem="DXq-Fc-PfV" firstAttribute="leading" secondItem="dCt-bT-aI2" secondAttribute="leading" constant="16" id="XqX-YW-VeF"/>
+                            <constraint firstItem="nh1-WW-nno" firstAttribute="top" secondItem="dCt-bT-aI2" secondAttribute="top" constant="16" id="dV1-br-anP"/>
+                        </constraints>
+                    </view>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="54" id="IkD-6U-Zm8"/>
+                    </constraints>
                 </box>
-                <popUpButton verticalHuggingPriority="750" verifyAmbiguity="off" translatesAutoresizingMaskIntoConstraints="NO" id="39U-7I-fEm">
-                    <rect key="frame" x="313" y="163" width="167" height="40"/>
-                    <popUpButtonCell key="cell" type="push" title="Preferred" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="eac-0Y-vKj" id="TWx-zF-jAK">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
-                        <menu key="menu" id="DkR-Wv-ewh">
-                            <items>
-                                <menuItem title="Preferred" state="on" id="eac-0Y-vKj"/>
-                                <menuItem title="Arabic" identifier="ar" id="rcZ-AI-naz"/>
-                                <menuItem title="Chinese Simplified" id="mYz-1F-BJr">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="Chinese Traditional" id="GMA-KR-82m">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="Dutch" id="HV2-Py-inP">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="English" id="2O1-cb-mbK"/>
-                                <menuItem title="French" id="LLT-V7-Qgr">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="German" id="2aP-1z-Hzo">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="Hebrew" id="REf-pq-TzN">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="Italian" id="DdV-mO-THS">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="Japanese" id="5kk-ZV-0Ki">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="Korean" id="0Dm-8H-ah9">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="Polish" id="ulr-Rn-9L3">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="Portuguese" id="Gwu-18-6SL">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="Portuguese (Brazil)" id="JnZ-pc-ZlQ">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="Russian" id="D53-xA-9jE">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="Spanish" id="PhL-Od-K1y">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="Swedish" id="AfW-ma-pQa" userLabel="Swedish">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                    <connections>
-                        <action selector="languagePopupChange:" target="-2" id="Mr7-pn-anj"/>
-                    </connections>
-                </popUpButton>
-                <button toolTip="Click for more information on Power Saving" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="geu-ZX-2ke">
-                    <rect key="frame" x="466" y="235" width="35" height="35"/>
-                    <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Pe4-WV-Mm2">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="helpOnBattery:" target="-2" id="dX2-Vd-se0"/>
-                    </connections>
-                </button>
-                <button toolTip="Debug mode will enable extra debug information messages to be logged. " verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jfm-Hl-4bN">
-                    <rect key="frame" x="315" y="74" width="107" height="22"/>
-                    <buttonCell key="cell" type="check" title="Debug mode" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="IpO-lE-bIE">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="debugCheckboxClick:" target="-2" id="PSp-I8-bLa"/>
-                    </connections>
-                </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xFh-dw-fup">
-                    <rect key="frame" x="316" y="138" width="136" height="16"/>
-                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Your current locale is " id="ZpU-TZ-xXp">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c2Y-BQ-Mg9">
-                    <rect key="frame" x="315" y="323" width="176" height="22"/>
-                    <buttonCell key="cell" type="check" title="Mute sound from videos" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="MCe-Ny-bEH">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="muteSoundClick:" target="-2" id="jbe-XY-PPY"/>
-                    </connections>
-                </button>
-                <button toolTip="Show AerialLog.txt in finder" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dka-WL-c4U">
-                    <rect key="frame" x="516" y="64" width="168" height="40"/>
-                    <buttonCell key="cell" type="push" title="Show Log in Finder" bezelStyle="rounded" image="folder" catalog="system" imagePosition="leading" alignment="center" alternateImage="NSFolder" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8fV-Kb-hfT">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="showLogInFinderClick:" target="-2" id="AEs-nt-heq"/>
-                    </connections>
-                </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XVw-x2-MRK">
-                    <rect key="frame" x="203" y="249" width="109" height="16"/>
-                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="When on battery:" id="NuA-Pp-M1N">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <popUpButton toolTip="Pick your preferred video format, see help for more information" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tVO-Se-9Jo">
-                    <rect key="frame" x="313" y="444" width="127" height="40"/>
-                    <popUpButtonCell key="cell" type="push" title="1080p H264" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="F41-ky-Eg7" id="bjl-nz-Him">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
-                        <menu key="menu" id="UvG-P4-sqy">
-                            <items>
-                                <menuItem title="1080p H264" state="on" id="F41-ky-Eg7"/>
-                                <menuItem title="1080p HEVC" id="QnL-88-t9e"/>
-                                <menuItem title="1080p HDR" id="rbr-AX-Qap" userLabel="1080p HDR">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="4K HEVC" id="43e-Ow-R4v"/>
-                                <menuItem title="4K HDR" id="D9e-ji-I4Y" userLabel="4K HDR">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                    <connections>
-                        <action selector="videoFormatPopupChange:" target="-2" id="5he-hm-yXX"/>
-                    </connections>
-                </popUpButton>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="79" translatesAutoresizingMaskIntoConstraints="NO" id="iIR-49-5le">
-                    <rect key="frame" x="229" y="457" width="83" height="16"/>
-                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Video format:" id="4pB-OE-3Z4">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button toolTip="Click for more information on Video Formats" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8lj-ap-GSr">
-                    <rect key="frame" x="443" y="443" width="35" height="35"/>
-                    <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ihk-vz-2UX">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="helpVideoFormat:" target="-2" id="hYL-8G-pcH"/>
-                    </connections>
-                </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TWt-lq-74o">
-                    <rect key="frame" x="244" y="176" width="68" height="16"/>
-                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Language:" id="wbl-fa-ZtS">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="vm9-LJ-GN6">
-                    <rect key="frame" x="20" y="113" width="749" height="5"/>
-                </box>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lzR-yN-m5b">
-                    <rect key="frame" x="312" y="23" width="155" height="40"/>
-                    <buttonCell key="cell" type="push" title="Reset All Settings" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="leading" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="T6y-Do-kQ7">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="resetAllSettings:" target="-2" id="hnc-p1-Gd0"/>
-                    </connections>
-                </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vYi-Hf-cI5">
-                    <rect key="frame" x="467" y="23" width="173" height="40"/>
-                    <buttonCell key="cell" type="push" title="Launch Setup Again" bezelStyle="rounded" image="aspectratio" catalog="system" imagePosition="left" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Bde-5x-OV2">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="launchSetupAgainClick:" target="-2" id="ezf-Eb-gEI"/>
-                    </connections>
-                </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D6x-HI-azM">
-                    <rect key="frame" x="315" y="287" width="206" height="22"/>
-                    <buttonCell key="cell" type="check" title="Autoplay previews in settings" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="Nwj-gh-gOs">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="autoPlaysPreviewsClick:" target="-2" id="sSe-40-4S5"/>
-                    </connections>
-                </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oe5-rQ-KJu">
-                    <rect key="frame" x="537" y="346" width="214" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="CBO-Vx-vdy">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <string key="title">Play vertical videos if available
- on vertical screens</string>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="favorOrientationClick:" target="-2" id="FvZ-aY-Uqe"/>
-                    </connections>
-                </button>
+                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ha-9D-VMf">
+                    <rect key="frame" x="0.0" y="0.0" width="791" height="572"/>
+                    <clipView key="contentView" id="EPP-mS-BQX">
+                        <rect key="frame" x="1" y="1" width="789" height="570"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="TLS-nM-OqY">
+                                <rect key="frame" x="0.0" y="20" width="789" height="550"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XOJ-kW-rZe">
+                                        <rect key="frame" x="227" y="459" width="85" height="17"/>
+                                        <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Video fades:" id="pA2-Es-SqM">
+                                            <font key="font" metaFont="system" size="14"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button toolTip="This feature is not available on Catalina and later because of macOS security restrictions" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4zW-Lf-b41">
+                                        <rect key="frame" x="315" y="373.5" width="215" height="22"/>
+                                        <buttonCell key="cell" type="check" title="Right arrow key to skip video" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="Rgn-1F-wKS">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system" size="14"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="rightArrowSkipClick:" target="-2" id="I8E-Rd-dOV"/>
+                                        </connections>
+                                    </button>
+                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ueZ-L1-tKm">
+                                        <rect key="frame" x="313" y="211" width="154" height="40"/>
+                                        <popUpButtonCell key="cell" type="push" title="Keep enabled" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="IpW-J3-24s" id="iVm-OE-7YZ">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="14" name="HelveticaNeue"/>
+                                            <menu key="menu" id="ju5-fz-KDO">
+                                                <items>
+                                                    <menuItem title="Keep enabled" state="on" id="IpW-J3-24s"/>
+                                                    <menuItem title="Always disable" id="cPU-pi-EsJ"/>
+                                                    <menuItem title="Disable if &lt; 20%" id="w6p-h9-U35"/>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                        <connections>
+                                            <action selector="onBatteryPopupChange:" target="-2" id="0Yo-oz-dDB"/>
+                                        </connections>
+                                    </popUpButton>
+                                    <popUpButton toolTip="The duration of the fades at the beginning and the end of each video" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2PZ-3t-5f8">
+                                        <rect key="frame" x="313" y="446" width="120" height="40"/>
+                                        <popUpButtonCell key="cell" type="push" title="1 second" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="VtY-HK-i7p" id="2Je-DA-thk">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="14" name="HelveticaNeue"/>
+                                            <menu key="menu" id="5xh-cq-dRg">
+                                                <items>
+                                                    <menuItem title="None" id="ezK-ND-Xmn"/>
+                                                    <menuItem title="0.5 second" id="qLH-T3-AWz"/>
+                                                    <menuItem title="1 second" state="on" id="VtY-HK-i7p"/>
+                                                    <menuItem title="2 seconds" id="xfC-f4-RF9">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                        <connections>
+                                            <action selector="videoFadesPopupChange:" target="-2" id="1eK-tM-QL1"/>
+                                        </connections>
+                                    </popUpButton>
+                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="LK9-Dp-4je">
+                                        <rect key="frame" x="20" y="192" width="749" height="5"/>
+                                    </box>
+                                    <popUpButton verticalHuggingPriority="750" verifyAmbiguity="off" translatesAutoresizingMaskIntoConstraints="NO" id="39U-7I-fEm">
+                                        <rect key="frame" x="313" y="138" width="170" height="40"/>
+                                        <popUpButtonCell key="cell" type="push" title="Preferred" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="eac-0Y-vKj" id="TWx-zF-jAK">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="14" name="HelveticaNeue"/>
+                                            <menu key="menu" id="DkR-Wv-ewh">
+                                                <items>
+                                                    <menuItem title="Preferred" state="on" id="eac-0Y-vKj"/>
+                                                    <menuItem title="Arabic" identifier="ar" id="rcZ-AI-naz"/>
+                                                    <menuItem title="Chinese Simplified" id="mYz-1F-BJr">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Chinese Traditional" id="GMA-KR-82m">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Dutch" id="HV2-Py-inP">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="English" id="2O1-cb-mbK"/>
+                                                    <menuItem title="French" id="LLT-V7-Qgr">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="German" id="2aP-1z-Hzo">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Hebrew" id="REf-pq-TzN">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Hungarian" id="7Gq-94-N1i">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Italian" id="DdV-mO-THS">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Japanese" id="5kk-ZV-0Ki">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Korean" id="0Dm-8H-ah9">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Polish" id="ulr-Rn-9L3">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Portuguese" id="Gwu-18-6SL">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Portuguese (Brazil)" id="JnZ-pc-ZlQ">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Russian" id="D53-xA-9jE">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Spanish" id="PhL-Od-K1y">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Swedish" id="AfW-ma-pQa" userLabel="Swedish">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                        <connections>
+                                            <action selector="languagePopupChange:" target="-2" id="Mr7-pn-anj"/>
+                                        </connections>
+                                    </popUpButton>
+                                    <button toolTip="Click for more information on Power Saving" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="geu-ZX-2ke">
+                                        <rect key="frame" x="470" y="210" width="35" height="35"/>
+                                        <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Pe4-WV-Mm2">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="helpOnBattery:" target="-2" id="dX2-Vd-se0"/>
+                                        </connections>
+                                    </button>
+                                    <button toolTip="Debug mode will enable extra debug information messages to be logged. " verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jfm-Hl-4bN">
+                                        <rect key="frame" x="315" y="47.5" width="112" height="22"/>
+                                        <buttonCell key="cell" type="check" title="Debug mode" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="IpO-lE-bIE">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system" size="14"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="debugCheckboxClick:" target="-2" id="PSp-I8-bLa"/>
+                                        </connections>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xFh-dw-fup">
+                                        <rect key="frame" x="316" y="112" width="144" height="17"/>
+                                        <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Your current locale is " id="ZpU-TZ-xXp">
+                                            <font key="font" metaFont="system" size="14"/>
+                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button toolTip="Built in videos don't have sound, but your local videos may have" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c2Y-BQ-Mg9">
+                                        <rect key="frame" x="315" y="299.5" width="186" height="22"/>
+                                        <buttonCell key="cell" type="check" title="Mute sound from videos" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="MCe-Ny-bEH">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system" size="14"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="muteSoundClick:" target="-2" id="jbe-XY-PPY"/>
+                                        </connections>
+                                    </button>
+                                    <button toolTip="Show AerialLog.txt in finder" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dka-WL-c4U">
+                                        <rect key="frame" x="521" y="37" width="176" height="40"/>
+                                        <buttonCell key="cell" type="push" title="Show Log in Finder" bezelStyle="rounded" image="folder" catalog="system" imagePosition="leading" alignment="center" alternateImage="NSFolder" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8fV-Kb-hfT">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system" size="14"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="showLogInFinderClick:" target="-2" id="AEs-nt-heq"/>
+                                        </connections>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XVw-x2-MRK">
+                                        <rect key="frame" x="196" y="224" width="116" height="17"/>
+                                        <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="When on battery:" id="NuA-Pp-M1N">
+                                            <font key="font" metaFont="system" size="14"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <popUpButton toolTip="Pick your preferred video format, see help for more information" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tVO-Se-9Jo">
+                                        <rect key="frame" x="313" y="496" width="131" height="40"/>
+                                        <popUpButtonCell key="cell" type="push" title="1080p H264" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="F41-ky-Eg7" id="bjl-nz-Him">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="14" name="HelveticaNeue"/>
+                                            <menu key="menu" id="UvG-P4-sqy">
+                                                <items>
+                                                    <menuItem title="1080p H264" state="on" id="F41-ky-Eg7"/>
+                                                    <menuItem title="1080p HEVC" id="QnL-88-t9e"/>
+                                                    <menuItem title="1080p HDR" id="rbr-AX-Qap" userLabel="1080p HDR">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="4K HEVC" id="43e-Ow-R4v"/>
+                                                    <menuItem title="4K HDR" id="D9e-ji-I4Y" userLabel="4K HDR">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                        <connections>
+                                            <action selector="videoFormatPopupChange:" target="-2" id="5he-hm-yXX"/>
+                                        </connections>
+                                    </popUpButton>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="79" translatesAutoresizingMaskIntoConstraints="NO" id="iIR-49-5le">
+                                        <rect key="frame" x="229" y="509" width="83" height="17"/>
+                                        <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Video format:" id="4pB-OE-3Z4">
+                                            <font key="font" metaFont="system" size="14"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button toolTip="Click for more information on Video Formats" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8lj-ap-GSr">
+                                        <rect key="frame" x="447" y="495" width="35" height="35"/>
+                                        <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ihk-vz-2UX">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="helpVideoFormat:" target="-2" id="hYL-8G-pcH"/>
+                                        </connections>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TWt-lq-74o">
+                                        <rect key="frame" x="240" y="151" width="72" height="17"/>
+                                        <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Language:" id="wbl-fa-ZtS">
+                                            <font key="font" metaFont="system" size="14"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="vm9-LJ-GN6">
+                                        <rect key="frame" x="20" y="87" width="749" height="5"/>
+                                    </box>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lzR-yN-m5b">
+                                        <rect key="frame" x="312" y="-4" width="163" height="40"/>
+                                        <buttonCell key="cell" type="push" title="Reset All Settings" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="leading" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="T6y-Do-kQ7">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system" size="14"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="resetAllSettings:" target="-2" id="hnc-p1-Gd0"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vYi-Hf-cI5">
+                                        <rect key="frame" x="475" y="-4" width="183" height="40"/>
+                                        <buttonCell key="cell" type="push" title="Launch Setup Again" bezelStyle="rounded" image="aspectratio" catalog="system" imagePosition="left" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Bde-5x-OV2">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system" size="14"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="launchSetupAgainClick:" target="-2" id="ezf-Eb-gEI"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D6x-HI-azM">
+                                        <rect key="frame" x="315" y="262.5" width="218" height="22"/>
+                                        <buttonCell key="cell" type="check" title="Autoplay previews in settings" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="Nwj-gh-gOs">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system" size="14"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="autoPlaysPreviewsClick:" target="-2" id="sSe-40-4S5"/>
+                                        </connections>
+                                    </button>
+                                    <button toolTip="If you have a vertical screen, and add your own vertical videos, checking this box will only play those on your vertical screen" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oe5-rQ-KJu">
+                                        <rect key="frame" x="315" y="336.5" width="351" height="22"/>
+                                        <buttonCell key="cell" type="check" title="Play vertical videos if available on vertical screens" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="CBO-Vx-vdy">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system" size="14"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="favorOrientationClick:" target="-2" id="FvZ-aY-Uqe"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aZ7-cT-Z3Y">
+                                        <rect key="frame" x="315" y="410.5" width="482" height="22"/>
+                                        <buttonCell key="cell" type="check" title="High quality text rendering (may cause your fan to spin on older Macs)" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="caS-lB-lS3">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system" size="14"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="highQualityTextClick:" target="-2" id="sph-zs-yx2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ueZ-L1-tKm" firstAttribute="leading" secondItem="TLS-nM-OqY" secondAttribute="leading" constant="318" id="2du-ua-F9P"/>
+                                    <constraint firstItem="xFh-dw-fup" firstAttribute="top" secondItem="39U-7I-fEm" secondAttribute="bottom" constant="15" id="31H-kh-2K3"/>
+                                    <constraint firstItem="tVO-Se-9Jo" firstAttribute="leading" secondItem="TLS-nM-OqY" secondAttribute="leading" constant="318" id="4V4-C7-nck"/>
+                                    <constraint firstItem="lzR-yN-m5b" firstAttribute="top" secondItem="Jfm-Hl-4bN" secondAttribute="bottom" constant="20" symbolic="YES" id="5R9-xG-J2v"/>
+                                    <constraint firstItem="oe5-rQ-KJu" firstAttribute="top" secondItem="4zW-Lf-b41" secondAttribute="bottom" constant="20" id="6W7-eK-3i7"/>
+                                    <constraint firstItem="tVO-Se-9Jo" firstAttribute="leading" secondItem="iIR-49-5le" secondAttribute="trailing" constant="8" symbolic="YES" id="8TE-Oa-fJN"/>
+                                    <constraint firstItem="Dka-WL-c4U" firstAttribute="leading" secondItem="Jfm-Hl-4bN" secondAttribute="trailing" constant="100" id="8n9-hA-Z8p"/>
+                                    <constraint firstItem="4zW-Lf-b41" firstAttribute="top" secondItem="aZ7-cT-Z3Y" secondAttribute="bottom" constant="20" id="AS5-tg-40M"/>
+                                    <constraint firstItem="ueZ-L1-tKm" firstAttribute="leading" secondItem="XVw-x2-MRK" secondAttribute="trailing" constant="8" symbolic="YES" id="AYE-8M-CZS"/>
+                                    <constraint firstAttribute="height" constant="550" id="D6W-pg-TO3"/>
+                                    <constraint firstItem="ueZ-L1-tKm" firstAttribute="top" secondItem="D6x-HI-azM" secondAttribute="bottom" constant="20" id="FRj-RH-JJU"/>
+                                    <constraint firstItem="geu-ZX-2ke" firstAttribute="centerY" secondItem="ueZ-L1-tKm" secondAttribute="centerY" id="Fy2-tC-HKo"/>
+                                    <constraint firstItem="2PZ-3t-5f8" firstAttribute="leading" secondItem="TLS-nM-OqY" secondAttribute="leading" constant="318" id="Gco-J1-0tC"/>
+                                    <constraint firstItem="ueZ-L1-tKm" firstAttribute="firstBaseline" secondItem="XVw-x2-MRK" secondAttribute="firstBaseline" id="IwS-Je-v70"/>
+                                    <constraint firstItem="geu-ZX-2ke" firstAttribute="leading" secondItem="ueZ-L1-tKm" secondAttribute="trailing" constant="12" symbolic="YES" id="LrG-2R-86Y"/>
+                                    <constraint firstItem="39U-7I-fEm" firstAttribute="firstBaseline" secondItem="TWt-lq-74o" secondAttribute="firstBaseline" id="Mf7-pV-7hz"/>
+                                    <constraint firstItem="4zW-Lf-b41" firstAttribute="leading" secondItem="TLS-nM-OqY" secondAttribute="leading" constant="318" id="Ndl-UR-fu3"/>
+                                    <constraint firstItem="2PZ-3t-5f8" firstAttribute="leading" secondItem="XOJ-kW-rZe" secondAttribute="trailing" constant="8" symbolic="YES" id="OnU-nq-3Mq"/>
+                                    <constraint firstItem="39U-7I-fEm" firstAttribute="leading" secondItem="TLS-nM-OqY" secondAttribute="leading" constant="318" id="Puj-Eb-j5y"/>
+                                    <constraint firstItem="Jfm-Hl-4bN" firstAttribute="leading" secondItem="TLS-nM-OqY" secondAttribute="leading" constant="318" id="Q1j-2P-VDn"/>
+                                    <constraint firstItem="vm9-LJ-GN6" firstAttribute="leading" secondItem="TLS-nM-OqY" secondAttribute="leading" constant="20" symbolic="YES" id="QaS-CI-PEw"/>
+                                    <constraint firstItem="c2Y-BQ-Mg9" firstAttribute="leading" secondItem="TLS-nM-OqY" secondAttribute="leading" constant="318" id="RKk-FA-9uw"/>
+                                    <constraint firstItem="aZ7-cT-Z3Y" firstAttribute="top" secondItem="2PZ-3t-5f8" secondAttribute="bottom" constant="22" id="S2S-M3-zCB"/>
+                                    <constraint firstItem="vYi-Hf-cI5" firstAttribute="leading" secondItem="lzR-yN-m5b" secondAttribute="trailing" constant="12" symbolic="YES" id="S9f-Ba-nxK"/>
+                                    <constraint firstItem="Dka-WL-c4U" firstAttribute="firstBaseline" secondItem="Jfm-Hl-4bN" secondAttribute="firstBaseline" id="U3P-Nl-7RG"/>
+                                    <constraint firstItem="tVO-Se-9Jo" firstAttribute="top" secondItem="TLS-nM-OqY" secondAttribute="top" constant="20" id="UGH-UO-phS"/>
+                                    <constraint firstItem="Jfm-Hl-4bN" firstAttribute="top" secondItem="vm9-LJ-GN6" secondAttribute="bottom" constant="22" id="V6H-OP-zNH"/>
+                                    <constraint firstItem="39U-7I-fEm" firstAttribute="leading" secondItem="TWt-lq-74o" secondAttribute="trailing" constant="8" symbolic="YES" id="VDt-Fb-vj7"/>
+                                    <constraint firstItem="D6x-HI-azM" firstAttribute="top" secondItem="c2Y-BQ-Mg9" secondAttribute="bottom" constant="20" id="WSe-aS-iaq"/>
+                                    <constraint firstItem="LK9-Dp-4je" firstAttribute="top" secondItem="ueZ-L1-tKm" secondAttribute="bottom" constant="22" id="Y0k-HV-ymr"/>
+                                    <constraint firstItem="xFh-dw-fup" firstAttribute="leading" secondItem="TLS-nM-OqY" secondAttribute="leading" constant="318" id="YpY-4H-bmB"/>
+                                    <constraint firstItem="2PZ-3t-5f8" firstAttribute="firstBaseline" secondItem="XOJ-kW-rZe" secondAttribute="firstBaseline" id="ZIP-Lp-oBA"/>
+                                    <constraint firstItem="D6x-HI-azM" firstAttribute="leading" secondItem="c2Y-BQ-Mg9" secondAttribute="leading" id="d69-7p-N5D"/>
+                                    <constraint firstItem="8lj-ap-GSr" firstAttribute="centerY" secondItem="tVO-Se-9Jo" secondAttribute="centerY" id="eN7-IJ-hRs"/>
+                                    <constraint firstItem="tVO-Se-9Jo" firstAttribute="firstBaseline" secondItem="iIR-49-5le" secondAttribute="firstBaseline" id="gox-MD-zsu"/>
+                                    <constraint firstItem="vm9-LJ-GN6" firstAttribute="top" secondItem="xFh-dw-fup" secondAttribute="bottom" constant="22" id="iOb-2A-mIE"/>
+                                    <constraint firstItem="c2Y-BQ-Mg9" firstAttribute="top" secondItem="oe5-rQ-KJu" secondAttribute="bottom" constant="20" id="jD9-be-4VL"/>
+                                    <constraint firstAttribute="trailing" secondItem="vm9-LJ-GN6" secondAttribute="trailing" constant="20" symbolic="YES" id="n2a-VF-PSL"/>
+                                    <constraint firstItem="2PZ-3t-5f8" firstAttribute="top" secondItem="tVO-Se-9Jo" secondAttribute="bottom" constant="22" id="nnZ-3a-oB4"/>
+                                    <constraint firstItem="8lj-ap-GSr" firstAttribute="leading" secondItem="tVO-Se-9Jo" secondAttribute="trailing" constant="12" id="oHW-az-0fH"/>
+                                    <constraint firstAttribute="trailing" secondItem="LK9-Dp-4je" secondAttribute="trailing" constant="20" symbolic="YES" id="onr-sK-a8L"/>
+                                    <constraint firstItem="LK9-Dp-4je" firstAttribute="leading" secondItem="TLS-nM-OqY" secondAttribute="leading" constant="20" symbolic="YES" id="pOS-5p-vmq"/>
+                                    <constraint firstItem="oe5-rQ-KJu" firstAttribute="leading" secondItem="4zW-Lf-b41" secondAttribute="leading" id="qPY-ht-VCC"/>
+                                    <constraint firstItem="vYi-Hf-cI5" firstAttribute="firstBaseline" secondItem="lzR-yN-m5b" secondAttribute="firstBaseline" id="upu-g3-3Ld"/>
+                                    <constraint firstItem="lzR-yN-m5b" firstAttribute="leading" secondItem="Jfm-Hl-4bN" secondAttribute="leading" id="wZl-Er-mrV"/>
+                                    <constraint firstItem="39U-7I-fEm" firstAttribute="top" secondItem="LK9-Dp-4je" secondAttribute="bottom" constant="22" id="xRC-lU-F6I"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="TLS-nM-OqY" secondAttribute="trailing" id="ELc-94-wBK"/>
+                            <constraint firstItem="TLS-nM-OqY" firstAttribute="top" secondItem="EPP-mS-BQX" secondAttribute="top" id="H5y-4A-Spj"/>
+                            <constraint firstItem="TLS-nM-OqY" firstAttribute="leading" secondItem="EPP-mS-BQX" secondAttribute="leading" id="khq-kf-q7Z"/>
+                        </constraints>
+                    </clipView>
+                    <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="lDZ-9J-IhM">
+                        <rect key="frame" x="1" y="555" width="789" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="68Y-fx-VNM">
+                        <rect key="frame" x="774" y="1" width="16" height="570"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
             </subviews>
             <constraints>
-                <constraint firstItem="c2Y-BQ-Mg9" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="318" id="34X-mi-YXN"/>
-                <constraint firstItem="8lj-ap-GSr" firstAttribute="leading" secondItem="tVO-Se-9Jo" secondAttribute="trailing" constant="12" id="465-dV-qFb"/>
-                <constraint firstItem="2PZ-3t-5f8" firstAttribute="top" secondItem="tVO-Se-9Jo" secondAttribute="bottom" constant="22" id="6N7-KY-DbN"/>
-                <constraint firstItem="Dka-WL-c4U" firstAttribute="firstBaseline" secondItem="Jfm-Hl-4bN" secondAttribute="firstBaseline" id="9vq-Ex-uDk"/>
-                <constraint firstItem="39U-7I-fEm" firstAttribute="leading" secondItem="TWt-lq-74o" secondAttribute="trailing" constant="8" symbolic="YES" id="A8t-0x-cGu"/>
-                <constraint firstItem="39U-7I-fEm" firstAttribute="firstBaseline" secondItem="TWt-lq-74o" secondAttribute="firstBaseline" id="AVh-P6-kgE"/>
-                <constraint firstItem="geu-ZX-2ke" firstAttribute="leading" secondItem="ueZ-L1-tKm" secondAttribute="trailing" constant="12" symbolic="YES" id="Ad5-JG-rp1"/>
-                <constraint firstItem="2PZ-3t-5f8" firstAttribute="firstBaseline" secondItem="XOJ-kW-rZe" secondAttribute="firstBaseline" id="Aup-7B-zNh"/>
-                <constraint firstItem="D6x-HI-azM" firstAttribute="top" secondItem="c2Y-BQ-Mg9" secondAttribute="bottom" constant="20" id="BjL-rq-WLU"/>
-                <constraint firstItem="tVO-Se-9Jo" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="318" id="CRW-8a-fj2"/>
-                <constraint firstItem="4zW-Lf-b41" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="318" id="F5G-dF-HZa"/>
-                <constraint firstItem="xFh-dw-fup" firstAttribute="top" secondItem="39U-7I-fEm" secondAttribute="bottom" constant="15" id="FRE-Wj-CNX"/>
-                <constraint firstItem="lzR-yN-m5b" firstAttribute="top" secondItem="Jfm-Hl-4bN" secondAttribute="bottom" constant="20" symbolic="YES" id="HQG-zO-te4"/>
-                <constraint firstItem="tVO-Se-9Jo" firstAttribute="firstBaseline" secondItem="iIR-49-5le" secondAttribute="firstBaseline" id="I1X-0n-1dO"/>
-                <constraint firstItem="LK9-Dp-4je" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="IPb-lj-v5e"/>
-                <constraint firstItem="ueZ-L1-tKm" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="318" id="IRP-3P-JM6"/>
-                <constraint firstItem="LK9-Dp-4je" firstAttribute="top" secondItem="ueZ-L1-tKm" secondAttribute="bottom" constant="22" id="Ieb-8f-gfk"/>
-                <constraint firstItem="xFh-dw-fup" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="318" id="KPc-G2-3vx"/>
-                <constraint firstItem="vYi-Hf-cI5" firstAttribute="leading" secondItem="lzR-yN-m5b" secondAttribute="trailing" constant="12" symbolic="YES" id="KhA-uu-phQ"/>
-                <constraint firstItem="vYi-Hf-cI5" firstAttribute="firstBaseline" secondItem="lzR-yN-m5b" secondAttribute="firstBaseline" id="M0J-PM-meY"/>
-                <constraint firstItem="Dka-WL-c4U" firstAttribute="leading" secondItem="Jfm-Hl-4bN" secondAttribute="trailing" constant="100" id="T0G-nv-quE"/>
-                <constraint firstItem="vm9-LJ-GN6" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="TQf-vz-A5T"/>
-                <constraint firstItem="4zW-Lf-b41" firstAttribute="top" secondItem="2PZ-3t-5f8" secondAttribute="bottom" constant="22" id="Uvu-gA-bOG"/>
-                <constraint firstItem="c2Y-BQ-Mg9" firstAttribute="top" secondItem="4zW-Lf-b41" secondAttribute="bottom" constant="20" id="WGy-Bw-aWq"/>
-                <constraint firstItem="ueZ-L1-tKm" firstAttribute="firstBaseline" secondItem="XVw-x2-MRK" secondAttribute="firstBaseline" id="YqP-Xf-TBY"/>
-                <constraint firstItem="tVO-Se-9Jo" firstAttribute="leading" secondItem="iIR-49-5le" secondAttribute="trailing" constant="8" symbolic="YES" id="Z3h-dz-NFc"/>
-                <constraint firstAttribute="trailing" secondItem="LK9-Dp-4je" secondAttribute="trailing" constant="20" symbolic="YES" id="ZhF-hr-nWh"/>
-                <constraint firstItem="Jfm-Hl-4bN" firstAttribute="top" secondItem="vm9-LJ-GN6" secondAttribute="bottom" constant="22" id="a4W-jU-exc"/>
-                <constraint firstItem="ueZ-L1-tKm" firstAttribute="top" secondItem="D6x-HI-azM" secondAttribute="bottom" constant="20" id="dis-WW-UCs"/>
-                <constraint firstItem="tVO-Se-9Jo" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="22" id="fnm-cq-xjp"/>
-                <constraint firstItem="2PZ-3t-5f8" firstAttribute="leading" secondItem="XOJ-kW-rZe" secondAttribute="trailing" constant="8" symbolic="YES" id="fsz-Yg-9P3"/>
-                <constraint firstItem="39U-7I-fEm" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="318" id="hNh-CD-XBN"/>
-                <constraint firstAttribute="trailing" secondItem="vm9-LJ-GN6" secondAttribute="trailing" constant="20" symbolic="YES" id="hsF-pU-ofl"/>
-                <constraint firstItem="geu-ZX-2ke" firstAttribute="centerY" secondItem="ueZ-L1-tKm" secondAttribute="centerY" id="i8N-HA-Xp5"/>
-                <constraint firstItem="2PZ-3t-5f8" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="318" id="jFn-il-tAA"/>
-                <constraint firstItem="lzR-yN-m5b" firstAttribute="leading" secondItem="Jfm-Hl-4bN" secondAttribute="leading" id="jWP-HX-u5c"/>
-                <constraint firstItem="D6x-HI-azM" firstAttribute="leading" secondItem="c2Y-BQ-Mg9" secondAttribute="leading" id="mOW-TG-ayj"/>
-                <constraint firstItem="vm9-LJ-GN6" firstAttribute="top" secondItem="xFh-dw-fup" secondAttribute="bottom" constant="22" id="ocg-IV-5Wd"/>
-                <constraint firstItem="8lj-ap-GSr" firstAttribute="centerY" secondItem="tVO-Se-9Jo" secondAttribute="centerY" id="qbF-GA-yNy"/>
-                <constraint firstItem="Jfm-Hl-4bN" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="318" id="ryF-PR-Wn6"/>
-                <constraint firstItem="39U-7I-fEm" firstAttribute="top" secondItem="LK9-Dp-4je" secondAttribute="bottom" constant="22" id="vEl-qI-h7O"/>
-                <constraint firstItem="ueZ-L1-tKm" firstAttribute="leading" secondItem="XVw-x2-MRK" secondAttribute="trailing" constant="8" symbolic="YES" id="wyg-p6-oe3"/>
+                <constraint firstItem="yjL-IP-0lB" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="3TR-0S-bRI"/>
+                <constraint firstAttribute="trailing" secondItem="yjL-IP-0lB" secondAttribute="trailing" id="4Am-Af-3hg"/>
+                <constraint firstItem="yjL-IP-0lB" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="89M-Yo-n8s"/>
+                <constraint firstAttribute="trailing" secondItem="6Ha-9D-VMf" secondAttribute="trailing" id="Uso-hM-AE1"/>
+                <constraint firstItem="6Ha-9D-VMf" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="frS-XR-hBo"/>
+                <constraint firstItem="6Ha-9D-VMf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="54" id="x9a-eL-C0V"/>
+                <constraint firstAttribute="bottom" secondItem="6Ha-9D-VMf" secondAttribute="bottom" id="yNI-0k-oeK"/>
             </constraints>
-            <point key="canvasLocation" x="-93.5" y="283"/>
+            <point key="canvasLocation" x="-92.5" y="346"/>
         </customView>
         <viewController id="d0b-m7-AaQ" userLabel="Popover View Controller">
             <connections>
@@ -505,5 +596,6 @@ HDR videos are encoded using Dolby Vision to represent a Higher Dynamic range of
         <image name="NSStatusPartiallyAvailable" width="16" height="16"/>
         <image name="aspectratio" catalog="system" width="18" height="14"/>
         <image name="folder" catalog="system" width="18" height="14"/>
+        <image name="wrench.and.screwdriver" catalog="system" width="24" height="23"/>
     </resources>
 </document>

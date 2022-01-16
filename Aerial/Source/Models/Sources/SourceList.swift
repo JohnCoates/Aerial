@@ -62,7 +62,7 @@ struct SourceList {
                         license: "",
                         more: "")
 
-    static var list: [Source] = [tvOS15, tvOS13, tvOS12, tvOS11, tvOS10] + foundSources
+    static var list: [Source] = [tvOS15, tvOS13, tvOS10] + foundSources
     // static var list: [Source] = foundSources
 
     // This is where the magic happens
@@ -113,14 +113,17 @@ struct SourceList {
         var communities: [Source] = []
         var online: [Source] = []
         var local: [Source] = []
+        var apple: [Source] = []
 
-        for source in list where !source.name.starts(with: "tvOS") {
+        for source in list { // where !source.name.starts(with: "tvOS") {
             if source.type == .local {
                 local.append(source)
             } else {
                 // This may need to be changed in the future
                 if !source.isCachable {
                     online.append(source)
+                } else if source.name.starts(with: "tvOS") {
+                    apple.append(source)
                 } else {
                     communities.append(source)
                 }
@@ -136,6 +139,10 @@ struct SourceList {
 
         if !online.isEmpty {
             output.append(SourceHeader(name: "Online Sources", sources: online))
+        }
+
+        if !apple.isEmpty {
+            output.append(SourceHeader(name: "Apple TV", sources: apple))
         }
 
         if !local.isEmpty {

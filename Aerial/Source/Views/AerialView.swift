@@ -321,7 +321,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     }
 
     override func viewDidChangeBackingProperties() {
-        // swiftlint:disable:next line_length
         debugLog("\(self.description) backing change \((self.window?.backingScaleFactor) ?? 1.0) isDisabled: \(isDisabled) frame: \(self.frame) preview: \(self.isPreview)")
 
         // Tentative workaround for a Catalina+ bug
@@ -448,6 +447,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                                        selector: #selector(AerialView.playerItemPlaybackStalledNotification(_:)),
                                        name: NSNotification.Name.AVPlayerItemPlaybackStalled,
                                        object: currentItem)
+
         DistributedNotificationCenter.default.addObserver(self,
             selector: #selector(AerialView.willStop(_:)),
             name: Notification.Name("com.apple.screensaver.willstop"), object: nil)
@@ -706,4 +706,3 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         }*/
     }
 }
-// swiftlint:disable:this file_length

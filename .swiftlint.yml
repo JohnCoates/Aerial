@@ -15,6 +15,7 @@ disabled_rules:
   # Allow declaring operators without extra whitespace, like so: `func ==(_ lhs, ...)`
   - operator_whitespace
   - redundant_string_enum_value
+  - inclusive_language
 
 excluded:
   - Extern
@@ -24,11 +25,9 @@ opt_in_rules:
   - empty_count
 
 file_length:
-  warning: 600
-  error: 1000
-line_length: 150
-trailing_comma:
-  mandatory_comma: true
+  warning: 1000
+  error: 2000
+line_length: 250
 identifier_name:
   min_length:
     warning: 2

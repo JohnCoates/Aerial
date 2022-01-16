@@ -46,6 +46,7 @@ class CacheViewController: NSViewController {
 
     @IBOutlet var cacheBox: NSBox!
     @IBOutlet var freeBox: NSBox!
+    @IBOutlet var packsBox: NSBox!
 
     // Manual mode
     @IBOutlet var cacheSize: NSTextField!
@@ -111,6 +112,9 @@ class CacheViewController: NSViewController {
 
     func updateCacheBox() {
         let usedCache = Cache.size()
+        let packsSize = Cache.packsSize()
+
+        print("pack size : \(packsSize)")
 
         var maxCache = PrefsCache.cacheLimit
         var freeCache = usedCache > maxCache ? 0 : maxCache - usedCache
@@ -121,7 +125,7 @@ class CacheViewController: NSViewController {
         }
 
         // This is the total max usage, used to draw the bar
-        var totalPotentialSize = max(maxCache, usedCache)
+        var totalPotentialSize = max(maxCache, usedCache) + packsSize
         if totalPotentialSize == 0 {
             totalPotentialSize = 1
         }
@@ -129,14 +133,14 @@ class CacheViewController: NSViewController {
 
         let cacheWidth = Int(usedCache * 486 / totalPotentialSize)
         let freeWidth = Int(freeCache * 486 / totalPotentialSize)
-
+        let packsWidth = Int(packsSize * 486 / totalPotentialSize)
         var cacheString = ""
 
         if usedCache > 0 {
             cacheString.append("\(usedCache.rounded(toPlaces: 1)) GB used by cached videos")
             cacheBox.isHidden = false
             cacheBox.frame.origin.x = CGFloat(206)   // We offset by 1px to make the borders overlap
-            cacheBox.setFrameSize(NSSize(width: cacheWidth, height: 23))
+            cacheBox.setFrameSize(NSSize(width: cacheWidth, height: 25))
         } else {
             cacheString.append("No space used by cached videos")
             cacheBox.isHidden = true
@@ -146,12 +150,21 @@ class CacheViewController: NSViewController {
             cacheString.append(", \(freeCache.rounded(toPlaces: 1)) GB remaining in your cache limit")
             freeBox.isHidden = false
             freeBox.frame.origin.x = CGFloat(206 + cacheWidth - 1)   // We offset by 1px to make the borders overlap
-            freeBox.setFrameSize(NSSize(width: freeWidth, height: 23))
+            freeBox.setFrameSize(NSSize(width: freeWidth, height: 25))
         } else {
             if PrefsCache.cacheLimit != 61 && PrefsCache.enableManagement {
                 cacheString.append(", your cache is full!")
             }
             freeBox.isHidden = true
+        }
+
+        if packsSize > 0.01 {
+            cacheString.append(", \(packsSize.rounded(toPlaces: 1)) GB used by packs")
+            packsBox.isHidden = false
+            packsBox.frame.origin.x = CGFloat(206 + cacheWidth + freeWidth - 2)   // We offset by 1px to make the borders overlap
+            packsBox.setFrameSize(NSSize(width: packsWidth, height: 25))
+        } else {
+            packsBox.isHidden = true
         }
 
         // (8 GB for packs, 32 GB for the cache, still 8 GB of free cache available for more videos)
@@ -269,49 +282,46 @@ class CacheViewController: NSViewController {
     }
 
     @IBAction func pickFolderButton(_ sender: Any) {
-        /*if #available(OSX 10.15, *) {
-            errorLog("How did you get in here?")
-        } else {*/
-            let openPanel = NSOpenPanel()
+        let openPanel = NSOpenPanel()
 
-            openPanel.canChooseDirectories = true
-            openPanel.canChooseFiles = false
-            openPanel.canCreateDirectories = true
-            openPanel.allowsMultipleSelection = false
-            openPanel.title = "Choose Aerial Cache Directory"
-            openPanel.prompt = "Choose"
-            if let customPath = Preferences.sharedInstance.customCacheDirectory {
-                if customPath != "" {
-                    openPanel.directoryURL = URL(fileURLWithPath: customPath)
+        openPanel.canChooseDirectories = true
+        openPanel.canChooseFiles = false
+        openPanel.canCreateDirectories = true
+        openPanel.allowsMultipleSelection = false
+        openPanel.title = "Choose Aerial Cache Directory"
+        openPanel.prompt = "Choose"
 
+        // Grab the supportPath
+        if let customPath = PrefsCache.supportPath {
+            if customPath != "" {
+                openPanel.directoryURL = URL(fileURLWithPath: customPath)
+            }
+        }
+
+        openPanel.begin { result in
+            guard result.rawValue == NSFileHandlingPanelOKButton, !openPanel.urls.isEmpty else {
+                return
+            }
+
+            let cacheDirectory = openPanel.urls[0]
+            PrefsCache.supportPath = cacheDirectory.path
+
+            // On macOS 12 we save a security scoped bookmark
+            if #available(macOS 12, *) {
+                do {
+                    let cacheBookmark = try cacheDirectory.bookmarkData(
+                        options: .withSecurityScope,
+                        includingResourceValuesForKeys: nil,
+                        relativeTo: nil)
+                    PrefsCache.supportBookmarkData = cacheBookmark
+                } catch {
+                    debugLog("Error saving the security scoped bookmark")
                 }
             }
 
-            openPanel.begin { result in
-                guard result.rawValue == NSFileHandlingPanelOKButton, !openPanel.urls.isEmpty else {
-                    return
-                }
-
-                let cacheDirectory = openPanel.urls[0]
-                Preferences.sharedInstance.customCacheDirectory = cacheDirectory.path
-
-                // On macOS 12 we save a security scoped bookmark
-                if #available(macOS 12, *) {
-                    do {
-                        let cacheBookmark = try cacheDirectory.bookmarkData(
-                            options: .withSecurityScope,
-                            includingResourceValuesForKeys: nil,
-                            relativeTo: nil)
-                        PrefsCache.cacheBookmarkData = cacheBookmark
-                    } catch {
-                        debugLog("Error saving the security scoped bookmark")
-                    }
-                }
-
-                Aerial.showInfoAlert(title: "Cache path changed",
-                                     text: "In order for your new cache path to take effect, please close this panel and System Preferences.")
-            }
-        // }
+            Aerial.showInfoAlert(title: "Cache path changed",
+                                 text: "In order for your new cache path to take effect, please close this panel and System Preferences.")
+        }
     }
 
     @IBAction func makeTimeMachineIgnore(_ sender: NSButton) {

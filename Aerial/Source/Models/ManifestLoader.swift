@@ -41,7 +41,7 @@ class ManifestLoader {
                      "b9-1.mov",            // Dupe of b2-2 (Hawaii, day)
                      "b9-2.mov",            // Dupe of b3-1 (London, night)
                      "comp_LA_A005_C009_v05_t9_6M.mov",     // Low quality version of Los Angeles day 687B36CB-BA5D-4434-BA99-2F2B8B6EC163
-                     "comp_LA_A009_C009_t9_6M_tag0.mov",
+                     "comp_LA_A009_C009_t9_6M_tag0.mov"
                      ]    // Low quality version of Los Angeles night 89B1643B-06DD-4DEC-B1B0-774493B0F7B7
 
     // This is used for videos where URLs should be merged with different ID
@@ -97,7 +97,7 @@ class ManifestLoader {
         "b1-4": "3E94AE98-EAF2-4B09-96E3-452F46BC114E",                                     // Bay bridge night
         "b9-3": "DE851E6D-C2BE-4D9F-AB54-0F9CE994DC51",                                     // Bay and Golden Bridge
         "b7-3": "29BDF297-EB43-403A-8719-A78DA11A2948",                                     // Fisherman's Wharf
-        "b3-3": "85CE77BF-3413-4A7B-9B0F-732E96229A73",                                     // Embarcadero, Market Street
+        "b3-3": "85CE77BF-3413-4A7B-9B0F-732E96229A73"                                     // Embarcadero, Market Street
     ]
 
     // Extra info to be merged for a given ID, as of right now only one known video
@@ -106,7 +106,7 @@ class ManifestLoader {
             ["url-1080-SDR": "https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_2K_SDR_HEVC.mov",
              "url-1080-HDR": "https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_2K_HDR_HEVC.mov",
              "url-4K-SDR": "https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_SDR_HEVC.mov",
-             "url-4K-HDR": "https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_HDR_HEVC.mov", ],    // Dubai night 2
+             "url-4K-HDR": "https://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_HDR_HEVC.mov" ]    // Dubai night 2
     ]
 
     // Extra POI
@@ -144,7 +144,7 @@ class ManifestLoader {
         "b7-3": "A007_C017_",                                                // San Francisco night 2
         "b5-3": "A015_C014_",                                                // San Francisco night 3
         "b1-4": "A015_C018_",                                                // San Francisco night 4
-        "b2-4": "A018_C014_",                                                 // San Francisco night 5
+        "b2-4": "A018_C014_"                                                 // San Francisco night 5
     ]
 
     // MARK: - Playlist generation
@@ -559,7 +559,6 @@ class ManifestLoader {
         let previous = URL(fileURLWithPath: cacheDirectory.appending("/tvos13.json"))
         let previousBnd = URL(fileURLWithPath: cacheDirectory.appending("/TVIdleScreenStrings13.bundle"))
 
-        // swiftlint:disable:next line_length
         if FileManager.default.fileExists(atPath: cacheDirectory.appending("/tvos13.json")) || FileManager.default.fileExists(atPath: cacheDirectory.appending("/TVIdleScreenStrings13.bundle")) {
             let new = URL(fileURLWithPath: cacheResourcesString.appending("/tvos13.json"))
             let newBnd = URL(fileURLWithPath: cacheResourcesString.appending("/TVIdleScreenStrings13.bundle"))
@@ -597,7 +596,6 @@ class ManifestLoader {
 
     // Check if the Manifests are saved in our cache directory
     func areManifestsCached() -> Bool {
-        // swiftlint:disable:next line_length
         return isManifestCached(manifest: .tvOS10) && isManifestCached(manifest: .tvOS11) && isManifestCached(manifest: .tvOS12) && isManifestCached(manifest: .tvOS13) && isManifestCached(manifest: .tvOS13Strings)
     }
 

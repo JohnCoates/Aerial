@@ -72,7 +72,7 @@ class ConditionSymbolLayer: CALayer {
                        801: "sun.max",
                        802: "cloud.sun",
                        803: "cloud.sun",
-                       804: "cloud", ]//
+                       804: "cloud" ]//
 
     let nightSymbols = [210: "cloud.moon.bolt",
 
@@ -81,7 +81,7 @@ class ConditionSymbolLayer: CALayer {
                         800: "moon.stars",
                         801: "moon",
                         802: "cloud.moon",
-                        803: "cloud.moon", ]
+                        803: "cloud.moon" ]
 
     init(weather: OWWeather, dt: Int, isNight: Bool, size: Int, square: Bool = false) {
         super.init()

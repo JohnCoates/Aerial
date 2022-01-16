@@ -143,7 +143,6 @@ public struct Solar {
         let cosDec = cos(asin(sinDec))
 
         // Calculate the Sun's local hour angle
-        // swiftlint:disable:next line_length
         let cosH = (cos(zenith.rawValue.degreesToRadians) - (sinDec * sin(coordinate.latitude.degreesToRadians))) / (cosDec * cos(coordinate.latitude.degreesToRadians))
 
         // No sunrise

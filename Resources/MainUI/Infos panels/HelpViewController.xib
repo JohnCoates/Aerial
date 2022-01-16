@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,96 +18,96 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="fiN-Oe-faj">
-                    <rect key="frame" x="198" y="444" width="79" height="16"/>
+                    <rect key="frame" x="198" y="443" width="84" height="17"/>
                     <textFieldCell key="cell" selectable="YES" title="Need help? " id="T0H-fO-TBy">
-                        <font key="font" metaFont="systemSemibold" size="13"/>
+                        <font key="font" metaFont="systemSemibold" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UUX-vU-Iz9">
-                    <rect key="frame" x="194" y="262" width="229" height="40"/>
+                    <rect key="frame" x="194" y="258" width="229" height="40"/>
                     <buttonCell key="cell" type="push" title="Check the Troubleshooting list" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sY3-LA-jwX">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="troubleshootButton:" target="-2" id="sxo-rj-tti"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ccg-Ld-deT">
-                    <rect key="frame" x="194" y="150" width="194" height="40"/>
+                    <rect key="frame" x="194" y="143" width="191" height="40"/>
                     <buttonCell key="cell" type="push" title="Check the GitHub issues" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SvK-VQ-O9q">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="issuesButton:" target="-2" id="JK2-mR-wtq"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PHe-ta-hg6">
-                    <rect key="frame" x="194" y="54" width="163" height="40"/>
+                    <rect key="frame" x="194" y="45" width="159" height="40"/>
                     <buttonCell key="cell" type="push" title="Join Discord Server" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nVz-89-CnO">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="visitDiscordClick:" target="-2" id="LR9-AA-ISS"/>
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="XIB-RT-Gf7">
-                    <rect key="frame" x="198" y="312" width="504" height="32"/>
+                    <rect key="frame" x="198" y="308" width="504" height="34"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="500" id="o5p-sa-qMn"/>
                     </constraints>
                     <textFieldCell key="cell" selectable="YES" title="More of a technical issue? We maintain a list of the most common issues with various versions of macOS here. And Little Snitch!" id="dgy-jB-vBw">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="GP7-Rh-FNa">
-                    <rect key="frame" x="198" y="200" width="504" height="48"/>
+                    <rect key="frame" x="198" y="193" width="504" height="51"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="500" id="5Gh-XF-Wlz"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="500" id="q9B-PH-fUN"/>
                     </constraints>
                     <textFieldCell key="cell" selectable="YES" id="iqc-Ni-hmV">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                         <string key="title">Can't find what you are looking for? Then please check our issues pages on GitHub, you may find an answer to your question and if you don't, you can ask your question there. </string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="CG1-ie-zJE">
-                    <rect key="frame" x="198" y="104" width="504" height="32"/>
+                    <rect key="frame" x="198" y="95" width="504" height="34"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="500" id="qJT-Me-Vmz"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="500" id="tFJ-aD-Ehb"/>
                     </constraints>
                     <textFieldCell key="cell" selectable="YES" title="If you want to follow the development and upcoming versions, we also have a Discord server." id="55U-cz-G55">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gLI-ih-SCQ">
-                    <rect key="frame" x="194" y="358" width="135" height="40"/>
+                    <rect key="frame" x="194" y="356" width="129" height="40"/>
                     <buttonCell key="cell" type="push" title="Check the FAQ" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AGy-2X-jvi">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="faqButton:" target="-2" id="EtM-Zt-UnJ"/>
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="mu4-R7-C8J">
-                    <rect key="frame" x="198" y="408" width="504" height="16"/>
+                    <rect key="frame" x="198" y="406" width="504" height="17"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="500" id="3pd-sp-wiA"/>
                     </constraints>
                     <textFieldCell key="cell" selectable="YES" title="Not exactly sure how something works? We got you covered in our new FAQ." id="cY1-Jx-zNC">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>

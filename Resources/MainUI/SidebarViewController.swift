@@ -9,16 +9,12 @@
 import Cocoa
 
 enum SidebarMenus {
-    case videos, settings, infos
+    case modern, videos, settings, infos
 }
 
 class SidebarViewController: NSViewController {
 
     @IBOutlet var sidebarOutlineView: SidebarOutlineView!
-
-    @IBOutlet var videosButton: NSButton!
-    @IBOutlet var settingsButton: NSButton!
-    @IBOutlet var infoButton: NSButton!
 
     // For the download indicator
     @IBOutlet var downloadIndicator: NSVisualEffectView!
@@ -29,7 +25,7 @@ class SidebarViewController: NSViewController {
     var windowController: PanelWindowController?
 
     // Always start with the videos panel selected
-    var menuSelection: SidebarMenus = .videos
+    var menuSelection: SidebarMenus = .modern
 
     @IBOutlet var closeButton: NSButton!
 
@@ -58,53 +54,16 @@ class SidebarViewController: NSViewController {
             self.updateDownloads(done: done, total: total, progress: progress)
         }
 
-        videosButton.image = Aerial.getSymbol("film")?.tinting(with: NSColor.secondaryLabelColor)
-        videosButton.alternateImage = Aerial.getAccentedSymbol("film")
-
-        settingsButton.image = Aerial.getSymbol("gear")?.tinting(with: NSColor.secondaryLabelColor)
-        settingsButton.alternateImage = Aerial.getAccentedSymbol("gear")
-
-        infoButton.image = Aerial.getSymbol("info.circle")?.tinting(with: NSColor.secondaryLabelColor)
-        infoButton.alternateImage = Aerial.getAccentedSymbol("info.circle")
-
         downloadIndicator.isHidden = true
         downloadIndicatorProgress.doubleValue = 0
-
-        /*let shadow: NSShadow = NSShadow()
-        shadow.shadowBlurRadius = 2
-        shadow.shadowOffset = NSSize(width: 0, height: -3)
-        shadow.shadowColor = NSColor.black */
-        // downloadIndicator.shadow = shadow
     }
 
     override func viewDidAppear() {
         // When we are really there, we can look for the data
         // This will trigger the refresh of the VideosViewController
         VideoList.instance.addCallback {
-            Sidebar.instance.refreshVideos()
-            self.sidebarOutlineView.reloadData()
-            self.sidebarOutlineView.expandItem(nil, expandChildren: true)
-            self.sidebarOutlineView.selectRowIndexes([0], byExtendingSelection: false)
-        }
-    }
-
-    // This is used to simulate the radio switch on the top left, this switch the sidebar into different modes
-    @IBAction func menuButtonClick(_ sender: NSButton) {
-        if sender == videosButton {
-            videosButton.state = .on
-            settingsButton.state = .off
-            infoButton.state = .off
-            updateSidebarMenu(.videos)
-        } else if sender == settingsButton {
-            videosButton.state = .off
-            settingsButton.state = .on
-            infoButton.state = .off
-            updateSidebarMenu(.settings)
-        } else {
-            videosButton.state = .off
-            settingsButton.state = .off
-            infoButton.state = .on
-            updateSidebarMenu(.infos)
+            print("reload")
+            self.reloadSidebar()
         }
     }
 
@@ -117,7 +76,7 @@ class SidebarViewController: NSViewController {
 
             sidebarOutlineView.reloadData()
             sidebarOutlineView.expandItem(nil, expandChildren: true)
-            sidebarOutlineView.selectRowIndexes([0], byExtendingSelection: false)
+            sidebarOutlineView.selectRowIndexes([1], byExtendingSelection: false)
         }
     }
 
@@ -155,11 +114,12 @@ class SidebarViewController: NSViewController {
             downloadIndicatorProgress.doubleValue = 0
 
             windowController!.updateViewInPlace()
-            Sidebar.instance.refreshVideos()
+            // Sidebar.instance.refreshVideos()
+            /*
             sidebarOutlineView.reloadData()
             sidebarOutlineView.expandItem(nil, expandChildren: true)
-            sidebarOutlineView.selectRowIndexes([0], byExtendingSelection: false)
-
+            sidebarOutlineView.selectRowIndexes([1], byExtendingSelection: false)
+            */
         } else if progress == 0 {
             downloadIndicator.isHidden = false
             downloadIndicatorProgress.doubleValue = Double(done)
@@ -185,14 +145,7 @@ extension SidebarViewController: NSOutlineViewDataSource {
             return header.entries.count
         }
 
-        switch menuSelection {
-        case .videos:
-            return Sidebar.instance.videos.count
-        case .settings:
-            return Sidebar.instance.settings.count
-        case .infos:
-            return Sidebar.instance.infos.count
-        }
+        return Sidebar.instance.modern.count
     }
 
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
@@ -200,14 +153,7 @@ extension SidebarViewController: NSOutlineViewDataSource {
             return header.entries[index]
         }
 
-        switch menuSelection {
-        case .videos:
-            return Sidebar.instance.videos[index]
-        case .settings:
-            return Sidebar.instance.settings[index]
-        case .infos:
-            return Sidebar.instance.infos[index]
-        }
+        return Sidebar.instance.modern[index]
     }
 
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
@@ -253,6 +199,13 @@ extension SidebarViewController: NSOutlineViewDelegate {
         return view
     }
 
+    func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
+        if item is Sidebar.Header {
+            return false
+        }
+
+        return true
+    }
     func outlineViewSelectionDidChange(_ notification: Notification) {
         guard let outlineView = notification.object as? NSOutlineView else {
             return
@@ -262,6 +215,10 @@ extension SidebarViewController: NSOutlineViewDelegate {
         if let entry = outlineView.item(atRow: selectedIndex) as? Sidebar.MenuEntry {
             windowController!.switchTo(entry.path)
         }
+    }
+
+    func outlineView(_ outlineView: NSOutlineView, shouldShowOutlineCellForItem item: Any) -> Bool {
+        return false
     }
 
     @available(OSX 10.16, *)
@@ -421,10 +378,10 @@ extension SidebarViewController: SidebarOutlineViewDelegate {
         }
 
         // We need to reload our sidebar
-        Sidebar.instance.refreshVideos()
+        // Sidebar.instance.refreshVideos()
         sidebarOutlineView.reloadData()
         sidebarOutlineView.expandItem(nil, expandChildren: true)
-        sidebarOutlineView.selectRowIndexes([0], byExtendingSelection: false)
+        sidebarOutlineView.selectRowIndexes([1], byExtendingSelection: false)
     }
 
     @objc func hideVideos(_ sender: Any) {
@@ -439,18 +396,29 @@ extension SidebarViewController: SidebarOutlineViewDelegate {
         }
 
         // We need to reload our sidebar
-        Sidebar.instance.refreshVideos()
+        // Sidebar.instance.refreshVideos()
         sidebarOutlineView.reloadData()
         sidebarOutlineView.expandItem(nil, expandChildren: true)
-        sidebarOutlineView.selectRowIndexes([0], byExtendingSelection: false)
+        sidebarOutlineView.selectRowIndexes([1], byExtendingSelection: false)
     }
 
     func reloadSidebar() {
         // We need to reload our sidebar
-        Sidebar.instance.refreshVideos()
+        // Sidebar.instance.refreshVideos()
+        print("reload sidebar")
+        let set = sidebarOutlineView.selectedRowIndexes
+
         sidebarOutlineView.reloadData()
         sidebarOutlineView.expandItem(nil, expandChildren: true)
-        sidebarOutlineView.selectRowIndexes([0], byExtendingSelection: false)
+
+        if set.isEmpty {
+            print("empty set")
+            sidebarOutlineView.selectRowIndexes([1], byExtendingSelection: false)
+        } else {
+            print("re set ing")
+            sidebarOutlineView.selectRowIndexes(set, byExtendingSelection: false)
+
+        }
     }
 
     @objc func resetVibrance(_ sender: Any) {

@@ -33,9 +33,9 @@ struct Source: Codable {
     // TODO
     func isEnabled() -> Bool {
         // tvOS is always enabled
-        if name.starts(with: "tvOS") {
+        /*if name.starts(with: "tvOS") {
             return true
-        }
+        }*/
 
         if PrefsVideos.enabledSources.keys.contains(name) {
             return PrefsVideos.enabledSources[name]!
@@ -227,7 +227,7 @@ struct Source: Codable {
                                                            .v1080pHEVC: url1080pHEVC,
                                                            .v1080pHDR: url1080pHDR,
                                                            .v4KHEVC: url4KHEVC,
-                                                           .v4KHDR: url4KHDR, ]
+                                                           .v4KHDR: url4KHDR ]
 
                         // Now we can finally add...
                         let video = AerialVideo(id: id,             // Must have
@@ -276,7 +276,7 @@ struct Source: Codable {
                 .v1080pHEVC: localizePath(asset.url1080SDR),
                 .v1080pHDR: localizePath(asset.url1080HDR),
                 .v4KHEVC: localizePath(asset.url4KSDR),
-                .v4KHDR: localizePath(asset.url4KHDR), ]
+                .v4KHDR: localizePath(asset.url4KHDR) ]
     }
 
     func oldUrlsFor(_ asset: VideoAsset) -> [VideoFormat: String] {
@@ -297,7 +297,7 @@ struct Source: Codable {
                 .v1080pHEVC: url1080pHEVC,
                 .v1080pHDR: url1080pHDR,
                 .v4KHEVC: url4KHEVC,
-                .v4KHDR: url4KHDR, ]
+                .v4KHDR: url4KHDR ]
     }
 
     func parseOldVideoManifest(_ data: Data) -> [AerialVideo] {

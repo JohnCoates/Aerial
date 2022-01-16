@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -38,24 +38,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U3I-0O-JPu">
-                                <rect key="frame" x="205" y="545" width="391" height="35"/>
+                                <rect key="frame" x="168" y="537" width="465" height="43"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Adapt videos based on time" id="HlA-RS-Oa5">
-                                    <font key="font" metaFont="systemBold" size="30"/>
+                                    <font key="font" metaFont="systemBold" size="36"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="fZE-lx-nSW">
-                                <rect key="frame" x="38" y="467" width="724" height="48"/>
+                                <rect key="frame" x="38" y="456" width="724" height="51"/>
                                 <textFieldCell key="cell" selectable="YES" id="2BM-mL-IKm">
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="14"/>
                                     <string key="title">Aerial can use your local time to display a more immersive experience that only shows certain videos during a given time of day. For example, nighttime videos are only shown at night. Your location can be used to precisely calculate your local sunrise and sunset time. Your location isn't shared with anyone.</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MX3-T8-nNh">
-                                <rect key="frame" x="292" y="389" width="216" height="48"/>
+                                <rect key="frame" x="292" y="378" width="216" height="48"/>
                                 <subviews>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Gn-K5-OVb">
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
@@ -104,37 +104,37 @@
                                 </customSpacing>
                             </stackView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="22t-gd-Abd">
-                                <rect key="frame" x="125" y="329.5" width="349" height="22"/>
+                                <rect key="frame" x="125" y="317.5" width="369" height="22"/>
                                 <buttonCell key="cell" type="radio" title="Use my location to calculate sunrise and sunset" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="large" inset="2" id="wah-Hv-bQN">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="systemSemibold" size="14"/>
+                                    <font key="font" metaFont="systemSemibold" size="15"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="choiceChange:" target="-2" id="ut8-HW-YAu"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jHI-px-D0M">
-                                <rect key="frame" x="125" y="142.5" width="164" height="22"/>
+                                <rect key="frame" x="125" y="125.5" width="172" height="22"/>
                                 <buttonCell key="cell" type="radio" title="Do not adapt videos" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="large" state="on" inset="2" id="TVP-xh-4qx">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="systemSemibold" size="14"/>
+                                    <font key="font" metaFont="systemSemibold" size="15"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="choiceChange:" target="-2" id="UeF-Yc-EnJ"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Nc-Pl-qMy">
-                                <rect key="frame" x="125" y="236.5" width="226" height="22"/>
+                                <rect key="frame" x="125" y="221.5" width="238" height="22"/>
                                 <buttonCell key="cell" type="radio" title="Use manually specified times" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="large" inset="2" id="FMW-zb-neL">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="systemSemibold" size="14"/>
+                                    <font key="font" metaFont="systemSemibold" size="15"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="choiceChange:" target="-2" id="y7b-lg-bOM"/>
                                 </connections>
                             </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eZG-Mf-Rud">
-                                <rect key="frame" x="40" y="301" width="48" height="48"/>
+                                <rect key="frame" x="40" y="290" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Q8K-YN-gwP"/>
                                     <constraint firstAttribute="width" constant="48" id="wjY-4F-ESh"/>
@@ -142,7 +142,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="mappin.and.ellipse" id="Nd0-z7-SqD"/>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bGh-sP-GO3">
-                                <rect key="frame" x="40" y="208" width="48" height="48"/>
+                                <rect key="frame" x="40" y="194" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="l63-uT-F8a"/>
                                     <constraint firstAttribute="width" constant="48" id="nUJ-Ar-G4P"/>
@@ -150,7 +150,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="clock" id="AJa-jB-rF7"/>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uzu-Lk-YXP">
-                                <rect key="frame" x="40" y="114" width="48" height="48"/>
+                                <rect key="frame" x="40" y="98" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="CCE-NS-WPI"/>
                                     <constraint firstAttribute="height" constant="48" id="kLn-pH-UYg"/>
@@ -158,15 +158,15 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="xmark.circle" id="lGF-hn-GgW"/>
                             </imageView>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="l3V-Qj-BKa">
-                                <rect key="frame" x="150" y="308" width="362" height="16"/>
+                                <rect key="frame" x="150" y="294" width="386" height="17"/>
                                 <textFieldCell key="cell" selectable="YES" title="This requires Location Services to be enabled on your Mac." id="DQp-Vt-8zr">
-                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <font key="font" metaFont="system" size="14"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oA4-ui-9wq">
-                                <rect key="frame" x="150" y="276" width="37" height="16"/>
+                                <rect key="frame" x="150" y="262" width="37" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="2b8-hX-G9x">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -174,7 +174,7 @@
                                 </textFieldCell>
                             </textField>
                             <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="utR-AS-8Il">
-                                <rect key="frame" x="383" y="202" width="42" height="21"/>
+                                <rect key="frame" x="389" y="186" width="42" height="21"/>
                                 <datePickerCell key="cell" controlSize="large" borderStyle="bezel" alignment="left" id="ubf-2V-peM">
                                     <font key="font" metaFont="system"/>
                                     <date key="date" timeIntervalSinceReferenceDate="618948000.78890002">
@@ -186,15 +186,15 @@
                                 </datePickerCell>
                             </datePicker>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8VH-do-LRN">
-                                <rect key="frame" x="150" y="206" width="54" height="16"/>
+                                <rect key="frame" x="150" y="190" width="57" height="17"/>
                                 <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Sunrise:" id="nhn-KG-MPz">
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="14"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FMY-kx-tOP">
-                                <rect key="frame" x="210" y="202" width="42" height="21"/>
+                                <rect key="frame" x="213" y="186" width="42" height="21"/>
                                 <datePickerCell key="cell" controlSize="large" borderStyle="bezel" alignment="left" id="SSx-nM-n4a">
                                     <font key="font" metaFont="system"/>
                                     <date key="date" timeIntervalSinceReferenceDate="618901200.77973998">
@@ -206,26 +206,26 @@
                                 </datePickerCell>
                             </datePicker>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NHk-hd-Q4a">
-                                <rect key="frame" x="327" y="206" width="50" height="16"/>
+                                <rect key="frame" x="330" y="190" width="53" height="17"/>
                                 <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Sunset:" id="Rye-iX-Uy7">
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="14"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ohd-3z-kec">
-                                <rect key="frame" x="150" y="121" width="612" height="16"/>
+                                <rect key="frame" x="150" y="102" width="612" height="17"/>
                                 <textFieldCell key="cell" selectable="YES" title="Videos do not change based on the time of day. They will be played at random." id="Tv9-4o-QiS">
-                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <font key="font" metaFont="system" size="14"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6mZ-LV-nEO">
-                                <rect key="frame" x="511" y="298" width="248" height="32"/>
+                                <rect key="frame" x="535" y="284" width="249" height="32"/>
                                 <buttonCell key="cell" type="push" title="How to enable Location Services " bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hFU-Be-EiQ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="14"/>
                                     <connections>
                                         <action selector="locationServicesClick:" target="-2" id="DVi-ua-b4q"/>
                                     </connections>
