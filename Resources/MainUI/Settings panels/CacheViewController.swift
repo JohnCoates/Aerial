@@ -99,11 +99,11 @@ class CacheViewController: NSViewController {
 
     func updateCachePath() {
         if PrefsCache.overrideCache {
-            if let cachePath = Preferences.sharedInstance.customCacheDirectory {
-                manuallyPickLabel.stringValue = "Using \(cachePath)"
-            } else {
+            // if let cachePath = Cache.supportPath {
+                manuallyPickLabel.stringValue = "Using \(Cache.supportPath)"
+            /*} else {
                 manuallyPickLabel.stringValue = "Select a path using the folder picker"
-            }
+            }*/
 
         } else {
             manuallyPickLabel.stringValue = "Using your Application Support directory"
@@ -119,7 +119,7 @@ class CacheViewController: NSViewController {
         var maxCache = PrefsCache.cacheLimit
         var freeCache = usedCache > maxCache ? 0 : maxCache - usedCache
 
-        if PrefsCache.cacheLimit == 61 || !PrefsCache.enableManagement {
+        if PrefsCache.cacheLimit == 101 || !PrefsCache.enableManagement {
             freeCache = 0
             maxCache = usedCache
         }
@@ -152,7 +152,7 @@ class CacheViewController: NSViewController {
             freeBox.frame.origin.x = CGFloat(206 + cacheWidth - 1)   // We offset by 1px to make the borders overlap
             freeBox.setFrameSize(NSSize(width: freeWidth, height: 25))
         } else {
-            if PrefsCache.cacheLimit != 61 && PrefsCache.enableManagement {
+            if PrefsCache.cacheLimit != 101 && PrefsCache.enableManagement {
                 cacheString.append(", your cache is full!")
             }
             freeBox.isHidden = true
@@ -260,7 +260,7 @@ class CacheViewController: NSViewController {
     func updateCacheSize() {
         let size = Cache.sizeString()
 
-        if PrefsCache.cacheLimit == 61 {
+        if PrefsCache.cacheLimit == 101 {
             limitTextField.isHidden = true
             limitUnitLabel.isHidden = true
             rotateFrequencyPopup.isEnabled = false
@@ -314,8 +314,9 @@ class CacheViewController: NSViewController {
                         includingResourceValuesForKeys: nil,
                         relativeTo: nil)
                     PrefsCache.supportBookmarkData = cacheBookmark
-                } catch {
-                    debugLog("Error saving the security scoped bookmark")
+
+                } catch let error {
+                    debugLog("Error saving the security scoped bookmark \(error)")
                 }
             }
 

@@ -128,7 +128,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="217" id="ipz-RT-lRq"/>
                             </constraints>
-                            <sliderCell key="cell" controlSize="large" state="on" alignment="left" minValue="1" maxValue="61" doubleValue="5" tickMarkPosition="below" numberOfTickMarks="9" sliderType="linear" id="BVi-87-dJN"/>
+                            <sliderCell key="cell" controlSize="large" state="on" alignment="left" minValue="1" maxValue="101" doubleValue="5" tickMarkPosition="below" numberOfTickMarks="9" sliderType="linear" id="BVi-87-dJN"/>
                             <connections>
                                 <action selector="limitSliderChange:" target="-2" id="i84-Z3-DXI"/>
                             </connections>
@@ -150,8 +150,8 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hTY-9R-NMo">
-                            <rect key="frame" x="70" y="221" width="108" height="17"/>
-                            <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Get new videos:" id="HcU-b8-0LK">
+                            <rect key="frame" x="72" y="221" width="106" height="17"/>
+                            <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Replace videos:" id="HcU-b8-0LK">
                                 <font key="font" metaFont="system" size="14"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -202,17 +202,27 @@
                         <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="qCm-Xg-sGD">
                             <rect key="frame" x="8" y="162" width="756" height="5"/>
                         </box>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yd1-B2-AiX">
+                            <rect key="frame" x="281" y="221" width="436" height="17"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="(if your cache is full, older videos will be replaced with newer ones)" id="xbm-Ev-ZSe">
+                                <font key="font" metaFont="system" size="14"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
                     </subviews>
                     <constraints>
                         <constraint firstItem="eO9-gC-aqe" firstAttribute="top" secondItem="qCm-Xg-sGD" secondAttribute="bottom" constant="16" id="0a1-QJ-ePE"/>
                         <constraint firstItem="l6E-tF-sRt" firstAttribute="top" secondItem="Kpn-Oc-zFD" secondAttribute="bottom" constant="16" id="7mI-Fp-Ehv"/>
                         <constraint firstAttribute="height" constant="300" id="8LB-lh-D2X"/>
+                        <constraint firstItem="Yd1-B2-AiX" firstAttribute="firstBaseline" secondItem="hTY-9R-NMo" secondAttribute="firstBaseline" id="B8v-IJ-b7j"/>
                         <constraint firstItem="agU-a4-AzS" firstAttribute="centerY" secondItem="mFt-fb-1OS" secondAttribute="centerY" id="DUN-cO-SgN"/>
                         <constraint firstItem="mFt-fb-1OS" firstAttribute="leading" secondItem="u4o-WA-mfN" secondAttribute="leading" constant="184" id="EhH-wn-maW"/>
                         <constraint firstItem="RaB-PR-zBP" firstAttribute="firstBaseline" secondItem="cW8-Ta-PzR" secondAttribute="firstBaseline" id="HCz-C4-6xe"/>
                         <constraint firstItem="Kpn-Oc-zFD" firstAttribute="leading" secondItem="u4o-WA-mfN" secondAttribute="leading" constant="184" id="ITi-3t-Wyo"/>
                         <constraint firstItem="I6n-yR-diw" firstAttribute="leading" secondItem="u4o-WA-mfN" secondAttribute="leading" constant="186" id="JDP-2Q-dS7"/>
                         <constraint firstItem="Fx0-Ue-MbY" firstAttribute="leading" secondItem="u4o-WA-mfN" secondAttribute="leading" constant="184" id="KsA-nF-ABl"/>
+                        <constraint firstItem="Yd1-B2-AiX" firstAttribute="leading" secondItem="Fx0-Ue-MbY" secondAttribute="trailing" constant="8" symbolic="YES" id="LSd-cu-PGW"/>
                         <constraint firstItem="I6n-yR-diw" firstAttribute="top" secondItem="RaB-PR-zBP" secondAttribute="bottom" constant="4" id="Ly4-jO-EuQ"/>
                         <constraint firstItem="RaB-PR-zBP" firstAttribute="leading" secondItem="cW8-Ta-PzR" secondAttribute="trailing" constant="8" symbolic="YES" id="M6b-dj-mqb"/>
                         <constraint firstItem="YDt-7V-EeW" firstAttribute="top" secondItem="1wh-wp-MNi" secondAttribute="bottom" constant="3" id="N1c-wD-lIE"/>

@@ -151,9 +151,9 @@
                 </scrollView>
                 <box title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="cXU-F4-Pzd">
                     <rect key="frame" x="185" y="4" width="610" height="477"/>
-                    <view key="contentView" id="NvJ-Yh-ScH" customClass="InfoContainerView" customModule="Aerial" customModuleProvider="target">
+                    <view key="contentView" focusRingType="none" id="NvJ-Yh-ScH" customClass="InfoContainerView" customModule="Aerial" customModuleProvider="target">
                         <rect key="frame" x="3" y="3" width="604" height="456"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                     </view>
                     <font key="titleFont" metaFont="system" size="14"/>
                 </box>

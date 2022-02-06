@@ -36,13 +36,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="70" headerView="b1V-rc-xZQ" viewBased="YES" indentationPerLevel="13" outlineTableColumn="Ssk-cL-P6o" id="vzM-Kh-6SV" customClass="SourceOutlineView" customModule="Aerial" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="779" height="302"/>
+                                <rect key="frame" x="0.0" y="0.0" width="789" height="302"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="17" height="0.0"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="isSelected" width="40" minWidth="40" maxWidth="40" id="Ssk-cL-P6o">
+                                    <tableColumn identifier="isSelected" width="50" minWidth="50" maxWidth="50" id="Ssk-cL-P6o">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Show">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -54,11 +54,11 @@
                                         </textFieldCell>
                                         <prototypeCellViews>
                                             <tableCellView identifier="isSelectedCell" id="Xuz-Uo-wO2" customClass="CheckboxCellView" customModule="Aerial" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="0.0" width="38" height="68"/>
+                                                <rect key="frame" x="8" y="0.0" width="48" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wGa-S6-kGM">
-                                                        <rect key="frame" x="8" y="23" width="22" height="22"/>
+                                                        <rect key="frame" x="13" y="23" width="22" height="22"/>
                                                         <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="Q6G-xu-7Lu">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -88,7 +88,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="valueColumnCell" id="sPv-Lx-coN" customClass="DescriptionCellView" customModule="Aerial" customModuleProvider="target">
-                                                <rect key="frame" x="63" y="0.0" width="629" height="68"/>
+                                                <rect key="frame" x="73" y="0.0" width="629" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k0S-C5-p57">
@@ -289,7 +289,7 @@ line2</string>
                                         </textFieldCell>
                                         <prototypeCellViews>
                                             <tableCellView id="TlS-Vu-nlh" customClass="ActionCellView" customModule="Aerial" customModuleProvider="target">
-                                                <rect key="frame" x="709" y="0.0" width="61" height="68"/>
+                                                <rect key="frame" x="719" y="0.0" width="61" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button toolTip="Download videos from this source now" id="dhO-VP-Rzn">
@@ -328,7 +328,7 @@ line2</string>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" wantsLayer="YES" id="b1V-rc-xZQ">
-                        <rect key="frame" x="0.0" y="0.0" width="779" height="25"/>
+                        <rect key="frame" x="0.0" y="0.0" width="789" height="25"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
@@ -626,7 +626,7 @@ Gw
     <resources>
         <image name="NSCaution" width="32" height="32"/>
         <image name="NSTouchBarDownloadTemplate" width="15" height="15"/>
-        <image name="antenna.radiowaves.left.and.right" catalog="system" width="20" height="19"/>
+        <image name="antenna.radiowaves.left.and.right" catalog="system" width="16" height="14"/>
         <image name="book" catalog="system" width="18" height="14"/>
         <image name="cloud" catalog="system" width="18" height="13"/>
         <image name="film" width="168" height="132"/>

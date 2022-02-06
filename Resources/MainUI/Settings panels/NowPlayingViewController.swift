@@ -28,6 +28,8 @@ class NowPlayingViewController: NSViewController {
     @IBOutlet var statusTimeImageView: NSImageView!
     @IBOutlet var statusTimeLabel: NSTextField!
 
+    @IBOutlet var statusHiddenVideoLabel: NSTextField!
+    
     var sources: [String] = []
     var currentSource: VideoList.FilterMode = .location
 
@@ -121,7 +123,10 @@ class NowPlayingViewController: NSViewController {
     func updateStatusBar() {
         if PrefsCache.enableManagement {
             // We are in managed mode
-            if Cache.isFull() {
+            if PrefsCache.cacheLimit >= 101 {
+                statusDriveImageView.image = Aerial.getAccentedSymbol("externaldrive.badge.checkmark")
+                statusDriveLabel.stringValue = String(Cache.size().rounded(toPlaces: 1)) + " GB"
+            } else if Cache.isFull() {
                 statusDriveImageView.image = Aerial.getAccentedSymbol("externaldrive.badge.xmark")
                 statusDriveLabel.stringValue = Cache.sizeString() + " (your cache is full)"
             } else {
@@ -137,6 +142,14 @@ class NowPlayingViewController: NSViewController {
         // May get removed
         statusTimeImageView.isHidden = true
         statusTimeLabel.isHidden = true
+        
+        if PrefsVideos.hidden.isEmpty {
+            statusHiddenVideoLabel.stringValue = "No hidden videos"
+        } else if PrefsVideos.hidden.count == 1 {
+            statusHiddenVideoLabel.stringValue = String(PrefsVideos.hidden.count) + " hidden video"
+        } else {
+            statusHiddenVideoLabel.stringValue = String(PrefsVideos.hidden.count) + " hidden videos"
+        }
     }
 
 }

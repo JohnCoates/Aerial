@@ -460,6 +460,28 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         self.stopAnimation()
     }
 
+    // Tentative integration with companion of extra features
+    @objc func togglePause() {
+        debugLog("Toggling pause")
+        if player?.rate == 0 {
+            player?.play()
+        } else {
+            player?.pause()
+        }
+        clearAllLayerAnimations()
+    }
+
+    @objc func nextVideo() {
+        debugLog("Next video")
+        fastFadeOut(andPlayNext: true)
+    }
+
+    @objc func skipAndHide() {
+        debugLog("Skip video and hide")
+        PrefsVideos.hidden.append(currentVideo!.id)
+        fastFadeOut(andPlayNext: true)
+    }
+
     // MARK: - playNextVideo()
     // swiftlint:disable:next cyclomatic_complexity
     func playNextVideo() {

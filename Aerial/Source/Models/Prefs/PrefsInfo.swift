@@ -357,7 +357,7 @@ struct PrefsInfo {
     }
 
     // Fast rendering mode
-    @SimpleStorage(key: "highQualityTextRendering", defaultValue: false)
+    @SimpleStorage(key: "highQualityTextRendering", defaultValue: HardwareDetection.sharedInstance.isAppleSilicon())
     static var highQualityTextRendering: Bool
 
     // Override margins

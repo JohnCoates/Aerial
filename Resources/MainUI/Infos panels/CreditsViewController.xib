@@ -41,7 +41,7 @@ Since version 1.4, Aerial is developed and maintained by Guillaume Louel.</strin
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gv6-y0-c1S">
-                                        <rect key="frame" x="194" y="14" width="135" height="40"/>
+                                        <rect key="frame" x="194" y="-3" width="135" height="40"/>
                                         <buttonCell key="cell" type="push" title="Contact us here" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a1o-SL-FaN">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system" size="14"/>
@@ -61,32 +61,33 @@ Since version 1.4, Aerial is developed and maintained by Guillaume Louel.</strin
                                         </connections>
                                     </button>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wpw-1v-dic">
-                                        <rect key="frame" x="198" y="64" width="311" height="289"/>
+                                        <rect key="frame" x="198" y="47" width="311" height="306"/>
                                         <textFieldCell key="cell" selectable="YES" id="sP2-o5-2MT">
                                             <font key="font" metaFont="system" size="14"/>
-                                            <string key="title">Translations contributed by:
+                                            <mutableString key="title">Translations contributed by:
 - Arabic by Kachi Kulu
 - Dutch by Sebastiaan Speck
 - English by Sean M Smith
 - German by Matthias Bauer &amp; Thomas W.
 - Hebrew by Bry Jacks
+- Hungarian by Matt Crogan
 - Italian by Angelo Marguglio 
 - Japanese by Junji 'Dr.MORO' Morokuma
 - Korean by Howon Kim
 - Polish by Aleksander Kasprzyk 
 - Portuguese/Brazil by Renan Sigolo
-- Russian by Tema Sysoev
+- Russian by Tema Sysoev and
 - Simplified &amp; Traditional Chinese by Linkey Leo
 - Spanish by Aitor García Rey 
 - Swedish by Samuel Holm
 
-Want to help with translations?</string>
+Want to help with translations?</mutableString>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2zM-0X-9R0">
-                                        <rect key="frame" x="363" y="14" width="133" height="40"/>
+                                        <rect key="frame" x="363" y="-3" width="133" height="40"/>
                                         <buttonCell key="cell" type="push" title="Hop on Discord" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KmS-rN-Kxf">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system" size="14"/>
@@ -96,7 +97,7 @@ Want to help with translations?</string>
                                         </connections>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ohW-uj-N2U">
-                                        <rect key="frame" x="337" y="27" width="18" height="17"/>
+                                        <rect key="frame" x="337" y="10" width="18" height="17"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="or" id="PRg-cf-Ee8">
                                             <font key="font" metaFont="system" size="14"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>

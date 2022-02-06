@@ -48,6 +48,27 @@ final class Logger {
 }
 var errorMessages = [LogMessage]()
 
+func path() -> String {
+    var appPath = ""
+
+    // Grab an array of Application Support paths
+    let appSupportPaths = NSSearchPathForDirectoriesInDomains(
+        .applicationSupportDirectory,
+        .userDomainMask,
+        true)
+
+    if appSupportPaths.isEmpty {
+        errorLog("FATAL : app support does not exist!")
+        return "/"
+    }
+
+    appPath = appSupportPaths[0]
+
+    let appSupportDirectory = appPath as NSString
+
+    return appSupportDirectory.appendingPathComponent("Aerial")
+}
+
 // swiftlint:disable:next identifier_name
 func Log(level: ErrorLevel, message: String) {
     #if DEBUG
@@ -86,7 +107,10 @@ func logToDisk(_ message: String) {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
         let string = dateFormatter.string(from: Date()) + " : " + message + "\n"
 
-        if let cacheDirectory = VideoCache.appSupportDirectory {
+        // if let cacheDirectory = VideoCache.appSupportDirectory {
+
+        let cacheDirectory = path()
+        // if let cacheDirectory = path() {
             var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
             cacheFileUrl.appendPathComponent("AerialLog.txt")
 
@@ -110,7 +134,7 @@ func logToDisk(_ message: String) {
                     NSLog("AerialError: Can't write to file AerialLog.txt")
                 }
             }
-        }
+        // }
     }
 }
 

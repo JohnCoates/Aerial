@@ -82,7 +82,7 @@ class OverlaysViewController: NSViewController {
         // Add the common block of features (enabled, font, position, screen)
         infoContainerView.addSubview(infoCommonView)
         infoCommonView.setType(forType, controller: self)
-
+        infoCommonView.frame.origin.y = 0
         // Then the per-type blocks if any
         switch forType {
         case .location:

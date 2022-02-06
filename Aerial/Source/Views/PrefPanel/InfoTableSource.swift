@@ -38,9 +38,14 @@ class InfoTableSource: NSTableView, NSTableViewDataSource, NSTableViewDelegate {
 
                 let isEnabled = PrefsInfo.ofType(PrefsInfo.layers[row]).isEnabled
 
-                cell.imageView?.image = NSImage(named: isEnabled
+                // Aerial.getAccentedSymbol(<#T##named: String##String#>)
+                // Aerial.getSymbol("checkmark.circle.fill")
+                cell.imageView?.image = isEnabled
+                ? Aerial.getAccentedSymbol("checkmark.circle.fill")
+                    : Aerial.getAccentedSymbol("circle")
+                /*cell.imageView?.image = NSImage(named: isEnabled
                     ? NSImage.statusAvailableName
-                    : NSImage.statusUnavailableName)
+                    : NSImage.statusUnavailableName)*/
 
                 return cell
             }

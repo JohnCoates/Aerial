@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20034" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20034"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -360,7 +360,7 @@
                                     </button>
                                     <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aZ7-cT-Z3Y">
                                         <rect key="frame" x="315" y="410.5" width="482" height="22"/>
-                                        <buttonCell key="cell" type="check" title="High quality text rendering (may cause your fan to spin on older Macs)" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="caS-lB-lS3">
+                                        <buttonCell key="cell" type="check" title="Retina text support (may cause your fans to spin on Intel Macs)" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="caS-lB-lS3">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system" size="14"/>
                                         </buttonCell>
@@ -502,11 +502,11 @@ Your screen brightness will be automatically restored on waking up. </string>
                         <font key="font" metaFont="message" size="11"/>
                         <string key="title">The most appropriate format depends on your Mac. Video playback on macOS can be accelerated by your GPU.
 
-- Macs older than late 2015 should prefer 1080p H264 as they may lack HEVC hardware decoding support.
+- Macs 2017 and newer should either use 1080p HEVC or 4K HEVC.
 
 - Late 2015/2016 Macs may only partially support hardware accelerated HEVC decoding. You may see higher CPU usage with these formats.
 
-- Macs 2017 and up should either use 1080p HEVC or 4K HEVC.
+- Macs older than late 2015 should prefer 1080p H264 as they may lack HEVC hardware decoding support.
 
 HDR videos are encoded using Dolby Vision to represent a Higher Dynamic range of colors and lighting. These videos have wilder colors that may look unrealistic to some. HDR is only available starting with macOS Catalina.</string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>

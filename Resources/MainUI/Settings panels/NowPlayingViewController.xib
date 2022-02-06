@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20034" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20034"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,6 +17,7 @@
                 <outlet property="selectAllButton" destination="6Kq-mf-i1S" id="cUl-Ou-oik"/>
                 <outlet property="statusDriveImageView" destination="4dU-Sh-aQm" id="Sgk-Jg-TyC"/>
                 <outlet property="statusDriveLabel" destination="yZG-Gx-USb" id="Lfv-Hf-xge"/>
+                <outlet property="statusHiddenVideoLabel" destination="PPB-xK-vmX" id="8d6-lX-VTu"/>
                 <outlet property="statusTimeImageView" destination="bpX-3f-k1M" id="ldx-NT-ihb"/>
                 <outlet property="statusTimeLabel" destination="6Mj-az-MFS" id="WC5-pQ-d9j"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -188,6 +189,25 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PPB-xK-vmX">
+                                <rect key="frame" x="717" y="7" width="88" height="14"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="5 hidden videos" id="l8n-Un-UPA">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wAs-eu-RqN">
+                                <rect key="frame" x="691" y="2" width="20.5" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="aqM-Ww-1Y8"/>
+                                    <constraint firstAttribute="height" constant="20" id="eib-h8-Gbf"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="1ns-Df-Ep2">
+                                    <imageReference key="image" image="eye.slash" catalog="system" symbolScale="medium"/>
+                                </imageCell>
+                                <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="yZG-Gx-USb" firstAttribute="leading" secondItem="4dU-Sh-aQm" secondAttribute="trailing" constant="6" id="6dO-TX-Xnw"/>
@@ -196,10 +216,14 @@
                             <constraint firstItem="6Mj-az-MFS" firstAttribute="centerY" secondItem="cSt-0j-uPZ" secondAttribute="centerY" id="7bp-fS-Vu7"/>
                             <constraint firstItem="bpX-3f-k1M" firstAttribute="centerY" secondItem="cSt-0j-uPZ" secondAttribute="centerY" id="Avw-Xa-fBN"/>
                             <constraint firstItem="4DP-TC-303" firstAttribute="leading" secondItem="cSt-0j-uPZ" secondAttribute="leading" id="LGk-5X-J8x"/>
+                            <constraint firstItem="wAs-eu-RqN" firstAttribute="centerY" secondItem="bpX-3f-k1M" secondAttribute="centerY" id="OIZ-1f-5CO"/>
                             <constraint firstAttribute="trailing" secondItem="4DP-TC-303" secondAttribute="trailing" id="Pa3-2q-4oE"/>
                             <constraint firstItem="yZG-Gx-USb" firstAttribute="centerY" secondItem="cSt-0j-uPZ" secondAttribute="centerY" id="UBK-a1-BOf"/>
+                            <constraint firstItem="PPB-xK-vmX" firstAttribute="leading" secondItem="wAs-eu-RqN" secondAttribute="trailing" constant="8" id="V8D-eB-2Q0"/>
                             <constraint firstItem="4dU-Sh-aQm" firstAttribute="leading" secondItem="cSt-0j-uPZ" secondAttribute="leading" constant="8" id="gkT-PJ-qsw"/>
+                            <constraint firstAttribute="trailing" secondItem="PPB-xK-vmX" secondAttribute="trailing" constant="10" id="nIV-jP-pI2"/>
                             <constraint firstItem="4dU-Sh-aQm" firstAttribute="centerY" secondItem="cSt-0j-uPZ" secondAttribute="centerY" id="ndU-IA-igS"/>
+                            <constraint firstItem="PPB-xK-vmX" firstAttribute="firstBaseline" secondItem="6Mj-az-MFS" secondAttribute="firstBaseline" id="rbJ-UR-k56"/>
                             <constraint firstItem="6Mj-az-MFS" firstAttribute="leading" secondItem="bpX-3f-k1M" secondAttribute="trailing" constant="8" id="rjl-TE-Pry"/>
                         </constraints>
                     </view>
@@ -254,6 +278,7 @@
         <image name="book" catalog="system" width="18" height="14"/>
         <image name="checkmark.square" catalog="system" width="15" height="14"/>
         <image name="clock" catalog="system" width="15" height="15"/>
+        <image name="eye.slash" catalog="system" width="21" height="14"/>
         <image name="internaldrive" catalog="system" width="18" height="13"/>
         <image name="leaf" catalog="system" width="16" height="14"/>
         <image name="location" catalog="system" width="15" height="15"/>

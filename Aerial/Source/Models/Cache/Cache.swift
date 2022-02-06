@@ -71,8 +71,27 @@ struct Cache {
                         debugLog("\(bookmarkUrl)")
                         appPath = bookmarkUrl.path
                         debugLog("\(appPath)")
-                    } catch {
-                        errorLog("Can't process bookmark")
+
+                        do {
+                            let url = try NSURL.init(resolvingBookmarkData: bookmarkData, options: .withoutUI, relativeTo: nil, bookmarkDataIsStale: nil)
+
+                            // NSURL.init(re)
+                            url.startAccessingSecurityScopedResource()
+
+                            /*let stest = "TEST"
+                            try stest.write(to: url.appendingPathComponent("test3.txt")!, atomically: true, encoding: .ascii)*/
+
+                        } catch let error as NSError {
+                            errorLog("Bookmark Access Failed: \(error.description)")
+                        }
+
+                        /*var stest2: String = "TEST"
+
+                        try stest2.write(to: bookmarkUrl.appendingPathComponent("test1.txt"), atomically: true, encoding: .ascii)*/
+
+                    } catch let error {
+                        errorLog("Can't process bookmark \(error)")
+                        // errorLog(error)
                     }
                 } else {
                     errorLog("Can't find supportBookmarkData on macOS 12")
@@ -588,7 +607,7 @@ struct Cache {
             // Then cache status
             if isFull() {
                 if !Aerial.showAlert(question: "Your cache is full",
-                                     text: "Your cache limit is currently set to \(PrefsCache.cacheLimit.rounded(toPlaces: 1)) GB, and currently contains \(Cache.sizeString()) of files.\n\n Do you want to proceed with the download anyway?\n\nYou can manually increase or decrease your cache size in Settings > Cache.",
+                                     text: "Your cache limit is currently set to \(PrefsCache.cacheLimit.rounded(toPlaces: 1)) GB, and currently contains \(Cache.sizeString) of files.\n\n Do you want to proceed with the download anyway?\n\nYou can manually increase or decrease your cache size in Settings > Cache.",
                              button1: "Download Anyway",
                              button2: "Cancel") {
                     return
