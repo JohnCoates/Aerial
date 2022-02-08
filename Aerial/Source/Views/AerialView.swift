@@ -468,7 +468,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         } else {
             player?.pause()
         }
-        clearAllLayerAnimations()
+        removePlayerFades()
     }
 
     @objc func nextVideo() {

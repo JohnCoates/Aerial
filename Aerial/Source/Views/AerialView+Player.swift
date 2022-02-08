@@ -122,6 +122,11 @@ extension AerialView {
         }
     }
 
+    func removePlayerFades() {
+        self.playerLayer.removeAllAnimations()
+        self.playerLayer.opacity = 1.0
+    }
+    
     // This works pre Catalina as of right now
     func setupGlitchWorkaroundLayer(layer: CALayer) {
         debugLog("Using dot workaround for video driver corruption")
