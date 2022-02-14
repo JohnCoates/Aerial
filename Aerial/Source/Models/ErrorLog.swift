@@ -111,29 +111,34 @@ func logToDisk(_ message: String) {
 
         let cacheDirectory = path()
         // if let cacheDirectory = path() {
-            var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
+        var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
+        
+        if Aerial.underCompanion {
+            cacheFileUrl.appendPathComponent("AerialUnderCompanionLog.txt")
+        } else {
             cacheFileUrl.appendPathComponent("AerialLog.txt")
+        }
 
-            let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)!
+        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)!
 
-            if FileManager.default.fileExists(atPath: cacheFileUrl.path) {
-                // Append to log
-                do {
-                    let fileHandle = try FileHandle(forWritingTo: cacheFileUrl)
-                    fileHandle.seekToEndOfFile()
-                    fileHandle.write(data)
-                    fileHandle.closeFile()
-                } catch {
-                    NSLog("AerialError: Can't open handle for AerialLog.txt")
-                }
-            } else {
-                // Create new log
-                do {
-                    try data.write(to: cacheFileUrl, options: .atomic)
-                } catch {
-                    NSLog("AerialError: Can't write to file AerialLog.txt")
-                }
+        if FileManager.default.fileExists(atPath: cacheFileUrl.path) {
+            // Append to log
+            do {
+                let fileHandle = try FileHandle(forWritingTo: cacheFileUrl)
+                fileHandle.seekToEndOfFile()
+                fileHandle.write(data)
+                fileHandle.closeFile()
+            } catch {
+                NSLog("AerialError: Can't open handle for AerialLog.txt")
             }
+        } else {
+            // Create new log
+            do {
+                try data.write(to: cacheFileUrl, options: .atomic)
+            } catch {
+                NSLog("AerialError: Can't write to file AerialLog.txt")
+            }
+        }
         // }
     }
 }

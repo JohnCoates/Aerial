@@ -53,11 +53,20 @@ class MessageLayer: AnimationTextLayer {
             case .text:
                 update(string: config.message)
             case .shell:
+                update(string: "")
                 DispatchQueue.global().async {
+                    debugLog("setting up initial")
                     let result = self.runShell()
-                    self.update(string: result ?? "")
+                    
+                    if let result = result {
+                        // Do it on the main queue...
+                        DispatchQueue.main.async {
+                            debugLog("updating initial " + result)
+                            self.update(string: result)
+                        }
+                    }
                 }
-                setupRefresh()
+                //setupRefresh()
             case .textfile:
                 // TODO
                 update(string: config.message)
@@ -69,6 +78,7 @@ class MessageLayer: AnimationTextLayer {
     }
 
     func setupRefresh() {
+        debugLog("setting up refresh")
         guard let config = config else {
             return
         }
@@ -97,8 +107,8 @@ class MessageLayer: AnimationTextLayer {
             messageTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: { [self] (_) in
 
                 DispatchQueue.global().async {
-                    let result = runShell()
-                    update(string: result ?? "")
+                    let result = self.runShell()
+                    self.update(string: result ?? "")
                 }
             })
         }
@@ -113,6 +123,7 @@ class MessageLayer: AnimationTextLayer {
             if FileManager.default.fileExists(atPath: PrefsInfo.message.shellScript) {
                 let (result, _) = Aerial.shell(launchPath: PrefsInfo.message.shellScript)
 
+                debugLog("result " + (result ?? ""))
                 if let res = result {
                     return res
                 }

@@ -12,9 +12,13 @@ class OverlaysViewController: NSViewController {
     @IBOutlet var popoverWeather: NSPopover!
     @IBOutlet var infoTableView: NSTableView!
     @IBOutlet var infoSettingsTableView: NSTableView!
-    @IBOutlet var infoBox: NSBox!
-    @IBOutlet var infoContainerView: InfoContainerView!
+    //@IBOutlet var infoBox: NSBox!
+    //@IBOutlet var infoContainerView: InfoContainerView!
 
+    
+    @IBOutlet var infoScrollView: NSScrollView!
+    @IBOutlet var infoScrollableView: InfoContainerView!
+    
     // Then all the individual views
     @IBOutlet var infoSettingsView: InfoSettingsView!
     @IBOutlet var infoCommonView: InfoCommonView!
@@ -70,8 +74,10 @@ class OverlaysViewController: NSViewController {
         resetInfoPanel()
 
         // Add the common block of features (enabled, font, position, screen)
-        infoContainerView.addSubview(infoSettingsView)
-        infoBox.title = "Advanced text settings"
+        infoScrollableView.addSubview(infoSettingsView)
+
+        //infoContainerView.addSubview(infoSettingsView)
+        //infoBox.title = "Advanced text settings"
         infoSettingsView.setStates()
     }
 
@@ -80,65 +86,85 @@ class OverlaysViewController: NSViewController {
         resetInfoPanel()
 
         // Add the common block of features (enabled, font, position, screen)
-        infoContainerView.addSubview(infoCommonView)
+        infoScrollableView.addSubview(infoCommonView)
+        //infoContainerView.addSubview(infoCommonView)
         infoCommonView.setType(forType, controller: self)
+        infoScrollableView.setFrameSize(NSSize(width: infoScrollableView.frame.width, height: 800))
+
         infoCommonView.frame.origin.y = 0
+
+        //infoScrollView.documentView?.scroll(.zero)
+
+        
         // Then the per-type blocks if any
         switch forType {
         case .location:
-            infoContainerView.addSubview(infoLocationView)
+            infoScrollableView.addSubview(infoLocationView)
             infoLocationView.frame.origin.y = infoCommonView.frame.height
             infoLocationView.setStates()
+            
+            //infoScrollableView.setFrameSize(NSSize(width: infoScrollableView.frame.width, height: infoCommonView.frame.height + infoLocationView.frame.height))
         case .message:
-            infoContainerView.addSubview(infoMessageView)
+            infoScrollableView.addSubview(infoMessageView)
             infoMessageView.frame.origin.y = infoCommonView.frame.height
             addSubMessagePanel()
             infoMessageView.setStates()
+            //infoScrollableView.setFrameSize(NSSize(width: infoScrollableView.frame.width, height: infoCommonView.frame.height + infoLocationView.frame.height))
         case .clock:
-            infoContainerView.addSubview(infoClockView)
+            infoScrollableView.addSubview(infoClockView)
             infoClockView.frame.origin.y = infoCommonView.frame.height
             infoClockView.setStates()
+            //infoScrollableView.setFrameSize(NSSize(width: infoScrollableView.frame.width, height: infoCommonView.frame.height + infoClockView.frame.height))
         case .date:
-            infoContainerView.addSubview(infoDateView)
+            infoScrollableView.addSubview(infoDateView)
             infoDateView.frame.origin.y = infoCommonView.frame.height
             infoDateView.setStates()
+            //infoScrollableView.setFrameSize(NSSize(width: infoScrollableView.frame.width, height: infoCommonView.frame.height + infoDateView.frame.height))
         case .battery:
-            infoContainerView.addSubview(infoBatteryView)
+            infoScrollableView.addSubview(infoBatteryView)
             infoBatteryView.frame.origin.y = infoCommonView.frame.height
             infoBatteryView.setStates()
+            //infoScrollableView.setFrameSize(NSSize(width: infoScrollableView.frame.width, height: infoCommonView.frame.height + infoBatteryView.frame.height))
         case .updates:
             break
         case .weather:
-            infoContainerView.addSubview(infoWeatherView)
+            infoScrollableView.addSubview(infoWeatherView)
             infoWeatherView.frame.origin.y = infoCommonView.frame.height
             infoWeatherView.setStates()
+            //infoScrollableView.setFrameSize(NSSize(width: infoScrollableView.frame.width, height: infoCommonView.frame.height + infoWeatherView.frame.height))
         case .countdown:
-            infoContainerView.addSubview(infoCountdownView)
+            infoScrollableView.addSubview(infoCountdownView)
             infoCountdownView.frame.origin.y = infoCommonView.frame.height
             infoCountdownView.setStates()
+            //infoScrollableView.setFrameSize(NSSize(width: infoScrollableView.frame.width, height: infoCommonView.frame.height + infoCountdownView.frame.height))
         case .timer:
-            infoContainerView.addSubview(infoTimerView)
+            infoScrollableView.addSubview(infoTimerView)
             infoTimerView.frame.origin.y = infoCommonView.frame.height
             infoTimerView.setStates()
+            //infoScrollableView.setFrameSize(NSSize(width: infoScrollableView.frame.width, height: infoCommonView.frame.height + infoTimerView.frame.height))
         case .music:
-            infoContainerView.addSubview(infoMusicView)
+            infoScrollableView.addSubview(infoMusicView)
             infoMusicView.frame.origin.y = infoCommonView.frame.height
             infoMusicView.setStates()
+            //infoScrollableView.setFrameSize(NSSize(width: infoScrollableView.frame.width, height: infoCommonView.frame.height + infoMusicView.frame.height))
         }
+        
+        infoScrollView.documentView?.scroll(.zero)
+
     }
 
     func addSubMessagePanel() {
         switch PrefsInfo.message.messageType {
         case .text:
-            infoContainerView.addSubview(infoMessageTextView)
+            infoScrollableView.addSubview(infoMessageTextView)
             infoMessageTextView.frame.origin.y = infoCommonView.frame.height + infoMessageView.frame.height
             currentSubMessage = infoMessageTextView
         case .shell:
-            infoContainerView.addSubview(infoMessageShellView)
+            infoScrollableView.addSubview(infoMessageShellView)
             infoMessageShellView.frame.origin.y = infoCommonView.frame.height + infoMessageView.frame.height
             currentSubMessage = infoMessageShellView
         case .textfile:
-            infoContainerView.addSubview(infoMessageTextFileView)
+            infoScrollableView.addSubview(infoMessageTextFileView)
             infoMessageTextFileView.frame.origin.y = infoCommonView.frame.height + infoMessageView.frame.height
             currentSubMessage = infoMessageTextFileView
         }
@@ -157,7 +183,7 @@ class OverlaysViewController: NSViewController {
 
     // Clear the panel
     func resetInfoPanel() {
-        infoContainerView.subviews.forEach({ $0.removeFromSuperview() })
+        infoScrollableView.subviews.forEach({ $0.removeFromSuperview() })
     }
 
     // MARK: Weather panel

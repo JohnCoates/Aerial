@@ -448,6 +448,10 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                                        name: NSNotification.Name.AVPlayerItemPlaybackStalled,
                                        object: currentItem)
 
+
+        DistributedNotificationCenter.default.addObserver(self,
+            selector: #selector(AerialView.willStart(_:)),
+            name: Notification.Name("com.apple.screensaver.willstart"), object: nil)
         DistributedNotificationCenter.default.addObserver(self,
             selector: #selector(AerialView.willStop(_:)),
             name: Notification.Name("com.apple.screensaver.willstop"), object: nil)
@@ -455,9 +459,20 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         Music.instance.setup()
     }
 
+    @objc func willStart(_ aNotification: Notification) {
+        if Aerial.underCompanion {
+            debugLog("############ willStart")
+            player?.pause()
+        }
+    }
+
     @objc func willStop(_ aNotification: Notification) {
         debugLog("############ willStop")
-        self.stopAnimation()
+        if !Aerial.underCompanion {
+            self.stopAnimation()
+        } else {
+            player?.play()
+        }
     }
 
     // Tentative integration with companion of extra features

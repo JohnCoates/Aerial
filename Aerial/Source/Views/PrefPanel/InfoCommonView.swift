@@ -32,7 +32,7 @@ class InfoCommonView: NSView {
         // We need the controller for callbacks, when we update the isEnabled state,
         // we need to update the list view on the left too
         self.controller = controller
-
+        
         // Store type
         self.forType = forType
 
@@ -44,34 +44,34 @@ class InfoCommonView: NSView {
 
         switch forType {
         case .location:
-            controller.infoBox.title = "Video location information"
+            //controller.infoBox.title = "Video location information"
             posRandom.isHidden = false
         case .message:
-            controller.infoBox.title = "Custom message"
+            //controller.infoBox.title = "Custom message"
             posRandom.isHidden = true
         case .clock:
-            controller.infoBox.title = "Current time"
+            //controller.infoBox.title = "Current time"
             posRandom.isHidden = true
         case .date:
-            controller.infoBox.title = "Current date"
+            //controller.infoBox.title = "Current date"
             posRandom.isHidden = true
         case .battery:
-            controller.infoBox.title = "Battery status"
+            //controller.infoBox.title = "Battery status"
             posRandom.isHidden = true
         case .updates:
-            controller.infoBox.title = "Updates notifications"
+            //controller.infoBox.title = "Updates notifications"
             posRandom.isHidden = true
         case .weather:
-            controller.infoBox.title = "Weather provided by OpenWeather"
+            //controller.infoBox.title = "Weather provided by OpenWeather"
             posRandom.isHidden = true
         case .countdown:
-            controller.infoBox.title = "Countdown to a time/date"
+            //controller.infoBox.title = "Countdown to a time/date"
             posRandom.isHidden = true
         case .timer:
-            controller.infoBox.title = "Timer"
+            //controller.infoBox.title = "Timer"
             posRandom.isHidden = true
         case .music:
-            controller.infoBox.title = "Music"
+            //controller.infoBox.title = "Music"
             posRandom.isHidden = true
         }
     }
