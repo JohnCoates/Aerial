@@ -129,8 +129,17 @@ class LayerManager {
     // Called before starting a new video
     func clearLayerAnimations(player: AVPlayer) {
         for layer in additionalLayers {
+            print(layer)
             layer.clear(player: player)
             layer.removeAllAnimations()
+        }
+    }
+    
+    func removeAllLayers() {
+        for layer in additionalLayers {
+            print(layer)
+            layer.removeAllAnimations()
+            layer.removeFromSuperlayer()
         }
     }
 

@@ -72,7 +72,6 @@ class AnimationTextLayer: CATextLayer, AnimatableLayer {
         self.string = string
         self.isWrapped = true
 
-        debugLog("string : " + string)
         // This is the rect resized to our string
         let newCorner = getCorner()
         frame = calculateRect(string: string, font: font as! NSFont, newCorner: newCorner)

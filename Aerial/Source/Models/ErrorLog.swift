@@ -96,10 +96,21 @@ func Log(level: ErrorLevel, message: String) {
 
     // Log to disk
     if preferences.debugMode {
+        //logToConsole(message)
         logToDisk(message)
     }
 }
 
+func logToConsole(_ message: String) {
+    if #available(OSX 10.12, *) {
+        // This is faster when available
+        let log = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "Screensaver")
+        os_log("Aerial: %{public}@", log: log, type: .default, message)
+    } else {
+        NSLog("Aerial: \(message)")
+    }
+
+}
 func logToDisk(_ message: String) {
     DispatchQueue.main.async {
         // Prefix message with date

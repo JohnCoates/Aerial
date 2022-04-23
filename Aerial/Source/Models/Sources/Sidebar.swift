@@ -10,9 +10,6 @@ import Cocoa
 
 class Sidebar {
     var modern: [Any] = []
-    var videos: [Any] = []
-    var settings: [Any] = []
-    var infos: [Any] = []
 
     struct Header {
         let name: String
@@ -27,9 +24,6 @@ class Sidebar {
 
     init() {
         makeModern()
-        /*makeSettings()
-        makeInfos()
-        refreshVideos()*/
     }
 
     // The new modern menu in 3.0
@@ -57,60 +51,6 @@ class Sidebar {
                 MenuEntry(name: "Help", path: "infos:help")
             ])
         ]
-    }
-
-    // This is where we maintain the list of the Sidebar content, this will need to be
-    // updated periodically unlike the other sidebars that are static
-    /*func refreshVideos() {
-        // At the very top, the current rotation
-        let onRotation = MenuEntry(name: "Currently playing", path: "videos:rotation:0")
-
-        // Favs
-        let fav = MenuEntry(name: "Favorites", path: "videos:favorites:0")
-
-        // All videos
-        let all = MenuEntry(name: "All videos", path: "videos:all")
-
-        // Cached/uncached
-        let cache = Header(name: "Cache",
-                           entries: makeEntriesFor(sources: VideoList.instance.getSources(mode: .cache),
-                           path: "videos:cache"))
-
-        // Locations
-        let locations = Header(name: "Location",
-                               entries: makeEntriesFor(sources: VideoList.instance.getSources(mode: .location),
-                               path: "videos:location"))
-
-        // Times
-        let time = Header(name: "Time",
-                          entries: makeEntriesFor(sources: VideoList.instance.getSources(mode: .time),
-                          path: "videos:time"))
-        // Scenes
-        let scene = Header(name: "Scene",
-                           entries: makeEntriesFor(sources: VideoList.instance.getSources(mode: .scene),
-                           path: "videos:scene"))
-
-        // Sources
-        let source = Header(name: "Source",
-                           entries: makeEntriesFor(sources: VideoList.instance.getSources(mode: .source),
-                           path: "videos:source"))
-
-        // Hidden
-        let hidden = MenuEntry(name: "Hidden", path: "videos:hidden:0")
-
-        videos = [onRotation, fav, all, cache, locations, time, scene, source, hidden]
-    }*/
-
-    func makeEntriesFor(sources: [String], path: String) -> [MenuEntry] {
-        var entries: [MenuEntry] = []
-        var index = 0
-
-        for source in sources {
-            entries.append(MenuEntry(name: source, path: path + ":\(index)"))
-            index += 1
-        }
-
-        return entries
     }
 
     // Helper to get the various icons for the sidebar

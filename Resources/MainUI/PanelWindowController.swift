@@ -78,9 +78,8 @@ import Cocoa
         Aerial.windowController = self
 
         // Create all the view items for the right panel
-        videoViewItem = NSSplitViewItem(viewController: videosVC!)
-
         nowPlayingItem = NSSplitViewItem(viewController: nowPlayingVC)
+        videoViewItem = NSSplitViewItem(viewController: videosVC!)
 
         // Infos
         infoViewItem = NSSplitViewItem(viewController: infoVC)

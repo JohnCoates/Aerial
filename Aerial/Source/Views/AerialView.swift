@@ -367,13 +367,17 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     }
 
     override func stopAnimation() {
-        super.stopAnimation()
+        //super.stopAnimation()
         wasStopped = true
         debugLog("\(self.description) stopAnimation")
         if !isDisabled {
             player?.pause()
             player?.rate = 0
+            layerManager.removeAllLayers()
+            playerLayer.removeAllAnimations()
             player?.replaceCurrentItem(with: nil)
+
+            isDisabled = true
         }
 
         let preferences = Preferences.sharedInstance
@@ -427,7 +431,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
         notificationCenter.removeObserver(self)
     }
-
+    
     func setNotifications(_ currentItem: AVPlayerItem) {
         let notificationCenter = NotificationCenter.default
 
@@ -459,6 +463,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         Music.instance.setup()
     }
 
+    func sendNotification(video: AerialVideo) {
+        DistributedNotificationCenter.default.post(name: Notification.Name("com.glouel.aerial.nextvideo"), object: "aerialtest : " + video.name)
+    }
+
+    
     @objc func willStart(_ aNotification: Notification) {
         if Aerial.underCompanion {
             debugLog("############ willStart")
@@ -575,7 +584,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                 observerWasSet = true
                 playerLayer.addObserver(self, forKeyPath: "readyForDisplay", options: .initial, context: nil)
             }
-
+            
+            sendNotification(video: video)
             setNotifications(currentItem)
 
             player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
@@ -611,6 +621,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                     playerLayer.addObserver(self, forKeyPath: "readyForDisplay", options: .initial, context: nil)
                 }
 
+                sendNotification(video: video)
                 setNotifications(currentItem)
 
                 player.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
@@ -621,7 +632,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                 }
             }
         }
-
     }
 
     // Is the current screen vertical?
@@ -653,6 +663,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                 } else {
                     debugLog("Right arrow key currently locked")
                 }
+            } else if event.keyCode == 125 {
+                stopAnimation()
             } else {
                 self.nextResponder!.keyDown(with: event)
                 // super.keyDown(with: event)

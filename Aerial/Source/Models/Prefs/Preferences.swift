@@ -96,7 +96,7 @@ final class Preferences {
         defaultValues[.showDescriptionsMode] = DescriptionMode.fade10seconds
         defaultValues[.multiMonitorMode] = MultiMonitorMode.mainOnly
         defaultValues[.descriptionCorner] = DescriptionCorner.bottomLeft
-        defaultValues[.debugMode] = true
+        defaultValues[.debugMode] = false
         defaultValues[.versionCheck] = VersionCheck.weekly
         defaultValues[.alsoVersionCheckBeta] = false
         defaultValues[.dimBrightness] = false

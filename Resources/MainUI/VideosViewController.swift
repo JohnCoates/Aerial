@@ -320,7 +320,6 @@ class VideosViewController: NSViewController {
         var filter: VideoList.FilterMode
 
         filter = VideoList.instance.modeFromPath(mode!) ?? .location
-        print("ursm : \(mode) \(filter)")
         rotationSecondaryPopup.removeAllItems()
 
         // Very unswift
@@ -574,9 +573,11 @@ class VideosViewController: NSViewController {
                 }
             } else {
                 // all
-                return VideoList.instance.videos
-                    .filter({ !PrefsVideos.hidden.contains($0.id) })
-                    .sorted { $0.secondaryName < $1.secondaryName }[videoListTableView.selectedRow]
+                if VideoList.instance.videos.count > 0 {
+                    return VideoList.instance.videos
+                        .filter({ !PrefsVideos.hidden.contains($0.id) })
+                        .sorted { $0.secondaryName < $1.secondaryName }[videoListTableView.selectedRow]
+                }
             }
         }
 

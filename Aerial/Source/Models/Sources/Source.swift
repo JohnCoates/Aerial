@@ -30,18 +30,12 @@ struct Source: Codable {
     var license: String
     var more: String
 
-    // TODO
     func isEnabled() -> Bool {
-        // tvOS is always enabled
-        /*if name.starts(with: "tvOS") {
-            return true
-        }*/
-
         if PrefsVideos.enabledSources.keys.contains(name) {
             return PrefsVideos.enabledSources[name]!
         }
 
-        // Unknown sources are enabled
+        // Unknown sources are enabled by default
         return true
     }
 

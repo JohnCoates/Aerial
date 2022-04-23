@@ -59,12 +59,7 @@ class SidebarViewController: NSViewController {
     }
 
     override func viewDidAppear() {
-        // When we are really there, we can look for the data
-        // This will trigger the refresh of the VideosViewController
-        VideoList.instance.addCallback {
-            print("reload")
-            self.reloadSidebar()
-        }
+        self.reloadSidebar()
     }
 
     private func updateSidebarMenu(_ menu: SidebarMenus) {
@@ -144,7 +139,7 @@ extension SidebarViewController: NSOutlineViewDataSource {
         if let header = item as? Sidebar.Header {
             return header.entries.count
         }
-
+        debugLog("child count \(Sidebar.instance.modern.count)")
         return Sidebar.instance.modern.count
     }
 
@@ -260,6 +255,7 @@ extension SidebarViewController: SidebarOutlineViewDelegate {
                 }
 
                 guard !videos.isEmpty else {
+                    debugLog("empty videos")
                     return nil
                 }
 
@@ -405,17 +401,17 @@ extension SidebarViewController: SidebarOutlineViewDelegate {
     func reloadSidebar() {
         // We need to reload our sidebar
         // Sidebar.instance.refreshVideos()
-        print("reload sidebar")
+        debugLog("reload sidebar")
         let set = sidebarOutlineView.selectedRowIndexes
 
         sidebarOutlineView.reloadData()
         sidebarOutlineView.expandItem(nil, expandChildren: true)
 
         if set.isEmpty {
-            print("empty set")
+            debugLog("empty set")
             sidebarOutlineView.selectRowIndexes([1], byExtendingSelection: false)
         } else {
-            print("re set ing")
+            debugLog("re set ing")
             sidebarOutlineView.selectRowIndexes(set, byExtendingSelection: false)
 
         }
