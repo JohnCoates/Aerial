@@ -61,9 +61,8 @@ class DateLayer: AnimationTextLayer {
     func getTimeString() -> String {
         // Handle locale
         var locale = Locale(identifier: Locale.preferredLanguages[0])
-        let preferences = Preferences.sharedInstance
-        if preferences.ciOverrideLanguage != "" {
-            locale = Locale(identifier: preferences.ciOverrideLanguage!)
+        if PrefsAdvanced.ciOverrideLanguage != "" {
+            locale = Locale(identifier: PrefsAdvanced.ciOverrideLanguage)
         }
         var template = ""
 

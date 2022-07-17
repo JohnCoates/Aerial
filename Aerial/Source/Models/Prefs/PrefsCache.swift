@@ -55,6 +55,10 @@ struct PrefsCache {
     @SimpleStorage(key: "cacheBookmarkData", defaultValue: nil)
     static var cacheBookmarkData: Data?
 
+    // The raw path in string form
+    @SimpleStorage(key: "cachePath", defaultValue: nil)
+    static var cachePath: String?
+    
     // App-scoped bookmark to cache, in NSData form
     @SimpleStorage(key: "supportBookmarkData", defaultValue: nil)
     static var supportBookmarkData: Data?
@@ -62,5 +66,7 @@ struct PrefsCache {
     // The raw path in string form
     @SimpleStorage(key: "supportPath", defaultValue: nil)
     static var supportPath: String?
+    
+  
 
 }

@@ -38,14 +38,14 @@ class TimeSetupViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        imageSunrise.image = Aerial.getSymbol("sunrise")?.tinting(with: .secondaryLabelColor)
-        imageDay.image = Aerial.getSymbol("sun.max")?.tinting(with: .secondaryLabelColor)
-        imageSunset.image = Aerial.getSymbol("sunset")?.tinting(with: .secondaryLabelColor)
-        imageNight.image = Aerial.getSymbol("moon.stars")?.tinting(with: .secondaryLabelColor)
+        imageSunrise.image = Aerial.helper.getSymbol("sunrise")?.tinting(with: .secondaryLabelColor)
+        imageDay.image = Aerial.helper.getSymbol("sun.max")?.tinting(with: .secondaryLabelColor)
+        imageSunset.image = Aerial.helper.getSymbol("sunset")?.tinting(with: .secondaryLabelColor)
+        imageNight.image = Aerial.helper.getSymbol("moon.stars")?.tinting(with: .secondaryLabelColor)
 
-        imageLocation.image = Aerial.getSymbol("mappin.and.ellipse")?.tinting(with: .secondaryLabelColor)
-        imageClock.image = Aerial.getSymbol("clock")?.tinting(with: .secondaryLabelColor)
-        imageXmark.image = Aerial.getSymbol("xmark.circle")?.tinting(with: .secondaryLabelColor)
+        imageLocation.image = Aerial.helper.getSymbol("mappin.and.ellipse")?.tinting(with: .secondaryLabelColor)
+        imageClock.image = Aerial.helper.getSymbol("clock")?.tinting(with: .secondaryLabelColor)
+        imageXmark.image = Aerial.helper.getSymbol("xmark.circle")?.tinting(with: .secondaryLabelColor)
 
         if let dateSunrise = timeFormatter.date(from: PrefsTime.manualSunrise) {
             sunriseTime.dateValue = dateSunrise
@@ -84,7 +84,7 @@ class TimeSetupViewController: NSViewController {
         locationLabel.stringValue = "Checking your location..."
         location.getCoordinates(failure: { (_) in
             // swiftlint:disable:next line_length
-            Aerial.showInfoAlert(title: "Could not get your location", text: "Make sure you enabled location services on your Mac, and that Aerial (or legacyScreenSaver on macOS 10.15 and later) is allowed to use your location.", button1: "OK", caution: true)
+            Aerial.helper.showInfoAlert(title: "Could not get your location", text: "Make sure you enabled location services on your Mac, and that Aerial (or legacyScreenSaver on macOS 10.15 and later) is allowed to use your location.", button1: "OK", caution: true)
             self.locationLabel.stringValue = "Check your Location Services settings on your mac"
 
         }, success: { (_) in

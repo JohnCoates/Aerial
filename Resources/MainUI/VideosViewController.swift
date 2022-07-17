@@ -133,7 +133,7 @@ class VideosViewController: NSViewController {
         // rotationPopup.item(at: 3)?.setIcons("clock")
         // rotationPopup.item(at: 4)?.setIcons("tram.fill")
         // rotationPopup.item(at: 5)?.setIcons("antenna.radiowaves.left.and.right")
-        rotationImage.image = Aerial.getAccentedSymbol("film")
+        rotationImage.image = Aerial.helper.getAccentedSymbol("film")
         rotationCacheNow.setIcons("arrow.down.circle")
     }
 
@@ -593,13 +593,13 @@ class VideosViewController: NSViewController {
 
         switch tvideo.timeOfDay {
         case "sunset":
-            timeImageView.image = Aerial.getSymbol("sunset")
+            timeImageView.image = Aerial.helper.getSymbol("sunset")
         case "sunrise":
-            timeImageView.image = Aerial.getSymbol("sunrise")
+            timeImageView.image = Aerial.helper.getSymbol("sunrise")
         case "night":
-            timeImageView.image = Aerial.getSymbol("moon.stars")
+            timeImageView.image = Aerial.helper.getSymbol("moon.stars")
         default:    // day
-            timeImageView.image = Aerial.getSymbol("sun.max")
+            timeImageView.image = Aerial.helper.getSymbol("sun.max")
         }
     }
 
@@ -612,17 +612,17 @@ class VideosViewController: NSViewController {
 
         switch tvideo.scene {
         case .nature:
-            sceneTypeImageView.image = Aerial.getSymbol("leaf")
+            sceneTypeImageView.image = Aerial.helper.getSymbol("leaf")
         case .beach:
-            sceneTypeImageView.image = Aerial.getSymbol("leaf")
+            sceneTypeImageView.image = Aerial.helper.getSymbol("leaf")
         case .countryside:
-            sceneTypeImageView.image = Aerial.getSymbol("leaf")
+            sceneTypeImageView.image = Aerial.helper.getSymbol("leaf")
         case .city:
-            sceneTypeImageView.image = Aerial.getSymbol("tram.fill")
+            sceneTypeImageView.image = Aerial.helper.getSymbol("tram.fill")
         case .space:
-            sceneTypeImageView.image = Aerial.getSymbol("sparkles")
+            sceneTypeImageView.image = Aerial.helper.getSymbol("sparkles")
         case .sea:
-            sceneTypeImageView.image = Aerial.getSymbol("helm")
+            sceneTypeImageView.image = Aerial.helper.getSymbol("helm")
         }
     }
 

@@ -26,18 +26,18 @@ class BrightnessViewController: NSViewController {
         super.viewDidLoad()
 
         // Main switch
-        if Preferences.sharedInstance.dimBrightness {
+        if PrefsDisplays.dimBrightness {
             lowerBrightness.state = .on
             changeBrightnessState(to: true)
         } else {
             changeBrightnessState(to: false)
         }
 
-        startFromSlider.doubleValue = Preferences.sharedInstance.startDim!
-        fadeToSlider.doubleValue = Preferences.sharedInstance.endDim!
+        startFromSlider.doubleValue = PrefsDisplays.startDim
+        fadeToSlider.doubleValue = PrefsDisplays.endDim
 
-        onlyDimAtNight.state = Preferences.sharedInstance.dimOnlyAtNight ? .on : .off
-        onlyDimOnBattery.state = Preferences.sharedInstance.dimOnlyAtNight ? .on : .off
+        onlyDimAtNight.state = PrefsDisplays.dimOnlyAtNight ? .on : .off
+        onlyDimOnBattery.state = PrefsDisplays.dimOnlyAtNight ? .on : .off
 
         let sleepTime = TimeManagement.sharedInstance.getCurrentSleepTime()
         if sleepTime != 0 {
@@ -55,7 +55,7 @@ class BrightnessViewController: NSViewController {
     }
 
     @IBAction func lowerBrightnessClick(_ sender: NSButton) {
-        Preferences.sharedInstance.dimBrightness = sender.state == .on
+        PrefsDisplays.dimBrightness = sender.state == .on
         changeBrightnessState(to: sender.state == .on)
 
     }
@@ -72,7 +72,7 @@ class BrightnessViewController: NSViewController {
                 Brightness.set(level: brightness)
                 savedBrightness = nil
             }
-            Preferences.sharedInstance.startDim = sender.doubleValue
+            PrefsDisplays.startDim = sender.doubleValue
         } else {
             if savedBrightness == nil {
                 savedBrightness = Brightness.get()
@@ -93,7 +93,7 @@ class BrightnessViewController: NSViewController {
                 Brightness.set(level: brightness)
                 savedBrightness = nil
             }
-            Preferences.sharedInstance.endDim = sender.doubleValue
+            PrefsDisplays.endDim = sender.doubleValue
         } else {
             if savedBrightness == nil {
                 savedBrightness = Brightness.get()
@@ -102,9 +102,9 @@ class BrightnessViewController: NSViewController {
         }
     }
     @IBAction func onlyDimAtNightClick(_ sender: NSButton) {
-        Preferences.sharedInstance.dimOnlyAtNight = sender.state == .on
+        PrefsDisplays.dimOnlyAtNight = sender.state == .on
     }
     @IBAction func onlyDimOnBatteryClick(_ sender: NSButton) {
-        Preferences.sharedInstance.dimOnlyOnBattery = sender.state == .on
+        PrefsDisplays.dimOnlyOnBattery = sender.state == .on
     }
 }

@@ -494,9 +494,8 @@ class ForecastLayer: CALayer {
         let dateFormatter = DateFormatter()
 
         var locale = Locale(identifier: Locale.preferredLanguages[0])
-        let preferences = Preferences.sharedInstance
-        if preferences.ciOverrideLanguage != "" {
-            locale = Locale(identifier: preferences.ciOverrideLanguage!)
+        if PrefsAdvanced.ciOverrideLanguage != "" {
+            locale = Locale(identifier: PrefsAdvanced.ciOverrideLanguage)
         }
 
         dateFormatter.locale = locale
@@ -509,9 +508,8 @@ class ForecastLayer: CALayer {
         let dateFormatter = DateFormatter()
 
         var locale = Locale(identifier: Locale.preferredLanguages[0])
-        let preferences = Preferences.sharedInstance
-        if preferences.ciOverrideLanguage != "" {
-            locale = Locale(identifier: preferences.ciOverrideLanguage!)
+        if PrefsAdvanced.ciOverrideLanguage != "" {
+            locale = Locale(identifier: PrefsAdvanced.ciOverrideLanguage)
         }
 
         dateFormatter.locale = locale

@@ -49,7 +49,7 @@ struct NightShift {
             cbdpath = "/usr/libexec/corebrightnessdiag"
         }
 
-        let (nsInfo, ts) = Aerial.shell(launchPath: cbdpath, arguments: ["nightshift-internal"])
+        let (nsInfo, ts) = Aerial.helper.shell(launchPath: cbdpath, arguments: ["nightshift-internal"])
 
         if ts != 0 {
             // Task didn't return correctly ? Abort

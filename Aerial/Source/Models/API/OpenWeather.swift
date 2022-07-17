@@ -112,8 +112,6 @@ struct OpenWeather {
     }
 
     static func getShortcodeLanguage() -> String {
-        let preferences = Preferences.sharedInstance
-
         // Those are the languages supported by OpenWeather
         let weatherLanguages = ["af", "al", "ar", "az", "bg", "ca", "cz", "da", "de", "el", "en",
                                 "eu", "fa", "fi", "fr", "gl", "he", "hi", "hr", "hu", "id", "it",
@@ -121,15 +119,15 @@ struct OpenWeather {
                                 "ru", "sv", "sk", "sl", "es", "sr", "th", "tr", "uk", "vi", "zh_cn",
                                 "zh_tw", "zu" ]
 
-        if preferences.ciOverrideLanguage == "" {
+        if PrefsAdvanced.ciOverrideLanguage == "" {
             let bestMatchedLanguage = Bundle.preferredLocalizations(from: weatherLanguages, forPreferences: Locale.preferredLanguages).first
             if let match = bestMatchedLanguage {
                 debugLog("Best matched language : \(match)")
                 return match
             }
         } else {
-            debugLog("Overrode matched language : \(preferences.ciOverrideLanguage!)")
-            return preferences.ciOverrideLanguage!
+            debugLog("Overrode matched language : \(PrefsAdvanced.ciOverrideLanguage)")
+            return PrefsAdvanced.ciOverrideLanguage
         }
 
         // We fallback here if nothing works

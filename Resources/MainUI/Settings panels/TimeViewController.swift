@@ -80,15 +80,15 @@ class TimeViewController: NSViewController {
             timeLocationRadio.state = .on
         }
 
-        myLocationImageView.image = Aerial.getSymbol("mappin.and.ellipse")?.tinting(with: .secondaryLabelColor)
+        myLocationImageView.image = Aerial.helper.getSymbol("mappin.and.ellipse")?.tinting(with: .secondaryLabelColor)
 
-        nightShiftImageView.image = Aerial.getSymbol("house")?.tinting(with: .secondaryLabelColor)
+        nightShiftImageView.image = Aerial.helper.getSymbol("house")?.tinting(with: .secondaryLabelColor)
 
-        manualImageView.image = Aerial.getSymbol("clock")?.tinting(with: .secondaryLabelColor)
+        manualImageView.image = Aerial.helper.getSymbol("clock")?.tinting(with: .secondaryLabelColor)
 
-        lightModeImageView.image = Aerial.getSymbol("gear")?.tinting(with: .secondaryLabelColor)
+        lightModeImageView.image = Aerial.helper.getSymbol("gear")?.tinting(with: .secondaryLabelColor)
 
-        noAdaptImageView.image = Aerial.getSymbol("xmark.circle")?.tinting(with: .secondaryLabelColor)
+        noAdaptImageView.image = Aerial.helper.getSymbol("xmark.circle")?.tinting(with: .secondaryLabelColor)
         updateTimeView()
 
         switch PrefsTime.sunEventWindow {
@@ -230,12 +230,12 @@ class TimeViewController: NSViewController {
 
         location.getCoordinates(failure: { (_) in
             // swiftlint:disable:next line_length
-            Aerial.showInfoAlert(title: "Could not get your location", text: "Make sure you enabled location services on your Mac (and Wi-Fi!), and that Aerial (or legacyScreenSaver on macOS 10.15 and later) is allowed to use your location.", button1: "OK", caution: true)
+            Aerial.helper.showInfoAlert(title: "Could not get your location", text: "Make sure you enabled location services on your Mac (and Wi-Fi!), and that Aerial (or legacyScreenSaver on macOS 10.15 and later) is allowed to use your location.", button1: "OK", caution: true)
         }, success: { (coordinates) in
             let lat = String(format: "%.2f", coordinates.latitude)
             let lon = String(format: "%.2f", coordinates.longitude)
 
-            Aerial.showInfoAlert(title: "Success", text: "Aerial can access your location (latitude: \(lat), longitude: \(lon)) and will use it to show you the correct videos.")
+            Aerial.helper.showInfoAlert(title: "Success", text: "Aerial can access your location (latitude: \(lat), longitude: \(lon)) and will use it to show you the correct videos.")
 
             self.updateTimeView()
         })

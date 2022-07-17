@@ -76,24 +76,19 @@ class SidebarViewController: NSViewController {
     }
 
     @IBAction func closeButton(_ sender: Any) {
-        // This seems needed for screensavers as our lifecycle is different
-        // from a regular app and we may be kept in memory by System Preferences
-        // and our settings won't get saved as they should be
-        Preferences.sharedInstance.synchronize()
-
         windowController!.stopVideo()
 
         if !downloadIndicator.isHidden {
             // swiftlint:disable:next line_length
-            if !Aerial.showAlert(question: "Downloads still in progress", text: "Your video downloads are still in progress. Are you sure you want to quit ? This will abandon your current downloads.", button1: "Quit and Abandon Downloads", button2: "Cancel") {
+            if !Aerial.helper.showAlert(question: "Downloads still in progress", text: "Your video downloads are still in progress. Are you sure you want to quit ? This will abandon your current downloads.", button1: "Quit and Abandon Downloads", button2: "Cancel") {
                 return
             }
         }
 
-        if Aerial.appMode {
+        if Aerial.helper.appMode {
             NSApplication.shared.terminate(nil)
         } else {
-            if Aerial.underCompanion {
+            if Aerial.helper.underCompanion {
                 windowController!.window?.close()
             } else {
                 windowController!.window?.sheetParent?.endSheet(windowController!.window!)

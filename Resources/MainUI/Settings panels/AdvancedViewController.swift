@@ -86,7 +86,7 @@ class AdvancedViewController: NSViewController {
 
         onBatteryPopup.selectItem(at: PrefsVideos.onBatteryMode.rawValue)
 
-        if Preferences.sharedInstance.debugMode {
+        if PrefsAdvanced.debugMode {
             debugCheckbox.state = .on
         }
 
@@ -94,7 +94,7 @@ class AdvancedViewController: NSViewController {
         languagePopup.selectItem(at: poisp.getLanguagePosition())
 
         // Grab preferred language as proper string
-        languageLabel.stringValue = Aerial.getPreferredLanguage()
+        languageLabel.stringValue = Aerial.helper.getPreferredLanguage()
 
         showLogButton.setIcons("folder")
         launchSetupAgain.setIcons("aspectratio")
@@ -163,7 +163,7 @@ class AdvancedViewController: NSViewController {
 
         if candidateFormat != originalFormat {
             // swiftlint:disable:next line_length
-            if Aerial.showAlert(question: "Changing format will delete all videos", text: "Changing format will delete your downloaded videos. They will be re-downloaded based on your preferences. \n\nYou can also manually redownload videos in Custom Sources.", button1: "Change Format and Delete Videos", button2: "Cancel") {
+            if Aerial.helper.showAlert(question: "Changing format will delete all videos", text: "Changing format will delete your downloaded videos. They will be re-downloaded based on your preferences. \n\nYou can also manually redownload videos in Custom Sources.", button1: "Change Format and Delete Videos", button2: "Cancel") {
                 PrefsVideos.videoFormat = candidateFormat
                 originalFormat = candidateFormat
 
@@ -207,11 +207,11 @@ class AdvancedViewController: NSViewController {
 
     @IBAction func languagePopupChange(_ sender: NSPopUpButton) {
         let poisp = PoiStringProvider.sharedInstance
-        Preferences.sharedInstance.ciOverrideLanguage = poisp.getLanguageStringFromPosition(pos: sender.indexOfSelectedItem)
+        PrefsAdvanced.ciOverrideLanguage = poisp.getLanguageStringFromPosition(pos: sender.indexOfSelectedItem)
     }
 
     @IBAction func debugCheckboxClick(_ sender: NSButton) {
-        Preferences.sharedInstance.debugMode = sender.state == .on
+        PrefsAdvanced.debugMode = sender.state == .on
     }
 
     @IBAction func showLogInFinderClick(_ sender: Any) {
@@ -226,7 +226,7 @@ class AdvancedViewController: NSViewController {
     }
 
     @IBAction func resetAllSettings(_ sender: NSButton) {
-        if Aerial.showAlert(
+        if Aerial.helper.showAlert(
             question: "Reset all settings?",
             text: "This will reset all your settings. After they are reset, Aerial will close System Preferences, you will have to reload it to access settings again.\n\nAre you sure you want to reset your settings?",
             button1: "Reset my settings",
@@ -239,7 +239,7 @@ class AdvancedViewController: NSViewController {
 
             // Settings may be stored in a container... unless we run under companion ! What a mess...
             if #available(OSX 10.15, *) {
-                if Aerial.underCompanion {
+                if Aerial.helper.underCompanion {
                     process.arguments = ["-currentHost", "delete", "com.JohnCoates.Aerial"]
                 } else {
                     process.arguments = ["-currentHost", "delete", "~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/ByHost/com.JohnCoates.Aerial"]
@@ -251,7 +251,7 @@ class AdvancedViewController: NSViewController {
             process.launch()
             process.waitUntilExit()
 
-            Aerial.showInfoAlert(title: "Settings reset to defaults", text: "Your settings were reset to defaults. \n\nPlease close Aerial and System Preferences in order to reload them.")
+            Aerial.helper.showInfoAlert(title: "Settings reset to defaults", text: "Your settings were reset to defaults. \n\nPlease close Aerial and System Preferences in order to reload them.")
         }
     }
 

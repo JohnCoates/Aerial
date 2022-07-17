@@ -10,7 +10,7 @@ import Cocoa
 
 extension NSMenuItem {
     func setIcons(_ named: String) {
-        self.image = Aerial.getMiniSymbol(named)
+        self.image = Aerial.helper.getMiniSymbol(named)
         self.image?.isTemplate = true
     }
 }

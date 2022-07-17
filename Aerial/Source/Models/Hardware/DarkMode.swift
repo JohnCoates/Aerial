@@ -12,7 +12,7 @@ import Cocoa
 struct DarkMode {
     static func isAvailable() -> (Bool, reason: String) {
         if #available(OSX 10.14, *) {
-            if Aerial.darkMode {
+            if Aerial.helper.darkMode {
                 return (true, "Your Mac is currently in Dark Mode")
             } else {
                 return (true, "Your Mac is currently in Light Mode")
@@ -24,6 +24,6 @@ struct DarkMode {
     }
 
     static func isEnabled() -> Bool {
-        return Aerial.darkMode
+        return Aerial.helper.darkMode
     }
 }

@@ -183,7 +183,7 @@ struct SourceList {
                 if let error = error {
                     debugLog("Can't load file, possible firewall issue")
                     DispatchQueue.main.async {
-                        Aerial.showErrorAlert(question: "An error occured loading the file",
+                        Aerial.helper.showErrorAlert(question: "An error occured loading the file",
                             text: "Please check your network connection, firewall, and try again. \n\nError : \(error.localizedDescription)")
                     }
                     return
@@ -192,7 +192,7 @@ struct SourceList {
                     debugLog("No HTTP response")
 
                     DispatchQueue.main.async {
-                        Aerial.showErrorAlert(question: "No HTTP Response",
+                        Aerial.helper.showErrorAlert(question: "No HTTP Response",
                                               text: "Please check your network connection, firewall, and try again.")
                     }
                     return
@@ -202,7 +202,7 @@ struct SourceList {
                     DispatchQueue.main.async {
                         debugLog("HTTP error")
 
-                        Aerial.showErrorAlert(question: "HTTP Error",
+                        Aerial.helper.showErrorAlert(question: "HTTP Error",
                             text: "Please verify the URL (and check your network connexion and firewall). HTTP error: \(response.statusCode)")
                     }
                     return
@@ -210,7 +210,7 @@ struct SourceList {
                     DispatchQueue.main.async {
                         debugLog("Incorect JSON format")
 
-                        Aerial.showErrorAlert(question: "Incorrect JSON Format",
+                        Aerial.helper.showErrorAlert(question: "Incorrect JSON Format",
                                               text: "Your URL was valid, but the file is not in the correct format. Please check the URL.")
                     }
                     return
@@ -295,7 +295,7 @@ struct SourceList {
 
             // ...
             if SourceList.hasNamed(name: url.lastPathComponent) {
-                Aerial.showInfoAlert(title: "Source name mismatch",
+                Aerial.helper.showInfoAlert(title: "Source name mismatch",
                                      text: "A source with this name already exists. Try renaming your folder and try again.")
             } else {
                 debugLog("Creating source \(url.lastPathComponent)")

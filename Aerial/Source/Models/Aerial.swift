@@ -11,20 +11,23 @@
 import Cocoa
 
 class Aerial: NSObject {
-
-    static var windowController: PanelWindowController?
+    static let helper = Aerial()
+    
+    var windowController: PanelWindowController?
 
     // We use this to track whether we run as a screen saver or an app
-    static var appMode = false
+    var appMode = false
 
     // We also track darkmode here now
-    static var darkMode = false
+    var darkMode = false
 
     // And we track if we are running under Aerial's Companion app
-    static var underCompanion = false
+    var underCompanion = false
 
+    let userName = NSUserName()
+    
     // Track our version number for logs and stuff
-    static var version: String = {
+    var version: String = {
         if let version = Bundle(identifier: "com.johncoates.Aerial-Test")?.infoDictionary?["CFBundleShortVersionString"] as? String {
             return "Version " + version
         } else if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
@@ -34,18 +37,27 @@ class Aerial: NSObject {
         return "Version ?"
     }()
 
-    static func checkCompanion() {
-        for bundle in Bundle.allBundles {
-            if let bundleId = bundle.bundleIdentifier {
-                if bundleId.contains("AerialUpdater") {
-                    underCompanion = true
-                    debugLog("> Running under Aerial Companion!")
+    // Are we running under Aerial Companion ? Desktop mode/Fullscreen mode
+    // Xcode debug mode is also considered as running under Companion
+    
+    func checkCompanion() {
+        debugLog("Checking for companion")
+        if appMode {
+            underCompanion = true
+            debugLog("> Running in appMode, simming Companion!")
+        } else {
+            for bundle in Bundle.allBundles {
+                if let bundleId = bundle.bundleIdentifier {
+                    if bundleId.contains("AerialUpdater") {
+                        underCompanion = true
+                        debugLog("> Running under Aerial Companion!")
+                    }
                 }
             }
         }
     }
 
-    static func computeDarkMode(view: NSView) {
+    func computeDarkMode(view: NSView) {
         if #available(OSX 10.14, *) {
             debugLog("Best match appearance : \(view.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua]))")
             debugLog("Effective Appearence : \(view.effectiveAppearance)")
@@ -56,7 +68,7 @@ class Aerial: NSObject {
     }
 
     // Language detection
-    static func getPreferredLanguage() -> String {
+    func getPreferredLanguage() -> String {
         let printOutputLocale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
         if let deviceLanguageName: String = printOutputLocale.displayName(forKey: .identifier, value: Locale.preferredLanguages[0]) {
             if #available(OSX 10.12, *) {
@@ -70,7 +82,7 @@ class Aerial: NSObject {
     }
 
     // Alerts
-    static func showErrorAlert(question: String, text: String, button: String = "OK") {
+    func showErrorAlert(question: String, text: String, button: String = "OK") {
         let alert = NSAlert()
         alert.messageText = question
         alert.informativeText = text
@@ -80,7 +92,7 @@ class Aerial: NSObject {
         alert.runModal()
     }
 
-    static func showAlert(question: String, text: String, button1: String = "OK", button2: String = "Cancel") -> Bool {
+    func showAlert(question: String, text: String, button1: String = "OK", button2: String = "Cancel") -> Bool {
         let alert = NSAlert()
         alert.messageText = question
         alert.informativeText = text
@@ -91,7 +103,7 @@ class Aerial: NSObject {
         return alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn
     }
 
-    static func showInfoAlert(title: String, text: String, button1: String = "OK", caution: Bool = false) {
+    func showInfoAlert(title: String, text: String, button1: String = "OK", caution: Bool = false) {
         let alert = NSAlert()
         alert.messageText = title
         alert.informativeText = text
@@ -108,16 +120,16 @@ class Aerial: NSObject {
     // Symbol/icon generation
 
     // Symbol as a CALayer
-    static func getSymbolLayer(_ named: String, size: CGFloat) -> CALayer {
+    func getSymbolLayer(_ named: String, size: CGFloat) -> CALayer {
         let imglayer = CALayer()
-        imglayer.contents = Aerial.getSymbol(named)
+        imglayer.contents = Aerial.helper.getSymbol(named)
         imglayer.frame.size = CGSize(width: size,
                                      height: size)
         return imglayer
     }
 
     // Symbol as a NSImage
-    static func getSymbol(_ named: String) -> NSImage? {
+    func getSymbol(_ named: String) -> NSImage? {
         // Use SFSymbols if available
         if #available(macOS 11.0, *) {
             if let image = NSImage(systemSymbolName: named, accessibilityDescription: named) {
@@ -138,7 +150,7 @@ class Aerial: NSObject {
         return nil
     }
 
-    static func getMiniSymbol(_ named: String, tint: NSColor = .labelColor) -> NSImage? {
+    func getMiniSymbol(_ named: String, tint: NSColor = .labelColor) -> NSImage? {
         if let symbol = getSymbol(named) {
             return resize(image: symbol, w: Int(symbol.size.width)/10, h: Int(symbol.size.height)/10).tinting(with: tint)
         } else {
@@ -148,7 +160,7 @@ class Aerial: NSObject {
 
     // TODO: move to extension of NSImage...
     // swiftlint:disable:next identifier_name
-    static func resize(image: NSImage, w: Int, h: Int) -> NSImage {
+    func resize(image: NSImage, w: Int, h: Int) -> NSImage {
         let destSize = NSSize(width: CGFloat(w), height: CGFloat(h))
         let newImage = NSImage(size: destSize)
         newImage.lockFocus()
@@ -162,7 +174,7 @@ class Aerial: NSObject {
         return NSImage(data: newImage.tiffRepresentation!)!
     }
 
-    static func getAccentedSymbol(_ named: String) -> NSImage? {
+    func getAccentedSymbol(_ named: String) -> NSImage? {
         if #available(OSX 10.14, *) {
             return getSymbol(named)?.tinting(with: .controlAccentColor)
         } else {
@@ -173,7 +185,7 @@ class Aerial: NSObject {
 
     // This is a list of fallback symbols, until we can use those from SF Symbols 2,
     // we export from SF Symbols 1...
-    private static func fallbackSymbol(_ forName: String) -> String {
+    private func fallbackSymbol(_ forName: String) -> String {
         switch forName {
         case "cloud":
             return "regular.cloud"
@@ -200,7 +212,7 @@ class Aerial: NSObject {
     }
 
     // Launch a process through shell and capture/return output
-    static func shell(launchPath: String, arguments: [String] = []) -> (String?, Int32) {
+    func shell(launchPath: String, arguments: [String] = []) -> (String?, Int32) {
         let task = Process()
         task.launchPath = launchPath
         task.arguments = arguments
@@ -226,5 +238,90 @@ class Aerial: NSObject {
         task.waitUntilExit()
 
         return (output, task.terminationStatus)
+    }
+    
+    /*
+    func trySettings() {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .long
+        dateFormatter.dateStyle = .none
+        let time = dateFormatter.string(from: date)
+        let bundleID = "/Users/guillaume/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/com.glouel.synctest"
+
+        // Test 1
+        CFPreferencesSetValue("underCompanion" as CFString, (underCompanion ? "under" : "notunder") as CFString, bundleID as CFString as CFString, kCFPreferencesCurrentUser, kCFPreferencesAnyHost)
+
+        CFPreferencesSetValue("lastRun" as CFString, time as CFString, bundleID as CFString as CFString, kCFPreferencesCurrentUser, kCFPreferencesAnyHost)
+
+        let val = CFPreferencesAppSynchronize(bundleID as CFString)
+        print("value : " + String(val))
+        
+        
+        // Test 2
+        let bundleID2 = "/Users/guillaume/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/com.glouel.synctest2"
+        let userDefaults = UserDefaults(suiteName: bundleID2)
+        userDefaults?.setValue(time, forKey: "lastRun")
+
+        userDefaults?.synchronize()
+
+
+        userDefaults?.setValue(underCompanion ? "under" : "notunder", forKey: "underCompanion")
+        userDefaults?.setValue(time, forKey: "lastRun")
+
+        userDefaults?.synchronize()
+        
+ 
+        /*let (result, _) = shell(launchPath: "/usr/bin/defaults", arguments: ["read", "~/Library/Preferences/com.glouel.synctest","lastRun"])
+        debugLog(result!)
+        print(result!)*/
+    }*/
+    
+    // Starting with 3.1.0beta2, existing settings are moved from Preferences/ByHost to Preferences
+    // This allows the sharing of preferences between regular screen saver and companion-hosted screensaver
+    func migratePreferences() {
+        // First check if the new settings already exists !
+        let baseContainerPrefPath = "/Users/" + Aerial.helper.userName + "/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/"
+        
+        let newBundleFile = baseContainerPrefPath + "com.glouel.Aerial.plist"
+
+        if FileManager.default.fileExists(atPath: newBundleFile) {
+            // We are done
+            debugLog("!!! New prefs already exists")
+        } else {
+            debugLog("!!! New prefs does NOT exist")
+            //Look for ByHost
+            let byHostPath = baseContainerPrefPath + "ByHost/"
+            
+            if FileManager.default.fileExists(atPath: byHostPath) {
+                debugLog("ByHost exists")
+                var oldPlist = ""
+                
+                // Try and find the old plist
+                do {
+                    let directoryContents = try FileManager.default.contentsOfDirectory(atPath: byHostPath)
+
+                    for directoryContent in directoryContents {
+                        if directoryContent.starts(with: "com.JohnCoates.Aerial") {
+                            // We found it !
+                            oldPlist = directoryContent
+                            break
+                        }
+                    }
+                } catch {
+                    debugLog(error.localizedDescription)
+                }
+
+                // Did we get it ?
+                if oldPlist != "" {
+                    debugLog("plist found " + oldPlist)
+                    do {
+                        try FileManager.default.copyItem(atPath: byHostPath + oldPlist, toPath: newBundleFile)
+                    } catch {
+                        debugLog(error.localizedDescription)
+                    }
+                }
+            }
+        }
     }
 }

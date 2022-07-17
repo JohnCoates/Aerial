@@ -90,9 +90,8 @@ class CountdownLayer: AnimationTextLayer {
         if #available(OSX 10.12, *) {
             // Handle locale
             var locale = Locale(identifier: Locale.preferredLanguages[0])
-            let preferences = Preferences.sharedInstance
-            if preferences.ciOverrideLanguage != "" {
-                locale = Locale(identifier: preferences.ciOverrideLanguage!)
+            if PrefsAdvanced.ciOverrideLanguage != "" {
+                locale = Locale(identifier: PrefsAdvanced.ciOverrideLanguage)
             }
 
             var calendar = Calendar.current

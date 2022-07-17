@@ -58,7 +58,7 @@ class InfoMessageView: NSView, NSTextViewDelegate {
 
         if PrefsInfo.message.shellScript != "" {
             if FileManager.default.fileExists(atPath: PrefsInfo.message.shellScript) {
-                let (result, code) = Aerial.shell(launchPath: PrefsInfo.message.shellScript)
+                let (result, code) = Aerial.helper.shell(launchPath: PrefsInfo.message.shellScript)
 
                 if let res = result {
                     shellScriptLabel.stringValue = res

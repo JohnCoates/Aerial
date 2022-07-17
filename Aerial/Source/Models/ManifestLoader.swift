@@ -1,6 +1,7 @@
 //
 //  ManifestLoader.swift
 //  Aerial
+//  WARNING : This is the old deprecated stuff
 //
 //  Created by John Coates on 10/28/15.
 //  Copyright © 2015 John Coates. All rights reserved.
@@ -17,7 +18,6 @@ typealias ManifestLoadCallback = ([AerialVideo]) -> Void
 class ManifestLoader {
     static let instance: ManifestLoader = ManifestLoader()
 
-    lazy var preferences = Preferences.sharedInstance
     var callbacks = [ManifestLoadCallback]()
     var loadedManifest = [AerialVideo]()
     var processedVideos = [AerialVideo]()
@@ -156,7 +156,6 @@ class ManifestLoader {
 
         // Start with a shuffled list, we may have synchronized seed shuffle
         var shuffled: [AerialVideo]
-        let preferences = Preferences.sharedInstance
         /*if preferences.synchronizedMode {
             if #available(OSX 10.11, *) {
                 let date = Date()
@@ -178,11 +177,11 @@ class ManifestLoader {
 
         for video in shuffled {
             // We exclude videos not in rotation
-            let inRotation = preferences.videoIsInRotation(videoID: video.id)
+            /*let inRotation = preferences.videoIsInRotation(videoID: video.id)
 
             if !inRotation {
                 continue
-            }
+            }*/
 
             // Do we restrict video types by day/night ?
             if isRestricted {
@@ -267,7 +266,7 @@ class ManifestLoader {
                 return nil
             }
 
-            for video in shuffled {
+            /*for video in shuffled {
                 // We exclude videos not in rotation
                 let inRotation = preferences.videoIsInRotation(videoID: video.id)
 
@@ -276,7 +275,7 @@ class ManifestLoader {
                     warnLog("returning random cached in rotation video after condition change not met !")
                     return video
                 }
-            }
+            }*/
             // Nothing ? Sorry but you'll get a non cached file
             warnLog("returning random video after condition change not met !")
             return shuffled.first!
@@ -371,7 +370,7 @@ class ManifestLoader {
         let dateFormatter = DateFormatter()
         let current = Date()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        preferences.lastVideoCheck = dateFormatter.string(from: current)
+        PrefsVideos.lastVideoCheck = dateFormatter.string(from: current)
 
         let downloadManager = DownloadManager()
 
@@ -501,9 +500,9 @@ class ManifestLoader {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.locale = Locale.init(identifier: "en_GB")
-        let dateObj = dateFormatter.date(from: preferences.lastVideoCheck!)
+        let dateObj = dateFormatter.date(from: PrefsVideos.lastVideoCheck)
 
-        debugLog(preferences.lastVideoCheck!)
+        debugLog(PrefsVideos.lastVideoCheck)
 
         var dayCheck: Int
 
@@ -531,7 +530,7 @@ class ManifestLoader {
             // Fallback on earlier versions
         }
 
-        debugLog("Interval : \(String(describing: dateObj?.timeIntervalSinceNow))")
+        //debugLog("Interval : \(String(describing: dateObj?.timeIntervalSinceNow))")
         if Int((dateObj?.timeIntervalSinceNow)!) < -dayCheck * 86400 {
             // We need to redownload then
             debugLog("Checking for new videos")

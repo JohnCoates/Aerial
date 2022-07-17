@@ -301,7 +301,7 @@ class VideoList {
         let completion = BlockOperation {
             self.refreshVideoList()
             if !PrefsCache.enableManagement {
-                Aerial.showInfoAlert(title: "Automatic downloads are disabled", text: "In order to watch the new videos, you will need to manually download them (for example by pressing the down arrow button on the right).")
+                Aerial.helper.showInfoAlert(title: "Automatic downloads are disabled", text: "In order to watch the new videos, you will need to manually download them (for example by pressing the down arrow button on the right).")
             }
         }
 

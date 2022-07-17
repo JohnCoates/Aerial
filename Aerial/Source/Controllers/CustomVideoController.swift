@@ -199,7 +199,7 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
 
             // ...
             if SourceList.hasNamed(name: url.lastPathComponent) {
-                Aerial.showInfoAlert(title: "Source name mismatch",
+                Aerial.helper.showInfoAlert(title: "Source name mismatch",
                                      text: "A source with this name already exists. Try renaming your folder and try again.")
             } else {
                 debugLog("Creating source \(url.lastPathComponent)")

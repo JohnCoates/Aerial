@@ -61,7 +61,7 @@ struct Cache {
 
         if PrefsCache.overrideCache {
             debugLog("Cache Override")
-            if #available(macOS 12, *) {
+            if !Aerial.helper.underCompanion, #available(macOS 12, *) {
                 if let bookmarkData = PrefsCache.supportBookmarkData {
                     do {
                         var isStale = false
@@ -596,7 +596,7 @@ struct Cache {
         if PrefsCache.enableManagement {
             // Check network first
             if !canNetwork() {
-                if !Aerial.showAlert(question: "You are on a restricted WiFi network",
+                if !Aerial.helper.showAlert(question: "You are on a restricted WiFi network",
                              text: "Your current settings restrict downloads when not connected to a trusted network. Do you wish to proceed?\n\nReminder: You can change this setting in the Cache tab.",
                              button1: "Download Anyway",
                              button2: "Cancel") {
@@ -606,7 +606,7 @@ struct Cache {
 
             // Then cache status
             if isFull() {
-                if !Aerial.showAlert(question: "Your cache is full",
+                if !Aerial.helper.showAlert(question: "Your cache is full",
                                      text: "Your cache limit is currently set to \(PrefsCache.cacheLimit.rounded(toPlaces: 1)) GB, and currently contains \(Cache.sizeString) of files.\n\n Do you want to proceed with the download anyway?\n\nYou can manually increase or decrease your cache size in Settings > Cache.",
                              button1: "Download Anyway",
                              button2: "Cancel") {

@@ -112,8 +112,12 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     // MARK: - Init / Setup
     // This is the one used by System Preferences/ScreenSaverEngine
     override init?(frame: NSRect, isPreview: Bool) {
+        // First thing, we migrate preferences if needed
+        Aerial.helper.migratePreferences()
+        
         // legacyScreenSaver always return true for isPreview on Catalina
         // We need to detect and override ourselves
+        // This is finally fixed in Ventura
         var preview = false
         self.originalWidth = frame.width
         self.originalHeight = frame.height
@@ -122,8 +126,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             preview = true
         }
 
-        Aerial.checkCompanion()
-
+        Aerial.helper.checkCompanion()
+        
         // This is where we manage our location info layers, clock, etc
         self.layerManager = LayerManager(isPreview: preview)
 
@@ -132,7 +136,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
         self.animationTimeInterval = 1.0 / 30.0
 
-        if Aerial.underCompanion && isPreview {
+        if Aerial.helper.underCompanion && isPreview {
             debugLog("Running under companion in preview mode, preventing setup")
         } else {
             setup()
@@ -141,7 +145,13 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     // This is the one used by our App target used for debugging
     required init?(coder: NSCoder) {
+        // First thing, we migrate preferences if needed
+        Aerial.helper.migratePreferences()
+        
         self.layerManager = LayerManager(isPreview: false)
+        Aerial.helper.appMode = true
+        
+        Aerial.helper.checkCompanion()
 
         // ...
         self.originalWidth = 0
@@ -195,7 +205,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     // swiftlint:disable:next cyclomatic_complexity
     func setup() {
         // First we check the system appearance, as it relies on our view
-        Aerial.computeDarkMode(view: self)
+        Aerial.helper.computeDarkMode(view: self)
 
         _ = TimeManagement.sharedInstance
 
@@ -380,9 +390,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             isDisabled = true
         }
 
-        let preferences = Preferences.sharedInstance
-
-        if preferences.dimBrightness {
+        if PrefsDisplays.dimBrightness {
             if !isPreview && brightnessToRestore != nil {
                 Brightness.set(level: brightnessToRestore!)
                 brightnessToRestore = nil
@@ -469,7 +477,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     
     @objc func willStart(_ aNotification: Notification) {
-        if Aerial.underCompanion {
+        if Aerial.helper.underCompanion {
             debugLog("############ willStart")
             player?.pause()
         }
@@ -477,7 +485,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     @objc func willStop(_ aNotification: Notification) {
         debugLog("############ willStop")
-        if !Aerial.underCompanion {
+        if !Aerial.helper.underCompanion {
             self.stopAnimation()
         } else {
             player?.play()

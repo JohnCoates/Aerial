@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         super.init()
 
         // First thing : let our model know we are an app and not a screensaver !
-        Aerial.appMode = true
+        Aerial.helper.appMode = true
 
         let panelWindowController = PanelWindowController()
         panelWindowController.showWindow(self)

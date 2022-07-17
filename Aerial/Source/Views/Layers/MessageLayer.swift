@@ -121,7 +121,7 @@ class MessageLayer: AnimationTextLayer {
 
         if config.shellScript != "" {
             if FileManager.default.fileExists(atPath: PrefsInfo.message.shellScript) {
-                let (result, _) = Aerial.shell(launchPath: PrefsInfo.message.shellScript)
+                let (result, _) = Aerial.helper.shell(launchPath: PrefsInfo.message.shellScript)
 
                 debugLog("result " + (result ?? ""))
                 if let res = result {

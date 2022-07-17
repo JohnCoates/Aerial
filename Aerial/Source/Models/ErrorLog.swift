@@ -89,13 +89,12 @@ func Log(level: ErrorLevel, message: String) {
     }
 
     // We may have set callbacks
-    let preferences = Preferences.sharedInstance
-    if level == .warning || level == .error || (level == .debug && preferences.debugMode) {
+    if level == .warning || level == .error || (level == .debug && PrefsAdvanced.debugMode) {
         Logger.sharedInstance.callBack(level: level)
     }
 
     // Log to disk
-    if preferences.debugMode {
+    if PrefsAdvanced.debugMode {
         //logToConsole(message)
         logToDisk(message)
     }
@@ -124,7 +123,7 @@ func logToDisk(_ message: String) {
         // if let cacheDirectory = path() {
         var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
         
-        if Aerial.underCompanion {
+        if Aerial.helper.underCompanion {
             cacheFileUrl.appendPathComponent("AerialUnderCompanionLog.txt")
         } else {
             cacheFileUrl.appendPathComponent("AerialLog.txt")
@@ -156,8 +155,7 @@ func logToDisk(_ message: String) {
 
 func debugLog(_ message: String) {
     // Comment the condition to always log debug mode
-    let preferences = Preferences.sharedInstance
-    if preferences.debugMode {
+    if PrefsAdvanced.debugMode {
         Log(level: .debug, message: message)
     }
 }

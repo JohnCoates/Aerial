@@ -47,9 +47,8 @@ final class PoiStringProvider {
 
     private func loadBundle() {
         // Idle string bundle
-        let preferences = Preferences.sharedInstance
         var bundlePath = VideoCache.appSupportDirectory!.appending("/tvOS 15")
-        if preferences.ciOverrideLanguage == "" {
+        if PrefsAdvanced.ciOverrideLanguage == "" {
             debugLog("Preferred languages : \(Locale.preferredLanguages)")
 
             let bestMatchedLanguage = Bundle.preferredLocalizations(from: getBundleLanguages(), forPreferences: Locale.preferredLanguages).first
@@ -64,9 +63,9 @@ final class PoiStringProvider {
                 bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle")
             }
         } else {
-            debugLog("Language overriden to \(String(describing: preferences.ciOverrideLanguage))")
+            debugLog("Language overriden to \(String(describing: PrefsAdvanced.ciOverrideLanguage))")
             // Or we load the overriden one
-            bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle/" + preferences.ciOverrideLanguage! + ".lproj/")
+            bundlePath.append(contentsOf: "/TVIdleScreenStrings.bundle/" + PrefsAdvanced.ciOverrideLanguage + ".lproj/")
         }
 
         if let sb = Bundle.init(path: bundlePath) {
@@ -144,17 +143,16 @@ final class PoiStringProvider {
     // MARK: - Community data
     // siftlint:disable:next cyclomatic_complexity
     private func getCommunityPathForLocale() -> String {
-        let preferences = Preferences.sharedInstance
         let locale: NSLocale = NSLocale(localeIdentifier: Locale.preferredLanguages[0])
 
         // Do we have a language override ?
-        if preferences.ciOverrideLanguage != "" {
-            let path = Bundle(for: PoiStringProvider.self).path(forResource: preferences.ciOverrideLanguage, ofType: "json")
+        if PrefsAdvanced.ciOverrideLanguage != "" {
+            let path = Bundle(for: PoiStringProvider.self).path(forResource: PrefsAdvanced.ciOverrideLanguage, ofType: "json")
             if path != nil {
                 let fileManager = FileManager.default
                 if fileManager.fileExists(atPath: path!) {
-                    debugLog("Community Language overriden to : \(preferences.ciOverrideLanguage!)")
-                    communityLanguage = preferences.ciOverrideLanguage!
+                    debugLog("Community Language overriden to : \(PrefsAdvanced.ciOverrideLanguage)")
+                    communityLanguage = PrefsAdvanced.ciOverrideLanguage
                     return path!
                 }
             }
@@ -241,9 +239,8 @@ final class PoiStringProvider {
     // Helpers for the main popup
     // swiftlint:disable:next cyclomatic_complexity
     func getLanguagePosition() -> Int {
-        let preferences = Preferences.sharedInstance
         // The list is alphabetized based on their english name in the UI
-        switch preferences.ciOverrideLanguage {
+        switch PrefsAdvanced.ciOverrideLanguage {
         case "ar":  // Arabic
             return 1
         case "zh_CN":  // Chinese Simplified

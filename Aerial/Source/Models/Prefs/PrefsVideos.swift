@@ -169,12 +169,23 @@ struct PrefsVideos {
     @SimpleStorage(key: "allowPerVideoVibrance", defaultValue: false)
     static var allowPerVideoVibrance: Bool
 
+    static private func defaultLastVideoCheck() -> String {
+        let dateFormatter = DateFormatter()
+        let current = Date(timeIntervalSinceReferenceDate: -123456789.0)
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: current)
+    }
+
+    @SimpleStorage(key: "lastVideoCheck", defaultValue: defaultLastVideoCheck())
+    static var lastVideoCheck: String
+
+
+    
     static private func intervalSinceLastVideoCheck() -> TimeInterval {
-        let preferences = Preferences.sharedInstance
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.locale = Locale.init(identifier: "en_GB")
-        let dateObj = dateFormatter.date(from: preferences.lastVideoCheck!)!
+        let dateObj = dateFormatter.date(from: PrefsVideos.lastVideoCheck)!
 
         // debugLog("Last manifest check : \(dateObj)")
 
@@ -182,11 +193,10 @@ struct PrefsVideos {
     }
 
     static func saveLastVideoCheck() {
-        let preferences = Preferences.sharedInstance
         let dateFormatter = DateFormatter()
         let current = Date()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        preferences.lastVideoCheck = dateFormatter.string(from: current)
+        PrefsVideos.lastVideoCheck = dateFormatter.string(from: current)
     }
 
     static func shouldCheckForNewVideos() -> Bool {

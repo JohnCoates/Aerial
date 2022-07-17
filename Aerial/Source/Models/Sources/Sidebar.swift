@@ -57,81 +57,81 @@ class Sidebar {
     // swiftlint:disable:next cyclomatic_complexity
     static func iconFor(_ path: String, name: String) -> NSImage? {
         if path.starts(with: "videos:location") {
-            return Aerial.getAccentedSymbol("mappin.and.ellipse")
+            return Aerial.helper.getAccentedSymbol("mappin.and.ellipse")
         } else if path.starts(with: "videos:cache") && name == VideoList.instance.cacheDownloaded {
-            return Aerial.getAccentedSymbol("internaldrive")
+            return Aerial.helper.getAccentedSymbol("internaldrive")
         } else if path.starts(with: "videos:cache") && name == VideoList.instance.cacheOnline {
-            return Aerial.getAccentedSymbol("cloud")
+            return Aerial.helper.getAccentedSymbol("cloud")
 
         } else if path.starts(with: "videos:time") && name == "Day" {
-            return Aerial.getAccentedSymbol("sun.max")
+            return Aerial.helper.getAccentedSymbol("sun.max")
         } else if path.starts(with: "videos:time") && name == "Night" {
-            return Aerial.getAccentedSymbol("moon.stars")
+            return Aerial.helper.getAccentedSymbol("moon.stars")
         } else if path.starts(with: "videos:time") && name == "Sunrise" {
-            return Aerial.getAccentedSymbol("sunrise")
+            return Aerial.helper.getAccentedSymbol("sunrise")
         } else if path.starts(with: "videos:time") && name == "Sunset" {
-            return Aerial.getAccentedSymbol("sunset")
+            return Aerial.helper.getAccentedSymbol("sunset")
 
         } else if path.starts(with: "videos:scene") && name == "Nature" {
-            return Aerial.getAccentedSymbol("leaf")
+            return Aerial.helper.getAccentedSymbol("leaf")
         } else if path.starts(with: "videos:scene") && name == "City" {
-            return Aerial.getAccentedSymbol("tram.fill")
+            return Aerial.helper.getAccentedSymbol("tram.fill")
         } else if path.starts(with: "videos:scene") && name == "Space" {
-            return Aerial.getAccentedSymbol("sparkles")
+            return Aerial.helper.getAccentedSymbol("sparkles")
         } else if path.starts(with: "videos:scene") && name == "Sea" {
-            return Aerial.getAccentedSymbol("helm")
+            return Aerial.helper.getAccentedSymbol("helm")
         } else if path.starts(with: "videos:scene") && name == "Beach" {
-            return Aerial.getAccentedSymbol("helm")
+            return Aerial.helper.getAccentedSymbol("helm")
         } else if path.starts(with: "videos:scene") && name == "Countryside" {
-            return Aerial.getAccentedSymbol("helm")
+            return Aerial.helper.getAccentedSymbol("helm")
 
         } else if path.starts(with: "videos:rotation") {
-            return Aerial.getAccentedSymbol("dial.min")
+            return Aerial.helper.getAccentedSymbol("dial.min")
 
         } else if path.starts(with: "videos:favorite") {
-            return Aerial.getSymbol("star")
+            return Aerial.helper.getSymbol("star")
 
         } else if path.starts(with: "videos:hidden") {
-            return Aerial.getAccentedSymbol("eye.slash")
+            return Aerial.helper.getAccentedSymbol("eye.slash")
 
         } else if path.starts(with: "videos:source") {
-            return Aerial.getAccentedSymbol("antenna.radiowaves.left.and.right")
+            return Aerial.helper.getAccentedSymbol("antenna.radiowaves.left.and.right")
 
         } else if path.starts(with: "videos:") {
-            return Aerial.getAccentedSymbol("film")
+            return Aerial.helper.getAccentedSymbol("film")
 
         } else if path.starts(with: "settings:sources") {
-            return Aerial.getAccentedSymbol("antenna.radiowaves.left.and.right")
+            return Aerial.helper.getAccentedSymbol("antenna.radiowaves.left.and.right")
         } else if path.starts(with: "settings:time") {
-            return Aerial.getAccentedSymbol("clock")
+            return Aerial.helper.getAccentedSymbol("clock")
         } else if path.starts(with: "settings:displays") {
-            return Aerial.getAccentedSymbol("display.2")
+            return Aerial.helper.getAccentedSymbol("display.2")
         } else if path.starts(with: "settings:brightness") {
-            return Aerial.getAccentedSymbol("sun.min")
+            return Aerial.helper.getAccentedSymbol("sun.min")
         } else if path.starts(with: "settings:cache") {
-            return Aerial.getAccentedSymbol("internaldrive")
+            return Aerial.helper.getAccentedSymbol("internaldrive")
         } else if path.starts(with: "settings:overlays") {
-            return Aerial.getAccentedSymbol("text.bubble")
+            return Aerial.helper.getAccentedSymbol("text.bubble")
         } else if path.starts(with: "settings:filters") {
-            return Aerial.getAccentedSymbol("slider.horizontal.3")
+            return Aerial.helper.getAccentedSymbol("slider.horizontal.3")
         } else if path.starts(with: "settings:updates") {
-            return Aerial.getAccentedSymbol("arrow.down.circle")
+            return Aerial.helper.getAccentedSymbol("arrow.down.circle")
         } else if path.starts(with: "settings:advanced") {
-            return Aerial.getAccentedSymbol("wrench.and.screwdriver")
+            return Aerial.helper.getAccentedSymbol("wrench.and.screwdriver")
 
         } else if path.starts(with: "infos:help") {
-            return Aerial.getAccentedSymbol("bubble.left.and.bubble.right")
+            return Aerial.helper.getAccentedSymbol("bubble.left.and.bubble.right")
         } else if path.starts(with: "infos:credits") {
-            return Aerial.getAccentedSymbol("person.3")
+            return Aerial.helper.getAccentedSymbol("person.3")
         } else if path.starts(with: "infos:about") {
-            return Aerial.getAccentedSymbol("info.circle")
+            return Aerial.helper.getAccentedSymbol("info.circle")
 
         } else if path.starts(with: "modern:nowplaying") {
-            return Aerial.getAccentedSymbol("play.circle")
+            return Aerial.helper.getAccentedSymbol("play.circle")
 
         } else {
             // For the WIP
-            return Aerial.getSymbol("wrench")
+            return Aerial.helper.getSymbol("wrench")
         }
     }
 }

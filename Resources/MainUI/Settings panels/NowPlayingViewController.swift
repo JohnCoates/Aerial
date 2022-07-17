@@ -124,18 +124,18 @@ class NowPlayingViewController: NSViewController {
         if PrefsCache.enableManagement {
             // We are in managed mode
             if PrefsCache.cacheLimit >= 101 {
-                statusDriveImageView.image = Aerial.getAccentedSymbol("externaldrive.badge.checkmark")
+                statusDriveImageView.image = Aerial.helper.getAccentedSymbol("externaldrive.badge.checkmark")
                 statusDriveLabel.stringValue = String(Cache.size().rounded(toPlaces: 1)) + " GB"
             } else if Cache.isFull() {
-                statusDriveImageView.image = Aerial.getAccentedSymbol("externaldrive.badge.xmark")
+                statusDriveImageView.image = Aerial.helper.getAccentedSymbol("externaldrive.badge.xmark")
                 statusDriveLabel.stringValue = Cache.sizeString() + " (your cache is full)"
             } else {
-                statusDriveImageView.image = Aerial.getAccentedSymbol("externaldrive.badge.checkmark")
+                statusDriveImageView.image = Aerial.helper.getAccentedSymbol("externaldrive.badge.checkmark")
                 statusDriveLabel.stringValue = String(Cache.size().rounded(toPlaces: 1)) + " / " + String(PrefsCache.cacheLimit.rounded(toPlaces: 1)) + " GB"
             }
         } else {
             // Manual mode
-            statusDriveImageView.image = Aerial.getAccentedSymbol("internaldrive")
+            statusDriveImageView.image = Aerial.helper.getAccentedSymbol("internaldrive")
             statusDriveLabel.stringValue = Cache.sizeString()
         }
 
@@ -177,10 +177,10 @@ extension NowPlayingViewController: NSCollectionViewDataSource {
 
         if PrefsVideos.newShouldPlayString.contains(path) {
             playingCollectionViewItem.checkImageButton?.state = .on
-            playingCollectionViewItem.checkImageButton?.image = Aerial.getSymbol("checkmark.circle.fill")
+            playingCollectionViewItem.checkImageButton?.image = Aerial.helper.getSymbol("checkmark.circle.fill")
         } else {
             playingCollectionViewItem.checkImageButton?.state = .off
-            playingCollectionViewItem.checkImageButton?.image = Aerial.getSymbol("circle")
+            playingCollectionViewItem.checkImageButton?.image = Aerial.helper.getSymbol("circle")
         }
 
         playingCollectionViewItem.textField?.stringValue = sources[indexPath[1]]

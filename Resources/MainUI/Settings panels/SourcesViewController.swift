@@ -142,7 +142,7 @@ class SourcesViewController: NSViewController {
             sourceOutlineView.expandItem(nil, expandChildren: true)
         } else {
             debugLog("URL was NOT parsed")
-            Aerial.showErrorAlert(question: "Non valid URL",
+            Aerial.helper.showErrorAlert(question: "Non valid URL",
                                   text: "Please type a valid URL to an Aerial source (see the more videos button), and make sure there are no trailing characters.")
         }
     }
@@ -174,7 +174,7 @@ extension SourcesViewController: SourceOutlineViewDelegate {
     @objc func removeSource(_ sender: Any) {
         if let source = selectedSource {
             // swiftlint:disable:next line_length
-            if Aerial.showAlert(question: "Remove a source", text: "This will remove all files and videos relating to this source. Are you sure you want to proceed? \n\nYou will need to restart System Preferences to complete the operation.", button1: "Remove Source", button2: "Cancel") {
+            if Aerial.helper.showAlert(question: "Remove a source", text: "This will remove all files and videos relating to this source. Are you sure you want to proceed? \n\nYou will need to restart System Preferences to complete the operation.", button1: "Remove Source", button2: "Cancel") {
                 source.wipeFromDisk()
                 sourceOutlineView.reloadData()
                 sourceOutlineView.expandItem(nil, expandChildren: true)
@@ -314,7 +314,7 @@ extension SourcesViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
                 cell.actionButton.isEnabled = true
             } else {
                 if VideoList.instance.videos.filter({ $0.source.name == source.name && !$0.isAvailableOffline }).isEmpty {
-                    cell.actionButton.image = Aerial.getMiniSymbol("checkmark.circle.fill", tint: .systemGreen)
+                    cell.actionButton.image = Aerial.helper.getMiniSymbol("checkmark.circle.fill", tint: .systemGreen)
                     cell.actionButton.isEnabled = false
                 } else {
                     cell.actionButton.setLargeIcon("arrow.down.circle")

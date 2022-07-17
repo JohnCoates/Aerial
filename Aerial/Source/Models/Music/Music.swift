@@ -342,7 +342,7 @@ class Music {
         request.httpMethod = "GET"
         request.addValue("Bearer \(APISecrets.appleMusicToken)", forHTTPHeaderField: "Authorization")
 
-        let dataTask = URLSession.shared.dataTask(with: request) { (data, _, _) in
+        let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if Int(id) != nil {
                 // This is the regular library path... This needs to be split up !
                 // Did we get a result ?

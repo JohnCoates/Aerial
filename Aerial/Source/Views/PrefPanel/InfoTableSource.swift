@@ -41,8 +41,8 @@ class InfoTableSource: NSTableView, NSTableViewDataSource, NSTableViewDelegate {
                 // Aerial.getAccentedSymbol(<#T##named: String##String#>)
                 // Aerial.getSymbol("checkmark.circle.fill")
                 cell.imageView?.image = isEnabled
-                ? Aerial.getAccentedSymbol("checkmark.circle.fill")
-                    : Aerial.getAccentedSymbol("circle")
+                ? Aerial.helper.getAccentedSymbol("checkmark.circle.fill")
+                : Aerial.helper.getAccentedSymbol("circle")
                 /*cell.imageView?.image = NSImage(named: isEnabled
                     ? NSImage.statusAvailableName
                     : NSImage.statusUnavailableName)*/

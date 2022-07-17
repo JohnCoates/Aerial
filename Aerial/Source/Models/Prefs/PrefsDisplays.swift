@@ -79,4 +79,23 @@ struct PrefsDisplays {
     // Advanced margins are stored as a string
     @SimpleStorage(key: "advancedMargins", defaultValue: "")
     static var advancedMargins: String
+    
+    
+    @SimpleStorage(key: "dimBrightness", defaultValue: false)
+    static var dimBrightness: Bool
+    
+    @SimpleStorage(key: "dimOnlyAtNight", defaultValue: false)
+    static var dimOnlyAtNight: Bool
+    @SimpleStorage(key: "dimOnlyOnBattery", defaultValue: false)
+    static var dimOnlyOnBattery: Bool
+    
+    @SimpleStorage(key: "overrideDimInMinutes", defaultValue: false)
+    static var overrideDimInMinutes: Bool
+
+    @SimpleStorage(key: "startDim", defaultValue: 0.5)
+    static var startDim: Double
+    @SimpleStorage(key: "endDim", defaultValue: 0.0)
+    static var endDim: Double
+    @SimpleStorage(key: "dimInMinutes", defaultValue: 30)
+    static var dimInMinutes: Int
 }

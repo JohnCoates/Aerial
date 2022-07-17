@@ -21,5 +21,17 @@ struct PrefsAdvanced {
 
     @SimpleStorage(key: "favorOrientation", defaultValue: true)
     static var favorOrientation: Bool
+    
+    // Debug mode
+    @SimpleStorage(key: "debugMode", defaultValue: false)
+    static var debugMode: Bool
 
+    // OVerride Language
+    @SimpleStorage(key: "ciOverrideLanguage", defaultValue: "")
+    static var ciOverrideLanguage: String
+
+    @SimpleStorage(key: "newDisplayDict", defaultValue: [String: Bool]())
+    static var newDisplayDict: [String: Bool]
+    
+    
 }

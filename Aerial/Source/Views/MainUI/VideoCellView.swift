@@ -23,8 +23,8 @@ class VideoCellView: NSTableCellView {
 
         checkButton.target = self
         checkButton.action = #selector(self.didChangeState(_:))
-        checkButton.image = Aerial.getSymbol("star")!.tinting(with: .white)
-        checkButton.alternateImage = Aerial.getSymbol("star.fill")!.tinting(with: .white)
+        checkButton.image = Aerial.helper.getSymbol("star")!.tinting(with: .white)
+        checkButton.alternateImage = Aerial.helper.getSymbol("star.fill")!.tinting(with: .white)
 
         let shadow: NSShadow = NSShadow()
         shadow.shadowBlurRadius = 2

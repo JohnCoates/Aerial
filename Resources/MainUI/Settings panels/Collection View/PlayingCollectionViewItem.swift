@@ -30,7 +30,7 @@ class PlayingCollectionViewItem: NSCollectionViewItem {
 
     @IBAction func browseButton(_ sender: Any) {
         print(hiddenPath.stringValue)
-        Aerial.windowController?.browseTo(hiddenPath.stringValue)
+        Aerial.helper.windowController?.browseTo(hiddenPath.stringValue)
     }
 
     @IBAction func mainImageClick(_ sender: NSButton) {
@@ -40,7 +40,7 @@ class PlayingCollectionViewItem: NSCollectionViewItem {
         if checkImageButton.state == .on {
             checkImageButton.state = .off
 
-            checkImageButton.image = Aerial.getSymbol("circle")
+            checkImageButton.image = Aerial.helper.getSymbol("circle")
             if PrefsVideos.newShouldPlayString.contains(path) {
                 PrefsVideos.newShouldPlayString.remove(at: PrefsVideos.newShouldPlayString.firstIndex(of: path)!)
             }
@@ -48,7 +48,7 @@ class PlayingCollectionViewItem: NSCollectionViewItem {
         } else {
             checkImageButton.state = .on
 
-            checkImageButton.image = Aerial.getSymbol("checkmark.circle.fill")
+            checkImageButton.image = Aerial.helper.getSymbol("checkmark.circle.fill")
             if !PrefsVideos.newShouldPlayString.contains(path) {
                 PrefsVideos.newShouldPlayString.append(path)
             }
@@ -60,12 +60,12 @@ class PlayingCollectionViewItem: NSCollectionViewItem {
         let path = hiddenPath.stringValue
 
         if sender.state == .on {
-            sender.image = Aerial.getSymbol("checkmark.circle.fill")
+            sender.image = Aerial.helper.getSymbol("checkmark.circle.fill")
             if !PrefsVideos.newShouldPlayString.contains(path) {
                 PrefsVideos.newShouldPlayString.append(path)
             }
         } else {
-            sender.image = Aerial.getSymbol("circle")
+            sender.image = Aerial.helper.getSymbol("circle")
             if PrefsVideos.newShouldPlayString.contains(path) {
                 PrefsVideos.newShouldPlayString.remove(at: PrefsVideos.newShouldPlayString.firstIndex(of: path)!)
             }

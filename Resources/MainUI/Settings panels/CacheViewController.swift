@@ -320,7 +320,7 @@ class CacheViewController: NSViewController {
                 }
             }
 
-            Aerial.showInfoAlert(title: "Cache path changed",
+            Aerial.helper.showInfoAlert(title: "Cache path changed",
                                  text: "In order for your new cache path to take effect, please close this panel and System Preferences.")
         }
     }

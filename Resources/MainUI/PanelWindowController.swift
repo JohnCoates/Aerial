@@ -65,6 +65,7 @@ import Cocoa
         let displaysVC = DisplaysViewController(nibName: .init("DisplaysViewController"), bundle: bundle)
         let brightnessVC = BrightnessViewController(nibName: .init("BrightnessViewController"), bundle: bundle)
         let cacheVC = CacheViewController(nibName: .init("CacheViewController"), bundle: bundle)
+        let companionCacheVC = CompanionCacheViewController(nibName: .init("CompanionCacheViewController"), bundle: bundle)
         let overlaysVC = OverlaysViewController(nibName: .init("OverlaysViewController"), bundle: bundle)
         let filtersVC = FiltersViewController(nibName: .init("FiltersViewController"), bundle: bundle)
         let advancedVC = AdvancedViewController(nibName: .init("AdvancedViewController"), bundle: bundle)
@@ -75,7 +76,7 @@ import Cocoa
         sidebarVC!.windowController = self
 
         // Also set the Aerial helper
-        Aerial.windowController = self
+        Aerial.helper.windowController = self
 
         // Create all the view items for the right panel
         nowPlayingItem = NSSplitViewItem(viewController: nowPlayingVC)
@@ -90,7 +91,11 @@ import Cocoa
         timeViewItem = NSSplitViewItem(viewController: timeVC)
         displaysViewItem = NSSplitViewItem(viewController: displaysVC)
         brightnessViewItem = NSSplitViewItem(viewController: brightnessVC)
-        cacheViewItem = NSSplitViewItem(viewController: cacheVC)
+        if Aerial.helper.underCompanion {
+            cacheViewItem = NSSplitViewItem(viewController: companionCacheVC)
+        } else {
+            cacheViewItem = NSSplitViewItem(viewController: cacheVC)
+        }
         overlaysViewItem = NSSplitViewItem(viewController: overlaysVC)
         filtersViewItem = NSSplitViewItem(viewController: filtersVC)
         advancedViewItem = NSSplitViewItem(viewController: advancedVC)

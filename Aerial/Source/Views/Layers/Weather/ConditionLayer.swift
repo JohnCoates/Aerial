@@ -233,7 +233,7 @@ class ConditionLayer: CALayer {
 
         humidityBlock.addSublayer(textHumidity)
 
-        let imglayer = Aerial.getSymbolLayer("humidity", size: CGFloat(PrefsInfo.weather.fontSize/2.8))
+        let imglayer = Aerial.helper.getSymbolLayer("humidity", size: CGFloat(PrefsInfo.weather.fontSize/2.8))
 
         // We put the temperature at the right of the wind icon
         textHumidity.anchorPoint = CGPoint(x: 0, y: 0)

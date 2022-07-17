@@ -361,23 +361,19 @@ final class DisplayDetection: NSObject {
     }
 
     func isScreenSelected(id: CGDirectDisplayID) -> Bool {
-        let preferences = Preferences.sharedInstance
-
         // If we have it in the dictionnary, then return that
-        if preferences.newDisplayDict.keys.contains(String(id)) {
-            return preferences.newDisplayDict[String(id)]!
+        if PrefsAdvanced.newDisplayDict.keys.contains(String(id)) {
+            return PrefsAdvanced.newDisplayDict[String(id)]!
         }
         return false    // Unknown screens will not be considered selected
     }
 
     func selectScreen(id: CGDirectDisplayID) {
-        let preferences = Preferences.sharedInstance
-        preferences.newDisplayDict[String(id)] = true
+        PrefsAdvanced.newDisplayDict[String(id)] = true
     }
 
     func unselectScreen(id: CGDirectDisplayID) {
-        let preferences = Preferences.sharedInstance
-        preferences.newDisplayDict[String(id)] = false
+        PrefsAdvanced.newDisplayDict[String(id)] = false
     }
 
     func getMarginsJSON() -> String {

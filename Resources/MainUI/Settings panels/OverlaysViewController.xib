@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20034" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21208.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20034"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21208.1"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -171,7 +171,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="InfoSettingsCellID" id="oWo-vM-jes">
-                                                <rect key="frame" x="1" y="1" width="146" height="29"/>
+                                                <rect key="frame" x="11" y="1" width="146" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5da-Zj-6hn">
@@ -856,7 +856,7 @@
                     </textFieldCell>
                 </textField>
                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IcH-dE-weS">
-                    <rect key="frame" x="307" y="92" width="35" height="35"/>
+                    <rect key="frame" x="311" y="96" width="35" height="35"/>
                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3MQ-92-9m9">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -932,7 +932,7 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="Mkb-6F-RoA">
-                    <rect key="frame" x="349" y="93" width="90" height="40"/>
+                    <rect key="frame" x="358" y="93" width="90" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="90" id="Jv2-8G-WhZ"/>
                         <constraint firstAttribute="height" constant="40" id="u2k-2r-QLb"/>
@@ -1163,7 +1163,7 @@ Independant of your choice, you can preview the results using the "Test" button 
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VqT-6u-vi8">
-                    <rect key="frame" x="150" y="52" width="163" height="22"/>
+                    <rect key="frame" x="150" y="52" width="147" height="22"/>
                     <datePickerCell key="cell" controlSize="large" borderStyle="bezel" alignment="left" id="SqO-Mg-AO0">
                         <font key="font" metaFont="system" size="14"/>
                         <date key="date" timeIntervalSinceReferenceDate="616845641.97237301">
@@ -1230,7 +1230,7 @@ Independant of your choice, you can preview the results using the "Test" button 
                     </connections>
                 </button>
                 <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VCk-nf-BTu">
-                    <rect key="frame" x="290" y="9" width="163" height="22"/>
+                    <rect key="frame" x="290" y="9" width="147" height="22"/>
                     <datePickerCell key="cell" controlSize="large" borderStyle="bezel" alignment="left" id="d1w-rW-mhy">
                         <font key="font" metaFont="system" size="14"/>
                         <date key="date" timeIntervalSinceReferenceDate="616845641.97390699">
@@ -1271,14 +1271,14 @@ Independant of your choice, you can preview the results using the "Test" button 
             <point key="canvasLocation" x="-840" y="7.5"/>
         </customView>
         <customView id="eaZ-HA-6Kx" userLabel="Message Text View">
-            <rect key="frame" x="0.0" y="0.0" width="580" height="135"/>
+            <rect key="frame" x="0.0" y="0.0" width="580" height="139"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vn-TO-wUI">
-                    <rect key="frame" x="150" y="16" width="410" height="108"/>
+                    <rect key="frame" x="150" y="20" width="410" height="108"/>
                     <clipView key="contentView" drawsBackground="NO" id="Ax6-3Y-Vnl">
                         <rect key="frame" x="0.0" y="0.0" width="410" height="108"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="ehG-nq-Wse">
                                 <rect key="frame" x="0.0" y="0.0" width="410" height="108"/>
@@ -1305,7 +1305,7 @@ Independant of your choice, you can preview the results using the "Test" button 
                     </scroller>
                 </scrollView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VRB-LU-QAK">
-                    <rect key="frame" x="78" y="105" width="66" height="17"/>
+                    <rect key="frame" x="78" y="109" width="66" height="17"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Message:" id="lPh-y5-xXN">
                         <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1319,7 +1319,7 @@ Independant of your choice, you can preview the results using the "Test" button 
                 <constraint firstItem="VRB-LU-QAK" firstAttribute="top" secondItem="eaZ-HA-6Kx" secondAttribute="top" constant="13" id="sVN-4k-BED"/>
                 <constraint firstItem="2vn-TO-wUI" firstAttribute="top" secondItem="eaZ-HA-6Kx" secondAttribute="top" constant="11" id="wps-8E-RLL"/>
             </constraints>
-            <point key="canvasLocation" x="-161" y="-402"/>
+            <point key="canvasLocation" x="-161" y="-404.5"/>
         </customView>
         <customView id="bXW-hw-1fP" userLabel="Message Shell View">
             <rect key="frame" x="0.0" y="0.0" width="580" height="225"/>
@@ -1796,11 +1796,11 @@ corner</string>
             <point key="canvasLocation" x="-112" y="1180"/>
         </customView>
         <customView id="wFi-1P-F0m" userLabel="Message Extra View" customClass="InfoMessageView" customModule="Aerial" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="595" height="0.0"/>
+            <rect key="frame" x="0.0" y="0.0" width="595" height="52"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HZB-E1-LF5">
-                    <rect key="frame" x="45" y="-32" width="99" height="17"/>
+                    <rect key="frame" x="45" y="20" width="99" height="17"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Message type:" id="MnS-Bc-nML">
                         <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1808,7 +1808,7 @@ corner</string>
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Car-4i-fsE">
-                    <rect key="frame" x="145" y="-45" width="133" height="40"/>
+                    <rect key="frame" x="145" y="7" width="133" height="40"/>
                     <popUpButtonCell key="cell" type="push" title="Text" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="rgn-Kj-il5" id="g8I-Jt-FCO">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="14" name="HelveticaNeue"/>
@@ -1841,7 +1841,7 @@ corner</string>
                 <outlet property="shellScriptLabel" destination="ZIt-5C-mn7" id="lOG-sF-6wt"/>
                 <outlet property="shellScriptTest" destination="7LK-MG-r8x" id="STF-OZ-nyD"/>
             </connections>
-            <point key="canvasLocation" x="550" y="1155"/>
+            <point key="canvasLocation" x="549.5" y="1181"/>
         </customView>
         <customView id="d6p-Wj-XTq" userLabel="Battery Extra View" customClass="InfoBatteryView" customModule="Aerial" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="595" height="39"/>

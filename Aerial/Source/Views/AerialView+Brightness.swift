@@ -12,18 +12,18 @@ extension AerialView {
     // We make sure we should dim, we're not a preview, we haven't dimmed yet (multi monitor)
     // and ensure we properly apply the night/battery restrictions !
     func checkIfShouldSetBrightness() {
-        let preferences = Preferences.sharedInstance
+        
         let timeManagement = TimeManagement.sharedInstance
 
-        if preferences.dimBrightness && !isPreview && brightnessToRestore == nil {
+        if PrefsDisplays.dimBrightness && !isPreview && brightnessToRestore == nil {
             let (should, to) = timeManagement.shouldRestrictPlaybackToDayNightVideo()
 
-            if !preferences.dimOnlyAtNight || (preferences.dimOnlyAtNight && should && to == "night") {
-                if !preferences.dimOnlyOnBattery || (preferences.dimOnlyOnBattery && Battery.isUnplugged()) {
+            if !PrefsDisplays.dimOnlyAtNight || (PrefsDisplays.dimOnlyAtNight && should && to == "night") {
+                if !PrefsDisplays.dimOnlyOnBattery || (PrefsDisplays.dimOnlyOnBattery && Battery.isUnplugged()) {
                     brightnessToRestore = Brightness.get()
                     // brightnessToRestore = timeManagement.getBrightness()
                     debugLog("Brightness before Aerial was launched : \(String(describing: brightnessToRestore))")
-                    Brightness.set(level: min(Float(preferences.startDim!), brightnessToRestore!))
+                    Brightness.set(level: min(Float(PrefsDisplays.startDim), brightnessToRestore!))
                     setDimTimers()
                 }
             }
@@ -34,15 +34,14 @@ extension AerialView {
     // Currently, this only works with internal monitors
     func setDimTimers() {
         if #available(OSX 10.12, *) {
-            let preferences = Preferences.sharedInstance
             let timeManagement = TimeManagement.sharedInstance
-            let startValue = min(preferences.startDim!, Double(brightnessToRestore!))
+            let startValue = min(PrefsDisplays.startDim, Double(brightnessToRestore!))
 
-            if preferences.dimBrightness && startValue > preferences.endDim! {
-                debugLog("setting brightness timers from \(String(describing: startValue)) to \(String(describing: preferences.endDim))")
+            if PrefsDisplays.dimBrightness && startValue > PrefsDisplays.endDim {
+                debugLog("setting brightness timers from \(String(describing: startValue)) to \(String(describing: PrefsDisplays.endDim))")
                 var interval: Int
-                if preferences.overrideDimInMinutes {
-                    interval = preferences.dimInMinutes! * 6 // * 60 / 10, we make 10 intermediate steps
+                if PrefsDisplays.overrideDimInMinutes {
+                    interval = PrefsDisplays.dimInMinutes * 6 // * 60 / 10, we make 10 intermediate steps
                 } else {
                     interval = timeManagement.getCurrentSleepTime() * 6
                     if interval == 0 {
@@ -53,7 +52,7 @@ extension AerialView {
 
                 for idx in 1...10 {
                     _ = Timer.scheduledTimer(withTimeInterval: TimeInterval(interval * idx), repeats: false) { (_) in
-                        let val = startValue - ((startValue - preferences.endDim!) / 10 * Double(idx))
+                        let val = startValue - ((startValue - PrefsDisplays.endDim) / 10 * Double(idx))
                         debugLog("Firing event \(idx) brightness to \(val)")
                         Brightness.set(level: Float(val))
                     }

@@ -580,7 +580,8 @@ struct PrefsInfo {
     private let key: String
     private let defaultValue: T
     private let module = "com.JohnCoates.Aerial"
-
+    private let bundleID = "/Users/" + Aerial.helper.userName + "/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/com.glouel.Aerial"
+    
     init(key: String, defaultValue: T) {
         self.key = key
         self.defaultValue = defaultValue
@@ -588,23 +589,46 @@ struct PrefsInfo {
 
     var wrappedValue: T {
         get {
-            if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
-                // We shoot for a string in the new system
-                if let jsonString = userDefaults.string(forKey: key) {
-                    guard let jsonData = jsonString.data(using: .utf8) else {
-                        return defaultValue
-                    }
-                    guard let value = try? JSONDecoder().decode(T.self, from: jsonData) else {
-                        return defaultValue
-                    }
-                    return value
-                } else {
-                    // Old time users may have the prefs stored as a data blob though
-                    if let data = userDefaults.object(forKey: key) as? Data {
-                        let value = try? JSONDecoder().decode(T.self, from: data)
-                        return value ?? defaultValue
+            if #available(OSX 10.15, *) {
+                if let userDefaults = UserDefaults(suiteName: bundleID) {
+                    // We shoot for a string in the new system
+                    if let jsonString = userDefaults.string(forKey: key) {
+                        guard let jsonData = jsonString.data(using: .utf8) else {
+                            return defaultValue
+                        }
+                        guard let value = try? JSONDecoder().decode(T.self, from: jsonData) else {
+                            return defaultValue
+                        }
+                        return value
                     } else {
-                        return defaultValue
+                        // Old time users may have the prefs stored as a data blob though
+                        if let data = userDefaults.object(forKey: key) as? Data {
+                            let value = try? JSONDecoder().decode(T.self, from: data)
+                            return value ?? defaultValue
+                        } else {
+                            return defaultValue
+                        }
+                    }
+                }
+            } else {
+                if let userDefaults = ScreenSaverDefaults(suiteName: module) {
+                    // We shoot for a string in the new system
+                    if let jsonString = userDefaults.string(forKey: key) {
+                        guard let jsonData = jsonString.data(using: .utf8) else {
+                            return defaultValue
+                        }
+                        guard let value = try? JSONDecoder().decode(T.self, from: jsonData) else {
+                            return defaultValue
+                        }
+                        return value
+                    } else {
+                        // Old time users may have the prefs stored as a data blob though
+                        if let data = userDefaults.object(forKey: key) as? Data {
+                            let value = try? JSONDecoder().decode(T.self, from: data)
+                            return value ?? defaultValue
+                        } else {
+                            return defaultValue
+                        }
                     }
                 }
             }
@@ -622,16 +646,30 @@ struct PrefsInfo {
             let jsonData = try? encoder.encode(newValue)
             let jsonString = String(bytes: jsonData!, encoding: .utf8)
 
-            if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
-                // Set value to UserDefaults
-                userDefaults.set(jsonString, forKey: key)
+            if #available(OSX 10.15, *) {
+                if let userDefaults = UserDefaults(suiteName: bundleID) {
+                    // Set value to UserDefaults
+                    userDefaults.set(jsonString, forKey: key)
 
-                // We force the sync so the settings are automatically saved
-                // This is needed as the System Preferences instance of Aerial
-                // is a separate instance from the screensaver ones
-                userDefaults.synchronize()
+                    // We force the sync so the settings are automatically saved
+                    // This is needed as the System Preferences instance of Aerial
+                    // is a separate instance from the screensaver ones
+                    userDefaults.synchronize()
+                } else {
+                    errorLog("UserDefaults set failed for \(key)")
+                }
             } else {
-                errorLog("UserDefaults set failed for \(key)")
+                if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
+                    // Set value to UserDefaults
+                    userDefaults.set(jsonString, forKey: key)
+
+                    // We force the sync so the settings are automatically saved
+                    // This is needed as the System Preferences instance of Aerial
+                    // is a separate instance from the screensaver ones
+                    userDefaults.synchronize()
+                } else {
+                    errorLog("UserDefaults set failed for \(key)")
+                }
             }
         }
     }
@@ -642,7 +680,8 @@ struct PrefsInfo {
     private let key: String
     private let defaultValue: T
     private let module = "com.JohnCoates.Aerial"
-
+    private let bundleID = "/Users/" + Aerial.helper.userName + "/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/com.glouel.Aerial"
+    
     init(key: String, defaultValue: T) {
         self.key = key
         self.defaultValue = defaultValue
@@ -650,17 +689,29 @@ struct PrefsInfo {
 
     var wrappedValue: T {
         get {
-            if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
-                return userDefaults.object(forKey: key) as? T ?? defaultValue
+            if #available(OSX 10.15, *) {
+                if let userDefaults = UserDefaults(suiteName: bundleID) {
+                    return userDefaults.object(forKey: key) as? T ?? defaultValue
+                }
+            } else {
+                if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
+                    return userDefaults.object(forKey: key) as? T ?? defaultValue
+                }
             }
 
             return defaultValue
         }
         set {
-            if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
-                userDefaults.set(newValue, forKey: key)
-
-                userDefaults.synchronize()
+            if #available(OSX 10.15, *) {
+                if let userDefaults = UserDefaults(suiteName: bundleID) {
+                    userDefaults.set(newValue, forKey: key)
+                    userDefaults.synchronize()
+                }
+            } else {
+                if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
+                    userDefaults.set(newValue, forKey: key)
+                    userDefaults.synchronize()
+                }
             }
         }
     }
