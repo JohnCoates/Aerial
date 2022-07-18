@@ -35,7 +35,7 @@ Starting with version 1.4, Aerial is maintained by [Guillaume Louel](https://git
 
 ## Compatibility
 
-- OS X Sierra (10.12) and above, natively compiled for Apple Silicon
+- macOS Sierra (10.12) and above, natively compiled for Apple Silicon
 
 ## Community
 
