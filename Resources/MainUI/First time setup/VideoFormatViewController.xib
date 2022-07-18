@@ -92,7 +92,7 @@
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YqF-HA-cLA">
                                 <rect key="frame" x="414" y="22" width="372" height="30"/>
-                                <textFieldCell key="cell" controlSize="large" title="You can expand the video to full screen by passing your cursor over the video and choosing the arrow in the lower right corner" id="Z5K-mZ-raw">
+                                <textFieldCell key="cell" controlSize="large" title="You can expand the video to full screen by passing your cursor over the video and choosing the arrows in the upper left corner" id="Z5K-mZ-raw">
                                     <font key="font" metaFont="cellTitle"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
