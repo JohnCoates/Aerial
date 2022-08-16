@@ -16,9 +16,9 @@ struct SourceHeader {
 // swiftlint:disable:next type_body_length
 struct SourceList {
     // This is the current one until next fall
-    static let tvOS15 = Source(name: "tvOS 15",
-                        description: "Apple TV screensavers from tvOS 15",
-                        manifestUrl: "https://sylvan.apple.com/Aerials/resources-15.tar",
+    static let tvOS16 = Source(name: "tvOS 16",
+                        description: "Apple TV screensavers from tvOS 16",
+                        manifestUrl: "https://sylvan.apple.com/Aerials/resources-16.tar",
                         type: .tvOS12,
                         scenes: [.nature, .city, .space, .sea],
                         isCachable: true,
@@ -35,7 +35,7 @@ struct SourceList {
                         license: "",
                         more: "")
 
-    static let tvOS12 = Source(name: "tvOS 12",
+    /*static let tvOS12 = Source(name: "tvOS 12",
                         description: "Apple TV screensavers from tvOS 12",
                         manifestUrl: "https://sylvan.apple.com/Aerials/resources.tar",
                         type: .tvOS12,
@@ -51,7 +51,7 @@ struct SourceList {
                         scenes: [.nature, .city],
                         isCachable: true,
                         license: "",
-                        more: "")
+                        more: "")*/
 
     static let tvOS10 = Source(name: "tvOS 10",
                         description: "Apple TV screensavers from tvOS 10",
@@ -62,7 +62,7 @@ struct SourceList {
                         license: "",
                         more: "")
 
-    static var list: [Source] = [tvOS15, tvOS13, tvOS10] + foundSources
+    static var list: [Source] = [tvOS16, tvOS13, tvOS10] + foundSources
     // static var list: [Source] = foundSources
 
     // This is where the magic happens

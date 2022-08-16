@@ -821,6 +821,9 @@
 		F00864B823AAE8E9003210EF /* NightShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00864B623AAE8E9003210EF /* NightShift.swift */; };
 		F008DAFD23AADCFB00739DE1 /* Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = F008DAFC23AADCFB00739DE1 /* Brightness.swift */; };
 		F008DAFE23AADCFB00739DE1 /* Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = F008DAFC23AADCFB00739DE1 /* Brightness.swift */; };
+		F01B180A2888714000317797 /* tl.json in Resources */ = {isa = PBXBuildFile; fileRef = F01B18092888714000317797 /* tl.json */; };
+		F01B180B2888714000317797 /* tl.json in Resources */ = {isa = PBXBuildFile; fileRef = F01B18092888714000317797 /* tl.json */; };
+		F01B180C2888714000317797 /* tl.json in Resources */ = {isa = PBXBuildFile; fileRef = F01B18092888714000317797 /* tl.json */; };
 		F0A3E0A32884683D005E8D8D /* CompanionCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A3E0A12884683D005E8D8D /* CompanionCacheViewController.swift */; };
 		F0A3E0A42884683D005E8D8D /* CompanionCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A3E0A12884683D005E8D8D /* CompanionCacheViewController.swift */; };
 		F0A3E0A52884683D005E8D8D /* CompanionCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A3E0A12884683D005E8D8D /* CompanionCacheViewController.swift */; };
@@ -1171,6 +1174,7 @@
 		F00864B323AAE7F0003210EF /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
 		F00864B623AAE8E9003210EF /* NightShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightShift.swift; sourceTree = "<group>"; };
 		F008DAFC23AADCFB00739DE1 /* Brightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brightness.swift; sourceTree = "<group>"; };
+		F01B18092888714000317797 /* tl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = tl.json; path = "../../../../../Downloads/locale-2/tl.json"; sourceTree = "<group>"; };
 		F0A3E0A12884683D005E8D8D /* CompanionCacheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionCacheViewController.swift; sourceTree = "<group>"; };
 		F0A3E0A22884683D005E8D8D /* CompanionCacheViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanionCacheViewController.xib; sourceTree = "<group>"; };
 		FA143CD61BDA3E880041A82B /* AerialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1328,6 +1332,7 @@
 				03977EE4250E6917008FBAFD /* pt.json */,
 				03E3C1D7256AAAF6000A2A5B /* ru.json */,
 				03977EE2250E6917008FBAFD /* sv.json */,
+				F01B18092888714000317797 /* tl.json */,
 				03977EEE250E6918008FBAFD /* zh_CN.json */,
 				03977EE5250E6917008FBAFD /* zh_TW.json */,
 				0369985C2196103300E359D3 /* missingvideos.json */,
@@ -2005,6 +2010,7 @@
 				0300B82324D1B536006132E5 /* regular.sun.min.pdf in Resources */,
 				0321A53F24D4515B004F1975 /* folder.pdf in Resources */,
 				0300B82924D1B536006132E5 /* arrow.down.circle.fill.pdf in Resources */,
+				F01B180B2888714000317797 /* tl.json in Resources */,
 				037772F124E44CE100D81EEA /* RecapViewController.xib in Resources */,
 				03977F10250E6918008FBAFD /* he.json in Resources */,
 				0396D57624B8B7ED00CC021B /* white_retina.png in Resources */,
@@ -2147,6 +2153,7 @@
 				03F752EB24EEFC3100945B1D /* text.cursor.pdf in Resources */,
 				03977F14250E6918008FBAFD /* en.json in Resources */,
 				0300B81E24D1B536006132E5 /* arrow.down.circle.pdf in Resources */,
+				F01B180C2888714000317797 /* tl.json in Resources */,
 				0300B82724D1B536006132E5 /* mappin.and.ellipse.pdf in Resources */,
 				0300B7EB24D1B536006132E5 /* person.3.pdf in Resources */,
 				0343E9FB2630590A00AC702F /* openweather_logo.png in Resources */,
@@ -2318,6 +2325,7 @@
 				0300B82224D1B536006132E5 /* regular.sun.min.pdf in Resources */,
 				0321A53E24D4515B004F1975 /* folder.pdf in Resources */,
 				0300B82824D1B536006132E5 /* arrow.down.circle.fill.pdf in Resources */,
+				F01B180A2888714000317797 /* tl.json in Resources */,
 				037772F024E44CE100D81EEA /* RecapViewController.xib in Resources */,
 				03977F0F250E6918008FBAFD /* he.json in Resources */,
 				03A42A992449F5EA003B3012 /* white_retina.png in Resources */,
@@ -3201,7 +3209,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3.1.0beta2;
+				CURRENT_PROJECT_VERSION = 3.1.0beta3;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3209,7 +3217,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 3.1.0beta2;
+				MARKETING_VERSION = 3.1.0beta3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3230,7 +3238,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3.1.0beta2;
+				CURRENT_PROJECT_VERSION = 3.1.0beta3;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3238,7 +3246,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 3.1.0beta2;
+				MARKETING_VERSION = 3.1.0beta3;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

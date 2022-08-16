@@ -48,7 +48,7 @@ final class Logger {
 }
 var errorMessages = [LogMessage]()
 
-func path() -> String {
+func appSupportPath() -> String {
     var appPath = ""
 
     // Grab an array of Application Support paths
@@ -119,7 +119,7 @@ func logToDisk(_ message: String) {
 
         // if let cacheDirectory = VideoCache.appSupportDirectory {
 
-        let cacheDirectory = path()
+        let cacheDirectory = appSupportPath()
         // if let cacheDirectory = path() {
         var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
         

@@ -139,7 +139,7 @@ struct PrefsVideos {
     @SimpleStorage(key: "allowSkips", defaultValue: true)
     static var allowSkips: Bool
 
-    @SimpleStorage(key: "sourcesEnabled", defaultValue: ["tvOS 15": true,
+    @SimpleStorage(key: "sourcesEnabled", defaultValue: ["tvOS 16": true,
                                                          "tvOS 13": false,
                                                          "tvOS 12": false,
                                                          "tvOS 11": false,

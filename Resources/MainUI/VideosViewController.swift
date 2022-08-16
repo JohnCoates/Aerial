@@ -366,8 +366,16 @@ class VideosViewController: NSViewController {
             }
 
             if video.isAvailableOffline {
-                showVideo(video)
-
+                // Temporary fix for Ventura beta 
+                if #available(OSX 13.0, *) {
+                    if !Aerial.helper.underCompanion && (PrefsVideos.videoFormat == .v4KHDR || PrefsVideos.videoFormat == .v1080pHDR) {
+                        showImage(video)
+                    } else {
+                        showVideo(video)
+                    }
+                } else {
+                    showVideo(video)
+                }
             } else {
                 showImage(video)
             }

@@ -204,13 +204,27 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     // swiftlint:disable:next cyclomatic_complexity
     func setup() {
+        // Temporary fix for macOS Ventura crashing on HDR videos...
+        if #available(OSX 13.0, *) {
+            if isPreview && (PrefsVideos.videoFormat == .v4KHDR || PrefsVideos.videoFormat == .v1080pHDR) {
+                // This will lead to crashing in up to Ventura beta5 so disable
+                let debugTextView = NSTextView(frame: bounds.insetBy(dx: 20, dy: 20))
+                debugTextView.font = .labelFont(ofSize: 10)
+                debugTextView.string += "Preview is disabled on Ventura beta"
+                isDisabled = true
+                
+                self.addSubview(debugTextView)
+                return
+            }
+        }
+
         // First we check the system appearance, as it relies on our view
         Aerial.helper.computeDarkMode(view: self)
 
         _ = TimeManagement.sharedInstance
 
         ensureCorrectFormat()
-
+        
         if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
             debugLog("\(self.description) AerialView setup init (V\(version)) preview: \(self.isPreview)")
             debugLog("Running \(ProcessInfo.processInfo.operatingSystemVersionString)")
