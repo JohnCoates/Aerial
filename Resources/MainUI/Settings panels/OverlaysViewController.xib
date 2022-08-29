@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21208.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21223" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21208.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21223"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -111,7 +111,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iJz-xW-cYh">
-                                                        <rect key="frame" x="3" y="7" width="17" height="17"/>
+                                                        <rect key="frame" x="3" y="7" width="17.5" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSListViewTemplate" id="6a7-o7-83i"/>
                                                     </imageView>
@@ -1871,9 +1871,9 @@ corner</string>
     </objects>
     <resources>
         <image name="NSFontPanel" width="32" height="32"/>
-        <image name="NSListViewTemplate" width="16" height="12"/>
+        <image name="NSListViewTemplate" width="21" height="15"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
-        <image name="NSTouchBarDeleteTemplate" width="15" height="17"/>
+        <image name="NSTouchBarDeleteTemplate" width="19" height="22"/>
         <image name="openweather_logo" width="180" height="80"/>
         <image name="screen0" width="720" height="400"/>
         <image name="text.bubble" catalog="system" width="22" height="20"/>

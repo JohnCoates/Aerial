@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21223" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21223"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,6 +14,7 @@
                 <outlet property="extraTextField" destination="bif-Gd-OGS" id="Ixc-Nx-oNH"/>
                 <outlet property="hiddenPath" destination="egl-P1-lot" id="EUQ-c0-rdQ"/>
                 <outlet property="mainImageButton" destination="Zi2-Qh-lVz" id="7Yz-dq-93J"/>
+                <outlet property="numberedPath" destination="tH2-7d-IY5" id="X3h-O4-9Bb"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -90,6 +91,15 @@
                         <action selector="imageButtonClick:" target="-2" id="xEd-ji-0WU"/>
                     </connections>
                 </button>
+                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tH2-7d-IY5">
+                    <rect key="frame" x="34" y="75" width="37" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" title="Label" id="JTu-lB-BSj">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstItem="JBg-vZ-1fj" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="GOk-Jj-rSQ"/>
@@ -103,6 +113,9 @@
                 <constraint firstItem="bif-Gd-OGS" firstAttribute="top" secondItem="JBg-vZ-1fj" secondAttribute="bottom" constant="2" id="pAJ-oY-AjH"/>
                 <constraint firstItem="Zi2-Qh-lVz" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="r11-Li-PgF"/>
             </constraints>
+            <connections>
+                <outlet property="menu" destination="ljy-gl-3bd" id="Ogf-nb-Dlh"/>
+            </connections>
             <point key="canvasLocation" x="233" y="115.5"/>
         </customView>
         <collectionViewItem id="3Ba-YT-RGC" customClass="PlayingCollectionViewItem" customModule="Aerial" customModuleProvider="target">
@@ -112,14 +125,58 @@
                 <outlet property="extraTextField" destination="bif-Gd-OGS" id="pQc-9y-OGV"/>
                 <outlet property="hiddenPath" destination="egl-P1-lot" id="vqp-1L-Tfr"/>
                 <outlet property="mainImageButton" destination="Zi2-Qh-lVz" id="tCW-a9-IJA"/>
+                <outlet property="numberedPath" destination="tH2-7d-IY5" id="FAg-KK-siE"/>
                 <outlet property="sourceItemView" destination="Zi2-Qh-lVz" id="A18-1N-VFR"/>
                 <outlet property="textField" destination="JBg-vZ-1fj" id="VvQ-u0-WQM"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="2XE-5s-UIH"/>
             </connections>
         </collectionViewItem>
+        <menu id="ljy-gl-3bd">
+            <items>
+                <menuItem title="Cache missing videos" image="arrow.down.circle" catalog="system" id="cih-PU-uqp">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="cacheVideosClick:" target="-2" id="mvV-we-yFD"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="i4P-jv-Bfy"/>
+                <menuItem title="Hide all videos" image="eye.slash" catalog="system" id="Xe2-S5-Mra">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="hideAllVideosClick:" target="-2" id="d7g-Nm-oDH"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="tYx-UV-zzI"/>
+                <menuItem title="Favorite all videos" image="star.fill" catalog="system" id="D8t-IU-GG1">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="favoriteAllClick:" target="-2" id="Lwv-B7-QEU"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Unfavorite all videos" image="star.slash" catalog="system" id="97z-Jk-eGb">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="unfavoriteAllClick:" target="-2" id="Rcj-2h-3qW"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="OPm-ID-e9x"/>
+                <menuItem title="Reset vibrance" image="slider.horizontal.3" catalog="system" id="lcy-LJ-CyX">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="resetVibranceClick:" target="-2" id="G2g-ov-221"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="314" y="382"/>
+        </menu>
     </objects>
     <resources>
+        <image name="arrow.down.circle" catalog="system" width="15" height="15"/>
         <image name="arrowshape.turn.up.forward.fill" catalog="system" width="21" height="18"/>
         <image name="checkmark.circle.fill" catalog="system" width="15" height="15"/>
+        <image name="eye.slash" catalog="system" width="21" height="14"/>
+        <image name="slider.horizontal.3" catalog="system" width="16" height="13"/>
+        <image name="star.fill" catalog="system" width="17" height="16"/>
+        <image name="star.slash" catalog="system" width="17" height="16"/>
     </resources>
 </document>

@@ -574,17 +574,20 @@ class VideosViewController: NSViewController {
 
     func getSelectedVideo() -> AerialVideo? {
         if let path = path {
-            if let mode = VideoList.instance.modeFromPath(path) {
-                let index = Int(path.split(separator: ":")[1])!
-                if index >= 0 && videoListTableView.selectedRow >= 0 {
-                    return VideoList.instance.getVideoForSource(index, item: videoListTableView.selectedRow, mode: mode)
-                }
-            } else {
-                // all
-                if VideoList.instance.videos.count > 0 {
-                    return VideoList.instance.videos
-                        .filter({ !PrefsVideos.hidden.contains($0.id) })
-                        .sorted { $0.secondaryName < $1.secondaryName }[videoListTableView.selectedRow]
+            if videoListTableView.selectedRow > -1 {
+                if let mode = VideoList.instance.modeFromPath(path) {
+                    let index = Int(path.split(separator: ":")[1])!
+                    if index >= 0 && videoListTableView.selectedRow >= 0 {
+                        return VideoList.instance.getVideoForSource(index, item: videoListTableView.selectedRow, mode: mode)
+                    }
+                } else {
+                    // all
+                    print(VideoList.instance.videos.count)
+                    if VideoList.instance.videos.count > 0 {
+                        return VideoList.instance.videos
+                            .filter({ !PrefsVideos.hidden.contains($0.id) })
+                            .sorted { $0.secondaryName < $1.secondaryName }[videoListTableView.selectedRow]
+                    }
                 }
             }
         }

@@ -32,6 +32,7 @@ class AdvancedViewController: NSViewController {
     @IBOutlet var rightArrowSkipCheckbox: NSButton!
     @IBOutlet var muteSoundCheckbox: NSButton!
 
+    @IBOutlet weak var muteAllMacOSSoundsCheckbox: NSButton!
     @IBOutlet var highQualityTextCheckbox: NSButton!
 
     @IBOutlet var favorOrientationCheckbox: NSButton!
@@ -81,6 +82,7 @@ class AdvancedViewController: NSViewController {
         highQualityTextCheckbox.state = PrefsInfo.highQualityTextRendering ? .on : .off
 
         muteSoundCheckbox.state = PrefsAdvanced.muteSound ? .on : .off
+        muteAllMacOSSoundsCheckbox.state = PrefsAdvanced.muteGlobalSound ? .on : .off
         autoplayPreviews.state = PrefsAdvanced.autoPlayPreviews ? .on : .off
         favorOrientationCheckbox.state = PrefsAdvanced.favorOrientation ? .on : .off
 
@@ -193,6 +195,10 @@ class AdvancedViewController: NSViewController {
         PrefsAdvanced.muteSound = sender.state == .on
     }
 
+    @IBAction func muteAllMacOSSoundsClick(_ sender: NSButton) {
+        PrefsAdvanced.muteGlobalSound = sender.state == .on
+    }
+    
     @IBAction func autoPlaysPreviewsClick(_ sender: NSButton) {
         PrefsAdvanced.autoPlayPreviews = sender.state == .on
     }

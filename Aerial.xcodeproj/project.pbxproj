@@ -815,6 +815,18 @@
 		03FF193526972C1200A0FA7F /* AppleMusicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF193326972C1200A0FA7F /* AppleMusicSearch.swift */; };
 		03FF193626972C1200A0FA7F /* AppleMusicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF193326972C1200A0FA7F /* AppleMusicSearch.swift */; };
 		AA7E2E5E1FC62E8B00E5F320 /* AerialPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */; };
+		F0058B8228ABF69B0053699B /* SoundOutputManager+Goodies.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0058B7E28ABF69B0053699B /* SoundOutputManager+Goodies.swift */; };
+		F0058B8328ABF69B0053699B /* SoundOutputManager+Goodies.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0058B7E28ABF69B0053699B /* SoundOutputManager+Goodies.swift */; };
+		F0058B8428ABF69B0053699B /* SoundOutputManager+Goodies.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0058B7E28ABF69B0053699B /* SoundOutputManager+Goodies.swift */; };
+		F0058B8528ABF69B0053699B /* SoundOutputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0058B7F28ABF69B0053699B /* SoundOutputManager.swift */; };
+		F0058B8628ABF69B0053699B /* SoundOutputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0058B7F28ABF69B0053699B /* SoundOutputManager.swift */; };
+		F0058B8728ABF69B0053699B /* SoundOutputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0058B7F28ABF69B0053699B /* SoundOutputManager.swift */; };
+		F0058B8828ABF69B0053699B /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0058B8028ABF69B0053699B /* Sound.swift */; };
+		F0058B8928ABF69B0053699B /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0058B8028ABF69B0053699B /* Sound.swift */; };
+		F0058B8A28ABF69B0053699B /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0058B8028ABF69B0053699B /* Sound.swift */; };
+		F0058B8B28ABF69B0053699B /* SoundOutputManager+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0058B8128ABF69B0053699B /* SoundOutputManager+Properties.swift */; };
+		F0058B8C28ABF69B0053699B /* SoundOutputManager+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0058B8128ABF69B0053699B /* SoundOutputManager+Properties.swift */; };
+		F0058B8D28ABF69B0053699B /* SoundOutputManager+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0058B8128ABF69B0053699B /* SoundOutputManager+Properties.swift */; };
 		F00864B423AAE7F0003210EF /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00864B323AAE7F0003210EF /* DarkMode.swift */; };
 		F00864B523AAE7F0003210EF /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00864B323AAE7F0003210EF /* DarkMode.swift */; };
 		F00864B723AAE8E9003210EF /* NightShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00864B623AAE8E9003210EF /* NightShift.swift */; };
@@ -824,6 +836,9 @@
 		F01B180A2888714000317797 /* tl.json in Resources */ = {isa = PBXBuildFile; fileRef = F01B18092888714000317797 /* tl.json */; };
 		F01B180B2888714000317797 /* tl.json in Resources */ = {isa = PBXBuildFile; fileRef = F01B18092888714000317797 /* tl.json */; };
 		F01B180C2888714000317797 /* tl.json in Resources */ = {isa = PBXBuildFile; fileRef = F01B18092888714000317797 /* tl.json */; };
+		F05E805428AE8A9C0088B9C5 /* NowPlayingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05E805328AE8A9C0088B9C5 /* NowPlayingCollectionView.swift */; };
+		F05E805528AE8A9C0088B9C5 /* NowPlayingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05E805328AE8A9C0088B9C5 /* NowPlayingCollectionView.swift */; };
+		F05E805628AE8A9C0088B9C5 /* NowPlayingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05E805328AE8A9C0088B9C5 /* NowPlayingCollectionView.swift */; };
 		F0A3E0A32884683D005E8D8D /* CompanionCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A3E0A12884683D005E8D8D /* CompanionCacheViewController.swift */; };
 		F0A3E0A42884683D005E8D8D /* CompanionCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A3E0A12884683D005E8D8D /* CompanionCacheViewController.swift */; };
 		F0A3E0A52884683D005E8D8D /* CompanionCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A3E0A12884683D005E8D8D /* CompanionCacheViewController.swift */; };
@@ -1171,10 +1186,15 @@
 		03FF192F269709AB00A0FA7F /* PlaybackSpeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackSpeed.swift; sourceTree = "<group>"; };
 		03FF193326972C1200A0FA7F /* AppleMusicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicSearch.swift; sourceTree = "<group>"; };
 		AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialPlayerItem.swift; sourceTree = "<group>"; };
+		F0058B7E28ABF69B0053699B /* SoundOutputManager+Goodies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SoundOutputManager+Goodies.swift"; sourceTree = "<group>"; };
+		F0058B7F28ABF69B0053699B /* SoundOutputManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundOutputManager.swift; sourceTree = "<group>"; };
+		F0058B8028ABF69B0053699B /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		F0058B8128ABF69B0053699B /* SoundOutputManager+Properties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SoundOutputManager+Properties.swift"; sourceTree = "<group>"; };
 		F00864B323AAE7F0003210EF /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
 		F00864B623AAE8E9003210EF /* NightShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightShift.swift; sourceTree = "<group>"; };
 		F008DAFC23AADCFB00739DE1 /* Brightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brightness.swift; sourceTree = "<group>"; };
 		F01B18092888714000317797 /* tl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = tl.json; path = "../../../../../Downloads/locale-2/tl.json"; sourceTree = "<group>"; };
+		F05E805328AE8A9C0088B9C5 /* NowPlayingCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingCollectionView.swift; sourceTree = "<group>"; };
 		F0A3E0A12884683D005E8D8D /* CompanionCacheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionCacheViewController.swift; sourceTree = "<group>"; };
 		F0A3E0A22884683D005E8D8D /* CompanionCacheViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanionCacheViewController.xib; sourceTree = "<group>"; };
 		FA143CD61BDA3E880041A82B /* AerialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1507,6 +1527,7 @@
 				0345D00D24C07CC70001045C /* VideoCellView.swift */,
 				03D3A11224C5FC770091FE99 /* AspectFillNSImageView.swift */,
 				030010A124D706DB0092AE68 /* SidebarOutlineView.swift */,
+				F05E805328AE8A9C0088B9C5 /* NowPlayingCollectionView.swift */,
 			);
 			path = MainUI;
 			sourceTree = "<group>";
@@ -1645,9 +1666,21 @@
 			path = "Collection View";
 			sourceTree = "<group>";
 		};
+		F0058B7D28ABF69B0053699B /* ISSoundAdditions */ = {
+			isa = PBXGroup;
+			children = (
+				F0058B7E28ABF69B0053699B /* SoundOutputManager+Goodies.swift */,
+				F0058B7F28ABF69B0053699B /* SoundOutputManager.swift */,
+				F0058B8028ABF69B0053699B /* Sound.swift */,
+				F0058B8128ABF69B0053699B /* SoundOutputManager+Properties.swift */,
+			);
+			path = ISSoundAdditions;
+			sourceTree = "<group>";
+		};
 		F008DAFB23AADC8E00739DE1 /* Hardware */ = {
 			isa = PBXGroup;
 			children = (
+				F0058B7D28ABF69B0053699B /* ISSoundAdditions */,
 				03D1E7892284471A00D10CF7 /* DisplayDetection.swift */,
 				03608A2B22A56465008F08A2 /* HardwareDetection.swift */,
 				032D1160239A7D82007E7756 /* Battery.swift */,
@@ -1870,6 +1903,8 @@
 			dependencies = (
 			);
 			name = "Aerial (low dependencies)";
+			packageProductDependencies = (
+			);
 			productName = Aerial;
 			productReference = 0396D5B524B8B7ED00CC021B /* Aerial (low dependencies).saver */;
 			productType = "com.apple.product-type.bundle";
@@ -1889,6 +1924,8 @@
 			dependencies = (
 			);
 			name = AerialApp;
+			packageProductDependencies = (
+			);
 			productName = "Aerial Test";
 			productReference = FA143CD61BDA3E880041A82B /* AerialApp.app */;
 			productType = "com.apple.product-type.application";
@@ -1927,6 +1964,8 @@
 			dependencies = (
 			);
 			name = Aerial;
+			packageProductDependencies = (
+			);
 			productName = Aerial;
 			productReference = FACAF1A51BD9FC6000E539DC /* Aerial.saver */;
 			productType = "com.apple.product-type.bundle";
@@ -1974,6 +2013,8 @@
 				Base,
 			);
 			mainGroup = FACAF19B1BD9FC6000E539DC;
+			packageReferences = (
+			);
 			productRefGroup = FACAF1A61BD9FC6000E539DC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2529,6 +2570,7 @@
 				031945FC24CCC52600F37B35 /* HelpViewController.swift in Sources */,
 				0396D51F24B8B7ED00CC021B /* AerialView+Brightness.swift in Sources */,
 				03D3A11424C5FC770091FE99 /* AspectFillNSImageView.swift in Sources */,
+				F0058B8C28ABF69B0053699B /* SoundOutputManager+Properties.swift in Sources */,
 				030473CC24BCA9A40094A1A6 /* VideoViewItem.swift in Sources */,
 				0321A53424D44E80004F1975 /* ActionCellView.swift in Sources */,
 				0396D52124B8B7ED00CC021B /* Locations.swift in Sources */,
@@ -2540,6 +2582,7 @@
 				0396D52824B8B7ED00CC021B /* AnimationTextLayer.swift in Sources */,
 				0345D00F24C07CC70001045C /* VideoCellView.swift in Sources */,
 				0345CFEE24BF43280001045C /* VideosViewController.swift in Sources */,
+				F0058B8928ABF69B0053699B /* Sound.swift in Sources */,
 				03EBF0C12746A53B00EC09D1 /* PlayingCollectionViewItem.swift in Sources */,
 				0396D52924B8B7ED00CC021B /* InfoWeatherView.swift in Sources */,
 				0396D52B24B8B7ED00CC021B /* SeededGenerator.swift in Sources */,
@@ -2567,9 +2610,11 @@
 				032E099F24C3897E00387230 /* AdvancedViewController.swift in Sources */,
 				037772EE24E44CE100D81EEA /* RecapViewController.swift in Sources */,
 				0396D53A24B8B7ED00CC021B /* DateLayer.swift in Sources */,
+				F0058B8328ABF69B0053699B /* SoundOutputManager+Goodies.swift in Sources */,
 				0396D53B24B8B7ED00CC021B /* AerialPlayerItem.swift in Sources */,
 				0396D53C24B8B7ED00CC021B /* HardwareDetection.swift in Sources */,
 				03EED2F124C44A7900F0C3D4 /* OverlaysViewController.swift in Sources */,
+				F05E805528AE8A9C0088B9C5 /* NowPlayingCollectionView.swift in Sources */,
 				0300B86A24D20B12006132E5 /* NextViewController.swift in Sources */,
 				0396D53E24B8B7ED00CC021B /* YahooLogoLayer.swift in Sources */,
 				0313329D24BF3FA700C84A05 /* SidebarViewController.swift in Sources */,
@@ -2600,6 +2645,7 @@
 				0396D55124B8B7ED00CC021B /* PrefsVideos.swift in Sources */,
 				0396D55224B8B7ED00CC021B /* LocationLayer.swift in Sources */,
 				0396D55424B8B7ED00CC021B /* InfoTableSource.swift in Sources */,
+				F0058B8628ABF69B0053699B /* SoundOutputManager.swift in Sources */,
 				0396D55524B8B7ED00CC021B /* Solar.swift in Sources */,
 				03A6D15425F297CE00960135 /* WindDirectionLayer.swift in Sources */,
 				03E1681B2673A63F00D7442D /* MusicLayer.swift in Sources */,
@@ -2646,6 +2692,7 @@
 				031FB7A2248A873C0054BAFD /* PrefsCache.swift in Sources */,
 				F00864B523AAE7F0003210EF /* DarkMode.swift in Sources */,
 				031945FD24CCC52600F37B35 /* HelpViewController.swift in Sources */,
+				F0058B8D28ABF69B0053699B /* SoundOutputManager+Properties.swift in Sources */,
 				034A6DC624AF3EC600D62129 /* SourceList.swift in Sources */,
 				03FA49B82428F84500863AF6 /* DateLayer.swift in Sources */,
 				0361B9AC23D73D4500B6252D /* PrefsTime.swift in Sources */,
@@ -2665,6 +2712,7 @@
 				033811B224C1E243002E23E0 /* InfoViewController.swift in Sources */,
 				0354D0ED23F6CB7B00D86F9E /* InfoSettingsView.swift in Sources */,
 				032851F9260A4C2C00684A81 /* OneCall.swift in Sources */,
+				F0058B8728ABF69B0053699B /* SoundOutputManager.swift in Sources */,
 				0321A53524D44E80004F1975 /* ActionCellView.swift in Sources */,
 				0345D01024C07CC70001045C /* VideoCellView.swift in Sources */,
 				03BDBEC224C4727C00BBD5E9 /* TimeViewController.swift in Sources */,
@@ -2695,6 +2743,7 @@
 				03FA49A22423DA1F00863AF6 /* TimerLayer.swift in Sources */,
 				03608A2D22A56465008F08A2 /* HardwareDetection.swift in Sources */,
 				036A57D923F4747D0009DC02 /* InfoCountdownView.swift in Sources */,
+				F0058B8A28ABF69B0053699B /* Sound.swift in Sources */,
 				03C97BC424B6210500739CED /* SourceInfo.swift in Sources */,
 				030473CD24BCA9A40094A1A6 /* VideoViewItem.swift in Sources */,
 				0378986024C35F8A009B9418 /* CacheViewController.swift in Sources */,
@@ -2740,6 +2789,7 @@
 				FAF450221BE2B45D00C1F98A /* VideoLoader.swift in Sources */,
 				0317C19E268B65D10082A40C /* Music.swift in Sources */,
 				03E168182673A23900D7442D /* InfoMusicView.swift in Sources */,
+				F0058B8428ABF69B0053699B /* SoundOutputManager+Goodies.swift in Sources */,
 				036A7E9D26370C260019186B /* Forecast.swift in Sources */,
 				0374C9FF247AC5BC002F29D3 /* Locations.swift in Sources */,
 				036A57DC23F5828E0009DC02 /* CountdownLayer.swift in Sources */,
@@ -2752,6 +2802,7 @@
 				03DDFCA7268F73080001A13E /* SpotifySong.swift in Sources */,
 				0313F9ED2294468600B074BB /* SeededGenerator.swift in Sources */,
 				034DEE3024BF1BC700A2D3CD /* PanelWindowController.swift in Sources */,
+				F05E805628AE8A9C0088B9C5 /* NowPlayingCollectionView.swift in Sources */,
 				03A4A80F2451D04C00A1F7A3 /* PrefsAdvanced.swift in Sources */,
 				03FF1932269709AB00A0FA7F /* PlaybackSpeed.swift in Sources */,
 				03A4A80C2451CE2C00A1F7A3 /* NSImage+trim.swift in Sources */,
@@ -2818,6 +2869,7 @@
 				031945FB24CCC52600F37B35 /* HelpViewController.swift in Sources */,
 				032D1164239A7F0C007E7756 /* AerialView+Brightness.swift in Sources */,
 				03D3A11324C5FC770091FE99 /* AspectFillNSImageView.swift in Sources */,
+				F0058B8B28ABF69B0053699B /* SoundOutputManager+Properties.swift in Sources */,
 				030473CB24BCA9A40094A1A6 /* VideoViewItem.swift in Sources */,
 				0321A53324D44E80004F1975 /* ActionCellView.swift in Sources */,
 				0374C9FE247AC5BC002F29D3 /* Locations.swift in Sources */,
@@ -2829,6 +2881,7 @@
 				0306336E23A15FA900046A59 /* AnimationTextLayer.swift in Sources */,
 				0345D00E24C07CC70001045C /* VideoCellView.swift in Sources */,
 				0345CFED24BF43280001045C /* VideosViewController.swift in Sources */,
+				F0058B8828ABF69B0053699B /* Sound.swift in Sources */,
 				03EBF0C02746A53B00EC09D1 /* PlayingCollectionViewItem.swift in Sources */,
 				0385FC5D242B9F6E007E6513 /* InfoWeatherView.swift in Sources */,
 				0313F9EC2294468600B074BB /* SeededGenerator.swift in Sources */,
@@ -2856,9 +2909,11 @@
 				032E099E24C3897E00387230 /* AdvancedViewController.swift in Sources */,
 				037772ED24E44CE100D81EEA /* RecapViewController.swift in Sources */,
 				03FA49B72428F84500863AF6 /* DateLayer.swift in Sources */,
+				F0058B8228ABF69B0053699B /* SoundOutputManager+Goodies.swift in Sources */,
 				AA7E2E5E1FC62E8B00E5F320 /* AerialPlayerItem.swift in Sources */,
 				03608A2C22A56465008F08A2 /* HardwareDetection.swift in Sources */,
 				03EED2F024C44A7900F0C3D4 /* OverlaysViewController.swift in Sources */,
+				F05E805428AE8A9C0088B9C5 /* NowPlayingCollectionView.swift in Sources */,
 				0300B86924D20B12006132E5 /* NextViewController.swift in Sources */,
 				03A42AA02449F959003B3012 /* YahooLogoLayer.swift in Sources */,
 				0313329C24BF3FA700C84A05 /* SidebarViewController.swift in Sources */,
@@ -2889,6 +2944,7 @@
 				038D2EDE23B0FB0D00CD91F7 /* PrefsVideos.swift in Sources */,
 				0306336823A1012200046A59 /* LocationLayer.swift in Sources */,
 				034F29B723A7A93D004B34D5 /* InfoTableSource.swift in Sources */,
+				F0058B8528ABF69B0053699B /* SoundOutputManager.swift in Sources */,
 				03958349217F4416008E8F9C /* Solar.swift in Sources */,
 				03A6D15325F297CE00960135 /* WindDirectionLayer.swift in Sources */,
 				03E1681A2673A63F00D7442D /* MusicLayer.swift in Sources */,
@@ -2965,7 +3021,7 @@
 				INFOPLIST_FILE = "Aerial copy-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 2.1.4beta1.appmode;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2994,7 +3050,7 @@
 				INFOPLIST_FILE = "Aerial copy-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 2.1.4beta1.appmode;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
@@ -3018,7 +3074,7 @@
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Aerial/App/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 2.1.4beta1.appmode;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3041,7 +3097,7 @@
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Aerial/App/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 2.1.4beta1.appmode;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johncoates.Aerial-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3209,15 +3265,15 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3.1.0beta3;
+				CURRENT_PROJECT_VERSION = 3.1.2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Old stuff/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 3.1.0beta3;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 3.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3238,15 +3294,15 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3.1.0beta3;
+				CURRENT_PROJECT_VERSION = 3.1.2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Old stuff/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 3.1.0beta3;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 3.1.2;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

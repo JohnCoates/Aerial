@@ -14,7 +14,7 @@ protocol SidebarOutlineViewDelegate: NSOutlineViewDelegate {
 
 class SidebarOutlineView: NSOutlineView {
 
-    override func menu(for event: NSEvent) -> NSMenu? {
+    /*override func menu(for event: NSEvent) -> NSMenu? {
         let point = self.convert(event.locationInWindow, from: nil)
         let row = self.row(at: point)
 
@@ -24,6 +24,6 @@ class SidebarOutlineView: NSOutlineView {
         }
 
         return nil
-    }
+    }*/
 
 }

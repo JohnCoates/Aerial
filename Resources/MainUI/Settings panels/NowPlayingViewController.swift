@@ -19,7 +19,7 @@ class NowPlayingViewController: NSViewController {
     @IBOutlet var deselectAllButton: NSButton!
 
     // Our main collection
-    @IBOutlet var playingCollectionView: NSCollectionView!
+    @IBOutlet var playingCollectionView: NowPlayingCollectionView!
 
     // Status stuff
     @IBOutlet var statusDriveImageView: NSImageView!
@@ -28,7 +28,9 @@ class NowPlayingViewController: NSViewController {
     @IBOutlet var statusTimeImageView: NSImageView!
     @IBOutlet var statusTimeLabel: NSTextField!
 
-    @IBOutlet var statusHiddenVideoLabel: NSTextField!
+    @IBOutlet weak var statusHiddenVideoButton: NSButton!
+
+    @IBOutlet weak var statusFavoriteButton: NSButton!
     
     var sources: [String] = []
     var currentSource: VideoList.FilterMode = .location
@@ -44,7 +46,7 @@ class NowPlayingViewController: NSViewController {
 
         if PrefsVideos.newShouldPlayString.isEmpty {
             print("empty, selecting all")
-            selectAllClick(selectAllButton)
+            selectAllClick(selectAllButton!)
         }
 
         // Now update the UI
@@ -101,6 +103,15 @@ class NowPlayingViewController: NSViewController {
         playingCollectionView.reloadData()
     }
 
+    @IBAction func statusHiddenVideoButtonClick(_ sender: Any) {
+        print("Hidden B")
+        Aerial.helper.windowController?.browseTo("hidden:0")
+    }
+   
+    @IBAction func statusFavoritesButtonClick(_ sender: Any) {
+        Aerial.helper.windowController?.browseTo("favorites:0")
+    }
+    
     @IBAction func deselectAllClick(_ sender: Any) {
         let subSources = VideoList.instance.getSources(mode: currentSource)
 
@@ -115,7 +126,7 @@ class NowPlayingViewController: NSViewController {
         playingCollectionView.reloadData()
     }
 
-    func reloadSources() {
+    public func reloadSources() {
         sources = VideoList.instance.getSources(mode: currentSource)
         playingCollectionView.reloadData()
     }
@@ -144,11 +155,19 @@ class NowPlayingViewController: NSViewController {
         statusTimeLabel.isHidden = true
         
         if PrefsVideos.hidden.isEmpty {
-            statusHiddenVideoLabel.stringValue = "No hidden videos"
+            statusHiddenVideoButton.title = "No hidden videos"
         } else if PrefsVideos.hidden.count == 1 {
-            statusHiddenVideoLabel.stringValue = String(PrefsVideos.hidden.count) + " hidden video"
+            statusHiddenVideoButton.title = String(PrefsVideos.hidden.count) + " hidden video"
         } else {
-            statusHiddenVideoLabel.stringValue = String(PrefsVideos.hidden.count) + " hidden videos"
+            statusHiddenVideoButton.title = String(PrefsVideos.hidden.count) + " hidden videos"
+        }
+        
+        if (PrefsVideos.favorites.isEmpty) {
+            statusFavoriteButton.title = "No favorites"
+        } else if PrefsVideos.favorites.count == 1 {
+            statusFavoriteButton.title = String(PrefsVideos.favorites.count) + " favorite"
+        } else {
+            statusFavoriteButton.title = String(PrefsVideos.favorites.count) + " favorites"
         }
     }
 
@@ -172,9 +191,13 @@ extension NowPlayingViewController: NSCollectionViewDataSource {
 
         guard let playingCollectionViewItem = item as? PlayingCollectionViewItem else {return item}
 
+        playingCollectionViewItem.nowPlayingViewController = self
+        
         let path = String(describing: currentSource) + ":" + sources[indexPath[1]]
         playingCollectionViewItem.hiddenPath.stringValue = path
 
+        playingCollectionViewItem.numberedPath.stringValue = String(describing: currentSource) + ":" + String(indexPath[1])
+        
         if PrefsVideos.newShouldPlayString.contains(path) {
             playingCollectionViewItem.checkImageButton?.state = .on
             playingCollectionViewItem.checkImageButton?.image = Aerial.helper.getSymbol("checkmark.circle.fill")

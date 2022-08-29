@@ -161,6 +161,25 @@ extension SidebarViewController: NSOutlineViewDataSource {
             return 30
         }
     }
+    
+    func reloadSidebar() {
+        // We need to reload our sidebar
+        // Sidebar.instance.refreshVideos()
+        debugLog("reload sidebar")
+        let set = sidebarOutlineView.selectedRowIndexes
+
+        sidebarOutlineView.reloadData()
+        sidebarOutlineView.expandItem(nil, expandChildren: true)
+
+        if set.isEmpty {
+            debugLog("empty set")
+            sidebarOutlineView.selectRowIndexes([1], byExtendingSelection: false)
+        } else {
+            debugLog("re set ing")
+            sidebarOutlineView.selectRowIndexes(set, byExtendingSelection: false)
+
+        }
+    }
 }
 
 extension SidebarViewController: NSOutlineViewDelegate {
@@ -227,7 +246,7 @@ extension SidebarViewController: NSOutlineViewDelegate {
 }
 
 // Right click menu
-extension SidebarViewController: SidebarOutlineViewDelegate {
+/*extension SidebarViewController: SidebarOutlineViewDelegate {
     // swiftlint:disable cyclomatic_complexity
     func outlineView(outlineView: NSOutlineView, menuForItem item: Any) -> NSMenu? {
         // Make sure we're right clicking a menu entry
@@ -392,25 +411,8 @@ extension SidebarViewController: SidebarOutlineViewDelegate {
         sidebarOutlineView.expandItem(nil, expandChildren: true)
         sidebarOutlineView.selectRowIndexes([1], byExtendingSelection: false)
     }
-
-    func reloadSidebar() {
-        // We need to reload our sidebar
-        // Sidebar.instance.refreshVideos()
-        debugLog("reload sidebar")
-        let set = sidebarOutlineView.selectedRowIndexes
-
-        sidebarOutlineView.reloadData()
-        sidebarOutlineView.expandItem(nil, expandChildren: true)
-
-        if set.isEmpty {
-            debugLog("empty set")
-            sidebarOutlineView.selectRowIndexes([1], byExtendingSelection: false)
-        } else {
-            debugLog("re set ing")
-            sidebarOutlineView.selectRowIndexes(set, byExtendingSelection: false)
-
-        }
-    }
+    
+    
 
     @objc func resetVibrance(_ sender: Any) {
         if menuPath == "" {
@@ -425,4 +427,4 @@ extension SidebarViewController: SidebarOutlineViewDelegate {
 
         windowController!.updateViewInPlace()
     }
-}
+}*/

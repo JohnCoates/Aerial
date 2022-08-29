@@ -113,7 +113,12 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     // This is the one used by System Preferences/ScreenSaverEngine
     override init?(frame: NSRect, isPreview: Bool) {
         // First thing, we migrate preferences if needed
-        Aerial.helper.migratePreferences()
+        Aerial.helper.checkCompanion()
+        if !Aerial.helper.underCompanion && !Aerial.helper.appMode {
+            Aerial.helper.migratePreferences()
+        } else {
+            debugLog("Not migrating under companion")
+        }
         
         // legacyScreenSaver always return true for isPreview on Catalina
         // We need to detect and override ourselves
@@ -126,7 +131,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             preview = true
         }
 
-        Aerial.helper.checkCompanion()
         
         // This is where we manage our location info layers, clock, etc
         self.layerManager = LayerManager(isPreview: preview)
@@ -145,13 +149,17 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     // This is the one used by our App target used for debugging
     required init?(coder: NSCoder) {
+        Aerial.helper.appMode = true
+
         // First thing, we migrate preferences if needed
-        Aerial.helper.migratePreferences()
+        Aerial.helper.checkCompanion()
+        if !Aerial.helper.underCompanion && !Aerial.helper.appMode {
+            Aerial.helper.migratePreferences()
+        } else {
+            debugLog("Not migrating under companion")
+        }
         
         self.layerManager = LayerManager(isPreview: false)
-        Aerial.helper.appMode = true
-        
-        Aerial.helper.checkCompanion()
 
         // ...
         self.originalWidth = 0
@@ -166,6 +174,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     }
 
     deinit {
+        Aerial.helper.maybeUnmuteSound()
+        
         debugLog("\(self.description) deinit AerialView")
         NotificationCenter.default.removeObserver(self)
 
@@ -217,10 +227,14 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                 return
             }
         }
+        
 
         // First we check the system appearance, as it relies on our view
         Aerial.helper.computeDarkMode(view: self)
 
+        // Then check if we need to mute/unmute sound
+        Aerial.helper.maybeMuteSound()
+        
         _ = TimeManagement.sharedInstance
 
         ensureCorrectFormat()
@@ -391,6 +405,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     }
 
     override func stopAnimation() {
+        Aerial.helper.maybeUnmuteSound()
         //super.stopAnimation()
         wasStopped = true
         debugLog("\(self.description) stopAnimation")

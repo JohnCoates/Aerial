@@ -95,7 +95,7 @@ func Log(level: ErrorLevel, message: String) {
 
     // Log to disk
     if PrefsAdvanced.debugMode {
-        //logToConsole(message)
+        logToConsole(message)
         logToDisk(message)
     }
 }

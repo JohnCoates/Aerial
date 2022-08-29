@@ -288,7 +288,7 @@ struct Cache {
             do {
                 debugLog("trying to create \(cacheSupportDirectory.appendingPathComponent("Aerial"))")
                 try FileManager.default.createDirectory(atPath: cacheSupportDirectory.appendingPathComponent("Aerial"),
-                                                withIntermediateDirectories: false, attributes: nil)
+                                                withIntermediateDirectories: true, attributes: nil)
                 return path
             } catch {
                 errorLog("Could not create Aerial's Caches path")

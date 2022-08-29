@@ -41,16 +41,16 @@ class Aerial: NSObject {
     // Xcode debug mode is also considered as running under Companion
     
     func checkCompanion() {
-        debugLog("Checking for companion")
+        logToConsole("Checking for companion")
         if appMode {
             underCompanion = true
-            debugLog("> Running in appMode, simming Companion!")
+            logToConsole("> Running in appMode, simming Companion!")
         } else {
             for bundle in Bundle.allBundles {
                 if let bundleId = bundle.bundleIdentifier {
                     if bundleId.contains("AerialUpdater") {
                         underCompanion = true
-                        debugLog("> Running under Aerial Companion!")
+                        logToConsole("> Running under Aerial Companion!")
                     }
                 }
             }
@@ -277,24 +277,44 @@ class Aerial: NSObject {
         print(result!)*/
     }*/
     
+    func getPreferencesDirectory() -> String {
+        // Grab an array of Application Support paths
+        let libPaths = NSSearchPathForDirectoriesInDomains(
+            .libraryDirectory,
+            .userDomainMask,
+            true)
+        
+        if !libPaths.isEmpty {
+            if underCompanion {
+                return libPaths.first! + "/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/"
+                
+            } else {
+                return libPaths.first! + "/Preferences/"
+            }
+        } else {
+            return "/Users/" + Aerial.helper.userName + "/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/"
+        }
+    }
+    
+    
     // Starting with 3.1.0beta2, existing settings are moved from Preferences/ByHost to Preferences
     // This allows the sharing of preferences between regular screen saver and companion-hosted screensaver
     func migratePreferences() {
         // First check if the new settings already exists !
-        let baseContainerPrefPath = "/Users/" + Aerial.helper.userName + "/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/"
+        let baseContainerPrefPath = getPreferencesDirectory()
         
         let newBundleFile = baseContainerPrefPath + "com.glouel.Aerial.plist"
 
         if FileManager.default.fileExists(atPath: newBundleFile) {
             // We are done
-            debugLog("!!! New prefs already exists")
+            logToConsole("!!! New prefs already exists")
         } else {
-            debugLog("!!! New prefs does NOT exist")
+            logToConsole("!!! New prefs does NOT exist")
             //Look for ByHost
             let byHostPath = baseContainerPrefPath + "ByHost/"
             
             if FileManager.default.fileExists(atPath: byHostPath) {
-                debugLog("ByHost exists")
+                logToConsole("ByHost exists")
                 var oldPlist = ""
                 
                 // Try and find the old plist
@@ -309,19 +329,33 @@ class Aerial: NSObject {
                         }
                     }
                 } catch {
-                    debugLog(error.localizedDescription)
+                    logToConsole(error.localizedDescription)
                 }
 
                 // Did we get it ?
                 if oldPlist != "" {
-                    debugLog("plist found " + oldPlist)
+                    logToConsole("plist found " + oldPlist)
                     do {
                         try FileManager.default.copyItem(atPath: byHostPath + oldPlist, toPath: newBundleFile)
+                        logToConsole("plist moved")
                     } catch {
-                        debugLog(error.localizedDescription)
+                        logToConsole(error.localizedDescription)
                     }
                 }
             }
+        }
+    }
+    
+    // Mute me maybe
+    func maybeMuteSound() {
+        if !appMode && !underCompanion && PrefsAdvanced.muteGlobalSound{
+            Sound.output.isMuted = true
+        }
+    }
+    
+    func maybeUnmuteSound() {
+        if !appMode && !underCompanion && PrefsAdvanced.muteGlobalSound {
+            Sound.output.isMuted = false
         }
     }
 }

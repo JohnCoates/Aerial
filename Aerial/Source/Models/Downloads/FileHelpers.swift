@@ -14,7 +14,7 @@ struct FileHelpers {
         if fileManager.fileExists(atPath: atPath) == false {
             do {
                 try fileManager.createDirectory(atPath: atPath,
-                                                withIntermediateDirectories: false, attributes: nil)
+                                                withIntermediateDirectories: true, attributes: nil)
             } catch let error {
                 errorLog("Couldn't create directory at \(atPath) : \(error)")
                 errorLog("FATAL : There's nothing more we can do at this point, please report")

@@ -580,7 +580,7 @@ struct PrefsInfo {
     private let key: String
     private let defaultValue: T
     private let module = "com.JohnCoates.Aerial"
-    private let bundleID = "/Users/" + Aerial.helper.userName + "/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/com.glouel.Aerial"
+    private let bundleID = Aerial.helper.getPreferencesDirectory() + "com.glouel.Aerial"
     
     init(key: String, defaultValue: T) {
         self.key = key
@@ -611,7 +611,7 @@ struct PrefsInfo {
                     }
                 }
             } else {
-                if let userDefaults = ScreenSaverDefaults(suiteName: module) {
+                if let userDefaults = ScreenSaverDefaults(forModuleWithName: module) {
                     // We shoot for a string in the new system
                     if let jsonString = userDefaults.string(forKey: key) {
                         guard let jsonData = jsonString.data(using: .utf8) else {
@@ -680,7 +680,7 @@ struct PrefsInfo {
     private let key: String
     private let defaultValue: T
     private let module = "com.JohnCoates.Aerial"
-    private let bundleID = "/Users/" + Aerial.helper.userName + "/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/com.glouel.Aerial"
+    private let bundleID = Aerial.helper.getPreferencesDirectory() + "com.glouel.Aerial"
     
     init(key: String, defaultValue: T) {
         self.key = key
