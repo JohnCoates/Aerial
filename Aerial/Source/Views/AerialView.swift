@@ -119,7 +119,10 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         } else {
             debugLog("Not migrating under companion")
         }
-        
+
+        // Clear log if > 1MB on startup
+        rollLogIfNeeded()
+
         // legacyScreenSaver always return true for isPreview on Catalina
         // We need to detect and override ourselves
         // This is finally fixed in Ventura
@@ -158,7 +161,10 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         } else {
             debugLog("Not migrating under companion")
         }
-        
+
+        // Clear log if > 1MB on startup
+        rollLogIfNeeded()
+
         self.layerManager = LayerManager(isPreview: false)
 
         // ...

@@ -69,6 +69,34 @@ func appSupportPath() -> String {
     return appSupportDirectory.appendingPathComponent("Aerial")
 }
 
+// This will clear the existing log if > 1MB
+// This is called at startup
+func rollLogIfNeeded() {
+    let cacheDirectory = appSupportPath()
+    // if let cacheDirectory = path() {
+    var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
+    
+    if Aerial.helper.underCompanion {
+        cacheFileUrl.appendPathComponent("AerialUnderCompanionLog.txt")
+    } else {
+        cacheFileUrl.appendPathComponent("AerialLog.txt")
+    }
+    
+    if FileManager.default.fileExists(atPath: cacheFileUrl.path) {
+        do {
+            let resourceValues = try cacheFileUrl.resourceValues(forKeys: [.fileSizeKey])
+            let fileSize = Int64(resourceValues.fileSize!)
+
+            if (fileSize > 1000000) {
+                try FileManager.default.removeItem(at: cacheFileUrl)
+            }
+                
+        } catch {
+            logToConsole(error.localizedDescription)
+        }
+    }
+}
+
 // swiftlint:disable:next identifier_name
 func Log(level: ErrorLevel, message: String) {
     #if DEBUG
