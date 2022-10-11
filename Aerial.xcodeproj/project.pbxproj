@@ -1473,8 +1473,8 @@
 				03EED2EE24C44A7900F0C3D4 /* OverlaysViewController.swift */,
 				030010AA24D71EB20092AE68 /* FiltersViewController.xib */,
 				030010A924D71EB20092AE68 /* FiltersViewController.swift */,
-				F0A3E0A12884683D005E8D8D /* CompanionCacheViewController.swift */,
 				F0A3E0A22884683D005E8D8D /* CompanionCacheViewController.xib */,
+				F0A3E0A12884683D005E8D8D /* CompanionCacheViewController.swift */,
 			);
 			path = "Settings panels";
 			sourceTree = "<group>";

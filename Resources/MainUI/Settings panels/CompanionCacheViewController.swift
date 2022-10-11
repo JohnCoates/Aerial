@@ -17,10 +17,7 @@ class CompanionCacheViewController: NSViewController {
     
     @IBAction func openSystemPreferences(_ sender: Any) {
         if #available(macOS 13, *) {
-            _ = Aerial.helper.shell(launchPath: "/usr/bin/osascript", arguments: [
-            "-e", "tell application \"System Settings\"",
-            "-e","activate",
-            "-e","end tell"])
+            _ = Aerial.helper.shell(launchPath: "/usr/bin/open", arguments: ["x-apple.systempreferences:com.apple.ScreenSaver-Settings.extension"])
         } else {
             _ = Aerial.helper.shell(launchPath: "/usr/bin/osascript", arguments: [
             "-e", "tell application \"System Preferences\"",
