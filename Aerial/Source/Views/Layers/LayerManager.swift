@@ -177,6 +177,13 @@ class LayerManager {
             }
         }
     }
+    
+    // This is called when our view gets resized. In theory this is limited to Companion but who knows
+    func redrawAllCorners() {
+        InfoCorner.allCases.forEach { corner in
+            redrawCorner(corner: corner)
+        }
+    }
 
     // Do we allow a random description in a corner or not ?
     // This is a best effort to try and avoid overlaps,

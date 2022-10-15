@@ -18,7 +18,7 @@ protocol CommonInfo {
 }
 
 // Helper Enums for the common infos
-enum InfoCorner: Int, Codable {
+enum InfoCorner: Int, Codable, CaseIterable {
     case topLeft, topCenter, topRight, bottomLeft, bottomCenter, bottomRight, screenCenter, random, absTopRight
 }
 

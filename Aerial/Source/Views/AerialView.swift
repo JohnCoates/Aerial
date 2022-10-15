@@ -364,6 +364,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         }
     }
 
+    // Handle window resize
+    override func viewDidEndLiveResize() {
+        layerManager.redrawAllCorners()
+    }
+    
     override func viewDidChangeBackingProperties() {
         debugLog("\(self.description) backing change \((self.window?.backingScaleFactor) ?? 1.0) isDisabled: \(isDisabled) frame: \(self.frame) preview: \(self.isPreview)")
 
