@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21223" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21223"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +11,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="OverlaysViewController" customModule="Aerial" customModuleProvider="target">
             <connections>
                 <outlet property="fontButton" destination="PoK-PJ-h6f" id="cfO-6g-shd"/>
+                <outlet property="hideUnderCompanion" destination="9LV-pU-dEq" id="Y6D-Az-0fK"/>
                 <outlet property="infoBatteryView" destination="d6p-Wj-XTq" id="TOA-QY-ml7"/>
                 <outlet property="infoClockView" destination="OyK-gu-5yP" id="WS7-hd-gZO"/>
                 <outlet property="infoCommonView" destination="T8p-iy-4mZ" id="O6Q-6D-auu"/>
@@ -253,6 +254,16 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
+                <button toolTip="Enable or disable this overlay" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9LV-pU-dEq">
+                    <rect key="frame" x="550" y="841.5" width="235" height="22"/>
+                    <buttonCell key="cell" type="check" title="Hide overlays under Companion" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="CRS-jP-1XT">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system" size="14"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="hideUnderCompanionClick:" target="-2" id="5Q4-BD-WQ9"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="sMA-U2-JnG" firstAttribute="leading" secondItem="Zk3-dp-nQh" secondAttribute="trailing" constant="8" symbolic="YES" id="0kC-0R-2xS"/>
@@ -261,10 +272,12 @@
                 <constraint firstAttribute="bottom" secondItem="Yug-di-Rrj" secondAttribute="bottom" id="IVW-7y-lBp"/>
                 <constraint firstAttribute="bottom" secondItem="sMA-U2-JnG" secondAttribute="bottom" id="SCF-fS-589"/>
                 <constraint firstItem="Zk3-dp-nQh" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="SR5-Ta-E7l"/>
+                <constraint firstItem="9LV-pU-dEq" firstAttribute="firstBaseline" secondItem="gfE-bm-FTe" secondAttribute="firstBaseline" id="Twx-LD-P0d"/>
                 <constraint firstItem="gfE-bm-FTe" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="16" id="URk-WE-5c7"/>
                 <constraint firstAttribute="trailing" secondItem="sMA-U2-JnG" secondAttribute="trailing" id="ZnI-7H-uCH"/>
                 <constraint firstItem="Yug-di-Rrj" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="gVB-by-2eZ"/>
                 <constraint firstItem="sMA-U2-JnG" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="54" id="lRn-cJ-iU4"/>
+                <constraint firstAttribute="trailing" secondItem="9LV-pU-dEq" secondAttribute="trailing" constant="20" id="ni9-zR-guf"/>
                 <constraint firstItem="Yug-di-Rrj" firstAttribute="top" secondItem="Zk3-dp-nQh" secondAttribute="bottom" id="p10-kT-ics"/>
                 <constraint firstItem="gfE-bm-FTe" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="54" id="rza-aE-7ja"/>
                 <constraint firstItem="sjm-7w-iIw" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="10" id="wtk-k3-wQx"/>
@@ -856,7 +869,7 @@
                     </textFieldCell>
                 </textField>
                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IcH-dE-weS">
-                    <rect key="frame" x="311" y="96" width="35" height="35"/>
+                    <rect key="frame" x="307" y="92" width="35" height="35"/>
                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3MQ-92-9m9">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -932,7 +945,7 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="Mkb-6F-RoA">
-                    <rect key="frame" x="358" y="93" width="90" height="40"/>
+                    <rect key="frame" x="349" y="93" width="90" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="90" id="Jv2-8G-WhZ"/>
                         <constraint firstAttribute="height" constant="40" id="u2k-2r-QLb"/>

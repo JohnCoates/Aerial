@@ -270,16 +270,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             }
         }
 
-        debugLog("pre check brightness")
         // We may need to set timers to progressively dim the screen
         checkIfShouldSetBrightness()
 
-        debugLog("pre shared view")
-
         // Shared views can get stuck, we may need to clean them up here
         cleanupSharedViews()
-
-        debugLog("pre dd")
 
         // We look for the screen in our detected list.
         // In case of preview or unknown screen result will be nil
@@ -456,11 +451,20 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             if AerialView.sharingPlayers {
                 for view in AerialView.sharedViews {
                     self.addPlayerFades(view: view, player: self.player!, video: self.currentVideo!)
-                    view.layerManager.setupLayersForVideo(video: self.currentVideo!, player: self.player!)
+                    
+                    if (Aerial.helper.underCompanion && PrefsInfo.hideUnderCompanion) {
+                        debugLog("Disable overlays under Companion")
+                    } else {
+                        view.layerManager.setupLayersForVideo(video: self.currentVideo!, player: self.player!)
+                    }
                 }
             } else {
                 self.addPlayerFades(view: self, player: self.player!, video: self.currentVideo!)
-                self.layerManager.setupLayersForVideo(video: self.currentVideo!, player: self.player!)
+                if (Aerial.helper.underCompanion && PrefsInfo.hideUnderCompanion) {
+                    debugLog("Disable overlays under Companion")
+                } else {
+                    self.layerManager.setupLayersForVideo(video: self.currentVideo!, player: self.player!)
+                }
             }
         }
     }

@@ -15,6 +15,7 @@ class OverlaysViewController: NSViewController {
     //@IBOutlet var infoBox: NSBox!
     //@IBOutlet var infoContainerView: InfoContainerView!
 
+    @IBOutlet weak var hideUnderCompanion: NSButton!
     
     @IBOutlet var infoScrollView: NSScrollView!
     @IBOutlet var infoScrollableView: InfoContainerView!
@@ -68,8 +69,14 @@ class OverlaysViewController: NSViewController {
         infoSettingsTableView.dataSource = infoSettingsSource
         infoSettingsTableView.delegate = infoSettingsSource
 
+        hideUnderCompanion.state = PrefsInfo.hideUnderCompanion ? .on : .off
     }
 
+    
+    @IBAction func hideUnderCompanionClick(_ sender: NSButton) {
+        PrefsInfo.hideUnderCompanion = sender.state == .on
+    }
+    
     func drawInfoSettingsPanel() {
         resetInfoPanel()
 

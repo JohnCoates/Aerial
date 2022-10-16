@@ -364,6 +364,11 @@ struct PrefsInfo {
     @SimpleStorage(key: "overrideMargins", defaultValue: false)
     static var overrideMargins: Bool
 
+    // Hide overlays under Companion
+    @SimpleStorage(key: "hideUnderCompanion", defaultValue: true)
+    static var hideUnderCompanion: Bool
+
+    
     @SimpleStorage(key: "marginX", defaultValue: 50)
     static var marginX: Int
     @SimpleStorage(key: "marginY", defaultValue: 50)

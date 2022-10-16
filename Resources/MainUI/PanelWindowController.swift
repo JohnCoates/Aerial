@@ -32,7 +32,7 @@ import Cocoa
     var overlaysViewItem: NSSplitViewItem?
     var filtersViewItem: NSSplitViewItem?
     var advancedViewItem: NSSplitViewItem?
-
+    
     var currentPath: String?
 
     convenience init() {
