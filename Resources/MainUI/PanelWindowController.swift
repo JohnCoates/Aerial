@@ -45,7 +45,8 @@ import Cocoa
         currentPath = "location:all"
 
         splitVC = NSSplitViewController()   // This is the core of ui V2, we dynamically change the right view controller based on what's on the left
-
+        
+        
         // We always need to specify a bundle manually, auto loading from bundle
         // does not work for screen savers when compiled as plugins
         let bundle = Bundle(for: PanelWindowController.self)
@@ -103,6 +104,8 @@ import Cocoa
         splitVC!.addSplitViewItem(NSSplitViewItem(sidebarWithViewController: sidebarVC!))
         splitVC!.addSplitViewItem(videoViewItem!)
 
+        splitVC!.splitViewItems[0].canCollapse = false
+        splitVC!.splitViewItems[1].canCollapse = false
         window?.contentViewController = splitVC
         // PrefsAdvanced.firstTimeSetup = false
         doFirstTimeSetup()
