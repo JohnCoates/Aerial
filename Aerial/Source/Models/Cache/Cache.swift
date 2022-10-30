@@ -67,31 +67,18 @@ struct Cache {
                         var isStale = false
                         let bookmarkUrl = try URL(resolvingBookmarkData: bookmarkData, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &isStale)
 
-                        debugLog("Bookmark is stale : \(isStale)")
-                        debugLog("\(bookmarkUrl)")
+                        //debugLog("Bookmark is stale : \(isStale)")
                         appPath = bookmarkUrl.path
-                        debugLog("\(appPath)")
 
                         do {
                             let url = try NSURL.init(resolvingBookmarkData: bookmarkData, options: .withoutUI, relativeTo: nil, bookmarkDataIsStale: nil)
 
-                            // NSURL.init(re)
                             url.startAccessingSecurityScopedResource()
-
-                            /*let stest = "TEST"
-                            try stest.write(to: url.appendingPathComponent("test3.txt")!, atomically: true, encoding: .ascii)*/
-
                         } catch let error as NSError {
                             errorLog("Bookmark Access Failed: \(error.description)")
                         }
-
-                        /*var stest2: String = "TEST"
-
-                        try stest2.write(to: bookmarkUrl.appendingPathComponent("test1.txt"), atomically: true, encoding: .ascii)*/
-
                     } catch let error {
                         errorLog("Can't process bookmark \(error)")
-                        // errorLog(error)
                     }
                 } else {
                     errorLog("Can't find supportBookmarkData on macOS 12")
@@ -110,20 +97,45 @@ struct Cache {
             }
         }
 
-        // This is the normal path
+        // This is the normal(ish) path
         if appPath == "" {
-            // Grab an array of Application Support paths
-            let appSupportPaths = NSSearchPathForDirectoriesInDomains(
-                .applicationSupportDirectory,
-                .userDomainMask,
-                true)
+            // This is the normal path via screensaver
+            if !Aerial.helper.underCompanion {
+                // Grab an array of Application Support paths
+                let appSupportPaths = NSSearchPathForDirectoriesInDomains(
+                    .applicationSupportDirectory,
+                    .userDomainMask,
+                    true)
 
-            if appSupportPaths.isEmpty {
-                errorLog("FATAL : app support does not exist!")
-                return "/"
+                if appSupportPaths.isEmpty {
+                    errorLog("FATAL : app support does not exist!")
+                    return "/"
+                }
+
+                appPath = appSupportPaths[0]
+            } else {
+                // If we are underCompanion, we need to add the container on 10.15+
+                // Grab an array of Application Support paths
+                if #available(OSX 10.15, *) {
+                    let libPaths = NSSearchPathForDirectoriesInDomains(
+                        .libraryDirectory,
+                        .userDomainMask,
+                        true)
+                    appPath = libPaths.first! + "/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Application Support/"
+
+                } else {
+                    let appSupportPaths = NSSearchPathForDirectoriesInDomains(
+                        .applicationSupportDirectory,
+                        .userDomainMask,
+                        true)
+
+                    if appSupportPaths.isEmpty {
+                        errorLog("FATAL : app support does not exist!")
+                        return "/"
+                    }
+                    appPath = appSupportPaths[0]
+                }
             }
-
-            appPath = appSupportPaths[0]
         }
 
         let appSupportDirectory = appPath as NSString

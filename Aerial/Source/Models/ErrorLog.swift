@@ -47,7 +47,7 @@ final class Logger {
     }
 }
 var errorMessages = [LogMessage]()
-
+/*
 func appSupportPath() -> String {
     var appPath = ""
 
@@ -67,12 +67,12 @@ func appSupportPath() -> String {
     let appSupportDirectory = appPath as NSString
 
     return appSupportDirectory.appendingPathComponent("Aerial")
-}
+}*/
 
 // This will clear the existing log if > 1MB
 // This is called at startup
 func rollLogIfNeeded() {
-    let cacheDirectory = appSupportPath()
+    let cacheDirectory = Cache.supportPath
     // if let cacheDirectory = path() {
     var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
     
@@ -147,8 +147,7 @@ func logToDisk(_ message: String) {
 
         // if let cacheDirectory = VideoCache.appSupportDirectory {
 
-        let cacheDirectory = appSupportPath()
-        // if let cacheDirectory = path() {
+        let cacheDirectory = Cache.supportPath        // if let cacheDirectory = path() {
         var cacheFileUrl = URL(fileURLWithPath: cacheDirectory as String)
         
         if Aerial.helper.underCompanion {

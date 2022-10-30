@@ -221,13 +221,13 @@ class AdvancedViewController: NSViewController {
     }
 
     @IBAction func showLogInFinderClick(_ sender: Any) {
-        let logfile = appSupportPath().appending("/AerialLog.txt")
+        let logfile = Cache.supportPath.appending("/AerialLog.txt")
 
         // If we don't have a log, just show the folder
         if FileManager.default.fileExists(atPath: logfile) == false {
-            NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: appSupportPath())
+            NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: Cache.supportPath)
         } else {
-            NSWorkspace.shared.selectFile(logfile, inFileViewerRootedAtPath: appSupportPath())
+            NSWorkspace.shared.selectFile(logfile, inFileViewerRootedAtPath: Cache.supportPath)
         }
     }
 
