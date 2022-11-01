@@ -17,8 +17,75 @@ class WeatherLayer: AnimationLayer {
 
     var cscale: CGFloat?
 
-    var cachedWeather: OWeather?
-    var cachedForecast: ForecastElement?
+    private static let cachedWeatherURL = URL(fileURLWithPath: Cache.supportPath, isDirectory: true).appendingPathComponent("Weather.json")
+    private static let cachedWeatherForecastURL = URL(fileURLWithPath: Cache.supportPath, isDirectory: true).appendingPathComponent("Forecast.json")
+    private static let cachedWeatherUpdateInterval: TimeInterval = 60 * 15
+
+    var cachedWeather: OWeather? {
+        get {
+            let fm = FileManager.default
+            guard fm.fileExists(atPath: WeatherLayer.cachedWeatherURL.path) else { return nil }
+            do {
+                guard let date = try fm.attributesOfItem(atPath: WeatherLayer.cachedWeatherURL.path)[.modificationDate] as? Date else {
+                    assertionFailure("Couldn't get modificationDate from File System!")
+                    return nil
+                }
+                // Make sure the cache was written in the last "update interval" seconds, otherwise download now
+                guard date >= Date().addingTimeInterval(-WeatherLayer.cachedWeatherUpdateInterval) else { return nil }
+                let data = try Data(contentsOf: WeatherLayer.cachedWeatherURL)
+                let result = try JSONDecoder().decode(OWeather.self, from: data)
+                return result
+            } catch {
+                // Handle error
+                assertionFailure("Error decoding Weather: \(error.localizedDescription)")
+                return nil
+            }
+        }
+        set {
+            do {
+                guard let newValue else { /* Don't store nil */ return }
+                let data = try JSONEncoder().encode(newValue)
+                try FileManager.default.createDirectory(atPath: Cache.supportPath, withIntermediateDirectories: true)
+                try data.write(to: Self.cachedWeatherURL)
+            } catch {
+                // Handle error
+                assertionFailure("Error encoding Weather: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    var cachedForecast: ForecastElement? {
+        get {
+            let fm = FileManager.default
+            guard fm.fileExists(atPath: WeatherLayer.cachedWeatherForecastURL.path) else { return nil }
+            do {
+                guard let date = try fm.attributesOfItem(atPath: WeatherLayer.cachedWeatherForecastURL.path)[.modificationDate] as? Date else {
+                 assertionFailure("Couldn't get modificationDate from File System!")
+                 return nil
+                }
+                // Make sure the cache was written in the last "update interval" seconds, otherwise download now
+                guard date >= Date().addingTimeInterval(-WeatherLayer.cachedWeatherUpdateInterval) else { return nil }
+                let data = try Data(contentsOf: WeatherLayer.cachedWeatherForecastURL)
+                let result = try JSONDecoder().decode(ForecastElement.self, from: data)
+                return result
+            } catch {
+                // Handle error
+                assertionFailure("Error decoding Weather: \(error.localizedDescription)")
+                return nil
+            }
+        }
+        set {
+            do {
+                guard let newValue else { /* Don't store nil */ return }
+                let data = try JSONEncoder().encode(newValue)
+                try FileManager.default.createDirectory(atPath: Cache.supportPath, withIntermediateDirectories: true)
+                try data.write(to: Self.cachedWeatherForecastURL)
+            } catch {
+                // Handle error
+                assertionFailure("Error encoding Weather: \(error.localizedDescription)")
+            }
+        }
+    }
 
     override init(layer: Any) {
         super.init(layer: layer)
@@ -71,41 +138,43 @@ class WeatherLayer: AnimationLayer {
             wasSetup = true
             frame.size = CGSize(width: 100, height: 1)
             update()
-            if PrefsInfo.weather.mode == .current {
-                if cachedWeather != nil {
-                    displayWeatherBlock()
-                } else {
-                    OpenWeather.fetch { result in
-                        switch result {
-                        case .success(let openWeather):
-                            self.cachedWeather = openWeather
-                            self.displayWeatherBlock()
-                        case .failure(let error):
-                            debugLog(error.localizedDescription)
-                        }
+        }
+        
+        if PrefsInfo.weather.mode == .current {
+            if cachedWeather != nil {
+                displayWeatherBlock()
+            } else {
+                print("fetching")
+                OpenWeather.fetch { result in
+                    switch result {
+                    case .success(let openWeather):
+                        self.cachedWeather = openWeather
+                        self.displayWeatherBlock()
+                    case .failure(let error):
+                        debugLog(error.localizedDescription)
                     }
                 }
+            }
+        } else {
+            if cachedForecast != nil && cachedWeather != nil {
+                displayWeatherBlock()
             } else {
-                if cachedForecast != nil {
-                    displayWeatherBlock()
-                } else {
-                    Forecast.fetch { result in
-                        switch result {
-                        case .success(let openWeather):
-                            self.cachedForecast = openWeather
-                            // self.displayWeatherBlock()
-                            OpenWeather.fetch { result in
-                                switch result {
-                                case .success(let openWeather):
-                                    self.cachedWeather = openWeather
-                                    self.displayWeatherBlock()
-                                case .failure(let error):
-                                    debugLog(error.localizedDescription)
-                                }
+                Forecast.fetch { result in
+                    switch result {
+                    case .success(let openWeather):
+                        self.cachedForecast = openWeather
+                        // self.displayWeatherBlock()
+                        OpenWeather.fetch { result in
+                            switch result {
+                            case .success(let openWeather):
+                                self.cachedWeather = openWeather
+                                self.displayWeatherBlock()
+                            case .failure(let error):
+                                debugLog(error.localizedDescription)
                             }
-                        case .failure(let error):
-                            debugLog(error.localizedDescription)
                         }
+                    case .failure(let error):
+                        debugLog(error.localizedDescription)
                     }
                 }
             }
@@ -117,6 +186,11 @@ class WeatherLayer: AnimationLayer {
             errorLog("No weather info in dWB please report")
             return
         }
+        
+        todayCond?.removeFromSuperlayer()
+        todayCond = nil
+        forecastCond?.removeFromSuperlayer()
+        forecastCond = nil
 
         if PrefsInfo.weather.mode == .current {
             todayCond = ConditionLayer(condition: cachedWeather!, scale: contentsScale)

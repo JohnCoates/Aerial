@@ -105,6 +105,25 @@ class InfoWeatherView: NSView {
     }
 
     @IBAction func testLocationButtonClick(_ sender: NSButton) {
+        // Clear out weather from existing location
+        let cachedWeatherURL = URL(fileURLWithPath: Cache.supportPath, isDirectory: true).appendingPathComponent("Weather.json")
+        let cachedWeatherForecastURL = URL(fileURLWithPath: Cache.supportPath, isDirectory: true).appendingPathComponent("Forecast.json")
+        let fm = FileManager.default
+        
+        // Clear out current weather
+        if fm.fileExists(atPath: cachedWeatherURL.path){
+            do {
+                try fm.removeItem(atPath: cachedWeatherURL.path)
+            } catch {}
+        }
+        
+        // Clear out forecast
+        if fm.fileExists(atPath: cachedWeatherForecastURL.path) {
+            do {
+                try fm.removeItem(atPath: cachedWeatherForecastURL.path)
+            } catch {}
+        }
+        
         if PrefsInfo.weather.mode == .current {
             OpenWeather.fetch { result in
                 switch result {
