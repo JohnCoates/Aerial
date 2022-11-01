@@ -184,24 +184,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         
         debugLog("\(self.description) deinit AerialView")
         NotificationCenter.default.removeObserver(self)
-
-        // set player item to nil if not preview player
-        if player != AerialView.previewPlayer {
-            player?.rate = 0
-            player?.replaceCurrentItem(with: nil)
-        }
-
-        guard let player = self.player else {
-            return
-        }
-
-        // Remove from player index
-        let indexMaybe = AerialView.players.firstIndex(of: player)
-
-        guard let index = indexMaybe else {
-            return
-        }
-        AerialView.players.remove(at: index)
     }
 
     func ensureCorrectFormat() {
@@ -431,8 +413,35 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                 brightnessToRestore = nil
             }
         }
+        
+        teardown()
     }
 
+    func teardown() {
+        // Remove notifications observer
+        clearNotifications()
+        // Clear layer animations
+        clearAllLayerAnimations()
+        
+
+
+        guard let player = self.player else {
+            return
+        }
+        // Remove from player index
+        let indexMaybe = AerialView.players.firstIndex(of: player)
+
+        guard let index = indexMaybe else {
+            return
+        }
+        AerialView.players.remove(at: index)
+        
+        // Remove any download
+        VideoManager.sharedInstance.cancelAll()
+        
+        debugLog("end teardown")
+    }
+    
     // Wait for the player to be ready
     // swiftlint:disable:next block_based_kvo
     internal override func observeValue(forKeyPath keyPath: String?,
@@ -479,9 +488,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     }
 
     func clearNotifications() {
-        let notificationCenter = NotificationCenter.default
-
-        notificationCenter.removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
+        DistributedNotificationCenter.default.removeObserver(self)
     }
     
     func setNotifications(_ currentItem: AVPlayerItem) {

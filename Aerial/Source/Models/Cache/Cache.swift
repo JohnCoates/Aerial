@@ -703,14 +703,14 @@ struct Cache {
             return
         }
 
-        debugLog("Looking for hidden videos to delete...")
+
         // Step 1 : Delete hidden videos
+        debugLog("Looking for hidden videos to delete...")
         for video in VideoList.instance.videos.filter({ PrefsVideos.hidden.contains($0.id) && $0.isAvailableOffline }) {
             debugLog("Deleting hidden video \(video.secondaryName)")
             do {
                 let path = VideoList.instance.localPathFor(video: video)
                 try FileManager.default.removeItem(atPath: path)
-                // try FileManager.default.removeItem(atPath: VideoCache.cachePath(forVideo: video)!)
             } catch {
                 errorLog("Could not delete video : \(video.secondaryName)")
             }

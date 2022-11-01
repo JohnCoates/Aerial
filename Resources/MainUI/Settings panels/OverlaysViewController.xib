@@ -1068,15 +1068,15 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <textFieldCell key="cell" selectable="YES" id="yQd-AC-jyQ">
                         <font key="font" metaFont="message" size="11"/>
-                        <string key="title">Aerial uses OpenWeather's API to retrieve and display current conditions and forecasts. In order for this to work, you will need to specify your location. There are two ways to do that:
+                        <mutableString key="title">Aerial uses OpenWeather's API to retrieve and display current conditions and forecasts. In order for this to work, you will need to specify your location. There are two ways to do that:
 
-- Manually specify : Simply enter your location (the name of your city, followed by a state abbreviation or country, such as "Paris, FR" or "Cupertino, CA".
+- Manually specify : Simply enter your location as the name of your city, followed by a country abbreviation. To avoid disambiguation, you can also add a state when applicable (e.g. Cupertino, CA, USA).
 
 - Use current location : For this to work, Aerial will ask your mac for your current location, which is provided by macOS location services. This information is then sent to OpenWeather's API to retrieve conditions to the city closest to the location specified. 
 
 For privacy reasons, the coordinates of your location are rounded to two decimals, leaving a precision of about 1 km. Please note that you will need to allow Aerial to use location services for this to work. In macOS Big Sur, please navigate to System Preferences &gt; Security &amp; Privacy &gt; Privacy &gt; Location Services and enable "legacyScreenSaver"
 
-Independant of your choice, you can preview the results using the "Test" button below. </string>
+Independant of your choice, you can preview the results using the "Test" button below. </mutableString>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
