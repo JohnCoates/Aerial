@@ -786,7 +786,7 @@
             <point key="canvasLocation" x="-840" y="950"/>
         </customView>
         <customView id="cmR-hZ-0Fe" customClass="InfoWeatherView" customModule="Aerial" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="615" height="238"/>
+            <rect key="frame" x="0.0" y="0.0" width="607" height="238"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MMI-hf-gCZ">
@@ -847,7 +847,7 @@
                     </connections>
                 </popUpButton>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iha-a4-YZ0">
-                    <rect key="frame" x="150" y="55" width="250" height="22"/>
+                    <rect key="frame" x="150" y="28" width="250" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="R0K-YM-KCz"/>
                     </constraints>
@@ -879,7 +879,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YAo-Tv-Uqc">
-                    <rect key="frame" x="148" y="22" width="60" height="17"/>
+                    <rect key="frame" x="148" y="66" width="60" height="17"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Location" id="bJ3-TA-jEX">
                         <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -887,7 +887,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bjs-UA-NkK">
-                    <rect key="frame" x="410" y="44" width="60" height="40"/>
+                    <rect key="frame" x="410" y="17" width="60" height="40"/>
                     <buttonCell key="cell" type="push" title="Test" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="R2U-fT-M9o">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system" size="14"/>
@@ -985,23 +985,36 @@
                         <action selector="windModePopupChange:" target="cmR-hZ-0Fe" id="9L4-KH-j8G"/>
                     </connections>
                 </popUpButton>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bNY-ba-zAN">
+                    <rect key="frame" x="410" y="53" width="60" height="40"/>
+                    <buttonCell key="cell" type="push" title="Test" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MQl-am-qpj">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system" size="14"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="testLocationButtonClick:" target="cmR-hZ-0Fe" id="5tn-aF-cIg"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="pj2-sU-RdG" firstAttribute="leading" secondItem="cmR-hZ-0Fe" secondAttribute="leading" constant="150" id="0Xb-xb-X37"/>
                 <constraint firstItem="RHF-CV-kHu" firstAttribute="firstBaseline" secondItem="AwV-pQ-aIV" secondAttribute="firstBaseline" id="0ke-ET-5TC"/>
+                <constraint firstAttribute="bottom" secondItem="Iha-a4-YZ0" secondAttribute="bottom" constant="28" id="1Cr-Er-TSV"/>
                 <constraint firstItem="Mkb-6F-RoA" firstAttribute="centerY" secondItem="mY1-Rf-ATP" secondAttribute="centerY" id="1ma-7S-i3c"/>
                 <constraint firstItem="RHF-CV-kHu" firstAttribute="leading" secondItem="AwV-pQ-aIV" secondAttribute="trailing" constant="8" symbolic="YES" id="55P-58-zSr"/>
                 <constraint firstItem="bc1-t5-1U8" firstAttribute="firstBaseline" secondItem="HYQ-NB-LAH" secondAttribute="firstBaseline" id="6hW-15-kmK"/>
                 <constraint firstItem="IcH-dE-weS" firstAttribute="centerY" secondItem="mY1-Rf-ATP" secondAttribute="centerY" id="9wu-pE-9qR"/>
-                <constraint firstItem="YAo-Tv-Uqc" firstAttribute="top" secondItem="Iha-a4-YZ0" secondAttribute="bottom" constant="16" id="FSf-xy-kLq"/>
+                <constraint firstItem="Bjs-UA-NkK" firstAttribute="leading" secondItem="bNY-ba-zAN" secondAttribute="leading" id="Dda-k4-lAg"/>
                 <constraint firstItem="IcH-dE-weS" firstAttribute="leading" secondItem="mY1-Rf-ATP" secondAttribute="trailing" constant="16" id="KVz-2F-Ywe"/>
                 <constraint firstItem="Bjs-UA-NkK" firstAttribute="firstBaseline" secondItem="Iha-a4-YZ0" secondAttribute="firstBaseline" id="NcH-eI-YXf"/>
-                <constraint firstAttribute="bottom" secondItem="YAo-Tv-Uqc" secondAttribute="bottom" constant="22" id="OQk-H9-hcb"/>
                 <constraint firstItem="pj2-sU-RdG" firstAttribute="leading" secondItem="2t2-hO-9s4" secondAttribute="trailing" constant="8" symbolic="YES" id="UoE-Qs-rDe"/>
                 <constraint firstItem="pj2-sU-RdG" firstAttribute="top" secondItem="bc1-t5-1U8" secondAttribute="bottom" constant="22" id="VFg-oP-Sko"/>
                 <constraint firstItem="Iha-a4-YZ0" firstAttribute="leading" secondItem="mY1-Rf-ATP" secondAttribute="leading" id="VpP-3w-IfX"/>
                 <constraint firstItem="pj2-sU-RdG" firstAttribute="firstBaseline" secondItem="2t2-hO-9s4" secondAttribute="firstBaseline" id="W0Z-0G-B4r"/>
+                <constraint firstItem="Iha-a4-YZ0" firstAttribute="top" secondItem="YAo-Tv-Uqc" secondAttribute="bottom" constant="16" id="XoV-EV-HdV"/>
                 <constraint firstItem="WWH-eQ-q01" firstAttribute="leading" secondItem="pj2-sU-RdG" secondAttribute="trailing" constant="16" id="Y0e-TM-gEL"/>
+                <constraint firstItem="bNY-ba-zAN" firstAttribute="firstBaseline" secondItem="YAo-Tv-Uqc" secondAttribute="firstBaseline" id="Y4u-4I-CMb"/>
+                <constraint firstAttribute="trailing" secondItem="RHF-CV-kHu" secondAttribute="trailing" constant="20" symbolic="YES" id="ZTg-EU-eaJ"/>
                 <constraint firstItem="Bjs-UA-NkK" firstAttribute="leading" secondItem="Iha-a4-YZ0" secondAttribute="trailing" constant="16" id="a8B-LT-Hyr"/>
                 <constraint firstItem="WWH-eQ-q01" firstAttribute="firstBaseline" secondItem="2t2-hO-9s4" secondAttribute="firstBaseline" id="ajl-lj-fIR"/>
                 <constraint firstItem="mY1-Rf-ATP" firstAttribute="firstBaseline" secondItem="MMI-hf-gCZ" secondAttribute="firstBaseline" id="b32-yY-EYf"/>
@@ -1009,6 +1022,7 @@
                 <constraint firstItem="YAo-Tv-Uqc" firstAttribute="leading" secondItem="pj2-sU-RdG" secondAttribute="leading" id="dEX-ar-esy"/>
                 <constraint firstItem="bc1-t5-1U8" firstAttribute="top" secondItem="cmR-hZ-0Fe" secondAttribute="top" constant="11" id="goN-cl-mTb"/>
                 <constraint firstItem="mY1-Rf-ATP" firstAttribute="top" secondItem="pj2-sU-RdG" secondAttribute="bottom" constant="22" id="hAF-di-mQj"/>
+                <constraint firstItem="YAo-Tv-Uqc" firstAttribute="top" secondItem="mY1-Rf-ATP" secondAttribute="bottom" constant="16" id="ozH-g8-m6T"/>
                 <constraint firstItem="bc1-t5-1U8" firstAttribute="leading" secondItem="cmR-hZ-0Fe" secondAttribute="leading" constant="150" id="pK0-iw-Xk1"/>
                 <constraint firstItem="ebH-Dw-L7o" firstAttribute="firstBaseline" secondItem="bc1-t5-1U8" secondAttribute="firstBaseline" id="qZ7-Ig-09D"/>
                 <constraint firstItem="mY1-Rf-ATP" firstAttribute="leading" secondItem="MMI-hf-gCZ" secondAttribute="trailing" constant="8" symbolic="YES" id="qnP-7u-9Q2"/>
@@ -1017,7 +1031,6 @@
                 <constraint firstItem="AwV-pQ-aIV" firstAttribute="firstBaseline" secondItem="bc1-t5-1U8" secondAttribute="firstBaseline" id="uA7-mp-p8r"/>
                 <constraint firstItem="AwV-pQ-aIV" firstAttribute="leading" secondItem="ebH-Dw-L7o" secondAttribute="trailing" constant="8" symbolic="YES" id="wOj-jz-TQm"/>
                 <constraint firstItem="mY1-Rf-ATP" firstAttribute="leading" secondItem="pj2-sU-RdG" secondAttribute="leading" id="wRg-i3-SDF"/>
-                <constraint firstItem="Iha-a4-YZ0" firstAttribute="top" secondItem="mY1-Rf-ATP" secondAttribute="bottom" constant="22" id="wTP-Q2-JTQ"/>
             </constraints>
             <connections>
                 <outlet property="degreePopup" destination="WWH-eQ-q01" id="B2k-uQ-E2L"/>
@@ -1025,13 +1038,15 @@
                 <outlet property="locationLabel" destination="YAo-Tv-Uqc" id="jJh-Rf-hes"/>
                 <outlet property="locationMode" destination="mY1-Rf-ATP" id="cyu-zj-MhQ"/>
                 <outlet property="locationString" destination="Iha-a4-YZ0" id="sPk-Q8-AeX"/>
+                <outlet property="testButtonCity" destination="Bjs-UA-NkK" id="kOw-sj-cIg"/>
+                <outlet property="testButtonLocation" destination="bNY-ba-zAN" id="huz-8U-PYz"/>
                 <outlet property="weatherModePopup" destination="bc1-t5-1U8" id="fdu-1l-38L"/>
                 <outlet property="windModePopup" destination="mol-HY-dqc" id="ayQ-ey-ltt"/>
                 <outlet property="withCity" destination="RHF-CV-kHu" id="LEZ-uQ-BY2"/>
                 <outlet property="withHumidity" destination="AwV-pQ-aIV" id="oVr-Gy-RqA"/>
                 <outlet property="withWind" destination="ebH-Dw-L7o" id="YZW-Ts-hNB"/>
             </connections>
-            <point key="canvasLocation" x="-108.5" y="1401"/>
+            <point key="canvasLocation" x="-112.5" y="1401"/>
         </customView>
         <window title="Weather preview" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="T1o-cz-8zC" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES" utility="YES" HUD="YES"/>

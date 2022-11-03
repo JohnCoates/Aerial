@@ -230,7 +230,7 @@ class TimeViewController: NSViewController {
 
         location.getCoordinates(failure: { (_) in
             // swiftlint:disable:next line_length
-            Aerial.helper.showInfoAlert(title: "Could not get your location", text: "Make sure you enabled location services on your Mac (and Wi-Fi!), and that Aerial (or legacyScreenSaver on macOS 10.15 and later) is allowed to use your location.", button1: "OK", caution: true)
+            Aerial.helper.showInfoAlert(title: "Could not get your location", text: "Make sure you enabled location services on your Mac (and Wi-Fi!), and that Aerial (or legacyScreenSaver on macOS 10.15 and later) is allowed to use your location. If you use Aerial Companion, you will also need also allow location services for it.", button1: "OK", caution: true)
         }, success: { (coordinates) in
             let lat = String(format: "%.2f", coordinates.latitude)
             let lon = String(format: "%.2f", coordinates.longitude)

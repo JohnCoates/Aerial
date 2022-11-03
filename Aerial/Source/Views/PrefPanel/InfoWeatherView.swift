@@ -21,6 +21,9 @@ class InfoWeatherView: NSView {
 
     @IBOutlet var windModePopup: NSPopUpButton!
 
+    @IBOutlet weak var testButtonLocation: NSButton!
+    @IBOutlet weak var testButtonCity: NSButton!
+
     // Init(ish)
     func setStates() {
         locationMode.selectItem(at: PrefsInfo.weather.locationMode.rawValue)
@@ -58,6 +61,20 @@ class InfoWeatherView: NSView {
 
     @IBAction func locationModeChange(_ sender: NSPopUpButton) {
         PrefsInfo.weather.locationMode = InfoLocationMode(rawValue: sender.indexOfSelectedItem)!
+        
+        if PrefsInfo.weather.locationMode == .useCurrent {
+            // Get the location
+            let location = Locations.sharedInstance
+
+            location.getCoordinates(failure: { (_) in
+                // swiftlint:disable:next line_length
+                Aerial.helper.showInfoAlert(title: "Could not get your location", text: "Make sure you enabled location services on your Mac (and Wi-Fi!), and that Aerial (or legacyScreenSaver on macOS 10.15 and later) is allowed to use your location. If you use Aerial Companion, you will also need also allow location services for it.", button1: "OK", caution: true)
+            }, success: { (coordinates) in
+                self.locationLabel.stringValue = "Location found (\(String(format: "%.2f", coordinates.latitude)), \(String(format: "%.2f", coordinates.longitude)))"
+                
+            })
+        }
+        
         updateLocationMode()
     }
 
@@ -79,10 +96,12 @@ class InfoWeatherView: NSView {
     func updateLocationMode() {
         if PrefsInfo.weather.locationMode == .manuallySpecify {
             locationString.isHidden = false
-            // locationLabel.isHidden = true
+            testButtonLocation.isHidden = true
+            testButtonCity.isHidden = false
         } else {
             locationString.isHidden = true
-            // locationLabel.isHidden = false
+            testButtonLocation.isHidden = false
+            testButtonCity.isHidden = true
         }
     }
 
