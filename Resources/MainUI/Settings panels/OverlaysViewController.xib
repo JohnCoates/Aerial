@@ -786,7 +786,7 @@
             <point key="canvasLocation" x="-840" y="950"/>
         </customView>
         <customView id="cmR-hZ-0Fe" customClass="InfoWeatherView" customModule="Aerial" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="580" height="238"/>
+            <rect key="frame" x="0.0" y="0.0" width="615" height="238"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MMI-hf-gCZ">
@@ -1031,7 +1031,7 @@
                 <outlet property="withHumidity" destination="AwV-pQ-aIV" id="oVr-Gy-RqA"/>
                 <outlet property="withWind" destination="ebH-Dw-L7o" id="YZW-Ts-hNB"/>
             </connections>
-            <point key="canvasLocation" x="-126" y="1401"/>
+            <point key="canvasLocation" x="-108.5" y="1401"/>
         </customView>
         <window title="Weather preview" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="T1o-cz-8zC" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES" utility="YES" HUD="YES"/>
@@ -1070,7 +1070,7 @@
                         <font key="font" metaFont="message" size="11"/>
                         <mutableString key="title">Aerial uses OpenWeather's API to retrieve and display current conditions and forecasts. In order for this to work, you will need to specify your location. There are two ways to do that:
 
-- Manually specify : Simply enter your location as the name of your city, followed by a country abbreviation. To avoid disambiguation, you can also add a state when applicable (e.g. Cupertino, CA, USA).
+- Manually specify : Simply enter your location as the name of your city, followed by a country abbreviation. In the United States, to remove ambiguity, you can also add a state abbreviation  (e.g. Cupertino, CA, US).
 
 - Use current location : For this to work, Aerial will ask your mac for your current location, which is provided by macOS location services. This information is then sent to OpenWeather's API to retrieve conditions to the city closest to the location specified. 
 
