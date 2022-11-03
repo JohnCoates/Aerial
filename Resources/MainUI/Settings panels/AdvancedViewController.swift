@@ -240,22 +240,37 @@ class AdvancedViewController: NSViewController {
 
             let process: Process = Process()
 
-            debugLog("clearing defaults")
+            debugLog("clearing old defaults")
             process.launchPath = "/usr/bin/defaults"
 
-            // Settings may be stored in a container... unless we run under companion ! What a mess...
+            // First remove old ByHost settings
             if #available(OSX 10.15, *) {
-                if Aerial.helper.underCompanion {
-                    process.arguments = ["-currentHost", "delete", "com.JohnCoates.Aerial"]
-                } else {
-                    process.arguments = ["-currentHost", "delete", "~/Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver/Data/Library/Preferences/ByHost/com.JohnCoates.Aerial"]
-                }
+                process.arguments = ["-currentHost", "delete", Aerial.helper.getPreferencesDirectory() + "ByHost/com.JohnCoates.Aerial"]
             } else {
                 process.arguments = ["-currentHost", "delete", "com.JohnCoates.Aerial"]
             }
 
             process.launch()
             process.waitUntilExit()
+
+            let process2: Process = Process()
+
+            debugLog("clearing new defaults")
+            process2.launchPath = "/usr/bin/defaults"
+
+            // First remove old ByHost settings
+            if #available(OSX 10.15, *) {
+                process2.arguments = ["delete", Aerial.helper.getPreferencesDirectory() + "com.glouel.Aerial"]
+            } else {
+                process2.arguments = ["delete", "com.glouel.Aerial"]
+            }
+
+            process2.launch()
+            process2.waitUntilExit()
+
+            
+            
+            
 
             Aerial.helper.showInfoAlert(title: "Settings reset to defaults", text: "Your settings were reset to defaults. \n\nPlease close Aerial and System Preferences in order to reload them.")
         }
