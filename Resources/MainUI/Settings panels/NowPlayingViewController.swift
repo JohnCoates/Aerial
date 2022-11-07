@@ -44,10 +44,7 @@ class NowPlayingViewController: NSViewController {
         // Reflect on UI
         currentlySelectedPopupButton.selectItem(at: PrefsVideos.intNewShouldPlay)
 
-        if PrefsVideos.newShouldPlayString.isEmpty {
-            print("empty, selecting all")
-            selectAllClick(selectAllButton!)
-        }
+
 
         // Now update the UI
         reloadSources()
@@ -57,10 +54,16 @@ class NowPlayingViewController: NSViewController {
         playingCollectionView.dataSource = self
         playingCollectionView.wantsLayer = true
 
+
+        
         VideoList.instance.addCallback {
             debugLog("NPrs")
             self.reloadSources()
             self.updateStatusBar()
+            
+            if self.isSelectionEmpty() {
+                self.selectAllClick(self.selectAllButton!)
+            }
         }
     }
 
@@ -86,8 +89,28 @@ class NowPlayingViewController: NSViewController {
         updateCurrentSource()
         reloadSources()
         updateStatusBar()
+        
+        if self.isSelectionEmpty() {
+            self.selectAllClick(self.selectAllButton!)
+        }
     }
 
+    func isSelectionEmpty() -> Bool {
+        let subSources = VideoList.instance.getSources(mode: currentSource)
+
+        let mode = String(describing: currentSource) + ":"
+
+        for source in subSources {
+            let path = mode + source
+            if PrefsVideos.newShouldPlayString.contains(path) {
+                return false
+            }
+        }
+        
+        return true
+    }
+    
+    
     @IBAction func selectAllClick(_ sender: Any) {
         let subSources = VideoList.instance.getSources(mode: currentSource)
 
