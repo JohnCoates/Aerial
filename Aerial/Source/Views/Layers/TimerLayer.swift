@@ -92,12 +92,18 @@ class TimerLayer: AnimationTextLayer {
             if Date() > endTime! && PrefsInfo.timer.disableWhenElapsed {
                 // Disabling for next launch
                 PrefsInfo.timer.isEnabled = false
+            }
 
+            
+            if Date() > endTime! {
                 // We may show a message when the timer is elapsed
                 if PrefsInfo.timer.replaceWithMessage {
                     return PrefsInfo.timer.customMessage
                 }
             }
+            
+            
+            
 
             return dateComponentsFormatter.string(from: Date(), to: endTime!) ?? ""
         } else {

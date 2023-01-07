@@ -83,7 +83,7 @@ final class PoiStringProvider {
         }
 
         if let sb = Bundle.init(path: bundlePath) {
-            let dictPath = Cache.supportPath.appending("/tvOS 13/TVIdleScreenStrings.bundle/en.lproj/Localizable.nocache.strings")
+            let dictPath = Cache.supportPath.appending("/tvOS 16/TVIdleScreenStrings.bundle/en.lproj/Localizable.nocache.strings")
 
             // We could probably only work with that...
             if let sd = NSDictionary(contentsOfFile: dictPath) as? [String: String] {
