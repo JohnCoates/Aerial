@@ -1052,9 +1052,9 @@
 		03958348217F4416008E8F9C /* Solar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solar.swift; sourceTree = "<group>"; };
 		0395835121807D1F008E8F9C /* thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail@2x.png"; sourceTree = "<group>"; };
 		0395835221807D1F008E8F9C /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail.png; sourceTree = "<group>"; };
-		0396D50624B8B7D700CC021B /* AerialApp copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "AerialApp copy-Info.plist"; path = "/Users/glouel/GLDev/AerialNew/Aerial/AerialApp copy-Info.plist"; sourceTree = "<absolute>"; };
+		0396D50624B8B7D700CC021B /* AerialApp copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AerialApp copy-Info.plist"; sourceTree = "<group>"; };
 		0396D5B524B8B7ED00CC021B /* Aerial (low dependencies).saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aerial (low dependencies).saver"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0396D5B624B8B7EE00CC021B /* Aerial copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Aerial copy-Info.plist"; path = "/Users/glouel/GLDev/AerialNew/Aerial/Aerial copy-Info.plist"; sourceTree = "<absolute>"; };
+		0396D5B624B8B7EE00CC021B /* Aerial copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Aerial copy-Info.plist"; sourceTree = "<group>"; };
 		03977EE2250E6917008FBAFD /* sv.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sv.json; sourceTree = "<group>"; };
 		03977EE3250E6917008FBAFD /* ja.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ja.json; sourceTree = "<group>"; };
 		03977EE4250E6917008FBAFD /* pt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pt.json; sourceTree = "<group>"; };
