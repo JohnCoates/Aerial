@@ -13,6 +13,8 @@ import Foundation
 // and still let them be used for everyone in the officially distributed Aerial.
 
 struct APISecrets {
+    static let appleMusicToken = "all"
+    static let openWeatherAppId = "secrets"
     static let yahooAppId = "intentionally"
     static let yahooClientId = "left"
     static let yahooClientSecret = "empty!"
