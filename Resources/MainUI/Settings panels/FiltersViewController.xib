@@ -84,7 +84,7 @@
                     </constraints>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JZe-5t-O4C">
-                    <rect key="frame" x="127" y="413" width="686" height="17"/>
+                    <rect key="frame" x="116" y="413" width="686" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Vibrance lets you adjust the colors of videos to make them pop more. This is not available for HDR videos." id="SB0-6z-9YD">
                         <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -92,7 +92,7 @@
                     </textFieldCell>
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="NWx-XD-ael">
-                    <rect key="frame" x="97" y="410" width="24" height="24"/>
+                    <rect key="frame" x="86" y="410" width="24" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="DfM-Cy-mvh"/>
                         <constraint firstAttribute="width" constant="24" id="qKd-mm-nDx"/>
@@ -139,7 +139,7 @@
                 <constraint firstItem="gp8-EJ-ObO" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="6gz-Aq-vNN"/>
                 <constraint firstItem="JZe-5t-O4C" firstAttribute="leading" secondItem="NWx-XD-ael" secondAttribute="trailing" constant="8" symbolic="YES" id="8Hn-KI-4jF"/>
                 <constraint firstItem="Lkf-KS-VPB" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="150" id="9iW-YK-N19"/>
-                <constraint firstItem="NWx-XD-ael" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="97" id="Egc-rM-AaO"/>
+                <constraint firstItem="NWx-XD-ael" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="86" id="Egc-rM-AaO"/>
                 <constraint firstItem="oaK-yX-Fb3" firstAttribute="leading" secondItem="0GU-RH-zJp" secondAttribute="trailing" constant="8" id="GCR-JE-7tQ"/>
                 <constraint firstItem="Lkf-KS-VPB" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="60" id="MFl-gR-4Cv"/>
                 <constraint firstItem="7rn-od-imW" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="16" id="UdV-Sj-pRV"/>
