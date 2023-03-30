@@ -23,10 +23,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Y1q-aR-nvJ">
-                                <rect key="frame" x="0.0" y="21" width="794" height="492"/>
+                                <rect key="frame" x="0.0" y="-17" width="794" height="530"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="ReU-xc-cMA">
-                                        <rect key="frame" x="198" y="421" width="504" height="51"/>
+                                        <rect key="frame" x="198" y="459" width="504" height="51"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="500" id="GtJ-bZ-C8o"/>
                                         </constraints>
@@ -40,7 +40,7 @@ Since version 1.4, Aerial is developed and maintained by Guillaume Louel.</strin
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gv6-y0-c1S">
-                                        <rect key="frame" x="194" y="-3" width="135" height="40"/>
+                                        <rect key="frame" x="194" y="35" width="135" height="40"/>
                                         <buttonCell key="cell" type="push" title="Contact us here" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a1o-SL-FaN">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system" size="14"/>
@@ -50,7 +50,7 @@ Since version 1.4, Aerial is developed and maintained by Guillaume Louel.</strin
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hEl-hg-Xq5">
-                                        <rect key="frame" x="194" y="367" width="142" height="40"/>
+                                        <rect key="frame" x="194" y="405" width="142" height="40"/>
                                         <buttonCell key="cell" type="push" title="Visit our Website" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8Qc-M5-TLV">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system" size="14"/>
@@ -60,7 +60,7 @@ Since version 1.4, Aerial is developed and maintained by Guillaume Louel.</strin
                                         </connections>
                                     </button>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wpw-1v-dic">
-                                        <rect key="frame" x="198" y="47" width="311" height="306"/>
+                                        <rect key="frame" x="198" y="85" width="311" height="306"/>
                                         <textFieldCell key="cell" selectable="YES" id="sP2-o5-2MT">
                                             <font key="font" metaFont="system" size="14"/>
                                             <string key="title">Translations contributed by:
@@ -86,7 +86,7 @@ Want to help with translations?</string>
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2zM-0X-9R0">
-                                        <rect key="frame" x="363" y="-3" width="133" height="40"/>
+                                        <rect key="frame" x="363" y="35" width="133" height="40"/>
                                         <buttonCell key="cell" type="push" title="Hop on Discord" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KmS-rN-Kxf">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system" size="14"/>
@@ -96,7 +96,7 @@ Want to help with translations?</string>
                                         </connections>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ohW-uj-N2U">
-                                        <rect key="frame" x="337" y="10" width="18" height="17"/>
+                                        <rect key="frame" x="337" y="48" width="18" height="17"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="or" id="PRg-cf-Ee8">
                                             <font key="font" metaFont="system" size="14"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -104,7 +104,7 @@ Want to help with translations?</string>
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J7J-2w-Ik9">
-                                        <rect key="frame" x="340" y="367" width="220" height="40"/>
+                                        <rect key="frame" x="340" y="405" width="220" height="40"/>
                                         <buttonCell key="cell" type="push" title="Visit the GitHub Project Page" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HmR-fK-HDO">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system" size="14"/>
@@ -126,7 +126,7 @@ Want to help with translations?</string>
                                     <constraint firstItem="2zM-0X-9R0" firstAttribute="firstBaseline" secondItem="Gv6-y0-c1S" secondAttribute="firstBaseline" id="UxQ-eg-aLW"/>
                                     <constraint firstItem="Gv6-y0-c1S" firstAttribute="leading" secondItem="wpw-1v-dic" secondAttribute="leading" id="eZZ-wK-odk"/>
                                     <constraint firstItem="J7J-2w-Ik9" firstAttribute="firstBaseline" secondItem="hEl-hg-Xq5" secondAttribute="firstBaseline" id="hIM-b9-aY1"/>
-                                    <constraint firstAttribute="height" constant="492" id="j93-s5-71V"/>
+                                    <constraint firstAttribute="height" constant="530" id="j93-s5-71V"/>
                                     <constraint firstItem="J7J-2w-Ik9" firstAttribute="leading" secondItem="hEl-hg-Xq5" secondAttribute="trailing" constant="16" id="m9w-Gb-5AR"/>
                                     <constraint firstItem="Gv6-y0-c1S" firstAttribute="top" secondItem="wpw-1v-dic" secondAttribute="bottom" constant="16" id="nFt-Zo-mMV"/>
                                     <constraint firstItem="hEl-hg-Xq5" firstAttribute="top" secondItem="ReU-xc-cMA" secondAttribute="bottom" constant="20" id="yh4-bS-5yh"/>
@@ -143,7 +143,7 @@ Want to help with translations?</string>
                         <rect key="frame" x="1" y="514" width="794" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="34h-Lz-aVs">
+                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="34h-Lz-aVs">
                         <rect key="frame" x="795" y="1" width="15" height="513"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
