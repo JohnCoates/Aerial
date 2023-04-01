@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -40,18 +40,17 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="805" height="877"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="811" height="530"/>
             <subviews>
-                <scrollView autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zk3-dp-nQh">
-                    <rect key="frame" x="0.0" y="33" width="180" height="790"/>
-                    <clipView key="contentView" drawsBackground="NO" id="3a0-nz-lxc">
-                        <rect key="frame" x="1" y="1" width="178" height="788"/>
+                <scrollView ambiguous="YES" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zk3-dp-nQh">
+                    <rect key="frame" x="0.0" y="-284" width="180" height="760"/>
+                    <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="3a0-nz-lxc">
+                        <rect key="frame" x="1" y="1" width="178" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="gvl-yV-dFx">
-                                <rect key="frame" x="0.0" y="0.0" width="178" height="788"/>
+                            <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="gvl-yV-dFx">
+                                <rect key="frame" x="0.0" y="0.0" width="178" height="758"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -150,7 +149,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <scrollView autohidesScrollers="YES" horizontalLineScroll="31" horizontalPageScroll="10" verticalLineScroll="31" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yug-di-Rrj">
+                <scrollView ambiguous="YES" autohidesScrollers="YES" horizontalLineScroll="31" horizontalPageScroll="10" verticalLineScroll="31" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yug-di-Rrj">
                     <rect key="frame" x="0.0" y="0.0" width="180" height="33"/>
                     <clipView key="contentView" id="cUU-VJ-Apk">
                         <rect key="frame" x="1" y="1" width="178" height="31"/>
@@ -215,7 +214,7 @@
                     </scroller>
                 </scrollView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gfE-bm-FTe">
-                    <rect key="frame" x="52" y="844" width="363" height="17"/>
+                    <rect key="frame" x="52" y="497" width="363" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Select which information should be overlayed on videos" id="dKT-nu-F64">
                         <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -223,7 +222,7 @@
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="25" verticalHuggingPriority="25" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" translatesAutoresizingMaskIntoConstraints="NO" id="sjm-7w-iIw">
-                    <rect key="frame" x="16" y="827" width="28" height="45"/>
+                    <rect key="frame" x="16" y="480" width="28" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="34" id="2fL-xS-TE1"/>
                         <constraint firstAttribute="width" constant="28" id="LVM-ht-Vpd"/>
@@ -234,28 +233,28 @@
                     <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
                 </imageView>
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMA-U2-JnG">
-                    <rect key="frame" x="188" y="0.0" width="617" height="823"/>
+                    <rect key="frame" x="188" y="0.0" width="623" height="476"/>
                     <clipView key="contentView" id="xUv-v2-rf1">
-                        <rect key="frame" x="1" y="1" width="615" height="821"/>
+                        <rect key="frame" x="1" y="1" width="606" height="459"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view id="y2b-67-Tqj" customClass="InfoContainerView" customModule="Aerial" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="806"/>
+                                <rect key="frame" x="0.0" y="-362" width="600" height="806"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </view>
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="aWh-xa-Re2">
-                        <rect key="frame" x="1" y="806" width="615" height="16"/>
+                        <rect key="frame" x="1" y="460" width="606" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="fWU-BK-uie">
-                        <rect key="frame" x="600" y="1" width="16" height="821"/>
+                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="fWU-BK-uie">
+                        <rect key="frame" x="607" y="1" width="15" height="459"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
                 <button toolTip="Enable or disable this overlay" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9LV-pU-dEq">
-                    <rect key="frame" x="550" y="841.5" width="235" height="22"/>
+                    <rect key="frame" x="556" y="494.5" width="235" height="22"/>
                     <buttonCell key="cell" type="check" title="Hide overlays under Companion" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="CRS-jP-1XT">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system" size="14"/>
@@ -269,7 +268,9 @@
                 <constraint firstItem="sMA-U2-JnG" firstAttribute="leading" secondItem="Zk3-dp-nQh" secondAttribute="trailing" constant="8" symbolic="YES" id="0kC-0R-2xS"/>
                 <constraint firstItem="Zk3-dp-nQh" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="54" id="37G-4g-HfA"/>
                 <constraint firstItem="sjm-7w-iIw" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="4CX-Lg-Yzy"/>
+                <constraint firstAttribute="width" constant="811" id="7j7-8G-gbn"/>
                 <constraint firstAttribute="bottom" secondItem="Yug-di-Rrj" secondAttribute="bottom" id="IVW-7y-lBp"/>
+                <constraint firstAttribute="height" constant="530" id="JtC-54-lLc"/>
                 <constraint firstAttribute="bottom" secondItem="sMA-U2-JnG" secondAttribute="bottom" id="SCF-fS-589"/>
                 <constraint firstItem="Zk3-dp-nQh" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="SR5-Ta-E7l"/>
                 <constraint firstItem="9LV-pU-dEq" firstAttribute="firstBaseline" secondItem="gfE-bm-FTe" secondAttribute="firstBaseline" id="Twx-LD-P0d"/>
@@ -1052,7 +1053,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES" utility="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="272" y="172" width="673" height="487"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2056" height="1285"/>
             <view key="contentView" id="Raj-x7-cvl">
                 <rect key="frame" x="0.0" y="0.0" width="673" height="487"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -1083,7 +1084,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <textFieldCell key="cell" selectable="YES" id="yQd-AC-jyQ">
                         <font key="font" metaFont="message" size="11"/>
-                        <mutableString key="title">Aerial uses OpenWeather's API to retrieve and display current conditions and forecasts. In order for this to work, you will need to specify your location. There are two ways to do that:
+                        <string key="title">Aerial uses OpenWeather's API to retrieve and display current conditions and forecasts. In order for this to work, you will need to specify your location. There are two ways to do that:
 
 - Manually specify : Simply enter your location as the name of your city, followed by a country abbreviation. In the United States, to remove ambiguity, you can also add a state abbreviation  (e.g. Cupertino, CA, US).
 
@@ -1091,7 +1092,7 @@
 
 For privacy reasons, the coordinates of your location are rounded to two decimals, leaving a precision of about 1 km. Please note that you will need to allow Aerial to use location services for this to work. In macOS Big Sur, please navigate to System Preferences &gt; Security &amp; Privacy &gt; Privacy &gt; Location Services and enable "legacyScreenSaver"
 
-Independant of your choice, you can preview the results using the "Test" button below. </mutableString>
+Independant of your choice, you can preview the results using the "Test" button below. </string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -1191,7 +1192,7 @@ Independant of your choice, you can preview the results using the "Test" button 
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VqT-6u-vi8">
-                    <rect key="frame" x="150" y="52" width="147" height="22"/>
+                    <rect key="frame" x="150" y="52" width="151" height="22"/>
                     <datePickerCell key="cell" controlSize="large" borderStyle="bezel" alignment="left" id="SqO-Mg-AO0">
                         <font key="font" metaFont="system" size="14"/>
                         <date key="date" timeIntervalSinceReferenceDate="616845641.97237301">
@@ -1258,7 +1259,7 @@ Independant of your choice, you can preview the results using the "Test" button 
                     </connections>
                 </button>
                 <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VCk-nf-BTu">
-                    <rect key="frame" x="290" y="9" width="147" height="22"/>
+                    <rect key="frame" x="290" y="9" width="151" height="22"/>
                     <datePickerCell key="cell" controlSize="large" borderStyle="bezel" alignment="left" id="d1w-rW-mhy">
                         <font key="font" metaFont="system" size="14"/>
                         <date key="date" timeIntervalSinceReferenceDate="616845641.97390699">
@@ -1305,15 +1306,15 @@ Independant of your choice, you can preview the results using the "Test" button 
                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vn-TO-wUI">
                     <rect key="frame" x="150" y="20" width="410" height="108"/>
                     <clipView key="contentView" drawsBackground="NO" id="Ax6-3Y-Vnl">
-                        <rect key="frame" x="0.0" y="0.0" width="410" height="108"/>
+                        <rect key="frame" x="0.0" y="0.0" width="395" height="108"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="ehG-nq-Wse">
-                                <rect key="frame" x="0.0" y="0.0" width="410" height="108"/>
+                                <rect key="frame" x="0.0" y="0.0" width="395" height="108"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="410" height="108"/>
+                                <size key="minSize" width="395" height="108"/>
                                 <size key="maxSize" width="420" height="10000000"/>
                                 <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             </textView>

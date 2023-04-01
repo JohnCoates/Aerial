@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,10 +22,10 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="800" height="500"/>
+            <rect key="frame" x="0.0" y="0.0" width="811" height="530"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rTv-ct-a72">
-                    <rect key="frame" x="197" y="420.5" width="274" height="22"/>
+                    <rect key="frame" x="197" y="450.5" width="274" height="22"/>
                     <string key="toolTip">If enabled, Aerial will lower your screen brightness to your desired setting, and fade it progressively until your Mac goes to sleep</string>
                     <buttonCell key="cell" type="check" title="Lower brightness while playing videos" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="kxF-VJ-OEL">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -36,7 +36,7 @@
                     </connections>
                 </button>
                 <button toolTip="Check if you only want to enable the brightness dimming at night" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MXe-aq-z27">
-                    <rect key="frame" x="197" y="261.5" width="212" height="22"/>
+                    <rect key="frame" x="197" y="291.5" width="212" height="22"/>
                     <buttonCell key="cell" type="check" title="Only dim brightness at night" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="G4I-F0-Kzd">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system" size="14"/>
@@ -46,7 +46,7 @@
                     </connections>
                 </button>
                 <button toolTip="Check if you only want to enable the brightness dimming when on battery" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E0D-Qf-cW9">
-                    <rect key="frame" x="197" y="222.5" width="229" height="22"/>
+                    <rect key="frame" x="197" y="252.5" width="229" height="22"/>
                     <buttonCell key="cell" type="check" title="Only dim brightness on battery" bezelStyle="regularSquare" imagePosition="left" controlSize="large" inset="2" id="SLW-yU-xBg">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system" size="14"/>
@@ -56,7 +56,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NR2-tO-ywP">
-                    <rect key="frame" x="198" y="303" width="263" height="17"/>
+                    <rect key="frame" x="198" y="333" width="263" height="17"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Your Mac currently goes to sleeep after:" id="Mjm-0D-ERr">
                         <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -64,7 +64,7 @@
                     </textFieldCell>
                 </textField>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zjp-n9-q99">
-                    <rect key="frame" x="198" y="375" width="254" height="28"/>
+                    <rect key="frame" x="198" y="405" width="254" height="28"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="36E-yk-7Ut"/>
                     </constraints>
@@ -74,7 +74,7 @@
                     </connections>
                 </slider>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ek8-ut-oUM">
-                    <rect key="frame" x="120" y="384" width="74" height="17"/>
+                    <rect key="frame" x="120" y="414" width="74" height="17"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Start from:" id="rv9-0q-qqD">
                         <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -82,7 +82,7 @@
                     </textFieldCell>
                 </textField>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gQf-ZQ-hsb">
-                    <rect key="frame" x="198" y="336" width="254" height="28"/>
+                    <rect key="frame" x="198" y="366" width="254" height="28"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="pzV-rb-8Bf"/>
                     </constraints>
@@ -92,7 +92,7 @@
                     </connections>
                 </slider>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eei-VX-faK">
-                    <rect key="frame" x="137" y="345" width="57" height="17"/>
+                    <rect key="frame" x="137" y="375" width="57" height="17"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Fade to:" id="uHK-Ny-zuZ">
                         <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -100,7 +100,7 @@
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="25" verticalHuggingPriority="25" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" translatesAutoresizingMaskIntoConstraints="NO" id="1kt-MQ-sfT">
-                    <rect key="frame" x="16" y="451" width="28.5" height="45"/>
+                    <rect key="frame" x="16" y="481" width="28.5" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="34" id="5Fh-5p-q6e"/>
                         <constraint firstAttribute="width" constant="28" id="vON-4g-3J9"/>
@@ -111,7 +111,7 @@
                     <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
                 </imageView>
                 <textField horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="egg-ke-irR">
-                    <rect key="frame" x="52" y="467" width="323" height="17"/>
+                    <rect key="frame" x="52" y="497" width="323" height="17"/>
                     <textFieldCell key="cell" selectable="YES" title="Brightness control only works with Apple displays" id="kxG-OU-XlP">
                         <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -121,14 +121,14 @@
             </subviews>
             <constraints>
                 <constraint firstItem="1kt-MQ-sfT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="1LD-kO-PJh"/>
-                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="500" id="7sz-u7-UwO"/>
                 <constraint firstItem="egg-ke-irR" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="54" id="8ai-jg-xw5"/>
                 <constraint firstItem="rTv-ct-a72" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="200" id="BNx-o2-9C2"/>
                 <constraint firstItem="NR2-tO-ywP" firstAttribute="top" secondItem="gQf-ZQ-hsb" secondAttribute="bottom" constant="22" id="CPh-k4-TCP"/>
                 <constraint firstItem="MXe-aq-z27" firstAttribute="leading" secondItem="rTv-ct-a72" secondAttribute="leading" id="Ix6-zz-1ID"/>
-                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="800" id="N84-iE-AgY"/>
                 <constraint firstItem="gQf-ZQ-hsb" firstAttribute="firstBaseline" secondItem="eei-VX-faK" secondAttribute="firstBaseline" id="PKu-cX-kOM"/>
                 <constraint firstItem="MXe-aq-z27" firstAttribute="top" secondItem="NR2-tO-ywP" secondAttribute="bottom" constant="22" id="ROm-s0-lZ4"/>
+                <constraint firstAttribute="width" constant="811" id="RRk-SS-lUC"/>
+                <constraint firstAttribute="height" constant="530" id="RmM-Qs-DF8"/>
                 <constraint firstItem="E0D-Qf-cW9" firstAttribute="top" secondItem="MXe-aq-z27" secondAttribute="bottom" constant="22" id="bpJ-kA-ASb"/>
                 <constraint firstItem="Zjp-n9-q99" firstAttribute="leading" secondItem="ek8-ut-oUM" secondAttribute="trailing" constant="8" symbolic="YES" id="eLX-Fd-iZi"/>
                 <constraint firstItem="Zjp-n9-q99" firstAttribute="firstBaseline" secondItem="ek8-ut-oUM" secondAttribute="firstBaseline" id="g2a-t0-dpw"/>

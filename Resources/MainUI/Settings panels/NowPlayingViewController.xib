@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,12 +26,11 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="813" height="451"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="813" height="530"/>
             <subviews>
                 <box boxType="custom" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="IHM-F7-zr4">
-                    <rect key="frame" x="0.0" y="398" width="813" height="53"/>
+                    <rect key="frame" x="0.0" y="477" width="813" height="53"/>
                     <view key="contentView" id="XKz-3o-YVR">
                         <rect key="frame" x="0.0" y="0.0" width="813" height="53"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -250,13 +249,13 @@
                     </constraints>
                 </box>
                 <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vb7-sF-TVC">
-                    <rect key="frame" x="0.0" y="28" width="813" height="370"/>
+                    <rect key="frame" x="0.0" y="28" width="813" height="449"/>
                     <clipView key="contentView" drawsBackground="NO" id="jH8-m2-LRr">
-                        <rect key="frame" x="0.0" y="0.0" width="813" height="370"/>
+                        <rect key="frame" x="0.0" y="0.0" width="813" height="449"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView selectable="YES" allowsMultipleSelection="YES" id="a8I-YB-mVT" customClass="NowPlayingCollectionView" customModule="Aerial" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="813" height="370"/>
+                                <rect key="frame" x="0.0" y="0.0" width="813" height="449"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="30" minimumLineSpacing="10" id="6f2-wF-zBT">
                                     <size key="itemSize" width="192" height="149"/>
@@ -278,6 +277,7 @@
                 </scrollView>
             </subviews>
             <constraints>
+                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="811" id="2Se-bJ-T8d"/>
                 <constraint firstItem="vb7-sF-TVC" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="7PC-FR-Je6"/>
                 <constraint firstAttribute="trailing" secondItem="52T-Wt-jny" secondAttribute="trailing" id="9ur-Ty-2ev"/>
                 <constraint firstItem="IHM-F7-zr4" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="E0C-eb-Lh7"/>
@@ -287,6 +287,7 @@
                 <constraint firstItem="IHM-F7-zr4" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Jsc-0n-uHI"/>
                 <constraint firstItem="vb7-sF-TVC" firstAttribute="top" secondItem="IHM-F7-zr4" secondAttribute="bottom" id="M32-MY-0FX"/>
                 <constraint firstItem="52T-Wt-jny" firstAttribute="top" secondItem="vb7-sF-TVC" secondAttribute="bottom" id="edY-Od-c2Z"/>
+                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="530" id="njX-74-hPd"/>
                 <constraint firstItem="52T-Wt-jny" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="r8z-IZ-lcg"/>
             </constraints>
             <point key="canvasLocation" x="267.5" y="253.5"/>
