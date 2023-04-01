@@ -9,9 +9,9 @@ If none of this fixes your issue, tell us about the problem you are experiencing
 
 #### Required information
 In order to help us sort your issue, we ask that you provide the following information:
-- [ ] Mac model:
+- [ ] Mac model: 
 - [ ] macOS version: 
-- [ ] Monitor setup:
+- [ ] Monitor setup: 
 
 If appropriate, please enable `Debug mode` and `Log to disk` in `Advanced` tab and replicate your bug, then attach the `AerialLog.txt` file (You can access this file through the Advanced tab).
 
