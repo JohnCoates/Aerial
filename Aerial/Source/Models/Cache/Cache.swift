@@ -622,7 +622,7 @@ struct Cache {
                 formatter.locale = Locale.current // USA: Locale(identifier: "en_US")
                 formatter.numberStyle = .decimal
                 let result = formatter.string(from: NSNumber(value: PrefsCache.cacheLimit.rounded(toPlaces: 1)))!
-                print(result)   // -> US$9,999.99
+                //print(result)   // -> US$9,999.99
                 
                 if !Aerial.helper.showAlert(question: "Your cache is full",
                                             text: "Your cache limit is currently set to \(result) GB, and currently contains \(Cache.sizeString()) of files.\n\n Do you want to proceed with the download anyway?\n\nYou can manually increase or decrease your cache size in Settings > Cache.",

@@ -183,12 +183,12 @@ import Cocoa
 
     // Switch from one source to another
     func switchTo(_ path: String) {
-        print("switch to :" + path)
+        //print("switch to :" + path)
 
         guard let currentPath = currentPath,
               let videosVC = videosVC,
               path != currentPath else {
-            print("switch init issue")
+            //print("switch init issue")
             return
         }
 

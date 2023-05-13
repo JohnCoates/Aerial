@@ -118,7 +118,7 @@ class NowPlayingViewController: NSViewController {
 
         for source in subSources {
             let path = mode + source
-            print(path)
+
             if !PrefsVideos.newShouldPlayString.contains(path) {
                 PrefsVideos.newShouldPlayString.append(path)
             }
@@ -127,7 +127,6 @@ class NowPlayingViewController: NSViewController {
     }
 
     @IBAction func statusHiddenVideoButtonClick(_ sender: Any) {
-        print("Hidden B")
         Aerial.helper.windowController?.browseTo("hidden:0")
     }
    

@@ -165,13 +165,12 @@ class VideosViewController: NSViewController {
 
             let subpath = path.split(separator: ":")[1]
 
-            print(subpath)
+            //print(subpath)
 
             // Very unswift
             var index = 0
             for item in VideoList.instance.getSources(mode: foundMode) {
                 if subpath == item {
-                    print(index)
                     rotationSecondaryPopup.selectItem(at: index)
                     rotationSecondaryPopupChange(rotationSecondaryPopup)
                 }
@@ -183,7 +182,6 @@ class VideosViewController: NSViewController {
     /// Reload the video view for a given path
     func reloadFor(path: String) {
         self.path = path
-        print("rf " + self.path!)
 
         updateRotationMenu()
         updateRuntimeLabel()
@@ -275,8 +273,6 @@ class VideosViewController: NSViewController {
             mode = "all"
         }
 
-        print("rpc " + mode!)
-
         // Cascade to a secondary popup for the various filters
         if mode == "all" || mode == "favorites" || mode == "hidden" {
             rotationSecondaryPopup.isHidden = true
@@ -286,15 +282,12 @@ class VideosViewController: NSViewController {
             rotationSecondaryPopup.isHidden = false
             updateRotationSecondaryMenu()
         }
-
-        // print(path!)
     }
 
     /// Secondary popup change event
     @IBAction func rotationSecondaryPopupChange(_ sender: NSPopUpButton) {
         // PrefsVideos.shouldPlayString = sender.selectedItem!.title
         path = mode! + ":\(sender.indexOfSelectedItem)"
-        print(path!)
         reloadFor(path: path!)
     }
 
@@ -335,7 +328,6 @@ class VideosViewController: NSViewController {
             // PrefsVideos.shouldPlayString = rotationSecondaryPopup.itemTitle(at: 0)
             rotationSecondaryPopup.selectItem(at: 0)
             path = mode! + ":0"
-            print(path!)
             reloadFor(path: path!)
         }
     }
@@ -407,6 +399,10 @@ class VideosViewController: NSViewController {
 
     /// Show video player
     func showVideo(_ video: AerialVideo) {
+        playbackSpeedLabel.isHidden = false
+        playbackSpeedSlider.isHidden = false
+
+        
         heroPlayerView.isHidden = false
         heroImageView.isHidden = true
         isCachedImageView.isHidden = false
@@ -582,7 +578,7 @@ class VideosViewController: NSViewController {
                     }
                 } else {
                     // all
-                    print(VideoList.instance.videos.count)
+                    //print(VideoList.instance.videos.count)
                     if VideoList.instance.videos.count > 0 {
                         return VideoList.instance.videos
                             .filter({ !PrefsVideos.hidden.contains($0.id) })
@@ -687,7 +683,7 @@ extension VideosViewController: NSTableViewDataSource {
             return 0
         }
 
-        print("nor path : " + path)
+        //print("nor path : " + path)
 
         if let mode = VideoList.instance.modeFromPath(path) {
             let index = Int(path.split(separator: ":")[1])!
@@ -705,7 +701,7 @@ extension VideosViewController: NSTableViewDelegate {
             return nil
         }
 
-        print("tv path : " + path)
+        //print("tv path : " + path)
 
         var video: AerialVideo
         if let mode = VideoList.instance.modeFromPath(path) {

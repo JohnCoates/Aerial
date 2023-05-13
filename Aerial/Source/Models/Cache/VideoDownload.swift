@@ -48,7 +48,7 @@ final class VideoDownload: NSObject, NSURLConnectionDataDelegate {
     }
 
     deinit {
-        print("deinit VideoDownload")
+        //print("deinit VideoDownload")
     }
 
     func startDownload() {

@@ -177,10 +177,11 @@ class VideoList {
                 filters.append(afilter.lowercased())
             }
         }
-        print("Filters :")
+
+        /*print("Filters :")
         for filter in filters {
             print(filter)
-        }
+        }*/
 
         /*print("Videos : ")
         for video in videos {

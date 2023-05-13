@@ -35,13 +35,10 @@ class PlayingCollectionViewItem: NSCollectionViewItem {
     
     
     @IBAction func browseButton(_ sender: Any) {
-        print("browse button")
-        print(hiddenPath.stringValue)
         Aerial.helper.windowController?.browseTo(hiddenPath.stringValue)
     }
     
     @IBAction func mainImageClick(_ sender: NSButton) {
-        print("click in")
         let path = hiddenPath.stringValue
         
         if checkImageButton.state == .on {
@@ -63,7 +60,6 @@ class PlayingCollectionViewItem: NSCollectionViewItem {
         }
     }
     @IBAction func imageButtonClick(_ sender: NSButton) {
-        print("click")
         let path = hiddenPath.stringValue
         
         if sender.state == .on {

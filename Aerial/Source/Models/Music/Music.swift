@@ -234,7 +234,7 @@ class Music {
                 songId = fetchId(id: userInfo["Store URL"] as! String)
             }
 
-            print(userInfo)
+            //print(userInfo)
 
             // Let everyone who wants to know that we have a new song playing !
             for callback in callbacks {
@@ -244,7 +244,7 @@ class Music {
     }
 
     @objc func spotifyCallback(_ aNotification: Notification) {
-        print(aNotification)
+        //print(aNotification)
         var album = ""
         var name = ""
         var artist = ""
@@ -297,7 +297,7 @@ class Music {
 
                     guard let artworkUrl = spotifySong.thumbnailURL else {
                         debugLog("No artwork in SpotifySong")
-                        print(spotifySong)
+                        //print(spotifySong)
                         completion(nil)
                         return
                     }

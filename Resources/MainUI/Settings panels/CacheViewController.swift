@@ -114,7 +114,7 @@ class CacheViewController: NSViewController {
         let usedCache = Cache.size()
         let packsSize = Cache.packsSize()
 
-        print("pack size : \(packsSize)")
+        //print("pack size : \(packsSize)")
 
         var maxCache = PrefsCache.cacheLimit
         var freeCache = usedCache > maxCache ? 0 : maxCache - usedCache
