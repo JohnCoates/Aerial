@@ -341,6 +341,13 @@ class VideoList {
             }
         }
 
+        for source in SourceList.list {
+            if source.type == .local {
+                debugLog("\(source.name) updating local source")
+                SourceList.updateLocalSource(source: source, reload: false)
+            }
+        }
+
         if !sourceQueue.isEmpty {
             // Now queue and download
             for source in sourceQueue {
@@ -414,6 +421,12 @@ class VideoList {
             return filteredVideosFor(mode, filter: PrefsVideos.newShouldPlayString)
         }
     }
+    
+    func everythingRotation() -> [AerialVideo] {
+        return videos
+            .filter({ !PrefsVideos.hidden.contains($0.id) })
+            .sorted { $0.secondaryName < $1.secondaryName }
+    }
 
     // MARK: - Playlist management
     func generatePlaylist(isRestricted: Bool, restrictedTo: String, isVertical: Bool) {
@@ -424,9 +437,16 @@ class VideoList {
         playlistRestrictedTo = restrictedTo
         playlistHasVerticalVideos = false
 
-        let shuffled = currentRotation().shuffled()
+        var shuffled = currentRotation().shuffled()
+
+        // If we have nothing, just get everything
+        if shuffled.count == 0 {
+            shuffled = everythingRotation().shuffled()
+        }
+        
         let cachedShuffled = shuffled.filter({ $0.isAvailableOffline })
 
+        
         debugLog("Playlist raw count: \(shuffled.count) raw cached count \(cachedShuffled.count) isRestricted: \(isRestricted) restrictedTo: \(restrictedTo)")
 
         if PrefsDisplays.viewingMode == .independent && PrefsAdvanced.favorOrientation {

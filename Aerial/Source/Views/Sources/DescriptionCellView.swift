@@ -74,7 +74,7 @@ class DescriptionCellView: NSTableCellView {
                 VideoList.instance.downloadSource(source: source)
             } else if source.type == .local {
                 debugLog("Checking local directory")
-                SourceList.updateLocalSource(source: source)
+                SourceList.updateLocalSource(source: source, reload: true)
             } else {
                 debugLog("Refreshing non-cacheable source")
                 VideoList.instance.downloadSource(source: source)

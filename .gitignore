@@ -8,3 +8,4 @@ DerivedData/
 release/
 debug.plist
 Examples/debug.html
+Aerial/Source/Models/API/APISecrets.swift

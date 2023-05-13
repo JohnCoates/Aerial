@@ -220,7 +220,7 @@ struct SourceList {
         }
     }
 
-    static func updateLocalSource(source: Source) {
+    static func updateLocalSource(source: Source, reload: Bool) {
         // We need the raw manifest to find the path inside
         let videos = source.getUnprocessedVideos()
 
@@ -257,7 +257,9 @@ struct SourceList {
 
                 SourceList.saveEntries(source: source, manifest: videoManifest)
 
-                VideoList.instance.reloadSources()
+                if reload {
+                    VideoList.instance.reloadSources()
+                }
             } catch {
                 errorLog("Could not process directory")
             }

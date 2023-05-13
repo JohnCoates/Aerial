@@ -208,7 +208,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                 // This will lead to crashing in up to Ventura beta5 so disable
                 let debugTextView = NSTextView(frame: bounds.insetBy(dx: 20, dy: 20))
                 debugTextView.font = .labelFont(ofSize: 10)
-                debugTextView.string += "Preview is disabled on Ventura beta"
+                debugTextView.string += "HDR Previews hidden on Ventura"
                 isDisabled = true
                 
                 self.addSubview(debugTextView)
