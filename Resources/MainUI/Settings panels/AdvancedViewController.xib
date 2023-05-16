@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -242,7 +242,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <button toolTip="Built in videos don't have sound, but your local videos may have" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c2Y-BQ-Mg9">
-                                        <rect key="frame" x="315" y="359.5" width="186" height="22"/>
+                                        <rect key="frame" x="315" y="359.5" width="185" height="22"/>
                                         <buttonCell key="cell" type="check" title="Mute sound from videos" bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="MCe-Ny-bEH">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system" size="14"/>
@@ -371,8 +371,11 @@
                                             <action selector="highQualityTextClick:" target="-2" id="sph-zs-yx2"/>
                                         </connections>
                                     </button>
-                                    <button toolTip="Built in videos don't have sound, but your local videos may have" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xqc-uN-D8Z">
+                                    <button toolTip="Built in videos don't have sound, but your local videos may have" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xqc-uN-D8Z">
                                         <rect key="frame" x="315" y="322.5" width="185" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="182" id="9dy-qP-jAn"/>
+                                        </constraints>
                                         <buttonCell key="cell" type="check" title="Mute all macOS sounds " bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="NR5-1m-1M0">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system" size="14"/>
@@ -383,6 +386,7 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="xqc-uN-D8Z" firstAttribute="centerX" secondItem="c2Y-BQ-Mg9" secondAttribute="centerX" id="18W-Sd-zDg"/>
                                     <constraint firstItem="ueZ-L1-tKm" firstAttribute="leading" secondItem="TLS-nM-OqY" secondAttribute="leading" constant="318" id="2du-ua-F9P"/>
                                     <constraint firstItem="xFh-dw-fup" firstAttribute="top" secondItem="39U-7I-fEm" secondAttribute="bottom" constant="15" id="31H-kh-2K3"/>
                                     <constraint firstItem="tVO-Se-9Jo" firstAttribute="leading" secondItem="TLS-nM-OqY" secondAttribute="leading" constant="318" id="4V4-C7-nck"/>
@@ -418,6 +422,7 @@
                                     <constraint firstItem="xFh-dw-fup" firstAttribute="leading" secondItem="TLS-nM-OqY" secondAttribute="leading" constant="318" id="YpY-4H-bmB"/>
                                     <constraint firstItem="2PZ-3t-5f8" firstAttribute="firstBaseline" secondItem="XOJ-kW-rZe" secondAttribute="firstBaseline" id="ZIP-Lp-oBA"/>
                                     <constraint firstItem="D6x-HI-azM" firstAttribute="leading" secondItem="c2Y-BQ-Mg9" secondAttribute="leading" id="d69-7p-N5D"/>
+                                    <constraint firstItem="xqc-uN-D8Z" firstAttribute="leading" secondItem="c2Y-BQ-Mg9" secondAttribute="leading" id="dyP-Ph-BD4"/>
                                     <constraint firstItem="8lj-ap-GSr" firstAttribute="centerY" secondItem="tVO-Se-9Jo" secondAttribute="centerY" id="eN7-IJ-hRs"/>
                                     <constraint firstItem="tVO-Se-9Jo" firstAttribute="firstBaseline" secondItem="iIR-49-5le" secondAttribute="firstBaseline" id="gox-MD-zsu"/>
                                     <constraint firstItem="vm9-LJ-GN6" firstAttribute="top" secondItem="xFh-dw-fup" secondAttribute="bottom" constant="22" id="iOb-2A-mIE"/>
@@ -444,7 +449,7 @@
                         <rect key="frame" x="1" y="460" width="794" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="68Y-fx-VNM">
+                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.88741721854304634" horizontal="NO" id="68Y-fx-VNM">
                         <rect key="frame" x="795" y="1" width="15" height="459"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
