@@ -42,13 +42,13 @@
             <rect key="frame" x="0.0" y="0.0" width="811" height="530"/>
             <subviews>
                 <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" transparent="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yjL-IP-0lB">
-                    <rect key="frame" x="0.0" y="476" width="811" height="54"/>
+                    <rect key="frame" x="0.0" y="477" width="811" height="53"/>
                     <view key="contentView" id="dCt-bT-aI2">
-                        <rect key="frame" x="0.0" y="0.0" width="811" height="54"/>
+                        <rect key="frame" x="0.0" y="0.0" width="811" height="53"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nh1-WW-nno">
-                                <rect key="frame" x="52" y="21" width="201" height="17"/>
+                                <rect key="frame" x="52" y="20" width="201" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Advanced settings and tweaks" id="c2R-sQ-75h">
                                     <font key="font" metaFont="system" size="14"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -56,9 +56,9 @@
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="25" verticalHuggingPriority="25" horizontalCompressionResistancePriority="75" verticalCompressionResistancePriority="75" translatesAutoresizingMaskIntoConstraints="NO" id="DXq-Fc-PfV">
-                                <rect key="frame" x="16" y="3" width="28.5" height="48"/>
+                                <rect key="frame" x="16" y="3" width="28.5" height="47"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="ARg-Kb-f9i"/>
+                                    <constraint firstAttribute="height" constant="33" id="ARg-Kb-f9i"/>
                                     <constraint firstAttribute="width" constant="28" id="oGg-16-n2o"/>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="Sil-Pd-Bb1">
@@ -76,17 +76,17 @@
                         </constraints>
                     </view>
                     <constraints>
-                        <constraint firstAttribute="height" constant="54" id="IkD-6U-Zm8"/>
+                        <constraint firstAttribute="height" constant="53" id="IkD-6U-Zm8"/>
                     </constraints>
                 </box>
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ha-9D-VMf">
-                    <rect key="frame" x="0.0" y="0.0" width="811" height="476"/>
+                    <rect key="frame" x="0.0" y="0.0" width="811" height="478"/>
                     <clipView key="contentView" id="EPP-mS-BQX">
-                        <rect key="frame" x="1" y="1" width="794" height="459"/>
+                        <rect key="frame" x="1" y="1" width="794" height="461"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="TLS-nM-OqY">
-                                <rect key="frame" x="0.0" y="-151" width="794" height="610"/>
+                                <rect key="frame" x="0.0" y="-149" width="794" height="610"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XOJ-kW-rZe">
                                         <rect key="frame" x="227" y="519" width="85" height="17"/>
@@ -447,11 +447,11 @@
                         </constraints>
                     </clipView>
                     <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="lDZ-9J-IhM">
-                        <rect key="frame" x="1" y="460" width="794" height="15"/>
+                        <rect key="frame" x="1" y="462" width="794" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.88741721854304634" horizontal="NO" id="68Y-fx-VNM">
-                        <rect key="frame" x="795" y="1" width="15" height="459"/>
+                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.88590604026845643" horizontal="NO" id="68Y-fx-VNM">
+                        <rect key="frame" x="795" y="1" width="15" height="461"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -464,7 +464,7 @@
                 <constraint firstAttribute="trailing" secondItem="6Ha-9D-VMf" secondAttribute="trailing" id="Uso-hM-AE1"/>
                 <constraint firstItem="6Ha-9D-VMf" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="frS-XR-hBo"/>
                 <constraint firstAttribute="width" constant="811" id="vRh-gY-tbC"/>
-                <constraint firstItem="6Ha-9D-VMf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="54" id="x9a-eL-C0V"/>
+                <constraint firstItem="6Ha-9D-VMf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="52" id="x9a-eL-C0V"/>
                 <constraint firstAttribute="bottom" secondItem="6Ha-9D-VMf" secondAttribute="bottom" id="yNI-0k-oeK"/>
             </constraints>
             <point key="canvasLocation" x="-92.5" y="372"/>
