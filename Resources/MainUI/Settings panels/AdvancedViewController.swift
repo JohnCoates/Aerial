@@ -14,6 +14,8 @@ class AdvancedViewController: NSViewController {
     var windowController: PanelWindowController?
     var firstSetupWindowController: FirstSetupWindowController?
 
+    @IBOutlet var scrollView: NSScrollView!
+    
     @IBOutlet var popoverVideoFormat: NSPopover!
 
     @IBOutlet var popoverH264Indicator: NSButton!
@@ -52,6 +54,8 @@ class AdvancedViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        scrollView.contentView.scroll(NSMakePoint(0,0))
+        
         // HEVC is available only in macOS 10.13+
         if #available(OSX 10.13, *) {
             videoFormatPopup.selectItem(at: PrefsVideos.videoFormat.rawValue)

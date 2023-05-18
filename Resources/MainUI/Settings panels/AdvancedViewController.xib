@@ -29,6 +29,7 @@
                 <outlet property="popoverOnBattery" destination="r9v-NK-gTh" id="EFa-81-wtw"/>
                 <outlet property="popoverVideoFormat" destination="Tj3-h3-vJZ" id="gyC-Rd-Wyw"/>
                 <outlet property="rightArrowSkipCheckbox" destination="4zW-Lf-b41" id="4zo-2D-C0S"/>
+                <outlet property="scrollView" destination="6Ha-9D-VMf" id="I3d-Mi-ww1"/>
                 <outlet property="showLogButton" destination="Dka-WL-c4U" id="hrx-cM-lP4"/>
                 <outlet property="videoFadesPopup" destination="2PZ-3t-5f8" id="I6x-56-bNY"/>
                 <outlet property="videoFormatPopup" destination="tVO-Se-9Jo" id="SRl-pM-qxB"/>
