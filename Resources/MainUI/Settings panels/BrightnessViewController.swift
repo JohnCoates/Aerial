@@ -39,11 +39,13 @@ class BrightnessViewController: NSViewController {
         onlyDimAtNight.state = PrefsDisplays.dimOnlyAtNight ? .on : .off
         onlyDimOnBattery.state = PrefsDisplays.dimOnlyAtNight ? .on : .off
 
-        let sleepTime = TimeManagement.sharedInstance.getCurrentSleepTime()
-        if sleepTime != 0 {
-            sleepAfterLabel.stringValue = "Your Mac currently goes to sleep after \(sleepTime) minutes"
-        } else {
-            sleepAfterLabel.stringValue = "Unable to determine your Mac sleep settings"
+        DispatchQueue.main.async {
+            let sleepTime = TimeManagement.sharedInstance.getCurrentSleepTime()
+            if sleepTime != 0 {
+                self.sleepAfterLabel.stringValue = "Your Mac currently goes to sleep after \(sleepTime) minutes"
+            } else {
+                self.sleepAfterLabel.stringValue = "Unable to determine your Mac sleep settings"
+            }
         }
     }
 

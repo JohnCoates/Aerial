@@ -57,7 +57,9 @@ class TimeViewController: NSViewController {
         super.viewDidLoad()
 
         setupDarkMode()
-        setupNightShift()
+        DispatchQueue.main.async {
+            self.setupNightShift()
+        }
 
         if let dateSunrise = timeFormatter.date(from: PrefsTime.manualSunrise) {
             sunriseTime.dateValue = dateSunrise
