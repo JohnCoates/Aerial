@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22113.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22113.1"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,7 +35,7 @@
                         <action selector="vibranceSliderChange:" target="-2" id="MTm-nT-NgR"/>
                     </connections>
                 </slider>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0GU-RH-zJp">
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0GU-RH-zJp">
                     <rect key="frame" x="86" y="453" width="148" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Apply global vibrance:" id="EXk-cA-wlS">
                         <font key="font" metaFont="system" size="14"/>
@@ -83,7 +83,7 @@
                         <constraint firstAttribute="bottom" secondItem="AvL-Xc-gaf" secondAttribute="bottom" id="vzz-kL-8jN"/>
                     </constraints>
                 </customView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JZe-5t-O4C">
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JZe-5t-O4C">
                     <rect key="frame" x="116" y="413" width="686" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Vibrance lets you adjust the colors of videos to make them pop more. This is not available for HDR videos." id="SB0-6z-9YD">
                         <font key="font" metaFont="system" size="14"/>
@@ -93,16 +93,16 @@
                 </textField>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="NWx-XD-ael">
                     <rect key="frame" x="86" y="410" width="24" height="24"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="24" id="DfM-Cy-mvh"/>
-                        <constraint firstAttribute="width" constant="24" id="qKd-mm-nDx"/>
-                    </constraints>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="info.circle" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="qrp-00-xdz">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="DfM-Cy-mvh"/>
+                        <constraint firstAttribute="width" constant="24" id="qKd-mm-nDx"/>
+                    </constraints>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7rn-od-imW">
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7rn-od-imW">
                     <rect key="frame" x="52" y="497" width="363" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Select which information should be overlayed on videos" id="kZK-qe-87B">
                         <font key="font" metaFont="system" size="14"/>
@@ -144,8 +144,8 @@
                 <constraint firstItem="Lkf-KS-VPB" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="60" id="MFl-gR-4Cv"/>
                 <constraint firstItem="7rn-od-imW" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="16" id="UdV-Sj-pRV"/>
                 <constraint firstItem="oaK-yX-Fb3" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="60" id="WVf-Pi-IAW"/>
-                <constraint firstAttribute="height" constant="530" id="Xgc-7b-f5x"/>
-                <constraint firstAttribute="width" constant="811" id="ZZJ-S9-wPb"/>
+                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="530" id="Xgc-7b-f5x"/>
+                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="811" id="ZZJ-S9-wPb"/>
                 <constraint firstItem="oaK-yX-Fb3" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="240" id="bIs-qY-CO3"/>
                 <constraint firstAttribute="trailing" secondItem="Lkf-KS-VPB" secondAttribute="trailing" constant="60" id="dux-Td-5U0"/>
                 <constraint firstItem="JZe-5t-O4C" firstAttribute="top" secondItem="oaK-yX-Fb3" secondAttribute="bottom" constant="20" id="hFr-sk-O7a"/>

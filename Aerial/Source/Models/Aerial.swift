@@ -71,8 +71,8 @@ class Aerial: NSObject {
 
     func computeDarkMode(view: NSView) {
         if #available(OSX 10.14, *) {
-            debugLog("Best match appearance : \(view.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua]))")
-            debugLog("Effective Appearence : \(view.effectiveAppearance)")
+            //debugLog("Best match appearance : \(view.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua]))")
+            //debugLog("Effective Appearence : \(view.effectiveAppearance)")
             darkMode =  view.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua
         } else {
             darkMode = false

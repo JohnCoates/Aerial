@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22113.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22113.1"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -55,7 +55,7 @@
                         <action selector="onlyDimOnBatteryClick:" target="-2" id="18Y-1W-f3K"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NR2-tO-ywP">
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NR2-tO-ywP">
                     <rect key="frame" x="198" y="333" width="263" height="17"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Your Mac currently goes to sleeep after:" id="Mjm-0D-ERr">
                         <font key="font" metaFont="system" size="14"/>
@@ -73,7 +73,7 @@
                         <action selector="startFromSliderChange:" target="-2" id="CMb-p5-yWb"/>
                     </connections>
                 </slider>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ek8-ut-oUM">
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ek8-ut-oUM">
                     <rect key="frame" x="120" y="414" width="74" height="17"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Start from:" id="rv9-0q-qqD">
                         <font key="font" metaFont="system" size="14"/>
@@ -91,7 +91,7 @@
                         <action selector="fadeToSliderChange:" target="-2" id="WIo-7i-wcv"/>
                     </connections>
                 </slider>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eei-VX-faK">
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eei-VX-faK">
                     <rect key="frame" x="137" y="375" width="57" height="17"/>
                     <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Fade to:" id="uHK-Ny-zuZ">
                         <font key="font" metaFont="system" size="14"/>
@@ -110,7 +110,7 @@
                     </imageCell>
                     <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
                 </imageView>
-                <textField horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="egg-ke-irR">
+                <textField focusRingType="none" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="egg-ke-irR">
                     <rect key="frame" x="52" y="497" width="323" height="17"/>
                     <textFieldCell key="cell" selectable="YES" title="Brightness control only works with Apple displays" id="kxG-OU-XlP">
                         <font key="font" metaFont="system" size="14"/>
@@ -127,8 +127,8 @@
                 <constraint firstItem="MXe-aq-z27" firstAttribute="leading" secondItem="rTv-ct-a72" secondAttribute="leading" id="Ix6-zz-1ID"/>
                 <constraint firstItem="gQf-ZQ-hsb" firstAttribute="firstBaseline" secondItem="eei-VX-faK" secondAttribute="firstBaseline" id="PKu-cX-kOM"/>
                 <constraint firstItem="MXe-aq-z27" firstAttribute="top" secondItem="NR2-tO-ywP" secondAttribute="bottom" constant="22" id="ROm-s0-lZ4"/>
-                <constraint firstAttribute="width" constant="811" id="RRk-SS-lUC"/>
-                <constraint firstAttribute="height" constant="530" id="RmM-Qs-DF8"/>
+                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="811" id="RRk-SS-lUC"/>
+                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="530" id="RmM-Qs-DF8"/>
                 <constraint firstItem="E0D-Qf-cW9" firstAttribute="top" secondItem="MXe-aq-z27" secondAttribute="bottom" constant="22" id="bpJ-kA-ASb"/>
                 <constraint firstItem="Zjp-n9-q99" firstAttribute="leading" secondItem="ek8-ut-oUM" secondAttribute="trailing" constant="8" symbolic="YES" id="eLX-Fd-iZi"/>
                 <constraint firstItem="Zjp-n9-q99" firstAttribute="firstBaseline" secondItem="ek8-ut-oUM" secondAttribute="firstBaseline" id="g2a-t0-dpw"/>

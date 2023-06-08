@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22113.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22113.1"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -47,7 +47,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="811" height="53"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nh1-WW-nno">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nh1-WW-nno">
                                 <rect key="frame" x="52" y="20" width="201" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Advanced settings and tweaks" id="c2R-sQ-75h">
                                     <font key="font" metaFont="system" size="14"/>
@@ -82,13 +82,13 @@
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ha-9D-VMf">
                     <rect key="frame" x="0.0" y="0.0" width="811" height="478"/>
                     <clipView key="contentView" id="EPP-mS-BQX">
-                        <rect key="frame" x="1" y="1" width="794" height="461"/>
+                        <rect key="frame" x="1" y="1" width="809" height="476"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="TLS-nM-OqY">
-                                <rect key="frame" x="0.0" y="-149" width="794" height="610"/>
+                                <rect key="frame" x="0.0" y="-134" width="809" height="610"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XOJ-kW-rZe">
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XOJ-kW-rZe">
                                         <rect key="frame" x="227" y="519" width="85" height="17"/>
                                         <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Video fades:" id="pA2-Es-SqM">
                                             <font key="font" metaFont="system" size="14"/>
@@ -144,9 +144,9 @@
                                         </connections>
                                     </popUpButton>
                                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="LK9-Dp-4je">
-                                        <rect key="frame" x="20" y="215" width="754" height="5"/>
+                                        <rect key="frame" x="20" y="215" width="769" height="5"/>
                                     </box>
-                                    <popUpButton verticalHuggingPriority="750" verifyAmbiguity="off" translatesAutoresizingMaskIntoConstraints="NO" id="39U-7I-fEm">
+                                    <popUpButton verifyAmbiguity="off" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="39U-7I-fEm">
                                         <rect key="frame" x="313" y="161" width="170" height="40"/>
                                         <popUpButtonCell key="cell" type="push" title="Preferred" bezelStyle="rounded" alignment="left" controlSize="large" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="eac-0Y-vKj" id="TWx-zF-jAK">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -234,7 +234,7 @@
                                             <action selector="debugCheckboxClick:" target="-2" id="PSp-I8-bLa"/>
                                         </connections>
                                     </button>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xFh-dw-fup">
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xFh-dw-fup">
                                         <rect key="frame" x="316" y="135" width="144" height="17"/>
                                         <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Your current locale is " id="ZpU-TZ-xXp">
                                             <font key="font" metaFont="system" size="14"/>
@@ -253,7 +253,7 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Show AerialLog.txt in finder" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dka-WL-c4U">
-                                        <rect key="frame" x="521" y="60" width="176" height="40"/>
+                                        <rect key="frame" x="475" y="60" width="176" height="40"/>
                                         <buttonCell key="cell" type="push" title="Show Log in Finder" bezelStyle="rounded" image="folder" catalog="system" imagePosition="leading" alignment="center" alternateImage="NSFolder" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8fV-Kb-hfT">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system" size="14"/>
@@ -262,7 +262,7 @@
                                             <action selector="showLogInFinderClick:" target="-2" id="AEs-nt-heq"/>
                                         </connections>
                                     </button>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XVw-x2-MRK">
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XVw-x2-MRK">
                                         <rect key="frame" x="196" y="247" width="116" height="17"/>
                                         <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="When on battery:" id="NuA-Pp-M1N">
                                             <font key="font" metaFont="system" size="14"/>
@@ -293,7 +293,7 @@
                                             <action selector="videoFormatPopupChange:" target="-2" id="5he-hm-yXX"/>
                                         </connections>
                                     </popUpButton>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="79" translatesAutoresizingMaskIntoConstraints="NO" id="iIR-49-5le">
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" preferredMaxLayoutWidth="79" translatesAutoresizingMaskIntoConstraints="NO" id="iIR-49-5le">
                                         <rect key="frame" x="229" y="569" width="83" height="17"/>
                                         <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Video format:" id="4pB-OE-3Z4">
                                             <font key="font" metaFont="system" size="14"/>
@@ -311,7 +311,7 @@
                                             <action selector="helpVideoFormat:" target="-2" id="hYL-8G-pcH"/>
                                         </connections>
                                     </button>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TWt-lq-74o">
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TWt-lq-74o">
                                         <rect key="frame" x="240" y="174" width="72" height="17"/>
                                         <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Language:" id="wbl-fa-ZtS">
                                             <font key="font" metaFont="system" size="14"/>
@@ -320,7 +320,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="vm9-LJ-GN6">
-                                        <rect key="frame" x="20" y="110" width="754" height="5"/>
+                                        <rect key="frame" x="20" y="110" width="769" height="5"/>
                                     </box>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lzR-yN-m5b">
                                         <rect key="frame" x="312" y="19" width="163" height="40"/>
@@ -374,13 +374,13 @@
                                     </button>
                                     <button toolTip="Built in videos don't have sound, but your local videos may have" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xqc-uN-D8Z">
                                         <rect key="frame" x="315" y="322.5" width="185" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="182" id="9dy-qP-jAn"/>
-                                        </constraints>
                                         <buttonCell key="cell" type="check" title="Mute all macOS sounds " bezelStyle="regularSquare" imagePosition="left" controlSize="large" state="on" inset="2" id="NR5-1m-1M0">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system" size="14"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="182" id="9dy-qP-jAn"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="muteAllMacOSSoundsClick:" target="-2" id="tPN-2g-idV"/>
                                         </connections>
@@ -447,11 +447,11 @@
                         </constraints>
                     </clipView>
                     <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="lDZ-9J-IhM">
-                        <rect key="frame" x="1" y="462" width="794" height="15"/>
+                        <rect key="frame" x="1" y="461" width="809" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.88590604026845643" horizontal="NO" id="68Y-fx-VNM">
-                        <rect key="frame" x="795" y="1" width="15" height="461"/>
+                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.9850746268656716" horizontal="NO" id="68Y-fx-VNM">
+                        <rect key="frame" x="794" y="1" width="16" height="476"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -460,10 +460,10 @@
                 <constraint firstItem="yjL-IP-0lB" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="3TR-0S-bRI"/>
                 <constraint firstAttribute="trailing" secondItem="yjL-IP-0lB" secondAttribute="trailing" id="4Am-Af-3hg"/>
                 <constraint firstItem="yjL-IP-0lB" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="89M-Yo-n8s"/>
-                <constraint firstAttribute="height" constant="530" id="SOi-hw-i2H"/>
+                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="530" id="SOi-hw-i2H"/>
                 <constraint firstAttribute="trailing" secondItem="6Ha-9D-VMf" secondAttribute="trailing" id="Uso-hM-AE1"/>
                 <constraint firstItem="6Ha-9D-VMf" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="frS-XR-hBo"/>
-                <constraint firstAttribute="width" constant="811" id="vRh-gY-tbC"/>
+                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="811" id="vRh-gY-tbC"/>
                 <constraint firstItem="6Ha-9D-VMf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="52" id="x9a-eL-C0V"/>
                 <constraint firstAttribute="bottom" secondItem="6Ha-9D-VMf" secondAttribute="bottom" id="yNI-0k-oeK"/>
             </constraints>
@@ -492,7 +492,7 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="idy-Zq-5gl" userLabel="Power saving popover">
             <rect key="frame" x="0.0" y="0.0" width="334" height="211"/>
             <subviews>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="265" translatesAutoresizingMaskIntoConstraints="NO" id="sau-H8-etT">
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="265" translatesAutoresizingMaskIntoConstraints="NO" id="sau-H8-etT">
                     <rect key="frame" x="18" y="29" width="298" height="154"/>
                     <textFieldCell key="cell" selectable="YES" id="tDx-U1-0Sz">
                         <font key="font" metaFont="message" size="11"/>
@@ -518,7 +518,7 @@ Your screen brightness will be automatically restored on waking up. </string>
             <rect key="frame" x="0.0" y="0.0" width="452" height="405"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="334" translatesAutoresizingMaskIntoConstraints="NO" id="fhD-YW-5Jq">
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="334" translatesAutoresizingMaskIntoConstraints="NO" id="fhD-YW-5Jq">
                     <rect key="frame" x="18" y="189" width="416" height="196"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" selectable="YES" refusesFirstResponder="YES" id="pBv-Hh-hGu">
@@ -552,7 +552,7 @@ HDR videos are encoded using Dolby Vision to represent a Higher Dynamic range of
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nz2-xT-PMG">
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nz2-xT-PMG">
                     <rect key="frame" x="50" y="15" width="314" height="14"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" title="HEVC acceleration may be supported" id="Tiu-80-XDP">
@@ -561,7 +561,7 @@ HDR videos are encoded using Dolby Vision to represent a Higher Dynamic range of
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Txl-g4-G2k">
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Txl-g4-G2k">
                     <rect key="frame" x="50" y="35" width="314" height="14"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" title="H.264 acceleration is supported" id="XzM-zr-fcM">
@@ -575,7 +575,7 @@ HDR videos are encoded using Dolby Vision to represent a Higher Dynamic range of
                     <autoresizingMask key="autoresizingMask"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSCaution" id="Tjk-u2-njs"/>
                 </imageView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="319" translatesAutoresizingMaskIntoConstraints="NO" id="4zF-9T-BaK">
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="319" translatesAutoresizingMaskIntoConstraints="NO" id="4zF-9T-BaK">
                     <rect key="frame" x="50" y="87" width="384" height="61"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" refusesFirstResponder="YES" id="vza-qo-Tcb">

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22113.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22113.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,13 +20,13 @@
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTK-WM-mgr">
                     <rect key="frame" x="0.0" y="0.0" width="811" height="530"/>
                     <clipView key="contentView" id="Sz1-o4-35Y">
-                        <rect key="frame" x="1" y="1" width="794" height="513"/>
+                        <rect key="frame" x="1" y="1" width="809" height="528"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Y1q-aR-nvJ">
-                                <rect key="frame" x="0.0" y="-17" width="794" height="530"/>
+                                <rect key="frame" x="0.0" y="-2" width="809" height="530"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="ReU-xc-cMA">
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="ReU-xc-cMA">
                                         <rect key="frame" x="198" y="459" width="504" height="51"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="500" id="GtJ-bZ-C8o"/>
@@ -60,7 +60,7 @@ Since version 1.4, Aerial is developed and maintained by Guillaume Louel.</strin
                                             <action selector="websiteButton:" target="-2" id="LGP-oT-yPC"/>
                                         </connections>
                                     </button>
-                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wpw-1v-dic">
+                                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wpw-1v-dic">
                                         <rect key="frame" x="198" y="85" width="311" height="306"/>
                                         <textFieldCell key="cell" selectable="YES" id="sP2-o5-2MT">
                                             <font key="font" metaFont="system" size="14"/>
@@ -96,7 +96,7 @@ Want to help with translations?</string>
                                             <action selector="discordButton:" target="-2" id="lkL-pw-NPM"/>
                                         </connections>
                                     </button>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ohW-uj-N2U">
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ohW-uj-N2U">
                                         <rect key="frame" x="337" y="48" width="18" height="17"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="or" id="PRg-cf-Ee8">
                                             <font key="font" metaFont="system" size="14"/>
@@ -141,11 +141,11 @@ Want to help with translations?</string>
                         </constraints>
                     </clipView>
                     <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="uxu-lf-jvj">
-                        <rect key="frame" x="1" y="514" width="794" height="15"/>
+                        <rect key="frame" x="1" y="513" width="809" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="34h-Lz-aVs">
-                        <rect key="frame" x="795" y="1" width="15" height="513"/>
+                        <rect key="frame" x="794" y="1" width="16" height="528"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -153,10 +153,10 @@ Want to help with translations?</string>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="JTK-WM-mgr" secondAttribute="bottom" id="4Uo-Sh-hPI"/>
                 <constraint firstItem="JTK-WM-mgr" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="CfZ-E8-gg4"/>
-                <constraint firstAttribute="width" constant="811" id="SVE-Ie-5qf"/>
+                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="811" id="SVE-Ie-5qf"/>
                 <constraint firstItem="JTK-WM-mgr" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="j0S-Qf-RMg"/>
                 <constraint firstAttribute="trailing" secondItem="JTK-WM-mgr" secondAttribute="trailing" id="jCc-Px-UYb"/>
-                <constraint firstAttribute="height" constant="530" id="xcR-Bc-mK8"/>
+                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="530" id="xcR-Bc-mK8"/>
             </constraints>
             <point key="canvasLocation" x="29.5" y="150"/>
         </customView>

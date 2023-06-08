@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22113.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22113.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,7 +20,7 @@
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="wIm-3a-mSi">
                     <rect key="frame" x="36" y="96" width="740" height="394"/>
                     <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mef-02-T9r">
+                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mef-02-T9r">
                             <rect key="frame" x="358" y="187" width="304" height="68"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="300" id="Hw7-YP-zzd"/>
@@ -42,7 +42,7 @@ Enjoying Aerial? </string>
                             </constraints>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon-512" id="2e6-aG-RVX"/>
                         </imageView>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ceu-gu-KNt">
+                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ceu-gu-KNt">
                             <rect key="frame" x="358" y="271" width="134" height="17"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Version 123456789" id="3BT-Co-yYW">
                                 <font key="font" metaFont="systemMedium" size="14"/>
@@ -50,7 +50,7 @@ Enjoying Aerial? </string>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="42t-wb-whP">
+                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="42t-wb-whP">
                             <rect key="frame" x="358" y="296" width="98" height="43"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Aerial" id="yQI-eW-wVq">
                                 <font key="font" metaFont="systemSemibold" size="36"/>
@@ -84,7 +84,7 @@ Enjoying Aerial? </string>
                         <constraint firstItem="42t-wb-whP" firstAttribute="leading" secondItem="T8n-jN-Ee4" secondAttribute="trailing" constant="20" id="xWn-Yo-X0G"/>
                     </constraints>
                 </customView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1H8-uB-MG3">
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1H8-uB-MG3">
                     <rect key="frame" x="245" y="17" width="321" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Apple TV and tvOS are trademarks of Apple Inc. " id="J9M-tH-MlW">
                         <font key="font" metaFont="system" size="14"/>
@@ -108,10 +108,10 @@ Enjoying Aerial? </string>
                 <constraint firstItem="wIm-3a-mSi" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="Q9B-84-Whr"/>
                 <constraint firstItem="1H8-uB-MG3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Kfe-gm-Zg6" secondAttribute="trailing" constant="20" id="RIb-nL-c1c"/>
                 <constraint firstItem="Kfe-gm-Zg6" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="VLz-Ln-AdL"/>
-                <constraint firstAttribute="height" constant="530" id="hSp-LP-MwV"/>
+                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="530" id="hSp-LP-MwV"/>
                 <constraint firstItem="1H8-uB-MG3" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="jQ5-G3-md3"/>
                 <constraint firstAttribute="bottom" secondItem="Kfe-gm-Zg6" secondAttribute="bottom" constant="10" id="soO-ar-asL"/>
-                <constraint firstAttribute="width" constant="811" id="tb7-rB-jCx"/>
+                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="811" id="tb7-rB-jCx"/>
                 <constraint firstItem="wIm-3a-mSi" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="40" id="wc8-8H-2BZ"/>
             </constraints>
             <point key="canvasLocation" x="-58.5" y="48"/>

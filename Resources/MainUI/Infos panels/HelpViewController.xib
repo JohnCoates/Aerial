@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22113.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22113.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,7 +16,7 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
             <rect key="frame" x="0.0" y="0.0" width="811" height="530"/>
             <subviews>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="fiN-Oe-faj">
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="fiN-Oe-faj">
                     <rect key="frame" x="198" y="473" width="84" height="17"/>
                     <textFieldCell key="cell" selectable="YES" title="Need help? " id="T0H-fO-TBy">
                         <font key="font" metaFont="systemSemibold" size="14"/>
@@ -54,7 +54,7 @@
                         <action selector="visitDiscordClick:" target="-2" id="LR9-AA-ISS"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="XIB-RT-Gf7">
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="XIB-RT-Gf7">
                     <rect key="frame" x="198" y="338" width="504" height="34"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="500" id="o5p-sa-qMn"/>
@@ -65,7 +65,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="GP7-Rh-FNa">
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="GP7-Rh-FNa">
                     <rect key="frame" x="198" y="223" width="504" height="51"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="500" id="5Gh-XF-Wlz"/>
@@ -78,7 +78,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="CG1-ie-zJE">
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="CG1-ie-zJE">
                     <rect key="frame" x="198" y="125" width="504" height="34"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="500" id="qJT-Me-Vmz"/>
@@ -100,7 +100,7 @@
                         <action selector="faqButton:" target="-2" id="EtM-Zt-UnJ"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="mu4-R7-C8J">
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="mu4-R7-C8J">
                     <rect key="frame" x="198" y="436" width="504" height="17"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="500" id="3pd-sp-wiA"/>
@@ -127,11 +127,11 @@
                 <constraint firstItem="gLI-ih-SCQ" firstAttribute="leading" secondItem="mu4-R7-C8J" secondAttribute="leading" id="Vot-qS-p4W"/>
                 <constraint firstItem="XIB-RT-Gf7" firstAttribute="leading" secondItem="mu4-R7-C8J" secondAttribute="leading" id="g0q-eb-iaJ"/>
                 <constraint firstItem="XIB-RT-Gf7" firstAttribute="leading" secondItem="fiN-Oe-faj" secondAttribute="leading" id="hjf-tl-Za5"/>
-                <constraint firstAttribute="width" constant="811" id="iH6-Nd-T12"/>
+                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="811" id="iH6-Nd-T12"/>
                 <constraint firstItem="PHe-ta-hg6" firstAttribute="top" secondItem="CG1-ie-zJE" secondAttribute="bottom" constant="16" id="qIx-97-UKf"/>
                 <constraint firstItem="CG1-ie-zJE" firstAttribute="leading" secondItem="Ccg-Ld-deT" secondAttribute="leading" id="tdH-Pa-Rap"/>
                 <constraint firstItem="UUX-vU-Iz9" firstAttribute="leading" secondItem="XIB-RT-Gf7" secondAttribute="leading" id="tmA-eS-hqD"/>
-                <constraint firstAttribute="height" constant="530" id="vdg-3G-mNt"/>
+                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="530" id="vdg-3G-mNt"/>
                 <constraint firstItem="fiN-Oe-faj" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="40" id="woO-AF-o4Y"/>
             </constraints>
             <point key="canvasLocation" x="-168" y="135"/>
