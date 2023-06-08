@@ -10,9 +10,12 @@ import Cocoa
 
 class CreditsViewController: NSViewController {
 
+    @IBOutlet var scrollView: NSScrollView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        
+        scrollView.contentView.scroll(NSMakePoint(0,0))
     }
 
     @IBAction func translationButton(_ sender: Any) {

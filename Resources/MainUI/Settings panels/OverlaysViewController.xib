@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -43,14 +43,14 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
             <rect key="frame" x="0.0" y="0.0" width="811" height="530"/>
             <subviews>
-                <scrollView ambiguous="YES" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zk3-dp-nQh">
-                    <rect key="frame" x="0.0" y="-284" width="180" height="760"/>
-                    <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="3a0-nz-lxc">
-                        <rect key="frame" x="1" y="1" width="178" height="758"/>
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zk3-dp-nQh">
+                    <rect key="frame" x="0.0" y="33" width="180" height="445"/>
+                    <clipView key="contentView" drawsBackground="NO" id="3a0-nz-lxc">
+                        <rect key="frame" x="1" y="1" width="178" height="443"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="gvl-yV-dFx">
-                                <rect key="frame" x="0.0" y="0.0" width="178" height="758"/>
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="gvl-yV-dFx">
+                                <rect key="frame" x="0.0" y="0.0" width="178" height="443"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -149,7 +149,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <scrollView ambiguous="YES" autohidesScrollers="YES" horizontalLineScroll="31" horizontalPageScroll="10" verticalLineScroll="31" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yug-di-Rrj">
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="31" horizontalPageScroll="10" verticalLineScroll="31" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yug-di-Rrj">
                     <rect key="frame" x="0.0" y="0.0" width="180" height="33"/>
                     <clipView key="contentView" id="cUU-VJ-Apk">
                         <rect key="frame" x="1" y="1" width="178" height="31"/>
@@ -233,23 +233,23 @@
                     <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
                 </imageView>
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMA-U2-JnG">
-                    <rect key="frame" x="188" y="0.0" width="623" height="476"/>
+                    <rect key="frame" x="188" y="0.0" width="623" height="478"/>
                     <clipView key="contentView" id="xUv-v2-rf1">
-                        <rect key="frame" x="1" y="1" width="606" height="459"/>
+                        <rect key="frame" x="1" y="1" width="606" height="461"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view id="y2b-67-Tqj" customClass="InfoContainerView" customModule="Aerial" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="-362" width="600" height="806"/>
+                                <rect key="frame" x="0.0" y="-360" width="600" height="806"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </view>
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="aWh-xa-Re2">
-                        <rect key="frame" x="1" y="460" width="606" height="15"/>
+                        <rect key="frame" x="1" y="462" width="606" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="fWU-BK-uie">
-                        <rect key="frame" x="607" y="1" width="15" height="459"/>
+                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.95652173913043481" horizontal="NO" id="fWU-BK-uie">
+                        <rect key="frame" x="607" y="1" width="15" height="461"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -266,7 +266,7 @@
             </subviews>
             <constraints>
                 <constraint firstItem="sMA-U2-JnG" firstAttribute="leading" secondItem="Zk3-dp-nQh" secondAttribute="trailing" constant="8" symbolic="YES" id="0kC-0R-2xS"/>
-                <constraint firstItem="Zk3-dp-nQh" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="54" id="37G-4g-HfA"/>
+                <constraint firstItem="Zk3-dp-nQh" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="52" id="37G-4g-HfA"/>
                 <constraint firstItem="sjm-7w-iIw" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="4CX-Lg-Yzy"/>
                 <constraint firstAttribute="width" constant="811" id="7j7-8G-gbn"/>
                 <constraint firstAttribute="bottom" secondItem="Yug-di-Rrj" secondAttribute="bottom" id="IVW-7y-lBp"/>
@@ -277,7 +277,7 @@
                 <constraint firstItem="gfE-bm-FTe" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="16" id="URk-WE-5c7"/>
                 <constraint firstAttribute="trailing" secondItem="sMA-U2-JnG" secondAttribute="trailing" id="ZnI-7H-uCH"/>
                 <constraint firstItem="Yug-di-Rrj" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="gVB-by-2eZ"/>
-                <constraint firstItem="sMA-U2-JnG" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="54" id="lRn-cJ-iU4"/>
+                <constraint firstItem="sMA-U2-JnG" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="52" id="lRn-cJ-iU4"/>
                 <constraint firstAttribute="trailing" secondItem="9LV-pU-dEq" secondAttribute="trailing" constant="20" id="ni9-zR-guf"/>
                 <constraint firstItem="Yug-di-Rrj" firstAttribute="top" secondItem="Zk3-dp-nQh" secondAttribute="bottom" id="p10-kT-ics"/>
                 <constraint firstItem="gfE-bm-FTe" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="54" id="rza-aE-7ja"/>
