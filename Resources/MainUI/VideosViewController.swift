@@ -358,8 +358,8 @@ class VideosViewController: NSViewController {
             }
 
             if video.isAvailableOffline {
-                // Temporary fix for Ventura beta 
-                if #available(OSX 13.0, *) {
+                // System settings crash under macOS 13 with HDR videos
+                if !Aerial.helper.canHDR() {
                     if !Aerial.helper.underCompanion && (PrefsVideos.videoFormat == .v4KHDR || PrefsVideos.videoFormat == .v1080pHDR) {
                         showImage(video)
                     } else {

@@ -37,6 +37,18 @@ class Aerial: NSObject {
         return "Version ?"
     }()
 
+
+    // Using HDR will crash System Settings in macOS 13. This is fixed in macOS 14
+    func canHDR() -> Bool {
+        if #available(OSX 13.0, *) {
+            if #unavailable(OSX 14.0) {
+                return false
+            }
+        }
+        
+        return true
+    }
+    
     // Are we running under Aerial Companion ? Desktop mode/Fullscreen mode
     // Xcode debug mode is also considered as running under Companion
     

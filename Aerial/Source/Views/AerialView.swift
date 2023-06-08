@@ -202,8 +202,9 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     // swiftlint:disable:next cyclomatic_complexity
     func setup() {
-        // Temporary fix for macOS Ventura crashing on HDR videos...
-        if #available(OSX 13.0, *) {
+        // Disable HDR only on macOS Ventura
+        // Todo : This may cause the can't reopen settings bug ?
+        if !Aerial.helper.canHDR() {
             if isPreview && (PrefsVideos.videoFormat == .v4KHDR || PrefsVideos.videoFormat == .v1080pHDR) {
                 // This will lead to crashing in up to Ventura beta5 so disable
                 let debugTextView = NSTextView(frame: bounds.insetBy(dx: 20, dy: 20))
