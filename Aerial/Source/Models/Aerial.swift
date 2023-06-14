@@ -21,7 +21,7 @@ class Aerial: NSObject {
     // We also track darkmode here now
     var darkMode = false
 
-    // And we track if we are running under Aerial's Companion app
+    // And we track if we are running under Aerial's Companion 
     var underCompanion = false
 
     let userName = NSUserName()
@@ -38,7 +38,7 @@ class Aerial: NSObject {
     }()
 
 
-    // Using HDR will crash System Settings in macOS 13. This is fixed in macOS 14
+    // Using HDR in the panel will crash System Settings in macOS 13. This is fixed in macOS 14 🎉
     func canHDR() -> Bool {
         if #available(OSX 13.0, *) {
             if #unavailable(OSX 14.0) {

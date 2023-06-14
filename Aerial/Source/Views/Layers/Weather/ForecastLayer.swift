@@ -362,7 +362,11 @@ class ForecastLayer: CALayer {
         let windLayer = CAVCTextLayer()
 
         if PrefsInfo.weather.degree == .celsius {
-            windLayer.string = "km/h"
+            if PrefsInfo.weatherWindMode == .kph {
+                windLayer.string = "km/h"
+            } else {
+                windLayer.string = "m/s"
+            }
         } else {
             windLayer.string = "mph"
         }
@@ -458,7 +462,7 @@ class ForecastLayer: CALayer {
         } else {
             wind.string = String(format: "%.0f", speed)
         }
-
+        
         // Get something large first
         (wind.font, wind.fontSize) = wind.makeFont(name: PrefsInfo.weather.fontName, size: size)
 
