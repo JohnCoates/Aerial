@@ -57,7 +57,7 @@
                 </button>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NR2-tO-ywP">
                     <rect key="frame" x="198" y="333" width="263" height="17"/>
-                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Your Mac currently goes to sleeep after:" id="Mjm-0D-ERr">
+                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="" id="Mjm-0D-ERr">
                         <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

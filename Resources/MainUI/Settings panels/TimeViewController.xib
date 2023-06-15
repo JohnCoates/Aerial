@@ -123,7 +123,7 @@
                 </button>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="R2Z-La-EL1">
                     <rect key="frame" x="395" y="409" width="87" height="17"/>
-                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Next Sunrise" id="vcy-lb-T6r">
+                    <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="" id="vcy-lb-T6r">
                         <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
