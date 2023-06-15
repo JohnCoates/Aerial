@@ -60,8 +60,11 @@ class CacheViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        makeTimeMachineIgnore.state = TimeMachine.isExcluded() ? .on : .off
-        makeTimeMachineIgnore2.state = makeTimeMachineIgnore.state
+        DispatchQueue.main.async {
+            self.makeTimeMachineIgnore.state = TimeMachine.isExcluded() ? .on : .off
+            self.makeTimeMachineIgnore2.state = self.makeTimeMachineIgnore.state
+            debugLog("tm : \(self.makeTimeMachineIgnore.state)")
+        }
 
         manuallyPick.state = PrefsCache.overrideCache ? .on : .off
         if #available(OSX 12, *) {
@@ -75,8 +78,6 @@ class CacheViewController: NSViewController {
 
         // Cache panel
         automaticallyDownloadCheckbox.state = PrefsCache.enableManagement ? .on : .off
-
-        debugLog("tm : \(TimeMachine.isExcluded())")
 
         limitTextField.doubleValue = PrefsCache.cacheLimit
         limitSlider.doubleValue = PrefsCache.cacheLimit
