@@ -56,11 +56,14 @@ final class AerialVideo: CustomStringConvertible, Equatable {
             // Fallback
             if urls[.v4KHEVC] != "" {
                 return getURL(string: urls[.v4KHEVC]!)
+            } else if urls[.v4KSDR240] != "" {  // macOS manifest only have those
+                return getURL(string: urls[.v4KSDR240]!)
             } else if urls[.v1080pHEVC] != "" {
                 return getURL(string: urls[.v1080pHEVC]!)
             } else if urls[.v1080pH264] != "" { // Last resort
                 return getURL(string: urls[.v1080pH264]!)
             } else {
+                // Something went very wrong if we are here
                 return getURL(string: urls[.v4KHDR]!)
             }
         }
@@ -240,6 +243,8 @@ final class AerialVideo: CustomStringConvertible, Equatable {
                 return "1080p HDR"
             case .v4KHEVC:
                 return "4K"
+            case .v4KSDR240:
+                return "4K 240FPS"
             }
         } else {
             return getBestFormat()

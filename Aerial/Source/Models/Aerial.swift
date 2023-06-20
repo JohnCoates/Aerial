@@ -38,10 +38,10 @@ class Aerial: NSObject {
     }()
 
 
-    // Using HDR in the panel will crash System Settings in macOS 13. This is fixed in macOS 14 🎉
+    // Using HDR in the panel will crash System Settings in macOS 13. This is fixed in macOS 13.4 🎉
     func canHDR() -> Bool {
         if #available(OSX 13.0, *) {
-            if #unavailable(OSX 14.0) {
+            if #unavailable(OSX 13.4) {
                 return false
             }
         }

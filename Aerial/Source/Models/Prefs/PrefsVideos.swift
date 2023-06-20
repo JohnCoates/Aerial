@@ -9,7 +9,7 @@
 import Foundation
 
 enum VideoFormat: Int, Codable, CaseIterable {
-    case v1080pH264, v1080pHEVC, v1080pHDR, v4KHEVC, v4KHDR
+    case v1080pH264, v1080pHEVC, v1080pHDR, v4KHEVC, v4KHDR, v4KSDR240
 }
 
 enum OnBatteryMode: Int, Codable {

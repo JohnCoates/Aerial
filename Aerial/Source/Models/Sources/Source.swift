@@ -270,7 +270,8 @@ struct Source: Codable {
                 .v1080pHEVC: localizePath(asset.url1080SDR),
                 .v1080pHDR: localizePath(asset.url1080HDR),
                 .v4KHEVC: localizePath(asset.url4KSDR),
-                .v4KHDR: localizePath(asset.url4KHDR) ]
+                .v4KHDR: localizePath(asset.url4KHDR),
+                .v4KSDR240: localizePath(asset.url4KSDR240FPS) ]
     }
 
     func oldUrlsFor(_ asset: VideoAsset) -> [VideoFormat: String] {
@@ -429,7 +430,7 @@ struct VideoAsset: Codable {
     let timeOfDay: String?
     let scene: String?
     let pointsOfInterest: [String: String]?
-    let url4KHDR, url4KSDR, url1080H264, url1080HDR: String?
+    let url4KHDR, url4KSDR, url1080H264, url1080HDR, url4KSDR120FPS, url4KSDR240FPS: String?
     let url1080SDR, url: String?
     let type: String?
 
@@ -441,6 +442,8 @@ struct VideoAsset: Codable {
         case url1080H264 = "url-1080-H264"
         case url1080HDR = "url-1080-HDR"
         case url1080SDR = "url-1080-SDR"
+        case url4KSDR240FPS = "url-4K-SDR-240FPS"
+        case url4KSDR120FPS = "url-4K-SDR-120FPS"
         case url
         case type
     }

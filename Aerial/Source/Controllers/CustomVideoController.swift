@@ -191,6 +191,8 @@ class CustomVideoController: NSWindowController, NSWindowDelegate, NSDraggingDes
                                              url4KSDR: lurl.path,
                                              url1080H264: "",
                                              url1080HDR: "",
+                                             url4KSDR120FPS: "",
+                                             url4KSDR240FPS: "",
                                              url1080SDR: "",
                                              url: "",
                                              type: "nature"))

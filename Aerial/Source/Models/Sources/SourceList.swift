@@ -16,6 +16,16 @@ struct SourceHeader {
 // swiftlint:disable:next type_body_length
 struct SourceList {
     // This is the current one until next fall
+    static let macOS14 = Source(name: "macOS 14b1",
+                        description: "High framerate lock screen videos from macOS 14 Sonoma",
+                        manifestUrl: "https://sylvan.apple.com/itunes-assets/Aerials126/v4/82/2e/34/822e344c-f5d2-878c-3d56-508d5b09ed61/resources-14-0.tar",
+                        type: .tvOS12,
+                        scenes: [.nature, .city, .space, .sea],
+                        isCachable: true,
+                        license: "",
+                        more: "")
+
+    // This is the current one until next fall
     static let tvOS16 = Source(name: "tvOS 16",
                         description: "Apple TV screensavers from tvOS 16",
                         manifestUrl: "https://sylvan.apple.com/Aerials/resources-16.tar",
@@ -62,7 +72,7 @@ struct SourceList {
                         license: "",
                         more: "")
 
-    static var list: [Source] = [tvOS16, tvOS13, tvOS10] + foundSources
+    static var list: [Source] = [macOS14, tvOS16, tvOS13, tvOS10] + foundSources
     // static var list: [Source] = foundSources
 
     // This is where the magic happens
@@ -72,6 +82,7 @@ struct SourceList {
 
         for folder in URL(fileURLWithPath: Cache.supportPath).subDirectories {
             if !folder.lastPathComponent.starts(with: "tvOS")
+                && !folder.lastPathComponent.starts(with: "macOS")
                 && !folder.lastPathComponent.starts(with: "backups")
                 && !folder.lastPathComponent.starts(with: "Thumbnails")
                 && !folder.lastPathComponent.starts(with: "Cache") {
@@ -122,7 +133,7 @@ struct SourceList {
                 // This may need to be changed in the future
                 if !source.isCachable {
                     online.append(source)
-                } else if source.name.starts(with: "tvOS") {
+                } else if source.name.starts(with: "tvOS") || source.name.starts(with: "macOS") {
                     apple.append(source)
                 } else {
                     communities.append(source)
@@ -142,7 +153,7 @@ struct SourceList {
         }
 
         if !apple.isEmpty {
-            output.append(SourceHeader(name: "Apple TV", sources: apple))
+            output.append(SourceHeader(name: "Apple", sources: apple))
         }
 
         if !local.isEmpty {
@@ -245,6 +256,8 @@ struct SourceList {
                                                  url4KSDR: lurl.path,
                                                  url1080H264: "",
                                                  url1080HDR: "",
+                                                 url4KSDR120FPS: "",
+                                                 url4KSDR240FPS: "",
                                                  url1080SDR: "",
                                                  url: "",
                                                  type: "nature"))
@@ -289,6 +302,8 @@ struct SourceList {
                                              url4KSDR: lurl.path,
                                              url1080H264: "",
                                              url1080HDR: "",
+                                             url4KSDR120FPS: "",
+                                             url4KSDR240FPS: "",
                                              url1080SDR: "",
                                              url: "",
                                              type: "nature"))

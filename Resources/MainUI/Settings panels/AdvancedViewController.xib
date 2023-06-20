@@ -286,6 +286,9 @@
                                                     <menuItem title="4K HDR" id="D9e-ji-I4Y" userLabel="4K HDR">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
                                                     </menuItem>
+                                                    <menuItem title="4K 240FPS" id="fEa-Ol-jdD" userLabel="4K HDR">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>

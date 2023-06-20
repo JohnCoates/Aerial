@@ -35,6 +35,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     var brightnessToRestore: Float?
 
+    var globalSpeed: Float = 1.0
+    
     // We use this for tentative Catalina bug workaround
     var originalWidth, originalHeight: CGFloat
 
@@ -453,7 +455,13 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         if self.playerLayer.isReadyForDisplay {
             self.player!.play()
             hasStartedPlaying = true
-            player!.rate = PlaybackSpeed.forVideo(self.currentVideo!.id)
+
+            if Aerial.helper.underCompanion {
+                player!.rate = globalSpeed
+            } else {
+                player!.rate = PlaybackSpeed.forVideo(self.currentVideo!.id)
+            }
+
             debugLog("start playback: \(self.frame) \(self.bounds) rate: \(player!.rate)")
 
             // If we share a player, we need to add the fades and the text to all the
@@ -550,6 +558,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         debugLog("Toggling pause")
         if player?.rate == 0 {
             player?.play()
+            player?.rate = globalSpeed
         } else {
             player?.pause()
         }
@@ -567,6 +576,25 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         fastFadeOut(andPlayNext: true)
     }
 
+    @objc func getGlobalSpeed() -> Float {
+        debugLog("Current global speed : " + String(globalSpeed))
+        return player!.rate
+    }
+
+    @objc func setGlobalSpeed(_ speed : Float)  {
+        debugLog("Setting speed to : " + String(speed))
+        globalSpeed = speed
+
+        // Apply now if playing
+        if let player = player {
+            if (player.rate != 0) {
+                player.rate = globalSpeed
+            }
+        }
+    }
+
+    
+    
     // MARK: - playNextVideo()
     // swiftlint:disable:next cyclomatic_complexity
     func playNextVideo() {
