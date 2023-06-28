@@ -547,6 +547,9 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     @objc func willStop(_ aNotification: Notification) {
         debugLog("############ willStop")
         if !Aerial.helper.underCompanion {
+            if let player = player {
+                player.pause()
+            }
             self.stopAnimation()
         } else {
             player?.play()

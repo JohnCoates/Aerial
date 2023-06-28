@@ -93,8 +93,12 @@ final class HardwareDetection: NSObject {
     func isHEVCMain10HWDecodingAvailable() -> HEVCMain10Support {
         let macModel = getMacModel()
 
+        // Apple silicon supports everything!
+        if isAppleSilicon() {
+            return .supported
+        }
+            
         // This is a manually compiled list based on CPU generations of each mac model line
-
         if macModel.starts(with: "iMacPro") || macModel.starts(with: "ADP") {
             // iMacPro - always
             return .supported
