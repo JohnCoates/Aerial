@@ -44,9 +44,9 @@ class InfoMusicView: NSView {
     }
 
     func makeStoreFrontPopup() {
-        for storename in Music.instance.storefronts.keys.sorted() {
+        /*for storename in Music.instance.storefronts.keys.sorted() {
             storefrontPopup.addItem(withTitle: storename)
-        }
+        }*/
     }
 
 }

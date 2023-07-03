@@ -189,9 +189,6 @@
 		031C5CB8268CA4E700CE35B4 /* ArtworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C5CB7268CA4E700CE35B4 /* ArtworkLayer.swift */; };
 		031C5CB9268CA4E700CE35B4 /* ArtworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C5CB7268CA4E700CE35B4 /* ArtworkLayer.swift */; };
 		031C5CBA268CA4E700CE35B4 /* ArtworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C5CB7268CA4E700CE35B4 /* ArtworkLayer.swift */; };
-		031C5CBD268CBF0400CE35B4 /* AppleMusicSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C5CBC268CBF0400CE35B4 /* AppleMusicSong.swift */; };
-		031C5CBE268CBF0400CE35B4 /* AppleMusicSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C5CBC268CBF0400CE35B4 /* AppleMusicSong.swift */; };
-		031C5CBF268CBF0400CE35B4 /* AppleMusicSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C5CBC268CBF0400CE35B4 /* AppleMusicSong.swift */; };
 		031FB78B248A87330054BAFD /* PrefsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FB78A248A87330054BAFD /* PrefsCache.swift */; };
 		031FB7A2248A873C0054BAFD /* PrefsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FB78A248A87330054BAFD /* PrefsCache.swift */; };
 		0321A53324D44E80004F1975 /* ActionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321A53224D44E80004F1975 /* ActionCellView.swift */; };
@@ -734,9 +731,6 @@
 		03DB968625657AE600BFCF20 /* LogoIcon-128px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03DB968325657AE600BFCF20 /* LogoIcon-128px@2x.png */; };
 		03DC004E248BC5A4005DB0F4 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC004D248BC5A4005DB0F4 /* Cache.swift */; };
 		03DC0065248BC60D005DB0F4 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DC004D248BC5A4005DB0F4 /* Cache.swift */; };
-		03DDFCA5268F73080001A13E /* SpotifySong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DDFCA4268F73070001A13E /* SpotifySong.swift */; };
-		03DDFCA6268F73080001A13E /* SpotifySong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DDFCA4268F73070001A13E /* SpotifySong.swift */; };
-		03DDFCA7268F73080001A13E /* SpotifySong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DDFCA4268F73070001A13E /* SpotifySong.swift */; };
 		03E168162673A23900D7442D /* InfoMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E168152673A23900D7442D /* InfoMusicView.swift */; };
 		03E168172673A23900D7442D /* InfoMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E168152673A23900D7442D /* InfoMusicView.swift */; };
 		03E168182673A23900D7442D /* InfoMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E168152673A23900D7442D /* InfoMusicView.swift */; };
@@ -811,9 +805,6 @@
 		03FF1930269709AB00A0FA7F /* PlaybackSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF192F269709AB00A0FA7F /* PlaybackSpeed.swift */; };
 		03FF1931269709AB00A0FA7F /* PlaybackSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF192F269709AB00A0FA7F /* PlaybackSpeed.swift */; };
 		03FF1932269709AB00A0FA7F /* PlaybackSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF192F269709AB00A0FA7F /* PlaybackSpeed.swift */; };
-		03FF193426972C1200A0FA7F /* AppleMusicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF193326972C1200A0FA7F /* AppleMusicSearch.swift */; };
-		03FF193526972C1200A0FA7F /* AppleMusicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF193326972C1200A0FA7F /* AppleMusicSearch.swift */; };
-		03FF193626972C1200A0FA7F /* AppleMusicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF193326972C1200A0FA7F /* AppleMusicSearch.swift */; };
 		AA7E2E5E1FC62E8B00E5F320 /* AerialPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */; };
 		F0058B8228ABF69B0053699B /* SoundOutputManager+Goodies.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0058B7E28ABF69B0053699B /* SoundOutputManager+Goodies.swift */; };
 		F0058B8328ABF69B0053699B /* SoundOutputManager+Goodies.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0058B7E28ABF69B0053699B /* SoundOutputManager+Goodies.swift */; };
@@ -977,7 +968,6 @@
 		031945FA24CCC52600F37B35 /* HelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
 		0319460824D1A09F00F37B35 /* icon-320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-320@2x.png"; sourceTree = "<group>"; };
 		031C5CB7268CA4E700CE35B4 /* ArtworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkLayer.swift; sourceTree = "<group>"; };
-		031C5CBC268CBF0400CE35B4 /* AppleMusicSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicSong.swift; sourceTree = "<group>"; };
 		031FB78A248A87330054BAFD /* PrefsCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsCache.swift; sourceTree = "<group>"; };
 		0321A53224D44E80004F1975 /* ActionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCellView.swift; sourceTree = "<group>"; };
 		0321A53D24D4515B004F1975 /* folder.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = folder.pdf; sourceTree = "<group>"; };
@@ -1159,7 +1149,6 @@
 		03DB966D256569F800BFCF20 /* icon-512@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-512@2x.png"; sourceTree = "<group>"; };
 		03DB968325657AE600BFCF20 /* LogoIcon-128px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogoIcon-128px@2x.png"; sourceTree = "<group>"; };
 		03DC004D248BC5A4005DB0F4 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
-		03DDFCA4268F73070001A13E /* SpotifySong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifySong.swift; sourceTree = "<group>"; };
 		03E168152673A23900D7442D /* InfoMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMusicView.swift; sourceTree = "<group>"; };
 		03E168192673A63F00D7442D /* MusicLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLayer.swift; sourceTree = "<group>"; };
 		03E2237024BE048900CD8ED4 /* VideoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoHeaderView.swift; sourceTree = "<group>"; };
@@ -1184,7 +1173,6 @@
 		03FA49B32428EE3300863AF6 /* InfoDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDateView.swift; sourceTree = "<group>"; };
 		03FA49B62428F84500863AF6 /* DateLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLayer.swift; sourceTree = "<group>"; };
 		03FF192F269709AB00A0FA7F /* PlaybackSpeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackSpeed.swift; sourceTree = "<group>"; };
-		03FF193326972C1200A0FA7F /* AppleMusicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicSearch.swift; sourceTree = "<group>"; };
 		AA7E2E5D1FC62E8B00E5F320 /* AerialPlayerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialPlayerItem.swift; sourceTree = "<group>"; };
 		F0058B7E28ABF69B0053699B /* SoundOutputManager+Goodies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SoundOutputManager+Goodies.swift"; sourceTree = "<group>"; };
 		F0058B7F28ABF69B0053699B /* SoundOutputManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundOutputManager.swift; sourceTree = "<group>"; };
@@ -1326,9 +1314,6 @@
 			isa = PBXGroup;
 			children = (
 				0317C19B268B65D10082A40C /* Music.swift */,
-				031C5CBC268CBF0400CE35B4 /* AppleMusicSong.swift */,
-				03FF193326972C1200A0FA7F /* AppleMusicSearch.swift */,
-				03DDFCA4268F73070001A13E /* SpotifySong.swift */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -2561,7 +2546,6 @@
 				0396D51924B8B7ED00CC021B /* DarkMode.swift in Sources */,
 				03047A5524D2DD8E000EFE62 /* NSMenuItem+icons.swift in Sources */,
 				0300109824D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift in Sources */,
-				031C5CBE268CBF0400CE35B4 /* AppleMusicSong.swift in Sources */,
 				0396D51A24B8B7ED00CC021B /* CustomVideoFolders.swift in Sources */,
 				036A7E9C26370C260019186B /* Forecast.swift in Sources */,
 				0396D51B24B8B7ED00CC021B /* InfoTimerView.swift in Sources */,
@@ -2586,7 +2570,6 @@
 				03EBF0C12746A53B00EC09D1 /* PlayingCollectionViewItem.swift in Sources */,
 				0396D52924B8B7ED00CC021B /* InfoWeatherView.swift in Sources */,
 				0396D52B24B8B7ED00CC021B /* SeededGenerator.swift in Sources */,
-				03FF193526972C1200A0FA7F /* AppleMusicSearch.swift in Sources */,
 				0396D52C24B8B7ED00CC021B /* InfoDateView.swift in Sources */,
 				0345EDE924C3239400C73038 /* DisplaysViewController.swift in Sources */,
 				0396D52D24B8B7ED00CC021B /* ManifestLoader.swift in Sources */,
@@ -2665,7 +2648,6 @@
 				0396D56024B8B7ED00CC021B /* DownloadManager.swift in Sources */,
 				033811B124C1E243002E23E0 /* InfoViewController.swift in Sources */,
 				03AA32632631A8F2002198C3 /* GeoCoding.swift in Sources */,
-				03DDFCA6268F73080001A13E /* SpotifySong.swift in Sources */,
 				031945F424CCC48C00F37B35 /* CreditsViewController.swift in Sources */,
 				0396D56224B8B7ED00CC021B /* InfoCountdownView.swift in Sources */,
 				0396D56324B8B7ED00CC021B /* ConditionSymbolLayer.swift in Sources */,
@@ -2698,7 +2680,6 @@
 				0361B9AC23D73D4500B6252D /* PrefsTime.swift in Sources */,
 				037772EF24E44CE100D81EEA /* RecapViewController.swift in Sources */,
 				0345D00C24BF4E8C0001045C /* Sidebar.swift in Sources */,
-				03FF193626972C1200A0FA7F /* AppleMusicSearch.swift in Sources */,
 				030010A424D706DB0092AE68 /* SidebarOutlineView.swift in Sources */,
 				032D1162239A7E03007E7756 /* Battery.swift in Sources */,
 				03893CB4217753AC008E7125 /* ErrorLog.swift in Sources */,
@@ -2799,7 +2780,6 @@
 				038D2EBD23AB91C300CD91F7 /* InfoLocationView.swift in Sources */,
 				034F29B823A7A9B3004B34D5 /* InfoTableSource.swift in Sources */,
 				03298777274687340036D898 /* NowPlayingViewController.swift in Sources */,
-				03DDFCA7268F73080001A13E /* SpotifySong.swift in Sources */,
 				0313F9ED2294468600B074BB /* SeededGenerator.swift in Sources */,
 				034DEE3024BF1BC700A2D3CD /* PanelWindowController.swift in Sources */,
 				F05E805628AE8A9C0088B9C5 /* NowPlayingCollectionView.swift in Sources */,
@@ -2818,7 +2798,6 @@
 				03A42AA4244A0E5F003B3012 /* ConditionLayer.swift in Sources */,
 				03BDBEA424C467EC00BBD5E9 /* BrightnessViewController.swift in Sources */,
 				036A57D623F30F490009DC02 /* DownloadIndicatorLayer.swift in Sources */,
-				031C5CBF268CBF0400CE35B4 /* AppleMusicSong.swift in Sources */,
 				0300109924D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift in Sources */,
 				03A596D623AA752F0097EA66 /* InfoClockView.swift in Sources */,
 				037772E324E43AF300D81EEA /* TimeSetupViewController.swift in Sources */,
@@ -2860,7 +2839,6 @@
 				F00864B423AAE7F0003210EF /* DarkMode.swift in Sources */,
 				03047A5424D2DD8E000EFE62 /* NSMenuItem+icons.swift in Sources */,
 				0300109724D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift in Sources */,
-				031C5CBD268CBF0400CE35B4 /* AppleMusicSong.swift in Sources */,
 				0313F9EF22955F3B00B074BB /* CustomVideoFolders.swift in Sources */,
 				036A7E9B26370C260019186B /* Forecast.swift in Sources */,
 				030DDA902423C3BE0072D5C9 /* InfoTimerView.swift in Sources */,
@@ -2885,7 +2863,6 @@
 				03EBF0C02746A53B00EC09D1 /* PlayingCollectionViewItem.swift in Sources */,
 				0385FC5D242B9F6E007E6513 /* InfoWeatherView.swift in Sources */,
 				0313F9EC2294468600B074BB /* SeededGenerator.swift in Sources */,
-				03FF193426972C1200A0FA7F /* AppleMusicSearch.swift in Sources */,
 				03FA49B42428EE3300863AF6 /* InfoDateView.swift in Sources */,
 				0345EDE824C3239400C73038 /* DisplaysViewController.swift in Sources */,
 				FAC36F671BE1778C007F2A20 /* ManifestLoader.swift in Sources */,
@@ -2964,7 +2941,6 @@
 				03E8730C2165013C002B469B /* DownloadManager.swift in Sources */,
 				033811B024C1E243002E23E0 /* InfoViewController.swift in Sources */,
 				03AA32622631A8F2002198C3 /* GeoCoding.swift in Sources */,
-				03DDFCA5268F73080001A13E /* SpotifySong.swift in Sources */,
 				031945F324CCC48C00F37B35 /* CreditsViewController.swift in Sources */,
 				036A57D823F470940009DC02 /* InfoCountdownView.swift in Sources */,
 				033D68812453080C0016F837 /* ConditionSymbolLayer.swift in Sources */,
@@ -3265,7 +3241,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3.2.8;
+				CURRENT_PROJECT_VERSION = 3.2.7beta0c;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3273,7 +3249,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 3.2.8;
+				MARKETING_VERSION = 3.2.7beta0c;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3294,7 +3270,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3.2.8;
+				CURRENT_PROJECT_VERSION = 3.2.7beta0c;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3302,7 +3278,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 3.2.8;
+				MARKETING_VERSION = 3.2.7beta0c;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

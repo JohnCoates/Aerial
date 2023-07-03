@@ -43,6 +43,14 @@ class ArtworkLayer: CALayer {
         fatalError("init(coder:) has not been implemented")
     }
 
+    
+    func updateArtwork(artwork: NSImage?) {
+        if let artwork = artwork {
+            contents = artwork
+        }
+    }
+    
+    /*
     func updateArtwork(id: String) {
         Music.instance.getArtworkUrl(id: id) { [self] artworkUrl in
             guard let artworkUrl = artworkUrl else {
@@ -75,5 +83,5 @@ class ArtworkLayer: CALayer {
 
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-    }
+    }*/
 }

@@ -19,6 +19,7 @@ class MusicLayer: AnimationLayer {
     let artworkLayer = ArtworkLayer()
     let nameLayer = CATextLayer()
     let artistLayer = CATextLayer()
+    let albumLayer = CATextLayer()
 
     override init(layer: Any) {
         super.init(layer: layer)
@@ -64,6 +65,10 @@ class MusicLayer: AnimationLayer {
             let fadeAnimation = self.createFadeInAnimation()
             add(fadeAnimation, forKey: "textfade")*/
         }
+
+        // We trigger the first one manually, so we get data immediately
+        debugLog("🎧🟧 manual triggering")
+        Music.instance.mediaRemoteCallback(nil)
     }
 
     func setupLayer() {
@@ -79,6 +84,12 @@ class MusicLayer: AnimationLayer {
         (artistLayer.font, artistLayer.fontSize) = artistLayer.makeFont(name: PrefsInfo.music.fontName, size: PrefsInfo.music.fontSize)
         addSublayer(artistLayer)
 
+        // Artist name below
+        albumLayer.string = ""
+        (albumLayer.font, albumLayer.fontSize) = albumLayer.makeFont(name: PrefsInfo.music.fontName, size: PrefsInfo.music.fontSize)
+        addSublayer(albumLayer)
+
+        
         // frame/position stuff
         reframe()
     }
@@ -97,11 +108,18 @@ class MusicLayer: AnimationLayer {
         artistLayer.frame = rect2
         artistLayer.contentsScale = self.contentsScale
 
+        let rect3 = albumLayer.calculateRect(string: albumLayer.string as! String,
+                                              font: albumLayer.font as! NSFont,
+                                              maxWidth: Double(layerManager.frame!.size.width))
+        albumLayer.frame = rect3
+        albumLayer.contentsScale = self.contentsScale
+        
+        
         artworkLayer.contentsScale = self.contentsScale
 
         // Then calc our parent frame size
-        let textHeight = nameLayer.frame.height + artistLayer.frame.height
-        let textWidth = max(nameLayer.frame.width, artistLayer.frame.width)
+        let textHeight = nameLayer.frame.height + artistLayer.frame.height + albumLayer.frame.height
+        let textWidth = max(nameLayer.frame.width, artistLayer.frame.width, albumLayer.frame.width)
 
         let artworkOffset = textHeight + 20
 
@@ -113,11 +131,15 @@ class MusicLayer: AnimationLayer {
         }
 
         // Position the things
+        albumLayer.anchorPoint = CGPoint(x: 0, y: 0)
+        albumLayer.position = CGPoint(x: artworkOffset, y: 0)
+
         nameLayer.anchorPoint = CGPoint(x: 0, y: 0)
-        nameLayer.position = CGPoint(x: artworkOffset, y: 0)
+        nameLayer.position = CGPoint(x: artworkOffset, y: albumLayer.frame.height - 6)
 
         artistLayer.anchorPoint = CGPoint(x: 0, y: 0)
-        artistLayer.position = CGPoint(x: artworkOffset, y: nameLayer.frame.height - 6)
+        artistLayer.position = CGPoint(x: artworkOffset, y: albumLayer.frame.height + nameLayer.frame.height - 12)
+
 
         artworkLayer.anchorPoint = CGPoint(x: 0, y: 0)
         artworkLayer.position = CGPoint(x: 0, y: 0)
@@ -125,7 +147,9 @@ class MusicLayer: AnimationLayer {
     }
 
     func updateStatus(songInfo: SongInfo) {
-        guard songInfo.name != "", songInfo.id != "" else {
+        debugLog("🎧🟧 updateStatus")
+
+        guard songInfo.name != "" else {
             opacity = 0
             frame.size.height = 0
             return
@@ -134,7 +158,8 @@ class MusicLayer: AnimationLayer {
         opacity = 1
         nameLayer.string = songInfo.name
         artistLayer.string = songInfo.artist
-        artworkLayer.updateArtwork(id: songInfo.id)
+        albumLayer.string = songInfo.album
+        artworkLayer.updateArtwork(artwork: songInfo.artwork)
         // frame/position stuff
         reframe()
     }
