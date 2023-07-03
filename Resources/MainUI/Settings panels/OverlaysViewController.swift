@@ -70,8 +70,14 @@ class OverlaysViewController: NSViewController {
         infoSettingsTableView.delegate = infoSettingsSource
 
         hideUnderCompanion.state = PrefsInfo.hideUnderCompanion ? .on : .off
+        
+        // Calling this in both viewDidLoad and viewDidAppear prevents a vertical shift
+        drawInfoPanel(forType: PrefsInfo.layers[infoTableView.selectedRow])
     }
 
+    override func viewDidAppear() {
+        drawInfoPanel(forType: PrefsInfo.layers[infoTableView.selectedRow])
+    }
     
     @IBAction func hideUnderCompanionClick(_ sender: NSButton) {
         PrefsInfo.hideUnderCompanion = sender.state == .on

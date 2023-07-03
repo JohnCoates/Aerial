@@ -42,7 +42,7 @@ class BrightnessViewController: NSViewController {
         DispatchQueue.main.async {
             let sleepTime = TimeManagement.sharedInstance.getCurrentSleepTime()
             if sleepTime != 0 {
-                self.sleepAfterLabel.stringValue = "Your Mac currently goes to sleep after \(sleepTime) minutes"
+                self.sleepAfterLabel.stringValue = "Your Mac currently goes to sleep after \(sleepTime) minute\(sleepTime != 1 ? "s" : "")"
             } else {
                 self.sleepAfterLabel.stringValue = "Unable to determine your Mac sleep settings"
             }

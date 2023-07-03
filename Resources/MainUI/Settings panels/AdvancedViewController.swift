@@ -54,7 +54,9 @@ class AdvancedViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        scrollView.contentView.scroll(NSMakePoint(0,0))
+        DispatchQueue.main.async {
+            self.scrollView.contentView.scroll(NSMakePoint(0,0))
+        }
         
         // HEVC is available only in macOS 10.13+
         if #available(OSX 10.13, *) {

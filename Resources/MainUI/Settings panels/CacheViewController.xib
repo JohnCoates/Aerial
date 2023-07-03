@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22113.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22113.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,12 +40,12 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="804" height="830"/>
+            <rect key="frame" x="0.0" y="0.0" width="811" height="830"/>
             <subviews>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="u4o-WA-mfN">
-                    <rect key="frame" x="16" y="284" width="772" height="300"/>
+                    <rect key="frame" x="16" y="284" width="779" height="300"/>
                     <subviews>
-                        <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1wh-wp-MNi">
+                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1wh-wp-MNi">
                             <rect key="frame" x="423" y="277" width="33" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="33" id="VId-kn-hXK"/>
@@ -64,7 +63,7 @@
                                 <action selector="limitTextFieldChange:" target="-2" id="Npl-Z9-PIY"/>
                             </connections>
                         </textField>
-                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IrX-JD-reU">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IrX-JD-reU">
                             <rect key="frame" x="462" y="279" width="24" height="17"/>
                             <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="GB" id="z4c-yB-k4e">
                                 <font key="font" metaFont="system" size="14"/>
@@ -72,7 +71,7 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cW8-Ta-PzR">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cW8-Ta-PzR">
                             <rect key="frame" x="49" y="279" width="129" height="17"/>
                             <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Limit cache size to:" id="DLv-dB-sq0">
                                 <font key="font" metaFont="system" size="14"/>
@@ -100,7 +99,7 @@
                                 <action selector="addCurrentNetworkClick:" target="-2" id="93G-1M-BPb"/>
                             </connections>
                         </button>
-                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l6E-tF-sRt">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l6E-tF-sRt">
                             <rect key="frame" x="182" y="22" width="63" height="17"/>
                             <textFieldCell key="cell" controlSize="large" title="Allowed: " id="HwM-ON-Dvy">
                                 <font key="font" metaFont="system" size="14"/>
@@ -115,7 +114,7 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                         </button>
-                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="agU-a4-AzS">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="agU-a4-AzS">
                             <rect key="frame" x="203" y="98" width="100" height="17"/>
                             <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Connected to: " id="GbJ-ZN-k25">
                                 <font key="font" metaFont="system" size="14"/>
@@ -133,7 +132,7 @@
                                 <action selector="limitSliderChange:" target="-2" id="i84-Z3-DXI"/>
                             </connections>
                         </slider>
-                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I6n-yR-diw">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I6n-yR-diw">
                             <rect key="frame" x="184" y="258" width="28" height="14"/>
                             <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="1 GB" id="o3E-dq-K0M">
                                 <font key="font" metaFont="smallSystem"/>
@@ -141,7 +140,7 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YDt-7V-EeW">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YDt-7V-EeW">
                             <rect key="frame" x="375" y="260" width="58" height="14"/>
                             <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="center" title="Unlimited" id="OjV-g1-U8U">
                                 <font key="font" metaFont="smallSystem"/>
@@ -149,7 +148,7 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hTY-9R-NMo">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hTY-9R-NMo">
                             <rect key="frame" x="72" y="221" width="106" height="17"/>
                             <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Replace videos:" id="HcU-b8-0LK">
                                 <font key="font" metaFont="system" size="14"/>
@@ -200,9 +199,9 @@
                             </connections>
                         </button>
                         <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="qCm-Xg-sGD">
-                            <rect key="frame" x="8" y="162" width="756" height="5"/>
+                            <rect key="frame" x="8" y="162" width="763" height="5"/>
                         </box>
-                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yd1-B2-AiX">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yd1-B2-AiX">
                             <rect key="frame" x="281" y="221" width="436" height="17"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="(if your cache is full, older videos will be replaced with newer ones)" id="xbm-Ev-ZSe">
                                 <font key="font" metaFont="system" size="14"/>
@@ -251,7 +250,7 @@
                     </constraints>
                 </customView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="g6L-Vy-rKN">
-                    <rect key="frame" x="16" y="722" width="772" height="54"/>
+                    <rect key="frame" x="16" y="722" width="779" height="54"/>
                     <subviews>
                         <box fixedFrame="YES" boxType="custom" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="uMh-u9-z5G">
                             <rect key="frame" x="184" y="29" width="153" height="25"/>
@@ -260,7 +259,7 @@
                                 <rect key="frame" x="1" y="1" width="151" height="23"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="G9x-bl-vJK">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="G9x-bl-vJK">
                                         <rect key="frame" x="56" y="4" width="40" height="15"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Cache" id="coI-xi-DVR">
                                             <font key="font" metaFont="cellTitle"/>
@@ -276,8 +275,8 @@
                             </view>
                             <color key="fillColor" name="systemIndigoColor" catalog="System" colorSpace="catalog"/>
                         </box>
-                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uaY-f5-FSu">
-                            <rect key="frame" x="63" y="8" width="646" height="16"/>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uaY-f5-FSu">
+                            <rect key="frame" x="67" y="8" width="646" height="16"/>
                             <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" title="Total usage 40 GB (8 GB for packs, 32 GB for the cache, still 8 GB of free cache available for more videos)" id="VPN-wd-3Px">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -291,7 +290,7 @@
                                 <rect key="frame" x="1" y="1" width="78" height="23"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gqg-D4-Gcg">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gqg-D4-Gcg">
                                         <rect key="frame" x="20" y="4" width="38" height="15"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Packs" id="MbW-vO-gcQ">
                                             <font key="font" metaFont="cellTitle"/>
@@ -307,7 +306,7 @@
                             </view>
                             <color key="fillColor" name="systemMintColor" catalog="System" colorSpace="catalog"/>
                         </box>
-                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YWN-Hr-d3G">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YWN-Hr-d3G">
                             <rect key="frame" x="99" y="34" width="79" height="17"/>
                             <textFieldCell key="cell" controlSize="large" lineBreakMode="clipping" alignment="right" title="Disk usage:" id="Fus-gy-WLi">
                                 <font key="font" metaFont="system" size="14"/>
@@ -322,7 +321,7 @@
                                 <rect key="frame" x="1" y="1" width="142" height="23"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="96i-aD-JIX">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="96i-aD-JIX">
                                         <rect key="frame" x="57" y="4" width="29" height="15"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" title="Free" id="HV6-vP-hq6">
                                             <font key="font" metaFont="cellTitle"/>
@@ -367,7 +366,7 @@
                         <action selector="manuallyPIckClick:" target="-2" id="6Px-mU-1A1"/>
                     </connections>
                 </button>
-                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nB4-bN-Nk2">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nB4-bN-Nk2">
                     <rect key="frame" x="220" y="662" width="444" height="15"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Because of security restrictions, this option requires macOS Monterey or later" id="DKN-y4-Ctc">
                         <font key="font" metaFont="cellTitle"/>
@@ -376,7 +375,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="opJ-yV-dsw">
-                    <rect key="frame" x="606" y="676" width="125" height="40"/>
+                    <rect key="frame" x="613" y="676" width="125" height="40"/>
                     <buttonCell key="cell" type="push" title="Pick Folder" bezelStyle="rounded" image="folder.badge.gearshape" catalog="system" imagePosition="left" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="61J-7N-dOP">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system" size="14"/>
@@ -385,7 +384,7 @@
                         <action selector="pickFolderButton:" target="-2" id="gPv-l4-nTp"/>
                     </connections>
                 </button>
-                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hBb-m4-Lg5">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hBb-m4-Lg5">
                     <rect key="frame" x="52" y="797" width="363" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Change cache location and how videos are downloaded" id="E6y-lf-REM">
                         <font key="font" metaFont="system" size="14"/>
@@ -405,7 +404,7 @@
                     <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
                 </imageView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UgL-8O-Ljc">
-                    <rect key="frame" x="458" y="676" width="148" height="40"/>
+                    <rect key="frame" x="465" y="676" width="148" height="40"/>
                     <buttonCell key="cell" type="push" title="Show in Finder" bezelStyle="rounded" image="folder" catalog="system" imagePosition="left" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NJy-ug-gBa">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system" size="14"/>
@@ -425,9 +424,9 @@
                     </connections>
                 </button>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="Epz-1h-oTj">
-                    <rect key="frame" x="16" y="458" width="772" height="126"/>
+                    <rect key="frame" x="16" y="458" width="779" height="126"/>
                     <subviews>
-                        <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="k6x-vV-geU">
+                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="k6x-vV-geU">
                             <rect key="frame" x="182" y="101" width="454" height="17"/>
                             <textFieldCell key="cell" selectable="YES" title="You can manually download or manage your cache from the video list." id="XE8-MB-KvC">
                                 <font key="font" metaFont="system" size="14"/>
@@ -437,16 +436,16 @@
                         </textField>
                         <button translatesAutoresizingMaskIntoConstraints="NO" id="Pzb-yH-L4O">
                             <rect key="frame" x="154" y="99" width="22" height="22"/>
-                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSInfo" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="I5o-hM-yIi">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="1zm-5q-hAh"/>
                                 <constraint firstAttribute="width" constant="22" id="CVq-hN-mLU"/>
                             </constraints>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSInfo" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="I5o-hM-yIi">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
                         </button>
-                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WTL-hI-TCP">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WTL-hI-TCP">
                             <rect key="frame" x="182" y="66" width="137" height="17"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Current cache size : " id="LuH-hC-uzW">
                                 <font key="font" metaFont="system" size="14"/>
@@ -513,7 +512,7 @@
         <image name="NSInfo" width="32" height="32"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
         <image name="folder" catalog="system" width="18" height="14"/>
-        <image name="folder.badge.gearshape" catalog="system" width="20" height="15"/>
+        <image name="folder.badge.gearshape" catalog="system" width="19" height="14"/>
         <image name="internaldrive" catalog="system" width="24" height="17"/>
     </resources>
 </document>
