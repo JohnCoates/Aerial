@@ -17,7 +17,7 @@ struct SourceHeader {
 struct SourceList {
     // This is the current one until next fall
     static let macOS14 = Source(name: "macOS 14b1",
-                        description: "High framerate lock screen videos from macOS 14 Sonoma",
+                        description: "High framerate videos from macOS 14 Sonoma",
                         manifestUrl: "https://sylvan.apple.com/itunes-assets/Aerials126/v4/82/2e/34/822e344c-f5d2-878c-3d56-508d5b09ed61/resources-14-0.tar",
                         type: .tvOS12,
                         scenes: [.nature, .city, .space, .sea],

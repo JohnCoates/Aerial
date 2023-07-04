@@ -54,15 +54,17 @@ final class AerialVideo: CustomStringConvertible, Equatable {
             return getURL(string: urls[wanted]!)
         } else {
             // Fallback
-            if urls[.v4KHEVC] != "" {
+            if urls.keys.contains(.v4KHEVC), urls[.v4KHEVC] != "" {
                 return getURL(string: urls[.v4KHEVC]!)
-            } else if urls[.v4KSDR240] != "" {  // macOS manifest only have those
+            } else if urls.keys.contains(.v4KSDR240), urls[.v4KSDR240] != "" {
+                // macOS manifest only have those
                 return getURL(string: urls[.v4KSDR240]!)
-            } else if urls[.v1080pHEVC] != "" {
+            } else if urls.keys.contains(.v1080pHEVC), urls[.v1080pHEVC] != "" {
                 return getURL(string: urls[.v1080pHEVC]!)
-            } else if urls[.v1080pH264] != "" { // Last resort
+            } else if urls.keys.contains(.v1080pH264), urls[.v1080pH264] != "" { // Last resort
                 return getURL(string: urls[.v1080pH264]!)
             } else {
+                errorLog("getClosestAvailable failed back hard to 4KHDR")
                 // Something went very wrong if we are here
                 return getURL(string: urls[.v4KHDR]!)
             }

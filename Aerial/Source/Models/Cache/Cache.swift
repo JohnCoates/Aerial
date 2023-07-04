@@ -382,7 +382,10 @@ struct Cache {
 
             // let pathURL = URL(fileURLWithPath: path)
             do {
-                pathUrl.startAccessingSecurityScopedResource()
+                guard pathUrl.startAccessingSecurityScopedResource() else {
+                    errorLog("removeCruft couldn't access scoped resouce")
+                    return
+                }
 
                 let directoryContent = try FileManager.default.contentsOfDirectory(at: pathUrl, includingPropertiesForKeys: nil)
                 debugLog("count : \(directoryContent.count)")

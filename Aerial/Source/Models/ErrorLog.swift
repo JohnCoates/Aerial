@@ -196,5 +196,5 @@ func warnLog(_ message: String) {
 }
 
 func errorLog(_ message: String) {
-    Log(level: .error, message: message)
+    Log(level: .error, message: "🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨 " + message)
 }

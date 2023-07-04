@@ -116,11 +116,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     override init?(frame: NSRect, isPreview: Bool) {
         // First thing, we migrate preferences if needed
         Aerial.helper.checkCompanion()
-        if !Aerial.helper.underCompanion && !Aerial.helper.appMode {
+        /*if !Aerial.helper.underCompanion && !Aerial.helper.appMode {
             Aerial.helper.migratePreferences()
         } else {
             debugLog("Not migrating under companion")
-        }
+        }*/
 
         // Clear log if > 1MB on startup
         rollLogIfNeeded()
@@ -141,7 +141,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         self.layerManager = LayerManager(isPreview: preview)
 
         super.init(frame: frame, isPreview: preview)
-        debugLog("avInit .saver \(frame) p: \(isPreview) o: \(preview)")
+        debugLog("🖼️ AVinit (.saver) \(frame) p: \(isPreview) o: \(preview)")
 
         self.animationTimeInterval = 1.0 / 30.0
 
@@ -158,11 +158,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
         // First thing, we migrate preferences if needed
         Aerial.helper.checkCompanion()
-        if !Aerial.helper.underCompanion && !Aerial.helper.appMode {
+        /*if !Aerial.helper.underCompanion && !Aerial.helper.appMode {
             Aerial.helper.migratePreferences()
         } else {
             debugLog("Not migrating under companion")
-        }
+        }*/
 
         // Clear log if > 1MB on startup
         rollLogIfNeeded()
@@ -177,14 +177,14 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         self.originalWidth = frame.width
         self.originalHeight = frame.height
 
-        debugLog("avInit .app")
+        debugLog("🖼️ AVinit .app")
         setup()
     }
 
     deinit {
         Aerial.helper.maybeUnmuteSound()
         
-        debugLog("\(self.description) deinit AerialView")
+        debugLog("🖼️ \(self.description) AVdeinit ")
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -193,10 +193,10 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         } else {
             // No HDR allowed here
             if PrefsVideos.videoFormat == .v4KHDR {
-                debugLog("Fixing 4K HDR not allowed prior to Catalina")
+                debugLog("🖼️⚠️ Fixing 4K HDR not allowed prior to Catalina")
                 PrefsVideos.videoFormat = .v4KHEVC
             } else if PrefsVideos.videoFormat == .v1080pHDR {
-                debugLog("Fixing 1080p HDR not allowed prior to Catalina")
+                debugLog("🖼️⚠️ Fixing 1080p HDR not allowed prior to Catalina")
                 PrefsVideos.videoFormat = .v1080pHEVC
             }
         }
@@ -231,8 +231,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         ensureCorrectFormat()
         
         if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
-            debugLog("\(self.description) AerialView setup init (V\(version)) preview: \(self.isPreview)")
-            debugLog("Running \(ProcessInfo.processInfo.operatingSystemVersionString)")
+            debugLog("🖼️ \(self.description) AV setup init (V\(version)) preview: \(self.isPreview)")
+            debugLog("🖼️ Running \(ProcessInfo.processInfo.operatingSystemVersionString)")
         }
 
         // First thing, we may need to migrate the cache !
@@ -248,7 +248,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         if !isPreview {
             if (PrefsVideos.onBatteryMode == .alwaysDisabled && Battery.isUnplugged())
                 || (PrefsVideos.onBatteryMode == .disableOnLow && Battery.isLow()) {
-                debugLog("Engaging power saving mode")
+                debugLog("🖼️ Engaging power saving mode")
                 isDisabled = true
                 Brightness.set(level: 0.0)
                 return
@@ -266,10 +266,10 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         let displayDetection = DisplayDetection.sharedInstance
         let thisScreen = displayDetection.findScreenWith(frame: self.frame)
         let screenCount = displayDetection.getScreenCount()
-        debugLog("Real screen count : \(screenCount)")
+        debugLog("🖼️ Real screen count : \(screenCount)")
 
         var localPlayer: AVPlayer?
-        debugLog("Using : \(String(describing: thisScreen))")
+        debugLog("🖼️ Using : \(String(describing: thisScreen))")
 
         // Is the current screen disabled by user ?
         if !isPreview {
@@ -277,7 +277,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             if let screen = thisScreen {
                 if !displayDetection.isScreenActive(id: screen.id) {
                     // Then we disable and exit
-                    debugLog("This display is not active, disabling")
+                    debugLog("🖼️ This display is not active, disabling")
                     isDisabled = true
                     return
                 }
@@ -319,9 +319,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
         // In mirror mode we use the main instance player
         if AerialView.sharingPlayers && AerialView.singlePlayerAlreadySetup {
-            self.playerLayer.player = AerialView.instanciatedViews[AerialView.sharedPlayerIndex!].player
-            self.playerLayer.opacity = 0
-            return
+            if let index = AerialView.sharedPlayerIndex {
+                self.playerLayer.player = AerialView.instanciatedViews[index].player
+                self.playerLayer.opacity = 0
+                return
+            }
         }
 
         // We're never sharing the preview !
@@ -334,7 +336,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         VideoList.instance.addCallback {
             // Then we may need to delay things a bit if we haven't gathered the coordinates yet
             if PrefsTime.timeMode == .locationService && Locations.sharedInstance.coordinates == nil {
-                debugLog("No coordinates yet, delaying a bit...")
+                debugLog("🖼️⚠️ No coordinates yet, delaying a bit...")
                 DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
                     self.playNextVideo()
                 }
@@ -350,32 +352,36 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     }
     
     override func viewDidChangeBackingProperties() {
-        debugLog("\(self.description) backing change \((self.window?.backingScaleFactor) ?? 1.0) isDisabled: \(isDisabled) frame: \(self.frame) preview: \(self.isPreview)")
+        debugLog("🖼️ \(self.description) backing change \((self.window?.backingScaleFactor) ?? 1.0) isDisabled: \(isDisabled) frame: \(self.frame) preview: \(self.isPreview)")
 
         // Tentative workaround for a Catalina+ bug
         if self.frame.width < 300 && !isPreview {
-            debugLog("*** Frame size bug, trying to override to \(originalWidth)x\(originalHeight)!")
+            debugLog("🖼️☢️ Frame size bug, trying to override to \(originalWidth)x\(originalHeight)!")
             self.frame = CGRect(x: 0, y: 0, width: originalWidth, height: originalHeight)
         }
 
         if !isDisabled {
-            self.layer!.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
-            self.playerLayer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
+            if let layer = layer {
+                layer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
+                self.playerLayer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
 
-            // And our additional layers
-            layerManager.setContentScale(scale: (self.window?.backingScaleFactor) ?? 1.0)
+                // And our additional layers
+                layerManager.setContentScale(scale: (self.window?.backingScaleFactor) ?? 1.0)
+            }
         }
     }
 
     // On previews, it's possible that our shared player was stopped and is not reusable
     func cleanupSharedViews() {
         if AerialView.singlePlayerAlreadySetup {
-            if AerialView.instanciatedViews[AerialView.sharedPlayerIndex!].wasStopped {
-                AerialView.singlePlayerAlreadySetup = false
-                AerialView.sharedPlayerIndex = nil
+            if let index = AerialView.sharedPlayerIndex {
+                if AerialView.instanciatedViews[index].wasStopped {
+                    AerialView.singlePlayerAlreadySetup = false
+                    AerialView.sharedPlayerIndex = nil
 
-                AerialView.instanciatedViews = [AerialView]()   // Clear the list of instanciated stuff
-                AerialView.sharedViews = [AerialView]()         // And the list of sharedViews
+                    AerialView.instanciatedViews = [AerialView]()   // Clear the list of instanciated stuff
+                    AerialView.sharedViews = [AerialView]()         // And the list of sharedViews
+                }
             }
         }
     }
@@ -383,7 +389,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     // MARK: - Lifecycle stuff
     override func startAnimation() {
         super.startAnimation()
-        debugLog("\(self.description) startAnimation frame \(self.frame) bounds \(self.bounds)")
+        debugLog("🖼️ \(self.description) startAnimation frame \(self.frame) bounds \(self.bounds)")
 
         if !isDisabled {
             // Previews may be restarted, but our layer will get hidden (somehow) so show it back
@@ -397,9 +403,9 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     override func stopAnimation() {
         Aerial.helper.maybeUnmuteSound()
-        //super.stopAnimation()
+
         wasStopped = true
-        debugLog("\(self.description) stopAnimation")
+        debugLog("🖼️ \(self.description) stopAnimation")
         if !isDisabled {
             player?.pause()
             player?.rate = 0
@@ -411,9 +417,9 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         }
 
         if PrefsDisplays.dimBrightness {
-            if !isPreview && brightnessToRestore != nil {
-                Brightness.set(level: brightnessToRestore!)
-                brightnessToRestore = nil
+            if !isPreview, let brightnessToRestore = brightnessToRestore {
+                Brightness.set(level: brightnessToRestore)
+                self.brightnessToRestore = nil
             }
         }
         
@@ -425,8 +431,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         clearNotifications()
         // Clear layer animations
         clearAllLayerAnimations()
-        
-
 
         guard let player = self.player else {
             return
@@ -442,7 +446,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         // Remove any download
         VideoManager.sharedInstance.cancelAll()
         
-        debugLog("end teardown")
+        debugLog("🖼️ end teardown")
     }
     
     // Wait for the player to be ready
@@ -450,38 +454,38 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     internal override func observeValue(forKeyPath keyPath: String?,
                                         of object: Any?, change: [NSKeyValueChangeKey: Any]?,
                                         context: UnsafeMutableRawPointer?) {
-        debugLog("\(self.description) observeValue \(String(describing: keyPath)) \(self.playerLayer.isReadyForDisplay)")
+        debugLog("🖼️ \(description) observeValue \(String(describing: keyPath)) \(playerLayer.isReadyForDisplay)")
 
-        if self.playerLayer.isReadyForDisplay {
-            self.player!.play()
+        if let player = player, let currentVideo = currentVideo, playerLayer.isReadyForDisplay {
+            player.play()
             hasStartedPlaying = true
 
             if Aerial.helper.underCompanion {
-                player!.rate = globalSpeed
+                player.rate = globalSpeed
             } else {
-                player!.rate = PlaybackSpeed.forVideo(self.currentVideo!.id)
+                player.rate = PlaybackSpeed.forVideo(currentVideo.id)
             }
 
-            debugLog("start playback: \(self.frame) \(self.bounds) rate: \(player!.rate)")
+            debugLog("🖼️ start playback: \(frame) \(bounds) rate: \(player.rate)")
 
             // If we share a player, we need to add the fades and the text to all the
             // instanciated views using it (eg: in mirrored mode)
             if AerialView.sharingPlayers {
                 for view in AerialView.sharedViews {
-                    self.addPlayerFades(view: view, player: self.player!, video: self.currentVideo!)
+                    self.addPlayerFades(view: view, player: player, video: currentVideo)
                     
                     if (Aerial.helper.underCompanion && PrefsInfo.hideUnderCompanion) {
-                        debugLog("Disable overlays under Companion")
+                        debugLog("🖼️ Disable overlays under Companion")
                     } else {
-                        view.layerManager.setupLayersForVideo(video: self.currentVideo!, player: self.player!)
+                        view.layerManager.setupLayersForVideo(video: currentVideo, player: player)
                     }
                 }
             } else {
-                self.addPlayerFades(view: self, player: self.player!, video: self.currentVideo!)
+                self.addPlayerFades(view: self, player: player, video: currentVideo)
                 if (Aerial.helper.underCompanion && PrefsInfo.hideUnderCompanion) {
-                    debugLog("Disable overlays under Companion")
+                    debugLog("🖼️ Disable overlays under Companion")
                 } else {
-                    self.layerManager.setupLayersForVideo(video: self.currentVideo!, player: self.player!)
+                    self.layerManager.setupLayersForVideo(video: currentVideo, player: player)
                 }
             }
         }
@@ -490,9 +494,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     // Remove all the layer animations on all shared views
     func clearAllLayerAnimations() {
         // Clear everything
-        layerManager.clearLayerAnimations(player: self.player!)
-        for view in AerialView.sharedViews {
-            view.layerManager.clearLayerAnimations(player: self.player!)
+        if let player = player {
+            layerManager.clearLayerAnimations(player: player)
+            for view in AerialView.sharedViews {
+                view.layerManager.clearLayerAnimations(player: player)
+            }
         }
     }
 
@@ -539,13 +545,13 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     
     @objc func willStart(_ aNotification: Notification) {
         if Aerial.helper.underCompanion {
-            debugLog("############ willStart")
+            debugLog("🖼️ 📢📢📢 willStart")
             player?.pause()
         }
     }
 
     @objc func willStop(_ aNotification: Notification) {
-        debugLog("############ willStop")
+        debugLog("🖼️ 📢📢📢 willStop")
         if !Aerial.helper.underCompanion {
             if let player = player {
                 player.pause()
@@ -558,7 +564,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
     // Tentative integration with companion of extra features
     @objc func togglePause() {
-        debugLog("Toggling pause")
+        debugLog("🖼️ Toggling pause")
         if player?.rate == 0 {
             player?.play()
             player?.rate = globalSpeed
@@ -569,23 +575,32 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     }
 
     @objc func nextVideo() {
-        debugLog("Next video")
+        debugLog("🖼️ Next video")
         fastFadeOut(andPlayNext: true)
     }
 
     @objc func skipAndHide() {
-        debugLog("Skip video and hide")
-        PrefsVideos.hidden.append(currentVideo!.id)
+        guard let currentVideo = currentVideo else {
+            errorLog("skipAndHide, no currentVideo")
+            return
+        }
+
+        debugLog("🖼️ Skip video and hide")
+        PrefsVideos.hidden.append(currentVideo.id)
         fastFadeOut(andPlayNext: true)
     }
 
     @objc func getGlobalSpeed() -> Float {
-        debugLog("Current global speed : " + String(globalSpeed))
-        return player!.rate
+        guard let player = player else {
+            errorLog("getGlobalSpeed, no player")
+            return 0
+        }
+        debugLog("🖼️ Current global speed : " + String(globalSpeed))
+        return player.rate
     }
 
     @objc func setGlobalSpeed(_ speed : Float)  {
-        debugLog("Setting speed to : " + String(speed))
+        debugLog("🖼️ Setting speed to : " + String(speed))
         globalSpeed = speed
 
         // Apply now if playing
@@ -601,7 +616,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     // MARK: - playNextVideo()
     // swiftlint:disable:next cyclomatic_complexity
     func playNextVideo() {
-        debugLog("\(self) pnv")
+        debugLog("🖼️ \(self) pnv")
 
         clearAllLayerAnimations()
 
@@ -619,7 +634,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             AerialView.previewPlayer = player
         }
 
-        debugLog("\(self.description) Setting player for all player layers in \(AerialView.sharedViews)")
+        debugLog("🖼️ \(self.description) Setting player for all player layers in \(AerialView.sharedViews)")
         for view in AerialView.sharedViews {
             view.playerLayer.player = player
         }
@@ -637,11 +652,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         let currentVideos: [AerialVideo] = AerialView.players.compactMap { (player) -> AerialVideo? in
             (player.currentItem as? AerialPlayerItem)?.video
         }
-
-        // Now we need to check if we should remove lingering stuff from the cache !
-        /*if Cache.canNetwork() {
-            Cache.removeCruft()
-        }*/
 
         let (randomVideo, pshouldLoop) = VideoList.instance.randomVideo(excluding: currentVideos, isVertical: isScreenVertical())
 
@@ -662,14 +672,14 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             }
 
             player.replaceCurrentItem(with: item)
-            debugLog("\(self.description) streaming video (not fully available offline) : \(video.url)")
+            debugLog("🖼️ \(self.description) streaming video (not fully available offline) : \(video.url)")
 
             guard let currentItem = player.currentItem else {
                 errorLog("\(self.description) No current item!")
                 return
             }
 
-            debugLog("\(self.description) observing current item \(currentItem)")
+            debugLog("🖼️ \(self.description) observing current item \(currentItem)")
 
             // Descriptions and fades are set when we begin playback
             if !self.observerWasSet {
@@ -699,13 +709,13 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             }
             DispatchQueue.global(qos: .default).async { [self] in
                 player.replaceCurrentItem(with: localitem)
-                debugLog("\(self.description) playing video (OFFLINE MODE) : \(localurl)")
+                debugLog("🖼️ \(self.description) playing video (OFFLINE MODE) : \(localurl)")
                 guard let currentItem = player.currentItem else {
                     errorLog("\(self.description) No current item!")
                     return
                 }
 
-                debugLog("\(self.description) observing current item \(currentItem)")
+                debugLog("🖼️ \(self.description) observing current item \(currentItem)")
 
                 // Descriptions and fades are set when we begin playback
                 if !self.observerWasSet {
@@ -732,7 +742,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     }
 
     override func keyDown(with event: NSEvent) {
-        debugLog("keyDown")
+        debugLog("🖼️ keyDown")
 
         if PrefsVideos.allowSkips {
             if event.keyCode == 124 {
@@ -753,7 +763,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                         }
                     }
                 } else {
-                    debugLog("Right arrow key currently locked")
+                    debugLog("🖼️⚠️ Right arrow key currently locked")
                 }
             } else if event.keyCode == 125 {
                 stopAnimation()
@@ -798,11 +808,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         isQuickFading = false   // Release our ugly lock
         playerLayer.opacity = 0
         if anim == playerLayer.animation(forKey: "quickfadeandnext") {
-            debugLog("stop and next")
+            debugLog("🖼️ stop and next")
             playerLayer.removeAllAnimations()   // Make sure we get rid of our anim
             playNextVideo()
         } else {
-            debugLog("stop")
+            debugLog("🖼️ stop")
             playerLayer.removeAllAnimations()   // Make sure we get rid of our anim
         }
     }
@@ -828,22 +838,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             return controller.window
         }
 
-//        let controller = PreferencesWindowController(windowNibName: "PreferencesWindow")
         let controller = PanelWindowController()
         preferencesController = controller
         return controller.window
-    }
-
-    func tryCompanion() {
-        /*debugLog("trying companion")
-
-        do {
-
-            try NSWorkspace.shared.open(URL(fileURLWithPath: "/Applications/Aerial.app"),
-                                     options: [.default],
-                                     configuration: [NSWorkspace.LaunchConfigurationKey.arguments: ["--silent"]])
-        } catch {
-            errorLog("error \(error.localizedDescription)")
-        }*/
     }
 }
