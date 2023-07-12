@@ -563,6 +563,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                 self.stopAnimation()
             } else {
                 player?.play()
+                player?.rate = globalSpeed
             }
         }
     }
@@ -579,6 +580,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                 self.stopAnimation()
             } else {
                 player?.play()
+                player?.rate = globalSpeed
             }
         }
     }
