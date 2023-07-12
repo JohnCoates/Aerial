@@ -534,7 +534,10 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         DistributedNotificationCenter.default.addObserver(self,
             selector: #selector(AerialView.willStop(_:)),
             name: Notification.Name("com.apple.screensaver.willstop"), object: nil)
-
+        DistributedNotificationCenter.default.addObserver(self,
+            selector: #selector(AerialView.screenIsUnlocked(_:)),
+            name: Notification.Name("com.apple.screenIsUnlocked"), object: nil)
+        
         Music.instance.setup()
     }
 
@@ -550,15 +553,33 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         }
     }
 
-    @objc func willStop(_ aNotification: Notification) {
-        debugLog("🖼️ 📢📢📢 willStop")
-        if !Aerial.helper.underCompanion {
-            if let player = player {
-                player.pause()
+    @objc func screenIsUnlocked(_ aNotification: Notification) {
+        if #available(macOS 14.0, *) {
+            debugLog("🖼️ 📢📢📢 ☢️sonoma☢️ workaround screenIsUnlocked")
+            if !Aerial.helper.underCompanion {
+                if let player = player {
+                    player.pause()
+                }
+                self.stopAnimation()
+            } else {
+                player?.play()
             }
-            self.stopAnimation()
+        }
+    }
+    
+    @objc func willStop(_ aNotification: Notification) {
+        if #available(macOS 14.0, *) {
+            debugLog("🖼️ 📢📢📢 🖼️ 📢📢📢 ☢️sonoma☢️ workaround IGNORING willStop")
         } else {
-            player?.play()
+            debugLog("🖼️ 📢📢📢 willStop")
+            if !Aerial.helper.underCompanion {
+                if let player = player {
+                    player.pause()
+                }
+                self.stopAnimation()
+            } else {
+                player?.play()
+            }
         }
     }
 
