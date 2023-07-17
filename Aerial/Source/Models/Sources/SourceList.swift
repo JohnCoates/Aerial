@@ -234,7 +234,10 @@ struct SourceList {
     static func updateLocalSource(source: Source, reload: Bool) {
         // We need the raw manifest to find the path inside
         let videos = source.getUnprocessedVideos()
+        let originalAssets = source.getUnprocessedAssets()
 
+        var updatedAssets = [VideoAsset]()
+        
         if videos.count >= 1 {
             let url = videos.first!.url.deletingLastPathComponent()
             let folderName = url.lastPathComponent
@@ -242,31 +245,43 @@ struct SourceList {
 
             do {
                 let urls = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
-                var assets = [VideoAsset]()
+                // var assets = [VideoAsset]()
 
+                
+                
                 for lurl in urls {
                     if lurl.path.lowercased().hasSuffix(".mp4") || lurl.path.lowercased().hasSuffix(".mov") {
-                        assets.append(VideoAsset(accessibilityLabel: folderName,
-                                                 id: NSUUID().uuidString,
-                                                 title: lurl.lastPathComponent,
-                                                 timeOfDay: "day",
-                                                 scene: "",
-                                                 pointsOfInterest: [:],
-                                                 url4KHDR: "",
-                                                 url4KSDR: lurl.path,
-                                                 url1080H264: "",
-                                                 url1080HDR: "",
-                                                 url4KSDR120FPS: "",
-                                                 url4KSDR240FPS: "",
-                                                 url1080SDR: "",
-                                                 url: "",
-                                                 type: "nature"))
+
+                        // Check if the asset was there previously
+                        let foundAssets = originalAssets.filter { $0.url4KSDR == lurl.path }
+
+                        if let foundAsset = foundAssets.first {
+                            // Just add the asset to the new array
+                            updatedAssets.append(foundAsset)
+                        } else {
+                            // Create a new entry
+                            updatedAssets.append(VideoAsset(accessibilityLabel: folderName,
+                                                     id: NSUUID().uuidString,
+                                                     title: lurl.lastPathComponent,
+                                                     timeOfDay: "day",
+                                                     scene: "",
+                                                     pointsOfInterest: [:],
+                                                     url4KHDR: "",
+                                                     url4KSDR: lurl.path,
+                                                     url1080H264: "",
+                                                     url1080HDR: "",
+                                                     url4KSDR120FPS: "",
+                                                     url4KSDR240FPS: "",
+                                                     url1080SDR: "",
+                                                     url: "",
+                                                     type: "nature"))
+                        }
                     }
                 }
 
                 debugLog("Updating manifest \(url.lastPathComponent)")
 
-                let videoManifest = VideoManifest(assets: assets, initialAssetCount: 1, version: 1)
+                let videoManifest = VideoManifest(assets: updatedAssets, initialAssetCount: 1, version: 1)
 
                 SourceList.saveEntries(source: source, manifest: videoManifest)
 

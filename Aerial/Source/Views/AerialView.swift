@@ -427,25 +427,28 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     }
 
     func teardown() {
+        debugLog("🖼️ \(self.description) teardown")
+
         // Remove notifications observer
+        debugLog("🖼️ \(self.description) clear notif")
         clearNotifications()
         // Clear layer animations
+        debugLog("🖼️ \(self.description) clear anims")
         clearAllLayerAnimations()
 
-        guard let player = self.player else {
-            return
-        }
-        // Remove from player index
-        let indexMaybe = AerialView.players.firstIndex(of: player)
+        if let player = player {
+            // Remove from player index
+            let indexMaybe = AerialView.players.firstIndex(of: player)
 
-        guard let index = indexMaybe else {
-            return
+            guard let index = indexMaybe else {
+                return
+            }
+            AerialView.players.remove(at: index)
         }
-        AerialView.players.remove(at: index)
         
         // Remove any download
         VideoManager.sharedInstance.cancelAll()
-        
+       
         debugLog("🖼️ end teardown")
     }
     
@@ -558,6 +561,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             debugLog("🖼️ 📢📢📢 ☢️sonoma☢️ workaround screenIsUnlocked")
             if !Aerial.helper.underCompanion {
                 if let player = player {
+                    layerManager.removeAllLayers()
                     player.pause()
                 }
                 self.stopAnimation()
@@ -578,6 +582,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                     player.pause()
                 }
                 self.stopAnimation()
+                
             } else {
                 player?.play()
                 player?.rate = globalSpeed

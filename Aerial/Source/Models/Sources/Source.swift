@@ -86,6 +86,30 @@ struct Source: Codable {
         return ""
     }
 
+    // Read local entries.json and return the video assets as an array
+    // This is used to update in place the entries.json at startup when updating local sources
+    func getUnprocessedAssets() -> [VideoAsset] {
+        if isCached() {
+            do {
+                let cacheFileUrl = URL(fileURLWithPath: Cache.supportPath.appending("/" + name + "/entries.json"))
+                let jsondata = try Data(contentsOf: cacheFileUrl)
+
+                if let videoManifest = try? newJSONDecoder().decode(VideoManifest.self, from: jsondata) {
+                    return videoManifest.assets
+                }
+
+                errorLog("### Could not parse manifest data")
+                return []
+            } catch {
+                errorLog("\(name) could not be opened")
+                return []
+            }
+        } else {
+            debugLog("\(name) is not cached")
+            return []
+        }
+    }
+    
     func getUnprocessedVideos() -> [AerialVideo] {
         if isCached() {
             do {
