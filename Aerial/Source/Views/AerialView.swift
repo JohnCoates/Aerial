@@ -36,9 +36,14 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     var brightnessToRestore: Float?
 
     var globalSpeed: Float = 1.0
-    
+    var globalPause = false
+
     // We use this for tentative Catalina bug workaround
     var originalWidth, originalHeight: CGFloat
+
+    // We use this for tentative Sonoma bug workaround
+    var foundScreen: Screen?
+    var foundFrame: NSRect?
 
     // Tentative improvement when only one video in playlist
     var shouldLoop = false
@@ -114,13 +119,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     // MARK: - Init / Setup
     // This is the one used by System Preferences/ScreenSaverEngine
     override init?(frame: NSRect, isPreview: Bool) {
-        // First thing, we migrate preferences if needed
         Aerial.helper.checkCompanion()
-        /*if !Aerial.helper.underCompanion && !Aerial.helper.appMode {
-            Aerial.helper.migratePreferences()
-        } else {
-            debugLog("Not migrating under companion")
-        }*/
 
         // Clear log if > 1MB on startup
         rollLogIfNeeded()
@@ -156,13 +155,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     required init?(coder: NSCoder) {
         Aerial.helper.appMode = true
 
-        // First thing, we migrate preferences if needed
         Aerial.helper.checkCompanion()
-        /*if !Aerial.helper.underCompanion && !Aerial.helper.appMode {
-            Aerial.helper.migratePreferences()
-        } else {
-            debugLog("Not migrating under companion")
-        }*/
 
         // Clear log if > 1MB on startup
         rollLogIfNeeded()
@@ -264,13 +257,31 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         // We look for the screen in our detected list.
         // In case of preview or unknown screen result will be nil
         let displayDetection = DisplayDetection.sharedInstance
-        let thisScreen = displayDetection.findScreenWith(frame: self.frame)
+
         let screenCount = displayDetection.getScreenCount()
         debugLog("🖼️ Real screen count : \(screenCount)")
+
+        debugLog("🥬 window \(String(describing: self.window))")
+
+        var thisScreen: Screen? = nil
+        if #available(macOS 14.0, *) {
+            thisScreen = displayDetection.alternateFindScreenWith(frame: self.frame, backingScaleFactor: self.window?.backingScaleFactor ?? 1)
+        } else {
+            thisScreen = displayDetection.findScreenWith(frame: self.frame)
+        }
+        
+        // We note the foundFrame as this is more accurate than the reported one! We need this for coordinates mapping
+        if let thisScreen = thisScreen {
+            foundFrame = thisScreen.bottomLeftFrame
+            foundScreen = thisScreen
+        }
+
 
         var localPlayer: AVPlayer?
         debugLog("🖼️ Using : \(String(describing: thisScreen))")
 
+        debugLog("🥬 window.screen \(String(describing: self.window?.screen))")
+        
         // Is the current screen disabled by user ?
         if !isPreview {
             // If it's an unknown screen, we leave it enabled
@@ -423,6 +434,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             }
         }
         
+        
         teardown()
     }
 
@@ -470,7 +482,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             }
 
             debugLog("🖼️ start playback: \(frame) \(bounds) rate: \(player.rate)")
-
+            debugLog("🥬🥬 window2 \(String(describing: window?.screen))")
             // If we share a player, we need to add the fades and the text to all the
             // instanciated views using it (eg: in mirrored mode)
             if AerialView.sharingPlayers {
@@ -573,6 +585,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     }
     
     @objc func willStop(_ aNotification: Notification) {
+        DisplayDetection.sharedInstance.resetUnusedScreens()
+
         if #available(macOS 14.0, *) {
             debugLog("🖼️ 📢📢📢 🖼️ 📢📢📢 ☢️sonoma☢️ workaround IGNORING willStop")
         } else {

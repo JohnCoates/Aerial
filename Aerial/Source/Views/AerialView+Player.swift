@@ -40,8 +40,8 @@ extension AerialView {
         // In case of span mode we need to compute the size of our layer
         if PrefsDisplays.viewingMode == .spanned && !isPreview {
             let zRect = displayDetection.getZeroedActiveSpannedRect()
-            let screen = displayDetection.findScreenWith(frame: self.frame)
-            if let scr = screen {
+            //let screen = displayDetection.findScreenWith(frame: self.frame)
+            if let scr = foundScreen {
                 let tRect = CGRect(x: zRect.origin.x - scr.zeroedOrigin.x,
                                    y: zRect.origin.y - scr.zeroedOrigin.y,
                                    width: zRect.width,

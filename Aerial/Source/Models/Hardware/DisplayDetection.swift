@@ -42,6 +42,8 @@ final class DisplayDetection: NSObject {
     static let sharedInstance = DisplayDetection()
 
     var screens = [Screen]()
+    var unusedScreens = [Screen]()
+
     var cmInPoints: CGFloat = 40
     var maxLeftScreens: CGFloat = 0
     var maxBelowScreens: CGFloat = 0
@@ -52,10 +54,16 @@ final class DisplayDetection: NSObject {
     // MARK: - Lifecycle
     override init() {
         super.init()
-        debugLog("Display Detection initialized")
+        debugLog("📺 Display Detection initialized")
         detectDisplays()
     }
 
+    func resetUnusedScreens() {
+        debugLog("📺 reset unused screens")
+        unusedScreens = screens
+        debugLog("📺☢️ s \(screens.count) us \(unusedScreens.count)")
+    }
+    
     // MARK: - Detection
     func detectDisplays() {
         // Display detection is done in two passes :
@@ -63,7 +71,6 @@ final class DisplayDetection: NSObject {
         //   may or may not be powered on !) and get most information needed
         // - Through NSScreen to get the backingScaleFactor (retinaness of a screen)
 
-        debugLog("***Display Detection***")
         // Cleanup a bit in case of redetection
         screens = [Screen]()
         maxLeftScreens = 0
@@ -100,9 +107,6 @@ final class DisplayDetection: NSObject {
                 thisIsMain = true
             }
 
-            debugLog("npass: dict \(screen.deviceDescription)")
-            debugLog("       bottomLeftFrame \(screen.frame)")
-
             screens.append(Screen(id: screenID,
                                   width: Int(screen.frame.width),
                                   height: Int(screen.frame.height),
@@ -120,11 +124,13 @@ final class DisplayDetection: NSObject {
         }
 
         for screen in screens {
-            debugLog("\(screen)")
+            debugLog("📺 found \(screen)")
         }
 
+        // We store the list to pluck it later
+        unusedScreens = screens
+        
         debugLog("\(getGlobalScreenRect())")
-        debugLog("***Display Detection Done***")
     }
 
     func getScreenCount() -> Int {
@@ -232,6 +238,26 @@ final class DisplayDetection: NSObject {
 
         return nil
     }
+    
+    func alternateFindScreenWith(frame: CGRect, backingScaleFactor: CGFloat) -> Screen? {
+        debugLog("📺☢️ fs : \(frame.size.debugDescription) bsf : \(backingScaleFactor)")
+        // This is a really simple workaround, we look at the size only, and with the screen list in reverse which seems to kindaaaa match ?
+        // We temporarily ignore bsf as we may not be able to access view.window this early it seems
+
+        debugLog("📺☢️ s \(screens.count) us \(unusedScreens.count)")
+        
+        for i in (0 ..< unusedScreens.count).reversed() {
+            if unusedScreens[i].bottomLeftFrame.size == frame.size {
+                let foundScreen = unusedScreens[i]
+                unusedScreens.remove(at: i)
+                debugLog("foundScreen : \(foundScreen.bottomLeftFrame.debugDescription)")
+                return foundScreen
+            }
+        }
+        
+        return nil
+    }
+
 
     func findScreenWith(id: CGDirectDisplayID) -> Screen? {
         for screen in screens where screen.id == id {
