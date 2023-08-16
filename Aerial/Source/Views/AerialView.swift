@@ -461,7 +461,8 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         // Remove any download
         VideoManager.sharedInstance.cancelAll()
        
-        debugLog("🖼️ end teardown")
+        debugLog("🖼️ end teardown, exiting")
+        exit(0)
     }
     
     // Wait for the player to be ready
@@ -549,10 +550,10 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         DistributedNotificationCenter.default.addObserver(self,
             selector: #selector(AerialView.willStop(_:)),
             name: Notification.Name("com.apple.screensaver.willstop"), object: nil)
-        DistributedNotificationCenter.default.addObserver(self,
+        /*DistributedNotificationCenter.default.addObserver(self,
             selector: #selector(AerialView.screenIsUnlocked(_:)),
             name: Notification.Name("com.apple.screenIsUnlocked"), object: nil)
-        
+        */
         Music.instance.setup()
     }
 
@@ -578,8 +579,10 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                 }
                 self.stopAnimation()
             } else {
-                player?.play()
-                player?.rate = globalSpeed
+                if !globalPause {
+                    player?.play()
+                    player?.rate = globalSpeed
+                }
             }
         }
     }
@@ -587,21 +590,27 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     @objc func willStop(_ aNotification: Notification) {
         DisplayDetection.sharedInstance.resetUnusedScreens()
 
-        if #available(macOS 14.0, *) {
+/*        if #available(macOS 14.0, *) {
             debugLog("🖼️ 📢📢📢 🖼️ 📢📢📢 ☢️sonoma☢️ workaround IGNORING willStop")
+        } else {*/
+        debugLog("🖼️ 📢📢📢 willStop")
+        if !Aerial.helper.underCompanion {
+            if let player = player {
+                player.pause()
+            }
+            
+            if #available(macOS 14.0, *) {
+                exit(0)
+            }
+
+            self.stopAnimation()
         } else {
-            debugLog("🖼️ 📢📢📢 willStop")
-            if !Aerial.helper.underCompanion {
-                if let player = player {
-                    player.pause()
-                }
-                self.stopAnimation()
-                
-            } else {
+            if !globalPause {
                 player?.play()
                 player?.rate = globalSpeed
             }
         }
+        //}
     }
 
     // Tentative integration with companion of extra features
@@ -610,8 +619,10 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         if player?.rate == 0 {
             player?.play()
             player?.rate = globalSpeed
+            globalPause = false
         } else {
             player?.pause()
+            globalPause = true
         }
         removePlayerFades()
     }
