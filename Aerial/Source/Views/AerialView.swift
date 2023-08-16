@@ -462,7 +462,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         VideoManager.sharedInstance.cancelAll()
        
         debugLog("🖼️ end teardown, exiting")
-        exit(0)
     }
     
     // Wait for the player to be ready
@@ -543,6 +542,9 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                                        name: NSNotification.Name.AVPlayerItemPlaybackStalled,
                                        object: currentItem)
 
+        NSWorkspace.shared.notificationCenter.addObserver(
+                self, selector: #selector(onSleepNote(note:)),
+                name: NSWorkspace.willSleepNotification, object: nil)
 
         DistributedNotificationCenter.default.addObserver(self,
             selector: #selector(AerialView.willStart(_:)),
@@ -584,6 +586,13 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                     player?.rate = globalSpeed
                 }
             }
+        }
+    }
+    
+    @objc func onSleepNote(note: Notification) {
+        debugLog("🖼️ 📢📢📢 onSleepNote")
+        if #available(macOS 14.0, *) {
+            exit(0)
         }
     }
     
