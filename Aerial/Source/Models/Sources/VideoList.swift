@@ -178,16 +178,6 @@ class VideoList {
             }
         }
 
-        /*print("Filters :")
-        for filter in filters {
-            print(filter)
-        }*/
-
-        /*print("Videos : ")
-        for video in videos {
-            print(video.name.lowercased())
-        }*/
-
         switch mode {
         case .location:
             let vids = videos
@@ -419,6 +409,7 @@ class VideoList {
                 .filter({ PrefsVideos.favorites.contains($0.id) && !PrefsVideos.hidden.contains($0.id) })
                 .sorted { $0.secondaryName < $1.secondaryName }
         default:
+            print(PrefsVideos.newShouldPlayString)
             return filteredVideosFor(mode, filter: PrefsVideos.newShouldPlayString)
         }
     }

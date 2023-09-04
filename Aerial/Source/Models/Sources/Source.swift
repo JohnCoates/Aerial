@@ -277,7 +277,7 @@ struct Source: Codable {
         if let mergename = poiStringProvider.getCommunityName(id: asset.id) {
             return mergename
         } else {
-            return asset.title ?? ""
+            return asset.title ?? "Unknown"
         }
     }
 

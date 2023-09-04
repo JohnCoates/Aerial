@@ -41,6 +41,8 @@ extension AerialView {
         if PrefsDisplays.viewingMode == .spanned && !isPreview {
             let zRect = displayDetection.getZeroedActiveSpannedRect()
             //let screen = displayDetection.findScreenWith(frame: self.frame)
+            debugLog("foundScreen check : \(foundScreen.debugDescription)")
+            
             if let scr = foundScreen {
                 let tRect = CGRect(x: zRect.origin.x - scr.zeroedOrigin.x,
                                    y: zRect.origin.y - scr.zeroedOrigin.y,

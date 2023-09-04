@@ -147,7 +147,15 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         if Aerial.helper.underCompanion && isPreview {
             debugLog("Running under companion in preview mode, preventing setup")
         } else {
-            setup()
+            // We need to delay things under Sonoma because legacyScreenSaver is awesome
+            if #available(macOS 14.0, *) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                    debugLog("🖼️ AVinit delayed setup!")
+                    self.setup()
+                }
+            } else {
+                setup()
+            }
         }
     }
 
@@ -171,7 +179,16 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         self.originalHeight = frame.height
 
         debugLog("🖼️ AVinit .app")
-        setup()
+        
+        // We need to delay things under Sonoma because legacyScreenSaver is awesome
+        if #available(macOS 14.0, *) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                debugLog("🖼️ AVinit delayed setup!")
+                self.setup()
+            }
+        } else {
+            setup()
+        }
     }
 
     deinit {
@@ -198,7 +215,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     // swiftlint:disable:next cyclomatic_complexity
     func setup() {
         // Disable HDR only on macOS Ventura
-        // Todo : This may cause the can't reopen settings bug ?
         if !Aerial.helper.canHDR() {
             if isPreview && (PrefsVideos.videoFormat == .v4KHDR || PrefsVideos.videoFormat == .v1080pHDR) {
                 // This will lead to crashing in up to Ventura beta5 so disable
@@ -211,16 +227,17 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                 return
             }
         }
-        
 
         // First we check the system appearance, as it relies on our view
         Aerial.helper.computeDarkMode(view: self)
 
         // Then check if we need to mute/unmute sound
         Aerial.helper.maybeMuteSound()
-        
+
+        // Kick up the timezone detection
         _ = TimeManagement.sharedInstance
 
+        // This is to make sure we don't start in a format that's unsupported
         ensureCorrectFormat()
         
         if let version = Bundle(identifier: "com.JohnCoates.Aerial")?.infoDictionary?["CFBundleShortVersionString"] as? String {
@@ -261,11 +278,9 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         let screenCount = displayDetection.getScreenCount()
         debugLog("🖼️ Real screen count : \(screenCount)")
 
-        debugLog("🥬 window \(String(describing: self.window))")
-
         var thisScreen: Screen? = nil
         if #available(macOS 14.0, *) {
-            thisScreen = displayDetection.alternateFindScreenWith(frame: self.frame, backingScaleFactor: self.window?.backingScaleFactor ?? 1)
+            //thisScreen = displayDetection.alternateFindScreenWith(frame: self.frame, backingScaleFactor: self.window?.backingScaleFactor ?? 1)
         } else {
             thisScreen = displayDetection.findScreenWith(frame: self.frame)
         }
@@ -274,13 +289,14 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         if let thisScreen = thisScreen {
             foundFrame = thisScreen.bottomLeftFrame
             foundScreen = thisScreen
+            debugLog("🖼️ Using : \(String(describing: thisScreen))")
         }
 
-
+        for twindow in NSApplication.shared.windows {
+            debugLog("window : \(twindow.debugDescription)")
+        }
+        
         var localPlayer: AVPlayer?
-        debugLog("🖼️ Using : \(String(describing: thisScreen))")
-
-        debugLog("🥬 window.screen \(String(describing: self.window?.screen))")
         
         // Is the current screen disabled by user ?
         if !isPreview {
@@ -325,7 +341,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             // add to player list
             AerialView.players.append(player)
         }
-
+        
         setupPlayerLayer(withPlayer: player)
 
         // In mirror mode we use the main instance player
@@ -354,6 +370,25 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             } else {
                 self.playNextVideo()
             }
+        }
+    }
+    
+    
+    override func viewDidMoveToWindow() {
+        super.viewDidMoveToWindow()
+        debugLog("🖼️ \(self.description) viewDidMoveToWindow frame: \(self.frame) window: \(self.window)")
+        debugLog(self.window?.screen.debugDescription ?? "Unknown")
+        
+        if let thisScreen = self.window?.screen {
+            let screenID = thisScreen.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as! CGDirectDisplayID
+            
+            debugLog(screenID.description)
+            
+            foundScreen = DisplayDetection.sharedInstance.findScreenWith(id: screenID)
+            foundFrame = foundScreen?.bottomLeftFrame
+            
+            debugLog("🖼️🌾 Using : \(String(describing: foundScreen))")
+            debugLog("🥬🌾 window.screen \(String(describing: self.window?.screen.debugDescription))")
         }
     }
 
