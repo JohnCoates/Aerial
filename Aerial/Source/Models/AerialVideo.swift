@@ -50,7 +50,7 @@ final class AerialVideo: CustomStringConvertible, Equatable {
 
     // Returns the closest video we have in the manifests
     private func getClosestAvailable(wanted: VideoFormat) -> URL {
-        if urls[wanted] != "" {
+        if urls[wanted] != "" && urls[wanted] != nil {
             return getURL(string: urls[wanted]!)
         } else {
             // Fallback

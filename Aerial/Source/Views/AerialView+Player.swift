@@ -66,10 +66,15 @@ extension AerialView {
 
         // The layers for descriptions, clock, message
         layerManager.setupExtraLayers(layer: layer, frame: self.frame)
+        // Make sure we set the retinaness here
+        layerManager.setContentScale(scale: self.window?.backingScaleFactor ?? 1.0)
 
         // An extra layer to try and contravent a macOS graphics driver bug
         // This is useful on High Sierra+ on Intel Macs
-        setupGlitchWorkaroundLayer(layer: layer)
+        if #available(macOS 12.0, *) {
+        } else {
+            setupGlitchWorkaroundLayer(layer: layer)
+        }
    }
 
     // MARK: - AVPlayerItem Notifications

@@ -47,7 +47,7 @@ final class PoiStringProvider {
 
     private func loadBundle() {
         // Idle string bundle
-        var bundlePath = Cache.supportPath.appending("/tvOS 16")
+        var bundlePath = Cache.supportPath.appending("/macOS 14")
 
         if PrefsAdvanced.ciOverrideLanguage == "" {
             debugLog("Preferred languages : \(Locale.preferredLanguages)")
@@ -83,7 +83,7 @@ final class PoiStringProvider {
         }
 
         if let sb = Bundle.init(path: bundlePath) {
-            let dictPath = Cache.supportPath.appending("/tvOS 16/TVIdleScreenStrings.bundle/en.lproj/Localizable.nocache.strings")
+            let dictPath = Cache.supportPath.appending("/macOS 14/TVIdleScreenStrings.bundle/en.lproj/Localizable.nocache.strings")
 
             // We could probably only work with that...
             if let sd = NSDictionary(contentsOfFile: dictPath) as? [String: String] {
@@ -154,6 +154,12 @@ final class PoiStringProvider {
         (!video.communityPoi.isEmpty && !getPoiKeys(video: video).isEmpty)
     }
 
+    func getLocalizedNameKey(key: String) -> String {
+        guard ensureLoadedBundle() else { return "" }
+        
+        return stringBundle!.localizedString(forKey: key, value: "", table: "Localizable.nocache")
+    }
+    
     // MARK: - Community data
     // siftlint:disable:next cyclomatic_complexity
     private func getCommunityPathForLocale() -> String {

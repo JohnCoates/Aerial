@@ -12,7 +12,7 @@ import Foundation
 // 11 is similar to 12+, but does not include pointsOfInterests
 // 12/13 share a same format, and we use that format for local videos too
 enum SourceType: Int, Codable {
-    case local, tvOS10, tvOS11, tvOS12
+    case local, tvOS10, tvOS11, tvOS12, macOS
 }
 
 enum SourceScene: String, Codable {
@@ -29,7 +29,7 @@ struct Source: Codable {
     var isCachable: Bool
     var license: String
     var more: String
-
+    
     func isEnabled() -> Bool {
         if PrefsVideos.enabledSources.keys.contains(name) {
             return PrefsVideos.enabledSources[name]!
@@ -137,6 +137,8 @@ struct Source: Codable {
                     return parseOldVideoManifest(jsondata)
                 } else if name.starts(with: "tvOS 13") {
                     return parseVideoManifest(jsondata) + getMissingVideos()  // Oh, Victoria Harbour 2...
+                } else if name.starts(with: "macOS") {
+                    return parseMacManifest(jsondata)
                 } else {
                     return parseVideoManifest(jsondata)
                 }
@@ -270,6 +272,20 @@ struct Source: Codable {
             return []
         }
     }
+    
+    func getSubcategoryFor(_ asset: MacAsset, manifest: MacManifest) -> String {
+        for category in manifest.categories {
+            if category.subcategories != nil {
+                for subcategory in category.subcategories! {
+                    if subcategory.id == asset.subcategories.first {
+                        return PoiStringProvider.sharedInstance.getLocalizedNameKey(key:subcategory.localizedNameKey)
+                    }
+                }
+            }
+        }
+        
+        return "Not found"
+    }
 
     func getSecondaryNameFor(_ asset: VideoAsset) -> String {
         let poiStringProvider = PoiStringProvider.sharedInstance
@@ -281,6 +297,13 @@ struct Source: Codable {
         }
     }
 
+    func getSecondaryNameFor(_ asset: MacAsset) -> String {
+        let poiStringProvider = PoiStringProvider.sharedInstance
+
+        return poiStringProvider.getLocalizedNameKey(key: asset.localizedNameKey)
+    }
+
+    
     func getSceneFor(_ asset: VideoAsset) -> String {
         if let updatedScene = SourceInfo.getSceneForVideo(id: asset.id) {
             return updatedScene.rawValue.lowercased()
@@ -289,6 +312,16 @@ struct Source: Codable {
         }
     }
 
+    func getSceneFor(_ asset: MacAsset) -> String {
+        if let updatedScene = SourceInfo.getSceneForVideo(id: asset.id) {
+            return updatedScene.rawValue.lowercased()
+        } else {
+            return "landscape"
+        }
+    }
+
+    
+    // Generate URLs
     func urlsFor(_ asset: VideoAsset) -> [VideoFormat: String] {
         return [.v1080pH264: localizePath(asset.url1080H264),
                 .v1080pHEVC: localizePath(asset.url1080SDR),
@@ -298,6 +331,16 @@ struct Source: Codable {
                 .v4KSDR240: localizePath(asset.url4KSDR240FPS) ]
     }
 
+    // Mac manifest only has 240 fps
+    func urlsFor(_ asset: MacAsset) -> [VideoFormat: String] {
+        return [.v1080pH264: "",
+                .v1080pHEVC: "",
+                .v1080pHDR: "",
+                .v4KHEVC: "",
+                .v4KHDR: "",
+                .v4KSDR240: localizePath(asset.url4KSDR240FPS) ]
+    }
+    
     func oldUrlsFor(_ asset: VideoAsset) -> [VideoFormat: String] {
         var url1080pHEVC = ""
         var url1080pHDR = ""
@@ -393,9 +436,6 @@ struct Source: Codable {
 
     func parseVideoManifest(_ data: Data) -> [AerialVideo] {
         if let videoManifest = try? newJSONDecoder().decode(VideoManifest.self, from: data) {
-            // Let's save the manifest here
-            // manifest = videoManifest
-
             var processedVideos: [AerialVideo] = []
 
             for asset in videoManifest.assets {
@@ -423,6 +463,37 @@ struct Source: Codable {
         errorLog("### Could not parse manifest data")
         return []
     }
+    
+    func parseMacManifest(_ data: Data) -> [AerialVideo] {
+        if let videoManifest = try? newJSONDecoder().decode(MacManifest.self, from: data) {
+            var processedVideos: [AerialVideo] = []
+
+            for asset in videoManifest.assets {
+                let (isDupe, _) = SourceInfo.findDuplicate(id: asset.id, url1080pH264: "")
+
+                if !isDupe {
+                    let video = AerialVideo(id: asset.id,
+                        name: getSubcategoryFor(asset, manifest: videoManifest),
+                        secondaryName: getSecondaryNameFor(asset),
+                        type: "video",
+                        timeOfDay: "day",
+                        scene: getSceneFor(asset),
+                        urls: urlsFor(asset),
+                        source: self,
+                        poi: asset.pointsOfInterest, // ?? [:],
+                        communityPoi: PoiStringProvider.sharedInstance.getCommunityPoi(id: asset.id))
+
+                    processedVideos.append(video)
+                }
+            }
+
+            return processedVideos
+        }
+
+        errorLog("### Could not parse manifest data")
+        return []
+    }
+    
 }
 
 // MARK: - VideoManifest
@@ -471,4 +542,57 @@ struct VideoAsset: Codable {
         case url
         case type
     }
+}
+
+// MARK: - MACManifest
+struct MacManifest: Codable {
+    let localizationVersion: LocalizationVersion
+    let categories: [SubcategoryElement]
+    let initialAssetCount: Int
+    let assets: [MacAsset]
+    let version: Int
+}
+
+// MARK: - Asset
+struct MacAsset: Codable {
+    let shotID: String
+    let previewImage: String
+    let localizedNameKey, accessibilityLabel: String
+    let preferredOrder: Int
+    let categories: [CategoryEnum]
+    let id: String
+    let subcategories: [String]
+    let pointsOfInterest: [String: String]
+    let url4KSDR240FPS: String
+    let includeInShuffle, showInTopLevel: Bool
+    let group: LocalizationVersion?
+
+    enum CodingKeys: String, CodingKey {
+        case shotID, previewImage, localizedNameKey, accessibilityLabel, preferredOrder, categories, id, subcategories, pointsOfInterest
+        case url4KSDR240FPS = "url-4K-SDR-240FPS"
+        case includeInShuffle, showInTopLevel, group
+    }
+}
+
+enum CategoryEnum: String, Codable {
+    case a33A55D9Edea4596A8506C10B54Fbbb5 = "A33A55D9-EDEA-4596-A850-6C10B54FBBB5"
+    case the55B7C95DCeaf4Fd8AdefF5Bc657D8F6D = "55B7C95D-CEAF-4FD8-ADEF-F5BC657D8F6D"
+    case the5Ef4117148624F93800CAd86Ce5E6891 = "5EF41171-4862-4F93-800C-AD86CE5E6891"
+    case the8Be8B5246Eae43F5A3E801Dcfa1Bcd4B = "8BE8B524-6EAE-43F5-A3E8-01DCFA1BCD4B"
+}
+
+enum LocalizationVersion: String, Codable {
+    case the19J1 = "19J-1"
+    case the19K1 = "19K-1"
+    case the21J1 = "21J-1"
+}
+
+// MARK: - SubcategoryElement
+struct SubcategoryElement: Codable {
+    let subcategories: [SubcategoryElement]?
+    let localizedDescriptionKey, representativeAssetID: String
+    let previewImage: String
+    let id: String
+    let preferredOrder: Int
+    let localizedNameKey: String
 }
