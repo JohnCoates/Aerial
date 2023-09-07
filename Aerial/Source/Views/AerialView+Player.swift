@@ -64,6 +64,10 @@ extension AerialView {
         }
         layer.addSublayer(playerLayer)
 
+        layer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
+        self.playerLayer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
+
+        
         // The layers for descriptions, clock, message
         layerManager.setupExtraLayers(layer: layer, frame: self.frame)
         // Make sure we set the retinaness here
