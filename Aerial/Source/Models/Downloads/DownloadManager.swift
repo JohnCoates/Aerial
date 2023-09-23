@@ -178,7 +178,7 @@ extension DownloadOperation: URLSessionTaskDelegate {
         } else if folder == "tvOS 12" {
             FileHelpers.unTar(file: destinationDirectory.appending("/resources.tar"), atPath: destinationDirectory)
         } else if folder == "macOS 14" {
-            FileHelpers.unTar(file: destinationDirectory.appending("/resources-14-0-9.tar"), atPath: destinationDirectory)
+            FileHelpers.unTar(file: destinationDirectory.appending("/resources-14-0-10.tar"), atPath: destinationDirectory)
         }
 
         debugLog("Finished downloading \(task.originalRequest!.url!.absoluteString)")

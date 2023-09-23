@@ -18,7 +18,7 @@ struct SourceList {
     // This is the current one until next fall
     static let macOS14 = Source(name: "macOS 14",
                         description: "High framerate videos from macOS 14 Sonoma",
-                        manifestUrl: "https://sylvan.apple.com/itunes-assets/Aerials126/v4/82/2e/34/822e344c-f5d2-878c-3d56-508d5b09ed61/resources-14-0-9.tar",
+                        manifestUrl: "https://sylvan.apple.com/itunes-assets/Aerials126/v4/82/2e/34/822e344c-f5d2-878c-3d56-508d5b09ed61/resources-14-0-10.tar",
                         type: .macOS,
                         scenes: [.nature, .city, .space, .sea],
                         isCachable: true,

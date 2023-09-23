@@ -34,6 +34,7 @@ class VideoList {
     var playlistRestrictedTo = ""
     var playlistHasVerticalVideos = false
     var playlist = [AerialVideo]()
+    var playlistForScreen: [String:[AerialVideo]] = [:]
     var lastPluckedFromPlaylist: AerialVideo?
 
     let cacheDownloaded = "Downloaded"
