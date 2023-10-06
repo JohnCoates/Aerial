@@ -439,7 +439,7 @@ struct Source: Codable {
             var processedVideos: [AerialVideo] = []
 
             for asset in videoManifest.assets {
-                let (isDupe, _) = SourceInfo.findDuplicate(id: asset.id, url1080pH264: asset.url1080H264 ?? "")
+                let (isDupe, foundVideo) = SourceInfo.findDuplicate(id: asset.id, url1080pH264: asset.url1080H264 ?? "")
 
                 if !isDupe {
                     let video = AerialVideo(id: asset.id,
@@ -454,6 +454,24 @@ struct Source: Codable {
                         communityPoi: PoiStringProvider.sharedInstance.getCommunityPoi(id: asset.id))
 
                     processedVideos.append(video)
+                } else {
+                    // Merge urls with macOS manifest
+                    let assetURLs = urlsFor(asset)
+                    if foundVideo?.urls[.v4KHDR] == "" {
+                        foundVideo?.urls[.v4KHDR] = assetURLs[.v4KHDR]
+                    }
+                    if foundVideo?.urls[.v4KHEVC] == "" {
+                        foundVideo?.urls[.v4KHEVC] = assetURLs[.v4KHEVC]
+                    }
+                    if foundVideo?.urls[.v1080pHDR] == "" {
+                        foundVideo?.urls[.v1080pHDR] = assetURLs[.v1080pHDR]
+                    }
+                    if foundVideo?.urls[.v1080pHEVC] == "" {
+                        foundVideo?.urls[.v1080pHEVC] = assetURLs[.v1080pHEVC]
+                    }
+                    if foundVideo?.urls[.v1080pH264] == "" {
+                        foundVideo?.urls[.v1080pH264] = assetURLs[.v1080pH264]
+                    }
                 }
             }
 

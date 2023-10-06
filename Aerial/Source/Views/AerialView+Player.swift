@@ -69,7 +69,12 @@ extension AerialView {
 
         
         // The layers for descriptions, clock, message
-        layerManager.setupExtraLayers(layer: layer, frame: self.frame)
+        // On Sonoma we can't use the reported frame!
+        if foundFrame != nil {
+            layerManager.setupExtraLayers(layer: layer, frame: foundFrame!)
+        } else {
+            layerManager.setupExtraLayers(layer: layer, frame: self.frame)
+        }
         // Make sure we set the retinaness here
         layerManager.setContentScale(scale: self.window?.backingScaleFactor ?? 1.0)
 
@@ -114,20 +119,24 @@ extension AerialView {
 
     // Video fade-in/out
     func addPlayerFades(view: AerialView, player: AVPlayer, video: AerialVideo) {
-        // We only fade in/out if we have duration
-        if video.duration > 0 && AerialView.shouldFade && !shouldLoop {
-            let playbackSpeed = Double(PlaybackSpeed.forVideo(video.id))
+        if !Aerial.helper.underCompanion {
+            // We only fade in/out if we have duration
+            if video.duration > 0 && AerialView.shouldFade && !shouldLoop {
+                let playbackSpeed = Double(PlaybackSpeed.forVideo(video.id))
 
-            view.playerLayer.opacity = 0
-            let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
-            fadeAnimation.values = [0, 1, 1, 0] as [Int]
-            fadeAnimation.keyTimes = [0,
-                                      AerialView.fadeDuration/(video.duration/playbackSpeed),
-                                      1-(AerialView.fadeDuration/(video.duration/playbackSpeed)), 1 ] as [NSNumber]
+                view.playerLayer.opacity = 0
+                let fadeAnimation = CAKeyframeAnimation(keyPath: "opacity")
+                fadeAnimation.values = [0, 1, 1, 0] as [Int]
+                fadeAnimation.keyTimes = [0,
+                                          AerialView.fadeDuration/(video.duration/playbackSpeed),
+                                          1-(AerialView.fadeDuration/(video.duration/playbackSpeed)), 1 ] as [NSNumber]
 
-            fadeAnimation.duration = video.duration/playbackSpeed
-            fadeAnimation.calculationMode = CAAnimationCalculationMode.cubic
-            view.playerLayer.add(fadeAnimation, forKey: "mainfade")
+                fadeAnimation.duration = video.duration/playbackSpeed
+                fadeAnimation.calculationMode = CAAnimationCalculationMode.cubic
+                view.playerLayer.add(fadeAnimation, forKey: "mainfade")
+            } else {
+                view.playerLayer.opacity = 1.0
+            }
         } else {
             view.playerLayer.opacity = 1.0
         }

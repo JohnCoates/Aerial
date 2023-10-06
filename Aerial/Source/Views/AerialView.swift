@@ -626,8 +626,10 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     
     @objc func onSleepNote(note: Notification) {
         debugLog("🖼️ 📢📢📢 onSleepNote")
-        if #available(macOS 14.0, *) {
-            exit(0)
+        if !Aerial.helper.underCompanion {
+            if #available(macOS 14.0, *) {
+                exit(0)
+            }
         }
     }
     
@@ -889,7 +891,12 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         let fadeOutAnimation = CAKeyframeAnimation(keyPath: "opacity")
         fadeOutAnimation.values = [1, 0] as [Int]
         fadeOutAnimation.keyTimes = [0, AerialView.fadeDuration] as [NSNumber]
-        fadeOutAnimation.duration = AerialView.fadeDuration
+        if !Aerial.helper.underCompanion {
+            fadeOutAnimation.duration = AerialView.fadeDuration
+        } else {
+            fadeOutAnimation.values = [1, 1] as [Int]
+            fadeOutAnimation.duration = 0.1
+        }
         fadeOutAnimation.delegate = self
         fadeOutAnimation.isRemovedOnCompletion = false
         fadeOutAnimation.calculationMode = CAAnimationCalculationMode.cubic
