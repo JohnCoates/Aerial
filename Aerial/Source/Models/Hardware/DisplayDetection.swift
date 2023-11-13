@@ -357,7 +357,8 @@ final class DisplayDetection: NSObject {
 
     func isScreenActive(id: CGDirectDisplayID) -> Bool {
         let screen = findScreenWith(id: id)
-
+        debugLog("ISA : \(screen)")
+        
         switch PrefsDisplays.displayMode {
         case .allDisplays:
             // This one is easy

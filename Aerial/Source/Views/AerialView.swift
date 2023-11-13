@@ -124,6 +124,13 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         // Clear log if > 1MB on startup
         rollLogIfNeeded()
 
+        // Set Companion bridge notifications under Sonoma, but not under Companion
+        if !Aerial.helper.underCompanion {
+            if #available(macOS 14, *) {
+                CompanionBridge.setNotifications()
+            }
+        }
+        
         // legacyScreenSaver always return true for isPreview on Catalina
         // We need to detect and override ourselves
         // This is finally fixed in Ventura
@@ -134,7 +141,6 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         if frame.width < 400 && frame.height < 300 {
             preview = true
         }
-
         
         // This is where we manage our location info layers, clock, etc
         self.layerManager = LayerManager(isPreview: preview)
@@ -149,7 +155,14 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         } else {
             // We need to delay things under Sonoma because legacyScreenSaver is awesome
             if #available(macOS 14.0, *) {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                var delay = 0.01
+                
+                // If nightshift we delay more
+                if !Aerial.helper.underCompanion && PrefsTime.timeMode == .nightShift {
+                    delay = 0.5
+                }
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                     debugLog("🖼️ AVinit delayed setup!")
                     self.setup()
                 }
@@ -168,6 +181,14 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         // Clear log if > 1MB on startup
         rollLogIfNeeded()
 
+        // Set Companion bridge notifications under Sonoma, but not under Companion
+        if !Aerial.helper.underCompanion {
+            if #available(macOS 14, *) {
+                CompanionBridge.setNotifications()
+            }
+        }
+
+        
         self.layerManager = LayerManager(isPreview: false)
 
         // ...
@@ -228,6 +249,9 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             }
         }
 
+
+        
+        
         // First we check the system appearance, as it relies on our view
         Aerial.helper.computeDarkMode(view: self)
 
@@ -280,7 +304,17 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
         var thisScreen: Screen? = nil
         if #available(macOS 14.0, *) {
-            //thisScreen = displayDetection.alternateFindScreenWith(frame: self.frame, backingScaleFactor: self.window?.backingScaleFactor ?? 1)
+            if foundScreen == nil {
+                debugLog("🖼️ missing foundScreen, workarounding \(String(describing: self.window?.screen))")
+                if let missingScreen = self.window?.screen {
+                    debugLog("🖼️ screen attached")
+                    matchScreen(thisScreen: missingScreen)
+                } else {
+                    errorLog("🖼️ still missing screen")
+                }
+            } else {
+                debugLog("🖼️ early foundScreen ok \(String(describing: foundScreen))")
+            }
         } else {
             thisScreen = displayDetection.findScreenWith(frame: self.frame)
         }
@@ -301,12 +335,14 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         // Is the current screen disabled by user ?
         if !isPreview {
             // If it's an unknown screen, we leave it enabled
-            if let screen = thisScreen {
+            if let screen = foundScreen {
                 if !displayDetection.isScreenActive(id: screen.id) {
                     // Then we disable and exit
                     debugLog("🖼️ This display is not active, disabling")
                     isDisabled = true
                     return
+                } else {
+                    debugLog("Screen is active")
                 }
             }
         } else {
@@ -380,18 +416,25 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         debugLog(self.window?.screen.debugDescription ?? "Unknown")
         
         if let thisScreen = self.window?.screen {
-            let screenID = thisScreen.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as! CGDirectDisplayID
-            
-            debugLog(screenID.description)
-            
-            foundScreen = DisplayDetection.sharedInstance.findScreenWith(id: screenID)
-            foundFrame = foundScreen?.bottomLeftFrame
-            
-            debugLog("🖼️🌾 Using : \(String(describing: foundScreen))")
-            debugLog("🥬🌾 window.screen \(String(describing: self.window?.screen.debugDescription))")
+            matchScreen(thisScreen: thisScreen)
+        } else {
+            // For some reason we may not have a screen here!
+            debugLog("🖼️ no screen attached, will try again later")
         }
     }
 
+    func matchScreen(thisScreen: NSScreen) {
+        let screenID = thisScreen.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as! CGDirectDisplayID
+        
+        debugLog(screenID.description)
+        
+        foundScreen = DisplayDetection.sharedInstance.findScreenWith(id: screenID)
+        foundFrame = foundScreen?.bottomLeftFrame
+        
+        debugLog("🖼️🌾 Using : \(String(describing: foundScreen))")
+        debugLog("🥬🌾 window.screen \(String(describing: self.window?.screen.debugDescription))")
+    }
+    
     // Handle window resize
     override func viewDidEndLiveResize() {
         layerManager.redrawAllCorners()

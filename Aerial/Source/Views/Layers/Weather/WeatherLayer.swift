@@ -142,9 +142,10 @@ class WeatherLayer: AnimationLayer {
         
         if PrefsInfo.weather.mode == .current {
             if cachedWeather != nil {
+                debugLog("weather using cache")
                 displayWeatherBlock()
             } else {
-                print("fetching")
+                debugLog("fetching fresh weather")
                 OpenWeather.fetch { result in
                     switch result {
                     case .success(let openWeather):
@@ -157,8 +158,10 @@ class WeatherLayer: AnimationLayer {
             }
         } else {
             if cachedForecast != nil && cachedWeather != nil {
+                debugLog("weather using cache")
                 displayWeatherBlock()
             } else {
+                debugLog("fetching fresh weather")
                 Forecast.fetch { result in
                     switch result {
                     case .success(let openWeather):

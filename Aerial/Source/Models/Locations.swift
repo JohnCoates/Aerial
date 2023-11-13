@@ -25,6 +25,22 @@ class Locations: NSObject {
 
     func getCoordinates(failure: @escaping (_ error: String) -> Void,
                         success: @escaping (_ response: CLLocationCoordinate2D) -> Void) {
+        // Sonoma workaround via CompanionBridge
+        if !Aerial.helper.underCompanion {
+            if #available(macOS 14.0, *) {
+                if CompanionBridge.locationLat != nil && CompanionBridge.locationLong != nil {
+                    debugLog("Location using CompanionBridge data")
+                    
+                    let coords = CLLocationCoordinate2DMake(
+                        CompanionBridge.locationLat! as CLLocationDegrees,
+                        CompanionBridge.locationLong! as CLLocationDegrees)
+
+                    success(coords)
+                    return
+                }
+            }
+        }
+        
         // Perhaps they are cached already ?
         if coordinates != nil {
             debugLog("Location using cached data")

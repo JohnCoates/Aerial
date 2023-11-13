@@ -39,6 +39,17 @@ struct NightShift {
 
     // swiftlint:disable:next large_tuple
     static func getInformation() -> (Bool, sunrise: Date?, sunset: Date?, error: String?) {
+        // Sonoma workaround
+        if !Aerial.helper.underCompanion {
+            if #available(macOS 14.0, *) {
+                if CompanionBridge.nightShiftSunrise != nil {
+                    debugLog("Nightshift using CompanionBridge data")
+                    return (true, CompanionBridge.nightShiftSunrise, CompanionBridge.nightShiftSunset, nil)
+                } else {
+                    return (false, nil, nil, "Sonoma requires Aerial Companion")
+                }
+            }
+        }
         if isNightShiftDataCached {
             return (nightShiftAvailable, nightShiftSunrise, nightShiftSunset, nil)
         }
@@ -50,6 +61,7 @@ struct NightShift {
         }
 
         let (nsInfo, ts) = Aerial.helper.shell(launchPath: cbdpath, arguments: ["nightshift-internal"])
+        
 
         if ts != 0 {
             // Task didn't return correctly ? Abort

@@ -251,6 +251,66 @@ class Aerial: NSObject {
 
         return (output, task.terminationStatus)
     }
+
+    func shell(_ command:String, args: [String] = []) -> String
+    {
+        let task = Process()
+        var arguments = ["-c"]
+        arguments.append(command)
+        arguments += args
+        task.launchPath = "/bin/bash"
+        task.arguments = arguments
+        
+        let pipe = Pipe()
+        task.standardOutput = pipe
+        task.launch()
+        
+        
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        let output = String(data: data, encoding: .utf8)
+        task.waitUntilExit()
+
+        return output ?? ""
+        
+/*        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        let output = String(data: data, encoding: String.Encoding.utf8)!
+*/        /*if output.count > 0 {
+            //remove newline character.
+            let lastIndex = output.index(before: output.endIndex)
+            return String(output[output.startIndex ..< lastIndex])
+        }*/
+        //return output
+    }
+    
+    // Launch a process through shell and capture/return output
+    func shell(executableURL: String, arguments: [String] = []) -> (String?, Int32) {
+        let task = Process()
+        task.executableURL = URL(fileURLWithPath: executableURL)
+        task.arguments = arguments
+
+        let pipe = Pipe()
+        task.standardOutput = pipe
+        task.standardError = pipe
+
+        if #available(OSX 10.13, *) {
+            do {
+                try task.run()
+            } catch {
+                // handle errors
+                debugLog("Error: \(error.localizedDescription)")
+            }
+        } else {
+            // A non existing command will crash 10.12
+            task.launch()
+        }
+
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        let output = String(data: data, encoding: .utf8)
+        task.waitUntilExit()
+
+        return (output, task.terminationStatus)
+    }
+
     
     /*
     func trySettings() {

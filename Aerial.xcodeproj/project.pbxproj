@@ -830,6 +830,9 @@
 		F06FCF1A28DB8673007558BA /* tl.json in Resources */ = {isa = PBXBuildFile; fileRef = F06FCF1928DB8673007558BA /* tl.json */; };
 		F06FCF1B28DB8673007558BA /* tl.json in Resources */ = {isa = PBXBuildFile; fileRef = F06FCF1928DB8673007558BA /* tl.json */; };
 		F06FCF1C28DB8673007558BA /* tl.json in Resources */ = {isa = PBXBuildFile; fileRef = F06FCF1928DB8673007558BA /* tl.json */; };
+		F07221872AD4354E001F5452 /* CompanionBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07221862AD4354E001F5452 /* CompanionBridge.swift */; };
+		F07221882AD4354E001F5452 /* CompanionBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07221862AD4354E001F5452 /* CompanionBridge.swift */; };
+		F07221892AD4354E001F5452 /* CompanionBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07221862AD4354E001F5452 /* CompanionBridge.swift */; };
 		F0A3E0A32884683D005E8D8D /* CompanionCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A3E0A12884683D005E8D8D /* CompanionCacheViewController.swift */; };
 		F0A3E0A42884683D005E8D8D /* CompanionCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A3E0A12884683D005E8D8D /* CompanionCacheViewController.swift */; };
 		F0A3E0A52884683D005E8D8D /* CompanionCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A3E0A12884683D005E8D8D /* CompanionCacheViewController.swift */; };
@@ -1183,6 +1186,7 @@
 		F008DAFC23AADCFB00739DE1 /* Brightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brightness.swift; sourceTree = "<group>"; };
 		F05E805328AE8A9C0088B9C5 /* NowPlayingCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingCollectionView.swift; sourceTree = "<group>"; };
 		F06FCF1928DB8673007558BA /* tl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tl.json; sourceTree = "<group>"; };
+		F07221862AD4354E001F5452 /* CompanionBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionBridge.swift; sourceTree = "<group>"; };
 		F0A3E0A12884683D005E8D8D /* CompanionCacheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionCacheViewController.swift; sourceTree = "<group>"; };
 		F0A3E0A22884683D005E8D8D /* CompanionCacheViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanionCacheViewController.xib; sourceTree = "<group>"; };
 		FA143CD61BDA3E880041A82B /* AerialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1774,6 +1778,7 @@
 				03AD45FE22981B0C00261325 /* CustomVideoFolders+helpers.swift */,
 				03C97BBF24B60E2F00739CED /* FileHelpers.swift */,
 				03FF192F269709AB00A0FA7F /* PlaybackSpeed.swift */,
+				F07221862AD4354E001F5452 /* CompanionBridge.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2528,6 +2533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0396D50B24B8B7ED00CC021B /* DisplayDetection.swift in Sources */,
+				F07221882AD4354E001F5452 /* CompanionBridge.swift in Sources */,
 				0396D50C24B8B7ED00CC021B /* LayerOffsets.swift in Sources */,
 				0396D50D24B8B7ED00CC021B /* APISecrets.swift in Sources */,
 				0396D50E24B8B7ED00CC021B /* NightShift.swift in Sources */,
@@ -2670,6 +2676,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03B8742424E41CF8008E3D1B /* CacheSetupViewController.swift in Sources */,
+				F07221892AD4354E001F5452 /* CompanionBridge.swift in Sources */,
 				03D3A11524C5FC770091FE99 /* AspectFillNSImageView.swift in Sources */,
 				031FB7A2248A873C0054BAFD /* PrefsCache.swift in Sources */,
 				F00864B523AAE7F0003210EF /* DarkMode.swift in Sources */,
@@ -2821,6 +2828,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03D1E78A2284471A00D10CF7 /* DisplayDetection.swift in Sources */,
+				F07221872AD4354E001F5452 /* CompanionBridge.swift in Sources */,
 				0306336B23A142FA00046A59 /* LayerOffsets.swift in Sources */,
 				0385FC59242B9AE1007E6513 /* APISecrets.swift in Sources */,
 				F00864B723AAE8E9003210EF /* NightShift.swift in Sources */,
@@ -3241,7 +3249,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3.3.3;
+				CURRENT_PROJECT_VERSION = 3.3.5;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3249,7 +3257,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 3.3.3;
+				MARKETING_VERSION = 3.3.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3270,7 +3278,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3.3.3;
+				CURRENT_PROJECT_VERSION = 3.3.5;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3L54M5L5KK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -3278,7 +3286,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 3.3.3;
+				MARKETING_VERSION = 3.3.5;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johncoates.Aerial;
 				PRODUCT_NAME = "$(TARGET_NAME)";

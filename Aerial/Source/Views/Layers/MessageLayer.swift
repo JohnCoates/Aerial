@@ -121,7 +121,13 @@ class MessageLayer: AnimationTextLayer {
 
         if config.shellScript != "" {
             if FileManager.default.fileExists(atPath: PrefsInfo.message.shellScript) {
-                let (result, _) = Aerial.helper.shell(launchPath: PrefsInfo.message.shellScript)
+                var result: String?
+                
+                if #available(macOS 14.0, *) {
+                    (result, _) = Aerial.helper.shell(executableURL: PrefsInfo.message.shellScript)
+                } else {
+                    (result, _) = Aerial.helper.shell(launchPath: PrefsInfo.message.shellScript)
+                }
 
                 debugLog("result " + (result ?? ""))
                 if let res = result {
