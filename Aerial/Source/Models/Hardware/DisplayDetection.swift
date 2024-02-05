@@ -239,8 +239,8 @@ final class DisplayDetection: NSObject {
         return nil
     }
     
-    func alternateFindScreenWith(frame: CGRect, backingScaleFactor: CGFloat) -> Screen? {
-        debugLog("📺☢️ fs : \(frame.size.debugDescription) bsf : \(backingScaleFactor)")
+    func alternateFindScreenWith(frame: CGRect) -> Screen? {
+        debugLog("📺☢️ fs : \(frame.size.debugDescription)")
         // This is a really simple workaround, we look at the size only, and with the screen list in reverse which seems to kindaaaa match ?
         // We temporarily ignore bsf as we may not be able to access view.window this early it seems
 
@@ -265,6 +265,14 @@ final class DisplayDetection: NSObject {
         }
 
         return nil
+    }
+    
+    func markScreenAsUsed(id: CGDirectDisplayID) {
+        // remove the screen from the unused list
+        debugLog("pre filter \(unusedScreens.count)")
+        let filteredScreens = unusedScreens.filter { $0.id != id }
+        unusedScreens = filteredScreens
+        debugLog("post filter \(unusedScreens.count)")
     }
 
     // Calculate the size of the global screen (the composite of all the displays attached)

@@ -412,15 +412,20 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     
     override func viewDidMoveToWindow() {
         super.viewDidMoveToWindow()
-        debugLog("🖼️ \(self.description) viewDidMoveToWindow frame: \(self.frame) window: \(self.window)")
-        debugLog(self.window?.screen.debugDescription ?? "Unknown")
-        
-        if let thisScreen = self.window?.screen {
-            matchScreen(thisScreen: thisScreen)
+        if foundScreen != nil {
+            debugLog("🖼️ \(self.description) viewDidMoveToWindow frame: \(self.frame) window: \(String(describing: self.window))")
+            debugLog(self.window?.screen.debugDescription ?? "Unknown")
+            
+            if let thisScreen = self.window?.screen {
+                matchScreen(thisScreen: thisScreen)
+            } else {
+                // For some reason we may not have a screen here!
+                debugLog("🖼️ no screen attached, will try again later")
+            }
         } else {
-            // For some reason we may not have a screen here!
-            debugLog("🖼️ no screen attached, will try again later")
+            debugLog("🖼️ wdmtw after we already have a screen, ignoring")
         }
+        
     }
 
     func matchScreen(thisScreen: NSScreen) {
@@ -429,10 +434,19 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         debugLog(screenID.description)
         
         foundScreen = DisplayDetection.sharedInstance.findScreenWith(id: screenID)
-        foundFrame = foundScreen?.bottomLeftFrame
-        
+        if let foundScreen = foundScreen {
+            foundFrame = foundScreen.bottomLeftFrame
+            if #available(macOS 14, *) {
+                self.frame = foundFrame!
+
+                // remove it from the list of unused screens
+                DisplayDetection.sharedInstance.markScreenAsUsed(id: screenID)
+            }
+        }
+
         debugLog("🖼️🌾 Using : \(String(describing: foundScreen))")
         debugLog("🥬🌾 window.screen \(String(describing: self.window?.screen.debugDescription))")
+        debugLog("🖼️🌾 self.frame : \(String(describing: self.frame))")
     }
     
     // Handle window resize

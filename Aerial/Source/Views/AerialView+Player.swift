@@ -40,7 +40,6 @@ extension AerialView {
         // In case of span mode we need to compute the size of our layer
         if PrefsDisplays.viewingMode == .spanned && !isPreview {
             let zRect = displayDetection.getZeroedActiveSpannedRect()
-            //let screen = displayDetection.findScreenWith(frame: self.frame)
             debugLog("foundScreen check : \(foundScreen.debugDescription)")
             
             if let scr = foundScreen {
@@ -48,10 +47,23 @@ extension AerialView {
                                    y: zRect.origin.y - scr.zeroedOrigin.y,
                                    width: zRect.width,
                                    height: zRect.height)
+                debugLog("tRect : \(tRect)")
                 playerLayer.frame = tRect
             } else {
-                errorLog("This is an unknown screen in span mode, this is not good")
-                playerLayer.frame = layer.bounds
+                debugLog("This is an unknown screen in span mode, workarounding...")
+                
+                if let alternateScreen = DisplayDetection.sharedInstance.alternateFindScreenWith(frame: self.frame) {
+                    foundScreen = alternateScreen
+                    debugLog("📺 alternate screen found : \(alternateScreen.description)")
+                    let tRect = CGRect(x: zRect.origin.x - alternateScreen.zeroedOrigin.x,
+                                       y: zRect.origin.y - alternateScreen.zeroedOrigin.y,
+                                       width: zRect.width,
+                                       height: zRect.height)
+                    playerLayer.frame = tRect
+                } else {
+                    errorLog("No alternate screen found, reverting to single screen mode")
+                    playerLayer.frame = layer.bounds
+                }
             }
         } else {
             playerLayer.frame = layer.bounds
