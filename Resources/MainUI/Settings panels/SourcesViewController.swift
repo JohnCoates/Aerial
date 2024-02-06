@@ -9,8 +9,6 @@
 import Cocoa
 
 class SourcesViewController: NSViewController {
-    var customVideoController: CustomVideoController?
-
     @IBOutlet var sourceOutlineView: SourceOutlineView!
 
     @IBOutlet var addOnlineWindow: NSWindow!

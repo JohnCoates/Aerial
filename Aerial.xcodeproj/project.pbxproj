@@ -160,10 +160,6 @@
 		0313329F24BF3FA700C84A05 /* SidebarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0313329B24BF3FA700C84A05 /* SidebarViewController.xib */; };
 		031332A024BF3FA700C84A05 /* SidebarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0313329B24BF3FA700C84A05 /* SidebarViewController.xib */; };
 		031332A124BF3FA700C84A05 /* SidebarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0313329B24BF3FA700C84A05 /* SidebarViewController.xib */; };
-		0313F9E622942AA500B074BB /* CustomVideos.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0313F9E522942AA500B074BB /* CustomVideos.xib */; };
-		0313F9E822942B4500B074BB /* CustomVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313F9E722942B4500B074BB /* CustomVideoController.swift */; };
-		0313F9E92294337F00B074BB /* CustomVideos.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0313F9E522942AA500B074BB /* CustomVideos.xib */; };
-		0313F9EA2294338300B074BB /* CustomVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313F9E722942B4500B074BB /* CustomVideoController.swift */; };
 		0313F9EC2294468600B074BB /* SeededGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313F9EB2294468600B074BB /* SeededGenerator.swift */; };
 		0313F9ED2294468600B074BB /* SeededGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313F9EB2294468600B074BB /* SeededGenerator.swift */; };
 		0313F9EF22955F3B00B074BB /* CustomVideoFolders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313F9EE22955F3B00B074BB /* CustomVideoFolders.swift */; };
@@ -399,7 +395,6 @@
 		0396D52924B8B7ED00CC021B /* InfoWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0385FC5C242B9F6E007E6513 /* InfoWeatherView.swift */; };
 		0396D52B24B8B7ED00CC021B /* SeededGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313F9EB2294468600B074BB /* SeededGenerator.swift */; };
 		0396D52C24B8B7ED00CC021B /* InfoDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA49B32428EE3300863AF6 /* InfoDateView.swift */; };
-		0396D52D24B8B7ED00CC021B /* ManifestLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F661BE1778C007F2A20 /* ManifestLoader.swift */; };
 		0396D52E24B8B7ED00CC021B /* TimerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA49A02423DA1F00863AF6 /* TimerLayer.swift */; };
 		0396D52F24B8B7ED00CC021B /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034A6DC324ACC80200D62129 /* Source.swift */; };
 		0396D53024B8B7ED00CC021B /* PrefsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F29BE23A7E28E004B34D5 /* PrefsInfo.swift */; };
@@ -450,7 +445,6 @@
 		0396D56524B8B7ED00CC021B /* AnimationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034587312449D8EB00C97D1B /* AnimationLayer.swift */; };
 		0396D56624B8B7ED00CC021B /* AnimatableLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345872C2449C52F00C97D1B /* AnimatableLayer.swift */; };
 		0396D56724B8B7ED00CC021B /* InfoClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A596D423AA752F0097EA66 /* InfoClockView.swift */; };
-		0396D56824B8B7ED00CC021B /* CustomVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313F9E722942B4500B074BB /* CustomVideoController.swift */; };
 		0396D56A24B8B7ED00CC021B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03510C722185EF76008F74F2 /* CoreLocation.framework */; };
 		0396D56D24B8B7ED00CC021B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03510C6A21834EB2008F74F2 /* IOKit.framework */; };
 		0396D56F24B8B7ED00CC021B /* Aerial-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 03510C6D21834F38008F74F2 /* Aerial-Bridging-Header.h */; };
@@ -461,7 +455,6 @@
 		0396D58E24B8B7ED00CC021B /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 0395835221807D1F008E8F9C /* thumbnail.png */; };
 		0396D59224B8B7ED00CC021B /* screen1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03D1E78F22848F7F00D10CF7 /* screen1.jpg */; };
 		0396D59D24B8B7ED00CC021B /* missingvideos.json in Resources */ = {isa = PBXBuildFile; fileRef = 0369985C2196103300E359D3 /* missingvideos.json */; };
-		0396D5A824B8B7ED00CC021B /* CustomVideos.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0313F9E522942AA500B074BB /* CustomVideos.xib */; };
 		0396D5AB24B8B7ED00CC021B /* purple_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A42A9B2449F601003B3012 /* purple_retina.png */; };
 		03977EF1250E6918008FBAFD /* sv.json in Resources */ = {isa = PBXBuildFile; fileRef = 03977EE2250E6917008FBAFD /* sv.json */; };
 		03977EF2250E6918008FBAFD /* sv.json in Resources */ = {isa = PBXBuildFile; fileRef = 03977EE2250E6917008FBAFD /* sv.json */; };
@@ -839,6 +832,9 @@
 		F0A3E0A62884683D005E8D8D /* CompanionCacheViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0A3E0A22884683D005E8D8D /* CompanionCacheViewController.xib */; };
 		F0A3E0A72884683D005E8D8D /* CompanionCacheViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0A3E0A22884683D005E8D8D /* CompanionCacheViewController.xib */; };
 		F0A3E0A82884683D005E8D8D /* CompanionCacheViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0A3E0A22884683D005E8D8D /* CompanionCacheViewController.xib */; };
+		F0FE3F3A2B7134BA006EC0DB /* URL+subdirectories.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FE3F392B7134BA006EC0DB /* URL+subdirectories.swift */; };
+		F0FE3F3B2B7134BA006EC0DB /* URL+subdirectories.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FE3F392B7134BA006EC0DB /* URL+subdirectories.swift */; };
+		F0FE3F3C2B7134BA006EC0DB /* URL+subdirectories.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FE3F392B7134BA006EC0DB /* URL+subdirectories.swift */; };
 		FA143CE61BDA3EEF0041A82B /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA143CE51BDA3EEF0041A82B /* AVKit.framework */; };
 		FA36BD3F1BE57F8E00D5E03B /* VideoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */; };
 		FA36BD401BE57F8E00D5E03B /* VideoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */; };
@@ -854,8 +850,6 @@
 		FAC36F5D1BE1756D007F2A20 /* CheckCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F441BE1756D007F2A20 /* CheckCellView.swift */; };
 		FAC36F5E1BE1756D007F2A20 /* CheckCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F441BE1756D007F2A20 /* CheckCellView.swift */; };
 		FAC36F601BE175CF007F2A20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F301BE1756D007F2A20 /* AppDelegate.swift */; };
-		FAC36F671BE1778C007F2A20 /* ManifestLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F661BE1778C007F2A20 /* ManifestLoader.swift */; };
-		FAC36F681BE1778C007F2A20 /* ManifestLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC36F661BE1778C007F2A20 /* ManifestLoader.swift */; };
 		FAF450211BE2B45D00C1F98A /* VideoLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF450201BE2B45D00C1F98A /* VideoLoader.swift */; };
 		FAF450221BE2B45D00C1F98A /* VideoLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF450201BE2B45D00C1F98A /* VideoLoader.swift */; };
 		FAF450241BE2D2FD00C1F98A /* VideoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF450231BE2D2FD00C1F98A /* VideoCache.swift */; };
@@ -960,8 +954,6 @@
 		030DDA8F2423C3BE0072D5C9 /* InfoTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTimerView.swift; sourceTree = "<group>"; };
 		0313329A24BF3FA700C84A05 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		0313329B24BF3FA700C84A05 /* SidebarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SidebarViewController.xib; sourceTree = "<group>"; };
-		0313F9E522942AA500B074BB /* CustomVideos.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomVideos.xib; sourceTree = "<group>"; };
-		0313F9E722942B4500B074BB /* CustomVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVideoController.swift; sourceTree = "<group>"; };
 		0313F9EB2294468600B074BB /* SeededGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeededGenerator.swift; sourceTree = "<group>"; };
 		0313F9EE22955F3B00B074BB /* CustomVideoFolders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVideoFolders.swift; sourceTree = "<group>"; };
 		0317C19B268B65D10082A40C /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
@@ -1189,6 +1181,7 @@
 		F07221862AD4354E001F5452 /* CompanionBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionBridge.swift; sourceTree = "<group>"; };
 		F0A3E0A12884683D005E8D8D /* CompanionCacheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionCacheViewController.swift; sourceTree = "<group>"; };
 		F0A3E0A22884683D005E8D8D /* CompanionCacheViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanionCacheViewController.xib; sourceTree = "<group>"; };
+		F0FE3F392B7134BA006EC0DB /* URL+subdirectories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+subdirectories.swift"; sourceTree = "<group>"; };
 		FA143CD61BDA3E880041A82B /* AerialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA143CE51BDA3EEF0041A82B /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		FA36BD3E1BE57F8E00D5E03B /* VideoDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = VideoDownload.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -1204,7 +1197,6 @@
 		FAC36F401BE1756D007F2A20 /* AerialVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AerialVideo.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		FAC36F431BE1756D007F2A20 /* AerialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AerialView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		FAC36F441BE1756D007F2A20 /* CheckCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CheckCellView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		FAC36F661BE1778C007F2A20 /* ManifestLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ManifestLoader.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		FACAF1A51BD9FC6000E539DC /* Aerial.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Aerial.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF450201BE2B45D00C1F98A /* VideoLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = VideoLoader.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		FAF450231BE2D2FD00C1F98A /* VideoCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = VideoCache.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -1477,7 +1469,6 @@
 				0395835221807D1F008E8F9C /* thumbnail.png */,
 				0395835121807D1F008E8F9C /* thumbnail@2x.png */,
 				0377BF6F24BA15E600C33F9F /* btn_donate.png */,
-				0313F9E522942AA500B074BB /* CustomVideos.xib */,
 			);
 			path = "Old stuff";
 			sourceTree = "<group>";
@@ -1740,20 +1731,11 @@
 		FAC36F3C1BE1756D007F2A20 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				FAC36F3D1BE1756D007F2A20 /* Controllers */,
 				FAC36F3F1BE1756D007F2A20 /* Models */,
 				FAC36F421BE1756D007F2A20 /* Views */,
 			);
 			name = Source;
 			path = Aerial/Source;
-			sourceTree = "<group>";
-		};
-		FAC36F3D1BE1756D007F2A20 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				0313F9E722942B4500B074BB /* CustomVideoController.swift */,
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		FAC36F3F1BE1756D007F2A20 /* Models */ = {
@@ -1771,7 +1753,6 @@
 				0338119424C1D15B002E23E0 /* Aerial.swift */,
 				FAC36F401BE1756D007F2A20 /* AerialVideo.swift */,
 				0374C9FD247AC5BC002F29D3 /* Locations.swift */,
-				FAC36F661BE1778C007F2A20 /* ManifestLoader.swift */,
 				03893CB2217749F0008E7125 /* ErrorLog.swift */,
 				0313F9EB2294468600B074BB /* SeededGenerator.swift */,
 				0313F9EE22955F3B00B074BB /* CustomVideoFolders.swift */,
@@ -1824,6 +1805,7 @@
 				0300109624D6EF4C0092AE68 /* AVPlayerItem+vibrance.swift */,
 				0332076C26D7C355001F9837 /* AVAsset+VideoOrientation.swift */,
 				03C605DB277B45CA005CA51F /* DispatchQueue+Extension.swift */,
+				F0FE3F392B7134BA006EC0DB /* URL+subdirectories.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2140,7 +2122,6 @@
 				0343E9FA2630590A00AC702F /* openweather_logo.png in Resources */,
 				0300B80E24D1B536006132E5 /* info.circle.pdf in Resources */,
 				03AA7A6424C84C6300A47970 /* snow.pdf in Resources */,
-				0396D5A824B8B7ED00CC021B /* CustomVideos.xib in Resources */,
 				03AA7AA024C84C6300A47970 /* cloud.hail.pdf in Resources */,
 				03BF17A324E2F29C0080EF34 /* VideoFormatViewController.xib in Resources */,
 				03F752D424EED19C00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png in Resources */,
@@ -2222,7 +2203,6 @@
 				0300B84224D1B536006132E5 /* checkmark.circle.fill.pdf in Resources */,
 				0300B83F24D1B536006132E5 /* dial.pdf in Resources */,
 				03E3C1E0256AAAF6000A2A5B /* ru.json in Resources */,
-				0313F9E92294337F00B074BB /* CustomVideos.xib in Resources */,
 				03977F05250E6918008FBAFD /* fr.json in Resources */,
 				0378986324C35F8A009B9418 /* CacheViewController.xib in Resources */,
 				0321A54024D4515B004F1975 /* folder.pdf in Resources */,
@@ -2455,7 +2435,6 @@
 				0343E9F92630590A00AC702F /* openweather_logo.png in Resources */,
 				0300B80D24D1B536006132E5 /* info.circle.pdf in Resources */,
 				03AA7A6324C84C6300A47970 /* snow.pdf in Resources */,
-				0313F9E622942AA500B074BB /* CustomVideos.xib in Resources */,
 				03AA7A9F24C84C6300A47970 /* cloud.hail.pdf in Resources */,
 				03BF17A224E2F29C0080EF34 /* VideoFormatViewController.xib in Resources */,
 				03F752D324EED19C00945B1D /* video_inspire_alabama_montgomery_countryside_00007.png in Resources */,
@@ -2561,6 +2540,7 @@
 				0396D51F24B8B7ED00CC021B /* AerialView+Brightness.swift in Sources */,
 				03D3A11424C5FC770091FE99 /* AspectFillNSImageView.swift in Sources */,
 				F0058B8C28ABF69B0053699B /* SoundOutputManager+Properties.swift in Sources */,
+				F0FE3F3B2B7134BA006EC0DB /* URL+subdirectories.swift in Sources */,
 				030473CC24BCA9A40094A1A6 /* VideoViewItem.swift in Sources */,
 				0321A53424D44E80004F1975 /* ActionCellView.swift in Sources */,
 				0396D52124B8B7ED00CC021B /* Locations.swift in Sources */,
@@ -2578,7 +2558,6 @@
 				0396D52B24B8B7ED00CC021B /* SeededGenerator.swift in Sources */,
 				0396D52C24B8B7ED00CC021B /* InfoDateView.swift in Sources */,
 				0345EDE924C3239400C73038 /* DisplaysViewController.swift in Sources */,
-				0396D52D24B8B7ED00CC021B /* ManifestLoader.swift in Sources */,
 				03E168172673A23900D7442D /* InfoMusicView.swift in Sources */,
 				037772E224E43AF300D81EEA /* TimeSetupViewController.swift in Sources */,
 				0396D52E24B8B7ED00CC021B /* TimerLayer.swift in Sources */,
@@ -2666,7 +2645,6 @@
 				0396D56524B8B7ED00CC021B /* AnimationLayer.swift in Sources */,
 				0396D56624B8B7ED00CC021B /* AnimatableLayer.swift in Sources */,
 				0396D56724B8B7ED00CC021B /* InfoClockView.swift in Sources */,
-				0396D56824B8B7ED00CC021B /* CustomVideoController.swift in Sources */,
 				03E2237224BE048900CD8ED4 /* VideoHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2731,6 +2709,7 @@
 				03FA49A22423DA1F00863AF6 /* TimerLayer.swift in Sources */,
 				03608A2D22A56465008F08A2 /* HardwareDetection.swift in Sources */,
 				036A57D923F4747D0009DC02 /* InfoCountdownView.swift in Sources */,
+				F0FE3F3C2B7134BA006EC0DB /* URL+subdirectories.swift in Sources */,
 				F0058B8A28ABF69B0053699B /* Sound.swift in Sources */,
 				03C97BC424B6210500739CED /* SourceInfo.swift in Sources */,
 				030473CD24BCA9A40094A1A6 /* VideoViewItem.swift in Sources */,
@@ -2742,7 +2721,6 @@
 				0338119724C1D15B002E23E0 /* Aerial.swift in Sources */,
 				FAC36F5C1BE1756D007F2A20 /* AerialView.swift in Sources */,
 				031C5CBA268CA4E700CE35B4 /* ArtworkLayer.swift in Sources */,
-				FAC36F681BE1778C007F2A20 /* ManifestLoader.swift in Sources */,
 				03FA49B52428EE3300863AF6 /* InfoDateView.swift in Sources */,
 				0306336923A1026800046A59 /* LocationLayer.swift in Sources */,
 				034F29C023A7E58C004B34D5 /* PrefsInfo.swift in Sources */,
@@ -2781,7 +2759,6 @@
 				036A7E9D26370C260019186B /* Forecast.swift in Sources */,
 				0374C9FF247AC5BC002F29D3 /* Locations.swift in Sources */,
 				036A57DC23F5828E0009DC02 /* CountdownLayer.swift in Sources */,
-				0313F9EA2294338300B074BB /* CustomVideoController.swift in Sources */,
 				03A6D14825F109B900960135 /* OpenWeather.swift in Sources */,
 				FAC36F5A1BE1756D007F2A20 /* AerialVideo.swift in Sources */,
 				038D2EBD23AB91C300CD91F7 /* InfoLocationView.swift in Sources */,
@@ -2856,6 +2833,7 @@
 				032D1164239A7F0C007E7756 /* AerialView+Brightness.swift in Sources */,
 				03D3A11324C5FC770091FE99 /* AspectFillNSImageView.swift in Sources */,
 				F0058B8B28ABF69B0053699B /* SoundOutputManager+Properties.swift in Sources */,
+				F0FE3F3A2B7134BA006EC0DB /* URL+subdirectories.swift in Sources */,
 				030473CB24BCA9A40094A1A6 /* VideoViewItem.swift in Sources */,
 				0321A53324D44E80004F1975 /* ActionCellView.swift in Sources */,
 				0374C9FE247AC5BC002F29D3 /* Locations.swift in Sources */,
@@ -2873,7 +2851,6 @@
 				0313F9EC2294468600B074BB /* SeededGenerator.swift in Sources */,
 				03FA49B42428EE3300863AF6 /* InfoDateView.swift in Sources */,
 				0345EDE824C3239400C73038 /* DisplaysViewController.swift in Sources */,
-				FAC36F671BE1778C007F2A20 /* ManifestLoader.swift in Sources */,
 				03E168162673A23900D7442D /* InfoMusicView.swift in Sources */,
 				037772E124E43AF300D81EEA /* TimeSetupViewController.swift in Sources */,
 				03FA49A12423DA1F00863AF6 /* TimerLayer.swift in Sources */,
@@ -2961,7 +2938,6 @@
 				034587322449D8EB00C97D1B /* AnimationLayer.swift in Sources */,
 				0345872D2449C52F00C97D1B /* AnimatableLayer.swift in Sources */,
 				03A596D523AA752F0097EA66 /* InfoClockView.swift in Sources */,
-				0313F9E822942B4500B074BB /* CustomVideoController.swift in Sources */,
 				03E2237124BE048900CD8ED4 /* VideoHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
