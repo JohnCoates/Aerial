@@ -155,6 +155,9 @@ final class AerialVideo: CustomStringConvertible, Equatable {
         updateDuration()    // We need to have the video duration
     }
 
+
+
+    
     func updateDuration() {
         // We need to retrieve video duration from the cached files.
         // This is a workaround as currently, the VideoCache infrastructure

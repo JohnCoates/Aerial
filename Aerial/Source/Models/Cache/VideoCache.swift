@@ -145,7 +145,23 @@ final class VideoCache {
         let fileManager = FileManager.default
 
         if video.url.absoluteString.starts(with: "file") {
-            return fileManager.fileExists(atPath: video.url.path)
+            if fileManager.fileExists(atPath: video.url.path) {
+                do {
+                    let resourceValues = try video.url.resourceValues(forKeys: [.fileSizeKey])
+                    let fileSize = resourceValues.fileSize!
+
+                    // Make sure the file is big enough to be a video and not some network failure
+                    if fileSize > 500000 {
+                        return true
+                    }
+                } catch {
+                    errorLog("File check throw")
+                }
+
+                return false
+            } else {
+                return false
+            }
         } else {
             if video.source.isCachable {
                 guard let videoCachePath = cachePath(forVideo: video) else {
@@ -153,10 +169,41 @@ final class VideoCache {
                     return false
                 }
 
-                return fileManager.fileExists(atPath: videoCachePath)
+                if fileManager.fileExists(atPath: videoCachePath) {
+                    do {
+                        let fileUrl = Foundation.URL(fileURLWithPath: videoCachePath)
+                        
+                        
+                        let resourceValues = try fileUrl.resourceValues(forKeys: [.fileSizeKey])
+                        let fileSize = resourceValues.fileSize!
+
+                        // Make sure the file is big enough to be a video and not some network failure
+                        if fileSize > 500000 {
+                            return true
+                        }
+
+                    } catch {
+                        errorLog("File check throw")
+                    }
+                }
+
+                return false
             } else {
                 let path = sourcePathFor(video)
-                return fileManager.fileExists(atPath: path)
+                do {
+                    let fileUrl = Foundation.URL(fileURLWithPath: path)
+                    let resourceValues = try fileUrl.resourceValues(forKeys: [.fileSizeKey])
+                    let fileSize = resourceValues.fileSize!
+
+                    // Make sure the file is big enough to be a video and not some network failure
+                    if fileSize > 500000 {
+                        return true
+                    }
+
+                } catch {
+                    errorLog("File check throw")
+                }
+                return false
             }
         }
     }

@@ -170,7 +170,7 @@ struct OneCall {
     }
 
     static func makeUrl(lat: String, lon: String) -> String {
-        return "http://api.openweathermap.org/data/2.5/onecall"
+        return "https://api.openweathermap.org/data/2.5/onecall"
             + "?lat=\(lat)&lon=\(lon)"
             + "&units=\(getUnits())"
             + "&lang=\(getShortcodeLanguage())"
@@ -182,7 +182,7 @@ struct OneCall {
         
         let nloc = location.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
 
-        return "http://api.openweathermap.org/data/2.5/onecall"
+        return "https://api.openweathermap.org/data/2.5/onecall"
             + "?q=\(nloc)"
             + "&units=\(getUnits())"
             + "&lang=\(getShortcodeLanguage())"

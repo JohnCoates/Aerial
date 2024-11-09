@@ -96,7 +96,7 @@ class ConditionSymbolLayer: CALayer {
             img = makeColorSymbol(name: getColorSymbol(condition: weather.id,
                                                   isNight: isNight), size: size)
         case .oweather:
-            downloadImage(from: URL(string: "http://openweathermap.org/img/wn/\(weather.icon)@4x.png")!, size: size)
+            downloadImage(from: URL(string: "https://openweathermap.org/img/wn/\(weather.icon)@4x.png")!, size: size)
             img = nil
         }
 
@@ -135,7 +135,7 @@ class ConditionSymbolLayer: CALayer {
             img = makeColorSymbol(name: getColorSymbol(condition: weather.id,
                                                   isNight: isNight), size: size)
         case .oweather:
-            downloadImage(from: URL(string: "http://openweathermap.org/img/wn/\(weather.icon)@4x.png")!, size: size)
+            downloadImage(from: URL(string: "https://openweathermap.org/img/wn/\(weather.icon)@4x.png")!, size: size)
             img = nil
         }
 

@@ -17,7 +17,11 @@ open class AspectFillNSImageView: NSImageView {
 
         set {
             self.layer = CALayer()
-            self.layer?.contentsGravity = CALayerContentsGravity.resizeAspectFill
+            if #available(macOS 10.14, *) {
+                self.layer?.contentsGravity = CALayerContentsGravity.resizeAspectFill
+            } else {
+                // Fallback on earlier versions
+            }
             self.layer?.contents = newValue
             self.wantsLayer = true
 

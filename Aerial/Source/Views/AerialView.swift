@@ -464,12 +464,12 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
         }
 
         if !isDisabled {
-            if let layer = layer {
-                layer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
-                self.playerLayer.contentsScale = (self.window?.backingScaleFactor) ?? 1.0
+            if let layer = layer, let window = self.window {
+                layer.contentsScale = (window.backingScaleFactor) ?? 1.0
+                self.playerLayer.contentsScale = (window.backingScaleFactor) ?? 1.0
 
                 // And our additional layers
-                layerManager.setContentScale(scale: (self.window?.backingScaleFactor) ?? 1.0)
+                layerManager.setContentScale(scale: (window.backingScaleFactor) ?? 1.0)
             }
         }
     }

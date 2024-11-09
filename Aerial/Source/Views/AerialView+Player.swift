@@ -144,7 +144,11 @@ extension AerialView {
                                           1-(AerialView.fadeDuration/(video.duration/playbackSpeed)), 1 ] as [NSNumber]
 
                 fadeAnimation.duration = video.duration/playbackSpeed
-                fadeAnimation.calculationMode = CAAnimationCalculationMode.cubic
+                if #available(macOS 10.14, *) {
+                    fadeAnimation.calculationMode = CAAnimationCalculationMode.cubic
+                } else {
+                    // Fallback on earlier versions
+                }
                 view.playerLayer.add(fadeAnimation, forKey: "mainfade")
             } else {
                 view.playerLayer.opacity = 1.0

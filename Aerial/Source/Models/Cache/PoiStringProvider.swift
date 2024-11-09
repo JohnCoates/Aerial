@@ -47,7 +47,7 @@ final class PoiStringProvider {
 
     private func loadBundle() {
         // Idle string bundle
-        var bundlePath = Cache.supportPath.appending("/macOS 14")
+        var bundlePath = Cache.supportPath.appending("/macOS 15")
 
         if PrefsAdvanced.ciOverrideLanguage == "" {
             debugLog("Preferred languages : \(Locale.preferredLanguages)")

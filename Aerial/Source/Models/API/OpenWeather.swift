@@ -135,7 +135,7 @@ struct OpenWeather {
     }
 
     static func makeUrl(lat: String, lon: String) -> String {
-        return "http://api.openweathermap.org/data/2.5/weather"
+        return "https://api.openweathermap.org/data/2.5/weather"
             + "?lat=\(lat)&lon=\(lon)"
             + "&units=\(getUnits())"
             + "&lang=\(getShortcodeLanguage())"
@@ -145,7 +145,7 @@ struct OpenWeather {
     static func makeUrl(location: String) -> String {
         let nloc = location.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
 
-        return "http://api.openweathermap.org/data/2.5/weather"
+        return "https://api.openweathermap.org/data/2.5/weather"
             + "?q=\(nloc)"
             + "&units=\(getUnits())"
             + "&lang=\(getShortcodeLanguage())"

@@ -16,14 +16,24 @@ struct SourceHeader {
 // swiftlint:disable:next type_body_length
 struct SourceList {
     // This is the current one until next fall
-    static let macOS14 = Source(name: "macOS 14",
+    static let macOS15 = Source(name: "macOS 15",
+                        description: "High framerate videos from macOS 15 Sequoia",
+                        manifestUrl: "https://sylvan.apple.com/itunes-assets/Aerials126/v4/82/2e/34/822e344c-f5d2-878c-3d56-508d5b09ed61/resources-15-0-2.tar",
+                        type: .macOS,
+                        scenes: [.nature, .city, .space, .sea],
+                        isCachable: true,
+                        license: "",
+                        more: "")
+    
+    // This is the current one until next fall
+    /*static let macOS14 = Source(name: "macOS 14",
                         description: "High framerate videos from macOS 14 Sonoma",
                         manifestUrl: "https://sylvan.apple.com/itunes-assets/Aerials126/v4/82/2e/34/822e344c-f5d2-878c-3d56-508d5b09ed61/resources-14-0-10.tar",
                         type: .macOS,
                         scenes: [.nature, .city, .space, .sea],
                         isCachable: true,
                         license: "",
-                        more: "")
+                        more: "")*/
 
     // This is the current one until next fall
     static let tvOS16 = Source(name: "tvOS 16",
@@ -72,7 +82,7 @@ struct SourceList {
                         license: "",
                         more: "")*/
 
-    static var list: [Source] = [macOS14, tvOS16, tvOS13] + foundSources
+    static var list: [Source] = [macOS15, tvOS16, tvOS13] + foundSources
     // static var list: [Source] = foundSources
 
     // This is where the magic happens
@@ -251,30 +261,36 @@ struct SourceList {
                 
                 for lurl in urls {
                     if lurl.path.lowercased().hasSuffix(".mp4") || lurl.path.lowercased().hasSuffix(".mov") {
+                        
+                        let resourceValues = try lurl.resourceValues(forKeys: [.fileSizeKey])
+                        let fileSize = resourceValues.fileSize!
 
-                        // Check if the asset was there previously
-                        let foundAssets = originalAssets.filter { $0.url4KSDR == lurl.path }
+                        if fileSize > 500000 {
+                            // Check if the asset was there previously
+                            let foundAssets = originalAssets.filter { $0.url4KSDR == lurl.path }
 
-                        if let foundAsset = foundAssets.first {
-                            // Just add the asset to the new array
-                            updatedAssets.append(foundAsset)
-                        } else {
-                            // Create a new entry
-                            updatedAssets.append(VideoAsset(accessibilityLabel: folderName,
-                                                     id: NSUUID().uuidString,
-                                                     title: lurl.lastPathComponent,
-                                                     timeOfDay: "day",
-                                                     scene: "",
-                                                     pointsOfInterest: [:],
-                                                     url4KHDR: "",
-                                                     url4KSDR: lurl.path,
-                                                     url1080H264: "",
-                                                     url1080HDR: "",
-                                                     url4KSDR120FPS: "",
-                                                     url4KSDR240FPS: "",
-                                                     url1080SDR: "",
-                                                     url: "",
-                                                     type: "nature"))
+                            if let foundAsset = foundAssets.first {
+                                // Just add the asset to the new array
+                                updatedAssets.append(foundAsset)
+                            } else {
+                                // Create a new entry
+                                updatedAssets.append(VideoAsset(accessibilityLabel: folderName,
+                                                         id: NSUUID().uuidString,
+                                                         title: lurl.lastPathComponent,
+                                                         timeOfDay: "day",
+                                                         scene: "",
+                                                         pointsOfInterest: [:],
+                                                         url4KHDR: "",
+                                                         url4KSDR: lurl.path,
+                                                         url1080H264: "",
+                                                         url1080HDR: "",
+                                                         url4KSDR120FPS: "",
+                                                         url4KSDR240FPS: "",
+                                                         url1080SDR: "",
+                                                         url: "",
+                                                         type: "nature"))
+                            }
+
                         }
                     }
                 }
@@ -307,21 +323,27 @@ struct SourceList {
 
             for lurl in urls {
                 if lurl.path.lowercased().hasSuffix(".mp4") || lurl.path.lowercased().hasSuffix(".mov") {
-                    assets.append(VideoAsset(accessibilityLabel: folderName,
-                                             id: NSUUID().uuidString,
-                                             title: lurl.lastPathComponent,
-                                             timeOfDay: "day",
-                                             scene: "",
-                                             pointsOfInterest: [:],
-                                             url4KHDR: "",
-                                             url4KSDR: lurl.path,
-                                             url1080H264: "",
-                                             url1080HDR: "",
-                                             url4KSDR120FPS: "",
-                                             url4KSDR240FPS: "",
-                                             url1080SDR: "",
-                                             url: "",
-                                             type: "nature"))
+                    
+                    let resourceValues = try lurl.resourceValues(forKeys: [.fileSizeKey])
+                    let fileSize = resourceValues.fileSize!
+
+                    if fileSize > 500000 {
+                        assets.append(VideoAsset(accessibilityLabel: folderName,
+                                                 id: NSUUID().uuidString,
+                                                 title: lurl.lastPathComponent,
+                                                 timeOfDay: "day",
+                                                 scene: "",
+                                                 pointsOfInterest: [:],
+                                                 url4KHDR: "",
+                                                 url4KSDR: lurl.path,
+                                                 url1080H264: "",
+                                                 url1080HDR: "",
+                                                 url4KSDR120FPS: "",
+                                                 url4KSDR240FPS: "",
+                                                 url1080SDR: "",
+                                                 url: "",
+                                                 type: "nature"))
+                    }
                 }
             }
 

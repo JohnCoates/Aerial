@@ -75,7 +75,7 @@ struct GeoCoding {
 
     static func makeUrl() -> String {
         let nloc = PrefsInfo.weather.locationString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        return "http://api.openweathermap.org/geo/1.0/direct"
+        return "https://api.openweathermap.org/geo/1.0/direct"
             + "?q=\(nloc)"
             + "&appid=\(APISecrets.openWeatherAppId)"
     }
