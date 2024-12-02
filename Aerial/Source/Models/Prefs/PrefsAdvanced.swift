@@ -25,6 +25,10 @@ struct PrefsAdvanced {
     @SimpleStorage(key: "favorOrientation", defaultValue: true)
     static var favorOrientation: Bool
     
+    // Invert colors
+    @SimpleStorage(key: "invertColors", defaultValue: false)
+    static var invertColors: Bool
+    
     // Debug mode
     @SimpleStorage(key: "debugMode", defaultValue: false)
     static var debugMode: Bool

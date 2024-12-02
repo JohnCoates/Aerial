@@ -31,6 +31,9 @@ class AdvancedViewController: NSViewController {
     @IBOutlet var menu4KHDR: NSMenuItem!
 
     @IBOutlet var videoFadesPopup: NSPopUpButton!
+
+    @IBOutlet weak var invertColorsCheckbox: NSButton!
+
     @IBOutlet var rightArrowSkipCheckbox: NSButton!
     @IBOutlet var muteSoundCheckbox: NSButton!
 
@@ -85,6 +88,7 @@ class AdvancedViewController: NSViewController {
             rightArrowSkipCheckbox.state = .off
         }
 
+        invertColorsCheckbox.state = PrefsAdvanced.invertColors ? .on : .off
         highQualityTextCheckbox.state = PrefsInfo.highQualityTextRendering ? .on : .off
 
         muteSoundCheckbox.state = PrefsAdvanced.muteSound ? .on : .off
@@ -186,6 +190,9 @@ class AdvancedViewController: NSViewController {
         }
     }
 
+    @IBAction func invertColorsCheckboxClick(_ sender: NSButton) {
+        PrefsAdvanced.invertColors = sender.state == .on
+    }
     @IBAction func videoFadesPopupChange(_ sender: NSPopUpButton) {
         PrefsVideos.fadeMode = FadeMode(rawValue: sender.indexOfSelectedItem)!
     }

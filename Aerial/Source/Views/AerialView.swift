@@ -826,6 +826,9 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             if let value = PrefsVideos.vibrance[video.id], !video.isHDR() {
                 item.setVibrance(value)
             }
+            if PrefsAdvanced.invertColors {
+                item.setColorInvert()
+            }
 
             player.replaceCurrentItem(with: item)
             debugLog("🖼️ \(self.description) streaming video (not fully available offline) : \(video.url)")
@@ -863,6 +866,10 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
                 let value = PrefsVideos.vibrance[video.id] ?? 0
                 localitem.setVibrance(value)
             }
+            if PrefsAdvanced.invertColors {
+                localitem.setColorInvert()
+            }
+            
             DispatchQueue.global(qos: .default).async { [self] in
                 player.replaceCurrentItem(with: localitem)
                 debugLog("🖼️ \(self.description) playing video (OFFLINE MODE) : \(localurl)")
