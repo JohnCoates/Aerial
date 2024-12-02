@@ -36,18 +36,27 @@ extension AVPlayerItem {
     
     func setColorInvert() {
         if #available(OSX 10.14, *) {
-            debugLog("Applying color invert")
+                debugLog("Applying color invert with brightness adjustment")
 
-            if let filter = CIFilter(name: "CIColorInvert") {
-                self.videoComposition = AVVideoComposition(asset: asset, applyingCIFiltersWithHandler: { request in
-                    let source = request.sourceImage.clampedToExtent()
-                    filter.setValue(source, forKey: kCIInputImageKey)
-                    let output = filter.outputImage
+                if let invertFilter = CIFilter(name: "CIColorInvert"),
+                   let brightnessFilter = CIFilter(name: "CIColorControls") {
                     
-                    request.finish(with: output!, context: nil)
-                })
+                    self.videoComposition = AVVideoComposition(asset: asset, applyingCIFiltersWithHandler: { request in
+                        let source = request.sourceImage.clampedToExtent()
+                        
+                        // First apply invert
+                        invertFilter.setValue(source, forKey: kCIInputImageKey)
+                        
+                        // Then apply brightness
+                        brightnessFilter.setValue(invertFilter.outputImage, forKey: kCIInputImageKey)
+                        brightnessFilter.setValue(-0.25, forKey: kCIInputBrightnessKey) // 25% decrease
+                        
+                        let output = brightnessFilter.outputImage
+                        
+                        request.finish(with: output!, context: nil)
+                    })
+                }
             }
-        }
     }
     
 }
