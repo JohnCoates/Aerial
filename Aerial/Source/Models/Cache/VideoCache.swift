@@ -145,23 +145,7 @@ final class VideoCache {
         let fileManager = FileManager.default
 
         if video.url.absoluteString.starts(with: "file") {
-            if fileManager.fileExists(atPath: video.url.path) {
-                do {
-                    let resourceValues = try video.url.resourceValues(forKeys: [.fileSizeKey])
-                    let fileSize = resourceValues.fileSize!
-
-                    // Make sure the file is big enough to be a video and not some network failure
-                    if fileSize > 500000 {
-                        return true
-                    }
-                } catch {
-                    errorLog("File check throw")
-                }
-
-                return false
-            } else {
-                return false
-            }
+            return fileManager.fileExists(atPath: video.url.path)
         } else {
             if video.source.isCachable {
                 guard let videoCachePath = cachePath(forVideo: video) else {

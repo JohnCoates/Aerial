@@ -261,11 +261,13 @@ struct SourceList {
                 
                 for lurl in urls {
                     if lurl.path.lowercased().hasSuffix(".mp4") || lurl.path.lowercased().hasSuffix(".mov") {
-                        
+                        let fileManager = FileManager.default
+                        let attributes = try? fileManager.attributesOfItem(atPath: lurl.path)
+                        let fileType = attributes?[.type] as? FileAttributeType
                         let resourceValues = try lurl.resourceValues(forKeys: [.fileSizeKey])
                         let fileSize = resourceValues.fileSize!
 
-                        if fileSize > 500000 {
+                        if fileSize > 500000 || fileType == .typeSymbolicLink {
                             // Check if the asset was there previously
                             let foundAssets = originalAssets.filter { $0.url4KSDR == lurl.path }
 
@@ -323,11 +325,13 @@ struct SourceList {
 
             for lurl in urls {
                 if lurl.path.lowercased().hasSuffix(".mp4") || lurl.path.lowercased().hasSuffix(".mov") {
-                    
+                    let fileManager = FileManager.default
+                    let attributes = try? fileManager.attributesOfItem(atPath: lurl.path)
+                    let fileType = attributes?[.type] as? FileAttributeType
                     let resourceValues = try lurl.resourceValues(forKeys: [.fileSizeKey])
                     let fileSize = resourceValues.fileSize!
 
-                    if fileSize > 500000 {
+                    if fileSize > 500000 || fileType == .typeSymbolicLink {
                         assets.append(VideoAsset(accessibilityLabel: folderName,
                                                  id: NSUUID().uuidString,
                                                  title: lurl.lastPathComponent,
