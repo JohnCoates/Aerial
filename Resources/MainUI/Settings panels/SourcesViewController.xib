@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22113.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22113.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="70" headerView="b1V-rc-xZQ" viewBased="YES" indentationPerLevel="13" outlineTableColumn="Ssk-cL-P6o" id="vzM-Kh-6SV" customClass="SourceOutlineView" customModule="Aerial" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="789" height="381"/>
+                                <rect key="frame" x="0.0" y="0.0" width="790" height="381"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="17" height="0.0"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -88,10 +87,10 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="valueColumnCell" id="sPv-Lx-coN" customClass="DescriptionCellView" customModule="Aerial" customModuleProvider="target">
-                                                <rect key="frame" x="73" y="0.0" width="629" height="68"/>
+                                                <rect key="frame" x="73.248931931094376" y="0.0" width="629" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k0S-C5-p57">
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k0S-C5-p57">
                                                         <rect key="frame" x="0.0" y="50" width="38" height="16"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="t3l-WH-Xr4">
                                                             <font key="font" metaFont="systemMedium" size="13"/>
@@ -99,7 +98,7 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PiP-K7-e2O">
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PiP-K7-e2O">
                                                         <rect key="frame" x="0.0" y="22" width="629" height="28"/>
                                                         <textFieldCell key="cell" id="FjG-vS-zA3">
                                                             <font key="font" metaFont="smallSystem"/>
@@ -117,7 +116,7 @@ line2</string>
                                                         </constraints>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="film" id="1rB-mU-MYO"/>
                                                     </imageView>
-                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kAu-1v-NWK">
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kAu-1v-NWK">
                                                         <rect key="frame" x="549" y="4" width="80" height="14"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Last updated: " id="q9w-ij-mAW">
                                                             <font key="font" metaFont="smallSystem"/>
@@ -125,7 +124,7 @@ line2</string>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="10" verticalCompressionResistancePriority="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ral-81-onK">
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="10" verticalCompressionResistancePriority="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ral-81-onK">
                                                         <rect key="frame" x="20" y="4" width="56" height="14"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="left" title="69 videos" usesSingleLineMode="YES" id="GdW-Ad-2Dd">
                                                             <font key="font" metaFont="smallSystem"/>
@@ -289,7 +288,7 @@ line2</string>
                                         </textFieldCell>
                                         <prototypeCellViews>
                                             <tableCellView id="TlS-Vu-nlh" customClass="ActionCellView" customModule="Aerial" customModuleProvider="target">
-                                                <rect key="frame" x="719" y="0.0" width="61" height="68"/>
+                                                <rect key="frame" x="719.49786386218875" y="0.0" width="61" height="68"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button toolTip="Download videos from this source now" id="dhO-VP-Rzn">
@@ -328,7 +327,7 @@ line2</string>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" wantsLayer="YES" id="b1V-rc-xZQ">
-                        <rect key="frame" x="0.0" y="0.0" width="789" height="25"/>
+                        <rect key="frame" x="0.0" y="0.0" width="790" height="25"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
@@ -392,7 +391,7 @@ line2</string>
                         <action selector="refreshPeriodicityChange:" target="-2" id="hUi-fS-Wye"/>
                     </connections>
                 </popUpButton>
-                <textField toolTip="How often should Aerial looks for new content?" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HWL-LY-Ozg">
+                <textField toolTip="How often should Aerial looks for new content?" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HWL-LY-Ozg">
                     <rect key="frame" x="640" y="497" width="58" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Refresh:" id="8uC-gE-Cn4">
                         <font key="font" metaFont="system" size="14"/>
@@ -410,7 +409,7 @@ line2</string>
                     </imageCell>
                     <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
                 </imageView>
-                <textField focusRingType="none" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8Bi-xK-lN6">
+                <textField horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8Bi-xK-lN6">
                     <rect key="frame" x="52" y="497" width="316" height="17"/>
                     <textFieldCell key="cell" selectable="YES" title="You can add videos from your Mac, or check our" id="0AG-cL-NaN">
                         <font key="font" metaFont="system" size="14"/>
@@ -468,7 +467,7 @@ line2</string>
             <view key="contentView" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ek0-xw-cVO">
                 <rect key="frame" x="0.0" y="12" width="740" height="145"/>
                 <subviews>
-                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oit-Js-Fye">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oit-Js-Fye">
                         <rect key="frame" x="18" y="109" width="352" height="16"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Please paste the URL of your online Aerial source below : " id="iQW-jI-Mm5">
                             <font key="font" usesAppearanceFont="YES"/>
@@ -476,7 +475,7 @@ line2</string>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gxJ-4P-fMD">
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gxJ-4P-fMD">
                         <rect key="frame" x="20" y="68" width="700" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="700" id="V73-Uq-dkJ"/>
@@ -497,7 +496,7 @@ line2</string>
                             <action selector="addOnlineCancel:" target="-2" id="w3I-Gu-58Y"/>
                         </connections>
                     </button>
-                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PuX-0t-vmu">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PuX-0t-vmu">
                         <rect key="frame" x="50" y="24" width="269" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="This is only for Aerial specific video sources" id="TZ8-kc-1VB">
@@ -556,7 +555,7 @@ line2</string>
                 <rect key="frame" x="0.0" y="0.0" width="665" height="250"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oZ9-Ey-gbW">
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oZ9-Ey-gbW">
                         <rect key="frame" x="20" y="179" width="625" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="78y-xO-Nnp">
@@ -565,7 +564,7 @@ line2</string>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wER-O8-qwH">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wER-O8-qwH">
                         <rect key="frame" x="20" y="214" width="504" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Please drag and drop your local directory containing videos, in the textfield below: " id="ExP-Ao-DcG">
@@ -579,7 +578,7 @@ line2</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSCaution" id="wer-ay-XrD"/>
                     </imageView>
-                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m5U-hR-2I7">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m5U-hR-2I7">
                         <rect key="frame" x="52" y="56" width="595" height="102"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" id="wR2-WM-OqJ">

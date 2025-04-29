@@ -412,7 +412,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
     
     override func viewDidMoveToWindow() {
         super.viewDidMoveToWindow()
-        if foundScreen != nil {
+        if foundScreen == nil {
             debugLog("🖼️ \(self.description) viewDidMoveToWindow frame: \(self.frame) window: \(String(describing: self.window))")
             debugLog(self.window?.screen.debugDescription ?? "Unknown")
             
