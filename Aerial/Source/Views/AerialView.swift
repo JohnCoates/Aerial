@@ -535,7 +535,7 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
 
         // Remove notifications observer
         debugLog("🖼️ \(self.description) clear notif")
-        clearNotifications()
+        //clearNotifications()  // tmptest
         // Clear layer animations
         debugLog("🖼️ \(self.description) clear anims")
         clearAllLayerAnimations()
@@ -703,7 +703,11 @@ final class AerialView: ScreenSaverView, CAAnimationDelegate {
             }
             
             if #available(macOS 14.0, *) {
-                exit(0)
+                debugLog("🖼️ ⏱️ Setting up 2-second delayed exit")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    debugLog("🖼️ 🚪 Exiting application now")
+                    exit(0)
+                }
             }
 
             self.stopAnimation()
