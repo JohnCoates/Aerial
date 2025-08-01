@@ -47,7 +47,7 @@ final class PoiStringProvider {
 
     private func loadBundle() {
         // Idle string bundle
-        var bundlePath = Cache.supportPath.appending("/macOS 15")
+        var bundlePath = Cache.supportPath.appending("/macOS 26")
 
         if PrefsAdvanced.ciOverrideLanguage == "" {
             debugLog("Preferred languages : \(Locale.preferredLanguages)")
@@ -83,7 +83,7 @@ final class PoiStringProvider {
         }
 
         if let sb = Bundle.init(path: bundlePath) {
-            let dictPath = Cache.supportPath.appending("/macOS 14/TVIdleScreenStrings.bundle/en.lproj/Localizable.nocache.strings")
+            let dictPath = Cache.supportPath.appending("/macOS 26/TVIdleScreenStrings.bundle/en.lproj/Localizable.nocache.strings")
 
             // We could probably only work with that...
             if let sd = NSDictionary(contentsOfFile: dictPath) as? [String: String] {

@@ -16,9 +16,18 @@ struct SourceHeader {
 // swiftlint:disable:next type_body_length
 struct SourceList {
     // This is the current one until next fall
-    static let macOS15 = Source(name: "macOS 15",
+    /*static let macOS15 = Source(name: "macOS 15",
                         description: "High framerate videos from macOS 15 Sequoia",
                         manifestUrl: "https://sylvan.apple.com/itunes-assets/Aerials126/v4/82/2e/34/822e344c-f5d2-878c-3d56-508d5b09ed61/resources-15-0-2.tar",
+                        type: .macOS,
+                        scenes: [.nature, .city, .space, .sea],
+                        isCachable: true,
+                        license: "",
+                        more: "")*/
+    
+    static let macOS26 = Source(name: "macOS 26",
+                        description: "High framerate videos from macOS 26",
+                        manifestUrl: "https://sylvan.apple.com/itunes-assets/Aerials126/v4/82/2e/34/822e344c-f5d2-878c-3d56-508d5b09ed61/resources-26-0-1.tar",
                         type: .macOS,
                         scenes: [.nature, .city, .space, .sea],
                         isCachable: true,
@@ -82,7 +91,7 @@ struct SourceList {
                         license: "",
                         more: "")*/
 
-    static var list: [Source] = [macOS15, tvOS16, tvOS13] + foundSources
+    static var list: [Source] = [macOS26, tvOS16, tvOS13] + foundSources
     // static var list: [Source] = foundSources
 
     // This is where the magic happens

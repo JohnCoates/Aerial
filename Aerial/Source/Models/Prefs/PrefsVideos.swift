@@ -139,11 +139,9 @@ struct PrefsVideos {
     @SimpleStorage(key: "allowSkips", defaultValue: true)
     static var allowSkips: Bool
 
-    @SimpleStorage(key: "sourcesEnabled", defaultValue: ["tvOS 16": true,
-                                                         "tvOS 13": false,
-                                                         "tvOS 12": false,
-                                                         "tvOS 11": false,
-                                                         "tvOS 10": false ])
+    @SimpleStorage(key: "sourcesEnabled", defaultValue: ["macOS 26": true,
+                                                         "tvOS 16": false,
+                                                         "tvOS 13": false])
     static var enabledSources: [String: Bool]
 
     // Favorites (we use the video ID)

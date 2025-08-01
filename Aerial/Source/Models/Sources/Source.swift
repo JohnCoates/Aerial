@@ -575,9 +575,10 @@ struct MacManifest: Codable {
 struct MacAsset: Codable {
     let shotID: String
     let previewImage: String
+    let previewImage900x580: String?
     let localizedNameKey, accessibilityLabel: String
     let preferredOrder: Int
-    let categories: [CategoryEnum]
+    let categories: [String]
     let id: String
     let subcategories: [String]
     let pointsOfInterest: [String: String]
@@ -587,22 +588,18 @@ struct MacAsset: Codable {
 
     enum CodingKeys: String, CodingKey {
         case shotID, previewImage, localizedNameKey, accessibilityLabel, preferredOrder, categories, id, subcategories, pointsOfInterest
+        case previewImage900x580 = "previewImage-900x580"
         case url4KSDR240FPS = "url-4K-SDR-240FPS"
         case includeInShuffle, showInTopLevel, group
     }
 }
 
-enum CategoryEnum: String, Codable {
-    case a33A55D9Edea4596A8506C10B54Fbbb5 = "A33A55D9-EDEA-4596-A850-6C10B54FBBB5"
-    case the55B7C95DCeaf4Fd8AdefF5Bc657D8F6D = "55B7C95D-CEAF-4FD8-ADEF-F5BC657D8F6D"
-    case the5Ef4117148624F93800CAd86Ce5E6891 = "5EF41171-4862-4F93-800C-AD86CE5E6891"
-    case the8Be8B5246Eae43F5A3E801Dcfa1Bcd4B = "8BE8B524-6EAE-43F5-A3E8-01DCFA1BCD4B"
-}
 
 enum LocalizationVersion: String, Codable {
     case the19J1 = "19J-1"
     case the19K1 = "19K-1"
     case the21J1 = "21J-1"
+    case the22L1 = "22L-1"
 }
 
 // MARK: - SubcategoryElement
