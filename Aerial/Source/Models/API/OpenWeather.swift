@@ -76,7 +76,7 @@ struct OWMain: Codable {
 
 // MARK: - OWSys
 struct OWSys: Codable {
-    let type, id: Int
+    let type, id: Int?
     let country: String
     let sunrise, sunset: Int
 }
@@ -97,6 +97,7 @@ struct OWWeather: Codable {
 struct OWWind: Codable {
     let speed: Double
     let deg: Int
+    let gust: Double?
 }
 
 struct OpenWeather {
@@ -180,13 +181,30 @@ struct OpenWeather {
                 fetchData(from: makeUrl(lat: lat, lon: lon)) { result in
                     switch result {
                     case .success(let jsonString):
+                        
+
                         let jsonData = jsonString.data(using: .utf8)!
 
-                        if var openWeather = try? newJSONDecoder().decode(OWeather.self, from: jsonData) {
+                        do {
+                            var openWeather = try newJSONDecoder().decode(OWeather.self, from: jsonData)
                             openWeather.processTemperatures()
-
                             completion(.success(openWeather))
-                        } else {
+                        } catch {
+                            debugLog("=== OW: JSON decoding failed: \(error)")
+                            if let decodingError = error as? DecodingError {
+                                switch decodingError {
+                                case .keyNotFound(let key, let context):
+                                    debugLog("=== OW: Missing key '\(key.stringValue)' at: \(context.codingPath.map { $0.stringValue }.joined(separator: "."))")
+                                case .typeMismatch(let type, let context):
+                                    debugLog("=== OW: Type mismatch for \(type) at: \(context.codingPath.map { $0.stringValue }.joined(separator: "."))")
+                                case .valueNotFound(let type, let context):
+                                    debugLog("=== OW: Missing value for \(type) at: \(context.codingPath.map { $0.stringValue }.joined(separator: "."))")
+                                case .dataCorrupted(let context):
+                                    debugLog("=== OW: Data corrupted at: \(context.codingPath.map { $0.stringValue }.joined(separator: "."))")
+                                @unknown default:
+                                    debugLog("=== OW: Unknown decoding error")
+                                }
+                            }
                             completion(.failure(.cityNotFound))
                         }
                     case .failure(let error):
@@ -210,6 +228,21 @@ struct OpenWeather {
                         openWeather.processTemperatures()
                         completion(.success(openWeather))
                     } catch {
+                        debugLog("=== OW: JSON decoding failed: \(error)")
+                        if let decodingError = error as? DecodingError {
+                            switch decodingError {
+                            case .keyNotFound(let key, let context):
+                                debugLog("=== OW: Missing key '\(key.stringValue)' at: \(context.codingPath.map { $0.stringValue }.joined(separator: "."))")
+                            case .typeMismatch(let type, let context):
+                                debugLog("=== OW: Type mismatch for \(type) at: \(context.codingPath.map { $0.stringValue }.joined(separator: "."))")
+                            case .valueNotFound(let type, let context):
+                                debugLog("=== OW: Missing value for \(type) at: \(context.codingPath.map { $0.stringValue }.joined(separator: "."))")
+                            case .dataCorrupted(let context):
+                                debugLog("=== OW: Data corrupted at: \(context.codingPath.map { $0.stringValue }.joined(separator: "."))")
+                            @unknown default:
+                                debugLog("=== OW: Unknown decoding error")
+                            }
+                        }
                         completion(.failure(.cityNotFound))
                     }
                 case .failure(_):
